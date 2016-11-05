@@ -278,8 +278,8 @@ class Crypt_TripleDES
         switch (true) {
             case CRYPT_DES_MODE == CRYPT_DES_MODE_INTERNAL:
             case $this->mode == CRYPT_DES_MODE_3CBC:
-                $this->des[0]->setKey(substr($key,  0, 8));
-                $this->des[1]->setKey(substr($key,  8, 8));
+                $this->des[0]->setKey(substr($key, 0, 8));
+                $this->des[1]->setKey(substr($key, 8, 8));
                 $this->des[2]->setKey(substr($key, 16, 8));
         }
         $this->changed = true;

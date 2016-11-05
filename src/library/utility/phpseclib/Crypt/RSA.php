@@ -96,7 +96,7 @@ require_once 'Crypt/Hash.php';
  * @see Crypt_RSA::setHash()
  * @see Crypt_RSA::setMGFHash()
  */
-define('CRYPT_RSA_ENCRYPTION_OAEP',  1);
+define('CRYPT_RSA_ENCRYPTION_OAEP', 1);
 /*
  * Use PKCS#1 padding.
  *
@@ -120,7 +120,7 @@ define('CRYPT_RSA_ENCRYPTION_PKCS1', 2);
  * @see Crypt_RSA::setSaltLength()
  * @see Crypt_RSA::setMGFHash()
  */
-define('CRYPT_RSA_SIGNATURE_PSS',  1);
+define('CRYPT_RSA_SIGNATURE_PSS', 1);
 /*
  * Use the PKCS#1 scheme by default.
  *
@@ -137,7 +137,7 @@ define('CRYPT_RSA_SIGNATURE_PKCS1', 2);
 /*
  * ASN1 Integer
  */
-define('CRYPT_RSA_ASN1_INTEGER',   2);
+define('CRYPT_RSA_ASN1_INTEGER', 2);
 /*
  * ASN1 Sequence (with the constucted bit set)
  */

@@ -197,7 +197,7 @@ class PwCutImage
         }
         imagealphablending($this->_backImage, true);
         imagecolortransparent($this->_backImage, imagecolorallocatealpha($this->_backImage, 0, 0, 0, 0));
-        imagecopyresampled($this->_backImage, $this->_frontImage, $offsetX, $offsetY, $this->cutX,  $this->cutY, $cw, $ch, $iw, $ih);
+        imagecopyresampled($this->_backImage, $this->_frontImage, $offsetX, $offsetY, $this->cutX, $this->cutY, $cw, $ch, $iw, $ih);
         $this->_creatImage();
 
         return true;

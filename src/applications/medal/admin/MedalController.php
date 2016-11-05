@@ -351,7 +351,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             foreach ($medals as &$medal) {
                 $medal['medalImage'] = $sevice->getMedalImage($medal['path'], $medal['icon']);
             }
-            $count = $this->_getMedalLogDs()->countMedalLogList($uid,  PwMedalLog::STATUS_AWARDED, $_medalIds);
+            $count = $this->_getMedalLogDs()->countMedalLogList($uid, PwMedalLog::STATUS_AWARDED, $_medalIds);
         }
 
         $args = array('medalid' => $medalId, 'receivetype' => $receivetype, 'username' => $username);

@@ -99,7 +99,7 @@ require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.AES');
  * @access private
  */
 define('NET_SSH2_MASK_CONSTRUCTOR', 0x00000001);
-define('NET_SSH2_MASK_LOGIN',       0x00000002);
+define('NET_SSH2_MASK_LOGIN', 0x00000002);
 /**#@-*/
 
 /**#@+
@@ -128,7 +128,7 @@ define('NET_SSH2_CHANNEL_EXEC', 0); // PuTTy uses 0x100
 /*
  * Returns the message numbers
  */
-define('NET_SSH2_LOG_SIMPLE',  1);
+define('NET_SSH2_LOG_SIMPLE', 1);
 /*
  * Returns the message content
  */
@@ -657,7 +657,7 @@ class Net_SSH2
             return;
         }
 
-        fputs($this->fsock, $this->identifier."\r\n");
+        fwrite($this->fsock, $this->identifier."\r\n");
 
         $response = $this->_get_binary_packet();
         if ($response === false) {
@@ -1822,7 +1822,7 @@ class Net_SSH2
         $packet .= $hmac;
 
         $start = strtok(microtime(), ' ') + strtok(''); // http://php.net/microtime#61838
-        $result = strlen($packet) == fputs($this->fsock, $packet);
+        $result = strlen($packet) == fwrite($this->fsock, $packet);
         $stop = strtok(microtime(), ' ') + strtok('');
 
         if (defined('NET_SSH2_LOGGING')) {

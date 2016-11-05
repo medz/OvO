@@ -205,7 +205,7 @@ class AdminFounderService
      */
     public function isWriteable()
     {
-        return is_writeable($this->getFounderFilePath());
+        return is_writable($this->getFounderFilePath());
     }
 
     /**

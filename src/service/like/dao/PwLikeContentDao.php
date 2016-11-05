@@ -54,7 +54,7 @@ class PwLikeContentDao extends PwBaseDao
         if (!$data = $this->_filterStruct($data)) {
             return false;
         }
-        $sql = $this->_bindSql('UPDATE %s SET %s  WHERE likeid = ? ', $this->getTable(),  $this->sqlSingle($data));
+        $sql = $this->_bindSql('UPDATE %s SET %s  WHERE likeid = ? ', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->update(array($likeid));

@@ -172,7 +172,7 @@ Wind::import('SRC:library.base.PwBaseDao');
         if (!$data['uid'] || !$data['medal_id']) {
             return false;
         }
-        $sql = $this->_bindSql('REPLACE INTO %s SET %s',  $this->getTable(), $this->sqlSingle($data));
+        $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
         $this->getConnection()->execute($sql);
 
         return $this->getConnection()->lastInsertId();
@@ -183,7 +183,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          if (!$data = $this->_filterStruct($data)) {
              return false;
          }
-         $sql = $this->_bindSql('UPDATE %s SET %s WHERE log_id = ? ',  $this->getTable(),  $this->sqlSingle($data));
+         $sql = $this->_bindSql('UPDATE %s SET %s WHERE log_id = ? ', $this->getTable(), $this->sqlSingle($data));
          $smt = $this->getConnection()->createStatement($sql);
 
          return $smt->update(array($logId));
