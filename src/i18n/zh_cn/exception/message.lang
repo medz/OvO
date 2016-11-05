@@ -1,0 +1,9 @@
+
+
+template.path.fail = "模板路径错误{parm1}，不能打开路径文件{parm2}或该路径文件不存在。"
+
+method.not.exit = "类方法不存在异常{parm1}，类{parm2}没有{parm3}方法。"
+
+class.not.exit = "类不存在异常{parm1}，类{parm2}加载失败,该类不存在。"
+class.path.fail = "类不存在异常{parm1}，类 {parm2} 加载失败,该类不存在或者类路径 {parm3} 错误。"
+class.type.fail = "类型异常{parm1}，这里需要一个 {parm2} 类型的对象，但是却得到了 {parm3}。"

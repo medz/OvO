@@ -1,0 +1,66 @@
+center.connect.fail = "无法连接云平台"
+install.step.end = 向系统中注册应用安装信息
+
+install.step.install = 验证应用安装信息
+install.step.registeApplication = 向系统中注册应用信息
+install.step.registeHooks = 向系统中注册钩子信息
+install.step.registeInjectServices = 向系统中注册系统挂载信息
+install.step.registeData = 写入数据信息（表创建，默认数据注册）
+install.step.registeModules = 写入模块配置信息
+install.step.afterInstall = 安装信息清理
+
+install.step.registeStyle = 向系统中注册风格信息
+install.step.movePack = 拷贝风格目录
+
+fail = 操作失败
+install.download.fail = "应用下载失败，{{error}}"
+install.fail.alias.empty = 应用安装失败，alias不可为空
+install.fail =  "应用安装失败，{{error}}"
+install.service.fail = 应用安装失败，加载安装服务失败，未加载到可用的安装服务
+install.step.fail = 应用安装失败，不存在的应用安装步骤
+install.appid.illegal = 应用安装失败，非法的应用ID
+install.exist.fail = "应用安装失败，应用 {{error}} 已经存在"
+install.initinstall.fail = 初始化安装信息失败
+install.checkpackage.fail = 安装包错误，可能是安装包不完整，或网络传输异常
+install.checkpackage.format.fail = "安装包解压失败，可能是由于压缩格式 {{error}} 不支持"
+install.inject.fail = 应用安装错误，安装程序加载失败
+install.pack.exist = "应用安装错误，{{error}} 已存在"
+install.res.not.exist = "指定的资源文件目录{{error}}不存在"
+install.mv.fail = "应用安装错误，{{error}} 所在目录不可写"
+install.mainfest.not.exist = 应用安装错误，mainfest文件不存在，可能是由于安装包不完整
+install.mainfest.fail = 应用安装错误，解析应用mainfest文件失败
+install.register.fail = 应用安装错误，注册应用信息失败
+install.data.fail = "应用安装错误，不允许直接操作非本应用创建的表 {{error}} , 请通过对应的服务进行数据操作"
+
+install.step.express = 安装包解压
+install.step.init = 初始化安装信息
+install.success = 恭喜！应用安装成功！
+install.nav.main = 在主导航中添加应用
+install.nav.bottom = 在底部导航中添加应用
+install.nav.my = 在我的下拉菜单中添加应用
+app.exist.fail = 应用不存在
+manifest.exist.fail = 应用配置Manifest.xml文件不存在
+update.fail = 更新应用失败:#0
+app.hook.null = 无扩展信息
+
+uninstall.fail="应用卸载失败，{{error}}"
+
+validate.fail = "应用操作失败，字段验证错误，{{error}}"
+validate.fail.appid.not.exit = "应用验证失败，字段验证错误，appid不存再"
+
+add.fail = 添加应用失败
+
+del.fail = 删除应用失败
+alias.exist = 目录已存在
+default.not.exist = 标准配置应用目录丢失，尝试覆盖源代码
+manifest.not.exist = 缺少关键文件，尝试覆盖源代码
+generate.copy.fail = 目录写入失败，请检查ext目录权限
+generate.unsupport.hook = 该钩子信息不足，不支持生成。请查看钩子文档
+empty = 必填项不可为空 
+illegal.alias=标识值仅支持字母和数字的组合，且首位必须是字母
+generate.style.unsupport = 暂不支持这个风格类型的生成
+xml.fail = xml解析失败，请检查xml内容
+
+get.app.url.fail = "获得应用地址失败 {{error}}"
+develop.success = "已成功生成应用#0, 应用代码在ext下的#1的目录"
+unsupport.zip = "服务器不支持解压缩，无法完成安装过程"
