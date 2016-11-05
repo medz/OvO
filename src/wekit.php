@@ -6,9 +6,6 @@ define('NEXT_RELEASE', '20141223');
 define('NEXT_FIXBUG','9000002');
 defined('WIND_DEBUG') || define('WIND_DEBUG', 0);
 
-require WEKIT_PATH . '../wind/Wind.php';
-
-
 /**
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
