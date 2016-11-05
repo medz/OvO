@@ -2,7 +2,9 @@
 
 if (!defined('WEKIT_VERSION')) {
     error_reporting(E_ERROR | E_PARSE);
-    require_once WINDID_BOOT.'../wekit.php';
+    
+    require dirname(dirname(__DIR__)).'/bootstrap.php';
+
     Wekit::init('windidclient');
     Wind::application('windidclient', Wekit::S());
     $database = include WINDID_BOOT.'conf/database.php';
