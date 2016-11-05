@@ -62,7 +62,7 @@ class WindidUserApi
             'uid' => $uid,
         );
 
-        return WindidApi::open('user/synLogout',  array(), $params);
+        return WindidApi::open('user/synLogout', array(), $params);
     }
 
     /**

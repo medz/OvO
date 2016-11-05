@@ -186,7 +186,7 @@ class WindidUserService
         $postUrl = 'postAction=ra_postAction&redirectURL=/&requestURL='.urlencode(Wekit::app('windid')->url->base.'/index.php?m=api&c=avatar&a=doAvatar&uid='.$uid.'&windidkey='.$key.'&time='.$time.'&clientid='.$appId.'&type=flash').'&avatar='.urlencode($this->getAvatar($uid, 'big').'?r='.rand(1, 99999));
 
         return $getHtml ? '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="700" height="430" id="rainbow" align="middle">
-							<param name="movie" value="' .Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" />
+							<param name="movie" value="'.Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" />
 							<param name="quality" value="high" />
 							<param name="bgcolor" value="#ffffff" />
 							<param name="play" value="true" />
@@ -197,8 +197,8 @@ class WindidUserService
 							<param name="devicefont" value="false" />
 							<param name="salign" value="" />
 							<param name="allowScriptAccess" value="never" />
-							<param name="FlashVars" value="' .$postUrl.'"/>
-							<embed src="' .Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" quality="high" bgcolor="#ffffff" width="700" height="430" name="mycamera" align="middle" allowScriptAccess="never" allowFullScreen="false" scale="exactfit"  wmode="transparent" FlashVars="'.$postUrl.'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+							<param name="FlashVars" value="'.$postUrl.'"/>
+							<embed src="'.Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" quality="high" bgcolor="#ffffff" width="700" height="430" name="mycamera" align="middle" allowScriptAccess="never" allowFullScreen="false" scale="exactfit"  wmode="transparent" FlashVars="'.$postUrl.'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 						</object>'
                        : array(
                             'width' => '500',
