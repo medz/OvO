@@ -7,12 +7,12 @@
  */
 
 return array(
-	'link' => array(
-		'class' => 'SRV:link.srv.PwLinkService',
-		'method' => 'getLinksByType',
-	),
-	'announce' => array(
-		'class' => 'SRV:announce.srv.PwAnnounceService',
-		'method' => 'getAnnounceForBbsScroll',
-	)
+    'link' => array(
+        'class' => 'SRV:link.srv.PwLinkService',
+        'method' => 'getLinksByType',
+    ),
+    'announce' => array(
+        'class' => 'SRV:announce.srv.PwAnnounceService',
+        'method' => 'getAnnounceForBbsScroll',
+    ),
 );
