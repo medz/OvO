@@ -26,7 +26,7 @@ class WindidMail
         $this->_mail->setFrom($config->sendmail);
 
         $this->_config = array('host' => $config->host, 'port' => $config->port, //'name' => 'localhost',
-            'auth' => $config->isauth, 'user' => $config->user, 'password' => $config->password);
+            'auth' => $config->isauth, 'user' => $config->user, 'password' => $config->password, );
     }
 
     /**
