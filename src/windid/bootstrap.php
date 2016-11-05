@@ -2,7 +2,7 @@
 
 if (!defined('WEKIT_VERSION')) {
     error_reporting(E_ERROR | E_PARSE);
-    
+
     require dirname(dirname(__DIR__)).'/bootstrap.php';
 
     Wekit::init('windidclient');
