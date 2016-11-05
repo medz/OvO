@@ -2,6 +2,7 @@
 
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwManifest');
+
 /**
  * 开发者调试应用
  *
@@ -253,14 +254,13 @@ class PwDebugApplication
             if (isset($manifest['install']) && $manifest['install']) {
                 $_tmp = array('class' => $manifest['install']);
                 $toinstall = Wekit::load($manifest['install']);
-                if (!$toinstall instanceof iPwInstall) {
-                    continue;
+                if ($toinstall instanceof iPwInstall) {
+                    $r = $toinstall->install($install);
+                    if ($r instanceof PwError) {
+                        return $this->_e($install, $r);
+                    }
+                    $install->addInstallLog('service', $_tmp);
                 }
-                $r = $toinstall->install($install);
-                if ($r instanceof PwError) {
-                    return $this->_e($install, $r);
-                }
-                $install->addInstallLog('service', $_tmp);
             }
             $r = $_install->registeResource($install);
             if ($r instanceof PwError) {
