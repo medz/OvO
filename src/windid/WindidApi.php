@@ -1,4 +1,5 @@
 <?php
+
 //!defined('WINDID') && define('WINDID', dirname(__FILE__));
 define('WINDID_BOOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 !defined('WINDID_VERSION') && define('WINDID_VERSION', '1.0.0');
