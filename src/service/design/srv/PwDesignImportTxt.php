@@ -177,7 +177,7 @@ class PwDesignImportTxt
     protected function updatePage()
     {
         Wind::import('SRV:design.dm.PwDesignPageDm');
-        $moduleIds = implode(',',  $this->newIds);
+        $moduleIds = implode(',', $this->newIds);
         $moduleIds = $moduleIds ? $moduleIds.','.$this->_pageInfo['module_ids'] : $this->_pageInfo['module_ids'];
         $moduleIds = array_filter(explode(',', $moduleIds));
         $dm = new PwDesignPageDm($this->_pageInfo['page_id']);

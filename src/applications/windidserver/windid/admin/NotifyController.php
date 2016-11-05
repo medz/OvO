@@ -19,7 +19,7 @@ class NotifyController extends WindidBaseController
         $page = $page > 1 ? $page : 1;
         $complete = ($complete === '') ? null : $complete;
         list($start, $limit) = Pw::page2limit($page, $perPage);
-        $list = $this->_getLogDs()->getList($clientid, 0, $limit,  $start, $complete);
+        $list = $this->_getLogDs()->getList($clientid, 0, $limit, $start, $complete);
         $count = $this->_getLogDs()->countList($clientid, 0, $complete);
         foreach ($list as $k => $v) {
             $appids[] = $v['appid'];
@@ -67,7 +67,7 @@ class NotifyController extends WindidBaseController
         $nids = array();
         for ($page = 1; $page <= $totalPage; $page++) {
             list($start, $limit) = Pw::page2limit($page, $perPage);
-            $list = $logDs->getList(0, 0, $limit,  $start, 0);
+            $list = $logDs->getList(0, 0, $limit, $start, 0);
             foreach ($list as $k => $v) {
                 $nids[] = $v['nid'];
             }

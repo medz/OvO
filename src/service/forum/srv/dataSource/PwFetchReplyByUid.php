@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('LIB:dataSource.iPwDataSource');
@@ -11,15 +12,17 @@ Wind::import('LIB:dataSource.iPwDataSource');
  * @version $Id: PwFetchReplyByPid.php 7260 2012-03-31 08:24:12Z jieyin $
  * @package forum
  */
-class PwFetchReplyByUid implements iPwDataSource {
-	
-	public $uid;
+class PwFetchReplyByUid implements iPwDataSource
+{
+    public $uid;
 
-	public function __construct($uid) {
-		$this->uid = $uid;
-	}
+    public function __construct($uid)
+    {
+        $this->uid = $uid;
+    }
 
-	public function getData() {
-		return Wekit::load('forum.PwThread')->getPostByUid($this->uid);
-	}
+    public function getData()
+    {
+        return Wekit::load('forum.PwThread')->getPostByUid($this->uid);
+    }
 }

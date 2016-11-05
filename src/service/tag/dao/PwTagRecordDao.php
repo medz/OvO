@@ -113,7 +113,7 @@ class PwTagRecordDao extends PwBaseDao
      */
     public function getHotTags($num)
     {
-        $sql = $this->_bindSql('SELECT `tag_id`,COUNT(*) AS cnt FROM %s GROUP BY `tag_id` ORDER BY cnt DESC %s ', $this->getTable(),  $this->sqlLimit($num));
+        $sql = $this->_bindSql('SELECT `tag_id`,COUNT(*) AS cnt FROM %s GROUP BY `tag_id` ORDER BY cnt DESC %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->queryAll(array(), 'tag_id');

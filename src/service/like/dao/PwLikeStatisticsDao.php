@@ -75,7 +75,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         if (!$data = $this->_filterStruct($data)) {
             return false;
         }
-        $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(),  $this->sqlSingle($data));
+        $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
         $this->getConnection()->execute($sql);
 
         return $this->getConnection()->lastInsertId();

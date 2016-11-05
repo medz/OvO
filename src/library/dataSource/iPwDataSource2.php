@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
@@ -9,6 +10,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @version $Id: iPwDataSource2.php 5976 2012-03-15 03:16:10Z jieyin $
  * @package forum
  */
-interface iPwDataSource2 {
-	public function getData($ids);
+interface iPwDataSource2
+{
+    public function getData($ids);
 }

@@ -64,7 +64,7 @@ require_once Wind::getRealPath('LIB:utility.phpseclib.Net.SSH2');
 /*
  * Returns the message numbers
  */
-define('NET_SFTP_LOG_SIMPLE',  NET_SSH2_LOG_SIMPLE);
+define('NET_SFTP_LOG_SIMPLE', NET_SSH2_LOG_SIMPLE);
 /*
  * Returns the message content
  */
@@ -93,7 +93,7 @@ define('NET_SFTP_LOCAL_FILE', 1);
 /*
  * Reads data from a string.
  */
-define('NET_SFTP_STRING',  2);
+define('NET_SFTP_STRING', 2);
 /**#@-*/
 
 /**
@@ -1124,7 +1124,7 @@ class Net_SFTP extends Net_SSH2
                     if ($local_file === false) {
                         $content .= $temp;
                     } else {
-                        fputs($fp, $temp);
+                        fwrite($fp, $temp);
                     }
                     break;
                 case NET_SFTP_STATUS:
@@ -1317,7 +1317,7 @@ class Net_SFTP extends Net_SSH2
     {
         $packet = $this->request_id !== false ?
             pack('NCNa*', strlen($data) + 5, $type, $this->request_id, $data) :
-            pack('NCa*',  strlen($data) + 1, $type, $data);
+            pack('NCa*', strlen($data) + 1, $type, $data);
 
         $start = strtok(microtime(), ' ') + strtok(''); // http://php.net/microtime#61838
         $result = $this->_send_channel_packet(NET_SFTP_CHANNEL, $packet);

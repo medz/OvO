@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('LIB:dataSource.iPwDataSource');
@@ -12,19 +13,21 @@ Wind::import('LIB:dataSource.iPwDataSource');
  * @package attention
  */
 
-class PwFetchAttentionFresh implements iPwDataSource {
-	
-	public $uid;
-	public $limit;
-	public $offset;
+class PwFetchAttentionFresh implements iPwDataSource
+{
+    public $uid;
+    public $limit;
+    public $offset;
 
-	public function __construct($uid, $limit, $offset) {
-		$this->uid = $uid;
-		$this->limit = $limit;
-		$this->offset = $offset;
-	}
+    public function __construct($uid, $limit, $offset)
+    {
+        $this->uid = $uid;
+        $this->limit = $limit;
+        $this->offset = $offset;
+    }
 
-	public function getData() {
-		return Wekit::load('attention.PwFresh')->getAttentionFresh($this->uid, $this->limit, $this->offset);
-	}
+    public function getData()
+    {
+        return Wekit::load('attention.PwFresh')->getAttentionFresh($this->uid, $this->limit, $this->offset);
+    }
 }
