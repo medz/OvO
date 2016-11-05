@@ -108,7 +108,7 @@ class WindidUtility
             $imageInfo = @getimagesize($file);
             $exts = array('1' => 'gif', '2' => 'jpg', '3' => 'png');
             if (!isset($exts[$imageInfo[2]])) {
-                continue;
+                return false;
             }
             $ext = $exts[$imageInfo[2]];
             $filename = rand(1000, 9999).'.'.$ext;
