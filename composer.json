@@ -1,0 +1,34 @@
+{
+    "name": "medz/thinksns",
+    "type": "project",
+    "description": "采用PHP+MySQL方式运行的开源社区程序",
+    "keywords": ["medz", "php", "phpwind"],
+    "homepage": "http://www.phpwind.com",
+    "license": "MIT",
+    "license-url": "./LICENSE",
+    "authors": [
+        {
+            "name": "Seven Du",
+            "homepage": "http://medz.cn",
+        },
+        {
+
+            "name": "phpwind",
+            "homepage": "http://www.phpwind.net",
+            "role": "Development company"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "ext-mcrypt": "*",
+        "ext-zlib": "*",
+        "ext-zip": "*"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
