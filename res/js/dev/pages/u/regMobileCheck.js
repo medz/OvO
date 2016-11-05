@@ -66,7 +66,7 @@
     reg_mobile.prop('disabled', false);
 
     var m_timer,
-    	regexp = /^(13[0-9]|15[0-9]|18[0-9])\d{8}$/,
+    	regexp = /^1[34578]\d{9}$/,
         checkin = false,
         _v;
 
