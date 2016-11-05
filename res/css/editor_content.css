@@ -1,0 +1,434 @@
+/*#
+===================
+@explain: 帖子内容输出样式（编辑器和帖子阅读页）
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: editor_content.css 24233 2013-01-23 06:36:49Z yanchixia $
+===================
+#*/
+.editor_content{
+	font-size:14px;
+	line-height:1.8;
+}
+/*斜体*/
+.editor_content em{
+	font-style: italic;
+}
+/*段落*/
+.editor_content p{
+	margin:0 0 0.5em;
+	padding:0;
+}
+/*有序列表*/
+.editor_content ol{
+	padding:1em 1em 1em 3em;
+}
+/*无序列表*/
+.editor_content ul{
+	padding:1em 1em 1em 3em;
+	list-style-type: disc;
+}
+.editor_content ul li{
+	list-style-type: disc;
+}
+/*所有图片位置*/
+.editor_content img{
+	vertical-align:top;
+}
+/*引用*/
+.blockquote{
+	border:1px dashed #CCC;
+	background:#f7f7f7 url(../images/editor/blockquote.png) right top no-repeat;
+	padding:15px;
+	margin:1em 0;
+}
+.blockquote .return{
+	background:url(../images/editor/return.png) no-repeat;
+	width:14px;
+	height:17px;
+	overflow:hidden;
+	text-indent:-2000em;
+	float:left;
+	margin:3px 0 0 5px;
+}
+/*表格*/
+.read_form{
+	table-layout:fixed;
+}
+.read_form td{
+	line-height:18px;
+	border:1px solid #e4e4e4;
+}
+/*帖内标题*/
+.inside_title{
+	font-size:16px;
+	font-weight:700;
+	margin-bottom:5px;
+}
+/*帖内图片*/
+.editor_content img{
+	max-width:100%;
+}
+
+/*此帖已被屏蔽*/
+.editor_content .shield{
+	background:#ffffe9;
+	border:1px dashed #eac991;
+	padding:10px 15px;
+	font-size:14px;
+	color:#666;
+	margin-bottom:10px;
+}
+
+/*
+===================
+隐藏的内容
+===================
+*/
+.content_hidden{
+	border:1px dashed #95c376;
+	padding:15px 20px;
+	margin:1em 0;
+	background:#f8fff3;
+}
+.content_hidden h6{
+	font-size:12px;
+	color:#669933;
+	margin:0 0 5px;
+	padding:0;
+}
+/*
+===================
+出售的内容
+===================
+*/
+.content_sell{
+	border:1px dashed #95c376;
+	padding:10px 15px;
+	margin:1em 0;
+	background:#f8fff3;
+}
+.content_sell h6{
+	font-size:12px;
+	color:#669933;
+	margin:0;
+	padding:0;
+	width:60%;
+}
+.content_sell .icon_edit,
+.content_sell .icon_delete{
+	float:right;
+	width:15px;
+	height:15px;
+	margin-right:3px;
+	overflow:hidden;
+	text-indent:-2000em;
+	background:url(../images/editor/del.png) no-repeat;
+	cursor:pointer;
+	visibility: hidden;
+}
+.content_sell_cur .icon_edit,
+.content_sell_cur .icon_delete{
+	visibility:visible;
+}
+.content_sell .icon_edit:hover{
+	background-position:-34px 0;
+}
+.content_sell .icon_delete{
+	background-position:0 -15px;
+	margin-right:10px;
+}
+.content_sell .icon_delete:hover{
+	background-position:-34px -15px;
+}
+.content_sell_price_info{
+	color:#888;
+	font-weight: normal;
+}
+
+/*
+===================
+购买记录
+===================
+*/
+.pop_buy_history{
+	width:400px;
+}
+
+/*
+===================
+附件下载列表
+===================
+*/
+.read_attach_downattach{
+	border-top:1px solid #e9e9e9;
+	border-bottom:1px solid #eaeaea;
+	background:#f7f7f7;
+	padding:15px;
+	margin-bottom:15px;
+}
+.read_attach_downattach dt{
+	border-bottom:1px solid #e8e8e8;
+	color:#666;
+	padding:0 5px 5px;
+}
+.read_attach_downattach dd{
+	padding:5px;
+	border-bottom:1px dashed #e8e8e8;
+}
+.read_attach_downattach span{
+	display:inline-block;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	vertical-align:top;
+}
+.read_attach_downattach .cost{
+	width:100px;
+	float:left;
+}
+.read_attach_downattach .time{
+	width:120px;
+	float:left;
+}
+.read_attach_downattach .operate{
+	width:180px;
+	float:left;
+}
+.read_attach_downattach .name{
+	width:310px;
+	float:left;
+}
+
+/*插入的附件*/
+.file_insert{
+	font-size:12px;
+}
+.file_insert .file_list_wrap span{
+	vertical-align:-5px;
+	margin-right:0;
+}
+/*附件图标*/
+.file_list_wrap span{
+	width:18px;
+	height:18px;
+	background:url(../images/editor/file_icon.png) 0 0 no-repeat;
+	display:inline-block;
+	margin-right:3px;
+	overflow:hidden;
+	vertical-align:-3px;
+}
+.file_list_wrap .file_icon_rar,
+.file_list_wrap .file_icon_zip,
+.file_list_wrap .file_icon_7z{
+	background-position:0 -20px;
+}
+.file_list_wrap .file_icon_3gp,
+.file_list_wrap .file_icon_mp4,
+.file_list_wrap .file_icon_rm,
+.file_list_wrap .file_icon_rmvb,
+.file_list_wrap .file_icon_avi,
+.file_list_wrap .file_icon_wmv,
+.file_list_wrap .file_icon_mkv,
+.file_list_wrap .file_icon_flv,
+.file_list_wrap .file_icon_mov,
+.file_list_wrap .file_icon_mpeg,
+.file_list_wrap .file_icon_mpg,
+.file_list_wrap .file_icon_dat{
+	background-position:0 -40px;
+}
+.file_list_wrap .file_icon_wav,
+.file_list_wrap .file_icon_mp3,
+.file_list_wrap .file_icon_wma,
+.file_list_wrap .file_icon_flac,
+.file_list_wrap .file_icon_ape{
+	background-position:0 -60px;
+}
+.file_list_wrap .file_icon_torrent,
+.file_list_wrap .file_icon_TORRENT{
+	background-position:0 -80px;
+}
+.file_list_wrap .file_icon_jpg,
+.file_list_wrap .file_icon_JPG{
+	background-position:0 -100px;
+}
+.file_list_wrap .file_icon_gif,
+.file_list_wrap .file_icon_GIF{
+	background-position:0 -120px;
+}
+.file_list_wrap .file_icon_png,
+.file_list_wrap .file_icon_PNG{
+	background-position:0 -140px;
+}
+.file_list_wrap .file_icon_bmp,
+.file_list_wrap .file_icon_BMP{
+	background-position:0 -160px;
+}
+/*页面*/
+.file_list_wrap .file_icon_html,
+.file_list_wrap .file_icon_htm,
+.file_list_wrap .file_icon_shtml{
+	background-position:0px -180px;
+}
+/*表格文件*/
+.file_list_wrap .file_icon_xls,
+.file_list_wrap .file_icon_xlsx{
+	background-position:0px -200px;
+}
+/*文档*/
+.file_list_wrap .file_icon_doc,
+.file_list_wrap .file_icon_docx{
+	background-position:0px -220px;
+}
+/*幻灯片*/
+.file_list_wrap .file_icon_ppt,
+.file_list_wrap .file_icon_pptx{
+	background-position:0px -240px;
+}
+/*pdf*/
+.file_list_wrap .file_icon_pdf{
+	background-position:0px -260px;
+}
+/*ps*/
+.file_list_wrap .file_icon_psd{
+	background-position:0px -280px;
+}
+/*ai*/
+.file_list_wrap .file_icon_ai{
+	background-position:0px -300px;
+}
+/*字体*/
+.file_list_wrap .file_icon_ttf,
+.file_list_wrap .file_icon_otf{
+	background-position:0px -320px;
+}
+
+/*
+===================
+代码段落字体
+===================
+*/
+.editor_content .syntaxhighlighter table{
+	table-layout:fixed;
+}
+.editor_content .syntaxhighlighter table td{
+	vertical-align:top;
+}
+.editor_content .syntaxhighlighter table td.code{
+	padding:5px 5px 5px 0 !important;
+}
+.editor_content .syntaxhighlighter table td.gutter{
+	padding:5px 0 5px 5px !important;
+}
+.editor_content .syntaxhighlighter{
+	font-size:13px !important;
+	font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;
+}
+
+/*
+===================
+懒加载loading
+===================
+*/
+.J_lazy{
+	min-height:20px;
+	min-width:20px;
+	background:#f7f7f7;
+}
+
+/*
+===================
+未插入内容图片列表
+===================
+*/
+.read_attach_pic{
+	border-top:1px solid #e9e9e9;
+	border-bottom:1px solid #eaeaea;
+	background:#f7f7f7;
+	padding:15px 0;
+	margin-bottom:15px;
+}
+.read_attach_pic .hd{
+	padding:0 24px;
+}
+.read_attach_pic .hd h2{
+	font-size:12px;
+	font-weight:100;
+	color:#666;
+}
+.read_attach_pic .hd span{
+	margin:0 10px;
+	color:#bbb;
+}
+.read_attach_pic .hd a{
+	color:#666;
+}
+.read_attach_pic .hd a.current{
+	color:#105cb6;
+}
+.read_attach_pic .ct{
+	padding-left:11px;
+}
+.read_attach_pic li{
+	float:left;
+	width:125px;
+	padding:10px 13px;
+	overflow:hidden;
+}
+.read_attach_pic .small_img li a{
+	display:block;
+	text-align:center;
+	overflow:hidden;
+	margin:0 auto;
+	width:125px;
+	height:125px;
+	padding:2px;
+	line-height:180px;
+	vertical-align:middle;
+	*font-size:160px;
+}
+.read_attach_pic li img{
+	vertical-align:top;
+}
+/*大图*/
+.read_attach_pic .big_img li{
+	width:90%;
+	display:block;
+}
+/*附件购买信息*/
+.read_attach_pic .big_img li .img_info,
+.single_img .img_info,
+.img_info{
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	border:1px solid #dbdbdb;
+	background:#f7f7f7;
+	padding:5px 10px;
+	max-width:200px;
+	_width:200px;
+	font-size:12px;
+	z-index:10;
+}
+.read_attach_pic .big_img li:hover .img_info,
+.read_attach_pic .big_img li.current .img_info{
+	display:block;
+}
+.read_attach_pic .big_img li .img_info a{
+	margin-left:15px;
+	white-space:nowrap;
+}
+.img_info p{
+	margin:0;
+}
+.read_attach_pic .big_img li img{
+	max-width:100%;
+}
+
+
+
+
+
+
+
