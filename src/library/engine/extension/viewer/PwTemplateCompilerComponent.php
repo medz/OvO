@@ -60,9 +60,9 @@ class PwTemplateCompilerComponent extends AbstractWindTemplateCompiler
         } else {
             if ($this->class) {
                 $content .= '$__tpl_data = call_user_func_array(
-								array(Wekit::load("' .$this->class.'"), 
-								"' .$this->method.'"), 
-								array(' .$this->args.'));';
+								array(Wekit::load("'.$this->class.'"), 
+								"'.$this->method.'"), 
+								array('.$this->args.'));';
             } else {
                 $content .= '$__tpl_data = '.$this->args.';';
             }

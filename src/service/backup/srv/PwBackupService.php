@@ -454,11 +454,11 @@ class PwBackupService
                 $query .= $value;
                 if (preg_match('/^CREATE/i', $query)) {
                     $extra = substr(strrchr($query, ')'), 1);
-                    $tabtype = substr(strchr($extra, '='), 1);
+                    $tabtype = substr(strstr($extra, '='), 1);
                     $tabtype = substr($tabtype, 0, strpos($tabtype, strpos($tabtype, ' ') ? ' ' : ';'));
-                    $comment = strchr($extra, 'COMMENT=');
+                    $comment = strstr($extra, 'COMMENT=');
                     if ($comment) {
-                        $comment = substr(strchr($comment, '='), 1);
+                        $comment = substr(strstr($comment, '='), 1);
                         $comment = substr($comment, 0, strpos($comment, strpos($comment, ';') ? ';' : ''));
                     }
                     $query = str_replace($extra, '', $query);

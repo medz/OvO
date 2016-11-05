@@ -68,7 +68,7 @@ class PunchController extends PwBaseController
         }
         // 奖励积分
         if ($awardNum) {
-            $this->_creditBo->addLog('punch', array($reward['type'] => $awardNum), $this->loginUser,  array(
+            $this->_creditBo->addLog('punch', array($reward['type'] => $awardNum), $this->loginUser, array(
                 'cname' => $this->_creditBo->cUnit[$reward['type']],
                 'affect' => $awardNum, )
             );

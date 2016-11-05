@@ -65,11 +65,11 @@ define('CRYPT_HASH_MODE_INTERNAL', 1);
 /*
  * Toggles the mhash() implementation, which has been deprecated on PHP 5.3.0+.
  */
-define('CRYPT_HASH_MODE_MHASH',    2);
+define('CRYPT_HASH_MODE_MHASH', 2);
 /*
  * Toggles the hash() implementation, which works on PHP 5.1.2+.
  */
-define('CRYPT_HASH_MODE_HASH',     3);
+define('CRYPT_HASH_MODE_HASH', 3);
 /**#@-*/
 
 /**
@@ -475,9 +475,9 @@ class Crypt_Hash
 
             // Extend the sixteen 32-bit words into sixty-four 32-bit words
             for ($i = 16; $i < 64; $i++) {
-                $s0 = $this->_rightRotate($w[$i - 15],  7) ^
+                $s0 = $this->_rightRotate($w[$i - 15], 7) ^
                       $this->_rightRotate($w[$i - 15], 18) ^
-                      $this->_rightShift($w[$i - 15],  3);
+                      $this->_rightShift($w[$i - 15], 3);
                 $s1 = $this->_rightRotate($w[$i - 2], 17) ^
                       $this->_rightRotate($w[$i - 2], 19) ^
                       $this->_rightShift($w[$i - 2], 10);
@@ -489,7 +489,7 @@ class Crypt_Hash
 
             // Main loop
             for ($i = 0; $i < 64; $i++) {
-                $s0 = $this->_rightRotate($a,  2) ^
+                $s0 = $this->_rightRotate($a, 2) ^
                       $this->_rightRotate($a, 13) ^
                       $this->_rightRotate($a, 22);
                 $maj = ($a & $b) ^
@@ -497,7 +497,7 @@ class Crypt_Hash
                        ($b & $c);
                 $t2 = $this->_add($s0, $maj);
 
-                $s1 = $this->_rightRotate($e,  6) ^
+                $s1 = $this->_rightRotate($e, 6) ^
                       $this->_rightRotate($e, 11) ^
                       $this->_rightRotate($e, 25);
                 $ch = ($e & $f) ^

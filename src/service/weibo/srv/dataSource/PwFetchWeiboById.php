@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('LIB:dataSource.iPwDataSource');
@@ -12,16 +13,17 @@ Wind::import('LIB:dataSource.iPwDataSource');
  * @package forum
  */
 
-class PwFetchWeiboById implements iPwDataSource {
-	
-	public $ids = array();
+class PwFetchWeiboById implements iPwDataSource
+{
+    public $ids = array();
 
-	public function __construct($ids) {
-		$this->ids = $ids;
-	}
+    public function __construct($ids)
+    {
+        $this->ids = $ids;
+    }
 
-	public function getData() {
-		return Wekit::load('weibo.PwWeibo')->getWeibos($this->ids);
-	}
+    public function getData()
+    {
+        return Wekit::load('weibo.PwWeibo')->getWeibos($this->ids);
+    }
 }
-?>

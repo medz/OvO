@@ -38,7 +38,7 @@ class PwDesignSegmentDao extends PwBaseDao
         if (!$data['segment'] || !$data['page_id']) {
             return false;
         }
-        $sql = $this->_bindSql('REPLACE INTO %s SET %s',  $this->getTable(), $this->sqlSingle($data));
+        $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
 
         return $this->getConnection()->execute($sql);
     }

@@ -100,7 +100,7 @@ Wind::import('SRC:library.base.PwBaseDao');
              $where .= ' AND isopen = ?';
              $array[] = $isopen;
          }
-         $sql = $this->_bindSql('SELECT * FROM %s  %s ORDER BY vieworder ASC ',  $this->getTable(), $where);
+         $sql = $this->_bindSql('SELECT * FROM %s  %s ORDER BY vieworder ASC ', $this->getTable(), $where);
          $smt = $this->getConnection()->createStatement($sql);
 
          return $smt->queryAll($array, 'medal_id');

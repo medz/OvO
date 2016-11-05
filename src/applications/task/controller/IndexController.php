@@ -195,7 +195,7 @@ class IndexController extends PwBaseController
             2 => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经关闭
             3 => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经过期
             4 => array('class' => 'task_mode_end', 'button' => '继续完成'), //正在进行中
-            5 => array('class' => 'task_mode_arrow', 'button' => '领取奖励')); //已完成
+            5 => array('class' => 'task_mode_arrow', 'button' => '领取奖励'), ); //已完成
         return $mode;
     }
 }

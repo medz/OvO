@@ -98,7 +98,7 @@ class PwCronService
                     $dm->setLoopdaytime(0, 0, $minute)->setNexttime($nexttime);
                     break;
                 case 'now':
-                    $nexttime = $this->getNextTime('now',  $day, $hour, $minute);
+                    $nexttime = $this->getNextTime('now', $day, $hour, $minute);
                     $dm->setLoopdaytime($day, $hour, $minute)->setNexttime($nexttime);
                     break;
                 default:

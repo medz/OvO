@@ -128,7 +128,7 @@ class ManageController extends AdminBaseController
 
         if (($result = $this->_getWordDS()->update($dm))instanceof PwError) {
             $this->showError($result->getError());
-        };
+        }
         $this->_getWordFilter()->updateCache();
         $this->showMessage('success');
     }
@@ -219,7 +219,7 @@ class ManageController extends AdminBaseController
 
         if (($result = $this->_getWordDS()->batchUpdate($ids, $dm))instanceof PwError) {
             $this->showError($result->getError());
-        };
+        }
         $this->_getWordFilter()->updateCache();
         $this->showMessage('success');
     }

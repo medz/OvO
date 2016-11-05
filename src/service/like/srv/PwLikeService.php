@@ -268,7 +268,7 @@
      */
     public function getLikeBrand($key, $start = 0, $limit = 10, $isthread = false)
     {
-        $statis = $this->_getLikeStatisticsDs()->getInfoList($key,  $start, $limit, $isthread);
+        $statis = $this->_getLikeStatisticsDs()->getInfoList($key, $start, $limit, $isthread);
         $likeids = $tids = array();
         if (empty($statis)) {
             return array();

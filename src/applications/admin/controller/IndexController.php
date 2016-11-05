@@ -159,8 +159,8 @@ class IndexController extends AdminBaseController
         $display = $srv->getOutType($config['type']);
         if ($display == 'flash') {
             $html = '<embed align="middle"
-				width="' .$config['width'].'"
-				height="' .$config['height'].'"
+				width="'.$config['width'].'"
+				height="'.$config['height'].'"
 				type="application/x-shockwave-flash"
 				allowscriptaccess="sameDomain"
 				menu="false"
@@ -181,13 +181,13 @@ class IndexController extends AdminBaseController
 				type="application/x-shockwave-flash"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				quality="high"
-				src="' .Wind::getApp()->getResponse()->getData('G', 'url', 'images').'/audio.swf?file='.urlencode($url).'">';
+				src="'.Wind::getApp()->getResponse()->getData('G', 'url', 'images').'/audio.swf?file='.urlencode($url).'">';
             }
             $html .= '<a id="J_verify_update_a" href="#" role="button">换一个</a>';
         } elseif ($display == 'image') {
             $html = '<img id="J_verify_update_img" src="'.$url.'"
-				width="' .$config['width'].'"
-				height="' .$config['height'].'" >';
+				width="'.$config['width'].'"
+				height="'.$config['height'].'" >';
             if ($config['voice']) {
                 $url = WindUrlHelper::createUrl('index/showVerify', array(
                     'getAudio' => 1,
@@ -201,7 +201,7 @@ class IndexController extends AdminBaseController
 				type="application/x-shockwave-flash"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
 				quality="high"
-				src="' .Wind::getApp()->getResponse()->getData('G', 'url', 'images').'/audio.swf?file='.urlencode($url).'"></span>';
+				src="'.Wind::getApp()->getResponse()->getData('G', 'url', 'images').'/audio.swf?file='.urlencode($url).'"></span>';
             }
             $html .= '<a id="J_verify_update_a" href="#" role="button">换一个</a>';
         } else {
