@@ -59,22 +59,22 @@
 /**
  * Marker constant for Services_JSON::decode(), used to flag stack state
  */
-define('SERVICES_JSON_SLICE',   1);
+define('SERVICES_JSON_SLICE', 1);
 
 /*
  * Marker constant for Services_JSON::decode(), used to flag stack state
  */
-define('SERVICES_JSON_IN_STR',  2);
+define('SERVICES_JSON_IN_STR', 2);
 
 /*
  * Marker constant for Services_JSON::decode(), used to flag stack state
  */
-define('SERVICES_JSON_IN_ARR',  3);
+define('SERVICES_JSON_IN_ARR', 3);
 
 /*
  * Marker constant for Services_JSON::decode(), used to flag stack state
  */
-define('SERVICES_JSON_IN_OBJ',  4);
+define('SERVICES_JSON_IN_OBJ', 4);
 
 /*
  * Marker constant for Services_JSON::decode(), used to flag stack state
@@ -371,7 +371,7 @@ class Services_JSON
                 */
 
                 // treat as a JSON object
-                if (is_array($var) && count($var) && (array_keys($var) !== range(0, sizeof($var) - 1))) {
+                if (is_array($var) && count($var) && (array_keys($var) !== range(0, count($var) - 1))) {
                     $properties = array_map(array($this, 'name_value'),
                                             array_keys($var),
                                             array_values($var));

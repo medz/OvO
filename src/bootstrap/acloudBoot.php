@@ -1,4 +1,5 @@
 <?php
+
 //define('WEKIT_PATH', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 //define('WEKIT_VERSION', '0.2');
 
