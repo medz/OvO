@@ -14,7 +14,7 @@ defined('WIND_DEBUG') || define('WIND_DEBUG', 0);
  * @version $Id: wekit.php 29883 2013-07-02 07:48:55Z long.shi $
  * @package wekit
  */
-class wekit
+class Wekit
 {
     protected static $_sc;                //系统配置
     protected static $_var;                //全局配置变量
