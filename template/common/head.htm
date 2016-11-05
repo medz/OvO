@@ -1,0 +1,57 @@
+<meta charset="{@Wekit::V('charset')}" />
+<title>{@G:seo.title} - Powered by phpwind</title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="generator" content="phpwind v{@G:version}" />
+<meta name="description" content="{@G:seo.description}" />
+<meta name="keywords" content="{@G:seo.keywords}" />
+<link rel="stylesheet" href="{@theme:site.css}/core.css?v={@NEXT_RELEASE}" />
+<link rel="stylesheet" href="{@theme:site.css}/style.css?v={@NEXT_RELEASE}" />
+<!-- <base id="headbase" href="{@G:url.base}/" /> -->
+{@Wekit::C('site', 'css.tag')|html}
+<script>
+//全局变量 Global Variables
+var GV = {
+	JS_ROOT : '{@G:url.res}/js/dev/',										//js目录
+	JS_VERSION : '{@NEXT_RELEASE}',											//js版本号(不能带空格)
+	JS_EXTRES : '{@G:url.extres}',
+	TOKEN : '{@Wind::getComponent('windToken')->saveToken('csrf_token')}',	//token $.ajaxSetup data
+	U_CENTER : '{@url:space/index/run}',		//用户空间(参数 : uid)
+<!--#
+$loginUser = Wekit::getLoginUser();
+if ($loginUser->isExists()) {
+#-->
+	//登录后
+	U_NAME : '{$loginUser->username}',										//登录用户名
+	U_AVATAR : '{@Pw::getAvatar($loginUser->uid)}',							//登录用户头像
+<!--#
+}
+#-->
+	U_AVATAR_DEF : '{@G:url.images}/face/face_small.jpg',					//默认小头像
+	U_ID : parseInt('{$loginUser->uid}'),									//uid
+	REGION_CONFIG : '',														//地区数据
+	CREDIT_REWARD_JUDGE : '{@$loginUser->showCreditNotice()|html}',			//是否积分奖励，空值:false, 1:true
+	URL : {
+		LOGIN : '{@url:u/login/run}',										//登录地址
+		QUICK_LOGIN : '{@url:u/login/fast}',								//快速登录
+		IMAGE_RES: '{@G:url.images}',										//图片目录
+		CHECK_IMG : '{@url:u/login/showverify}',							//验证码图片url，global.js引用
+		VARIFY : '{@url:verify/index/get}',									//验证码html
+		VARIFY_CHECK : '{@url:verify/index/check}',							//验证码html
+		HEAD_MSG : {
+			LIST : '{@url:message/notice/minilist}'							//头部消息_列表
+		},
+		USER_CARD : '{@url:space/card/run}',								//小名片(参数 : uid)
+		LIKE_FORWARDING : '{@url:post/doreply/}',							//喜欢转发(参数 : fid)
+		REGION : '{@url:misc/webData/area}',									//地区数据
+		SCHOOL : '{@url:misc/webData/school}',								//学校数据
+		EMOTIONS : "{@url:emotion/index/run?type=bbs}",					//表情数据
+		CRON_AJAX : '{$runCron}',											//计划任务 后端输出执行
+		FORUM_LIST : '{@url:bbs/forum/list}',								//版块列表数据
+		CREDIT_REWARD_DATA : '{@url:u/index/showcredit}',					//积分奖励 数据
+		AT_URL: '{@url:bbs/remind/run}',									//@好友列表接口
+		TOPIC_TYPIC: '{@url:bbs/forum/topictype}'							//主题分类
+	}
+};
+</script>
+<script src="{@G:url.js}/wind.js?v={@NEXT_RELEASE}"></script>
+<hook name="head" display='false'/>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+</head>
+<body>
+<design role="start"/>
+	<!--# 
+	$wrapall = !$portal['header'] ? 'custom_wrap' : 'wrap';
+	#-->
+	<div class="{$wrapall}">
+	<!--# if($portal['header']){ #-->
+	<template source='TPL:common.header' load='true' />
+	<!--# } #-->
+	<div class="main_wrap">
+	<!--# if($portal['navigate']){ #-->
+		<div class="bread_crumb">{@$headguide|html}</div>
+	<!--# } #-->
+		<div class="cc">
+			<design role="tips" id="nodesign"/>
+			<design role="segment" id="segment1"/>
+		</div>
+	</div>
+	<!--# if($portal['footer']){ #-->
+	<template source='TPL:common.footer' load='true' />
+	<!--# } #-->
+	</div>
+<script>
+Wind.use('jquery', 'global');
+</script>
+<design role="end"/>
+</body>
+</html>

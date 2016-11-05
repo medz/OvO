@@ -1,0 +1,101 @@
+<div class="side_more_box">
+<!--# list($number, $visitors) = $space->model('visit',6); 
+		if ($number){
+#-->
+			<div class="box">
+				<div class="hd">
+					<!--# if ($space->tome == 2){ #-->
+					<a href="{@url:my/visitor/run}" class="more">全部</a>
+					<!--# } #-->
+					<h3>最近来访</h3><span>({$number})</span>
+				</div>
+				<div class="ct">
+					<div class="space_face_list">
+						<ul class="cc">
+						<!--# foreach($visitors AS $key => $value){ #-->
+							<li><a class="J_user_card_show" data-uid="{$value['uid']}" href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'small')}" data-type="small" width="50" height="50" /><p>{$value['username']}</p></a><div class="time">{@Pw::time2str($value['visitor_time'], 'm-d')}</div></li>
+						<!--# } #-->	
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--# } #-->	
+<!--# list($number, $tags) = $space->model('userTag',10); 	
+		if ($number){
+#-->
+			<div class="box">
+				<div class="hd">
+				<!--# if ($space->tome == 2){ #-->
+					<a href="{@url:profile/tag/run?_tab=tag}" class="more">管理</a>
+				<!--# } #-->
+					<h3>{$host}的标签</h3><span>({$number})</span>
+				</div>
+				<div class="ct">
+					<div class="space_tags_list">
+					<!--# foreach($tags AS $key => $value){ #-->
+						<a rel="nofollow" href="{@url:my/friend/search?usertag=$value['name']}">{$value['name']}</a>
+					<!--# } #-->	
+					</div>
+				</div>
+			</div>
+<!--# } #-->
+<!--# list($number, $tags) = $space->model('tag',5); 
+		if ($number){
+#-->
+			<div class="box">
+				<div class="hd">
+				<!--# if ($space->tome == 2){ #-->
+					<a href="{@url:tag/index/my}" class="more">全部</a>
+				<!--# } #-->
+					<h3>{$host}的话题</h3><span>({$number})</span>
+				</div>
+				<div class="ct">
+					<div class="space_topic_list">
+						<ul>
+						<!--# foreach($tags AS $value){ #-->
+							<li><a href="{@url:tag/index/view?name=$value['tag_name']}">{$value['tag_name']}</a><span>({$value['content_count']})</span></li>
+						<!--# } #-->	
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--# } #-->
+<!--# list($number, $follows) =  $space->model('follow',6);  
+		if ($number){
+#-->
+			<div class="box">
+				<div class="hd">
+					<a href="{@url:space/follows/run?uid=$space->spaceUid}" class="more">全部</a>
+					<h3>{$host}关注的人</h3><span>({$number})</span>
+				</div>
+				<div class="ct">
+					<div class="space_face_list">
+						<ul class="cc">
+						<!--# foreach($follows AS $value){	#-->
+							<li><a class="J_user_card_show" data-uid="{$value['uid']}"  href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'small')}" data-type="small" width="50" height="50" /><p>{$value['username']}</p></a></li>
+						<!--# } #-->	
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--# } #-->
+<!--# list($number, $fans) = $space->model('fans',6);  
+		if ($number){
+#-->
+			<div class="box">
+				<div class="hd">
+					<a href="{@url:space/fans/run?uid=$space->spaceUid}" class="more">全部</a>
+					<h3>{$host}的粉丝</h3><span>({$number})</span>
+				</div>
+				<div class="ct">
+					<div class="space_face_list">
+						<ul class="cc">
+						<!--# foreach($fans AS $value){ #-->
+							<li><a class="J_user_card_show" data-uid="{$value['uid']}" href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'small')}" data-type="small" width="50" height="50" /><p>{$value['username']}</p></a></li>
+						<!--# } #-->	
+						</ul>
+					</div>
+				</div>
+			</div>
+<!--# } #-->
+</div>

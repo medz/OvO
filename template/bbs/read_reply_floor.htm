@@ -1,0 +1,9 @@
+<li>
+	<a href="{@url:space/index/run?uid=$uid}" class="face" target="_blank"><img src="{@Pw::getAvatar($uid)}" onerror="this.onerror=null;this.src='{@G:url.images}/face/face_small.jpg'" width="30" height="30" alt="{$username}"></a><div class="reply_content">
+		<a class="J_user_card_show" data-uid="{$uid}" href="{@url:space/index/run?uid=$uid}">{$username}</a>：{@$content|html}
+		<div>
+			<span class="operate"><a href="{@url:report/index/report?type=post&type_id=$pid}" class="J_report J_qlogin_trigger report">举报</a><a href="" class="J_read_reply_single" data-username="{$username}">回复</a></span>
+			<span class="time">{@Pw::time2str($time, 'auto')}</span>
+		</div>
+	</div>
+</li>

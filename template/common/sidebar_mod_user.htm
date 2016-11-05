@@ -1,0 +1,56 @@
+<!--# 
+	if ($loginUser->info['recommend_friend']) {
+		$pFriends = Wekit::load('attention.srv.PwAttentionRecommendFriendsService')->getRecommentUser($loginUser);
+		if ($pFriends) {
+		$otherFriends = array_slice($pFriends,3);
+		$pFriends = array_slice($pFriends,0,3);
+ #-->
+<div class="box_wrap" id="J_friend_maybe">
+	<h2 class="box_title J_sidebar_box_toggle">可能认识的人</h2>
+	<div class="side_may_list" id="J_friend_maybe_list" data-url="{@url:my/follow/recommendfriend}">
+	<!--#
+		$i = 0;
+		foreach($pFriends as $v){
+			$pUid = $v['uid'];
+			//if ($v['cnt'] < 1) continue;
+			$class = ($i > 1) ? 'display:none;' : '';
+			$class2 = ($i > 0) ? 'display:none;' : '';
+			$load = ($i > 0) ? 'false' : 'true';
+			$arrow = ($i == 0) ? '&uarr;' : '&darr;';
+	 #-->
+		<div class="J_friend_maybe_items">
+			<dl>
+				<dt><a href="{@url:space/index/run?uid=$pUid}" class="J_user_card_show" data-uid="{$pUid}"><img class="J_avatar" src="{@Pw::getAvatar($pUid,'small')}" width="50" height="50" data-uid="{$pUid}" data-type="small" /></a></dt>
+				<dd>
+					<p class="title"><a href="{@url:space/index/run?uid=$pUid}" class="J_user_card_show" data-uid="{$pUid}">{$v['username']}</a></p>
+					<p><a href="{@url:my/follow/add}" class="core_follow J_friend_maybe_follow mr10" data-uid="{$pUid}" role="button" rel="nofollow">关注</a>
+					<!--# if ($v['cnt']) { #-->
+					<a href="{@url:my/follow/samefriend?uid=$pUid}" class="unmore J_friend_view" data-uid="{$pUid}">{$v['cnt']}个共同好友{$arrow|html}</a>
+					<!--# } #-->
+					</p>
+				</dd>
+			</dl>
+			<!--# if ($v['sameUser']) { #-->
+			<div id="J_friend_related_{$pUid}" class="related J_friend_related" style="{$class2}" data-load="{$load}">
+				
+				<div class="menu_arrow"><em></em><span></span></div>
+				<!--# 
+					$tmp = array();
+					foreach($v['sameUser'] as $sk => $su){
+						if (!trim($su)) continue;
+						$tmp[] = sprintf('<a href="%s" class="J_user_card_show" data-uid="%d" target="_blank">%s</a>',WindUrlHelper::createUrl('space/index/run',array('uid'=>$sk)),$sk,$su);
+					}
+					$tmp = implode('、', $tmp);
+				 #-->
+				 您关注的人中： {$tmp|html}<!--# if($v['cnt'] > 3) {#-->等{$v['cnt']}人<!--# } #--> 也关注了Ta
+			</div>
+			<!--# } #-->
+		</div>
+	<!--#
+		$i++;
+		}
+	 #-->
+		
+	</div>
+</div>
+<!--# }} #-->

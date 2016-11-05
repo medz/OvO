@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/medal.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:medal/index/run}">勋章</a><em>&gt;</em><a href="{@url:medal/index/center}">勋章中心</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap medal_page">
+					<nav>
+						<div class="content_nav">
+							<ul>
+								<li><a href="{@url:medal/index/run}">我的勋章</a></li>
+								<li  class="current"><a href="{@url:medal/index/center}">勋章中心</a></li>
+								<li><a href="{@url:medal/index/order}">勋章排行</a></li>
+							</ul>
+						</div>
+					<nav>
+						<div id="J_medal_card_wrap" class="medal_content">
+							<div class="medal_show_list">
+								<div class="hd">
+									<h2>自动勋章</h2><span>（无需申请，达到指定任务的要求后到 <a href="{@url:medal/index/run}">我的勋章</a> 领取即可）</span>
+								</div>
+								<div class="ct">
+									<ul class="cc">
+									<!--# $medals_c = $medals_zw = $medals_zy =array();
+									foreach ($medals as $key=>$medal){ 
+										if ($medal['receive_type'] ==1){ 
+											if ($myStatus[$key] > 0 && $myStatus[$key] < 4) {
+												$medals_zw[$key] = $medal;
+											}elseif($myStatus[$key] == 4){
+												$medals_zy[$key] = $medal;
+											}else{
+											#-->
+											<li><a class="J_medal_card" data-role="show" data-id="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+											</a></li>
+											<!--# } #-->
+										<!--# }elseif($medal['receive_type'] ==2){
+												 $medals_c[$key] = $medal;
+												}elseif($medal['receive_type'] ==3){
+												 $medals_r[$key] = $medal;
+												}
+										} #-->
+										<!-- 与我相关的勋章 -->
+										<!--# foreach ($medals_zw as $key=>$medal){ #-->
+										<li><a class="J_medal_card" data-role="receive" data-subid="{$medal['medal_id']}" data-id="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+											<!--# if ($myStatus[$key] == 1){ #-->	
+													<em class="status_in"></em>
+												<!--# }elseif($myStatus[$key] == 2){ #-->
+													<em class="status"></em>
+												<!--# }elseif($myStatus[$key] == 3){ #-->
+													<em class="status_can"></em>
+												<!--# }elseif($myStatus[$key] == 4){ #-->
+													<em class="status_do"></em>
+												<!--# } #-->	
+											</a></li>
+										<!--# } #-->	
+										<!-- 我已领取的勋章 -->
+										<!--# foreach ($medals_zy as $key=>$medal){ #-->
+										<li><a class="J_medal_card" data-role="show" data-id="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+													<em class="status_do"></em>
+											</a></li>
+										<!--# } #-->	
+									</ul>
+									<!-- <div class="not_content">啊哦，暂没有自动勋章！</div> -->
+								</div>
+							</div>
+							<!--# if ($medals_c){ #-->
+							<div id="medal_manual" class="medal_show_list medal_manual_list">
+								<div class="hd">
+									<h2>手动勋章</h2><span>（申请后由网站管理员人工审核颁发）</span>
+								</div>
+								<div class="ct">
+									<ul class="cc">
+									<!--# $medals_cw1 = $medals_cw2 = $medals_cw3 = $medals_cy =array();
+											foreach ($medals_c as $key=>$medal){ 
+											if ($myStatus[$key] == 1) {
+												$medals_cw1[$key] = $medal;
+											}elseif($myStatus[$key] == 2){
+												$medals_cw2[$key] = $medal;
+											}elseif($myStatus[$key] == 3){
+												$medals_cw3[$key] = $medal;
+											}elseif($myStatus[$key] == 4){
+												$medals_cy[$key] = $medal;
+											}else{ #-->
+											<li>
+												<a class="J_medal_card" data-role="apply" data-id="{$medal['medal_id']}" data-subid="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+											</a>
+											</li>
+											<!--# } #-->
+										<!--# } #-->
+										<!-- 与我相关的勋章 -->
+										<!--# foreach ($medals_cw1 as $key=>$medal){  #-->
+											<li>
+												<a class="J_medal_card" data-role="show" data-id="{$medal['medal_id']}" data-subid="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+												<em class="status_in"></em></a>
+											</li>
+										<!--# } #-->
+										<!--# foreach ($medals_cw2 as $key=>$medal){ #-->
+											<li>
+												<a class="J_medal_card" data-role="applied" data-id="{$medal['medal_id']}" data-subid="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+												<em class="status"></em></a>
+											</li>
+										<!--# } #-->
+										<!--# foreach ($medals_cw3 as $key=>$medal){  #-->
+											<li>
+												<a class="J_medal_card" data-role="receive" data-id="{$medal['medal_id']}" data-subid="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+												<em class="status_can"></em></a>
+												
+											</li>
+										<!--# } #-->
+									
+										<!--# foreach ($medals_cy as $key=>$medal){  #-->
+											<li>
+												<a class="J_medal_card" data-role="show" data-id="{$medal['medal_id']}" data-subid="{$medal['medal_id']}" href="{@url:medal/index/show?medalid=$medal['medal_id']}"><img src="{$medal['image']}" width="96" height="96" alt="{$medal['name']}" /><p title="{$medal['name']}">{$medal['name']}</p>
+												<em class="status_do"></em>
+												</a>
+											</li>
+										<!--# } #-->
+									</ul>
+									<!-- <div class="not_content">啊哦，暂没有手动勋章！</div> -->
+								</div>
+							</div>
+							<!--# } #-->
+						</div>
+					</div>
+			</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+//所有未展示勋章数据
+var MEDAL_JSON = {@$medalJson|json},
+		MEDAL_COUNT = '{$count}',																													//已领取勋章数
+		MEDAL_APPLY_URL = '{@url:medal/index/doApply/}',			//勋章申请url
+		MEDAL_AWARD_URL = '{@url:medal/index/doAward/}',			//勋章领取url
+		MEDAL_PAGE_URL = '{@url:medal/index/run}',						//勋章应用的链接地址
+		medel_data = {};
+
+Wind.use('jquery', 'global', 'ajaxForm', function(){
+	Wind.js(GV.JS_ROOT+'pages/medal/medal.js?v='+ GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

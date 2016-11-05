@@ -1,0 +1,22 @@
+<meta charset="{@Wekit::V('charset')}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>{@G:c.name}</title>
+<link href="{@G:url.css}/admin_style.css?v{@NEXT_RELEASE}" rel="stylesheet" />
+<script>
+//全局变量，是Global Variables不是Gay Video喔
+var GV = {
+	JS_ROOT : "{@G:url.res}/js/dev/",																									//js目录
+	JS_VERSION : "{@NEXT_RELEASE}",																										//js版本号
+	TOKEN : '{@Wind::getComponent('windToken')->saveToken('csrf_token')}',	//token ajax全局
+	REGION_CONFIG : {},
+	SCHOOL_CONFIG : {},
+	URL : {
+		LOGIN : '{@G:loginUrl}',																													//后台登录地址
+		IMAGE_RES: '{@G:url.images}',																										//图片目录
+		REGION : '{@url:misc/webData/area|pw}',					//地区
+		SCHOOL : '{@url:misc/webData/school|pw}'				//学校
+	}
+};
+</script>
+<script src="{@G:url.js}/wind.js?v{@NEXT_RELEASE}"></script>
+<script src="{@G:url.js}/jquery.js?v{@NEXT_RELEASE}"></script>

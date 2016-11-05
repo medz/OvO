@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">	
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:design/push/run}">显示中数据</a></li>
+			<li><a href="{@url:design/push/status?status=1}">待审核数据</a></li>
+			<li><a href="{@url:design/push/status?status=2}">推送数据</a></li>	
+			<li><a href="{@url:design/push/shield}">屏蔽数据</a></li>	
+		</ul>
+	</div>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>此列表展示前台各模块正在显示的，来源为推送的数据。</li>
+		</ul>
+	</div>
+	<div class="h_a">搜索</div>
+	<form method="post"  action="{@url:design/push/run}" >
+	<div class="search_type cc mb10">
+		<span class="mr20">所属页面：
+			<select class="select_2" name="pageid" id="J_flag_initiative">
+				<option value="">不限制</option>
+			<!--# foreach ($pagelist as $v){ #-->
+				<option value="{$v['page_id']}" {@Pw::isSelected($v['page_id'] == $pageid)}>{$v['page_name']}</option>
+			<!--# } #-->
+			</select>
+		</span>
+		<span class="mr20">所属模块：
+			<select class="select_2" name="moduleid" id="J_flag_passive">
+				<option>不限制</option>
+			</select>
+		</span>
+		<button class="btn" type="submit">搜索</button>
+	</div>
+	</form>
+	<form class="J_ajaxForm" method="post"  action="{@url:design/push/batchshield}" >
+			<!--# if ($list) { #-->
+	<div class="table_list">
+		<table width="100%">
+			<colgroup>
+				<col width="70">
+				<col width="200">
+				<col width="160">
+				<col width="90">
+				<col width="160">
+			</colgroup>
+			<thead>
+				<tr>
+					<td><label><input type="checkbox" data-checklist="J_check_y" data-direction="y" class="J_check_all" name="checkAll">全选</label></td>
+					<td>标题</td>
+					<td>所属模块</td>
+					<td>推荐人</td>
+					<td>显示时间</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<!--# foreach ($list as $v){ #-->
+			<tr>
+				<td><input data-yid="J_check_y" data-xid="J_check_x" class="J_check" type="checkbox" name="dataids[]" value="{$v['data_id']}"></td>
+				<td><a href="{$v['url']}" target="_blank">{$v['title']}</a></td>
+				<td>{$modules[$v['module_id']]['module_name']}</td>
+				<td>{$pushs[$v['from_id']]['created_user']}</td>
+				<td>{@Pw::time2str($v['start_time'])}</td>
+				<td><a href="{@url:design/push/doshield}" class="mr10 J_ajax_del" data-msg="确定要删除选中内容?" data-pdata="{'dataid': '{$v['data_id']}'}">[删除]</a></td>
+			</tr>
+			<!--# } #-->
+		</table>
+		<div class="p10"><page tpl='TPL:common.page'  page="$page" per="$perpage" count="$count" url="design/push/run" args='$args'/></div>
+	</div>
+			<!--# } else { #-->
+				<div class="not_content_mini"><i></i>啊哦，没有符合条件的内容！</div>
+			<!--# } #-->
+
+
+	<!--# if ($list) { #-->
+	<div class="btn_wrap">
+	<div class="btn_wrap_pd">
+		<label class="mr20"><input type="checkbox" data-checklist="J_check_x" data-direction="x" class="J_check_all" name="checkAll">全选</label><button data-subcheck="true" data-msg="确定要删除选中内容?" class="btn btn_submit J_ajax_submit_btn" type="submit">删除</button>
+	</div>
+	</div>
+	<!--# } #-->
+	</form>	
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	//select联动
+	var flag_passive = $('#J_flag_passive'),
+		flag_initiative = $('#J_flag_initiative'),
+		moduleid = '{$moduleid}';		//模块id 后端输出
+	flag_initiative.on('change', function(){
+		flatSet(this.value);
+	});
+
+	//
+	if(flag_initiative.val()) {
+		flatSet(flag_initiative.val(), moduleid);
+	}
+
+	function flatSet(pageid, id){
+		if(pageid) {
+			$.post('{@url:design/page/getModuleOption}', {pageid : pageid}, function(data){
+				if(data.state == 'success') {
+					flag_passive.html('<option>不限制</option>'+data.html);
+
+					if(id) {
+						flag_passive.children('[value='+ id +']').prop('selected', true);
+					}
+				}else if(data.state == 'fail'){
+					//common.js
+					resultTip({
+						error : true,
+						msg : data.message
+					});
+				}
+			}, 'json');
+		}else{
+			flag_passive.html('<option>不限制</option>');
+		}
+	}
+});
+</script>
+</body>
+</html>

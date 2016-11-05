@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/message.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:message/message/run}">消息</a><em>&gt;</em>
+			<a href="{@url:message/message/run}">私信</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<!--中间内容-->
+					<div class="box_wrap message_page">
+					<template source='TPL:message.message_header' load='true' />
+				<!--# if ($dialogs) { #-->
+						<div id="J_notice_list" class="message_list J_check_wrap">
+							<div class="hd cc J_op_bar" style="display:none;">
+								<div class="check"><label><input name="" type="checkbox" class="J_check_all" value="">全选</label></div>
+								<div class="operate"><a href="" class="btn J_msg_manage_hide">取消</a><span class="J_check_op" style="visibility:hidden;"><a href="{@url:message/message/deleteDialog}" data-role="del" class="btn J_check_op_sub">删除</a><a href="{@url:message/message/checkReaded}" class="btn J_check_op_sub">标记已读</a></span></div>
+							</div>
+							<div class="hd cc J_op_manage"><a href="javascript:;" class="btn J_msg_manage_show">批量管理</a></div>
+				<!--# foreach ($dialogs as $value) {
+					$lastMessage = $value['last_message'];
+				 #-->
+							<div class="ct cc J_notice_item">
+								<div class="check"><input name="ids[]" class="J_check" type="checkbox" value="{$value['dialog_id']}" style="display:none;"></div>
+								<div class="content J_content">
+								<!--# if ($value['to_uid'] == $lastMessage['from_uid']) { #-->
+									<a href="{@url:space/index/run?uid=$value['from_uid']}" class="face J_user_card_show" data-uid="{$value['from_uid']}"  target="_blank">
+										<img class="J_avatar" src="{@Pw::getAvatar($value['from_uid'])}" data-type="small" width="50" height="50" alt="" />
+									</a>
+									<div class="title">
+										 发给 <a href="{@url:space/index/run?uid=$value['from_uid']}" class="name J_user_card_show" data-uid="{$value['from_uid']}"  target="_blank">{$lastMessage['to_username']}</a>：{$lastMessage['content']|html}<!--# if ($value['unread_count']) { #--><a class="J_unread unread" data-count="{$value['unread_count']}" href="{@url:message/message/dialog?dialogid=$value['dialog_id']}">(<span class="J_read_count_{$value['from_uid']}">{$value['unread_count']}</span>条未读)</a><!--# } #--><a class="J_tragger" href="{@url:message/message/dialog?dialogid=$value['dialog_id']}"></a>
+									</div>
+									<div class="info"><span class="num">共{$value['message_count']}条</span><span class="operating"><a href="#" data-uri="{@url:message/message/deleteDialog}" data-msg="确定删除与{$lastMessage['to_username']}的所有对话记录吗？" class="J_msg_del" data-pdata="{'ids':'{$value['dialog_id']}'}" data-type="msg">删除</a>|</span><span class="time"><!--#echo Pw::time2str($value['modified_time'],'auto');#--></span></div>
+								<!--# } else { #-->
+									<a href="{@url:space/index/run?uid=$lastMessage['from_uid']}" class="face J_user_card_show" data-uid="{$lastMessage['from_uid']}"  target="_blank">
+										<img src="{@Pw::getAvatar($lastMessage['from_uid'], 'small')}" data-type="small" width="50" height="50" alt="" class="J_avatar" />
+									</a>
+									<div class="title">
+										 <a href="{@url:space/index/run?uid=$lastMessage['from_uid']}" class="name J_user_card_show" data-uid="{$lastMessage['from_uid']}"  target="_blank">{$lastMessage['from_username']}</a>：{$lastMessage['content']|html}<!--# if ($value['unread_count']) { #--><a class="J_unread unread" data-count="{$value['unread_count']}" href="{@url:message/message/dialog?dialogid=$value['dialog_id']}">(<span class="J_read_count_{$lastMessage['from_uid']}">{$value['unread_count']}</span>条未读)</a><!--# } #--><a class="J_tragger" href="{@url:message/message/dialog?dialogid=$value['dialog_id']}"></a>
+									</div>
+									<div class="info"><span class="num">共{$value['message_count']}条</span><span class="operating"><a href="{@url:message/message/dialog?dialogid=$value['dialog_id']}">回复</a>|<a href="#" data-uri="{@url:message/message/deleteDialog}" data-msg="确定删除与{$lastMessage['from_username']}的所有对话记录吗？" class="J_msg_del" data-pdata="{'ids':'{$value['dialog_id']}'}" data-type="msg">删除</a>|</span><span class="time"><!--#echo Pw::time2str($value['modified_time'],'auto');#--></span></div>
+								<!--# } #-->
+								</div>
+							</div>
+				<!--# } #-->
+							<div class="ft cc J_op_bar" style="display:none;">
+								<div class="check"><label><input name="" type="checkbox" class="J_check_all" value="">全选</label></div>
+								<div class="operate"><a href="" class="btn J_msg_manage_hide">取消</a><span class="J_check_op" style="visibility:hidden;"><a href="{@url:message/message/deleteDialog}" data-role="del" class="btn J_check_op_sub">删除</a><a href="{@url:message/message/checkReaded}" class="btn J_check_op_sub">标记已读</a></span></div>
+							</div>
+							<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='message/message/run'/>
+						</div>
+						<!--# } else { #-->
+								<div><div class="cc not_content">暂无私信</div></div>
+						<!--# } #-->
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_2' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', 'dialog', function(){
+
+	//点击整行跳转， 头像链接 不触发
+	$('#J_notice_list .J_content').on('click', function(e){
+		if(e.target.tagName.toLowerCase() !== 'a' && !$(e.target).hasClass('J_avatar')) {
+			window.location.href = $(this).find('a.J_tragger').attr('href');
+		};
+	});
+	
+	//选择后提交
+	var unread_count = $('#J_unread_count'),
+		checkbox = $('input.J_check_all, input.J_check')
+		check_op = $('.J_check_op');
+
+	$('a.J_check_op_sub').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			href = $this.prop('href'),
+			checked = $('input.J_check:checked'),
+			ids_arr = [];
+			
+		//ids数组
+		$.each(checked, function(i, o){
+			ids_arr.push($(this).val());
+		});
+
+		if($this.data('role') === 'del') {
+			//删除
+			Wind.dialog({
+				message	: '确定删除选中的对话记录吗？',
+				type	: 'confirm',
+				follow : $this,
+				isMask	: false,
+				onOk	: function() {
+					$.ajax({
+						url : href,
+						type : 'post',
+						dataType : 'json',
+						data : {
+							'ids[]' : ids_arr
+						},
+						success : function(data){
+							if(data.state === 'success') {
+								check_op.css('visibility', 'hidden');
+
+								unReadCount(checked.parents('.J_notice_item').find('a.J_unread'), unread_count);
+
+								checked.parents('.J_notice_item').fadeOut(function(){
+									$(this).remove();
+
+									if(!$('.J_notice_item').length) {
+										//清空了
+										location.reload();
+									}
+								});
+							}else if( data.state === 'fail' ) {
+								Wind.Util.resultTip({
+									error : true,
+									msg : data.message
+								});
+							}
+						}
+					});
+				}
+			});
+		}else{
+			//标记已读
+			$.ajax({
+				url : href,
+				type : 'post',
+				dataType : 'json',
+				data : {
+					'ids[]' : ids_arr
+				},
+				success : function(data){
+					if(data.state === 'success') {
+						checked.prop('checked', false);
+
+						check_op.css('visibility', 'hidden');
+						checkbox.removeAttr('checked');
+						
+						unReadCount(checked.parents('.J_notice_item').find('a.J_unread'), unread_count);
+					}else if( data.state === 'fail' ) {
+						Wind.Util.resultTip({
+							error : true,
+							msg : data.message
+						});
+					}
+				}
+			});
+		}
+		
+	});
+
+	function unReadCount(items, count){
+		var read_c = parseInt(count.text());		//原未读总数
+
+		var c = 0;
+		for(i=0, len=items.length; i<len; i++) {
+			c = c + $(items[i]).data('count');
+		};
+
+		var result = read_c - c;
+		if(result == 0) {
+			count.remove();
+		}else{
+			count.text(result);
+		}
+						
+		items.remove();
+
+		/*Wind.Util.resultTip({
+			msg : '操作成功'
+		});*/
+	}
+	
+	Wind.js(GV.JS_ROOT +'pages/message/message_index.js?v=' + GV.JS_VERSION);
+	
+});
+</script>
+</body>
+</html>

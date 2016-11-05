@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/message.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:message/message/run}">消息</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap message_page">
+						<template source='TPL:message.message_header' load='true' />
+						<div class="message_list">
+							<div class="hd cc">
+									<!--# $dialogUsername = $dialog['last_message']['from_uid'] == $dialog['to_uid'] ? 
+												$dialog['last_message']['to_username'] : $dialog['last_message']['from_username'];//对话人
+											$dialogUserid = $dialog['last_message']['from_uid'] == $dialog['to_uid'] ? 
+												$dialog['last_message']['to_uid'] : $dialog['last_message']['from_uid'];
+												$blackList = Wekit::load('user.PwUserBlack')->getBlacklist($loginUser->uid);
+												if ($blackList) {
+													$isBlack = Pw::inArray($dialogUserid,$blackList) ? true : false;
+												}
+									 #-->
+									<span class="fr">
+									<!--# if (!$isBlack) { #-->
+									<a href="{@url:message/message/addBlack?uid=$dialogUserid}" data-msg="确定把{$dialogUsername}加入黑名单吗？" class="J_dialog_delall">加入黑名单</a>
+									<!--# } else { #-->
+									<a href="{@url:profile/secret/black?_left=secret}" target="_blank">查看黑名单</a>
+									<!--# } #-->
+									<span class="line">|</span><a href="{@url:message/message/deleteDialog?ids=$dialog['dialog_id']}" data-msg="确定删除与{$dialogUsername}的所有对话记录吗？" class="J_dialog_delall">全部删除</a></span>
+									<a href="{@url:message/message/run}" class="return">&lt;&lt;&nbsp;回到私信</a><span class="line">|</span>共有 {$count} 条与 <a href="{@url:space/index/run?uid=$dialogUserid}" target="_blank">{$dialogUsername}</a> 的对话记录
+							</div>
+						</div>
+						<dl class="cc message_reply">
+							<dt><a href="{@url:space/index/run?uid=$dialog['to_uid']}" class="face J_user_card_show" data-uid="{$dialog['to_uid']}"  target="_blank"><img class="J_avatar" src="{@Pw::getAvatar($dialog['to_uid'],'small')}" data-type="small" width="50" height="50" alt="" /></a></dt>
+							<dd>
+								<form id="J_msg_send_form" action="{@url:message/message/doAddDialog}" method="post">
+								<input type="hidden" name=username value="{$dialogUsername}">
+								<div class="cc"><textarea id="J_msg_send_ta" class="J_at_user_textarea" name='content'></textarea></div>
+								<a href="#" class="icon_face J_insert_emotions" data-emotiontarget="#J_msg_send_ta">表情d</a>
+								<div class="tar"><button type="submit" id="J_msg_send_btn" class="btn btn_submit disabled">发送</button></div>
+								</form>
+							</dd>
+						</dl>
+						<!--# if ($messages) { 
+							Wind::import('LIB:ubb.PwUbbCode');
+						#-->
+						<div class="message_dialogue" id="J_posts_list">
+							<!--# foreach ($messages as $value) { 
+								$value['tousername'] = $value['from_uid'] == $dialog['to_uid'] ? '我' : $dialogUsername;
+								$bubbles = $value['from_uid'] == $dialog['to_uid'] ? ' my' : '';
+								$value['content'] = PwUbbCode::parseEmotion($value['content']);
+								$value['content'] = PwUbbCode::parseUrl($value['content']);
+							#-->
+							<dl class="cc{$bubbles}">
+								<dt><a href="{@url:space/index/run?uid=$value['from_uid']}" class="face J_user_card_show" data-uid="{$value['from_uid']}" target="_blank"><img src="{@Pw::getAvatar($value['from_uid'],'small')}" data-type="small" width="50" height="50" onerror="this.onerror=null;this.src='{@G:url.images}/face/face_small.jpg'" alt="{$value['tousername']}" /></a></dt>
+								<dd>
+									<div class="arrow"><em></em><span></span></div>
+									<div class="title">
+										<a href="{@url:space/index/run?uid=$value['from_uid']}" class="b J_user_card_show" data-uid="{$value['from_uid']}"  target="_blank">{$value['tousername']}</a>：{$value['content']|html}
+									</div>
+									<div class="info">
+									<span class="operat"><a href="{@url:message/message/deletemessage?dialogid=$dialog['dialog_id']&messageid=$value['message_id']}" class="J_msg_dialog_del">删除</a>
+									<!--# if ($value['from_uid'] != $dialog['to_uid'] && $loginUser->getPermission('allow_report')) { #-->
+									 | <a href="{@url:report/index/report?type=message&type_id=$value['message_id']}" data-pid="{$value['message_id']}" class="J_report">举报</a>
+									<!--# } #-->
+									 </span><span class="time" title="{@Pw::time2str($value['created_time'], 'Y-m-d H:i')}">{@Pw::time2str($value['created_time'], 'auto')}</span></div>
+								</dd>
+							</dl>
+							<!--# } #-->
+						</div>
+						<!--# } #-->
+					</div>
+					<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='message/message/dialog' args='$args'/>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_2' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', 'dialog', 'ajaxForm', 'validate', function(){
+	var msg_send_ta = $('#J_msg_send_ta'),
+		msg_send_btn = $('#J_msg_send_btn');
+	
+	//初始化空内容
+	msg_send_ta.val('');
+	
+	//按钮状态&ctrl+enter提交方法
+	Wind.Util.buttonStatus(msg_send_ta, msg_send_btn);
+	Wind.Util.ctrlEnterSub(msg_send_ta, msg_send_btn);
+	
+	//提交发送
+	$('#J_msg_send_form').ajaxForm({
+		dataType : 'json',
+		success : function(data){
+			if(data.state === 'success') {
+				window.location.reload();
+			}else{
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message
+				});
+			}
+		}
+	});
+	
+	//删除 黑名单
+	if( $('a.J_ajax_confirm').length ) {
+
+			$('a.J_ajax_confirm').on('click',function(e) {
+				e.preventDefault();
+				var $this = $(this);
+				Wind.Util.ajaxConfirm({
+					elem : $this,
+					href : $this.attr('href'),
+					msg : $this.data('msg'),
+					callback : function(){
+						Wind.Util.resultTip({
+							msg : '操作成功',
+							callback : function(){
+								$this.parents('dl').remove();
+							}
+						});
+					}
+				});
+				
+			});
+	}
+
+	//全部删除
+	$('a.J_dialog_delall').on('click',function(e) {
+		e.preventDefault();
+		var $this = $(this);
+
+		Wind.Util.ajaxConfirm({
+			elem : $this,
+			href : $this.attr('href'),
+			msg : $this.data('msg'),
+			callback : function(){
+				Wind.Util.resultTip({
+					msg : '操作成功',
+					callback : function(){
+						window.location.href = "{@url:message/message/run}";
+					}
+				});
+			}
+		});
+	});
+
+	//删除
+	$('a.J_msg_dialog_del').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$.getJSON($this.attr('href'), function(data){
+			if(data.state == 'success') {
+				$this.parents('dl').slideUp('slow', function(){
+					$this.remove();
+					if(data.referer) {
+						location.href = decodeURIComponent(data.referer);
+					}
+				});
+			}else if(data.state == 'fail') {
+				//global.js
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message
+				});
+			}
+		});
+	});
+
+	//ie6 hover
+	if($.browser.msie && $.browser.version < 7) {
+		$('#J_posts_list dd').hover(function(){
+			$(this).addClass('current ');
+		}, function(){
+			$(this).removeClass('current ');
+		});
+	}
+	
+	Wind.js(GV.JS_ROOT +'pages/message/message_index.js?v=' + GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

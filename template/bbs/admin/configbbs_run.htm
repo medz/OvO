@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<form class="J_ajaxForm" action="{@url:bbs/configbbs/dorun}" method="post">
+		<div class="h_a">论坛设置</div>
+		<div class="table_full">
+			<table width="100%">
+				<col class="th" />
+				<col width="400" />
+				<col />
+				<tr style="display:none">
+					<th>论坛名称</th>
+					<td><input name="bbsname" type="text" class="input length_5 input_hd" value="{$config['bbsname']}"></td>
+					<td><div class="fun_tips">设置后显示在面包屑路径以及论坛各个页面title的站点名称中。</div></td>
+				</tr>
+				<tr>
+					<th>帖子标题最大长度</th>
+					<td><input name="title_length_max" type="text" class="input length_5 input_hd" value="{$config['title.length.max']}"></td>
+					<td><div class="fun_tips">单位：字，请输入正整数</div></td>
+				</tr>
+				<tr>
+					<th>内容长度控制</th>
+					<td><input type="text" name="content_length_min" value="{$config['content.length.min']}" class="input mr5"><span class="mr5">至</span><input type="text" name="content_length_max" value="{$config['content.length.max']}" class="input"></td>
+					<td><div class="fun_tips">单位：字，请输入正整数</div></td>
+				</tr>
+				<!-- <tr>
+					<th>定时发帖</th>
+					<td>
+						<ul class="switch_list cc mb10">
+							<li><label><input class="J_timeing" name="ifopen" data-role="open" type="radio" value="1" {@Pw::ifcheck(1 == $config['post.timing.open'])}><span>开启</span></label></li>
+							<li><label><input class="J_timeing" name="ifopen" data-role="close" type="radio" value="0"{@Pw::ifcheck(0 == $config['post.timing.open'])}><span>关闭</span></label></li>
+						</ul>
+						<div class="mb10">开始于&nbsp;<input name="start_hour" type="number" class="input length_1 J_timing_input" value="{$config['post.timing.start_hour']}">&nbsp;时&nbsp;<input name="start_min" type="number" class="input length_1 J_timing_input"value="{$config['post.timing.start_min']}">&nbsp;分</div>
+						<div>结束于&nbsp;<input name="end_hour" type="number" class="input length_1 J_timing_input" value="{$config['post.timing.end_hour']}">&nbsp;时&nbsp;<input name="end_min" type="number" class="input length_1 J_timing_input" value="{$config['post.timing.end_min']}">&nbsp;分</div>
+					</td>
+					<td><div class="fun_tips">设置用户发布的帖子需要审核的时间段，支持跨越零点设置。<br>例如：需设置用户在 每天23:00 到 次日8:00 这段时间内发布的帖子需要审核，则设置开始于23:00；结束于8:00。 </div></td>
+				</tr>
+				<tr>
+					<th>允许发帖的用户组</th>
+					<td>
+						<div class="user_group J_check_wrap">
+							<!--# foreach ($groupTypes as $type => $typeName) { #-->
+							<dl>
+								<dt><label><input type="checkbox" data-direction="y" data-checklist="J_check_timging_{$type}" class="checkbox J_check_all" />{$typeName}</label></dt>
+								<dd>
+								<!--# foreach ($groups as $group) { #-->
+									<!--# if ($group['type'] == $type) { #-->
+									<label><input class="J_check" data-yid="J_check_timging_{$type}" type="checkbox" name="timing_groups[]" value="{$group['gid']}"{@Pw::ifcheck(Pw::inArray($group['gid'], $config['post.timing.groups']))} /><span>{$group['name']}</span></label>
+									<!--# } #-->
+								<!--# } #-->
+								</dd>
+							</dl>
+							<!--# } #-->
+						</div>
+					</td>
+					<td><div class="fun_tips">勾选的用户组不受定时发帖的限制，在限制时间段内也可以正常发帖。</div></td>
+				</tr> -->
+				<tr>
+					<th>定时发帖审核</th>
+					<td>
+						<ul class="switch_list cc mb10">
+							<li><label><input class="J_check" type="radio" data-role='open' name="check" {@Pw::ifcheck(1 == $config['post.check.open'])} value="1"><span>开启</span></label></li>
+							<li><label><input class="J_check" type="radio" data-role='close' name="check" {@Pw::ifcheck(0 == $config['post.check.open'])} value="0"><span>关闭</span></label></li>
+						</ul>
+						<div class="mb10">开始于&nbsp;<input name="check_start_hour" type="number" class="input length_1 J_timing_input" value="{$config['post.check.start_hour']}">&nbsp;时&nbsp;<input name="check_start_min" type="number" class="input length_1 J_timing_input"value="{$config['post.check.start_min']}">&nbsp;分</div>
+						<div>结束于&nbsp;<input name="check_end_hour" type="number" class="input length_1 J_timing_input" value="{$config['post.check.end_hour']}">&nbsp;时&nbsp;<input name="check_end_min" type="number" class="input length_1 J_timing_input" value="{$config['post.check.end_min']}">&nbsp;分</div>
+					</td>
+					<td><div class="fun_tips">设置用户发布的帖子需要审核的时间段，支持跨越零点设置。 <br>例如：需设置用户在 每天23:00 到 次日8:00 这段时间内发布的帖子需要审核，则设置开始于23:00；结束于8:00。</div></td>
+				</tr>
+				<tr>
+					<th>不需审核的用户组</th>
+					<td>
+						<div class="user_group J_check_wrap">
+							<!--# foreach ($groupTypes as $type => $typeName) { #-->
+							<dl>
+								<dt><label><input type="checkbox" data-direction="y" data-checklist="J_check_{$type}" class="checkbox J_check_all" />{$typeName}</label></dt>
+								<dd>
+								<!--# foreach ($groups as $group) { #-->
+									<!--# if ($group['type'] == $type) { #-->
+									<label><input class="J_check" data-yid="J_check_{$type}" type="checkbox" name="check_groups[]" value="{$group['gid']}"{@Pw::ifcheck(Pw::inArray($group['gid'], $config['post.check.groups']))} /><span>{$group['name']}</span></label>
+									<!--# } #-->
+								<!--# } #-->
+								</dd>
+							</dl>
+							<!--# } #-->
+						</div>
+					</td>
+					<td><div class="fun_tips">勾选的用户组不受定时发帖审核的限制，在限制时间段内发帖可以直接显示。</div></td>
+				</tr>
+			</table>
+		</div>
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+			</div>
+		</div>
+	</form>
+	
+</div>
+<template source='TPL:admin.common.footer' />
+<script type="text/javascript">
+$(function(){
+	//定时发帖开启/关闭
+	$('input.J_timeing').on('change', function(e){
+		var checks = $('div.J_check_time_wrap input:checkbox');
+		var input = $('input.J_timing_input');
+		if($(this).data('role') === 'open') {
+			checks.removeAttr('readonly');
+			input.removeAttr('readonly');
+		}else{
+			checks.attr('readonly', 'true');
+			input.attr('readonly', 'true');
+		}
+	});
+});
+</script>
+</body>
+</html>

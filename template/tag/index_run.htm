@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/tag.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<pw-start/>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<pw-tpl id="main_segment"/>
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:tag/index/run}">话题</a><em>&gt;</em><a href="{@url:tag/index/run}">热门话题</a>
+		</div>
+		<div class="tag_page_run cc">
+			<div class="tag_nav">
+				<ul class="cc">
+					<li class="current"><a href="{@url:tag/index/run}">热门话题</a></li>
+					<li><a rel="nofollow" href="{@url:tag/index/my}" data-referer="true" class="J_qlogin_trigger">我关注的话题</a></li>
+				</ul>
+			</div>
+			<!--新话题列表-->
+			<div class="mb20">
+				<pw-tpl id="huatidemo"/>
+			</div>
+			<div class="box_wrap tag_hotlist">
+				<!--# if ($hotTags) { #-->
+				<div class="hd">
+					<span class="title">热门话题</span>
+					<span class="degree">热门度</span>
+					<span class="user">最新关注会员</span>
+				</div>
+				<div class="ct" id="J_tag_hotlist_ct">
+				<!--# foreach ($hotTags as $v) { 
+					$number = ceil(0.7 * $v['content_count'] + 0.3 * $v['attention_count']);
+					$stylewidth = 10 * $number;
+					$stylewidth = $stylewidth > 240 ? 240 : $stylewidth;
+				#-->
+					<dl class="cc">
+						<dt>
+							<div class="title"><a href="{@url:tag/index/view?name=$v['tag_name']}">{$v['tag_name']}</a></div>
+							<div class="bg" style="width:{$stylewidth}px;"></div>
+							<!--#if ($loginUser->uid) {#-->
+							<div class="num">
+							<!--#if (isset($myTags[$v['tag_id']])) {#-->
+							<a rel="nofollow" href="{@url:tag/index/attention?type=del&id=$v['tag_id']}" data-type="unfollow" data-id="{$v['tag_id']}" class="core_unfollow J_follow_btn J_qlogin_trigger">取消关注</a>
+							<!--#} else {#-->
+							<a rel="nofollow" href="{@url:tag/index/attention?type=add&id=$v['tag_id']}" data-type="follow" data-id="{$v['tag_id']}" class="core_follow J_follow_btn J_qlogin_trigger">关注该话题</a>
+							<!--#}#-->
+							</div>
+							<!--#}#-->
+						</dt>
+						<dd>
+						<!--# foreach ($v['attentions'] as $uv) { 
+						#-->
+							<a class="J_user_card_show" data-uid="{$uv}" href="{@url:space/index/run?uid=$uv}"><img class="J_avatar" src="{@Pw::getAvatar($uv, 'small')}" data-type="small" width="40" height="40" alt="" /></a>
+						<!--# } #-->
+						</dd>
+					</dl>
+				<!--# } #-->
+				</div>
+				<!--# } else { #-->
+				<div class="not_content">啊哦，热门话题暂没有任何内容哦！</div>
+				<!--# } #-->
+			</div>
+			<!--结束-->
+			<div class="tac"><advertisement id='Common.Topic.Top' sys='1'/></div>
+			
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', function(){
+	//关注&取消关注
+	var URL_ADD = '{@url:/tag/index/attention?type=add}',
+		URL_DEL = '{@url:/tag/index/attention?type=del}';
+
+	var follow_btn = $('a.J_follow_btn'),
+		lock = false;
+	follow_btn.on('click', function(e){
+		e.preventDefault();
+
+		if(!GV.U_ID || lock) {
+			return;
+		}
+		lock = true;
+		
+		var $this = $(this),
+			type = $this.data('type'),
+			id = $this.data('id'),
+			url = (type === 'follow' ? URL_ADD : URL_DEL),
+			anti_text = (type === 'follow' ? '取消关注' : '关注该话题'),			//文案
+			anti_type = (type === 'follow' ? 'unfollow' : 'follow');				//标识
+
+		$.post(url, {id : id}, function(data){
+
+			if(data.state === 'success') {
+				//写入相对的信息
+				$this.text(anti_text);
+				$this.data('type', anti_type);
+
+				if(type == 'follow') {
+					$this.removeClass('core_follow').addClass('core_unfollow');
+				}else{
+					$this.removeClass('core_unfollow').addClass('core_follow');
+				}
+
+			}else if(data.state === 'fail') {
+				Wind.Util.resultTip({
+					error : true,
+					elem : $this,
+					follow : true,
+					msg : data.message
+				});
+			}
+			lock = false;
+		}, 'json');
+	});
+
+	//ie6 关注
+	if($.browser.msie && $.browser.version < 7) {
+		$('#J_tag_hotlist_ct > dl').hover(function(){
+			$(this).addClass('current');
+		}, function(){
+			$(this).removeClass('current');
+		});
+	}
+	
+	
+	Wind.use(GV.JS_ROOT +'pages/tag/tag_index.js?v=' + GV.JS_VERSION);
+});
+</script>
+<pw-end/>
+</body>
+</html>

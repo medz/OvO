@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<template source="credit_headtab" />
+	<form action="{@url:credit/credit/editStrategy}" id="J_edit_strategy_form" class="J_ajaxForm">
+	<div class="table_purview mb10">
+		<table width="100%">
+			<col width="160">
+			<col width="130">
+			<tr class="h_a">
+				<th>用户行为</th>
+				<td>每日奖惩上限次数</td>
+				<!--# foreach($creditBo->cType as $value) { #-->
+				<td>{$value}</td>
+				<!--# } #-->
+			</tr>
+			<!--# foreach ($allModules as $key => $item) { #-->
+			<tbody>
+				<tr class="hd_bar">
+					<th colspan="100"><span class="mr10">{$moduleConfig[$key][0]}</span>
+						<a href="" class="J_edit_credit">[编辑]</a>
+						<a href="#" class="btn J_save_credit" style="display: none">保存</a>
+						<a href="" class="J_edit_cancel" style="display: none">[取消]</a>
+					</th>
+				</tr>
+				<!--#foreach($item as $_tmp) {#-->
+				<tr>
+					<th>{$moduleConfig[$_tmp][0]}</th>
+					<td{@$moduleConfig[$_tmp][4] ? ' id="J_for_reg"' : ''|html} class="J_credit_items" data-name="info[{$_tmp}][limit]">{$strategy[$_tmp]['limit']}</td>
+					<!--# foreach ($creditBo->cType as $k => $v) { #-->
+					<td class="J_credit_items" data-name="info[{$_tmp}][credit][{$k}]">{$strategy[$_tmp]['credit'][$k]}</td>
+					<!--# } #-->
+				</tr>
+				<!--#}#-->
+			</tbody>
+			<!--#}#-->
+		</table>
+	</div>
+	
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.use('dialog', function(){
+	//编辑积分策略
+var action_url = $('#J_edit_strategy_form').attr('action');
+
+//编辑
+$('.J_edit_credit').on('click',function(e) {
+	e.preventDefault();
+	var tbody = $(this).parents('tbody');
+
+	$(this).hide().parent().find('.J_save_credit').show();
+	$(this).parent().find('.J_edit_cancel').show();
+
+	//循环积分表格
+	var temp;
+	tbody.find('td.J_credit_items').each(function(i, o) {
+		var val = this.innerHTML,
+				$this = $(this);
+		$this.data('value',val);
+
+		
+		if($this.attr('id') == 'J_for_reg') {
+			temp = $('<input type="number" class="input length_1" value="'+ val +'" style="display:none" name="'+ $this.data('name') +'" />');
+		}else{
+			this.innerHTML = '';
+			temp = $('<input type="number" class="input length_1" value="'+ val +'" name="'+ $this.data('name') +'" />');
+		}
+
+		temp.appendTo($this);
+
+	});
+
+});
+
+//保存积分策略
+$('.J_save_credit').on('click',function(e) {
+	e.preventDefault();
+	var $this = $(this),
+			tbody = $(this).parents('tbody'),
+			td_list =tbody.find('td.J_credit_items'),
+			params = {};
+
+	//遍历所有文本框，组合成字符串参数后提交
+	td_list.each(function(i, o) {
+		var input = $(this).find('input'),
+			val = input.val(),
+			name = input.attr('name');
+			
+		if(val) {
+			params[name] = val;
+		}
+	});
+
+	//post提交
+	$.post(action_url, params, function(data){
+		if(data.state === 'success') {
+			//成功后还原表格中的值
+			td_list.each(function() {
+				var val = $(this).find('input').val();
+					this.innerHTML = val;
+				});
+				reloadPage(window);
+			}else {
+				Wind.dialog.alert(data.message);
+			}
+			//提交成功之后按钮处理
+			$this.hide().parent().find('.J_edit_credit').show().focus();
+			$this.parent().find('.J_edit_cancel').hide();
+	}, 'json');
+
+});
+
+//取消编辑
+$('.J_edit_cancel').on('click',function(e) {
+	e.preventDefault();
+	var tbody = $(this).parents('tbody'),
+			td_list =tbody.find('td.J_credit_items');
+
+	td_list.each(function() {
+		var val = $(this).data('value');
+		this.innerHTML = val;
+	});
+
+	$(this).hide().parent().find('.J_save_credit').hide();
+	$(this).parent().find('.J_edit_credit').show();
+});
+});
+
+</script>
+</body>
+</html>

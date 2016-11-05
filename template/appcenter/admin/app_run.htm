@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:appcenter/app/run}">已安装</a></li>
+			<li><a href="{@url:appcenter/app/install}">本地安装</a></li>
+			<!--# if(Wekit::load('APPCENTER:service.srv.PwDebugApplication')->inDevMode1()){ #-->
+			<li><a href="{@url:appcenter/develop/run}">开发助手</a></li>
+			<!--# } #-->
+		</ul>
+	</div>
+<!--#if($count==0 && !isset($search)){ #-->
+	<div class="tips_light">您还没有已安装的应用</div>
+<!--#}else{ #-->
+	<div class="mb10 cc">
+	<form action="{@url:appcenter/app/search}" method="POST">
+		<span class="fl mr20">
+			<input type="text" class="input length_4 mr5" value="{$keyword}" name="keyword">
+			<button class="btn btn_submit" type="submit">查找</button>
+		</span>
+	</form>
+		<span class="fl" style="padding-top:4px;">共<span class="b org">{$count}</span>个应用</span>
+	</div>
+	<div class="table_list">
+	<table width="100%">
+		<colgroup>
+			<col width="90">
+			<col width="350">
+			<col width="120">
+		</colgroup>
+		<thead>
+			<tr>
+				<td>应用图标</td>
+				<td>应用介绍</td>
+       	<td>最后更新</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+<!--# 
+$app_ids = array();
+foreach ($apps as $k => $app) { 
+if(strpos($app['logo'], '://') === false){
+$app['logo'] = Wekit::url()->extres . '/' . $app['alias'] . '/' . $app['logo'];
+}
+#-->
+			<tr>
+				<td><div class="app_icon"><b></b><img src="{$app['logo']}" onerror="this.onerror=null;this.src='{@G:url.images}/admin/yy.png'" alt="{$app['name']}" width="80" height="80"></div></td>
+				<td valign="top">
+					<!--# if($app['status'] & 1){ #-->
+						<h3 class="mb5 f12"><a target="_blank" href="{@url:app/index/run?app=$app['alias']|pw}">{$app['name']}</a></h3>
+					<!--# }else{ #-->
+						<h3 class="mb5 f12">{$app['name']}</h3>
+					<!--# } #-->
+					<div class="mb5">
+						<span class="mr15">版本：V{$app['version']}</span>
+						<span>开发者：{$app['author_name'] ? $app['author_name'] : '匿名'}</span>
+					</div>
+					<div class="gray">{$app['description'] ? $app['description'] : '这家伙很懒'}</div>
+					<div>
+						<span class="mr20"><a href="{$app['website']}" target="_blank">{$app['website']}</a></span>
+						<!--# if($app['app_id'][0] !== 'L'){ $app_ids[] = $app['app_id']; } #-->
+					</div>
+				</td>
+				<td><span>{@Pw::time2str($app['created_time'])}</span></td>
+				<td>
+				<!--# if($app['status'] & 2){ #-->
+				<a id="app_set_{$app['app_id']}" href="{@url:app/manage/run?app=$app['alias']}" class="btn btn_submit btn_big mr5">设置</a>
+				<!--# }elseif($app['app_id'][0] !== 'L'){ #-->
+				<a id="app_set_{$app['app_id']}" href="{$app['admin_url']}" style="display:none" class="btn btn_submit btn_big mr5">设置</a>
+				<!--# }else{ #-->
+				<button title="无需设置" class="btn btn_submit btn_big mr5 disabled" style="margin:0;" disabled>设置</button><!--# } #--><button data-act="卸载" data-msg="卸载将清除所有数据，确定要卸载吗？" data-action="{@url:appcenter/app/uninstall?app_id=$app['app_id']}" class="J_ajax_upgrade btn_big btn">卸载</button>
+				<button data-act="升级" data-msg="确定要升级吗？升级将覆盖当前应用" id="app_update_{$app['app_id']}" data-action="{@url:appcenter/app/upgrade?app_id=$app['app_id']}" class="J_ajax_upgrade btn btn_big btn_error" style="display:none">升级</button>
+				<!--# if($app['status'] & 4 && Wekit::load('APPCENTER:service.srv.PwDebugApplication')->inDevMode1()){ #-->
+				<div><a href="{@url:appcenter/develop/edit?alias=$app['alias']}" class="btn btn_big mr5">设计</a>
+				<a href="{@url:appcenter/app/export?alias=$app['alias']}" class="btn btn_big">导出</a></div>
+				<!--# } #-->
+				</td>
+			</tr>
+<!--# } #-->
+		</table>
+	</div>
+	<!--# if(isset($search)) { #-->
+	<page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="appcenter/app/search?keyword=$keyword" />
+	<!--# }else{ #-->
+	<page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="appcenter/app/run" />
+	<!--# } #-->
+	
+<!--#}#-->
+
+
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+var url = '{@url:appcenter/app/refresh}',
+app_ids = '{@implode(",", $app_ids)}';
+
+if(app_ids) {
+	$.ajax({
+        url: url,
+        data: {app_ids : app_ids},
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+        	$.each(data.data, function(k,v){
+        		if(v.admin_url) {
+        			$('#app_set_'+k).show();
+        			$('#app_set_'+k).attr('href', v.admin_url.replace(/&amp;/g, '&')); //0531版本后台云搜索、广告管家无法使用的解决办法 http://www.phpwind.net/read/3027660 by taishici
+        		}
+        		v.update_url && $('#app_update_'+k).show();
+        		v.open_new && $('#app_set_'+k).attr('target', '_blank');
+        	});
+        },
+        error: function () {
+        }
+    });
+}
+Wind.use('dialog',function() {
+	
+	$('.J_ajax_upgrade').on('click',function(e) {
+		e.preventDefault();
+		var $this = $(this), url = $this.data('action'), msg = $this.data('msg'), act = $this.data('act');
+		var params = {
+				message	: msg,
+				type	: 'confirm',
+				isMask	: false,
+				follow	: $(this),//跟随触发事件的元素显示
+				onOk	: function() {
+					$.ajax({
+				        url: url,
+				        type: "GET",
+				        dataType: "JSON",
+				        beforeSend: function ( xhr ) {
+				        	$this.text('正在' + act + '。。。').prop('disabled',true).addClass('disabled tips_loading');
+				        },
+				        success: function(data) {
+				        	$this.removeClass('disabled tips_loading').text(act).removeProp('disabled');
+				        	if(data.state === 'success') {
+								if(data.referer) {
+									location.href = decodeURIComponent(data.referer);
+								}else {
+									reloadPage(window);
+								}
+							}else if( data.state === 'fail' ) {
+								Wind.dialog.alert(data.message);
+							}
+				        }
+				    });
+				}
+			};
+			Wind.dialog(params); 
+		
+	});
+	
+});
+</script>
+</body>
+</html>

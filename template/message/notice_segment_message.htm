@@ -1,0 +1,75 @@
+<hook-action name="minilist" args="v">
+<!--弹窗列表-->
+	<!--# Wind::import('LIB:ubb.PwUbbCode');
+		if ($v['extend_params']['is_send']) {
+			$username = '发给' . '<span class="s4">' .$v['extend_params']['from_username'] . '</span>';
+			$from_uid = $v['extend_params']['to_uid'];
+		} else {
+			$username = $v['extend_params']['from_username'];
+			$from_uid = $v['extend_params']['from_uid'];
+		}
+		$v['title'] = Pw::substrs(WindSecurity::escapeHTML($v['message_extend_params']['title']), 32);
+		$v['title'] = PwUbbCode::parseEmotion($v['title']);
+	#-->
+		<div class="fe"><img src="{@Pw::getAvatar($from_uid, 'small')}" data-type="small" width="50" height="50" onerror="this.onerror=null;this.src='{@G:url.images}/face/face_small.jpg'" alt="{$username}" /></div>
+		<div class="ct">
+			{$username|html}：{$v['title']|html}&nbsp;<!--# if ($v['message_extend_params']['unread_count']) { #--><span class="org J_unread_multi" data-unread="{$v['message_extend_params']['unread_count']}">({$v['message_extend_params']['unread_count']}条未读)</span><!--# } #-->
+			<div class="io">
+				<span class="num">共{$v['message_extend_params']['message_count']}条</span>
+				<span class="time"><!--#echo Pw::time2str($v['modified_time'],'auto');#--></span></div>
+		</div>
+</hook-action>
+
+<hook-action name="detail" args="detailList,notice,prevNotice,nextNotice">
+<!--弹窗详情-->
+	<template source='notice_minitop' load='true' />
+
+	<!--# if ($detailList['dialog']['unread_count']) { #-->
+	<div style="padding:10px 10px 0;">有{$detailList['dialog']['unread_count']}条<a href="{@url:space/index/run?uid=$notice['extend_params']['from_uid']}" target="_blank">{$notice['extend_params']['from_username']}</a>的未读私信，<a href="{@url:message/message/dialog?dialogid=$detailList['dialog']['dialog_id']}" target="_blank">查看全部私信&nbsp;&gt;&gt;</a></div>
+	<!--# } #-->
+	<!--# 
+		$loginUser = Wekit::getLoginUser(); 
+		$blacklist = Wekit::load('user.PwUserBlack')->getBlacklist($loginUser->uid);
+		if (Pw::inArray($notice['extend_params']['from_uid'],$blacklist)) { 
+		#-->
+	<div class="tips">已把{$notice['extend_params']['from_username']}列入黑名单，您不会再收到Ta的私信。</div>
+	<!--# } #-->
+
+	<div id="J_hm_reply_placeholder" class="input gray" style="margin:10px 20px;">写私信给：{$notice['extend_params']['from_username']}</div>
+	<div id="J_message_reply" class="my_message_reply" style="display:none;">
+		<form action="{@url:message/message/doAddDialog}" method="post" >
+			<input type="hidden" name="username" value="{$notice['extend_params']['from_username']}" />
+			<textarea id="J_head_msg_textarea" class="J_at_user_textarea" name="content"></textarea>
+			<div class="cc">
+				
+				<a href="" class="icon_face J_insert_emotions" data-emotiontarget="#J_msg_textarea">表情</a>
+				<button id="J_message_reply_btn" class="btn btn_submit fr" type="submit">发送</button>
+			</div>
+		</form>
+	</div>
+	<div class="J_hm_list my_message_dialog" id="J_msg_dialog_list">
+	<!--# $loginUser = Wekit::getLoginUser(); 
+		Wind::import('LIB:ubb.PwUbbCode');
+	#-->
+	<!--# foreach($detailList['data'] as $v){ 
+		$username = $v['from_uid'] == $loginUser->uid ? '我' : $notice['extend_params']['from_username'];
+		$bubbles = $v['from_uid'] == $loginUser->uid ? 'my cc' : 'cc';
+		$v['content'] = WindSecurity::escapeHTML($v['content']);
+		$v['content'] = PwUbbCode::parseEmotion($v['content']);
+		$v['content'] = PwUbbCode::parseUrl($v['content']);
+	#-->
+		<div class="{$bubbles}">
+			<div class="face"><a href="{@url:space/index/run?uid=$v['from_uid']}"><img class="J_avatar" src="{@Pw::getAvatar($v['from_uid'], 'small')}" data-type="small" width="25" height="25" onerror="this.onerror=null;this.src='{@G:url.images}/face/face_small.jpg'" alt="{$username}" /></a></div>
+			<div class="bubble">
+				<div class="arrow"><em></em><span></span></div>
+				<a href="{@url:space/index/run?uid=$v['from_uid']}" class="b">{$username}</a>：{$v['content']|html}
+				<div class="io"><span class="time"><!--# echo Pw::time2str($v['created_time'],'auto'); #--></span></div>
+			</div>
+		</div>
+	<!--# } #-->
+	</div>
+	<div class="my_message_bottom">
+		<a href="{@url:message/message/dialog?dialogid=$v['dialog_id']}">查看全部私信&nbsp;&gt;&gt;</a>
+	</div>
+	
+</hook-action>

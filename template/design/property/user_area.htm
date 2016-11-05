@@ -1,0 +1,30 @@
+<hook-action name="hometown" args='property,alias'>
+<dl class="cc">
+	<dt>家乡：</dt>
+	<dd class="J_region_set">
+		<span style="">
+			<span class="J_province">{$property['hometown']['rout'][0][1]}</span>
+			<span class="J_city">{$property['hometown']['rout'][1][1]}</span>
+			<span class="J_district">{$property['hometown']['rout'][2][1]}</span>
+		</span>
+		<a data-pid="{$property['hometown']['rout'][0][0]}" data-cid="{$property['hometown']['rout'][1][0]}" data-did="{$property['hometown']['rout'][2][0]}" href="javascript:;" class="J_region_change" data-cancl="true"> 选择</a> <input class="J_areaid" name="property[hometown][id]" value="{$property['hometown']['id']}" type="hidden" />
+		<a<!--#if (!$property['hometown']['id']) {#--> style="display:none;"<!--#}#--> class="J_region_cancl" href="javascript:;" class="">取消</a>
+	</dd>
+</dl>
+
+</hook-action>
+
+<hook-action name="location" args='property,alias'>
+<dl class="cc">
+	<dt>居住地：</dt>
+	<dd class="J_region_set">
+		<span style="">
+			<span class="J_province">{$property['location']['rout'][0][1]}</span>
+			<span class="J_city">{$property['location']['rout'][1][1]}</span>
+			<span class="J_district">{$property['location']['rout'][2][1]}</span>
+		</span>
+		<a data-pid="{$property['location']['rout'][0][0]}" data-cid="{$property['location']['rout'][1][0]}" data-did="{$property['location']['rout'][2][0]}" href="javascript:;" class="J_region_change" data-cancl="true"> 选择</a> <input class="J_areaid" name="property[location][id]" value="{$property['location']['id']}" type="hidden" />
+		<a<!--#if (!$property['location']['id']) {#--> style="display:none;"<!--#}#--> class="J_region_cancl" href="javascript:;" class="">取消</a>
+	</dd>
+</dl>
+</hook-action>

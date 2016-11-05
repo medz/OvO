@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav">
+	<div class="return"><a href="{@url:admin/u/groups/run?type=$group['type']}">返回上一级</a></div>
+	<ul class="cc J_tabs_nav">
+		<!--#foreach($topLevelCategories as $k=>$v){ #-->
+		<li{$topLevelCategoryClasses[$k]|html} id="J_nav_{$k}" data-tab="nav_{$k}">
+			<a href="{@url:admin/u/groups/edit?category=$k&gid=$gid}&manage={$isManage?1:0}">{$v}</a>
+		</li>
+		<!--# } #-->
+	</ul>
+</div>
+
+<div class="tips_bubble" style="display:none;right:18px;margin-top:50px;" id="J_tips_bubble">
+	<div class="core_arrow_bottom"><em></em><span></span></div>
+	<p class="mb5">在这里勾选设置项，完成复制设置</p>
+	<p class="tar"><a href="" id="J_tips_bubble_close">我知道了</a></p>
+</div>
+
+<form id="J_rigths_form" action="{@url:admin/u/groups/doedit}" method="post">
+<input type="hidden" name="gid" value="{$gid}" />
+<input type="hidden" name="category" value="{$category}" />
+<div class="h_a">用户组设置</div>
+<div class="table_full">
+	<table width="100%">
+		<col class="th" />
+		<col width="400" />
+		<col />
+		<tr>
+			<th>用户组头衔</th>
+			<td><input type="text" name="groupname" value="{$group['name']}" class="input length_5"></td>
+			<td class="td_tips"></td>
+		</tr>
+	</table>
+</div>
+<div class="J_tabs_contents">
+<!--# foreach($permissionConfigs as $key => $value){ #-->
+	<div>
+		<!--# foreach($value as $k => $v){ #-->
+		<div class="h_a">{$v['name']}</div>
+		<div class="table_full">
+			<table width="100%">
+				<col class="th" />
+				<col width="400" />
+				<col />
+				<col width="44" />
+				<!--# foreach($v['items'] as $k2 => $v2){ 
+					$type = $v2['config'][0];
+				#-->
+				<tr><!--  选中后效果 class="tr_checkbox" -->
+					<th><a href="{@url:u/groups/setright?rkey=$k2}">{$v2['config'][2]}</a></th>
+					<td>
+					<!--# if ($type == 'html') { #-->
+						<segment tpl='permission_html_segments' alias='permission_html_segments' args='$k2,$v2' name="$k2" />
+					<!--# } elseif ($type == 'app') { #-->
+						<segment tpl="{$v2['config'][5]}" alias='permission_html_segments' args='$k2,$v2' name="$k2" />
+					<!--# } else { #-->
+						<segment tpl='permission_type_segments' alias='permission_html_segments' args='$k2,$v2' name="$type" />
+					<!--# } #-->
+					</td>
+					<td style="vertical-align:middle"><div class="fun_tips">{$v2['config'][3]|html}</div></td>
+					<td style="vertical-align:middle"><input type="checkbox" class="J_line_highlight" style="display:none;" name="copy_items[{$k2}]" value="1"></td>
+				</tr>
+				<!--# } #-->
+			</table>
+		</div>
+		<!--# } #-->
+	</div>
+<!--# } #-->
+</div>
+
+<div class="core_pop_wrap pop_expand" style="display:none;" id="J_copy_pop">
+	<div class="core_pop">
+		<div class="pop_cont">
+			<a href="" class="pop_close" id="J_copy_close">关闭</a>
+			<div class="mb15 s6">勾选上述设置，并批量复制到其它用户组</div>
+			<div class="cc shift">
+				<div class="fl">
+					<h4>选择用户组</h4>
+					<select size="10" name="" id="J_copy_select_all" multiple="true">
+						<!--# foreach($groups as $k=>$v){ #-->
+						<option value="{$k}">{$v['name']}</option>
+						<!--# } #-->
+					</select>
+				</div>
+				<div class="fl shift_operate">
+					<p class="mb10"><a href="" class="btn" id="J_copy_add">添加 &gt;&gt;</a></p>
+					<p><a href="" class="btn" id="J_copy_del">&lt;&lt; 移除</a></p>
+				</div>
+				<div class="fr">
+					<h4>已选用户组</h4>
+					<select id="J_copy_select_sub" name="copy_groups[]" size="10" multiple="true">
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="core_arrow_bottom"><em></em><span></span></div>
+</div>
+
+<div class="btn_wrap">
+   <div class="btn_wrap_pd">
+      <button type="submit" class="btn btn_submit mr20" id="J_rights_form_btn">提交</button><a href="javascript:;" id="J_copy_rights">复制用户组权限</a>
+   </div>
+</div>
+
+</form>
+
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.use('ajaxForm', function(){
+	Wind.js(GV.JS_ROOT+ 'pages/pwadmin/rightsCpoy.js?v=' +GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

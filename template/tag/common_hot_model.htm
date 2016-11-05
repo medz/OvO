@@ -1,0 +1,13 @@
+<!--# if($__tpl_data) {#-->
+<div class="box_wrap">
+	<h2 class="box_title">热门话题</h2>
+	<div class="tags_hot">
+	<ul class="cc">
+		<!--# foreach($__tpl_data as $k=>$v){ #-->
+		<li><a href="{@url:tag/index/view?name=$v['tag_name']}" class="title">{$v['tag_name']}</a></li>
+		<!--# } #-->
+	</ul>
+	</div>
+</div>
+<advertisement  id='103192'/>
+<!--# } #-->

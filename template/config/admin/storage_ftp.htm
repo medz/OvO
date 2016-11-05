@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+
+<!-- start -->
+<div class="nav">
+	<div class="return"><a href="{@url:config/storage/run}">返回上一级</a></div>
+</div>
+
+<form method="post" class="J_ajaxForm" action="{@url:windid/storage/doftp}" data-role="list">
+	<div class="h_a">FTP附件设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<!-- <tr>
+				<th>远程附件地址</th>
+				<td><input name="ftpUrl" type="text" class="input length_5" value="{$config['ftp.url']}"></td>
+				<td><div class="fun_tips">请输入远程附件要存储的服务器目录，如:http://www.phpwind.net/attachment</div></td>
+			</tr> -->
+			<tr>
+				<th>FTP服务器地址</th>
+				<td><input name="ftpServer" type="text" class="input length_5" value="{$config['ftp.server']}"></td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>FTP服务器端口</th>
+				<td><input name="ftpPort" type="text" class="input length_5" value="{$config['ftp.port']}"></td>
+				<td><div class="fun_tips">默认为21</div></td>
+			</tr>
+			<tr>
+				<th>FTP上传目录</th>
+				<td><input name="ftpDir" type="text" class="input length_5" value="{$config['ftp.dir']}"></td>
+				<td><div class="fun_tips">请确保该目录对应的文件夹和远程附件地址对应的文件夹一致。</div></td>
+			</tr>
+			<tr>
+				<th>FTP帐号</th>
+				<td><input name="ftpUser" type="text" class="input length_5"  value="{$config['ftp.user']}"></td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>FTP密码</th>
+				<td><input name="ftpPwd" type="password" class="input length_5"  value="{$config['ftp.pwd']}"></td>
+				<td><div class="fun_tips">密码中请不要包含“*”</div></td>
+			</tr>
+			<tr>
+				<th>FTP超时</th>
+				<td><input name="ftpTimeout" type="text" class="input length_5 mr5" value="{$config['ftp.timeout']}">秒</td>
+				<td><div class="fun_tips">系统将在设定时间内等待服务器的响应。</div></td>
+			</tr>
+		</table>
+		</div>
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+			</div>
+		</div>
+</form>
+<!-- end -->
+
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

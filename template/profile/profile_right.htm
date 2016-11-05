@@ -1,0 +1,132 @@
+<div id="J_profile_right" class="content">
+	<div class="profile_nav">
+		<ul>
+			<li class="current"><a href="{@url:profile/right/run}">权限</a></li>
+		</ul>
+	</div>
+	<div class="management_group_list">
+		<ul class="cc">
+<!--#if (count($switchGroups) > 1) {#-->
+			<li class="current fr" style="margin:0;padding:0;"><a href="" id="J_change_group">切换当前用户组</a></li>
+<!--#}#-->
+			<li><a class="J_right_toggle" data-id="J_right_my" href="">我的用户组</a><em class="core_arrow"></em></li>
+<!--#foreach ($showTypes as $key) {#-->
+			<li><a class="J_right_toggle"data-id="J_right_{$key}" href="">{$groupTypes[$key]['name']}</a><em class="core_arrow"></em></li>
+<!--#}#-->
+		</ul>
+	</div>
+	<div class="core_menu J_right_menus" style="margin:-2px 0 0 -15px;display:none" id="J_right_my">
+		<div class="core_arrow_top"><em></em><span></span></div>
+		<div class="core_menu_list">
+			<ul class="cc">
+<!--#foreach ($myGroups as $_gid) {
+	if (!$_gid) continue;
+#-->
+				<li><a href="{@url:profile/right/run?gid=$_gid}">{$allGroups[$_gid]['name']}</a></li>
+<!--#}#-->
+			</ul>
+		</div>
+	</div>
+<!--#foreach ($groupTypes as $_key => $_value) {
+	if ($_key == 'default') continue;
+#-->
+	<div class="core_menu J_right_menus" style="margin:-2px 0 0 -27px;display:none" id="J_right_{$_key}">
+		<div class="core_arrow_top"><em></em><span></span></div>
+		<div class="core_menu_list">
+			<ul class="cc">
+<!--#foreach ($_value['sub'] as $_gid => $_gitem) {#-->
+				<li><a href="{@url:profile/right/run?gid=$_gid}">{$_gitem['name']}</a></li>
+<!--#}#-->
+			</ul>
+		</div>
+	</div>
+<!--#
+}
+if ($compare) {
+	$class = 'my_group_contrast';
+}
+#-->
+	<div class="my_group cc {$class}">
+		<div class="type">
+			<h2>&nbsp;</h2>
+			<ul>
+				<li></li>
+<!--#foreach ($categorys as $_cat => $_items) {#-->
+				<li class="hd">{$_items['name']}</li>
+<!--#foreach ($_items['sub'] as $_sub) {#-->
+				<li>{$myGroupPermission[$_sub]['name']}</li>
+<!--#}}#-->
+			</ul>
+		</div>
+		<div class="current">
+			<h2>我当前的用户组 - {$allGroups[$loginUser->gid]['name']}</h2>
+			<ul>
+				<li>我的积分{$myCredit}</li>
+<!--#foreach ($categorys as $_cat => $_items) {#-->
+				<li class="hd">&nbsp;</li>
+<!--#foreach ($_items['sub'] as $_sub) {
+	$cont = $myGroupPermission[$_sub]['value'];
+	if ('radio' == $myGroupPermission[$_sub]['type']) {
+		$cont = ($cont) ? '<span class="correct_span">支持</span>' : '<span class="error_span">不支持</span>';
+	} elseif (!$cont) {
+		$cont = '不限';
+	}
+#-->
+				<li>{$cont|html}</li>
+<!--#}}#-->
+			</ul>
+		</div>
+<!--#if ($compare) {#-->
+		<div class="contrast">
+			<h2>{$groupTypes[$allGroups[$comparegid]['type']]['name']} - {$allGroups[$comparegid]['name']}</h2>
+			<ul>
+				<li><!--#if ('member' == $allGroups[$comparegid]['type']) {#-->升级所需积分{$allGroups[$comparegid]['points']}<!--#}#--></li>
+<!--#foreach ($categorys as $_cat => $_items) {#-->
+				<li class="hd">&nbsp;</li>
+<!--#foreach ($_items['sub'] as $_sub) {
+	$cont = $compareGroupPermission[$_sub]['value'];
+	if ('radio' == $myGroupPermission[$_sub]['type']) {
+		$cont = ($cont) ? '<span class="correct_span">支持</span>' : '<span class="error_span">不支持</span>';
+	} elseif (!$cont) {
+		$cont = '不限';
+	}
+#-->
+				<li>{$cont|html}</li>
+<!--#}}#-->
+			</ul>
+		</div>
+<!--#}#-->
+	</div>
+<!--#if (count($switchGroups) > 1) {#-->
+<!--切换用户组弹窗-->
+	<div id="J_change_group_pop" class="core_pop_wrap" style="display:none;">
+		<div class="core_pop">
+			<div class="pop_group_select">
+			    <form id="J_change_group_form" action="{@url:profile/right/doset}" method="post">
+				<div class="pop_top">
+					<a href="" class="pop_close" id="J_change_group_close">关闭</a>
+					<strong>切换当前用户组</strong>
+				</div>
+				<div class="pop_cont">
+					<ul class="cc">
+<!--#foreach ($switchGroups as $_gid) {#-->
+						<li><label><input type="radio" value='{$_gid}' name='gid' {@Pw::ifcheck($_gid == $loginUser->gid)}/><span>{$allGroups[$_gid]['name']}</span></label></li>
+<!--#}#-->
+					</ul>
+				</div>
+				<div class="pop_bottom">
+					<button type="submit" class="btn btn_submit" id="J_change_group_sub">提交</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+<!--#}#-->
+</div>
+<script>
+//core.js
+Wind.ready(document, function(){
+	//引入js组件
+	Wind.use('jquery', 'global', GV.JS_ROOT +'pages/profile/profileRights.js?v=' +GV.JS_VERSION);
+});
+</script>

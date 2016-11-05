@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/message.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:message/message/run}">消息</a><em>&gt;</em>
+			<a href="{@url:message/notice/run}">通知</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap notice_page">
+						<template source='TPL:message.message_header' load='true' />
+						<div id="J_notice_list" class="notice_list J_check_wrap">
+					<!--#
+					if ($noticeList){
+					#-->
+							<div class="hd cc J_op_bar" style="display:none;">
+								<div class="check"><label><input name="" type="checkbox" class="J_check_all" value="">全选</label></div>
+								<div class="operate J_notice_op">
+									<span class="filter"><span class="current">{$typeCounts[$typeid]['typename']}</span> - <a href="javascript:;" data-id="J_notice_drop_1" class="drop_down J_hover_more">更多<em class="core_arrow"></em></a></span>
+									<a href="" class="btn J_msg_manage_hide">取消</a>
+									<a href="{@url:message/notice/delete}" style="visibility:hidden;" class="btn J_check_op J_check_op_sub">删除</a>
+								</div>
+							</div>
+							<div class="hd cc J_op_manage">
+								<span class="filter"><span class="current">{$typeCounts[$typeid]['typename']}</span> - <a href="javascript:;" data-id="J_notice_drop_1" class="drop_down J_hover_more">更多<em class="core_arrow"></em></a></span>
+								<a href="javascript:;" class="btn J_msg_manage_show">批量管理</a>
+							</div>
+							<div id="J_notice_drop_1" class="core_menu" style="display:none;position:absolute;">
+								<ul class="core_menu_list cc">
+								<!--# 
+									foreach($typeCounts as $k=>$v){
+										$url = @WindUrlHelper::createUrl('message/notice/run'. ($k ? "?type=$k" : ''));
+								 #-->
+									<li><a href="{$url|html}"><em class="data">{$v['count']}</em>{$v['typename']}</a></li>
+								<!--# } #-->
+								</ul>
+							</div>
+					<!--#
+						}	
+					//主题分类
+					if ($noticeList){
+						
+						foreach($noticeList as $v){
+							list($typeCounts[$v['typeid']]['type']) = explode('_',$typeCounts[$v['typeid']]['type']);
+							$typeTpl = 'notice_segment_' . $typeCounts[$v['typeid']]['type'];
+				#-->
+						<segment alias='notice_list' tpl="$typeTpl" args='$v' name="list" />
+				<!--#
+					}
+				} else {
+					#-->
+							<div class="not_content">
+								暂无通知
+							</div>
+					<!--# 	
+					}
+					 #-->
+					 
+					<!--#
+					if ($noticeList){
+					#-->
+							<div class="ft J_op_bar" style="display:none;">
+								<div class="check"><label><input name="" type="checkbox" class="J_check_all" value="">全选</label></div>
+								<div class="operate">
+									<a href="" class="btn J_msg_manage_hide">取消</a>
+									<div id="J_notice_drop_2" class="core_menu" style="display:none;position:absolute;">
+										<ul class="core_menu_list cc">
+										<!--# 
+											foreach($typeCounts as $k=>$v){
+												$url = @WindUrlHelper::createUrl('message/notice/run'. ($k ? "?type=$k" : ''));
+											#-->
+											<li><a href="{$url|html}"><em class="data">{$v['count']}</em>{$v['typename']}</a></li>
+										<!--# } #-->
+										</ul>
+									</div>
+									<span class="filter"><span class="current">{$typeCounts[$typeid]['typename']}</span> - <a href="javascript:;" data-id="J_notice_drop_2" class="drop_down J_hover_more">更多<em class="core_arrow"></em></a></span>
+									<a class="btn J_check_op J_check_op_sub" style="visibility:hidden;" href="{@url:message/notice/delete}">删除</a>
+								</div>
+							</div>
+						<!--# } #-->
+						<!--# if($totalpage > 1){ #-->
+							<div style="padding-top:10px;"><page tpl="TPL:common.page" total="$totalpage" page="$page" per="$perpage" count="$count" url="message/notice/run" args="$args" /></div>
+						<!--# } #-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_2' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', 'dialog', function() {
+	var notice_list = $('#J_notice_list');
+
+	//点击整行跳转
+	$('#J_notice_list .J_notice_content').on('click', function(e){
+		if(e.target.tagName.toLowerCase() !== 'a') {
+			var trigger = $(this).find('a.J_notice_show');
+			if(trigger.data('role') == 'down') {
+				trigger.click()
+			}
+		};
+	});
+	
+/*
+ * 忽略
+*/
+	var URL_IGNORE = "{@url:message/notice/ignore?ignore=1}",		//忽略
+			URL_UNIGNORE = '{@url:message/notice/ignore?ignore=0}';	//取消忽略 开启回复提醒
+
+	$('a.J_notice_ignore').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+				info = $this.parents('.J_notice_item').find('.info'),
+				id = $this.data('id'),
+				role = $(this).data('role'),
+				type = $this.data('type'),
+				url = type ? URL_IGNORE : URL_UNIGNORE;
+
+		//global.js
+		Wind.Util.ajaxMaskShow();
+
+		$.post(url, {
+			id : id
+		}, function(data){
+			//global.js
+			Wind.Util.ajaxMaskRemove();
+
+			if(data.state == 'success') {
+				if(!id) {
+					//没有取消忽略
+					Wind.Util.resultTip({
+						elem : $this,
+						msg : data.message
+					});
+
+					return false;
+				}
+
+				if(role == 'reply') {
+					//忽略回复
+					if(type) {
+						//global.js
+						Wind.Util.resultTip({
+							follow : $this.parent(),
+							msg : '您将不会再收到 此帖的回复 通知'
+						});
+						$this.text('开启回复提醒').data('type', false);
+					}else{
+						$this.text('关闭回复提醒').data('type', true);
+					}
+					
+				}else{
+					//忽略其他
+					if(type) {
+						Wind.Util.resultTip({
+							elem : $this,
+							msg : '已忽略此类通知'
+						});
+						//$this.text('取消忽略').data('type', false);
+						$this.replaceWith('<a href="{@url:message/message/set}">查看通知设置</a>')
+					}else{
+						$this.text('忽略').data('type', true);
+					}
+				}
+				
+			}else if(data.state == 'fail') {
+				//global.js
+				Wind.Util.resultTip({
+					error : true,
+					elem : $this,
+					msg : '已忽略此类通知'
+				});
+			}
+		}, 'json');
+	});
+	
+	//选择后提交
+	$('a.J_check_op_sub').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			href = $this.prop('href'),
+			checked = $('input.J_check:checked'),
+			ids_arr = [];
+			
+		//ids数组
+		$.each(checked, function(i, o){
+			ids_arr.push($(this).val());
+		});
+
+
+		//删除
+		Wind.dialog({
+			message	: '确定删除选中的通知吗？',
+			type	: 'confirm',
+			follow : $this,
+			isMask	: false,
+			onOk	: function() {
+				$.ajax({
+					url : href,
+					type : 'post',
+					dataType : 'json',
+					data : {
+					'ids[]' : ids_arr
+					},
+					success : function(data){
+						if(data.state === 'success') {
+							checked.parents('.J_notice_item').fadeOut(function(){
+								$(this).remove();
+								
+								if(!$('.J_notice_item').length) {
+									//清空了
+									location.reload();
+								}
+							});
+
+						}else if( data.state === 'fail' ) {
+							Wind.dialog.alert(data.message);
+						}
+					}
+				});
+			}
+		});
+		
+	});
+	
+	//显示隐藏
+	$('a.J_hover_more').each(function(){
+		var $this = $(this);
+
+		//global.js
+		Wind.Util.hoverToggle({
+			elem : $this,		//hover元素
+			list : $('#'+ $this.data('id')),
+			callback : function(elem, list){
+				//计算定位
+				var a_width = elem.width(),
+					a_height = elem.height(),
+					b_width = list.width(),
+					b_height = list.height(),
+					a_offset_left = elem.offset().left, //到文档左侧距离
+					a_offset_top = elem.offset().top, //到文档顶部距离
+					a_window_top = a_offset_top - $(document).scrollTop(), //到窗口顶部距离
+					a_window_bottom = $(window).height() - a_window_top - a_height, //到窗口底部距离
+					b_left,
+					b_top;
+							
+				if (a_offset_left > $(document).width() / 2) {
+					//靠右
+					b_left = a_offset_left + a_width - b_width;
+				} else {
+					//靠左
+					b_left = a_offset_left;
+				}
+							
+				//默认垂直定位
+				b_top = a_offset_top + a_height;
+							
+				if (a_window_bottom < b_height && a_window_top >= b_height) {
+					//底部空间不足 顶部空间足够时，显示在上面
+					b_top = a_offset_top - b_height;
+				}
+							
+				list.css({
+					left : b_left,
+					top : b_top
+				});
+			}
+		});
+	});
+	
+	
+	//展开&收起
+	$('a.J_notice_show').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			notice_part	= $this.siblings('.J_notice_part'),
+			notice_all	= $this.siblings('.J_notice_all'),
+			role = $this.data('role');
+		
+		if(role === 'down') {
+			//展开
+			
+			if(notice_all.children().length){
+				//内容已隐藏
+				notice_part.hide();
+				notice_all.show();
+				$this.data('role', 'up').text('收起↑').addClass('open_down');
+			}else{
+				//请求内容
+				notice_all.load(this.href, function(data){
+					if(Wind.Util.ajaxTempError(data)) {
+						return false;
+					}
+
+					//模板与头部消息公用，清理
+					$(this).find('div.my_message_top, div.my_message_bottom').remove();
+					
+					notice_all.show();
+					notice_part.hide();
+					$this.data('role', 'up').text('收起↑');
+
+					//绑定发私信
+					if(notice_all.find('a.J_send_msg_pop').length) {
+						Wind.js(GV.JS_ROOT+ 'pages/common/sendMsgPop.js?v='+ GV.JS_VERSION);
+					}
+
+					//表情js
+					if($.isFunction(window.insertEmotions) && $('a.J_insert_emotions').length) {
+						Wind.use('rangeInsert', GV.JS_ROOT+ 'pages/common/insertEmotions.js?v='+ GV.JS_VERSION);
+					}
+
+					//加关注
+					$('a.J_msg_follow').on('click', function(e){
+						e.preventDefault();
+						var $this = $(this);
+						$.post(this.href, {
+							uid: $this.data('uid')
+						}, function(data){
+							if(data.state == 'success') {
+								$this.replaceWith('<span class="core_unfollow">已关注</span>');
+							}else if(data.state == 'fail'){
+								//global.js
+								Wind.Util.resultTip({
+									error : true,
+									msg : data.message,
+									follow : $this
+								});
+							}
+						}, 'json');
+					});
+
+					//未读icon
+					var icon_new = notice_part.find('.J_icon_new');
+					if(icon_new.length) {
+						icon_new.attr('class', icon_new.attr('class').replace('_new', '')).removeClass('J_icon_new');
+					}
+
+				});
+			}
+		}else{
+			//收起
+			notice_part.show();
+			notice_all.hide();
+			$this.data('role', 'down').text('展开↓').removeClass('open_down');
+		}
+	});
+
+	//绑定表情
+	notice_list.on('click', 'a.J_insert_emotions', function(e){
+		e.preventDefault();
+		//insertEmotions($(this), $($(this).data('emotiontarget')));
+	});
+
+	Wind.js(GV.JS_ROOT +'pages/message/message_index.js?v=' + GV.JS_VERSION);
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/vote.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="">投票</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap vote_page">
+					<nav>
+						<div class="content_nav">
+							<ul>
+								<li><a href="index.php?m=vote&c=hot">热门投票</a></li>
+								<li><a href="index.php?m=vote&c=ta">Ta的投票</a></li>
+								<li class="current"><a href="index.php?m=vote&c=my">我的投票</a></li>
+							</ul>
+						</div>
+						<div class="content_type">
+							<ul class="cc">
+								<li><a href="{@url:vote/my/run}">我参与的</a></li>
+								<li class="line"></li><li class="current"><a href="{@url:vote/my/create}">我发起的</a></li>
+							</ul>
+						</div>
+					</nav>
+						<div class="vote_list">
+
+<!--# if ($total) { 
+foreach($pollInfo as $value) {
+#-->
+<template source='TPL:vote.listcommon' load='true' />
+<!--# }} else { #-->
+<div class="not_content">
+
+<!--# if ($isPostPollGuide) { #-->
+	啊哦，我的投票暂没有任何内容，马上去<a title="快速发帖" href="" aria-haspopup="true" id="J_vote_post">发个投票帖</a>吧！
+<!--# }else { #-->
+	啊哦，我的投票暂没有任何内容！
+<!--# } #-->
+
+</div>
+<!--# } #-->				
+							<div><page tpl='TPL:common.page' page='$page' per='$perpage' count='$total' url='vote/my/create' /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+				<template source='TPL:vote.sidebar' load='true' />
+			</div>
+		</div>
+	</div>
+
+<div id="J_vote_forum_pop" tabindex="0" class="pop_select_forum" style="margin-left:-100px;z-index:11;display:none;">
+	<a id="J_vote_forum_close" href="#" class="pop_close">关闭</a>
+	<div class="core_arrow_top" style="left:310px;"></div>
+	<div class="hd">发帖到其他版块</div>
+	<div id="J_vote_forum_ct" class="ct cc">
+		<div class="pop_loading"></div>
+	</div>
+	<div class="ft">
+		<div class="associate">
+			<label class="fr"><input type="checkbox" id="J_vote_forum_join" data-url="{@url:bbs/forum/join}">添加到我的版块</label>
+			发帖到：<span id="J_vote_post_to_cate"></span>-<span id="J_vote_post_to_forum"></span>
+		</div>
+		<div class="tac">
+			<button type="button" class="btn btn_submit disabled" disabled="disabled" id="J_vote_forum_submit" data-url="{@url:bbs/post/run/}">确定</button>
+		</div>
+	</div>
+</div>
+
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+var URL_FORUM_LIST = '{@url:vote/vote/forumlist}';
+Wind.use('jquery', 'global', function(){
+	Wind.js(GV.JS_ROOT +'pages/vote/vote_index.js?v=' + GV.JS_VERSION);
+	//快速发投票帖
+	if(GV.U_ID) {
+		var vote_post = $('#J_vote_post'),
+			vote_forum_pop = $('#J_vote_forum_pop');
+		Wind.Util.clickToggle({
+			elem : vote_post,
+			list : vote_forum_pop,
+			callback : function(){
+				Wind.js(GV.JS_ROOT + 'pages/vote/vote_post.js?v=' + GV.JS_VERSION);
+				vote_forum_pop.css({
+					position : 'absolute',
+					top : ($(window).height() - vote_forum_pop.height()) /2 + $(window).scrollTop() + "px",
+					left : ($(window).width() - vote_forum_pop.width()) /2 + $(window).scrollLeft() + "px"
+				});
+			}
+		});
+	}
+	
+	
+	
+});
+
+
+</script>
+</body>
+</html>

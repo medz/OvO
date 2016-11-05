@@ -1,0 +1,50 @@
+<div class="edit_menu" id="J_punch_friend_pop" data-max="{$todayNum}">
+	<div class="core_pop">
+		<div class="pop_help_punch">
+			<div class="edit_menu_top">
+				<a href="#" class="edit_menu_close J_punch_close">关闭</a>
+				<strong>@提醒</strong>
+			</div>
+			<div class="">
+				<div class="info" style="font-size:14px;line-height:24px;padding:5px;">
+					最多可以提醒{$todayNum}个好友哦
+					<div class="arrow"><em></em><span></span></div>
+				</div>
+				<div class="select_box">
+					<div class="hd">
+						<span>选择好友</span>
+						<span>已选择</span>
+					</div>
+					<div class="ct cc">
+						<div class="left">
+							<dl class="current">
+								<dt class="J_friend_dt" name="type" value="0">最近@的人</dt>
+								<!--# foreach ($reminds as $k => $v) { #-->
+								<dd id="J_firend_dd_{$k}" class="J_friend_item" data-name="friend" data-id="{$k}">{$v}</dd>
+								<!--# } #-->
+								
+							</dl>
+							<dl>
+								<dt class="J_friend_dt" data-name="type" data-id="" data-fanurl="{@url:bbs/remind/getfollow?page=$page}">全部</dt>						
+							</dl>
+							<!--# foreach ($typeArr as $k => $v) { #-->
+							<dl>
+								<dt class="J_friend_dt" data-name="type" data-id="{$k}" data-fanurl="{@url:bbs/remind/getfollow?type=$k&page=$page}">{$v}</dt>						
+							</dl>
+							<!--# } #-->
+						</div>
+						<div class="right">
+							<div class="arrow"><em></em><span></span></div>
+							<ul class="cc" id="J_friend_selected"></ul>
+						</div>
+					</div>
+				</div>
+				<div class="pop_bottom">
+					<input type="hidden" name="" id="J_type_id">
+					<button type="submit" class="edit_menu_btn J_close">确认</button>
+					<a href="#" class="btn J_at_close">取消</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

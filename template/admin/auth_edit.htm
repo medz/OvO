@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<template source='common.head' />
+</head>
+<body style="width:435px;" class="body_none">
+<div class="">
+
+<!--用户权限编辑添加: 用户编辑弹窗-->
+<form id="J_auth_form" action="{@url:auth/doEdit}" method="post">
+<input id="J_userId" type="hidden" value="{$user['id']}" name="id" />
+<div>
+	<div class="pop_cont">
+		<div class="mb15"><h4 class="mb5">用户名</h4><input name="username" readonly value="{$user['username']}" type="text" class="input input_hd" style="width:396px;"></div>
+		<div class="cc shift">
+			<div class="fl">
+				<h4>选择角色</h4>
+				<select id="J_roles" size="10" name="roles">
+<!--#foreach($roles as $role){ #-->
+					<option value="{$role['name']}">{$role['name']}</option>
+<!--# } #-->
+				</select>
+			</div>
+			<div class="fl shift_operate">
+				<p class="mb10"><a id="J_auth_role_add" href="" class="btn">添加 &gt;&gt;</a></p>
+				<p><a id="J_auth_role_del" href="" class="btn">&lt;&lt; 移除</a></p>
+			</div>
+			<div class="fr">
+				<h4>拥有角色</h4>
+				<select id="J_user_roles" name="userRoles[]" size="10" multiple="multiple">
+<!--# foreach($user['roles'] as $role){ #-->
+					<option value="{$role['name']}">{$role['name']}</option>
+<!--# } #-->
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="pop_bottom"><span id="J_submit_tips"></span><button class="btn fr" id="J_dialog_close" type="button">取消</button><button id="J_auth_sub" class="btn btn_submit mr10 fr" type="submit">提交</button></div>
+</div>
+</form>
+<!--用户编辑弹窗结束-->
+
+</div>
+<template source='common.footer' />
+<script>
+Wind.js(GV.JS_ROOT+ 'pages/admin/auth_manage.js?v=' +GV.JS_VERSION);
+</script>
+</body>
+</html>
