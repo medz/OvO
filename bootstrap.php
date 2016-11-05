@@ -1,5 +1,11 @@
 <?php
 
+// 开发框架信息
+$frameworkAutoloadFile = __DIR__.'/windframework/vendor/autoload.php';
+if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
+    require $frameworkAutoloadFile;
+}
+
 $filename = __DIR__.'/vendor/autoload.php';
 if (!file_exists($filename) || !is_file($filename)) {
     echo '<pre>',
