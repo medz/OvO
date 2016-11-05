@@ -1,0 +1,17 @@
+<?php
+defined('WEKIT_VERSION') or exit(403);
+Wind::import('{{interface}}');
+/**
+ * {{description}}
+ *
+ * @author {{author}} <{{email}}>
+ * @copyright {{website}}
+ * @license {{website}}
+ */
+class {{classname}} {{extends}} {
+	/*
+	 * @see {{interfacename}}
+	*/
+	
+}
+?>
