@@ -36,8 +36,7 @@
     },
     "autoload": {
         "classmap": [
-            "src/wekit.php",
-            "wind/Wind.php"
+            "src/",
         ]
     }
 }
