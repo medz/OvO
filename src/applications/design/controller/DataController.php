@@ -168,7 +168,7 @@ class DataController extends DesignBaseController
                 $data[$k] = $image;
                 $extend = unserialize($info['extend_info']);
                 $delImages = $extend['standard_image'];
-                $imageSrv->clearFiles($this->bo->moduleid,  explode('|||', $delImages));
+                $imageSrv->clearFiles($this->bo->moduleid, explode('|||', $delImages));
             } else {
                 $data[$k] = $v;
             }

@@ -30,7 +30,7 @@ class PwThreadPollDao extends PwBaseDao
 
     public function getPollByPollid($pollid)
     {
-        $sql = $this->_bindSql('SELECT * FROM %s WHERE poll_id = ?',  $this->getTable());
+        $sql = $this->_bindSql('SELECT * FROM %s WHERE poll_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->getOne(array($pollid));
@@ -61,7 +61,7 @@ class PwThreadPollDao extends PwBaseDao
 
     public function deleteByPollid($pollid)
     {
-        $sql = $this->_bindSql('DELETE FROM %s WHERE poll_id = ?',  $this->getTable());
+        $sql = $this->_bindSql('DELETE FROM %s WHERE poll_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->update(array($pollid));

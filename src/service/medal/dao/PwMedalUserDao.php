@@ -86,7 +86,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          if ($data['uid'] < 1) {
              return false;
          }
-         $sql = $this->_bindSql('REPLACE INTO %s SET %s',  $this->getTable(), $this->sqlSingle($data));
+         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
          $this->getConnection()->execute($sql);
 
          return $this->getConnection()->lastInsertId();

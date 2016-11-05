@@ -20,7 +20,7 @@ class NotifyController extends AdminBaseController
         $page = $page > 1 ? $page : 1;
         $complete = ($complete === '') ? null : $complete;
         list($start, $limit) = Pw::page2limit($page, $perPage);
-        $list = $this->_getNotifyDs()->getlogList($clientid, 0, $limit,  $start, $complete);
+        $list = $this->_getNotifyDs()->getlogList($clientid, 0, $limit, $start, $complete);
         $count = $this->_getNotifyDs()->countLogList($clientid, 0, $complete);
         foreach ($list as $k => $v) {
             $appids[] = $v['appid'];
@@ -67,7 +67,7 @@ class NotifyController extends AdminBaseController
         $nids = array();
         for ($page = 1; $page <= $totalPage; $page++) {
             list($start, $limit) = Pw::page2limit($page, $perPage);
-            $list = $nDs->getLogList(0, 0, $limit,  $start, 0);
+            $list = $nDs->getLogList(0, 0, $limit, $start, 0);
             foreach ($list as $k => $v) {
                 $nids[] = $v['nid'];
             }

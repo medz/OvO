@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('LIB:dataSource.iPwDataSource');
 
@@ -11,19 +12,21 @@ Wind::import('LIB:dataSource.iPwDataSource');
  * @package poll
  */
 
-class PwFetchPollByPollid implements iPwDataSource {
-	
+class PwFetchPollByPollid implements iPwDataSource
+{
     public $pollid = array();
-	public $limit = 0;
-	public $offset = 0;
+    public $limit = 0;
+    public $offset = 0;
 
-	public function __construct($pollid, $limit, $offset = 0) {
-		$this->pollid = $pollid;
-		$this->limit = $limit;
-		$this->offset = $offset;
-	}
-    
-	public function getData() {
-		return Wekit::load('poll.PwPoll')->fetchPollByPollid($this->pollid, $this->limit, $this->offset);
-	}
+    public function __construct($pollid, $limit, $offset = 0)
+    {
+        $this->pollid = $pollid;
+        $this->limit = $limit;
+        $this->offset = $offset;
+    }
+
+    public function getData()
+    {
+        return Wekit::load('poll.PwPoll')->fetchPollByPollid($this->pollid, $this->limit, $this->offset);
+    }
 }

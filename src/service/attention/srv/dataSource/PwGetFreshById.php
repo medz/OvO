@@ -1,4 +1,5 @@
 <?php
+
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('LIB:dataSource.iPwDataSource');
@@ -12,15 +13,17 @@ Wind::import('LIB:dataSource.iPwDataSource');
  * @package attention
  */
 
-class PwGetFreshById implements iPwDataSource {
-	
-	public $id;
+class PwGetFreshById implements iPwDataSource
+{
+    public $id;
 
-	public function __construct($id) {
-		$this->id = $id;
-	}
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
 
-	public function getData() {
-		return Wekit::load('attention.PwFresh')->fetchFresh(array($this->id));
-	}
+    public function getData()
+    {
+        return Wekit::load('attention.PwFresh')->fetchFresh(array($this->id));
+    }
 }
