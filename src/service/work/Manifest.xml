@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<name>用户工作经历插件</name>
+	<title>工作经历</title>
+	<appHook>u_profile_tab</appHook>
+	<hooktype>work</hooktype>
+	<class>SRV:user.hooks.profile_work.srv.injector.PwUserWorkExperenceInjector</class>
+	<method>run</method>
+	<expression>hooktype==work</expression>
+</manifest>
