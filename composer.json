@@ -1,5 +1,5 @@
 {
-    "name": "medz/thinksns",
+    "name": "medz/phpwind",
     "type": "project",
     "description": "采用PHP+MySQL方式运行的开源社区程序",
     "keywords": ["medz", "php", "phpwind"],
