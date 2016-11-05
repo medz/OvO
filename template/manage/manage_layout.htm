@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<template source='TPL:common.head' load='true' />
+	<link href="{@theme:css}/profile.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+	<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:manage/content/run}">前台管理</a>
+		</div>
+		<div class="cc profile_page">
+			<div class="md">
+				<template source='TPL:manage.menubar_left' load="true" />
+			</div>
+			<div class="cm">
+				<div class="cw">
+					<div class="box_wrap">
+				<!--#$this->content();#-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', 'ajaxForm', function(){
+	Wind.js(GV.JS_ROOT +'pages/recycle/recycle_index.js?v='+ GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<nav>
+<div class="content_nav">
+	<ul>
+		<li class="{@Pw::isCurrent($li == 'follow')|html}"><a href="{@url:my/follow/run}">我关注的人</a></li>
+		<li class="{@Pw::isCurrent($li == 'fans')|html}"><a href="{@url:my/fans/run}">我的粉丝</a></li>
+		<li class="{@Pw::isCurrent($li == 'invite')|html}"><a href="{@url:my/invite/run}">邀请好友</a></li>
+		<li class="{@Pw::isCurrent($li == 'friend')|html}"><a href="{@url:my/friend/run}">找人</a></li>
+		<li class="{@Pw::isCurrent($li == 'visitor')|html}"><a href="{@url:my/visitor/run}">访问脚印</a></li>
+	</ul>
+</div>
+</nav>

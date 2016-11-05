@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<template source='common.head' />
+</head>
+<body>
+<div class="wrap">
+
+<!--搜索开始-->
+	<div class="h_a">有关“<span class="red">{$keyword}</span>”的搜索结果</div>
+	<div class="search_list">
+		<!--# if($result){ #-->
+			<!--# foreach($result as $k=>$v) { #-->
+			<h2><a class="J_tabframe_trigger" href="{$v['url']|html}&searchword={$keyword}" data-id="{$k|html}" data-parent="{$v['parent']|html}" data-level="{$v['level']}">{$v['name']|html}</a></h2>
+			<!--# if($v['items']){
+				foreach($v['items'] as $v2){
+			#-->
+			<dl>
+				<dd>{$v2|html}</dd>
+			</dl>
+				<!--# } #-->
+			<!--# } #-->
+			<!--# if ($v['sub']) {
+			 #-->
+			<dl>
+				<!--# foreach($v['sub'] as $v2){ #-->
+				<dt><a class="J_tabframe_trigger" href="{$v2['url']|html}&searchword={$keyword}" data-id="{$k|html}" data-parent="{$v['parent']|html}" data-level="{$v['level']}">{$v2['name']|html}</a></dt>
+					<!--# foreach($v2['items'] as $v3){ #-->
+				<dd>{$v3|html}</dd>
+					<!--# } #-->
+				<!--# } #-->
+			</dl>
+			<!--# } #-->
+		<!--# 
+			}
+		} else { #-->
+		<dl>
+			<dt><span class="red">没有找到相关内容</span></dt>
+		</dl>
+		<!--# } #-->
+	</div>
+
+<!--搜索结束-->
+
+</div>
+<template source='common.footer' />
+</body>
+</html>

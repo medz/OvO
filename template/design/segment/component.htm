@@ -1,0 +1,134 @@
+<div class="cc">
+<div class="pop_design_code">
+	<!--# if($components){ #-->
+	<div class="mb5">
+		模块模版：
+			<select id="J_comp_select" class="select_5" name="compid" data-url="{@url:design/template/getcomp}">
+				<option value="">自定义</option>
+				<!--# foreach ($components as $v){	#-->
+				<option value="{$v['comp_id']}" {@Pw::isSelected($compid == $v['comp_id'])}>{$v['comp_name']}</option>
+				<!--# } #-->
+			</select>
+	</div>
+	<!--# } #-->
+	<textarea id="J_design_temp_tpl" name="tpl">{$tpl}</textarea>
+	<div>
+		<span class="mr5"><input id="J_design_temp_name" type="text" name="tplname" class="input mr5" style="width:90px;" placeholder="模块模板名称"><button type="button" id="J_design_temp_sub" class="btn mr5 btn_submit" data-action="{@url:design/template/dosave}">模板另存为</button></span>
+		<span class="gray">此样式保存到模块模板中，可用于其他模块</span>
+	</div>
+</div>
+<div class="pop_design_case">
+	<table class="pop_design_tablelist">
+		<!--# $i=0; foreach ($signkeys as $sign){
+					$cls =  is_int($i/2) ? 'thbg' : '';
+		#-->
+		<tr>
+			<th class="{$cls}">
+				{$sign[1]}
+				<div class="J_sign_items cp" style="color:#006699;">{$sign[0]}</div>
+			</th>
+		</tr>
+		<!--# $i++;#-->
+		<!--# } #-->
+	</table>
+</div>
+</div>
+<script type="text/javascript">
+$(function() {
+	//ie不支持高亮功能
+	if($.browser.msie) {
+		//模块模版
+        $('#J_comp_select').change(function(){
+			var $this = $(this);
+
+			Wind.Util.ajaxMaskShow(100000);
+			$.post($this.data('url'), {
+				compid : this.value,
+				moduleid : $('#J_moduleid').val()
+			}, function(data){
+				Wind.Util.ajaxMaskRemove();
+				if(data.state == 'success') {
+					$('#J_design_temp_tpl').val(data.html);
+				}else if(data.state == 'fail'){
+					if(Wind.Util.resultTip) {
+						Wind.Util.resultTip({
+							error : true,
+							follow : $this,
+							msg : data.message,
+							zindex : 100000
+						});
+					}else{
+						//后台
+						alert(data.message);
+					}
+
+				}
+			}, 'json');
+		});
+	 return;
+	}
+	
+	var textarea = $('#J_design_temp_tpl');
+	if(!textarea.length) { return; }
+	//改掉ID，因为这个模板所在的页面还会引用common.js，会造成两个代码高亮框
+	textarea.attr('id','');
+	var	codemirror_path = GV.JS_ROOT + 'windeditor/plugins/codemirror/codemirror/';
+	Wind.css(codemirror_path + 'codemirror.css?v='+ GV.JS_VERSION, function(){
+		//css要先加载，需要定位计算
+		Wind.js(codemirror_path +'codemirror.js?v=' + GV.JS_VERSION,function() {
+			if(!window.CodeMirror) {
+				return;
+			}
+
+			var codeEditor = window.CodeMirror.fromTextArea(textarea[0], {
+					mode: "text/html",
+	                tabMode: "indent",
+	                lineNumbers: true,
+	                lineWrapping:true,
+	                onChange:function(editor) {
+	                	//同步textarea的值，CodeMirror绑定过submit同步，但这里没有用submit
+	                	textarea.val(editor.getValue());
+	                }
+				}
+			);
+			var dom = codeEditor.getWrapperElement();
+			var height = textarea.outerHeight();
+	        dom.style.cssText = 'height:'+ height +'px;font-family:consolas,"Courier new",monospace;font-size:13px;';
+	        codeEditor.getScrollerElement().style.cssText = 'height:'+ height +'px';
+	        codeEditor.refresh();
+
+	        //模块模版
+	        $('#J_comp_select').change(function(){
+				var $this = $(this);
+
+				Wind.Util.ajaxMaskShow(100000);
+				$.post($this.data('url'), {
+					compid : this.value,
+					moduleid : $('#J_moduleid').val()
+				}, function(data){
+					Wind.Util.ajaxMaskRemove();
+					if(data.state == 'success') {
+						$('textarea[name=tpl]').val(data.html);
+						codeEditor.setValue(data.html);
+					}else if(data.state == 'fail'){
+						if(Wind.Util.resultTip) {
+							Wind.Util.resultTip({
+								error : true,
+								follow : $this,
+								msg : data.message,
+								zindex : 100000
+							});
+						}else{
+							//后台
+							alert(data.message);
+						}
+
+					}
+				}, 'json');
+			});
+		});
+	});
+	
+
+});
+</script>

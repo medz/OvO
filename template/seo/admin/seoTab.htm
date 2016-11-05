@@ -1,0 +1,7 @@
+<div class="nav">
+	<ul class="cc">
+	<!--#foreach($tabs as $alias => $tab){#-->
+		<li class="{$tab['current']}"><a href="{@WindUrlHelper::createUrl($tab['url'])|url}">{$tab['title']}</a></li>
+	<!--# } #-->
+	</ul>
+</div>

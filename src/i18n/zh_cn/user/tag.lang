@@ -1,0 +1,17 @@
+id.require = 非法请求
+illega.format=数据格式错误
+name.require = 标签不能为空
+
+uid.require=非法的用户ID
+add.success=添加成功
+delete.success=删除成功
+
+ids.require=请选择需要操作的标签
+delete.success=删除成功
+sethot.success=设置成功
+
+name.length.error=标签名称的长度为1 - 8个字
+name.format.error=标签名称只支持中文、字母、数字、下划线和小数点哦
+owntag.limit.over="标签的最大数量为{num}个"
+
+relation.exists=已有同类标签

@@ -1,0 +1,414 @@
+/*
+===================
+@explain: 发帖页面
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: post.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+*/
+.header_wrap,
+#notice{
+	position:static;
+}
+body {
+	padding-top:0 !important;
+}
+.my_menu_wrap{
+	top:45px !important;
+}
+.post_page{
+	padding-bottom:40px;
+}
+.post_page .content_nav{
+	margin:15px 15px 0;
+}
+.post_content{
+	padding:15px;
+}
+.post_page .ft{
+	height:40px;
+}
+.post_page .ft .btn_submit{
+	width:100px;
+}
+
+/*
+===================
+标题
+===================
+*/
+.post_page .title{
+	margin-bottom:15px;
+}
+
+/*
+===================
+编辑器左右两栏
+===================
+*/
+.post_page .cm{
+	float:left;
+	width:100%;
+	min-height:1px;
+}
+.post_page .cw{
+	margin-right:192px;
+}
+.post_page .sd{
+	float:left;
+	width:190px;
+	margin-left:-190px;
+	_margin-left:-192px;
+}
+
+/*
+===================
+帖子功能扩展
+===================
+*/
+.post_page .sidebar dt{
+	border:1px solid #dddddd;
+	border-left:0 none;
+	background:#f6f6f6 url(../../images/post/arrow.png) 170px 9px no-repeat;
+	line-height:30px;
+	height:30px;
+	padding:0 10px;
+}
+.post_page .sidebar dl.current dt{
+	font-weight:700;
+	background-position:170px -21px;
+}
+.post_page .sidebar dd{
+	padding:10px;
+	background:#f8f8f8;
+	display:none;
+}
+.post_page .sidebar dl.current dd{
+	display:block;
+}
+
+/*
+===================
+添加标签
+===================
+*/
+.post_tags_add .user_select_input{
+	min-height:70px;
+	width:162px;
+	margin-bottom:5px;
+	padding-right:2px;
+	overflow:hidden;
+}
+.post_tags_add .user_select_input ul{
+	width:162px;
+}
+.post_tags_add .user_select_input li{
+	margin-bottom:3px;
+	height:24px;
+	position:relative;
+}
+.post_tags_add .user_select_input li a{
+	height:22px;
+}
+.post_tags_add .user_select_input .J_tag_name{
+	margin-right:12px;
+	max-width:135px;
+	min-width:24px;
+	float:left;
+	height:20px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+}
+.post_tags_add .user_select_input input{
+	width:100%;
+}
+.post_tags_add .user_select_input li a del{
+	position:absolute;
+	right:3px;
+	top:1px;
+}
+
+/*
+===================
+热门标签
+===================
+*/
+.post_tags_hot ul{
+	padding:5px 0 0;
+}
+.post_tags_hot li{
+	float:left;
+	margin-right:5px;
+	height:27px;
+	line-height:22px;
+}
+.post_tags_hot li a{
+	color:#ffffff;
+	float:left;
+	font-family:Simsun;
+	white-space:nowrap;
+	background:#69a9d7;
+	word-break:break-all;
+}
+.post_tags_hot li a:hover{
+	text-decoration:none;
+	background-color:#2b77af;
+}
+.post_tags_hot li a span{
+	display:inline-block;
+	padding:0 6px;
+	cursor:pointer;
+}
+.post_tags_hot li a del{
+	display:inline-block;
+	padding:0 4px 0 0;
+	cursor:pointer;
+	color:#3d6f93;
+	text-decoration:none;
+	position:relative;
+	margin-left:-3px;
+}
+.post_tags_hot li a:hover del{
+	color:#3d6f93;
+}
+.post_tags_hot li.disabled a{
+	color:#999999;
+	background-color:#e9eaea;
+	border-color:#e9eaea;
+}
+.post_tags_hot li.disabled a span{
+	cursor:default;
+}
+
+/*
+===================
+帖子类型扩展结构
+===================
+*/
+.post_type{
+	border:1px dashed #ccc;
+	background:#f3f9fb;
+	padding:15px 20px;
+	margin-bottom:15px;
+}
+.post_type h4{
+	font-weight:700;
+	margin-bottom:5px;
+}
+.post_type_ct{
+	float:left;
+	width:400px;
+	border-right:1px solid #d5e6ed;
+}
+.post_type_sd{
+	float:left;
+	border-left:1px solid #d5e6ed;
+	margin-left:-1px;
+	padding-left:25px;
+	padding-bottom:10px;
+}
+
+/*
+===================
+上传图标
+===================
+*/
+.icon_image_up{
+	width:16px;
+	height:16px;
+	position:relative;
+	overflow:hidden;
+	margin:5px 10px 0;
+}
+.icon_image_up a{
+	height:16px;
+	width:16px;
+	display:block;
+	text-indent:-2000em;
+	overflow:hidden;
+	background:url(../../images/post/image_up.png) no-repeat;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	opacity:0.8;
+}
+.icon_image_up:hover a{
+	text-decoration:none;
+	filter:alpha(opacity=100);
+	-moz-opacity:1;
+	opacity:1;
+}
+.icon_image_up input{
+	width:16px;
+	height:16px;
+	position:absolute;
+	top:0;
+	right:0;
+	background:none;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	opacity:0;
+	cursor:pointer;
+	outline:none;
+}
+
+/*
+===================
+帖子类型扩展操作选项
+===================
+*/
+.post_type_operate{
+
+}
+.post_type_operate li{
+	height:35px;
+	line-height:30px;
+}
+
+/*
+===================
+投票选项
+===================
+*/
+.post_vote_item li{
+	float:left;
+	width:100%;
+	padding-bottom:10px;
+}
+.post_vote_item li .icon_del{
+	display:none;
+	float:left;
+	margin-top:6px;
+}
+.post_vote_item li:hover .icon_del,
+.post_vote_item li.hover .icon_del{
+	display:block;
+}
+.J_ie_imgfile{
+	display:block;
+	float:left;
+	width:100%;
+	height:20px;
+}
+
+/*
+===================
+图片投票预览效果
+===================
+*/
+.vote_preview{
+	border:1px solid #ccc;
+	padding:5px;
+	background:#fff;
+	margin-top:5px;
+	float:left;
+	position:relative;
+	width:120px;
+}
+.vote_preview img{
+	vertical-align:top;
+}
+.vote_preview .icon_del{
+	position:absolute;
+	right:10px;
+	top:5px;
+}
+.vote_preview_ie .fl{
+	line-height:25px;
+	margin-right:10px;
+	height:25px;
+}
+
+/*
+===================
+我的草稿按钮
+===================
+*/
+.my_drafts{
+	float:right;
+	color:#666;
+	line-height:20px;
+	padding:2px 5px 2px 10px;
+}
+.my_drafts:hover,
+.up_current{
+	background:#fff;
+	border:1px solid #ccc;
+	padding:1px 4px 1px 9px;
+	text-decoration:none;
+}
+.up_current,
+.up_current:hover{
+	position:relative;
+	z-index:4;
+	border-bottom:0 none;
+}
+
+
+/*
+===================
+草稿弹窗
+===================
+*/
+.pop_draft{
+	border:1px solid #c4c4c4;
+	background:#fff;
+	padding:10px;
+	position:absolute;
+	z-index: 3;
+	margin:22px 0 0 -261px;
+	width:305px;
+	height:150px;
+}
+.pop_draft ul{
+	height:150px;
+	overflow-y:auto;
+}
+.pop_draft li{
+	padding:5px;
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+	border-bottom:1px solid #e4e4e4;
+}
+.pop_draft li span.J_draft_title{
+	overflow:hidden;
+	line-height:18px;
+	height:18px;
+	display:inline-block;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	color:#333;
+	margin-right:5px;
+	width:150px;
+	cursor:pointer;
+}
+.pop_draft li span{
+	color:#999;
+}
+.pop_draft li .insert{
+	float:left;
+	margin-right:5px;
+}
+.pop_draft li .insert:hover{
+	background-position:0 -20px;
+}
+
+
+/*
+===================
+发帖敏感词提示
+===================
+*/
+.pop_sensitive{
+	width:300px;
+}
+.pop_sensitive .not_content_mini{
+	/*padding:0 20px 0 45px;
+	line-height:1.5;
+	height:auto;
+	background-position:0 0;
+	margin-bottom:0;
+	white-space:normal;*/
+}

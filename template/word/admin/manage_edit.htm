@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body style="width:390px;" class="body_none">
+	<form class="J_ajaxForm" action="{@url:word/manage/doedit?_json=1}" method="post">
+	<div class="pop_cont">
+		<div class="pop_table" style="height:200px;">
+			<table width="100%">
+				<tr>
+					<th>敏感词</th>
+					<td>
+					<span class="must_red">*</span><input type="text" name="word[word]" class="input length_5" value="{$detail['word']}" />
+					<div class="cc gray"></div>
+					</td>
+				</tr>
+				<tr>
+					<th>等级</th>
+					<td>
+						<select class="select_5" name="word[type]" id="J_type">
+								<!--# foreach($typeList as $key=>$value){ #-->
+								<!--# $selected = ($key == $detail['word_type']) ? 'selected' : '' #-->
+								<option value="{$key}" {$selected}>{$value}</option>
+								<!--# } #-->
+						</select>
+					</td>
+				</tr>
+				<!--# $display = ($detail['word_type'] == 3) ? '' : 'display:none;';$detail['word_replace'] = $detail['word_replace'] ? $detail['word_replace'] : '****';#-->
+				<tr id="J_replace" style="{$display}">
+					<th>替换为</th>
+					<td>
+						<span class="must_red">*</span><input class="input length_5" type="text" name="word[replace]" value="{$detail['word_replace']}" >
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="pop_bottom">
+		<button class="btn fr" id="J_dialog_close" type="button">取消</button>
+		<button type="submit" class="btn btn_submit J_ajax_submit_btn fr mr10">提交</button>
+	</div>
+	<input name="id" type="hidden" value="{$detail['word_id']}">
+	</form>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){	
+	$('#J_type').on('change', function(){
+		var $this = $(this),
+		value = $this.val();
+		if (value == 3) {
+			$('#J_replace').show();
+			return true;
+		}
+		$('#J_replace').hide()
+	});
+});
+</script>
+</body>
+</html>

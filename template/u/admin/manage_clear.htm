@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body class="body_none" style="width:350px;">
+<div>
+<!--清理-->
+	<div class="core_pop">
+		<form class="J_ajaxForm" action="{@url:admin/u/manage/doClear}" method="post">
+		<input type="hidden" value="{$uid}" name="uid" />
+		<div class="pop_cont">
+			<div class="mb10">提示：清理用户信息后不可恢复，请慎重操作！</div>
+			<div class="double_list">
+				<ul class="cc J_check_wrap" style="height:110px;">
+					<li class="all_check"><label><input class="J_check_all" data-checklist="J_check_c1" data-direction="y" type="checkbox" ><span>全部</span></label><span>(同时会清空用户资料)</span></li>
+					<!--#foreach ($types as $key => $item) { #-->
+					<li><label><input class="J_check" data-yid="J_check_c1" name="clear[]" type="checkbox" value="{$key}"><span>{$item['title']}</span></label></li>
+					<!--#}#-->
+				</ul>
+			</div>
+		</div>
+		<div id="J_submit_tips"></div>
+		<div class="pop_bottom tar">
+			<button type="submit" class="btn btn_submit mr10 J_ajax_submit_btn">提交</button>
+			<button id="J_manage_clear_cancel" type="button" class="btn btn_cancel">取消</button>
+		</div>
+		</form>
+	</div>
+
+<!--结束-->
+
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	//Wind.use('dialog', 'ajaxForm', function(){
+		/*var submit_tips = $('#J_submit_tips');
+	
+		//提交
+		$('#J_clear_form').ajaxForm({
+			dataType	: 'json',
+			success		: function(data, statusText, xhr, $form) {
+				
+				if( data.state === 'success' ) {
+					submit_tips.attr('class', 'tips_success').text(data.message).slideDown('fast');
+					setTimeout(function(){
+						window.parent.Wind.dialog.closeAll();
+					}, 3000);
+				}else{
+					submit_tips.attr('class', 'tips_error').text(data.message).slideDown('fast');
+				}
+			}
+		});*/
+		
+		
+	//});
+	//取消
+	$('#J_manage_clear_cancel').click(function(e){
+		window.parent.Wind.dialog.closeAll();
+	});
+});
+</script>
+</body>
+</html>

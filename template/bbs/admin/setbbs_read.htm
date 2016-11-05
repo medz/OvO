@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<template source='PUBLIC:template.admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<form method="post" class="J_ajaxForm" action="{@url:bbs/setbbs/doread}">
+	<div class="nav">
+		<ul class="cc">
+			<!-- <li><a href="{@url:bbs/setbbs/run}">首页</a></li> -->
+			<li><a href="{@url:bbs/setbbs/thread}">列表页</a></li>
+			<li class="current"><a href="{@url:bbs/setbbs/read}">阅读页</a></li>
+		</ul>
+	</div>
+	<div class="h_a">论坛阅读页功能细节设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>每页帖子楼层数</th>
+				<td><input name="perpage" type="number" class="input length_5 mr5" value="{$config['read.perpage']}"></td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<!-- 
+			<tr>
+				<th>匿名的名称</th>
+				<td><input name="anonymous_displayname" type="text" class="input length_5" value="{$config['read.anoymous_displayname']}"></td>
+				<td><div class="fun_tips">发布匿名帖时，匿名用户显示的匿名文字。</div></td>
+			</tr>
+			<tr>
+				<th>屏蔽禁言会员所有帖子</th>
+				<td>
+					<ul class="switch_list cc mb10">
+						<li><label><input type="radio" name="shield_banthreads" value="1" {@Pw::ifcheck($config['read.shield_banthreads']==1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="shield_banthreads" value="0" {@Pw::ifcheck($config['read.shield_banthreads']==0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">屏蔽禁言会员的帖子内容，普通用户不可查看。</div></td>
+			</tr>
+			 -->
+			<tr>
+				<th>帖子楼层单位</th>
+				<td><input name="floor_name" type="text" value="{$config['read.floor_name']}" class="input length_5"></td>
+				<td><div class="fun_tips">设置帖子显示楼层的单位，如“楼”将显示为1楼。</div></td>
+			</tr>
+			<tr>
+				<th>预设帖子楼层名称</th>
+				<td>
+					<textarea class="length_5" name="defined_floor_name">{$config['read.defined_floor_name']}</textarea>
+				</td>
+				<td><div class="fun_tips">格式 “楼层名称”或“N:楼层名称”，N代表楼层数（主题帖为0楼），如果没有指定楼层N，则第一行代表主题帖子。其中，连续楼层之间可以用‘,’逗号隔开或换行，N后面的楼层为N+1，以此类推，直到再次出现N。<br>例:0:楼主，沙发，板凳<br>3:地板，地下室<br>100:中奖楼层</div></td>
+			</tr>
+			<tr>
+				<th>点击率实时更新</th>
+				<td>
+					<ul class="switch_list cc mb10">
+						<li><label><input type="radio" name="hit_update" value="1" {@Pw::ifcheck($config['read.hit_update']==1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="hit_update" value="0" {@Pw::ifcheck($config['read.hit_update']==0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">开启后，浏览帖子将实时更新阅读数</div></td>
+			</tr>
+			<tr>
+				<th>图片懒加载</th>
+				<td>
+					<ul class="switch_list cc mb10">
+						<li><label><input type="radio" name="image_lazy" value="1" {@Pw::ifcheck($config['read.image_lazy']==1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="image_lazy" value="0" {@Pw::ifcheck($config['read.image_lazy']==0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">开启后，浏览帖子实现图片按需加载，可以提升页面显示速度，但可能会影响搜索引擎对图片的收录。</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="h_a">个人信息显示</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>显示个人信息</th>
+				<td>
+					<ul class="switch_list cc mb10">
+						<li><label><input type="radio" name="display_member_info" value="1" {@Pw::ifcheck($config['read.display_member_info']==1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="display_member_info" value="0" {@Pw::ifcheck($config['read.display_member_info']==0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">开启后，帖子阅读页楼层左侧的用户信息将展开显示。</div></td>
+			</tr>
+			<tr>
+				<th>显示栏目</th>
+				<td>
+					<div class="cross">
+						<ul>
+							<li>
+								<span class="span_2">顺序</span>
+								<span class="span_2">栏目名称</span>
+								<span class="span_2">显示</span>
+							</li>
+							<!--# $i=0; #-->
+							<!--# foreach ($order as $key => $value) { 
+								if (!$allInfo[$key]) continue;
+							#-->
+							<li>
+								<span class="span_2"><input name="display_info_vieworder[{$key}]" type="text" class="input length_1" value="{@$i++}"></span>
+								<span class="span_2">{$allInfo[$key]}</span>
+								<span class="span_2"><input name="display_info[{$key}]" type="checkbox" value="1"{@Pw::ifcheck($config['read.display_info'][$key])}></span>
+							</li>
+							<!--# } #-->
+						</ul>
+					</div>
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='PUBLIC:template.admin.common.footer' />
+</body>
+</html>

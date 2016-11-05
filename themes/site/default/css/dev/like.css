@@ -1,0 +1,359 @@
+/*#
+===================
+@explain: 喜欢
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: like.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+
+/*
+===================
+导航
+===================
+*/
+.like_nav{
+	margin-bottom:10px;
+}
+.like_nav li{
+	float:left;
+	margin-right:10px;
+}
+.like_nav li a{
+	display:block;
+	float:left;
+	line-height:28px;
+	height:28px;
+	overflow:hidden;
+	padding:0 15px;
+	color:#666;
+	font-size:14px;
+	border-radius:3px;
+}
+.like_nav li a:hover{
+	background-color:#dbdbdb;
+}
+.like_nav li.current a{
+	text-decoration:none;
+	background-color:#9b9b9b;
+	background-position:22px -40px;
+	box-shadow:0 2px 2px #888 inset;
+	color:#fff;
+}
+
+/*
+===================
+瀑布内容
+===================
+*/
+.like_falls .row{
+	display:inline-block;
+	width:230px;
+	margin:0 4px 0 3px;
+	vertical-align:top;
+}
+
+.like_falls{
+	margin-bottom:20px;
+}
+	
+/*
+===================
+喜欢的帖子
+===================
+*/
+.like_page{
+	padding:0 0 15px;
+}
+
+.like_content{
+	padding:0;
+}
+
+
+/*
+===================
+喜欢的列表
+===================
+*/
+.like_lists{
+	color:#444;
+	padding-bottom:10px;
+}
+.like_lists dl{
+	border-bottom:1px dashed #e6e6e6;
+	padding:0 0 7px;
+	margin:0 0 10px;
+}
+/*头像*/
+.like_lists .face{
+	float: left;
+	width: 64px;
+	padding:3px 0;
+}
+.like_lists .face a{
+	display:block;
+}
+/*右侧内容*/
+.like_lists .text_content{
+	margin:0 0 0 65px;
+}
+.like_lists .content{
+	margin-bottom:7px;
+	overflow:hidden;
+}
+/*用户名*/
+.like_lists .name{
+	font-weight:700;
+	font-size:14px;
+}
+/*标题*/
+.like_lists .title{
+	font-weight:700;
+	font-size:14px;
+	color:#333;
+}
+/*简介*/
+.like_lists .descrip{
+	margin-bottom:10px;
+}
+/*底部信息*/
+.like_lists .info{
+	color:#999;
+}
+.like_lists .info a{
+	color:#999;
+}
+.like_lists .info i{
+	font-style:normal;
+	margin:0 5px;
+	color:#E6E6E6;
+}
+.like_lists .info .right{
+	float:right;
+}
+.like_lists .info .right a{
+	color:#568cca;
+}
+
+
+/*
+===================
+取消喜欢
+===================
+*/
+.a_unlike{
+	margin-left:10px;
+}
+
+/*
+===================
+热门喜欢
+===================
+*/
+.like_hot_list{
+	padding:5px 15px 15px;
+}
+.like_hot_list li{
+	border-bottom:1px dotted #e4e4e4;
+	line-height:26px;
+	height:26px;
+	overflow:hidden;
+}
+.like_hot_list li a{
+	display:block;
+	float:left;
+	width:155px;
+	overflow:hidden;
+	height:26px;
+	margin-right:10px;
+	color:#666;
+}
+.like_hot_list li .num{
+	padding-left:20px;
+	background:url(../../images/like/heart.png) 0 center no-repeat;
+	font-family:Simsun;
+	color:#999;
+}
+
+/*
+===================
+添加分类
+===================
+*/
+.pop_like_sort{
+	width:380px;
+}
+.pop_like_sort .pop_cont dd{
+	float:left;
+	width:250px;
+}
+
+/*
+===================
+无喜欢时提示
+===================
+*/
+.like_not_tips{
+	width:650px;
+	height:350px;
+	background:url(../../images/like/not_tips.png) 30px 15px no-repeat;
+	text-indent:-2000em;
+	overflow:hidden;
+}
+
+/*
+===================
+分类
+===================
+*/
+.like_lists .sort{
+	float:right;
+	white-space:nowrap;
+}
+.like_lists .sort a{
+	color:#666;
+	display:block;
+	padding:3px 15px;
+}
+.like_lists .sort a:hover,
+.like_lists .sort a.current{
+	border:1px solid #c4c4c4;
+	padding:2px 14px;
+	text-decoration:none;
+	border-radius:3px;
+	background:#f7f7f7;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f7f7f7), to(#ebebeb));
+	background-image: -webkit-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -moz-linear-gradient(top, #f7f7f7, #ebebeb);
+	background-image: -ms-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -o-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: linear-gradient(#f7f7f7, #ebebeb);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#ebebeb', GradientType=0);
+}
+.like_lists .sort em{
+	_vertical-align:0;
+	border-top: 4px #a3a3a3 solid;
+}
+
+/*
+===================
+下拉
+===================
+*/
+.sort_down{
+	margin-top:5px;
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	width:118px;
+	padding:1px;
+	z-index:1;
+}
+.sort_down ul{
+	padding:5px;
+}
+.sort_down li{
+	padding:3px 0;
+	color:#666;
+}
+.sort_down .add{
+	display:block;
+	line-height:25px;
+	background:#eeeeee url(../../images/like/add.png) 10px center no-repeat;
+	color:#5697bd;
+	border-top:1px dotted #ccc;
+	padding-left:25px;
+}
+.sort_down .input{
+	padding:2px 4px;
+	width:98px;
+	margin-bottom:5px;
+}
+.sort_down .ft{
+	padding:0 5px 5px;
+}
+.sort_down .btn{
+	margin:0;
+	font-family:Simsun;
+	width:50px;
+}
+.sort_down .btn_submit{
+	margin-right:8px;
+}
+	
+/*
+===================
+loading
+===================
+*/
+.loading{
+	border-radius: 16px;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background:#000;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	position: fixed;
+	_position:absolute;
+	left: 50%;
+	margin-left: -50px;
+	bottom: 80px;
+}
+.loading span{
+	background:url(../../images/common/loading.gif) 0 center no-repeat;
+	padding-left:24px;
+}
+	
+	
+/*
+===================
+喜欢的分类
+===================
+*/
+.side_cate_list{
+	padding:10px 15px;
+}
+.side_cate_list li{
+	padding:2px 0;
+	height:20px;
+}
+.side_cate_list #J_group_edit_wrap{
+	height:28px;
+}
+.side_cate_list li .icon_del,
+.side_cate_list li .icon_edit{
+	display:none;
+	margin:2px 0 0 5px;
+}
+.side_cate_list li:hover .icon_del,
+.side_cate_list li:hover .icon_edit,
+.side_cate_list li.hover .icon_del,
+.side_cate_list li.hover .icon_edit{
+	display:block;
+}
+.side_cate_list li .input{
+	margin:0 3px 0 0;
+	width:100px;
+	padding:2px;
+}
+.side_cate_list li a{
+	color:#666;
+}
+.side_cate_list li .btn{
+	margin:0 3px 0 0;
+}
+.side_cate_list li em{
+	color:#999;
+	padding-left:5px;
+}
+.side_cate_list .add{
+	display:block;
+	line-height:25px;
+	background: url(../../images/like/add.png) 0 center no-repeat;
+	color:#5697bd;
+	padding-left:15px;
+}

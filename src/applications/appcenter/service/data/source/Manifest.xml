@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="{{charset}}"?>
+<manifest>
+	<application>
+		<name>{{name}}</name>                  
+		<alias>{{alias}}</alias>
+		<version>{{version}}</version>	 
+		<pw-version>{{pw_version}}</pw-version>       
+		<description>{{description}}</description>   
+		<logo>images/logo.jpg</logo>		
+		<type>app</type>					
+		<charset>{{charset}}</charset>		 
+		<website>{{website}}</website>	 
+		<author-name>{{author}}</author-name>		     
+		<author-email>{{email}}</author-email>		  	
+		<author-icon>your icon</author-icon>	         
+	</application>
+
+	<res>res</res>
+
+	<installation-service>{{installation_service}}</installation-service>
+	<inject-services>{{inject_services}}</inject-services>
+</manifest>

@@ -1,0 +1,29 @@
+<!--.main-wrap,#main End-->
+<div class="tac">
+<advertisement id='Site.Footer1' sys='1'/><br />
+<advertisement id='Site.Footer2' sys='1'/>
+</div>
+<div class="footer_wrap">
+	<div class="footer">
+		<pw-drag id="footer_segment"/>
+		<div class="bottom">
+		<!--#
+			$nav = Wekit::load('SRV:nav.bo.PwNavBo');
+			$bottom = $nav->getNavFromConfig('bottom');
+			foreach($bottom as $key=>$value){
+		#-->
+			{$value['name']|html}
+		<!--# } #-->
+		</div>
+		<p>Powered by <a href="http://www.phpwind.net/" target="_blank" rel="nofollow">phpwind v{@NEXT_VERSION}</a> &copy;2003-2015 <a href="http://www.phpwind.com" target="_blank" rel="nofollow">phpwind.com</a> <a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow">{@Wekit::C('site','info.icp')}</a></p>
+		<p>{@Wekit::C('site','statisticscode')|html}</p>
+	</div>
+	<advertisement id='Site.FloatLeft' sys='1'/>
+	<advertisement id='Site.FloatRight' sys='1'/>
+	<advertisement id='Site.PopupNotice' sys='1'/>
+	<div id="cloudwind_common_bottom"></div>
+	<hook name="footer"/>
+</div>
+
+<!--返回顶部-->
+<a href="#" rel="nofollow" role="button" id="back_top" tabindex="-1">返回顶部</a>

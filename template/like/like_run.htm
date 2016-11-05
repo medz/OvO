@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/like.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body class="like_body">
+<pw-start/>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<pw-tpl id="main_segment"/>
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:like/like/run}">喜欢</a><em>&gt;</em><a href="{@url:like/like/run}">热门喜欢</a>
+		</div>
+		<div class="like_page_run cc">
+			<div class="like_nav cc">
+				<ul>
+					<li  class="current"><a href="{@url:like/like/run}">热门喜欢</a></li>
+					<li><a href="{@url:like/mylike/ta}" data-referer="true" class="J_qlogin_trigger" rel="nofollow">Ta的喜欢</a></li>
+					<li><a href="{@url:like/mylike/run}" data-referer="true" class="J_qlogin_trigger" rel="nofollow">我的喜欢</a></li>
+				</ul>
+			</div>
+			<div class="like_falls cc">
+				<design role="data" id="likedemo"/>
+				<div id="container"></div>
+			</div>
+			<div class="loading" id="J_loading"><span>加载中...</span></div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+
+<script>
+var J_LIKE_URL = "{@url:like/like/data?moduleid=$datamodule&pageid=$pageid&page=$page}",getdata="{$getdata}";
+var LIKE_PLUS = "{@url:like/mylike/doLike?typeid=_FROMTYPE&fromid=_KEY}";		//点击喜欢地址
+var J_LIKE_DATA = "{@$data|json}";
+
+Wind.use('jquery', 'global', function(){
+	if(getdata == 1){
+		Wind.js(GV.JS_ROOT +"util_libs/masonry.js?v="+ GV.JS_VERSION, GV.JS_ROOT +"pages/mylike/like_index.js?v="+ GV.JS_VERSION, GV.JS_ROOT+ 'pages/common/likePlus.js?v='+ GV.JS_VERSION, function(){
+				//Ta的喜欢模板
+				var template ='{$template|html}',
+					is_waterfall = $(template).hasClass('tmode_waterfall') ? true : false;
+
+				var fall = new LikeFall({
+					container: $("#container"),
+					url: J_LIKE_URL,
+					template: template,
+					dis: 20,
+					firstLoaded: function(result){
+						if( result == '' || result.length < 1){
+							$("#J_loading").hide();
+							$("#container").html('<div class="box_wrap"><div class="not_content">啊哦，热门喜欢暂没有任何内容哦!</div></div>');
+							return;
+						}
+						//初始化瀑布流
+						if(is_waterfall){
+							$("#container").imagesLoaded(function(){
+			                  $("#container").masonry({
+			                    itemSelector: '.tmode_waterfall',
+			                    columnWidth: function( containerWidth ) {
+			                        return containerWidth / 4;
+			                      }
+			                  });
+			                });
+		                }
+					},
+					allLoaded: function(){
+						$("#J_page").show();
+					},
+					RenderComplete: function(html){
+						//头像加载容错处理
+                    	var avatar = html.find('.J_avatar');
+						avatar && Wind.Util.avatarError(avatar);
+						//
+						html.css("opacity", 0);
+						try{
+							//这里当图片异常的时候会导致延迟显示
+                            html.imagesLoaded(function(){
+                    			$("#J_loading").hide();
+                    			
+                    			//同时处理不支持瀑布流的模板
+								if(is_waterfall){
+									$("#container").append(html).masonry('appended', html, true);
+								}else{
+									$("#container").append(html);
+								}
+								html.animate({"opacity": 1}, 800);
+
+                                //likePlus
+								likePlus(html.find('.J_like_btn'));
+                            });
+                       }catch(e){
+                       }
+					},
+					loadFailed: function(){
+						$("#J_loading").hide();
+					}
+				});
+				fall.init();	
+		});
+	}else{
+		$("#J_loading").hide();
+	}
+});
+
+</script>
+<pw-end/>
+</body>
+</html>

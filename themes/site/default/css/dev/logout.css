@@ -1,0 +1,35 @@
+/*
+===================
+@explain: 登录或退出跳转页面
+@copyright: Copyright 2011,phpwind.com
+@author: longwenid@gmail.com
+$Id: logout.css 28793 2013-05-24 03:55:18Z jieyin $
+===================
+*/
+
+/*
+===================
+主体内容区域
+===================
+*/
+.logout_page{
+	margin-top:20px;
+}
+
+/*
+===================
+消息提示
+===================
+*/
+.logout_message{
+	width:400px;
+	margin:0 auto;
+	padding:40px 0 60px 120px;
+	background:url(../../images/tips/big.png) -60px 40px no-repeat;
+	line-height:1.5;
+}
+.logout_message h2{
+	padding:5px 0 10px;
+	font-size:16px;
+	font-weight:100;
+}

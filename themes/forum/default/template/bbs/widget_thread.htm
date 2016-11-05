@@ -1,0 +1,38 @@
+<!--# if ($tpc_topped && !isset($value['issort'])) { #-->
+<tr>
+	<td colspan="5" class="tac ordinary">普通主题</td>
+</tr>
+<!--# } #-->
+<tr>
+	<td class="icon"><span class="posts_icon"><i class="icon_{$value['icon']}" title="{$icon[$value['icon']]}"></i></span></td>
+	<td class="subject">
+		<!--# if ($operateThread) { #-->
+		<input class="J_check" name="" type="checkbox" value="{$value['tid']}" autocomplete="off" />
+		<!--# } #-->
+		<!--# if ($value['topic_type'] && $pwforum->forumset['topic_type_display'] && isset($topictypes['all_types'][$value['topic_type']])) { #-->
+			<!--# if ($_parentid = $topictypes['all_types'][$value['topic_type']]['parentid']) { #-->
+		<a href="{@url:bbs/thread/run?fid=$pwforum->fid&type=$_parentid}" class="st">[{$topictypes['all_types'][$_parentid]['name']|html}]</a>
+			<!--# } #-->
+		<a href="{@url:bbs/thread/run?fid=$pwforum->fid&type=$value['topic_type']}" class="st">[{$topictypes['all_types'][$value['topic_type']]['name']|html}]</a>
+		<!--# } #-->
+		<a href="{@url:bbs/read/run?tid=$value['tid']&fid=$value['fid']}" class="st" style="{$value['highlight_style']}" title="{$value['subject']}">{@Pw::substrs($value['subject'],$numofthreadtitle)}</a>
+		<hook class='$threadList' name='createHtmlAfterSubject' args="array($value)" />
+		<!--# if ($value['inspect']) { 
+			$value['inspect'][0] = ($value['inspect'][0]) == 0 ? '主' : $value['inspect'][0];
+		#-->
+		<span class="red">[{$value['inspect'][1]}阅至{$value['inspect'][0]}楼]</span>
+		<!--# } #-->
+		<!--# if ($value['ifupload']) { #--><span class="posts_icon"><i class="icon_{$uploadIcon[$value['ifupload']]}" title="{$icon[$uploadIcon[$value['ifupload']]]}"></i></span><!--# } #-->
+	</td>
+	<td class="author">
+		<a class="J_user_card_show face" data-uid="{$value['created_userid']}" href="{@url:space/index/run?uid=$value['created_userid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['created_userid'], 'small')}" data-type="small" width="25" height="25" alt="{$value['created_username']}" /></a>
+		<a class="J_user_card_show" data-uid="{$value['created_userid']}" href="{@url:space/index/run?uid=$value['created_userid']}">{$value['created_username']}</a><br /><span>{@Pw::time2str($value['created_time'], 'Y-m-d')}</span>
+	</td>
+	<td class="num">
+		<em>{$value['replies']}</em>/<span>{$value['hits']}</span>
+	</td>
+	<td class="lastpost">
+		<a class="J_user_card_show" data-uid="{$value['lastpost_userid']}" href="{@url:space/index/run?uid=$value['lastpost_userid']}">{$value['lastpost_username']}</a><br /><span><a rel="nofollow" href="{@url:bbs/read/run?tid=$value['tid']&fid=$value['fid']&page=e}#a">{@Pw::time2str($value['lastpost_time'],'m-d H:i')}</a></span>
+	</td>	
+</tr>
+<!--# $tpc_topped = isset($value['issort']); #-->

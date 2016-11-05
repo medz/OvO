@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:appcenter/upgrade/run}">版本升级</a></li>
+			<li><a href="{@url:appcenter/fixup/run}">安全中心</a></li>
+		</ul>
+	</div>
+	<!--# if(isset($msg)){ #-->
+	<div class="h_a">说明</div>
+	<!-- <div class="prompt_text"><span class="red">{$msg}</span></div> -->
+	<form method="post" action="{@url:appcenter/upgrade/file}">
+		<div class="h_a">设置FTP/SFTP信息</div>
+		<div class="table_full">
+			<table width="100%">
+				<col class="th" />
+				<col width="360" />
+				<col />
+				<tr>
+					<th>服务器地址</th>
+					<td><span class="must_red">*</span><input type="hidden" name="ftp" value="1">
+						<input name="server" type="text" class="input length_5"></td>
+					<td><div class="fun_tips"></div></td>
+				</tr>
+				<tr>
+					<th>服务器端口</th>
+					<td><span class="must_red">*</span><input name="port" type="text" class="input length_5"></td>
+					<td><div class="fun_tips">默认为21</div></td>
+				</tr>
+				<tr>
+					<th>站点根目录</th>
+					<td><span class="must_red">*</span><input name="dir" type="text" class="input length_5"></td>
+					<td><div class="fun_tips">站点根目录的绝对路径或相对于 FTP 主目录的相对路径，结尾不要加斜杠“/”，“.”表示 FTP 主目录</div></td>
+				</tr>
+				<tr>
+					<th>帐号</th>
+					<td><span class="must_red">*</span><input name="user" type="text" class="input length_5"></td>
+					<td><div class="fun_tips"></div></td>
+				</tr>
+				<tr>
+					<th>密码</th>
+					<td><span class="must_red">*</span><input name="pwd" type="password" class="input length_5"></td>
+					<td><div class="fun_tips">密码中请不要包含“*”</div></td>
+				</tr>
+				<tr>
+					<th>协议</th>
+					<td><span class="must_red">*</span><select size="1" name="sftp">
+							<option value="0" selected="selected">ftp</option>
+							<option value="1">sftp</option>
+						</select></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<button class="btn btn_submit" type="submit">连接并检测</button>
+			</div>
+		</div>
+	</form>
+	<!--# }else{ #-->
+	<div class="cc">
+		<ul class="stepstat">
+			<li>1.获取待更新文件列表</li>
+			<li>2.下载更新</li>
+			<li class="current">3.本地文件比对</li>
+			<li>4.正在升级</li>
+			<li>5.升级完成</li>
+		</ul>
+	</div>
+	<div class="table_list">
+		<table width="100%">
+			<thead>
+				<tr>
+					<td width="400">待更新文件列表</td>
+					<td>状态</td>
+					<td></td>
+				</tr>
+			</thead>
+			<!--# foreach($change as $v2){ if ($v2 == 'conf/directory.php') continue;#-->
+			<tr>
+				<td>{$v2}</td>
+				<td>差异</td>
+				<td><!-- <a>[合并代码]</a><a>[强制覆盖]</a> --></td>
+			</tr>
+			<!--# } #-->
+			<!--# foreach($new as $v3){ #-->
+			<tr>
+				<td>{$v3}</td>
+				<td>新增</td>
+				<td></td>
+			</tr>
+			<!--# } #-->
+			<!--# foreach($unchange as $v1){ #-->
+			<tr>
+				<td>{$v1}</td>
+				<td>正常</td>
+				<td></td>
+			</tr>
+			<!--# } #-->
+		
+			<tr>
+				<td colspan="3"> 升级文件存放目录： data/upgrade/{$version} </td>
+			</tr>
+			<tr>
+				<td colspan="3"> 历史文件备份目录： data/backup/phpwind_{@str_replace('.','',NEXT_VERSION .'_'.NEXT_RELEASE)} </td>
+			</tr>
+			</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+		<!--# if($change){ #-->
+			<!-- <a href="{@url:appcenter/upgrade/doupgrade?type=merge}" class="btn">全部合并代码</a> -->
+			<a href="{@url:appcenter/upgrade/doupgrade?type=replace}" class="btn btn_submit">全部强制覆盖</a>
+			<!--# }else{ #-->
+			<a href="{@url:appcenter/upgrade/doupgrade}" class="btn btn_submit">开始升级</a>
+		<!--# } #-->
+		</div>
+	</div>
+	<!--# } #-->
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

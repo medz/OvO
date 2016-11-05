@@ -1,0 +1,1380 @@
+/*
+===================
+@explain: 编辑器皮肤样式
+@copyright: Copyright 2011,phpwind.com
+@author: longwenid@gmail.com
+$Id: default.css 20130 2012-10-23 10:48:25Z chris.chencq $
+===================
+*/
+.wind_editor_wrap{
+	border:1px solid #c1c1c1;
+	background:#ffffff;
+	font-size:12px;
+	font-family:Arial;
+}
+.wind_editor_wrap a{
+	color:#333;
+	text-decoration:none;
+}
+.wind_editor_toolbar{
+	background:#f6f6f6;
+	border-bottom:1px solid #e2e2e2;
+	zoom:1;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+.wind_editor_toolbar:after,
+.wind_editor_body:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+	width:1px;
+}
+.wind_editor_toolbar ul{
+	padding:5px 2px;
+	margin:0;
+	float:left;
+}
+.wind_editor_toolbar li{
+	padding:0 2px 0 3px;
+	float:left;
+	border-right:1px solid #e2e2e2;
+	margin:0;
+	list-style:none;
+}
+.wind_clear{
+	height:4px;
+	overflow:hidden;
+	font:0/0 Arial;
+	clear:both;
+	_width:1px;
+}
+.wind_editor_body{
+	overflow:hidden;
+	zoom:1;
+}
+.wind_editor_body textarea{
+	float:left;
+	width:100%;
+	border:0 none;
+	-webkit-box-shadow:0 0 0 #f0f0f0 inset;
+	-moz-box-shadow:0 0 0 #f0f0f0 inset;
+	box-shadow:0 0 0 #f0f0f0 inset;
+	border-radius: 0;
+	outline:none;
+	resize:none;
+	overflow:hidden;
+}
+.wind_editor_body textarea:focus{
+	background:#fff;
+}
+
+.wind_editor_statusbar{
+	height:23px;
+	line-height:23px;
+	border-top:1px solid #eaeaea;
+	background:#f6f4f5;
+	padding:0 10px;
+}
+/*
+===================
+工具栏按钮
+===================
+*/
+.wind_icon{
+	float:left;
+	margin:0 1px 0 0;
+	border:1px solid #f6f6f6;
+}
+.wind_icon:hover{
+	padding:0;
+}
+.wind_icon span,
+.wind_attachn span{
+	width:20px;
+	height:20px;
+	padding:0;
+	margin:0;
+	display:block;
+	overflow:hidden;
+	vertical-align:top;
+	float:left;
+	cursor:pointer;
+	line-height:0;
+	background:url(toolbar.png) 0 0 no-repeat;
+}
+.wind_icon_big span{
+	width:34px;
+	height:46px;
+}
+.wind_icon span.bold{
+	background-position:0 0;
+}
+.wind_icon span.italic{
+	background-position:-20px 0;
+}
+.wind_icon span.underline{
+	background-position:-40px 0;
+}
+.wind_icon span.foreColor{
+	background-position:-60px 0;
+}
+.wind_icon span.strikeThrough{
+	background-position:-80px 0;
+}
+.wind_icon span.backColor{
+	background-position:-100px 0;
+}
+.wind_icon span.justifyLeft{
+	background-position:-120px 0;
+}
+.wind_icon span.justifyCenter{
+	background-position:-140px 0;
+}
+.wind_icon span.justifyRight{
+	background-position:-160px 0;
+}
+.wind_icon span.insertLink{
+	background-position:0 -20px;
+}
+.wind_icon span.unlink{
+	background-position:-20px -20px;
+}
+.wind_icon span.insertTable{
+	background-position:-40px -20px;
+}
+.wind_icon span.horizontal{
+	background-position:-60px -20px;
+}
+.wind_icon span.insertBlockquote{
+	background-position:-80px -20px;
+}
+.wind_icon span.insertCode{
+	background-position:-100px -20px;
+}
+.wind_icon span.insertOrderedList{
+	background-position:-120px -20px;
+}
+.wind_icon span.insertUnorderedList{
+	background-position:-140px -20px;
+}
+.wind_icon span.indent{
+	background-position:-160px -20px;
+}
+.wind_icon span.outdent{
+	background-position:-180px -20px;
+}
+.wind_icon span.insertEmoticons{
+	background-position:0 -40px;
+}
+.wind_icon span.insertPhoto{
+	background-position:-20px -40px;
+}
+.wind_icon span.insertFile{
+	background-position:-40px -40px;
+}
+.wind_icon span.insertMusic{
+	background-position:-60px -40px;
+}
+.wind_icon span.insertVideo{
+	background-position:-80px -40px;
+}
+.wind_icon span.partIndent{
+	background-position:-100px -40px;
+}
+.wind_icon span.customCode{
+	background-position:-120px -40px;
+}
+.wind_icon span.undo{
+	background-position:-140px -40px;
+}
+.wind_icon span.html{
+	background-position:-140px -60px;
+}
+.wind_icon span.redo{
+	background-position:-160px -40px;
+}
+.wind_icon span.removeFormat{
+	background-position:-180px -40px;
+}
+.wind_icon span.downFile{
+	background-position:0 -60px;
+}
+.wind_icon span.insertSell{
+	background-position:-20px -60px;
+}
+.wind_icon span.insertHide{
+	background-position:-40px -60px;
+}
+.wind_icon span.superscript{
+	background-position:-60px -60px;
+}
+.wind_icon span.subscript{
+	background-position:-80px -60px;
+}
+/*
+===================
+大图标
+===================
+*/
+.wind_icon_big .wind_icon span.insertEmoticons{
+	background-position:0 -150px;
+}
+.wind_icon_big .wind_icon span.insertPhoto{
+	background-position:-34px -150px;
+}
+.wind_icon_big .wind_icon span.insertFile{
+	background-position:-68px -150px;
+}
+.wind_icon_big .wind_icon span.insertMusic{
+	background-position:-102px -150px;
+}
+.wind_icon_big .wind_icon span.insertVideo{
+	background-position:-136px -150px;
+}
+.wind_icon_big .wind_icon span.removeFormat{
+	background-position:0 -200px;
+}
+.wind_icon_big .wind_icon span.atremind{
+	background-position:-34px -200px;
+}
+
+/*
+===================
+有附件状态
+===================
+*/
+.wind_attachn {
+	float:left;
+}
+.wind_attachn span{
+	background-position:0 -120px;
+	position:absolute;
+	width:16px;
+	height:16px;
+	margin-left:-12px;
+	margin-top:-4px;
+}
+
+/*
+===================
+代码模式开关
+===================
+*/
+.wind_codeMode,
+.wind_onCodeMode{
+	float:right;
+	border:1px solod #ccc;
+	padding-left:15px;
+	background:url(checkbox.png) 0 3px no-repeat;
+	cursor:pointer;
+	margin:6px 8px 0 10px;
+	white-space:nowrap;
+}
+.wind_onCodeMode{
+	background-position:0 -27px;
+}
+
+/*
+===================
+简单高级模式
+===================
+*/
+.wind_toolbar_switch{
+	border:1px solid #cdcdcd;
+	background:#ffffff;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(50%, #f4f4f4), to(#eeeeee));
+	background-image: -webkit-linear-gradient(#ffffff, #f4f4f4 50%, #eeeeee);
+	background-image: -moz-linear-gradient(top, #ffffff, #f4f4f4 50%, #eeeeee);
+	background-image: -ms-linear-gradient(#ffffff, #f4f4f4 50%, #eeeeee);
+	background-image: -o-linear-gradient(#ffffff, #f4f4f4 50%, #eeeeee);
+	background-image: linear-gradient(#ffffff, #f4f4f4 50%, #eeeeee);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+	float:right;
+	cursor:pointer;
+	padding:0 6px;
+	margin:6px 8px 1px;
+}
+
+/*
+===================
+工具栏下拉
+>>字体选择
+===================
+*/
+.wind_editor_toolbar .wind_select{
+	float:left;
+	border:1px solid #e3e9ef;
+	border-top-color:#abadb3;
+	background:#fff;
+	margin:0 3px 0 0;
+	padding-right:5px;
+}
+.wind_editor_toolbar .wind_select:hover{
+	border:1px solid #3366cc;
+}
+.wind_editor_toolbar .wind_select span{
+	background:url(down.png) right center no-repeat;
+	width:70px;
+	height:20px;
+	line-height:20px;
+	display:block;
+	overflow:hidden;
+	vertical-align:top;
+	float:left;
+	cursor:pointer;
+	padding:0 5px;
+}
+/*
+===================
+工具栏色块下拉
+>>背景颜色
+===================
+*/
+.edit_acolorlump{
+	display:block;
+	width:15px;
+	height:2px;
+	overflow:hidden;
+	margin:16px auto 0;
+}
+.edit_arrow{
+	float:left;
+	padding-left:1px;
+	width:10px;
+	height:20px;
+	background:url(down.png) center 9px no-repeat;
+	overflow:hidden;
+	cursor:pointer;
+}
+.wind_icon:hover .edit_arrow{
+	padding:0;
+	border-left:1px solid #8dcfff;
+}
+/*
+===================
+工具栏按钮悬停效果
+===================
+*/
+.wind_editor_toolbar .wind_icon:hover,
+.wind_editor_toolbar .wind_select:hover,
+.edit_menu_select li a:hover,
+.edit_menu_select li.activate,
+.wind_editor_toolbar .activate,
+.color_initialize:hover,
+.wind_toolbar_switch:hover{
+	text-decoration:none;
+	border:1px solid #8dcfff;
+	background:#e9f8ff;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e9f8ff), color-stop(25%, #e9f8ff), to(#d1f0ff));
+	background-image: -webkit-linear-gradient(#e9f8ff, #e9f8ff 25%, #d1f0ff);
+	background-image: -moz-linear-gradient(top, #e9f8ff, #e9f8ff 25%, #d1f0ff);
+	background-image: -ms-linear-gradient(#e9f8ff, #e9f8ff 25%, #d1f0ff);
+	background-image: -o-linear-gradient(#e9f8ff, #e9f8ff 25%, #d1f0ff);
+	background-image: linear-gradient(#e9f8ff, #e9f8ff 25%, #d1f0ff);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9f8ff', endColorstr='#d1f0ff', GradientType=0);
+	text-shadow: 0 1px 0 #ffffff;
+}
+/*
+===================
+工具栏按钮失效效果
+===================
+*/
+.wind_editor_toolbar .disabled,
+.wind_editor_toolbar .disabled:hover{
+	opacity:0.2;
+	-moz-opacity:0.2;
+	filter:alpha(opacity=20);
+	border:1px solid #f6f6f6;
+	background:none;
+}
+.wind_editor_toolbar .disabled span{
+	cursor:default;
+}
+/*
+===================
+表单样式
+===================
+*/
+.wind_editor_wrap .input{
+	padding:3px 4px;
+	font-size: 100%;
+	line-height:18px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	box-shadow:2px 2px 2px #f0f0f0 inset;
+	vertical-align: middle;
+  margin: 0;
+	font-family: inherit;
+	height:18px;
+}
+.wind_editor_wrap .input:focus{
+	border-color:#555 #aaa #aaa;
+	background-color:#fffbde;
+}
+.wind_editor_wrap textarea{
+	height:72px;
+  overflow: auto;
+  vertical-align: top;
+	resize: vertical;
+}
+.wind_editor_wrap select,
+.wind_editor_wrap input[type="file"] {
+	height: 28px;
+	line-height: 28px;
+}
+.wind_editor_wrap select[size]{
+	height:auto;
+}
+.wind_editor_wrap .form_success{
+	border-color:#3e973e #87c787 #87c787 !important;
+}
+.wind_editor_wrap .form_error{
+	border-color:#bc5050 #f2a6a6 #f2a6a6 !important;
+}
+/*
+===================
+编辑器按钮
+===================
+*/
+.edit_menu button{
+	color: #333;
+	background:#e6e6e6 url(btn.png);
+	border: 1px solid #c4c4c4;
+	border-radius: 2px;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	padding:4px 10px;
+	display: inline-block;
+	cursor: pointer;
+	font-size:100%;
+	line-height: normal;
+	text-decoration:none;
+	overflow:visible;
+	vertical-align: middle;
+	text-align:center;
+	zoom: 1;
+	white-space:nowrap;
+	font-family:inherit;
+	width:80px;
+}
+/*悬停*/
+.edit_menu button:hover {
+	background-position: 0 -40px;
+	color: #333;
+	text-decoration: none;
+}
+/*点击后*/
+.edit_menu button:active {
+	background-position:0 -81px;
+}
+/*其他按钮文字颜色*/
+.edit_menu button.edit_menu_btn{
+  color: #ffffff;
+}
+/*提交按钮*/
+.edit_menu button.edit_menu_btn{
+	background-position:0 -120px;
+	background-color: #1b75b6;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-color: #106bab #106bab #0d68a9;
+}
+.edit_menu button.edit_menu_btn:hover{
+	background-position:0 -160px;
+}
+.edit_menu button.edit_menu_btn:active{
+	background-position:0 -201px;
+}
+/*
+===================
+编辑器弹窗
+===================
+*/
+.edit_menu{
+	position:absolute;
+	z-index:11;
+	background:#fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border:1px solid #ccc;
+	font-size:12px;
+}
+.edit_menu input[type="radio"],
+.edit_menu input[type="checkbox"]{
+	vertical-align:-3px;
+	padding:0;
+	margin-right:3px;
+	*marign-rignt:0;
+}
+/*
+===================
+编辑器颜色选取
+===================
+*/
+.editor_color_panel{
+	background-color:#fff;
+	width:189px;height:175px;
+	position:absolute;
+}
+.color_initialize{
+	padding:5px;
+	margin:5px 5px 0;
+	line-height:16px;
+	cursor:pointer;
+}
+.color_initialize:hover{
+	padding:4px;
+}
+.color_initialize em{
+	font-size:16px;
+	margin-right:5px;
+	font-family:Simsun;
+	vertical-align:bottom;
+}
+.editor_color_panel .color_general{
+	height:16px;
+	margin:11px 7px 9px 11px;
+}
+.editor_color_panel .color_list{
+	height:70px;
+	margin:0 7px 0 11px;
+}
+.editor_color_panel .color_standard{
+	height:16px;
+	margin:13px 7px 8px 11px;
+}
+.editor_color_panel strong{
+	font-size:0;
+	display:block;
+	width:14px;
+	height:14px;
+	margin-right:3px;
+	float:left;
+	cursor:pointer;
+}
+/*
+===================
+编辑器弹窗--下拉菜单
+===================
+*/
+ul.edit_menu_select{
+	width:118px;
+	padding:5px;
+}
+.edit_menu_select li{
+	padding:0;
+	margin:0;
+	border:0 none;
+	float:none;
+}
+.edit_menu_select li a{
+	line-height:1.5;
+	display:block;
+	text-indent:5px;
+	color:#333;
+	padding:2px 0;
+	border:1px solid #fff;
+	zoom:1;
+}
+/*
+===================
+编辑器弹窗--内容区域
+===================
+*/
+.edit_menu_top{
+	line-height:18px;
+	height:18px;
+	padding:9px 15px 8px;
+	border-top:1px solid #fff;
+	border-bottom:1px solid #e7e7e7;
+	background:#f6f6f6;
+}
+.edit_menu_top strong{
+	font-weight:700;
+	color:#333;
+	font-size:14px;
+	margin-right:10px;
+	float:left;
+}
+.edit_menu_cont{
+	padding:10px 15px;
+}
+.edit_menu_bot{
+	padding:5px 15px 15px;
+	text-align:center;
+}
+.edit_menu_bot button{
+	margin:0 5px;
+}
+.edit_menu_top ul{
+	float:left;
+}
+.edit_menu_top li{
+	float:left;
+}
+.edit_menu_top li a{
+	display:block;
+	padding:4px 10px;
+	color:#333;
+}
+.edit_menu_top li.current a{
+	border:1px solid #e7e7e7;
+	background:#fff;
+	border-bottom:0 none;
+}
+
+/*
+===================
+编辑器弹窗--关闭
+===================
+*/
+.edit_menu_close{
+	float:right;
+	width:17px;
+	height:17px;
+	overflow:hidden;
+	text-indent:-2000em;
+	background:url(pop_close.png) no-repeat;
+	-webkit-transition: all 0.2s ease-out;
+	margin-left:40px;
+}
+.edit_menu_close:hover{
+	background-position:0 -17px;
+}
+/*
+===================
+隐藏内容
+===================
+*/
+.edit_menu_hide{
+	width:600px;
+}
+.edit_menu_hide ul{
+	margin-bottom:10px;
+	padding:0;
+}
+.edit_menu_hide li{
+	padding:5px 0;
+	margin:0;
+	list-style:none;
+}
+.edit_menu_hide li .input{
+	margin:0 5px;
+}
+.edit_menu_hide textarea{
+	width:560px;
+	height:300px;
+}
+
+/*
+===================
+插入代码
+===================
+*/
+.edit_menu_code{
+	width:500px;
+}
+.edit_menu_code textarea{
+	width:460px;
+	height:250px;
+}
+
+/*
+===================
+插入视频
+===================
+*/
+.edit_menu_video{
+	width:385px;
+}
+.edit_menu_video dl{
+	padding:5px 0 10px;
+}
+.edit_menu_video dt{
+	float:left;
+	width:50px;
+	line-height:26px;
+}
+.edit_menu_video label{
+	display:inline-block;
+	line-height:26px;
+}
+
+/*
+===================
+插入音乐
+===================
+*/
+.edit_menu_music{
+	width:385px;
+}
+.edit_menu_music dl{
+	padding:5px 0 10px;
+}
+.edit_menu_music dt{
+	float:left;
+	width:50px;
+	line-height:26px;
+}
+.edit_menu_music label{
+	display:inline-block;
+	line-height:26px;
+}
+
+/*
+===================
+图片和附件上传操作区域
+===================
+*/
+.edit_uping{
+	margin-bottom:10px;
+	height:30px;
+}
+.edit_uping button{
+	margin-right:15px;
+}
+.edit_uping .num{
+	margin-top:5px;
+	float:right;
+	color:#999;
+}
+.edit_uping .num em{
+	color:#ff5500;
+	font-style:normal;
+}
+/*
+===================
+附件上传
+===================
+*/
+.edit_menu_file{
+	width:510px;
+}
+.edit_menu_upfile{
+	border:1px solid #cccccc;
+	height:200px;
+	overflow-y:auto;
+	position:relative;
+}
+.edit_menu_upfile dl{
+	padding:0;
+	margin:0;
+}
+.edit_menu_upfile dt,
+.edit_menu_upfile dd{
+	margin:0;
+	padding:5px 0 3px;
+	line-height:28px;
+	overflow: hidden;
+}
+.edit_menu_upfile dt{
+	background:#f7f7f7;
+}
+.edit_menu_upfile dd{
+	background:url(edit_menu_upfile_bg.png) -480px 0 no-repeat;
+	border-top:1px solid #e5e5e5;
+}
+.edit_menu_upfile dd.current{
+	height:48px;
+}
+.edit_menu_upfile dd.current .input_sell{
+	width:60px;
+	margin-right:10px;
+}
+.edit_menu_upfile .span_1,
+.edit_menu_upfile .span_2,
+.edit_menu_upfile .span_3,
+.edit_menu_upfile .span_4{
+	margin-left:10px;
+}
+.edit_menu_upfile .span_1{
+	float:left;
+	width:180px;
+}
+.edit_menu_upfile .span_2{
+	float:left;
+	width:120px;
+}
+.edit_menu_upfile .span_2 .input{
+	width:108px;
+	float:left;
+}
+.edit_menu_upfile .span_3{
+	width:130px;
+	float:right;
+	text-align:left;
+	clear:right;
+}
+.edit_menu_upfile .span_3 .modify_file {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align:top;
+	float:left;
+	zoom:1;
+}
+.edit_menu_upfile .span_3 .modify_file input{
+	width:28px;
+	margin:0;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+	position: absolute;
+	left:0;
+}
+.edit_menu_upfile .span_3 a{
+	margin-right:3px;
+	float:left;
+	zoom:1;
+}
+.edit_menu_upfile .span_3 a:hover{
+	text-decoration:underline;
+}
+.edit_menu_upfile .span_4{
+	float:left;
+	width:260px;
+}
+.edit_menu_upfile .span_4 .input{
+	width:70px;
+	margin-right:5px;
+	float:left;
+}
+.edit_menu_upfile .span_4 em{
+	float:left;
+	font-style:normal;
+}
+.edit_menu_upfile .span_4 em select{
+	height:26px;
+	line-height:26px;
+	float:left;
+	width: 62px;
+}
+.edit_menu_upfile .span_4 button{
+	float:left;
+	width:40px;
+	margin:0 5px 0 0;
+	padding-left:0;
+	padding-right:0;
+}
+.edit_menu_file .edit_menu_bot{
+	text-align:center;
+}
+.edit_menu_file .edit_menu_bot button{
+	margin:0 10px 0 0;
+}
+/*
+===================
+附件图标
+===================
+*/
+.file_icon span{
+	float:left;
+	display:block;
+	width:20px;
+	height:20px;
+	background:url(file_icon.png) no-repeat;
+	margin:3px 0 0 0;
+}
+.file_icon em{
+	float:left;
+	width:157px;
+	height:24px;
+	padding:1px;
+	line-height:24px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	font-style:normal;
+}
+/*.file_icon em:hover{
+	padding:0;
+	border:1px solid #ccc;
+	background-color:#fff;
+	box-shadow:2px 2px 2px #f0f0f0 inset;
+}*/
+.file_icon .input{
+	float:left;
+	height:16px;
+	line-height:16px;
+	width:149px;
+}
+.file_icon span.file_icon_rar,
+.file_icon span.file_icon_zip,
+.file_icon span.file_icon_7z{
+	background-position:0 -20px;
+}
+.file_icon span.file_icon_3gp,
+.file_icon span.file_icon_mp4,
+.file_icon span.file_icon_rm,
+.file_icon span.file_icon_rmvb,
+.file_icon span.file_icon_avi,
+.file_icon span.file_icon_wmv,
+.file_icon span.file_icon_mkv,
+.file_icon span.file_icon_flv,
+.file_icon span.file_icon_mov,
+.file_icon span.file_icon_mpeg,
+.file_icon span.file_icon_mpg,
+.file_icon span.file_icon_dat{
+	background-position:0 -40px;
+}
+.file_icon span.file_icon_wav,
+.file_icon span.file_icon_mp3,
+.file_icon span.file_icon_wma,
+.file_icon span.file_icon_flac,
+.file_icon span.file_icon_ape{
+	background-position:0 -60px;
+}
+.file_icon span.file_icon_torrent,
+.file_icon span.file_icon_TORRENT{
+	background-position:0 -80px;
+}
+.file_icon span.file_icon_jpg,
+.file_icon span.file_icon_JPG{
+	background-position:0 -100px;
+}
+.file_icon span.file_icon_gif,
+.file_icon span.file_icon_GIF{
+	background-position:0 -120px;
+}
+.file_icon span.file_icon_png,
+.file_icon span.file_icon_PNG{
+	background-position:0 -140px;
+}
+.file_icon span.file_icon_bmp,
+.file_icon span.file_icon_BMP{
+	background-position:0 -160px;
+}
+/*
+===================
+信息提示
+===================
+*/
+.edit_tips{
+	display:inline-table;
+	width:16px;
+	height:16px;
+	color:#2852a4;
+	cursor:help;
+	background:url(edit_tips.png) 0 center no-repeat;
+	vertical-align:middle;
+}
+/*
+===================
+图片上传
+===================
+*/
+.edit_menu_photo{
+	width:510px;
+}
+.edit_menu_photo .edit_menu_bot{
+	text-align:left;
+	padding:5px 10px 15px;
+	color:#999;
+	text-align: center;
+}
+.edit_menu_photo .edit_menu_btn{
+	margin-right:20px;
+}
+.eidt_uphoto{
+	border:1px solid #cccccc;
+}
+.eidt_uphoto ul{
+	height:230px;
+	overflow-y:scroll;
+	padding-bottom:10px;
+}
+.eidt_uphoto li{
+	float:left;
+	width:80px;
+	height:100px;
+	margin:10px 0 0 10px;
+}
+.eidt_uphoto .invalid{
+	background:#fbfbfb;
+	border:1px solid #cccccc;
+	position:relative;
+	height:98px;
+	width:78px;
+}
+.eidt_uphoto .invalid .error{
+	text-align:center;
+	padding:30px 1px;
+}
+.eidt_uphoto .no{
+	border:1px solid #cccccc;
+	overflow:hidden;
+	text-indent:-2000em;
+	height:98px;
+	background:#fbfbfb url(pic.jpg) center center no-repeat;
+}
+.eidt_uphoto .schedule{
+	background:#ffffff;
+	border:1px solid #cccccc;
+	position:relative;
+	line-height:98px;
+	height:98px;
+	text-align:center;
+}
+.eidt_uphoto .schedule span{
+	position:absolute;
+	left:0;
+	top:0;
+	height:98px;
+	background:#f0f5f9;
+}
+.eidt_uphoto .schedule em{
+	position:absolute;
+	width:78px;
+	text-align:center;
+	left:0;
+	top:0;
+	z-index:1;
+}
+.eidt_uphoto .get{
+	background:#ffffff;
+	border:1px solid #cccccc;
+	position:relative;
+	overflow:hidden;
+}
+.eidt_uphoto .get img{
+	cursor:pointer;
+}
+.eidt_uphoto .del{
+	position:absolute;
+	width:15px;
+	height:15px;
+	background:url(del.png) no-repeat;
+	right:1px;
+	top:1px;
+	overflow:hidden;
+	text-indent:-2000em;
+	display:none;
+}
+.eidt_uphoto .del:hover{
+	background-position:-20px 0;
+}
+.eidt_uphoto .get img{
+	vertical-align:top;
+	width:78px;
+	height:75px;
+	border-bottom:1px solid #ccc;
+}
+.eidt_uphoto .get input{
+	border:0;
+	outline:0 none;
+	margin-left:3px;
+}
+.eidt_uphoto .get .edit{
+	position:absolute;
+	height:22px;
+	line-height:22px;
+	text-align:center;
+	width:78px;
+	bottom:0;
+	left:0;
+	background:#e5e5e5;
+	color:#333;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	opacity:0.7;
+	display:none;
+}
+.eidt_uphoto li:hover .edit,
+.eidt_uphoto li:hover .del{
+	text-decoration:none;
+	display:block;
+}
+/*
+===================
+网络照片
+===================
+*/
+.edit_online_photo{
+	padding:20px;
+	margin:5px auto;
+}
+.edit_online_photo em{
+	display:inline-block;
+	width:80px;
+	text-align:right;
+	padding-right:10px;
+}
+.edit_online_photo .input{
+	width:300px;
+}
+
+/*
+===================
+图片编辑
+===================
+*/
+.edit_menu_photoedit{
+	width:600px;
+}
+.edit_menu_photoedit .edit_menu_bot{
+	border-top:1px solid #e4e4e4;
+	padding:10px;
+	margin:0 10px;
+}
+.edit_menu_photoedit .sidebar{
+	width:100px;
+	float:left;
+	border-right:1px solid #e4e4e4;
+	min-height:100px;
+	position:relative;
+}
+.edit_menu_photoedit .content{
+	border-left:1px solid #e4e4e4;
+	margin-left:-1px;
+	float:left;
+	width:468px;
+	min-height:100px;
+}
+.edit_menu_photoedit .sidebar dl{
+	margin-bottom:20px;
+}
+.edit_menu_photoedit .sidebar dt{
+	margin-bottom:5px;
+}
+.edit_menu_photoedit .sidebar a{
+	display:inline-block;
+	padding:2px 12px 2px 10px;
+	border:1px solid #ccc;
+	color:#333;
+	background:#e9f8ff;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #f7f7f7), to(#e9e9e9));
+	background-image: -webkit-linear-gradient(#ffffff, #f7f7f7 25%, #e9e9e9);
+	background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7 25%, #e9e9e9);
+	background-image: -ms-linear-gradient(#ffffff, #f7f7f7 25%, #e9e9e9);
+	background-image: -o-linear-gradient(#ffffff, #f7f7f7 25%, #e9e9e9);
+	background-image: linear-gradient(#ffffff, #f7f7f7 25%, #e9e9e9);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9e9e9', GradientType=0);
+	margin-bottom:5px;
+	line-height:22px;
+}
+.edit_menu_photoedit .sidebar a:hover{
+	border-color:#aaa;
+	text-decoration:none;
+}
+.edit_menu_photoedit .sidebar a em{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	vertical-align:top;
+	background:url(photo_edit.png) no-repeat;
+	margin:3px 10px 0 0;
+}
+.edit_menu_photoedit .sidebar a em.whirl_right{
+	background-position:0 -30px;
+}
+.edit_menu_photoedit .sidebar a em.cut{
+	background-position:0 -60px;
+}
+.edit_menu_photoedit .sidebar a em.reset{
+	background-position:0 -90px;
+	margin-top:5px;
+}
+/*
+===================
+预览图片
+===================
+*/
+.eidt_preview_wrap{
+	display:table;
+	width:100%;
+	height:100%;
+}
+.eidt_preview{
+	display:table-row;
+}
+.eidt_preview span{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.eidt_preview img{
+	vertical-align:middle;
+	border:0 none;
+}
+/*
+===================
+图片名称编辑
+===================
+*/
+.eidt_photo_title{
+	padding:10px;
+	text-align:center;
+}
+
+
+/*
+===================
+插入链接
+===================
+*/
+.edit_menu_insertLink{
+	width:450px;
+}
+.edit_menu_insertLink dl{
+	padding:0 0 15px;
+	margin:0;
+}
+.edit_menu_insertLink dt{
+	float:left;
+	width:50px;
+	line-height:26px;
+	padding:0;
+	margin:0;
+}
+.edit_menu_insertLink dd{
+	overflow:hidden;
+	line-height:26px;
+	padding:0;
+	margin:0;
+}
+.edit_menu_insertLink .http_dl select{
+	width:70px;
+	margin-right:10px;
+}
+/*
+===================
+插入表格
+===================
+*/
+.edit_menu_insertTable{
+	width:450px;
+}
+.edit_menu_insertTable ul{
+	padding:0;
+	margin:0;
+	height:180px;
+}
+.edit_menu_insertTable li{
+	float:left;
+	width:209px;
+	padding:0 0 10px;
+	list-style:none;
+	margin:0;
+	height:26px;
+}
+.edit_menu_insertTable li em{
+	display:inline-block;
+	width:70px;
+	font-style:normal;
+}
+.edit_menu_insertTable li .input{
+	width:80px;
+	margin-right:5px;
+}
+.edit_menu_insertTable li select{
+	width:90px;
+}
+
+/*
+===================
+编辑器内视频与音乐
+===================
+*/
+.editor_video_content{
+	border:1px dashed #ccc;
+	width:300px;
+	height:200px;
+	background:#fffeee url(video_48.png) center center no-repeat;
+}
+.editor_music_content{
+	border:1px dashed #ccc;
+	width:250px;
+	height:100px;
+	background:#fffeee url(music_48.png) center center no-repeat;
+}
+
+/*
+===================
+表情弹窗
+===================
+*/
+.edit_show_face{
+	width:397px;
+}
+.edit_show_face .edit_menu_cont{
+	padding:15px;
+}
+.edit_show_face .edit_menu_cont ul{
+	border-top:1px solid #e4e4e4;
+	border-left:1px solid #e4e4e4;
+}
+.edit_show_face .edit_menu_cont li{
+	float:left;
+	border-right:1px solid #e4e4e4;
+	border-bottom:1px solid #e4e4e4;
+}
+.edit_show_face .edit_menu_cont li a{
+	display:block;
+	width:50px;
+	height:50px;
+	padding:5px;
+	text-align:center;
+	line-height:50px;
+}
+.edit_show_face .edit_menu_cont li a:hover{
+	padding:3px;
+	border:2px solid #2B77AF;
+}
+.edit_show_face .edit_menu_cont li img{
+	vertical-align:middle;
+	max-height:50px;
+	max-width:50px;
+	_height:50px;
+	_width:50px;
+}
+.edit_show_loading{
+	height:150px;
+	line-height:150px;
+	text-align:center;
+}
+/*表情分页*/
+.edit_show_page{
+	padding:10px 0 0;
+}
+.edit_show_page a{
+	line-height:16px;
+	padding:0 5px;
+	float:left;
+	display:block;
+	height:16px;
+	overflow:hidden;
+	margin-right:5px;
+}
+.edit_show_page a{
+	color:#555;
+	border: 1px solid #e4e4e4;
+	text-decoration:none;
+}
+.edit_show_page a:hover,
+.edit_show_page a.current{
+	background:#409fdf;
+	color:#fff;
+	border: 1px solid #006699;
+	text-decoration:none;
+}
+/*
+ * 恢复内容提示
+ */
+.restore_tip_wrap{
+	border-bottom:1px solid #ddd;
+	background:#ffffee;
+	padding:6px 10px;
+}
+.restore_tip_wrap a{
+	color:#105cb6;
+	margin-left:10px;
+}
+.restore_tip_wrap a:hover{
+	text-decoration:underline;
+}
+.restore_tip_close{
+	float:right;
+}

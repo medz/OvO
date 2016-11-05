@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<cross-domain-policy>
+    <allow-access-from domain="*" /><!-- flash跨域策略，domain建议设置为 *.你的站点域名 -->
+</cross-domain-policy>

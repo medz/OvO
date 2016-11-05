@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:admin/config/email/run}">电子邮件设置</a></li>
+			<li><a href="{@url:admin/config/email/send}">电子邮件检测</a></li>
+		</ul>
+	</div>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		目前只提供SMTP模式
+	</div>
+	<div class="h_a">电子邮件设置</div>
+	<form class="J_ajaxForm" action="{@url:admin/config/email/dorun}" method="post">
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>邮件发送</th>
+				<td>
+					<ul class="switch_list cc">
+						<li><label><input type="radio" name="mailOpen" value="1" {@Pw::ifcheck($config['mailOpen'] == 1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="mailOpen" value="0" {@Pw::ifcheck($config['mailOpen'] == 0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">开启后可以给用户发送电子邮件。</div></td>
+			</tr>
+			<tr>
+				<th>SMTP服务器</th>
+				<td>
+					<input type="text" class="input length_5" name="mailHost" value="{$config['mail.host']}">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>SMTP端口</th>
+				<td>
+					<input type="text" class="input length_5" name="mailPort" value="{$config['mail.port']}">
+				</td>
+				<td><div class="fun_tips">默认不需修改。</div></td>
+			</tr>
+			<tr>
+				<th>发信人地址</th>
+				<td>
+					<input type="text" class="input length_5" name="mailFrom" value="{$config['mail.from']}">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>SMTP用户身份验证</th>
+				<td>
+					<ul class="switch_list cc">
+						<li><label><input type="radio" name="mailAuth" value="1" {@Pw::ifcheck($config['mail.auth'] == 1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="mailAuth" value="0" {@Pw::ifcheck($config['mail.auth'] == 0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">如果SMTP服务器要求通过身份验证才可以发邮件，请选择"开启"。</div></td>
+			</tr>
+			<tr>
+				<th>验证用户名</th>
+				<td>
+					<input type="text" class="input length_5" name="mailUser" value="{$config['mail.user']}">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>验证密码</th>
+				<td>
+					<input type="text" class="input length_5" name="mailPassword" value="{$password}">
+				</td>
+				<td><div class="fun_tips">安全考虑，只显示密码的前后两位，中间显示八个 * 号。</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+		<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

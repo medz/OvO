@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ol>
+			<li>计划任务是一项使系统在规定时间自动执行某些特定任务的功能。</li>
+			<li>合理设置执行时间，能有效地为服务器减轻负担。</li>
+			<li>对于如“期限头衔自动回收”此类需每天更新的计划任务建议不设置月和周的更新时间，否则对于购买一或几天的头衔的用户可能在一周或者一月内都无法回收头衔。</li>
+			<li>触发任务除系统指定的时间外，用户行为也可触发。触发任务的任务周期只是初始值。</li>
+		</ol>
+	</div>
+	<div class="cc mb10">
+		<a href="{@url:cron/cron/add}" class="btn"><span class="add"></span>添加计划</a>
+		<a href="{@url:cron/cron/import}" class="btn J_cron_back fr">恢复系统计划任务</a>
+	</div>
+	<div class="table_list">
+		<table width="100%">
+			<thead>
+				<tr>
+					<td>计划标题</td>
+					<td>任务周期</td>
+					<td>任务状态</td>
+					<td>上次执行时间</td>
+					<td>下次执行时间</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+		<!--# 
+			foreach ($list as $cron){
+			$modified = $cron['modified_time'] ? Pw::time2str($cron['modified_time']) : '-';
+			$next = $cron['next_time'] ? Pw::time2str($cron['next_time']) : '-';
+		#-->
+			<tr>
+				<td>{$cron['subject']}</td>
+				<td>{$cron['type']}</td>
+				<td><!--# if ($cron['isopen']) {#--> 开启 <!--# }else{#--> 关闭<!--#}#--></td>
+				<td>{$modified}</td>
+				<td>{$next}</td>
+				<td><a href="{@url:cron/cron/edit?id=$cron['cron_id']}" class="mr5">[编辑]</a>
+				<!--# if ($cron['isopen'] !=2){ #-->
+				<a class="J_ajax_del" href="{@url:cron/cron/dodelete}" data-pdata="{'id': '{$cron['cron_id']}'}">[删除]</a></td>
+				<!--# } #-->
+			</tr>
+		<!--# 
+			}
+		#-->
+		</table>
+	</div>
+	
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	$('#J_time_select').on('change', function(){
+		$('#J_time_'+ $(this).val()).show().siblings('.J_time_item').hide();
+	});
+
+	var lock = false;
+	$('a.J_cron_back').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		if(lock) {
+			return false;
+		}
+		lock = true;
+
+		$.post(this.href, function(data) {
+			lock = false;
+			if(data.state === 'success') {
+				$( '<span class="tips_success fr">' + data.message + '</span>' ).insertAfter($this).fadeIn( 'fast' );
+				reloadPage(window);
+			}else if( data.state === 'fail' ) {
+				Wind.dialog.alert(data.message);
+			}
+		}, 'json');
+	});
+});
+</script>
+</body>
+</html>

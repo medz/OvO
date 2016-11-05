@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<template source='PUBLIC:template.admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<form method="post" class="J_ajaxForm" action="{@url:bbs/setbbs/dothread}">
+	<div class="nav">
+		<ul class="cc">
+			<!-- <li><a href="{@url:bbs/setbbs/run}">首页</a></li> -->
+			<li class="current"><a href="{@url:bbs/setbbs/thread}">列表页</a></li>
+			<li><a href="{@url:bbs/setbbs/read}">阅读页</a></li>
+		</ul>
+	</div>
+	<div class="h_a">论坛列表页功能细节设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>新帖控制</th>
+				<td><input name="new_thread_minutes" type="number" class="input length_5 mr5" value="{$config['thread.new_thread_minutes']}">分钟</td>
+				<td><div class="fun_tips">超过设定时间后，主题将不在显示为新帖。</div></td>
+			</tr>
+			<tr>
+				<th>每页显示主题数</th>
+				<td><input name="perpage" type="number" class="input length_5" value="{$config['thread.perpage']}"></td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>最大显示页数</th>
+				<td><input name="max_pages" type="number" class="input length_5" value="{$config['thread.max_pages']}"></td>
+				<td><div class="fun_tips">主题列表中用户可以查看的最大页数，建议设置为1000-2500之间，0表示不限制。</div></td>
+			</tr>
+			<!-- 
+			<tr>
+				<th>显示快速发布主题</th>
+				<td>
+					<ul class="switch_list cc">
+						<li><label><input type="radio" value="1" {@Pw::ifcheck($config['thread.show_fastpost']==1)}><span>开启</span></label></li>
+						<li><label><input type="radio" value="0" {@Pw::ifcheck($config['thread.show_fastpost']==0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			 -->
+			<!--tr>
+				<th>侧栏版块列表宽度</th>
+				<td><input name="leftside_width" type="number" class="input length_5 mr5" value="{$config['thread.leftside_width']}">像素</td>
+				<td><div class="fun_tips">设置左侧版块导航宽度，可根据版块名称长度自动调整。</div></td>
+			</tr-->
+			<tr>
+				<th>热帖回复数量</th>
+				<td><input name="hotthread_replies" type="number" class="input length_5" value="{$config['thread.hotthread_replies']}"></td>
+				<td><div class="fun_tips">回复数超过设定值后，主题将显示热门帖子图标。</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='PUBLIC:template.admin.common.footer' />
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<template source='link_tab' />
+<!--==============================链接审核================================-->
+	<form method="post" class="J_ajaxForm" data-role="list" action="{@url:link/link/doCheck}">
+	<div class="table_list">
+		<table width="100%">
+			<colgroup>
+				<col width="70">
+				<col width="60">
+				<col>
+				<col>
+				<col width="110">
+			</colgroup>
+			<thead>
+				<tr>
+					<td><label><input class="J_check_all" data-direction="y" data-checklist="J_check_y" type="checkbox">全部</label></td>
+					<td>顺序</td>
+					<td>站点名称</td>
+					<td>站点地址</td>
+					<td>站点logo</td>
+					<td>分类</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<!--# if ($links) { #-->
+			<!--# foreach ($links as $key => $value) { #-->
+			<tr>
+				<td><input class="J_check" data-xid="J_check_x" data-yid="J_check_y" type="checkbox" name="lid[]" value="{$value['lid']}"></td>
+				<td><input class="input length_0 J_link_vieworder" type="text" name="data[{$value['lid']}][vieworder]" value="{$value['vieworder']}"></td>
+				<td>{$value['name']}</td>
+				<td>{$value['url']}</td>
+				<td>{$value['logo']}</td>
+				<td>
+					<div data-id="{$value['lid']}" class="cate_link_down J_link_cata"></div>
+					<div class="core_menu J_menu_drop" style="display:none;margin-top:18px;">
+						<ul class="core_menu_list cc">
+							<!--# foreach ($typesList as $k => $v) { #-->
+							<li><label><input class="J_cate_check" data-text="{$v['typename']}" type="checkbox" name="data[{$value['lid']}][typeid][]" value="{$v['typeid']}" {@Pw::ifcheck(Pw::inArray($v['typeid'], $value['typeids']))}>{$v['typename']}</label></li>
+							<!--# } #-->
+						</ul>
+					</div>
+					<div class="cate_link J_cate_link">
+					<!--# foreach ($value['typeids'] as $typeid) { #-->
+					<span>{$typesList[$typeid]['typename']}</span>
+					<!--# } #--></div>
+				</td>
+				<td><a class="J_check_pass mr10" data-lid="{$value['lid']}" href="">[通过]</a><a href="{@url:link/link/doDelete}" class="mr10 J_ajax_del" data-msg="确定要拒绝此友情链接申请吗？" data-pdata="{'lid': '{$value['lid']}'}">[拒绝]</a></td>
+			</tr>
+			<!--# } #-->
+			<!--# } else { #-->
+				<tr><td colspan="7" class="tac">啊哦，暂无内容！</td></tr>
+			<!--# } #-->
+		</table>
+	</div>
+	<!--# if ($links) { #-->
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<label class="mr20"><input class="J_check_all" data-direction="x" data-checklist="J_check_x" type="checkbox">全选</label>
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">通过</button><button type="button" data-action="{@url:link/link/doDelete}" class="btn J_ajax_submit_btn">拒绝</button>
+		</div>
+	</div>
+	<!--# } #-->
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+<script type="text/javascript">
+Wind.use('dialog',function() {
+
+	//分类显示&隐藏
+	$('div.J_link_cata').on('mouseenter', function(){
+		$(this).siblings('.J_menu_drop').show();
+	}).on('mouseleave', function(e){
+		var $this = $(this);
+		if(!$(e.relatedTarget).is($('div.J_menu_drop, div.J_menu_drop *'))) {
+			$(this).siblings('.J_menu_drop').hide();
+		}
+	});
+	
+	$('div.J_menu_drop').on('mouseleave', function(e){
+		$(this).hide();
+	});
+	
+	
+	//分类列表选择
+	$('input.J_cate_check').on('change', function(e){
+		var $this = $(this), cate_list = $this.parents('div.J_menu_drop').siblings('div.J_cate_link');
+		if($this.attr('checked')) {
+			cate_list.append('<span class="J_cate_item_'+ $this.val() +'">'+ $this.data('text') +'</span>')
+		}else{
+			cate_list.find('span.J_cate_item_'+ $this.val()).remove();
+		}
+	});
+	
+	
+	//点击单个通过
+	$('a.J_check_pass').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			tr = $this.parents('tr'),
+			order = tr.find('input.J_link_vieworder').val(), //顺序
+			cates = tr.find('div.J_menu_drop input.J_cate_check:checked'),
+			cates_arr = [],
+			lid = $this.data('lid');
+			
+		//分类数组
+		$.each(cates, function(i, o){
+			cates_arr.push($(this).val());
+		});
+		
+		$.ajax({
+			url			: "{@url:link/link/doCheck}",
+			type		: 'post',
+			dataType	: 'json',
+			data		: '&signle=1&lid[]='+lid+'&data['+lid+'][vieworder]='+order+'&data['+lid+'][typeid]='+cates_arr+'&csrf_token='+GV.TOKEN,
+			success : function(data){
+				if(data.state === 'success') {
+					var location = window.location;
+					location.href = location.pathname + location.search;
+				}else{
+					Wind.dialog.alert(data.message);
+				}
+			}
+		})
+
+	});
+	
+	//批量拒绝
+	$('#J_link_del_all').on('click', function(e){
+		e.preventDefault();
+		if(!$('input.J_check:checked').length) {
+			Wind.dialog.alert('请至少选定至一条友情链接');
+			return;
+		}
+		Wind.dialog({
+			message	: '确定要拒绝选中的友情链接申请吗？', 
+			type	: 'confirm',
+			onOk	: function() {
+				$('form.J_ajaxForm').ajaxSubmit({
+					dataType : 'json',
+					url		 : '{@url:link/link/doDelete}',
+					success	 : function(data, statusText, xhr, $form) {
+						if(data.state === 'success') {
+							var location = window.location;
+							location.href = location.pathname + location.search;
+						}else{
+							Wind.dialog.alert(data.message);
+						}
+					}
+				});
+			}
+		});
+		
+	});
+	
+	
+});
+</script>
+</body>
+</html>

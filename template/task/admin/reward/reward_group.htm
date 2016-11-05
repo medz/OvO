@@ -1,0 +1,27 @@
+<!--=============用户组奖励===============-->
+<tbody class="J_reward_forum">
+	<tr>
+		<th>指定用户组</th>
+		<td>
+			<span class="must_red">*</span>
+			<input type="hidden" value="id-name" name="reward[key]" />
+			<select class="select_5" name="reward[value]">
+<!--#foreach ($groups as $key => $item) {
+		$key = $key . '-' . $item['name'];
+#-->
+			<option value="{$key}" {@Pw::isSelected($key == $reward['value'])}>{$item['name']}</option>
+<!--#}#-->
+			</select>
+		</td>
+		<td><div class="fun_tips"></div></td>
+	</tr>
+	<tr>
+		<th>有效时间</th>
+		<td>
+			<span class="must_red">*</span>
+			<input name="reward[time]" type="text" class="input length_5 input_hd" value="{$reward['time']}">天
+			<input type="hidden" value="用户组[{name}]{time}天" name="reward[descript]" />
+		</td>
+		<td><div class="fun_tips"></div></td>
+	</tr>
+</tbody>

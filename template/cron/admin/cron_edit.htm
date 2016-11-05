@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">	
+	<div class="nav">
+		<div class="return"><a href="{@url:cron/cron/run}">返回上一级</a></div>
+	</div>
+<!--添加计划任务-->
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ol>
+			<li>计划任务是一项使系统在规定时间自动执行某些特定任务的功能。</li>
+			<li>计划任务与系统核心紧密关联，上传不当的文件可能造成站点无法正常运行。</li>
+			<li>关于计划任务的添加，您需要上传相应执行文件到 service/cron/srv/do/目录下,文件名必须为PwCronDoXxx.php形式</li>
+		</ol>
+	</div>
+	<div class="h_a">添加计划任务</div>
+	<form class="J_ajaxForm"  action="{@url:cron/cron/doedit}" method="post">
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>任务标题</th>
+				<td>
+					<input type="text" class="input length_5 mr5" name="subject" value="{$info['subject']}">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>执行时间</th>
+				<td>
+					<select id="J_time_select" name="looptype" class="mr10">
+					<!--# 
+					foreach($loopType as $k=>$v){
+					#-->
+						<option value="{$k}" {@Pw::isSelected($k == $info['loop_type'])}>{$v}</option>
+					<!--# 
+					}
+					#-->
+					</select>
+
+					<span class="J_time_item" id="J_time_month"  <!--# if( $info['loop_type'] != 'month'){ #--> style="display:none;" <!--# } #-->>
+						<select class="select_2 mr10" name="month_day">
+					<!--# 
+						for($i = 1; $i <= 31; $i++){
+					#-->
+							<option value="{$i}" {@Pw::isSelected($i == $info['day'])}>{$i}日</option>
+					<!--# 
+						}
+					#-->
+							<option value="99" {@Pw::isSelected(99 == $info['day'])}>最后一天</option>
+						</select>
+						<select class="select_2"  name="month_hour">
+					<!--# 
+						for($i = 0; $i <= 23; $i++){
+					#-->
+							<option value="{$i}" {@Pw::isSelected($i == $info['hour'])}>{$i}点</option>
+					<!--# 
+						}
+					#-->
+						</select>
+					</span>
+
+					<span class="J_time_item" id="J_time_week"  <!--# if( $info['loop_type'] != 'week'){ #--> style="display:none;" <!--# } #-->>
+						<select class="select_2 mr10" name="week_day">
+							<option value="1" {@Pw::isSelected(1 == $info['day'])}>周一</option>
+							<option value="2" {@Pw::isSelected(2 == $info['day'])}>周二</option>
+							<option value="3" {@Pw::isSelected(3 == $info['day'])}>周三</option>
+							<option value="4" {@Pw::isSelected(4 == $info['day'])}>周四</option>
+							<option value="5" {@Pw::isSelected(5 == $info['day'])}>周五</option>
+							<option value="6" {@Pw::isSelected(6 == $info['day'])}>周六</option>
+							<option value="0" {@Pw::isSelected(0 == $info['day'])}>周日</option>
+						</select>
+						<select class="select_2" name="week_hour">
+					<!--# 
+						for($i = 0; $i <= 23; $i++){
+					#-->
+							<option value="{$i}" {@Pw::isSelected($i == $info['hour'])}>{$i}点</option>
+					<!--# 
+						}
+					#-->
+						</select>
+					</span>
+
+					<span class="J_time_item" id="J_time_day"  <!--# if( $info['loop_type'] != 'day'){ #--> style="display:none;" <!--# } #-->>
+						<select class="select_2 mr10"  name="day_hour">
+					<!--# 
+						for($i = 0; $i <= 23; $i++){
+					#-->
+							<option value="{$i}" {@Pw::isSelected($i == $info['hour'])}>{$i}点</option>
+					<!--# 
+						}
+					#-->
+						</select>
+					</span>
+
+					<span class="J_time_item" id="J_time_hour"  <!--# if( $info['loop_type'] != 'hour'){ #--> style="display:none;" <!--# } #-->>
+						<select class="select_2" name="hour_minute">
+							<option value="0" {@Pw::isSelected(0 == $info['minute'])}>00分</option>
+							<option value="10" {@Pw::isSelected(10 == $info['minute'])}>10分</option>
+							<option value="20" {@Pw::isSelected(20 == $info['minute'])}>20分</option>
+							<option value="30" {@Pw::isSelected(30 == $info['minute'])}>30分</option>
+							<option value="40" {@Pw::isSelected(40 == $info['minute'])}>40分</option>
+							<option value="50" {@Pw::isSelected(50 == $info['minute'])}>50分</option>
+						</select>
+					</span>
+
+					<span class="J_time_item" id="J_time_now"  <!--# if( $info['loop_type'] != 'now'){ #--> style="display:none;" <!--# } #-->>
+						<!--#
+							if ($info['day']) $time =  $info['day'];
+							if ($info['hour']) $time =  $info['hour'];
+							if ($info['minute']) $time =  $info['minute'];
+						#-->
+						<input type="text" class="input length_2 mr5" name="now_time" value="{$time}">
+						<select class="select_2" name="now_type">
+							<option value="minute" {@Pw::isSelected($info['minute'])}>分钟</option>
+							<option value="hour" {@Pw::isSelected($info['hour'])}>小时</option>
+							<option value="day" {@Pw::isSelected($info['day'])}>天</option>
+						</select>
+					</span>
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<!--# if ($info['isopen'] == 2){ #-->
+			<input type="hidden" name="isopen" value="2">
+			<!--# }else{ #-->
+			<tr>
+				<th>开启计划</th>
+				<td>
+					<ul class="switch_list cc">
+						<li><label><input type="radio" name="isopen" value="1" {@Pw::ifcheck($info['isopen'] == 1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="isopen" value="0" {@Pw::ifcheck(!$info['isopen'])}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<!--# } #-->
+			<tr>
+				<th>执行文件</th>
+				<td>
+					<select class="select_4 mr5" name="filename">
+						<!--# foreach ($fileList as $file){
+							 $basename = basename($file,".php");
+						#-->
+							<option value="{$basename}" {@Pw::isSelected($basename == $info['cron_file'])}>{$file}</option>
+						<!--# 
+							}
+						#-->
+					</select>
+				</td>
+				<td><div class="fun_tips">请选择任务php文件名称</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+		<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		<input type="hidden" name="id" value="{$info['cron_id']}">
+		</div>
+	</div>
+	</form>
+<!--结束-->
+
+	
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	$('#J_time_select').on('change', function(){
+		$('#J_time_'+ $(this).val()).show().siblings('.J_time_item').hide();
+	});
+});
+</script>
+</body>
+</html>

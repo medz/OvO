@@ -1,0 +1,26 @@
+<!--# if ($__tpl_data) { #-->
+	<section class="links_list">
+		<!--# if ($__tpl_data['logo']) { #-->
+		<!--# foreach ($__tpl_data['logo'] as $link) { 
+			  	
+		#-->
+		<dl>
+			<dt><a href="{$link['url']}"><img src="{$link['logo']}" width="88" height="31" alt="{$link['name']}" title="{$link['name']}"></a></dt>
+			<dd>
+				<a href="{$link['url']}">{$link['name']}</a><br />
+				{$link['descrip']}
+			</dd>
+		</dl>
+		<!--# } #-->
+		<!--# } #-->
+		<!--# if ($__tpl_data['text']) { #-->
+		<ul class="cc">
+			<!--# foreach ($__tpl_data['text'] as $link) { 
+				  
+			#-->
+			<li><a href="{$link['url']}">{$link['name']}</a></li>
+			<!--# } #-->
+		</ul>
+		<!--# } #-->
+	</section>
+<!--# } #-->

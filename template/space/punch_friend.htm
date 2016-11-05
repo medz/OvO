@@ -1,0 +1,58 @@
+<!--====================打卡弹窗=====================-->
+<div class="core_pop_wrap" id="J_punch_friend_pop" data-max="{$friendNum}">
+	<div class="core_pop">
+		<div class="pop_help_punch">
+		<form id="J_punch_friend_form" action="{@url:space/punch/dofriend}" method="post" >
+			<div class="pop_top J_drag_handle">
+				<a href="#" class="pop_close J_punch_close">关闭</a>
+				<strong>帮Ta打卡</strong>
+			</div>
+			<div class="">
+				<div class="info">
+					每帮一个好友打卡可获<span class="org">{$reward['cNum']}{$reward['cUnit']}{$reward['cType']}</span>，最多选择<span class="org">{$friendNum}个好友</span>
+					<div class="arrow"><em></em><span></span></div>
+				</div>
+				<!--# if ($follows) { #-->
+				<div class="select_box">
+					<div class="hd">
+						<span>选择好友</span>
+						<span>已选择</span>
+					</div>
+					<div class="ct cc">
+						<div class="left">
+							<dl class="current">
+								<dt class="J_friend_dt" id="J_punch_dt_all" name="type" value="0" data-url="{@url:space/punch/getfollow}">全部</dt>
+								<!--# foreach ($follows as $k => $v) { #-->
+								<dd id="J_firend_dd_{$k}" class="J_friend_item {$v['disable']}" data-name="friend" data-id="{$k}">{$v['username']}</dd>
+								<!--# } #-->
+								
+							</dl>
+							<!--# foreach ($typeArr as $k => $v) { #-->
+							<dl>
+								<dt class="J_friend_dt" data-name="type" data-id="{$k}" data-url="{@url:space/punch/getfollow?type=$k}">{$v}</dt>						
+							</dl>
+							<!--# } #-->
+						</div>
+						<div class="right">
+							<div class="arrow"><em></em><span></span></div>
+							<ul class="cc" id="J_friend_selected"></ul>
+						</div>
+					</div>
+				</div>
+				<div class="pop_bottom">
+					<input type="hidden" name="" id="J_type_id">
+					<button type="submit" class="btn btn_submit disabled" id="J_punch_friend_sub" disabled="true">确定</button>
+					<a href="#" class="btn J_punch_close">取消</a>
+				</div>
+			<!--# } else {#-->
+				<div class="select_box" style="height:238px;">
+					<div style="padding:60px 0 0;">
+						<div class="not_content_mini"><i></i>你还没有好友哦!</div>
+					</div>
+				</div>
+			<!--# } #-->
+			</div>
+		</form>
+		</div>
+	</div>
+</div>

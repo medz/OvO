@@ -1,0 +1,17 @@
+<div class="pages">
+
+<!--# if($page > 1) { 
+$page_i = $page - 1;
+#-->
+
+	<a href="{@url:hook/manage/search?name=$name&page=$page_i}" class="pages_pre">&laquo;&nbsp;上一页</a>
+
+<!--# } if(count($hooks) == $perpage) {
+$page_i = $page + 1;
+ #-->
+ 
+	<a href="{@url:hook/manage/search?name=$name&page=$page_i}" class="pages_next">下一页&nbsp;&raquo;</a>
+
+<!--# } #-->
+
+</div>

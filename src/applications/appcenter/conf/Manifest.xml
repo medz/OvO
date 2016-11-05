@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>wind management</name>                  	<!-- 必填 应用名称，将显示在应用列表中 -->
+		<alias>alias</alias>	                 		<!-- 必填 不可重复 应用别名，和目录包名保持一致， 用于系统唯一标识该应用，
+                                                             -->
+		<version>1.0.0</version>	                  	<!-- 必填 应用版本信息 -->
+		<pw-version>0.8.0</pw-version>                	<!-- 必填 支持的PW版本信息，多个版本用逗号分割 -->
+		<description>wind management</description>    	<!-- 可选 应用描述信息，将显示在应用列表，用来描述应用特点、案例、使用方式等 -->
+		<logo>images/logo.png</logo>					<!-- 可选 应用的图标地址 -->
+		<type>app</type>								<!-- 必填 应用类型，应用=>app,风格=>style -->
+		<station>1</station>                            <!-- 可选 供站内应用使用，普通应用无需这项配置-->
+		<charset>UTF-8</charset>		          		<!-- 必填 应用编码信息，标识该应用包的编码类型 -->
+		<website>http://path/to/homepage</website>	  	<!-- 可选 应用主页信息 -->
+		<author-name></author-name>		          		<!-- 可选 作者名称 -->
+		<author-email></author-email>		  			<!-- 可选 作者email -->
+		<author-icon></author-icon>	                  	<!-- 可选 作者头像 -->
+	</application>
+
+	<!-- 数据注册 -->
+	<!-- 需要执行的sql语句请放在应用目录下的conf/data.sql文件中 -->
+
+	<!-- 资源文件目录，安装时候将把目录下的资源文件转移到www/themes/extres/{alias}下，
+	     模板里可通过{@G:url.extres}/{alias}访问这个目录下的文件-->
+	<res>res</res>
+	
+	<!-- 当应用有额外需要安装或清理的数据，例如注册到核心表的数据，运行时生成的临时文件等，可通过实现iPwInstall接口来实现其中的install或uninstall方法 -->
+	<install></install>
+	
+	<!-- 安装程序时需要调用的安装服务，该标签的值为安装服务别名 -->
+	<installation-service></installation-service>
+	
+	<!-- 应用钩子注册 -->
+	<hooks>
+		<hook-name>	                       		<!-- 钩子名称 -->
+			<documents>
+				<description></description>    	<!-- 钩子描述，接收一串描述字符串，表述钩子的定义的位置，作用以及使用方法，调用类型(run,verify...) -->
+				<param></param>		       		<!-- 钩子定义的参数类型列表说明，接收一串描述字符串，表述参数类型意义是否可选填等信息 -->
+				<interface></interface>	       	<!-- 钩子定义对扩展接口返回值要求，接收一串描述字符串，表述是否需要返回值，返回值类型等 -->
+			</documents>
+		</hook-name>
+	</hooks>
+
+	<!-- 扩展注册 -->
+	<inject-services>
+		<hook-name>                               	<!-- 钩子名称 -->
+			<alias>				  					<!-- 扩展别名 -->
+				<class></class>			  			<!-- 必填 扩展实现类的绝对路径地址， 路径别名方式 -->
+				<method></method>		  			<!-- 根据钩子类型不同 可选 自定义扩展执行方法 -->
+				<loadway></loadway>		  			<!-- 可选 默认 load加载方式 -->
+				<expression></expression>	  		<!-- 可选 填写钩子执行表达式，当表达式成立时执行该挂载，在 Controller 类型的钩子位置可用 -->
+				<description></description>	  		<!-- 扩展定义描述信息，接收一串字描述字符串， 表述扩展定义的功能作用 -->
+			</alias>
+		</hook-name>
+	</inject-services>
+
+</manifest>

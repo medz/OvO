@@ -1,0 +1,519 @@
+/*
+===================
+@explain: 注册流程
+@copyright: Copyright 2011,phpwind.com
+@author: longwenid@gmail.com
+$Id: register.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+*/
+
+/*
+===================
+主体内容区域
+===================
+*/
+.register{
+	margin-top:20px;
+}
+
+/*
+===================
+注册登录布局
+===================
+*/
+.reg_cont_wrap{
+	float:left;
+	min-height:1px;
+	width:100%;
+}
+.reg_cont{
+	margin-right:220px;
+	position:relative;
+}
+.reg_side{
+	float:left;
+	width:200px;
+	margin-left:-200px;
+	padding-top:30px;
+}
+
+/*
+===================
+标题栏
+===================
+*/
+.reg_head{
+	padding:10px 15px;
+	border-bottom:1px solid #ededed;
+	font-size:16px;
+	font-weight:700;
+	color:#666;
+}
+
+/*
+===================
+表单区域
+===================
+*/
+.reg_form{
+	padding:25px 0 50px 15px;
+}
+.reg_form dl{
+	padding:15px 0 15px 10px;
+	width:690px;
+	min-height:32px;
+	zoom:1;
+	position:relative;
+}
+.reg_form dl.pick{
+	padding:10px 0 0 10px;
+	height:24px;
+}
+.reg_form dl:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+}
+.reg_form dl.current{
+	background:#eff7fe;
+}
+.reg_form dl.dl_cd{
+	height:115px;
+}
+.reg_form dl.dl_cd img{
+	vertical-align:top;
+}
+.reg_form dl.dl_cd .tips_icon_error,
+.reg_form dl.dl_cd .tips_icon_success{
+	float:left;
+	margin-top:5px;
+	margin-left:5px;
+}
+.reg_form dl.dl_cd .dd_r .tips_icon_error,
+.reg_form dl.dl_cd .dd_r .tips_icon_success{
+	float:inherit;
+	margin-top:0;
+	margin-left:0;
+}
+.reg_form dt{
+	float:left;
+	width:110px;
+	font-size:14px;
+	line-height:25px;
+	*line-height:28px;
+	text-align:right;
+	margin-right:15px;
+}
+.reg_form dd{
+	float:left;
+	width:250px;
+	/*height:30px;*/
+}
+.reg_form dd .input{
+	vertical-align:top;
+}
+.reg_form dd.dd_r{
+	width:308px;
+	line-height:26px;
+}
+.reg_form dd .reg_ddtext{
+	line-height:26px;
+	height:26px;
+	font-size:14px;
+}
+.reg_form .input,
+.reg_form textarea{
+	margin-right:5px;
+}
+.reg_form dl.current .input,
+.reg_form .input:focus,
+.reg_form textarea:focus{
+	outline:2px solid #99d8f5;
+	border-color:#7bbff2;
+}
+.reg_form .username{
+	line-height:25px;
+	font-size:14px;
+}
+.reg_side_cont{
+	border-left:1px dotted #ccc;
+	padding:10px 20px 20px;
+}
+.reg_form .btn_submit{
+	padding-left:25px;
+	padding-right:25px;
+	position:relative;
+}
+.reg_form .tips{
+	padding:5px 10px;
+	line-height:20px;
+	margin-bottom:10px;
+}
+.reg_form .tips_icon_error,
+.reg_form .tips_icon_success{
+	*margin-top:5px;
+}
+
+/*
+===================
+密码强度
+===================
+*/
+.pwd_strength_1,
+.pwd_strength_2,
+.pwd_strength_3,
+.pwd_strength_4{
+	width:84px;
+	height:9px;
+	overflow:hidden;
+	display:inline-block;
+	background:url(../../images/register/pwd_strength.png) no-repeat;
+	margin-right:5px;
+}
+.pwd_strength_2{
+	background-position:0 -9px;
+}
+.pwd_strength_3{
+	background-position:0 -18px;
+}
+.pwd_strength_4{
+	background-position:0 -27px;
+}
+
+/*
+===================
+条款协议
+===================
+*/
+.agreements{
+	margin:10px 0 0 135px;
+	width:460px;
+}
+.agreements pre{
+	height:150px;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	border:1px solid #e4e4e4;
+}
+
+/*
+===================
+操作提示
+===================
+*/
+.reg_tips{
+	background:url(../../images/register/arrow_reg.png) 0 4px no-repeat;
+	display:inline-block;
+	padding:5px 10px 5px 20px;
+	vertical-align:middle;
+	color:#999;
+	line-height:1.5;
+}
+
+/*
+===================
+邮箱下拉
+===================
+*/
+.mail_down{
+	position:absolute;
+	width:240px;
+	z-index:11;
+}
+.mail_down ul{
+	border:1px solid #cccccc;
+	padding:1px;
+	background:#fff;
+}
+.mail_down li{
+	line-height:21px;
+	height:21px;
+	overflow:hidden;
+}
+.mail_down li a{
+	display:block;
+	color:#999;
+	text-decoration:none;
+	padding:0 10px;
+}
+.mail_down li a:hover,
+.mail_down li.current a{
+	background-color:#e8f4fc;
+	color:#333;
+}
+
+/*
+===================
+密码找回
+===================
+*/
+.password_back_type{
+	padding:0 0 0 135px;
+}
+.password_back_type a{
+	border:1px solid #e0e0e0;
+	display:inline-block;
+	background:#fff;
+	height:100px;
+	width:160px;
+	text-align:center;
+	margin-right:10px;
+	color:#666;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#f0f0f0));
+	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #f0f0f0);
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #f0f0f0);
+	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #f0f0f0);
+	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #f0f0f0);
+	background-image: linear-gradient(#ffffff, #ffffff 25%, #f0f0f0);
+}
+.password_back_type a:hover{
+	background:#ffff9d;
+	border-color:#ffae12;
+	text-decoration:none;
+	color:#000;
+}
+.password_back_type img{
+	display:block;
+	vertical-align:top;
+	margin:7px auto 3px;
+}
+
+/*
+===================
+邀请注册
+===================
+*/
+.invite_box_wrap{
+	border:1px solid #eeeeee;
+	padding:1px;
+	background:#fff;
+	margin:5px 0 10px 133px;
+	width:400px;
+}
+.invite_box{
+	background:#f6f6f6;
+	padding:5px 10px;
+}
+.invite_box .hd{
+	font-family:Simsun;
+	margin-bottom:8px;
+}
+.invite_box .hd a{
+	color:#666;
+}
+.invite_box .ct ul{
+	padding:10px 0 10px 10px;
+}
+.invite_box .ct li{
+	padding:10px 0 0;
+	color:#666;
+}
+.invite_box .ct li em{
+	display:inline-block;
+	width:60px;
+}
+.invite_box .ct .input{
+	padding:2px;
+	width:140px;
+}
+.invite_box .tips{
+	text-align:left;
+	padding:5px 10px;
+	line-height:1.5;
+}
+
+
+/*
+===================
+消息提示
+===================
+*/
+.reg_message{
+	width:400px;
+	margin:40px auto 0;
+	padding:0 0 40px 100px;
+	background:url(../../images/tips/big.png) -100px 0 no-repeat;
+	min-height:100px;
+	_height:100px;
+	line-height:1.5;
+}
+.reg_message h2{
+	padding:5px 0 10px;
+	font-size:16px;
+	font-weight:100;
+}
+.reg_ignore{
+	background-position:0 -100px;
+}
+.reg_ignore ul{
+	padding-top:5px;
+}
+.reg_ignore .error_return{
+	padding-top:10px;
+	font-size:14px;
+}
+
+
+/*
+===================
+验证激活
+===================
+*/
+.reg_activation{
+	width:610px;
+	margin:0 auto;
+	padding:30px 0;
+}
+.reg_activation h1{
+	font-size:20px;
+	font-family:"Microsoft Yahei";
+	font-weight:100;
+	color:#598403;
+	letter-spacing:1px;
+	margin-bottom:30px;
+}
+.reg_activation p{
+	line-height:1.8;
+}
+.reg_activation p.text{
+	line-height:2;
+	font-size:14px;
+}
+.reg_activation_tip h2{
+	font-size:12px;
+	border-top:1px solid #d0d4d7;
+	margin-top:50px;
+	padding:10px 0 5px;
+}
+.reg_activation_tip p{
+	padding-bottom:30px;
+}
+
+/*
+===================
+版块会员推荐
+===================
+*/
+.reg_push{
+	padding:0 10px;
+}
+.reg_push_forum,
+.reg_push_user{
+	border:1px solid #eaf1f7;
+	background:#f7fbfe;
+	margin-bottom:20px;
+	padding:15px;
+}
+.reg_push_forum h3,
+.reg_push_user h3{
+	font-weight:100;
+	font-size:12px;
+	color:#333;
+	display:block;
+	border-bottom:1px dashed #c2c6c9;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	line-height:26px;
+}
+.reg_push .ct{
+	overflow:hidden;
+}
+.reg_push .ct ul{
+	margin-left:-25px;
+	position:relative;
+}
+.reg_push .ct ul li{
+	float:left;
+	width:270px;
+	height:70px;
+	margin:10px 0;
+	margin-left:26px;
+}
+.reg_push h4{
+	margin-bottom:5px;
+}
+.reg_push .face{
+	float:left;
+	margin-right:10px;
+}
+.reg_push .text{
+	overflow:hidden;
+}
+
+/*
+===================
+地区学校资料库
+===================
+*/
+.pop_region_list{
+	padding-bottom:10px;
+}
+.pop_region_list ul{
+	padding-left:2px;
+}
+.pop_region_list ul li{
+	float:left;
+	line-height:20px;
+}
+.pop_region_list ul li a,
+.pop_region_list ul li span{
+	display:block;
+	padding:0 5px;
+	color:#333;
+	white-space:nowrap;
+	border-radius:2px;
+}
+.pop_region_list ul li a:hover{
+	background:#e0e0e0;
+	text-decoration:none;
+}
+.pop_region_list ul li.current a,
+.pop_region_list ul li.current span{
+	background:#266aae;
+	color:#ffffff;
+}
+.pop_region_list .hr{
+	background:#e4e4e4;
+	height:1px;
+	overflow:hidden;
+	font:0/0 Arial;
+	clear:both;
+	margin:10px 0;
+}
+.pop_region_list .filter{
+	padding:10px 0;
+}
+.pop_region_list .filter a{
+	margin-right:12px;
+}
+.pop_region_list .filter a.current{
+	color:#333;
+	font-weight:700;
+}
+.pop_region_list .list{
+	border:1px solid #ccc;
+	height:108px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.pop_region_list .list ul{
+	padding:5px;
+}
+.pop_region_list .list li{
+	float:left;
+	width:33%;
+	cursor:pointer;
+	text-indent:5px;
+}
+.pop_region_list .list li:hover{
+	background:#f7f7f7;
+}
+
+/*验证码*/
+#J_verify_code #J_verify_update_img{
+	float:left;
+	margin-right:10px;
+}

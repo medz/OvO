@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:bbs/contentcheck/run}">主题审核</a></li>
+			<li><a href="{@url:bbs/contentcheck/reply}">回复审核</a></li>
+		</ul>
+	</div>
+	
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ol>
+			<li>当版块功能设置中开启 "审核主题" 功能时，只有管理员审核通过状态的帖子才会在前台正常显示</li>
+		</ol>
+	</div>
+	<div class="h_a">搜索</div>
+	<form method="post" action="{@url:bbs/contentcheck/run}">
+	<div class="search_type cc mb10">
+		<label>作者：</label><input name="author" value="{$args['author']}" type="text" class="input length_2 mr10">
+		<label>所属版块：</label><select name="fid" class="select_3 mr10"><option value="0">所有版块</option>{@$option_html|html}</select>
+		<label>发帖时间：</label><input name="created_time_start" type="text" class="input length_2 mr5 J_date"><span class="mr5">至</span><input name="created_time_end" type="text" class="input length_2 J_date mr10">
+		<button class="btn">搜索</button>
+	</div>
+	</form>
+	
+	<form class="J_ajaxForm" action="{@url:bbs/contentcheck/doPassThread}" method="post">
+		<!--# if ($threadb) { #-->
+		<div class="h_a"><!--label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x">全选</label-->列表</div>
+		<div class="table_list">
+			<table width="100%">
+				<!--# foreach ($threadb as $key => $value) { #-->
+				<tr>
+					<td width="10"><input type="checkbox" name="tid[]" value="{$value['tid']}" class="J_check" data-yid="J_check_y" data-xid="J_check_x"></td>
+					<td width="600">
+						<div class="mb5">
+							<a href="{@url:bbs/thread/run?fid=$value['fid']|pw}" class="mr5" target="_blank">[{$forumlist[$value['fid']]['name']|html}]</a><a href="{@url:bbs/read/run?tid=$value['tid']&fid=$value['fid']|pw}" target="_blank">{$value['subject']}</a>
+						</div>
+						<div class="mb5">
+							作者：<a href="{@url:space/index/run?uid=$value['created_userid']|pw}" target="_blank" class="mr15">{$value['created_username']}</a>发帖时间：{@Pw::time2str($value['created_time'])}
+						</div>
+						<div class="p10" style="line-height:1.5;border:1px solid #ccc;background:#fff;max-height:140px;_height:60px;overflow-y:auto;">{$value['content']}
+						</div>
+					</td>
+					<td>
+						<ul class="single_list cc">
+							<li><a class="J_ajax_refresh mr5" href="{@url:bbs/contentcheck/doPassThread}" data-pdata="{'tid': '{$value['tid']}'}">[通过]</a></li>
+							<li><a class="J_ajax_del" href="{@url:bbs/contentcheck/doDeleteThread}" data-pdata="{'tid': '{$value['tid']}'}">[删除]</a></li>
+						</ul>
+					</td>
+				</tr>
+				<!--# } #-->
+			</table>
+			<div class="p10">
+				<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='bbs/contentcheck/run' args='$url'/>
+			</div>
+		</div>
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<label class="mr20"><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选</label>
+		<button class="btn btn_submit J_ajax_submit_btn" type="submit">通过</button>
+				<button class="btn J_ajax_submit_btn" type="submit" data-action="{@url:bbs/contentcheck/doDeleteThread}">删除</button>
+			</div>
+		</div>
+		<!--# } else { #-->
+		<div class="not_content_mini"><i></i>啊哦，没有符合条件的内容！</div>
+		<!--# } #-->
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

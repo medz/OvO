@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+
+
+<!--添加模板-->
+
+	<div class="nav">
+		<div class="return"><a href="{@url:design/data/run?moduleid=$moduleid}">返回上一级</a></div>
+		<ul class="cc">
+			<li class="current"><a href="{@url:design/data/edit?moduleid=$moduleid&dataid=$data['data_id']}">修改数据</a></li>
+		</ul>
+	</div>
+	<div class="h_a">修改数据</div>
+	<form class="J_ajaxForm"  action="{@url:design/data/doedit?_json=1}" method="post">
+	<div class="design_ct">
+		<template source='TPL:design.segment.data_edit' load='true' />
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit" >提交</button>
+			<input type="hidden" name="moduleid" value="{$moduleid}">
+			<input type="hidden" name="dataid" value="{$data['data_id']}">
+		</div>
+	</div>
+	</form>
+
+
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.use('colorPicker', 'datePicker', function() {
+	$('.J_design_font_config').each(function() {
+				var elem = $(this).find('.J_design_color_pick');
+				var panel = elem.parent('.J_design_font_config');
+				var bg_elem = $(this).find('.J_bg');
+
+				elem.colorPicker({
+					default_color : 'url("'+ GV.URL.IMAGE_RES +'/transparent.png")',
+					callback:function(color) {
+						bg_elem.css('background',color);
+
+						var v = ( color.length === 7 ? color : '' );
+						panel.find('.J_case').css('color', v);
+						panel.find('.J_hidden_color').val(v);
+					}
+				});
+			});
+
+			//加粗、斜体、下划线的处理
+			$('.J_bold,.J_italic,.J_underline').on('click',function() {
+				var panel = $(this).parents('.J_design_font_config');
+				var c = $(this).data('class');
+				if( $(this).prop('checked') ) {
+					panel.find('.J_case').addClass(c);
+				}else {
+					panel.find('.J_case').removeClass(c);
+				}
+			});
+
+	$('input.J_design_date').datePicker({
+		time : true
+	});
+
+
+});
+</script>
+</body>
+</html>

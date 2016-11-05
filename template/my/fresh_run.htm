@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/fresh.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+<style>
+.aPre{
+	cursor:url({@theme:images}/common/pre.cur),auto;
+}
+.aNext{
+	cursor:url({@theme:images}/common/next.cur),auto;
+	right:0;
+}
+</style>
+</head>
+<body>
+<pw-start/>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:my/fresh/run}">我的关注</a><!--#if($currents != 'all'){#--><em>&gt;</em><a href="{@url:my/fresh/run?gid=$currents}">{$type[$currents]}</a><!--#}#-->
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<!--新鲜事列表-->
+					<pw-tpl id="first_segment"/>
+					<!--点击输入框后-->
+					<div class="fresh_post box_wrap" id="J_fresh_post_wrap">
+						<form id="J_fresh_post_form" action="{@url:my/fresh/post?_getHtml=1}" method="post">
+						<div class="hd">
+							<h2>快速发帖到论坛</h2><!--# if ($unpost) { #--><span>（您已经{$unpost}没发帖了）</span><!--# } #-->
+						</div>
+						<div class="ct">
+							<textarea id="J_fresh_post_ta" name="content" style="color:#999;height:45px;" class="textarea J_at_user_textarea" placeholder="现在，你有什么想说的？"></textarea>
+						</div>
+						<div id="J_fresh_post_op" class="ft cc" style="display:none;">
+							<div class="posting">
+								<span id="J_fresh_forum_btn" class="fresh_select_forum"><span class="J_text">选择版块</span><em class="core_arrow"></em></span>
+								<input type="hidden" name="fid" id="J_fresh_post_fid" value="" />
+								<button id="J_fresh_post_sub" type="button" class="btn btn_submit btn_big">发布</button>
+							</div>
+							<div class="operate">
+							<a href="" class="a_face J_insert_emotions" data-emotiontarget="#J_fresh_post_ta">表情</a><a href="javascript:;" id="" class="a_photo{@$allowUpload ? '' : ' dn'}">图片<span class="a_photo_flash"><span id="J_fresh_swfupload"></span></span></a>
+							</div>
+						</div>
+						
+						<!--版块选择-->
+						<div id="J_fresh_post_forum_wrap" tabindex="0" class="pop_select_forum" style="display:none;">
+							<a class="pop_close" href="#" id="J_fresh_forum_close">关闭</a>
+							<div class="core_arrow_top" style="left:190px;"><em></em><span></span></div>
+							<div class="hd">发帖到其他版块</div>
+							<div class="ct cc">
+								<div class="source_forum">
+									<h4>选择分类</h4>
+									<ul id="J_fresh_cate"></ul>
+								</div>
+								<div class="target_forum">
+									<h4>选择版块</h4>
+									<ul id="J_fresh_forum"></ul>
+								</div>
+							</div>
+							<div class="ft">
+								<div class="associate">
+									<label class="fr"><input type="checkbox" id="J_forum_join">添加到我的版块</label>
+									发帖到：<span id="J_fresh_post_to_forum"></span>
+								</div>
+								<div class="tac">
+									<button type="button" class="btn btn_submit disabled" disabled="disabled" id="J_fresh_post_pop_close">确定</button>
+								</div>
+							</div>
+						</div>
+						<!--图片上传的内容-->
+						<div id="J_fresh_upload_queue" class="fresh_upload_pictures" style="display:none;">
+							<div class="arrow"><em></em><span></span></div>
+							<a href="" class="pop_close" id="J_fresh_upload_close">删除</a>
+							<ul class="cc">
+								<li class="goon" id="J_fresh_upload_info">你还可以上传<span class="J_count">4</span>张</li>
+							</ul>
+						</div>
+						</form>
+					</div>
+					<!--结束-->
+					<div style="width:638px;overflow:hidden;"><advertisement id='Common.Attention.Btm' sys='1'/></div>
+					<div class="box_wrap fresh_page">
+						<div class="fresh_nav">
+							<ul class="cc">
+								<li class="{@Pw::isCurrent($currents=='all')}"><a href="{@url:my/fresh/run/}">全部</a></li>
+								<!--# foreach ($type as $key => $value) { #-->
+								<li class="line"></li>
+								<li class="{@Pw::isCurrent($currents==$key)}"><a href="{@url:my/fresh/run?gid=$key}">{$value}</a></li>
+								<!--# } #-->
+							</ul>
+						</div>
+						<!--# if ($freshdb) {#-->
+						<div class="feed_lists" id="J_feed_lists">
+							<div id="J_news_tip" class="tips" style="display:none;">有<strong>10</strong>条新鲜事，点击查看</div>
+							<!--# foreach ($freshdb as $key => $fresh) { #-->
+							<template source='fresh_floor' load='true' />
+							<!--# } #-->
+							<div>
+								<page tpl="TPL:common.page" total="$totalpage" page="$page" per="$perpage" count="$count" url="my/fresh/run" args="$url" />
+							</div>
+						</div>
+						<!--# } else { #-->
+						<div class="not_content">啊哦，我的关注暂没有任何内容哦！</div>
+						<!--# } #-->
+					</div>
+		<!--结束-->
+					<pw-tpl id="fresh_bottom"/>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+//回复提交地址
+var FRESH_DOREPLY = '{@url:my/fresh/doreply}',
+	FORUM_LIST = '{@url:forum/list}',
+	FORUM_JOIN = '{@url:bbs/forum/join}',
+	IMG_UPLOAD = "{@url:bbs/upload/dorun?_json=1}";
+
+var fast_upload_config = {
+	size_limit : '{$maxSize}',		//图片大小限制
+	num_limit : '{$attachnum}',		//数量限制
+	types : '{$filetypes}'			//上传图片类型
+};
+
+//引入jquery文件
+Wind.use('jquery', 'global', 'swfupload', 'ajaxForm', function(){
+	//支持的图片
+	var filetype = {@Pw::array2str(Pw::subArray(Wekit::C('attachment', 'extsize'), array('jpg', 'jpeg', 'png', 'gif', 'bmp')))|html},
+		sup_pic = false;
+	for(i in filetype) {
+		if(i) {
+			sup_pic = true;
+		}
+	}
+	if(!sup_pic) {
+		//不支持图片上传
+		$('a.a_photo').hide();
+	}
+	
+	Wind.js(GV.JS_ROOT +'pages/my/freshFast.js?v='+ GV.JS_VERSION);
+	
+	Wind.js(GV.JS_ROOT +'pages/common/freshRead.js?v='+ GV.JS_VERSION);
+	
+});
+</script>
+<pw-end/>
+</body>
+</html>

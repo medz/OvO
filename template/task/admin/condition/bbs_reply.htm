@@ -1,0 +1,20 @@
+<!--=======回帖 帖子条件=========-->
+<tbody class="J_task_forum">
+	<tr>
+		<th>指定主题ID</th>
+		<td>
+			<span class="must_red">*</span>
+			<input name="condition[tid]" type="text" class="input length_5 input_hd" value="{$condition['tid']}">
+			<input type="hidden" name="condition[url]" value="bbs/read/run?tid={tid}">
+		</td>
+		<td><div class="fun_tips"></div></td>
+	</tr>
+	<tr>
+		<th>回帖数</th>
+		<td>
+			<span class="must_red">*</span>
+			<input type="text" class="input length_5 input_hd" name="condition[num]" value="{$condition['num']}">
+		</td>
+		<td><div class="fun_tips"></div></td>
+	</tr>
+</tbody>
