@@ -43,7 +43,7 @@ class WindidNotifyLogDao extends WindidBaseDao
             $where .= ' AND `complete` = ?';
             $array[] = $complete;
         }
-        $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY logid DESC %s ', $this->getTable(), $where,  $this->sqlLimit($limit, $start));
+        $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY logid DESC %s ', $this->getTable(), $where, $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->queryAll($array, 'logid');

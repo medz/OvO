@@ -87,7 +87,7 @@ class WindidUtility
         if (function_exists('curl_init')) {
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS,  array('FileData' => '@'.$file));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, array('FileData' => '@'.$file));
             curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -120,7 +120,7 @@ class WindidUtility
             $data .= "--$boundary--\r\n";
             $header .= 'Content-length: '.strlen($data)."\r\n\r\n";
             $fp = fsockopen($urlArr['host'], $port);
-            fputs($fp, $header.$data);
+            fwrite($fp, $header.$data);
             $response = '';
             while (!feof($fp)) {
                 $response .= fgets($fp, 128);
