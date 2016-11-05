@@ -1,0 +1,236 @@
+/*#
+===================
+@explain: 邀请注册
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: invite.css 24835 2013-02-22 06:44:21Z yanchixia $
+===================
+#*/
+
+/*
+===================
+外包裹
+===================
+*/
+.invite_page{
+	padding:0 0 15px;
+}
+
+.invite_content{
+	padding:15px 0;
+}
+
+/*
+===================
+标题
+===================
+*/
+.invite_page h2{
+	font-size:14px;
+	margin-bottom:5px;
+	border-bottom:2px solid #e4e4e4;
+	padding-bottom:7px;
+}
+.invite_page h2 select{
+	font-size:12px;
+	margin-left:20px;
+}
+
+/*
+===================
+购买选项
+===================
+*/
+.buy_invite{
+	padding:15px 20px;
+}
+.buy_invite dl{
+	line-height:26px;
+	padding:0 0 20px;
+	font-size:14px;
+}
+.buy_invite dt{
+	float:left;
+	width:100px;
+	text-align:right;
+	margin-right:20px;
+}
+.buy_invite dd{
+	float:left;
+	width:450px;
+}
+.buy_invite dd .summary{
+	overflow:hidden;
+	font-size:12px;
+	color:#999;
+	padding-left:10px;
+}
+.buy_invite .btn{
+	width:100px;
+	font-size:14px;
+	position:relative;
+}
+
+/*
+===================
+付款方式
+===================
+*/
+.payment_type{
+	width:400px;
+}
+.payment_type li{
+	float:left;
+	margin:5px 15px 10px 0;
+	position:relative;
+	width:127px;
+	height:40px;
+}
+.payment_type li a{
+	float:left;
+	display:block;
+	width:127px;
+	height:40px;
+	overflow:hidden;
+	text-indent:-2000em;
+	border:1px solid #cccccc;
+	background:url(../../images/common/pay.png) no-repeat;
+}
+.payment_type li a.alipay{
+	background-position:0 0;
+}
+.payment_type li a.tenpay{
+	background-position:0 -40px;
+}
+.payment_type li a.paypal{
+	background-position:0 -80px;
+}
+.payment_type li a.bill{
+	background-position:0 -120px;
+}
+.payment_type li a:hover,
+.payment_type li.current a{
+	border:2px solid #ff5500;
+	margin-top:-1px;
+	margin-left:-1px;
+}
+.payment_type li.current em{
+	background:#fff url(../../images/common/radio_disabled.png) right bottom no-repeat;
+	position:absolute;
+	width:10px;
+	height:8px;
+	right:-1px;
+	bottom:-1px;
+}
+
+/*
+===================
+激活码列表
+===================
+*/
+.invite_list{
+	margin-top:-5px;
+}
+.invite_list table{
+	table-layout:fixed;
+}
+.invite_list thead td{
+	padding:5px 0 5px 5px;
+	background:#f7f7f7;
+	color:#666;
+}
+.invite_list td{
+	border-bottom:1px solid #e4e4e4;
+	padding:7px 0 5px 5px;
+}
+.invite_list a:visited,
+.invite_list a.visited{
+	color:#999;
+}
+.invite_list .code{
+	letter-spacing:-1px;
+}
+
+/*
+===================
+邮箱下拉
+===================
+*/
+.mail_down{
+	position:absolute;
+	width:240px;
+}
+.mail_down ul{
+	border:1px solid #cccccc;
+	padding:1px;
+	background:#fff;
+}
+.mail_down li{
+	line-height:21px;
+	height:21px;
+	overflow:hidden;
+}
+.mail_down li a{
+	display:block;
+	color:#999;
+	text-decoration:none;
+	padding:0 10px;
+}
+.mail_down li a:hover,
+.mail_down li.current a{
+	background-color:#e8f4fc;
+	color:#333;
+}
+
+
+/*
+===================
+邀请到的会员列表
+===================
+*/
+.invite_uesr_list{
+	overflow:hidden;
+	padding-top:15px;
+}
+.invite_uesr_list ul{
+}
+.invite_uesr_list li{
+	width:90px;
+	margin-right:30px;
+	height:140px;
+	float:left;
+	display:inline;
+}
+.invite_uesr_list li img{
+	vertical-align:top;
+}
+.invite_uesr_list li p a{
+	background:#f6f6f6;
+	height:22px;
+	line-height:22px;
+	overflow:hidden;
+	padding:0 5px;
+	display:block;
+	text-align:center;
+	color:#0079b4;
+}
+
+/*
+===================
+链接邀请
+===================
+*/
+.invite_address_copy{
+	padding:20px 0;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1497 @@
+/*#
+===================
+@explain: 版块页面（包含列表和阅读页）
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: forum.css 24715 2013-02-17 03:13:14Z yanchixia $
+===================
+#*/
+
+/*
+===================
+样式目录/已有控件
+>>整体背景
+>>版块列表展示页
+>>发帖回复按钮
+>>版块信息
+>>帖子列表包裹
+>>帖子列表样式
+>>帖子列表状态图
+>>加入该版块会员列表
+>>未加入版块提示
+>>阅读页结构
+>>楼层左箭头
+>>阅读页标题
+>>阅读页数据
+>>阅读页楼层左侧用户信息
+>>阅读页上一主题/下一主题
+>>阅读页楼层顶部操作
+>>阅读页喜欢操作
+>>阅读页喜欢确认弹窗
+>>最新喜欢会员列表
+>>楼层喜欢的会员弹窗
+>>阅读页标签
+>>阅读页标签名片
+>>快速回复
+>>快速回复列表
+>>楼层用户签名
+>>帖内置顶
+>>编辑记录
+>>公告
+>>
+===================
+*/
+
+/*
+===================
+整体背景
+===================
+*/
+.btn_post,
+.btn_replay,
+.posts_icon i,
+.floor_info .operate a,
+.floor_page .next,
+.floor_page .pre,
+.floor_bottom_tips a.a_reply,
+.floor_bottom_tips a.a_like,
+.more_down,
+.icon_read_like,
+.pop_read_like_arrow,
+.reply_quick .operate .a_face,
+.inside_digs_icon{
+	background:url(../../images/forum/bg.png) no-repeat;
+}
+
+/*
+===================
+论坛基础信息
+===================
+*/
+.bbs_info_box{
+	color:#666;
+	color:rgba(0,0,0,0.6);
+	margin-bottom:10px;
+}
+.bbs_info_box span{
+	display:inline-block;
+	vertical-align:top;
+}
+.bbs_info_box i{
+	display:inline-block;
+	vertical-align:top;
+	width:1px;
+	height:12px;
+	background:#ccc;
+	overflow:hidden;
+	padding:0;
+	margin:3px 10px 0;
+}
+
+/*
+===================
+版块列表展示页
+===================
+*/
+.forum_group{
+	border-top:1px solid #e5e5e5;
+	margin-top:-1px;
+}
+.forum_group .box_title{
+	background:#f7f7f7;
+	border-top:1px solid #fff;
+}
+.forum_group table a{
+	color:#333;
+}
+/*分类版块名*/
+.forum_group .cname{
+	font-size:12px;
+}
+.forum_group .fname{
+	font-size:12px;
+}
+/*版块名*/
+.forum_group .fname a{
+	margin-right:5px;
+	font-weight:700;
+}
+.forum_group .ct{
+	padding:0 15px;
+	margin-top:-1px;
+}
+.forum_group .ct img{
+	max-width:500px;
+}
+.forum_group .ct table{
+	table-layout:fixed;
+}
+.forum_group .ct td,
+.forum_group .ct th{
+	padding:10px 0;
+	border-top:1px dashed #e4e4e4;
+}
+/*版块简介*/
+.forum_group .descrip{
+	color:#999;
+}
+/*最后回复*/
+.forum_group .last{
+	width:250px;
+}
+.forum_group .last,
+.forum_group .last_name{
+	color:#999;
+}
+.forum_group .last_name{
+	margin-right:5px;
+}
+/*新旧帖*/
+.forum_group .ct .old,
+.forum_group .ct .new,
+.forum_group .ct .lock{
+	padding:10px 5px 10px 45px;
+	color:#444;
+	font-weight:100;
+	height:35px;
+}
+/*旧主题版块*/
+.forum_group .ct .old{
+	background:url(../../images/forum/old.gif) 0 center no-repeat;
+}
+/*新主题版块*/
+.forum_group .ct .new{
+	background:url(../../images/forum/new.gif) 0 center no-repeat;
+}
+/*锁定版块*/
+.forum_group .ct .lock{
+	background:url(../../images/forum/lock.gif) 0 center no-repeat;
+}
+
+/*
+===================
+子版块列表
+>>继承 forum_group
+===================
+*/
+.forum_child{
+	margin-top:20px;
+	padding:0 10px 10px;
+	background:#fbfbfb;
+	border-bottom:1px solid #e9e9e9;
+}
+.forum_child .hd{
+	border-bottom:1px solid #fbfbfb;
+	overflow:hidden;
+	padding:7px 10px;
+	position:relative;
+	padding-bottom:0;
+	color:#666;
+}
+.forum_child .ct{
+	padding:0 10px;
+}
+
+/*
+===================
+发帖回复按钮
+===================
+*/
+.btn_post,
+.btn_replay{
+	height:30px;
+	overflow:hidden;
+	width:70px;
+	display:block;
+	text-indent:-2000em;
+	text-decoration:none;
+	float:left;
+	position:relative;
+}
+.btn_post{
+	background-position:0 0;
+}
+.btn_post:hover{
+	background-position:0 -30px;
+}
+.btn_post:active{
+	background-position:0 -60px;
+}
+.btn_replay{
+	background-position:0 -90px;
+}
+.btn_replay:hover{
+	background-position:0 -120px;
+}
+.btn_replay:active{
+	background-position:0 -150px;
+}
+
+/*列表页分页和发帖*/
+.pages_wrap{
+	padding:0 0 20px 0;
+}
+.pages_wrap .btn_post{
+	float:left;
+}
+.pages_wrap .pages{
+	float:right;
+}
+/*阅读页分页和发帖回复*/
+.read_pages_wrap{
+	padding:0 0 10px 0;
+}
+.read_pages_wrap .btn_post{
+	float:right;
+	margin-left:10px;
+	display:inline;
+}
+.read_pages_wrap .btn_replay{
+	float:right;
+}
+.read_pages_wrap .pages{
+	float:left;
+}
+
+
+/*下拉菜单*/
+.btn_post_menu{
+	width:68px;
+	border:1px solid #b1d1de;
+	background:#fff;
+	position:absolute;
+	z-index:1;
+}
+.btn_post_menu li a{
+	display:block;
+	line-height:28px;
+	height:28px;
+	text-align:center;
+	color:#666;
+}
+.btn_post_menu li a:hover{
+	background:#f2f7fb;
+	text-decoration:none;
+}
+
+/*
+===================
+版块信息
+===================
+*/
+.forum_info_box{
+}
+/*logo*/
+.forum_info_box .banner{
+	float:left;
+	margin-right:15px;
+}
+.forum_info_box .banner img{
+	max-width:300px;
+}
+/*名称*/
+.forum_info_box .name{
+	overflow:hidden;
+}
+.forum_info_box .name h3{
+	display:inline;
+	margin-right:15px;
+	font-size:14px;
+}
+/*相关数值*/
+.forum_info_box .num{
+	margin-bottom:5px;
+	overflow:hidden;
+	font-family:Tahoma;
+}
+.forum_info_box .num ul{
+}
+.forum_info_box .num li{
+	float:left;
+	padding:0 20px 0 0;
+	color:#666;
+}
+.forum_info_box .num li.none{
+	border:0 none;
+}
+.forum_info_box .num em{
+	color:#000;
+	font-weight:700;
+}
+/*版主*/
+.forum_info_box .moderator{
+	margin-bottom:5px;
+	color:#666;
+}
+.forum_info_box .moderator a{
+	color:#333;
+}
+/*公告*/
+.forum_info_box .notice{
+	overflow:hidden;
+	color:#666;
+}
+/*更多*/
+.forum_info_box .more{
+	white-space:nowrap;
+}
+/*子版*/
+.forum_info_box .child{
+	margin-bottom:10px;
+	color:#666;
+	overflow:hidden;
+}
+.forum_info_box .child a{
+	margin-right:15px;
+	white-space:nowrap;
+}
+
+/*
+===================
+帖子列表包裹
+===================
+*/
+.thread_page{
+	position:relative;
+	padding:0;
+	margin:0;
+}
+/*
+===================
+帖子列表样式
+===================
+*/
+.thread_posts_list{
+	padding:0 0 10px;
+}
+.thread_posts_list table{
+	table-layout:fixed;
+}
+.thread_posts_list td{
+	border-bottom:1px dashed #dcdcdc;
+}
+.thread_posts_list tr.tr_check td{
+	background:#ffffee;
+}
+.thread_posts_list .author{
+	width:55px;
+}
+.thread_posts_list .author a{
+	display:block;
+	width:45px;
+	height:45px;
+	overflow:hidden;
+}
+.thread_posts_list .ordinary{
+	background:#f7f7f7;
+	padding:3px 0;
+	color:#666;
+}
+.thread_posts_list .num{
+	width:130px;
+	line-height:18px;
+	text-align:center;
+	color:#999;
+}
+.thread_posts_list .num span{
+	float:right;
+	display:block;
+	background:#f4f4f4;
+	width:54px;
+	height:36px;
+	padding:4px 0;
+	margin:0 0 0 10px;
+	border-radius: 3px;
+	overflow:hidden;
+}
+.thread_posts_list .num em{
+	display:block;
+	font-weight:700;
+}
+.thread_posts_list .st{
+	font-size:14px;
+	margin-right:3px;
+}
+.thread_posts_list .subject{
+	padding:10px 0 !important;
+}
+.thread_posts_list .subject em{
+	font-size:14px;
+	margin-right:5px;
+}
+.thread_posts_list .title{
+	padding-bottom:5px;
+}
+.thread_posts_list .info,
+.thread_posts_list .info a{
+	color:#999;
+}
+.thread_posts_list .info span{
+	margin:0 10px 0 5px;
+}
+
+/*
+===================
+帖子列表状态图标
+===================
+*/
+.posts_icon i{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+	vertical-align:middle;
+	background-position:-80px -40px;
+	margin-top:1px;
+	font:0/0 Arial;
+}
+.posts_icon i.icon_headtopic_1{
+	background-position:-80px 0;
+}
+.posts_icon i.icon_headtopic_2{
+	background-position:-100px 0;
+}
+.posts_icon i.icon_headtopic_3{
+	background-position:-120px 0;
+}
+.posts_icon i.icon_digest{
+	background-position:-120px -20px;
+}
+.posts_icon i.icon_topichot{
+	background-position:-100px -20px;
+}
+.posts_icon i.icon_topicnew{
+	background-position:-80px -20px;
+}
+.posts_icon i.icon_topic{
+	background-position:-80px -40px;
+}
+.posts_icon i.icon_img{
+	background-position:-100px -40px;
+}
+.posts_icon i.icon_vote{
+	background-position:-120px -40px;
+}
+.posts_icon i.icon_lock{
+	background-position:-80px -60px;
+}
+.posts_icon i.icon_highlight{
+	background-position:-100px -60px;
+}
+.posts_icon i.icon_like{
+	background-position:-120px -60px;
+}
+.posts_icon i.icon_music{
+	background-position:-80px -80px;
+}
+.posts_icon i.icon_shop{
+	background-position:-100px -80px;
+}
+.posts_icon i.icon_file{
+	background-position:-120px -80px;
+}
+.posts_icon i.icon_reward{
+	background-position:-100px -100px;
+}
+.posts_icon i.icon_debate{
+	background-position:-120px -100px;
+}
+
+/*
+===================
+加入该版块会员列表
+===================
+*/
+.thread_uesr_list{
+	overflow:hidden;
+	padding:15px 0;
+}
+.thread_uesr_list h2{
+	font-size:12px;
+	color:#666;
+	border-bottom:1px solid #e9e9e9;
+	margin-bottom:15px;
+	padding:5px 0;
+}
+.thread_uesr_list h2 span{
+	float:right;
+	font-weight:100;
+}
+.thread_uesr_list ul{
+	margin-left:-30px;
+}
+.thread_uesr_list li{
+	width:90px;
+	margin-left:31px;
+	height:140px;
+	float:left;
+	display:inline;
+}
+.thread_uesr_list li img{
+	vertical-align:top;
+}
+.thread_uesr_list li a{
+	display:block;
+}
+.thread_uesr_list li p a{
+	background:#f6f6f6;
+	height:22px;
+	line-height:22px;
+	overflow:hidden;
+	padding:0 5px;
+	display:block;
+	text-align:center;
+	color:#0079b4;
+}
+
+/*
+===================
+未加入版块提示
+===================
+*/
+.not_followforum{
+	padding-top:20px;
+	width:620px;
+	height:295px;
+	background:url(../../images/forum/not_followforum.png) 0 20px no-repeat;
+	overflow:hidden;
+	text-indent:-2000em;
+}
+
+/*
+===================
+阅读页结构
+===================
+*/
+.floor{
+	border-left:1px solid #efefef;
+	border-right:1px solid #efefef;
+	border-bottom:1px solid #d3d3d3;
+	box-shadow:0 1px 1px rgba(0,0,0,0.02);
+	background:#fff;
+	margin-bottom:10px;
+}
+.floor .box_wrap{
+	border:0 none;
+	box-shadow:0 0 0;
+	background:none;
+	border-radius:0;
+	margin:0;
+}
+#read_0{
+	margin-top:0;
+}
+.floor .floor_left{
+	vertical-align:top;
+	width:160px;
+	background:#fbfbfb;
+	border-right:1px solid #e9e9e9;
+}
+.floor .floor_right{
+	vertical-align:top;
+	padding:10px 20px;
+}
+.floor_bottom{
+	vertical-align:bottom;
+	padding:0 20px;
+}
+
+/*
+===================
+楼层左箭头
+===================
+*/
+.floor_arrow{
+	display:none;
+	position:absolute;
+	margin-left:-42px;
+	margin-top:25px;
+}
+.floor_arrow span,
+.floor_arrow em{
+	position:absolute;
+	width:0;
+	height:0;
+	padding:0;
+	margin:-1px 0 0 2px;
+	border-top:10px transparent dashed;
+	border-bottom:10px transparent dashed;
+	border-left:10px transparent dashed;
+	overflow:hidden;
+}
+.floor_arrow span{
+	border-right:10px #ffffff solid;
+}
+.floor_arrow em{
+	border-right:10px #d3d3d3 solid;
+	margin-top:0;
+}
+
+/*
+===================
+阅读页标题
+===================
+*/
+.floor_title{
+	padding:2px 0 12px;
+	border-bottom:1px dashed #dddddd;
+	margin-bottom:10px;
+}
+.floor_title h1{
+	font-size:16px;
+	display:inline;
+	line-height:24px;
+}
+
+/*帖子荣誉*/
+.floor_honor{
+	padding:0 0 0 10px;
+	display:inline-block;
+	vertical-align:top;
+	padding-top:2px;
+}
+
+/*
+===================
+阅读页数据
+>>回复/浏览
+===================
+*/
+.post_num{
+	float:right;
+	margin-top:5px;
+	color:#999;
+}
+.post_num .replies{
+	padding-left:10px;
+}
+.post_num .hits{
+	border-right:1px solid #ccc;
+	padding:0 10px;
+}
+
+/*
+===================
+阅读页楼层左侧用户信息
+===================
+*/
+.floor_info{
+	padding:20px 0 20px 20px;
+}
+/*用户名*/
+.floor_info .name{
+	padding:5px 0;
+}
+.floor_info .name a{
+	font-weight:700;
+	color:#333;
+}
+/*头像*/
+.floor_info .face{
+	width:120px;
+	height:120px;
+	position:relative;
+	margin-bottom:5px;
+}
+.floor_info .face a{
+	display:block;
+}
+.floor_info .face a img{
+	display:block;
+	width:120px;
+	height:120px;
+}
+/*
+.floor_info .face .edit{
+	position:absolute;
+	bottom:0;
+	width:100%;
+	background:#000;
+	background:rgba(0,0,0,0.5);
+	height:20px;
+	text-align:center;
+	line-height:20px;
+}
+.floor_info .face .edit a{
+	display:inline;
+	margin:0 5px;
+	color:#fff;
+}
+*/
+
+/*等级图标*/
+.floor_info .level{
+	padding:5px 0 10px;
+}
+.floor_info .level img{
+	display:block;
+	margin:3px 0 0 -2px;
+}
+/*积分数据*/
+.floor_info .integral{
+	margin-bottom:8px;
+}
+.floor_info .integral li{
+	padding-bottom:2px;
+	height:18px;
+	overflow:hidden;
+}
+.floor_info .integral em{
+	float:left;
+	width:60px;
+}
+.floor_info .integral span{
+	display:block;
+	width:70px;
+	height:18px;
+	float:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.floor_info .integral a{
+	color:#333;
+}
+/*操作：发邮件/加关注*/
+.floor_info .operate{
+	margin-bottom:12px;
+}
+.floor_info .operate a{
+	display:inline-block;
+	line-height:20px;
+	height:20px;
+	color:#999;
+}
+.floor_info .operate a:hover{
+	color:#333;
+	text-decoration:none;
+}
+.floor_info .operate .follow{
+	background-position:-150px 6px;
+	margin-right:9px;
+	padding-left:12px;
+}
+.floor_info .operate .unfollow{
+	background-position:-150px -54px;
+	margin-right:9px;
+	padding-left:14px;
+}
+.floor_info .operate .message{
+	background-position:-150px -25px;
+	padding-left:16px;
+}
+/*用户拥有勋章*/
+.floor_info .medal{
+	overflow:hidden;
+	padding-bottom:7px;
+}
+.floor_info .medal ul{
+	margin-left:-3px;
+}
+.floor_info .medal li{
+	float:left;
+	margin:0 0 0 3px; 
+	height:33px;
+}
+
+/*
+===================
+阅读页上一主题/下一主题
+===================
+*/
+.floor_page{
+	width:29px;
+	height:97px;
+	overflow:hidden;
+	position:fixed;
+	_position:absolute;
+	left:50%;
+	margin-left:480px;
+	top:300px;
+}
+.floor_page .next,
+.floor_page .pre{
+	display:block;
+	height:48px;
+	overflow:hidden;
+	text-indent:-2000em;
+	background-position:0 -200px;
+}
+.floor_page .next{
+	background-position:0 -248px;
+}
+.floor_page a.pre:hover{
+	background-position:-30px -200px;
+}
+.floor_page a.next:hover{
+	background-position:-30px -248px;
+}
+
+/*
+===================
+阅读页楼层顶部操作
+===================
+*/
+.floor_top_tips{
+	padding:0 0 10px;
+	margin-bottom:5px;
+	color:#666;
+}
+/*楼层*/
+.floor_top_tips .lou{
+	float:right;
+	font-size:24px;
+	color:#bbb;
+	line-height:1.3;
+	cursor:pointer;
+}
+.floor_top_tips .lou sup{
+	font-size:12px;
+}
+.floor_top_tips .fr a{
+	color:#666666;
+}
+.floor_bottom_tips{
+	padding:10px 0;
+	color:#666;
+	height:20px;
+}
+.floor_bottom_tips a{
+	color:#666;
+}
+.floor_bottom_tips a.a_reply{
+	padding-left:15px;
+	margin-right:20px;
+	background-position:-150px -87px;
+}
+.floor_bottom_tips a.a_like{
+	padding-left:15px;
+	background-position:-150px -117px;
+}
+/*更多 只看楼主/倒序阅读*/
+.more_down{
+	float:right;
+	width:13px;
+	height:13px;
+	overflow:hidden;
+	text-indent:-2000em;
+	background-position:-80px -200px;
+	margin:3px 20px;
+}
+.more_down:hover{
+	background-position:-80px -213px;
+}
+
+/*
+===================
+阅读页喜欢操作
+===================
+*/
+.icon_read_like{
+	width:116px;
+	height:25px;
+	background-position:0 -300px;
+	background-repeat:no-repeat;
+	display:block;
+	margin:30px auto 20px;
+	color:#ff6600;
+	line-height:25px;
+	cursor:pointer;
+	overflow:hidden;
+}
+.icon_read_like span{
+	float:left;
+	display:block;
+	width:0;
+	height:0;
+	overflow:hidden;
+	font:0/0 Arial;
+	padding:0;
+	margin:0;
+}
+.icon_read_like em{
+	float:right;
+	width:47px;
+	height:25px;
+	color:#ff6600;
+	text-align:center;
+	font-weight:700;
+	text-indent:0;
+	overflow:hidden;
+	display:block;
+}
+.icon_read_like:hover{
+	filter:alpha(opacity=90);
+	-moz-opacity:0.9;
+	opacity:0.9;
+	text-decoration:none;
+}
+
+/*
+===================
+阅读页喜欢确认弹窗
+===================
+*/
+.pop_read_like{
+	width:212px;
+	border:1px solid #ffe7cb;
+	background:#fff4ea;
+	position:absolute;
+	padding:9px;
+	border-radius:5px;
+	box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+.pop_read_like .input{
+	border-color:#ffd4ba;
+	width:200px;
+	outline:0 none;
+}
+.pop_read_like textarea{
+	border-color:#ffd4ba;
+	width:200px;
+	height:45px;
+	outline:0 none;
+}
+.pop_read_like .pop_close{
+	margin-left:0;
+}
+.pop_read_like .hd{
+	height:24px;
+	background:url(../../images/forum/pop_read_like_hd.png) -5px center no-repeat;
+	margin-bottom:6px;
+	text-indent:125px;
+	line-height:26px;
+	overflow:hidden;
+}
+.pop_read_like .ct{
+	padding:0 0 10px;
+}
+.pop_read_like .ft .btn{
+	margin:0 10px 0 0;
+}
+.pop_read_like_arrow{
+	width:22px;
+	height:13px;
+	background-position:-120px -300px;
+	position:absolute;
+	bottom:-13px;
+	right:60px;
+}
+
+/*
+===================
+最新喜欢会员列表
+===================
+*/
+.read_like_list{
+	padding:0 0 10px;
+}
+.read_like_list h4{
+	margin-bottom:10px;
+	font-size:12px;
+}
+.read_like_list img{
+	vertical-align:top;
+	display:block;
+	margin-bottom:5px;
+}
+.read_like_list a{
+	margin-right:10px;
+	width:50px;
+	display:block;
+	float:left;
+	color:#666;
+}
+.read_like_list span{
+	display:block;
+	text-align:center;
+	height:18px;
+	overflow:hidden;
+}
+
+/*
+===================
+楼层喜欢的会员弹窗
+===================
+*/
+.floot_like_pop{
+	width:260px;
+}
+.floot_like_pop img{
+	vertical-align:middle;
+	margin-right:5px;
+}
+.floot_like_pop li{
+	float:left;
+	width:49.9%;
+	padding:0 0 10px;
+}
+
+/*
+===================
+阅读页标签
+===================
+*/
+.read_tag_list{
+	padding:0 0 10px;
+}
+.read_tag_list .tag_item{
+	display:inline-block;
+	background:#e8f2f9;
+	margin-right:10px;
+	margin-bottom:10px;
+	border-radius:3px;
+	padding:3px 10px;
+	vertical-align:top;
+}
+.read_rag_list .tag_item:hover{
+	background:#217bbb;
+	color:#fff;
+}
+.read_tag_list a.edit{
+	background:none;
+	padding-left:0;
+	line-height:22px;
+	display:inline-block;
+}
+
+/*
+===================
+阅读页标签名片
+===================
+*/
+.tag_card{
+	width:260px;
+	background:#fff;
+	position:absolute;
+	border:1px solid #d9d9d9;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+	padding:15px 20px;
+	z-index:999;
+}
+.tag_card .arrow{
+	position:absolute;
+	top:-9px;
+	left:10px;
+}
+.tag_card .arrow span,
+.tag_card .arrow em{
+	position:absolute;
+	width:0;
+	height:0;
+	padding:0;
+	margin:0 0 0 2px;
+	border-top:5px transparent dashed;
+	border-right:5px transparent dashed;
+	border-left:5px transparent dashed;
+	overflow:hidden;
+}
+.tag_card .arrow span{
+	border-bottom:5px #ffffff solid;
+}
+.tag_card .arrow em{
+	border-bottom:5px #d9d9d9 solid;
+	margin-top:-1px;
+}
+.tag_card .name{
+	margin-bottom:10px;
+	overflow:hidden;
+}
+.tag_card .name h3{
+	display:inline;
+	margin-right:15px;
+}
+.tag_card .num{
+	margin-bottom:10px;
+	overflow:hidden;
+}
+.tag_card .num ul{
+}
+.tag_card .num li{
+	float:left;
+	padding:0 20px 0 0;
+	color:#666;
+}
+.tag_card .num em{
+	color:#000;
+	font-weight:700;
+}
+.tag_card .ft{
+	border-top:1px dotted #ccc;
+	color:#666;
+	padding-top:10px;
+}
+
+/*
+===================
+快速回复
+===================
+*/
+.reply_quick{
+	width:600px;
+	margin:30px 0 10px;
+}
+.reply_quick dt{
+	float:left;
+}
+.reply_quick dd{
+	float:right;
+	margin-bottom:5px;
+	border-top:1px solid #dcdcdc;
+	border-left:1px solid #dcdcdc;
+	position:relative;
+}
+.reply_quick textarea{
+	border:1px solid;
+	border-color:#e5e3e4  #dcdcdc #dcdcdc #e5e3e4;
+	width:520px;
+	box-shadow:0 0 0;
+	float:left;
+}
+.reply_quick textarea:focus{
+	outline:0 none;
+	border-color:#dcdcdc;
+}
+/*左角*/
+.reply_quick dd .arrow{
+	position:absolute;
+	left:0;
+	top:15px;
+	margin-left:-14px;
+}
+.reply_quick dd .arrow span,
+.reply_quick dd .arrow em{
+	position:absolute;
+	width:0;
+	height:0;
+	padding:0;
+	border-bottom:8px transparent dashed;
+	border-top:8px transparent dashed;
+	border-left:8px transparent dashed;
+	overflow:hidden;
+}
+.reply_quick dd .arrow span{
+	border-right:8px #fff solid;
+}
+.reply_quick dd .arrow em{
+	border-right:8px #dcdcdc solid;
+	margin-left:-2px;
+	margin-top:-1px;
+}
+/*按钮*/
+.reply_quick .btn{
+	padding-right:15px;
+	padding-left:15px;
+	float:right;
+}
+.reply_quick .ft{
+	padding-left:68px;
+}
+.reply_quick .ft a{
+	float:right;
+	color:#999;
+	font-family:Simsun;
+	margin-right:20px;
+	margin-top:3px;
+}
+/*发布图片表情*/
+.reply_quick .operate .a_face{
+	float:left;
+	margin-right:20px;
+	padding-left:22px;
+	line-height:20px;
+	color:#999;
+	background-position:-150px -147px;
+}
+.reply_quick .operate a:hover{
+	text-decoration:none;
+	color:#666;
+}
+.reply_quick .operate .a_face:hover{
+	background-position:-150px -177px;
+}
+/*
+.reply_quick .operate .a_photo{
+	background-position:0 -27px;
+}
+.reply_quick .operate .a_photo:hover{
+	background-position:0 -87px;
+}
+.reply_quick .operate .a_photo_flash{
+	position:absolute;
+	margin-left:-48px;
+	height:22px;
+	overflow:hidden;
+	cursor:pointer;
+}
+*/
+
+/*
+===================
+快速回复列表
+===================
+*/
+.reply_list{
+	border:1px solid #f4f4f4;
+	background:#fafafa;
+	padding:0 15px;
+	margin-bottom:20px;
+	position:relative;
+	width:600px;
+}
+.reply_list .core_arrow_top{
+	left:0;
+	padding-left:15px;
+}
+.reply_list .core_arrow_top em{
+	border-bottom: 8px #f4f4f4 solid;
+}
+.reply_list .core_arrow_top span{
+	border-bottom: 8px #fafafa solid;
+}
+.reply_list .reply_quick{
+	margin:10px auto;
+}
+.reply_list ul{
+	padding-left:30px;
+}
+.reply_list li{
+	border-top:1px dotted #d7d7d7;
+	padding:10px 0 10px;
+}
+.reply_list li .face{
+	float:left;
+	margin-right:10px;
+}
+.reply_list li .reply_content{
+	overflow:hidden;
+	vertical-align:top;
+}
+.reply_list li .reply_content .time{
+	color:#999;
+	margin-right:10px;
+}
+.reply_list li .reply_content .operate{
+	float:right;
+}
+.reply_list li .reply_content .operate a{
+	margin-left:5px;
+}
+.reply_list li .reply_content img{
+	vertical-align:top;
+}
+
+/*
+===================
+楼主快速回复
+===================
+*/
+.floor_reply{
+	padding:20px 20px;
+	vertical-align:top;
+}
+.reply_toolbar_wrap{
+	border:1px solid #e4e4e4;
+	margin-bottom:10px;
+	width:598px;
+}
+.reply_toolbar{
+	background:#f7f7f7;
+	border-bottom:1px solid #e4e4e4;
+	padding:5px 10px;
+	line-height:20px;
+	height:20px;
+}
+.floor_reply textarea{
+	width:590px;
+	height:90px;
+	border:0 none;
+	box-shadow:0 0 0;
+}
+.floor_reply textarea:focus{
+	outline:0 none;
+}
+.floor_reply .btn{
+	padding-left:15px;
+	padding-right:15px;
+}
+/*进入高级模式*/
+.reply_high{
+	float:right;
+	color:#666;
+}
+/*未登录提示*/
+.reply_login_tips{
+	border:1px solid #e4e4e4;
+	background:#fbfbfb;
+	padding:50px 0;
+	height:18px;
+	line-height:18px;
+	text-align:center;
+	color:#666;
+}
+
+/*
+===================
+楼层用户签名
+===================
+*/
+.signature{
+	background:url(../../images/forum/signature.png) 0 0 no-repeat;
+	margin-top:10px;
+	padding:25px 0 0;
+	overflow:hidden;
+	_height:expression(this.scrollHeight>parseInt(this.currentStyle.maxHeight)?this.currentStyle.maxHeight:"auto");
+}
+
+/*
+===================
+帖内置顶
+帖子相关操作记录
+===================
+*/
+.inside_logs{
+	background:#f4f4f4;
+	text-align:center;
+	line-height:30px;
+	height:30px;
+	color:#666;
+	padding:0 10px;
+	margin-top:-5px;
+	margin-bottom:10px;
+}
+
+/*帖子置顶图标--火箭的那个小图标*/
+.inside_digs_icon{
+	float:right;
+	width:16px;
+	height:16px;
+	background-position:-80px -120px;
+	overflow:hidden;
+	margin:7px 5px 0 0;
+}
+
+/*
+===================
+编辑记录
+===================
+*/
+.edit_log{
+	padding:20px 0;
+	color:#666;
+}
+
+
+
+
+/*
+===================
+公告--待确认
+===================
+*/
+.core_announce_wrap{
+	padding:0;
+	margin:10px 0 0;
+	border-bottom:1px dashed #e8e8e8;
+	height:28px;
+	overflow:hidden;
+}
+.core_announce li{
+	height:28px;
+	line-height:18px;
+	overflow:hidden;
+	background:url(../../images/forum/speaker.png) 0 3px no-repeat;
+	padding-left:18px;
+	float:left;
+}
+.core_announce li a{
+	color:#666;
+	margin-right:10px;
+}
+.core_announce span{
+	margin-right:10px;
+	color:#999999;
+	white-space:nowrap;
+}
+
+/*
+===================
+弹窗-管理操作选项
+===================
+*/
+.pop_operat_list{
+	overflow:hidden;
+}
+.pop_operat_list ul{
+	margin-left:-10px;
+	_padding-bottom:10px;
+}
+.pop_operat_list li{
+	float:left;
+	margin:0 0 10px 10px;
+}
+.pop_operat_list a{
+	display:inline;
+	border:1px solid #ccc;
+	background:#fff;
+	padding:3px 10px;
+	float:left;
+	color:#333;
+	white-space:nowrap;
+}
+.pop_operat_list a:hover{
+	text-decoration:none;
+	border-color:#1377a9;
+}
+/*
+===================
+列表管理
+===================
+*/
+.management{
+	background:#ffffee;
+	border:1px solid #e4e4e4;
+	padding:10px 15px;
+	color:#666;
+	margin-bottom:10px;
+}
+.management a{
+	margin:0 5px;
+	color:#333;
+}
+.management i{
+	color:#ccc;
+	font-style:normal;
+	margin:0 5px;
+}
+
+/*
+===================
+帖子管理
+===================
+*/
+.read_management{
+	background:#ffffee;
+	border:1px solid #e4e4e4;
+	margin:0 0 10px;
+	padding:10px 15px;
+	color:#666;
+}
+.read_management a{
+	margin:0 5px;
+	color:#666;
+}
+.read_management i{
+	color:#ccc;
+	font-style:normal;
+	margin:0 5px;
+}
+
+
+
+
+
+
+
+
+

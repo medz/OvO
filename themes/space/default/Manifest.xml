@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>默认模板</name>
+		<alias>default</alias>
+		<version>1.0</version>
+		<pw-version>9.0</pw-version>
+		<charset>UTF-8</charset>
+		<type>style</type>
+		<logo>images/preview.jpg</logo>
+		<style-type>space</style-type>
+		<description>传统个人空间样式</description>
+		<charset>utf-8</charset>
+		<website>http://www.phpwind.net/u-htm-uid-1793211.html</website>
+		<author-name>phpwind UED</author-name>
+		<author-email>yanchixia@aliyun-inc.com</author-email>
+		<author-icon>http://www.phpwind.net/u-htm-uid-1793211.html</author-icon>
+	</application>
+	
+</manifest>

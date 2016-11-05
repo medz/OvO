@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>默认模板</name>
+		<alias>default</alias>
+		<version>1.0</version>
+		<pw-version>9.0</pw-version>
+		<charset>UTF-8</charset>
+		<type>style</type>
+		<style-type>site</style-type>
+		<description>迎接2013全新版面</description>
+		<logo>images/preview.jpg</logo>
+		<website></website>
+		<author-name>phpwind UED</author-name>
+		<author-email>yanchixia@aliyun-inc.com</author-email>
+		<author-icon></author-icon>
+	</application>
+
+</manifest>
