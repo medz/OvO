@@ -5,7 +5,9 @@ define('BOOT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 @header('Content-Type:text/html; charset=utf-8');
 define('SCR', 'aCloud_index');
 define('WIND_DEBUG', 0);
-require_once '.././src/wekit.php';
+
+require dirname(__DIR__).'/bootstrap.php';
+
 Wekit::init('acloud');
 $front = Wind::application('acloud', WEKIT_PATH.'aCloud/aCloudConfig.php');
 // $front->createApplication();
