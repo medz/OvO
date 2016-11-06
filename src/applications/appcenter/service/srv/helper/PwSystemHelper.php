@@ -173,7 +173,7 @@ class PwSystemHelper
         // 检查表是否存在，以兼容论坛独立表某些表不存在的情况
         $ckTableIfExists = $pdo->query("SHOW TABLES LIKE '$value[0]'")->fetch();
         if (empty($ckTableIfExists)) {
-            continue;
+            return;
         }
         $rt = $pdo->query("SHOW COLUMNS FROM $value[0] LIKE '$value[1]'")->fetch();
         $lowersql = strtolower($value[2]);
