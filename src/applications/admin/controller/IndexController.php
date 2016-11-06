@@ -31,7 +31,6 @@ class IndexController extends AdminBaseController
         if (isset($menus['custom']['items']) && is_array($menus['custom']['items'])) {
             $menus['custom']['items'] += $menuService->getCustomMenus($this->loginUser);
         }
-
         $this->setOutput($menus, 'menus');
     }
 
