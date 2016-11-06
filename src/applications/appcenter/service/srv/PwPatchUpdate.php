@@ -42,7 +42,7 @@ class PwPatchUpdate
         }
         /* $r['info'] = array(
             array('id' => '9000001', 'name' => '更新', 'desc' => 'blabla', 'time' => '1323333', 'rule' => array(
-                array('filename' => 'src/wekit.php', 'search' => base64_encode('Jianmin Chen'), 'replace' => base64_encode('Shi Long'), 'count' => '1', 'nums' => array('1'))))
+                array('filename' => 'src/Wekit.php', 'search' => base64_encode('Jianmin Chen'), 'replace' => base64_encode('Shi Long'), 'count' => '1', 'nums' => array('1'))))
         ); */
         $temp = array();
         foreach ($r['info'] as $v) {

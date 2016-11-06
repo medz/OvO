@@ -297,10 +297,10 @@ class PwSystemInstallation extends PwInstallApplication
             WindFile::del($sourceDir.DIRECTORY_SEPARATOR.$old);
             if ('.php' === substr($old, -4) && !strncasecmp($old, 'www'.DIRECTORY_SEPARATOR, 4)) {
                 $content = WindFile::read($sourceDir.DIRECTORY_SEPARATOR.$new);
-                if (strpos($content, '../../src/wekit.php')) {
-                    $content = str_replace('../../src/wekit.php', $relativePath_2, $content);
+                if (strpos($content, '../../src/Wekit.php')) {
+                    $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
                 } else {
-                    $content = str_replace('../src/wekit.php', $relativePath_1, $content);
+                    $content = str_replace('../src/Wekit.php', $relativePath_1, $content);
                 }
                 WindFile::write($sourceDir.DIRECTORY_SEPARATOR.$new, $content);
             }
@@ -355,10 +355,10 @@ class PwSystemInstallation extends PwInstallApplication
                 $baseFile = basename($_v);
                 if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || !strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
                     $content = WindFile::read($_v);
-                    if (strpos($content, '../../src/wekit.php')) {
-                        $content = str_replace('../../src/wekit.php', $relativePath_2, $content);
+                    if (strpos($content, '../../src/Wekit.php')) {
+                        $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
                     } else {
-                        $content = str_replace('../src/wekit.php', $relativePath_1, $content);
+                        $content = str_replace('../src/Wekit.php', $relativePath_1, $content);
                     }
                     $tmp = tempnam($this->tmpPath, basename($_v).WindUtility::generateRandStr(3));
                     WindFile::write($tmp, $content);
@@ -371,10 +371,10 @@ class PwSystemInstallation extends PwInstallApplication
                 $baseFile = basename($_v);
                 if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || !strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
                     $content = WindFile::read($_v);
-                    if (strpos($content, '../../src/wekit.php')) {
-                        $content = str_replace('../../src/wekit.php', $relativePath_2, $content);
+                    if (strpos($content, '../../src/Wekit.php')) {
+                        $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
                     } else {
-                        $content = str_replace('../src/wekit.php', $relativePath_1, $content);
+                        $content = str_replace('../src/Wekit.php', $relativePath_1, $content);
                     }
                     $tmp = tempnam($this->tmpPath, basename($_v).WindUtility::generateRandStr(3));
                     WindFile::write($tmp, $content);

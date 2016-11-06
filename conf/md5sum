@@ -20,7 +20,7 @@ fb337345da8e0b775032b2fa5f71469c	conf/publish.php
 bf0fb70526bd02ca1904e2d59af66f92	conf/windid/components.php
 28161b16200fbd341a1efe0b0fc5e7ed	conf/windid/database.php
 9c515305656c0ca0ac39c711f3a15d0b	conf/windid/directory.php
-47f3edb74f64f22e13324a9a1f973bb3	src/wekit.php
+47f3edb74f64f22e13324a9a1f973bb3	src/Wekit.php
 04b2ffe8b612504635bd7fab6a3de0c6	src/aCloud/aCloud.php
 3a076c42094767e06763ec16bc5cafc7	src/aCloud/aCloudConfig.php
 442f666d0da5c71a17af5bf758261bae	src/aCloud/api/ACloudApiRouter.php
