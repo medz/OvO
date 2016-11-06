@@ -1,4 +1,4 @@
-# phpwind 10 - 目前最新：10.0.0
+# phpwind 10 - 目前最新：10.0.1
 你没有看错，就是phpwind 10.
 ## 官方老版本如何升级10版本：
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
