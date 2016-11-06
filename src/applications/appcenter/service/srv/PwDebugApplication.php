@@ -287,7 +287,8 @@ class PwDebugApplication
                 'log_type' => $key,
                 'data' => $value,
                 'created_time' => time(),
-                'modified_time' => time(), );
+                'modified_time' => time(),
+            );
             $fields[] = $_tmp;
         }
         Wekit::load('APPCENTER:service.PwApplicationLog')->batchAdd($fields);
