@@ -889,7 +889,7 @@ class PwSimpleUbbCode
         $text = preg_replace_callback(
             '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/is',
             function ($m) use ($tdStyle) {
-                return PwSimpleUbbCode::createTd($m[1], $m[3], $m[4], $[6], $tdStyle);
+                return PwSimpleUbbCode::createTd($m[1], $m[3], $m[4], $m[6], $tdStyle);
             },
             $text
         );
