@@ -63,7 +63,7 @@ INSERT INTO `pw_common_nav` (`navid`, `parentid`, `rootid`, `type`, `sign`, `nam
 (14, 0, 14, 'my', 'medal', '我的勋章', '', 'index.php?m=medal', '', 0, 1, 7),
 (15, 0, 15, 'bottom', '', 'phpwind fans', '', 'https://github.com/medz/phpwind', '', 0, 1, 1),
 (16, 0, 16, 'bottom', '', '联系我们', '|||', 'http://phpwind.com/contact.html', '', 0, 1, 2),
-(17, 0, 17, 'bottom', '', '程序建议', '', 'http://www.phpwind.net/thread-htm-fid-39.html', '', 0, 1, 3),
+(17, 0, 17, 'bottom', '', '程序建议', '', 'http://www.phpwind.net/thread/155', '', 0, 1, 3),
 (18, 0, 18, 'bottom', '', '问题反馈', '', 'http://www.phpwind.net/thread/155', '', 0, 1, 4);
 
 INSERT INTO `pw_medal_info` (`medal_id`, `name`, `path`, `image`, `icon`, `descrip`, `medal_type`, `receive_type`, `medal_gids`, `award_type`, `award_condition`, `expired_days`, `isopen`, `vieworder`) VALUES
