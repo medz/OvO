@@ -1,3 +1,21 @@
+<!--#
+preg_match_all("/\[img\](.*?)\[\/img\]/i",$atc_content,$matches);
+if(isset($matches[1]) && is_array($matches[1])){
+    $urls = $matches[1];
+    foreach($urls as $k=>$v){
+        $v = preg_replace(array("/^javascript:/i","/>|<|\(|\)|(\\\\x)/"),array('',''),$v);
+        $v = explode(":",$v);
+        if($v[0]=="http" || $v[0]=="https"){
+            $v[0] .= ":";
+        }
+        if(isset($v[2]) && intval($v[2]) > 0){
+            $v[2] = ":".$v[2];
+        }
+        $urls[$k] = implode("",$v);
+    }
+    $atc_content = str_replace($matches[1],$urls,$atc_content);
+}
+#-->
 <textarea name="atc_content" id="J_wind_editor" style="height:300px;width:100%;padding:0;margin:0;">{$atc_content}</textarea>
 <script>
 	/*
@@ -72,7 +90,8 @@
 			// @提醒权限
 			var REMIND_OPEN = '{$loginUser->getPermission('remind_open')}',
 				VIDEO_OPEN = '{$loginUser->getPermission('allow_publish_vedio')}',
-				MUSIC_OPEN = '{$loginUser->getPermission('allow_publish_music')}';
+				MUSIC_OPEN = '{$loginUser->getPermission('allow_publish_music')}',
+				TAO_OPEN = '{$loginUser->getPermission('allow_publish_tao')}';
 			//根据服务器端配置判断是否加载编辑器功能插件
 			var customPlugins = [];
 			if (ATTACH_CONFIG.ifopen == 1) { customPlugins.push('insertFile'); }
@@ -80,8 +99,11 @@
 			if (MUSIC_OPEN == 1) { customPlugins.push('insertMusic'); }
 			if (EDIT_CONFIG.enhide.ifopen == 1) { customPlugins.push('insertHide'); }
 			if (EDIT_CONFIG.sell.ifopen == 1) { customPlugins.push('insertSell'); }
-			if (REMIND_OPEN == 1) { customPlugins.push('atremind'); }
-			//插入代码和openApp的插件放最后
+            if (REMIND_OPEN == 1) { customPlugins.push('atremind'); }
+            if (TAO_OPEN == 1){ customPlugins.push('insertTao'); }
+            // 下面这货是啥？
+            // customPlugins.push('insertShare');
+			// 插入代码和openApp的插件放最后
 			plugins = plugins.concat(['insertEmoticons', 'insertPhoto'],customPlugins,['insertCode', 'openApp']);
 			//简单模式时的插件
 			mini = mini.concat( customPlugins );
