@@ -204,7 +204,7 @@ class PwUbbCode
         $t = 0;
         while (self::hasTag($message, 'table')) {
             $message = preg_replace_callback('/\[table(?:=(\d{1,4}(?:%|px)?)(?:,(#\w{6})?)?(?:,(#\w{6})?)?(?:,(\d+))?(?:,(\d+))?(?:,(left|center|right))?)?\](?!.*(\[table))(.*?)\[\/table\]/is', function ($m) {
-                return PwUbbCode::createTable($m[8],$m[1],$m[2],$m[3],$m[4],$m[5], $m[6]);
+                return PwUbbCode::createTable($m[8], $m[1], $m[2], $m[3], $m[4], $m[5], $m[6]);
             }, $message);
             if (++$t > $max) {
                 break;
@@ -365,7 +365,7 @@ class PwUbbCode
     {
         if ($convertStatus) {
             return preg_replace_callback("/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\(\r\n\"']+?)\[\/flash\]/is", function ($m) {
-                return PwUbbCode::createPlayer($m[6],$m[2],$m[3], $m[5],'video');
+                return PwUbbCode::createPlayer($m[6], $m[2], $m[3], $m[5], 'video');
             }, $message, self::$_cvtimes);
         }
 
@@ -384,11 +384,10 @@ class PwUbbCode
     public static function parseMedia($message, $convertStatus = 1)
     {
         if ($convertStatus) {
-
             $message = preg_replace_callback(
                 '/\[(wmv|mp3)(=(0|1))?\]([^\<\(\r\n\"\']+?)\[\/\\1\]/is',
                 function ($m) {
-                    return PwUbbCode::createPlayer($m[4],'314','53',$m[3],'audio');
+                    return PwUbbCode::createPlayer($m[4], '314', '53', $m[3], 'audio');
                 },
                 $message
             );
@@ -396,7 +395,7 @@ class PwUbbCode
             $message = preg_replace_callback(
                 '/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\(\r\n\"\']+?)\[\/\\1\]/is',
                 function ($m) {
-                    return PwUbbCode::createPlayer($m[6],$m[3],$m[4],$m[5],'video');
+                    return PwUbbCode::createPlayer($m[6], $m[3], $m[4], $m[5], 'video');
                 },
                 $message
             );
