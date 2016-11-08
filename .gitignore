@@ -12,3 +12,5 @@
 /attachment/
 !/windid/attachment/index.html
 /windid/attachment/
+!/src/extensions/demo
+/src/extensions/
