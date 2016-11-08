@@ -411,7 +411,6 @@ class PwSimpleUbbCode
     public static function parseFlash($message, $config)
     {
         if ($config->isConvertFlash) {
-
             return preg_replace_callback(
                 '/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"\']+?)\[\/flash\]/is',
                 function ($matches) {
@@ -444,7 +443,6 @@ class PwSimpleUbbCode
     public static function parseMedia($message, $config)
     {
         if ($config->isConvertMedia == 2) {
-
             return preg_replace_callback(
                 array(
                     '/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
@@ -478,10 +476,10 @@ class PwSimpleUbbCode
             array(
                 '/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
                 '/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
-            ), 
+            ),
             function ($m) {
                 return PwSimpleUbbCode::_pushCode('createMediaLink', $m[2]);
-            }, 
+            },
             $message
         );
 
@@ -498,10 +496,10 @@ class PwSimpleUbbCode
     public static function parseRemind($message, $remindUser)
     {
         return preg_replace_callback(
-            '/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/i', 
+            '/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/i',
             function ($m) use ($remindUser) {
                 return PwSimpleUbbCode::_pushCode('createRemind', $m[1], $remindUser);
-            }, 
+            },
             $message
         );
         // return preg_replace('/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/ie', "self::_pushCode('createRemind', '\\1', \$remindUser)", $message);
@@ -517,10 +515,10 @@ class PwSimpleUbbCode
     public static function parseIframe($message, $config)
     {
         return preg_replace_callback(
-            '/\[iframe\]([^\[\<\r\n\"\']+?)\[\/iframe\]/is', 
+            '/\[iframe\]([^\[\<\r\n\"\']+?)\[\/iframe\]/is',
             function ($m) use ($config) {
                 return PwSimpleUbbCode::_pushCode('createIframe', $m[1], $config);
-            }, 
+            },
             $message
         );
         // return preg_replace("/\[iframe\]([^\[\<\r\n\"']+?)\[\/iframe\]/eis", "self::_pushCode('createIframe','\\1', \$config)", $message);
@@ -881,7 +879,7 @@ class PwSimpleUbbCode
             array(
                 '<br />',
                 // "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')",
-                "<tr><td{$tdStyle}>"
+                "<tr><td{$tdStyle}>",
             ),
             $text
         );
