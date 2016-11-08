@@ -49,6 +49,9 @@ class PwSpaceDm extends PwBaseDm
     public function setBackImage($image, $repeat, $fixed, $align)
     {
         //$array = array('image'=>$image, 'repeat'=>$repeat, 'fixed'=>$fixed, 'align'=>$align);
+        $image = htmlentities($image);
+        $repeat = htmlentities($repeat);
+        $align = htmlentities($align);
         $array = array($image, $repeat, $fixed, $align);
         $this->_data['back_image'] = serialize($array);
 
