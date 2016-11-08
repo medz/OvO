@@ -274,20 +274,23 @@ class PwUbbCode
      */
     public static function parseUrl($message, $checkurl = 0)
     {
-        $searcharray = array(
-            "/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder|ed2k)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is",
-            "/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder|ed2k)?[^\[\s]+?)\[\/url\]/is",
-        );
-        $replacearray = array(
+        $message = preg_replace_callback(
+            '/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder|ed2k)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is',
             function ($m) use ($checkurl) {
                 return PwUbbCode::createUrl($m[1], $m[5], $m[2], $m[4], $checkurl);
             },
+            $message
+        );
+
+        $message = preg_replace_callback(
+            '/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder|ed2k)?[^\[\s]+?)\[\/url\]/is',
             function ($m) use ($checkurl) {
                 return PwUbbCode::createUrl($m[1], $m[1], $m[2], '0', $checkurl);
             },
+            $message
         );
 
-        return preg_replace_callback($searcharray, $replacearray, $message);
+        return $message;
     }
 
     /**
@@ -298,7 +301,14 @@ class PwUbbCode
      */
     public static function parseCode($message)
     {
-        return preg_replace_callback("/\[code(\s*brush\:(.+?)\;toolbar\:(true|false)\;)?\](.+?)\[\/code\]/is", "self::createCode('\\4', '\\2', '\\3')", $message, self::$_cvtimes);
+        return preg_replace_callback(
+            '/\[code(\s*brush\:(.+?)\;toolbar\:(true|false)\;)?\](.+?)\[\/code\]/is',
+            function ($m) {
+                return PwUbbCode::createCode($m[4], $m[2], $m[3]);
+            },
+            $message,
+            self::$_cvtimes
+        );
     }
 
     /**
@@ -310,7 +320,13 @@ class PwUbbCode
      */
     public static function parsePost($message, $config)
     {
-        return preg_replace_callback("/\[post\](.+?)\[\/post\]/is", "self::createPost('\\1', \$config)", $message);
+        return preg_replace_callback(
+            "/\[post\](.+?)\[\/post\]/is",
+            function ($m) use ($config) {
+                return PwUbbCode::createPost($m[1], $config);
+            },
+            $message
+        );
     }
 
     /**
@@ -322,7 +338,13 @@ class PwUbbCode
      */
     public static function parseHide($message, $config)
     {
-        return preg_replace_callback("/\[hide=(.+?)\](.+?)\[\/hide\]/is", "self::createHide('\\1', '\\2', \$config)", $message);
+        return preg_replace_callback(
+            "/\[hide=(.+?)\](.+?)\[\/hide\]/is",
+            function ($m) use ($config) {
+                return PwUbbCode::createHide($m[1], $m[2], $config);
+            },
+            $message
+        );
     }
 
     /**
@@ -334,7 +356,13 @@ class PwUbbCode
      */
     public static function parseSell($message, $config)
     {
-        return preg_replace_callback("/\[sell=(\d+)(\,(\d+))?\](.+?)\[\/sell\]/is", "self::createSell('\\1', '\\3', '\\4', \$config)", $message);
+        return preg_replace_callback(
+            "/\[sell=(\d+)(\,(\d+))?\](.+?)\[\/sell\]/is",
+            function ($m) use ($config) {
+                return PwUbbCode::createSell($m[1], $m[3], $m[4], $config);
+            },
+            $message
+        );
     }
 
     /**
@@ -345,7 +373,13 @@ class PwUbbCode
      */
     public static function parseQuote($message)
     {
-        return preg_replace_callback("/\[quote(=(.+?)\,(\d+))?\](.*?)\[\/quote\]/is", "self::createQoute('\\4', '\\2', '\\3')", $message);
+        return preg_replace_callback(
+            "/\[quote(=(.+?)\,(\d+))?\](.*?)\[\/quote\]/is",
+            function ($m) {
+                return PwUbbCode::createQoute($m[4], $m[2], $m[3]);
+            },
+            $message
+        );
         /* 盖楼
         while (self::hasTag($message, 'quote')) {
             $message = preg_replace("/\[quote(=([^,]+?)\,(\d+))?\](?!.*?\[quote.*?)(.*?)\[\/quote\]/eis", "self::createQoute('\\4', '\\2', '\\3')", $message);
@@ -416,7 +450,13 @@ class PwUbbCode
 
     public static function parseTao($message)
     {
-        return preg_replace_callback("/\[tao=([^,]+),([^,]+),([^,]+),([^,]+),([^,]+)\]\[\/tao\]/is", "self::createTao('\\1', '\\4', '\\3', '\\2', '\\5')", $message);
+        return preg_replace_callback(
+            "/\[tao=([^,]+),([^,]+),([^,]+),([^,]+),([^,]+)\]\[\/tao\]/is",
+            function ($m) {
+                return PwUbbCode::createTao($m[1], $m[4], $m[3], $m[2], $m[5]);
+            },
+            $message
+        );
     }
 
     public static function parseShare($message)
@@ -428,7 +468,13 @@ class PwUbbCode
 
     public static function parseRemind($message, $remindUser)
     {
-        return preg_replace_callback('/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/i', "self::createRemind('\\1', \$remindUser)", $message);
+        return preg_replace_callback(
+            '/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/i',
+            function ($m) use ($remindUser) {
+                return PwUbbCode::createRemind($m[1], $remindUser);
+            },
+            $message
+        );
     }
 
     /**
@@ -440,7 +486,14 @@ class PwUbbCode
      */
     public static function parseIframe($message, $convertStatus = 1)
     {
-        return preg_replace_callback("/\[iframe\]([^\[\<\(\r\n\"']+?)\[\/iframe\]/is", "self::createIframe('\\1', \$convertStatus)", $message, self::$_cvtimes);
+        return preg_replace_callback(
+            "/\[iframe\]([^\[\<\(\r\n\"']+?)\[\/iframe\]/is",
+            function ($m) use ($convertStatus) {
+                return PwUbbCode::createIframe($m[1], $convertStatus);
+            },
+            $message,
+            self::$_cvtimes
+        );
     }
 
     protected static function _init()
@@ -578,7 +631,14 @@ class PwUbbCode
         if ($hasCode) {
             self::_init();
             self::_startParse();
-            self::hasTag($message, 'code') && $message = preg_replace_callback("/\[code.*?\].+?\[\/code\]/is", "self::srcCode('\\0')", $message, self::$_cvtimes);
+            self::hasTag($message, 'code') && $message = preg_replace_callback(
+                "/\[code.*?\].+?\[\/code\]/is",
+                function ($m) {
+                    return PwUbbCode::srcCode($m[0]);
+                },
+                $message,
+                self::$_cvtimes
+            );
         }
         $message = preg_replace(
             "/(?<![\]a-z0-9-=\"'(\\/])((https?|ftp|gopher|news|telnet|mms|rtsp):\/\/|www\.)([a-z0-9\/\-_+=.~!%@?#%&;:$\\│\|]+)/i",
