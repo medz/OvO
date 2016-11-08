@@ -13,6 +13,7 @@ class PwErrorHandler extends WindError
      */
     protected function showErrorMessage($message, $file, $line, $trace, $errorcode)
     {
+        // var_dump($message, $file, $line, $trace, $errorcode);
         list($fileLines, $trace) = $this->crash($file, $line, $trace);
 
         if (Wind::$isDebug & 2) {

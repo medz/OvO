@@ -191,7 +191,16 @@ class PwSimpleUbbCode
     {
         $t = 0;
         while (self::hasTag($message, 'table')) {
-            $message = preg_replace('/\[table(?:=(\d{1,4}(?:%|px)?)(?:,(#\w{6})?)?(?:,(#\w{6})?)?(?:,(\d+))?(?:,(\d+))?(?:,(left|center|right))?)?\](?!.*(\[table))(.*?)\[\/table\]/eis', "self::_pushCode('createTable', '\\8','\\1','\\2','\\3','\\4','\\5','\\6')", $message);
+            // $message = preg_replace('/\[table(?:=(\d{1,4}(?:%|px)?)(?:,(#\w{6})?)?(?:,(#\w{6})?)?(?:,(\d+))?(?:,(\d+))?(?:,(left|center|right))?)?\](?!.*(\[table))(.*?)\[\/table\]/eis', "self::_pushCode('createTable', '\\8','\\1','\\2','\\3','\\4','\\5','\\6')", $message);
+
+            $message = preg_replace_callback(
+                '/\[table(?:=(\d{1,4}(?:%|px)?)(?:,(#\w{6})?)?(?:,(#\w{6})?)?(?:,(\d+))?(?:,(\d+))?(?:,(left|center|right))?)?\](?!.*(\[table))(.*?)\[\/table\]/is',
+                function ($matches) {
+                    return PwSimpleUbbCode::_pushCode('createTable', $matches[8], $matches[1], $matches[2], $matches[3], $matches[4], $matches[5], $matches[6]);
+                },
+                $message
+            );
+
             if (++$t > $max) {
                 break;
             }
@@ -208,7 +217,15 @@ class PwSimpleUbbCode
      */
     public static function parseEmotion($message)
     {
-        $message = preg_replace("/\[s:(.+?)\]/eis", "self::_pushCode('createEmotion', '\\1')", $message);
+        // $message = preg_replace("/\[s:(.+?)\]/eis", "self::_pushCode('createEmotion', '\\1')", $message);
+
+        $message = preg_replace_callback(
+            '/\[s:(.+?)\]/is',
+            function ($matches) {
+                return PwSimpleUbbCode::_pushCode('createEmotion', $matches[1]);
+            },
+            $message
+        );
 
         return $message;
     }
@@ -243,7 +260,14 @@ class PwSimpleUbbCode
      */
     public static function parseImg($message, $maxWidth = 0, $maxHeight = 0)
     {
-        return preg_replace("/\[img\]([^\<\r\n\"']+?)\[\/img\]/eis", "self::_pushCode('createImg', '\\1', '$maxWidth', '$maxHeight')", $message);
+        return preg_replace_callback(
+            '/\[img\]([^\<\r\n\"\']+?)\[\/img\]/is',
+            function ($matches) use ($maxWidth, $maxHeight) {
+                return PwSimpleUbbCode::_pushCode('createImg', $matches[1], $maxWidth, $maxHeight);
+            },
+            $message
+        );
+        // return preg_replace("/\[img\]([^\<\r\n\"']+?)\[\/img\]/eis", "self::_pushCode('createImg', '\\1', '$maxWidth', '$maxHeight')", $message);
     }
 
     /**
@@ -256,15 +280,23 @@ class PwSimpleUbbCode
     public static function parseUrl($message, $checkurl = 0)
     {
         $searcharray = array(
-            "/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/eis",
-            "/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)\[\/url\]/eis",
+            "/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is",
+            "/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)\[\/url\]/is",
         );
         $replacearray = array(
-            "self::_pushCode('createUrl', '\\1', '\\5', '\\2', '\\4', '$checkurl')",
-            "self::_pushCode('createUrl', '\\1', '\\1', '\\2', '0', '$checkurl')",
+            function ($matches) use ($checkurl) {
+                return PwSimpleUbbCode::_pushCode('createUrl', $matches[1], $matches[5], $matches[2], $matches[4], $checkurl);
+            },
+            function ($matches) use ($checkurl) {
+                return PwSimpleUbbCode::_pushCode('createUrl', $matches[1], $matches[1], $matches[2], '0', $checkurl);
+            },
+            // "self::_pushCode('createUrl', '\\1', '\\5', '\\2', '\\4', '$checkurl')",
+            // "self::_pushCode('createUrl', '\\1', '\\1', '\\2', '0', '$checkurl')",
         );
 
-        return preg_replace($searcharray, $replacearray, $message);
+        return preg_replace_callback($searcharray, $replacearray, $message);
+
+        // return preg_replace($searcharray, $replacearray, $message);
     }
 
     /**
@@ -275,7 +307,14 @@ class PwSimpleUbbCode
      */
     public static function parseCode($message)
     {
-        return preg_replace("/\[code(\sbrush\:(.+?)\;toolbar\:(true|false)\;)?\](.+?)\[\/code\]/eis", "self::_pushCode('createCode', '\\4', '\\2', '\\3')", $message);
+        return preg_replace_callback(
+            '/\[code(\sbrush\:(.+?)\;toolbar\:(true|false)\;)?\](.+?)\[\/code\]/is',
+            function ($matches) {
+                return PwSimpleUbbCode::_pushCode('createCode', $matches[4], $matches[2], $matches[3]);
+            },
+            $message
+        );
+        // return preg_replace("/\[code(\sbrush\:(.+?)\;toolbar\:(true|false)\;)?\](.+?)\[\/code\]/eis", "self::_pushCode('createCode', '\\4', '\\2', '\\3')", $message);
     }
 
     /**
@@ -287,7 +326,14 @@ class PwSimpleUbbCode
      */
     public static function parsePost($message, $config)
     {
-        return preg_replace("/\[post\](.+?)\[\/post\]/eis", "self::_pushCode('createPost', '\\1', \$config)", $message);
+        return preg_replace_callback(
+            '/\[post\](.+?)\[\/post\]/is',
+            function ($matches) use ($config) {
+                return PwSimpleUbbCode::_pushCode('createPost', $matches[1], $config);
+            },
+            $message
+        );
+        // return preg_replace("/\[post\](.+?)\[\/post\]/eis", "self::_pushCode('createPost', '\\1', \$config)", $message);
     }
 
     /**
@@ -299,7 +345,14 @@ class PwSimpleUbbCode
      */
     public static function parseHide($message, $config)
     {
-        return preg_replace("/\[hide=(.+?)\](.+?)\[\/hide\]/eis", "self::_pushCode('createHide', '\\1', '\\2', \$config)", $message);
+        return preg_replace_callback(
+            '/\[hide=(.+?)\](.+?)\[\/hide\]/is',
+            function ($matches) use ($config) {
+                return PwSimpleUbbCode::_pushCode('createHide', $matches[1], $matches[2], $config);
+            },
+            $message
+        );
+        // return preg_replace("/\[hide=(.+?)\](.+?)\[\/hide\]/eis", "self::_pushCode('createHide', '\\1', '\\2', \$config)", $message);
     }
 
     /**
@@ -311,7 +364,14 @@ class PwSimpleUbbCode
      */
     public static function parseSell($message, $config)
     {
-        return preg_replace("/\[sell=(.+?)\](.+?)\[\/sell\]/eis", "self::_pushCode('createSell', '\\1', '\\2', \$config)", $message);
+        return preg_replace_callback(
+            '/\[sell=(.+?)\](.+?)\[\/sell\]/is',
+            function ($matches) use ($config) {
+                return PwSimpleUbbCode::_pushCode('createHide', $matches[1], $matches[2], $config);
+            },
+            $message
+        );
+        // return preg_replace("/\[sell=(.+?)\](.+?)\[\/sell\]/eis", "self::_pushCode('createSell', '\\1', '\\2', \$config)", $message);
     }
 
     /**
@@ -322,7 +382,23 @@ class PwSimpleUbbCode
      */
     public static function parseQuote($message)
     {
-        return preg_replace("/\[quote(=(.+?)\,\d+)?\](.*?)\[\/quote\]/eis", "self::_pushCode('createQoute', '\\3', '\\2')", $message);
+        return preg_replace_callback(
+            '/\[quote(=(.+?)\,\d+)?\](.*?)\[\/quote\]/is',
+            function ($matches) {
+                return PwSimpleUbbCode::_pushCode('createQoute', $matches[1], $matches[2]);
+            },
+            $message
+        );
+
+        return preg_replace_callback(
+            '/\[quote(=(.+?)\,\d+)?\](.*?)\[\/quote\]/is',
+            function ($m) {
+                return PwSimpleUbbCode::_pushCode('createQoute', $m[3], $m[2]);
+            },
+            $message,
+        );
+
+        // return preg_replace("/\[quote(=(.+?)\,\d+)?\](.*?)\[\/quote\]/eis", "self::_pushCode('createQoute', '\\3', '\\2')", $message);
     }
 
     /**
@@ -335,10 +411,27 @@ class PwSimpleUbbCode
     public static function parseFlash($message, $config)
     {
         if ($config->isConvertFlash) {
-            return preg_replace("/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"']+?)\[\/flash\]/eis", "self::_pushCode('createPlayer','\\6','\\2','\\3','\\5','video')", $message);
+
+            return preg_replace_callback(
+                '/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"\']+?)\[\/flash\]/is',
+                function ($matches) {
+                    return PwSimpleUbbCode::_pushCode('createPlayer', $matches[6], $matches[2], $matches[3], $matches[5], 'video');
+                },
+                $message
+            );
+
+            // return preg_replace("/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"']+?)\[\/flash\]/eis", "self::_pushCode('createPlayer','\\6','\\2','\\3','\\5','video')", $message);
         }
 
-        return preg_replace("/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"']+?)\[\/flash\]/eis", "self::_pushCode('createFlashLink','\\6')", $message);
+        return preg_replace_callback(
+            '/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"\']+?)\[\/flash\]/is',
+            function ($matches) {
+                return PwSimpleUbbCode::_pushCode('createFlashLink', $matches[6]);
+            },
+            $message
+        );
+
+        // return preg_replace("/\[flash(=(\d+?)\,(\d+?)(\,(0|1))?)?\]([^\[\<\r\n\"']+?)\[\/flash\]/eis", "self::_pushCode('createFlashLink','\\6')", $message);
     }
 
     /**
@@ -351,32 +444,67 @@ class PwSimpleUbbCode
     public static function parseMedia($message, $config)
     {
         if ($config->isConvertMedia == 2) {
-            return preg_replace(
+
+            return preg_replace_callback(
                 array(
-                    "/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-                    "/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
+                    '/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
+                    '/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
                 ),
                 array(
-                    "self::_pushCode('createPlayer','\\4','314','53','\\3','audio')",
-                    "self::_pushCode('createPlayer','\\6','\\3','\\4','\\5','video')",
+                    function ($m) {
+                        return PwSimpleUbbCode::_pushCode('createPlayer', $m[4], '314', '53', $m[3], 'audio');
+                    },
+                    function ($m) {
+                        return PwSimpleUbbCode::_pushCode('createPlayer', $m[6], $m[3], $m[4], $m[5], 'video');
+                    },
                 ),
                 $message
             );
+
+            // return preg_replace(
+            //     array(
+            //         "/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
+            //         "/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
+            //     ),
+            //     array(
+            //         "self::_pushCode('createPlayer','\\4','314','53','\\3','audio')",
+            //         "self::_pushCode('createPlayer','\\6','\\3','\\4','\\5','video')",
+            //     ),
+            //     $message
+            // );
         }
 
-        return preg_replace(
+        return preg_replace_callback(
             array(
-                "/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-                "/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-            ),
-            "self::_pushCode('createMediaLink','\\2')",
+                '/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
+                '/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
+            ), 
+            function ($m) {
+                return PwSimpleUbbCode::_pushCode('createMediaLink', $m[2]);
+            }, 
             $message
         );
+
+        // return preg_replace(
+        //     array(
+        //         "/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
+        //         "/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
+        //     ),
+        //     "self::_pushCode('createMediaLink','\\2')",
+        //     $message
+        // );
     }
 
     public static function parseRemind($message, $remindUser)
     {
-        return preg_replace('/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/ie', "self::_pushCode('createRemind', '\\1', \$remindUser)", $message);
+        return preg_replace_callback(
+            '/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/i', 
+            function ($m) use ($remindUser) {
+                return PwSimpleUbbCode::_pushCode('createRemind', $m[1], $remindUser);
+            }, 
+            $message
+        );
+        // return preg_replace('/@([\x7f-\xff\dA-Za-z\.\_]+)(?=\s?)/ie', "self::_pushCode('createRemind', '\\1', \$remindUser)", $message);
     }
 
     /**
@@ -388,7 +516,14 @@ class PwSimpleUbbCode
      */
     public static function parseIframe($message, $config)
     {
-        return preg_replace("/\[iframe\]([^\[\<\r\n\"']+?)\[\/iframe\]/eis", "self::_pushCode('createIframe','\\1', \$config)", $message);
+        return preg_replace_callback(
+            '/\[iframe\]([^\[\<\r\n\"\']+?)\[\/iframe\]/is', 
+            function ($m) use ($config) {
+                return PwSimpleUbbCode::_pushCode('createIframe', $m[1], $config);
+            }, 
+            $message
+        );
+        // return preg_replace("/\[iframe\]([^\[\<\r\n\"']+?)\[\/iframe\]/eis", "self::_pushCode('createIframe','\\1', \$config)", $message);
     }
 
     protected static function _init()
@@ -398,7 +533,7 @@ class PwSimpleUbbCode
         self::$_hide = false;
     }
 
-    protected static function _pushCode()
+    public static function _pushCode()
     {
         $args = func_get_args();
         $length = array_push(self::$_code, $args);
@@ -739,10 +874,26 @@ class PwSimpleUbbCode
         //不显示表格内容
         $text = trim(str_replace(array('\\"', '<br />'), array('"', "\n"), $text));
         $text = preg_replace(
-            array('/(\[\/td\]\s*)?\[\/tr\]\s*/is', '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/eis'),
-            array('<br />', "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')", "<tr><td{$tdStyle}>"),
+            array(
+                '/(\[\/td\]\s*)?\[\/tr\]\s*/is',
+                // '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/eis'
+            ),
+            array(
+                '<br />',
+                // "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')",
+                "<tr><td{$tdStyle}>"
+            ),
             $text
         );
+
+        $text = preg_replace_callback(
+            '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/is',
+            function ($m) use ($tdStyle) {
+                return PwSimpleUbbCode::createTd($m[1], $m[3], $m[4], $[6], $tdStyle);
+            },
+            $text
+        );
+
         $text = str_replace('[tr]', '', $text);
         $text = str_replace("\n", '<br />', $text);
 
