@@ -80,6 +80,9 @@ class PropertyController extends PwBaseController
         }
         $cache = $this->getInput('cache', 'post');
         $property = $this->getInput('property', 'post');
+
+        isset($property['html']) && $property['html'] = $this->_getDesignService()->filterTemplate($property['html']);
+
         if ($property['limit'] > 200) {
             $this->showError('DESIGN:maxlimit.error');
         }
