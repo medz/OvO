@@ -61,10 +61,10 @@ INSERT INTO `pw_common_nav` (`navid`, `parentid`, `rootid`, `type`, `sign`, `nam
 (12, 0, 12, 'my', 'vote', '我的投票', '', 'index.php?m=vote&c=my', '', 0, 1, 5),
 (13, 0, 13, 'my', 'task', '我的任务', '', 'index.php?m=task', '', 0, 1, 6),
 (14, 0, 14, 'my', 'medal', '我的勋章', '', 'index.php?m=medal', '', 0, 1, 7),
-(15, 0, 15, 'bottom', '', '关于phpwind', '', 'http://phpwind.com/about.html', '', 0, 1, 1),
+(15, 0, 15, 'bottom', '', 'phpwind fans', '', 'https://github.com/medz/phpwind', '', 0, 1, 1),
 (16, 0, 16, 'bottom', '', '联系我们', '|||', 'http://phpwind.com/contact.html', '', 0, 1, 2),
 (17, 0, 17, 'bottom', '', '程序建议', '', 'http://www.phpwind.net/thread-htm-fid-39.html', '', 0, 1, 3),
-(18, 0, 18, 'bottom', '', '问题反馈', '', 'http://www.phpwind.net/thread-htm-fid-54.html', '', 0, 1, 4);
+(18, 0, 18, 'bottom', '', '问题反馈', '', 'http://www.phpwind.net/thread/155', '', 0, 1, 4);
 
 INSERT INTO `pw_medal_info` (`medal_id`, `name`, `path`, `image`, `icon`, `descrip`, `medal_type`, `receive_type`, `medal_gids`, `award_type`, `award_condition`, `expired_days`, `isopen`, `vieworder`) VALUES
 (1, '社区居民', '', 'big/shequjumin.gif', 'icon/shequjumin.gif', '注册用户登录后即可获得此勋章', 1, 1, '', 10, 1, 0, 1, 0),
