@@ -33,7 +33,7 @@ class WindidMessageService
      * @param  int   $uid
      * @param  int   $dialogId
      * @param  array $messageIds
-     * @return æ     ‡è®°æˆåŠŸçš„æ¡æ•°
+     * @return æ    ‡è®°æˆåŠŸçš„æ¡æ•°
      */
     public function read($uid, $dialogId, $messageIds = array())
     {
@@ -354,7 +354,7 @@ class WindidMessageService
             return false;
         }
         list($total, $unreads) = $this->_getMessageDs()->countUserMessages($uid);
-        /**
+        /*
          * 重复设置数据库（多余的数据库查询），先这样解决。后续架构优化。
          */
         Wekit::load('message.srv.PwMessageService')->resetUserMessages($dialog['to_uid']);
