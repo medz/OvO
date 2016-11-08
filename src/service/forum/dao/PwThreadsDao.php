@@ -28,7 +28,7 @@ class PwThreadsDao extends PwBaseDao
 
     public function getThreadByFid($fid, $limit, $offset)
     {
-        $sql = $this->_bindSql('SELECT * FROM %s WHERE fid=? AND disabled=0 ORDER BY lastpost_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
+        $sql = $this->_bindSql('SELECT * FROM %s WHERE fid=? AND disabled=0 AND topped=0 ORDER BY lastpost_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
         return $smt->queryAll(array($fid), 'tid');
