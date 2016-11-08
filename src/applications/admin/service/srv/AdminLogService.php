@@ -88,7 +88,7 @@ class AdminLogService
         flock($fp, LOCK_SH);
         $size = filesize($this->logfile);
         $size > $offset ? fseek($fp, -$offset, SEEK_END) : $offset = $size;
-        $logs = fread($fp, $offset);
+        $logs = $offset > 0 ? fread($fp, $offset) : '';
         fclose($fp);
 
         $logs = explode("\n", trim($logs));
