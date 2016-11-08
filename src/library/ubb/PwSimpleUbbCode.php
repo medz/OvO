@@ -395,7 +395,7 @@ class PwSimpleUbbCode
             function ($m) {
                 return PwSimpleUbbCode::_pushCode('createQoute', $m[3], $m[2]);
             },
-            $message,
+            $message
         );
 
         // return preg_replace("/\[quote(=(.+?)\,\d+)?\](.*?)\[\/quote\]/eis", "self::_pushCode('createQoute', '\\3', '\\2')", $message);
