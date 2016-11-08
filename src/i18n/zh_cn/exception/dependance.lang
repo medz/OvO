@@ -1,0 +1,2 @@
+
+admin.userservice = 依赖异常,当前访问的 {service} 依赖于用户服务接口 {userservice},请检查依赖的服务包是否存在或类型是否正确.

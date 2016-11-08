@@ -1,0 +1,63 @@
+<?php
+defined('WEKIT_VERSION') or exit(403);
+Wind::import('EXT:{{alias}}.service.dm.{{class_dm}}');
+/**
+ * {{classname}} - 数据服务接口
+ *
+ * @author {{author}} <{{email}}>
+ * @copyright {{website}}
+ * @license {{website}}
+ */
+class {{classname}} {
+	
+	/**
+	 * add record
+	 *
+	 * @param {{class_dm}} $dm
+	 * @return multitype:|Ambigous <boolean, number, string, rowCount>
+	 */
+	public function add({{class_dm}} $dm) {
+		if (true !== ($r = $dm->beforeAdd())) return $r;
+		return $this->_loadDao()->add($dm->getData());
+	}
+	
+	/**
+	 * update record
+	 *
+	 * @param {{class_dm}} $dm
+	 * @return multitype:|Ambigous <boolean, number, rowCount>
+	 */
+	public function update({{class_dm}} $dm) {
+		if (true !== ($r = $dm->beforeUpdate())) return $r;
+		return $this->_loadDao()->update($dm->getId(), $dm->getData());
+	}
+	
+	/**
+	 * get a record
+	 *
+	 * @param unknown_type $id
+	 * @return Ambigous <multitype:, multitype:unknown , mixed>
+	 */
+	public function get($id) {
+		return $this->_loadDao()->get($id);
+	}
+	
+	/**
+	 * delete a record
+	 *
+	 * @param unknown_type $id
+	 * @return Ambigous <number, boolean, rowCount>
+	 */
+	public function delete($id) {
+		return $this->_loadDao()->delete($id);
+	}
+	
+	/**
+	 * @return {{class_dao}}
+	 */
+	private function _loadDao() {
+		return Wekit::loadDao('EXT:{{alias}}.service.dao.{{class_dao}}');
+	}
+}
+
+?>

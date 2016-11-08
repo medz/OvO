@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+	<application>
+		<name>应用示例包</name>
+		<alias>demo</alias>
+		<version>1.0</version>
+		<pw-version>9.0</pw-version>
+		<type>app</type>
+		<description>系统标准基础应用包，你可以通过拷贝一份作为你开发的基础。可实现功能：编辑器扩展，前台应用列表，后台应用管理菜单。
+		</description>
+		<charset>utf-8</charset>
+		<logo>images/logo.jpg</logo>
+		<website>http://www.phpwind.net/u-htm-uid-1793211.html</website>
+		<author-name>pw</author-name>
+		<author-email>pw@aliyun-inc.com</author-email>
+		<author-icon>http://www.phpwind.net/u-htm-uid-1793211.html
+		</author-icon>
+	</application>
+	<res>resource</res>
+	<inject-services>
+		<s_PwEditor_app>
+			<demo>
+				<class>EXT:demo.service.srv.AppDemo_PwEditor_AppDo</class>
+				<loadway>load</loadway>
+				<method>appDemoDo</method>
+				<description>this is another s_PwEditor_app</description>
+			</demo>
+		</s_PwEditor_app>
+		<s_admin_menu>
+			<demo>
+				<class>EXT:demo.service.srv.AppDemo_Admin_MenuDo</class>
+				<loadway>load</loadway>
+				<method>appDemoDo</method>
+				<description>this is another s_admin_menu</description>
+			</demo>
+		</s_admin_menu>
+	</inject-services>
+</manifest>

@@ -1,0 +1,22 @@
+setting.success = 积分设置成功
+setting.dataError = 非法的积分数据
+setting.doDelete.success = 积分删除成功
+setting.doDelete.fail = 非法的删除操作
+
+exchange.fail.credit.same="相互转换的积分名称不能相同"
+exchange.fail.exists.not="该种积分不能互相转换"
+exchange.fail.num.error="转换数量错误(必须为{num}的整数倍)"
+exchange.fail.credit.less="您的积分不足(当前拥有{credit})"
+exchange.notice.format="恭喜您，积分转换成功！本次转换数量：{num1}{unit1}{credit1} 转换为 {num2}{unit2}{credit2}。"
+
+transfer.fail.credit.exists.not=该种积分不能转账
+transfer.fail.touser.exists.not=输入用户帐号错误
+transfer.fail.num.error="转换数量最低为{num}"
+transfer.fail.credit.less="您的积分不足(当前拥有{credit})"
+transfer.fail.pwd.error=登录密码输入错误
+transfer.to.notice.format="用户 {username} 转账给您 {num}{unit}{credit}，请注意查收。"
+
+strategy.update.success = "积分策略保存成功"
+
+pay.num.min="最少充值{min}元"
+pay.notice.format="恭喜您，积分充值成功！本次充值金额：{price}元人民币，获得{num}{unit}{credit}"

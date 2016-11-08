@@ -1,0 +1,24 @@
+通知扩展README
+
+添加一种系统知步骤：
+1.在PwNoticeService _getTypes、_getTypeNames中增加相关类型
+2.在SRV:message.notice中增加实现（继承PwNoticeAction）
+	属性说明
+	1)$aggregate　消息是否需要合并，如果要合并，将根据关键参数param进行合并
+	
+	实现方法说明：
+	1)buildTitle生成消息标题
+	2)formatExtendParams处理扩展参数，如果通知需合并,此处需特别处理历史数据
+	3)getDetailList 获取弹窗详细页所需要的列表（option）
+	
+３. 实现相关模板
+	1)TPL:message.notice_list_somenotice.htm 通知中心列表页展示
+	2)TPL:message.notice_minilist_somenotice.htm 通知弹窗列表展示
+	3)TPL:message.notice_detail_somenotice.htm 通知弹窗详细页
+
+发通知方法:
+PwNoticeService::sendNotice
+	 * @param int $uid 收件人uid
+	 * @param string $type 通知类型 somenotice
+	 * @param int $param 关键ID 如tid,uid,　供合并通知用
+	 * @param array $extendParams 其它扩展参数　供展示及交互时使用
