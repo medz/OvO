@@ -12,22 +12,21 @@ Wind::import('SRV:forum.srv.PwThreadManage');
  * @version $Id: ManageController.php 24747 2013-02-20 03:13:43Z jieyin $
  * @package src.applications.bbs.controller
  */
-class ManageController extends PwBaseController
-{
+class ManageController extends PwBaseController {
+    
     public $action;
-
+    
     protected $singleData = array();
     protected $manage;
     protected $doAction;
     protected $doCancel = array();
-
+    
     /**
      * preprocessing before any manage action
-     *
+     * 
      * @see base/PwBaseController::beforeAction()
      */
-    public function beforeAction($handlerAdapter)
-    {
+    public function beforeAction($handlerAdapter) {
         parent::beforeAction($handlerAdapter);
 
         if (!$this->loginUser->isExists()) {
@@ -36,18 +35,15 @@ class ManageController extends PwBaseController
         $this->action = $handlerAdapter->getAction();
         $this->manage = $this->_getManage($this->action);
         if (($result = $this->manage->check()) !== true) {
-            if (false === $result) {
-                $this->showError(new PwError('BBS:manage.permission.deny'));
-            }
+            if (false === $result) $this->showError(new PwError('BBS:manage.permission.deny'));
             $this->showError($result->getError());
         }
     }
-
+    
     /**
      * manage action
      */
-    public function manageAction()
-    {
+    public function manageAction() {
         if (!$this->doAction) {
             $reason = Wekit::C()->site->get('managereasons', '');
             $this->setOutput(explode("\n", $reason), 'manageReason');
@@ -66,14 +62,13 @@ class ManageController extends PwBaseController
             $this->showMessage('operate.success');
         }
     }
-
+    
     /**
      * get manage handler
-     *
+     * 
      * @param $action
      */
-    protected function _getManage($action)
-    {
+    protected function _getManage($action) {
         $tids = $this->getInput('tids', 'post');
         $tid = $this->getInput('tid', 'post');
         if ($tids && !is_array($tids)) {
@@ -83,14 +78,14 @@ class ManageController extends PwBaseController
         }
         $manage = new PwThreadManage(new PwFetchTopicByTid($tids), $this->loginUser);
 
-        if (strpos($action, 'do') === 0 && $action != 'down') {
+        if (strpos($action,'do') === 0 && $action != 'down') {
             $this->doAction = true;
         } else {
             $this->doAction = false;
 
             $this->setOutput('帖子操作', 'title');
             $this->setOutput(count($manage->getData()), 'count');
-
+            
             if (count($data = $manage->getData()) == 1) {
                 $this->singleData = current($data);
             }
@@ -136,12 +131,10 @@ class ManageController extends PwBaseController
         } else {
             $manage->appendDo($do);
         }
-
         return $manage;
     }
-
-    protected function _getCombinedManage($manage)
-    {
+    
+    protected function _getCombinedManage($manage) {
         $do = array();
         if (!$this->doAction) {
             $operateThread = $manage->getPermission();
@@ -159,17 +152,15 @@ class ManageController extends PwBaseController
             $this->setOutput('docombined', 'doaction');
         } else {
             $actions = $this->getInput('actions', 'post');
-            foreach ((array) $actions as $key => $value) {
+            foreach ((array)$actions as $key => $value) {
                 $method = sprintf('_get%sManage', ucfirst($value));
                 $do[] = $this->$method($manage);
             }
         }
-
         return $do;
     }
 
-    protected function _getOtherActions($action)
-    {
+    protected function _getOtherActions($action) {
         $a1 = array('topped', 'digest', 'up', 'highlight');
         $a2 = array('lock', 'down');
         if (in_array($action, $a1)) {
@@ -178,27 +169,24 @@ class ManageController extends PwBaseController
         if (in_array($action, $a2)) {
             return array_diff($a2, array($action));
         }
-
         return array();
     }
 
-    protected function _getDigestManage($manage)
-    {
+    protected function _getDigestManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoDigest');
         $do = new PwThreadManageDoDigest($manage);
         if (!$this->doAction) {
+
         } else {
             $digest = $this->getInput('digest', 'post');
             $do->setDigest($digest);
-            $do->setReason($this->getInput('reason', 'post'));
+            $do->setReason(htmlentities($this->getInput('reason', 'post')));
             !$digest && $this->doCancel[] = 'dodigest';
         }
-
         return $do;
     }
 
-    protected function _getToppedManage($manage)
-    {
+    protected function _getToppedManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoTopped');
         $do = new PwThreadManageDoTopped($manage);
         if (!$this->doAction) {
@@ -223,34 +211,31 @@ class ManageController extends PwBaseController
             $do->setTopped($topped);
             $do->setFids($toppedFids);
             $do->setOvertime($toppedOvertime);
-            $do->setReason($this->getInput('reason', 'post'));
+            $do->setReason(htmlentities($this->getInput('reason', 'post')));
             !$topped && $this->doCancel[] = 'dotopped';
         }
-
         return $do;
     }
-
-    protected function _getUpManage($manage)
-    {
+    
+    protected function _getUpManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoUp');
         $do = new PwThreadManageDoUp($manage);
         if (!$this->doAction) {
+
         } else {
             $uptime = $this->getInput('uptime', 'post');
             $do->setUptime($uptime);
-            $do->setReason($this->getInput('reason', 'post'));
+            $do->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
 
-    protected function _getHighlightManage($manage)
-    {
+    protected function _getHighlightManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoHighlight');
         $do = new PwThreadManageDoHighlight($manage);
         if (!$this->doAction) {
             if ($this->singleData) {
-                Wind::import('LIB:utility.PwHighlight');
+                Wind::import("LIB:utility.PwHighlight");
                 $hightlight = new PwHighlight();
                 $hightlightStyle = $hightlight->parseHighlight($this->singleData['highlight']);
                 $overtime = Wekit::load('forum.PwOvertime')->getOvertimeByTidAndType($this->singleData['tid'], 'highlight');
@@ -263,7 +248,7 @@ class ManageController extends PwBaseController
             $this->setOutput($hightlightOvertime, 'hightlightOvertime');
         } else {
             list($bold, $italic, $underline, $color, $highlightOvertime) = $this->getInput(array('bold', 'italic', 'underline', 'color', 'highlight_overtime'), 'post');
-            Wind::import('LIB:utility.PwHighlight');
+            Wind::import("LIB:utility.PwHighlight");
             $hightlight = new PwHighlight();
             $hightlight->setColor($color);
             $hightlight->setBold($bold);
@@ -271,17 +256,13 @@ class ManageController extends PwBaseController
             $hightlight->setUnderline($underline);
             $do->setHighlight($hightlight->getHighlight());
             $do->setOvertime($highlightOvertime);
-            $do->setReason($this->getInput('reason', 'post'));
-            if (!$color && !$bold && !$italic && !$underline) {
-                $this->doCancel[] = 'dohighlight';
-            }
+            $do->setReason(htmlentities($this->getInput('reason', 'post')));
+            if (!$color && !$bold && !$italic && !$underline) $this->doCancel[] = 'dohighlight';
         }
-
         return $do;
     }
 
-    protected function _getDeleteManage($manage)
-    {
+    protected function _getDeleteManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoDeleteTopic');
         $do = new PwThreadManageDoDeleteTopic($manage);
         if (!$this->doAction) {
@@ -289,27 +270,24 @@ class ManageController extends PwBaseController
         } else {
             $deductCredit = $this->getInput('deductCredit', 'post');
             $do->setIsDeductCredit($deductCredit)
-                ->setReason($this->getInput('reason', 'post'));
+                ->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
-
-    protected function _getDownManage($manage)
-    {
+    
+    protected function _getDownManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoDown');
         $do = new PwThreadManageDoDown($manage);
         if (!$this->doAction) {
+            
         } else {
             list($downtime, $downed) = $this->getInput(array('downtime', 'downed'), 'post');
-            $do->setDowntime($downtime)->setDowned($downed)->setReason($this->getInput('reason', 'post'));
+            $do->setDowntime($downtime)->setDowned($downed)->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
-
-    protected function _getLockManage($manage)
-    {
+    
+    protected function _getLockManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoLock');
         $do = new PwThreadManageDoLock($manage);
         if (!$this->doAction) {
@@ -321,15 +299,13 @@ class ManageController extends PwBaseController
             $this->setOutput($defaultLocked, 'defaultLocked');
         } else {
             $locked = $this->getInput('locked', 'post');
-            $do->setLocked($locked)->setReason($this->getInput('reason', 'post'));
+            $do->setLocked($locked)->setReason(htmlentities($this->getInput('reason', 'post')));
             !$locked && $this->doCancel[] = 'dolock';
         }
-
         return $do;
     }
 
-    protected function _getMoveManage($manage)
-    {
+    protected function _getMoveManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoMove');
         $do = new PwThreadManageDoMove($manage);
         if (!$this->doAction) {
@@ -337,59 +313,53 @@ class ManageController extends PwBaseController
             $this->setOutput('domove', 'doaction');
         } else {
             list($fid, $topictype) = $this->getInput(array('fid', 'topictype'), 'post');
-            $do->setFid($fid)->setTopictype($topictype)->setReason($this->getInput('reason', 'post'));
+            $do->setFid($fid)->setTopictype($topictype)->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
 
-    protected function _getTypeManage($manage)
-    {
+    protected function _getTypeManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoType');
         $do = new PwThreadManageDoType($manage);
         if (!$this->doAction) {
             $topicTypes = $do->getTopicTypes();
-            $this->setOutput($topicTypes, 'topicTypes');
+            $this->setOutput($topicTypes,'topicTypes');
             $this->setOutput('dotype', 'doaction');
         } else {
             list($topicType, $subTopicType) = $this->getInput(array('topictype', 'sub_topictype'), 'post');
             $do->setTopictype($topicType, $subTopicType);
-            $do->setReason($this->getInput('reason', 'post'));
+            $do->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
 
-    protected function _getCopyManage($manage)
-    {
+    protected function _getCopyManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoCopy');
         $do = new PwThreadManageDoCopy($manage);
-
+        
         if (!$this->doAction) {
             $this->setOutput('docopy', 'doaction');
             $this->setOutput($this->_getFroumService()->getForumOption($do->fid), 'option_html');
         } else {
             list($fid, $topictype) = $this->getInput(array('fid', 'topictype'), 'post');
-            $do->setFid($fid)->setTopictype($topictype)->setReason($this->getInput('reason', 'post'));
+            $do->setFid($fid)->setTopictype($topictype)->setReason(htmlentities($this->getInput('reason', 'post')));
         }
-
         return $do;
     }
 
     /**
      * ban manage
-     *
+     * 
      * @return PwThreadManageDoBan
      */
-    protected function _getBanManage($manage)
-    {
+    protected function _getBanManage($manage) {
         Wind::import('SRV:forum.srv.manage.PwThreadManageDoBan');
         $do = new PwThreadManageDoBan($manage, $this->loginUser);
         if ($this->doAction) {
             $banInfo = new stdClass();
             $banInfo->types = $this->getInput('types', 'post');
             $banInfo->end_time = $this->getInput('end_time', 'post');
-            $banInfo->reason = $this->getInput('reason', 'post');
+            $banInfo->reason = htmlentities($this->getInput('reason', 'post'));
             $banInfo->ban_range = intval($this->getInput('ban_range', 'post'));
             $banInfo->sendNotice = intval($this->getInput('sendnotice', 'post'));
             $do->setBanInfo($banInfo)->setBanUids($this->getInput('uids', 'post'))->setDeletes($this->getInput('delete', 'post'));
@@ -408,28 +378,23 @@ class ManageController extends PwBaseController
             $this->setOutput('doban', 'doaction');
             $this->setOutput('用户禁止', 'title');
         }
-
         return $do;
     }
 
     /* (non-PHPdoc)
      * @see WindController::resolvedActionMethod()
      */
-    public function resolvedActionMethod($handlerAdapter)
-    {
+    public function resolvedActionMethod($handlerAdapter) {
         return $this->resolvedActionName('manage');
     }
-
+    
     /**
      * send messages
      */
-    protected function _sendMessage($action, $threads)
-    {
-        if (!is_array($threads) || !$threads || !$action || $action == 'doban') {
-            return false;
-        }
+    protected function _sendMessage($action, $threads) {
+        if (!is_array($threads) || !$threads || !$action || $action == 'doban') return false;
         $noticeService = Wekit::load('message.srv.PwNoticeService');
-        $reason = $this->getInput('reason', 'post');
+        $reason = htmlentities($this->getInput('reason', 'post'));
         foreach ($threads as $thread) {
             $params = array();
             $params['manageUsername'] = $this->manage->user->username;
@@ -441,8 +406,8 @@ class ManageController extends PwBaseController
             if ($action == 'docombined') {
                 $actions = $this->getInput('actions', 'post');
                 $tmp = array();
-                foreach ($actions as $v) {
-                    $tmp[] = $this->_getManageActionName('do'.$v);
+                foreach ($actions as $v){
+                    $tmp[] = $this->_getManageActionName('do' . $v);
                 }
                 $tmp && $params['manageTypeString'] = implode(',', $tmp);
             } else {
@@ -451,20 +416,17 @@ class ManageController extends PwBaseController
             $noticeService->sendNotice($thread['created_userid'], 'threadmanage', $thread['tid'], $params);
         }
     }
-
-    protected function _getManageActionName($action)
-    {
+    
+    protected function _getManageActionName($action) {
         $resource = Wind::getComponent('i18n');
         $message = $resource->getMessage("BBS:manage.operate.name.$action");
         if (in_array($action, $this->doCancel)) {
-            $message = $resource->getMessage('BBS:manage.operate.action.cancel').$message;
+            $message = $resource->getMessage("BBS:manage.operate.action.cancel") . $message;
         }
-
         return $message;
     }
-
-    protected function _getFroumService()
-    {
+    
+    protected function _getFroumService() {
         return Wekit::load('forum.srv.PwForumService');
     }
 }
