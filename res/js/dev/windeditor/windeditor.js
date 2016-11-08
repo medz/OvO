@@ -17,6 +17,8 @@
 	*/
 	var deviceAgent = navigator.userAgent.toLowerCase(),
 		isMobile = deviceAgent.indexOf('mobile') >= 0,
+		isEdge = deviceAgent.indexOf('edge') >= 0,
+		isGecko = deviceAgent.indexOf('gecko') >= 0,
 		browser = $.browser,
 		ie = browser.msie,
 		ie6 = ie && browser.version < 7,
@@ -1162,7 +1164,9 @@
 		                    span.innerHTML = '.';
 						}
 						var tempSpan = span.cloneNode(true);
-						_self.editorDoc.body.appendChild(tempSpan);
+						if(!isEdge && !isGecko) {
+							_self.editorDoc.body.appendChild(tempSpan);
+						}
 						var currentHeight = tempSpan.offsetTop;
 						if(currentHeight > height) {
 							_self.body.css('height',currentHeight);
@@ -1171,7 +1175,9 @@
 							_self.body.css('height',height);
 							_self.codeContainer.height(height);
 						}
-						_self.editorDoc.body.removeChild(tempSpan);
+						if(!isEdge && !isGecko) {
+							_self.editorDoc.body.removeChild(tempSpan);
+						}
 					},50);
 				}
 				body.bind("contentchange keyup mouseup paste input activate focus", function(e) {
