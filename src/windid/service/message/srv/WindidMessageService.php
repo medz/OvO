@@ -2,10 +2,10 @@
 
 Wind::import('WSRV:message.dm.WindidMessageDm');
 /**
- * 私信业务
+ * ç§ä¿¡ä¸šåŠ¡
  *
  * @author peihong <peihong.zhangph@aliyun-inc.com>
- * @copyright ©2003-2103 phpwind.com
+ * @copyright Â©2003-2103 phpwind.com
  * @license http://www.phpwind.com
  * @version $Id: WindidMessageService.php 24834 2013-02-22 06:43:43Z jieyin $
  * @package windid.service.message.srv
@@ -15,7 +15,7 @@ class WindidMessageService
     private $_blackList = array();
 
     /**
-     * 获取未读消息数
+     * èŽ·å–æœªè¯»æ¶ˆæ¯æ•°
      *
      * @param  int $uid
      * @return int
@@ -28,12 +28,12 @@ class WindidMessageService
     }
 
     /**
-     * 标记已读
+     * æ ‡è®°å·²è¯»
      *
      * @param  int   $uid
      * @param  int   $dialogId
      * @param  array $messageIds
-     * @return �     �记成功的条数
+     * @return æ     ‡è®°æˆåŠŸçš„æ¡æ•°
      */
     public function read($uid, $dialogId, $messageIds = array())
     {
@@ -72,7 +72,7 @@ class WindidMessageService
     }
 
     /**
-     * 更新消息数
+     * æ›´æ–°æ¶ˆæ¯æ•°
      *
      * @param int $uid
      * @param int $num
@@ -87,7 +87,7 @@ class WindidMessageService
     }
 
     /**
-     * 发送私信
+     * å‘é€ç§ä¿¡
      *
      * @param string $username
      * @param string $content
@@ -104,7 +104,7 @@ class WindidMessageService
     }
 
     /**
-     * 按用户ID发送私信
+     * æŒ‰ç”¨æˆ·IDå‘é€ç§ä¿¡
      *
      * @param  int              $uid
      * @param  string           $content
@@ -120,7 +120,7 @@ class WindidMessageService
             $this->_blackList[$uid] = $this->_getUserBlackDs()->getBlacklist($uid);
         }
 
-        //生成新消息
+        //ç”Ÿæˆæ–°æ¶ˆæ¯
         $dm = new WindidMessageDm();
         $dm->setCreatedUserId($fromUid)->setToUid($uid)->setContent($content);
         if (($result = $dm->beforeAdd()) instanceof WindidError) {
@@ -129,7 +129,7 @@ class WindidMessageService
         $messageId = $this->_getMessageDs()->addMessage($dm);
         $lastMessage = $this->_getLastMessage($fromUid, $uid, $content);
 
-        //=========================发件人对话信息=========================
+        //=========================å‘ä»¶äººå¯¹è¯ä¿¡æ¯=========================
         $dm = new WindidMessageDm();
         $dm->setLastMessage($lastMessage);
 
@@ -145,7 +145,7 @@ class WindidMessageService
             $dialogId = $this->_getMessageDs()->addDialog($dm);
         }
 
-        //添加发件人联系
+        //æ·»åŠ å‘ä»¶äººè”ç³»
         $dm = new WindidMessageDm();
         $dm->setDialogId($dialogId)->setMessageId($messageId)->setIsRead(1)->setIsSend(1);
         $this->_getMessageDs()->addRelation($dm);
@@ -156,33 +156,33 @@ class WindidMessageService
             return false;
         }
 
-        //=========================收件人对话信息=========================
+        //=========================æ”¶ä»¶äººå¯¹è¯ä¿¡æ¯=========================
         $dialog = $this->_getMessageDs()->getDialogByUid($uid, $fromUid);
-        // 分组已存在更新数量
+        // åˆ†ç»„å·²å­˜åœ¨æ›´æ–°æ•°é‡
         if ($dialog) {
             $dialogId = $dialog['dialog_id'];
             $dm->increaseUnreadCount()->increaseMessageCount()->setModifiedTime(Pw::getTime());
             $this->_getMessageDs()->updateDialog($dialogId, $dm);
         } else {
-            // 分组不存在添加一条
+            // åˆ†ç»„ä¸å­˜åœ¨æ·»åŠ ä¸€æ¡
             $dm->setToUid($uid)
                 ->setFromUid($fromUid)
                 ->setUnreadCount(1)
                 ->setMessageCount(1);
-            //新增私信分组记录
+            //æ–°å¢žç§ä¿¡åˆ†ç»„è®°å½•
             $dialogId = $this->_getMessageDs()->addDialog($dm);
         }
 
-        //添加收件人联系
+        //æ·»åŠ æ”¶ä»¶äººè”ç³»
         $dm = new WindidMessageDm();
         $dm->setDialogId($dialogId)->setMessageId($messageId);
         $this->_getMessageDs()->addRelation($dm);
-        $this->resetUserMessages($uid); //TODO后期要改掉
+        $this->resetUserMessages($uid); //TODOåŽæœŸè¦æ”¹æŽ‰
         return true;
     }
 
     /**
-     * 按用户名群发送私信
+     * æŒ‰ç”¨æˆ·åç¾¤å‘é€ç§ä¿¡
      *
      * @param  array        $usernames
      * @param  content      $content
@@ -203,7 +203,7 @@ class WindidMessageService
     }
 
     /**
-     * 根据uids群发消息
+     * æ ¹æ®uidsç¾¤å‘æ¶ˆæ¯
      *
      * @param  array        $uids
      * @param  string       $content
@@ -323,7 +323,7 @@ class WindidMessageService
     }*/
 
     /**
-     * 重新统计某会话的统计数
+     * é‡æ–°ç»Ÿè®¡æŸä¼šè¯çš„ç»Ÿè®¡æ•°
      *
      * @param int $dialogId
      */
@@ -343,7 +343,7 @@ class WindidMessageService
     }
 
     /**
-     * 重新计算用户私信数
+     * é‡æ–°è®¡ç®—ç”¨æˆ·ç§ä¿¡æ•°
      *
      * @param int $uid
      */
@@ -354,12 +354,16 @@ class WindidMessageService
             return false;
         }
         list($total, $unreads) = $this->_getMessageDs()->countUserMessages($uid);
+        /**
+         * 重复设置数据库（多余的数据库查询），先这样解决。后续架构优化。
+         */
+        Wekit::load('message.srv.PwMessageService')->resetUserMessages($dialog['to_uid']);
 
         return $this->_updateUser($uid, $unreads);
     }
 
     /**
-     * 搜索消息
+     * æœç´¢æ¶ˆæ¯
      *
      * @param  array        $search array('fromuid', 'keyword', 'username', 'starttime', 'endtime')
      * @param  int          $start
@@ -397,7 +401,7 @@ class WindidMessageService
         foreach ($messages as $v) {
             $uids[] = $v['from_uid'];
         }
-        // 组装用户数据
+        // ç»„è£…ç”¨æˆ·æ•°æ®
         $userInfos = $this->_getUserDs()->fetchUserByUid($uids);
         if (!$userInfos) {
             return array(0, array());
@@ -425,7 +429,7 @@ class WindidMessageService
 
     /**
      *
-     * 组装最近一条消息的信息
+     * ç»„è£…æœ€è¿‘ä¸€æ¡æ¶ˆæ¯çš„ä¿¡æ¯
      * @param int    $fromUid
      * @param int    $toUid
      * @param string $messageContent
