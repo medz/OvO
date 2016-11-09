@@ -297,27 +297,6 @@ class Wekit
      */
     protected static function _loadBase()
     {
-        Wind::import('WIND:utility.WindFolder');
-        Wind::import('WIND:utility.WindJson');
-        Wind::import('WIND:utility.WindFile');
-        Wind::import('WIND:utility.WindValidator');
-        Wind::import('WIND:utility.WindCookie');
-        Wind::import('WIND:utility.WindSecurity');
-        Wind::import('WIND:utility.WindString');
-        Wind::import('WIND:utility.WindConvert');
-
-        Wind::import('LIB:base.*');
-        Wind::import('LIB:engine.extension.viewer.*');
-        Wind::import('LIB:engine.component.*');
-        Wind::import('LIB:engine.error.*');
-        Wind::import('LIB:engine.exception.*');
-        Wind::import('LIB:engine.hook.*');
-        Wind::import('LIB:engine.PwCache');
-        Wind::import('LIB:engine.PwConfigBo');
-        Wind::import('LIB:engine.PwConfigSet');
-        Wind::import('LIB:PwLoader');
-        Wind::import('LIB:filter.PwFrontFilters');
-
         Wind::import('WINDID:WindidApi');
     }
 }
