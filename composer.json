@@ -39,6 +39,10 @@
         "classmap": [
             "src/Wekit.php",
             "src/library/"
-        ]
+        ],
+        "psr-4": {
+            "Pw\\": "src/",
+            "Pw\\Ext\\": "src/extensions/"
+        }
     }
 }
