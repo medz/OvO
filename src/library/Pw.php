@@ -11,8 +11,8 @@
  */
 class Pw
 {
-    const VARSION = '1.0.1';
-    const VARSION_NAME = 'phpwind Fans 1.0.1';
+    const VERSION = '1.0.1';
+    const VERSION_NAME = 'phpwind Fans 1.0.1';
 
     /**
      * 取得指定名称的cookie值

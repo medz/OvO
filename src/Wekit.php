@@ -1,9 +1,9 @@
 <?php
 
 define('WEKIT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
-define('WEKIT_VERSION', Pw::VARSION);
+define('WEKIT_VERSION', Pw::VERSION);
 
-define('NEXT_VERSION', Pw::VARSION);
+define('NEXT_VERSION', Pw::VERSION);
 define('NEXT_RELEASE', '20161107');
 define('NEXT_FIXBUG', '9000002');
 
