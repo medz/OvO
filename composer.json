@@ -37,7 +37,8 @@
     },
     "autoload": {
         "classmap": [
-            "src/Wekit.php"
+            "src/Wekit.php",
+            "src/library/"
         ]
     }
 }

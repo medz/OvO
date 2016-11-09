@@ -1,9 +1,5 @@
 <?php
 
-defined('WEKIT_VERSION') || exit('Forbidden');
-
-Wind::import('WIND:utility.WindCookie');
-
 /**
  * 工具类库
  *
@@ -15,6 +11,8 @@ Wind::import('WIND:utility.WindCookie');
  */
 class Pw
 {
+    const VARSION = '1.0.0';
+
     /**
      * 取得指定名称的cookie值
      *

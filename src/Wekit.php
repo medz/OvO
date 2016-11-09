@@ -1,10 +1,12 @@
 <?php
 
 define('WEKIT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
-define('WEKIT_VERSION', '1.0.0');
-define('NEXT_VERSION', '1.0.0');
+define('WEKIT_VERSION', Pw::VARSION);
+
+define('NEXT_VERSION', Pw::VARSION);
 define('NEXT_RELEASE', '20161107');
 define('NEXT_FIXBUG', '9000002');
+
 defined('WIND_DEBUG') || define('WIND_DEBUG', 0);
 
 /**
@@ -313,7 +315,6 @@ class Wekit
         Wind::import('LIB:engine.PwCache');
         Wind::import('LIB:engine.PwConfigBo');
         Wind::import('LIB:engine.PwConfigSet');
-        Wind::import('LIB:Pw');
         Wind::import('LIB:PwLoader');
         Wind::import('LIB:filter.PwFrontFilters');
 
