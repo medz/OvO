@@ -231,7 +231,7 @@ class PwHook
                 continue;
             }
 
-            if (!class_exists($filter['class']) && !is_file(Wind::getRealPath($filter['class']))) {
+            if (!is_file(Wind::getRealPath($filter['class'])) && !class_exists($filter['class'])) {
                 continue;
             }
             if (!empty($filter['expression'])) {
