@@ -1,12 +1,12 @@
 <?php
 
 // 开发框架信息
-$frameworkAutoloadFile = __DIR__.'/windframework/vendor/autoload.php';
+$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
 if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
     require $frameworkAutoloadFile;
 }
 
-$filename = __DIR__.'/vendor/autoload.php';
+$filename = dirname(__FILE__).'/vendor/autoload.php';
 if (!file_exists($filename) || !is_file($filename)) {
     echo '<pre>',
          'You must set up the project dependencies, run the following commands:', PHP_EOL,
