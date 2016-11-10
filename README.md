@@ -3,7 +3,7 @@
 ## 官方老版本如何升级phpwind fans版本：
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
 
-1.先泽phpwind-fans-x.x.zip格式的文件点击即可下载。
+1.选择phpwind-fans-x.x.zip格式的文件点击即可下载。
 2.将下载下来的文件解压，然后将解压内容覆盖到你现在的phpwind9程序即可。
 
 
