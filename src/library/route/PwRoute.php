@@ -239,7 +239,8 @@ class PwRoute extends AbstractPwRoute
         $flags = array('a' => 0, 'c' => 1, 'm' => 3);
         $consts = array('a' => 1, 'c' => 3, 'm' => 7);
         foreach ($this->params as $k => $v) {
-            if ($route[$k] === $router->$methods[$k]() && $flag === $flags[$k]) {
+            $handle = $methods[$k];
+            if ($route[$k] === $router->$handle() && $flag === $flags[$k]) {
                 $flag = $consts[$k];
             }
             $_args[$v] = $route[$k];
