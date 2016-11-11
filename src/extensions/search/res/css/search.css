@@ -1,0 +1,566 @@
+/*#
+===================
+@explain: 搜索界面
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: search.css 20785 2012-11-08 07:19:47Z jinlong.panjl $
+===================
+#*/
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+/*
+===================
+隐藏头部搜索
+===================
+*/
+.header_search{
+	display:none;
+}
+.nav_weak{
+	display:none;
+}
+
+/*===搜素切换标签===*/
+.search_label { height:31px; font-size:14px; width:618px;_width:610px; position:relative;*zoom:1; z-index:1;}
+.search_label ul { zoom:1; overflow:hidden;}
+.search_label li { width:65px; height:31px; line-height:30px; color:#1F5998; float:left; display:inline; cursor:pointer; text-align:center;}
+.search_label li.current,.search_label li:hover { background:url(../images/label_over.gif) no-repeat; color:#000; font-weight:bold;}
+.search_label li.more {background:url(../images/arrow.gif) no-repeat right center;}
+
+/*关键字*/
+.search_key { margin:10px 2px; margin-bottom: 0px; clear:both; position:relative; z-index:0;}
+.search_key a {margin-right:16px; color:#4B4B4B; display:inline-block; margin-bottom:10px;}
+/*广告*/
+.adv {margin:30px 0; text-align:center;}
+
+/*===搜素输入区域===*/
+.searchArea {/*background:#fcfcfc url(../images/search_bg.jpg) repeat-x bottom;*/ background: #fff; height:138px;}
+.searchAreas{width: 960px;margin: 0 auto;}
+.search_area { /*float:left; */padding-top:30px; width:803px;margin: 0 auto;}
+.search_key font{float:right;_margin-top:-21px;}
+.search_area1 { position:relative; height:35px;*zoom:1;}
+.searchArea h1 {float:left;margin-top: 25px;margin-right: 15px;margin-left: 20px;}
+.search_l { width:680px; overflow:hidden; zoom:1;}
+.search_box1 { position:absolute; width:500px; padding:0 3px; background:#fff; border:1px solid #D3D4D6; clear:both; top:30px; left:4px; display:none;}
+.search_box1 li a {font-size:14px; line-height:21px; display:block; color:#333; width:100%;}
+.search_box1 li a:hover {background:#36F; color:#fff; text-decoration:none;}
+.search_l { padding:3px; border:1px solid #D3D4D6; border-top:none; background:#E5E9EC; width:610px; float:left;}
+.search_2 { border-top:1px solid #D3D4D6;}
+.search_input { background:#fff; width:502px; padding:0 7px; border:1px solid #D3D4D6; border-right:none; height:26px; line-height:26px; color:#333; font-size:14px; float:left;}
+.search_but { background:url(../images/search_but.gif); width:90px; height:28px; font-size:14px; color:#fff; border:0; cursor:pointer; padding-bottom:2px; *padding-bottom:0;}
+.search_r {float:left; margin-left:10px; line-height:34px;}
+.search_r a { color:#305D9E;}
+
+/*关键字*/
+a.ad_search {margin:6px 0 0 14px; color:#305ca1;}
+
+/*===面包屑样式开始===*/
+.search_crumbs { height:40px; zoom:1; overflow:hidden; padding-left:183px; line-height:40px;width: 960px;}
+.search_crumbs span {font-weight:bold; color:#ff5a02;padding:0 5px;}
+/*新版*/
+.main_search{
+	padding-top: 10px;
+	width: 100%;
+	overflow: hidden;
+	background: #f5f5f5;
+}
+.search_wrap {
+	width: 100%;
+	background: #fff;
+	margin-left:inherit;
+	margin-right: auto;
+	padding-top: 10px;
+	overflow: hidden;
+}
+.main {
+	width: 960px;
+	background: #fff;
+	border: inherit;
+	border-color: #fff #efefef #d3d3d3 #efefef;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+	margin-bottom: 10px;
+	margin: 0 auto;
+}
+.box_wrap {
+	border-left: 0px;
+	border-right: 0px;
+}
+/*
+===================
+布局
+===================
+*/
+.cm{
+	float:left;
+	width:100%;
+	min-height:1px;
+}
+.grid_3{}
+.grid_3 .cw{
+	margin:0 150px 0 170px;
+	position:relative;
+	min-height:300px;
+}
+.grid_3 .md{
+	float:left;
+	width:160px;
+	margin-right:-160px;
+	position:relative;
+	padding-top:15px;
+}
+.grid_3 .sd{
+	float:left;
+	width:140px;
+	margin-left:-140px;
+	padding-top:15px;
+	
+}
+
+/*
+===================
+搜索操作部位
+===================
+*/
+.search_type_wrap{
+	background:#f9f9f9;
+	border-bottom:1px solid #e4e4e4;
+}
+.search_type{
+	padding:15px 0 20px 170px;
+	width:790px;
+	margin:0 auto;
+}
+/*类型*/
+.search_type ul{
+	height:25px;
+}
+.search_type li{
+	float:left;
+	display:inline;
+}
+.search_type li a{
+	float:left;
+	font-size:14px;
+	margin-right:20px;
+}
+.search_type li.current a{
+	color:#333;
+	text-decoration:none;
+	font-weight:700;
+}
+/*输入框*/
+.search_type .input{
+	height:20px;
+	line-height:20px;
+	width:400px;
+	vertical-align:top;
+	margin-right:10px;
+	font-size:14px;
+}
+/*搜索按钮*/
+.search_type .btn{
+	vertical-align:top;
+	font-family:Simsun;
+}
+
+/*
+===================
+历史搜索
+===================
+*/
+.sidebar{
+	border-left:1px solid #e4e4e4;
+	padding-bottom:20px;
+	line-height:28px;
+}
+.sidebar h2{
+	font-size:12px;
+	margin-bottom:5px;
+	border-left:2px solid #488FCE;
+	margin-left:-1px;
+	padding-left:13px;
+}
+.sidebar ul{
+	padding-left:14px;
+}
+.sidebar li a{
+	color:#333;
+	display:block;
+}
+
+/*
+===================
+左侧菜单
+===================
+*/
+.menubar{
+	border-right:1px solid #e4e4e4;
+	line-height:28px;
+	padding-bottom:20px;
+}
+.menubar h2{
+	font-size:12px;
+	border-right:2px solid #488FCE;
+	margin-right:-1px;
+	padding:0 10px;
+	margin-bottom:5px;
+}
+.menubar ul{
+	margin-bottom:30px;
+}
+.menubar li a{
+	color:#333;
+	padding-left:10px;
+	display:block;
+}
+.menubar li a:hover{
+	background:#e4e4e4;
+	text-decoration:none;
+}
+.menubar li.current{
+	background:#e4e4e4;
+}
+
+/*
+===================
+发帖时间筛选
+===================
+*/
+.type_list{
+	border-bottom:1px solid #CCC;
+}
+.type_list h2{
+	font-size:12px;
+}
+
+/*
+===================
+搜索结果区域
+===================
+*/
+.search_content .ct{
+	padding:0 15px;
+}
+.search_content dl{
+	padding:15px 0;
+	border-bottom:1px dotted #e4e4e4;
+}
+.search_content dt{
+	font-size:14px;
+	margin-bottom:7px;
+}
+.search_content dd .text{
+	margin-bottom:7px;
+}
+.search_content dd .info{
+	color:#999;
+}
+.search_content dd .info a{
+	color:#999;
+	margin-right:15px;
+}
+.search_content dd .info .time{
+	margin-right:15px;
+}
+.search_content em{
+	color:#ff0000;
+}
+.posts_icon i{
+	background:url(../../../site/default/images/forum/bg.png) no-repeat;
+}
+.search_content dd .text .posts_icon i{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+	vertical-align:middle;
+	background-position:-80px -40px;
+	margin-top:1px;
+}
+.search_content dd .text .posts_icon i.icon_img{
+	background-position:-100px -40px;
+}
+.search_content dd .text .posts_icon i.icon_file{
+	background-position:-120px -80px;
+}
+/*
+===================
+版块结果筛选
+===================
+*/
+.forum_search_list{
+	padding:0;
+	margin-bottom:30px;
+}
+.forum_search_list dl{
+}
+.forum_search_list dl.dl_all{
+}
+.forum_menu dt{
+	line-height:normal;
+	height:auto;
+	background:none;
+}
+.forum_search_list dl dt a{
+	padding:0 2px;
+	line-height:28px;
+	height:28px;
+	display:block;
+}
+.forum_search_list dl dt:hover{
+	background:none;
+}
+.forum_search_list dl dt a:hover{
+	text-decoration:none;
+	background:#e5e5e5;
+}
+.forum_search_list dl.current{
+	border-top:0 none;
+}
+.forum_search_list dl.current dt a{
+	font-weight:100;
+}
+.forum_search_list dd{
+	border-bottom:0 none;
+	padding:0;
+	margin:0;
+}
+.forum_search_list dd p a{
+	border-radius:0;
+}
+
+
+/*
+===================
+用户列表
+===================
+*/
+.fans_list{
+	padding:15px 15px 15px 0;
+	margin-left:10px;
+}
+.fans_list dl{
+	border:1px solid #e6e6e6;
+	background:#f5f5f5;
+	padding:15px;
+	margin:0 0 15px;
+	position:relative;
+}
+.fans_list em{
+	color:#ff0000;
+}
+
+/*
+===================
+头像
+===================
+*/
+.fans_list dt{
+	float: left;
+	width: 64px;
+	padding:3px 0 6px;
+	_padding-top:0;
+}
+.fans_list dt a{
+	display:block;
+}
+
+/*
+===================
+打招呼
+===================
+*/
+.fans_list .called{
+	border:1px solid #d8d8d8;
+	border-radius:2px;
+	color:#666;
+	width:48px;
+	text-align:center;
+	background:#f7f7f7;
+	box-shadow:0 1px 1px #ffffff inset;
+	font-size:12px;
+}
+.fans_list .called:hover{
+	color:#333;
+	text-decoration:none;
+}
+
+/*
+===================
+内容
+===================
+*/
+.fans_list dd{
+	overflow:hidden;
+}
+
+/*
+===================
+用户名
+===================
+*/
+.fans_list .name{
+	font-size:14px;
+	margin-right:7px;
+}
+
+/*
+===================
+用户名所以栏
+===================
+*/
+.fans_list .title{
+	margin-bottom:5px;
+}
+
+/*
+===================
+用户数据
+===================
+*/
+.fans_list .num{
+	color:#666;
+	margin-bottom:7px;
+}
+.fans_list .num span{
+	color:#ccc;
+	margin:0 9px;
+}
+.fans_list .num a{
+	margin-left:4px;
+}
+
+/*
+===================
+用户最新动作
+===================
+*/
+.fans_list .action a{
+	color:#5697bd;
+	margin:0 5px;
+}
+.fans_list .action .time{
+	color:#999;
+}
+
+/*
+===================
+两者关系
+===================
+*/
+.fans_list .attribute{
+	position:absolute;
+	right:15px;
+	top:15px;
+	width:80px;
+}
+.fans_list .attribute .mnfollow{
+	background:url(../../../site/default/images/fans/mnfollow.png) no-repeat;
+	width:43px;
+	height:13px;
+	overflow:hidden;
+	text-indent:-2000em;
+	display:block;
+	margin-bottom:10px;
+	float:right;
+}
+.fans_list .attribute .core_follow,
+.fans_list .attribute .core_unfollow{
+	float:right;
+}
+
+
+/*
+===================
+版块信息
+===================
+*/
+.forum_info_wrap{
+	padding:15px 15px 15px 0;
+	margin-left:10px;
+}
+.forum_info_wrap em{
+	color:#ff0000;
+}
+.forum_info_box{
+	background:#f5f5f5;
+	padding:15px;
+	border:1px solid #e6e6e6;
+	margin-bottom:15px;
+}
+/*logo*/
+.forum_info_box .banner{
+	float:left;
+	margin-right:15px;
+}
+.forum_info_box .banner img{
+	max-width:300px;
+}
+/*名称*/
+.forum_info_box .name{
+	margin-bottom:5px;
+	overflow:hidden;
+}
+.forum_info_box .name h3{
+	display:inline;
+	margin-right:15px;
+	font-size:14px;
+}
+.forum_info_box .name h3 a{
+	color:#333;
+}
+/*相关数值*/
+.forum_info_box .num{
+	margin-bottom:5px;
+	overflow:hidden;
+	font-family:Tahoma;
+}
+.forum_info_box .num ul{
+}
+.forum_info_box .num li{
+	float:left;
+	padding:0 20px 0 0;
+	color:#666;
+}
+.forum_info_box .num li.none{
+	border:0 none;
+}
+.forum_info_box .num em{
+	color:#000;
+	font-weight:700;
+}
+/*版主*/
+.forum_info_box .moderator{
+	margin-bottom:5px;
+	color:#666;
+}
+.forum_info_box .moderator a{
+	color:#333;
+}
+/*公告*/
+.forum_info_box .notice{
+	overflow:hidden;
+	color:#666;
+}
+/*更多*/
+.forum_info_box .more{
+	white-space:nowrap;
+}
+/*子版*/
+.forum_info_box .child{
+	margin-bottom:10px;
+	color:#666;
+	overflow:hidden;
+}
+.forum_info_box .child a{
+	margin-right:15px;
+	white-space:nowrap;
+}
+/*加入退出版块*/
+.forum_info_box .core_unfollow span{
+	display:none;
+}
+.forum_info_box .core_unfollow:hover span{
+	display:inline;
+}
+

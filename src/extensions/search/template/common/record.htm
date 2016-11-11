@@ -1,0 +1,38 @@
+<!--# if ($loginUser->uid) { 
+	$searchRecord = Wekit::load('EXT:search.service.AppSearchRecord')->getByUidAndType($loginUser->uid, $recordType);
+	if ($searchRecord) {
+#-->
+<div class="sidebar design_layout_ct " id="J_side_my_records">
+	<h2><a href="{@url:app/search/index/truncate?type=$recordType&src=$src}" class="gray fr fn J_record_del">清空</a>历史搜索</h2> 
+	<ul class="" >
+		<!--# foreach ($searchRecord as $record) { 
+			$keywords = urlencode($record['keywords']);
+		#-->
+		<li><a href="{@url:app/search/$src/run}&keywords={$keywords}" title="{$record['keywords']}">{$record['keywords']}</a></li>
+		<!--# } #-->
+	</ul>
+</div>
+<!--# }} #-->
+<pw-tpl id="searchlist_record"/>
+<script>
+Wind.use('jquery', 'global', 'ajaxForm', 'dialog', function(){
+	//清空
+	$('a.J_record_del').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$.getJSON($this.attr('href'), function(data){
+			if(data.state === 'success') {
+				
+				$('#J_side_my_records').slideUp('slow', function(){
+					$(this).remove();
+				});
+			}else{
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message
+				});
+			}
+		});
+	});
+});
+</script>
