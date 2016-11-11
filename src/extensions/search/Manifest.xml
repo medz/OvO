@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>易搜索</name>
+		<alias>search</alias>
+		<version>1.5.0</version>
+		<pw-version>9.0</pw-version>
+		<type>app</type>
+		<description>易搜索是一款PHPwind智能搜索应用</description>
+		<charset>utf-8</charset>
+		<logo>images/logo.png</logo>
+		<website>http://www.huasituo.com</website>
+		<author-name>华思拓网络</author-name>
+		<author-email>info@huasituo.com</author-email>
+		<author-icon></author-icon>
+	</application>
+	<res>res</res>
+	<install>EXT:search.service.srv.AppSearchInstall</install>
+	<inject-services>
+		<hook-name name="s_admin_menu">
+			<alias name="search">
+				<class>EXT:search.service.srv.AppSearchConfigDo</class>
+				<loadway>load</loadway>
+				<method>getAdminMenu</method>
+				<description>易搜索后台菜单扩展</description>
+			</alias>
+		</hook-name>
+		<hook-name name="s_permissionCategoryConfig">
+			<alias name="search">
+				<class>EXT:search.service.srv.AppSearchConfigDo</class>
+				<loadway>load</loadway>
+				<method>getPermissionCategoryConfig</method>
+				<description>易搜索用户组权限扩展</description>
+			</alias>
+		</hook-name>
+		<hook-name name="s_permissionConfig">
+			<alias name="search">
+				<class>EXT:search.service.srv.AppSearchConfigDo</class>
+				<loadway>load</loadway>
+				<method>getPermissionConfig</method>
+				<description>易搜索用户组根权限扩展</description>
+			</alias>
+		</hook-name>
+	</inject-services>
+</manifest>

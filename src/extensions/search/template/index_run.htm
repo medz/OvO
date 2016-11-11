@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@G:url.extres}/search/css/search_index.css?v={@G:version}" rel="stylesheet" />
+</head>
+<body>
+<pw-start/>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+  <div class="main_search">
+    <div class="main_index">
+
+      <h1><a href="{@url:app/search/index/run}">
+        <!--# if($__css = Wekit::C('site', 'css.logo')) { #-->
+        <!--后台logo上传-->
+        <img src="{@Pw::getPath($__css)}" alt="{@Wekit::C('site','info.name')}">
+        <!--# } else { #-->
+        <img src="{@theme:site.images}/logo.png" alt="{@Wekit::C('site','info.name')}">
+        <!--# } #-->
+      </a>
+      </h1>
+
+       <div class="search_label">
+          <ul>
+            <!--# foreach($stypes as $k=>$v){#-->
+            <li class='{@Pw::isCurrent($k==$src)}' ><a href="{$v['url']}" >{$v['name']}</a></li>
+            <!--#}#-->
+         </ul>
+    	</div>
+      <div class="search_area">
+        <div class="search_l">
+    			<form action="{@url:app/search/$src/run}" method="post">
+                <input type="text" class="search_input"  id="keyword"  autocomplete=off  name="keywords"  value = '请您输入你想搜索的内容'  style='color:#999999'  onclick="if(this.value=='请您输入你想搜索的内容'){ this.value='';this.style.color='#333';}"/>
+                <button type="submit" class="search_but">搜 索</button>
+               </form>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="search_key" style="margin-bottom: 250px;">
+       <!--# foreach($hots as $k=>$v){#-->
+    	<a href='{$v['url']}' title='{$v['keywords']}'>{$v['keywords']}</a>
+        <!--#}#-->
+      </div>
+    </div>	
+  </div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global');
+</script>
+<pw-end/>
+</body>
+</html>

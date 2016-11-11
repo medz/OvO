@@ -1,0 +1,45 @@
+/*#
+===================
+@explain: 易搜索界面
+@copyright: Copyright 2015,huasituo.com
+===================
+#*/
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+/*
+===================
+隐藏头部搜索
+===================
+*/
+.header_search{
+	display:none;
+}
+.nav_weak{
+	display:none;
+}
+/*新搜索首页*/
+.clear {width:0; line-height:0; height:0; padding:0; margin:0; float:none; clear:both;}
+.main_search{overflow: hidden; background: #fff; width: 100%;}
+.main_index { width:618px; margin:0 auto; padding-top: 80px;overflow: hidden;}
+.main_index h1 {text-align:center; margin-bottom:40px;}
+
+/*===搜素切换标签===*/
+.search_label { height:31px; font-size:14px; width:618px; position:relative;}
+.search_label ul { zoom:1; overflow:hidden;}
+.search_label li { width:65px; height:31px; line-height:30px; color:#1F5998; float:left; display:inline; cursor:pointer; text-align:center;}
+.search_label li.current,.search_label li:hover { background:url(../images/label_over.gif) no-repeat; color:#000; font-weight:bold;}
+
+/*===搜素输入区域===*/
+.search_l { width:680px; overflow:hidden; zoom:1;}
+.search_area {position:relative; height:35px;}
+.search_l { padding:3px; border:1px solid #D3D4D6; border-top:none; background:#E5E9EC; width:610px; float:left;}
+.search_input { background:#fff; width:502px; padding:0 7px; border:1px solid #D3D4D6; border-right:none; height:26px; line-height:26px; color:#333; font-size:14px; float:left;}
+.search_but { background:url(../images/search_but.gif); width:92px; height:28px; font-size:14px; color:#fff; border:0; cursor:pointer; padding-bottom:2px; *padding-bottom:0; float:left;}
+.search_r {float:right; line-height:34px;}
+.search_r a { color:#305D9E;}
+
+/*关键字*/
+.search_key { margin:10px 0 0; clear:both; position:relative; z-index:0;}
+.search_key a {margin-right:16px; color:#4B4B4B; display:inline-block; margin-bottom:10px;}
+/*广告*/
+.adv {margin:30px 0; text-align:center;}
