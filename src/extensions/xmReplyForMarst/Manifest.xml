@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+	<application>
+	<name>回帖仅楼主可见</name>
+	<alias>xmReplyForLz</alias>
+	<version>1.0</version>
+	<pw-version>9.0.1</pw-version>
+	<description>回帖仅楼主可见</description>
+	<logo>images/logo.jpg</logo>
+	<type>app</type>
+	<charset>UTF-8</charset>
+	<website>http://www.jhdxr.com</website>
+	<author-name>蝦米</author-name>
+	<author-email>phpwind@jhdxr.com</author-email>
+	<author-icon>your icon</author-icon>
+	</application>
+	<res>res</res>
+	<installation-service>
+	</installation-service>
+	<inject-services>
+	<m_PwTopicPost>
+	<app_xmReplyForLz>
+	<class>EXT:xmReplyForLz.service.srv.App_XmReplyForLzPwTopicPostDo</class>
+	<description>this is another m_PwTopicPost</description>
+	</app_xmReplyForLz>
+	</m_PwTopicPost>
+	<s_permissionConfig>
+	<app_xmReplyForLz>
+	<class>EXT:xmReplyForLz.service.srv.App_XmReplyForLz_ConfigDo</class>
+	<loadway>load</loadway>
+	<method>getPermissionConfig</method>
+	<description>this is another s_permissionConfig</description>
+	</app_xmReplyForLz>
+	</s_permissionConfig>
+	<s_permissionCategoryConfig>
+	<app_xmReplyForLz>
+	<class>EXT:xmReplyForLz.service.srv.App_XmReplyForLz_ConfigDo</class>
+	<loadway>load</loadway>
+	<method>getPermissionCategoryConfig</method>
+	<description>this is another s_permissionCategoryConfig</description>
+	</app_xmReplyForLz>
+	</s_permissionCategoryConfig>
+	<m_PwThreadDisplay>
+	<app_xmReplyForLz>
+	<class>EXT:xmReplyForLz.service.srv.App_XmReplyForLzPwThreadDisplayDo</class>
+	<description>this is another m_PwThreadDisplay</description>
+	</app_xmReplyForLz>
+	</m_PwThreadDisplay>
+	</inject-services>
+	</manifest>
