@@ -86,7 +86,7 @@ INSERT INTO `pw_common_config` (`name`, `namespace`, `value`, `vtype`, `descript
 ('cookie.domain', 'site', '', 'string', ''),
 ('cookie.path', 'site', '', 'string', ''),
 ('debug', 'site', '0', 'string', ''),
-('info.name', 'site', 'phpwind 9.0', 'string', ''),
+('info.name', 'site', 'phpwind fans', 'string', ''),
 ('managereasons', 'site', '问题已收集，谢谢反馈！\n建议已收集，谢谢反馈！\n已关注，谢谢反馈！\n广告帖\n恶意灌水\n非法内容\n与版规不符\n重复发帖\n------------------------------------------------\n优秀文章\n原创内容', 'string', ''),
 ('onlinetime', 'site', '30', 'string', ''),
 ('punch.friend.open', 'site', '1', 'string', ''),
