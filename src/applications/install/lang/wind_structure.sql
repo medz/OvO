@@ -17,7 +17,7 @@ CREATE TABLE `pw_acloud_apis` (
 
 DROP TABLE IF EXISTS `pw_acloud_apps`;
 CREATE TABLE `pw_acloud_apps` (
-  `app_id` char(22) NULL DEFAULT '',
+  `app_id` char(22) NOT NULL,
   `app_name` varchar(60) NULL DEFAULT '',
   `app_token` char(128) NULL DEFAULT '',
   `created_time` int(10) unsigned NULL DEFAULT '0',
@@ -27,7 +27,7 @@ CREATE TABLE `pw_acloud_apps` (
 
 DROP TABLE IF EXISTS `pw_acloud_app_configs`;
 CREATE TABLE `pw_acloud_app_configs` (
-  `app_id` char(22) NULL DEFAULT '',
+  `app_id` char(22) NOT NULL,
   `app_key` varchar(30) NULL DEFAULT '',
   `app_value` text,
   `app_type` tinyint(3) NULL DEFAULT '1',
@@ -38,7 +38,7 @@ CREATE TABLE `pw_acloud_app_configs` (
 
 DROP TABLE IF EXISTS `pw_acloud_extras`;
 CREATE TABLE `pw_acloud_extras` (
-  `ekey` varchar(100) NULL DEFAULT '',
+  `ekey` varchar(100) NOT NULL,
   `evalue` text,
   `etype` tinyint(3) NULL DEFAULT '1',
   `created_time` int(10) unsigned NULL DEFAULT '0',
@@ -70,7 +70,7 @@ CREATE TABLE `pw_acloud_sql_log` (
 
 DROP TABLE IF EXISTS `pw_acloud_table_settings`;
 CREATE TABLE `pw_acloud_table_settings` (
-  `name` varchar(255) NULL DEFAULT '',
+  `name` varchar(255) NOT NULL,
   `status` tinyint(3) NULL DEFAULT '0',
   `category` tinyint(3) NULL DEFAULT '0',
   `primary_key` varchar(20) NULL DEFAULT '',
@@ -93,8 +93,8 @@ CREATE TABLE `pw_admin_auth` (
 
 DROP TABLE IF EXISTS `pw_admin_config`;
 CREATE TABLE `pw_admin_config` (
-  `name` varchar(30) NULL DEFAULT '' COMMENT '配置名称',
-  `namespace` varchar(15) NULL DEFAULT 'global' COMMENT '配置命名空间',
+  `name` varchar(30) NOT NULL COMMENT '配置名称',
+  `namespace` varchar(15) NOT NULL COMMENT '配置命名空间',
   `value` text COMMENT '缓存值',
   `vtype` enum('string','array','object') NULL DEFAULT 'string' COMMENT '配置值类型',
   `description` text COMMENT '配置介绍',
@@ -151,7 +151,7 @@ CREATE TABLE `pw_announce` (
 
 DROP TABLE IF EXISTS `pw_application`;
 CREATE TABLE `pw_application` (
-  `app_id` char(20) NULL DEFAULT '' COMMENT '应用id',
+  `app_id` char(20) NOT NULL COMMENT '应用id',
   `name` varchar(100) NULL DEFAULT '' COMMENT '名称',
   `alias` varchar(100) NULL DEFAULT '' COMMENT '别名',
   `logo` varchar(100) NULL DEFAULT '' COMMENT '应用logo',
@@ -209,7 +209,7 @@ CREATE TABLE `pw_app_poll_option` (
 
 DROP TABLE IF EXISTS `pw_app_poll_thread`;
 CREATE TABLE `pw_app_poll_thread` (
-  `tid` int(10) unsigned NULL DEFAULT '0' COMMENT '帖子ID',
+  `tid` int(10) unsigned NOT NULL COMMENT '帖子ID',
   `poll_id` int(10) unsigned NULL DEFAULT '0' COMMENT '投票ID',
   `created_userid` int(10) unsigned NULL DEFAULT '0' COMMENT '投票发起人',
   PRIMARY KEY (`tid`),
@@ -245,7 +245,7 @@ CREATE TABLE `pw_attachs` (
 
 DROP TABLE IF EXISTS `pw_attachs_thread`;
 CREATE TABLE `pw_attachs_thread` (
-  `aid` int(10) unsigned NULL DEFAULT '0' COMMENT '附件id',
+  `aid` int(10) unsigned NOT NULL COMMENT '附件id',
   `fid` smallint(5) unsigned NULL DEFAULT '0' COMMENT '所属版块id',
   `tid` int(10) unsigned NULL DEFAULT '0' COMMENT '所属帖子id',
   `pid` int(10) unsigned NULL DEFAULT '0' COMMENT '所属回复id',
@@ -294,8 +294,8 @@ CREATE TABLE `pw_attachs_thread_download` (
 
 DROP TABLE IF EXISTS `pw_attention`;
 CREATE TABLE `pw_attention` (
-  `uid` int(10) unsigned NULL DEFAULT '0',
-  `touid` int(10) unsigned NULL DEFAULT '0',
+  `uid` int(10) unsigned NOT NULL,
+  `touid` int(10) unsigned NOT NULL,
   `created_time` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`touid`,`uid`),
   KEY `idx_uid_createdtime` (`uid`,`created_time`),
@@ -316,7 +316,7 @@ CREATE TABLE `pw_attention_fresh` (
 
 DROP TABLE IF EXISTS `pw_attention_fresh_index`;
 CREATE TABLE `pw_attention_fresh_index` (
-  `fresh_id` int(10) unsigned NULL DEFAULT '0',
+  `fresh_id` int(10) unsigned NOT NULL,
   `tid` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`fresh_id`),
   KEY `idx_tid` (`tid`)
@@ -335,7 +335,7 @@ CREATE TABLE `pw_attention_fresh_relations` (
 
 DROP TABLE IF EXISTS `pw_attention_recommend_cron`;
 CREATE TABLE `pw_attention_recommend_cron` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户uid',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='可能认识的人更新任务表';
@@ -369,9 +369,9 @@ CREATE TABLE `pw_attention_type` (
 
 DROP TABLE IF EXISTS `pw_attention_type_relations`;
 CREATE TABLE `pw_attention_type_relations` (
-  `uid` int(10) unsigned NULL DEFAULT '0',
-  `touid` int(10) unsigned NULL DEFAULT '0',
-  `typeid` int(10) NULL DEFAULT '0',
+  `uid` int(10) unsigned NOT NULL,
+  `touid` int(10) unsigned NOT NULL,
+  `typeid` int(10) NOT NULL,
   PRIMARY KEY (`uid`,`touid`,`typeid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='关注分类关系表';
 
@@ -425,7 +425,7 @@ CREATE TABLE `pw_bbs_forum` (
 
 DROP TABLE IF EXISTS `pw_bbs_forum_extra`;
 CREATE TABLE `pw_bbs_forum_extra` (
-  `fid` smallint(5) unsigned NULL DEFAULT '0',
+  `fid` smallint(5) unsigned NOT NULL,
   `seo_description` varchar(255) NULL DEFAULT '',
   `seo_keywords` varchar(255) NULL DEFAULT '',
   `settings_basic` text,
@@ -435,7 +435,7 @@ CREATE TABLE `pw_bbs_forum_extra` (
 
 DROP TABLE IF EXISTS `pw_bbs_forum_statistics`;
 CREATE TABLE `pw_bbs_forum_statistics` (
-  `fid` smallint(5) unsigned NULL DEFAULT '0',
+  `fid` smallint(5) unsigned NOT NULL,
   `todayposts` mediumint(8) unsigned NULL DEFAULT '0',
   `todaythreads` mediumint(8) unsigned NULL DEFAULT '0',
   `article` mediumint(8) unsigned NULL DEFAULT '0',
@@ -452,8 +452,8 @@ CREATE TABLE `pw_bbs_forum_statistics` (
 
 DROP TABLE IF EXISTS `pw_bbs_forum_user`;
 CREATE TABLE `pw_bbs_forum_user` (
-  `uid` int(10) unsigned NULL DEFAULT '0',
-  `fid` smallint(5) unsigned NULL DEFAULT '0',
+  `uid` int(10) unsigned NOT NULL,
+  `fid` smallint(5) unsigned NOT NULL,
   `join_time` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`uid`,`fid`),
   KEY `idx_fid_jointime` (`fid`,`join_time`)
@@ -498,7 +498,7 @@ CREATE TABLE `pw_bbs_posts` (
 
 DROP TABLE IF EXISTS `pw_bbs_posts_reply`;
 CREATE TABLE `pw_bbs_posts_reply` (
-  `pid` int(10) unsigned NULL DEFAULT '0',
+  `pid` int(10) unsigned NOT NULL,
   `rpid` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`pid`),
   KEY `idx_rpid_pid` (`rpid`,`pid`)
@@ -506,7 +506,7 @@ CREATE TABLE `pw_bbs_posts_reply` (
 
 DROP TABLE IF EXISTS `pw_bbs_posts_topped`;
 CREATE TABLE `pw_bbs_posts_topped` (
-  `pid` int(10) unsigned NULL DEFAULT '0' COMMENT '回帖pid',
+  `pid` int(10) unsigned NOT NULL COMMENT '回帖pid',
   `tid` int(10) unsigned NOT NULL COMMENT '帖子tid',
   `floor` int(10) unsigned NULL DEFAULT '0' COMMENT '回帖楼层号',
   `created_userid` int(10) unsigned NULL DEFAULT '0' COMMENT '贴内置顶操作人',
@@ -580,7 +580,7 @@ CREATE TABLE `pw_bbs_threads_buy` (
 
 DROP TABLE IF EXISTS `pw_bbs_threads_cate_index`;
 CREATE TABLE `pw_bbs_threads_cate_index` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `cid` smallint(5) unsigned NULL DEFAULT '0',
   `fid` smallint(5) unsigned NULL DEFAULT '0',
   `disabled` tinyint(3) unsigned NULL DEFAULT '0',
@@ -592,7 +592,7 @@ CREATE TABLE `pw_bbs_threads_cate_index` (
 
 DROP TABLE IF EXISTS `pw_bbs_threads_content`;
 CREATE TABLE `pw_bbs_threads_content` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `useubb` tinyint(1) unsigned NULL DEFAULT '0',
   `usehtml` tinyint(1) unsigned NULL DEFAULT '0',
   `aids` smallint(5) unsigned NULL DEFAULT '0',
@@ -608,7 +608,7 @@ CREATE TABLE `pw_bbs_threads_content` (
 
 DROP TABLE IF EXISTS `pw_bbs_threads_digest_index`;
 CREATE TABLE `pw_bbs_threads_digest_index` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `fid` smallint(5) unsigned NULL DEFAULT '0',
   `disabled` tinyint(3) unsigned NULL DEFAULT '0',
   `cid` smallint(5) unsigned NULL DEFAULT '0',
@@ -625,14 +625,14 @@ CREATE TABLE `pw_bbs_threads_digest_index` (
 
 DROP TABLE IF EXISTS `pw_bbs_threads_hits`;
 CREATE TABLE `pw_bbs_threads_hits` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `hits` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`tid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8  COMMENT='帖子点击记录表';
 
 DROP TABLE IF EXISTS `pw_bbs_threads_index`;
 CREATE TABLE `pw_bbs_threads_index` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `fid` smallint(5) unsigned NULL DEFAULT '0',
   `disabled` tinyint(3) unsigned NULL DEFAULT '0',
   `created_time` int(10) unsigned NULL DEFAULT '0',
@@ -653,8 +653,8 @@ CREATE TABLE `pw_bbs_threads_overtime` (
 
 DROP TABLE IF EXISTS `pw_bbs_threads_sort`;
 CREATE TABLE `pw_bbs_threads_sort` (
-  `fid` smallint(5) unsigned NULL DEFAULT '0' COMMENT '版块ID',
-  `tid` int(10) unsigned NULL DEFAULT '0' COMMENT '帖子ID',
+  `fid` smallint(5) unsigned NOT NULL COMMENT '版块ID',
+  `tid` int(10) unsigned NOT NULL COMMENT '帖子ID',
   `extra` int(10) NULL DEFAULT '0' COMMENT '扩展字段,如置顶1、2、3',
   `sort_type` varchar(20) NULL DEFAULT '' COMMENT '排序类型',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
@@ -694,8 +694,8 @@ CREATE TABLE `pw_cache` (
 
 DROP TABLE IF EXISTS `pw_common_config`;
 CREATE TABLE `pw_common_config` (
-  `name` varchar(30) NULL DEFAULT '' COMMENT '配置名称',
-  `namespace` varchar(15) NULL DEFAULT 'global' COMMENT '配置命名空间',
+  `name` varchar(30) NOT NULL COMMENT '配置名称',
+  `namespace` varchar(15) NOT NULL COMMENT '配置命名空间',
   `value` text COMMENT '缓存值',
   `vtype` enum('string','array','object') NULL DEFAULT 'string' COMMENT '配置值类型',
   `description` text COMMENT '配置介绍',
@@ -765,8 +765,8 @@ CREATE TABLE `pw_common_nav` (
 
 DROP TABLE IF EXISTS `pw_common_process`;
 CREATE TABLE `pw_common_process` (
-  `flag` varchar(20) NULL DEFAULT '' COMMENT '进程标记',
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '进程锁用户',
+  `flag` varchar(20) NOT NULL COMMENT '进程标记',
+  `uid` int(10) unsigned NOT NULL COMMENT '进程锁用户',
   `expired_time` int(10) unsigned NULL DEFAULT '0' COMMENT '过期时间',
   PRIMARY KEY (`flag`(10),`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='进程控制表';
@@ -787,8 +787,8 @@ CREATE TABLE `pw_credit_log` (
 
 DROP TABLE IF EXISTS `pw_credit_log_operate`;
 CREATE TABLE `pw_credit_log_operate` (
-  `uid` int(10) unsigned NULL DEFAULT '0',
-  `operate` varchar(40) NULL DEFAULT '',
+  `uid` int(10) unsigned NOT NULL,
+  `operate` varchar(40) NOT NULL,
   `num` smallint(5) unsigned NULL DEFAULT '0',
   `update_time` int(10) unsigned NULL DEFAULT '0',
   PRIMARY KEY (`uid`,`operate`)
@@ -796,9 +796,9 @@ CREATE TABLE `pw_credit_log_operate` (
 
 DROP TABLE IF EXISTS `pw_design_bak`;
 CREATE TABLE `pw_design_bak` (
-  `bak_type` tinyint(1) unsigned NULL DEFAULT '0' COMMENT '备份类型',
-  `page_id` int(10) unsigned NULL DEFAULT '0' COMMENT '备份页面',
-  `is_snapshot` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '是否快照',
+  `bak_type` tinyint(1) unsigned NOT NULL COMMENT '备份类型',
+  `page_id` int(10) unsigned NOT NULL COMMENT '备份页面',
+  `is_snapshot` tinyint(3) unsigned NOT NULL COMMENT '是否快照',
   `bak_info` MEDIUMTEXT COMMENT '备份信息',
   PRIMARY KEY (`page_id`,`bak_type`,`is_snapshot`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='门户备份表';
@@ -830,7 +830,7 @@ CREATE TABLE `pw_design_component` (
 
 DROP TABLE IF EXISTS `pw_design_cron`;
 CREATE TABLE `pw_design_cron` (
-  `module_id` int(10) unsigned NULL DEFAULT '0' COMMENT '模块ID',
+  `module_id` int(10) unsigned NOT NULL COMMENT '模块ID',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`module_id`),
   KEY `idx_createdtime` (`created_time`)
@@ -961,8 +961,8 @@ CREATE TABLE `pw_design_script` (
 
 DROP TABLE IF EXISTS `pw_design_segment`;
 CREATE TABLE `pw_design_segment` (
-  `segment` varchar(50) NULL DEFAULT '' COMMENT '片段名称',
-  `page_id` smallint(5) unsigned NULL DEFAULT '0' COMMENT '所属页面ID',
+  `segment` varchar(50) NOT NULL COMMENT '片段名称',
+  `page_id` smallint(5) unsigned NOT NULL COMMENT '所属页面ID',
   `segment_tpl` MEDIUMTEXT COMMENT '片段代码',
   `segment_struct` MEDIUMTEXT  COMMENT '片段结构代码',
   PRIMARY KEY (`segment`,`page_id`)
@@ -982,7 +982,7 @@ CREATE TABLE `pw_design_shield` (
 
 DROP TABLE IF EXISTS `pw_design_structure`;
 CREATE TABLE `pw_design_structure` (
-  `struct_name` varchar(50) NULL DEFAULT '' COMMENT '结构名称',
+  `struct_name` varchar(50) NOT NULL COMMENT '结构名称',
   `struct_title` text COMMENT '结构标题',
   `struct_style` text COMMENT '结构样式',
  `segment` varchar(50) NULL DEFAULT '' COMMENT '结构所属片段',
@@ -991,7 +991,7 @@ CREATE TABLE `pw_design_structure` (
 
 DROP TABLE IF EXISTS `pw_domain`;
 CREATE TABLE `pw_domain` (
-  `domain_key` varchar(100) NULL DEFAULT '' COMMENT '域名标识',
+  `domain_key` varchar(100) NOT NULL COMMENT '域名标识',
   `domain_type` varchar(15) NULL DEFAULT '' COMMENT '域名类型',
   `domain` varchar(15) NULL DEFAULT '' COMMENT '域名',
   `root` varchar(45) NULL DEFAULT '' COMMENT '根域名',
@@ -1023,7 +1023,7 @@ CREATE TABLE `pw_frag_template` (
 
 DROP TABLE IF EXISTS `pw_hook`;
 CREATE TABLE `pw_hook` (
-  `name` varchar(50) NULL DEFAULT '',
+  `name` varchar(50) NOT NULL,
   `app_id` char(20) NULL DEFAULT '' COMMENT '应用id',
   `app_name` varchar(100) NULL DEFAULT '' COMMENT '应用名称',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
@@ -1052,7 +1052,7 @@ CREATE TABLE `pw_hook_inject` (
 
 DROP TABLE IF EXISTS `pw_invite_code`;
 CREATE TABLE `pw_invite_code` (
-  `code` char(32) NULL DEFAULT '',
+  `code` char(32) NOT NULL,
   `created_userid` int(10) NULL DEFAULT '0',
   `invited_userid` int(10) NULL DEFAULT '0',
   `ifused` tinyint(1) NULL DEFAULT '0',
@@ -1148,7 +1148,7 @@ CREATE TABLE `pw_link` (
 DROP TABLE IF EXISTS `pw_link_relations`;
 CREATE TABLE `pw_link_relations` (
   `lid` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '友情链接id',
-  `typeid` smallint(5) unsigned NULL DEFAULT '0' COMMENT '分类id',
+  `typeid` smallint(5) unsigned NOT NULL COMMENT '分类id',
   PRIMARY KEY (`lid`,`typeid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='友情链接分类关系表';
 
@@ -1245,7 +1245,7 @@ CREATE TABLE `pw_medal_user` (
 
 DROP TABLE IF EXISTS `pw_message_config`;
 CREATE TABLE `pw_message_config` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户uid',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
   `privacy` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '关注人才能发私信',
   `notice_types` varchar(255) NULL DEFAULT '' COMMENT '通知忽略类型',
   PRIMARY KEY (`uid`)
@@ -1269,8 +1269,8 @@ CREATE TABLE `pw_message_notices` (
 
 DROP TABLE IF EXISTS `pw_online_guest`;
 CREATE TABLE `pw_online_guest` (
-  `ip` int(10) unsigned NULL DEFAULT '0' COMMENT '用户IP',
-  `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
+  `ip` int(10) unsigned NOT NULL COMMENT '用户IP',
+  `created_time` int(10) unsigned NOT NULL COMMENT '创建时间',
   `modify_time` int(10) unsigned NULL DEFAULT '0' COMMENT '更新时间',
   `fid` int(10) unsigned NULL DEFAULT '0' COMMENT '版块ID',
   `tid` int(10) unsigned NULL DEFAULT '0' COMMENT '贴子ID',
@@ -1281,7 +1281,7 @@ CREATE TABLE `pw_online_guest` (
 
 DROP TABLE IF EXISTS `pw_online_statistics`;
 CREATE TABLE `pw_online_statistics` (
-  `signkey` char(20) NULL DEFAULT '' COMMENT '统计标识',
+  `signkey` char(20) NOT NULL COMMENT '统计标识',
   `number` int(10) unsigned NULL DEFAULT '0' COMMENT '统计数量',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`signkey`)
@@ -1289,7 +1289,7 @@ CREATE TABLE `pw_online_statistics` (
 
 DROP TABLE IF EXISTS `pw_online_user`;
 CREATE TABLE `pw_online_user` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `username` char(15) NULL DEFAULT '' COMMENT '用户名',
   `modify_time` int(10) unsigned NULL DEFAULT '0' COMMENT '更新时间',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
@@ -1323,7 +1323,7 @@ CREATE TABLE `pw_pay_order` (
 
 DROP TABLE IF EXISTS `pw_recycle_reply`;
 CREATE TABLE `pw_recycle_reply` (
-  `pid` int(10) unsigned NULL DEFAULT '0',
+  `pid` int(10) unsigned NOT NULL,
   `tid` int(10) unsigned NULL DEFAULT '0',
   `fid` int(10) unsigned NULL DEFAULT '0',
   `operate_time` int(10) unsigned NULL DEFAULT '0',
@@ -1334,7 +1334,7 @@ CREATE TABLE `pw_recycle_reply` (
 
 DROP TABLE IF EXISTS `pw_recycle_topic`;
 CREATE TABLE `pw_recycle_topic` (
-  `tid` int(10) unsigned NULL DEFAULT '0',
+  `tid` int(10) unsigned NOT NULL,
   `fid` smallint(5) unsigned NULL DEFAULT '0',
   `operate_time` int(10) unsigned NULL DEFAULT '0',
   `operate_username` varchar(15) NOT NULL,
@@ -1344,7 +1344,7 @@ CREATE TABLE `pw_recycle_topic` (
 
 DROP TABLE IF EXISTS `pw_remind`;
 CREATE TABLE `pw_remind` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户uid',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
   `touid` varchar(255) NULL DEFAULT '' COMMENT '最近提醒人',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='@最近提醒表';
@@ -1368,9 +1368,9 @@ CREATE TABLE `pw_report` (
 
 DROP TABLE IF EXISTS `pw_seo`;
 CREATE TABLE `pw_seo` (
-  `mod` varchar(15) NULL DEFAULT '' COMMENT '模块名',
-  `page` varchar(20) NULL DEFAULT '' COMMENT '页面名',
-  `param` varchar(20) NULL DEFAULT '' COMMENT '参数名',
+  `mod` varchar(15) NOT NULL COMMENT '模块名',
+  `page` varchar(20) NOT NULL COMMENT '页面名',
+  `param` varchar(20) NOT NULL COMMENT '参数名',
   `title` varchar(255) NULL DEFAULT '' COMMENT '名称',
   `keywords` varchar(255) NULL DEFAULT '' COMMENT '关键词',
   `description` varchar(255) NULL DEFAULT '' COMMENT '描述',
@@ -1379,7 +1379,7 @@ CREATE TABLE `pw_seo` (
 
 DROP TABLE IF EXISTS `pw_space`;
 CREATE TABLE `pw_space` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `space_name` varchar(50) NULL DEFAULT '' COMMENT '空间名称',
   `space_descrip` varchar(255) NULL DEFAULT '' COMMENT '空间描述',
   `space_domain` varchar(20) NULL DEFAULT '' COMMENT '二级哉域名',
@@ -1395,14 +1395,14 @@ CREATE TABLE `pw_space` (
 
 DROP TABLE IF EXISTS `pw_space_domain`;
 CREATE TABLE `pw_space_domain` (
-  `domain` varchar(15) NULL DEFAULT '' COMMENT '空间域名',
+  `domain` varchar(15) NOT NULL COMMENT '空间域名',
   `uid` INT(10) NULL DEFAULT 0 COMMENT '用户id',
   PRIMARY KEY  (`domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT = '空间域名表';
 
 DROP TABLE IF EXISTS `pw_style`;
 CREATE TABLE `pw_style` (
-  `app_id` char(20) NULL DEFAULT '',
+  `app_id` char(20) NOT NULL,
   `iscurrent` tinyint(1) unsigned NULL DEFAULT '0' COMMENT '是否默认',
   `style_type` char(10) NULL DEFAULT '' COMMENT '风格类型',
   `name` varchar(100) NULL DEFAULT '' COMMENT '名称',
@@ -1445,7 +1445,7 @@ CREATE TABLE `pw_tag` (
 DROP TABLE IF EXISTS `pw_tag_attention`;
 CREATE TABLE `pw_tag_attention` (
   `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
-  `tag_id` int(10) unsigned NULL DEFAULT '0' COMMENT '话题id',
+  `tag_id` int(10) unsigned NOT NULL COMMENT '话题id',
   `last_read_time` int(10) unsigned NULL DEFAULT '0' COMMENT '关注时间',
   PRIMARY KEY (`tag_id`,`uid`),
   KEY `idx_uid_lastreadtime` (`uid`,`last_read_time`)
@@ -1466,8 +1466,8 @@ CREATE TABLE `pw_tag_category` (
 
 DROP TABLE IF EXISTS `pw_tag_category_relation`;
 CREATE TABLE `pw_tag_category_relation` (
-  `tag_id` int(10) unsigned NULL DEFAULT '0' COMMENT '话题id',
-  `category_id` smallint(5) unsigned NULL DEFAULT '0' COMMENT '分类id',
+  `tag_id` int(10) unsigned NOT NULL COMMENT '话题id',
+  `category_id` smallint(5) unsigned NOT NULL COMMENT '分类id',
   PRIMARY KEY (`category_id`,`tag_id`),
   KEY `idx_tagid` (`tag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='话题分类关系表';
@@ -1484,9 +1484,9 @@ CREATE TABLE `pw_tag_record` (
 DROP TABLE IF EXISTS `pw_tag_relation`;
 CREATE TABLE `pw_tag_relation` (
   `tag_id` int(10) unsigned NOT NULL COMMENT '话题id',
-  `content_tag_id` int(10) unsigned NULL DEFAULT '0' COMMENT '内容id',
-  `type_id` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '应用分类id',
-  `param_id` int(10) unsigned NULL DEFAULT '0' COMMENT '应用id',
+  `content_tag_id` int(10) unsigned NOT NULL COMMENT '内容id',
+  `type_id` tinyint(3) unsigned NOT NULL COMMENT '应用分类id',
+  `param_id` int(10) unsigned NOT NULL COMMENT '应用id',
   `ifcheck` tinyint(3) unsigned NULL DEFAULT '1' COMMENT '是否审核',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`type_id`,`param_id`,`content_tag_id`),
@@ -1516,15 +1516,15 @@ CREATE TABLE `pw_task` (
 
 DROP TABLE IF EXISTS `pw_task_cache`;
 CREATE TABLE `pw_task_cache` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `task_ids` varchar(200) NULL DEFAULT '' COMMENT '该用户完成任务的最后ID记录及周期任务ID记录',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='任务缓存';
 
 DROP TABLE IF EXISTS `pw_task_group`;
 CREATE TABLE `pw_task_group` (
-  `taskid` int(10) unsigned NULL DEFAULT '0' COMMENT '任务ID',
-  `gid` int(10) NULL DEFAULT '0' COMMENT '用户组ID',
+  `taskid` int(10) unsigned NOT NULL COMMENT '任务ID',
+  `gid` int(10) NOT NULL COMMENT '用户组ID',
   `is_auto` tinyint(1) NULL DEFAULT '0' COMMENT '是否是周期任务',
   `end_time` int(10) unsigned NULL DEFAULT '0' COMMENT '结束时间',
   PRIMARY KEY (`gid`,`taskid`)
@@ -1532,8 +1532,8 @@ CREATE TABLE `pw_task_group` (
 
 DROP TABLE IF EXISTS `pw_task_user`;
 CREATE TABLE `pw_task_user` (
-  `taskid` int(10) unsigned NULL DEFAULT '0' COMMENT '任务ID',
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `taskid` int(10) unsigned NOT NULL COMMENT '任务ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `task_status` tinyint(3) NULL DEFAULT '0' COMMENT '任务状态',
   `is_period` tinyint(1) NULL DEFAULT '0' COMMENT '是否是周期任务',
   `step` varchar(100) NULL DEFAULT '' COMMENT '任务完成的进度信息',
@@ -1545,7 +1545,7 @@ CREATE TABLE `pw_task_user` (
 
 DROP TABLE IF EXISTS `pw_user`;
 CREATE TABLE `pw_user` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `username` varchar(15) NULL DEFAULT '' COMMENT '用户名字',
   `email` varchar(40) NULL DEFAULT '' COMMENT 'Email地址',
   `password` char(32) NULL DEFAULT '' COMMENT '随机密码',
@@ -1562,7 +1562,7 @@ CREATE TABLE `pw_user` (
 
 DROP TABLE IF EXISTS `pw_user_active_code`;
 CREATE TABLE `pw_user_active_code` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `email` varchar(80) NULL DEFAULT '' COMMENT 'Email地址',
   `code` varchar(10) NULL DEFAULT '' COMMENT '激活码',
   `send_time` int(10) unsigned NULL DEFAULT '0' COMMENT '发送时间',
@@ -1588,8 +1588,8 @@ CREATE TABLE `pw_user_ban` (
 
 DROP TABLE IF EXISTS `pw_user_behavior`;
 CREATE TABLE `pw_user_behavior` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户UID',
-  `behavior` char(20) NULL DEFAULT '' COMMENT '行为标识',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户UID',
+  `behavior` char(20) NOT NULL COMMENT '行为标识',
   `number` int(10) NULL DEFAULT '0' COMMENT '行为统计',
   `expired_time` int(10) unsigned NULL DEFAULT '0' COMMENT '过期时间',
   `extend_info` varchar(255) NULL DEFAULT '' COMMENT '额外信息',
@@ -1607,7 +1607,7 @@ CREATE TABLE `pw_user_belong` (
 
 DROP TABLE IF EXISTS `pw_user_data`;
 CREATE TABLE `pw_user_data` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `lastvisit` int(10) unsigned NULL DEFAULT '0' COMMENT '最后访问时间',
   `lastloginip` varchar(20) NULL DEFAULT '' COMMENT '最后登录IP',
   `lastpost` int(10) unsigned NULL DEFAULT '0' COMMENT '最后发帖时间',
@@ -1665,7 +1665,7 @@ CREATE TABLE `pw_user_groups` (
 
 DROP TABLE IF EXISTS `pw_user_info`;
 CREATE TABLE `pw_user_info` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `gender` tinyint(1) NULL DEFAULT '0' COMMENT '性别',
   `byear` smallint(5) unsigned NULL DEFAULT '0' COMMENT '出生年份',
   `bmonth` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '出生月份',
@@ -1692,7 +1692,7 @@ CREATE TABLE `pw_user_info` (
 
 DROP TABLE IF EXISTS `pw_user_login_ip_recode`;
 CREATE TABLE `pw_user_login_ip_recode` (
-  `ip` varchar(20) NULL DEFAULT '' COMMENT 'IP地址',
+  `ip` varchar(20) NOT NULL COMMENT 'IP地址',
   `last_time` varchar(10) NULL DEFAULT '' COMMENT '最后访问时间',
   `error_count` smallint(5) unsigned NULL DEFAULT '0' COMMENT '错误次数',
   PRIMARY KEY (`ip`)
@@ -1700,7 +1700,7 @@ CREATE TABLE `pw_user_login_ip_recode` (
 
 DROP TABLE IF EXISTS `pw_user_mobile`;
 CREATE TABLE `pw_user_mobile` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户uid',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
   `mobile` bigint(11) unsigned NULL DEFAULT '0' COMMENT '用户手机号码',
   PRIMARY KEY (`uid`),
   UNIQUE KEY `idx_mobile` (`mobile`)
@@ -1708,7 +1708,7 @@ CREATE TABLE `pw_user_mobile` (
 
 DROP TABLE IF EXISTS `pw_user_mobile_verify`;
 CREATE TABLE `pw_user_mobile_verify` (
-  `mobile` bigint(11) unsigned NULL DEFAULT '0' COMMENT '用户手机号码',
+  `mobile` bigint(11) unsigned NOT NULL COMMENT '用户手机号码',
   `code` smallint(5) unsigned NULL DEFAULT '0' COMMENT '验证码',
   `expired_time` int(10) unsigned NULL DEFAULT '0' COMMENT '过期时间',
   `number` tinyint(3) unsigned NULL DEFAULT '0',
@@ -1718,8 +1718,8 @@ CREATE TABLE `pw_user_mobile_verify` (
 
 DROP TABLE IF EXISTS `pw_user_permission_groups`;
 CREATE TABLE `pw_user_permission_groups` (
-  `gid` mediumint(8) unsigned NULL DEFAULT '0' COMMENT '用户组ID',
-  `rkey` varchar(64) NULL DEFAULT '' COMMENT '权限点',
+  `gid` mediumint(8) unsigned NOT NULL COMMENT '用户组ID',
+  `rkey` varchar(64) NOT NULL COMMENT '权限点',
   `rtype` enum('basic','system','systemforum') NULL DEFAULT 'basic' COMMENT '权限类型',
   `rvalue` text COMMENT '权限值',
   `vtype` enum('string','array') NULL DEFAULT 'string' COMMENT '权限值类型',
@@ -1728,7 +1728,7 @@ CREATE TABLE `pw_user_permission_groups` (
 
 DROP TABLE IF EXISTS `pw_user_register_check`;
 CREATE TABLE `pw_user_register_check` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `ifchecked` tinyint(1) NULL DEFAULT '1' COMMENT '是否已经审核',
   `ifactived` tinyint(1) NULL DEFAULT '1' COMMENT '是否已经激活',
   PRIMARY KEY (`uid`)
@@ -1736,7 +1736,7 @@ CREATE TABLE `pw_user_register_check` (
 
 DROP TABLE IF EXISTS `pw_user_register_ip`;
 CREATE TABLE `pw_user_register_ip` (
-  `ip` varchar(20) NULL DEFAULT '' COMMENT 'IP地址',
+  `ip` varchar(20) NOT NULL COMMENT 'IP地址',
   `last_regdate` int(10) unsigned NULL DEFAULT '0' COMMENT '最后注册时间',
   `num` int(10) unsigned NULL DEFAULT '0' COMMENT '次数',
   PRIMARY KEY (`ip`)
@@ -1756,7 +1756,7 @@ CREATE TABLE `pw_user_tag` (
 DROP TABLE IF EXISTS `pw_user_tag_relation`;
 CREATE TABLE `pw_user_tag_relation` (
   `tag_id` int(10) unsigned NOT NULL COMMENT '个性标签ID',
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户ID',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户ID',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`uid`,`tag_id`),
   KEY `idx_createdtime` (`created_time`)
@@ -1777,7 +1777,7 @@ CREATE TABLE `pw_user_work` (
 
 DROP TABLE IF EXISTS `pw_upgrade_log`;
 CREATE TABLE `pw_upgrade_log` (
-  `id` varchar(25) NULL DEFAULT '' COMMENT '主键id',
+  `id` varchar(25) NOT NULL COMMENT '主键id',
   `type` tinyint(1) NULL DEFAULT '0' COMMENT '日志类型',
   `data` text COMMENT '内容',
   PRIMARY KEY (`id`)
@@ -1813,7 +1813,7 @@ CREATE TABLE `pw_weibo_comment` (
 
 DROP TABLE IF EXISTS `pw_windid_application`;
 CREATE TABLE `pw_windid_application` (
-  `app_id` char(20) NULL DEFAULT '' COMMENT '应用id',
+  `app_id` char(20) NOT NULL COMMENT '应用id',
   `name` varchar(100) NULL DEFAULT '' COMMENT '名称',
   `alias` varchar(100) NULL DEFAULT '' COMMENT '别名',
   `logo` varchar(100) NULL DEFAULT '' COMMENT '应用logo',
@@ -1843,7 +1843,7 @@ CREATE TABLE `pw_windid_application_log` (
 
 DROP TABLE IF EXISTS `pw_windid_hook`;
 CREATE TABLE `pw_windid_hook` (
-  `name` varchar(50) NULL DEFAULT '',
+  `name` varchar(50) NOT NULL,
   `app_id` char(20) NULL DEFAULT '' COMMENT '应用id',
   `app_name` varchar(100) NULL DEFAULT '' COMMENT '应用名称',
   `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
@@ -1884,8 +1884,8 @@ CREATE TABLE `pw_windid_admin_auth` (
 
 DROP TABLE IF EXISTS `pw_windid_admin_config`;
 CREATE TABLE `pw_windid_admin_config` (
-  `name` varchar(30) NULL DEFAULT '' COMMENT '配置名称',
-  `namespace` varchar(15) NULL DEFAULT 'global' COMMENT '配置命名空间',
+  `name` varchar(30) NOT NULL COMMENT '配置名称',
+  `namespace` varchar(15) NOT NULL COMMENT '配置命名空间',
   `value` text COMMENT '缓存值',
   `vtype` enum('string','array','object') NULL DEFAULT 'string' COMMENT '配置值类型',
   `description` text COMMENT '配置介绍',
@@ -1940,7 +1940,7 @@ CREATE TABLE `pw_windid_area` (
 DROP TABLE IF EXISTS `pw_windid_config`;
 CREATE TABLE `pw_windid_config` (
   `name` varchar(30) NOT NULL COMMENT '配置名字',
-  `namespace` varchar(15) NULL DEFAULT 'global' COMMENT '配置命名空间',
+  `namespace` varchar(15) NOT NULL COMMENT '配置命名空间',
   `value` text COMMENT '值',
   `vtype` enum('string','array','object') NULL DEFAULT 'string' COMMENT '配置值类型',
   `descrip` text COMMENT '描述',
@@ -2040,7 +2040,7 @@ CREATE TABLE `pw_windid_user` (
 
 DROP TABLE IF EXISTS `pw_windid_user_black`;
 CREATE TABLE `pw_windid_user_black` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '用户uid',
+  `uid` int(10) unsigned NOT NULL COMMENT '用户uid',
   `blacklist` text COMMENT '黑名单',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户黑名单';
