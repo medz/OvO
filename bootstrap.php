@@ -6,18 +6,14 @@ if (function_exists('get_include_path') && function_exists('set_include_path')) 
     $includePaths = (array) explode(PATH_SEPARATOR, get_include_path());
     $rootDir = __DIR__;
 
-    // 已经设置
-    foreach ($includePaths as $key => $value) {
-        if ($value == $root) {
-            unset($includePaths[$key]);
-        }
+    // 如果没有设置在include_path中。
+    if (!in_array($rootDir, $includePaths)) {
+        // 加入root的完整路径
+        array_push($includePaths, $rootDir);
+
+        // 设置include_path
+        @set_include_path(implode(PATH_SEPARATOR, $includePaths));
     }
-
-    // 加入root的完整路径
-    array_push($includePaths, $rootDir);
-
-    // 设置include_path
-    @set_include_path(implode(PATH_SEPARATOR, $includePaths));
 }
 
 // 开发框架信息
