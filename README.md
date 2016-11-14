@@ -1,5 +1,5 @@
-# phpwind fans - 目前最新：f 1.0.1
-你没有看错，就是phpwind 10.
+# phpwind fans - 目前最新：F 1.0.2
+phpwind Fans版本是原本暂定的phpwind10版本而来。基于官方最新的phpwind9.0.1开发，同步官方所有代码的基础上进行改良和长期维护。
 ## 官方老版本如何升级phpwind fans版本：
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
 
