@@ -147,7 +147,7 @@ class PwSimpleUbbCode
     public static function convertEmail($message)
     {
         $message = preg_replace_callback("/\[email=([^\[]*)\][^\[]*\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
-                $message = preg_replace_callback("/\[email\]([^\[]*)\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
+        $message = preg_replace_callback("/\[email\]([^\[]*)\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
         return preg_replace(
             array("/\[email=([^\[]*)\]([^\[]*)\[\/email\]/is", "/\[email\]([^\[]*)\[\/email\]/is"),
             array('<a href="mailto:\\1 ">\\2</a>', '<a href="mailto:\\1 ">\\1</a>'),
@@ -443,33 +443,24 @@ class PwSimpleUbbCode
     public static function parseMedia($message, $config)
     {
         if ($config->isConvertMedia == 2) {
-            return preg_replace_callback(
-                array(
-                    '/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
-                    '/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
-                ),
-                array(
-                    function ($m) {
-                        return PwSimpleUbbCode::_pushCode('createPlayer', $m[4], '314', '53', $m[3], 'audio');
-                    },
-                    function ($m) {
-                        return PwSimpleUbbCode::_pushCode('createPlayer', $m[6], $m[3], $m[4], $m[5], 'video');
-                    },
-                ),
+
+            $message = preg_replace_callback(
+                '/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
+                function ($m) {
+                    return PwSimpleUbbCode::_pushCode('createPlayer', $m[4], '314', '53', $m[3], 'audio');
+                },
                 $message
             );
 
-            // return preg_replace(
-            //     array(
-            //         "/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-            //         "/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-            //     ),
-            //     array(
-            //         "self::_pushCode('createPlayer','\\4','314','53','\\3','audio')",
-            //         "self::_pushCode('createPlayer','\\6','\\3','\\4','\\5','video')",
-            //     ),
-            //     $message
-            // );
+            $message = preg_replace_callback(
+                '/\[(wmv|rm)(=([0-9]{1,3})\,([0-9]{1,3})\,(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
+                function ($m) {
+                    return PwSimpleUbbCode::_pushCode('createPlayer', $m[6], $m[3], $m[4], $m[5], 'video');
+                },
+                $message
+            );
+
+            return $message;
         }
 
         return preg_replace_callback(
@@ -482,15 +473,6 @@ class PwSimpleUbbCode
             },
             $message
         );
-
-        // return preg_replace(
-        //     array(
-        //         "/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-        //         "/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/eis",
-        //     ),
-        //     "self::_pushCode('createMediaLink','\\2')",
-        //     $message
-        // );
     }
 
     public static function parseRemind($message, $remindUser)
