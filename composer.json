@@ -5,7 +5,6 @@
     "keywords": ["medz", "php", "phpwind"],
     "homepage": "http://www.phpwind.com",
     "license": "MIT",
-    "license-url": "./LICENSE",
     "authors": [
         {
             "name": "Seven Du",
@@ -42,7 +41,7 @@
         ],
         "psr-4": {
             "Pw\\Ext\\": "src/extensions/",
-            "Pw\\App\\": "src/applications/",
+            "Pw\\App\\": "src/applications/"
         }
     }
 }
