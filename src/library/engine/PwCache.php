@@ -358,7 +358,7 @@ class PwCache
                 $server = new PwFileCache();
                 break;
             case self::USE_DB:
-                
+
                 $server = new WindDbCache(Wind::getComponent('db'));
                 break;
             case self::USE_MEN:
@@ -366,7 +366,7 @@ class PwCache
                 $server = new $class();
                 break;
             case self::USE_REDIS:
-                
+
                 $server = new WindRedisCache();
                 break;
         }

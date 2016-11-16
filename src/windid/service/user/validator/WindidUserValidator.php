@@ -125,7 +125,6 @@ class WindidUserValidator
      */
     private static function isNameLenValid($username, $charset = 'utf8')
     {
-        
         $len = WindString::strlen($username, $charset);
 
         return $len > self::getConfig('security.username.max') || $len < self::getConfig('security.username.min');
