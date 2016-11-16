@@ -450,7 +450,7 @@ class RegisterController extends PwBaseController
             'post');
 
         //	验证输入
-        
+
         $config = $this->_getRegistConfig();
         if (!$username) {
             $this->showError('USER:user.error.-1', 'u/register/run');

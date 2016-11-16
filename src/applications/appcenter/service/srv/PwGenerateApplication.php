@@ -262,7 +262,7 @@ class PwGenerateApplication
                 'method' => $method,
                 'description' => 'this is another '.$hookname, ), );
         $manifest['inject-services'][$hookname] = $hook;
-        
+
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
@@ -322,7 +322,7 @@ class PwGenerateApplication
                         'loadway' => 'load',
                         'method' => 'getAdminMenu',
                         'description' => $this->name.'admin menu', ), ), );
-            
+
             $parser = new WindXmlParser();
             $hook = preg_replace('/<\?xml[^\?]+\?>/i', '', $parser->parseToXml($hook, Wind::getApp()->getResponse()->getCharset()));
             $hook = str_replace('><', ">\n\t<", $hook);

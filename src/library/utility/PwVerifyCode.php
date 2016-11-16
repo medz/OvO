@@ -154,7 +154,7 @@ class PwVerifyCode
     private function _readVerifyCode()
     {
         //return Pw::getCookie('Pw_verify_code');
-        
+
         $session = new WindSession();
 
         return $session->get('verifycode');
@@ -174,14 +174,13 @@ class PwVerifyCode
         }
 
         //session 保存验证码
-        
+
         $session = new WindSession();
         $session->set('verifycode', $code);
     }
 
     private function _clearVerifyCode()
     {
-        
         $session = new WindSession();
         $session->delete('verifycode');
     }

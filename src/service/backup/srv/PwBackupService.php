@@ -296,7 +296,7 @@ class PwBackupService
             $zipService->addFile($data, $filename);
             $data = $zipService->getCompressedFile();
         }
-        
+
         WindFile::write($filePath, $data);
 
         return true;
@@ -323,7 +323,7 @@ class PwBackupService
             $value['end'] != -1 && $value['end'] += $linesOfBackupTip;
             $record .= $key.':'.$filename.','.$value['start'].','.$value['end']."\n";
         }
-        
+
         WindFile::write($filePath.'/table.index', $record, 'ab+');
 
         return true;

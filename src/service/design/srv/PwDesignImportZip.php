@@ -45,7 +45,6 @@ class PwDesignImportZip
      */
     public function checkZip($filename)
     {
-        
         Wind::import('LIB:utility.PwZip');
         $config = array();
         $_isTpl = false;
