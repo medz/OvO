@@ -622,7 +622,7 @@ Wind::import('ADMIN:library.AdminBaseController');
      private function _uploadImage($key = 'image')
      {
          Wind::import('SRV:upload.action.PwMedalUpload');
-         
+
          if ($key == 'image') {
              $bhv = new PwMedalUpload('image', 80, 80);
          } else {

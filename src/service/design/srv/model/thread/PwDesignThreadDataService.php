@@ -171,7 +171,6 @@ class PwDesignThreadDataService extends PwDesignModelBase
         $tTypes = $this->_getTopicType($_tType);
         $attachs = $this->_getAttachs($_aTid);
         if ($ishighlight) {
-            
             $highlight = new PwHighlight();
         }
         foreach ($list as $k => $v) {

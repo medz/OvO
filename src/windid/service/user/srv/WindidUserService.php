@@ -154,7 +154,6 @@ class WindidUserService
 
     public function defaultAvatar($uid, $type = 'face')
     {
-        
         $_avatar = array('.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg');
         $defaultBanDir = Wind::getRealDir('RES:').'images/face/';
         $store = Wind::getComponent('storage');

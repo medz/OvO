@@ -99,7 +99,6 @@ class IndexController extends PwBaseController
      */
     public function getAudioAction()
     {
-        
         $srv = new PwVerifyCode();
         $srv->getAudioVerify();
         exit;

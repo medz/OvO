@@ -134,7 +134,6 @@ class IndexController extends AdminBaseController
     {
         $audio = $this->getInput('getAudio', 'get');
         if ($audio) {
-            
             $srv = new PwVerifyCode();
             $srv->getAudioVerify();
             exit;

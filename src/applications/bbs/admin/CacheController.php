@@ -77,7 +77,6 @@ class CacheController extends AdminBaseController
 
     private function _compressCss()
     {
-        
         $compress = new PwCssCompress();
         $r = $compress->doCompile();
         if ($r instanceof PwError) {

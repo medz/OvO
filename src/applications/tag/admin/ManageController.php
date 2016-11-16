@@ -555,7 +555,7 @@ class ManageController extends AdminBaseController
     private function uploadLogo()
     {
         Wind::import('SRV:upload.action.PwTagUpload');
-        
+
         $tagUpload = new PwTagUpload(156, 156);
         $upload = new PwUpload($tagUpload);
         if (($result = $upload->check()) === true) {

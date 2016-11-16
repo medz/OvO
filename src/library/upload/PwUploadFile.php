@@ -194,7 +194,7 @@ class PwUploadFile
             return;
         }
 
-        
+
         $watermark = new PwImageWatermark($image);
         $watermark->setPosition($config['mark.position'])
             ->setType($config['mark.type'])

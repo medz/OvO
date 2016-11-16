@@ -654,7 +654,7 @@ class SetforumController extends AdminBaseController
     private function _uploadTopicTypeIcon()
     {
         Wind::import('SRV:upload.action.PwTopictypeUpload');
-        
+
         $bhv = new PwTopictypeUpload(16, 16);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {
@@ -670,7 +670,7 @@ class SetforumController extends AdminBaseController
     private function _uploadImage($type, $fid)
     {
         Wind::import('SRV:upload.action.PwForumUpload');
-        
+
         $bhv = new PwForumUpload($type, $fid);
         $upload = new PwUpload($bhv);
 

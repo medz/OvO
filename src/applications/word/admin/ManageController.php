@@ -291,7 +291,7 @@ class ManageController extends AdminBaseController
     public function doimportAction()
     {
         Wind::import('SRV:upload.action.PwWordUpload');
-        
+
         $bhv = new PwWordUpload();
         $upload = new PwUpload($bhv);
 
