@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 
 /**
  * 新鲜事删除扩展服务接口--删除微博源内容

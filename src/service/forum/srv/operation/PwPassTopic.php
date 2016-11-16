@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.PwGleanDoProcess');
+
 
 /**
  * 帖子通过审核及其关联操作(扩展)

@@ -9,7 +9,7 @@
  * @version $Id: PwUserPermissionDm.php 21226 2012-12-03 03:57:42Z jieyin $
  */
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 class PwUserPermissionDm extends PwBaseDm
 {

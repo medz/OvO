@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:utility.PwVerifyCode');
+
 /**
  * 消息Controller
  *
@@ -447,7 +447,7 @@ class MessageController extends PwBaseController
 
     private function _parseEmotion($message)
     {
-        Wind::import('LIB:ubb.PwUbbCode');
+        
         $message = $this->_parseUrl($message);
         $message = Pw::substrs($message, 36);
 

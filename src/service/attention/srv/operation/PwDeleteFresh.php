@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.PwGleanDoProcess');
+
 Wind::import('SRV:attention.PwFresh');
 Wind::import('HOOK:PwDeleteFresh.PwDeleteFreshDoTopicDelete');
 Wind::import('HOOK:PwDeleteFresh.PwDeleteFreshDoReplyDelete');

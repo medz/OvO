@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:dataSource.iPwDataSource');
+
 
 /**
  * 不同排序的投票

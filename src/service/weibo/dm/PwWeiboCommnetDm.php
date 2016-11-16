@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 /**
  * 微博数据模型

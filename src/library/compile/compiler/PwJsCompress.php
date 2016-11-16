@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:compile.AbstractPwCompiler');
+
 class PwJsCompress extends AbstractPwCompiler
 {
     /*

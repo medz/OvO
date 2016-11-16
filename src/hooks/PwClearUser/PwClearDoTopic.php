@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 Wind::import('SRV:forum.srv.dataSource.PwGetTopicByUid');
 Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
 

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 /**
  * 附件数据模型

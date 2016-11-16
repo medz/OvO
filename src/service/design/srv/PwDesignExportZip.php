@@ -27,7 +27,7 @@ class PwDesignExportZip
 
     public function zip($charset = 'utf-8')
     {
-        Wind::import('LIB:utility.PwZip');
+        
         $zip = new PwZip();
         $files = $this->read($this->dir);
         $fromCharset = Wekit::app()->charset;

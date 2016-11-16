@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:upload.PwUploadAction');
+
 
 /**
  * 上传组件

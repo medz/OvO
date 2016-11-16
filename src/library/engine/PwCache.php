@@ -354,7 +354,6 @@ class PwCache
     {
         switch ($use) {
             case self::USE_FILE:
-                Wind::import('LIB:engine.extension.cache.PwFileCache');
                 $server = new PwFileCache();
                 break;
             case self::USE_DB:
@@ -362,7 +361,7 @@ class PwCache
                 $server = new WindDbCache(Wind::getComponent('db'));
                 break;
             case self::USE_MEN:
-                $class = Wind::import('WIND:cache.strategy.Wind'.Wekit::V('mem.server'));
+                $class = 'Wind'.Wekit::V('mem.server');
                 $server = new $class();
                 break;
             case self::USE_REDIS:

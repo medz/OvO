@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 /**
  * 帖子附件购买记录

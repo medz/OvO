@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 Wind::import('SRV:space.bo.PwSpaceBo');
 /**
  * 我的空间
@@ -216,7 +216,7 @@ class MyspaceController extends PwBaseController
     private function _uploadImage()
     {
         Wind::import('SRV:upload.action.PwSpaceUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwSpaceUpload($this->loginUser->uid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

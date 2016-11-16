@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:image.PwCutImage');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com

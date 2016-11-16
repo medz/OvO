@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:utility.PwMail');
+
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
  * 用户找回密码服务

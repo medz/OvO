@@ -9,7 +9,7 @@
  */
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 
 class PwTopicTypeDm extends PwBaseDm

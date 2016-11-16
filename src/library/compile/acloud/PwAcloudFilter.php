@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:compile.acloud.PwAcloudDataMapper');
+
 
 /**
  * Acloud服务相关

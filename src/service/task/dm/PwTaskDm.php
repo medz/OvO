@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDm');
+
 /**
  * 任务体系的数据模型
  *

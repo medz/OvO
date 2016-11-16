@@ -5,9 +5,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.bo.PwThreadBo');
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('SRV:attach.srv.PwAttachDisplay');
-Wind::import('LIB:ubb.PwUbbCode');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertConfig');
+
+
+
 
 /**
  * 帖子显示流程

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:ubb.config.PwUbbCodeConvertConfig');
+
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**

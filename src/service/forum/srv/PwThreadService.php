@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:ubb.PwSimpleUbbCode');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+
+
 
 /**
  * 帖子公共服务

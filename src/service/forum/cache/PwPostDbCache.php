@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDbCache');
+
 
 /**
  * 回复缓存数据接口

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:upload.PwUploadAction');
+
 Wind::import('SRV:attach.dm.PwThreadAttachDm');
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('COM:utility.WindUtility');

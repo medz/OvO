@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**

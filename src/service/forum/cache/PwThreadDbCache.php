@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseMapDbCache');
+
 
 /**
  * 帖子缓存数据接口

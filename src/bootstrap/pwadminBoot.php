@@ -92,7 +92,7 @@ class pwadminBoot extends adminBoot
     {
         parent::beforeStart($front);
         if (!Wind::getComponent('router')->getRoute('pw')) {
-            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance(Wind::import('LIB:route.PwRoute'), array('bbs')));
+            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', array('bbs')));
         }
     }
 }

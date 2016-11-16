@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:image.PwImage');
+
 
 /**
  * 上传文件对象
@@ -194,7 +194,7 @@ class PwUploadFile
             return;
         }
 
-        Wind::import('LIB:image.PwImageWatermark');
+        
         $watermark = new PwImageWatermark($image);
         $watermark->setPosition($config['mark.position'])
             ->setType($config['mark.type'])

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:dataSource.iPwDataSource');
+
 
 /**
  * 获取用户(A)关注的指定用户列表的新鲜事

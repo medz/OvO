@@ -140,7 +140,7 @@ class AttachmentController extends AdminBaseController
         list($thumb, $thumbsize_width, $thumbsize_height, $quality) = $this->getInput(
             array('thumb', 'thumbsize_width', 'thumbsize_height', 'quality'), 'post');
 
-        Wind::import('LIB:image.PwImage');
+        
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $thumburl = Wind::getRealDir('PUBLIC:attachment', false).'/demo_thumb.jpg';
         $image->makeThumb($thumburl, $thumbsize_width, $thumbsize_height, $quality, $thumb);

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.iPwDoHookProcess');
+
 Wind::import('SRV:forum.vo.PwThreadSo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 Wind::import('SRV:forum.dm.PwReplyDm');

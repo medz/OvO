@@ -106,8 +106,8 @@ class IndexController extends BaseProfileController
             if (($len = $this->loginUser->getPermission('sign_max_length')) && Pw::strlen($bbsSign) > $len) { //仅在此限制签名字数
                 $this->showError(array('USER:user.edit.sign.length.over', array('{max}' => $len)));
             }
-            Wind::import('LIB:ubb.PwUbbCode');
-            Wind::import('LIB:ubb.config.PwUbbCodeConvertConfig');
+            
+            
             $ubb = new PwUbbCodeConvertConfig();
             $ubb->isConverImg = $this->loginUser->getPermission('sign_ubb_img') ? true : false;
             $userDm->setBbsSign($bbsSign)

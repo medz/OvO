@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('LIB:ubb.PwSimpleUbbCode');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+
+
 /**
  * 喜欢列表组装服务
  *

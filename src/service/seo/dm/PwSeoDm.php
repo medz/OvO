@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDm');
+
 /**
  * seo的数据模型
  *

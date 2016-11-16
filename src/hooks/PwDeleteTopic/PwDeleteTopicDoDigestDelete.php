@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 
 /**
  * 删除帖子精华信息---进入回收站的帖子同时删除该帖子的精华信息

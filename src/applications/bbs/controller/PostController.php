@@ -334,8 +334,8 @@ class PostController extends PwBaseController
             $reply = Wekit::load('forum.PwThread')->getPost($pid);
             $total = $reply['replies'];
             list($start, $limit) = Pw::page2limit($page, $perpage);
-            Wind::import('LIB:ubb.PwSimpleUbbCode');
-            Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+            
+            
             $replydb = Wekit::load('forum.PwPostsReply')->getPostByPid($pid, $limit, $start);
             $replydb = Wekit::load('forum.srv.PwThreadService')->displayReplylist($replydb);
         } else {

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:utility.verifycode.PwBaseCode');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * @author $Author: gao.wanggao $ foxsee@aliyun.com

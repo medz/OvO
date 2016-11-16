@@ -3,7 +3,7 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
-Wind::import('LIB:upload.PwUpload');
+
 Wind::import('SRV:upload.action.PwAttUpload');
 Wind::import('SRV:attach.dm.PwThreadAttachDm');
 

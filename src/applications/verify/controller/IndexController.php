@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
@@ -99,7 +99,7 @@ class IndexController extends PwBaseController
      */
     public function getAudioAction()
     {
-        Wind::import('LIB:utility.PwVerifyCode');
+        
         $srv = new PwVerifyCode();
         $srv->getAudioVerify();
         exit;

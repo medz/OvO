@@ -77,7 +77,7 @@ class CacheController extends AdminBaseController
 
     private function _compressCss()
     {
-        Wind::import('LIB:compile.compiler.PwCssCompress');
+        
         $compress = new PwCssCompress();
         $r = $compress->doCompile();
         if ($r instanceof PwError) {

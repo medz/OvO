@@ -242,7 +242,7 @@ class StyleController extends AdminBaseController
         if (!$conf) {
             $this->showMessage('fail');
         }
-        Wind::import('LIB:utility.PwZip');
+        
         $dir = Wind::getRealDir('THEMES:').DIRECTORY_SEPARATOR.$conf[1].DIRECTORY_SEPARATOR.$alias;
         if (!is_dir($dir)) {
             $this->showError('fail');
@@ -418,7 +418,7 @@ class StyleController extends AdminBaseController
     private function _upload($key)
     {
         Wind::import('SRV:upload.action.PwIconUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwIconUpload($key, 'background/');
         $upload = new PwUpload($bhv);
         $r = $upload->execute();

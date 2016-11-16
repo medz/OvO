@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 /**
  * 友情链接数据模型

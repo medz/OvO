@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:ubb.config.PwUbbCodeConvertConfig');
+
 
 /**
  * ubb转换配置

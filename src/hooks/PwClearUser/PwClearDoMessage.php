@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 
 /**
  * 清理用户消息

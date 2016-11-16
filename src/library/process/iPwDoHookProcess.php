@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.PwGleanDoProcess');
+
 
 /**
  * Do(操作)业务流程(扩展)

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.PwGleanDoProcess');
+
 Wind::import('HOOK:PwDeleteWeibo.PwDeleteWeiboDoCommentDelete');
 
 /**

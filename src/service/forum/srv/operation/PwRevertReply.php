@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.PwGleanDoProcess');
+
 Wind::import('HOOK:PwRevertReply.PwRevertReplyDoMain');
 //Wind::import('SRV:forum.srv.operation.do.PwDeleteReplyDoDirectDelete');
 //Wind::import('SRV:forum.srv.operation.do.PwDeleteArticleDoAttachDelete');

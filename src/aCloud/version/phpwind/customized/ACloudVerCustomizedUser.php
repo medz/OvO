@@ -70,7 +70,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
         Wind::import('SRV:upload.action.PwAvatarUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwAvatarUpload($userBo);
 
         $upload = new PwUpload($bhv);

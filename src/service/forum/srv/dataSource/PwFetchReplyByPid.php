@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:dataSource.iPwDataSource');
+
 
 /**
  * 根据用户获取帖子列表

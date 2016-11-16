@@ -3,7 +3,7 @@
 define('WINDID_IS_NOTIFY', 1);
 
 Wind::import('APPS:windidnotify.service.PwWindidInform');
-Wind::import('LIB:utility.PwWindidStd');
+
 Wind::import('WINDID:service.base.WindidUtility');
 
 /**

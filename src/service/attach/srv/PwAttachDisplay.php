@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:ubb.PwUbbCode');
+
 
 /**
  * 帖子附件附件展示 / ubb解析

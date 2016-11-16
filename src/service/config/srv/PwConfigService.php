@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:utility.PwDelayRun');
+
 
 /**
  * 通用配置服务

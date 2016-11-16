@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 
 /**
  * 帖子删除扩展服务接口--删除回帖置顶

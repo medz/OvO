@@ -107,7 +107,7 @@ class phpwindBoot extends bootstrap
      */
     public function runApps($front = null)
     {
-        Wind::import('LIB:compile.acloud.PwAcloudFilter');
+        
         $front->registeFilter(new PwAcloudFilter());
 
         $controller = Wind::getComponent('router')->getController();

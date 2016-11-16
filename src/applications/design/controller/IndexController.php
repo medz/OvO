@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>
  * @author $Author: long.shi $ Foxsee@aliyun.com

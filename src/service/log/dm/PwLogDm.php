@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDm');
+
 /**
  * 前台管理日志LOGDM对象
  *

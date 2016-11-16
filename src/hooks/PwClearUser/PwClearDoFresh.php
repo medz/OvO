@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByUid');
 Wind::import('SRV:forum.srv.operation.PwDeleteReply');
 

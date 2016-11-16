@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:dataSource.iPwDataSource');
+
 
 /**
  * 获取新鲜事

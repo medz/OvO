@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDao');
+
 /**
  * Pw_task_user的dao
  *

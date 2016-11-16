@@ -1,6 +1,6 @@
 <hook-action name="minilist" args="v">
 <!--弹窗列表-->
-	<!--# Wind::import('LIB:ubb.PwUbbCode');
+	<!--# 
 		if ($v['extend_params']['is_send']) {
 			$username = '发给' . '<span class="s4">' .$v['extend_params']['from_username'] . '</span>';
 			$from_uid = $v['extend_params']['to_uid'];
@@ -49,7 +49,7 @@
 	</div>
 	<div class="J_hm_list my_message_dialog" id="J_msg_dialog_list">
 	<!--# $loginUser = Wekit::getLoginUser(); 
-		Wind::import('LIB:ubb.PwUbbCode');
+		
 	#-->
 	<!--# foreach($detailList['data'] as $v){ 
 		$username = $v['from_uid'] == $loginUser->uid ? '我' : $notice['extend_params']['from_username'];

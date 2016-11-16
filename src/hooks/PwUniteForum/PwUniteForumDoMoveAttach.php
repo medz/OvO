@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:process.iPwDoHookProcess');
+
 
 /**
  * 合并版块--移动附件

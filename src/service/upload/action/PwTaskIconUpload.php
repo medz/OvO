@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:upload.PwUploadAction');
+
 Wind::import('COM:utility.WindUtility');
 
 /**

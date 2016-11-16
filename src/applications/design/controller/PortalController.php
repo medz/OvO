@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
@@ -267,7 +267,7 @@ class PortalController extends PwBaseController
     private function _upload($portalId = 0)
     {
         Wind::import('SRV:upload.action.PwPortalUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwPortalUpload($portalId);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

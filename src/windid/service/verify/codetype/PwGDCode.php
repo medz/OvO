@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:utility.verifycode.PwBaseCode');
+
 /**
  * GD库验证码
  *
@@ -266,7 +266,7 @@ class PwGDCode extends PwBaseCode
         header('Pragma:no-cache');
         header('Cache-control:no-cache');
         header('Content-type: image/gif');
-        Wind::import('LIB:utility.verifycode.GifMerge');
+        
         self::_getCodeLenth();
         self::_setRandBackground();
         self::_setRandFont();

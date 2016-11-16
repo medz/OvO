@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:compile.acloud.collect.AbstractAcloudCollect');
+
 /**
  * 页面收集页面
  *

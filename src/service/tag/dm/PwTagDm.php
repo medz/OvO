@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDm');
+
 Wind::import('SRV:user.validator.PwUserValidator');
 
 /**

@@ -134,7 +134,7 @@ class IndexController extends AdminBaseController
     {
         $audio = $this->getInput('getAudio', 'get');
         if ($audio) {
-            Wind::import('LIB:utility.PwVerifyCode');
+            
             $srv = new PwVerifyCode();
             $srv->getAudioVerify();
             exit;

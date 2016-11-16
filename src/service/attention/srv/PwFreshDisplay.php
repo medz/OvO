@@ -3,12 +3,12 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.PwFresh');
-Wind::import('LIB:dataSource.PwDataLazyLoader');
-Wind::import('LIB:dataSource.iPwDataSource2');
+
+
 Wind::import('SRV:weibo.PwWeibo');
 Wind::import('SRV:attention.srv.freshDisplay.PwFreshAttachDisplay');
-Wind::import('LIB:ubb.PwSimpleUbbCode');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+
+
 
 /**
  * 新鲜事列表

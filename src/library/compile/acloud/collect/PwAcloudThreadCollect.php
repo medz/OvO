@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:compile.acloud.collect.AbstractAcloudCollect');
+
 
 /**
  * 手机帖子列表页的数据

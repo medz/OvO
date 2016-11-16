@@ -1,7 +1,7 @@
 <?php
 
 ! defined('ACLOUD_PATH') && exit('Forbidden');
-Wind::import('LIB:base.PwBaseController');
+
 
 define('Friend_INVALID_PARAMS', 101);
 define('Friend_NOT_EXISTS', 102);

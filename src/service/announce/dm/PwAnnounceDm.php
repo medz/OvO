@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('LIB:base.PwBaseDm');
+
 
 /**
  * 公告管理基础表数据模型

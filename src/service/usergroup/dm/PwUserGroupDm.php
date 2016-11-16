@@ -9,7 +9,7 @@
  * @version $Id: PwUserGroupDm.php 16536 2012-08-24 07:59:16Z peihong.zhangph $
  */
 
-Wind::import('LIB:base.PwBaseDm');
+
 
 class PwUserGroupDm extends PwBaseDm
 {

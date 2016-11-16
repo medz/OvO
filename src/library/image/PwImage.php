@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:image.PwImageThumb');
+
 
 /**
  * image 对象

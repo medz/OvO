@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:upload.PwUploadAction');
+
 class PwIconUpload extends PwUploadAction
 {
     public $key;

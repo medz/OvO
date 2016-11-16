@@ -68,8 +68,8 @@ class IndexController extends SpaceBaseController
     public function replyAction()
     {
         $id = (int) $this->getInput('id');
-        Wind::import('LIB:ubb.PwSimpleUbbCode');
-        Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+        
+        
         Wind::import('SRV:attention.srv.PwFreshReplyList');
         $reply = new PwFreshReplyList($id);
         $fresh = $reply->getData();
@@ -102,8 +102,8 @@ class IndexController extends SpaceBaseController
             $array = Wekit::load('forum.PwThread')->getPost($fresh['src_id']);
             $thread = new PwThreadBo($array['tid']);
         }
-        Wind::import('LIB:ubb.PwUbbCode');
-        Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+        
+        
         $array['content'] = WindSecurity::escapeHTML($array['content']);
         $array['content'] = str_replace("\n", '<br />', $array['content']);
         $array['useubb'] && $array['content'] = PwUbbCode::convert($array['content'], new PwUbbCodeConvertThread($thread, $array, $this->loginUser));
@@ -129,8 +129,8 @@ class IndexController extends SpaceBaseController
         if (!$fresh = $freshDisplay->gather()) {
             $this->showError('fresh.exists.not');
         }
-        Wind::import('LIB:ubb.PwSimpleUbbCode');
-        Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+        
+        
         Wind::import('SRV:attention.srv.PwFreshReplyList');
 
         $fresh = current($fresh);

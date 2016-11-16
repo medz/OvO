@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:upload.PwUpload');
+
 /**
  * 應用上傳工具類
  *

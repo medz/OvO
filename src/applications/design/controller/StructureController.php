@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 Wind::import('SRV:design.bo.PwDesignStructureBo');
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>

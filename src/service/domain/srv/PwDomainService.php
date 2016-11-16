@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('Lib:utility.PwCacheService');
+
 /**
  * 域名service
  *

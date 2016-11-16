@@ -5,7 +5,7 @@
  * @copyright Copyright &copy; 2003-2010 phpwind.com
  * @license
  */
-Wind::import('LIB:image.PwImage');
+
 
 class AcloudVerCommonUtility extends ACloudVerCommonBase
 {

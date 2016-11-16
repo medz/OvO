@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseDao');
+
 /**
  * 风格dao
  *

@@ -59,7 +59,7 @@ class PwDesignImageDataService extends PwDesignModelBase
     private function _uploadFile($moduleid = 0)
     {
         Wind::import('SRV:upload.action.PwDesignImageUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwDesignImageUpload($moduleid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

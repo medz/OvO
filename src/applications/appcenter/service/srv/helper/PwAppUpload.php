@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:upload.PwUploadAction');
+
 /**
  * 应用上传
  *

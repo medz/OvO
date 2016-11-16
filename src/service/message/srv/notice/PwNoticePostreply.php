@@ -89,8 +89,8 @@ class PwNoticePostreply extends PwNoticeAction
     {
         $reply = Wekit::load('forum.PwThread')->getPost($pid);
         $total = $reply['replies'];
-        Wind::import('LIB:ubb.PwSimpleUbbCode');
-        Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+        
+        
         $replydb = Wekit::load('forum.PwPostsReply')->getPostByPid($pid, $limit);
         foreach ($replydb as $key => $value) {
             $value['content'] = WindSecurity::escapeHTML($value['content']);

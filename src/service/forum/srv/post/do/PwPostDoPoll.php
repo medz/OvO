@@ -227,7 +227,7 @@ class PwPostDoPoll extends PwPostDoBase
     public function uploadOptionImage()
     {
         Wind::import('SRV:upload.action.PwPollUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwPollUpload($this->user);
 
         $upload = new PwUpload($bhv);

@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 
 /**
  * TODO 话题屏蔽

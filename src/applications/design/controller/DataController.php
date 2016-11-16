@@ -422,7 +422,7 @@ class DataController extends DesignBaseController
     private function _uploadFile($key, $moduleid = 0)
     {
         Wind::import('SRV:upload.action.PwDesignDataUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwDesignDataUpload($key, $moduleid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

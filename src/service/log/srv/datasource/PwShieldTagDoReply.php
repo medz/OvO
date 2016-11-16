@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('LIB:process.iPwGleanDoHookProcess');
+
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> Dec 3, 2012
  * @link http://www.phpwind.com

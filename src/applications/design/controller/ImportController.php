@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:base.PwBaseController');
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
  * @author $Author: jieyin $ Foxsee@aliyun.com
@@ -214,7 +214,7 @@ class ImportController extends PwBaseController
     private function _uploadFile()
     {
         Wind::import('SRV:upload.action.PwDesignImportUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new PwDesignImportUpload();
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

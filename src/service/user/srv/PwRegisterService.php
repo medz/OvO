@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('SRV:service.user.validator.PwUserValidator');
-Wind::import('LIB:utility.PwMail');
+
 Wind::import('SRV:credit.bo.PwCreditBo');
 Wind::import('SRV:user.PwUser');
 

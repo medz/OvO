@@ -772,7 +772,7 @@ class IndexController extends WindController
 
     private function _defaultAvatar($uid, $type = 'face')
     {
-        Wind::import('LIB:upload.PwUpload');
+        
         $_avatar = array('.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg');
         $defaultBanDir = Wind::getRealDir('ROOT:').'res/images/face/';
         $fileDir = 'avatar/'.Pw::getUserDir($uid).'/';

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:route.AbstractPwRoute');
+
 /**
  * 前台路由
  *

@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('LIB:base.PwBaseDm');
-Wind::import('LIB:ubb.PwUbbCode');
-Wind::import('LIB:ubb.config.PwUbbCodeConvertThread');
+
+
+
 
 /**
  * 帖子数据模型(insert, update)

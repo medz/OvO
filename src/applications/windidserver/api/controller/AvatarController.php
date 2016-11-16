@@ -105,7 +105,7 @@ class AvatarController extends OpenBaseController
     {
         $uid = (int) $this->getInput('uid', 'get');
         Wind::import('WSRV:upload.action.WindidAvatarUpload');
-        Wind::import('LIB:upload.PwUpload');
+        
         $bhv = new WindidAvatarUpload($uid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

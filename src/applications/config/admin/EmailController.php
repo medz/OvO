@@ -65,7 +65,7 @@ class EmailController extends AdminBaseController
      */
     public function dosendAction()
     {
-        Wind::import('LIB:utility.PwMail');
+        
         list($fromEmail, $toEmail) = $this->getInput(array('fromEmail', 'toEmail'), 'post');
         if (!$toEmail) {
             $this->showError('ADMIN:email.test.toemail.require');

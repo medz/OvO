@@ -3,8 +3,8 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.PwFresh');
-Wind::import('LIB:dataSource.PwDataLazyLoader');
-Wind::import('LIB:dataSource.iPwDataSource2');
+
+
 Wind::import('SRV:weibo.PwWeibo');
 
 /**

@@ -114,9 +114,9 @@ class windidadminBoot extends adminBoot
     {
         parent::beforeStart($front);
         if (!Wind::getComponent('router')->getRoute('pw')) {
-            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance(Wind::import('LIB:route.PwRoute'), array('bbs')));
+            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', array('bbs')));
         }
-        Wind::getComponent('router')->addRoute('admin', WindFactory::createInstance(Wind::import('LIB:route.PwAdminRoute'), array('default')), true);
+        Wind::getComponent('router')->addRoute('admin', WindFactory::createInstance('PwAdminRoute', array('default')), true);
         Wekit::setapp('windid', Wekit::app());
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('LIB:route.AbstractPwRoute');
+
 /**
  * 后台路由，主要处理应用的后台url
  *

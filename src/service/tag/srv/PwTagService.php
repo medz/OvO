@@ -519,7 +519,7 @@ class PwTagService
 
     private function _getCacheService()
     {
-        Wind::import('Lib:utility.PwCacheService');
+        
 
         return new PwCacheService();
     }
