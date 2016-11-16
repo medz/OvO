@@ -443,7 +443,6 @@ class PwSimpleUbbCode
     public static function parseMedia($message, $config)
     {
         if ($config->isConvertMedia == 2) {
-
             $message = preg_replace_callback(
                 '/\[(wmv|mp3)(=(0|1))?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
                 function ($m) {
