@@ -149,7 +149,7 @@ class PwVerifyCode
     private function _readVerifyCode()
     {
         return Pw::getCookie('Pw_verify_code');
-        /*Wind::import('WIND:http.session.WindSession');
+        /*
         $session = new WindSession();
         return $session->get('verifycode');*/
     }
@@ -159,7 +159,7 @@ class PwVerifyCode
         Wind::import('LIB:utility.verifycode.PwBaseCode');
         $code = WindConvert::convert(PwBaseCode::getCode(), Wekit::V('charset'), 'UTF-8');
         $code = Pw::encrypt(strtolower($code), $this->_config['key']);
-        //Wind::import('WIND:http.session.WindSession');
+        //
         Pw::setCookie('Pw_verify_code', $code, 3600);
         /*$session = new WindSession();
         $session->set('verifycode', $code);*/

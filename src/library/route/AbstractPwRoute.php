@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:router.route.AbstractWindRoute');
+
 /**
  * 基础路由
  *

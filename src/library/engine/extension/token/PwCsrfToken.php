@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:token.IWindSecurityToken');
+
 /**
  *
  * CSRF Token令牌安全类

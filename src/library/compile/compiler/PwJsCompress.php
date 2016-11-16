@@ -11,7 +11,7 @@ class PwJsCompress extends AbstractPwCompiler
         $JS_DEV_PATH = Wind::getRealDir('PUBLIC:res.js.dev');
         $JS_BUILD_PATH = Wind::getRealDir('PUBLIC:res.js.build');
 
-        Wind::import('Wind:utility.WindFolder');
+        
         $files = $this->_getFiles($JS_DEV_PATH);
         foreach ($files as $file) {
             $newfile = $JS_BUILD_PATH.substr($file, strlen($JS_DEV_PATH));

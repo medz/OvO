@@ -450,7 +450,7 @@ class RegisterController extends PwBaseController
             'post');
 
         //	验证输入
-        Wind::import('Wind:utility.WindValidator');
+        
         $config = $this->_getRegistConfig();
         if (!$username) {
             $this->showError('USER:user.error.-1', 'u/register/run');

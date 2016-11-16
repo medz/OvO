@@ -192,7 +192,6 @@ class PwSystemHelper
      */
     public static function downloadUseSocket($url, $file)
     {
-        Wind::import('WIND:http.transfer.WindHttpSocket');
         $http = new WindHttpSocket($url);
         WindFolder::mkRecur(dirname($file));
         $data = $http->send();
@@ -215,7 +214,6 @@ class PwSystemHelper
         if ($useSocket) {
             return self::downloadUseSocket($url, $file);
         }
-        Wind::import('WIND:http.transfer.WindHttpCurl');
         $http = new WindHttpCurl($url);
         WindFolder::mkRecur(dirname($file));
         $fp = fopen($file, 'w');

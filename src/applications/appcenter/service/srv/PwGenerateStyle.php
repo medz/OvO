@@ -131,7 +131,7 @@ class PwGenerateStyle
         }
         PwApplicationHelper::copyRecursive($this->defaultDir, $this->baseDir);
         $file = $this->baseDir.'/Manifest.xml';
-        Wind::import('WIND:parser.WindXmlParser');
+        
         $parser = new WindXmlParser();
         $manifest = $parser->parse($file);
         $manifest['application']['name'] = $this->name;

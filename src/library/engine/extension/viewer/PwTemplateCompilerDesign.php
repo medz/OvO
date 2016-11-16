@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:viewer.AbstractWindTemplateCompiler');
+
 /**
  * 门户调用标签解析
  *

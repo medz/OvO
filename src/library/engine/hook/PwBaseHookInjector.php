@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('WIND:filter.WindActionFilter');
+
 
 /**
  * PwHook action拦截过滤器抽象接口定义

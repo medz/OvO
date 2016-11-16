@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('LIB:compile.AbstractPwCompiler');
-Wind::import('WIND:utility.WindFolder');
+
 /**
  * css编译器
  *

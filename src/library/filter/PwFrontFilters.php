@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:base.AbstractWindBootstrap');
+
 /**
  * P9中的一些全局挂载
  *

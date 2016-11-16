@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:viewer.AbstractWindTemplateCompiler');
+
 /**
  * 编译javascript标签
  *

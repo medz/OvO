@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('WIND:dao.WindDao');
+
 
 /**
  * phpwind dao层基类

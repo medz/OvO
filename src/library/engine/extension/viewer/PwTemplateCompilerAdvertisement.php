@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:viewer.AbstractWindTemplateCompiler');
+
 /**
  *
  * 广告标签解析

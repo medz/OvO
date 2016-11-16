@@ -3,7 +3,7 @@
 Wind::import('SRV:user.PwUser');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 Wind::import('SRV:credit.bo.PwCreditBo');
-Wind::import('WIND:utility.WindValidator');
+
 Wind::import('SRV:user.validator.PwUserValidator');
 
 /**

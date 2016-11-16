@@ -169,7 +169,7 @@ class UpgradeController extends WindController
         $db_ftp = $this->_getConfig('db_ftp');
         $ftp = $attachDir = null;
         if ($db_ftp['db_ifftp']) {
-            Wind::import('WIND:ftp.WindSocketFtp');
+            
             $ftp = new WindSocketFtp(array(
                 'server' => $db_ftp['ftp_server'],
                 'port' => $db_ftp['ftp_port'],

@@ -3,7 +3,7 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:forum.srv.PwPost');
-Wind::import('WIND:utility.WindJson');
+
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**

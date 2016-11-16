@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:http.transfer.WindHttpSocket');
+
 /**
  * 应用公共服务
  *

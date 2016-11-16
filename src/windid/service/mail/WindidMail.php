@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:mail.WindMail');
+
 
 /**
  * 邮件公共服务

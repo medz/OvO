@@ -125,7 +125,6 @@ class PwApplicationHelper
      */
     public static function requestAcloudUseSocket($url, $tmpdir = '')
     {
-        Wind::import('WIND:http.transfer.WindHttpSocket');
         $http = new WindHttpSocket($url);
         if ($tmpdir !== '') {
             WindFolder::mkRecur($tmpdir);
@@ -165,7 +164,6 @@ class PwApplicationHelper
         if ($useSocket) {
             return self::requestAcloudUseSocket($url, $tmpdir);
         }
-        Wind::import('WIND:http.transfer.WindHttpCurl');
         $http = new WindHttpCurl($url);
         if ($tmpdir !== '') {
             WindFolder::mkRecur($tmpdir);
@@ -266,7 +264,6 @@ class PwApplicationHelper
         WindFolder::mkRecur($tmpdir);
         $_tmp = $tmpdir.'/tmp.'.Pw::getTime();
         $fp = fopen($_tmp, 'w');
-        Wind::import('WIND:http.transfer.WindHttpCurl');
         $curl = new WindHttpCurl($url);
         $curl->send('GET', array(CURLOPT_FOLLOWLOCATION => true, CURLOPT_FILE => $fp));
         $info = $curl->getInfo();

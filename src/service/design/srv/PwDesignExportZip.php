@@ -48,7 +48,7 @@ class PwDesignExportZip
                 continue;
             }
             if (strtolower($file['filename']) == 'manifest.xml') {
-                Wind::import('WIND:parser.WindXmlParser');
+                
                 $xml = new WindXmlParser('1.0', $fromCharset);
                 $config = $xml->parseXmlStream($file['data'], 0);
                 unset($config['module']);

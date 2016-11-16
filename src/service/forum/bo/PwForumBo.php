@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('WIND:utility.WindSecurity');
+
 
 /**
  * 单个版块的业务模型

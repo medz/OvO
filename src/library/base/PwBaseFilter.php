@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:filter.WindActionFilter');
+
 
 /**
  * 系统默认全局filter

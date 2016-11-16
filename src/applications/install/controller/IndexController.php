@@ -181,7 +181,7 @@ class IndexController extends WindController
         }
 
         // 检测是否安装过了
-        Wind::import('WIND:db.WindConnection');
+        
         $dsn = 'mysql:host='.$input['dbhost'].';port='.$input['dbport'];
         try {
             $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);

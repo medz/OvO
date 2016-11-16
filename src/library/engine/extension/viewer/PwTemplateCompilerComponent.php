@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:viewer.AbstractWindTemplateCompiler');
+
 /**
  * 组件标签编译器
  *

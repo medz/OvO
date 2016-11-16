@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:cache.AbstractWindCache');
+
 
 /**
  * 文件缓存实现

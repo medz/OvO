@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:filter.WindEnhancedListener');
+
 require_once Wind::getRealPath('ACLOUD:aCloud');
 /**
  * @author Qiong Wu <papa0924@gmail.com>

@@ -138,7 +138,6 @@ class DevelopController extends AdminBaseController
     {
         list($xml, $alias) = $this->getInput(array('xml', 'alias'), 'post');
         $file = Wind::getRealDir('EXT:'.$alias).'/Manifest.xml';
-        Wind::import('WIND:parser.WindXmlParser');
         $parser = new WindXmlParser();
         if (!$parser->parseXmlStream($xml)) {
             $this->showError('APPCENTER:xml.fail');

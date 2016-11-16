@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('WIND:utility.WindJson');
+
 /**
  * 错误处理
  *

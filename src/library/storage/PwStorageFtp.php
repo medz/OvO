@@ -98,7 +98,7 @@ class PwStorageFtp
     public function _getFtp()
     {
         if ($this->_ftp == null) {
-            Wind::import('WIND:ftp.WindSocketFtp');
+            
             $this->_ftp = new WindSocketFtp(array(
                 'server' => $this->_config['ftp.server'],
                 'port' => $this->_config['ftp.port'],

@@ -1,7 +1,5 @@
 <?php
 
-Wind::import('WIND:ftp.WindSocketFtp');
-
 /**
  * 普通ftp保存，不限制文件后缀
  *

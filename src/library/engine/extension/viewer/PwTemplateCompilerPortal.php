@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('WIND:viewer.AbstractWindTemplateCompiler');
+
 Wind::import('SRV:design.srv.PwPortalCompile');
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>

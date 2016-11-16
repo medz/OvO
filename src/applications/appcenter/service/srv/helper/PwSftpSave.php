@@ -1,6 +1,5 @@
 <?php
 
-Wind::import('WIND:ftp.AbstractWindFtp');
 @set_time_limit(1000);
 require_once Wind::getRealPath('LIB:utility.phpseclib.Net.SFTP');
 /**

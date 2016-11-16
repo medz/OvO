@@ -158,7 +158,6 @@ class PwGenerateApplication
     {
         $this->baseDir = Wind::getRealDir('EXT:'.$this->alias);
         $file = $this->baseDir.'/Manifest.xml';
-        Wind::import('WIND:parser.WindXmlParser');
         $parser = new WindXmlParser();
         $manifest = $parser->parse($file);
         $manifest['application']['name'] = $this->name;
@@ -212,7 +211,6 @@ class PwGenerateApplication
                 'class' => 'EXT:'.$this->alias.'.service.srv.'.$classname,
                 'description' => 'this is another '.$hookname, ), );
         $manifest['inject-services'][$hookname] = $hook;
-        Wind::import('WIND:parser.WindXmlParser');
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
@@ -264,7 +262,7 @@ class PwGenerateApplication
                 'method' => $method,
                 'description' => 'this is another '.$hookname, ), );
         $manifest['inject-services'][$hookname] = $hook;
-        Wind::import('WIND:parser.WindXmlParser');
+        
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
@@ -324,7 +322,7 @@ class PwGenerateApplication
                         'loadway' => 'load',
                         'method' => 'getAdminMenu',
                         'description' => $this->name.'admin menu', ), ), );
-            Wind::import('WIND:parser.WindXmlParser');
+            
             $parser = new WindXmlParser();
             $hook = preg_replace('/<\?xml[^\?]+\?>/i', '', $parser->parseToXml($hook, Wind::getApp()->getResponse()->getCharset()));
             $hook = str_replace('><', ">\n\t<", $hook);

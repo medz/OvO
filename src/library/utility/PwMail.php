@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('WIND:mail.WindMail');
+
 
 /**
  * 发邮件组件
