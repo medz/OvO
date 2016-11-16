@@ -214,7 +214,7 @@ class ImportController extends PwBaseController
     private function _uploadFile()
     {
         Wind::import('SRV:upload.action.PwDesignImportUpload');
-        
+
         $bhv = new PwDesignImportUpload();
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

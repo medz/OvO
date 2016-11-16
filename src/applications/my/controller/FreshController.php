@@ -154,8 +154,8 @@ class FreshController extends PwBaseController
         /*
         $content = WindSecurity::escapeHTML($content);
         if ($reply->getIsuseubb()) {
-            
-            
+
+
             $content = PwSimpleUbbCode::convert($content, 140, new PwUbbCodeConvertThread());
         }*/
         $fresh = array();
@@ -187,8 +187,8 @@ class FreshController extends PwBaseController
             $array = $this->_getThread()->getPost($fresh['src_id']);
             $thread = new PwThreadBo($array['tid']);
         }
-        
-        
+
+
         $array['content'] = WindSecurity::escapeHTML($array['content']);
         $array['content'] = str_replace("\n", '<br />', $array['content']);
         $array['useubb'] && $array['content'] = PwUbbCode::convert($array['content'], new PwUbbCodeConvertThread($thread, $array, $this->loginUser));

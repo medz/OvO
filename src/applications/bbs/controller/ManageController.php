@@ -250,7 +250,6 @@ class ManageController extends PwBaseController
         $do = new PwThreadManageDoHighlight($manage);
         if (!$this->doAction) {
             if ($this->singleData) {
-                
                 $hightlight = new PwHighlight();
                 $hightlightStyle = $hightlight->parseHighlight($this->singleData['highlight']);
                 $overtime = Wekit::load('forum.PwOvertime')->getOvertimeByTidAndType($this->singleData['tid'], 'highlight');
@@ -263,7 +262,7 @@ class ManageController extends PwBaseController
             $this->setOutput($hightlightOvertime, 'hightlightOvertime');
         } else {
             list($bold, $italic, $underline, $color, $highlightOvertime) = $this->getInput(array('bold', 'italic', 'underline', 'color', 'highlight_overtime'), 'post');
-            
+
             $hightlight = new PwHighlight();
             $hightlight->setColor($color);
             $hightlight->setBold($bold);

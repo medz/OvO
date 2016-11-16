@@ -267,7 +267,7 @@ class PortalController extends PwBaseController
     private function _upload($portalId = 0)
     {
         Wind::import('SRV:upload.action.PwPortalUpload');
-        
+
         $bhv = new PwPortalUpload($portalId);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

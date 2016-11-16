@@ -519,8 +519,6 @@ class PwTagService
 
     private function _getCacheService()
     {
-        
-
         return new PwCacheService();
     }
 

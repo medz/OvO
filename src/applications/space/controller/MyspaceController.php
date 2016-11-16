@@ -216,7 +216,7 @@ class MyspaceController extends PwBaseController
     private function _uploadImage()
     {
         Wind::import('SRV:upload.action.PwSpaceUpload');
-        
+
         $bhv = new PwSpaceUpload($this->loginUser->uid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

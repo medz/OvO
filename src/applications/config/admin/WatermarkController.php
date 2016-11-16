@@ -68,8 +68,8 @@ class WatermarkController extends AdminBaseController
             'mark.quality' => abs(intval($this->getInput('markQuality', 'post'))),
         );
 
-        
-        
+
+
 
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $watermark = new PwImageWatermark($image);

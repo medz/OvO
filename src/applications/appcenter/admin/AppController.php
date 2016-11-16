@@ -344,7 +344,7 @@ class AppController extends AdminBaseController
     public function exportAction()
     {
         $alias = $this->getInput('alias', 'get');
-        
+
         $dir = Wind::getRealDir('EXT:'.$alias);
         if (!is_dir($dir)) {
             $this->showError('fail');

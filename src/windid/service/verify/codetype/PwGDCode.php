@@ -266,7 +266,7 @@ class PwGDCode extends PwBaseCode
         header('Pragma:no-cache');
         header('Cache-control:no-cache');
         header('Content-type: image/gif');
-        
+
         self::_getCodeLenth();
         self::_setRandBackground();
         self::_setRandFont();

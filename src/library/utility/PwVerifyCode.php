@@ -51,7 +51,6 @@ class PwVerifyCode
     public function getAudioVerify()
     {
         if ($this->_config['voice']) {
-            
             PwAudioCode::$verifyLength = $this->_config['content.length'];
             PwAudioCode::$verifyType = 7;
             PwAudioCode::init();
@@ -67,7 +66,7 @@ class PwVerifyCode
     public function getVerify()
     {
         $_tmps = array();
-        
+
         $_tmps = $this->_config['content.type'];
         $_key = array_rand($_tmps, 1);
         switch ($_tmps[$_key]) {
@@ -162,7 +161,6 @@ class PwVerifyCode
 
     private function _saveVerifyCode()
     {
-        
         $code = WindConvert::convert(PwBaseCode::getCode(), Wekit::V('charset'), 'UTF-8');
         $code = Pw::encrypt(strtolower($code), $this->_config['key']);
 

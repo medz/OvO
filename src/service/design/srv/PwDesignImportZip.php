@@ -45,7 +45,6 @@ class PwDesignImportZip
      */
     public function checkZip($filename)
     {
-        
         $config = array();
         $_isTpl = false;
         $extension = array('htm', 'js', 'gif', 'jpg', 'jpeg', 'txt', 'png', 'css', 'xml');

@@ -307,7 +307,7 @@ class PwApplicationHelper
     public static function zip($dir, $target)
     {
         $files = self::readRecursive($dir);
-        
+
         $zip = new PwZip();
         $dir_len = strlen(dirname($dir)) + 1;
         foreach ($files as $v) {

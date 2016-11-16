@@ -447,7 +447,6 @@ class MessageController extends PwBaseController
 
     private function _parseEmotion($message)
     {
-        
         $message = $this->_parseUrl($message);
         $message = Pw::substrs($message, 36);
 

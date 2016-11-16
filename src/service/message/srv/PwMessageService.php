@@ -141,7 +141,7 @@ class PwMessageService
         if ($uid == $fromUid) {
             return new PwError('MESSAGE:send.to.myself');
         }
-        
+
         $content = PwUbbCode::autoUrl($content, true);
 
         // 发消息前hook
@@ -387,7 +387,7 @@ class PwMessageService
             $dm->setMessageCount($num);
         }
         !defined('WINDID_IS_NOTIFY') && define('WINDID_IS_NOTIFY', 1);
-        
+
         $std = PwWindidStd::getInstance('user');
         $std->setMethod('editDmUser', 1);
 
@@ -403,7 +403,7 @@ class PwMessageService
         $dm = new PwUserInfoDm($uid);
         $dm->setMessageCount($unread);
 
-        
+
         $std = PwWindidStd::getInstance('user');
         $std->setMethod('editDmUser', 1);
         if (($result = $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA)) !== true) {

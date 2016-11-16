@@ -252,7 +252,7 @@ class ManageController extends AdminBaseController
     private function saveIcon()
     {
         Wind::import('SRV:upload.action.PwTaskIconUpload');
-        
+
         $taskUpload = new PwTaskIconUpload(80, 80);
         $upload = new PwUpload($taskUpload);
         if (($result = $upload->check()) === true) {
