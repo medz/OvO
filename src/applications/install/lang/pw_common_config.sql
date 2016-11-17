@@ -69,8 +69,8 @@ INSERT INTO `pw_common_config` (`name`, `namespace`, `value`, `vtype`, `descript
 ('invite.pay.open', 'register', '0', 'string', ''),
 ('invite.reward.credit.num', 'register', '10', 'string', ''),
 ('invite.reward.credit.type', 'register', '2', 'string', ''),
-('protocol', 'register', '当您申请用户时，表示您已经同意遵守本规章。 欢迎您加入本站点参加交流和讨论，本站点为公共论坛，为维护网上公共秩序和社会稳定，请您自觉遵守以下条款： <br>\n一、不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本站制作、复制和传播下列信息： <br>\n（一）煽动抗拒、破坏宪法和法律、行政法规实施的；\n（二）煽动颠覆国家政权，推翻社会主义制度的；<br>\n（三）煽动分裂国家、破坏国家统一的；<br>\n（四）煽动民族仇恨、民族歧视，破坏民族团结的；<br>\n（五）捏造或者歪曲事实，散布谣言，扰乱社会秩序的；<br>\n（六）宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；<br>\n（七）公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；<br>\n（八）损害国家机关信誉的；<br>\n（九）其他违反宪法和法律行政法规的；<br>\n（十）进行商业广告行为的。<br>\n二、互相尊重，对自己的言论和行为负责。<br>\n三、禁止在申请用户时使用相关本站的词汇，或是带有侮辱、毁谤、造谣类的或是有其含义的各种语言进行注册用户，否则我们会将其删除。<br>\n四、禁止以任何方式对本站进行各种破坏行为。<br>\n五、如果您有违反国家相关法律法规的行为，本站概不负责，您的登录论坛信息均被记录无疑，必要时，我们会向相关的国家管理部门提供此类信息。 ', 'string', ''),
-('security.ban.username', 'register', '创始人,管理员,版主,斑竹,admin', 'string', ''),
+('protocol', 'register', '当您访问本网站时，即视为您已经同意遵守本规章。 欢迎您加入本站点参加交流和讨论，本站点为公共论坛，为维护网上公共秩序和社会稳定，请您自觉遵守以下条款： <br>\n一、不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本站制作、复制和传播下列信息： <br>\n（一）煽动抗拒、破坏宪法和法律、行政法规实施的；\n（二）煽动颠覆国家政权，推翻社会主义制度的；<br>\n（三）煽动分裂国家、破坏国家统一的；<br>\n（四）煽动民族仇恨、民族歧视，破坏民族团结的；<br>\n（五）捏造或者歪曲事实，散布谣言，扰乱社会秩序的；<br>\n（六）宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；<br>\n（七）公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；<br>\n（八）损害国家机关信誉的；<br>\n（九）其他违反宪法和法律行政法规的；<br>\n（十）进行商业广告行为的。<br>\n二、互相尊重，对自己的言论和行为负责。<br>\n三、禁止在申请用户时使用相关本站的词汇，或是带有侮辱、毁谤、造谣类的或是有其含义的各种语言进行注册用户，否则我们会将其删除。<br>\n四、禁止以任何方式对本站进行各种破坏行为。<br>\n五、如果您有违反国家相关法律法规的行为，本站概不负责，您的登录论坛信息均被记录无疑，必要时，我们会向相关的国家管理部门提供此类信息。 ', 'string', ''),
+('security.ban.username', 'register', '创始人,管理员,版主,斑竹,admin,root', 'string', ''),
 ('security.ip', 'register', '0', 'string', '');
 INSERT INTO `pw_common_config` (`name`, `namespace`, `value`, `vtype`, `description`) VALUES
 ('security.password', 'register', '', 'string', ''),
@@ -96,7 +96,7 @@ INSERT INTO `pw_common_config` (`name`, `namespace`, `value`, `vtype`, `descript
 ('refreshtime', 'site', '0', 'string', ''),
 ('time.cv', 'site', '0', 'string', ''),
 ('time.timezone', 'site', '8', 'string', ''),
-('visit.message', 'site', '站点升级中。。。', 'string', ''),
+('visit.message', 'site', '站点维护中。。。', 'string', ''),
 ('content.length', 'verify', '4', 'string', ''),
 ('content.questions', 'verify', 'a:0:{}', 'array', ''),
 ('content.showanswer', 'verify', '0', 'string', ''),
