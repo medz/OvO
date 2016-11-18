@@ -809,7 +809,7 @@ class IndexController extends WindController
         $dm->setApiFile('windid.php')
             ->setIsNotify('1')
             ->setIsSyn('1')
-            ->setAppName('phpwind9.0')
+            ->setAppName('phpwind Fans')
             ->setSecretkey($key)
             ->setAppUrl($baseUrl)
             ->setCharset($charset)
