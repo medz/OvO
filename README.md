@@ -27,3 +27,6 @@ php composer.phar install
 你也可以加入QQ群：30568679 对升级时或者使用过程中上文没有提到的问题进行交流。
 
 fans版本将会是一个长期维护版本，也会听取用户意见修改。有什么想法👏一点要告诉我们哦。
+
+## 插件快速开发demo请看
+[/src/extensions/demo](https://github.com/medz/phpwind/tree/master/src/extensions/demo)
