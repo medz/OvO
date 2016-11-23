@@ -1,4 +1,4 @@
-# phpwind fans - 目前最新：F 1.0.2
+# phpwind fans - 目前最新：F 1.0.5
 phpwind Fans版本是原本暂定的phpwind10版本而来。基于官方最新的phpwind9.0.1开发，同步官方所有代码的基础上进行改良和长期维护。
 ## 关于下载
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
@@ -20,9 +20,11 @@ php composer.phar install
 解决：你下载的是源码，请看上方 关于下载
 
 2.插件应用zip包在系统后台-插件与模板-应用管理-本地上传后安装失败，而且所有插件应用都安装失败。
+
 可能存在服务器zip包解压问题。解决：试试解压后直接上传到 网站根目录/src/extensions/下，到系统后台-插件与模板-应用管理-未安装应用-安装。
 
 3. 环境配置问题
+
 解决：请先百度
 
 如果你在使用或者升级phpwind fans的时候发现什么问题，请随时提交issues给我们
