@@ -24,30 +24,22 @@
 	<!-- 安装程序时需要调用的安装服务，该标签的值为安装服务别名，目前有nav_main(主导航位置),nav_bottom（底部导航）,nav_my（用户名处的下拉菜单）, 具体可查看\src\applications\appcenter\conf\install.php文件 -->
 	<!--installation-service>nav_main,nav_bottom,nav_my</installation-service><!-- nav_main表示添加到前台主导航 -->
 	<inject-services>
-		<hook-name>                               	<!-- 钩子名称 -->
-			<alias>				  					<!-- 扩展别名 -->
-				<class></class>			  			<!-- 必填 扩展实现类的绝对路径地址， 路径别名方式 -->
-				<method></method>		  			<!-- 根据钩子类型不同 可选 自定义扩展执行方法 -->
-				<loadway></loadway>		  			<!-- 可选 默认 load加载方式 -->
+		<hook-name name="s_PwEditor_app">                               	<!-- 钩子名称 -->
+			<alias name="demo">				  					<!-- 扩展别名 -->
+				<class>EXT:demo.service.srv.AppDemo_PwEditor_AppDo</class>	<!-- 必填 扩展实现类的绝对路径地址， 路径别名方式 -->
+				<method>appDemoDo</method>		  			<!-- 根据钩子类型不同 可选 自定义扩展执行方法 -->
+				<loadway>load</loadway>		  			<!-- 可选 默认 load加载方式 -->
 				<expression></expression>	  		<!-- 可选 填写钩子执行表达式，当表达式成立时执行该挂载，在 Controller 类型的钩子位置可用 -->
-				<description></description>	  		<!-- 扩展定义描述信息，接收一串字描述字符串， 表述扩展定义的功能作用 -->
+				<description>this is another s_PwEditor_app</description>	  <!-- 扩展定义描述信息，接收一串字描述字符串， 表述扩展定义的功能作用 -->
 			</alias>
 		</hook-name>
-		<s_PwEditor_app>
-			<demo>
-				<class>EXT:demo.service.srv.AppDemo_PwEditor_AppDo</class>	
-				<loadway>load</loadway>
-				<method>appDemoDo</method>
-				<description>this is another s_PwEditor_app</description>
-			</demo>
-		</s_PwEditor_app>
-		<s_admin_menu>
-			<demo>
+		<hook-name name="s_admin_menu">
+			<alias name="demo">
 				<class>EXT:demo.service.srv.AppDemo_Admin_MenuDo</class>
 				<loadway>load</loadway>
 				<method>appDemoDo</method>
 				<description>this is another s_admin_menu</description>
-			</demo>
-		</s_admin_menu>
+			</alias>
+		</hook-name>
 	</inject-services>
 </manifest>
