@@ -105,7 +105,7 @@ class WindidUtility
             }
             $imageInfo = @getimagesize($file);
             $exts = array('1' => 'gif', '2' => 'jpg', '3' => 'png');
-            if (isset($exts[$imageInfo[2]])) {
+            if (!isset($exts[$imageInfo[2]])) {
                 return false;
             }
             $ext = $exts[$imageInfo[2]];
