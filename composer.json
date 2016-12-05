@@ -28,12 +28,6 @@
         "ext-zip": "*",
         "medz/windframework": "*"
     },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^1.11"
-    },
-    "config": {
-        "preferred-install": "dist"
-    },
     "autoload": {
         "classmap": [
             "src/Wekit.php",
