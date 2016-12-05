@@ -4,11 +4,11 @@
  * 附件基础dao服务
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: PwThreadAttachDao.php 24314 2013-01-28 08:09:53Z jieyin $
- * @package attach
  */
-
 class PwThreadAttachDao extends PwBaseDao
 {
     protected $_table = 'attachs_thread';

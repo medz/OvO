@@ -5,16 +5,16 @@
  * @author $Author: gao.wanggao $
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNav.php 19309 2012-10-12 09:03:36Z long.shi $
- * @package nav
  */
-
 class PwNav
 {
     /**
-     * 根据ID获得一条导航信息
+     * 根据ID获得一条导航信息.
      *
-     * @param  int   $navid 导航ID
+     * @param int $navid 导航ID
+     *
      * @return array
      */
     public function getNav($navId)
@@ -23,9 +23,10 @@ class PwNav
     }
 
     /**
-     * 获取多条导航信息
+     * 获取多条导航信息.
      *
-     * @param  array    $navids
+     * @param array $navids
+     *
      * @return Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function fetchNav($navids)
@@ -34,10 +35,11 @@ class PwNav
     }
 
     /**
-     * 根据导航类型获得列表
+     * 根据导航类型获得列表.
      *
      * @param string $type 导航类型
      * @param  int    $isshow 0不显示,1显示,2全部
+     *
      * @return array
      */
     public function getNavByType($type = 'main', $isShow = 1)
@@ -57,10 +59,11 @@ class PwNav
     }
 
     /**
-     * 根据某导航类型顶级列表
+     * 根据某导航类型顶级列表.
      *
      * @param string $type 导航类型
      * @param  int    $isshow 0不显示,1显示,2全部
+     *
      * @return array
      */
     public function getRootNav($type = 'main', $isShow = 2)
@@ -69,10 +72,11 @@ class PwNav
     }
 
     /**
-     * 根据某导航的子导航列表
+     * 根据某导航的子导航列表.
      *
      * @param int $navId 导航类型
      * @param  int   $isshow 0不显示,1显示,2全部
+     *
      * @return array
      */
     public function getChildNav($navId, $isShow = 2)
@@ -81,9 +85,10 @@ class PwNav
     }
 
     /**
-     * 增加一条导航信息
+     * 增加一条导航信息.
      *
-     * @param  object $dm 导航模型数据
+     * @param object $dm 导航模型数据
+     *
      * @return array
      */
     public function addNav(PwNavDm $dm)
@@ -100,9 +105,10 @@ class PwNav
     }
 
     /**
-     * 修改一条导航信息
+     * 修改一条导航信息.
      *
-     * @param  object $dm导航数据模型
+     * @param object $dm导航数据模型
+     *
      * @return array
      */
     public function updateNav(PwNavDm $dm)
@@ -118,9 +124,10 @@ class PwNav
     }
 
     /**
-     * 修改多条导航信息
+     * 修改多条导航信息.
      *
-     * @param  array $dms 导航数据
+     * @param array $dms 导航数据
+     *
      * @return array
      */
     public function updateNavs($dms)
@@ -140,10 +147,12 @@ class PwNav
     }
 
     /**
-     * 添加多条导航信息
+     * 添加多条导航信息.
      *
      * TODO 必需跟据数组入栈顺序循环
-     * @param  array $dms 导航数据
+     *
+     * @param array $dms 导航数据
+     *
      * @return array
      */
     public function addNavs($dms)
@@ -168,9 +177,10 @@ class PwNav
     }
 
     /**
-     * 删除一条导航信息
+     * 删除一条导航信息.
      *
-     * @param  int   $navId 导航ID
+     * @param int $navId 导航ID
+     *
      * @return array
      */
     public function delNav($navId)
@@ -184,10 +194,11 @@ class PwNav
     }
 
     /**
-     * 对导航进行分组和排序更新
+     * 对导航进行分组和排序更新.
      *
-     * @param  int   $navId 导航ID
-     * @param  array $data  导航数据
+     * @param int   $navId 导航ID
+     * @param array $data  导航数据
+     *
      * @return array
      */
     private function _updateNav($navId, $data)
@@ -207,6 +218,7 @@ class PwNav
             $this->_getNavDao()->updateNav($navId, array('orderid' => $orderid));
         }
     }
+
     /**
      * @return PwNavDao
      */
@@ -216,9 +228,10 @@ class PwNav
     }
 
     /**
-     * 对导航信息进行分组和排序
+     * 对导航信息进行分组和排序.
      *
-     * @param  array $array 导航数据
+     * @param array $array 导航数据
+     *
      * @return array
      */
     private function _arrayValueSort($array)

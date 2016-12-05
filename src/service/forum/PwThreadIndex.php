@@ -8,14 +8,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadIndex.php 17055 2012-08-30 11:02:11Z jieyin $
- * @package forum
  */
-
 class PwThreadIndex
 {
     /**
-     * 统计所有帖子数
+     * 统计所有帖子数.
      *
      * @return int
      */
@@ -25,9 +24,10 @@ class PwThreadIndex
     }
 
     /**
-     * 统计所有在版块序列中的帖子数
+     * 统计所有在版块序列中的帖子数.
      *
-     * @param  array $fids 版块id序列
+     * @param array $fids 版块id序列
+     *
      * @return int
      */
     public function countThreadInFids($fids)
@@ -40,9 +40,10 @@ class PwThreadIndex
     }
 
     /**
-     * 统计所有不在版块序列中的帖子数
+     * 统计所有不在版块序列中的帖子数.
      *
-     * @param  array $fids 版块id序列
+     * @param array $fids 版块id序列
+     *
      * @return int
      */
     public function countThreadNotInFids($fids)
@@ -55,11 +56,12 @@ class PwThreadIndex
     }
 
     /**
-     * 获取帖子
+     * 获取帖子.
      *
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order  排序方式
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function fetch($limit, $offset, $order = 'lastpost')
@@ -70,12 +72,13 @@ class PwThreadIndex
     }
 
     /**
-     * 获取在版块序列中的帖子
+     * 获取在版块序列中的帖子.
      *
-     * @param  array  $fids   版块id序列
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order  排序方式
+     * @param array  $fids   版块id序列
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function fetchInFid($fids, $limit, $offset, $order = 'lastpost')
@@ -89,12 +92,13 @@ class PwThreadIndex
     }
 
     /**
-     * 获取不在版块序列中的帖子
+     * 获取不在版块序列中的帖子.
      *
-     * @param  array  $fids   版块id序列
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order  排序方式
+     * @param array  $fids   版块id序列
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function fetchNotInFid($fids, $limit, $offset, $order = 'lastpost')
@@ -108,9 +112,10 @@ class PwThreadIndex
     }
 
     /**
-     * 删除多条数据
+     * 删除多条数据.
      *
-     * @param  int  $limit
+     * @param int $limit
+     *
      * @return bool
      */
     public function deleteOver($limit)

@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 订单数据模型
+ * 订单数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPayVo.php 7431 2012-04-06 01:54:39Z jieyin $
- * @package forum
  */
-
 class PwPayVo
 {
     protected $_orderNo;

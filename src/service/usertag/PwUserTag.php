@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 个人标签
+ * 个人标签.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserTag.php 14142 2012-07-17 09:07:45Z xiaoxia.xuxx $
- * @package src.service.usertag
  */
 class PwUserTag
 {
     /**
-     * 根据标签ID获得该标签的数据
+     * 根据标签ID获得该标签的数据.
      *
-     * @param  int           $tag_id
+     * @param int $tag_id
+     *
      * @return PwError|array
      */
     public function getTag($tag_id)
@@ -27,9 +28,10 @@ class PwUserTag
     }
 
     /**
-     * 根据标签ID列表批量获取标签信息
+     * 根据标签ID列表批量获取标签信息.
      *
-     * @param  array $tag_ids
+     * @param array $tag_ids
+     *
      * @return array
      */
     public function fetchTag($tag_ids)
@@ -42,9 +44,10 @@ class PwUserTag
     }
 
     /**
-     * 根据标签名字获取标签
+     * 根据标签名字获取标签.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return array
      */
     public function getTagByName($name)
@@ -57,10 +60,11 @@ class PwUserTag
     }
 
     /**
-     * 分段获取热门标签
+     * 分段获取热门标签.
      *
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getHotTag($limit, $start = 0)
@@ -69,7 +73,7 @@ class PwUserTag
     }
 
     /**
-     * 统计热门标签
+     * 统计热门标签.
      *
      * @return int
      */
@@ -79,9 +83,10 @@ class PwUserTag
     }
 
     /**
-     * 添加一个标签
+     * 添加一个标签.
      *
-     * @param  PwUserTagDm $tagDm
+     * @param PwUserTagDm $tagDm
+     *
      * @return int
      */
     public function addTag(PwUserTagDm $tagDm)
@@ -94,9 +99,10 @@ class PwUserTag
     }
 
     /**
-     * 批量添加标签
+     * 批量添加标签.
      *
-     * @param  array        $tagDms
+     * @param array $tagDms
+     *
      * @return PwError|bool
      */
     public function batchAddTag($tagDms)
@@ -119,9 +125,10 @@ class PwUserTag
     }
 
     /**
-     * 更新标签
+     * 更新标签.
      *
-     * @param  PwUserTagDm $tagDm
+     * @param PwUserTagDm $tagDm
+     *
      * @return bool
      */
     public function updateTag(PwUserTagDm $tagDm)
@@ -135,10 +142,11 @@ class PwUserTag
     }
 
     /**
-     * 批量设置标签的热门
+     * 批量设置标签的热门.
      *
-     * @param  array        $tag_ids
-     * @param  int          $ifhot
+     * @param array $tag_ids
+     * @param int   $ifhot
+     *
      * @return PwError|bool
      */
     public function batchUpdateTagHot($tag_ids, $ifhot)
@@ -151,9 +159,10 @@ class PwUserTag
     }
 
     /**
-     * 删除标签
+     * 删除标签.
      *
-     * @param  int  $tag_id
+     * @param int $tag_id
+     *
      * @return bool
      */
     public function deleteTag($tag_id)
@@ -166,9 +175,10 @@ class PwUserTag
     }
 
     /**
-     * 批量删除标签
+     * 批量删除标签.
      *
-     * @param  array        $tag_ids
+     * @param array $tag_ids
+     *
      * @return PwError|bool
      */
     public function batchDeleteTag($tag_ids)
@@ -181,11 +191,12 @@ class PwUserTag
     }
 
     /**
-     * 搜索个人标签
+     * 搜索个人标签.
      *
-     * @param  PwUserTagSo $tagSo
-     * @param  int         $limit
-     * @param  int         $start
+     * @param PwUserTagSo $tagSo
+     * @param int         $limit
+     * @param int         $start
+     *
      * @return array
      */
     public function searchTag(PwUserTagSo $tagSo, $limit, $start = 0)
@@ -194,9 +205,10 @@ class PwUserTag
     }
 
     /**
-     * 统计搜索的个人标签
+     * 统计搜索的个人标签.
      *
-     * @param  PwUserTagSo $tagSo
+     * @param PwUserTagSo $tagSo
+     *
      * @return int
      */
     public function countSearchTag(PwUserTagSo $tagSo)
@@ -205,7 +217,7 @@ class PwUserTag
     }
 
     /**
-     * 获得用户标签DAO
+     * 获得用户标签DAO.
      *
      * @return PwUserTagDao
      */

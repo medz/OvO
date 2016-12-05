@@ -4,13 +4,13 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子管理操作 - 移动
+ * 帖子管理操作 - 移动.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwThreadManageDoMove extends PwThreadManageDo
 {
@@ -59,9 +59,10 @@ class PwThreadManageDoMove extends PwThreadManageDo
     }
 
     /**
-     * 设置需要复制到的版块
+     * 设置需要复制到的版块.
      *
-     * @param  int $fid
+     * @param int $fid
+     *
      * @return int
      */
     public function setFid($fid)
@@ -72,9 +73,10 @@ class PwThreadManageDoMove extends PwThreadManageDo
     }
 
     /**
-     * 设置主题分类
+     * 设置主题分类.
      *
-     * @param  int $topictype
+     * @param int $topictype
+     *
      * @return int
      */
     public function setTopictype($topictype)
@@ -87,7 +89,8 @@ class PwThreadManageDoMove extends PwThreadManageDo
     /**
      * 复制帖子 | 复制特殊帖、附件等待做。。。
      *
-     * @param  int $topictype
+     * @param int $topictype
+     *
      * @return int
      */
     public function run()

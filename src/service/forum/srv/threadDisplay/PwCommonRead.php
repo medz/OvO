@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadDisplay.PwReadDataSource');
 
 /**
- * 帖子内容页回复列表数据接口 / 普通列表
+ * 帖子内容页回复列表数据接口 / 普通列表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCommonRead.php 17895 2012-09-10 07:40:24Z jieyin $
- * @package forum
  */
-
 class PwCommonRead extends PwReadDataSource
 {
     public $thread;
@@ -22,7 +21,7 @@ class PwCommonRead extends PwReadDataSource
     public function __construct(PwThreadBo $thread)
     {
         $this->thread = $thread;
-        $this->info = & $thread->info;
+        $this->info = &$thread->info;
     }
 
     public function initPage($total)
@@ -44,7 +43,7 @@ class PwCommonRead extends PwReadDataSource
         list($start, $limit) = Pw::page2limit($this->page, $this->perpage);
         if ($start == 0) {
             $this->info['pid'] = 0;
-            $this->data[] = & $this->info;    //地址引用，便于bulidRead同步修改
+            $this->data[] = &$this->info;    //地址引用，便于bulidRead同步修改
             $this->info['aids'] && $this->_aids[] = 0;
             $this->_uids[] = $this->info['created_userid'];
         }
@@ -74,10 +73,11 @@ class PwCommonRead extends PwReadDataSource
     }
 
     /**
-     * 帖内置顶
+     * 帖内置顶.
      *
-     * @param  int     $limit
-     * @param  int     $offset
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array()
      */
     private function _getToppedReply($limit, $offset)

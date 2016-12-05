@@ -1,19 +1,21 @@
 <?php
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright ©2003-2010 phpwind.com
  * @license
  */
-
 class PwUserTagDm extends PwBaseDm
 {
     public $tag_id = 0;
 
     /**
-     * 设置标签ID
+     * 设置标签ID.
      *
-     * @param  int         $tag_id
+     * @param int $tag_id
+     *
      * @return PwUserTagDm
      */
     public function setTagid($tag_id)
@@ -24,9 +26,10 @@ class PwUserTagDm extends PwBaseDm
     }
 
     /**
-     * 设置标签名字
+     * 设置标签名字.
      *
-     * @param  string      $name
+     * @param string $name
+     *
      * @return PwUserTagDm
      */
     public function setName($name)
@@ -37,9 +40,10 @@ class PwUserTagDm extends PwBaseDm
     }
 
     /**
-     * 设置该标签是否为热门标签
+     * 设置该标签是否为热门标签.
      *
-     * @param  int         $ifhot
+     * @param int $ifhot
+     *
      * @return PwUserTagDm
      */
     public function setIfhot($ifhot)
@@ -50,9 +54,10 @@ class PwUserTagDm extends PwBaseDm
     }
 
     /**
-     * 该标签的使用次数
+     * 该标签的使用次数.
      *
-     * @param  int         $count
+     * @param int $count
+     *
      * @return PwUserTagDm
      */
     public function setUsedcount($count)
@@ -65,7 +70,8 @@ class PwUserTagDm extends PwBaseDm
     /**
      * 设置增加值
      *
-     * @param  int         $count
+     * @param int $count
+     *
      * @return PwUserTagDm
      */
     public function increaseCount($count)
@@ -111,7 +117,7 @@ class PwUserTagDm extends PwBaseDm
     }
 
     /**
-     * 检查数据合法性
+     * 检查数据合法性.
      *
      * @return bool|PwError
      */

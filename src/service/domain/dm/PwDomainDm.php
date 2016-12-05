@@ -2,20 +2,21 @@
 
 
 /**
- * domain模型
+ * domain模型.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $id$
- * @package service.domain.dm
  */
 class PwDomainDm extends PwBaseDm
 {
     /**
-     * 设置key
+     * 设置key.
      *
-     * @param  string     $key
+     * @param string $key
+     *
      * @return PwDomainDm
      */
     public function setDomainKey($key)
@@ -26,9 +27,10 @@ class PwDomainDm extends PwBaseDm
     }
 
     /**
-     * 设置域名类型
+     * 设置域名类型.
      *
-     * @param  sring      $type
+     * @param sring $type
+     *
      * @return PwDomainDm
      */
     public function setDomainType($type)
@@ -39,9 +41,10 @@ class PwDomainDm extends PwBaseDm
     }
 
     /**
-     * 设置二级域名
+     * 设置二级域名.
      *
-     * @param  string     $domain
+     * @param string $domain
+     *
      * @return PwDomainDm
      */
     public function setDomain($domain)
@@ -52,9 +55,10 @@ class PwDomainDm extends PwBaseDm
     }
 
     /**
-     * 设置根域名
+     * 设置根域名.
      *
-     * @param  string     $root
+     * @param string $root
+     *
      * @return PwDomainDm
      */
     public function setRoot($root)
@@ -65,9 +69,10 @@ class PwDomainDm extends PwBaseDm
     }
 
     /**
-     * 设置域名首字母
+     * 设置域名首字母.
      *
-     * @param  string     $root
+     * @param string $root
+     *
      * @return PwDomainDm
      */
     public function setFirst($first)
@@ -78,9 +83,10 @@ class PwDomainDm extends PwBaseDm
     }
 
     /**
-     * 设置域名首字母
+     * 设置域名首字母.
      *
-     * @param  string     $root
+     * @param string $root
+     *
      * @return PwDomainDm
      */
     public function setId($id)

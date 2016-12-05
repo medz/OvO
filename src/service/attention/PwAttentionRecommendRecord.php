@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 可能认识的人DS
+ * 可能认识的人DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwAttentionRecommendRecord
 {
@@ -28,9 +28,9 @@ class PwAttentionRecommendRecord
         }
 
         return $this->_getDao()->replace(array(
-            'uid' => $uid,
+            'uid'           => $uid,
             'recommend_uid' => $recommendUid,
-            'same_uid' => $sameUid,
+            'same_uid'      => $sameUid,
         ));
     }
 
@@ -44,8 +44,8 @@ class PwAttentionRecommendRecord
     }
 
     /**
+     * 删除某用户的潜在好友.
      *
-     * 删除某用户的潜在好友
      * @param int $uid
      * @param int $recommendUid
      */
@@ -64,8 +64,8 @@ class PwAttentionRecommendRecord
     }
 
     /**
+     * 删除某用户的潜在好友.
      *
-     * 删除某用户的潜在好友
      * @param int $uid
      * @param int $sameUid
      */
@@ -81,7 +81,6 @@ class PwAttentionRecommendRecord
     }
 
     /**
-     *
      * @return PwAttentionRecommendRecordDao
      */
     private function _getDao()
@@ -90,7 +89,6 @@ class PwAttentionRecommendRecord
     }
 
     /**
-     *
      * @return PwAttentionDao
      */
     private function _getAttentionDao()

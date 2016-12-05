@@ -6,18 +6,21 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * 用户权限基础服务
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 1, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserPermission.php 24736 2013-02-19 09:24:40Z jieyin $
  */
-
 class PwUserPermission
 {
     /**
-     * 设置用户组权限
+     * 设置用户组权限.
      *
-     * @param  PwUserPermissionDm $dm
+     * @param PwUserPermissionDm $dm
+     *
      * @return bool
      */
     public function setPermission(PwUserPermissionDm $dm)
@@ -32,10 +35,11 @@ class PwUserPermission
     }
 
     /**
-     * 获取某会员组的权限
+     * 获取某会员组的权限.
      *
-     * @param  string $gid
-     * @param  array  $keys
+     * @param string $gid
+     * @param array  $keys
+     *
      * @return array
      */
     public function getPermissions($gid, $keys = array())
@@ -49,9 +53,10 @@ class PwUserPermission
     }
 
     /**
-     * 获取某个rkey的权限
+     * 获取某个rkey的权限.
      *
-     * @param  string $rkey
+     * @param string $rkey
+     *
      * @return array
      */
     public function getPermissionByRkey($rkey)
@@ -60,10 +65,11 @@ class PwUserPermission
     }
 
     /**
-     * 获取指定用户组某个rkey的权限
+     * 获取指定用户组某个rkey的权限.
      *
-     * @param  string $rkey
-     * @param  array  $gids
+     * @param string $rkey
+     * @param array  $gids
+     *
      * @return array
      */
     public function getPermissionByRkeyAndGids($rkey, $gids)
@@ -76,9 +82,10 @@ class PwUserPermission
     }
 
     /**
-     * 获取某类rkey的权限
+     * 获取某类rkey的权限.
      *
-     * @param  array $rkeys
+     * @param array $rkeys
+     *
      * @return array
      */
     public function fetchPermissionByRkey($rkeys = array())
@@ -91,9 +98,10 @@ class PwUserPermission
     }
 
     /**
-     * 根据gids获取用户组权限
+     * 根据gids获取用户组权限.
      *
-     * @param  array $gids
+     * @param array $gids
+     *
      * @return array
      */
     public function fetchPermissionByGid($gids)
@@ -106,9 +114,10 @@ class PwUserPermission
     }
 
     /**
-     * 根据用户组删除权限点
+     * 根据用户组删除权限点.
      *
-     * @param  unknown_type $gid
+     * @param unknown_type $gid
+     *
      * @return bool
      */
     public function deletePermissionsByGid($gid)
@@ -117,10 +126,11 @@ class PwUserPermission
     }
 
     /**
-     * 批量删除用户组权限点
+     * 批量删除用户组权限点.
      *
-     * @param  int   $gid
-     * @param  array $keys
+     * @param int   $gid
+     * @param array $keys
+     *
      * @return bool
      */
     public function batchDeletePermissionByGidAndKeys($gid, $keys)

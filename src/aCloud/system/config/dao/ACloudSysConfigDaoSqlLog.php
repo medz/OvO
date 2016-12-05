@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreDao');
 class ACloudSysConfigDaoSqlLog extends ACloudSysCoreDao
 {
@@ -56,7 +56,7 @@ class ACloudSysConfigDaoSqlLog extends ACloudSysCoreDao
 
     public function deleteSqlLogsByIds($ids)
     {
-        if (! ACloudSysCoreS::isArray($ids)) {
+        if (!ACloudSysCoreS::isArray($ids)) {
             return false;
         }
 

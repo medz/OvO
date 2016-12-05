@@ -2,13 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 二级域名
+ * 二级域名.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: DomainController.php 24202 2013-01-23 02:18:05Z jieyin $
- * @package rewrite.admin
  */
 class DomainController extends AdminBaseController
 {
@@ -33,7 +33,7 @@ class DomainController extends AdminBaseController
     }
 
     /**
-     * 保存修改
+     * 保存修改.
      */
     public function doModifyAction()
     {

@@ -2,12 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: liusanbian $>
+ * the last known user to change this file in the repository  <$LastChangedBy: liusanbian $>.
+ *
  * @author $Author: liusanbian $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ModelController.php 12232 2012-06-19 17:37:18Z liusanbian $
- * @package
  */
 class ModelController extends AdminBaseController
 {
@@ -54,8 +55,7 @@ class ModelController extends AdminBaseController
     }
 
     /**
-     *
-     * getDesignService
+     * getDesignService.
      *
      * @return PwDesignService
      */
@@ -65,8 +65,7 @@ class ModelController extends AdminBaseController
     }
 
     /**
-     *
-     * getDesignModelDs
+     * getDesignModelDs.
      *
      * @return PwDesignModel
      */

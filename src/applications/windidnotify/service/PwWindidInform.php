@@ -1,17 +1,19 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWindidInform.php 29745 2013-06-28 09:07:39Z gao.wanggao $
- * @package
  */
 class PwWindidInform
 {
     /**
      * 用于通讯测试，传递参数test
      * Enter description here ...
+     *
      * @param unknown_type $params
      */
     public function test($testdata)

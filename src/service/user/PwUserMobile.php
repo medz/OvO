@@ -6,15 +6,16 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwUserMobile
 {
     /**
      * 取一条
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getByUid($uid)
@@ -28,9 +29,10 @@ class PwUserMobile
     }
 
     /**
-     * 批量取
+     * 批量取.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchByUid($uids)
@@ -45,7 +47,8 @@ class PwUserMobile
     /**
      * 根据手机号码取一条
      *
-     * @param  int   $mobile
+     * @param int $mobile
+     *
      * @return array
      */
     public function getByMobile($mobile)
@@ -60,8 +63,9 @@ class PwUserMobile
     /**
      * 添加单条
      *
-     * @param  int   $uid
-     * @param  int   $mobile
+     * @param int $uid
+     * @param int $mobile
+     *
      * @return array
      */
     public function addMobile($uid, $mobile)
@@ -78,8 +82,9 @@ class PwUserMobile
     /**
      * 添加单条
      *
-     * @param  int   $uid
-     * @param  int   $mobile
+     * @param int $uid
+     * @param int $mobile
+     *
      * @return array
      */
     public function replaceMobile($uid, $mobile)
@@ -95,7 +100,8 @@ class PwUserMobile
     /**
      * 删除单条
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)
@@ -109,9 +115,10 @@ class PwUserMobile
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchDelete($uids)
@@ -124,10 +131,11 @@ class PwUserMobile
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  int  $uid
-     * @param  int  $mobile
+     * @param int $uid
+     * @param int $mobile
+     *
      * @return bool
      */
     public function updateMobile($uid, $mobile)

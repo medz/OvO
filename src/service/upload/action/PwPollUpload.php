@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('COM:utility.WindUtility');
 
 /**
@@ -11,10 +10,9 @@ Wind::import('COM:utility.WindUtility');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPollUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package forum
  */
-
 class PwPollUpload extends PwUploadAction
 {
     public $dir;
@@ -117,7 +115,7 @@ class PwPollUpload extends PwUploadAction
             $aid = $ds->addAttach($dm);
             */
             $this->attachs[$value['attname']][$value['id']] = array(
-                'id' => $value['id'],
+                'id'   => $value['id'],
                 'name' => $value['name'],
                 'type' => $value['type'],
                 'path' => $value['fileuploadurl'],
@@ -139,7 +137,7 @@ class PwPollUpload extends PwUploadAction
     }
 
     /**
-     * get PwAttach
+     * get PwAttach.
      *
      * @return PwAttach
      */

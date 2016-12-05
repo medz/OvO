@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 define('AC_THREAD_SIG', 1);
 define('AC_DIARY_SIG', 2);
 define('AC_MEMBER_SIG', 3);
@@ -13,16 +13,16 @@ class ACloudVerDataFlowAggregate
 {
     public static function getMonitorTables()
     {
-        $tableConfigs = ACloudVerDataFlowAggregate::getTableConfigs();
+        $tableConfigs = self::getTableConfigs();
 
         return array_keys($tableConfigs);
     }
 
     public static function getTypeByTableName($tableName)
     {
-        $tableConfigs = ACloudVerDataFlowAggregate::getTableConfigs();
+        $tableConfigs = self::getTableConfigs();
 
-        return isset($tableConfigs [$tableName]) ? $tableConfigs [$tableName] : null;
+        return isset($tableConfigs[$tableName]) ? $tableConfigs[$tableName] : null;
     }
 
     public static function getTableConfigs()

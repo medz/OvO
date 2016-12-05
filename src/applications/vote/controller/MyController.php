@@ -7,16 +7,14 @@ Wind::import('SRV:poll.srv.dataSource.PwFetchPollByOrder');
 Wind::import('SRV:poll.srv.dataSource.PwFetchPollByUid');
 
 /**
- * 我的投票
+ * 我的投票.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: MyController.php 3219 2012-01-12 06:43:45Z mingxing.sun $
- * @package admin
- * @subpackage controller
  */
-
 class MyController extends PwBaseController
 {
     public $page = 1;
@@ -176,7 +174,7 @@ class MyController extends PwBaseController
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */
@@ -186,7 +184,7 @@ class MyController extends PwBaseController
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */

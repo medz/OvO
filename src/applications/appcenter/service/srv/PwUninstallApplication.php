@@ -3,14 +3,13 @@
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwManifest');
 /**
- * 卸载应用
+ * 卸载应用.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUninstallApplication.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package products
- * @subpackage appcenter.service.srv
  */
 class PwUninstallApplication
 {
@@ -54,9 +53,10 @@ class PwUninstallApplication
     }
 
     /**
-     * 强制清理
+     * 强制清理.
      *
-     * @param  unknown_type $appId
+     * @param unknown_type $appId
+     *
      * @return bool
      */
     public function forceUninstall($appId)
@@ -77,7 +77,7 @@ class PwUninstallApplication
      * appId 应用ID
      * hook	 已安装的hook
      * inject 已注册的inject
-     * table 已安装的数据表
+     * table 已安装的数据表.
      *
      * @param string $key
      */
@@ -119,7 +119,6 @@ class PwUninstallApplication
     }
 
     /**
-     *
      * @return PwHookInject
      */
     private function _loadPwHookInject()

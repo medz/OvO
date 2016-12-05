@@ -1,22 +1,23 @@
 <?php
 /**
- * 邀请链接相关操作
+ * 邀请链接相关操作.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteFriendService.php 19073 2012-10-10 08:33:40Z xiaoxia.xuxx $
- * @package src.service.inviate.srv
  */
 class PwInviteFriendService
 {
     private $_inviteCodeKey = 'abc@2012';
 
     /**
-     * 邀请注册一个用户
+     * 邀请注册一个用户.
      *
-     * @param  string       $inviteCode
-     * @param  int          $invited_uid
+     * @param string $inviteCode
+     * @param int    $invited_uid
+     *
      * @return bool|PwError
      */
     public function inviteRegist($inviteCode, $invited_uid)
@@ -55,10 +56,11 @@ class PwInviteFriendService
     }
 
     /**
-     * 邀请
+     * 邀请.
      *
-     * @param  string $inviteCode  邀请链接的邀请码
-     * @param  int    $invited_uid 接受邀请的用户ID
+     * @param string $inviteCode  邀请链接的邀请码
+     * @param int    $invited_uid 接受邀请的用户ID
+     *
      * @return bool
      */
     public function invite($inviteCode, $invited_uid)
@@ -87,9 +89,8 @@ class PwInviteFriendService
         return $aUser;
     }
 
-
     /**
-     * 检测是否可以使用链接邀请
+     * 检测是否可以使用链接邀请.
      *
      * 如果开启了邀请注册，则抛出错误（如果已经开启了邀请注册，则好友邀请不可用）
      * 否则，允许使用
@@ -108,9 +109,10 @@ class PwInviteFriendService
     }
 
     /**
-     * 检查邀请链接是否有效
+     * 检查邀请链接是否有效.
      *
-     * @param  string        $code
+     * @param string $code
+     *
      * @return PwError|array
      */
     public function checkInviteCode($code)
@@ -127,7 +129,8 @@ class PwInviteFriendService
     /**
      * 解析邀请链接码
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return int
      */
     public function parseInviteCode($code)
@@ -146,7 +149,8 @@ class PwInviteFriendService
     /**
      * 根据输入的用户ID构建该用户的邀请链接码
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return string
      */
     public function createInviteCode($uid)
@@ -155,10 +159,11 @@ class PwInviteFriendService
     }
 
     /**
-     * 互相加为好友
+     * 互相加为好友.
      *
-     * @param  array        $aUser
-     * @param  array        $bUser
+     * @param array $aUser
+     * @param array $bUser
+     *
      * @return PwError|bool
      */
     private function _addFans($aUser, $bUser)
@@ -190,7 +195,7 @@ class PwInviteFriendService
     }
 
     /**
-     * 用户DS
+     * 用户DS.
      *
      * @return PwUser
      */

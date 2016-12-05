@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThread.php 23306 2013-01-08 06:57:50Z jieyin $
- * @package forum
  */
-
 class PwThread
 {
     const FETCH_MAIN = 1;        //帖子基本信息
@@ -28,10 +27,11 @@ class PwThread
     const STATUS_OPERATORLOG = 4; //是否有帖子操作日志
 
     /**
-     * 获取单个帖子信息
+     * 获取单个帖子信息.
      *
      * @param int $tid 帖子id
      * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return array
      */
     public function getThread($tid, $fetchmode = self::FETCH_MAIN)
@@ -44,10 +44,11 @@ class PwThread
     }
 
     /**
-     * 获取多个帖子信息
+     * 获取多个帖子信息.
      *
      * @param array $tids tid序列
      * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return array
      */
     public function fetchThread($tids, $fetchmode = self::FETCH_MAIN)
@@ -60,12 +61,13 @@ class PwThread
     }
 
     /**
-     * 获取某个版块的帖子列表 (按最后回复排序)
+     * 获取某个版块的帖子列表 (按最后回复排序).
      *
      * @param int $fid    版块id
      * @param int $limit  个数
      * @param int $offset 起始偏移量
      * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return array
      */
     public function getThreadByFid($fid, $limit, $offset = 0, $fetchmode = self::FETCH_MAIN)
@@ -79,9 +81,10 @@ class PwThread
     }
 
     /**
-     * 统计版块的帖子数/回复数
+     * 统计版块的帖子数/回复数.
      *
-     * @param  int   $fid 版块fid
+     * @param int $fid 版块fid
+     *
      * @return array
      */
     public function countPosts($fid)
@@ -90,7 +93,7 @@ class PwThread
     }
 
     /**
-     * 获取主题分类的帖子列表
+     * 获取主题分类的帖子列表.
      */
     public function getThreadByFidAndType($fid, $type, $limit, $start, $fetchmode = self::FETCH_MAIN)
     {
@@ -103,9 +106,10 @@ class PwThread
     }
 
     /**
-     * 统计用户发帖数
+     * 统计用户发帖数.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countThreadByUid($uid)
@@ -118,12 +122,13 @@ class PwThread
     }
 
     /**
-     * 获取用户的帖子
+     * 获取用户的帖子.
      *
      * @param int $uid    用户id
      * @param int $limit  个数
      * @param int $offset 起始偏移量
      * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return array
      */
     public function getThreadByUid($uid, $limit = 0, $offset = 0, $fetchmode = self::FETCH_MAIN)
@@ -136,13 +141,14 @@ class PwThread
     }
 
     /**
-     * 获取某个版块用户的帖子
+     * 获取某个版块用户的帖子.
      *
      * @param int   $fid    版块id
      * @param mixed $uids   用户id (int|array)
      * @param int   $limit  个数
      * @param int   $offset 起始偏移量
      * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return array
      */
     public function getThreadsByFidAndUids($fid, $uids, $limit = 0, $offset = 0, $fetchmode = self::FETCH_MAIN)
@@ -157,9 +163,10 @@ class PwThread
 
     /**
      * 增加帖子
-     * 注：本接口只提供数据层的相关操作，完整的帖子发布接口请参照 PwPost::execute()
+     * 注：本接口只提供数据层的相关操作，完整的帖子发布接口请参照 PwPost::execute().
      *
-     * @param  object $topicDm 帖子数据模型
+     * @param object $topicDm 帖子数据模型
+     *
      * @return mixed
      */
     public function addThread(PwTopicDm $topicDm)
@@ -172,10 +179,11 @@ class PwThread
     }
 
     /**
-     * 更新帖子
+     * 更新帖子.
      *
      * @param object $topicDm 帖子数据模型
      * @param  int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return mixed
      */
     public function updateThread(PwTopicDm $topicDm, $fetchmode = self::FETCH_ALL)
@@ -188,11 +196,12 @@ class PwThread
     }
 
     /**
-     * 批量更新帖子
+     * 批量更新帖子.
      *
      * @param array  $tids    帖子id
      * @param object $topicDm 帖子数据模型
      * @param  int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     *
      * @return mixed
      */
     public function batchUpdateThread($tids, PwTopicDm $topicDm, $fetchmode = self::FETCH_ALL)
@@ -208,9 +217,10 @@ class PwThread
     }
 
     /**
-     * 还原帖子disabled属性
+     * 还原帖子disabled属性.
      *
-     * @param  array $tids
+     * @param array $tids
+     *
      * @return bool
      */
     public function revertTopic($tids)
@@ -224,7 +234,7 @@ class PwThread
 
     /**
      * 删除帖子
-     * 注：本接口只提供数据层的相关操作，完整的帖子删除接口请参照 PwDeleteTopic::execute()
+     * 注：本接口只提供数据层的相关操作，完整的帖子删除接口请参照 PwDeleteTopic::execute().
      *
      * @param int $tid
      */
@@ -239,7 +249,7 @@ class PwThread
 
     /**
      * 批量删除帖子
-     * 注：本接口只提供数据层的相关操作，完整的帖子删除接口请参照 PwDeleteTopic::execute()
+     * 注：本接口只提供数据层的相关操作，完整的帖子删除接口请参照 PwDeleteTopic::execute().
      *
      * @param array $tids
      */
@@ -253,9 +263,10 @@ class PwThread
     }
 
     /**
-     * 统计帖子数(搜索)
+     * 统计帖子数(搜索).
      *
-     * @param  object $so
+     * @param object $so
+     *
      * @return int
      */
     public function countSearchThread(PwThreadSo $so)
@@ -264,9 +275,10 @@ class PwThread
     }
 
     /**
-     * 搜索帖子
+     * 搜索帖子.
      *
-     * @param  object $so
+     * @param object $so
+     *
      * @return array
      */
     public function searchThread(PwThreadSo $so, $limit = 20, $offset = 0, $fetchmode = self::FETCH_MAIN)
@@ -274,17 +286,15 @@ class PwThread
         return $this->_getThreadMergeDao()->searchThread($fetchmode, $so->getData(), $so->getOrderby(), $limit, $offset);
     }
 
-
     /****************** 以上是主题接口 ******************\
 
     \****************** 以下是回复接口 ******************/
 
-
-
     /**
-     * 获取一个回复
+     * 获取一个回复.
      *
-     * @param  int   $pid 回复id
+     * @param int $pid 回复id
+     *
      * @return array
      */
     public function getPost($pid)
@@ -297,9 +307,10 @@ class PwThread
     }
 
     /**
-     * 获取多个回复
+     * 获取多个回复.
      *
-     * @param  array $pids 回复ids
+     * @param array $pids 回复ids
+     *
      * @return array
      */
     public function fetchPost($pids)
@@ -312,11 +323,12 @@ class PwThread
     }
 
     /**
-     * 获取一个帖子的回复列表
+     * 获取一个帖子的回复列表.
      *
-     * @param  int   $tid    帖子id
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $tid    帖子id
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getPostByTid($tid, $limit = 20, $offset = 0, $asc = true)
@@ -329,9 +341,10 @@ class PwThread
     }
 
     /**
-     * 统计用户的回复数
+     * 统计用户的回复数.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countPostByUid($uid)
@@ -344,11 +357,12 @@ class PwThread
     }
 
     /**
-     * 获取用户的回复
+     * 获取用户的回复.
      *
-     * @param  int   $uid    用户id
-     * @param  int   $limit  个数
-     * @param  int   $offset 起始偏移量
+     * @param int $uid    用户id
+     * @param int $limit  个数
+     * @param int $offset 起始偏移量
+     *
      * @return array
      */
     public function getPostByUid($uid, $limit = 20, $offset = 0)
@@ -361,10 +375,11 @@ class PwThread
     }
 
     /**
-     * 统计用户(A)在帖子(B)中的回复数
+     * 统计用户(A)在帖子(B)中的回复数.
      *
-     * @param  int $tid
-     * @param  int $uid
+     * @param int $tid
+     * @param int $uid
+     *
      * @return int
      */
     public function countPostByTidAndUid($tid, $uid)
@@ -377,10 +392,11 @@ class PwThread
     }
 
     /**
-     * 统计帖子(A)中的ID小于回复(B)的回复个数
+     * 统计帖子(A)中的ID小于回复(B)的回复个数.
      *
-     * @param  int $tid
-     * @param  int $pid
+     * @param int $tid
+     * @param int $pid
+     *
      * @return int
      */
     public function countPostByTidUnderPid($tid, $pid)
@@ -393,13 +409,14 @@ class PwThread
     }
 
     /**
-     * 获取用户(A)在帖子(B)中的回复
+     * 获取用户(A)在帖子(B)中的回复.
      *
-     * @param  int   $tid
-     * @param  int   $uid
-     * @param  int   $limit
-     * @param  int   $offset
-     * @param  bool  $asc
+     * @param int  $tid
+     * @param int  $uid
+     * @param int  $limit
+     * @param int  $offset
+     * @param bool $asc
+     *
      * @return array
      */
     public function getPostByTidAndUid($tid, $uid, $limit = 20, $offset = 0, $asc = true)
@@ -412,9 +429,10 @@ class PwThread
     }
 
     /**
-     * 统计回复数(搜索)
+     * 统计回复数(搜索).
      *
-     * @param  object $so
+     * @param object $so
+     *
      * @return int
      */
     public function countSearchPost(PwPostSo $so)
@@ -423,9 +441,10 @@ class PwThread
     }
 
     /**
-     * 搜索回复
+     * 搜索回复.
      *
-     * @param  object $so
+     * @param object $so
+     *
      * @return array
      */
     public function searchPost(PwPostSo $so, $limit = 20, $offset = 0)
@@ -434,9 +453,10 @@ class PwThread
     }
 
     /**
-     * 增加一个回复
+     * 增加一个回复.
      *
-     * @param  object $replyDm 回复数据模型
+     * @param object $replyDm 回复数据模型
+     *
      * @return array
      */
     public function addPost(PwReplyDm $replyDm)
@@ -449,10 +469,11 @@ class PwThread
     }
 
     /**
-     * 更新回复
+     * 更新回复.
      *
-     * @param  int    $pid     回复id
-     * @param  object $replyDm 回复数据模型
+     * @param int    $pid     回复id
+     * @param object $replyDm 回复数据模型
+     *
      * @return mixed
      */
     public function updatePost(PwReplyDm $replyDm)
@@ -465,10 +486,11 @@ class PwThread
     }
 
     /**
-     * 批量更新帖子
+     * 批量更新帖子.
      *
-     * @param  array  $pids    回复id
-     * @param  object $replyDm 帖子数据模型
+     * @param array  $pids    回复id
+     * @param object $replyDm 帖子数据模型
+     *
      * @return mixed
      */
     public function batchUpdatePost($pids, PwReplyDm $replyDm)
@@ -484,10 +506,11 @@ class PwThread
     }
 
     /**
-     * 批量更新帖子
+     * 批量更新帖子.
      *
-     * @param  array  $tids    帖子id
-     * @param  object $replyDm 帖子数据模型
+     * @param array  $tids    帖子id
+     * @param object $replyDm 帖子数据模型
+     *
      * @return mixed
      */
     public function batchUpdatePostByTid($tids, PwReplyDm $replyDm)
@@ -503,9 +526,10 @@ class PwThread
     }
 
     /**
-     * 还原帖子disabled属性
+     * 还原帖子disabled属性.
      *
-     * @param  array $tids
+     * @param array $tids
+     *
      * @return bool
      */
     public function revertPost($tids)
@@ -518,9 +542,10 @@ class PwThread
     }
 
     /**
-     * 根据回复id批量删除回复
+     * 根据回复id批量删除回复.
      *
-     * @param  array $pids 回复id
+     * @param array $pids 回复id
+     *
      * @return bool
      */
     public function batchDeletePost($pids)
@@ -533,9 +558,10 @@ class PwThread
     }
 
     /**
-     * 根据帖子id批量删除回复
+     * 根据帖子id批量删除回复.
      *
-     * @param  array $tids 帖子id
+     * @param array $tids 帖子id
+     *
      * @return bool
      */
     public function batchDeletePostByTid($tids)
@@ -574,7 +600,7 @@ class PwThread
     protected function _getDaoMap()
     {
         return array(
-            self::FETCH_MAIN => 'forum.dao.PwThreadsDao',
+            self::FETCH_MAIN    => 'forum.dao.PwThreadsDao',
             self::FETCH_CONTENT => 'forum.dao.PwThreadsContentDao',
         );
     }

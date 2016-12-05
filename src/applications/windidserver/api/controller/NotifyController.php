@@ -2,12 +2,13 @@
 
 Wind::import('APPS:api.controller.OpenBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: NotifyController.php 24579 2013-02-01 03:26:06Z gao.wanggao $
- * @package
  */
 class NotifyController extends OpenBaseController
 {

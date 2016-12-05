@@ -3,16 +3,16 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminAuth.php 24131 2013-01-22 05:55:40Z yishuo $
- * @package admin
- * @subpackage service
  */
 class AdminAuth
 {
     /**
-     * 根据用户名查找后台用户
+     * 根据用户名查找后台用户.
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return array
      */
     public function findByUsername($username)
@@ -21,9 +21,10 @@ class AdminAuth
     }
 
     /**
-     * 根据用户ID查找用户是否是后台用户
+     * 根据用户ID查找用户是否是后台用户.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function findByUid($uid)
@@ -32,9 +33,10 @@ class AdminAuth
     }
 
     /**
-     * 根据ID查找后台用户
+     * 根据ID查找后台用户.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function findById($id)
@@ -43,10 +45,11 @@ class AdminAuth
     }
 
     /**
-     * 分页查找后台用户
+     * 分页查找后台用户.
      *
-     * @param  int   $page    当前页
-     * @param  int   $perPgae 每页显示条数
+     * @param int $page    当前页
+     * @param int $perPgae 每页显示条数
+     *
      * @return array
      */
     public function findByPage($page, $perPgae = 10)
@@ -64,9 +67,10 @@ class AdminAuth
     }
 
     /**
-     * 删除后台用户
+     * 删除后台用户.
      *
-     * @param  id           $id
+     * @param id $id
+     *
      * @return PwError|bool
      */
     public function del($id)
@@ -79,10 +83,11 @@ class AdminAuth
     }
 
     /**
-     * 编辑后台用户定义
+     * 编辑后台用户定义.
      *
-     * @param  int   $id
-     * @param  array $roles
+     * @param int   $id
+     * @param array $roles
+     *
      * @return array
      */
     public function edit($id, $username, $roles)
@@ -102,10 +107,11 @@ class AdminAuth
     }
 
     /**
-     * 添加用户角色定义
+     * 添加用户角色定义.
      *
-     * @param  string        $username
-     * @param  array         $roles
+     * @param string $username
+     * @param array  $roles
+     *
      * @return array|PwError
      */
     public function add($username, $uid, $roles)

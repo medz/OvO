@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') or exit(403);
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 应用的后台配置
+ * 应用的后台配置.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 24202 2013-01-23 02:18:05Z jieyin $
- * @package admin
  */
 class ManageController extends AdminBaseController
 {
@@ -33,8 +33,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 应用的设置提交
-     *
+     * 应用的设置提交.
      */
     public function doRunAction()
     {

@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPortalDm.php 17219 2012-09-04 06:05:24Z gao.wanggao $
- * @package
  */
-
 class PwDesignPortalDm extends PwBaseDm
 {
     public $id;
@@ -40,14 +40,12 @@ class PwDesignPortalDm extends PwBaseDm
         return $this;
     }
 
-
     public function setKeywords($keywords)
     {
         $this->_data['keywords'] = Pw::substrs($keywords, 120);
 
         return $this;
     }
-
 
     public function setDomain($domain)
     {

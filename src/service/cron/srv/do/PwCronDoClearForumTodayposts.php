@@ -9,8 +9,8 @@ Wind::import('SRV:site.dm.PwBbsinfoDm');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCronDoClearForumTodayposts.php 21328 2012-12-04 11:32:35Z jieyin $
- * @package forum
  */
 class PwCronDoClearForumTodayposts extends AbstractCronBase
 {

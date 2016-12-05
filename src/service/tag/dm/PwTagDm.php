@@ -4,13 +4,13 @@
 Wind::import('SRV:user.validator.PwUserValidator');
 
 /**
- * 话题DM
+ * 话题DM.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package PwTagDm
  */
 class PwTagDm extends PwBaseDm
 {
@@ -22,9 +22,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置顺序
+     * 设置顺序.
      *
-     * @param  int     $vieworder
+     * @param int $vieworder
+     *
      * @return PwTagDm
      */
     public function setVieworder($vieworder)
@@ -35,9 +36,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置名称
+     * 设置名称.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return PwTagDm
      */
     public function setName($name)
@@ -48,9 +50,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置parent
+     * 设置parent.
      *
-     * @param  int     $parentTagId
+     * @param int $parentTagId
+     *
      * @return PwTagDm
      */
     public function setParent($parentTagId)
@@ -61,9 +64,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置是否热门
+     * 设置是否热门.
      *
-     * @param  int     $ifHot
+     * @param int $ifHot
+     *
      * @return PwTagDm
      */
     public function setIfhot($ifhot)
@@ -74,9 +78,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 获取是否有封面
+     * 获取是否有封面.
      *
-     * @param  int     $iflogo
+     * @param int $iflogo
+     *
      * @return PwTagDm
      */
     public function setIflogo($iflogo)
@@ -85,9 +90,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置logo
+     * 设置logo.
      *
-     * @param  string  $tagLogo
+     * @param string $tagLogo
+     *
      * @return PwTagDm
      */
     public function setTagLogo($tagLogo)
@@ -100,7 +106,8 @@ class PwTagDm extends PwBaseDm
     /**
      * 设置摘要
      *
-     * @param  string  $excerpt
+     * @param string $excerpt
+     *
      * @return PwTagDm
      */
     public function setExcerpt($excerpt)
@@ -111,9 +118,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置seo标题
+     * 设置seo标题.
      *
-     * @param  string  $seoTitle
+     * @param string $seoTitle
+     *
      * @return PwTagDm
      */
     public function setSeoTitle($seoTitle)
@@ -124,9 +132,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置seoDescript
+     * 设置seoDescript.
      *
-     * @param  string  $seoDescript
+     * @param string $seoDescript
+     *
      * @return PwTagDm
      */
     public function setSeoDescript($seoDescript)
@@ -137,9 +146,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置seo关键字
+     * 设置seo关键字.
      *
-     * @param  string  $seoDescription
+     * @param string $seoDescription
+     *
      * @return PwTagDm
      */
     public function setSeoKeywords($seoKeywords)
@@ -150,9 +160,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置内容关系数
+     * 设置内容关系数.
      *
-     * @param  int     $contentCount
+     * @param int $contentCount
+     *
      * @return PwTagDm
      */
     public function setContentCount($contentCount)
@@ -163,9 +174,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置被关注数
+     * 设置被关注数.
      *
-     * @param  int     $attentionCount
+     * @param int $attentionCount
+     *
      * @return PwTagDm
      */
     public function setAttentionCount($attentionCount)
@@ -176,9 +188,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * increase关联内容数量 $num允许负数
+     * increase关联内容数量 $num允许负数.
      *
-     * @param  int     $attentionCount
+     * @param int $attentionCount
+     *
      * @return PwTagDm
      */
     public function addContentCount($num)
@@ -189,9 +202,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * increase关注数量
+     * increase关注数量.
      *
-     * @param  int     $attentionCount
+     * @param int $attentionCount
+     *
      * @return PwTagDm
      */
     public function addAttentionCount($num)
@@ -202,9 +216,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置话题初始创建人
+     * 设置话题初始创建人.
      *
-     * @param  int     $uid
+     * @param int $uid
+     *
      * @return PwTagDm
      */
     public function setCreateUid($uid)
@@ -215,9 +230,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置分类名称
+     * 设置分类名称.
      *
-     * @param  string  $categoryName
+     * @param string $categoryName
+     *
      * @return PwTagDm
      */
     public function setCategoryName($categoryName)
@@ -228,9 +244,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置分类别名
+     * 设置分类别名.
      *
-     * @param  string  $alias
+     * @param string $alias
+     *
      * @return PwTagDm
      */
     public function setCategoryAlias($alias)
@@ -241,9 +258,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置话题来自应用类别ID
+     * 设置话题来自应用类别ID.
      *
-     * @param  int     $typeId
+     * @param int $typeId
+     *
      * @return PwTagDm
      */
     public function setTypeId($typeId)
@@ -254,9 +272,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置话题来自应用类别唯一值（如帖子 tid）
+     * 设置话题来自应用类别唯一值（如帖子 tid）.
      *
-     * @param  int     $paramId
+     * @param int $paramId
+     *
      * @return PwTagDm
      */
     public function setParamId($paramId)
@@ -267,9 +286,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置内容是否显示
+     * 设置内容是否显示.
      *
-     * @param  int     $ifcheck
+     * @param int $ifcheck
+     *
      * @return PwTagDm
      */
     public function setIfCheck($ifcheck)
@@ -280,9 +300,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置创建时间
+     * 设置创建时间.
      *
-     * @param  int     $createdTime
+     * @param int $createdTime
+     *
      * @return PwTagDm
      */
     public function setCreatedTime($createdTime)
@@ -293,9 +314,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置分类
+     * 设置分类.
      *
-     * @param  int     $categoryId
+     * @param int $categoryId
+     *
      * @return PwTagDm
      */
     public function setCategoryId($categoryId)
@@ -306,7 +328,7 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 获取创建人
+     * 获取创建人.
      *
      * @return int
      */
@@ -316,7 +338,7 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 获取是否热门字段
+     * 获取是否热门字段.
      *
      * @return int
      */
@@ -326,9 +348,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 获取分类
+     * 获取分类.
      *
-     * @param  int     $ifcheck
+     * @param int $ifcheck
+     *
      * @return PwTagDm
      */
     public function getCategoryId()
@@ -337,9 +360,10 @@ class PwTagDm extends PwBaseDm
     }
 
     /**
-     * 设置内容关系tagid（主要为帖子阅读页、详细页查询服务）
+     * 设置内容关系tagid（主要为帖子阅读页、详细页查询服务）.
      *
-     * @param  int     $contentTagId
+     * @param int $contentTagId
+     *
      * @return PwTagDm
      */
     public function setContentTagId($contentTagId)

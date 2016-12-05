@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignModuleBo.php 22756 2012-12-27 03:27:36Z gao.wanggao $
- * @package
  */
 class PwDesignModuleBo
 {
@@ -20,8 +21,7 @@ class PwDesignModuleBo
     }
 
     /**
-     * 为模版缓存id
-     *
+     * 为模版缓存id.
      */
     public function setStdId()
     {
@@ -29,7 +29,7 @@ class PwDesignModuleBo
     }
 
     /**
-     * model类型临时更改
+     * model类型临时更改.
      *
      * @param string $model
      */
@@ -60,6 +60,7 @@ class PwDesignModuleBo
 
         return $property;
     }
+
     public function getView()
     {
         $view = array();
@@ -169,10 +170,9 @@ class PwDesignModuleBo
     }
 
     /**
-     * 允许数据更新的时间
+     * 允许数据更新的时间.
      *
      * @return � �许更新的开始时间，允许更新的结束时间，更新的时间
-     *
      */
     public function refreshTime($time)
     {
@@ -207,16 +207,16 @@ class PwDesignModuleBo
         $styleSrv = Wekit::load('design.srv.PwDesignStyle');
         foreach ((array) $titles['titles'] as $k => $v) {
             $_tmp = array(
-                'title' => WindSecurity::escapeHTML($v['title']),
-                'link' => $v['link'],
-                'image' => $v['image'],
-                'float' => $v['float'],
-                'margin' => $v['margin'],
-                'fontsize' => $v['fontsize'],
-                'fontcolor' => $v['fontcolor'],
-                'fontbold' => $v['fontbold'],
+                'title'         => WindSecurity::escapeHTML($v['title']),
+                'link'          => $v['link'],
+                'image'         => $v['image'],
+                'float'         => $v['float'],
+                'margin'        => $v['margin'],
+                'fontsize'      => $v['fontsize'],
+                'fontcolor'     => $v['fontcolor'],
+                'fontbold'      => $v['fontbold'],
                 'fontunderline' => $v['fontunderline'],
-                'fontitalic' => $v['fontitalic'],
+                'fontitalic'    => $v['fontitalic'],
             );
             $style = $styleSrv->buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);

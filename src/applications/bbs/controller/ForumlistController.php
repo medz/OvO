@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 版块列表页
+ * 版块列表页.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ForumlistController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package srcapplications.bbs.controller
  */
 class ForumlistController extends PwBaseController
 {
@@ -42,9 +42,10 @@ class ForumlistController extends PwBaseController
 
     /**
      * 过滤版块信息
-     * 1、过滤掉不显示的版块
+     * 1、过滤掉不显示的版块.
      *
-     * @param  array $list
+     * @param array $list
+     *
      * @return array
      */
     private function _filterMap($list)
@@ -69,10 +70,11 @@ class ForumlistController extends PwBaseController
     }
 
     /**
-     * 设置版块的版主UID
+     * 设置版块的版主UID.
      *
-     * @param  array $manage
-     * @param  array $userList
+     * @param array $manage
+     * @param array $userList
+     *
      * @return array
      */
     private function _setManages($manage)

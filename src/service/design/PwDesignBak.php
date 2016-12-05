@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignBak.php 17555 2012-09-06 09:43:13Z gao.wanggao $
- * @package
  */
 class PwDesignBak
 {
@@ -29,8 +30,8 @@ class PwDesignBak
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @param int        $type
      * @param string|int $pk
      * @param array      $info

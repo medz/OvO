@@ -2,13 +2,13 @@
 
 
 /**
- * 基础路由
+ * 基础路由.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AbstractPwRoute.php 25182 2013-03-06 07:54:07Z long.shi $
- * @package route
  */
 abstract class AbstractPwRoute extends AbstractWindRoute
 {
@@ -20,6 +20,7 @@ abstract class AbstractPwRoute extends AbstractWindRoute
             $this->default_m = $default_m;
         }
     }
+
     /**
      * @return field_type
      */

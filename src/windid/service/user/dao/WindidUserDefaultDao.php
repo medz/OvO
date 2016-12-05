@@ -7,8 +7,8 @@ Wind::import('WSRV:user.dao.WindidUserInterface');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserDefaultDao.php 24398 2013-01-30 02:45:05Z jieyin $
- * @package windid.service.user.dao
  */
 class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
 {

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户搜索
+ * 用户搜索.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserSo.php 20572 2012-10-31 06:50:17Z jinlong.panjl $
- * @package service.user.vo
  */
 class PwUserSo
 {
@@ -15,9 +15,10 @@ class PwUserSo
     protected $_orderby = array();
 
     /**
-     * 根据用户名搜索
+     * 根据用户名搜索.
      *
-     * @param  string   $name
+     * @param string $name
+     *
      * @return PwUserSo
      */
     public function setUsername($name)
@@ -28,9 +29,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的用户ID
+     * 设置查询的用户ID.
      *
-     * @param  int|array $uid
+     * @param int|array $uid
+     *
      * @return PwUserSo
      */
     public function setUid($uid)
@@ -41,9 +43,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的email
+     * 设置查询的email.
      *
-     * @param  string   $email
+     * @param string $email
+     *
      * @return PwUserSo
      */
     public function setEmail($email)
@@ -54,9 +57,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的用户组
+     * 设置查询的用户组.
      *
-     * @param  int|array $gid
+     * @param int|array $gid
+     *
      * @return PwUserSo
      */
     public function setGid($gid)
@@ -67,9 +71,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的用户组
+     * 设置查询的用户组.
      *
-     * @param  int|array $memberid
+     * @param int|array $memberid
+     *
      * @return PwUserSo
      */
     public function setMemberid($memberid)
@@ -80,9 +85,10 @@ class PwUserSo
     }
 
     /**
-     * 设置用户的性别  | 该查询字段没有索引
+     * 设置用户的性别  | 该查询字段没有索引.
      *
-     * @param  int      $gender
+     * @param int $gender
+     *
      * @return PwUserSo
      */
     public function setGender($gender)
@@ -95,7 +101,8 @@ class PwUserSo
     /**
      * 设置居住地地址
      *
-     * @param  int      $areaid
+     * @param int $areaid
+     *
      * @return PwUserSo
      */
     public function setLocation($areaid)
@@ -108,7 +115,8 @@ class PwUserSo
     /**
      * 设置家庭地址
      *
-     * @param  int      $areaid
+     * @param int $areaid
+     *
      * @return PwUserSo
      */
     public function setHometown($areaid)
@@ -119,9 +127,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的regdate注册时间
+     * 设置查询的regdate注册时间.
      *
-     * @param  int      $regdate
+     * @param int $regdate
+     *
      * @return PwUserSo
      */
     public function setRegdate($regdate)
@@ -132,9 +141,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的postnum发帖量 | 无索引  请谨慎使用
+     * 设置查询的postnum发帖量 | 无索引  请谨慎使用.
      *
-     * @param  int      $asc
+     * @param int $asc
+     *
      * @return PwUserSo
      */
     public function orderbyPostnum($asc)
@@ -145,9 +155,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的lastvisit上次访问时间 | 无索引  请谨慎使用
+     * 设置查询的lastvisit上次访问时间 | 无索引  请谨慎使用.
      *
-     * @param  int      $asc
+     * @param int $asc
+     *
      * @return PwUserSo
      */
     public function orderbyLastvisit($asc)
@@ -158,9 +169,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的lastpost上次递交帖子的时间 | 无索引  请谨慎使用
+     * 设置查询的lastpost上次递交帖子的时间 | 无索引  请谨慎使用.
      *
-     * @param  int      $asc
+     * @param int $asc
+     *
      * @return PwUserSo
      */
     public function orderbyLastpost($asc)
@@ -171,9 +183,10 @@ class PwUserSo
     }
 
     /**
-     * 设置查询的regdate注册时间 | 无索引  请谨慎使用 | 由于注册时间后台可以更改，所以不能使用UID
+     * 设置查询的regdate注册时间 | 无索引  请谨慎使用 | 由于注册时间后台可以更改，所以不能使用UID.
      *
-     * @param  int      $asc
+     * @param int $asc
+     *
      * @return PwUserSo
      */
     public function orderbyRegdate($asc)
@@ -184,7 +197,7 @@ class PwUserSo
     }
 
     /**
-     * 获得查询数据
+     * 获得查询数据.
      *
      * @return array
      */
@@ -194,7 +207,7 @@ class PwUserSo
     }
 
     /**
-     * 获得排序数据
+     * 获得排序数据.
      *
      * @return array
      */

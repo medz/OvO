@@ -1,19 +1,20 @@
 <?php
 /**
- * domain-DS
+ * domain-DS.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package service.domain
  */
 class PwDomain
 {
     /**
-     * 添加一个个性域名
+     * 添加一个个性域名.
      *
-     * @param  array       $data
+     * @param array $data
+     *
      * @return bool|number
      */
     public function replaceDomain(PwDomainDm $dm)
@@ -26,9 +27,10 @@ class PwDomain
     }
 
     /**
-     * 根据type更新
+     * 根据type更新.
      *
-     * @param  PwDomainDm    $dm
+     * @param PwDomainDm $dm
+     *
      * @return bool|Ambigous <number, boolean, rowCount>
      */
     public function updateByDomainType(PwDomainDm $dm)
@@ -44,9 +46,10 @@ class PwDomain
     }
 
     /**
-     * 根据key更新
+     * 根据key更新.
      *
-     * @param  PwDomainDm    $dm
+     * @param PwDomainDm $dm
+     *
      * @return bool|Ambigous <number, boolean, rowCount>
      */
     public function updateByDomainKey(PwDomainDm $dm)
@@ -62,9 +65,10 @@ class PwDomain
     }
 
     /**
-     * 根据type删除
+     * 根据type删除.
      *
-     * @param  string $type
+     * @param string $type
+     *
      * @return number
      */
     public function deleteByDomainType($type)
@@ -77,9 +81,10 @@ class PwDomain
     }
 
     /**
-     * 根据key删除
+     * 根据key删除.
      *
-     * @param  unknown_type  $key
+     * @param unknown_type $key
+     *
      * @return bool|Ambigous <number, number>
      */
     public function deleteByDomainKey($key)
@@ -92,10 +97,11 @@ class PwDomain
     }
 
     /**
-     * 根据key获取
+     * 根据key获取.
      *
-     * @param  unknown_type $key
-     * @return Ambigous     <multitype:, multitype:unknown , mixed>
+     * @param unknown_type $key
+     *
+     * @return Ambigous <multitype:, multitype:unknown , mixed>
      */
     public function getByDomainKey($key)
     {
@@ -107,10 +113,11 @@ class PwDomain
     }
 
     /**
-     * 根据域名和根域名获取
+     * 根据域名和根域名获取.
      *
-     * @param  string $domain
-     * @param  string $root
+     * @param string $domain
+     * @param string $root
+     *
      * @return array
      */
     public function getByDomainAndRoot($domain, $root)
@@ -123,7 +130,7 @@ class PwDomain
     }
 
     /**
-     * 仅供计划任务用
+     * 仅供计划任务用.
      *
      * @return array
      */
@@ -133,9 +140,10 @@ class PwDomain
     }
 
     /**
-     * 根据类型查询
+     * 根据类型查询.
      *
-     * @param  string $appType
+     * @param string $appType
+     *
      * @return array
      */
     public function getByType($type)
@@ -144,10 +152,11 @@ class PwDomain
     }
 
     /**
-     * 根据域名和类型查询
+     * 根据域名和类型查询.
      *
-     * @param  string $domain
-     * @param  string $type
+     * @param string $domain
+     * @param string $type
+     *
      * @return array
      */
     public function getByDomainAndType($domain, $type)
@@ -156,10 +165,11 @@ class PwDomain
     }
 
     /**
-     * 根据域名查询
+     * 根据域名查询.
      *
-     * @param  string $domain
-     * @param  string $type
+     * @param string $domain
+     * @param string $type
+     *
      * @return array
      */
     public function getByDomain($domain)
@@ -168,8 +178,7 @@ class PwDomain
     }
 
     /**
-     * 获取所有域名
-     *
+     * 获取所有域名.
      */
     public function getAll()
     {
@@ -177,10 +186,11 @@ class PwDomain
     }
 
     /**
-     * 根据Id和类型查询
+     * 根据Id和类型查询.
      *
-     * @param  string $type
-     * @param  int    $id
+     * @param string $type
+     * @param int    $id
+     *
      * @return array
      */
     public function getByTypeAndId($type, $id)
@@ -194,10 +204,11 @@ class PwDomain
     }
 
     /**
-     * 根据某一类型和id批量查询
+     * 根据某一类型和id批量查询.
      *
-     * @param  string $type
-     * @param  array  $ids
+     * @param string $type
+     * @param array  $ids
+     *
      * @return array
      */
     public function fetchByTypeAndId($type, $ids)

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 邀请码DM
+ * 邀请码DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteCodeDm.php 19073 2012-10-10 08:33:40Z xiaoxia.xuxx $
- * @package service.invite
  */
 class PwInviteCodeDm extends PwBaseDm
 {
@@ -16,7 +16,8 @@ class PwInviteCodeDm extends PwBaseDm
     /**
      * 设置邀请码
      *
-     * @param  string         $code
+     * @param string $code
+     *
      * @return PwInviteCodeDm
      */
     public function setCode($code)
@@ -27,9 +28,10 @@ class PwInviteCodeDm extends PwBaseDm
     }
 
     /**
-     * 设置邀请码购买者ID
+     * 设置邀请码购买者ID.
      *
-     * @param  int            $uid
+     * @param int $uid
+     *
      * @return PwInviteCodeDm
      */
     public function setCreateUid($uid)
@@ -40,9 +42,10 @@ class PwInviteCodeDm extends PwBaseDm
     }
 
     /**
-     * 设置被邀请的用户ID
+     * 设置被邀请的用户ID.
      *
-     * @param  int            $uid
+     * @param int $uid
+     *
      * @return PwInviteCodeDm
      */
     public function setInvitedUid($uid)
@@ -55,7 +58,8 @@ class PwInviteCodeDm extends PwBaseDm
     /**
      * 设置邀请码的状态
      *
-     * @param  int            $ifused
+     * @param int $ifused
+     *
      * @return PwInviteCodeDm
      */
     public function setIfused($ifused)
@@ -66,9 +70,10 @@ class PwInviteCodeDm extends PwBaseDm
     }
 
     /**
-     * 设置邀请码的购买时间
+     * 设置邀请码的购买时间.
      *
-     * @param  int            $createdTime
+     * @param int $createdTime
+     *
      * @return PwInviteCodeDm
      */
     public function setCreatedTime($createdTime)
@@ -79,9 +84,10 @@ class PwInviteCodeDm extends PwBaseDm
     }
 
     /**
-     * 设置邀请码的被使用时间
+     * 设置邀请码的被使用时间.
      *
-     * @param  int            $modifiedTime
+     * @param int $modifiedTime
+     *
      * @return PwInviteCodeDm
      */
     public function setModifiedTime($modifiedTime)

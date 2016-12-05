@@ -2,8 +2,7 @@
 
 
 /**
- * 话题前台
- *
+ * 话题前台.
  */
 class IndexController extends PwBaseController
 {
@@ -47,7 +46,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 我的话题
+     * 我的话题.
      */
     public function myAction()
     {
@@ -107,8 +106,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     *
-     * 关注话题
+     * 关注话题.
      */
     public function attentionAction()
     {
@@ -132,8 +130,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 话题聚合页 - 内容
-     *
+     * 话题聚合页 - 内容.
      */
     public function viewAction()
     {
@@ -188,7 +185,7 @@ class IndexController extends PwBaseController
             }
         }
         $args = array(
-            'id' => $tag['tag_id'],
+            'id'   => $tag['tag_id'],
             'type' => $type,
         );
         $this->setOutput($this->_checkAllowManage(), 'allowManage');
@@ -217,8 +214,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 屏蔽操作
-     *
+     * 屏蔽操作.
      */
     public function doshieldAction()
     {
@@ -248,8 +244,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 关注话题榜单
-     *
+     * 关注话题榜单.
      */
     public function attentionlistAction()
     {
@@ -264,8 +259,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 编辑帖子阅读页话题
-     *
+     * 编辑帖子阅读页话题.
      */
     public function editReadTagAction()
     {
@@ -313,8 +307,7 @@ class IndexController extends PwBaseController
                     ->setParamId($tid)
                     ->setIfHot(1)
                     ->setCreatedTime(Pw::getTime())
-                    ->setCreateUid($this->loginUser->uid)
-            ;
+                    ->setCreateUid($this->loginUser->uid);
         }
         $result = $this->_getTagService()->updateTags($typeId, $tid, $dmArray);
         if ($result instanceof PwError) {
@@ -324,8 +317,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 获取热门话题
-     *
+     * 获取热门话题.
      */
     public function getHotTagsAction()
     {
@@ -335,8 +327,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 话题小名片
-     *
+     * 话题小名片.
      */
     public function cardAction()
     {
@@ -359,8 +350,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 检测屏蔽权限
-     *
+     * 检测屏蔽权限.
      */
     private function _checkAllowManage()
     {
@@ -372,8 +362,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 检测编辑权限
-     *
+     * 检测编辑权限.
      */
     private function _checkAllowEdit($tid)
     {
@@ -386,8 +375,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 设置热门话题
-     *
+     * 设置热门话题.
      */
     private function _setHotTagList($hotTags)
     {
@@ -417,7 +405,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 分类DS
+     * 分类DS.
      *
      * @return PwTagCateGory
      */
@@ -427,7 +415,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 关注DS
+     * 关注DS.
      *
      * @return PwTagAttention
      */

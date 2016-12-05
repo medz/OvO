@@ -7,10 +7,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOrderDao.php 7491 2012-04-06 10:14:44Z jieyin $
- * @package forum
  */
-
 class PwOrderDao extends PwBaseDao
 {
     protected $_table = 'pay_order';
@@ -91,6 +90,7 @@ class PwOrderDao extends PwBaseDao
     {
         return $this->_update($id, $fields);
     }
+
     /*
     public function updateForum($fid, $fields, $increaseFields = array()) {
         if (!$fields = $this->_filterStruct($fields)) {

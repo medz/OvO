@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudAppRouter
 {
     public function getAppsByPage($page)
@@ -8,8 +8,8 @@ class ACloudAppRouter
         $apps = $this->getApps();
         $tmp = array();
         foreach ($apps as $app => $config) {
-            if (isset($config ['page']) && in_array($page, $config ['page'])) {
-                $tmp [] = $app;
+            if (isset($config['page']) && in_array($page, $config['page'])) {
+                $tmp[] = $app;
             }
         }
 
@@ -19,7 +19,7 @@ class ACloudAppRouter
     public function getApps()
     {
         $apps = array();
-        $apps ['search'] = array('page' => array('search', 'searcher'));
+        $apps['search'] = array('page' => array('search', 'searcher'));
 
         return $apps;
     }

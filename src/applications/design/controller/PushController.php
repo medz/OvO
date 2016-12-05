@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PushController.php 28899 2013-05-29 07:23:48Z gao.wanggao $
- * @package
  */
 class PushController extends PwBaseController
 {
@@ -75,7 +76,6 @@ class PushController extends PwBaseController
         $this->setOutput($option, 'html');
         $this->showMessage('operate.success');
     }
-
 
     public function doaddAction()
     {

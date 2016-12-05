@@ -3,14 +3,13 @@
 Wind::import('SRV:forum.srv.PwThreadList');
 
 /**
- * 版块相关页面
+ * 版块相关页面.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: ForumController.php 28803 2013-05-24 07:58:21Z jieyin $
- * @package forum
  */
-
 class ForumController extends PwBaseController
 {
     public function run()
@@ -70,7 +69,7 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 我的版块
+     * 我的版块.
      */
     public function myAction()
     {
@@ -120,7 +119,7 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 版块列表 弹窗
+     * 版块列表 弹窗.
      */
     public function listAction()
     {
@@ -166,7 +165,7 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 加入版块
+     * 加入版块.
      */
     public function joinAction()
     {
@@ -192,7 +191,7 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 退出版块
+     * 退出版块.
      */
     public function quitAction()
     {
@@ -267,9 +266,10 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 格式化数据  把字符串"1,版块1,2,版块2"格式化为数组
+     * 格式化数据  把字符串"1,版块1,2,版块2"格式化为数组.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return array
      */
     public static function splitStringToArray($string)
@@ -286,10 +286,11 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 加入版块 - 更新我的版块缓存数据
+     * 加入版块 - 更新我的版块缓存数据.
      *
-     * @param  array $userInfo
-     * @param  array $foruminfo
+     * @param array $userInfo
+     * @param array $foruminfo
+     *
      * @return bool
      */
     private function _addJoionForum($userInfo, $foruminfo)
@@ -306,10 +307,11 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 推出版块 - 更新我的版块缓存数据
+     * 推出版块 - 更新我的版块缓存数据.
      *
-     * @param  array $userInfo
-     * @param  int   $fid
+     * @param array $userInfo
+     * @param int   $fid
+     *
      * @return bool
      */
     private function _removeJoionForum($userInfo, $fid)
@@ -342,9 +344,10 @@ class ForumController extends PwBaseController
     }
 
     /**
-     * 格式化我的版块缓存数据结构
+     * 格式化我的版块缓存数据结构.
      *
-     * @param  array  $array 格式化成"1,版块1,2,版块2"
+     * @param array $array 格式化成"1,版块1,2,版块2"
+     *
      * @return string
      */
     private static function _formatJoinForum($array)

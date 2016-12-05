@@ -8,16 +8,17 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidCreditSetService.php 24718 2013-02-17 06:42:06Z jieyin $
- * @package src.service.credit
  */
 class WindidCreditSetService
 {
     /**
-     * 设置用户积分
+     * 设置用户积分.
      *
      * @param  array $credit 积分配置信息<array('1' => array('name'=>?,'unit'=>?,'descrip'=>?), '2' => ?, ...)>
-     * @param  array $new 新增加的积分
+     * @param array $new 新增加的积分
+     *
      * @return bool
      */
     public function setCredits($credits, $newCredit = array())
@@ -71,7 +72,7 @@ class WindidCreditSetService
     }
 
     /**
-     * 删除积分
+     * 删除积分.
      *
      * 涉及更新：
      * 1、windid上的积分设置
@@ -79,7 +80,8 @@ class WindidCreditSetService
      * 3、用户积分的相关字段设置
      * 3.1: 如果积分字段在8以内则只是清楚该列数据，如果积分字段在8以上，删除对应字段
      *
-     * @param  int          $creditId 积分ID
+     * @param int $creditId 积分ID
+     *
      * @return PwError|bool
      */
     public function deleteCredit($creditId)
@@ -97,7 +99,7 @@ class WindidCreditSetService
     }
 
     /**
-     * 获取DS
+     * 获取DS.
      *
      * @return PwUserDataExpand
      */

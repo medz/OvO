@@ -4,8 +4,8 @@ Wind::import('SRC:bootstrap.bootstrap');
 
 /**
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: windidclientBoot.php 24756 2013-02-20 06:35:04Z jieyin $
- * @package wekit
  */
 class windidclientBoot extends bootstrap
 {
@@ -15,7 +15,7 @@ class windidclientBoot extends bootstrap
     }
 
     /**
-     * 获取全局配置
+     * 获取全局配置.
      *
      * @return array
      */
@@ -25,7 +25,7 @@ class windidclientBoot extends bootstrap
     }
 
     /**
-     * 获取当前时间戳
+     * 获取当前时间戳.
      *
      * @return int
      */
@@ -40,7 +40,7 @@ class windidclientBoot extends bootstrap
     }
 
     /**
-     * 获得登录用户信息
+     * 获得登录用户信息.
      *
      * @return PwUserBo
      */

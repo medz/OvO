@@ -13,9 +13,10 @@ define('USER_FORUM_NOT_EXIST', 303);
 class ACloudVerCommonUser extends ACloudVerCommonBase
 {
     /**
-     * 根据用户ID获得用户所有相关信息
+     * 根据用户ID获得用户所有相关信息.
      *
-     * @param  int   $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function getByUid($uid)
@@ -33,9 +34,10 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 根据用户名字获得用户数据信息
+     * 根据用户名字获得用户数据信息.
      *
-     * @param  string $username 用户名
+     * @param string $username 用户名
+     *
      * @return array
      */
     public function getByName($username)
@@ -83,9 +85,10 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 获取某用户加入的版块
+     * 获取某用户加入的版块.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getFavoritesForumByUid($uid)
@@ -103,10 +106,11 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 加入版块
+     * 加入版块.
      *
-     * @param  int   $uid
-     * @param  int   $fid
+     * @param int $uid
+     * @param int $fid
+     *
      * @return array
      */
     public function addFavoritesForumByUid($uid, $fid)
@@ -136,10 +140,11 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 用户登录
+     * 用户登录.
      *
-     * @param  string $username 用户登录的帐号
-     * @param  string $password 用户登录的密码
+     * @param string $username 用户登录的帐号
+     * @param string $password 用户登录的密码
+     *
      * @return array
      */
     public function userLogin($username, $password)
@@ -154,7 +159,7 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 用户注册信息
+     * 用户注册信息.
      *
      * @return bool|int
      */
@@ -188,10 +193,11 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
     }
 
     /**
-     * 编辑email
+     * 编辑email.
      *
-     * @param  int          $uid   用户id
-     * @param  int          $email email
+     * @param int $uid   用户id
+     * @param int $email email
+     *
      * @return bool|PwError
      */
     public function updateEmail($uid, $email)

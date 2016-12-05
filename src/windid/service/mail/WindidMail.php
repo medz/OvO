@@ -1,14 +1,13 @@
 <?php
 
 
-
 /**
  * 邮件公共服务
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMail.php 23833 2013-01-16 06:41:42Z jieyin $
- * @package windid.service.mail
  */
 class WindidMail
 {
@@ -26,15 +25,16 @@ class WindidMail
         $this->_mail->setFrom($config->sendmail);
 
         $this->_config = array('host' => $config->host, 'port' => $config->port, //'name' => 'localhost',
-            'auth' => $config->isauth, 'user' => $config->user, 'password' => $config->password, );
+            'auth'                    => $config->isauth, 'user' => $config->user, 'password' => $config->password, );
     }
 
     /**
-     * 发送邮件
+     * 发送邮件.
      *
      * @param string $toemail 收件人
      * @param string $subject 邮件标题
      * @param  string $message 邮件内容
+     *
      * @return bool
      */
     public function send($toemail, $subject, $message)

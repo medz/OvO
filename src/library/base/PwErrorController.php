@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 错误处理
+ * 错误处理.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwErrorController.php 1532 2011-12-15上午11:00:42 xiaoxiao $
- * @package library.base
  */
 class PwErrorController extends WindErrorHandler
 {
@@ -28,7 +28,7 @@ class PwErrorController extends WindErrorHandler
     }
 
     /**
-     * 错误提示
+     * 错误提示.
      *
      * @see WindErrorHandler::run()
      */
@@ -103,11 +103,12 @@ class PwErrorController extends WindErrorHandler
     }
 
     /**
-     * 风格设置
+     * 风格设置.
      *
      * 设置当前页面风格，需要两个参数，$type风格类型，$theme该类型下风格
      *
      * @see WindSimpleController::setTheme()
+     *
      * @param string $type  风格类型(site,space,area...)
      * @param string $theme 风格别名
      */

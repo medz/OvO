@@ -7,17 +7,19 @@ Wind::import('SRV:design.srv.model.PwDesignModelBase');
  *  decorateAddProperty 为插入表单值修饰
  *  decorateEditProperty 为修改表单值修饰
  *  _getData 获取数据
- * </note>
+ * </note>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignThreadDataService.php 25436 2013-03-15 08:45:34Z gao.wanggao $
- * @package
  */
 class PwDesignThreadDataService extends PwDesignModelBase
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateAddProperty()
      */
     public function decorateAddProperty($model)
@@ -35,7 +37,8 @@ class PwDesignThreadDataService extends PwDesignModelBase
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateEditProperty()
      */
     public function decorateEditProperty($moduleBo)
@@ -55,7 +58,8 @@ class PwDesignThreadDataService extends PwDesignModelBase
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateSaveProperty()
      */
     public function decorateSaveProperty($property, $moduleid)
@@ -145,7 +149,8 @@ class PwDesignThreadDataService extends PwDesignModelBase
     }
 
     /**
-     * 用于推送时的指定数据获取
+     * 用于推送时的指定数据获取.
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::_fetchData()
      */
     protected function fetchData($ids)
@@ -196,8 +201,8 @@ class PwDesignThreadDataService extends PwDesignModelBase
 
             $list[$k]['forum_name'] = $this->_filterForumHtml($forums[$v['fid']]['name']);
             $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid']), '', 'pw');
-            $list[$k]['tType'] = isset($tTypes[$v['topic_type']]['name']) ? $tTypes[$v['topic_type']]['name'] : '' ;
-            $list[$k]['tType_url'] = isset($tTypes[$v['topic_type']]['id']) ? WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid'], 'type' => $tTypes[$v['topic_type']]['id']), '', 'pw') : '' ;
+            $list[$k]['tType'] = isset($tTypes[$v['topic_type']]['name']) ? $tTypes[$v['topic_type']]['name'] : '';
+            $list[$k]['tType_url'] = isset($tTypes[$v['topic_type']]['id']) ? WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid'], 'type' => $tTypes[$v['topic_type']]['id']), '', 'pw') : '';
             $list[$k]['thumb_attach'] = $attachs[$v['tid']]['path'] ? $attachs[$v['tid']]['path'] : '';
         }
 
@@ -222,6 +227,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
     /**
      * 过滤版块名称html
      * Enter description here ...
+     *
      * @param string $forumname
      */
     private function _filterForumHtml($forumname)

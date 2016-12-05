@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPage.php 18599 2012-09-24 03:02:56Z gao.wanggao $
- * @package
  */
 class PwDesignPage
 {
@@ -46,6 +47,7 @@ class PwDesignPage
     /**
      * 按路由获取所有页面
      * Enter description here ...
+     *
      * @param string $router
      */
     public function getPageByRouter($router)
@@ -77,7 +79,8 @@ class PwDesignPage
     }
 
     /**
-     * 查找module 所属的page页   用于后台查找
+     * 查找module 所属的page页   用于后台查找.
+     *
      * @param string $field
      * @param string $value
      */

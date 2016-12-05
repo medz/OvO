@@ -2,15 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
- * TODO 话题屏蔽
+ * TODO 话题屏蔽.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwShieldTagDoTopic.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package wind
  */
 class PwShieldTagDoTopic extends iPwGleanDoHookProcess
 {

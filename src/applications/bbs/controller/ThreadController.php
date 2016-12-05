@@ -6,20 +6,19 @@ Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('SRV:forum.srv.PwThreadList');
 
 /**
- * 帖子列表页
+ * 帖子列表页.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: ThreadController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package forum
  */
-
 class ThreadController extends PwBaseController
 {
     protected $topictypes;
 
     /**
-     * 帖子列表页
+     * 帖子列表页.
      */
     public function run()
     {
@@ -121,10 +120,10 @@ class ThreadController extends PwBaseController
         }
         $seoBo->init('bbs', 'thread', $fid);
         $seoBo->set(array(
-            '{forumname}' => $pwforum->foruminfo['name'],
+            '{forumname}'        => $pwforum->foruminfo['name'],
             '{forumdescription}' => Pw::substrs($pwforum->foruminfo['descrip'], 100, 0, false),
-            '{classification}' => $this->_getSubTopictypeName($type),
-            '{page}' => $threadList->page,
+            '{classification}'   => $this->_getSubTopictypeName($type),
+            '{page}'             => $threadList->page,
         ));
         Wekit::setV('seo', $seoBo);
         Pw::setCookie('visit_referer', 'fid_'.$fid.'_page_'.$threadList->page, 300);

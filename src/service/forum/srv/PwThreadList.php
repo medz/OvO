@@ -3,7 +3,7 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 版块显示帖子列表
+ * 版块显示帖子列表.
  *
  * -> 1.check 检查帖子显示运行环境
  * -> 2.appendDo(*) 增加帖子显示时的行为动作,例:投票、悬赏等(可选)
@@ -13,10 +13,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadList.php 24045 2013-01-21 05:34:56Z jieyin $
- * @package forum
  */
-
 class PwThreadList extends PwBaseHookService
 {
     public $page = 1;
@@ -40,23 +39,23 @@ class PwThreadList extends PwBaseHookService
             'headtopic_3' => '置顶3',
             'headtopic_2' => '置顶2',
             'headtopic_1' => '置顶1',
-            'digest' => '精华',
-            'lock' => '锁定',
+            'digest'      => '精华',
+            'lock'        => '锁定',
 
-            'vote' => '投票',
+            'vote'   => '投票',
             'reward' => '悬赏',
-            'shop' => '商品',
+            'shop'   => '商品',
             'debate' => '辩论',
             'active' => '活动',
 
             'topichot' => '热门帖',
             'topicnew' => '新帖',
-            'topic' => '普通帖',
+            'topic'    => '普通帖',
 
-            'img' => '图片帖',
-            'file' => '附件',
+            'img'   => '图片帖',
+            'file'  => '附件',
             'music' => '音乐',
-            'like' => '喜欢帖',
+            'like'  => '喜欢帖',
         );
         $this->uploadIcon = array(
             1 => 'img', 2 => 'txt', 3 => 'img', 4 => 'file', 5 => 'img', 6 => 'txt', 7 => 'img',

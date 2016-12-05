@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadMergeDao.php 21335 2012-12-05 03:39:26Z jieyin $
- * @package forum
  */
-
 class PwThreadMergeDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads';

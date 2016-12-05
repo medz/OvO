@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户教育经历DS
+ * 用户教育经历DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwEducation.php 1532 2012-1-13上午10:41:23 xiaoxiao $
- * @package src.service.user.hooks.experience_education
  */
 class PwEducation
 {
     /**
-     * 添加教育经历
+     * 添加教育经历.
      *
-     * @param  PwEducationDm $dm
+     * @param PwEducationDm $dm
+     *
      * @return PwError|int
      */
     public function addEducation($dm)
@@ -30,10 +31,11 @@ class PwEducation
     }
 
     /**
-     * 更新教育经历
+     * 更新教育经历.
      *
-     * @param  id               $id
-     * @param  PwEducationDm    $dm
+     * @param id            $id
+     * @param PwEducationDm $dm
+     *
      * @return PwError|bool|int
      */
     public function editEducation($id, $dm)
@@ -55,10 +57,11 @@ class PwEducation
     }
 
     /**
-     * 删除教育经历
+     * 删除教育经历.
      *
-     * @param  int         $id  教育经历ID
-     * @param  int         $uid 对应用户ID
+     * @param int $id  教育经历ID
+     * @param int $uid 对应用户ID
+     *
      * @return PwError|int
      */
     public function deleteEducation($id, $uid)
@@ -71,10 +74,11 @@ class PwEducation
     }
 
     /**
-     * 根据ID获得用户教育经历
+     * 根据ID获得用户教育经历.
      *
-     * @param  int           $id  经历ID
-     * @param  int           $uid 用户ID
+     * @param int $id  经历ID
+     * @param int $uid 用户ID
+     *
      * @return PwError|array
      */
     public function getEducationById($id, $uid)
@@ -87,9 +91,10 @@ class PwEducation
     }
 
     /**
-     * 根据用户ID删除用户的教育经历
+     * 根据用户ID删除用户的教育经历.
      *
-     * @param  int         $uid
+     * @param int $uid
+     *
      * @return PwError|int
      */
     public function deleteEducationByUid($uid)
@@ -102,11 +107,12 @@ class PwEducation
     }
 
     /**
-     * 根据用户ID获得用户教育经历列表
+     * 根据用户ID获得用户教育经历列表.
      *
-     * @param  int   $uid
-     * @param  int   $number 返回条数，默认为10
-     * @param  int   $start  开始搜索的位置
+     * @param int $uid
+     * @param int $number 返回条数，默认为10
+     * @param int $start  开始搜索的位置
+     *
      * @return array
      */
     public function getByUid($uid, $number = 10, $start = 0)
@@ -119,9 +125,10 @@ class PwEducation
     }
 
     /**
-     * 根据用户ID统计该用户拥有的教育经历
+     * 根据用户ID统计该用户拥有的教育经历.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)
@@ -134,7 +141,7 @@ class PwEducation
     }
 
     /**
-     * 获得教育经历相关dao
+     * 获得教育经历相关dao.
      *
      * @return PwEducationDao
      */

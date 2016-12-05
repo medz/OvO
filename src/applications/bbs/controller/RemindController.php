@@ -6,10 +6,9 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
-
 class RemindController extends PwBaseController
 {
     public function beforeAction($handlerAdapter)
@@ -25,7 +24,6 @@ class RemindController extends PwBaseController
 
     /**
      * @下拉获取用户数据
-     *
      */
     public function run()
     {
@@ -51,7 +49,6 @@ class RemindController extends PwBaseController
 
     /**
      * @提醒获取好友弹窗
-     *
      */
     public function friendAction()
     {
@@ -67,8 +64,7 @@ class RemindController extends PwBaseController
     }
 
     /**
-     * 获取用户关注数据，ajax输出
-     *
+     * 获取用户关注数据，ajax输出.
      */
     public function getfollowAction()
     {
@@ -92,8 +88,7 @@ class RemindController extends PwBaseController
     }
 
     /**
-     * 组装用户
-     *
+     * 组装用户.
      */
     private function _buildRemindUsers($uids)
     {
@@ -122,7 +117,7 @@ class RemindController extends PwBaseController
     }
 
     /**
-     * PwAttentionService
+     * PwAttentionService.
      *
      * @return PwAttentionService
      */
@@ -148,7 +143,7 @@ class RemindController extends PwBaseController
     }
 
     /**
-     * PwUserBehavior
+     * PwUserBehavior.
      *
      * @return PwUserBehavior
      */
@@ -158,7 +153,7 @@ class RemindController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */

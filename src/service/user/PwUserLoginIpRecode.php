@@ -2,22 +2,23 @@
 
 /**
  * 用户登录IP记录
- * 同一个IP每天尝试登录的次数限制
+ * 同一个IP每天尝试登录的次数限制.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserLoginIpRecode.php 5811 2012-03-12 10:36:04Z xiaoxia.xuxx $
- * @package src.service.user
  */
 class PwUserLoginIpRecode
 {
     /**
-     * 更新登录记录
+     * 更新登录记录.
      *
-     * @param  string $ip
-     * @param  int    $lastTime
-     * @param  int    $error_count
+     * @param string $ip
+     * @param int    $lastTime
+     * @param int    $error_count
+     *
      * @return bool
      */
     public function updateRecode($ip, $lastTime, $error_count)
@@ -30,9 +31,10 @@ class PwUserLoginIpRecode
     }
 
     /**
-     * 根据IP获得记录
+     * 根据IP获得记录.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return array
      */
     public function getRecode($ip)
@@ -45,7 +47,7 @@ class PwUserLoginIpRecode
     }
 
     /**
-     * 返回用户登录IP限制记录的DAO
+     * 返回用户登录IP限制记录的DAO.
      *
      * @return PwUserLoginIpRecodeDao
      */

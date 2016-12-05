@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 帖子发布流程
+ * 帖子发布流程.
  *
  * -> 1.check 检查帖子发布运行环境
  * -> 2.appendDo(*) 增加帖子发布时的行为动作,例:投票、附件等(可选)
@@ -10,10 +10,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManage.php 22328 2012-12-21 08:46:57Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwThreadManage extends PwBaseHookService
 {
     public $ds;

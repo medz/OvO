@@ -2,13 +2,13 @@
 
 
 /**
- * Pw_task_user的dao
+ * Pw_task_user的dao.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskUserDao.php 16928 2012-08-29 08:54:39Z xiaoxia.xuxx $
- * @package service.task.dao
  */
 class PwTaskUserDao extends PwBaseDao
 {
@@ -23,9 +23,10 @@ class PwTaskUserDao extends PwBaseDao
         'finish_time', );
 
     /**
-     * 添加一条用户任务记录
+     * 添加一条用户任务记录.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function replaceUserTask($data)
@@ -39,10 +40,11 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 更新任务是否周期性
+     * 更新任务是否周期性.
      *
-     * @param  int  $taskid
-     * @param  int  $is_period
+     * @param int $taskid
+     * @param int $is_period
+     *
      * @return bool
      */
     public function updateIsPeriod($taskid, $data)
@@ -57,11 +59,12 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 修改记录
+     * 修改记录.
      *
-     * @param  int   $id
-     * @param  int   $uid
-     * @param  array $data
+     * @param int   $id
+     * @param int   $uid
+     * @param array $data
+     *
      * @return bool
      */
     public function updateByTaskIdAndUid($taskid, $uid, $data)
@@ -76,10 +79,11 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 获取用户的某个任务的具体信息
+     * 获取用户的某个任务的具体信息.
      *
-     * @param  int   $taskid
-     * @param  int   $uid
+     * @param int $taskid
+     * @param int $uid
+     *
      * @return array
      */
     public function get($taskid, $uid)
@@ -92,8 +96,9 @@ class PwTaskUserDao extends PwBaseDao
     /**
      * 批量查询用户任务
      *
-     * @param  array $ids
-     * @param  int   $uid
+     * @param array $ids
+     * @param int   $uid
+     *
      * @return array
      */
     public function gets($ids, $uid)
@@ -107,10 +112,11 @@ class PwTaskUserDao extends PwBaseDao
     /**
      * 根据用户和任务状态查询任务
      *
-     * @param  int   $uid
-     * @param  int   $status
-     * @param  int   $num
-     * @param  int   $start
+     * @param int $uid
+     * @param int $status
+     * @param int $num
+     * @param int $start
+     *
      * @return array
      */
     public function getMyTasksByStatus($uid, $status, $num = 10, $start = 0)
@@ -124,8 +130,9 @@ class PwTaskUserDao extends PwBaseDao
     /**
      * 根据是否周期性查询用户任务
      *
-     * @param  int   $uid
-     * @param  int   $isPeriod
+     * @param int $uid
+     * @param int $isPeriod
+     *
      * @return array
      */
     public function getTasksByIsPeriod($uid, $isPeriod)
@@ -137,10 +144,11 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 根据uid和状态查询总数
+     * 根据uid和状态查询总数.
      *
-     * @param  int $uid
-     * @param  int $status
+     * @param int $uid
+     * @param int $status
+     *
      * @return int
      */
     public function countMyTasksByStatus($uid, $status)
@@ -151,9 +159,10 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 根据任务id删除记录
+     * 根据任务id删除记录.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteByTaskid($id)
@@ -164,9 +173,10 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 根据用户id删除记录
+     * 根据用户id删除记录.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)
@@ -177,9 +187,10 @@ class PwTaskUserDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID列表批量删除信息
+     * 根据用户ID列表批量删除信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return int
      */
     public function batchDeleteByUid($uids)

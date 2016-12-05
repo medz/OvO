@@ -4,13 +4,13 @@ Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
 Wind::import('SRV:task.srv.PwTaskComplete');
 Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
 /**
- * 回帖扩展
+ * 回帖扩展.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskBbsPostDo.php 20491 2012-10-30 08:15:09Z xiaoxia.xuxx $
- * @package service.task.srv.condition
  */
 class PwTaskBbsPostDo extends PwPostDoBase implements PwTaskCompleteInterface
 {

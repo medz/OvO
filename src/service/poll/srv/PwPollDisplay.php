@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 class PwPollDisplay
 {
     public $pollData = array();
@@ -44,7 +43,7 @@ class PwPollDisplay
     }
 
     /**
-     * 聚合内容，投票扩展关联
+     * 聚合内容，投票扩展关联.
      *
      * @return array
      */
@@ -142,7 +141,6 @@ class PwPollThread
 
     private $_pollids = array();
     private $_tids = array();
-
 
     public function __construct($pollids)
     {

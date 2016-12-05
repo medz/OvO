@@ -8,19 +8,19 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserGroupsService.php 24736 2013-02-19 09:24:40Z jieyin $
- * @package src.service.user.srv
  */
-
 class PwUserGroupsService
 {
     protected $_nkey = array('allow_sign', 'sign_max_height', 'sign_ubb', 'sign_ubb_img');
 
     /**
-     * 计算用户综合积分
+     * 计算用户综合积分.
      *
-     * @param  array $strategy 积分计算策略
-     * @param  array $user     用户信息
+     * @param array $strategy 积分计算策略
+     * @param array $user     用户信息
+     *
      * @return int
      */
     public function calculateCredit($strategy, $user)
@@ -42,9 +42,10 @@ class PwUserGroupsService
     }
 
     /**
-     * 获取用户综合积分
+     * 获取用户综合积分.
      *
-     * @param  array $user 用户信息
+     * @param array $user 用户信息
+     *
      * @return int
      */
     public function getCredit($user)
@@ -57,10 +58,11 @@ class PwUserGroupsService
     }
 
     /**
-     * 计算用户所在升级组的ID
+     * 计算用户所在升级组的ID.
      *
-     * @param  int    $credit 综合积分
-     * @param  string $type   member/vip
+     * @param int    $credit 综合积分
+     * @param string $type   member/vip
+     *
      * @return int
      */
     public function calculateLevel($credit)
@@ -81,11 +83,12 @@ class PwUserGroupsService
     }
 
     /**
-     * 通过监测用户数据更新字段，自动更新用户组 (hook)
+     * 通过监测用户数据更新字段，自动更新用户组 (hook).
      *
-     * @param  int   $uid
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $uid
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return bool
      */
     public function updateLevel($uid, $fields, $increaseFields)
@@ -116,7 +119,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 通过监测数据更新字段，自动更新用户组缓存 (hook)
+     * 通过监测数据更新字段，自动更新用户组缓存 (hook).
      */
     public function updateGroupCacheByHook($gids)
     {
@@ -125,7 +128,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 通过监测数据更新字段，自动删除用户组缓存 (hook)
+     * 通过监测数据更新字段，自动删除用户组缓存 (hook).
      */
     public function deleteGroupCacheByHook($gid)
     {
@@ -134,7 +137,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 通过监测数据更新字段，自动更新权限缓存 (hook)
+     * 通过监测数据更新字段，自动更新权限缓存 (hook).
      */
     public function updatePermissionCacheByHook(PwUserPermissionDm $dm)
     {
@@ -147,8 +150,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 更新全局用户组等级名称缓存
-     *
+     * 更新全局用户组等级名称缓存.
      */
     public function updateLevelCache()
     {
@@ -156,7 +158,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 获取全局用户组等级名称缓存
+     * 获取全局用户组等级名称缓存.
      *
      * @return array
      */
@@ -176,7 +178,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 更新所有用户组的指定权限缓存group_right，主要用于帖子阅读页的显示权限判断
+     * 更新所有用户组的指定权限缓存group_right，主要用于帖子阅读页的显示权限判断.
      *
      * @param array $gkey
      */
@@ -189,7 +191,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 获取所有用户组的指定权限缓存group_right
+     * 获取所有用户组的指定权限缓存group_right.
      *
      * @return array
      */
@@ -205,7 +207,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 批量更新用户组的权限缓存
+     * 批量更新用户组的权限缓存.
      *
      * @param array $gids 更新指定gid序列的权限缓存
      */
@@ -218,9 +220,10 @@ class PwUserGroupsService
     }
 
     /**
-     * 获取多个用户组的权限缓存
+     * 获取多个用户组的权限缓存.
      *
      * @param  array $gids 获取指定gid序列权限缓存内容
+     *
      * @return array
      */
     public function getGroupCacheValue($gids = array())
@@ -235,7 +238,7 @@ class PwUserGroupsService
         $permission = array();
         foreach ($result as $key => $value) {
             $permission[$value['gid']][$value['rkey']] = array(
-                'type' => $value['rtype'],
+                'type'  => $value['rtype'],
                 'value' => $value['rvalue'],
             );
         }
@@ -248,9 +251,10 @@ class PwUserGroupsService
     }
 
     /**
-     * 获取单个用户组的权限缓存
+     * 获取单个用户组的权限缓存.
      *
      * @param  int   $gid 获取指定gid的缓存内容
+     *
      * @return array
      */
     public function getGroupCacheValueByGid($gid)
@@ -261,7 +265,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 获得用户Ds
+     * 获得用户Ds.
      *
      * @return PwUser
      */
@@ -271,7 +275,7 @@ class PwUserGroupsService
     }
 
     /**
-     * 获得用户组Ds
+     * 获得用户组Ds.
      *
      * @return PwUserGroups
      */

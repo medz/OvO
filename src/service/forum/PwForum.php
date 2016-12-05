@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForum.php 20973 2012-11-22 10:33:45Z jieyin $
- * @package forum
  */
-
 class PwForum
 {
     const FETCH_MAIN = 1;        //版块主要信息
@@ -20,7 +19,7 @@ class PwForum
     const FETCH_ALL = 7;
 
     /**
-     * 获取版块信息
+     * 获取版块信息.
      *
      * @param int $fid 版块id
      * @param int $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
@@ -36,7 +35,7 @@ class PwForum
     }
 
     /**
-     * 批量获取版块信息
+     * 批量获取版块信息.
      *
      * @param array $fids 版块id
      * @param int   $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
@@ -52,7 +51,7 @@ class PwForum
     }
 
     /**
-     * 获取所有版块信息
+     * 获取所有版块信息.
      *
      * @param int $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                       return array
@@ -63,7 +62,7 @@ class PwForum
     }
 
     /**
-     * 获取普通版块信息 <不包括子版>
+     * 获取普通版块信息 <不包括子版>.
      *
      * @param int $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                       return array
@@ -74,7 +73,7 @@ class PwForum
     }
 
     /**
-     * 获取版块排序
+     * 获取版块排序.
      *
      * @return array
      */
@@ -84,7 +83,7 @@ class PwForum
     }
 
     /**
-     * 增加版块
+     * 增加版块.
      *
      * @param object $forumModel 版块数据模型
      *                           return mixed
@@ -99,7 +98,7 @@ class PwForum
     }
 
     /**
-     * 搜索版块名称
+     * 搜索版块名称.
      *
      * @param string $keyword
      */
@@ -119,7 +118,7 @@ class PwForum
     }
 
     /**
-     * 更新版块信息
+     * 更新版块信息.
      *
      * @param object $dm 更新信息
      * @param int    $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
@@ -135,9 +134,10 @@ class PwForum
     }
 
     /**
-     * 获取子版块
+     * 获取子版块.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getSubForums($fid)
@@ -146,7 +146,7 @@ class PwForum
     }
 
     /**
-     * 更新统计版块的帖子统计数
+     * 更新统计版块的帖子统计数.
      *
      * @param int $fid
      */
@@ -159,7 +159,7 @@ class PwForum
     }
 
     /**
-     * 批量更新版块信息
+     * 批量更新版块信息.
      *
      * @param array  $fids 版块id序列
      * @param object $dm   更新信息
@@ -179,9 +179,10 @@ class PwForum
     }
 
     /**
-     * 删除一个版块
+     * 删除一个版块.
      *
-     * @param  int  $fid 版块id
+     * @param int $fid 版块id
+     *
      * @return bool
      */
     public function deleteForum($fid)
@@ -196,9 +197,9 @@ class PwForum
     protected function _getDaoMap()
     {
         return array(
-            self::FETCH_MAIN => 'forum.dao.PwForumDao',
+            self::FETCH_MAIN       => 'forum.dao.PwForumDao',
             self::FETCH_STATISTICS => 'forum.dao.PwForumStatisticsDao',
-            self::FETCH_EXTRA => 'forum.dao.PwForumExtraDao',
+            self::FETCH_EXTRA      => 'forum.dao.PwForumExtraDao',
         );
     }
 

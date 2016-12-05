@@ -5,15 +5,14 @@ Wind::import('SRV:forum.dm.PwTopicDm');
 Wind::import('SRV:forum.dm.PwForumDm');
 
 /**
- * 帖子管理操作-复制
+ * 帖子管理操作-复制.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDigest.php 14445 2012-07-20 09:16:44Z jinlong.panjl $
- * @package forum
  */
-
 class PwThreadManageDoCopy extends PwThreadManageDo
 {
     public $fid;
@@ -60,9 +59,10 @@ class PwThreadManageDoCopy extends PwThreadManageDo
     }
 
     /**
-     * 设置需要复制到的版块
+     * 设置需要复制到的版块.
      *
-     * @param  int $fid
+     * @param int $fid
+     *
      * @return int
      */
     public function setFid($fid)
@@ -73,9 +73,10 @@ class PwThreadManageDoCopy extends PwThreadManageDo
     }
 
     /**
-     * 设置主题分类
+     * 设置主题分类.
      *
-     * @param  int $topictype
+     * @param int $topictype
+     *
      * @return int
      */
     public function setTopictype($topictype)
@@ -88,7 +89,8 @@ class PwThreadManageDoCopy extends PwThreadManageDo
     /**
      * 复制帖子 | 复制特殊帖、附件等待做。。。
      *
-     * @param  int $topictype
+     * @param int $topictype
+     *
      * @return int
      */
     public function run()

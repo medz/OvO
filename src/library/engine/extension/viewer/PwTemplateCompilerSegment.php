@@ -7,7 +7,7 @@
  * <!--#foreach ($templateList as $key => $tmp) {#-->
  * 		<segment tpl='$tmp' args='array()' alias='batchForeach'/>
  * <!--#}#-->
- * </code>
+ * </code>.
  *
  * 如上将会batchtemp加载的模板都编译到batchForeach缓存文件中保存。
  *
@@ -15,9 +15,8 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTemplateCompilerSegment.php 7486 2012-04-06 09:30:48Z xiaoxia.xuxx $
- * @package wekit
- * @subpackage engine.extension.viewer
  */
 class PwTemplateCompilerSegment extends AbstractWindTemplateCompiler
 {

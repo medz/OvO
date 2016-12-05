@@ -6,8 +6,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: bootstrap.php 24569 2013-02-01 02:23:37Z jieyin $
- * @package wekit
  */
 abstract class bootstrap
 {
@@ -20,7 +20,7 @@ abstract class bootstrap
     protected $_re;
 
     /**
-     * 构造函数
+     * 构造函数.
      */
     public function __construct($re)
     {
@@ -47,19 +47,19 @@ abstract class bootstrap
     }
 
     /**
-     * 获取配置服务提供方
+     * 获取配置服务提供方.
      */
     abstract public function getConfigService();
 
     /**
-     * 获取全局配置
+     * 获取全局配置.
      *
      * @return PwConfigBo
      */
     abstract public function getConfig();
 
     /**
-     * 获取当前时间戳
+     * 获取当前时间戳.
      *
      * @return int
      */
@@ -69,7 +69,7 @@ abstract class bootstrap
     }
 
     /**
-     * 获得登录用户信息
+     * 获得登录用户信息.
      *
      * @return obj
      */
@@ -86,7 +86,7 @@ abstract class bootstrap
     }
 
     /**
-     * 获取全站url信息
+     * 获取全站url信息.
      *
      * @return obj
      */
@@ -120,7 +120,7 @@ abstract class bootstrap
     }
 
     /**
-     * 初始化应用信息
+     * 初始化应用信息.
      */
     public function beforeStart($front = null)
     {

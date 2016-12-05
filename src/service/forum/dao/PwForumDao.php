@@ -7,10 +7,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumDao.php 18802 2012-09-27 10:17:30Z jieyin $
- * @package forum
  */
-
 class PwForumDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum';

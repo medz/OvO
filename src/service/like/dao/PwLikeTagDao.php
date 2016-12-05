@@ -2,18 +2,18 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeTagDao.php 5763 2012-03-10 09:04:11Z gao.wanggao $
- * @package
  */
 class PwLikeTagDao extends PwBaseDao
 {
     protected $_table = 'like_tag';
     protected $_dataStruct = array('tagid', 'uid', 'tagname', 'number');
-
 
     public function getInfo($tagid)
     {

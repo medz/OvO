@@ -6,18 +6,17 @@ Wind::import('SRV:poll.srv.PwPollDisplay');
 Wind::import('SRV:poll.srv.dataSource.PwFetchPollByOrder');
 
 /**
- * 投票模型
+ * 投票模型.
  *
  * 1. run 权限入口
  * </code>
+ *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: TaController.php 3219 2012-01-12 06:43:45Z mingxing.sun $
- * @package admin
- * @subpackage controller
  */
-
 class TaController extends PwBaseController
 {
     public $page = 1;
@@ -32,8 +31,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * 我关注的人参与的投票
-     *
+     * 我关注的人参与的投票.
      */
     public function run()
     {
@@ -88,8 +86,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * 我关注的人发起的投票
-     *
+     * 我关注的人发起的投票.
      */
     public function createAction()
     {
@@ -132,7 +129,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * 获取我关注的用户ID
+     * 获取我关注的用户ID.
      *
      * return array
      */
@@ -175,7 +172,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * 获取投票接口
+     * 获取投票接口.
      *
      * @return PwPoll
      */
@@ -185,7 +182,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */
@@ -195,7 +192,7 @@ class TaController extends PwBaseController
     }
 
     /**
-     * get PwAttentionRecommendFriendsService
+     * get PwAttentionRecommendFriendsService.
      *
      * @return PwAttentionRecommendFriendsService
      */

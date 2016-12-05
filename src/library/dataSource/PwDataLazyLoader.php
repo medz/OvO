@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 类库加载工具
+ * 类库加载工具.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDataLazyLoader.php 8692 2012-04-24 05:56:29Z jieyin $
- * @package controller
  */
-
 class PwDataLazyLoader
 {
     public static $instance = array();

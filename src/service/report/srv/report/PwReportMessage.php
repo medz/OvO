@@ -22,7 +22,6 @@ class PwReportMessage extends PwReportAction
         return array();
     }
 
-
     private function _getWindid()
     {
         return WindidApi::api('message');

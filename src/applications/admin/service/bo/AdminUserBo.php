@@ -6,8 +6,8 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: AdminUserBo.php 23734 2013-01-15 09:10:00Z jieyin $
- * @package src.service.user.bo
  */
 class AdminUserBo
 {

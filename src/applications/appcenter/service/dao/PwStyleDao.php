@@ -2,13 +2,13 @@
 
 
 /**
- * 风格dao
+ * 风格dao.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyleDao.php 18955 2012-10-09 07:42:19Z long.shi $
- * @package service.style.dao
  */
 class PwStyleDao extends PwBaseDao
 {
@@ -17,9 +17,10 @@ class PwStyleDao extends PwBaseDao
     protected $_dataStruct = array('app_id', 'iscurrent', 'style_type', 'name', 'alias', 'logo', 'author_name', 'author_icon', 'author_email', 'website', 'version', 'pwversion', 'created_time', 'modified_time', 'description');
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function addStyle($data)
@@ -28,10 +29,11 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 修改
+     * 修改.
      *
-     * @param  int   $styleid
-     * @param  array $data
+     * @param int   $styleid
+     * @param array $data
+     *
      * @return bool
      */
     public function updateStyle($styleid, $data)
@@ -40,9 +42,10 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int     $styleid
+     * @param int $styleid
+     *
      * @return booelan
      */
     public function deleteStyle($styleid)
@@ -51,7 +54,7 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 统计风格数
+     * 统计风格数.
      *
      * @return int
      */
@@ -75,11 +78,12 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 获取风格列表
+     * 获取风格列表.
      *
-     * @param  int    $offset
-     * @param  int    $limit
-     * @param  string $orderBy
+     * @param int    $offset
+     * @param int    $limit
+     * @param string $orderBy
+     *
      * @return array
      */
     public function getStyleListByType($type = 'site', $num = 10, $start = 0)
@@ -94,7 +98,8 @@ class PwStyleDao extends PwBaseDao
     /**
      * 获取所有风格
      *
-     * @param  string $type
+     * @param string $type
+     *
      * @return array
      */
     public function getAllStyles($type = 'site')
@@ -105,9 +110,10 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 获取风格详细信息
+     * 获取风格详细信息.
      *
-     * @param  int   $styleid
+     * @param int $styleid
+     *
      * @return array
      */
     public function getStyle($styleid)
@@ -130,9 +136,10 @@ class PwStyleDao extends PwBaseDao
     }
 
     /**
-     * 根据ID查找App应用注册信息，返回app数据
+     * 根据ID查找App应用注册信息，返回app数据.
      *
-     * @param  string $appId
+     * @param string $appId
+     *
      * @return array
      */
     public function findByAppId($appId)

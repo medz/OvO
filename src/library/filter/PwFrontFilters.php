@@ -2,13 +2,13 @@
 
 
 /**
- * P9中的一些全局挂载
+ * P9中的一些全局挂载.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwFrontFilters.php 24881 2013-02-25 07:08:35Z jieyin $
- * @package wind
  */
 class PwFrontFilters extends AbstractWindBootstrap
 {
@@ -50,7 +50,7 @@ class PwFrontFilters extends AbstractWindBootstrap
     }
 
     /**
-     * ajax递交编码转换
+     * ajax递交编码转换.
      */
     private function _convertCharsetForAjax()
     {

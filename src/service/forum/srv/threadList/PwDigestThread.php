@@ -4,13 +4,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
 
 /**
- * 获取精华帖子列表
+ * 获取精华帖子列表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDigestThread.php 21318 2012-12-04 09:24:09Z jieyin $
- * @package src.service.forum.srv.threadList
  */
 class PwDigestThread extends PwThreadDataSource
 {
@@ -19,7 +19,7 @@ class PwDigestThread extends PwThreadDataSource
     protected $orderby;
 
     /**
-     * 构造方法
+     * 构造方法.
      *
      * @param PwForumBo $forum
      * @param string    $type
@@ -54,7 +54,7 @@ class PwDigestThread extends PwThreadDataSource
     }
 
     /**
-     * 帖子DS
+     * 帖子DS.
      *
      * @return PwThread
      */
@@ -64,7 +64,7 @@ class PwDigestThread extends PwThreadDataSource
     }
 
     /**
-     * 精华DS
+     * 精华DS.
      *
      * @return PwThreadDigestIndex
      */
@@ -74,10 +74,11 @@ class PwDigestThread extends PwThreadDataSource
     }
 
     /**
-     * 根据帖子ID$sort排序
+     * 根据帖子ID$sort排序.
      *
-     * @param  array $data
-     * @param  array $sort
+     * @param array $data
+     * @param array $sort
+     *
      * @return array
      */
     protected function _sort($data, $sort)

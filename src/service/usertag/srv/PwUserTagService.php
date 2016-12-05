@@ -3,20 +3,21 @@
 Wind::import('SRV:usertag.dm.PwUserTagDm');
 
 /**
- * 个人标签的service
+ * 个人标签的service.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserTagService.php 15027 2012-07-30 09:37:09Z xiaoxia.xuxx $
- * @package usertag.srv
  */
 class PwUserTagService
 {
     /**
-     * 根据用户ID获得用户的标签列表
+     * 根据用户ID获得用户的标签列表.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getUserTagList($uid)
@@ -30,11 +31,12 @@ class PwUserTagService
     }
 
     /**
-     * 添加一个用户的标签
+     * 添加一个用户的标签.
      *
-     * @param  int    $uid
-     * @param  string $tag
-     * @param  int    $time
+     * @param int    $uid
+     * @param string $tag
+     * @param int    $time
+     *
      * @return array
      */
     public function addUserTagToUid($uid, $tag, $time)
@@ -75,11 +77,12 @@ class PwUserTagService
     }
 
     /**
-     * 将用户和用户标签添加关联
+     * 将用户和用户标签添加关联.
      *
-     * @param  int   $uid
-     * @param  int   $tag_id
-     * @param  int   $time
+     * @param int $uid
+     * @param int $tag_id
+     * @param int $time
+     *
      * @return array
      */
     public function addTagRelationWithTagid($uid, $tag_id, $time)
@@ -113,9 +116,10 @@ class PwUserTagService
     }
 
     /**
-     * 是否允许继续添加
+     * 是否允许继续添加.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function allowAdd($uid)
@@ -129,7 +133,7 @@ class PwUserTagService
     }
 
     /**
-     * 获得标签DS
+     * 获得标签DS.
      *
      * @return PwUserTag
      */
@@ -139,7 +143,7 @@ class PwUserTagService
     }
 
     /**
-     * 获得标签关系DS
+     * 获得标签关系DS.
      *
      * @return PwUserTagRelation
      */

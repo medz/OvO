@@ -3,18 +3,18 @@
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:hook.dm.PwHookInjectDm');
 /**
- * inject
+ * inject.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: InjectController.php 28812 2013-05-24 09:08:16Z jieyin $
- * @package hook.admin
  */
 class InjectController extends AdminBaseController
 {
     /**
-     * 添加inject展示页
+     * 添加inject展示页.
      */
     public function addAction()
     {
@@ -25,7 +25,7 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     * 添加inject
+     * 添加inject.
      */
     public function doAddAction()
     {
@@ -44,7 +44,7 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     * 编辑inject展示
+     * 编辑inject展示.
      */
     public function editAction()
     {
@@ -56,7 +56,7 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     * 编辑inject
+     * 编辑inject.
      */
     public function doEditAction()
     {
@@ -83,7 +83,7 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     * 删除injector
+     * 删除injector.
      */
     public function delAction()
     {
@@ -95,7 +95,7 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     * injector详细页
+     * injector详细页.
      */
     public function detailAction()
     {
@@ -107,7 +107,6 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwHooks
      */
     private function _hookDs()
@@ -116,7 +115,6 @@ class InjectController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwHookInject
      */
     private function _injectDs()

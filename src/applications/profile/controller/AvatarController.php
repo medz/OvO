@@ -4,13 +4,13 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:user.PwUserBan');
 
 /**
- * 用户头像处理
+ * 用户头像处理.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: AvatarController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package src.products.u.controller.profile
  */
 class AvatarController extends BaseProfileController
 {

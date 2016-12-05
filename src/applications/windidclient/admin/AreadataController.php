@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('WINDID:service.area.dm.WindidAreaDm');
 
 /**
- * 全局-资料库-地区库
+ * 全局-资料库-地区库.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AreadataController.php 24493 2013-01-31 03:40:55Z jieyin $
- * @package applications.config.admin
  */
 class AreadataController extends AdminBaseController
 {
@@ -29,7 +29,7 @@ class AreadataController extends AdminBaseController
         $this->setOutput($parentid, 'areaid');
         $this->setOutput($list, 'list');
         $_rout = array('all' => array('disable' => 'li_disabled'), 'province' => array('areaid' => '', 'name' => '', 'disable' => 'li_disabled', 'display' => 'display:none;'),
-            'city' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
+            'city'           => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
         switch (count($rout)) {
             case 1:
                 $_rout['all']['disable'] = '';
@@ -55,7 +55,7 @@ class AreadataController extends AdminBaseController
     }
 
     /**
-     * 更新地区
+     * 更新地区.
      */
     public function updateAction()
     {
@@ -106,7 +106,7 @@ class AreadataController extends AdminBaseController
     }
 
     /**
-     * 删除地区
+     * 删除地区.
      */
     public function deleteAction()
     {
@@ -123,7 +123,7 @@ class AreadataController extends AdminBaseController
     }
 
     /**
-     * 获得area的DS
+     * 获得area的DS.
      *
      * @return WindidArea
      */

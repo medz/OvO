@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBbsinfo.php 21328 2012-12-04 11:32:35Z jieyin $
- * @package forum
  */
-
 class PwBbsinfo
 {
     /**
-     * 获取论坛信息
+     * 获取论坛信息.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getInfo($id)
@@ -30,9 +30,10 @@ class PwBbsinfo
     }
 
     /**
-     * 更新论坛信息
+     * 更新论坛信息.
      *
-     * @param  object $dm 更新信息
+     * @param object $dm 更新信息
+     *
      * @return bool
      */
     public function updateInfo(PwBbsinfoDm $dm)

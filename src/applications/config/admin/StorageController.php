@@ -2,12 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: StorageController.php 28806 2013-05-24 08:06:26Z jieyin $
- * @package
  */
 class StorageController extends AdminBaseController
 {
@@ -19,8 +20,9 @@ class StorageController extends AdminBaseController
             $this->showError('WINDID:is.server.config');
         }
     }
+
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function run()
     {
@@ -39,7 +41,7 @@ class StorageController extends AdminBaseController
     }
 
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function dostroageAction()
     {
@@ -72,7 +74,7 @@ class StorageController extends AdminBaseController
     }
 
     /**
-     * 后台设置-ftp设置
+     * 后台设置-ftp设置.
      */
     public function ftpAction()
     {
@@ -82,7 +84,7 @@ class StorageController extends AdminBaseController
     }
 
     /**
-     * 后台设置-ftp设置
+     * 后台设置-ftp设置.
      */
     public function doftpAction()
     {

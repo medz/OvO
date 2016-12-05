@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeRelations.php 5754 2012-03-10 07:01:17Z gao.wanggao $
- * @package
  */
 class PwLikeRelations
 {
     /**
-     * 获取内容
+     * 获取内容.
      *
      * @param int $tagid
      */
@@ -34,7 +35,7 @@ class PwLikeRelations
     }
 
     /**
-     * 添加内容
+     * 添加内容.
      *
      * @param int $logid
      * @param int $tagid
@@ -53,7 +54,7 @@ class PwLikeRelations
     }
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param int $logid
      * @param int $tagid
@@ -70,7 +71,7 @@ class PwLikeRelations
     }
 
     /**
-     * 删除多条内容
+     * 删除多条内容.
      *
      * @param int $tagid
      */
@@ -85,7 +86,7 @@ class PwLikeRelations
     }
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param int $logid
      */
@@ -98,7 +99,6 @@ class PwLikeRelations
 
         return $this->_getLikeRelationsDao()->deleteInfosBylogid($logid);
     }
-
 
     private function _getLikeRelationsDao()
     {

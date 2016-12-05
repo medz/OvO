@@ -3,7 +3,8 @@
 class AdminSearchLangParserService extends WindLangResource
 {
     /**
-     * 解析搜索的语言文件
+     * 解析搜索的语言文件.
+     *
      * @return array
      */
     public function parseSearchLang()
@@ -50,7 +51,8 @@ class AdminSearchLangParserService extends WindLangResource
     }
 
     /**
-     * 获得搜索文件包路径
+     * 获得搜索文件包路径.
+     *
      * @return string
      */
     private function _getPath()

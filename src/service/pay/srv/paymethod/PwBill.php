@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:pay.srv.paymethod.PwPayAbstract');
 
 /**
- * 在线支付 - 快钱支付方式
+ * 在线支付 - 快钱支付方式.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBill.php 24975 2013-02-27 09:24:54Z jieyin $
- * @package forum
  */
-
 class PwBill extends PwPayAbstract
 {
     public $bill;
@@ -47,20 +46,20 @@ class PwBill extends PwPayAbstract
     {
         strlen($this->bill) == 11 && $this->bill .= '01';
         $param = array(
-            'inputCharset' => ($this->charset == 'gbk' ? 2 : 1),
-            'pageUrl' => $this->baseurl,
-            'version' => 'v2.0',
-            'language' => 1,
-            'signType' => 1,
+            'inputCharset'   => ($this->charset == 'gbk' ? 2 : 1),
+            'pageUrl'        => $this->baseurl,
+            'version'        => 'v2.0',
+            'language'       => 1,
+            'signType'       => 1,
             'merchantAcctId' => $this->bill,
-            'payerName' => 'admin',
-            'orderId' => $vo->getOrderNo(),
-            'orderAmount' => ($vo->getFee() * 100),
-            'orderTime' => Pw::time2str(Pw::getTime(), 'YmdHis'),
-            'productName' => $vo->getBody(),
-            'productNum' => 1,
-            'payType' => '00',
-            'redoFlag' => 1,
+            'payerName'      => 'admin',
+            'orderId'        => $vo->getOrderNo(),
+            'orderAmount'    => ($vo->getFee() * 100),
+            'orderTime'      => Pw::time2str(Pw::getTime(), 'YmdHis'),
+            'productName'    => $vo->getBody(),
+            'productNum'     => 1,
+            'payType'        => '00',
+            'redoFlag'       => 1,
         );
         $url = $this->bill_url;
         $arg = '';

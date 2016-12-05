@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysRouter
 {
     public function run()
@@ -24,7 +24,7 @@ class ACloudSysRouter
         list($app_id, $app_name, $app_token) = ACloudSysCoreS::gp(array('app_id', 'app_name', 'app_token'));
         $initService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
         $fields = array('app_id' => $app_id, 'app_name' => ACloudSysCoreCommon::convertFromUTF8($app_name), 'app_token' => $app_token);
-        if (! ($app = $initService->addApp($fields))) {
+        if (!($app = $initService->addApp($fields))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_addApp fail');
         }
 
@@ -34,7 +34,7 @@ class ACloudSysRouter
     private function config_deleteAllApp()
     {
         $initService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
-        if (! ($result = $initService->deleteAllApp())) {
+        if (!($result = $initService->deleteAllApp())) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteAllApp fail');
         }
 
@@ -47,7 +47,7 @@ class ACloudSysRouter
         $initService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
         $initService->updateApp(array('app_name' => ACloudSysCoreCommon::convertFromUTF8($app_name), 'app_token' => $app_token), $app_id);
         $app = $initService->getApp($app_id);
-        if (! $app || $app ['app_token'] != $app_token) {
+        if (!$app || $app['app_token'] != $app_token) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_updateApp fail');
         }
 
@@ -72,7 +72,7 @@ class ACloudSysRouter
         list($app_id) = ACloudSysCoreS::gp(array('app_id'));
         $initService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
         $app = $initService->getApp($app_id);
-        if (! $app) {
+        if (!$app) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getApp fail');
         }
 
@@ -83,7 +83,7 @@ class ACloudSysRouter
     {
         $initService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
         $apps = $initService->getApps();
-        if (! $apps) {
+        if (!$apps) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getApps fail');
         }
 
@@ -95,7 +95,7 @@ class ACloudSysRouter
         list($name, $template, $argument, $argumentType, $fields, $status, $category, $createdTime, $modifiedTime) = ACloudSysCoreS::gp(array('name', 'template', 'argument', 'argumentType', 'fields', 'status', 'category', 'createdTime', 'modifiedTime'));
         $configApiService = ACloudSysCoreCommon::loadSystemClass('apis', 'config.service');
         $fields = array('name' => $name, 'template' => $template, 'argument' => $argument, 'argument_type' => $argumentType, 'fields' => $fields, 'status' => $status, 'category' => $category, 'created_time' => $createdTime, 'modified_time' => $modifiedTime);
-        if (! ($result = $configApiService->addApi($fields))) {
+        if (!($result = $configApiService->addApi($fields))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_addApi fail');
         }
 
@@ -107,7 +107,7 @@ class ACloudSysRouter
         list($name, $template, $argument, $argumentType, $fields, $status, $category, $createdTime, $modifiedTime) = ACloudSysCoreS::gp(array('name', 'template', 'argument', 'argumentType', 'fields', 'status', 'category', 'createdTime', 'modifiedTime'));
         $configApiService = ACloudSysCoreCommon::loadSystemClass('apis', 'config.service');
         $fields = array('template' => $template, 'argument' => $argument, 'argument_type' => $argumentType, 'fields' => $fields, 'status' => $status, 'category' => $category, 'created_time' => $createdTime, 'modified_time' => $modifiedTime);
-        if (! ($result = $configApiService->updateApiConfigByApiName($name, $fields))) {
+        if (!($result = $configApiService->updateApiConfigByApiName($name, $fields))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_updateApi fail');
         }
 
@@ -118,7 +118,7 @@ class ACloudSysRouter
     {
         list($name) = ACloudSysCoreS::gp(array('name'));
         $configApiService = ACloudSysCoreCommon::loadSystemClass('apis', 'config.service');
-        if (! ($result = $configApiService->deleteApiConfigByApiName($name))) {
+        if (!($result = $configApiService->deleteApiConfigByApiName($name))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteApi fail');
         }
 
@@ -130,7 +130,7 @@ class ACloudSysRouter
         list($name) = ACloudSysCoreS::gp(array('name'));
         $configApiService = ACloudSysCoreCommon::loadSystemClass('apis', 'config.service');
         $apis = $configApiService->getApiConfigByApiName($name);
-        if (! $apis) {
+        if (!$apis) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getApi fail');
         }
 
@@ -141,7 +141,7 @@ class ACloudSysRouter
     {
         $configApiService = ACloudSysCoreCommon::loadSystemClass('apis', 'config.service');
         $apis = $configApiService->getApis();
-        if (! $apis) {
+        if (!$apis) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getApis fail');
         }
 
@@ -153,7 +153,7 @@ class ACloudSysRouter
         list($name, $status, $category, $primaryKey, $createdTime, $modifiedTime) = ACloudSysCoreS::gp(array('name', 'status', 'category', 'primaryKey', 'createdTime', 'modifiedTime'));
         $tableSettingsService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $fields = array('name' => $name, 'status' => $status, 'category' => $category, 'primary_key' => $primaryKey, 'created_time' => $createdTime, 'modified_time' => $modifiedTime);
-        if (! ($result = $tableSettingsService->addTableSetting($fields))) {
+        if (!($result = $tableSettingsService->addTableSetting($fields))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_addTableSetting fail');
         }
 
@@ -165,7 +165,7 @@ class ACloudSysRouter
         list($name, $status, $category, $primaryKey, $createdTime, $modifiedTime) = ACloudSysCoreS::gp(array('name', 'status', 'category', 'primaryKey', 'createdTime', 'modifiedTime'));
         $tableSettingsService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $fields = array('status' => $status, 'category' => $category, 'primary_key' => $primaryKey, 'created_time' => $createdTime, 'modified_time' => $modifiedTime);
-        if (! ($result = $tableSettingsService->updateTableSettingByTableName($name, $fields))) {
+        if (!($result = $tableSettingsService->updateTableSettingByTableName($name, $fields))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_updateTableSetting fail');
         }
 
@@ -176,7 +176,7 @@ class ACloudSysRouter
     {
         list($name) = ACloudSysCoreS::gp(array('name'));
         $tableSettingsService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
-        if (! ($result = $tableSettingsService->deleteTableSettingByTableName($name))) {
+        if (!($result = $tableSettingsService->deleteTableSettingByTableName($name))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteTableSetting fail');
         }
 
@@ -188,7 +188,7 @@ class ACloudSysRouter
         list($name) = ACloudSysCoreS::gp(array('name'));
         $tableSettingsService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $tableSetting = $tableSettingsService->getSettingByTableName($name);
-        if (! $tableSetting) {
+        if (!$tableSetting) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getTableSetting fail');
         }
 
@@ -199,7 +199,7 @@ class ACloudSysRouter
     {
         $tableSettingsService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $tableSettings = $tableSettingsService->getTableSettings();
-        if (! $tableSettings) {
+        if (!$tableSettings) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getTableSettings fail');
         }
 
@@ -210,7 +210,7 @@ class ACloudSysRouter
     {
         list($ekey, $evalue, $etype) = ACloudSysCoreS::gp(array('ekey', 'evalue', 'etype'));
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
-        if (! ($extra = $extrasService->setExtra($ekey, $evalue, $etype))) {
+        if (!($extra = $extrasService->setExtra($ekey, $evalue, $etype))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_setExtra fail');
         }
 
@@ -221,7 +221,7 @@ class ACloudSysRouter
     {
         list($ekey) = ACloudSysCoreS::gp(array('ekey'));
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
-        if (! ($evalue = $extrasService->getExtra($ekey))) {
+        if (!($evalue = $extrasService->getExtra($ekey))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getExtra fail');
         }
 
@@ -231,7 +231,7 @@ class ACloudSysRouter
     private function config_getExtras()
     {
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
-        if (! ($extras = $extrasService->getExtras())) {
+        if (!($extras = $extrasService->getExtras())) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getExtras fail');
         }
 
@@ -241,7 +241,7 @@ class ACloudSysRouter
     private function config_deleteAllExtras()
     {
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
-        if (! ($result = $extrasService->deleteAllExtras())) {
+        if (!($result = $extrasService->deleteAllExtras())) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteExtras fail');
         }
 
@@ -252,7 +252,7 @@ class ACloudSysRouter
     {
         list($app_id, $app_key, $app_value, $app_type) = ACloudSysCoreS::gp(array('app_id', 'app_key', 'app_value', 'app_type'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($config = $appConfigService->addAppConfig(array('app_id' => $app_id, 'app_key' => $app_key, 'app_value' => $app_value, 'app_type' => $app_type)))) {
+        if (!($config = $appConfigService->addAppConfig(array('app_id' => $app_id, 'app_key' => $app_key, 'app_value' => $app_value, 'app_type' => $app_type)))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_addAppConfig fail');
         }
 
@@ -263,7 +263,7 @@ class ACloudSysRouter
     {
         list($app_id, $app_key) = ACloudSysCoreS::gp(array('app_id', 'app_key'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($config = $appConfigService->getAppConfig($app_id, $app_key))) {
+        if (!($config = $appConfigService->getAppConfig($app_id, $app_key))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_addAppConfig fail');
         }
 
@@ -274,7 +274,7 @@ class ACloudSysRouter
     {
         list($app_id) = ACloudSysCoreS::gp(array('app_id'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($configs = $appConfigService->getAppConfigsByAppId($app_id))) {
+        if (!($configs = $appConfigService->getAppConfigsByAppId($app_id))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getAppConfigsByAppId fail');
         }
 
@@ -285,7 +285,7 @@ class ACloudSysRouter
     {
         list($app_id, $app_key, $app_value) = ACloudSysCoreS::gp(array('app_id', 'app_key', 'app_value'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($config = $appConfigService->updateAppConfig($app_id, $app_key, $app_value))) {
+        if (!($config = $appConfigService->updateAppConfig($app_id, $app_key, $app_value))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_updateAppConfig fail');
         }
 
@@ -296,7 +296,7 @@ class ACloudSysRouter
     {
         list($app_id, $app_key) = ACloudSysCoreS::gp(array('app_id', 'app_key'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($config = $appConfigService->deleteAppConfig($app_id, $app_key))) {
+        if (!($config = $appConfigService->deleteAppConfig($app_id, $app_key))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteAppConfig fail');
         }
 
@@ -306,7 +306,7 @@ class ACloudSysRouter
     private function config_deleteAllAppConfig()
     {
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($result = $appConfigService->deleteAllAppConfig())) {
+        if (!($result = $appConfigService->deleteAllAppConfig())) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteAllAppConfig fail');
         }
 
@@ -317,7 +317,7 @@ class ACloudSysRouter
     {
         list($app_id) = ACloudSysCoreS::gp(array('app_id'));
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($config = $appConfigService->deleteAppConfigByAppId($app_id))) {
+        if (!($config = $appConfigService->deleteAppConfigByAppId($app_id))) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_deleteAppConfigByAppId fail');
         }
 
@@ -327,7 +327,7 @@ class ACloudSysRouter
     private function config_getAppConfigs()
     {
         $appConfigService = ACloudSysCoreCommon::loadSystemClass('app.configs', 'config.service');
-        if (! ($configs = $appConfigService->getAppConfigs())) {
+        if (!($configs = $appConfigService->getAppConfigs())) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'config_getAppConfigs fail');
         }
 
@@ -337,13 +337,13 @@ class ACloudSysRouter
     private function apply_verify()
     {
         $controlService = ACloudSysCoreCommon::loadSystemClass('control', 'verify.service');
-        if (! $controlService->ipControl()) {
+        if (!$controlService->ipControl()) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'apply_verify_ipcontrol_fail');
         }
 
         $applyService = ACloudSysCoreCommon::loadSystemClass('apply', 'open.service');
         $bool = $applyService->verifying($_POST);
-        if (! $bool) {
+        if (!$bool) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'apply_verify_fail ');
         }
 
@@ -353,12 +353,12 @@ class ACloudSysRouter
     private function apply_initKey()
     {
         $controlService = ACloudSysCoreCommon::loadSystemClass('control', 'verify.service');
-        if (! $controlService->ipControl()) {
+        if (!$controlService->ipControl()) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'apply_initkey_ipcontrol_fail');
         }
         $initService = ACloudSysCoreCommon::loadSystemClass('init', 'open.service');
         list($bool, $message) = $initService->initSecretKey(array_merge($_GET, $_POST));
-        if (! $bool) {
+        if (!$bool) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $message);
         }
 
@@ -368,12 +368,12 @@ class ACloudSysRouter
     private function apply_checkKey()
     {
         $controlService = ACloudSysCoreCommon::loadSystemClass('control', 'verify.service');
-        if (! $controlService->ipControl()) {
+        if (!$controlService->ipControl()) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'apply_checkkey_ipcontrol_fail');
         }
         $initService = ACloudSysCoreCommon::loadSystemClass('init', 'open.service');
         list($bool, $message) = $initService->checkSecretKey(array_merge($_GET, $_POST));
-        if (! $bool) {
+        if (!$bool) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $message);
         }
 
@@ -383,7 +383,7 @@ class ACloudSysRouter
     private function apply_success()
     {
         $applyService = ACloudSysCoreCommon::loadSystemClass('apply', 'open.service');
-        if (! $applyService->applySuccess()) {
+        if (!$applyService->applySuccess()) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, 'apply_success_fail');
         }
 
@@ -560,7 +560,7 @@ class ACloudSysRouter
         $commonFactory = ACloudVerCommonFactory::getInstance();
         $commonApplication = $commonFactory->getVersionCommonApplication();
         list($bool, $response) = $commonApplication->onlineInstall($appId);
-        if ($bool === - 1) {
+        if ($bool === -1) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $response);
         }
 
@@ -574,7 +574,7 @@ class ACloudSysRouter
         $commonFactory = ACloudVerCommonFactory::getInstance();
         $commonApplication = $commonFactory->getVersionCommonApplication();
         list($bool, $response) = $commonApplication->localInstall($appId, $hash);
-        if ($bool === - 1) {
+        if ($bool === -1) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $response);
         }
 
@@ -588,7 +588,7 @@ class ACloudSysRouter
         $commonFactory = ACloudVerCommonFactory::getInstance();
         $commonApplication = $commonFactory->getVersionCommonApplication();
         list($bool, $response) = $commonApplication->uninstallApp($appId);
-        if ($bool === - 1) {
+        if ($bool === -1) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $response);
         }
 
@@ -602,7 +602,7 @@ class ACloudSysRouter
         $commonFactory = ACloudVerCommonFactory::getInstance();
         $commonApplication = $commonFactory->getVersionCommonApplication();
         list($bool, $response) = $commonApplication->updateApp($appId);
-        if ($bool === - 1) {
+        if ($bool === -1) {
             return ACloudSysCoreCommon::simpleResponse(ACloudSysCoreDefine::ACLOUD_HTTP_FAIL, $response);
         }
 

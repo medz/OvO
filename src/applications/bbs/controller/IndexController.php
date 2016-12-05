@@ -3,14 +3,13 @@
 Wind::import('SRV:forum.srv.PwThreadList');
 
 /**
- * 默认站点首页
+ * 默认站点首页.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 24758 2013-02-20 06:55:42Z jieyin $
- * @package forum
  */
-
 class IndexController extends PwBaseController
 {
     public function run()

@@ -2,16 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 发邮件组件
+ * 发邮件组件.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMail.php 24044 2013-01-21 05:33:26Z xiaoxia.xuxx $
- * @package Lib:utility.PwMail
  */
 class PwMail
 {
@@ -25,15 +23,15 @@ class PwMail
     {
         $config = Wekit::C('email');
         $this->_config = array(
-            'mailOpen' => $config['mailOpen'],
+            'mailOpen'   => $config['mailOpen'],
             'mailMethod' => $config['mailMethod'],
-            'host' => $config['mail.host'],
-            'port' => $config['mail.port'],
-            'from' => $config['mail.from'],
-            'auth' => $config['mail.auth'],
-            'user' => $config['mail.user'],
-            'password' => $config['mail.password'],
-            'timeout' => 20, ); //尝试链接超时时间
+            'host'       => $config['mail.host'],
+            'port'       => $config['mail.port'],
+            'from'       => $config['mail.from'],
+            'auth'       => $config['mail.auth'],
+            'user'       => $config['mail.user'],
+            'password'   => $config['mail.password'],
+            'timeout'    => 20, ); //尝试链接超时时间
         $this->_mail = new WindMail();
         $this->_mail->setCharset(Wekit::V('charset'));
         $this->_mail->setDate(date('r', Pw::getTime()));
@@ -43,11 +41,12 @@ class PwMail
     }
 
     /**
-     * 普通发邮件方法
+     * 普通发邮件方法.
      *
      * @param string $toUser  收件人
      * @param string $subject 邮件标题
      * @param  string $content 邮件内容
+     *
      * @return bool
      */
     public function sendMail($toUser, $subject, $content)
@@ -78,7 +77,7 @@ class PwMail
     }
 
     /**
-     * 根据后台配置获取发邮件方式
+     * 根据后台配置获取发邮件方式.
      *
      * return string
      */

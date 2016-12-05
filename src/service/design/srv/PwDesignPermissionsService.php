@@ -1,16 +1,18 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPermissionsService.php 20523 2012-10-30 10:32:39Z gao.wanggao $
- * @package
  */
 class PwDesignPermissionsService
 {
     /**
-     * 判断用户的管理组权限
+     * 判断用户的管理组权限.
+     *
      * @param int $uid
      */
     public function getPermissionsForUserGroup($uid)
@@ -23,7 +25,8 @@ class PwDesignPermissionsService
     }
 
     /**
-     * 判断用户的某个页面权限
+     * 判断用户的某个页面权限.
+     *
      * @param int $uid
      * @param int $pageid
      */
@@ -49,7 +52,8 @@ class PwDesignPermissionsService
     }
 
     /**
-     * 判断用户的某个模块权限
+     * 判断用户的某个模块权限.
+     *
      * @param int $uid
      * @param int $moduleid
      * @param int $pageid
@@ -78,8 +82,7 @@ class PwDesignPermissionsService
     }
 
     /**
-     * 获取用户有权限的所有页面
-     *
+     * 获取用户有权限的所有页面.
      */
     public function getPermissionsAllPage($uid)
     {

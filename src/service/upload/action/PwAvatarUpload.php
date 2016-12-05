@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:attach.dm.PwThreadAttachDm');
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('COM:utility.WindUtility');
 
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAvatarUpload.php 28882 2013-05-28 10:51:23Z gao.wanggao $
- * @package upload
  */
-
 class PwAvatarUpload extends PwUploadAction
 {
     public $isLocal = true;

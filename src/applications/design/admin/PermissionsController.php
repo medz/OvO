@@ -2,12 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PermissionsController.php 28818 2013-05-24 10:10:46Z gao.wanggao $
- * @package
  */
 class PermissionsController extends AdminBaseController
 {
@@ -146,7 +147,6 @@ class PermissionsController extends AdminBaseController
         $this->setOutput($moduleinfo, 'info');
     }
 
-
     public function doeditAction()
     {
         $designId = (int) $this->getInput('design_id', 'post');
@@ -235,7 +235,6 @@ class PermissionsController extends AdminBaseController
     {
         return Wekit::load('design.PwDesignPage');
     }
-
 
     private function _getPortalDs()
     {

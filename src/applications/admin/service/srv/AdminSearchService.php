@@ -6,7 +6,8 @@ class AdminSearchService
     private $_menus = array();
 
     /**
-     * 构造函数
+     * 构造函数.
+     *
      * @param string $keyword
      * @param array  $menus   用户拥有访问权限的菜单集合
      */
@@ -17,7 +18,8 @@ class AdminSearchService
     }
 
     /**
-     * 初始化菜单
+     * 初始化菜单.
+     *
      * @param array $menus
      * @param int   $level 该菜单的层级
      */
@@ -26,10 +28,10 @@ class AdminSearchService
         foreach ($menus as $v) {
             if ($v['url'] && $v['name'] && $v['id']) {
                 $this->_menus[$v['id']] = array(
-                    'url' => $v['url'],
-                    'name' => $v['name'],
+                    'url'    => $v['url'],
+                    'name'   => $v['name'],
                     'parent' => $v['parent'],
-                    'level' => $level,
+                    'level'  => $level,
                 );
             }
             if ($v['items']) {
@@ -39,7 +41,8 @@ class AdminSearchService
     }
 
     /**
-     * 执行搜索
+     * 执行搜索.
+     *
      * @return array
      */
     public function search()
@@ -105,8 +108,10 @@ class AdminSearchService
     }
 
     /**
-     * 检查是否有是被搜索
-     * @param  string $string
+     * 检查是否有是被搜索.
+     *
+     * @param string $string
+     *
      * @return array
      */
     private function _check($string)

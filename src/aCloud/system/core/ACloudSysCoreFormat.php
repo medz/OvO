@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreFormat
 {
     private $formats = array('json', 'serialize');
@@ -40,7 +40,7 @@ class ACloudSysCoreFormat
         $xmlDocInfo = $xml->createElement('docinfo');
         $xmlDocInfo->setAttribute('charset', 'utf-8');
 
-        ! is_null($totalPages) && $xmlDocInfo->setAttribute('totalpages', $totalPages);
+        !is_null($totalPages) && $xmlDocInfo->setAttribute('totalpages', $totalPages);
 
         $xmlDocs = $xml->createElement('docs');
         foreach ($docs as $doc) {

@@ -1,22 +1,24 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeContent.php 8487 2012-04-19 08:09:57Z gao.wanggao $
- * @package
  */
-
 class PwLikeContent
 {
     const THREAD = 1;
     const POST = 2;
     const WEIBO = 3;
     const APP = 9;
+
     /**
      * 对typeid进行类型绑定
      * Enter description here ...
+     *
      * @param int $typeid
      */
     public function transformTypeid($typeid = self::THREAD)
@@ -36,7 +38,7 @@ class PwLikeContent
     }
 
     /**
-     * 获取一条内容
+     * 获取一条内容.
      *
      * @param  $likeid
      */
@@ -51,7 +53,7 @@ class PwLikeContent
     }
 
     /**
-     * 批量获取内容
+     * 批量获取内容.
      *
      * @param array $likeids
      */
@@ -65,7 +67,7 @@ class PwLikeContent
     }
 
     /**
-     * 根据typeid和fromid获取内容
+     * 根据typeid和fromid获取内容.
      *
      * @param int $tid
      * @param int $pid
@@ -82,7 +84,7 @@ class PwLikeContent
     }
 
     /**
-     * 添加内容
+     * 添加内容.
      *
      * @param PwLikeDm $dm
      */
@@ -97,7 +99,7 @@ class PwLikeContent
     }
 
     /**
-     * 更新内容
+     * 更新内容.
      *
      * @param PwLikeDm $dm
      */
@@ -114,6 +116,7 @@ class PwLikeContent
     /**
      * 更新最后回复ID
      * Enter description here ...
+     *
      * @param int $likeid
      * @param int $pid
      */
@@ -130,7 +133,7 @@ class PwLikeContent
     }
 
     /**
-     * 更新最近喜欢用户列表()
+     * 更新最近喜欢用户列表().
      *
      * @param int $likeid
      * @param int $uid
@@ -160,7 +163,7 @@ class PwLikeContent
     }
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param int $likeid
      */

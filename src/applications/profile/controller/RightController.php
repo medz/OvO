@@ -4,13 +4,13 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:usergroup.srv.PwPermissionService');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
- * 用户权限相关
+ * 用户权限相关.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: RightController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package src.products.u.controller.profile
  */
 class RightController extends BaseProfileController
 {
@@ -65,7 +65,7 @@ class RightController extends BaseProfileController
     }
 
     /**
-     * 设置用户组
+     * 设置用户组.
      */
     public function dosetAction()
     {
@@ -110,7 +110,7 @@ class RightController extends BaseProfileController
     }
 
     /**
-     * 获取显示相关用户组的信息
+     * 获取显示相关用户组的信息.
      */
     private function listGroups()
     {
@@ -144,7 +144,7 @@ class RightController extends BaseProfileController
     }
 
     /**
-     * 获得需要显示的权限点
+     * 获得需要显示的权限点.
      *
      * @return array
      */

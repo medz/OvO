@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Mingqu Luo <luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwWord.php 17009 2012-08-30 08:19:36Z hejin $
- * @package wind
  */
-
 class PwWord
 {
     const NAME_BANED = 1;        //禁用
@@ -19,25 +18,26 @@ class PwWord
     const WORD_REPLACE = 3;    //替换
 
     /**
-     * 类型列表
+     * 类型列表.
      *
      * @return array
      */
     public function getTypeMap()
     {
         $map = array(
-                self::NAME_BANED => '禁用',
+                self::NAME_BANED    => '禁用',
                 self::WORD_VERIFIED => '审核',
-                self::WORD_REPLACE => '替换',
+                self::WORD_REPLACE  => '替换',
         );
 
         return $map;
     }
 
     /**
-     * 获取单条敏感词信息
+     * 获取单条敏感词信息.
      *
-     * @param  int   $wordId
+     * @param int $wordId
+     *
      * @return array
      */
     public function get($wordId)
@@ -51,9 +51,10 @@ class PwWord
     }
 
     /**
-     * 获得某个敏感词记录
+     * 获得某个敏感词记录.
      *
-     * @param  string $word
+     * @param string $word
+     *
      * @return array
      */
     public function getByWord($word)
@@ -66,9 +67,10 @@ class PwWord
     }
 
     /**
-     * 获得某个类型敏感词
+     * 获得某个类型敏感词.
      *
-     * @param  int   $type
+     * @param int $type
+     *
      * @return array
      */
     public function getWordByType($type)
@@ -82,9 +84,10 @@ class PwWord
     }
 
     /**
-     * 获得多条敏感词信息
+     * 获得多条敏感词信息.
      *
-     * @param  array $wordIds
+     * @param array $wordIds
+     *
      * @return array
      */
     public function fetch($wordIds)
@@ -97,9 +100,10 @@ class PwWord
     }
 
     /**
-     * 根据敏感词获得列表
+     * 根据敏感词获得列表.
      *
-     * @param  array $word
+     * @param array $word
+     *
      * @return array
      */
     public function fetchByWord($word = array())
@@ -112,10 +116,11 @@ class PwWord
     }
 
     /**
-     * 获得敏感词列表
+     * 获得敏感词列表.
      *
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getWordList($limit = 20, $offset = 0)
@@ -124,7 +129,7 @@ class PwWord
     }
 
     /**
-     * 统计数量
+     * 统计数量.
      *
      * @return int
      */
@@ -134,9 +139,10 @@ class PwWord
     }
 
     /**
-     * 根据不同来源统计敏感词数量
+     * 根据不同来源统计敏感词数量.
      *
-     * @param  int $from 来源 0代表 local 1代表platform
+     * @param int $from 来源 0代表 local 1代表platform
+     *
      * @return int
      */
     public function countByFrom($from = 0)
@@ -145,7 +151,7 @@ class PwWord
     }
 
     /**
-     * 添加
+     * 添加.
      *
      * @param PwWordDm $dm
      */
@@ -161,9 +167,10 @@ class PwWord
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $wordId
+     * @param int $wordId
+     *
      * @return bool
      */
     public function delete($wordId)
@@ -178,9 +185,10 @@ class PwWord
     }
 
     /**
-     * 根据类型删除
+     * 根据类型删除.
      *
-     * @param  int  $type
+     * @param int $type
+     *
      * @return bool
      */
     public function deleteByType($type)
@@ -193,9 +201,10 @@ class PwWord
     }
 
     /**
-     * 根据关键字删除
+     * 根据关键字删除.
      *
-     * @param  string $keyword
+     * @param string $keyword
+     *
      * @return bool
      */
     public function deleteByKeyword($keyword)
@@ -208,10 +217,11 @@ class PwWord
     }
 
     /**
-     * 根据类型、关键字删除
+     * 根据类型、关键字删除.
      *
-     * @param  int    $type
-     * @param  string $keyword
+     * @param int    $type
+     * @param string $keyword
+     *
      * @return bool
      */
     public function deleteByTypeAndKeyword($type, $keyword)
@@ -222,8 +232,9 @@ class PwWord
 
         return $this->_getDao()->deleteByTypeAndKeyword($type, $keyword);
     }
+
     /**
-     * 更新
+     * 更新.
      *
      * @param PwWordDm $dm
      */
@@ -243,7 +254,7 @@ class PwWord
     }
 
     /**
-     * 批量更新
+     * 批量更新.
      *
      * @param array    $wordIds
      * @param PwWordDm $dm
@@ -263,9 +274,10 @@ class PwWord
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $wordIds
+     * @param array $wordIds
+     *
      * @return bool
      */
     public function batchDelete($wordIds)
@@ -279,10 +291,11 @@ class PwWord
     }
 
     /**
-     * 是否存在敏感词
+     * 是否存在敏感词.
      *
-     * @param  string $word
-     * @param  int    $excludeId 排除ID
+     * @param string $word
+     * @param int    $excludeId 排除ID
+     *
      * @return bool
      */
     private function _isExistWord($word, $excludeId = 0)
@@ -300,9 +313,10 @@ class PwWord
     }
 
     /**
-     * 统计(仅服务搜索)
+     * 统计(仅服务搜索).
      *
-     * @param  PwWordSo $so
+     * @param PwWordSo $so
+     *
      * @return int
      */
     public function countSearchWord(PwWordSo $so)
@@ -311,9 +325,10 @@ class PwWord
     }
 
     /**
-     * 仅服务搜索
+     * 仅服务搜索.
      *
-     * @param  PwWordSo $so
+     * @param PwWordSo $so
+     *
      * @return array
      */
     public function searchWord(PwWordSo $so, $limit = 20, $offset = 0)
@@ -322,7 +337,7 @@ class PwWord
     }
 
     /**
-     * 从数据表直接获得所有敏感词列表(需谨慎)
+     * 从数据表直接获得所有敏感词列表(需谨慎).
      *
      * @return array
      */
@@ -332,8 +347,7 @@ class PwWord
     }
 
     /**
-     * 清空数据(需谨慎)
-     *
+     * 清空数据(需谨慎).
      */
     public function truncate()
     {
@@ -341,8 +355,7 @@ class PwWord
     }
 
     /**
-     * 类型全部更新(需谨慎仅后台使用)
-     *
+     * 类型全部更新(需谨慎仅后台使用).
      */
     public function updateAllByTypeAndRelpace($type, $relpace)
     {
@@ -352,9 +365,10 @@ class PwWord
     }
 
     /**
-     * 判断是否是替换词
+     * 判断是否是替换词.
      *
-     * @param  int  $type
+     * @param int $type
+     *
      * @return bool
      */
     public function isReplaceWord($type)
@@ -363,7 +377,7 @@ class PwWord
     }
 
     /**
-     * get PwWordDao
+     * get PwWordDao.
      *
      * @return PwWordDao
      */

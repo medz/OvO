@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子删除扩展服务接口--删除帖子新鲜事
+ * 帖子删除扩展服务接口--删除帖子新鲜事.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteTopicDoFreshDelete.php 17980 2012-09-10 12:36:27Z jieyin $
- * @package forum
  */
-
 class PwDeleteTopicDoFreshDelete extends iPwGleanDoHookProcess
 {
     /*

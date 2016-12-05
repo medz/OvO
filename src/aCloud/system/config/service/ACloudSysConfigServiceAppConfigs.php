@@ -1,19 +1,19 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceAppConfigs
 {
     public function addAppConfig($fields)
     {
-        $type = ($fields ['app_type']) ? $fields ['app_type'] : (is_array($fields ['app_value']) ? 2 : 1);
-        $value = is_array($fields ['app_value']) ? serialize($fields ['app_value']) : $fields ['app_value'];
+        $type = ($fields['app_type']) ? $fields['app_type'] : (is_array($fields['app_value']) ? 2 : 1);
+        $value = is_array($fields['app_value']) ? serialize($fields['app_value']) : $fields['app_value'];
         $data = array();
-        $data ['app_id'] = $fields ['app_id'];
-        $data ['app_key'] = $fields ['app_key'];
-        $data ['app_value'] = $value;
-        $data ['app_type'] = intval($type);
-        $fields ['created_time'] = $fields ['modified_time'] = time();
+        $data['app_id'] = $fields['app_id'];
+        $data['app_key'] = $fields['app_key'];
+        $data['app_value'] = $value;
+        $data['app_type'] = intval($type);
+        $fields['created_time'] = $fields['modified_time'] = time();
 
         return $this->getAppConfigsDao()->insert($fields);
     }

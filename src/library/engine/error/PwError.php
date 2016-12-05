@@ -1,19 +1,19 @@
 <?php
 /**
- * 错误机制
+ * 错误机制.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.net
+ *
  * @version $Id: PwError.php 17618 2012-09-07 04:01:22Z xiaoxia.xuxx $
- * @package wekit
  */
 class PwError
 {
     protected $error = array();
 
     /**
-     * 错误创建
+     * 错误创建.
      *
      * @param string $error
      * @param array  $var   错误信息中的替换变量
@@ -25,7 +25,7 @@ class PwError
     }
 
     /**
-     * 添加错误信息
+     * 添加错误信息.
      *
      * @param string $error 错误信息
      * @param  array  $var   错误信息中包含的错误输出变量，格式如{key}=>'value',在message中存在{key}
@@ -35,7 +35,8 @@ class PwError
      *                       在返回该条错误的时候
      *                       $error = new Pw('USER:login.error.pwd', array('{num}' => 5));
      *                       </pre>
-     * @param  array $data 错误数据
+     * @param array $data 错误数据
+     *
      * @return bool
      */
     public function addError($error, $var = array(), $data = array())
@@ -52,9 +53,10 @@ class PwError
     }
 
     /**
-     * 获取错误信息
+     * 获取错误信息.
      *
-     * @param  bool   $isAll 是否返回所有的错误信息
+     * @param bool $isAll 是否返回所有的错误信息
+     *
      * @return string
      */
     public function getError($isAll = false)
@@ -69,7 +71,7 @@ class PwError
     }
 
     /**
-     * 获取错误信息附带的数据
+     * 获取错误信息附带的数据.
      *
      * @return array
      */

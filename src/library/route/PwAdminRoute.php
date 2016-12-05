@@ -2,13 +2,13 @@
 
 
 /**
- * 后台路由，主要处理应用的后台url
+ * 后台路由，主要处理应用的后台url.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAdminRoute.php 25182 2013-03-06 07:54:07Z long.shi $
- * @package library
  */
 class PwAdminRoute extends AbstractPwRoute
 {
@@ -56,11 +56,12 @@ class PwAdminRoute extends AbstractPwRoute
     }
 
     /**
-     * 分析参数
+     * 分析参数.
      *
-     * @param  AbstractWindRouter $router
-     * @param  string             $action
-     * @param  array              $args
+     * @param AbstractWindRouter $router
+     * @param string             $action
+     * @param array              $args
+     *
      * @return array
      */
     private function _resolveMca($router, $action, $args)

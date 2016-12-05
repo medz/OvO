@@ -3,18 +3,18 @@
 Wind::import('SRV:user.srv.register.do.PwRegisterDoBase');
 
 /**
- * 注册 - 手机
+ * 注册 - 手机.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwRegisterDoVerifyMobile extends PwRegisterDoBase
 {
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param PwRegisterService $pwUserRegister
      * @param string            $code

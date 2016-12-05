@@ -1,12 +1,12 @@
 <?php
 /**
- * 应用安装日志表
+ * 应用安装日志表.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwApplicationLogDao extends PwBaseDao
 {
@@ -14,9 +14,10 @@ class PwApplicationLogDao extends PwBaseDao
     protected $_dataStruct = array('app_id', 'log_type', 'created_time', 'modified_time', 'data');
 
     /**
-     * 添加应用安装日志
+     * 添加应用安装日志.
      *
-     * @param  array         $fields
+     * @param array $fields
+     *
      * @return bool|Ambigous <rowCount, boolean, number>
      */
     public function add($fields)
@@ -30,9 +31,10 @@ class PwApplicationLogDao extends PwBaseDao
     }
 
     /**
-     * 批量添加
+     * 批量添加.
      *
-     * @param  array    $fields
+     * @param array $fields
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchAdd($fields)
@@ -53,9 +55,10 @@ class PwApplicationLogDao extends PwBaseDao
     }
 
     /**
-     * 根据ID删除应用安装日志
+     * 根据ID删除应用安装日志.
      *
-     * @param  string   $appid
+     * @param string $appid
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function delByAppId($appid)
@@ -66,9 +69,10 @@ class PwApplicationLogDao extends PwBaseDao
     }
 
     /**
-     * 根据ID批量删除应用安装日志
+     * 根据ID批量删除应用安装日志.
      *
      * @param array $appids
+     *
      * @return
      */
     public function batchDelByAppId($appids)
@@ -79,9 +83,10 @@ class PwApplicationLogDao extends PwBaseDao
     }
 
     /**
-     * 根据APP_ID获取应用安装日志
+     * 根据APP_ID获取应用安装日志.
      *
-     * @param  string   $appid
+     * @param string $appid
+     *
      * @return Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function fetchByAppId($appid)

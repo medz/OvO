@@ -3,19 +3,19 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * controller 基类
+ * controller 基类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBaseController.php 29863 2013-07-02 03:28:46Z gao.wanggao $
- * @package lib.base.controller
  */
 class PwBaseController extends WindController
 {
     /**
-     * 当前用户信息
+     * 当前用户信息.
      *
-     * @var PwUserBo $loginUser
+     * @var PwUserBo
      */
     protected $loginUser;
     protected $_m;
@@ -39,13 +39,13 @@ class PwBaseController extends WindController
         $this->setTheme('site', null);
     }
 
-
     /**
-     * 显示信息
+     * 显示信息.
      *
      * @param string $message 消息信息
      * @param string $referer 跳转地址
      * @param bool   $referer 是否刷新页面
+     *
      * @see WindSimpleController::showMessage()
      */
     protected function showMessage($message = '', $referer = '', $refresh = false)
@@ -57,7 +57,7 @@ class PwBaseController extends WindController
     }
 
     /**
-     * 显示错误
+     * 显示错误.
      *
      * @param string $error   消息信息
      * @param string $referer 跳转地址
@@ -92,10 +92,11 @@ class PwBaseController extends WindController
     }
 
     /**
-     * action Hook 注册
+     * action Hook 注册.
      *
-     * @param  string            $registerKey 扩展点别名
-     * @param  PwBaseHookService $bp
+     * @param string            $registerKey 扩展点别名
+     * @param PwBaseHookService $bp
+     *
      * @throws PwException
      */
     protected function runHook($registerKey, $bp)
@@ -125,14 +126,13 @@ class PwBaseController extends WindController
         $this->resolveActionFilter($_filters);
     }
 
-
-
     /**
-     * 风格设置
+     * 风格设置.
      *
      * 设置当前页面风格，需要两个参数，$type风格类型，$theme该类型下风格
      *
      * @see WindSimpleController::setTheme()
+     *
      * @param string $type  风格类型(site,space,area...)
      * @param string $theme 风格别名
      */

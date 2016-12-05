@@ -6,8 +6,8 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwRemindDao extends PwBaseDao
 {
@@ -18,7 +18,8 @@ class PwRemindDao extends PwBaseDao
     /**
      * 查询一条
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function get($uid)
@@ -27,9 +28,10 @@ class PwRemindDao extends PwBaseDao
     }
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function add($data)
@@ -38,9 +40,10 @@ class PwRemindDao extends PwBaseDao
     }
 
     /**
-     * 修改
+     * 修改.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function replace($data)
@@ -51,9 +54,10 @@ class PwRemindDao extends PwBaseDao
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)

@@ -13,8 +13,8 @@ defined('WIND_DEBUG') || define('WIND_DEBUG', 0);
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: wekit.php 29883 2013-07-02 07:48:55Z long.shi $
- * @package wekit
  */
 class Wekit
 {
@@ -23,7 +23,7 @@ class Wekit
     protected static $_app = array();    //应用对象
 
     /**
-     * 运行当前应用
+     * 运行当前应用.
      *
      * @param string $name 应用名称默认‘phpwind’
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
@@ -42,8 +42,7 @@ class Wekit
     }
 
     /**
-     * phpwind初始化
-     *
+     * phpwind初始化.
      */
     public static function init($name)
     {
@@ -62,11 +61,12 @@ class Wekit
     }
 
     /**
-     * 获取实例
+     * 获取实例.
      *
-     * @param  string $path    路径
-     * @param  string $loadway 加载方式
-     * @param  array  $args    参数
+     * @param string $path    路径
+     * @param string $loadway 加载方式
+     * @param array  $args    参数
+     *
      * @return object
      */
     public static function getInstance($path, $loadway = '', array $args = array())
@@ -86,9 +86,10 @@ class Wekit
     }
 
     /**
-     * 加载类库(单例)
+     * 加载类库(单例).
      *
-     * @param  string $path 路径
+     * @param string $path 路径
+     *
      * @return object
      */
     public static function load($path)
@@ -97,9 +98,10 @@ class Wekit
     }
 
     /**
-     * 加载Dao(单例)
+     * 加载Dao(单例).
      *
-     * @param  string $path 路径
+     * @param string $path 路径
+     *
      * @return object
      */
     public static function loadDao($path)
@@ -108,11 +110,12 @@ class Wekit
     }
 
     /**
-     * 获取Dao组合(单例)
+     * 获取Dao组合(单例).
      *
-     * @param  int    $index  索引键
-     * @param  array  $daoMap dao列表
-     * @param  string $vkey   区分符
+     * @param int    $index  索引键
+     * @param array  $daoMap dao列表
+     * @param string $vkey   区分符
+     *
      * @return object
      */
     public static function loadDaoFromMap($index, $daoMap, $vkey)
@@ -121,10 +124,11 @@ class Wekit
     }
 
     /**
-     * 设置全局变量
+     * 设置全局变量.
      *
      * @param array|string|object $data
      * @param string              $key
+     *
      * @see WindWebApplication::setGlobal
      */
     public static function setGlobal($data, $key = '')
@@ -141,9 +145,10 @@ class Wekit
     }
 
     /**
-     * 获得全局变量
+     * 获得全局变量.
      *
      * @return array|string|object
+     *
      * @see WindWebApplication::getGlobal
      */
     public static function getGlobal()
@@ -155,7 +160,7 @@ class Wekit
     }
 
     /**
-     * 获取当前应用
+     * 获取当前应用.
      *
      * @return phpwindBoot
      */
@@ -165,7 +170,7 @@ class Wekit
     }
 
     /**
-     * 创建当前应用实例
+     * 创建当前应用实例.
      *
      * @param string $appName 应用名称
      * @param string $re      运行环境名称(多应用环境场景下可用)
@@ -196,7 +201,7 @@ class Wekit
     }
 
     /**
-     * 获取当前登录用户
+     * 获取当前登录用户.
      *
      * @return PwUserBo
      */
@@ -206,9 +211,10 @@ class Wekit
     }
 
     /**
-     * 获取全局基本配置
+     * 获取全局基本配置.
      *
-     * @param  string $key
+     * @param string $key
+     *
      * @return mixed
      */
     public static function V($key)
@@ -217,7 +223,7 @@ class Wekit
     }
 
     /**
-     * 设置全局基本配置
+     * 设置全局基本配置.
      *
      * @param string $key
      * @param mixed  $value
@@ -228,10 +234,11 @@ class Wekit
     }
 
     /**
-     * 获取应用配置 config
+     * 获取应用配置 config.
      *
      * @param  string $namespace 配置域
      * @param  string $key       配置键值
+     *
      * @return mixted
      */
     public static function C($namespace = '', $key = '')
@@ -255,7 +262,7 @@ class Wekit
     }
 
     /**
-     * 获取系统配置
+     * 获取系统配置.
      */
     public static function S($key = 'ALL')
     {
@@ -281,7 +288,7 @@ class Wekit
     }
 
     /**
-     * 加载系统配置
+     * 加载系统配置.
      */
     protected static function _loadSystemConfig($name)
     {
@@ -292,8 +299,7 @@ class Wekit
     }
 
     /**
-     * 预加载相关类文件
-     *
+     * 预加载相关类文件.
      */
     protected static function _loadBase()
     {

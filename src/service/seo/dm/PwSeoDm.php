@@ -2,13 +2,13 @@
 
 
 /**
- * seo的数据模型
+ * seo的数据模型.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwSeoDm.php 6118 2012-03-16 10:40:35Z long.shi $
- * @package service.seo.dm
  */
 class PwSeoDm extends PwBaseDm
 {

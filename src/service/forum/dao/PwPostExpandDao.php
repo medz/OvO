@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostExpandDao.php 22336 2012-12-21 09:36:17Z jieyin $
- * @package forum
  */
-
 class PwPostExpandDao extends PwBaseDao
 {
     protected $_table = 'bbs_posts';

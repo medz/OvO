@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 条件扩展-帖子
+ * 条件扩展-帖子.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: TaskConditionBbsController.php 20430 2012-10-29 10:46:33Z xiaoxia.xuxx $
- * @package src.modules.task.admin
  */
 class TaskConditionBbsController extends AdminBaseController
 {
@@ -26,11 +26,12 @@ class TaskConditionBbsController extends AdminBaseController
     }
 
     /**
-     * 构建版块树
+     * 构建版块树.
      *
-     * @param  int   $parentid
-     * @param  array $map
-     * @param  int   $level
+     * @param int   $parentid
+     * @param array $map
+     * @param int   $level
+     *
      * @return array
      */
     private function _buildForumTree($parentid, $map, $level = '')
@@ -50,8 +51,7 @@ class TaskConditionBbsController extends AdminBaseController
     }
 
     /**
-     * 获得版块列表
-     *
+     * 获得版块列表.
      */
     private function _getForumList()
     {
@@ -80,7 +80,7 @@ class TaskConditionBbsController extends AdminBaseController
     }
 
     /**
-     * 回帖
+     * 回帖.
      */
     public function replyAction()
     {
@@ -88,7 +88,7 @@ class TaskConditionBbsController extends AdminBaseController
     }
 
     /**
-     * 喜欢帖子
+     * 喜欢帖子.
      */
     public function likeAction()
     {

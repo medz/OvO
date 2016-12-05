@@ -5,10 +5,9 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumUserDao.php 8503 2012-04-19 09:37:20Z jieyin $
- * @package forum
  */
-
 class PwForumUserDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum_user';
@@ -58,6 +57,7 @@ class PwForumUserDao extends PwBaseDao
 
         return $smt->update(array($uid, $fid));
     }
+
     /*
     public function getForum($fid) {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE fid=?');

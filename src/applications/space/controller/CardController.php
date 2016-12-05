@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 小名片
+ * 小名片.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: CardController.php 19721 2012-10-17 07:42:35Z gao.wanggao $
- * @package src.products.user.controller
  */
 class CardController extends PwBaseController
 {

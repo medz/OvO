@@ -1,12 +1,13 @@
 <?php
 /**
  * 门户页面类型扩展
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignRouter.php 28949 2013-05-31 05:43:05Z gao.wanggao $
- * @package
  */
 class PwDesignRouter
 {
@@ -25,6 +26,7 @@ class PwDesignRouter
     /**
      * 增加一个门户页面类型
      * Enter description here ...
+     *
      * @param string $m
      * @param string $c
      * @param string $a

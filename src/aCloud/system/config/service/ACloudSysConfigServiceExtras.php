@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceExtras
 {
@@ -33,12 +33,12 @@ class ACloudSysConfigServiceExtras
             $acloudExtrasConfig[$key] = $extra;
         }
 
-        return ($extra && $extra ['evalue']) ? (($extra ['etype'] == 2) ? unserialize($extra ['evalue']) : $extra ['evalue']) : null;
+        return ($extra && $extra['evalue']) ? (($extra['etype'] == 2) ? unserialize($extra['evalue']) : $extra['evalue']) : null;
     }
 
     public function _setExtra($key, $data)
     {
-        $fields = array('ekey' => $key, 'evalue' => $data ['evalue'], 'etype' => $data ['etype'], 'created_time' => time(), 'modified_time' => time());
+        $fields = array('ekey' => $key, 'evalue' => $data['evalue'], 'etype' => $data['etype'], 'created_time' => time(), 'modified_time' => time());
 
         return $this->getExtrasDao()->insert($fields);
     }

@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudVerCoreDao
 {
     private $_baseInstance = null;
@@ -17,7 +17,7 @@ class ACloudVerCoreDao
 
     public function getDB()
     {
-        if (! $this->_baseInstance) {
+        if (!$this->_baseInstance) {
             $this->_baseInstance = Wind::getComponent('db');
         }
 

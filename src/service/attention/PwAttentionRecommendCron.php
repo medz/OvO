@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 可能认识的人计划任务DS
+ * 可能认识的人计划任务DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwAttentionRecommendCron
 {
     /**
      * 获取所有任务
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function getCron($uid)
@@ -30,7 +31,8 @@ class PwAttentionRecommendCron
     /**
      * 获取所有任务
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function getAllCron()
@@ -41,7 +43,8 @@ class PwAttentionRecommendCron
     /**
      * 增加单个任务
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function replaceCron($uid)
@@ -57,7 +60,8 @@ class PwAttentionRecommendCron
     /**
      * 删除单个任务
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteCron($uid)
@@ -71,9 +75,10 @@ class PwAttentionRecommendCron
     }
 
     /**
-     * 根据时间删除
+     * 根据时间删除.
      *
-     * @param  int  $created_time
+     * @param int $created_time
+     *
      * @return bool
      */
     public function deleteByCreatedTime($created_time)
@@ -87,7 +92,6 @@ class PwAttentionRecommendCron
     }
 
     /**
-     *
      * @return PwAttentionRecommendCronDao
      */
     private function _getDao()

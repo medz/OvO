@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 新鲜事附件展示
+ * 新鲜事附件展示.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshAttachDisplay.php 20202 2012-10-24 09:10:34Z jieyin $
- * @package fresh|attach
  */
-
 class PwFreshAttachDisplay
 {
     public $pics;

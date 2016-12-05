@@ -3,15 +3,14 @@
 Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 
 /**
- * 帖子管理操作-删除帖子
+ * 帖子管理操作-删除帖子.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDeleteTopic.php 24736 2013-02-19 09:24:40Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoDeleteTopic extends PwThreadManageDo
 {
     protected $tids;

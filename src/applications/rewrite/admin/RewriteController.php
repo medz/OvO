@@ -7,8 +7,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: RewriteController.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package rewrite.admin
  */
 class RewriteController extends AdminBaseController
 {
@@ -50,14 +50,14 @@ class RewriteController extends AdminBaseController
                 $unique[] = $format_i;
                 if ($k1 == 'thread') {
                     $rewriteData['cate'] = array(
-                        'format' => $format[$k1],
+                        'format'  => $format[$k1],
                         'pattern' => $this->_compileFormat($format[$k1]),
-                        'route' => 'bbs/cate/run', );
+                        'route'   => 'bbs/cate/run', );
                 }
                 $rewriteData[$k1] = array(
-                    'format' => $format[$k1],
+                    'format'  => $format[$k1],
                     'pattern' => $this->_compileFormat($format[$k1]),
-                    'route' => $v1[2], );
+                    'route'   => $v1[2], );
             }
         }
         $bo->flush();

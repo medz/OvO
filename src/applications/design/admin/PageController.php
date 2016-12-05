@@ -2,14 +2,14 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PageController.php 28936 2013-05-31 02:50:17Z gao.wanggao $
- * @package
  */
-
 class PageController extends AdminBaseController
 {
     public function run()
@@ -64,6 +64,7 @@ class PageController extends AdminBaseController
     /**
      * 清空当前页设计数据
      * Enter description here ...
+     *
      * @see ImportController->dorunAction
      */
     public function doclearAction()
@@ -140,7 +141,6 @@ class PageController extends AdminBaseController
     {
         return Wekit::load('design.PwDesignStructure');
     }
-
 
     private function _getBakDs()
     {

@@ -7,8 +7,8 @@ Wind::import('WSRV:user.dao.WindidUserInterface');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserInfoDao.php 24702 2013-02-06 03:44:49Z jieyin $
- * @package windid.service.user.dao
  */
 class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
 {
@@ -119,9 +119,10 @@ class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 根据用户ID获得用户资料信息
+     * 根据用户ID获得用户资料信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getUserInfoByUid($uid)
@@ -133,11 +134,13 @@ class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
     {
         return $this->_fetch($uids, 'uid');
     }
+
     /**
-     * 合并数组
+     * 合并数组.
      *
-     * @param  array $user 用户基本信息
-     * @param  int   $uid  用户ID
+     * @param array $user 用户基本信息
+     * @param int   $uid  用户ID
+     *
      * @return array
      */
     protected function _mergeUserInfo($user, $uid)

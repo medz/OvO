@@ -3,13 +3,13 @@
 Wind::import('SRV:design.srv.model.PwDesignModelBase');
 
 /**
- * 门户数据 - 友情链接
+ * 门户数据 - 友情链接.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwDesignLinkDataService extends PwDesignModelBase
 {
@@ -67,7 +67,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
     }
 
     /**
-     * PwLink
+     * PwLink.
      *
      * @return PwLink
      */

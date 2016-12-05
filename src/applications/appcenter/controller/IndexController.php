@@ -1,9 +1,11 @@
 <?php
 /**
- *
  * @author jinling.su<emily100813@gmail.com> 2012-5-28
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright &copy; 2003-2010 phpwind.com
+ *
  * @version $Id: IndexController.php 24585 2013-02-01 04:02:37Z jieyin $
  */
 class IndexController extends PwBaseController
@@ -26,18 +28,18 @@ class IndexController extends PwBaseController
         foreach ($apps as $k => $v) {
             $return[] = array(
                 'app_id' => $k,
-                'name' => $v['name'],
-                'logo' => $v['logo'],
-                'alias' => $v['alias'],
-                'desc' => $v['description'] ? $v['description'] : '这家伙很懒',
-                'url' => $v['status'] & 8 ? WindUrlHelper::createUrl('appcenter/apps/run', array('appid' => $v['app_id'])) : WindUrlHelper::createUrl('app/index/run', array('app' => $v['alias'])), );
+                'name'   => $v['name'],
+                'logo'   => $v['logo'],
+                'alias'  => $v['alias'],
+                'desc'   => $v['description'] ? $v['description'] : '这家伙很懒',
+                'url'    => $v['status'] & 8 ? WindUrlHelper::createUrl('appcenter/apps/run', array('appid' => $v['app_id'])) : WindUrlHelper::createUrl('app/index/run', array('app' => $v['alias'])), );
         }
         $this->setOutput(
             array(
-                'apps' => $return,
-                'count' => $count,
+                'apps'    => $return,
+                'count'   => $count,
                 'perpage' => $this->perpage,
-                'page' => $page,
+                'page'    => $page,
                 'orderby' => $orderBy,
                 ));
         $this->setTemplate('app_index_run');
@@ -50,7 +52,6 @@ class IndexController extends PwBaseController
     }
 
     /**
-     *
      * @return PwApplication
      */
     private function _appDs()

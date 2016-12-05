@@ -2,20 +2,18 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:credit.bo.PwCreditBo');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 新鲜事删除扩展服务接口--删除回复源内容
+ * 新鲜事删除扩展服务接口--删除回复源内容.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteFreshDoReplyDelete.php 21189 2012-11-30 04:00:34Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwDeleteFreshDoReplyDelete extends iPwGleanDoHookProcess
 {
     public $record = array();

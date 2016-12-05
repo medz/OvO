@@ -4,19 +4,18 @@ Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwManifest');
 
 /**
- * 开发者调试应用
+ * 开发者调试应用.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDebugApplication.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwDebugApplication
 {
     private $app_id;
     /**
-     *
      * @var PwManifest
      */
     private $manifest;
@@ -37,8 +36,7 @@ class PwDebugApplication
     }
 
     /**
-     * do ---> go
-     *
+     * do ---> go.
      */
     public function compile($force = false)
     {
@@ -64,7 +62,7 @@ class PwDebugApplication
     }
 
     /**
-     * 调试应用
+     * 调试应用.
      *
      * @param unknown_type $alias
      * @param unknown_type $manifest
@@ -98,10 +96,10 @@ class PwDebugApplication
             }
             $this->_loadPwHooks()->batchAdd($hooks);
             $log[] = array(
-                'app_id' => $this->app_id,
-                'log_type' => 'hook',
-                'data' => array_keys($hooks),
-                'created_time' => WEKIT_TIMESTAMP,
+                'app_id'        => $this->app_id,
+                'log_type'      => 'hook',
+                'data'          => array_keys($hooks),
+                'created_time'  => WEKIT_TIMESTAMP,
                 'modified_time' => WEKIT_TIMESTAMP, );
         }
         $inject = $this->manifest->getInjectServices();
@@ -114,10 +112,10 @@ class PwDebugApplication
             $this->_loadPwHookInject()->batchAdd($inject);
             $injects = $this->_loadPwHookInject()->findByAppId($alias);
             $log[] = array(
-                'app_id' => $this->app_id,
-                'log_type' => 'inject',
-                'data' => array_keys($injects),
-                'created_time' => WEKIT_TIMESTAMP,
+                'app_id'        => $this->app_id,
+                'log_type'      => 'inject',
+                'data'          => array_keys($injects),
+                'created_time'  => WEKIT_TIMESTAMP,
                 'modified_time' => WEKIT_TIMESTAMP, );
         }
 
@@ -125,10 +123,11 @@ class PwDebugApplication
     }
 
     /**
-     * 复制资源文件
+     * 复制资源文件.
      *
-     * @param  unknown_type $alias
-     * @param  unknown_type $manifest
+     * @param unknown_type $alias
+     * @param unknown_type $manifest
+     *
      * @return bool
      */
     private function _copyRes($alias, $manifest)
@@ -157,17 +156,17 @@ class PwDebugApplication
                 $packs_log[] = $targetPath;
             }
             $log[] = array(
-                'app_id' => $this->app_id,
-                'log_type' => 'packs',
-                'data' => $packs_log,
-                'created_time' => WEKIT_TIMESTAMP,
+                'app_id'        => $this->app_id,
+                'log_type'      => 'packs',
+                'data'          => $packs_log,
+                'created_time'  => WEKIT_TIMESTAMP,
                 'modified_time' => WEKIT_TIMESTAMP, );
         }
         $log && $this->_loadInstallLog()->batchAdd($log);
     }
 
     /**
-     * 读取目录
+     * 读取目录.
      *
      * @return multitype:string
      */
@@ -194,7 +193,7 @@ class PwDebugApplication
     }
 
     /**
-     * 扫描完安装
+     * 扫描完安装.
      *
      * @param unknown_type $pack
      */
@@ -283,10 +282,10 @@ class PwDebugApplication
         $fields = array();
         foreach ($install->getInstallLog() as $key => $value) {
             $_tmp = array(
-                'app_id' => $install->getAppId(),
-                'log_type' => $key,
-                'data' => $value,
-                'created_time' => time(),
+                'app_id'        => $install->getAppId(),
+                'log_type'      => $key,
+                'data'          => $value,
+                'created_time'  => time(),
                 'modified_time' => time(),
             );
             $fields[] = $_tmp;
@@ -310,7 +309,6 @@ class PwDebugApplication
     }
 
     /**
-     *
      * @return PwHookInject
      */
     private function _loadPwHookInject()
@@ -319,7 +317,6 @@ class PwDebugApplication
     }
 
     /**
-     *
      * @return PwHooks
      */
     private function _loadPwHooks()
@@ -328,7 +325,6 @@ class PwDebugApplication
     }
 
     /**
-     *
      * @return PwApplication
      */
     private function _appDs()
@@ -337,7 +333,6 @@ class PwDebugApplication
     }
 
     /**
-     *
      * @return PwApplicationLog
      */
     private function _loadInstallLog()

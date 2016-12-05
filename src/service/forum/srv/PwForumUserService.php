@@ -7,18 +7,18 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumUserService.php 19492 2012-10-15 08:05:10Z jieyin $
- * @package forum
  */
-
 class PwForumUserService
 {
     /**
-     * 获取版块活跃用户
+     * 获取版块活跃用户.
      *
-     * @param  int   $fid
-     * @param  int   $day
-     * @param  int   $num
+     * @param int $fid
+     * @param int $day
+     * @param int $num
+     *
      * @return array
      */
     public function getActiveUser($fid, $day = 7, $num = 12)

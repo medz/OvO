@@ -1,12 +1,12 @@
 <?php
 /**
- * 话题容关系DAO
+ * 话题容关系DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwTagRelationsDao
  */
 class PwTagRelationDao extends PwBaseDao
 {
@@ -14,9 +14,10 @@ class PwTagRelationDao extends PwBaseDao
     protected $_dataStruct = array('tag_id', 'content_tag_id', 'type_id', 'param_id', 'ifcheck', 'created_time');
 
     /**
-     * 单个添加内容关系
+     * 单个添加内容关系.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addRelation($data)
@@ -25,9 +26,10 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 批量添加
+     * 批量添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function batchAddRelation($data)
@@ -51,9 +53,10 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 更新内容关系
+     * 更新内容关系.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function updateRelation($typeId, $paramId, $id, $data)
@@ -68,9 +71,10 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 批量添加内容关系
+     * 批量添加内容关系.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addRelations($data)
@@ -95,9 +99,11 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 更新tag relation表的tagid,content id
-     * @param  int  $fromTagId
-     * @param  int  $toTagId
+     * 更新tag relation表的tagid,content id.
+     *
+     * @param int $fromTagId
+     * @param int $toTagId
+     *
      * @return bool
      */
     public function updateTagRelationByTagId($fromTagId, $toTagId)
@@ -109,9 +115,10 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_id删除
+     * 根据tag_id删除.
      *
-     * @param  int  $tagId
+     * @param int $tagId
+     *
      * @return bool
      */
     public function deleteByTagId($tagId)
@@ -123,9 +130,10 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_ids批量删除
+     * 根据tag_ids批量删除.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function deleteByTagIds($tagIds)
@@ -137,10 +145,11 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和ID删除
+     * 根据类型和ID删除.
      *
-     * @param  int  $typeId
-     * @param  int  $paramId
+     * @param int $typeId
+     * @param int $paramId
+     *
      * @return bool
      */
     public function deleteByTypeId($typeId, $paramId)
@@ -154,9 +163,10 @@ class PwTagRelationDao extends PwBaseDao
     /**
      * 根据type_id、param_id、content_tag_id删除一条
      *
-     * @param  int  $typeId
-     * @param  int  $paramId
-     * @param  int  $tagId
+     * @param int $typeId
+     * @param int $paramId
+     * @param int $tagId
+     *
      * @return bool
      */
     public function delete($typeId, $paramId, $tagId)
@@ -178,11 +188,12 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据type_id、param_id、content_tag_ids批量删除
+     * 根据type_id、param_id、content_tag_ids批量删除.
      *
-     * @param  int   $typeId
-     * @param  int   $paramId
-     * @param  array $tagIds
+     * @param int   $typeId
+     * @param int   $paramId
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function batchDeleteRelationsByType($typeId, $paramId, $tagIds)
@@ -194,10 +205,11 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据type_id、param_ids批量删除
+     * 根据type_id、param_ids批量删除.
      *
-     * @param  int   $typeId
-     * @param  array $paramIds
+     * @param int   $typeId
+     * @param array $paramIds
+     *
      * @return bool
      */
     public function batchDelete($typeId, $paramIds)
@@ -209,10 +221,11 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和ID获取数据
+     * 根据类型和ID获取数据.
      *
-     * @param  int   $typeId
-     * @param  int   $paramId
+     * @param int $typeId
+     * @param int $paramId
+     *
      * @return array
      */
     public function getByTypeId($typeId, $paramId)
@@ -224,10 +237,11 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和IDs批量获取数据
+     * 根据类型和IDs批量获取数据.
      *
-     * @param  int   $typeId
-     * @param  array $paramIds
+     * @param int   $typeId
+     * @param array $paramIds
+     *
      * @return array
      */
     public function fetchByTypeIdAndParamIds($typeId, $paramIds)
@@ -239,11 +253,12 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和ID统计数据
+     * 根据类型和ID统计数据.
      *
-     * @param  int   $tagId
-     * @param  int   $typeId
-     * @param  int   $ifcheck
+     * @param int $tagId
+     * @param int $typeId
+     * @param int $ifcheck
+     *
      * @return array
      */
     public function countByTagId($tagId, $typeId, $ifcheck)
@@ -261,11 +276,12 @@ class PwTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和ID获取数据
+     * 根据类型和ID获取数据.
      *
-     * @param  int   $tagId
-     * @param  int   $typeId
-     * @param  int   $ifcheck
+     * @param int $tagId
+     * @param int $typeId
+     * @param int $ifcheck
+     *
      * @return array
      */
     public function getByTagId($tagId, $typeId, $ifcheck, $offset, $num = 4)

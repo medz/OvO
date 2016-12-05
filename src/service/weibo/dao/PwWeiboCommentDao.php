@@ -5,10 +5,9 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWeiboCommentDao.php 8959 2012-04-28 09:06:05Z jieyin $
- * @package forum
  */
-
 class PwWeiboCommentDao extends PwBaseDao
 {
     protected $_table = 'weibo_comment';

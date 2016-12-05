@@ -5,17 +5,18 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidSchoolService.php 24685 2013-02-05 04:28:51Z jieyin $
- * @package service.school.srv
  */
 class WindidSchoolService
 {
     /**
      * 查询学校
      *
-     * @param  WindidSchoolSo $searchSo
-     * @param  int            $limit
-     * @param  int            $start
+     * @param WindidSchoolSo $searchSo
+     * @param int            $limit
+     * @param int            $start
+     *
      * @return array
      */
     public function searchSchool(WindidSchoolSo $searchSo, $limit = 10, $start = 0)
@@ -30,9 +31,10 @@ class WindidSchoolService
     }
 
     /**
-     * 获得学校名称的第一个字母
+     * 获得学校名称的第一个字母.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return string
      */
     public function getFirstChar($name)
@@ -104,7 +106,7 @@ class WindidSchoolService
     }
 
     /**
-     * 获得学校Ds
+     * 获得学校Ds.
      *
      * @return WindidSchool
      */

@@ -1,19 +1,20 @@
 <?php
 /**
- * Windid工具库
+ * Windid工具库.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUtility.php 32085 2014-08-20 08:48:50Z gao.wanggao $
- * @package Windid.library
  */
 class WindidUtility
 {
     /**
      * 生成密码
      *
-     * @param  string $password 源密码
-     * @param  string $salt
+     * @param string $password 源密码
+     * @param string $salt
+     *
      * @return string
      */
     public static function buildPassword($password, $salt)
@@ -22,10 +23,11 @@ class WindidUtility
     }
 
     /**
-     * 安全问题加密
+     * 安全问题加密.
      *
-     * @param  string $question
-     * @param  string $answer
+     * @param string $question
+     * @param string $answer
+     *
      * @return bool
      */
     public static function buildQuestion($question, $answer)

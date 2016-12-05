@@ -2,20 +2,18 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:credit.bo.PwCreditBo');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 帖子删除扩展服务接口--更新用户发帖数，积分等信息
+ * 帖子删除扩展服务接口--更新用户发帖数，积分等信息.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteReplyDoUserUpdate.php 17512 2012-09-06 04:50:49Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
 {
     public $record = array();
@@ -34,7 +32,7 @@ class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
     }
 
     /**
-     * 积分操作
+     * 积分操作.
      *
      * @param array $value 回帖
      */
@@ -44,7 +42,7 @@ class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
         $forum = new PwForumBo($value['fid']);
         PwCreditBo::getInstance()->operate(
             'delete_reply', PwUserBo::getInstance($value['created_userid']), true, array(
-                'operator' => $this->srv->user->username,
+                'operator'  => $this->srv->user->username,
                 'forumname' => $forum->foruminfo['name'],
             ),
             $forum->getCreditSet('delete_reply'));

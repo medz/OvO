@@ -2,13 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台消息管理Controller
+ * 后台消息管理Controller.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class ManageController extends AdminBaseController
 {
@@ -36,8 +36,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 删除消息
-     *
+     * 删除消息.
      */
     public function deleteMessagesAction()
     {
@@ -50,8 +49,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 发消息
-     *
+     * 发消息.
      */
     public function addAction()
     {
@@ -60,8 +58,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 群发消息
-     *
+     * 群发消息.
      */
     public function sendAction()
     {
@@ -88,8 +85,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * do群发消息
-     *
+     * do群发消息.
      */
     public function doSendAction()
     {
@@ -146,9 +142,9 @@ class ManageController extends AdminBaseController
         $haveBuild = ($haveBuild > $count) ? $count : $haveBuild;
         $step++;
         usleep(500);
-        $data = array('step' => $step,
+        $data = array('step'    => $step,
                     'countStep' => $countStep,
-                    'count' => $count,
+                    'count'     => $count,
                     'haveBuild' => $haveBuild,
                 );
         Pw::echoJson(array('data' => $data));
@@ -164,8 +160,8 @@ class ManageController extends AdminBaseController
         foreach ($userInfos as $userInfo) {
             $extendParams = array(
                 'username' => $userInfo['username'],
-                'title' => $title,
-                'content' => $content,
+                'title'    => $title,
+                'content'  => $content,
             );
             $notice->sendNotice($userInfo['uid'], 'massmessage', '', $extendParams);
         }
@@ -174,8 +170,8 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageService
      */
     private function _getMessageService()
@@ -183,10 +179,9 @@ class ManageController extends AdminBaseController
         return Wekit::load('message.srv.PwMessageService');
     }
 
-
     /**
-     *
      * Enter description here ...
+     *
      * @return PwUser
      */
     private function _getUserDs()

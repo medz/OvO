@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 话题搜索条件
+ * 话题搜索条件.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwTagSo
 {
@@ -27,7 +27,8 @@ class PwTagSo
     }
 
     /**
-     * 搜索话题ID
+     * 搜索话题ID.
+     *
      * @param array $tag_ids
      */
     public function setTagId($tag_ids)
@@ -38,7 +39,8 @@ class PwTagSo
     }
 
     /**
-     * 搜索话题分类
+     * 搜索话题分类.
+     *
      * @param int $category_id
      */
     public function setCategoryId($category_id)
@@ -49,7 +51,8 @@ class PwTagSo
     }
 
     /**
-     * 搜索是否热门
+     * 搜索是否热门.
+     *
      * @param int $logo
      */
     public function setIfhot($ifhot)
@@ -60,7 +63,8 @@ class PwTagSo
     }
 
     /**
-     * 搜索有封面话题
+     * 搜索有封面话题.
+     *
      * @param int $logo
      */
     public function setIflogo($logo)

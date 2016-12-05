@@ -5,13 +5,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('APPCENTER:service.srv.helper.PwFtpSave');
 Wind::import('APPCENTER:service.srv.helper.PwSftpSave');
 /**
- * 在线升级
+ * 在线升级.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: UpgradeController.php 28799 2013-05-24 06:47:37Z yetianshi $
- * @package appcenter
  */
 class UpgradeController extends AdminBaseController
 {
@@ -21,7 +21,6 @@ class UpgradeController extends AdminBaseController
     protected $localFileList = array();
     protected $version;
     /**
-     *
      * @var PwSystemInstallation
      */
     protected $installService = null;
@@ -76,7 +75,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * step 1: 请求升级信息，获取列表，写入upgrade.temp文件
+     * step 1: 请求升级信息，获取列表，写入upgrade.temp文件.
      */
     public function checkAction()
     {
@@ -124,7 +123,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * step2 :确认后，列出文件
+     * step2 :确认后，列出文件.
      */
     public function listAction()
     {
@@ -139,7 +138,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * step 3 : 下载
+     * step 3 : 下载.
      */
     public function downloadAction()
     {
@@ -182,8 +181,8 @@ class UpgradeController extends AdminBaseController
             }
             WindFile::savePhpData($this->upgrade_temp,
                 array(
-                    'version' => $this->version,
-                    'filelist' => $this->fileList,
+                    'version'     => $this->version,
+                    'filelist'    => $this->fileList,
                     'newfilelist' => $fileList, ));
             Wekit::cache()->set('system_upgrade_step', 3);
             PwSystemHelper::log('download file success', $this->version);
@@ -194,7 +193,7 @@ class UpgradeController extends AdminBaseController
     /**
      * step 4 :--文件比对--
      * 文件目录可写
-     * 文件md5比对
+     * 文件md5比对.
      */
     public function fileAction()
     {
@@ -234,7 +233,7 @@ class UpgradeController extends AdminBaseController
     /**
      * step 5 : 开始升级
      * 备份源文件
-     * 覆盖文件
+     * 覆盖文件.
      */
     public function doupgradeAction()
     {
@@ -256,7 +255,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * step 6 : 数据库更新操作
+     * step 6 : 数据库更新操作.
      *
      * 先执行update.sql,再跳转到update.php
      */
@@ -343,7 +342,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * 执行数据库脚本升级
+     * 执行数据库脚本升级.
      */
     public function phpAction()
     {
@@ -380,8 +379,8 @@ class UpgradeController extends AdminBaseController
         $this->setOutput(
             array(
                 'systeminfo' => 'phpwind '.NEXT_VERSION.' release '.NEXT_RELEASE,
-                'back' => str_replace(ROOT_PATH, '', $back),
-                'upgrade' => str_replace(ROOT_PATH, '', $upgrade), ));
+                'back'       => str_replace(ROOT_PATH, '', $back),
+                'upgrade'    => str_replace(ROOT_PATH, '', $upgrade), ));
     }
 
     private function _clear()
@@ -425,7 +424,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * 更新成功后备份
+     * 更新成功后备份.
      *
      * @return multitype:string
      */
@@ -447,7 +446,6 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwSystemInstallation
      */
     private function _loadInstallation()

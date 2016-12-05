@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('FORUM_INVALID_PARAMS', 401);
 define('FORUM_FAVOR_MAX', 402);
@@ -15,7 +15,7 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
     }
 
     /**
-     * 获取版块列表
+     * 获取版块列表.
      *
      * @return array
      */
@@ -23,32 +23,34 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
     {
         $result = $this->getPwForum()->getForumList();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
     }
 
     /**
-     * 根据版块id获取版块列表
+     * 根据版块id获取版块列表.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getForumByFid($fid)
     {
         $result = $this->getPwForum()->getForum(intval($fid));
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
     }
 
     /**
-     * 根据版块id获取子版块
+     * 根据版块id获取子版块.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getChildForumByFid($fid)
@@ -59,7 +61,7 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
         }
         $result = $this->getPwForum()->getSubForums(intval($fid));
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -70,7 +72,7 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
         $fids && $fids = explode(',', $fids);
         $result = $this->getPwForumService()->getForumOption($fids);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -95,7 +97,7 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
             }
             $data[] = $v;
         }
-        if (! ACloudSysCoreS::isArray($data)) {
+        if (!ACloudSysCoreS::isArray($data)) {
             return array();
         }
 
@@ -104,10 +106,10 @@ class ACloudVerCommonForum extends ACloudVerCommonBase
 
     private function buildForumData($data)
     {
-        list($result, $siteUrl) = array(array(), ACloudSysCoreCommon::getGlobal('g_siteurl', $_SERVER ['SERVER_NAME']));
+        list($result, $siteUrl) = array(array(), ACloudSysCoreCommon::getGlobal('g_siteurl', $_SERVER['SERVER_NAME']));
         foreach ($data as $value) {
-            $value ['forumurl'] = 'http://'.$siteUrl.'/index.php?m=bbs&c=thread&fid='.$value ['fid'];
-            $result [$value ['fid']] = $value;
+            $value['forumurl'] = 'http://'.$siteUrl.'/index.php?m=bbs&c=thread&fid='.$value['fid'];
+            $result[$value['fid']] = $value;
         }
 
         return $result;

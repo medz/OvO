@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 友情链接搜索条件
+ * 友情链接搜索条件.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwLinkSo
 {
@@ -27,7 +27,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索链接ID
+     * 搜索链接ID.
+     *
      * @param array $lid
      */
     public function setLid($lid)
@@ -38,7 +39,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索名称
+     * 搜索名称.
+     *
      * @param string $name
      */
     public function setName($name)
@@ -49,7 +51,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索URL
+     * 搜索URL.
+     *
      * @param string $url
      */
     public function setUrl($url)
@@ -60,7 +63,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索有logo
+     * 搜索有logo.
+     *
      * @param int $logo
      */
     public function setLogo($logo)
@@ -71,7 +75,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索ifcheck
+     * 搜索ifcheck.
+     *
      * @param int $ifcheck
      */
     public function setIfcheck($ifcheck)
@@ -82,7 +87,8 @@ class PwLinkSo
     }
 
     /**
-     * 搜索分类
+     * 搜索分类.
+     *
      * @param int $typeid
      */
     public function setTypeid($typeid)

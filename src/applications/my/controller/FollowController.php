@@ -3,14 +3,13 @@
 Wind::import('SRV:attention.PwAttentionType');
 
 /**
- * 首页
+ * 首页.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: FollowController.php 28843 2013-05-28 01:57:37Z jieyin $
- * @package forum
  */
-
 class FollowController extends PwBaseController
 {
     /* (non-PHPdoc)
@@ -26,7 +25,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 关注-首页
+     * 关注-首页.
      */
     public function run()
     {
@@ -94,7 +93,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 关注用户
+     * 关注用户.
      */
     public function addAction()
     {
@@ -115,7 +114,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 批量关注用户
+     * 批量关注用户.
      */
     public function batchaddAction()
     {
@@ -137,7 +136,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 取消关注
+     * 取消关注.
      */
     public function deleteAction()
     {
@@ -153,7 +152,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 添加关注分类
+     * 添加关注分类.
      */
     public function addtypeAction()
     {
@@ -175,7 +174,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 保存用户分类
+     * 保存用户分类.
      */
     public function savetypeAction()
     {
@@ -192,7 +191,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 修改关注分类
+     * 修改关注分类.
      */
     public function editTypeAction()
     {
@@ -223,7 +222,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * 删除关注分类
+     * 删除关注分类.
      */
     public function deleteTypeAction()
     {
@@ -295,7 +294,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * PwUser
+     * PwUser.
      *
      * @return PwUser
      */
@@ -305,7 +304,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -315,7 +314,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * PwAttentionType
+     * PwAttentionType.
      *
      * @return PwAttentionType
      */
@@ -325,7 +324,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * PwAttentionService
+     * PwAttentionService.
      *
      * @return PwAttentionService
      */
@@ -345,7 +344,7 @@ class FollowController extends PwBaseController
     }
 
     /**
-     * PwAttentionRecommendFriendsService
+     * PwAttentionRecommendFriendsService.
      *
      * @return PwAttentionRecommendFriendsService
      */

@@ -4,12 +4,13 @@
 Wind::import('SRV:space.bo.PwSpaceBo');
 /**
  * 我的空间
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: MyspaceController.php 28765 2013-05-23 03:05:46Z gao.wanggao $
- * @package
  */
 class MyspaceController extends PwBaseController
 {
@@ -24,7 +25,8 @@ class MyspaceController extends PwBaseController
     }
 
     /**
-     * 空间设置
+     * 空间设置.
+     *
      * @see wekit/wind/web/WindController::run()
      */
     public function run()
@@ -67,7 +69,6 @@ class MyspaceController extends PwBaseController
         }
         $this->showMessage('success');
     }
-
 
     /**
      * 空间基本信息处理
@@ -139,7 +140,6 @@ class MyspaceController extends PwBaseController
         $this->showMessage('MEDAL:success');
     }
 
-
     /**
      * 空间背景设置
      * Enter description here ...
@@ -184,7 +184,6 @@ class MyspaceController extends PwBaseController
     public function delbackground()
     {
     }
-
 
     public function doreplyAction()
     {

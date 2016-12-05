@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:log.so.PwLogSo');
 
 /**
- * 前台管理日志
+ * 前台管理日志.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: LoginlogController.php 25604 2013-03-20 01:24:06Z gao.wanggao $
- * @package src.applications.log.admin
  */
 class LoginlogController extends AdminBaseController
 {
@@ -50,7 +50,7 @@ class LoginlogController extends AdminBaseController
     }
 
     /**
-     * 清除三个月前操作
+     * 清除三个月前操作.
      */
     public function clearAction()
     {
@@ -73,7 +73,7 @@ class LoginlogController extends AdminBaseController
     }
 
     /**
-     * 返回登录的错误类型
+     * 返回登录的错误类型.
      *
      * @return array
      */

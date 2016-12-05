@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台设置-每日打卡设置
+ * 后台设置-每日打卡设置.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PunchController extends AdminBaseController
 {
@@ -26,7 +26,7 @@ class PunchController extends AdminBaseController
     }
 
     /**
-     * 后台设置-每日打卡设置
+     * 后台设置-每日打卡设置.
      */
     public function dorunAction()
     {
@@ -44,15 +44,15 @@ class PunchController extends AdminBaseController
         }
         $punchReward = array(
             'type' => $punchReward['type'],
-            'min' => $min,
-            'max' => $max,
+            'min'  => $min,
+            'max'  => $max,
             'step' => abs(ceil($punchReward['step'])),
         );
         $rewardNum = abs(ceil($punchFrendReward['rewardNum']));
         $punchFrendReward = array(
-            'friendNum' => abs(ceil($punchFrendReward['friendNum'])),
+            'friendNum'   => abs(ceil($punchFrendReward['friendNum'])),
             'rewardMeNum' => abs(ceil($punchFrendReward['rewardMeNum'])),
-            'rewardNum' => $rewardNum > $max ? $max : $rewardNum,
+            'rewardNum'   => $rewardNum > $max ? $max : $rewardNum,
         );
         $config->set('punch.open', $punchOpen)
             ->set('punch.reward', $punchReward)

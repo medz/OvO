@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 帖子内容页回复列表数据接口
+ * 帖子内容页回复列表数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwReadDataSource.php 21659 2012-12-12 07:00:13Z xiaoxia.xuxx $
- * @package forum
  */
-
 abstract class PwReadDataSource
 {
     public $page = 1;
@@ -67,7 +66,7 @@ abstract class PwReadDataSource
     }
 
     /**
-     * 设置url参数
+     * 设置url参数.
      *
      * @param string $key
      * @param string $value
@@ -78,9 +77,10 @@ abstract class PwReadDataSource
     }
 
     /**
-     * 获取当前链接模式
+     * 获取当前链接模式.
      *
-     * @param  string $except
+     * @param string $except
+     *
      * @return string
      */
     public function getUrlArgs($except = '')

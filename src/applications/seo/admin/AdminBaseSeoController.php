@@ -3,20 +3,21 @@
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:seo.dm.PwSeoDm');
 /**
- * seo模式的基础controller
+ * seo模式的基础controller.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package modules.seo.admin
  */
 class AdminBaseSeoController extends AdminBaseController
 {
     /**
-     * 设置后台菜单
+     * 设置后台菜单.
      *
-     * @param  string $action
+     * @param string $action
+     *
      * @return string
      */
     protected function setTab($mod)
@@ -33,9 +34,10 @@ class AdminBaseSeoController extends AdminBaseController
     }
 
     /**
-     * 获得所有页面和占位符
+     * 获得所有页面和占位符.
      *
-     * @param  string $mode
+     * @param string $mode
+     *
      * @return array
      */
     protected function getAllPagesAndCodes($mode)
@@ -47,7 +49,6 @@ class AdminBaseSeoController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwSeo
      */
     protected function _seoDs()
@@ -56,7 +57,6 @@ class AdminBaseSeoController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwSeoService
      */
     protected function _seoService()
@@ -65,7 +65,6 @@ class AdminBaseSeoController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwSeoExtends
      */
     protected function _extendServices()

@@ -3,8 +3,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwHookInjectDao extends PwBaseDao
 {
@@ -25,9 +25,10 @@ class PwHookInjectDao extends PwBaseDao
         'description', );
 
     /**
-     * 添加钩子定义
+     * 添加钩子定义.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function add($fields)
@@ -43,9 +44,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 批量添加钩子扩展信息, 影响行数
+     * 批量添加钩子扩展信息, 影响行数.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return int
      */
     public function batchAdd($fields)
@@ -73,9 +75,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 刪除hook，返回影响行数
+     * 刪除hook，返回影响行数.
      *
-     * @param  string $id
+     * @param string $id
+     *
      * @return int
      */
     public function del($id)
@@ -86,9 +89,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据钩子名称删除钩子定义
+     * 根据钩子名称删除钩子定义.
      *
-     * @param  string $alias
+     * @param string $alias
+     *
      * @return bool
      */
     public function delByAlias($alias)
@@ -99,9 +103,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据Inject id批量删除injector信息
+     * 根据Inject id批量删除injector信息.
      *
-     * @param  array    $ids
+     * @param array $ids
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchDelById($ids)
@@ -112,9 +117,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据别名，批量删除injector
+     * 根据别名，批量删除injector.
      *
-     * @param  array    $alias
+     * @param array $alias
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchDelByAlias($alias)
@@ -125,9 +131,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据HookName删除injector
+     * 根据HookName删除injector.
      *
-     * @param  string   $hookName
+     * @param string $hookName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function delByHookName($hookName)
@@ -138,9 +145,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据HookName删除injector
+     * 根据HookName删除injector.
      *
-     * @param  array    $hookNames
+     * @param array $hookNames
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchDelByHookName($hookNames)
@@ -151,10 +159,11 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据钩子名称和扩展别名删除一个扩展
+     * 根据钩子名称和扩展别名删除一个扩展.
      *
-     * @param  string   $alias
-     * @param  string   $hookname
+     * @param string $alias
+     * @param string $hookname
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function delByHookNameAndAlias($alias, $hookname)
@@ -165,10 +174,11 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据hook id 更新，返回影响行数
+     * 根据hook id 更新，返回影响行数.
      *
-     * @param  string $id
-     * @param  array  $fields
+     * @param string $id
+     * @param array  $fields
+     *
      * @return int
      */
     public function update($id, $fields)
@@ -182,9 +192,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据ID查找hook注册信息，返回hook数据
+     * 根据ID查找hook注册信息，返回hook数据.
      *
-     * @param  string $appId
+     * @param string $appId
+     *
      * @return array
      */
     public function find($id)
@@ -198,9 +209,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据id数据批量获取hook数据
+     * 根据id数据批量获取hook数据.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetch($ids)
@@ -209,9 +221,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据HookName获取注入服务列表
+     * 根据HookName获取注入服务列表.
      *
-     * @param  int   $hookId
+     * @param int $hookId
+     *
      * @return array
      */
     public function findByHookName($hookName)
@@ -222,9 +235,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据HookName批量获取注入服务列表
+     * 根据HookName批量获取注入服务列表.
      *
-     * @param  int   $hookId
+     * @param int $hookId
+     *
      * @return array
      */
     public function fetchByHookName($hookNames)
@@ -235,9 +249,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据别名获取应用注如服务列表
+     * 根据别名获取应用注如服务列表.
      *
-     * @param  string $alias
+     * @param string $alias
+     *
      * @return array
      */
     public function findByAlias($alias)
@@ -250,7 +265,8 @@ class PwHookInjectDao extends PwBaseDao
     /**
      * 根据别名批量查找注册服务
      *
-     * @param  array    $alias
+     * @param array $alias
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchFindByAlias($alias)
@@ -261,12 +277,13 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 分页查找钩子信息
+     * 分页查找钩子信息.
      *
-     * @param  int           $num   默认为10
-     * @param  int           $start
-     * @param  int           $index
-     * @param  string        $order
+     * @param int    $num   默认为10
+     * @param int    $start
+     * @param int    $index
+     * @param string $order
+     *
      * @return bool|Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function findByPage($num = 10, $start = 0, $index = 'id', $order = 'alias')
@@ -281,7 +298,7 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 获取数据总条数
+     * 获取数据总条数.
      *
      * @return int
      */
@@ -293,9 +310,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据应用名称删除
+     * 根据应用名称删除.
      *
-     * @param  string   $appName
+     * @param string $appName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function deleteByAppName($appName)
@@ -306,9 +324,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据应用id删除
+     * 根据应用id删除.
      *
-     * @param  string   $appName
+     * @param string $appName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function deleteByAppId($appid)
@@ -319,9 +338,10 @@ class PwHookInjectDao extends PwBaseDao
     }
 
     /**
-     * 根据appid获取应用注如服务列表
+     * 根据appid获取应用注如服务列表.
      *
-     * @param  string $appid
+     * @param string $appid
+     *
      * @return array
      */
     public function findByAppid($appid)

@@ -7,15 +7,16 @@ Wind::import('SRV:task.dm.PwTaskDmFactory');
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskService.php 24025 2013-01-21 03:18:31Z xiaoxia.xuxx $
- * @package src.service.task.srv
  */
 class PwTaskService
 {
     /**
      * 根据用户的行为数据分析并发送自动任务
      *
-     * @param  array $behavior
+     * @param array $behavior
+     *
      * @return bool
      */
     public function sendAutoTask($behavior)
@@ -56,8 +57,9 @@ class PwTaskService
      *
      * @param int $id
      * @param  int          $status 开启1或是关闭0
-     * @param  int          $order 顺序
-     * @param  string       $title 标题
+     * @param int    $order 顺序
+     * @param string $title 标题
+     *
      * @return PwError|bool
      */
     public function openTask($id, $status, $order = '', $title = '')
@@ -86,9 +88,10 @@ class PwTaskService
      * 删除一条任务
      * 1：任务信息表
      * 2：任务-用户组 关系表
-     * 3：任务-用户 关系表
+     * 3：任务-用户 关系表.
      *
-     * @param  int          $id 任务ID
+     * @param int $id 任务ID
+     *
      * @return PwError|bool
      */
     public function deleteTask($id)
@@ -108,10 +111,11 @@ class PwTaskService
     }
 
     /**
-     * 获取任务列表
+     * 获取任务列表.
      *
-     * @param  int   $page 查询页数
-     * @param  int   $num  返回条数
+     * @param int $page 查询页数
+     * @param int $num  返回条数
+     *
      * @return array
      */
     public function getTaskList($page = 1, $num = 10)
@@ -126,11 +130,11 @@ class PwTaskService
         foreach ($list as $k => $v) {
             $taskDb[$k] = array(
                 'view_order' => $v['view_order'],
-                'title' => $v['title'],
-                'is_open' => $v['is_open'],
-                'reward' => unserialize($v['reward']),
+                'title'      => $v['title'],
+                'is_open'    => $v['is_open'],
+                'reward'     => unserialize($v['reward']),
                 'start_time' => $v['start_time'],
-                'end_time' => $v['end_time'], );
+                'end_time'   => $v['end_time'], );
             if (isset($nextTask[$k])) {
                 $taskDb[$k]['msg'] = $lang->getMessage('TASK:delete.error.has.next.task', array('{title}' => $nextTask[$k]['title']));
             }
@@ -140,7 +144,7 @@ class PwTaskService
     }
 
     /**
-     * 获取用户可申领的任务列表
+     * 获取用户可申领的任务列表.
      *
      * 条件：
      * 1：该用户所在用户组有申领权限的，或是该任务是对任何用户开放的
@@ -150,9 +154,11 @@ class PwTaskService
      * 2-1：任务是否已经过期
      * 2-2：任务未开启
      * 2-3：任务的前置任务显示
-     * @param  int   $uid  用户ID
-     * @param  int   $page 页数
-     * @param  int   $num  条数
+     *
+     * @param int $uid  用户ID
+     * @param int $page 页数
+     * @param int $num  条数
+     *
      * @return array array(count, array())
      */
     public function getApplicableTaskList($uid, $page = 1, $num = 10)
@@ -172,7 +178,7 @@ class PwTaskService
     }
 
     /**
-     * 获得用户正在进行中的任务列表
+     * 获得用户正在进行中的任务列表.
      *
      * 条件：
      * 1：用户申领成功的任务
@@ -187,8 +193,9 @@ class PwTaskService
      *
      * @param int $uid 用户ID
      * @param int statu 用户任务类型，PwTask::DOING/UNREWARD/COMPLETE中的组合
-     * @param  int   $page 页数
-     * @param  int   $num  返回数量
+     * @param int $page 页数
+     * @param int $num  返回数量
+     *
      * @return array array(count, array())
      */
     public function getMyTaskListWithStatu($uid, $statu = PwTaskUser::COMPLETE, $page = 1, $num = 10)
@@ -216,10 +223,11 @@ class PwTaskService
      * 6：返回任务ID列表：条件2-5产生的任务ID+条件1得到的周期任务ID列表
      * 实现：
      * 1：推送给用户
-     * 2： 用户执行acceptTask
+     * 2： 用户执行acceptTask.
      *
-     * @param  int   $uid   用户ID
-     * @param  int   $limit 条数
+     * @param int $uid   用户ID
+     * @param int $limit 条数
+     *
      * @return array
      */
     public function getAutoApplicableTaskList($uid, $limit = 1)
@@ -235,8 +243,9 @@ class PwTaskService
     /**
      * 获得任务的自动后置任务
      *
-     * @param  int   $taskid 任务ID
-     * @param  int   $uid    用户ID
+     * @param int $taskid 任务ID
+     * @param int $uid    用户ID
+     *
      * @return array
      */
     public function getNextAutoApplicableTaskList($taskid, $uid)
@@ -257,7 +266,8 @@ class PwTaskService
     /**
      * 获取一个任务的可选择前置任务
      *
-     * @param  int   $taskid
+     * @param int $taskid
+     *
      * @return array
      */
     public function getPreTasksByTaskId($taskid)
@@ -275,15 +285,16 @@ class PwTaskService
     }
 
     /**
-     * 构建我的任务列表
+     * 构建我的任务列表.
      *
      * 每个任务有三个状态信息：
      * 1-tag: 右上角显示:1:已领取，2：已关闭，3：已结束，4：正在进行中，5: 领取奖励--已完成，
      * 2-continue: 按钮是否可以使用
      * 3-percent: 任务进行的进度
      *
-     * @param  array $taskList 任务信息
-     * @param  array $myTask   我的任务信息
+     * @param array $taskList 任务信息
+     * @param array $myTask   我的任务信息
+     *
      * @return array
      */
     private function _buildMyTaskList($taskList, $myTask)
@@ -324,13 +335,14 @@ class PwTaskService
     }
 
     /**
-     * 构建任务输出列表
+     * 构建任务输出列表.
      *
      * 每个任务有两个附加信息：
      * 1-parent:前置任务信息
      * 2-reward: 奖励描述
      *
-     * @param  array $taskList 任务列表
+     * @param array $taskList 任务列表
+     *
      * @return array
      */
     private function _buildTaskList($taskList)
@@ -351,10 +363,11 @@ class PwTaskService
     }
 
     /**
-     * 根据用户ID获得该用户所拥有的用户组ID列表
+     * 根据用户ID获得该用户所拥有的用户组ID列表.
      *
-     * @param  int   $uid  用户ID
-     * @param  array $gids 用户组ID列表
+     * @param int   $uid  用户ID
+     * @param array $gids 用户组ID列表
+     *
      * @return array
      */
     private function _getGidsByUid($uid)
@@ -369,7 +382,7 @@ class PwTaskService
     }
 
     /**
-     * 任务DS
+     * 任务DS.
      *
      * @return PwTask
      */
@@ -379,7 +392,7 @@ class PwTaskService
     }
 
     /**
-     * 用户任务ds
+     * 用户任务ds.
      *
      * @return PwTaskUser
      */

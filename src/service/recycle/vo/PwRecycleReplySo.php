@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 回收站帖子搜索条件
+ * 回收站帖子搜索条件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRecycleReplySo.php 11923 2012-06-14 09:17:27Z jieyin $
- * @package forum
  */
-
 class PwRecycleReplySo
 {
     protected $_data = array();
@@ -27,7 +26,7 @@ class PwRecycleReplySo
     }
 
     /**
-     * 搜索帖子标题
+     * 搜索帖子标题.
      */
     public function setKeywordOfTitle($keyword)
     {
@@ -37,7 +36,7 @@ class PwRecycleReplySo
     }
 
     /**
-     * 搜索版块
+     * 搜索版块.
      *
      * @param mixed $fid int|array
      */
@@ -49,7 +48,7 @@ class PwRecycleReplySo
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      */
     public function setAuthor($author)
     {
@@ -60,7 +59,7 @@ class PwRecycleReplySo
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      *
      * @param mixed $authorid int|array
      */
@@ -72,7 +71,7 @@ class PwRecycleReplySo
     }
 
     /**
-     * 发帖时间区间，起始
+     * 发帖时间区间，起始.
      */
     public function setCreateTimeStart($time)
     {

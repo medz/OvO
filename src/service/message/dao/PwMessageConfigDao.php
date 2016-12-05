@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户消息配置dao
+ * 用户消息配置dao.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwMessageConfigDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwMessageConfigDao extends PwBaseDao
     protected $_dataStruct = array('uid', 'privacy', 'notice_types');
 
     /**
-     * 获取用户消息配置
+     * 获取用户消息配置.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function getMessageConfig($uid)
@@ -30,9 +31,10 @@ class PwMessageConfigDao extends PwBaseDao
     }
 
     /**
-     * 获取用户消息配置
+     * 获取用户消息配置.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchMessageConfig($uids)
@@ -41,9 +43,10 @@ class PwMessageConfigDao extends PwBaseDao
     }
 
     /**
-     * 用户配置
+     * 用户配置.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function setMessageConfig($data)
@@ -52,8 +55,8 @@ class PwMessageConfigDao extends PwBaseDao
             return false;
         }
         $data = array(
-            'uid' => $data['uid'],
-            'privacy' => $data['privacy'],
+            'uid'          => $data['uid'],
+            'privacy'      => $data['privacy'],
             'notice_types' => $data['notice_types'],
         );
         $sql = $this->_bindSql('REPLACE INTO %s SET %s ', $this->getTable(), $this->sqlSingle($data));

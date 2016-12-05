@@ -87,18 +87,18 @@ class ArticleController extends AdminBaseController
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
         $this->setOutput(array(
-            'keyword' => $keyword,
+            'keyword'          => $keyword,
             'created_username' => $created_username,
-            'time_start' => $time_start,
-            'time_end' => $time_end,
-            'fid' => $fid,
-            'digest' => $digest,
-            'created_userid' => $created_userid,
-            'created_ip' => $created_ip,
-            'hits_start' => $hits_start,
-            'hits_end' => $hits_end,
-            'replies_start' => $replies_start,
-            'replies_end' => $replies_end,
+            'time_start'       => $time_start,
+            'time_end'         => $time_end,
+            'fid'              => $fid,
+            'digest'           => $digest,
+            'created_userid'   => $created_userid,
+            'created_ip'       => $created_ip,
+            'hits_start'       => $hits_start,
+            'hits_end'         => $hits_end,
+            'replies_start'    => $replies_start,
+            'replies_end'      => $replies_end,
         ), 'args');
 
         $this->setOutput($this->_getFroumService()->getForumList($fid), 'forumList');
@@ -186,14 +186,14 @@ class ArticleController extends AdminBaseController
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
         $this->setOutput(array(
-            'keyword' => $keyword,
-            'created_username' => $created_username,
+            'keyword'            => $keyword,
+            'created_username'   => $created_username,
             'created_time_start' => $created_time_start,
-            'created_time_end' => $created_time_end,
-            'fid' => $fid,
-            'created_userid' => $created_userid,
-            'created_ip' => $created_ip,
-            'tid' => $tid,
+            'created_time_end'   => $created_time_end,
+            'fid'                => $fid,
+            'created_userid'     => $created_userid,
+            'created_ip'         => $created_ip,
+            'tid'                => $tid,
         ), 'args');
 
         $this->setOutput($this->_getFroumService()->getForumList($fid), 'forumList');
@@ -203,7 +203,6 @@ class ArticleController extends AdminBaseController
 
     /**
      * Enter description here ...
-     *
      */
     public function deletereplyAction()
     {

@@ -1,12 +1,13 @@
 <?php
 /**
  * 默认数据服务
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignDefaultService.php 25611 2013-03-20 02:20:51Z gao.wanggao $
- * @package
  */
 class PwDesignDefaultService
 {
@@ -92,7 +93,6 @@ TPL;
         return true;
     }
 
-
     public function tagModule()
     {
         $ds = $this->_getPageDs();
@@ -153,12 +153,10 @@ TPL;
         return true;
     }
 
-
     private function _getBakService()
     {
         return Wekit::load('design.srv.PwPageBakService');
     }
-
 
     private function _getPageDs()
     {

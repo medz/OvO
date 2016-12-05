@@ -6,15 +6,16 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwRemind
 {
     /**
-     * 根据uid获取最近@数据
+     * 根据uid获取最近@数据.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getByUid($uid)
@@ -28,10 +29,11 @@ class PwRemind
     }
 
     /**
-     * 更新数据
+     * 更新数据.
      *
-     * @param  int   $uid
-     * @param  array $touid
+     * @param int   $uid
+     * @param array $touid
+     *
      * @return bool
      */
     public function replaceRemind($uid, $touid)
@@ -45,9 +47,10 @@ class PwRemind
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)

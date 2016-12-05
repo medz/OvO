@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 投票基础表数据模型
+ * 投票基础表数据模型.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPollDm.php 4308 2012-02-15 02:55:41Z mingxing.sun$
- * @package poll
  */
-
 class PwPollDm extends PwBaseDm
 {
     public $poll_id = 0;
@@ -24,7 +21,7 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置投票个数限制
+     * 设置投票个数限制.
      *
      * @param int $mostVotes
      *                       return object
@@ -38,12 +35,12 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置是否投票后才能查看结果
+     * 设置是否投票后才能查看结果.
      *
-     * @param  int    $isViewResult
+     * @param int $isViewResult
+     *
      * @return object
      */
-
     public function setIsViewResult($isViewResult)
     {
         $this->_data['isafter_view'] = intval($isViewResult);
@@ -59,9 +56,10 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置投票发起者UID
+     * 设置投票发起者UID.
      *
-     * @param  int    $createdUserid
+     * @param int $createdUserid
+     *
      * @return object
      */
     public function setCreatedUserid($createdUserid)
@@ -72,9 +70,10 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置注册时间限制
+     * 设置注册时间限制.
      *
-     * @param  string $regtimeLimit
+     * @param string $regtimeLimit
+     *
      * @return object
      */
     public function setRegtimeLimit($regtimeLimit)
@@ -85,7 +84,7 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置有效时间
+     * 设置有效时间.
      *
      * @param int $validtime
      *                       return object
@@ -98,9 +97,10 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置APP应用扩展类别
+     * 设置APP应用扩展类别.
      *
-     * @param  int    $appType
+     * @param int $appType
+     *
      * @return object
      */
     public function setAppType($appType)
@@ -111,9 +111,10 @@ class PwPollDm extends PwBaseDm
     }
 
     /**
-     * 设置投票人数
+     * 设置投票人数.
      *
-     * @param  int    $voterNum
+     * @param int $voterNum
+     *
      * @return object
      */
     public function setVoterNum($voterNum)

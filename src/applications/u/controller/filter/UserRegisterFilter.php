@@ -1,12 +1,12 @@
 <?php
 /**
- * 用户注册过滤
+ * 用户注册过滤.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: UserRegisterFilter.php 18671 2012-09-26 02:49:27Z xiaoxia.xuxx $
- * @package
  */
 class UserRegisterFilter extends WindActionFilter
 {

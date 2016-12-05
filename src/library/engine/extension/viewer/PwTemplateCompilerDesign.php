@@ -2,15 +2,15 @@
 
 
 /**
- * 门户调用标签解析
+ * 门户调用标签解析.
  *
  * <design role="" id=""></design>
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $id$
- * @package engine.extension.viewer
  */
 class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
 {
@@ -21,6 +21,7 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
 
     private $_uri;
     private $_router;
+
     /* (non-PHPdoc)
      * @see AbstractWindTemplateCompiler::compile()
      */
@@ -61,7 +62,6 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
                 //return $this->service->afterDesign();
         }
     }
-
 
     public function getProperties()
     {

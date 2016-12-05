@@ -6,21 +6,24 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * 用户权限服务
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 8, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwPermissionService.php 24736 2013-02-19 09:24:40Z jieyin $
  */
-
 class PwPermissionService
 {
     private $_config;
     private $_configCategory;
 
     /**
-     * 获取一级菜单项
+     * 获取一级菜单项.
      *
-     * @param  bool  $manage (管理权限true|普通权限false)
+     * @param bool $manage (管理权限true|普通权限false)
+     *
      * @return array
      */
     public function getTopLevelCategories($manage = false)
@@ -46,7 +49,7 @@ class PwPermissionService
     }
 
     /**
-     * 获取某一组的所有权限点
+     * 获取某一组的所有权限点.
      *
      * @param string $category
      */
@@ -91,7 +94,7 @@ class PwPermissionService
     }
 
     /**
-     * 获取权限配置设置
+     * 获取权限配置设置.
      *
      * @param int    $gid
      * @param string $category
@@ -125,10 +128,11 @@ class PwPermissionService
     }
 
     /**
-     * 根据用户组获得用户组的的权限设置
+     * 根据用户组获得用户组的的权限设置.
      *
-     * @param  array $needKeys
-     * @param  array $category
+     * @param array $needKeys
+     * @param array $category
+     *
      * @return array
      */
     public function getPermissionPoint($needKeys, $category = array())
@@ -165,10 +169,11 @@ class PwPermissionService
     }
 
     /**
-     * 根据用户组及需要的权限点获得该用户组的权限设置
+     * 根据用户组及需要的权限点获得该用户组的权限设置.
      *
-     * @param  int   $gid         用户组ID
-     * @param  array $returnItems 需要返回的点
+     * @param int   $gid         用户组ID
+     * @param array $returnItems 需要返回的点
+     *
      * @return array
      */
     public function getPermissionConfigByGid($gid, $returnItems)
@@ -210,7 +215,7 @@ class PwPermissionService
     }
 
     /**
-     * 获取权限菜单配置
+     * 获取权限菜单配置.
      *
      * @return array
      */
@@ -228,7 +233,7 @@ class PwPermissionService
     }
 
     /**
-     * 获取权限点配置
+     * 获取权限点配置.
      *
      * @return array
      */

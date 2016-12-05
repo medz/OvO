@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 define('POST_INVALID_PARAMS', 301);
 class ACloudApiCommonMessage
 {

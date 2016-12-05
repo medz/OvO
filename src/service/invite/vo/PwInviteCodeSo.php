@@ -5,15 +5,15 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteCodeSo.php 19073 2012-10-10 08:33:40Z xiaoxia.xuxx $
- * @package service.invite.vo
  */
 class PwInviteCodeSo
 {
     private $_data = array();
 
     /**
-     * 获取所有查询数据
+     * 获取所有查询数据.
      *
      * @return array
      */
@@ -25,7 +25,8 @@ class PwInviteCodeSo
     /**
      * 设置搜索状态
      *
-     * @param  int                    $ifused
+     * @param int $ifused
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setIfused($ifused)
@@ -36,9 +37,10 @@ class PwInviteCodeSo
     }
 
     /**
-     * 设置过期时间---查询未过期字段
+     * 设置过期时间---查询未过期字段.
      *
-     * @param  int                    $expireTime
+     * @param int $expireTime
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setExpireTime($expireTime)
@@ -49,9 +51,10 @@ class PwInviteCodeSo
     }
 
     /**
-     * 设置创建用户ID
+     * 设置创建用户ID.
      *
-     * @param  int                    $uid
+     * @param int $uid
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setCreatedUid($uid)
@@ -62,9 +65,10 @@ class PwInviteCodeSo
     }
 
     /**
-     * 设置被邀请人的用户ID
+     * 设置被邀请人的用户ID.
      *
-     * @param  用户名              $uid
+     * @param 用户名 $uid
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setInvitedUid($uid)
@@ -75,9 +79,10 @@ class PwInviteCodeSo
     }
 
     /**
-     * 设置创建用户名字
+     * 设置创建用户名字.
      *
-     * @param  string                 $username
+     * @param string $username
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setCreatedUsername($username)
@@ -93,9 +98,10 @@ class PwInviteCodeSo
     }
 
     /**
-     * 设置注册用户的用户名
+     * 设置注册用户的用户名.
      *
-     * @param  string                 $username
+     * @param string $username
+     *
      * @return PwUserInviteCodeSearch
      */
     public function setInvitedUsername($username)

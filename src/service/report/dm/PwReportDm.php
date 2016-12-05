@@ -2,15 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
- * 举报DM
+ * 举报DM.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwReportDm extends PwBaseDm
 {
@@ -23,9 +22,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置类型type
+     * 设置类型type.
      *
-     * @param  int        $type
+     * @param int $type
+     *
      * @return PwReportDm
      */
     public function setType($type)
@@ -36,9 +36,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置类型typeid
+     * 设置类型typeid.
      *
-     * @param  int        $typeId
+     * @param int $typeId
+     *
      * @return PwReportDm
      */
     public function setTypeId($typeId)
@@ -49,9 +50,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置内容content
+     * 设置内容content.
      *
-     * @param  string     $content
+     * @param string $content
+     *
      * @return PwReportDm
      */
     public function setContent($content)
@@ -63,9 +65,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置内容链接
+     * 设置内容链接.
      *
-     * @param  string     $contentUrl
+     * @param string $contentUrl
+     *
      * @return PwReportDm
      */
     public function setContentUrl($contentUrl)
@@ -77,9 +80,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置作者
+     * 设置作者.
      *
-     * @param  int        $author_userid
+     * @param int $author_userid
+     *
      * @return PwReportDm
      */
     public function setAuthorUserid($authorUserid)
@@ -90,9 +94,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置举报人
+     * 设置举报人.
      *
-     * @param  string     $created_userid
+     * @param string $created_userid
+     *
      * @return PwReportDm
      */
     public function setCreatedUserid($created_userid)
@@ -103,9 +108,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置举报事件
+     * 设置举报事件.
      *
-     * @param  int        $created_time
+     * @param int $created_time
+     *
      * @return PwReportDm
      */
     public function setCreatedTime($created_time)
@@ -116,9 +122,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置举报原因
+     * 设置举报原因.
      *
-     * @param  string     $reason
+     * @param string $reason
+     *
      * @return PwReportDm
      */
     public function setReason($reason)
@@ -129,9 +136,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置是否处理
+     * 设置是否处理.
      *
-     * @param  int        $ifcheck
+     * @param int $ifcheck
+     *
      * @return PwReportDm
      */
     public function setIfcheck($ifcheck)
@@ -142,9 +150,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置处理人
+     * 设置处理人.
      *
-     * @param  int        $operate_userid
+     * @param int $operate_userid
+     *
      * @return PwReportDm
      */
     public function setOperateUserid($operate_userid)
@@ -155,9 +164,10 @@ class PwReportDm extends PwBaseDm
     }
 
     /**
-     * 设置处理时间
+     * 设置处理时间.
      *
-     * @param  int        $operate_time
+     * @param int $operate_time
+     *
      * @return PwReportDm
      */
     public function setOperateTime($operate_time)

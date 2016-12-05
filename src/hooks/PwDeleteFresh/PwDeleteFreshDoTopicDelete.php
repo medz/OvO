@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 新鲜事删除扩展服务接口--删除帖子源内容
+ * 新鲜事删除扩展服务接口--删除帖子源内容.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteFreshDoTopicDelete.php 21189 2012-11-30 04:00:34Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwDeleteFreshDoTopicDelete extends iPwGleanDoHookProcess
 {
     public $record = array();

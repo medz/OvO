@@ -2,14 +2,14 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 25125 2013-03-05 03:29:29Z gao.wanggao $
- * @package
  */
-
 class IndexController extends PwBaseController
 {
     public function run()
@@ -56,7 +56,6 @@ class IndexController extends PwBaseController
 
         return $headguide.'<em>&gt;</em>'.WindSecurity::escapeHTML($protalname);
     }
-
 
     private function _getPortalDs()
     {

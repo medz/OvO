@@ -3,13 +3,13 @@
 Wind::import('SRV:task.srv.PwTaskComplete');
 Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
 /**
- * 喜欢帖子的扩展
+ * 喜欢帖子的扩展.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskBbsLikeDo.php 20491 2012-10-30 08:15:09Z xiaoxia.xuxx $
- * @package service.task.srv.condition
  */
 class PwTaskBbsLikeDo implements PwTaskCompleteInterface
 {

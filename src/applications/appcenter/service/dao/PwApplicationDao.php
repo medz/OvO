@@ -5,9 +5,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwApplicationDao.php 23963 2013-01-17 08:40:39Z long.shi $
- * @package products
- * @subpackage appcenter.service.dao
  */
 class PwApplicationDao extends PwBaseDao
 {
@@ -30,9 +29,10 @@ class PwApplicationDao extends PwBaseDao
         'description', );
 
     /**
-     * 添加应用
+     * 添加应用.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function add($fields)
@@ -48,9 +48,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据appid刪除应用，返回影响行数
+     * 根据appid刪除应用，返回影响行数.
      *
-     * @param  string $id
+     * @param string $id
+     *
      * @return int
      */
     public function delByAppId($id)
@@ -61,10 +62,11 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 更新应用，返回影响行数
+     * 更新应用，返回影响行数.
      *
-     * @param  string $app_id
-     * @param  array  $fields
+     * @param string $app_id
+     * @param array  $fields
+     *
      * @return int
      */
     public function update($app_id, $fields)
@@ -78,9 +80,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据ID查找App应用注册信息，返回app数据
+     * 根据ID查找App应用注册信息，返回app数据.
      *
-     * @param  string $appId
+     * @param string $appId
+     *
      * @return array
      */
     public function findByAppId($appId)
@@ -94,9 +97,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据应用别名查找应用注册信息，返回app数据
+     * 根据应用别名查找应用注册信息，返回app数据.
      *
-     * @param  string $alias
+     * @param string $alias
+     *
      * @return array
      */
     public function findByAlias($alias)
@@ -110,9 +114,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据应用别名查找应用注册信息，返回app数据
+     * 根据应用别名查找应用注册信息，返回app数据.
      *
-     * @param  array $alias
+     * @param array $alias
+     *
      * @return array
      */
     public function fetchByAlias($alias, $index = 'app_id')
@@ -126,9 +131,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据app_id批量获取
+     * 根据app_id批量获取.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetchByAppId($ids, $index = 'app_id')
@@ -140,10 +146,11 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * app列表
+     * app列表.
      *
-     * @param  int   $num
-     * @param  int   $start
+     * @param int $num
+     * @param int $start
+     *
      * @return array
      */
     public function fetchByPage($num = 10, $start = 0, $index = 'app_id')
@@ -155,12 +162,13 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据status获取列表
+     * 根据status获取列表.
      *
-     * @param  int    $num
-     * @param  int    $start
-     * @param  int    $status  是否有独立页面
-     * @param  string $orderby
+     * @param int    $num
+     * @param int    $start
+     * @param int    $status  是否有独立页面
+     * @param string $orderby
+     *
      * @return array
      */
     public function fetchListByStatus($num = 10, $start = 0, $status = 1, $orderby = 'created_time')
@@ -172,9 +180,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据status获取总数
+     * 根据status获取总数.
      *
-     * @param  int $status
+     * @param int $status
+     *
      * @return int
      */
     public function countByStatus($status = 1)
@@ -185,11 +194,12 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 根据应用名称模糊搜索
+     * 根据应用名称模糊搜索.
      *
-     * @param  string $name
-     * @param  int    $num
-     * @param  int    $start
+     * @param string $name
+     * @param int    $num
+     * @param int    $start
+     *
      * @return array
      */
     public function searchByName($name, $num = 10, $start = 0)
@@ -201,9 +211,10 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 统计搜索结果
+     * 统计搜索结果.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return int
      */
     public function countSearchByName($name)
@@ -214,7 +225,7 @@ class PwApplicationDao extends PwBaseDao
     }
 
     /**
-     * 获取app总数
+     * 获取app总数.
      *
      * @return int
      */

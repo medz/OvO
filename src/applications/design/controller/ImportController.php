@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ImportController.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package
  */
 class ImportController extends PwBaseController
 {
@@ -53,7 +54,6 @@ class ImportController extends PwBaseController
         $this->_getDesignService()->clearCompile();
         $this->showMessage('operate.success');
     }
-
 
     public function editstyleAction()
     {

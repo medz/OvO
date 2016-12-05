@@ -4,13 +4,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
 /**
- * 帖子发布 - 话题
+ * 帖子发布 - 话题.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwPostDoRemind extends PwPostDoBase
 {
@@ -65,10 +65,10 @@ class PwPostDoRemind extends PwPostDoBase
         //发送通知
         $title = Pw::substrs(trim($this->_atc_title), 20);
         $extendParams = array(
-            'remindUid' => $this->loginUser->uid,
+            'remindUid'      => $this->loginUser->uid,
             'remindUsername' => $this->loginUser->username,
-            'title' => $title,
-            'notice' => '在帖子 <a href="'.WindUrlHelper::createUrl('bbs/read/run', array('tid' => $tid)).'" target="_blank">'.$title.'</a> @了您',
+            'title'          => $title,
+            'notice'         => '在帖子 <a href="'.WindUrlHelper::createUrl('bbs/read/run', array('tid' => $tid)).'" target="_blank">'.$title.'</a> @了您',
         );
         // 是否黑名单
         $remindUids = $this->_checkBlack($remindUids);
@@ -78,7 +78,7 @@ class PwPostDoRemind extends PwPostDoBase
     }
 
     /**
-     * 是否开启权限
+     * 是否开启权限.
      *
      * @return bool
      */
@@ -92,9 +92,10 @@ class PwPostDoRemind extends PwPostDoBase
     }
 
     /**
-     * 是否开启权限
+     * 是否开启权限.
      *
-     * @param  array $remindUids
+     * @param array $remindUids
+     *
      * @return bool
      */
     private function _checkBlack($remindUids)
@@ -116,7 +117,7 @@ class PwPostDoRemind extends PwPostDoBase
     }
 
     /**
-     * PwRemindService
+     * PwRemindService.
      *
      * @return PwRemindService
      */

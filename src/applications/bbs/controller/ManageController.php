@@ -4,13 +4,13 @@ Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
 Wind::import('SRV:forum.srv.PwThreadManage');
 
 /**
- * 帖子-管理操作
+ * 帖子-管理操作.
  *
  * @author peihong <jhqblxt@gmail.com> Dec 2, 2011
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ManageController.php 24747 2013-02-20 03:13:43Z jieyin $
- * @package src.applications.bbs.controller
  */
 class ManageController extends PwBaseController
 {
@@ -22,7 +22,7 @@ class ManageController extends PwBaseController
     protected $doCancel = array();
 
     /**
-     * preprocessing before any manage action
+     * preprocessing before any manage action.
      *
      * @see base/PwBaseController::beforeAction()
      */
@@ -44,7 +44,7 @@ class ManageController extends PwBaseController
     }
 
     /**
-     * manage action
+     * manage action.
      */
     public function manageAction()
     {
@@ -68,7 +68,7 @@ class ManageController extends PwBaseController
     }
 
     /**
-     * get manage handler
+     * get manage handler.
      *
      * @param $action
      */
@@ -376,7 +376,7 @@ class ManageController extends PwBaseController
     }
 
     /**
-     * ban manage
+     * ban manage.
      *
      * @return PwThreadManageDoBan
      */
@@ -420,7 +420,7 @@ class ManageController extends PwBaseController
     }
 
     /**
-     * send messages
+     * send messages.
      */
     protected function _sendMessage($action, $threads)
     {

@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 回复搜索条件
+ * 回复搜索条件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostSo.php 13278 2012-07-05 02:08:39Z jieyin $
- * @package forum
  */
-
 class PwPostSo
 {
     protected $_data = array();
@@ -28,7 +27,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索回复标题
+     * 搜索回复标题.
      */
     public function setKeywordOfTitle($keyword)
     {
@@ -38,7 +37,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索回复内容
+     * 搜索回复内容.
      */
     public function setKeywordOfContent($keyword)
     {
@@ -48,7 +47,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索回复标题或内容
+     * 搜索回复标题或内容.
      */
     public function setKeywordOfTitleOrContent($keyword)
     {
@@ -58,7 +57,7 @@ class PwPostSo
     }
 
     /**
-     * 帖子是否可用
+     * 帖子是否可用.
      */
     public function setDisabled($disabled)
     {
@@ -68,7 +67,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索版块
+     * 搜索版块.
      *
      * @param mixed $fid int|array
      */
@@ -80,7 +79,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索版块
+     * 搜索版块.
      *
      * @param mixed $tid int|array
      */
@@ -92,7 +91,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      */
     public function setAuthor($author)
     {
@@ -103,7 +102,7 @@ class PwPostSo
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      *
      * @param mixed $authorid int|array
      */
@@ -115,7 +114,7 @@ class PwPostSo
     }
 
     /**
-     * 发帖时间区间，起始
+     * 发帖时间区间，起始.
      */
     public function setCreateTimeStart($time)
     {

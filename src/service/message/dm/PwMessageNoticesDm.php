@@ -2,17 +2,13 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- *
  * @author peihong.zhangph
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMessageNoticesDm.php 3682 2012-01-01 03:36:56Z peihong.zhangph $
- * @package forum
  */
-
 class PwMessageNoticesDm extends PwBaseDm
 {
     public $id;

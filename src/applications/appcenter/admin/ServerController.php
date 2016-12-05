@@ -9,7 +9,7 @@ class ServerController extends AdminBaseController
     private $BenchService = null;
 
     /**
-     * 应用中心
+     * 应用中心.
      */
     public function appcenterAction()
     {
@@ -55,7 +55,7 @@ class ServerController extends AdminBaseController
     {
         list($siteName, $siteUrl, $charset, $version) = $this->BenchService->getSiteInfo();
         list($bool, $result) = $this->BenchService->simpleApply($siteUrl);
-        if (! $bool) {
+        if (!$bool) {
             $this->setOutput('error', 'ac_type');
             $this->setOutput($result, 'ac_message');
 

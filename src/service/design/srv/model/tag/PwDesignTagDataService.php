@@ -7,12 +7,13 @@ Wind::import('SRV:design.srv.model.PwDesignModelBase');
  *  decorateAddProperty 为插入表单值修饰
  *  decorateEditProperty 为修改表单值修饰
  *  getData 获取数据
- * </note>
+ * </note>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignTagDataService.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package
  */
 class PwDesignTagDataService extends PwDesignModelBase
 {
@@ -92,8 +93,9 @@ class PwDesignTagDataService extends PwDesignModelBase
     {
         return Wekit::load('design.PwDesignModel');
     }
+
     /**
-     * PwDesignComponent
+     * PwDesignComponent.
      *
      * @return PwDesignComponent
      */

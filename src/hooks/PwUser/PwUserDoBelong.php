@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 添加用户-添加用户相关用户组
+ * 添加用户-添加用户相关用户组.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserDoBelong.php 8620 2012-04-21 09:48:09Z xiaoxia.xuxx $
- * @package src.hooks.PwAddUser
  */
 class PwUserDoBelong
 {
     /**
-     * 编辑用户信息
+     * 编辑用户信息.
      *
-     * @param  PwUserInfoDm $dm
+     * @param PwUserInfoDm $dm
+     *
      * @return bool|PwError
      */
     public function editUser($dm)
@@ -33,9 +34,10 @@ class PwUserDoBelong
     }
 
     /**
-     * 根据用户ID删除信息
+     * 根据用户ID删除信息.
      *
-     * @param  int          $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return bool|PwError
      */
     public function deleteUser($uid)
@@ -47,9 +49,10 @@ class PwUserDoBelong
     }
 
     /**
-     * 根据用户ID列表批量删除用户数据
+     * 根据用户ID列表批量删除用户数据.
      *
-     * @param  array        $uids
+     * @param array $uids
+     *
      * @return bool|PwError
      */
     public function batchDeleteUser($uids)

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 精华帖子索引表
+ * 精华帖子索引表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwThreadsDigestIndexDao.php 25506 2013-03-18 09:43:10Z jieyin $
- * @package src.service.forum.dao
  */
 class PwThreadsDigestIndexDao extends PwBaseDao
 {
@@ -17,12 +17,13 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     protected $_threadTable = 'bbs_threads';
 
     /**
-     * 根据版块分类ID获取精华帖子
+     * 根据版块分类ID获取精华帖子.
      *
-     * @param  int    $cid    类型
-     * @param  int    $limit  查询的条数
-     * @param  int    $offset 开始查询的位置
-     * @param  string $order  排序方式
+     * @param int    $cid    类型
+     * @param int    $limit  查询的条数
+     * @param int    $offset 开始查询的位置
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function getThreadsByCid($cid, $limit, $offset, $order)
@@ -35,9 +36,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 根据版块分类ID统计精华帖子
+     * 根据版块分类ID统计精华帖子.
      *
-     * @param  int $cid
+     * @param int $cid
+     *
      * @return int
      */
     public function countByCid($cid)
@@ -49,13 +51,14 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 根据版块ID获取该版块的精华列表
+     * 根据版块ID获取该版块的精华列表.
      *
-     * @param  int    $fid    版块ID
-     * @param  int    $typeid 主题类型
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order
+     * @param int    $fid    版块ID
+     * @param int    $typeid 主题类型
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order
+     *
      * @return array
      */
     public function getThreadsByFid($fid, $typeid, $limit, $offset, $order)
@@ -68,10 +71,11 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 根据版块ID统计该版块的精华列表
+     * 根据版块ID统计该版块的精华列表.
      *
-     * @param  int $fid    版块ID
-     * @param  int $typeid 主题类型
+     * @param int $fid    版块ID
+     * @param int $typeid 主题类型
+     *
      * @return int
      */
     public function countByFid($fid, $typeid)
@@ -83,10 +87,11 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 添加精华
+     * 添加精华.
      *
-     * @param  int   $tid
-     * @param  array $fields
+     * @param int   $tid
+     * @param array $fields
+     *
      * @return bool
      */
     public function addThread($tid, $fields)
@@ -101,9 +106,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 批量加精
+     * 批量加精.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function batchAddDigest($data)
@@ -129,11 +135,12 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 更新精华相关信息
+     * 更新精华相关信息.
      *
-     * @param  int   $tid
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $tid
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return int
      */
     public function updateThread($tid, $fields, $increaseFields = array())
@@ -144,11 +151,12 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 批量更新精华相关信息
+     * 批量更新精华相关信息.
      *
-     * @param  array $tids
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param array $tids
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return bool
      */
     public function batchUpdateThread($tids, $fields, $increaseFields = array())
@@ -159,9 +167,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 还原帖子的时候，还原精华设置
+     * 还原帖子的时候，还原精华设置.
      *
-     * @param  array $tids
+     * @param array $tids
+     *
      * @return bool
      */
     public function revertTopic($tids)
@@ -171,9 +180,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 删除精华相关信息
+     * 删除精华相关信息.
      *
-     * @param  int $tid
+     * @param int $tid
+     *
      * @return int
      */
     public function deleteThread($tid)
@@ -182,9 +192,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 批量删除帖子精华相关信息
+     * 批量删除帖子精华相关信息.
      *
-     * @param  array $tids
+     * @param array $tids
+     *
      * @return bool
      */
     public function batchDeleteThread($tids)
@@ -193,9 +204,10 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 处理版块对应的分类
+     * 处理版块对应的分类.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return array
      */
     private function _processField($fields)
@@ -208,10 +220,11 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     }
 
     /**
-     * 获得排序的字段和索引
+     * 获得排序的字段和索引.
      *
-     * @param  string $order
-     * @param  bool   $fid
+     * @param string $order
+     * @param bool   $fid
+     *
      * @return array
      */
     private function _getOrderFieldAndIndex($order, $fid = false)

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 工作经历Dao
+ * 工作经历Dao.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWorkDao.php 1532 2012-1-10下午03:21:54 xiaoxiao $
- * @package src.service.user.hooks.experience_work.dao
  */
 class PwWorkDao extends PwBaseDao
 {
@@ -15,9 +15,10 @@ class PwWorkDao extends PwBaseDao
     protected $_dataStruct = array('id', 'uid', 'company', 'starty', 'startm', 'endy', 'endm');
 
     /**
-     * 添加工作经历
+     * 添加工作经历.
      *
-     * @param  array    $data
+     * @param array $data
+     *
      * @return bool|int
      */
     public function add($data)
@@ -32,11 +33,12 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 更新工作经历
+     * 更新工作经历.
      *
-     * @param  int      $id   工作经历ID
-     * @param  int      $uid  用户ID
-     * @param  array    $data
+     * @param int   $id   工作经历ID
+     * @param int   $uid  用户ID
+     * @param array $data
+     *
      * @return bool|int
      */
     public function update($id, $uid, $data)
@@ -52,10 +54,11 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 删除工作经历
+     * 删除工作经历.
      *
-     * @param  int      $id  工作经历ID
-     * @param  int      $uid 对应用户ID
+     * @param int $id  工作经历ID
+     * @param int $uid 对应用户ID
+     *
      * @return bool|int
      */
     public function delete($id, $uid)
@@ -67,10 +70,11 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 根据工作经历ID获取该工作经历详细信息
+     * 根据工作经历ID获取该工作经历详细信息.
      *
-     * @param  int   $id  经历ID
-     * @param  int   $uid 用户ID
+     * @param int $id  经历ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function get($id, $uid)
@@ -82,9 +86,10 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除用户工作经历
+     * 根据用户ID删除用户工作经历.
      *
-     * @param  int      $uid
+     * @param int $uid
+     *
      * @return bool|int
      */
     public function deleteByUid($uid)
@@ -96,11 +101,12 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID获得该用户的工作经历列表
+     * 根据用户ID获得该用户的工作经历列表.
      *
-     * @param  int   $uid   用户ID
-     * @param  int   $limit 返回条数
-     * @param  int   $start 开始位置
+     * @param int $uid   用户ID
+     * @param int $limit 返回条数
+     * @param int $start 开始位置
+     *
      * @return array
      */
     public function getByUid($uid, $limit, $start)
@@ -112,9 +118,10 @@ class PwWorkDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID统计该用户的工作经历
+     * 根据用户ID统计该用户的工作经历.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)

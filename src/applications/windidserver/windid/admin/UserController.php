@@ -2,13 +2,13 @@
 
 Wind::import('APPS:windid.admin.WindidBaseController');
 /**
- * 后台用户管理界面
+ * 后台用户管理界面.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: UserController.php 24723 2013-02-17 09:14:43Z jieyin $
- * @package
  */
 class UserController extends WindidBaseController
 {
@@ -48,8 +48,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 添加用户
-     *
+     * 添加用户.
      */
     public function addAction()
     {
@@ -76,8 +75,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 编辑用户信息
-     *
+     * 编辑用户信息.
      */
     public function editAction()
     {
@@ -100,8 +98,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 编辑用户信息操作
-     *
+     * 编辑用户信息操作.
      */
     public function doEditAction()
     {
@@ -161,13 +158,11 @@ class UserController extends WindidBaseController
         $dm->setAlipay($this->getInput('alipay', 'post'));
         $dm->setMobile($this->getInput('mobile', 'post'));
 
-
         //联系信息
         $dm->setEmail($this->getInput('email', 'post'));
         $dm->setAliww($this->getInput('aliww', 'post'));
         $dm->setQq($this->getInput('qq', 'post'));
         $dm->setMsn($this->getInput('msn', 'post'));
-
 
         $ds = Wekit::load('WSRV:user.WindidUser');
         $result = $ds->editUser($dm);
@@ -180,9 +175,8 @@ class UserController extends WindidBaseController
         $this->showMessage('WINDID:success', 'windid/user/edit?uid='.$uid);
     }
 
-
     /**
-     * 恢复系统头像
+     * 恢复系统头像.
      */
     public function defaultAvatarAction()
     {
@@ -198,8 +192,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 清理用户信息
-     *
+     * 清理用户信息.
      */
     public function deleteAction()
     {
@@ -243,8 +236,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 设置用户积分
-     *
+     * 设置用户积分.
      */
     public function doEditCreditAction()
     {
@@ -284,7 +276,7 @@ class UserController extends WindidBaseController
     }
 
     /**
-     * 设置地区显示
+     * 设置地区显示.
      *
      * @return array
      */

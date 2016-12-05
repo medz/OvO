@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:user.PwUserStatus');
 
 /**
- * 新用户审核
+ * 新用户审核.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: CheckController.php 22361 2012-12-21 11:50:28Z xiaoxia.xuxx $
- * @package products.u.admin
  */
 class CheckController extends AdminBaseController
 {
@@ -42,7 +42,7 @@ class CheckController extends AdminBaseController
     }
 
     /**
-     * 电子邮件用户激活
+     * 电子邮件用户激活.
      */
     public function emailAction()
     {
@@ -67,8 +67,7 @@ class CheckController extends AdminBaseController
     }
 
     /**
-     * 批量审核用户
-     *
+     * 批量审核用户.
      */
     public function docheckAction()
     {
@@ -103,8 +102,7 @@ class CheckController extends AdminBaseController
     }
 
     /**
-     * 批量激活用户
-     *
+     * 批量激活用户.
      */
     public function doactiveAction()
     {
@@ -139,7 +137,7 @@ class CheckController extends AdminBaseController
     }
 
     /**
-     * 删除用户 批量
+     * 删除用户 批量.
      */
     public function deleteAction()
     {
@@ -154,7 +152,7 @@ class CheckController extends AdminBaseController
     }
 
     /**
-     * 获得用户的状态DS
+     * 获得用户的状态DS.
      *
      * @return PwUserRegisterCheck
      */

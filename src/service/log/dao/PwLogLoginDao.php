@@ -8,8 +8,8 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogLoginDao.php 21359 2012-12-05 08:01:23Z xiaoxia.xuxx $
- * @package src.service.log.dao
  */
 class PwLogLoginDao extends PwBaseDao
 {
@@ -18,9 +18,10 @@ class PwLogLoginDao extends PwBaseDao
     protected $_dataStruct = array('id', 'uid', 'username', 'typeid', 'created_time', 'ip');
 
     /**
-     * 添加日志
+     * 添加日志.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addLog($data)
@@ -29,9 +30,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 批量添加日志
+     * 批量添加日志.
      *
-     * @param  array $datas
+     * @param array $datas
+     *
      * @return int
      */
     public function batchAddLog($datas)
@@ -58,9 +60,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 根据日志ID删除某条日志
+     * 根据日志ID删除某条日志.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return int
      */
     public function deleteLog($id)
@@ -69,9 +72,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 根据日志ID列表删除日志
+     * 根据日志ID列表删除日志.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return int
      */
     public function batchDeleteLog($ids)
@@ -80,9 +84,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 清除某个时间段之前的日志
+     * 清除某个时间段之前的日志.
      *
-     * @param  int $time
+     * @param int $time
+     *
      * @return int
      */
     public function clearLogBeforeDatetime($time)
@@ -93,7 +98,7 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 根据条件搜索日志
+     * 根据条件搜索日志.
      *
      * @param array $condition
      * @param int   $limit
@@ -108,9 +113,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 根据搜索条件统计结果
+     * 根据搜索条件统计结果.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearch($condition)
@@ -122,9 +128,10 @@ class PwLogLoginDao extends PwBaseDao
     }
 
     /**
-     * 后台搜索
+     * 后台搜索.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return array
      */
     private function _buildCondition($condition)

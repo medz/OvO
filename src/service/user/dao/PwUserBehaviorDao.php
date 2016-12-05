@@ -3,8 +3,8 @@
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBehaviorDao.php 23501 2013-01-10 06:53:26Z jinlong.panjl $
- * @package
  */
 class PwUserBehaviorDao extends PwBaseDao
 {

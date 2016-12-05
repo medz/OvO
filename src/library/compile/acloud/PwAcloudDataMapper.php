@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 传递数据map器
+ * 传递数据map器.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAcloudDataMapper.php 12670 2012-06-25 07:44:35Z yanchixia $
- * @package wekit.compile.acloud
  */
 class PwAcloudDataMapper
 {
@@ -20,7 +20,7 @@ class PwAcloudDataMapper
     private $title = '';
 
     /**
-     * 获得当前页标识
+     * 获得当前页标识.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 获得当前登录用户名
+     * 获得当前登录用户名.
      *
      * @return string
      */
@@ -50,7 +50,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 获得当前登录用户ID
+     * 获得当前登录用户ID.
      *
      * @return int
      */
@@ -60,7 +60,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 获得当前帖子ID
+     * 获得当前帖子ID.
      *
      * @return int
      */
@@ -70,7 +70,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 获得当前版块ID
+     * 获得当前版块ID.
      *
      * @return int
      */
@@ -80,7 +80,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 获得当前帖子标题
+     * 获得当前帖子标题.
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前页面标识
+     * 设置当前页面标识.
      *
      * @param string $src
      */
@@ -110,7 +110,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前登录用户名
+     * 设置当前登录用户名.
      *
      * @param string $username
      */
@@ -120,7 +120,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前登录用户名
+     * 设置当前登录用户名.
      *
      * @param int $uid
      */
@@ -130,7 +130,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前帖子ID
+     * 设置当前帖子ID.
      *
      * @param int $tid
      */
@@ -140,7 +140,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前版块ID
+     * 设置当前版块ID.
      *
      * @param int $fid
      */
@@ -150,7 +150,7 @@ class PwAcloudDataMapper
     }
 
     /**
-     * 设置当前帖子标题
+     * 设置当前帖子标题.
      *
      * @param string $title
      */

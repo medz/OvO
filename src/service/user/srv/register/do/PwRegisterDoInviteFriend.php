@@ -9,8 +9,8 @@ Wind::import('SRV:invite.dm.PwInviteCodeDm');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRegisterDoInvite.php 7869 2012-04-12 10:46:46Z xiaoxia.xuxx $
- * @package src.service.user.srv.register.do
  */
 class PwRegisterDoInviteFriend extends PwRegisterDoBase
 {
@@ -18,7 +18,7 @@ class PwRegisterDoInviteFriend extends PwRegisterDoBase
     private $inviteInfo = array();
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param PwRegisterService $pwUserRegister
      * @param string            $code

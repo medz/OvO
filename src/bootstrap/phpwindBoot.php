@@ -9,8 +9,8 @@ Wind::import('SRV:user.bo.PwUserBo');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: phpwindBoot.php 24569 2013-02-01 02:23:37Z jieyin $
- * @package wekit
  */
 class phpwindBoot extends bootstrap
 {
@@ -19,7 +19,7 @@ class phpwindBoot extends bootstrap
     private $_loginUser = null;
 
     /**
-     * 构造函数
+     * 构造函数.
      */
     public function __construct($re)
     {
@@ -32,7 +32,7 @@ class phpwindBoot extends bootstrap
         WindFactory::_getInstance()->loadClassDefinitions(
             array(
                 'sqlStatement' => array(
-                    'proxy' => 'WIND:filter.proxy.WindEnhancedClassProxy',
+                    'proxy'     => 'WIND:filter.proxy.WindEnhancedClassProxy',
                     'listeners' => array('LIB:compile.acloud.PwAcloudDbListener'), ), ));
 
         $this->charset = Wind::getComponent('response')->getCharset();
@@ -44,7 +44,7 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 获取全局配置
+     * 获取全局配置.
      *
      * @return array
      */
@@ -54,7 +54,7 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 获取当前时间戳
+     * 获取当前时间戳.
      *
      * @return int
      */
@@ -69,7 +69,7 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 获得登录用户信息
+     * 获得登录用户信息.
      *
      * @return PwUserBo
      */
@@ -91,7 +91,8 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 初始化应用信息
+     * 初始化应用信息.
+     *
      * @param AbstractWindFrontController $front
      */
     public function beforeStart($front = null)
@@ -101,7 +102,7 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 执行acloud的相关
+     * 执行acloud的相关.
      *
      * @param AbstractWindFrontController $front
      */
@@ -137,7 +138,7 @@ class phpwindBoot extends bootstrap
     }
 
     /**
-     * 初始话当前用户
+     * 初始话当前用户.
      */
     protected function _initUser()
     {

@@ -2,17 +2,17 @@
 
 
 /**
- * 组件标签编译器
+ * 组件标签编译器.
  *
  * 标签使用例子:
  * <code>
  * <component name="test" args="" tpl="template" /></code>
+ *
  * @author xiaoxiao <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTemplateCompilerComponent.php 22295 2012-12-21 05:39:44Z gao.wanggao $
- * @package wekit
- * @subpackage engine.extension.viewer
  */
 class PwTemplateCompilerComponent extends AbstractWindTemplateCompiler
 {

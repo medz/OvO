@@ -7,14 +7,13 @@ Wind::import('SRV:forum.srv.PwPost');
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**
- * 发帖
+ * 发帖.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PostController.php 27729 2013-04-28 02:00:50Z jieyin $
- * @package forum
  */
-
 class PostController extends PwBaseController
 {
     public $post;
@@ -55,7 +54,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 发帖页
+     * 发帖页.
      */
     public function run()
     {
@@ -77,7 +76,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 发帖
+     * 发帖.
      */
     public function doaddAction()
     {
@@ -106,7 +105,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 发回复页
+     * 发回复页.
      */
     public function replyAction()
     {
@@ -132,7 +131,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 快速回复
+     * 快速回复.
      */
     public function fastreplyAction()
     {
@@ -140,7 +139,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 回复列表
+     * 回复列表.
      */
     public function replylistAction()
     {
@@ -148,7 +147,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 回复
+     * 回复.
      */
     public function doreplyAction()
     {
@@ -225,7 +224,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 帖子编辑页
+     * 帖子编辑页.
      */
     public function modifyAction()
     {
@@ -260,7 +259,7 @@ class PostController extends PwBaseController
     }
 
     /**
-     * 编辑帖子
+     * 编辑帖子.
      */
     public function domodifyAction()
     {
@@ -335,7 +334,6 @@ class PostController extends PwBaseController
             $total = $reply['replies'];
             list($start, $limit) = Pw::page2limit($page, $perpage);
 
-
             $replydb = Wekit::load('forum.PwPostsReply')->getPostByPid($pid, $limit, $start);
             $replydb = Wekit::load('forum.srv.PwThreadService')->displayReplylist($replydb);
         } else {
@@ -357,7 +355,7 @@ class PostController extends PwBaseController
         $allowThreadExtend = $this->loginUser->getPermission('allow_thread_extend', false, array());
         $sellConfig = array(
             'ifopen' => ($this->post->forum->forumset['allowsell'] && $allowThreadExtend['sell']) ? 1 : 0,
-            'price' => $sellCreditRange['maxprice'],
+            'price'  => $sellCreditRange['maxprice'],
             'income' => $sellCreditRange['maxincome'],
             'credit' => Pw::subArray($creditBo->cType, $this->loginUser->getPermission('sell_credits')),
         );
@@ -398,14 +396,14 @@ class PostController extends PwBaseController
         reset($attach);
         foreach ($attach as $key => $value) {
             $array[$key] = array(
-                'name' => $value['name'],
-                'size' => $value['size'],
-                'path' => Pw::getPath($value['path'], $value['ifthumb'] & 1),
+                'name'      => $value['name'],
+                'size'      => $value['size'],
+                'path'      => Pw::getPath($value['path'], $value['ifthumb'] & 1),
                 'thumbpath' => Pw::getPath($value['path'], $value['ifthumb']),
-                'desc' => $value['descrip'],
-                'special' => $value['special'],
-                'cost' => $value['cost'],
-                'ctype' => $value['ctype'],
+                'desc'      => $value['descrip'],
+                'special'   => $value['special'],
+                'cost'      => $value['cost'],
+                'ctype'     => $value['ctype'],
             );
         }
 
@@ -444,8 +442,8 @@ class PostController extends PwBaseController
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwTopicType
      */
     private function _getTopictypeDs()

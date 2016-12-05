@@ -7,8 +7,8 @@ Wind::import('WSRV:user.dao.WindidUserInterface');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserDataDao.php 24810 2013-02-21 10:32:03Z jieyin $
- * @package windid.service.user.dao
  */
 class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
 {
@@ -131,9 +131,10 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 获取用户的积分
+     * 获取用户的积分.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getCredit($uid)
@@ -145,11 +146,12 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 更新用户的积分
+     * 更新用户的积分.
      *
-     * @param  int   $uid
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $uid
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return int
      */
     public function updateCredit($uid, $fields, $increaseFields = array())
@@ -158,7 +160,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 获得表结构
+     * 获得表结构.
      *
      * @return array
      */
@@ -169,10 +171,12 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
 
         return array_keys($tbFields);
     }
+
     /**
-     * 添加用户积分字段(>8以上的）
+     * 添加用户积分字段(>8以上的）.
      *
-     * @param  int $num
+     * @param int $num
+     *
      * @return int
      */
     public function alterAddCredit($num)
@@ -183,9 +187,10 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 删除用户积分字段（1-8不允许删除）
+     * 删除用户积分字段（1-8不允许删除）.
      *
-     * @param  int $num
+     * @param int $num
+     *
      * @return int
      */
     public function alterDropCredit($num)
@@ -196,9 +201,10 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 清空用户的积分（只适用于1-8）
+     * 清空用户的积分（只适用于1-8）.
      *
-     * @param  int $num
+     * @param int $num
+     *
      * @return int
      */
     public function clearCredit($num)
@@ -209,9 +215,10 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 根据UID列表获取信息
+     * 根据UID列表获取信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     protected function _fetchUserByUid($uids)
@@ -220,10 +227,11 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 数据合并
+     * 数据合并.
      *
-     * @param  array $user 用户基本信息
-     * @param  int   $uid  用户ID
+     * @param array $user 用户基本信息
+     * @param int   $uid  用户ID
+     *
      * @return array
      */
     protected function _mergeUserInfo($user, $uid)
@@ -236,7 +244,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     }
 
     /**
-     * 获得数据表结构
+     * 获得数据表结构.
      *
      * @return array
      */

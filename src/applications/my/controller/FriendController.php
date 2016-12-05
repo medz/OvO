@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 找人Controller
+ * 找人Controller.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: FriendController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package wind
  */
 class FriendController extends PwBaseController
 {
@@ -23,7 +23,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * 推荐关注
+     * 推荐关注.
      */
     public function run()
     {
@@ -40,7 +40,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * 可能认识
+     * 可能认识.
      */
     public function friendAction()
     {
@@ -50,7 +50,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * 搜索用户
+     * 搜索用户.
      */
     public function searchAction()
     {
@@ -119,11 +119,12 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * 组装用户数据
+     * 组装用户数据.
      *
-     * @param  int   $uid
-     * @param  array $uids
-     * @param  int   $num
+     * @param int   $uid
+     * @param array $uids
+     * @param int   $num
+     *
      * @return array
      */
     private function _buildUserInfo($uid, $uids, $num)
@@ -136,7 +137,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwUserDs
+     * PwUserDs.
      *
      * @return PwUser
      */
@@ -146,7 +147,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -156,7 +157,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwAttentionRecommendFriendsService
+     * PwAttentionRecommendFriendsService.
      *
      * @return PwAttentionRecommendFriendsService
      */
@@ -166,7 +167,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwUserTag
+     * PwUserTag.
      *
      * @return PwUserTag
      */
@@ -176,7 +177,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwUserTagRelation
+     * PwUserTagRelation.
      *
      * @return PwUserTagRelation
      */
@@ -186,7 +187,7 @@ class FriendController extends PwBaseController
     }
 
     /**
-     * PwUserTagService
+     * PwUserTagService.
      *
      * @return PwUserTagService
      */

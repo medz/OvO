@@ -7,35 +7,36 @@ Wind::import('SRV:user.validator.PwUserValidator');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTryPwdBp.php 24520 2013-01-31 07:11:48Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwTryPwdBp
 {
     private $loginConfig = array();
     /**
-     * 每日同一个IP地址允许尝试错误密码的总次数
-     * @var int $errIplimit
+     * 每日同一个IP地址允许尝试错误密码的总次数.
+     *
+     * @var int
      */
     private $errIplimit = 100;
     /**
-     * 尝试次数达到最高次数之后，一段时间30分钟内不能再登录
+     * 尝试次数达到最高次数之后，一段时间30分钟内不能再登录.
      *
-     * @var int $nextTrySpace 单位秒
+     * @var int 单位秒
      */
     private $nextTrySpace = 1800;
 
     /**
-     * 修改相关尝试密码次数限制
-     * @var int $configTotal
+     * 修改相关尝试密码次数限制.
+     *
+     * @var int
      */
     private $configTotal = 5;
-
 
     private $ip = '';
 
     /**
-     * 构造信息
+     * 构造信息.
      */
     public function __construct($config = array())
     {
@@ -43,9 +44,8 @@ class PwTryPwdBp
         $this->initConfig($config ? array_merge($_siteConfig, $config) : $_siteConfig);
     }
 
-
     /**
-     * 获得登录用户信息
+     * 获得登录用户信息.
      *
      * @param  string $username     登录输入
      * @param string $password 密码
@@ -53,6 +53,7 @@ class PwTryPwdBp
      * @param  bool   $checkQ       是否验证安全问题
      * @param  string $safeQuestion 安全问题
      * @param  string $safeAnswer   安全问题答案
+     *
      * @return array
      */
     public function auth($username, $password, $ip = '', $checkQ = false, $safeQuestion = '', $safeAnswer = '')
@@ -86,7 +87,8 @@ class PwTryPwdBp
     }
 
     /**
-     * 检查用户密码是否正确
+     * 检查用户密码是否正确.
+     *
      * @param string $uid      用户uid
      * @param string $password 密码
      * @param string $ip       尝试的IP地址
@@ -107,6 +109,7 @@ class PwTryPwdBp
      * @param int $uid 用户信息
      * @param  string  $question 安全问题
      * @param  string  $answer   安全问题答案
+     *
      * @return PwError
      */
     public function checkQuestion($uid, $question, $answer, $ip)
@@ -126,9 +129,10 @@ class PwTryPwdBp
     }
 
     /**
-     * 检查用户是否已经超过尝试设置的次数
+     * 检查用户是否已经超过尝试设置的次数.
      *
-     * @param  int          $uid
+     * @param int $uid
+     *
      * @return bool|PwError
      */
     public function allowTryAgain($uid, $ip, $type = 'pwd')
@@ -153,11 +157,12 @@ class PwTryPwdBp
     }
 
     /**
-     * 跟新用户的尝试信息
+     * 跟新用户的尝试信息.
      *
-     * @param  int     $uid  用户ID
-     * @param  string  $ip   登录的IP地址
-     * @param  string  $type 记录类型
+     * @param int    $uid  用户ID
+     * @param string $ip   登录的IP地址
+     * @param string $type 记录类型
+     *
      * @return PwError
      */
     public function updateTryRecord($uid, $ip, $type = 'pwd')
@@ -192,10 +197,11 @@ class PwTryPwdBp
     }
 
     /**
-     * 更新尝试次数的记录
+     * 更新尝试次数的记录.
      *
-     * @param  int          $uid
-     * @param  string       $tryPwd
+     * @param int    $uid
+     * @param string $tryPwd
+     *
      * @return bool|PwError
      */
     public function restoreTryRecord($uid, $tryPwd)
@@ -207,9 +213,11 @@ class PwTryPwdBp
     }
 
     /**
-     * 检查验证结果
-     * @param  int           $status
-     * @param  array         $info
+     * 检查验证结果.
+     *
+     * @param int   $status
+     * @param array $info
+     *
      * @return array|PwError
      */
     protected function checkVerifyResult($status, $info)
@@ -255,10 +263,11 @@ class PwTryPwdBp
     }
 
     /**
-     * 检查IP的限制
+     * 检查IP的限制.
      *
-     * @param  string       $ip
-     * @param  bool         $isUpdate
+     * @param string $ip
+     * @param bool   $isUpdate
+     *
      * @return bool|PwError
      */
     private function checkIpLimit($ip, $isUpdate = false)
@@ -288,7 +297,7 @@ class PwTryPwdBp
     }
 
     /**
-     * 初始化配置信息
+     * 初始化配置信息.
      */
     private function initConfig($config)
     {
@@ -305,7 +314,7 @@ class PwTryPwdBp
     }
 
     /**
-     * 获得用户Ds
+     * 获得用户Ds.
      *
      * @return PwUser
      */
@@ -315,7 +324,7 @@ class PwTryPwdBp
     }
 
     /**
-     * 获得windidDS
+     * 获得windidDS.
      *
      * @return WindidUserApi
      */

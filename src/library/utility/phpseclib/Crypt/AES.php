@@ -53,16 +53,18 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_AES
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVIII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: AES.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Crypt_Rijndael
+ * Include Crypt_Rijndael.
  */
 require_once 'Rijndael.php';
 
@@ -111,30 +113,32 @@ define('CRYPT_AES_MODE_MCRYPT', 2);
  * Pure-PHP implementation of AES.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_AES
  */
 class Crypt_AES extends Crypt_Rijndael
 {
     /**
-     * mcrypt resource for encryption
+     * mcrypt resource for encryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::encrypt()
-     * @var String
+     *
+     * @var string
      */
     public $enmcrypt;
 
     /**
-     * mcrypt resource for decryption
+     * mcrypt resource for decryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::decrypt()
-     * @var String
+     *
+     * @var string
      */
     public $demcrypt;
 
@@ -144,7 +148,8 @@ class Crypt_AES extends Crypt_Rijndael
      * Determines whether or not the mcrypt extension should be used.  $mode should only, at present, be
      * CRYPT_AES_MODE_ECB or CRYPT_AES_MODE_CBC.  If not explictly set, CRYPT_AES_MODE_CBC will be used.
      *
-     * @param  optional Integer $mode
+     * @param optional Integer $mode
+     *
      * @return Crypt_AES
      */
     public function Crypt_AES($mode = CRYPT_AES_MODE_CBC)
@@ -201,15 +206,14 @@ class Crypt_AES extends Crypt_Rijndael
     }
 
     /**
-     * Dummy function
+     * Dummy function.
      *
      * Since Crypt_AES extends Crypt_Rijndael, this function is, technically, available, but it doesn't do anything.
      *
-     * @param Integer $length
+     * @param int $length
      */
     public function setBlockLength($length)
     {
-        return;
     }
 
     /**
@@ -226,7 +230,8 @@ class Crypt_AES extends Crypt_Rijndael
      * length.
      *
      * @see Crypt_AES::decrypt()
-     * @param String $plaintext
+     *
+     * @param string $plaintext
      */
     public function encrypt($plaintext)
     {
@@ -266,7 +271,8 @@ class Crypt_AES extends Crypt_Rijndael
      * If strlen($ciphertext) is not a multiple of 16, null bytes will be added to the end of the string until it is.
      *
      * @see Crypt_AES::encrypt()
-     * @param String $ciphertext
+     *
+     * @param string $ciphertext
      */
     public function decrypt($ciphertext)
     {
@@ -303,10 +309,9 @@ class Crypt_AES extends Crypt_Rijndael
     }
 
     /**
-     * Setup mcrypt
+     * Setup mcrypt.
      *
      * Validates all the variables.
-     *
      */
     public function _mcryptSetup()
     {
@@ -357,13 +362,15 @@ class Crypt_AES extends Crypt_Rijndael
     }
 
     /**
-     * Encrypts a block
+     * Encrypts a block.
      *
      * Optimized over Crypt_Rijndael's implementation by means of loop unrolling.
      *
      * @see Crypt_Rijndael::_encryptBlock()
-     * @param  String $in
-     * @return String
+     *
+     * @param string $in
+     *
+     * @return string
      */
     public function _encryptBlock($in)
     {
@@ -416,13 +423,15 @@ class Crypt_AES extends Crypt_Rijndael
     }
 
     /**
-     * Decrypts a block
+     * Decrypts a block.
      *
      * Optimized over Crypt_Rijndael's implementation by means of loop unrolling.
      *
      * @see Crypt_Rijndael::_decryptBlock()
-     * @param  String $in
-     * @return String
+     *
+     * @param string $in
+     *
+     * @return string
      */
     public function _decryptBlock($in)
     {
@@ -442,7 +451,6 @@ class Crypt_AES extends Crypt_Rijndael
             $state['word3'] ^ $dw[$this->Nr][2],
             $state['word4'] ^ $dw[$this->Nr][3],
         );
-
 
         // invShiftRows + invSubBytes + invMixColumns + addRoundKey
         for ($round = $this->Nr - 1; $round > 0; $round--) {

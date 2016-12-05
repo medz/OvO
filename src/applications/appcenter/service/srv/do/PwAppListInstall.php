@@ -2,13 +2,13 @@
 
 Wind::import('APPCENTER:service.srv.iPwInstall');
 /**
- * 前台应用中心列表注册
+ * 前台应用中心列表注册.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAppListInstall.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package appcenter.service.srv.do
  */
 class PwAppListInstall implements iPwInstall
 {

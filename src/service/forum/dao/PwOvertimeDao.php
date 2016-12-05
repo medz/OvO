@@ -1,11 +1,13 @@
 <?php
 /**
  * @author peihong <jhqblxt@gmail.com> Mar 26, 2012
+ *
  * @link
+ *
  * @license
+ *
  * @version $Id: PwOvertimeDao.php 6075 2012-03-16 05:54:18Z peihong.zhangph $
  */
-
 class PwOvertimeDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_overtime';
@@ -14,8 +16,8 @@ class PwOvertimeDao extends PwBaseDao
     public function setOvertime($tid, $type, $overtime)
     {
         $fields = array(
-            'tid' => $tid,
-            'm_type' => $type,
+            'tid'      => $tid,
+            'm_type'   => $type,
             'overtime' => $overtime,
         );
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));

@@ -5,10 +5,9 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshIndexDao.php 16249 2012-08-21 09:01:24Z jieyin $
- * @package forum
  */
-
 class PwFreshIndexDao extends PwBaseDao
 {
     protected $_table = 'attention_fresh_index';

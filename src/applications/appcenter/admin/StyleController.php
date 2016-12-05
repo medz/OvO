@@ -8,8 +8,8 @@ Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: StyleController.php 24598 2013-02-01 06:44:48Z long.shi $
- * @package appcenter.admin
  */
 class StyleController extends AdminBaseController
 {
@@ -37,16 +37,16 @@ class StyleController extends AdminBaseController
         }
         $this->setOutput(
             array(
-                'type' => $type,
-                'addons' => $addons,
+                'type'    => $type,
+                'addons'  => $addons,
                 'perpage' => $this->perpage,
-                'page' => $page,
-                'count' => $count,
-                'styles' => $results, ));
+                'page'    => $page,
+                'count'   => $count,
+                'styles'  => $results, ));
     }
 
     /**
-     * 界面管理
+     * 界面管理.
      */
     public function manageAction()
     {
@@ -57,42 +57,42 @@ class StyleController extends AdminBaseController
         $conf = Wekit::C('css');
         $this->setOutput(
             array(
-                'logo' => $conf['logo'],
-                'bg' => $conf['bg'],
-                'bgcolor' => $conf['bgcolor'],
-                'bgtile' => $conf['bgtile'],
-                'bgalign' => $conf['bgalign'],
-                'size' => $conf['size'],
-                'font' => $conf['font'],
-                'corelink' => $conf['corelink'],
-                'coretext' => $conf['coretext'],
-                'subjectsize' => $conf['subjectsize'],
-                'contentsize' => $conf['contentsize'],
-                'headbg' => $conf['headbg'],
-                'headbgcolor' => $conf['headbgcolor'],
-                'headbgtile' => $conf['headbgtile'],
-                'headbgalign' => $conf['headbgalign'],
-                'headlink' => $conf['headlink'],
-                'headactivelink' => $conf['headactivelink'],
+                'logo'            => $conf['logo'],
+                'bg'              => $conf['bg'],
+                'bgcolor'         => $conf['bgcolor'],
+                'bgtile'          => $conf['bgtile'],
+                'bgalign'         => $conf['bgalign'],
+                'size'            => $conf['size'],
+                'font'            => $conf['font'],
+                'corelink'        => $conf['corelink'],
+                'coretext'        => $conf['coretext'],
+                'subjectsize'     => $conf['subjectsize'],
+                'contentsize'     => $conf['contentsize'],
+                'headbg'          => $conf['headbg'],
+                'headbgcolor'     => $conf['headbgcolor'],
+                'headbgtile'      => $conf['headbgtile'],
+                'headbgalign'     => $conf['headbgalign'],
+                'headlink'        => $conf['headlink'],
+                'headactivelink'  => $conf['headactivelink'],
                 'headactivecolor' => $conf['headactivecolor'],
-                'boxbg' => $conf['boxbg'],
-                'boxbgcolor' => $conf['boxbgcolor'],
-                'boxbgtile' => $conf['boxbgtile'],
-                'boxbgalign' => $conf['boxbgalign'],
-                'boxborder' => $conf['boxborder'],
-                'boxlink' => $conf['boxlink'],
-                'boxtext' => $conf['boxtext'],
-                'boxhdbg' => $conf['boxhdbg'],
-                'boxhdbgcolor' => $conf['boxhdbgcolor'],
-                'boxhdbgtile' => $conf['boxhdbgtile'],
-                'boxhdbgalign' => $conf['boxhdbgalign'],
-                'boxhdborder' => $conf['boxhdborder'],
-                'boxhdlink' => $conf['boxhdlink'],
-                'boxhdtext' => $conf['boxhdtext'], ));
+                'boxbg'           => $conf['boxbg'],
+                'boxbgcolor'      => $conf['boxbgcolor'],
+                'boxbgtile'       => $conf['boxbgtile'],
+                'boxbgalign'      => $conf['boxbgalign'],
+                'boxborder'       => $conf['boxborder'],
+                'boxlink'         => $conf['boxlink'],
+                'boxtext'         => $conf['boxtext'],
+                'boxhdbg'         => $conf['boxhdbg'],
+                'boxhdbgcolor'    => $conf['boxhdbgcolor'],
+                'boxhdbgtile'     => $conf['boxhdbgtile'],
+                'boxhdbgalign'    => $conf['boxhdbgalign'],
+                'boxhdborder'     => $conf['boxhdborder'],
+                'boxhdlink'       => $conf['boxhdlink'],
+                'boxhdtext'       => $conf['boxhdtext'], ));
     }
 
     /**
-     * 界面管理
+     * 界面管理.
      */
     public function doManageAction()
     {
@@ -145,33 +145,33 @@ class StyleController extends AdminBaseController
                 'boxhdlink',
                 'boxhdtext', ), 'post');
         $config = array(
-            'bgcolor' => $color == '#ffffff' ? '' : $color,
-            'headbgcolor' => $headbgcolor == '#ffffff' ? '' : $headbgcolor,
-            'headlink' => $headlink == '#ffffff' ? '' : $headlink,
-            'headactivelink' => $headactivelink == '#ffffff' ? '' : $headactivelink,
-            'corelink' => $corelink == '#ffffff' ? '' : $corelink,
-            'coretext' => $coretext == '#ffffff' ? '' : $coretext,
+            'bgcolor'         => $color == '#ffffff' ? '' : $color,
+            'headbgcolor'     => $headbgcolor == '#ffffff' ? '' : $headbgcolor,
+            'headlink'        => $headlink == '#ffffff' ? '' : $headlink,
+            'headactivelink'  => $headactivelink == '#ffffff' ? '' : $headactivelink,
+            'corelink'        => $corelink == '#ffffff' ? '' : $corelink,
+            'coretext'        => $coretext == '#ffffff' ? '' : $coretext,
             'headactivecolor' => $headactivecolor == '#ffffff' ? '' : $headactivecolor,
-            'boxbgcolor' => $boxbgcolor == '#ffffff' ? '' : $boxbgcolor,
-            'boxborder' => $boxborder == '#ffffff' ? '' : $boxborder,
-            'boxlink' => $boxlink == '#ffffff' ? '' : $boxlink,
-            'boxtext' => $boxtext == '#ffffff' ? '' : $boxtext,
-            'boxhdbgcolor' => $boxhdbgcolor == '#ffffff' ? '' : $boxhdbgcolor,
-            'boxhdborder' => $boxhdborder == '#ffffff' ? '' : $boxhdborder,
-            'boxhdlink' => $boxhdlink == '#ffffff' ? '' : $boxhdlink,
-            'boxhdtext' => $boxhdtext == '#ffffff' ? '' : $boxhdtext,
-            'bgtile' => $this->getInput('bgtile', 'post'),
-            'bgalign' => $this->getInput('bgalign', 'post'),
-            'size' => $this->getInput('size', 'post'),
-            'font' => $this->getInput('font', 'post'),
-            'subjectsize' => $this->getInput('subjectsize', 'post'),
-            'contentsize' => $this->getInput('contentsize', 'post'),
-            'headbgtile' => $this->getInput('headbgtile', 'post'),
-            'headbgalign' => $this->getInput('headbgalign', 'post'),
-            'boxbgtile' => $this->getInput('boxbgtile', 'post'),
-            'boxbgalign' => $this->getInput('boxbgalign', 'post'),
-            'boxhdbgtile' => $this->getInput('boxhdbgtile', 'post'),
-            'boxhdbgalign' => $this->getInput('boxhdbgalign', 'post'), ) + $config;
+            'boxbgcolor'      => $boxbgcolor == '#ffffff' ? '' : $boxbgcolor,
+            'boxborder'       => $boxborder == '#ffffff' ? '' : $boxborder,
+            'boxlink'         => $boxlink == '#ffffff' ? '' : $boxlink,
+            'boxtext'         => $boxtext == '#ffffff' ? '' : $boxtext,
+            'boxhdbgcolor'    => $boxhdbgcolor == '#ffffff' ? '' : $boxhdbgcolor,
+            'boxhdborder'     => $boxhdborder == '#ffffff' ? '' : $boxhdborder,
+            'boxhdlink'       => $boxhdlink == '#ffffff' ? '' : $boxhdlink,
+            'boxhdtext'       => $boxhdtext == '#ffffff' ? '' : $boxhdtext,
+            'bgtile'          => $this->getInput('bgtile', 'post'),
+            'bgalign'         => $this->getInput('bgalign', 'post'),
+            'size'            => $this->getInput('size', 'post'),
+            'font'            => $this->getInput('font', 'post'),
+            'subjectsize'     => $this->getInput('subjectsize', 'post'),
+            'contentsize'     => $this->getInput('contentsize', 'post'),
+            'headbgtile'      => $this->getInput('headbgtile', 'post'),
+            'headbgalign'     => $this->getInput('headbgalign', 'post'),
+            'boxbgtile'       => $this->getInput('boxbgtile', 'post'),
+            'boxbgalign'      => $this->getInput('boxbgalign', 'post'),
+            'boxhdbgtile'     => $this->getInput('boxhdbgtile', 'post'),
+            'boxhdbgalign'    => $this->getInput('boxhdbgalign', 'post'), ) + $config;
         $bo = new PwConfigSet('css');
         foreach ($config as $k => $v) {
             $bo->set($k, $v);
@@ -182,7 +182,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 删除图标，logo
+     * 删除图标，logo.
      */
     public function deleteAction()
     {
@@ -194,8 +194,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 删除应用目录
-     *
+     * 删除应用目录.
      */
     public function delFolderAction()
     {
@@ -206,7 +205,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 设为默认
+     * 设为默认.
      */
     public function defaultAction()
     {
@@ -231,8 +230,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 导出压缩包
-     *
+     * 导出压缩包.
      */
     public function exportAction()
     {
@@ -260,7 +258,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 风格预览
+     * 风格预览.
      */
     public function previewAction()
     {
@@ -281,7 +279,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 安装未安装的风格列表
+     * 安装未安装的风格列表.
      */
     public function doInstallAction()
     {
@@ -300,7 +298,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 卸载
+     * 卸载.
      */
     public function uninstallAction()
     {
@@ -365,7 +363,7 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 重新安装流程
+     * 重新安装流程.
      *
      * @param string $manifestFile
      * @param string $package
@@ -399,10 +397,10 @@ class StyleController extends AdminBaseController
         $fields = array();
         foreach ($install->getInstallLog() as $key => $value) {
             $_tmp = array(
-                'app_id' => $install->getAppId(),
-                'log_type' => $key,
-                'data' => $value,
-                'created_time' => Pw::getTime(),
+                'app_id'        => $install->getAppId(),
+                'log_type'      => $key,
+                'data'          => $value,
+                'created_time'  => Pw::getTime(),
                 'modified_time' => Pw::getTime(), );
             $fields[] = $_tmp;
         }
@@ -410,9 +408,10 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     * 上传
+     * 上传.
      *
-     * @param  string $key
+     * @param string $key
+     *
      * @return string
      */
     private function _upload($key)
@@ -430,7 +429,6 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwApplication
      */
     private function _appDs()
@@ -439,7 +437,6 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwStyle
      */
     private function _styleDs()
@@ -448,7 +445,6 @@ class StyleController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwStyleService
      */
     private function _styleService()

@@ -3,14 +3,14 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignShieldDao.php 20146 2012-10-24 02:51:25Z gao.wanggao $
- * @package
  */
-
 class PwDesignShieldDao extends PwBaseDao
 {
     protected $_pk = 'shield_id';
@@ -38,7 +38,7 @@ class PwDesignShieldDao extends PwBaseDao
         $where = '';
         $array = array();
         if ($moduleid) {
-            $where = ' WHERE `module_id` = ?' ;
+            $where = ' WHERE `module_id` = ?';
             $array = array($moduleid);
         }
         $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY shield_id DESC %s ', $this->getTable(), $where, $this->sqlLimit($limit, $offset));
@@ -52,7 +52,7 @@ class PwDesignShieldDao extends PwBaseDao
         $where = '';
         $array = array();
         if ($moduleid) {
-            $where = ' WHERE `module_id` = ?' ;
+            $where = ' WHERE `module_id` = ?';
             $array = array($moduleid);
         }
         $sql = $this->_bindSql('SELECT count(*) FROM %s %s ', $this->getTable(), $where);

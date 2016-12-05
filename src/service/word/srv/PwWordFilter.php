@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:word.PwWord');
 /**
- * 词语过滤对外接口
+ * 词语过滤对外接口.
  *
  * @author Mingqu Luo <luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwWordFilter.php 23428 2013-01-09 10:17:46Z jinlong.panjl $
- * @package wind
  */
-
 class PwWordFilter
 {
     const WORD_ALL_KEY = 'word';
@@ -39,10 +38,11 @@ class PwWordFilter
     }
 
     /**
-     * 返回替换以后的敏感词 （帖子替换敏感词扫描）
+     * 返回替换以后的敏感词 （帖子替换敏感词扫描）.
      *
      * @param  string $str     需要扫描的内容
      * @param  int    $version 帖子表或者回复表中的word_version
+     *
      * @return string
      */
     public function replaceWord($str, $version)
@@ -57,9 +57,10 @@ class PwWordFilter
     }
 
     /**
-     * 检测敏感词（直接返回） | 有就返回true ，没有返回false
+     * 检测敏感词（直接返回） | 有就返回true ，没有返回false.
      *
-     * @param  string $str
+     * @param string $str
+     *
      * @return bool
      */
     public function filter($str)
@@ -70,9 +71,10 @@ class PwWordFilter
     }
 
     /**
-     * 检测是否含有禁止敏感词 （帖子用）
+     * 检测是否含有禁止敏感词 （帖子用）.
      *
-     * @param  string               $content
+     * @param string $content
+     *
      * @return string||bool|pwerror
      */
     public function filterWord($str)
@@ -87,9 +89,10 @@ class PwWordFilter
     }
 
     /**
-     * 格式数据
+     * 格式数据.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return array
      */
     private function _buildWord($data)
@@ -106,7 +109,7 @@ class PwWordFilter
     }
 
     /**
-     * 获得所有敏感词列表(需谨慎)
+     * 获得所有敏感词列表(需谨慎).
      *
      * @return array
      */
@@ -116,7 +119,7 @@ class PwWordFilter
     }
 
     /**
-     * 从数据库获得所有敏感词列表
+     * 从数据库获得所有敏感词列表.
      *
      * @return array
      */
@@ -128,7 +131,7 @@ class PwWordFilter
     }
 
     /**
-     * 从cache获得所有替换敏感词列表
+     * 从cache获得所有替换敏感词列表.
      *
      * @return array
      */
@@ -138,7 +141,7 @@ class PwWordFilter
     }
 
     /**
-     * 从数据库获得所有替换敏感词列表
+     * 从数据库获得所有替换敏感词列表.
      *
      * @return array
      */
@@ -188,7 +191,7 @@ class PwWordFilter
     }
 
     /**
-     * get PwWord
+     * get PwWord.
      *
      * @return PwWord
      */

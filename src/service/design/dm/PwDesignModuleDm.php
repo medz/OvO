@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignModuleDm.php 22339 2012-12-21 09:37:22Z gao.wanggao $
- * @package
  */
 class PwDesignModuleDm extends PwBaseDm
 {
@@ -17,7 +18,6 @@ class PwDesignModuleDm extends PwBaseDm
             $this->moduleid = (int) $moduleid;
         }
     }
-
 
     public function setPageId($pageid)
     {
@@ -103,7 +103,6 @@ class PwDesignModuleDm extends PwBaseDm
             }
         }
 
-
         if ($border['style']) {
             $border['top']['style'] = $border['style'];
             $border['right']['style'] = $border['style'];
@@ -151,11 +150,11 @@ class PwDesignModuleDm extends PwBaseDm
         }
 
         $style = array(
-            'font' => $font,
-            'link' => $link,
-            'border' => $border,
-            'margin' => $margin,
-            'padding' => $padding,
+            'font'       => $font,
+            'link'       => $link,
+            'border'     => $border,
+            'margin'     => $margin,
+            'padding'    => $padding,
             'background' => $background,
             'styleclass' => $styleclass,
         );

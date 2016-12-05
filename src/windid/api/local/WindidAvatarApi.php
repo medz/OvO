@@ -4,8 +4,8 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidAvatarApi.php 32085 2014-08-20 08:48:50Z gao.wanggao $
- * @package windid.service.avatar
  */
 class WindidAvatarApi
 {
@@ -25,9 +25,11 @@ class WindidAvatarApi
     }
 
     /**
-     * 获取用户头像
+     * 获取用户头像.
+     *
      * @param $uid
      * @param $size big middle small
+     *
      * @return string
      */
     public function getAvatar($uid, $size = 'middle')
@@ -36,16 +38,17 @@ class WindidAvatarApi
     }
 
     /**
-     * 还原头像
+     * 还原头像.
      *
-     * @param  int    $uid
-     * @param  string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     * @param int    $uid
+     * @param string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     *
      * @return bool
      */
     public function defaultAvatar($uid, $type = 'face')
     {
         $params = array(
-            'uid' => $uid,
+            'uid'  => $uid,
             'type' => $type,
         );
 
@@ -57,6 +60,7 @@ class WindidAvatarApi
      *
      * @param int $uid 用户uid
      * @param  int          $getHtml 获取代码|配置
+     *
      * @return string|array
      */
     public function showFlash($uid, $getHtml = 1)
@@ -68,13 +72,13 @@ class WindidAvatarApi
     {
         $time = Pw::getTime();
         $query = array(
-            'm' => 'api',
-            'c' => 'avatar',
-            'a' => 'doavatar',
+            'm'         => 'api',
+            'c'         => 'avatar',
+            'a'         => 'doavatar',
             'windidkey' => WindidUtility::appKey(WINDID_CLIENT_ID, $time, WINDID_CLIENT_KEY, array('uid' => $uid, 'm' => 'api', 'c' => 'avatar', 'a' => 'doavatar'), array()),
-            'clientid' => WINDID_CLIENT_ID,
-            'time' => $time,
-            'uid' => $uid,
+            'clientid'  => WINDID_CLIENT_ID,
+            'time'      => $time,
+            'uid'       => $uid,
         );
         $url = WINDID_SERVER_URL.'/index.php?'.http_build_query($query);
         $result = WindidUtility::uploadRequest($url, $file);

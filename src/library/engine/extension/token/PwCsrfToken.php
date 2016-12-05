@@ -2,20 +2,18 @@
 
 
 /**
- *
- * CSRF Token令牌安全类
+ * CSRF Token令牌安全类.
  *
  * @author liusanbian <liusanbian@aliyun.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package utility
  */
 class PwCsrfToken extends WindModule implements IWindSecurityToken
 {
     /**
-     *
-     * Csrf token
+     * Csrf token.
      *
      * @var array
      */

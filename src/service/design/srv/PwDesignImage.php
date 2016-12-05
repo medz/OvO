@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignImage.php 24487 2013-01-31 02:50:53Z gao.wanggao $
- * @package
  */
 class PwDesignImage
 {
@@ -163,8 +164,6 @@ class PwDesignImage
         return $filename;
     }
 
-
-
     protected function getContents($url)
     {
         $timeout = 30;
@@ -183,7 +182,7 @@ class PwDesignImage
             if (function_exists('stream_context_create')) {
                 $opts = array(
                     'http' => array(
-                        'method' => 'GET',
+                        'method'  => 'GET',
                         'timeout' => $timeout,
                     ),
                 );
@@ -195,8 +194,6 @@ class PwDesignImage
 
         return $contents;
     }
-
-
 
     private function createFolder($path = '')
     {

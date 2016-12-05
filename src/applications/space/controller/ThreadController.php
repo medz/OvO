@@ -2,18 +2,18 @@
 
 Wind::import('APPS:space.controller.SpaceBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>
+ * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>.
+ *
  * @author  Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ThreadController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package
  */
 class ThreadController extends SpaceBaseController
 {
     /**
-     * 我的帖子
-     *
+     * 我的帖子.
      */
     public function run()
     {
@@ -62,8 +62,7 @@ class ThreadController extends SpaceBaseController
     }
 
     /**
-     * 我的回复
-     *
+     * 我的回复.
      */
     public function postAction()
     {

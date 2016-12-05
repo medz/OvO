@@ -2,19 +2,20 @@
 
 Wind::import('SRV:space.bo.PwSpaceBo');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpaceModel.php 20893 2012-11-16 07:00:39Z jieyin $
- * @package
  */
-
 class PwSpaceModel extends PwSpaceBo
 {
     /**
      * 模块调用接口
      * Enter description here ...
+     *
      * @param string $mod   visit|tovisit|tag|keys|fllow|fans
      * @param int    $limit
      * @param int    $page

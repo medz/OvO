@@ -2,27 +2,26 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:credit.bo.PwCreditBo');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 帖子删除扩展服务接口--更新用户发帖数，积分等信息
+ * 帖子删除扩展服务接口--更新用户发帖数，积分等信息.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteTopicDoUserUpdate.php 17512 2012-09-06 04:50:49Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
 {
     public $recode = array();
     private $operatorCredit = true;
 
     /**
-     * over write construct to support the second param
+     * over write construct to support the second param.
+     *
      * @param PwGleanDoProcess $srv            [description]
      * @param bool             $operatorCredit [description]
      */
@@ -33,7 +32,7 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
     }
 
     /**
-     * collect the data
+     * collect the data.
      *
      * @param array $value [description]
      */
@@ -57,7 +56,7 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
     }
 
     /**
-     * 积分操作
+     * 积分操作.
      *
      * @param array $value 帖子
      */
@@ -68,15 +67,16 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
         PwCreditBo::getInstance()->operate(
             'delete_topic', PwUserBo::getInstance($value['created_userid']), true, array(
                 'operator' => $this->srv->user->username,
-                'title' => $value['subject'],
+                'title'    => $value['subject'],
             ),
             $forum->getCreditSet('delete_topic'));
     }
 
     /**
-     * update the user info about thread
+     * update the user info about thread.
      *
-     * @param  array $ids [description]
+     * @param array $ids [description]
+     *
      * @return boid
      */
     public function run($ids)

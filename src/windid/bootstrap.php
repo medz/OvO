@@ -18,10 +18,10 @@ if (!defined('WEKIT_VERSION')) {
         $windidConfig['connect'] = 'db';
     } else {
         $database = array(
-            'dsn' => 'mysql:host='.$windidConfig['db.host'].';dbname='.$windidConfig['db.name'].';port='.$windidConfig['db.port'],
-            'user' => $windidConfig['db.user'],
-            'pwd' => $windidConfig['db.pwd'],
-            'charset' => $windidConfig['db.charset'],
+            'dsn'         => 'mysql:host='.$windidConfig['db.host'].';dbname='.$windidConfig['db.name'].';port='.$windidConfig['db.port'],
+            'user'        => $windidConfig['db.user'],
+            'pwd'         => $windidConfig['db.pwd'],
+            'charset'     => $windidConfig['db.charset'],
             'tableprefix' => $windidConfig['db.prefix'],
         );
     }

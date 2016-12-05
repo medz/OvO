@@ -5,14 +5,13 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwApplicationService.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package products
- * @subpackage appcenter.service.srv
  */
 class PwApplicationService
 {
     /**
-     * 添加应用信息
+     * 添加应用信息.
      *
      * @param PwApplicationDm $application
      */
@@ -21,9 +20,10 @@ class PwApplicationService
     }
 
     /**
-     * 根据App_id删除应用信息，该操作会级联删除应用相关信息(log,hooks,injector)
+     * 根据App_id删除应用信息，该操作会级联删除应用相关信息(log,hooks,injector).
      *
-     * @param  string       $app_id
+     * @param string $app_id
+     *
      * @return true|PwError
      */
     public function del($app_id)

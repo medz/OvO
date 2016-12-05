@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 消息联系表
+ * 消息联系表.
  *
  * @author peihong.zhang
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageRelationDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package forum
  */
-
 class WindidMessageRelationDao extends WindidBaseDao
 {
     protected $_pk = 'id';
@@ -17,9 +16,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     protected $_dataStruct = array('id', 'dialog_id', 'message_id', 'is_read', 'is_send');
 
     /**
-     * 添加消息关系
+     * 添加消息关系.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return int
      */
     public function addMessageRelation($fields)
@@ -42,10 +42,11 @@ class WindidMessageRelationDao extends WindidBaseDao
     }
 
     /**
-     * 更新消息关系表
+     * 更新消息关系表.
      *
-     * @param  int   $dialogId
-     * @param  array $messageIds
+     * @param int   $dialogId
+     * @param array $messageIds
+     *
      * @return int
      */
     public function readMessages($dialogId, $messageIds)
@@ -57,9 +58,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     }
 
     /**
-     * 更新消息关系表
+     * 更新消息关系表.
      *
-     * @param  int $dialogId
+     * @param int $dialogId
+     *
      * @return int
      */
     public function readDialogMessages($dialogId)
@@ -79,9 +81,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     }
 
     /**
-     * 统计信息数量
+     * 统计信息数量.
      *
-     * @param  int   $dialogId
+     * @param int $dialogId
+     *
      * @return array
      */
     public function countDialogMessages($dialogId)
@@ -103,9 +106,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     /**
      * 获取对话私信
      *
-     * @param  int   $dialogId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $dialogId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogMessages($dialogId, $limit, $start)
@@ -119,10 +123,11 @@ class WindidMessageRelationDao extends WindidBaseDao
     /**
      * 根据message_id获取前面几条
      *
-     * @param  int   $dialogId
-     * @param  int   $messageId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $dialogId
+     * @param int $messageId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getPreviousMessage($dialogId, $messageId, $num)
@@ -136,9 +141,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     /**
      * 根据message_id获取后面几条
      *
-     * @param  int   $dialogId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $dialogId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getNextMessage($dialogId, $messageId, $num)
@@ -150,9 +156,10 @@ class WindidMessageRelationDao extends WindidBaseDao
     }
 
     /**
-     * 根据$ids删除关系
+     * 根据$ids删除关系.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDeleteRelation($ids)
@@ -180,10 +187,11 @@ class WindidMessageRelationDao extends WindidBaseDao
     }
 
     /**
-     * 根据messageId删除单个关系
+     * 根据messageId删除单个关系.
      *
-     * @param  int  $dialogId
-     * @param  int  $messageId
+     * @param int $dialogId
+     * @param int $messageId
+     *
      * @return bool
      */
     public function deleteRelation($dialogId, $messageId)

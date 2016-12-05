@@ -3,13 +3,13 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * 草稿DAO
+ * 草稿DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwDraftDao extends PwBaseDao
 {
@@ -17,9 +17,10 @@ class PwDraftDao extends PwBaseDao
     protected $_dataStruct = array('id', 'created_userid', 'title', 'content', 'created_time');
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function add($data)
@@ -28,9 +29,10 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -39,9 +41,10 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -50,10 +53,11 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 修改
+     * 修改.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return bool
      */
     public function update($id, $data)
@@ -62,9 +66,10 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 获取一条信息
+     * 获取一条信息.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -73,9 +78,10 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 根据用户统计草稿箱数量
+     * 根据用户统计草稿箱数量.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)
@@ -87,10 +93,11 @@ class PwDraftDao extends PwBaseDao
     }
 
     /**
-     * 根据用户获取$num条数据
+     * 根据用户获取$num条数据.
      *
-     * @param  int   $uid
-     * @param  int   $num
+     * @param int $uid
+     * @param int $num
+     *
      * @return array
      */
     public function getByUid($uid, $num)

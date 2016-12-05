@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 会员相关-完成条件扩展
+ * 会员相关-完成条件扩展.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: TaskConditionMemberController.php 15745 2012-08-13 02:45:07Z xiaoxia.xuxx $
- * @package src.modules.task.admin
  */
 class TaskConditionMemberController extends AdminBaseController
 {
@@ -26,7 +26,7 @@ class TaskConditionMemberController extends AdminBaseController
     }
 
     /**
-     * 完成资料
+     * 完成资料.
      */
     public function profileAction()
     {
@@ -34,7 +34,7 @@ class TaskConditionMemberController extends AdminBaseController
     }
 
     /**
-     * 上传头像
+     * 上传头像.
      */
     public function avatarAction()
     {
@@ -42,7 +42,7 @@ class TaskConditionMemberController extends AdminBaseController
     }
 
     /**
-     * 发送消息
+     * 发送消息.
      */
     public function sendMsgAction()
     {
@@ -58,7 +58,7 @@ class TaskConditionMemberController extends AdminBaseController
     }
 
     /**
-     * 求粉丝
+     * 求粉丝.
      */
     public function fansAction()
     {

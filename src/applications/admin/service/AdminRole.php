@@ -5,13 +5,13 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminRole.php 24240 2013-01-23 07:09:33Z yishuo $
- * @package wind
  */
 class AdminRole
 {
     /**
-     * 删除权限组
+     * 删除权限组.
      *
      * @param int $rid 权限组ID
      */
@@ -29,10 +29,11 @@ class AdminRole
     }
 
     /**
-     * 添加后台管理角色
+     * 添加后台管理角色.
      *
-     * @param  string       $name  角色名称
-     * @param  array        $auths 角色权限
+     * @param string $name  角色名称
+     * @param array  $auths 角色权限
+     *
      * @return bool|PwError
      */
     public function addRole($name, $auths)
@@ -56,7 +57,7 @@ class AdminRole
     }
 
     /**
-     * 编辑后台管理角色
+     * 编辑后台管理角色.
      *
      * @param id     $id
      * @param string $name
@@ -78,7 +79,7 @@ class AdminRole
     }
 
     /**
-     * 查找已存在的全部角色定义
+     * 查找已存在的全部角色定义.
      */
     public function findRoles()
     {
@@ -86,9 +87,10 @@ class AdminRole
     }
 
     /**
-     * 根据角色名称查找角色列表
+     * 根据角色名称查找角色列表.
      *
-     * @param  array         $names
+     * @param array $names
+     *
      * @return array|PwError
      */
     public function findRolesByNames($names)
@@ -102,9 +104,10 @@ class AdminRole
     }
 
     /**
-     * 根据角色名称查找角色列表
+     * 根据角色名称查找角色列表.
      *
-     * @param  array         $names
+     * @param array $names
+     *
      * @return array|PwError
      */
     public function findRolesByName($name)
@@ -118,9 +121,10 @@ class AdminRole
     }
 
     /**
-     * 根据角色ID查找角色
+     * 根据角色ID查找角色.
      *
-     * @param  array         $ids
+     * @param array $ids
+     *
      * @return array|PwError
      */
     public function findRolesByIds($ids)
@@ -134,9 +138,10 @@ class AdminRole
     }
 
     /**
-     * 根据角色ID查找角色
+     * 根据角色ID查找角色.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function findRoleById($id)

@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudVerCommonBase
 {
@@ -13,11 +13,11 @@ class ACloudVerCommonBase
     public function getDeletedId($startId, $endId)
     {
         list($tableName, $primaryKey) = $this->getPrimaryKeyAndTable();
-        if (! $tableName) {
+        if (!$tableName) {
             return array();
         }
         list($existIds, $allIds) = array($this->getIdsFromTable($startId, $endId), range($startId, $endId));
-        if (! ACloudSysCoreS::isArray($existIds)) {
+        if (!ACloudSysCoreS::isArray($existIds)) {
             return $this->formatDeleteIds($allIds);
         }
 
@@ -31,11 +31,11 @@ class ACloudVerCommonBase
         $sql = sprintf('SELECT %s FROM %s WHERE %s >= %s AND %s <= %s', ACloudSysCoreS::sqlMetaData($primaryKey), ACloudSysCoreS::sqlMetaData('{{'.$tableName.'}}'), ACloudSysCoreS::sqlMetaData($primaryKey), ACloudSysCoreS::sqlEscape($startId), ACloudSysCoreS::sqlMetaData($primaryKey), ACloudSysCoreS::sqlEscape($endId));
         $query = Wind::getComponent('db')->query($sql);
         $tmpResult = $query->fetchAll(null, PDO::FETCH_ASSOC);
-        if (! ACloudSysCoreS::isArray($tmpResult)) {
+        if (!ACloudSysCoreS::isArray($tmpResult)) {
             return array();
         }
         foreach ($tmpResult as $value) {
-            $result [] = $value [$primaryKey];
+            $result[] = $value[$primaryKey];
         }
 
         return $result;
@@ -43,13 +43,13 @@ class ACloudVerCommonBase
 
     public function formatDeleteIds($ids)
     {
-        if (! ACloudSysCoreS::isArray($ids)) {
+        if (!ACloudSysCoreS::isArray($ids)) {
             return array();
         }
         list($tableName, $primaryKey) = $this->getPrimaryKeyAndTable();
         $result = array();
         foreach ($ids as $id) {
-            $result [] = array($primaryKey => intval($id));
+            $result[] = array($primaryKey => intval($id));
         }
 
         return $result;
@@ -61,7 +61,7 @@ class ACloudVerCommonBase
             return array($errorCode, $responseData);
         }
         $resource = Wind::getComponent('i18n');
-        if (! is_array($responseData)) {
+        if (!is_array($responseData)) {
             return array($errorCode, $resource->getMessage($responseData));
         }
         /* $message = array_shift ( $responseData );

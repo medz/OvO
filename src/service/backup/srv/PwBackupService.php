@@ -6,8 +6,8 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwBackupService
 {
@@ -44,6 +44,7 @@ class PwBackupService
      * @param $sizelimit
      * @param $insertmethod
      * @param $filename
+     *
      * @return array
      */
     public function backupSpecialTable($tabledb, $dirname, $isCompress, $insertmethod = 'common')
@@ -69,7 +70,7 @@ class PwBackupService
     }
 
     /**
-     * 备份表数据
+     * 备份表数据.
      *
      * @param $tabledb
      * @param $tableid
@@ -77,6 +78,7 @@ class PwBackupService
      * @param $sizelimit
      * @param $insertmethod
      * @param $filename
+     *
      * @return array
      */
     public function backupData($tabledb, $tableid, $start, $sizelimit, $insertmethod = 'common', $filename = '')
@@ -94,12 +96,13 @@ class PwBackupService
     }
 
     /**
-     * 普通方式备份表数据
+     * 普通方式备份表数据.
      *
      * @param $tabledb
      * @param $tableid
      * @param $start
      * @param $sizelimit
+     *
      * @return array
      */
     protected function _backupDataCommonMethod($tabledb, $tableid = 0, $start = 0, $sizelimit = 0)
@@ -140,12 +143,13 @@ class PwBackupService
     }
 
     /**
-     * 扩展方式备份表数据
+     * 扩展方式备份表数据.
      *
      * @param $tabledb
      * @param $tableid
      * @param $start
      * @param $sizelimit
+     *
      * @return array
      */
     protected function _backupDataExtendMethod($tabledb, $tableid = 0, $start = 0, $sizelimit = 0)
@@ -191,7 +195,7 @@ class PwBackupService
     }
 
     /**
-     * 获取数据
+     * 获取数据.
      *
      * @param $table
      * @param $start
@@ -205,7 +209,7 @@ class PwBackupService
     }
 
     /**
-     * 组装每个字段的数据
+     * 组装每个字段的数据.
      *
      * @param $total
      * @param $result
@@ -224,11 +228,12 @@ class PwBackupService
     }
 
     /**
-     * 备份表结构
+     * 备份表结构.
      *
      * @param $tabledb
      * @param $dirname
      * @param $isCompress
+     *
      * @return bool
      */
     public function backupTable($tabledb, $dirname, $isCompress)
@@ -250,7 +255,7 @@ class PwBackupService
     }
 
     /**
-     * 备份文件提示
+     * 备份文件提示.
      *
      * @return string
      */
@@ -262,7 +267,7 @@ class PwBackupService
     }
 
     /**
-     * 获取备份文件提示的行数
+     * 获取备份文件提示的行数.
      *
      * @return int
      */
@@ -272,11 +277,12 @@ class PwBackupService
     }
 
     /**
-     * 保存数据到文件
+     * 保存数据到文件.
      *
      * @param $filePath
      * @param $data
      * @param $isCompress
+     *
      * @return bool
      */
     public function saveData($filePath, $data, $isCompress = false)
@@ -303,10 +309,11 @@ class PwBackupService
     }
 
     /**
-     * 记录表数据的保存文件跟位置
+     * 记录表数据的保存文件跟位置.
      *
      * @param $tableSaveInfo
      * @param $filename
+     *
      * @return bool
      */
     public function _recordTableSaveInfo($tableSaveInfo, $filename)
@@ -330,7 +337,7 @@ class PwBackupService
     }
 
     /**
-     * 备份文件保存目录
+     * 备份文件保存目录.
      *
      * @return string
      */
@@ -340,7 +347,7 @@ class PwBackupService
     }
 
     /**
-     * 获取data目录
+     * 获取data目录.
      *
      * @return string
      */
@@ -362,7 +369,7 @@ class PwBackupService
     }
 
     /**
-     * 创建文件夹
+     * 创建文件夹.
      *
      * @return bool
      */
@@ -387,10 +394,11 @@ class PwBackupService
     }
 
     /**
-     * 根据文件和步骤组装sql数组
+     * 根据文件和步骤组装sql数组.
      *
-     * @param  string $dir
-     * @param  int    $step
+     * @param string $dir
+     * @param int    $step
+     *
      * @return array
      */
     public function backinData($dir, $step = 1)
@@ -402,9 +410,9 @@ class PwBackupService
         $tmpname = $this->getSavePath().$dir.'/';
         $extend = file_exists($tmpname.'table.zip') ? 'zip' : 'sql';
         if (!$step) {
-            $specialFile = $tmpname.'specialTables.'.$extend ;
+            $specialFile = $tmpname.'specialTables.'.$extend;
             $this->_backinFileData($specialFile, $extend);
-            $filename = $tmpname.'table.'.$extend ;
+            $filename = $tmpname.'table.'.$extend;
         } else {
             $filename = $tmpname.$dir.'_'.$step.'.'.$extend;
         }
@@ -429,9 +437,10 @@ class PwBackupService
     }
 
     /**
-     * 执行导入sql
+     * 执行导入sql.
      *
-     * @param  array $sql
+     * @param array $sql
+     *
      * @return bool
      */
     private function _doBackIn($sql)
@@ -484,7 +493,7 @@ class PwBackupService
     }
 
     /**
-     * zlib扩展是否开启
+     * zlib扩展是否开启.
      *
      * @return bool
      */
@@ -494,7 +503,7 @@ class PwBackupService
     }
 
     /**
-     * PwBackupDao
+     * PwBackupDao.
      *
      * @return PwBackupDao
      */
@@ -504,7 +513,7 @@ class PwBackupService
     }
 
     /**
-     * PwBackup
+     * PwBackup.
      *
      * @return PwBackup
      */

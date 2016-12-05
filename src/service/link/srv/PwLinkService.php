@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 友情链接
+ * 友情链接.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLinkService.php 28814 2013-05-24 09:31:14Z jieyin $
- * @package src.service.link.srv
  */
 class PwLinkService
 {
     /**
-     * 根据链接ID列表,批量删除友情链接
+     * 根据链接ID列表,批量删除友情链接.
      *
-     * @param  array $lids
+     * @param array $lids
+     *
      * @return bool
      */
     public function batchDelete($lids)
@@ -26,9 +27,10 @@ class PwLinkService
     }
 
     /**
-     * 根据分类组装数据
+     * 根据分类组装数据.
      *
-     * @param  int $typeid
+     * @param int $typeid
+     *
      * @return int
      */
     public function getTypesByTypeId($typeid = null)
@@ -42,9 +44,10 @@ class PwLinkService
     }
 
     /**
-     * 获取链接列表
+     * 获取链接列表.
      *
-     * @param  int   $typeId
+     * @param int $typeId
+     *
      * @return array
      */
     public function getLinksList($typeId = 0)
@@ -73,11 +76,12 @@ class PwLinkService
     }
 
     /**
-     * 获取未审核链接列表
+     * 获取未审核链接列表.
      *
-     * @param  int   $ifcheck 0 未审核| 1已审核
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $ifcheck 0 未审核| 1已审核
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getCheckLinksList($start, $limit, $ifcheck)
@@ -101,9 +105,10 @@ class PwLinkService
     }
 
     /**
-     * 根据分类标识组装logo和非logo数据
+     * 根据分类标识组装logo和非logo数据.
      *
-     * @param  string $typename
+     * @param string $typename
+     *
      * @return array
      */
     public function getLinksByType($typename)
@@ -126,7 +131,7 @@ class PwLinkService
     }
 
     /**
-     * 分类列表
+     * 分类列表.
      *
      * @return array
      */
@@ -143,7 +148,7 @@ class PwLinkService
     }
 
     /**
-     * 获得link的DS
+     * 获得link的DS.
      *
      * @return PwLink
      */

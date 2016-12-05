@@ -5,7 +5,7 @@
  * 3、可以使用的参数：
  * 论坛首页：站点名称{sitename}
  * 帖子列表：站点名称{sitename}、版块名称{forumname}、版块简介{forumdescription}
- * 帖子阅读页：站点名称{sitename}、版块名称{forumname}、帖子标题{title}、帖子摘要{description}、帖子主题分类{classification}、标签{tags}
+ * 帖子阅读页：站点名称{sitename}、版块名称{forumname}、帖子标题{title}、帖子摘要{description}、帖子主题分类{classification}、标签{tags}.
  *
  * 显示逻辑：
  * 以帖子列表页为例：
@@ -32,20 +32,20 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package service.seo.bo
  */
 class PwSeoBo
 {
     /**
-     * 全局seo格式，即页面也没有设置默认的seo格式的情况
+     * 全局seo格式，即页面也没有设置默认的seo格式的情况.
      *
      * @var array
      */
     protected $defaultSeo = array(
-        'title' => '{sitename}',
+        'title'       => '{sitename}',
         'description' => '{sitename}',
-        'keywords' => '{sitename}', );
+        'keywords'    => '{sitename}', );
     protected $seo = array();
     protected $codeData = array();
     protected $default = array();
@@ -68,7 +68,7 @@ class PwSeoBo
     }
 
     /**
-     * 初始化页面的seo格式
+     * 初始化页面的seo格式.
      *
      * 显示逻辑：
      * 以帖子列表页为例：
@@ -129,7 +129,7 @@ class PwSeoBo
     }
 
     /**
-     * 此接口仅供无后台管理模式的seo值设置
+     * 此接口仅供无后台管理模式的seo值设置.
      *
      * @param string $title
      * @param string $keywords
@@ -139,8 +139,8 @@ class PwSeoBo
     {
         if ($title || $keywords || $description) {
             $this->seo = array(
-                'title' => $title,
-                'keywords' => $keywords,
+                'title'       => $title,
+                'keywords'    => $keywords,
                 'description' => $description, );
         }
     }
@@ -148,13 +148,12 @@ class PwSeoBo
     public function setDefaultSeo($title, $keywords, $description)
     {
         $this->default = array(
-            'title' => $title,
-            'keywords' => $keywords,
+            'title'       => $title,
+            'keywords'    => $keywords,
             'description' => $description, );
     }
 
     /**
-     *
      * @return PwSeoService
      */
     private function _seoService()
@@ -162,7 +161,7 @@ class PwSeoBo
         return Wekit::load('seo.srv.PwSeoService');
     }
 
-    private function _choose($option1, $option2 = false, $default)
+    private function _choose($option1, $option2, $default)
     {
         $tmp = array();
         if ($option2 !== false) {

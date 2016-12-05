@@ -3,20 +3,21 @@
  * 用户权限dao服务
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 2, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserPermissionGroupsDao.php 24736 2013-02-19 09:24:40Z jieyin $
  */
-
 class PwUserPermissionGroupsDao extends PwBaseDao
 {
     protected $_table = 'user_permission_groups';
     protected $_dataStruct = array('gid', 'rkey', 'rtype', 'rvalue', 'vtype');
 
     /**
-     *
-     * 设置用户组权限
+     * 设置用户组权限.
      *
      * @param array $fields
      */
@@ -28,7 +29,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     }
 
     /**
-     * 获取某会员组的权限
+     * 获取某会员组的权限.
      *
      * @param string $gid
      * @param array  $keys
@@ -59,7 +60,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     }
 
     /**
-     * 获取某类rkey的权限
+     * 获取某类rkey的权限.
      *
      * @param string $rkeys
      * @param array
@@ -81,7 +82,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     }
 
     /**
-     * 删除某用户组所有权限
+     * 删除某用户组所有权限.
      *
      * @param int $gid
      */
@@ -93,7 +94,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     }
 
     /**
-     * 删除某用户组所有权限
+     * 删除某用户组所有权限.
      *
      * @param int   $gid
      * @param array $keys

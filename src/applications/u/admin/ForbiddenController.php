@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:user.PwUserBan');
 
 /**
- * 用户禁止
+ * 用户禁止.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ForbiddenController.php 28859 2013-05-28 03:11:35Z jieyin $
- * @package src.products.u.admin
  */
 class ForbiddenController extends AdminBaseController
 {
@@ -26,7 +26,7 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 禁止用户
+     * 禁止用户.
      */
     public function dorunAction()
     {
@@ -87,9 +87,8 @@ class ForbiddenController extends AdminBaseController
         $this->showMessage('USER:ban.success', 'u/forbidden/run');
     }
 
-
     /**
-     * 自动禁止设置
+     * 自动禁止设置.
      */
     public function autoAction()
     {
@@ -108,7 +107,7 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 设置自动禁止
+     * 设置自动禁止.
      */
     public function dosetautoAction()
     {
@@ -137,7 +136,7 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 获得列表
+     * 获得列表.
      */
     public function listAction()
     {
@@ -171,7 +170,7 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 解除禁止
+     * 解除禁止.
      */
     public function delAction()
     {
@@ -205,7 +204,7 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 获得禁止的期限
+     * 获得禁止的期限.
      *
      * @return array
      */
@@ -214,12 +213,12 @@ class ForbiddenController extends AdminBaseController
         static $days = array();
         if (!$days) {
             $days = array(
-                0 => array('title' => '永久'), //永久禁止
-                3 => array('title' => '三天'), //禁止三天
-                7 => array('title' => '一周'), //禁止一周
-                14 => array('title' => '二周'),  //禁止二周
-                30 => array('title' => '一个月'), //禁止一个月
-                60 => array('title' => '二个月'), //禁止二个月
+                0   => array('title' => '永久'), //永久禁止
+                3   => array('title' => '三天'), //禁止三天
+                7   => array('title' => '一周'), //禁止一周
+                14  => array('title' => '二周'),  //禁止二周
+                30  => array('title' => '一个月'), //禁止一个月
+                60  => array('title' => '二个月'), //禁止二个月
                 180 => array('title' => '半年'), //禁止半年
                 360 => array('title' => '一年'), //禁止一年
             );
@@ -229,10 +228,11 @@ class ForbiddenController extends AdminBaseController
     }
 
     /**
-     * 根据类型获得用户ID=>$name
+     * 根据类型获得用户ID=>$name.
      *
-     * @param  array $values 值
-     * @param  int   $type   $value的类型是uid(1)还是usename(2)
+     * @param array $values 值
+     * @param int   $type   $value的类型是uid(1)还是usename(2)
+     *
      * @return bool
      */
     private function _getUids($values, $type = 1)

@@ -3,16 +3,16 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminCustom.php 16114 2012-08-20 05:41:56Z long.shi $
- * @package admin
- * @subpackage service
  */
 class AdminCustom
 {
     /**
-     * 根据用户名查找用户常用菜单
+     * 根据用户名查找用户常用菜单.
      *
-     * @param  string        $username
+     * @param string $username
+     *
      * @return array|PwError
      */
     public function findByUsername($name)
@@ -21,7 +21,7 @@ class AdminCustom
     }
 
     /**
-     * 添加或修改常用菜单
+     * 添加或修改常用菜单.
      *
      * @param string $username
      * @param string $custom

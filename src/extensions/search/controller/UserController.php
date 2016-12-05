@@ -5,13 +5,13 @@ Wind::import('EXT:search.service.AppSearchRecord');
 Wind::import('SRV:seo.bo.PwSeoBo');
 
 /**
- * 本地搜索
+ * 本地搜索.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class UserController extends PwBaseController
 {
@@ -90,7 +90,8 @@ class UserController extends PwBaseController
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/library/base/PwBaseController::afterAction()
      */
     public function afterAction($handlerAdapter)
@@ -99,9 +100,8 @@ class UserController extends PwBaseController
         $this->setOutput($this->_getExecTime(), 'exectime');
     }
 
-
     /**
-     * 取得系统运行所耗时间 **
+     * 取得系统运行所耗时间 **.
      */
     private static function _getExecTime()
     {

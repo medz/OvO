@@ -2,13 +2,13 @@
 
 Wind::import('SRV:task.dm.PwTaskUserDm');
 /**
- * 完成任务的BP
+ * 完成任务的BP.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskComplete.php 9458 2012-05-07 07:56:42Z xiaoxia.xuxx $
- * @package src.service.task.srv
  */
 class PwTaskComplete
 {
@@ -18,7 +18,7 @@ class PwTaskComplete
     private $doTask = null;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int                     $uid
      * @param PwTaskCompleteInterface $doTask
@@ -38,8 +38,9 @@ class PwTaskComplete
      * 4、过滤任务中已经过期和关闭的任务，这些任务都不能再被继续完成
      * 5、执行任务判断：逐个判断注册过来的任务-将任务的条件和已经完成的step传递给任务：任务判断condition和step，如果step还没有完成则更新该step
      *
-     * @param  string $type  任务类别  后台设置中的“会员”/"论坛“类，
-     * @param  string $child 任务类别中的小类， 比如”会员“->'求粉丝'
+     * @param string $type  任务类别  后台设置中的“会员”/"论坛“类，
+     * @param string $child 任务类别中的小类， 比如”会员“->'求粉丝'
+     *
      * @return bool
      */
     public function doTask($type, $child)
@@ -78,9 +79,10 @@ class PwTaskComplete
     /**
      * 更新用户任务
      *
-     * @param  int   $taskId
-     * @param  array $conditions
-     * @param  array $step
+     * @param int   $taskId
+     * @param array $conditions
+     * @param array $step
+     *
      * @return bool
      */
     private function _doTask($taskInfo, $conditions, $step)
@@ -104,7 +106,7 @@ class PwTaskComplete
     }
 
     /**
-     * 获得 任务的Ds
+     * 获得 任务的Ds.
      *
      * @return PwTask
      */

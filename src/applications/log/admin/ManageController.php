@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:log.so.PwLogSo');
 
 /**
- * 前台管理日志
+ * 前台管理日志.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 23742 2013-01-15 09:22:58Z jieyin $
- * @package src.applications.log.admin
  */
 class ManageController extends AdminBaseController
 {
@@ -56,7 +56,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 清除三个月前操作
+     * 清除三个月前操作.
      */
     public function clearAction()
     {
@@ -79,8 +79,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 获得版块列表
-     *
+     * 获得版块列表.
      */
     private function _getForumList()
     {
@@ -101,11 +100,12 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 构建版块树
+     * 构建版块树.
      *
-     * @param  int   $parentid
-     * @param  array $map
-     * @param  int   $level
+     * @param int   $parentid
+     * @param array $map
+     * @param int   $level
+     *
      * @return array
      */
     private function _buildForumTree($parentid, $map, $level = '')

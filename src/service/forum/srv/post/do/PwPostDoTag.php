@@ -5,13 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
 Wind::import('SRV:tag.dm.PwTagDm');
 /**
- * 帖子发布 - 话题
+ * 帖子发布 - 话题.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwPostDoTag extends PwPostDoBase
 {
@@ -68,8 +68,7 @@ class PwPostDoTag extends PwPostDoBase
                     ->setTypeId($this->typeId)
                     ->setParamId($tid)
                     ->setIfhot(1)
-                    ->setCreateUid($this->loginUser->uid)
-            ;
+                    ->setCreateUid($this->loginUser->uid);
         }
 
         return $dmArray;

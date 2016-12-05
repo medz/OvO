@@ -50,11 +50,13 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_DES
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: DES.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
@@ -64,7 +66,7 @@
  * @see Crypt_DES::_processBlock()
  */
 /**
- * Contains array_reverse($keys[CRYPT_DES_DECRYPT])
+ * Contains array_reverse($keys[CRYPT_DES_DECRYPT]).
  */
 define('CRYPT_DES_ENCRYPT', 0);
 /*
@@ -118,86 +120,95 @@ define('CRYPT_DES_MODE_MCRYPT', 2);
  * Pure-PHP implementation of DES.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_DES
  */
 class Crypt_DES
 {
     /**
-     * The Key Schedule
+     * The Key Schedule.
      *
      * @see Crypt_DES::setKey()
-     * @var Array
+     *
+     * @var array
      */
     public $keys = "\0\0\0\0\0\0\0\0";
 
     /**
-     * The Encryption Mode
+     * The Encryption Mode.
      *
      * @see Crypt_DES::Crypt_DES()
-     * @var Integer
+     *
+     * @var int
      */
     public $mode;
 
     /**
-     * Continuous Buffer status
+     * Continuous Buffer status.
      *
      * @see Crypt_DES::enableContinuousBuffer()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $continuousBuffer = false;
 
     /**
-     * Padding status
+     * Padding status.
      *
      * @see Crypt_DES::enablePadding()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $padding = true;
 
     /**
-     * The Initialization Vector
+     * The Initialization Vector.
      *
      * @see Crypt_DES::setIV()
-     * @var String
+     *
+     * @var string
      */
     public $iv = "\0\0\0\0\0\0\0\0";
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_DES::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $encryptIV = "\0\0\0\0\0\0\0\0";
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_DES::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $decryptIV = "\0\0\0\0\0\0\0\0";
 
     /**
-     * mcrypt resource for encryption
+     * mcrypt resource for encryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::encrypt()
-     * @var String
+     *
+     * @var string
      */
     public $enmcrypt;
 
     /**
-     * mcrypt resource for decryption
+     * mcrypt resource for decryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::decrypt()
-     * @var String
+     *
+     * @var string
      */
     public $demcrypt;
 
@@ -206,7 +217,8 @@ class Crypt_DES
      *
      * @see setKey()
      * @see setIV()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $changed = true;
 
@@ -216,7 +228,8 @@ class Crypt_DES
      * Determines whether or not the mcrypt extension should be used.  $mode should only, at present, be
      * CRYPT_DES_MODE_ECB or CRYPT_DES_MODE_CBC.  If not explictly set, CRYPT_DES_MODE_CBC will be used.
      *
-     * @param  optional Integer $mode
+     * @param optional Integer $mode
+     *
      * @return Crypt_DES
      */
     public function Crypt_DES($mode = CRYPT_MODE_DES_CBC)
@@ -274,7 +287,7 @@ class Crypt_DES
      *
      * If the key is not explicitly set, it'll be assumed to be all zero's.
      *
-     * @param String $key
+     * @param string $key
      */
     public function setKey($key)
     {
@@ -283,12 +296,12 @@ class Crypt_DES
     }
 
     /**
-     * Sets the initialization vector. (optional)
+     * Sets the initialization vector. (optional).
      *
      * SetIV is not required when CRYPT_DES_MODE_ECB is being used.  If not explictly set, it'll be assumed
      * to be all zero's.
      *
-     * @param String $iv
+     * @param string $iv
      */
     public function setIV($iv)
     {
@@ -297,15 +310,16 @@ class Crypt_DES
     }
 
     /**
-     * Generate CTR XOR encryption key
+     * Generate CTR XOR encryption key.
      *
      * Encrypt the output of this and XOR it against the ciphertext / plaintext to get the
      * plaintext / ciphertext in CTR mode.
      *
      * @see Crypt_DES::decrypt()
      * @see Crypt_DES::encrypt()
-     * @param Integer $length
-     * @param String  $iv
+     *
+     * @param int    $length
+     * @param string $iv
      */
     public function _generate_xor($length, &$iv)
     {
@@ -347,7 +361,8 @@ class Crypt_DES
      * length.
      *
      * @see Crypt_DES::decrypt()
-     * @param String $plaintext
+     *
+     * @param string $plaintext
      */
     public function encrypt($plaintext)
     {
@@ -417,7 +432,8 @@ class Crypt_DES
      * If strlen($ciphertext) is not a multiple of 8, null bytes will be added to the end of the string until it is.
      *
      * @see Crypt_DES::encrypt()
-     * @param String $ciphertext
+     *
+     * @param string $ciphertext
      */
     public function decrypt($ciphertext)
     {
@@ -566,7 +582,7 @@ class Crypt_DES
     }
 
     /**
-     * Pads a string
+     * Pads a string.
      *
      * Pads a string using the RSA PKCS padding standards so that its length is a multiple of the blocksize (8).
      * 8 - (strlen($text) & 7) bytes are added, each of which is equal to chr(8 - (strlen($text) & 7)
@@ -595,7 +611,7 @@ class Crypt_DES
     }
 
     /**
-     * Unpads a string
+     * Unpads a string.
      *
      * If padding is enabled and the reported padding length is invalid the encryption key will be assumed to be wrong
      * and false will be returned.
@@ -618,15 +634,16 @@ class Crypt_DES
     }
 
     /**
-     * Encrypts or decrypts a 64-bit block
+     * Encrypts or decrypts a 64-bit block.
      *
      * $mode should be either CRYPT_DES_ENCRYPT or CRYPT_DES_DECRYPT.  See
      * {@link http://en.wikipedia.org/wiki/Image:Feistel.png Feistel.png} to get a general
      * idea of what this function does.
      *
-     * @param  String  $block
-     * @param  Integer $mode
-     * @return String
+     * @param string $block
+     * @param int    $mode
+     *
+     * @return string
      */
     public function _processBlock($block, $mode)
     {
@@ -814,8 +831,9 @@ class Crypt_DES
     /**
      * Creates the key schedule.
      *
-     * @param  String $key
-     * @return Array
+     * @param string $key
+     *
+     * @return array
      */
     public function _prepareKey($key)
     {

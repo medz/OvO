@@ -4,19 +4,19 @@ Wind::import('SRC:bootstrap.adminBoot');
 Wind::import('SRV:user.bo.PwUserBo');
 
 /**
- * pwadmin后台应用引导脚本
+ * pwadmin后台应用引导脚本.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class pwadminBoot extends adminBoot
 {
     /**
      * 后台菜单访问路径，
-     * 默认菜单地址‘APP:admin.conf.mainmenu.php’
+     * 默认菜单地址‘APP:admin.conf.mainmenu.php’.
      *
      * @var string
      */
@@ -24,7 +24,7 @@ class pwadminBoot extends adminBoot
 
     /**
      * 后台home页管理链接地址，
-     * 默认‘APP:admin.controller.HomeController’
+     * 默认‘APP:admin.controller.HomeController’.
      *
      * @var string
      */
@@ -34,14 +34,14 @@ class pwadminBoot extends adminBoot
      * 搜索功能相关设置，
      * 后台搜索功能是依赖于搜索文件的
      * 搜索文件位置i18n/language/admin/searchFile
-     * 将搜索文件存放在语言包中，并指定相关搜索文件
+     * 将搜索文件存放在语言包中，并指定相关搜索文件.
      *
      * @var string
      */
     public $searchFile = 'search';
 
     /**
-     * 后台log记录
+     * 后台log记录.
      *
      * @var string
      */
@@ -58,14 +58,14 @@ class pwadminBoot extends adminBoot
 
     /**
      * db组建名称，
-     * 默认为系统默认的db组建‘db’,如果需要启用其他的db组建，请设置改项
+     * 默认为系统默认的db组建‘db’,如果需要启用其他的db组建，请设置改项.
      *
      * @var string
      */
     public $dbComponentName = '';
 
     /**
-     * 设置应用依赖服务配置
+     * 设置应用依赖服务配置.
      *
      * @var array
      */
@@ -81,7 +81,7 @@ class pwadminBoot extends adminBoot
         WindFactory::_getInstance()->loadClassDefinitions(
             array(
                 'sqlStatement' => array(
-                    'proxy' => 'WIND:filter.proxy.WindEnhancedClassProxy',
+                    'proxy'     => 'WIND:filter.proxy.WindEnhancedClassProxy',
                     'listeners' => array('LIB:compile.acloud.PwAcloudDbListener'), ), ));
     }
 

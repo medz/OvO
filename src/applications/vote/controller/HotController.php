@@ -6,16 +6,14 @@ Wind::import('SRV:poll.srv.PwPollDisplay');
 Wind::import('SRV:poll.srv.dataSource.PwFetchPollByOrder');
 
 /**
- * 应用中心热门投票模型
+ * 应用中心热门投票模型.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: HotController.php 3219 2012-01-12 06:43:45Z mingxing.sun $
- * @package admin
- * @subpackage controller
  */
-
 class HotController extends PwBaseController
 {
     public $page = 1;
@@ -86,7 +84,7 @@ class HotController extends PwBaseController
     }
 
     /**
-     * get PwPollService
+     * get PwPollService.
      *
      * @return PwPollService
      */
@@ -96,7 +94,7 @@ class HotController extends PwBaseController
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */
@@ -106,7 +104,7 @@ class HotController extends PwBaseController
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */

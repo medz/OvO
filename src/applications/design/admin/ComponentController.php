@@ -2,14 +2,14 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ComponentController.php 28810 2013-05-24 08:50:05Z jieyin $
- * @package
  */
-
 class ComponentController extends AdminBaseController
 {
     public function run()

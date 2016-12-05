@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 支付宝支付
+ * 支付宝支付.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: AlipayController.php 26622 2013-04-13 02:16:20Z jieyin $
- * @package forum
  */
-
 class AlipayController extends PwBaseController
 {
     protected $_var = array();
@@ -30,7 +29,7 @@ class AlipayController extends PwBaseController
 
         $veryfy_result2 = trim($http->post(array(
             'notify_id' => $this->_var['notify_id'],
-            'partner' => $this->_conf['alipaypartnerID'],
+            'partner'   => $this->_conf['alipaypartnerID'],
         )), "\r\n");
 
         //兼容支付宝urlencode之后伪静态+号无法rawurldecode的处理方案
@@ -84,7 +83,7 @@ class AlipayController extends PwBaseController
     }
 
     /**
-     * 显示错误信息
+     * 显示错误信息.
      *
      * @param string $msg
      * @param string $notify
@@ -103,14 +102,15 @@ class AlipayController extends PwBaseController
 
 /**
  * 测试方法
- * //TODO
+ * //TODO.
  *
- * @param  unknown_type $host
- * @param  unknown_type $data
- * @param  unknown_type $method
- * @param  unknown_type $showagent
- * @param  unknown_type $port
- * @param  unknown_type $timeout
+ * @param unknown_type $host
+ * @param unknown_type $data
+ * @param unknown_type $method
+ * @param unknown_type $showagent
+ * @param unknown_type $port
+ * @param unknown_type $timeout
+ *
  * @return bool|string
  */
 function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port = null, $timeout = 30)

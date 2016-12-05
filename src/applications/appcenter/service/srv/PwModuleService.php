@@ -5,8 +5,8 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwModuleService.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package appcenter.service
  */
 class PwModuleService
 {
@@ -23,9 +23,10 @@ class PwModuleService
     }
 
     /**
-     * 获取某个应用的模块配置
+     * 获取某个应用的模块配置.
      *
-     * @param  string     $alias
+     * @param string $alias
+     *
      * @return multitype:
      */
     public function getModule($alias)
@@ -34,11 +35,12 @@ class PwModuleService
     }
 
     /**
-     * 注册某个应用的模块配置
+     * 注册某个应用的模块配置.
      *
-     * @param  unknown_type $alias
-     * @param  unknown_type $module
-     * @return Ambigous     <boolean, number, rowCount>
+     * @param unknown_type $alias
+     * @param unknown_type $module
+     *
+     * @return Ambigous <boolean, number, rowCount>
      */
     public function registeModule($alias, $module)
     {
@@ -48,10 +50,11 @@ class PwModuleService
     }
 
     /**
-     * 删除某个应用的模块配置
+     * 删除某个应用的模块配置.
      *
-     * @param  unknown_type $alias
-     * @return Ambigous     <boolean, number, rowCount>
+     * @param unknown_type $alias
+     *
+     * @return Ambigous <boolean, number, rowCount>
      */
     public function deleteModule($alias)
     {
@@ -61,7 +64,7 @@ class PwModuleService
     }
 
     /**
-     * 转化入库格式
+     * 转化入库格式.
      *
      * @return array
      */

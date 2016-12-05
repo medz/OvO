@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 通知基础表
+ * 通知基础表.
  *
  * @author peihong.zhang
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMessageNoticesDao.php 3575 2012-01-11 11:32:47Z zhangph $
- * @package forum
  */
-
 class PwMessageNoticesDao extends PwBaseDao
 {
     protected $_table = 'message_notices';
@@ -70,8 +69,10 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
-     * 获取未读通知数
-     * @param  int $uid
+     * 获取未读通知数.
+     *
+     * @param int $uid
+     *
      * @return int
      */
     public function getUnreadNoticeCount($uid)
@@ -94,8 +95,8 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
+     * 获取用户通知(按类型).
      *
-     * 获取用户通知(按类型)
      * @param int $uid
      * @param int $type
      * @param int $param
@@ -109,8 +110,8 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
+     * 按类型统计用户通知数.
      *
-     * 按类型统计用户通知数
      * @param int $uid
      */
     public function countNoticesByType($uid)
@@ -140,8 +141,8 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
+     * 删除一条通知.
      *
-     * 删除一条通知
      * @param int $id
      */
     public function deleteNotice($id)
@@ -153,8 +154,8 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
+     * 批量删除通知.
      *
-     * 批量删除通知
      * @param int $id
      */
     public function deleteNoticeByIds($ids)
@@ -172,8 +173,9 @@ class PwMessageNoticesDao extends PwBaseDao
 
         return $smt->update(array($uid), true);
     }
+
     /**
-     * 根据类型删除通知
+     * 根据类型删除通知.
      *
      * @param int $uid
      * @param int $type
@@ -189,7 +191,7 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
-     * 根据uid删除通知
+     * 根据uid删除通知.
      *
      * @param int $uid
      * @param bool
@@ -203,7 +205,7 @@ class PwMessageNoticesDao extends PwBaseDao
     }
 
     /**
-     * 根据类型批量删除通知
+     * 根据类型批量删除通知.
      *
      * @param int   $uid
      * @param int   $type

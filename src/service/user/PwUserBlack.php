@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户黑名单
+ * 用户黑名单.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwUserBlack
 {
     /**
-     * 获取用户黑名单
+     * 获取用户黑名单.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getBlacklist($uid)
@@ -23,9 +24,10 @@ class PwUserBlack
     }
 
     /**
-     * 批量获取用户黑名单
+     * 批量获取用户黑名单.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchBlacklist($uids)
@@ -34,7 +36,7 @@ class PwUserBlack
     }
 
     /**
-     * 设置用户黑名单
+     * 设置用户黑名单.
      *
      * @param int $uid
      * @param int $blackUid
@@ -45,7 +47,7 @@ class PwUserBlack
     }
 
     /**
-     * 替换黑名单
+     * 替换黑名单.
      *
      * @param int   $uid
      * @param array $blackList
@@ -56,9 +58,10 @@ class PwUserBlack
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteBlacklist($uid)
@@ -67,10 +70,11 @@ class PwUserBlack
     }
 
     /**
-     * 检测是否黑名单
+     * 检测是否黑名单.
      *
-     * @param  int   $uid
-     * @param  array $uids
+     * @param int   $uid
+     * @param array $uids
+     *
      * @return array | bool
      */
     public function checkUserBlack($uid, $uids)

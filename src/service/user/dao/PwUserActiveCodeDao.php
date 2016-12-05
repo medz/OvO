@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户激活码记录表
+ * 用户激活码记录表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserActiveCodeDao.php 10088 2012-05-16 12:18:26Z xiaoxia.xuxx $
- * @package src.service.user.dao
  */
 class PwUserActiveCodeDao extends PwBaseDao
 {
@@ -18,6 +18,7 @@ class PwUserActiveCodeDao extends PwBaseDao
      * 添加用户激活码
      *
      * @param  array    $data 激活码相关数据
+     *
      * @return bool|int
      */
     public function insert($data)
@@ -34,8 +35,9 @@ class PwUserActiveCodeDao extends PwBaseDao
     /**
      * 更新用户激活码
      *
-     * @param  int      $uid        用户ID
-     * @param  int      $activetime 激活时间
+     * @param int $uid        用户ID
+     * @param int $activetime 激活时间
+     *
      * @return bool|int
      */
     public function update($uid, $activetime)
@@ -47,9 +49,10 @@ class PwUserActiveCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除信息
+     * 根据用户ID删除信息.
      *
-     * @param  int      $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return int|bool
      */
     public function deleteByUid($uid)
@@ -61,10 +64,11 @@ class PwUserActiveCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID获得信息
+     * 根据用户ID获得信息.
      *
-     * @param  int   $uid    用户ID
-     * @param  int   $typeid 激活码类型
+     * @param int $uid    用户ID
+     * @param int $typeid 激活码类型
+     *
      * @return array
      */
     public function getInfoByUid($uid, $typeid)

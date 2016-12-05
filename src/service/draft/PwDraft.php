@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 草稿箱
+ * 草稿箱.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwDraft
 {
     /**
-     * 添加
+     * 添加.
      *
-     * @param  PwDraftDm $dm
+     * @param PwDraftDm $dm
+     *
      * @return bool
      */
     public function addDraft(PwDraftDm $dm)
@@ -29,7 +30,8 @@ class PwDraft
     /**
      * 删除一条
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function deleteDraft($id)
@@ -43,10 +45,11 @@ class PwDraft
     }
 
     /**
-     * 根据uid获取num条数据
+     * 根据uid获取num条数据.
      *
-     * @param  int   $uid
-     * @param  int   $num
+     * @param int $uid
+     * @param int $num
+     *
      * @return array
      */
     public function getByUid($uid, $num = 10)
@@ -61,9 +64,10 @@ class PwDraft
     }
 
     /**
-     * 根据用户统计草稿箱数量
+     * 根据用户统计草稿箱数量.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function countByUid($uid)
@@ -77,9 +81,10 @@ class PwDraft
     }
 
     /**
-     * 获取一条数据
+     * 获取一条数据.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getDraft($id)
@@ -93,10 +98,11 @@ class PwDraft
     }
 
     /**
-     * 编辑
+     * 编辑.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return array
      */
     public function updateDraft($id, PwDraftDm $dm)

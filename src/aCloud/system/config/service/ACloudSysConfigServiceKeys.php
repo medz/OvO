@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceKeys
 {
@@ -17,7 +17,7 @@ class ACloudSysConfigServiceKeys
         $id = intval($id);
         $key = $this->getKeysDao()->get($id);
 
-        return ($key && $key ['key6'] && strlen($key ['key6']) == 128) ? $key ['key6'] : '';
+        return ($key && $key['key6'] && strlen($key['key6']) == 128) ? $key['key6'] : '';
     }
 
     public function getKey1($id)
@@ -25,7 +25,7 @@ class ACloudSysConfigServiceKeys
         $id = intval($id);
         $key = $this->getKeysDao()->get($id);
 
-        return ($key && $key ['key1'] && strlen($key ['key1']) == 128) ? $key ['key1'] : '';
+        return ($key && $key['key1'] && strlen($key['key1']) == 128) ? $key['key1'] : '';
     }
 
     public function updateKey123($id, $key1, $key2, $key3)

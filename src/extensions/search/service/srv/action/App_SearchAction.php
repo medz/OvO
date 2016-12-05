@@ -3,7 +3,9 @@
 abstract class App_SearchAction
 {
     abstract public function countSearch($so);
+
     abstract public function search($so, $limit = 20, $start = 0);
+
     abstract public function build($list, $keywords);
 
     public function _highlighting($subject, $pattern)
@@ -12,9 +14,10 @@ abstract class App_SearchAction
     }
 
     /**
-     * 检查关键字查询条件
+     * 检查关键字查询条件.
      *
      * @param string $keyword
+     *
      * @return string 关键字
      */
     protected function _checkKeywordCondition($keyword)
@@ -28,7 +31,7 @@ abstract class App_SearchAction
         $keywords = array();
         foreach ($ks as $v) {
             $v = trim($v);
-            ($v) && $keywords [] = $v;
+            ($v) && $keywords[] = $v;
         }
         if (!$keywords) {
             return array();

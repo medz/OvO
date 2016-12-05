@@ -7,8 +7,8 @@ Wind::import('SRV:user.dm.PwUserInfoDm');
  * @author peihong <peihong.zhangph@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMessageService.php 3833 2012-01-12 03:32:27Z peihong.zhangph $
- * @package src.service.message.srv
  */
 class PwMessageService
 {
@@ -17,9 +17,10 @@ class PwMessageService
     /**
      * 按用户名发送私信
      *
-     * @param  string       $username
-     * @param  content      $content
-     * @param  int          $from_uid
+     * @param string  $username
+     * @param content $content
+     * @param int     $from_uid
+     *
      * @return PwError|bool
      */
     public function sendMessage($username, $content, $fromUid = 0)
@@ -49,7 +50,8 @@ class PwMessageService
     /**
      * 检测隐私
      *
-     * @param  array        $userInfos 以uid为key的二维数组
+     * @param array $userInfos 以uid为key的二维数组
+     *
      * @return PwError|bool
      */
     private function _checkPrivate($userInfos)
@@ -78,8 +80,9 @@ class PwMessageService
     /**
      * 按用户名群发送私信
      *
-     * @param  array        $usernames
-     * @param  content      $content
+     * @param array   $usernames
+     * @param content $content
+     *
      * @return PwError|bool
      */
     public function sendMessageByUsernames($usernames, $content, $fromUid = 0)
@@ -112,8 +115,8 @@ class PwMessageService
     }
 
     /**
+     * 批量标记会话已读.
      *
-     * 批量标记会话已读
      * @param array $dialogIds
      */
     public function markDialogReaded($dialogIds)
@@ -128,8 +131,9 @@ class PwMessageService
     /**
      * 按用户ID发送私信
      *
-     * @param  int          $uid
-     * @param  string       $content
+     * @param int    $uid
+     * @param string $content
+     *
      * @return PwError|bool
      */
     public function sendMessageByUid($uid, $content, $fromUid = 0)
@@ -178,10 +182,11 @@ class PwMessageService
     }
 
     /**
-     * 根据uids群发消息
+     * 根据uids群发消息.
      *
-     * @param  array        $uids
-     * @param  string       $content
+     * @param array  $uids
+     * @param string $content
+     *
      * @return PwError|bool
      */
     public function sendMessagesByUids($uids, $content, $fromUid = 0)
@@ -197,14 +202,13 @@ class PwMessageService
         return true;
     }
 
-
     /**
+     * 获取分组列表.
      *
-     * 获取分组列表
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
      * @return array
      */
     public function getDialogs($uid, $start, $limit)
@@ -219,8 +223,8 @@ class PwMessageService
     }
 
     /**
+     * 获取一条对话信息.
      *
-     * 获取一条对话信息
      * @param int $dialogId
      */
     public function getDialog($dialogId)
@@ -229,8 +233,8 @@ class PwMessageService
     }
 
     /**
+     * 根据uid获取对话信息.
      *
-     * 根据uid获取对话信息
      * @param int $toUid
      * @param int $fromUid
      */
@@ -240,12 +244,13 @@ class PwMessageService
     }
 
     /**
-     * 获取对话消息列表
+     * 获取对话消息列表.
      *
-     * @param  int   $uid
-     * @param  int   $from_uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $from_uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogMessageList($dialogId, $limit, $start)
@@ -267,8 +272,8 @@ class PwMessageService
     }
 
     /**
+     * 重新计算用户私信数.
      *
-     * 重新计算用户私信数
      * @param int $uid
      */
     public function resetUserMessages($uid)
@@ -283,8 +288,8 @@ class PwMessageService
     }
 
     /**
+     * 删除会话.
      *
-     * 删除会话
      * @param array $dialogIds
      */
     public function batchDeleteDialog($uid, $dialogIds)
@@ -293,8 +298,8 @@ class PwMessageService
     }
 
     /**
+     * 后台清理用户消息接口.
      *
-     * 后台清理用户消息接口
      * @param int  $uid
      * @param bool $message 是否删除私信
      * @param bool $notice  是否删除通知
@@ -308,13 +313,14 @@ class PwMessageService
     }
 
     /**
-     * 搜索消息
+     * 搜索消息.
      *
-     * @param  int   $start
-     * @param  int   $limit
-     * @param  int   $from_uid
-     * @param  int   $starttime
-     * @param  int   $endtime
+     * @param int $start
+     * @param int $limit
+     * @param int $from_uid
+     * @param int $starttime
+     * @param int $endtime
+     *
      * @return array
      */
     public function getMessagesByUid($start, $limit, $fromuid = '', $starttime = 0, $endtime = 0, $keyword = '')
@@ -337,8 +343,7 @@ class PwMessageService
     }
 
     /**
-     *
-     * 后台根据搜索结果的message id删除消息
+     * 后台根据搜索结果的message id删除消息.
      */
     public function deleteMessageByMessageIds($messageIds)
     {
@@ -346,11 +351,12 @@ class PwMessageService
     }
 
     /**
-     * 设置消息
+     * 设置消息.
      *
-     * @param  int   $uid
-     * @param  array $data
-     * @param  int   $message_tone
+     * @param int   $uid
+     * @param array $data
+     * @param int   $message_tone
+     *
      * @return array
      */
     public function setMessageConfig($uid, $privacy, $notice_types, $message_tone)
@@ -369,11 +375,12 @@ class PwMessageService
     }
 
     /**
-     * 更新用户表未读数
+     * 更新用户表未读数.
      *
-     * @param  int  $uid
-     * @param  int  $num
-     * @param  bool $increase
+     * @param int  $uid
+     * @param int  $num
+     * @param bool $increase
+     *
      * @return int
      */
     public function updateUserMessage($uid, $num = 1, $increase = true)
@@ -403,7 +410,6 @@ class PwMessageService
         $dm = new PwUserInfoDm($uid);
         $dm->setMessageCount($unread);
 
-
         $std = PwWindidStd::getInstance('user');
         $std->setMethod('editDmUser', 1);
         if (($result = $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA)) !== true) {
@@ -423,7 +429,7 @@ class PwMessageService
     }
 
     /**
-     * 检查发私信权限
+     * 检查发私信权限.
      *
      * @param int $uid
      * @param int $blackUid
@@ -441,9 +447,10 @@ class PwMessageService
     }
 
     /**
-     * 检测是否粉丝
+     * 检测是否粉丝.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array | bool
      */
     private function _checkMessageFan($uids)
@@ -468,11 +475,12 @@ class PwMessageService
     }
 
     /**
-     * 检测今日发消息数量
+     * 检测今日发消息数量.
      *
-     * @param  PwUserBo $user
-     * @param  int      $countUser
-     * @return PwError  | bool
+     * @param PwUserBo $user
+     * @param int      $countUser
+     *
+     * @return PwError | bool
      */
     private function _checkTodayNum(PwUserBo $user, $touids)
     {
@@ -488,7 +496,7 @@ class PwMessageService
     }
 
     /**
-     * 获得windidDS
+     * 获得windidDS.
      *
      * @return WindidUser
      */
@@ -525,7 +533,6 @@ class PwMessageService
     }
 
     /**
-     *
      * @return PwHookService
      */
     private function _getHook()
@@ -537,9 +544,8 @@ class PwMessageService
         return self::$_hookInstance;
     }
 
-
     /**
-     * PwUserBehavior
+     * PwUserBehavior.
      *
      * @return PwUserBehavior
      */

@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:report.dm.PwReportDm');
 
 /**
- * 举报管理
+ * 举报管理.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class ManageController extends AdminBaseController
 {
@@ -18,8 +18,7 @@ class ManageController extends AdminBaseController
     private $_maxUids = 30;
 
     /**
-     * 举报管理
-     *
+     * 举报管理.
      */
     public function run()
     {
@@ -42,8 +41,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 忽略
-     *
+     * 忽略.
      */
     public function deleteAction()
     {
@@ -63,8 +61,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 标记处理
-     *
+     * 标记处理.
      */
     public function dealCheckAction()
     {
@@ -87,10 +84,10 @@ class ManageController extends AdminBaseController
         $reports = $this->_getReportDs()->fetchReport($ids);
         $notice = Wekit::load('message.srv.PwNoticeService');
         $extendParams = array(
-            'operateUserId' => $this->loginUser->uid,
+            'operateUserId'   => $this->loginUser->uid,
             'operateUsername' => $this->loginUser->username,
-            'operateTime' => Pw::getTime(),
-            'operateType' => $action,
+            'operateTime'     => Pw::getTime(),
+            'operateType'     => $action,
         );
         foreach ($reports as $v) {
             $this->_getReportService()->sendNotice($v, $extendParams);
@@ -102,8 +99,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 接收提醒用户列表
-     *
+     * 接收提醒用户列表.
      */
     public function receiverListAction()
     {
@@ -113,8 +109,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 添加接收人
-     *
+     * 添加接收人.
      */
     public function addReceiverAction()
     {
@@ -136,8 +131,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * do删除
-     *
+     * do删除.
      */
     public function deleteReceiverAction()
     {
@@ -156,9 +150,10 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 根据用户uids批量获取用户带身份
+     * 根据用户uids批量获取用户带身份.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     private function getUsersWithGroup($uids)

@@ -2,19 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('COM:utility.WindUtility');
 
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Mingqu Luo<luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwForumUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package wind
  */
-
 class PwForumUpload extends PwUploadAction
 {
     public $key;
@@ -81,11 +79,11 @@ class PwForumUpload extends PwUploadAction
         foreach ($uploaddb as $key => $value) {
             $this->attachs = array(
                 'attname' => $value['attname'],
-                'type' => $value['type'],
-                'path' => $value['fileuploadurl'],
-                'size' => $value['size'],
-                'width' => $this->width,
-                'height' => $this->height,
+                'type'    => $value['type'],
+                'path'    => $value['fileuploadurl'],
+                'size'    => $value['size'],
+                'width'   => $this->width,
+                'height'  => $this->height,
             );
         }
 

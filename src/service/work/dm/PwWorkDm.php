@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 工作经历的DM
+ * 工作经历的DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWorkDm.php 1532 2012-1-13上午11:01:28 xiaoxiao $
- * @package src.service.user.hooks.experience_work.dm
  */
 class PwWorkDm extends PwBaseDm
 {
     /**
-     * 设置用户ID
+     * 设置用户ID.
      *
-     * @param  int      $uid
+     * @param int $uid
+     *
      * @return PwWorkDm
      */
     public function setUid($uid)
@@ -25,9 +26,10 @@ class PwWorkDm extends PwBaseDm
     }
 
     /**
-     * 设置工作单位名字
+     * 设置工作单位名字.
      *
-     * @param  string   $company
+     * @param string $company
+     *
      * @return PwWorkDm
      */
     public function setCompany($company)
@@ -38,10 +40,11 @@ class PwWorkDm extends PwBaseDm
     }
 
     /**
-     * 设置开始时间
+     * 设置开始时间.
      *
-     * @param  int      $year
-     * @param  int      $month
+     * @param int $year
+     * @param int $month
+     *
      * @return PwWorkDm
      */
     public function setStartTime($year, $month)
@@ -53,10 +56,11 @@ class PwWorkDm extends PwBaseDm
     }
 
     /**
-     * 设置结束时间
+     * 设置结束时间.
      *
-     * @param  int      $year
-     * @param  int      $month
+     * @param int $year
+     * @param int $month
+     *
      * @return PwWorkDm
      */
     public function setEndTime($year, $month)
@@ -84,7 +88,7 @@ class PwWorkDm extends PwBaseDm
     }
 
     /**
-     * 检查数据
+     * 检查数据.
      *
      * @return PwError
      */

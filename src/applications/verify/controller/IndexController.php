@@ -2,14 +2,14 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 28899 2013-05-29 07:23:48Z gao.wanggao $
- * @package
  */
-
 class IndexController extends PwBaseController
 {
     /* (non-PHPdoc)
@@ -33,7 +33,7 @@ class IndexController extends PwBaseController
     {
         $rand = $this->getInput('rand', 'get');
         $config = Wekit::C('verify');
-        $config['type'] = $config['type'] ? $config['type'] : 'image' ;
+        $config['type'] = $config['type'] ? $config['type'] : 'image';
         Wind::import('SRV:verify.srv.PwVerifyService');
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         if ($rand) {
@@ -55,11 +55,11 @@ class IndexController extends PwBaseController
 				src="'.$url.'">';
             if ($config['voice']) {
                 $url = WindUrlHelper::createUrl('verify/index/getAudio', array(
-                    'songVolume' => 100,
-                    'autoStart' => 'false',
-                    'repeatPlay' => 'false',
+                    'songVolume'   => 100,
+                    'autoStart'    => 'false',
+                    'repeatPlay'   => 'false',
                     'showDownload' => 'false',
-                    'rand' => Pw::getTime(),
+                    'rand'         => Pw::getTime(),
                 ), '', 'pw');
                 $html .= '<embed height="20" width="25" 
 				type="application/x-shockwave-flash" 
@@ -74,11 +74,11 @@ class IndexController extends PwBaseController
 				height="'.$config['height'].'" >';
             if ($config['voice']) {
                 $url = WindUrlHelper::createUrl('verify/index/getAudio', array(
-                    'songVolume' => 100,
-                    'autoStart' => 'false',
-                    'repeatPlay' => 'false',
+                    'songVolume'   => 100,
+                    'autoStart'    => 'false',
+                    'repeatPlay'   => 'false',
                     'showDownload' => 'false',
-                    'rand' => Pw::getTime(),
+                    'rand'         => Pw::getTime(),
                 ), '', 'pw');
                 $html .= '<span title="点击后键入您听到的内容"><embed wmode="transparent" height="20" width="25" 
 				type="application/x-shockwave-flash" 

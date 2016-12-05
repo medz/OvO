@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignExportTxt.php 24989 2013-02-28 02:53:30Z gao.wanggao $
- * @package
  */
 class PwDesignExportTxt
 {
@@ -15,7 +16,6 @@ class PwDesignExportTxt
     {
         $this->pageInfo = $pageInfo;
     }
-
 
     public function txt($charset = 'utf-8')
     {
@@ -73,9 +73,9 @@ class PwDesignExportTxt
         $_text = $_title.$_text.$_end;
 
         return array(
-            'content' => $_text,
+            'content'  => $_text,
             'filename' => $filename,
-            'ext' => 'txt',
+            'ext'      => 'txt',
         );
     }
 

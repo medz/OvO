@@ -3,15 +3,14 @@
 Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 
 /**
- * 帖子管理操作-已阅
+ * 帖子管理操作-已阅.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDeleteReply.php 14354 2012-07-19 10:36:06Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoInspect extends PwThreadManageDo
 {
     protected $lou;

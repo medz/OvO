@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPoll.php 9437 2012-05-07 06:37:33Z hejin $
- * @package poll
  */
-
 class PwPoll
 {
     /**
-     * 获取单条投票记录
+     * 获取单条投票记录.
      *
-     * @param  int   $pollid
+     * @param int $pollid
+     *
      * @return array
      */
     public function getPoll($pollid)
@@ -31,9 +31,10 @@ class PwPoll
     }
 
     /**
-     * 获取投票信息
+     * 获取投票信息.
      *
-     * @param  array $pollids
+     * @param array $pollids
+     *
      * @return array
      */
     public function fetchPoll($pollids)
@@ -46,7 +47,7 @@ class PwPoll
     }
 
     /**
-     * 获得最新投票列表
+     * 获得最新投票列表.
      *
      * @param int   $limit
      * @param int   $offset
@@ -58,10 +59,11 @@ class PwPoll
     }
 
     /**
-     * 统计某个时间段的投票数
+     * 统计某个时间段的投票数.
      *
-     * @param  int $startTime
-     * @param  int $endTime
+     * @param int $startTime
+     * @param int $endTime
+     *
      * @return int
      */
     public function countPollByTime($startTime = 0, $endTime = 0)
@@ -70,12 +72,13 @@ class PwPoll
     }
 
     /**
-     * 获得某个时间段的投票
+     * 获得某个时间段的投票.
      *
-     * @param  int   $startTime
-     * @param  int   $endTime
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $startTime
+     * @param int $endTime
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getPollByTime($startTime, $endTime, $limit, $offset, $orderby = array())
@@ -84,9 +87,10 @@ class PwPoll
     }
 
     /**
-     * 根据 uid 统计投票总数
+     * 根据 uid 统计投票总数.
      *
-     * @param  array $uid
+     * @param array $uid
+     *
      * @return int
      */
     public function countPollByUid($uid)
@@ -100,11 +104,12 @@ class PwPoll
     }
 
     /**
-     * 获取用户的投票列表
+     * 获取用户的投票列表.
      *
-     * @param  int   $uid
-     * @param  int   $offset
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $offset
+     * @param int $limit
+     *
      * @return array
      */
     public function getPollByUid($uid, $limit, $offset)
@@ -118,9 +123,10 @@ class PwPoll
     }
 
     /**
-     * 根据 uids 统计投票总数
+     * 根据 uids 统计投票总数.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return int
      */
     public function countPollByUids($uids)
@@ -133,11 +139,12 @@ class PwPoll
     }
 
     /**
-     * 获取投票信息
+     * 获取投票信息.
      *
-     * @param  array $uids
-     * @param  int   $offset
-     * @param  int   $limit
+     * @param array $uids
+     * @param int   $offset
+     * @param int   $limit
+     *
      * @return array
      */
     public function fetchPollByUid($uids, $limit, $offset)
@@ -150,11 +157,12 @@ class PwPoll
     }
 
     /**
-     * 根据投票IDS 获得投票列表
+     * 根据投票IDS 获得投票列表.
      *
-     * @param  int   $pollid
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $pollid
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function fetchPollByPollid($pollids, $limit, $offset)
@@ -167,9 +175,10 @@ class PwPoll
     }
 
     /**
-     * 添加投票
+     * 添加投票.
      *
-     * @param  PwPollDm $dm
+     * @param PwPollDm $dm
+     *
      * @return int
      */
     public function addPoll(PwPollDm $dm)
@@ -182,9 +191,10 @@ class PwPoll
     }
 
     /**
-     * 删除投票
+     * 删除投票.
      *
-     * @param  int  $pollid
+     * @param int $pollid
+     *
      * @return bool
      */
     public function deletePoll($pollid)
@@ -198,9 +208,10 @@ class PwPoll
     }
 
     /**
-     * 更新投票选项
+     * 更新投票选项.
      *
-     * @param  PwPollDm $dm
+     * @param PwPollDm $dm
+     *
      * @return bool
      */
     public function updatePoll(PwPollDm $dm)

@@ -5,13 +5,13 @@ Wind::import('APPS:u.service.helper.PwUserHelper');
 Wind::import('SRV:user.validator.PwUserValidator');
 /**
  * 重置密码流程
- * 重置成功一次  才算找回密码次数完成一次，才会更新验证码状态及找回密码次数
+ * 重置成功一次  才算找回密码次数完成一次，才会更新验证码状态及找回密码次数.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: FindPwdController.php 22230 2012-12-19 21:45:20Z xiaoxia.xuxx $
- * @package src.products.user.controller
  */
 class FindPwdController extends PwBaseController
 {
@@ -149,7 +149,7 @@ class FindPwdController extends PwBaseController
     }
 
     /**
-     * 检查有效是否正确
+     * 检查有效是否正确.
      */
     public function dobymailAction()
     {
@@ -216,7 +216,7 @@ class FindPwdController extends PwBaseController
     }
 
     /**
-     * 验证邮件展示重置密码页面
+     * 验证邮件展示重置密码页面.
      */
     public function resetpwdAction()
     {
@@ -326,7 +326,7 @@ class FindPwdController extends PwBaseController
     }
 
     /**
-     * 检查邮箱地址合法性
+     * 检查邮箱地址合法性.
      */
     public function checkMailFormatAction()
     {
@@ -338,7 +338,7 @@ class FindPwdController extends PwBaseController
     }
 
     /**
-     * 检查手机号码格式是否正确
+     * 检查手机号码格式是否正确.
      */
     public function checkPhoneFormatAction()
     {
@@ -351,6 +351,7 @@ class FindPwdController extends PwBaseController
 
     /**
      * 检查是否符合要求
+     *
      * @param string $type 类型
      */
     private function checkState()
@@ -372,7 +373,8 @@ class FindPwdController extends PwBaseController
     /**
      * 检查验证码
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return bool
      */
     private function checkCode($code)
@@ -391,7 +393,7 @@ class FindPwdController extends PwBaseController
     }
 
     /**
-     * 获得用户的DS
+     * 获得用户的DS.
      *
      * @return PwUser
      */

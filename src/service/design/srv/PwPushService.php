@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPushService.php 17555 2012-09-06 09:43:13Z gao.wanggao $
- * @package
  */
 class PwPushService
 {
     /**
-     * 获取某类型的一条推送数据
+     * 获取某类型的一条推送数据.
      *
      * @return array 返回的数据结构与门户数据完全相同
      */
@@ -28,9 +29,8 @@ class PwPushService
         return $srv->getFromData($formid);
     }
 
-
     /**
-     * 添加推送数据到推送表
+     * 添加推送数据到推送表.
      */
     public function addPushData(PwDesignPushDm $dm)
     {
@@ -50,7 +50,7 @@ class PwPushService
     }
 
     /**
-     * 把一条推送数据写入展示数据
+     * 把一条推送数据写入展示数据.
      */
     public function pushToData($pushid)
     {

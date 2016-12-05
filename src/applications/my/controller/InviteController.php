@@ -2,13 +2,13 @@
 
 Wind::import('SRV:invite.vo.PwInviteCodeSo');
 /**
- * 邀请好友
+ * 邀请好友.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: InviteController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package service.products.bbs.controller
  */
 class InviteController extends PwBaseController
 {
@@ -92,7 +92,7 @@ class InviteController extends PwBaseController
     }
 
     /**
-     * 在线购买
+     * 在线购买.
      */
     public function onlineAction()
     {
@@ -117,7 +117,7 @@ class InviteController extends PwBaseController
     }
 
     /**
-     * 邀请统计页面
+     * 邀请统计页面.
      */
     public function statisticsAction()
     {
@@ -153,7 +153,7 @@ class InviteController extends PwBaseController
     }
 
     /**
-     * 邀请链接
+     * 邀请链接.
      */
     public function inviteFriendAction()
     {
@@ -206,7 +206,7 @@ class InviteController extends PwBaseController
     }
 
     /**
-     * 获得邀请码DS
+     * 获得邀请码DS.
      *
      * @return PwInviteCode
      */

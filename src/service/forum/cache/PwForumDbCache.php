@@ -2,23 +2,21 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 版块缓存数据接口
+ * 版块缓存数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumDbCache.php 21318 2012-12-04 09:24:09Z jieyin $
- * @package src.service.user
  */
 class PwForumDbCache extends PwBaseMapDbCache
 {
     protected $keys = array(
-        'forum' => array('forum_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumDao', 'getForum')),
+        'forum'           => array('forum_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumDao', 'getForum')),
         'forumstatistics' => array('forumstatistics_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumStatisticsDao', 'getForum')),
-        'forumextra' => array('forumextra_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumExtraDao', 'getForum')),
+        'forumextra'      => array('forumextra_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumExtraDao', 'getForum')),
     );
 
     public function getKeysByFid($fid)

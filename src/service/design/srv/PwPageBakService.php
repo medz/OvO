@@ -1,12 +1,13 @@
 <?php
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPageBakService.php 22555 2012-12-25 08:37:31Z gao.wanggao $
- * @package
  */
 class PwPageBakService
 {
@@ -16,6 +17,7 @@ class PwPageBakService
     /**
      * 建立上一个版本备份
      * Enter description here ...
+     *
      * @param int $pageid
      */
     public function doBak($pageid)
@@ -33,6 +35,7 @@ class PwPageBakService
     /**
      * 建立备份快照
      * Enter description here ...
+     *
      * @param int $pageid
      */
     public function doSnap($pageid)

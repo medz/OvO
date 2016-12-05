@@ -1,12 +1,12 @@
 <?php
 /**
- * 我关注的话题dao
+ * 我关注的话题dao.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package PwTagAttentionDao
  */
 class PwTagAttentionDao extends PwBaseDao
 {
@@ -14,10 +14,11 @@ class PwTagAttentionDao extends PwBaseDao
     protected $_dataStruct = array('uid', 'tag_id', 'last_read_time');
 
     /**
-     * 根据uid和tagId获取话题
+     * 根据uid和tagId获取话题.
      *
-     * @param  int   $uid
-     * @param  int   $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return array
      */
     public function get($uid, $tagId)
@@ -29,9 +30,10 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 统计我关注的话题
+     * 统计我关注的话题.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)
@@ -43,10 +45,11 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 取我关注的热门话题
+     * 取我关注的热门话题.
      *
-     * @param  int   $uid
-     * @param  array $tagIds
+     * @param int   $uid
+     * @param array $tagIds
+     *
      * @return int
      */
     public function getAttentionByUidAndTagsIds($uid, $tagIds)
@@ -58,11 +61,12 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 获取我关注的话题
+     * 获取我关注的话题.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getByUid($uid, $limit = 100, $start = 0)
@@ -74,9 +78,10 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 统计关注话题的用户
+     * 统计关注话题的用户.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function countByTagId($tagId)
@@ -88,11 +93,12 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 获取关注话题的用户
+     * 获取关注话题的用户.
      *
-     * @param  int   $tagId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $tagId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getByTagId($tagId, $start, $limit)
@@ -104,9 +110,10 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 添加一条关注
+     * 添加一条关注.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function add($data)
@@ -120,10 +127,11 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 删除一条关注
+     * 删除一条关注.
      *
-     * @param  int $uid
-     * @param  int $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return int
      */
     public function delete($uid, $tagId)
@@ -135,9 +143,10 @@ class PwTagAttentionDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_ids删除
+     * 根据tag_ids删除.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function deleteByTagIds($tagIds)

@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 快钱支付
+ * 快钱支付.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: Pay99billController.php 24284 2013-01-25 03:28:25Z xiaoxia.xuxx $
- * @package forum
  */
-
 class Pay99billController extends PwBaseController
 {
     protected $_var = array();

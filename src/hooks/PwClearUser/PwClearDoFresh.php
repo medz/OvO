@@ -5,13 +5,13 @@ Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByUid');
 Wind::import('SRV:forum.srv.operation.PwDeleteReply');
 
 /**
- * 删除新鲜事
+ * 删除新鲜事.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwClearDoFresh.php 16415 2012-08-23 07:53:40Z xiaoxia.xuxx $
- * @package src.hooks.PwClearUser
  */
 class PwClearDoFresh extends iPwGleanDoHookProcess
 {

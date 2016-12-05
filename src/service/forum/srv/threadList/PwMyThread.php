@@ -5,13 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
 
 /**
- * 获取我的帖子-我的主题列表
+ * 获取我的帖子-我的主题列表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwMyThread.php 19291 2012-10-12 08:14:16Z xiaoxia.xuxx $
- * @package wind
  */
 class PwMyThread extends PwThreadDataSource
 {
@@ -21,7 +21,7 @@ class PwMyThread extends PwThreadDataSource
     private $uid = 0;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $spaceid
      * @param int $loginUid
@@ -48,7 +48,6 @@ class PwMyThread extends PwThreadDataSource
     }
 
     /**
-     *
      * @return PwThreadExpand
      */
     protected function _getThreadExpandDs()

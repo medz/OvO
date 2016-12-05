@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonFactory');
 define('POST_INVALID_PARAMS', 301);
 class ACloudApiCommonForum

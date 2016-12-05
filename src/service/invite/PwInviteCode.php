@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 邀请码DS
+ * 邀请码DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteCode.php 19073 2012-10-10 08:33:40Z xiaoxia.xuxx $
- * @package service.invite
  */
 class PwInviteCode
 {
     /**
-     * 根据邀请码获得邀请码信息
+     * 根据邀请码获得邀请码信息.
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return array
      */
     public function getCode($code)
@@ -27,9 +28,10 @@ class PwInviteCode
     }
 
     /**
-     * 根据创建者ID获得已使用的邀请码列表
+     * 根据创建者ID获得已使用的邀请码列表.
      *
-     * @param  int   $createdUid
+     * @param int $createdUid
+     *
      * @return array
      */
     public function getUsedCodeByCreatedUid($createdUid, $limit = 18, $start = 0)
@@ -42,9 +44,10 @@ class PwInviteCode
     }
 
     /**
-     * 根据用户ID统计该用户邀请的人数
+     * 根据用户ID统计该用户邀请的人数.
      *
-     * @param  int   $createdUid
+     * @param int $createdUid
+     *
      * @return array
      */
     public function countUsedCodeByCreatedUid($createdUid)
@@ -59,9 +62,10 @@ class PwInviteCode
     /**
      * 搜索邀请码
      *
-     * @param  PwInviteCodeSo $condition 搜索条件对象
-     * @param  int            $limit     搜索的条数
-     * @param  int            $offset    搜索的开始位置
+     * @param PwInviteCodeSo $condition 搜索条件对象
+     * @param int            $limit     搜索的条数
+     * @param int            $offset    搜索的开始位置
+     *
      * @return array
      */
     public function searchCode(PwInviteCodeSo $condition, $limit = 10, $offset = 0)
@@ -70,9 +74,10 @@ class PwInviteCode
     }
 
     /**
-     * 根据条件统计邀请码总数
+     * 根据条件统计邀请码总数.
      *
-     * @param  PwInviteCodeSo $condition
+     * @param PwInviteCodeSo $condition
+     *
      * @return int
      */
     public function countSearchCode(PwInviteCodeSo $condition)
@@ -81,10 +86,11 @@ class PwInviteCode
     }
 
     /**
-     * 根据用户ID和时间，查询该用户在该时间点之后已经购买的
+     * 根据用户ID和时间，查询该用户在该时间点之后已经购买的.
      *
      * @param int $uid 用户ID
      * @param  int $time 计算的其实时间
+     *
      * @return int
      */
     public function countByUidAndTime($uid, $time)
@@ -95,7 +101,8 @@ class PwInviteCode
     /**
      * 添加邀请码
      *
-     * @param  PwInviteCodeDm $dm 邀请码
+     * @param PwInviteCodeDm $dm 邀请码
+     *
      * @return bool
      */
     public function addCode(PwInviteCodeDm $dm)
@@ -110,7 +117,8 @@ class PwInviteCode
     /**
      * 批量添加邀请码
      *
-     * @param  array $codeDms 邀请码信息
+     * @param array $codeDms 邀请码信息
+     *
      * @return bool
      */
     public function batchAddCode($codeDms)
@@ -133,9 +141,10 @@ class PwInviteCode
     }
 
     /**
-     * 更新邀请码信息
+     * 更新邀请码信息.
      *
      * @param  PwInviteCodeDm $dm 邀请码的购买者---当注册用户购买邀请码注册，成功之后更新该邀请码的购买者
+     *
      * @return bool
      */
     public function updateCode(PwInviteCodeDm $dm)
@@ -150,7 +159,8 @@ class PwInviteCode
     /**
      * 删除邀请码
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return bool
      */
     public function deleteCode($code)
@@ -161,7 +171,8 @@ class PwInviteCode
     /**
      * 批量删除邀请码
      *
-     * @param  array $cods
+     * @param array $cods
+     *
      * @return bool
      */
     public function batchDeleteCode($codes)
@@ -172,7 +183,8 @@ class PwInviteCode
     /**
      * 批量过滤已经存在的邀请码
      *
-     * @param  array $codes
+     * @param array $codes
+     *
      * @return array
      */
     public function fetchCode($codes)
@@ -181,7 +193,7 @@ class PwInviteCode
     }
 
     /**
-     * 邀请码DAO
+     * 邀请码DAO.
      *
      * @return PwInviteCodeDao
      */

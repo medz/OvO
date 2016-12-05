@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 教育经历的DM
+ * 教育经历的DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwEducationDm.php 1532 2012-1-13上午11:01:28 xiaoxiao $
- * @package src.service.user.hooks.experience_education.dm
  */
 class PwEducationDm extends PwBaseDm
 {
     /**
-     * 设置用户ID
+     * 设置用户ID.
      *
-     * @param  int           $uid
+     * @param int $uid
+     *
      * @return PwEducationDm
      */
     public function setUid($uid)
@@ -25,9 +26,10 @@ class PwEducationDm extends PwBaseDm
     }
 
     /**
-     * 设置教育单位名字
+     * 设置教育单位名字.
      *
-     * @param  string        $school
+     * @param string $school
+     *
      * @return PwEducationDm
      */
     public function setSchoolid($school)
@@ -38,9 +40,10 @@ class PwEducationDm extends PwBaseDm
     }
 
     /**
-     * 设置学历
+     * 设置学历.
      *
-     * @param  string        $degree
+     * @param string $degree
+     *
      * @return PwEducationDm
      */
     public function setDegree($degree)
@@ -51,9 +54,10 @@ class PwEducationDm extends PwBaseDm
     }
 
     /**
-     * 设置开始时间
+     * 设置开始时间.
      *
-     * @param  int           $year
+     * @param int $year
+     *
      * @return PwEducationDm
      */
     public function setStartTime($year)
@@ -80,7 +84,7 @@ class PwEducationDm extends PwBaseDm
     }
 
     /**
-     * 检查数据
+     * 检查数据.
      *
      * @return PwError
      */

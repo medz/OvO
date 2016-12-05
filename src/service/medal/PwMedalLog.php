@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: liusanbian $>
+ * the last known user to change this file in the repository  <$LastChangedBy: liusanbian $>.
+ *
  * @author $Author: liusanbian $ Foxsee@aliyun.com
  * @copyright  ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalLog.php 12232 2012-06-19 17:37:18Z liusanbian $
- * @package
  */
-
 class PwMedalLog
 {
     const STATUS_NO = 0; //无状态
@@ -15,8 +15,9 @@ class PwMedalLog
     const STATUS_APPLIED = 2; //已申请
     const STATUS_AWARD = 3; //可领取
     const STATUS_AWARDED = 4; //已领取
+
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
      * @param int $logId
      */
@@ -31,7 +32,7 @@ class PwMedalLog
     }
 
     /**
-     * 根据用户ID和勋章ID获取一条记录
+     * 根据用户ID和勋章ID获取一条记录.
      *
      * @param uid $uid
      * @param uid $medalId
@@ -76,8 +77,9 @@ class PwMedalLog
 
         return $this->_getDao()->getInfoListByUidStatus($uid, $status);
     }
+
     /**
-     * 分页获取内容
+     * 分页获取内容.
      *
      * @param int $uid
      * @param int $process
@@ -97,7 +99,7 @@ class PwMedalLog
     }
 
     /**
-     * 勋章记录搜索，仅供后台调用
+     * 勋章记录搜索，仅供后台调用.
      *
      * @param int   $uid
      * @param int   $status
@@ -147,6 +149,7 @@ class PwMedalLog
 
         return $this->_getDao()->countInfo($uid, $status, $medalId);
     }
+
     /*
     public function addInfo(PwMedalLogDm $dm) {
         $resource = $dm->beforeAdd();
@@ -154,7 +157,6 @@ class PwMedalLog
         return $this->_getDao()->addInfo($dm->getData());
     }
     */
-
 
     public function replaceMedalLog(PwMedalLogDm $dm)
     {
@@ -179,6 +181,7 @@ class PwMedalLog
     /**
      * 根据用户ID和勋章ID更新有效期
      * Enter description here ...
+     *
      * @param unknown_type $uid
      * @param unknown_type $medalId
      */

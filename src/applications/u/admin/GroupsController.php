@@ -3,19 +3,21 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台用户组管理文件
+ * 后台用户组管理文件.
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 4, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: GroupsController.php 28860 2013-05-28 03:16:49Z jieyin $
  */
-
 class GroupsController extends AdminBaseController
 {
     /**
-     * 后台首页处理方法
+     * 后台首页处理方法.
      */
     public function run()
     {
@@ -65,7 +67,7 @@ class GroupsController extends AdminBaseController
     }
 
     /**
-     * 编辑用户组
+     * 编辑用户组.
      */
     public function editAction()
     {
@@ -98,7 +100,7 @@ class GroupsController extends AdminBaseController
     }
 
     /**
-     * 保存用户组权限设置
+     * 保存用户组权限设置.
      */
     public function doeditAction()
     {
@@ -164,9 +166,9 @@ class GroupsController extends AdminBaseController
             $defaultValue = isset($groupPermissions[$key]) ? $groupPermissions[$key]['rvalue'] : null;
 
             $permissionConfigs[$value['type']][$value['gid']] = array(
-                'name' => $value['name'],
+                'name'    => $value['name'],
                 'default' => $defaultValue,
-                'config' => $permission,
+                'config'  => $permission,
             );
         }
 
@@ -194,7 +196,7 @@ class GroupsController extends AdminBaseController
     }
 
     /**
-     * 保存用户组信息
+     * 保存用户组信息.
      */
     public function dosaveAction()
     {
@@ -261,7 +263,7 @@ class GroupsController extends AdminBaseController
     }
 
     /**
-     * 删除用户组
+     * 删除用户组.
      */
     public function deleteAction()
     {

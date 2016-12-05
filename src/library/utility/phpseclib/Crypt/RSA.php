@@ -59,26 +59,28 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_RSA
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMIX Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: RSA.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Math_BigInteger
+ * Include Math_BigInteger.
  */
 require_once 'Math/BigInteger.php';
 
 /**
- * Include Crypt_Random
+ * Include Crypt_Random.
  */
 require_once 'Crypt/Random.php';
 
 /**
- * Include Crypt_Hash
+ * Include Crypt_Hash.
  */
 require_once 'Crypt/Hash.php';
 
@@ -208,153 +210,153 @@ define('CRYPT_RSA_PUBLIC_FORMAT_OPENSSH', 3);
  * Pure-PHP PKCS#1 compliant implementation of RSA.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_RSA
  */
 class Crypt_RSA
 {
     /**
-     * Precomputed Zero
+     * Precomputed Zero.
      *
-     * @var Array
+     * @var array
      */
     public $zero;
 
     /**
-     * Precomputed One
+     * Precomputed One.
      *
-     * @var Array
+     * @var array
      */
     public $one;
 
     /**
-     * Private Key Format
+     * Private Key Format.
      *
-     * @var Integer
+     * @var int
      */
     public $privateKeyFormat = CRYPT_RSA_PRIVATE_FORMAT_PKCS1;
 
     /**
-     * Public Key Format
+     * Public Key Format.
      *
-     * @var Integer
+     * @var int
      */
     public $publicKeyFormat = CRYPT_RSA_PUBLIC_FORMAT_PKCS1;
 
     /**
-     * Modulus (ie. n)
+     * Modulus (ie. n).
      *
      * @var Math_BigInteger
      */
     public $modulus;
 
     /**
-     * Modulus length
+     * Modulus length.
      *
      * @var Math_BigInteger
      */
     public $k;
 
     /**
-     * Exponent (ie. e or d)
+     * Exponent (ie. e or d).
      *
      * @var Math_BigInteger
      */
     public $exponent;
 
     /**
-     * Primes for Chinese Remainder Theorem (ie. p and q)
+     * Primes for Chinese Remainder Theorem (ie. p and q).
      *
-     * @var Array
+     * @var array
      */
     public $primes;
 
     /**
-     * Exponents for Chinese Remainder Theorem (ie. dP and dQ)
+     * Exponents for Chinese Remainder Theorem (ie. dP and dQ).
      *
-     * @var Array
+     * @var array
      */
     public $exponents;
 
     /**
-     * Coefficients for Chinese Remainder Theorem (ie. qInv)
+     * Coefficients for Chinese Remainder Theorem (ie. qInv).
      *
-     * @var Array
+     * @var array
      */
     public $coefficients;
 
     /**
-     * Hash name
+     * Hash name.
      *
-     * @var String
+     * @var string
      */
     public $hashName;
 
     /**
-     * Hash function
+     * Hash function.
      *
      * @var Crypt_Hash
      */
     public $hash;
 
     /**
-     * Length of hash function output
+     * Length of hash function output.
      *
-     * @var Integer
+     * @var int
      */
     public $hLen;
 
     /**
-     * Length of salt
+     * Length of salt.
      *
-     * @var Integer
+     * @var int
      */
     public $sLen;
 
     /**
-     * Hash function for the Mask Generation Function
+     * Hash function for the Mask Generation Function.
      *
      * @var Crypt_Hash
      */
     public $mgfHash;
 
     /**
-     * Length of MGF hash function output
+     * Length of MGF hash function output.
      *
-     * @var Integer
+     * @var int
      */
     public $mgfHLen;
 
     /**
-     * Encryption mode
+     * Encryption mode.
      *
-     * @var Integer
+     * @var int
      */
     public $encryptionMode = CRYPT_RSA_ENCRYPTION_OAEP;
 
     /**
-     * Signature mode
+     * Signature mode.
      *
-     * @var Integer
+     * @var int
      */
     public $signatureMode = CRYPT_RSA_SIGNATURE_PSS;
 
     /**
-     * Public Exponent
+     * Public Exponent.
      *
-     * @var Mixed
+     * @var mixed
      */
     public $publicExponent = false;
 
     /**
-     * Password
+     * Password.
      *
-     * @var String
+     * @var string
      */
     public $password = '';
 
     /**
-     * The constructor
+     * The constructor.
      *
      * If you want to make use of the openssl extension, you'll need to set the mode manually, yourself.  The reason
      * Crypt_RSA doesn't do it is because OpenSSL doesn't fail gracefully.  openssl_pkey_new(), in particular, requires
@@ -385,7 +387,7 @@ class Crypt_RSA
     }
 
     /**
-     * Create public / private key pair
+     * Create public / private key pair.
      *
      * Returns an array with the following three elements:
      *  - 'privatekey': The private key.
@@ -412,7 +414,7 @@ class Crypt_RSA
 
             return array(
                 'privatekey' => $privatekey,
-                'publickey' => $publickey,
+                'publickey'  => $publickey,
                 'partialkey' => false,
             );
         }
@@ -457,7 +459,7 @@ class Crypt_RSA
         } else {
             $exponents = $coefficients = $primes = array();
             $lcm = array(
-                'top' => $this->one->copy(),
+                'top'    => $this->one->copy(),
                 'bottom' => false,
             );
         }
@@ -473,12 +475,12 @@ class Crypt_RSA
                     if ($timeout <= 0) {
                         return serialize(array(
                             'privatekey' => '',
-                            'publickey' => '',
+                            'publickey'  => '',
                             'partialkey' => array(
-                                'primes' => $primes,
+                                'primes'       => $primes,
                                 'coefficients' => $coefficients,
-                                'lcm' => $lcm,
-                                'exponents' => $exponents,
+                                'lcm'          => $lcm,
+                                'exponents'    => $exponents,
                             ),
                         ));
                     }
@@ -497,12 +499,12 @@ class Crypt_RSA
                 if ($primes[$i] === false) { // if we've reached the timeout
                     return array(
                         'privatekey' => '',
-                        'publickey' => '',
+                        'publickey'  => '',
                         'partialkey' => empty($primes) ? '' : serialize(array(
-                            'primes' => array_slice($primes, 0, $i - 1),
+                            'primes'       => array_slice($primes, 0, $i - 1),
                             'coefficients' => $coefficients,
-                            'lcm' => $lcm,
-                            'exponents' => $exponents,
+                            'lcm'          => $lcm,
+                            'exponents'    => $exponents,
                         )),
                     );
                 }
@@ -550,7 +552,7 @@ class Crypt_RSA
 
         return array(
             'privatekey' => $this->_convertPrivateKey($n, $e, $d, $primes, $exponents, $coefficients),
-            'publickey' => $this->_convertPublicKey($n, $e),
+            'publickey'  => $this->_convertPublicKey($n, $e),
             'partialkey' => false,
         );
     }
@@ -559,22 +561,24 @@ class Crypt_RSA
      * Convert a private key to the appropriate format.
      *
      * @see setPrivateKeyFormat()
-     * @param  String $RSAPrivateKey
-     * @return String
+     *
+     * @param string $RSAPrivateKey
+     *
+     * @return string
      */
     public function _convertPrivateKey($n, $e, $d, $primes, $exponents, $coefficients)
     {
         $num_primes = count($primes);
         $raw = array(
-            'version' => $num_primes == 2 ? chr(0) : chr(1), // two-prime vs. multi
-            'modulus' => $n->toBytes(true),
-            'publicExponent' => $e->toBytes(true),
+            'version'         => $num_primes == 2 ? chr(0) : chr(1), // two-prime vs. multi
+            'modulus'         => $n->toBytes(true),
+            'publicExponent'  => $e->toBytes(true),
             'privateExponent' => $d->toBytes(true),
-            'prime1' => $primes[1]->toBytes(true),
-            'prime2' => $primes[2]->toBytes(true),
-            'exponent1' => $exponents[1]->toBytes(true),
-            'exponent2' => $exponents[2]->toBytes(true),
-            'coefficient' => $coefficients[2]->toBytes(true),
+            'prime1'          => $primes[1]->toBytes(true),
+            'prime2'          => $primes[2]->toBytes(true),
+            'exponent1'       => $exponents[1]->toBytes(true),
+            'exponent2'       => $exponents[2]->toBytes(true),
+            'coefficient'     => $coefficients[2]->toBytes(true),
         );
 
         // if the format in question does not support multi-prime rsa and multi-prime rsa was used,
@@ -636,11 +640,13 @@ class Crypt_RSA
     }
 
     /**
-     * Convert a public key to the appropriate format
+     * Convert a public key to the appropriate format.
      *
      * @see setPublicKeyFormat()
-     * @param  String $RSAPrivateKey
-     * @return String
+     *
+     * @param string $RSAPrivateKey
+     *
+     * @return string
      */
     public function _convertPublicKey($n, $e)
     {
@@ -666,7 +672,7 @@ class Crypt_RSA
                 //     publicExponent    INTEGER   -- e
                 // }
                 $components = array(
-                    'modulus' => pack('Ca*a*', CRYPT_RSA_ASN1_INTEGER, $this->_encodeLength(strlen($modulus)), $modulus),
+                    'modulus'        => pack('Ca*a*', CRYPT_RSA_ASN1_INTEGER, $this->_encodeLength(strlen($modulus)), $modulus),
                     'publicExponent' => pack('Ca*a*', CRYPT_RSA_ASN1_INTEGER, $this->_encodeLength(strlen($publicExponent)), $publicExponent),
                 );
 
@@ -684,13 +690,15 @@ class Crypt_RSA
     }
 
     /**
-     * Break a public or private key down into its constituant components
+     * Break a public or private key down into its constituant components.
      *
      * @see _convertPublicKey()
      * @see _convertPrivateKey()
-     * @param  String  $key
-     * @param  Integer $type
-     * @return Array
+     *
+     * @param string $key
+     * @param int    $type
+     *
+     * @return array
      */
     public function _parseKey($key, $type)
     {
@@ -896,12 +904,12 @@ class Crypt_RSA
                     extract(unpack('Nlength', $this->_string_shift($key, 4)));
 
                     return array(
-                        'modulus' => new Math_BigInteger($this->_string_shift($key, $length), -256),
+                        'modulus'        => new Math_BigInteger($this->_string_shift($key, $length), -256),
                         'publicExponent' => $modulus,
                     );
                 } else {
                     return array(
-                        'modulus' => $modulus,
+                        'modulus'        => $modulus,
                         'publicExponent' => $publicExponent,
                     );
                 }
@@ -909,12 +917,12 @@ class Crypt_RSA
     }
 
     /**
-     * Loads a public or private key
+     * Loads a public or private key.
      *
      * Returns true on success and false on failure (ie. an incorrect password was provided or the key was malformed)
      *
-     * @param String  $key
-     * @param Integer $type optional
+     * @param string $key
+     * @param int    $type optional
      */
     public function loadKey($key, $type = CRYPT_RSA_PRIVATE_FORMAT_PKCS1)
     {
@@ -942,14 +950,15 @@ class Crypt_RSA
     }
 
     /**
-     * Sets the password
+     * Sets the password.
      *
      * Private keys can be encrypted with a password.  To unset the password, pass in the empty string or false.
      * Or rather, pass in $password such that empty($password) is true.
      *
      * @see createKey()
      * @see loadKey()
-     * @param String $password
+     *
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -957,7 +966,7 @@ class Crypt_RSA
     }
 
     /**
-     * Defines the public key
+     * Defines the public key.
      *
      * Some private key formats define the public exponent and some don't.  Those that don't define it are problematic when
      * used in certain contexts.  For example, in SSH-2, RSA authentication works by sending the public key along with a
@@ -970,9 +979,11 @@ class Crypt_RSA
      * Returns true on success, false on failure
      *
      * @see getPublicKey()
-     * @param  String  $key
-     * @param  Integer $type optional
-     * @return Boolean
+     *
+     * @param string $key
+     * @param int    $type optional
+     *
+     * @return bool
      */
     public function setPublicKey($key, $type = CRYPT_RSA_PUBLIC_FORMAT_PKCS1)
     {
@@ -984,15 +995,16 @@ class Crypt_RSA
     }
 
     /**
-     * Returns the public key
+     * Returns the public key.
      *
      * The public key is only returned under two circumstances - if the private key had the public key embedded within it
      * or if the public key was set via setPublicKey().  If the currently loaded key is supposed to be the public key this
      * function won't return it since this library, for the most part, doesn't distinguish between public and private keys.
      *
      * @see getPublicKey()
-     * @param String  $key
-     * @param Integer $type optional
+     *
+     * @param string $key
+     * @param int    $type optional
      */
     public function getPublicKey($type = CRYPT_RSA_PUBLIC_FORMAT_PKCS1)
     {
@@ -1009,10 +1021,11 @@ class Crypt_RSA
     }
 
     /**
-     * Generates the smallest and largest numbers requiring $bits bits
+     * Generates the smallest and largest numbers requiring $bits bits.
      *
-     * @param  Integer $bits
-     * @return Array
+     * @param int $bits
+     *
+     * @return array
      */
     public function _generateMinMax($bits)
     {
@@ -1034,13 +1047,14 @@ class Crypt_RSA
     }
 
     /**
-     * DER-decode the length
+     * DER-decode the length.
      *
      * DER supports lengths up to (2**8)**127, however, we'll only support lengths up to (2**8)**4.  See
      * {@link http://itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf#p=13 X.690 � 8.1.3} for more information.
      *
-     * @param  String  $string
-     * @return Integer
+     * @param string $string
+     *
+     * @return int
      */
     public function _decodeLength(&$string)
     {
@@ -1055,13 +1069,14 @@ class Crypt_RSA
     }
 
     /**
-     * DER-encode the length
+     * DER-encode the length.
      *
      * DER supports lengths up to (2**8)**127, however, we'll only support lengths up to (2**8)**4.  See
      * {@link http://itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf#p=13 X.690 � 8.1.3} for more information.
      *
-     * @param  Integer $length
-     * @return String
+     * @param int $length
+     *
+     * @return string
      */
     public function _encodeLength($length)
     {
@@ -1075,13 +1090,14 @@ class Crypt_RSA
     }
 
     /**
-     * String Shift
+     * String Shift.
      *
      * Inspired by array_shift
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
      */
     public function _string_shift(&$string, $index = 1)
     {
@@ -1092,10 +1108,11 @@ class Crypt_RSA
     }
 
     /**
-     * Determines the private key format
+     * Determines the private key format.
      *
      * @see createKey()
-     * @param Integer $format
+     *
+     * @param int $format
      */
     public function setPrivateKeyFormat($format)
     {
@@ -1103,10 +1120,11 @@ class Crypt_RSA
     }
 
     /**
-     * Determines the public key format
+     * Determines the public key format.
      *
      * @see createKey()
-     * @param Integer $format
+     *
+     * @param int $format
      */
     public function setPublicKeyFormat($format)
     {
@@ -1114,12 +1132,12 @@ class Crypt_RSA
     }
 
     /**
-     * Determines which hashing function should be used
+     * Determines which hashing function should be used.
      *
      * Used with signature production / verification and (if the encryption mode is CRYPT_RSA_ENCRYPTION_OAEP) encryption and
      * decryption.  If $hash isn't supported, sha1 is used.
      *
-     * @param String $hash
+     * @param string $hash
      */
     public function setHash($hash)
     {
@@ -1142,12 +1160,12 @@ class Crypt_RSA
     }
 
     /**
-     * Determines which hashing function should be used for the mask generation function
+     * Determines which hashing function should be used for the mask generation function.
      *
      * The mask generation function is used by CRYPT_RSA_ENCRYPTION_OAEP and CRYPT_RSA_SIGNATURE_PSS and although it's
      * best if Hash and MGFHash are set to the same thing this is not a requirement.
      *
-     * @param String $hash
+     * @param string $hash
      */
     public function setMGFHash($hash)
     {
@@ -1168,14 +1186,14 @@ class Crypt_RSA
     }
 
     /**
-     * Determines the salt length
+     * Determines the salt length.
      *
      * To quote from {@link http://tools.ietf.org/html/rfc3447#page-38 RFC3447#page-38}:
      *
      *    Typical salt lengths in octets are hLen (the length of the output
      *    of the hash function Hash) and 0.
      *
-     * @param Integer $format
+     * @param int $format
      */
     public function setSaltLength($sLen)
     {
@@ -1183,11 +1201,12 @@ class Crypt_RSA
     }
 
     /**
-     * Generates a random string x bytes long
+     * Generates a random string x bytes long.
      *
-     * @param  Integer          $bytes
-     * @param  optional Integer $nonzero
-     * @return String
+     * @param int              $bytes
+     * @param optional Integer $nonzero
+     *
+     * @return string
      */
     public function _random($bytes, $nonzero = false)
     {
@@ -1208,13 +1227,14 @@ class Crypt_RSA
     }
 
     /**
-     * Integer-to-Octet-String primitive
+     * Integer-to-Octet-String primitive.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-4.1 RFC3447#section-4.1}.
      *
-     * @param  Math_BigInteger $x
-     * @param  Integer         $xLen
-     * @return String
+     * @param Math_BigInteger $x
+     * @param int             $xLen
+     *
+     * @return string
      */
     public function _i2osp($x, $xLen)
     {
@@ -1229,11 +1249,12 @@ class Crypt_RSA
     }
 
     /**
-     * Octet-String-to-Integer primitive
+     * Octet-String-to-Integer primitive.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-4.2 RFC3447#section-4.2}.
      *
-     * @param  String          $x
+     * @param string $x
+     *
      * @return Math_BigInteger
      */
     public function _os2ip($x)
@@ -1242,11 +1263,12 @@ class Crypt_RSA
     }
 
     /**
-     * Exponentiate with or without Chinese Remainder Theorem
+     * Exponentiate with or without Chinese Remainder Theorem.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.1.1 RFC3447#section-5.1.2}.
      *
-     * @param  Math_BigInteger $x
+     * @param Math_BigInteger $x
+     *
      * @return Math_BigInteger
      */
     public function _exponentiate($x)
@@ -1319,14 +1341,15 @@ class Crypt_RSA
     }
 
     /**
-     * Performs RSA Blinding
+     * Performs RSA Blinding.
      *
      * Protects against timing attacks by employing RSA Blinding.
      * Returns $x->modPow($this->exponents[$i], $this->primes[$i])
      *
-     * @param  Math_BigInteger $x
-     * @param  Math_BigInteger $r
-     * @param  Integer         $i
+     * @param Math_BigInteger $x
+     * @param Math_BigInteger $r
+     * @param int             $i
+     *
      * @return Math_BigInteger
      */
     public function _blind($x, $r, $i)
@@ -1343,11 +1366,12 @@ class Crypt_RSA
     }
 
     /**
-     * RSAEP
+     * RSAEP.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.1.1 RFC3447#section-5.1.1}.
      *
-     * @param  Math_BigInteger $m
+     * @param Math_BigInteger $m
+     *
      * @return Math_BigInteger
      */
     public function _rsaep($m)
@@ -1362,11 +1386,12 @@ class Crypt_RSA
     }
 
     /**
-     * RSADP
+     * RSADP.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.1.2 RFC3447#section-5.1.2}.
      *
-     * @param  Math_BigInteger $c
+     * @param Math_BigInteger $c
+     *
      * @return Math_BigInteger
      */
     public function _rsadp($c)
@@ -1381,11 +1406,12 @@ class Crypt_RSA
     }
 
     /**
-     * RSASP1
+     * RSASP1.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.2.1 RFC3447#section-5.2.1}.
      *
-     * @param  Math_BigInteger $m
+     * @param Math_BigInteger $m
+     *
      * @return Math_BigInteger
      */
     public function _rsasp1($m)
@@ -1400,11 +1426,12 @@ class Crypt_RSA
     }
 
     /**
-     * RSAVP1
+     * RSAVP1.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.2.2 RFC3447#section-5.2.2}.
      *
-     * @param  Math_BigInteger $s
+     * @param Math_BigInteger $s
+     *
      * @return Math_BigInteger
      */
     public function _rsavp1($s)
@@ -1419,13 +1446,14 @@ class Crypt_RSA
     }
 
     /**
-     * MGF1
+     * MGF1.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#appendix-B.2.1 RFC3447#appendix-B.2.1}.
      *
-     * @param  String  $mgfSeed
-     * @param  Integer $mgfLen
-     * @return String
+     * @param string $mgfSeed
+     * @param int    $mgfLen
+     *
+     * @return string
      */
     public function _mgf1($mgfSeed, $maskLen)
     {
@@ -1442,14 +1470,15 @@ class Crypt_RSA
     }
 
     /**
-     * RSAES-OAEP-ENCRYPT
+     * RSAES-OAEP-ENCRYPT.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-7.1.1 RFC3447#section-7.1.1} and
      * {http://en.wikipedia.org/wiki/Optimal_Asymmetric_Encryption_Padding OAES}.
      *
-     * @param  String $m
-     * @param  String $l
-     * @return String
+     * @param string $m
+     * @param string $l
+     *
+     * @return string
      */
     public function _rsaes_oaep_encrypt($m, $l = '')
     {
@@ -1490,7 +1519,7 @@ class Crypt_RSA
     }
 
     /**
-     * RSAES-OAEP-DECRYPT
+     * RSAES-OAEP-DECRYPT.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-7.1.2 RFC3447#section-7.1.2}.  The fact that the error
      * messages aren't distinguishable from one another hinders debugging, but, to quote from RFC3447#section-7.1.2:
@@ -1510,9 +1539,10 @@ class Crypt_RSA
      *    the empty string; other uses of the label are outside the scope of
      *    this document.
      *
-     * @param  String $c
-     * @param  String $l
-     * @return String
+     * @param string $c
+     * @param string $l
+     *
+     * @return string
      */
     public function _rsaes_oaep_decrypt($c, $l = '')
     {
@@ -1568,12 +1598,13 @@ class Crypt_RSA
     }
 
     /**
-     * RSAES-PKCS1-V1_5-ENCRYPT
+     * RSAES-PKCS1-V1_5-ENCRYPT.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-7.2.1 RFC3447#section-7.2.1}.
      *
-     * @param  String $m
-     * @return String
+     * @param string $m
+     *
+     * @return string
      */
     public function _rsaes_pkcs1_v1_5_encrypt($m)
     {
@@ -1603,7 +1634,7 @@ class Crypt_RSA
     }
 
     /**
-     * RSAES-PKCS1-V1_5-DECRYPT
+     * RSAES-PKCS1-V1_5-DECRYPT.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-7.2.2 RFC3447#section-7.2.2}.
      *
@@ -1618,8 +1649,9 @@ class Crypt_RSA
      * with a strictly PKCS#1 v1.5 compliant RSA implementation.  Public key encrypted ciphertext's should but
      * not private key encrypted ciphertext's.
      *
-     * @param  String $c
-     * @return String
+     * @param string $c
+     *
+     * @return string
      */
     public function _rsaes_pkcs1_v1_5_decrypt($c)
     {
@@ -1665,12 +1697,12 @@ class Crypt_RSA
     }
 
     /**
-     * EMSA-PSS-ENCODE
+     * EMSA-PSS-ENCODE.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-9.1.1 RFC3447#section-9.1.1}.
      *
-     * @param String  $m
-     * @param Integer $emBits
+     * @param string $m
+     * @param int    $emBits
      */
     public function _emsa_pss_encode($m, $emBits)
     {
@@ -1701,14 +1733,15 @@ class Crypt_RSA
     }
 
     /**
-     * EMSA-PSS-VERIFY
+     * EMSA-PSS-VERIFY.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-9.1.2 RFC3447#section-9.1.2}.
      *
-     * @param  String  $m
-     * @param  String  $em
-     * @param  Integer $emBits
-     * @return String
+     * @param string $m
+     * @param string $em
+     * @param int    $emBits
+     *
+     * @return string
      */
     public function _emsa_pss_verify($m, $em, $emBits)
     {
@@ -1748,12 +1781,13 @@ class Crypt_RSA
     }
 
     /**
-     * RSASSA-PSS-SIGN
+     * RSASSA-PSS-SIGN.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-8.1.1 RFC3447#section-8.1.1}.
      *
-     * @param  String $m
-     * @return String
+     * @param string $m
+     *
+     * @return string
      */
     public function _rsassa_pss_sign($m)
     {
@@ -1773,13 +1807,14 @@ class Crypt_RSA
     }
 
     /**
-     * RSASSA-PSS-VERIFY
+     * RSASSA-PSS-VERIFY.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-8.1.2 RFC3447#section-8.1.2}.
      *
-     * @param  String $m
-     * @param  String $s
-     * @return String
+     * @param string $m
+     * @param string $s
+     *
+     * @return string
      */
     public function _rsassa_pss_verify($m, $s)
     {
@@ -1815,13 +1850,14 @@ class Crypt_RSA
     }
 
     /**
-     * EMSA-PKCS1-V1_5-ENCODE
+     * EMSA-PKCS1-V1_5-ENCODE.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-9.2 RFC3447#section-9.2}.
      *
-     * @param  String  $m
-     * @param  Integer $emLen
-     * @return String
+     * @param string $m
+     * @param int    $emLen
+     *
+     * @return string
      */
     public function _emsa_pkcs1_v1_5_encode($m, $emLen)
     {
@@ -1867,12 +1903,13 @@ class Crypt_RSA
     }
 
     /**
-     * RSASSA-PKCS1-V1_5-SIGN
+     * RSASSA-PKCS1-V1_5-SIGN.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-8.2.1 RFC3447#section-8.2.1}.
      *
-     * @param  String $m
-     * @return String
+     * @param string $m
+     *
+     * @return string
      */
     public function _rsassa_pkcs1_v1_5_sign($m)
     {
@@ -1897,12 +1934,13 @@ class Crypt_RSA
     }
 
     /**
-     * RSASSA-PKCS1-V1_5-VERIFY
+     * RSASSA-PKCS1-V1_5-VERIFY.
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-8.2.2 RFC3447#section-8.2.2}.
      *
-     * @param  String $m
-     * @return String
+     * @param string $m
+     *
+     * @return string
      */
     public function _rsassa_pkcs1_v1_5_verify($m, $s)
     {
@@ -1945,11 +1983,11 @@ class Crypt_RSA
     }
 
     /**
-     * Set Encryption Mode
+     * Set Encryption Mode.
      *
      * Valid values include CRYPT_RSA_ENCRYPTION_OAEP and CRYPT_RSA_ENCRYPTION_PKCS1.
      *
-     * @param Integer $mode
+     * @param int $mode
      */
     public function setEncryptionMode($mode)
     {
@@ -1957,11 +1995,11 @@ class Crypt_RSA
     }
 
     /**
-     * Set Signature Mode
+     * Set Signature Mode.
      *
      * Valid values include CRYPT_RSA_SIGNATURE_PSS and CRYPT_RSA_SIGNATURE_PKCS1
      *
-     * @param Integer $mode
+     * @param int $mode
      */
     public function setSignatureMode($mode)
     {
@@ -1969,15 +2007,17 @@ class Crypt_RSA
     }
 
     /**
-     * Encryption
+     * Encryption.
      *
      * Both CRYPT_RSA_ENCRYPTION_OAEP and CRYPT_RSA_ENCRYPTION_PKCS1 both place limits on how long $plaintext can be.
      * If $plaintext exceeds those limits it will be broken up so that it does and the resultant ciphertext's will
      * be concatenated together.
      *
      * @see decrypt()
-     * @param  String $plaintext
-     * @return String
+     *
+     * @param string $plaintext
+     *
+     * @return string
      */
     public function encrypt($plaintext)
     {
@@ -2013,11 +2053,13 @@ class Crypt_RSA
     }
 
     /**
-     * Decryption
+     * Decryption.
      *
      * @see encrypt()
-     * @param  String $plaintext
-     * @return String
+     *
+     * @param string $plaintext
+     *
+     * @return string
      */
     public function decrypt($ciphertext)
     {
@@ -2049,11 +2091,13 @@ class Crypt_RSA
     }
 
     /**
-     * Create a signature
+     * Create a signature.
      *
      * @see verify()
-     * @param  String $message
-     * @return String
+     *
+     * @param string $message
+     *
+     * @return string
      */
     public function sign($message)
     {
@@ -2071,12 +2115,14 @@ class Crypt_RSA
     }
 
     /**
-     * Verifies a signature
+     * Verifies a signature.
      *
      * @see sign()
-     * @param  String  $message
-     * @param  String  $signature
-     * @return Boolean
+     *
+     * @param string $message
+     * @param string $signature
+     *
+     * @return bool
      */
     public function verify($message, $signature)
     {

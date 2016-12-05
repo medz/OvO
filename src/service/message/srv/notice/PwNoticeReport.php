@@ -2,13 +2,13 @@
 
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 /**
- * 私信举报
+ * 私信举报.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwNoticeReport extends PwNoticeAction
 {
@@ -20,7 +20,6 @@ class PwNoticeReport extends PwNoticeAction
     }
 
     /**
-     *
      * @see PwNoticeAction::formatExtendParams()
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)

@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPushDm.php 19612 2012-10-16 08:43:42Z gao.wanggao $
- * @package
  */
 class PwDesignPushDm extends PwBaseDm
 {
@@ -59,7 +60,6 @@ class PwDesignPushDm extends PwBaseDm
 
         return $this;
     }
-
 
     public function setOrderid($orderid)
     {

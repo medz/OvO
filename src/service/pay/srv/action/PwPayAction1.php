@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 在线支付 - 积分购买
+ * 在线支付 - 积分购买.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPayAction1.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package forum
  */
-
 class PwPayAction1
 {
     protected $_order;
@@ -22,6 +21,7 @@ class PwPayAction1
         $this->_order = $order;
         $this->_conf = Wekit::C('credit', 'recharge');
     }
+
     public function run()
     {
         $rmbrate = $this->_conf[$this->_order['buy']]['rate'];

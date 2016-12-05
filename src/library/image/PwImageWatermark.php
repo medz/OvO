@@ -3,14 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 缩略水印
+ * 缩略水印.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: PwImageWatermark.php 24724 2013-02-17 10:05:52Z jieyin $
- * @package lib.image
  */
-
 class PwImageWatermark
 {
     protected $image;
@@ -43,7 +43,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置位置
+     * 设置位置.
      */
     public function setPosition($position)
     {
@@ -53,7 +53,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印透明度
+     * 设置水印透明度.
      */
     public function setTransparency($transparency)
     {
@@ -63,7 +63,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置图片质量
+     * 设置图片质量.
      */
     public function setQuality($quality)
     {
@@ -73,7 +73,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置缩略方式 <1.图片水印 1.文字水印>
+     * 设置缩略方式 <1.图片水印 1.文字水印>.
      */
     public function setType($type)
     {
@@ -83,7 +83,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印图片
+     * 设置水印图片.
      */
     public function setFile($file)
     {
@@ -93,7 +93,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印文字
+     * 设置水印文字.
      */
     public function setText($text)
     {
@@ -103,7 +103,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印字体
+     * 设置水印字体.
      */
     public function setFontfamily($fontfamily)
     {
@@ -113,7 +113,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印字体大小
+     * 设置水印字体大小.
      */
     public function setFontsize($fontsize)
     {
@@ -123,7 +123,7 @@ class PwImageWatermark
     }
 
     /**
-     * 设置水印字体颜色
+     * 设置水印字体颜色.
      */
     public function setFontcolor($fontcolor)
     {
@@ -186,7 +186,7 @@ class PwImageWatermark
     }
 
     /**
-     * 生成缩略图
+     * 生成缩略图.
      */
     public function execute()
     {

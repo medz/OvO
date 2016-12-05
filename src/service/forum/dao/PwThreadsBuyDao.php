@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadsBuyDao.php 24066 2013-01-21 07:30:33Z jinlong.panjl $
- * @package forum
  */
-
 class PwThreadsBuyDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_buy';

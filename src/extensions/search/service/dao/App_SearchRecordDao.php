@@ -3,13 +3,13 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * 搜索记录
+ * 搜索记录.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class App_SearchRecordDao extends PwBaseDao
 {
@@ -17,9 +17,10 @@ class App_SearchRecordDao extends PwBaseDao
     protected $_dataStruct = array('id', 'created_userid', 'created_time', 'search_type', 'keywords');
 
     /**
-     * 获取一条信息
+     * 获取一条信息.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -28,9 +29,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 单条添加
+     * 单条添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function add($data)
@@ -39,9 +41,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 单条添加
+     * 单条添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function replace($data)
@@ -52,9 +55,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 单条删除
+     * 单条删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -63,10 +67,11 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据用户和类型删除
+     * 根据用户和类型删除.
      *
-     * @param  int  $uid
-     * @param  int  $type
+     * @param int $uid
+     * @param int $type
+     *
      * @return bool
      */
     public function deleteByUidAndType($uid, $type)
@@ -77,9 +82,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据时间删除
+     * 根据时间删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteByTime()
@@ -90,9 +96,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -101,10 +108,11 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 单条修改
+     * 单条修改.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return bool
      */
     public function update($id, $fields, $increaseFields = array(), $bitFields = array())
@@ -113,9 +121,10 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据用户统计数量
+     * 根据用户统计数量.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUidAndType($uid, $type)
@@ -127,10 +136,11 @@ class App_SearchRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据用户获取数据
+     * 根据用户获取数据.
      *
-     * @param  int   $uid
-     * @param  int   $type
+     * @param int $uid
+     * @param int $type
+     *
      * @return array
      */
     public function getByUidAndType($uid, $type)

@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 数据库备份Ds
+ * 数据库备份Ds.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwBackup
 {
     /**
-     * 获取一个表的总行数
+     * 获取一个表的总行数.
      *
      * @param $table
+     *
      * @return table status string
      */
     public function getTableStatus($table)
@@ -27,9 +28,10 @@ class PwBackup
     }
 
     /**
-     * 获取create table 信息
+     * 获取create table 信息.
      *
      * @param $table
+     *
      * @return create table string
      */
     public function getCreateTable($table)
@@ -42,11 +44,12 @@ class PwBackup
     }
 
     /**
-     * 获取数据
+     * 获取数据.
      *
      * @param $table
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $start
+     * @param int $limit
+     *
      * @return table status string
      */
     public function getData($table, $limit, $start)
@@ -59,9 +62,10 @@ class PwBackup
     }
 
     /**
-     * 获取表的字段数
+     * 获取表的字段数.
      *
      * @param $table
+     *
      * @return int
      */
     public function getColumnCount($table)
@@ -84,7 +88,7 @@ class PwBackup
     }
 
     /**
-     * 获取所有表
+     * 获取所有表.
      *
      * @return tables
      */
@@ -112,9 +116,10 @@ class PwBackup
     }
 
     /**
-     * 优化表
+     * 优化表.
      *
-     * @param  array $tables
+     * @param array $tables
+     *
      * @return bool
      */
     public function optimizeTables($tables)
@@ -129,9 +134,10 @@ class PwBackup
     }
 
     /**
-     * 修复表
+     * 修复表.
      *
-     * @param  array $tables
+     * @param array $tables
+     *
      * @return bool
      */
     public function repairTables($tables)
@@ -146,7 +152,7 @@ class PwBackup
     }
 
     /**
-     * 执行Sql
+     * 执行Sql.
      *
      * @return tables
      */
@@ -156,9 +162,10 @@ class PwBackup
     }
 
     /**
-     * 组装可执行的table
+     * 组装可执行的table.
      *
-     * @param  array  $tables
+     * @param array $tables
+     *
      * @return tables table1,table2,table3
      */
     private function _buildTables($tables)
@@ -178,7 +185,7 @@ class PwBackup
     }
 
     /**
-     * PwBackupDao
+     * PwBackupDao.
      *
      * @return PwBackupDao
      */

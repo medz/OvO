@@ -8,8 +8,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBo.php 24736 2013-02-19 09:24:40Z jieyin $
- * @package src.service.user.bo
  */
 class PwUserBo
 {
@@ -26,7 +26,7 @@ class PwUserBo
     private static $_userBo = array();
 
     /**
-     * 构造函数信息
+     * 构造函数信息.
      *
      * @param int $uid 用户ID
      */
@@ -48,9 +48,10 @@ class PwUserBo
     }
 
     /**
-     * 获取一个 PwUserBo 对象实例，并缓存
+     * 获取一个 PwUserBo 对象实例，并缓存.
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return object
      */
     public static function getInstance($uid)
@@ -68,7 +69,7 @@ class PwUserBo
     }
 
     /**
-     * 判断是否存在用户信息
+     * 判断是否存在用户信息.
      *
      * @return bool
      */
@@ -78,9 +79,10 @@ class PwUserBo
     }
 
     /**
-     * 判断用户的用户组是否在指定组中
+     * 判断用户的用户组是否在指定组中.
      *
-     * @param  array $groups
+     * @param array $groups
+     *
      * @return bool
      */
     public function inGroup($groups)
@@ -92,7 +94,7 @@ class PwUserBo
             return true;
         }
         if ($this->groups) {
-            return !!array_intersect($this->groups, $groups);
+            return (bool) array_intersect($this->groups, $groups);
         }
 
         return false;
@@ -101,9 +103,10 @@ class PwUserBo
     /**
      * 获取用户某个权限点的权限值
      *
-     * @param  string $key          权限键值<支持多级数组调用，例如:a.b.c 将调用$a['b']['c']>
-     * @param  bool   $isBM         是否是版主<当所指定的权限是版块限定的权限时，需要指定当前是否是版主身份>
-     * @param  mixed  $defaultValue
+     * @param string $key          权限键值<支持多级数组调用，例如:a.b.c 将调用$a['b']['c']>
+     * @param bool   $isBM         是否是版主<当所指定的权限是版块限定的权限时，需要指定当前是否是版主身份>
+     * @param mixed  $defaultValue
+     *
      * @return mixed
      */
     public function getPermission($key, $isBM = false, $defaultValue = '')
@@ -128,9 +131,10 @@ class PwUserBo
     }
 
     /**
-     * 与指定用户比较权限等级
+     * 与指定用户比较权限等级.
      *
-     * @param  array $uids 用户id序列
+     * @param array $uids 用户id序列
+     *
      * @return bool
      */
     public function comparePermission($uids)
@@ -151,9 +155,10 @@ class PwUserBo
     }
 
     /**
-     * 获得用户某一类型的积分
+     * 获得用户某一类型的积分.
      *
-     * @param  int $creditType
+     * @param int $creditType
+     *
      * @return int
      */
     public function getCredit($creditType)
@@ -162,7 +167,7 @@ class PwUserBo
     }
 
     /**
-     * 获取用户组信息
+     * 获取用户组信息.
      *
      * @return array
      */
@@ -174,7 +179,7 @@ class PwUserBo
     }
 
     /**
-     * 获得用户在线时间 (单位秒)
+     * 获得用户在线时间 (单位秒).
      *
      * @return int
      */
@@ -186,7 +191,7 @@ class PwUserBo
     }
 
     /**
-     * 展示用户的积分变更
+     * 展示用户的积分变更.
      *
      * @return array
      */
@@ -196,7 +201,7 @@ class PwUserBo
     }
 
     /**
-     * 用户重置操作
+     * 用户重置操作.
      *
      * @return bool
      */
@@ -211,7 +216,7 @@ class PwUserBo
     }
 
     /**
-     * 导入新用户组信息和权限
+     * 导入新用户组信息和权限.
      *
      * @param int $gid 用户组id
      */
@@ -223,7 +228,7 @@ class PwUserBo
     }
 
     /**
-     * 初始化当前用户组信息及权限
+     * 初始化当前用户组信息及权限.
      */
     private function _initGroup()
     {
@@ -238,7 +243,7 @@ class PwUserBo
     }
 
     /**
-     * 获取用户
+     * 获取用户.
      *
      * @return PwUser
      */

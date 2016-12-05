@@ -3,15 +3,16 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwHookInject
 {
     /**
-     * 添加注入服务信息
+     * 添加注入服务信息.
      *
-     * @param  PwHookInjectDm $inject
+     * @param PwHookInjectDm $inject
+     *
      * @return PwError|true
      */
     public function add($inject)
@@ -25,9 +26,10 @@ class PwHookInject
     }
 
     /**
-     * 修改注入服务信息
+     * 修改注入服务信息.
      *
-     * @param  PwHookInjectDm $inject
+     * @param PwHookInjectDm $inject
+     *
      * @return PwError|true
      */
     public function update($inject)
@@ -41,7 +43,7 @@ class PwHookInject
     }
 
     /**
-     * 添加钩子注入服务信息
+     * 添加钩子注入服务信息.
      *
      * @param array $injects
      */
@@ -51,9 +53,10 @@ class PwHookInject
     }
 
     /**
-     * 根据injectId删除injector
+     * 根据injectId删除injector.
      *
-     * @param  int          $id
+     * @param int $id
+     *
      * @return PwError|bool
      */
     public function del($id)
@@ -62,9 +65,10 @@ class PwHookInject
     }
 
     /**
-     * 根据injectId批量删除injector
+     * 根据injectId批量删除injector.
      *
-     * @param  array        $ids
+     * @param array $ids
+     *
      * @return PwError|bool
      */
     public function batchDel($ids)
@@ -73,9 +77,10 @@ class PwHookInject
     }
 
     /**
-     * 根据HookName删除injector信息
+     * 根据HookName删除injector信息.
      *
-     * @param  string   $hookName
+     * @param string $hookName
+     *
      * @return Ambigous <boolean, Ambigous, rowCount, number>
      */
     public function delByHookName($hookName)
@@ -84,9 +89,10 @@ class PwHookInject
     }
 
     /**
-     * 根据钩子名称批量删除injector
+     * 根据钩子名称批量删除injector.
      *
-     * @param  array    $hookNames
+     * @param array $hookNames
+     *
      * @return Ambigous <boolean, Ambigous, rowCount, number>
      */
     public function batchDelByHookName($hookNames)
@@ -95,9 +101,10 @@ class PwHookInject
     }
 
     /**
-     * 根据别名删除injector
+     * 根据别名删除injector.
      *
-     * @param  string   $alias
+     * @param string $alias
+     *
      * @return Ambigous <boolean, rowCount, number>
      */
     public function delByAlias($alias)
@@ -106,9 +113,10 @@ class PwHookInject
     }
 
     /**
-     * 根据别名批量删除injector
+     * 根据别名批量删除injector.
      *
-     * @param  array    $alias
+     * @param array $alias
+     *
      * @return Ambigous <boolean, Ambigous, rowCount, number>
      */
     public function batchDelByAlias($alias)
@@ -117,10 +125,11 @@ class PwHookInject
     }
 
     /**
-     * 根据别名和钩子名称删除扩展记录
+     * 根据别名和钩子名称删除扩展记录.
      *
-     * @param  string   $alias
-     * @param  string   $hookName
+     * @param string $alias
+     * @param string $hookName
+     *
      * @return Ambigous <Ambigous, rowCount, boolean, number>
      */
     public function delByAliasAndHookName($alias, $hookName)
@@ -137,9 +146,10 @@ class PwHookInject
     }
 
     /**
-     * 根据别名查找injector
+     * 根据别名查找injector.
      *
-     * @param  string   $alias
+     * @param string $alias
+     *
      * @return Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function fetchByAlias($alias)
@@ -150,7 +160,8 @@ class PwHookInject
     /**
      * 根据别名批量查找注册服务
      *
-     * @param  array    $alias
+     * @param array $alias
+     *
      * @return Ambigous <Ambigous, rowCount, boolean, number>
      */
     public function batchFetchByAlias($alias)
@@ -161,9 +172,10 @@ class PwHookInject
     }
 
     /**
-     * 根据Hook名称查找injector
+     * 根据Hook名称查找injector.
      *
-     * @param  string $hookName
+     * @param string $hookName
+     *
      * @return array
      */
     public function findByHookName($hookName)
@@ -172,9 +184,10 @@ class PwHookInject
     }
 
     /**
-     * 根据Hook名称批量查找injector
+     * 根据Hook名称批量查找injector.
      *
-     * @param  array $hookName
+     * @param array $hookName
+     *
      * @return array
      */
     public function fetchByHookName($hookNames)
@@ -187,9 +200,10 @@ class PwHookInject
     }
 
     /**
-     * 根据ID查找hookInject注册信息，返回hook数据
+     * 根据ID查找hookInject注册信息，返回hook数据.
      *
-     * @param  string $appId
+     * @param string $appId
+     *
      * @return array
      */
     public function find($id)
@@ -198,9 +212,10 @@ class PwHookInject
     }
 
     /**
-     * 根据id数据批量获取hook数据
+     * 根据id数据批量获取hook数据.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetch($ids)
@@ -213,12 +228,13 @@ class PwHookInject
     }
 
     /**
-     * 分页查找injector
+     * 分页查找injector.
      *
-     * @param  int      $num
-     * @param  int      $start
-     * @param  int      $index
-     * @param  string   $order
+     * @param int    $num
+     * @param int    $start
+     * @param int    $index
+     * @param string $order
+     *
      * @return Ambigous <boolean, Ambigous, multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function fetchByPage($num = 10, $start = 0, $index = 'id', $order = 'alias')
@@ -227,9 +243,10 @@ class PwHookInject
     }
 
     /**
-     * 根据应用名称删除
+     * 根据应用名称删除.
      *
-     * @param  string   $appName
+     * @param string $appName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function deleteByAppName($appName)
@@ -238,9 +255,10 @@ class PwHookInject
     }
 
     /**
-     * 根据应用id删除
+     * 根据应用id删除.
      *
-     * @param  string   $appName
+     * @param string $appName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function deleteByAppId($appid)
@@ -249,9 +267,10 @@ class PwHookInject
     }
 
     /**
-     * 根据appid获取应用注如服务列表
+     * 根据appid获取应用注如服务列表.
      *
-     * @param  string $appid
+     * @param string $appid
+     *
      * @return array
      */
     public function findByAppId($appid)

@@ -8,18 +8,19 @@ Wind::import('SRV:log.dm.PwLogDm');
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogService.php 23697 2013-01-15 05:17:30Z jieyin $
- * @package src.service.log.srv
  */
 class PwLogService
 {
     /**
-     * 添加话题屏蔽的LOG
+     * 添加话题屏蔽的LOG.
      *
-     * @param  PwUserBo $user
-     * @param  PwLogDm  $dm
-     * @param  array    $langArgs
-     * @param  bool     $ifShield
+     * @param PwUserBo $user
+     * @param PwLogDm  $dm
+     * @param array    $langArgs
+     * @param bool     $ifShield
+     *
      * @return bool
      */
     public function addShieldTagLog(PwUserBo $user, PwLogDm $dm, $langArgs, $ifShield = true)
@@ -45,11 +46,12 @@ class PwLogService
     }
 
     /**
-     * 添加编辑帖子的LOG
+     * 添加编辑帖子的LOG.
      *
-     * @param  PwUserBo $user
-     * @param  array    $thread
-     * @param  bool     $isReply
+     * @param PwUserBo $user
+     * @param array    $thread
+     * @param bool     $isReply
+     *
      * @return bool
      */
     public function addEditThreadLog(PwUserBo $user, $thread, $isReply = false)
@@ -83,10 +85,11 @@ class PwLogService
     }
 
     /**
-     * 删除帖子附件
+     * 删除帖子附件.
      *
-     * @param  PwUserBo $user
-     * @param  array    $attach
+     * @param PwUserBo $user
+     * @param array    $attach
+     *
      * @return bool
      */
     public function addDeleteAtachLog(PwUserBo $user, $attach)
@@ -115,7 +118,7 @@ class PwLogService
     }
 
     /**
-     * 添加前台帖子管理的相关日志
+     * 添加前台帖子管理的相关日志.
      *
      * @param PwUserBo $user        操作者
      * @param string $type        操作类型
@@ -164,13 +167,14 @@ class PwLogService
     }
 
     /**
-     * 添加禁止用户的相关LOG
+     * 添加禁止用户的相关LOG.
      *
-     * @param  PwUserBo $user
-     * @param  array    $uids    禁止用户
-     * @param  array    $types   禁止类型
-     * @param  string   $reason
-     * @param  string   $endTime
+     * @param PwUserBo $user
+     * @param array    $uids    禁止用户
+     * @param array    $types   禁止类型
+     * @param string   $reason
+     * @param string   $endTime
+     *
      * @return bool
      */
     public function addBanUserLog(PwUserBo $user, $uids, $types, $reason, $endTime = '')
@@ -197,9 +201,9 @@ class PwLogService
             $title = $this->getOperatTypeTitle($type);
             $langArgs = array(
                 '{operatedUser}' => '',
-                '{createdUser}' => sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username),
-                '{operattype}' => $title,
-                '{reason}' => $reason ? $this->_buildSecurity($reason) : '无', );
+                '{createdUser}'  => sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username),
+                '{operattype}'   => $title,
+                '{reason}'       => $reason ? $this->_buildSecurity($reason) : '无', );
             foreach ($userList as $_uid => $_user) {
                 $langArgs['{operatedUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $_uid)), $_user['username']);
                 $_dm = new PwLogDm();
@@ -219,10 +223,11 @@ class PwLogService
     }
 
     /**
-     * 添加删除新鲜事时的管理日志
+     * 添加删除新鲜事时的管理日志.
      *
-     * @param  PwUserBo $user
-     * @param  array    $data
+     * @param PwUserBo $user
+     * @param array    $data
+     *
      * @return bool
      */
     public function addDeleteFreshLog(PwUserBo $user, $data)
@@ -251,11 +256,12 @@ class PwLogService
     }
 
     /**
-     * 前台管理日志搜索接口
+     * 前台管理日志搜索接口.
      *
-     * @param  PwLogSo        $so
-     * @param  int            $limit
-     * @param  int            $start
+     * @param PwLogSo $so
+     * @param int     $limit
+     * @param int     $start
+     *
      * @return array(logList, forumList)
      */
     public function searchManageLogs(PwLogSo $so, $limit = 10, $offset = 0)
@@ -270,11 +276,12 @@ class PwLogService
     }
 
     /**
-     * 根据tid获得帖子的管理日志列表
+     * 根据tid获得帖子的管理日志列表.
      *
-     * @param  int   $tid
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $tid
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getThreadLog($tid, $limit = 10, $start = 0)
@@ -292,10 +299,11 @@ class PwLogService
     }
 
     /**
-     * 获得日志的信息
+     * 获得日志的信息.
      *
-     * @param  string $msg
-     * @param  array  $args
+     * @param string $msg
+     * @param array  $args
+     *
      * @return string
      */
     protected function getLogMsg($msg, $args)
@@ -324,93 +332,95 @@ class PwLogService
     }
 
     /**
-     * 获取操作类型
+     * 获取操作类型.
      *
-     * @param  string $t
+     * @param string $t
+     *
      * @return array
      */
     public function getOperatTypeid($t = '')
     {
         static $typeid = array(
-            'degist' => 1, //加精
-            'undegis' => 2, //取消加精
-            'highlight' => 3, //加亮
-            'type' => 4, //分类
-            'move' => 5, //移动
-            'readed' => 6, //已阅
-            'edit' => 7, //编辑
-            'copy' => 8, //复制
-            'delete' => 9, //删除
-            'lock' => 10, //锁定
-            'unlock' => 11, //接触锁定
-            'closed' => 12, //关闭
-            'down' => 13, //压帖
-            'shield' => 14, //屏蔽
-            'unshield' => 15, //取消屏蔽
-            'delatc' => 16, //删除附件
-            'up' => 17, //提前
-            'threadtopped' => 18, //帖内置顶
-            'topped' => 19, //本版置顶
-            'catetopped' => 20, //分类置顶
-            'sitetopped' => 21, //全局置顶
-            'untopped' => 22, //取消置顶
-            'delfresh' => 25, //删除新鲜事
-            'shieldtag' => 28, //话题屏蔽
-            'unshieldtag' => 29, //取消话题屏蔽
-            'banuserspeak' => 30, //禁言用户
+            'degist'        => 1, //加精
+            'undegis'       => 2, //取消加精
+            'highlight'     => 3, //加亮
+            'type'          => 4, //分类
+            'move'          => 5, //移动
+            'readed'        => 6, //已阅
+            'edit'          => 7, //编辑
+            'copy'          => 8, //复制
+            'delete'        => 9, //删除
+            'lock'          => 10, //锁定
+            'unlock'        => 11, //接触锁定
+            'closed'        => 12, //关闭
+            'down'          => 13, //压帖
+            'shield'        => 14, //屏蔽
+            'unshield'      => 15, //取消屏蔽
+            'delatc'        => 16, //删除附件
+            'up'            => 17, //提前
+            'threadtopped'  => 18, //帖内置顶
+            'topped'        => 19, //本版置顶
+            'catetopped'    => 20, //分类置顶
+            'sitetopped'    => 21, //全局置顶
+            'untopped'      => 22, //取消置顶
+            'delfresh'      => 25, //删除新鲜事
+            'shieldtag'     => 28, //话题屏蔽
+            'unshieldtag'   => 29, //取消话题屏蔽
+            'banuserspeak'  => 30, //禁言用户
             'banuseravatar' => 31, //禁止用户头像
-            'banusersign' => 32, //禁止用户帖子签名
-            'other' => 40, //其他
+            'banusersign'   => 32, //禁止用户帖子签名
+            'other'         => 40, //其他
         );
 
         return $t ? $typeid[$t] : $typeid;
     }
 
     /**
-     * 获得操作项的名字
+     * 获得操作项的名字.
      *
-     * @param  strin $type
+     * @param strin $type
+     *
      * @return array
      */
     public function getOperatTypeTitle($type = '')
     {
         $types = array(
-            'degist' => '设为精华',
-            'undegis' => '取消精华',
-            'highlight' => '加亮',
-            'type' => '分类',
-            'move' => '移动',
-            'readed' => '已阅',
-            'edit' => '编辑',
-            'copy' => '复制',
-            'delete' => '删除',
-            'lock' => '锁定',
-            'unlock' => '解除锁定',
-            'closed' => '关闭',
-            'down' => '压帖',
-            'shield' => '屏蔽',
-            'unshield' => '取消屏蔽',
-            'delatc' => '删除附件',
-            'up' => '提前',
-            'threadtopped' => '帖内置顶',
-            'topped' => '本版置顶',
-            'catetopped' => '分类置顶',
-            'sitetopped' => '全局置顶',
-            'untopped' => '取消置顶',
-            'delfresh' => '新鲜事删除',
-            'shieldtag' => '话题屏蔽',
-            'unshieldtag' => '取消话题屏蔽',
-            'banuserspeak' => '禁言用户',
+            'degist'        => '设为精华',
+            'undegis'       => '取消精华',
+            'highlight'     => '加亮',
+            'type'          => '分类',
+            'move'          => '移动',
+            'readed'        => '已阅',
+            'edit'          => '编辑',
+            'copy'          => '复制',
+            'delete'        => '删除',
+            'lock'          => '锁定',
+            'unlock'        => '解除锁定',
+            'closed'        => '关闭',
+            'down'          => '压帖',
+            'shield'        => '屏蔽',
+            'unshield'      => '取消屏蔽',
+            'delatc'        => '删除附件',
+            'up'            => '提前',
+            'threadtopped'  => '帖内置顶',
+            'topped'        => '本版置顶',
+            'catetopped'    => '分类置顶',
+            'sitetopped'    => '全局置顶',
+            'untopped'      => '取消置顶',
+            'delfresh'      => '新鲜事删除',
+            'shieldtag'     => '话题屏蔽',
+            'unshieldtag'   => '取消话题屏蔽',
+            'banuserspeak'  => '禁言用户',
             'banuseravatar' => '禁止头像',
-            'banusersign' => '禁止帖子签名',
-            'other' => '其他',
+            'banusersign'   => '禁止帖子签名',
+            'other'         => '其他',
         );
 
         return $type ? $types[$type] : $types;
     }
 
     /**
-     * 获得日志的DS
+     * 获得日志的DS.
      *
      * @return PwLog
      */

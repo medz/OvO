@@ -1,13 +1,12 @@
 <?php
 /**
- *
- * 站内应用框架
+ * 站内应用框架.
  *
  * @author Mingqu Luo<luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class AppsController extends PwBaseController
 {
@@ -37,16 +36,15 @@ class AppsController extends PwBaseController
     }
 
     /**
-     * 从云平台上获取
-     *
+     * 从云平台上获取.
      */
     public function apiRequest($method, $params = array())
     {
         $params['method'] = $method;
-        $params['url'] = 'http://'.$_SERVER ['HTTP_HOST'];
+        $params['url'] = 'http://'.$_SERVER['HTTP_HOST'];
         //$params['url'] = 'http://www.wekit.net';
         $params['app_id'] = $this->appid;
-        $params ['timestamp'] = Pw::getTime();
+        $params['timestamp'] = Pw::getTime();
         $params['sign'] = $this->createSign($params);
 
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreHttpclient');
@@ -79,7 +77,7 @@ class AppsController extends PwBaseController
 
         $keysService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
         $key1 = $keysService->getKey1(1);
-        if (! $key1 || strlen($key1) != 128) {
+        if (!$key1 || strlen($key1) != 128) {
             return '';
         }
 
@@ -90,7 +88,7 @@ class AppsController extends PwBaseController
 
     public function createHttpQuery($params)
     {
-        if (empty($params) || ! is_array($params)) {
+        if (empty($params) || !is_array($params)) {
             return '';
         }
 
@@ -98,7 +96,7 @@ class AppsController extends PwBaseController
             return http_build_query($params);
         }
 
-        if (empty($params) || ! is_array($params)) {
+        if (empty($params) || !is_array($params)) {
             return '';
         }
 

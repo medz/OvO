@@ -6,8 +6,8 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwUserMobileVerifyDao extends PwBaseDao
 {
@@ -18,7 +18,8 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 取一条
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -27,9 +28,10 @@ class PwUserMobileVerifyDao extends PwBaseDao
     }
 
     /**
-     * 批量取
+     * 批量取.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetch($ids)
@@ -40,7 +42,8 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 添加单条
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function add($fields)
@@ -51,7 +54,8 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 添加单条
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function replace($fields)
@@ -64,7 +68,8 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 删除单条
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -75,7 +80,8 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 删除单条
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteByExpiredTime($expired_time)
@@ -87,9 +93,10 @@ class PwUserMobileVerifyDao extends PwBaseDao
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -100,8 +107,9 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 更新单条
      *
-     * @param  int   $id
-     * @param  array $fields
+     * @param int   $id
+     * @param array $fields
+     *
      * @return bool
      */
     public function update($id, $fields)
@@ -112,8 +120,9 @@ class PwUserMobileVerifyDao extends PwBaseDao
     /**
      * 更新单条
      *
-     * @param  int   $expiredTime
-     * @param  array $fields
+     * @param int   $expiredTime
+     * @param array $fields
+     *
      * @return bool
      */
     public function updateByExpiredTime($expiredTime, $fields)
@@ -125,10 +134,11 @@ class PwUserMobileVerifyDao extends PwBaseDao
     }
 
     /**
-     * 批量更新
+     * 批量更新.
      *
-     * @param  array $ids
-     * @param  array $fields
+     * @param array $ids
+     * @param array $fields
+     *
      * @return bool
      */
     public function batchUpdate($ids, $fields)

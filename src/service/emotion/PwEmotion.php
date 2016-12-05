@@ -1,17 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwEmotion.php 6968 2012-03-28 08:53:37Z gao.wanggao $
- * @package
  */
-
 class PwEmotion
 {
     /**
-     * 获取一条表情信息
+     * 获取一条表情信息.
      *
      * @param int $emotionId
      */
@@ -26,7 +26,7 @@ class PwEmotion
     }
 
     /**
-     * 获取多条表情信息
+     * 获取多条表情信息.
      *
      * @param array $emotionIds
      */
@@ -40,7 +40,7 @@ class PwEmotion
     }
 
     /**
-     * 获取多个分类的表情
+     * 获取多个分类的表情.
      *
      * @param array $categoryIds
      */
@@ -54,7 +54,7 @@ class PwEmotion
     }
 
     /**
-     * 获取一个分类的表情
+     * 获取一个分类的表情.
      *
      * @param int  $categoryId
      * @param bool $isUsed
@@ -71,13 +71,12 @@ class PwEmotion
     }
 
     /**
-     * 获取所有表情
+     * 获取所有表情.
      */
     public function getAllEmotion()
     {
         return $this->_getDao()->getAllEmotion();
     }
-
 
     public function addEmotion(PwEmotionDm $dm)
     {

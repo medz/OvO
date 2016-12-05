@@ -2,16 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子删除扩展服务接口--删除帖子话题
+ * 帖子删除扩展服务接口--删除帖子话题.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwDeleteTopicDoTagDelete extends iPwGleanDoHookProcess
 {

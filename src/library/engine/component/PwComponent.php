@@ -1,19 +1,19 @@
 <?php
 /**
- * 组件服务类
+ * 组件服务类.
  *
  * 组件服务类,解析并加载组件并启动组件服务
+ *
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwComponent.php 20274 2012-10-25 07:49:56Z yishuo $
- * @package wekit
- * @subpackage engine.component
  */
 class PwComponent extends WindModule
 {
     /**
-     * 组件调用接口
+     * 组件调用接口.
      *
      * @param string $name
      * @param string $tpl

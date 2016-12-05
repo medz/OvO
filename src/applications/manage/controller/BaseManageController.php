@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
  * 前台管理面板
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: BaseManageController.php 20606 2012-10-31 14:00:06Z xiaoxia.xuxx $
- * @package wind
  */
 class BaseManageController extends PwBaseController
 {
@@ -37,7 +36,7 @@ class BaseManageController extends PwBaseController
     }
 
     /**
-     * 设置当前的标签
+     * 设置当前的标签.
      *
      * @param unknown_type $handlerAdapter
      */
@@ -47,9 +46,10 @@ class BaseManageController extends PwBaseController
     }
 
     /**
-     * 判断权限
+     * 判断权限.
      *
-     * @param  string $cate
+     * @param string $cate
+     *
      * @return bool
      */
     private function _checkRight($cate = 'all')

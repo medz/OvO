@@ -8,8 +8,8 @@ Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskMemberPunchDo.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package service.task.srv.condition
  */
 class PwTaskMemberPunchDo implements PwTaskCompleteInterface
 {

@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadDisplay.PwReadDataSource');
 
 /**
- * 帖子内容页回复列表数据接口 / 只看某用户列表|只看楼主
+ * 帖子内容页回复列表数据接口 / 只看某用户列表|只看楼主.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserRead.php 16856 2012-08-29 04:27:45Z jieyin $
- * @package forum
  */
-
 class PwUserRead extends PwReadDataSource
 {
     public $thread;
@@ -26,7 +25,7 @@ class PwUserRead extends PwReadDataSource
         $this->thread = $thread;
         $this->tid = $thread->tid;
         $this->uid = $uid;
-        $this->info = & $thread->info;
+        $this->info = &$thread->info;
         $this->urlArgs['uid'] = $uid;
     }
 
@@ -45,7 +44,7 @@ class PwUserRead extends PwReadDataSource
         list($start, $limit) = Pw::page2limit($this->page, $this->perpage);
         if ($start == 0) {
             $this->info['pid'] = 0;
-            $this->data[] = & $this->info;    //地址引用，便于bulidRead同步修改
+            $this->data[] = &$this->info;    //地址引用，便于bulidRead同步修改
             $this->info['aids'] && $this->_aids[] = 0;
             $this->_uids[] = $this->info['created_userid'];
         }

@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Oct 31, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserGroupsDao.php 19883 2012-10-19 06:26:36Z jieyin $
  */
-
 class PwUserGroupsDao extends PwBaseDao
 {
     protected $_table = 'user_groups';
@@ -16,7 +18,7 @@ class PwUserGroupsDao extends PwBaseDao
     protected $_dataStruct = array('type', 'name', 'category', 'image', 'points');
 
     /**
-     * 获取所有用户组
+     * 获取所有用户组.
      */
     public function getAllGroups()
     {
@@ -27,10 +29,11 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 获取一个会员组详细信息
+     * 获取一个会员组详细信息.
      *
-     * @param  int   $gid
-     * @return Array
+     * @param int $gid
+     *
+     * @return array
      */
     public function getGroupByGid($gid)
     {
@@ -38,9 +41,10 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 根据一组gid获取用户组
+     * 根据一组gid获取用户组.
      *
-     * @param  array $gids
+     * @param array $gids
+     *
      * @return array
      */
     public function fetchGroup($gids)
@@ -49,7 +53,7 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 添加用户组
+     * 添加用户组.
      *
      * @param array $fields
      */
@@ -59,7 +63,7 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 更新用户组
+     * 更新用户组.
      *
      * @param int   $gid
      * @param array $fields
@@ -70,7 +74,7 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 删除用户组
+     * 删除用户组.
      *
      * @param int $gid
      */
@@ -80,7 +84,7 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 按会员组类型获取组列表
+     * 按会员组类型获取组列表.
      *
      * @param string $groupType
      */
@@ -93,7 +97,7 @@ class PwUserGroupsDao extends PwBaseDao
     }
 
     /**
-     * 按会员组类型获取组列表（按升级点数升序）
+     * 按会员组类型获取组列表（按升级点数升序）.
      *
      * @param string $groupType
      */

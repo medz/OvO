@@ -2,12 +2,13 @@
 
 Wind::import('APPS:windid.admin.WindidBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: NotifyController.php 24773 2013-02-21 02:59:06Z jieyin $
- * @package
  */
 class NotifyController extends WindidBaseController
 {
@@ -55,7 +56,6 @@ class NotifyController extends WindidBaseController
         $this->setOutput($list, 'list');
         $this->setOutput($apps, 'apps');
     }
-
 
     public function clearAction()
     {

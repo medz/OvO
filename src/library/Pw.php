@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 工具类库
+ * 工具类库.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: Pw.php 28776 2013-05-23 08:46:10Z jieyin $
- * @package library
  */
 class Pw
 {
@@ -17,8 +17,9 @@ class Pw
     /**
      * 取得指定名称的cookie值
      *
-     * @param  string $name cookie名称
-     * @param  string $pre  cookie前缀,默认为null即没有前缀
+     * @param string $name cookie名称
+     * @param string $pre  cookie前缀,默认为null即没有前缀
+     *
      * @return bool
      */
     public static function getCookie($name)
@@ -30,13 +31,14 @@ class Pw
     }
 
     /**
-     * 设置cookie
+     * 设置cookie.
      *
-     * @param  string     $name     cookie名称
-     * @param  string     $value    cookie值,默认为null
-     * @param  string|int $expires  过期时间,默认为null即会话cookie,随着会话结束将会销毁
-     * @param  string     $pre      cookie前缀,默认为null即没有前缀
-     * @param  bool       $httponly
+     * @param string     $name     cookie名称
+     * @param string     $value    cookie值,默认为null
+     * @param string|int $expires  过期时间,默认为null即会话cookie,随着会话结束将会销毁
+     * @param string     $pre      cookie前缀,默认为null即没有前缀
+     * @param bool       $httponly
+     *
      * @return bool
      */
     public static function setCookie($name, $value = null, $expires = null, $httponly = false)
@@ -54,10 +56,11 @@ class Pw
     }
 
     /**
-     * 加密方法
+     * 加密方法.
      *
-     * @param  string $str
-     * @param  string $key
+     * @param string $str
+     * @param string $key
+     *
      * @return string
      */
     public static function encrypt($str, $key = '')
@@ -70,10 +73,11 @@ class Pw
     }
 
     /**
-     * 解密方法
+     * 解密方法.
      *
-     * @param  string $str
-     * @param  string $key
+     * @param string $str
+     * @param string $key
+     *
      * @return string
      */
     public static function decrypt($str, $key = '')
@@ -86,9 +90,10 @@ class Pw
     }
 
     /**
-     * 密码加密存储
+     * 密码加密存储.
      *
-     * @param  string $pwd
+     * @param string $pwd
+     *
      * @return string
      */
     public static function getPwdCode($pwd)
@@ -97,9 +102,10 @@ class Pw
     }
 
     /**
-     * 求取字符串长度
+     * 求取字符串长度.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return string
      */
     public static function strlen($string)
@@ -108,7 +114,7 @@ class Pw
     }
 
     /**
-     * 字符串截取
+     * 字符串截取.
      *
      * @param string $string
      * @param int    $length
@@ -125,7 +131,7 @@ class Pw
     }
 
     /**
-     * 清理包含WindCode的字符串
+     * 清理包含WindCode的字符串.
      *
      * @param string $text
      * @param bool   $stripTags
@@ -155,10 +161,11 @@ class Pw
     }
 
     /**
-     * 将数据用json加密
+     * 将数据用json加密.
      *
-     * @param  mixed  $value   需要加密的数据
-     * @param  string $charset 字符编码
+     * @param mixed  $value   需要加密的数据
+     * @param string $charset 字符编码
+     *
      * @return string 加密后的数据
      */
     public static function jsonEncode($value)
@@ -167,11 +174,12 @@ class Pw
     }
 
     /**
-     * 将json格式数据解密
+     * 将json格式数据解密.
      *
      * @param  string $value   待解密的数据
-     * @param  string $charset 解密后字符串编码
-     * @return mixed  解密后的数据
+     * @param string $charset 解密后字符串编码
+     *
+     * @return mixed 解密后的数据
      */
     public static function jsonDecode($value)
     {
@@ -179,9 +187,10 @@ class Pw
     }
 
     /**
-     * 将数组简易地转换成json格式
+     * 将数组简易地转换成json格式.
      *
-     * @param  array  $var
+     * @param array $var
+     *
      * @return string
      */
     public static function array2str($var)
@@ -198,10 +207,11 @@ class Pw
     }
 
     /**
-     * 从数组(A)中找出指定键值的子集
+     * 从数组(A)中找出指定键值的子集.
      *
-     * @param  array $var   数组(A)
-     * @param  array $vkeys 指定键值
+     * @param array $var   数组(A)
+     * @param array $vkeys 指定键值
+     *
      * @return array
      */
     public static function subArray($var, $vkeys)
@@ -220,10 +230,11 @@ class Pw
     }
 
     /**
-     * 页码转sql
+     * 页码转sql.
      *
-     * @param  int   $page    分页
-     * @param  int   $perpage 每页显示数
+     * @param int $page    分页
+     * @param int $perpage 每页显示数
+     *
      * @return array <1.start 2.limit>
      */
     public static function page2limit($page, $perpage = 10)
@@ -235,9 +246,10 @@ class Pw
     }
 
     /**
-     * 将时间字串转化成零时区时间戳返回
+     * 将时间字串转化成零时区时间戳返回.
      *
-     * @param  string $str 格式良好的时间串
+     * @param string $str 格式良好的时间串
+     *
      * @return int
      */
     public static function str2time($str)
@@ -251,12 +263,14 @@ class Pw
     }
 
     /**
-     * 时间戳转字符串
+     * 时间戳转字符串.
      *
      * @example Y-m-d H:i:s  2012-12-12 12:12:12
-     * @param  int    $timestamp 时间戳
-     * @param  string $format    时间格式
-     * @param  int    $sOffset   时间矫正值
+     *
+     * @param int    $timestamp 时间戳
+     * @param string $format    时间格式
+     * @param int    $sOffset   时间矫正值
+     *
      * @return string
      */
     public static function time2str($timestamp, $format = 'Y-m-d H:i')
@@ -315,7 +329,7 @@ class Pw
     }
 
     /**
-     * 获取今日零点时间戳
+     * 获取今日零点时间戳.
      *
      * @return int
      */
@@ -325,11 +339,12 @@ class Pw
     }
 
     /**
-     * 获取图片路径
+     * 获取图片路径.
      *
-     * @param  string $path
-     * @param  int    $thumb   0:没有缩略图/1：缩略图/2:迷你缩略图
-     * @param  bool   $isLocal 是否强制使用本地存储 (默认自动选择)
+     * @param string $path
+     * @param int    $thumb   0:没有缩略图/1：缩略图/2:迷你缩略图
+     * @param bool   $isLocal 是否强制使用本地存储 (默认自动选择)
+     *
      * @return string
      */
     public static function getPath($path, $ifthumb = 0, $isLocal = false)
@@ -342,8 +357,9 @@ class Pw
     /**
      * 获取用户头像地址
      *
-     * @param  int    $uid
-     * @param  string $size <m.中头像 s.小头像>
+     * @param int    $uid
+     * @param string $size <m.中头像 s.小头像>
+     *
      * @return string
      */
     public static function getAvatar($uid, $size = 'middle')
@@ -362,9 +378,10 @@ class Pw
     }
 
     /**
-     * 获取用户头像存储目录
+     * 获取用户头像存储目录.
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return string
      */
     public static function getUserDir($uid)
@@ -375,11 +392,12 @@ class Pw
     }
 
     /**
-     * 删除附件
+     * 删除附件.
      *
-     * @param  string $path    附件相对地址
-     * @param  int    $ifthumb 缩略图
-     * @param  bool   $isLocal 是否强制使用本地存储 (默认自动选择)
+     * @param string $path    附件相对地址
+     * @param int    $ifthumb 缩略图
+     * @param bool   $isLocal 是否强制使用本地存储 (默认自动选择)
+     *
      * @return bool
      */
     public static function deleteAttach($path, $ifthumb = 0, $isLocal = false)
@@ -390,9 +408,10 @@ class Pw
     }
 
     /**
-     * 删除本地文件
+     * 删除本地文件.
      *
-     * @param  string $filename 文件绝对地址
+     * @param string $filename 文件绝对地址
+     *
      * @return bool
      */
     public static function deleteFile($filename)
@@ -401,9 +420,10 @@ class Pw
     }
 
     /**
-     * 返回html checked
+     * 返回html checked.
      *
-     * @param  bool   $var
+     * @param bool $var
+     *
      * @return string
      */
     public static function ifcheck($var)
@@ -412,9 +432,10 @@ class Pw
     }
 
     /**
-     * 返回html selected
+     * 返回html selected.
      *
-     * @param  bool   $var
+     * @param bool $var
+     *
      * @return string
      */
     public static function isSelected($var)
@@ -423,9 +444,10 @@ class Pw
     }
 
     /**
-     * 返回html current
+     * 返回html current.
      *
-     * @param  bool   $var
+     * @param bool $var
+     *
      * @return string
      */
     public static function isCurrent($var)
@@ -434,10 +456,11 @@ class Pw
     }
 
     /**
-     * 编码转换
+     * 编码转换.
      *
      * @param  string $string       内容字符串
-     * @param  string $fromEncoding 原编码
+     * @param string $fromEncoding 原编码
+     *
      * @return string
      */
     public static function convert($string, $toEncoding, $fromEncoding = '')
@@ -450,7 +473,8 @@ class Pw
     /**
      * 检查是否在线
      *
-     * @param  int  $time lastvisit
+     * @param int $time lastvisit
+     *
      * @return bool
      */
     public static function checkOnline($time)
@@ -464,11 +488,12 @@ class Pw
     }
 
     /**
-     * 位运算比对
+     * 位运算比对.
      *
-     * @param  int $status 状态码
-     * @param  int $b      比对位置
-     * @param  int $len    比对位数
+     * @param int $status 状态码
+     * @param int $b      比对位置
+     * @param int $len    比对位数
+     *
      * @return int
      */
     public static function getstatus($status, $b, $len = 1)
@@ -500,7 +525,8 @@ class Pw
      * 注：只作用于二维数组
      *
      * @param  array  $data 待收集的二维列表
-     * @param  string $key 需要收集的
+     * @param string $key 需要收集的
+     *
      * @return array
      */
     public static function collectByKey($data, $key)
@@ -519,7 +545,7 @@ class Pw
     }
 
     /**
-     * 根据指定的key的顺序，排序数据
+     * 根据指定的key的顺序，排序数据.
      *
      * 如：有二维数组
      * $a = array(
@@ -542,9 +568,10 @@ class Pw
      * 如果某一维元素没有设置key则该元素将不会被排序，如果该KEY的值为空，则该元素值将会在排好序的最前端根据原顺序输出
      * 注：只作用于二维数组
      *
-     * @param  array $data
-     * @param  sring $key
-     * @param  array $orders
+     * @param array $data
+     * @param sring $key
+     * @param array $orders
+     *
      * @return array
      */
     public static function orderByKeys($data, $key, $orders)
@@ -579,10 +606,11 @@ class Pw
     }
 
     /**
-     * 重写in_array
+     * 重写in_array.
      *
-     * @param  int|string $value
-     * @param  array      $array
+     * @param int|string $value
+     * @param array      $array
+     *
      * @return bool
      */
     public static function inArray($value, $array)
@@ -591,7 +619,7 @@ class Pw
     }
 
     /**
-     * 将HTML标签转义后输出字符串
+     * 将HTML标签转义后输出字符串.
      *
      * @param string $str
      */
@@ -601,7 +629,7 @@ class Pw
     }
 
     /**
-     * 将HTML标签转义后输出JSON数据
+     * 将HTML标签转义后输出JSON数据.
      *
      * @param mixed $data
      */

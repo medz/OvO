@@ -3,19 +3,21 @@
 Wind::import('SRV:education.srv.helper.PwEducationHelper');
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright ©2003-2010 phpwind.com
  * @license
  */
-
 class PwEducationService
 {
     /**
-     * 根据用户ID获得该用户的教育经历
+     * 根据用户ID获得该用户的教育经历.
      *
-     * @param  int   $uid
-     * @param  int   $num
-     * @param  bool  $buildArea 是否需要查询获取学校地区的层级
+     * @param int  $uid
+     * @param int  $num
+     * @param bool $buildArea 是否需要查询获取学校地区的层级
+     *
      * @return array
      */
     public function getEducationByUid($uid, $num = 10, $buildArea = false)
@@ -49,7 +51,7 @@ class PwEducationService
     }
 
     /**
-     * 获得学校Ds
+     * 获得学校Ds.
      *
      * @return WindidSchool
      */
@@ -59,7 +61,7 @@ class PwEducationService
     }
 
     /**
-     * 教育经历DS
+     * 教育经历DS.
      *
      * @return PwEducation
      */

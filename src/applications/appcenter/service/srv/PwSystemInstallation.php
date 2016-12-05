@@ -9,8 +9,8 @@ Wind::import('APPCENTER:service.srv.helper.PwSftpSave');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwSystemInstallation.php 24976 2013-02-27 09:29:00Z long.shi $
- * @package wind
  */
 class PwSystemInstallation extends PwInstallApplication
 {
@@ -28,7 +28,7 @@ class PwSystemInstallation extends PwInstallApplication
 
     /**
      * 根据当前版本+release获取升级信息(patch包地址) ,hash值
-     * 获取升级文件列表
+     * 获取升级文件列表.
      */
     public function checkUpgrade()
     {
@@ -74,7 +74,7 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 检查环境
+     * 检查环境.
      *
      * @return PwError boolean
      */
@@ -91,7 +91,7 @@ class PwSystemInstallation extends PwInstallApplication
     /**
      * 下载
      * 1、下载zip包
-     * 2、单个文件下载
+     * 2、单个文件下载.
      */
     public function download($downloadUrl, $hash, $file = '')
     {
@@ -144,30 +144,30 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 获取文件转移方式
+     * 获取文件转移方式.
      *
      * @return multitype:Ambigous <string, multitype:>
      */
     public function getMoveWay()
     {
         $directory = array(
-            'ROOT' => '..',
-            'CONF' => '../conf',
-            'DATA' => '../data',
-            'SRC' => '../src',
-            'APPS' => '../src/applications',
-            'EXT' => '../src/extensions',
-            'HOOK' => '../src/hooks',
-            'LIB' => '../src/library',
-            'SRV' => '../src/service',
-            'REP' => '../src/repository',
+            'ROOT'   => '..',
+            'CONF'   => '../conf',
+            'DATA'   => '../data',
+            'SRC'    => '../src',
+            'APPS'   => '../src/applications',
+            'EXT'    => '../src/extensions',
+            'HOOK'   => '../src/hooks',
+            'LIB'    => '../src/library',
+            'SRV'    => '../src/service',
+            'REP'    => '../src/repository',
             'WINDID' => '../src/windid',
             'ACLOUD' => '../src/aCloud',
             'PUBLIC' => '../www',
             'THEMES' => '../www/themes',
-            'TPL' => '../www/template',
+            'TPL'    => '../www/template',
             'ATTACH' => '../www/attachment',
-            'HTML' => '../www/html', );
+            'HTML'   => '../www/html', );
         $sort = array(
             'TPL',
             'THEMES',
@@ -198,7 +198,7 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 根据现有目录结构调整升级包目录
+     * 根据现有目录结构调整升级包目录.
      *
      * @param array $fileList
      */
@@ -318,11 +318,12 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 补救措施，临时解决方案，后续版本@deprecated
+     * 补救措施，临时解决方案，后续版本@deprecated.
      *
-     * @param  unknown_type $fileList
-     * @param  unknown_type $useFtp
-     * @param  unknown_type $oldList
+     * @param unknown_type $fileList
+     * @param unknown_type $useFtp
+     * @param unknown_type $oldList
+     *
      * @return bool|PwError
      */
     public function after($fileList, $useFtp, $oldList)
@@ -434,9 +435,10 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 验证本地文件
+     * 验证本地文件.
      *
-     * @param  array $fileList
+     * @param array $fileList
+     *
      * @return array
      */
     public function validateLocalFiles($fileList)
@@ -455,7 +457,7 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 进行升级
+     * 进行升级.
      */
     public function doUpgrade($fileList, $useFtp = 0)
     {
@@ -499,7 +501,7 @@ class PwSystemInstallation extends PwInstallApplication
     }
 
     /**
-     * 备份
+     * 备份.
      */
     public function backUp($fileList)
     {

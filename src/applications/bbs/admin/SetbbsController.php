@@ -2,14 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台菜单管理操作类
+ * 后台菜单管理操作类.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: SetbbsController.php 28790 2013-05-23 10:15:16Z jieyin $
- * @package admin
- * @subpackage controller
  */
 class SetbbsController extends AdminBaseController
 {
@@ -64,18 +63,18 @@ class SetbbsController extends AdminBaseController
         is_array($order) || $order = array();
 
         $allInfo = array(
-            'uid' => 'UID',
-            'regdate' => '注册日期',
+            'uid'       => 'UID',
+            'regdate'   => '注册日期',
             'lastvisit' => '最后登录',
-            'fans' => '粉丝',
-            'follows' => '关注',
-            'posts' => '发帖数',
-            'homepage' => '个人主页',
-            'location' => '来自',
-            'qq' => 'QQ',
-            'aliww' => '阿里旺旺',
-            'birthday' => '生日',
-            'hometown' => '家乡', );
+            'fans'      => '粉丝',
+            'follows'   => '关注',
+            'posts'     => '发帖数',
+            'homepage'  => '个人主页',
+            'location'  => '来自',
+            'qq'        => 'QQ',
+            'aliww'     => '阿里旺旺',
+            'birthday'  => '生日',
+            'hometown'  => '家乡', );
         Wind::import('SRV:credit.bo.PwCreditBo');
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $allInfo[$key] = $value;

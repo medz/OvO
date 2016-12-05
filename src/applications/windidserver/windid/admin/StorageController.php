@@ -2,17 +2,18 @@
 
 Wind::import('APPS:windid.admin.WindidBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: StorageController.php 24648 2013-02-04 02:31:11Z jieyin $
- * @package
  */
 class StorageController extends WindidBaseController
 {
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function run()
     {
@@ -32,7 +33,7 @@ class StorageController extends WindidBaseController
     }
 
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function dostroageAction()
     {

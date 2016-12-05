@@ -6,9 +6,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-15
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AttachmentController.php 3284 2011-12-15 08:38:49Z yishuo $
- * @package admin
- * @subpackage controller.config
  */
 class AttachmentController extends AdminBaseController
 {
@@ -27,7 +26,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 后台设置-附件设置
+     * 后台设置-附件设置.
      */
     public function dorunAction()
     {
@@ -47,7 +46,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function storageAction()
     {
@@ -75,7 +74,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 附件存储方式设置列表页
+     * 附件存储方式设置列表页.
      */
     public function dostroageAction()
     {
@@ -102,7 +101,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 后台设置-附件缩略设置
+     * 后台设置-附件缩略设置.
      */
     public function thumbAction()
     {
@@ -112,7 +111,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 后台设置-附件缩略设置
+     * 后台设置-附件缩略设置.
      */
     public function dothumbAction()
     {
@@ -131,7 +130,7 @@ class AttachmentController extends AdminBaseController
     }
 
     /**
-     * 后台设置-附件缩略预览
+     * 后台设置-附件缩略预览.
      */
     public function viewAction()
     {
@@ -139,7 +138,6 @@ class AttachmentController extends AdminBaseController
 
         list($thumb, $thumbsize_width, $thumbsize_height, $quality) = $this->getInput(
             array('thumb', 'thumbsize_width', 'thumbsize_height', 'quality'), 'post');
-
 
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $thumburl = Wind::getRealDir('PUBLIC:attachment', false).'/demo_thumb.jpg';

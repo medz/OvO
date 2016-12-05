@@ -3,17 +3,19 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
  /**
-  * the last known user to change this file in the repository  <$LastChangedBy: taishici $>
+  * the last known user to change this file in the repository  <$LastChangedBy: taishici $>.
+  *
   * @author $Author: taishici $ Foxsee@aliyun.com
   * @copyright ?2003-2103 phpwind.com
   * @license http://www.phpwind.com
+  *
   * @version $Id: MedalController.php 29742 2013-06-28 08:02:34Z taishici $
-  * @package
   */
  class MedalController extends AdminBaseController
  {
      /**
-     * 勋章管理
+     * 勋章管理.
+     *
      * @see wekit/wind/web/WindController::run()
      */
     public function run()
@@ -36,8 +38,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章批量修改
-     *
+     * 勋章批量修改.
      */
     public function dorunAction()
     {
@@ -59,8 +60,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     *
-     * 勋章添加表单
+     * 勋章添加表单.
      */
     public function addAction()
     {
@@ -75,9 +75,9 @@ Wind::import('ADMIN:library.AdminBaseController');
         $i = 1;
         foreach ($medals as $medal) {
             $_medal = array(
-                'order' => $i,
+                'order'  => $i,
                 'amount' => $medal['award_condition'],
-                'name' => $medal['name'],
+                'name'   => $medal['name'],
                 );
             $medalJson[$medal['award_type']][] = $_medal;
             $i++;
@@ -95,8 +95,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章添加处理
-     *
+     * 勋章添加处理.
      */
     public function doAddAction()
     {
@@ -147,8 +146,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章编辑表单
-     *
+     * 勋章编辑表单.
      */
     public function editAction()
     {
@@ -170,9 +168,9 @@ Wind::import('ADMIN:library.AdminBaseController');
         $i = 1;
         foreach ($medals as $medal) {
             $_medal = array(
-                'order' => $i,
+                'order'  => $i,
                 'amount' => $medal['award_condition'],
-                'name' => $medal['name'],
+                'name'   => $medal['name'],
                 );
             $medalJson[$medal['award_type']][] = $_medal;
             $i++;
@@ -191,8 +189,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章修改处理
-     *
+     * 勋章修改处理.
      */
     public function doEditAction()
     {
@@ -250,8 +247,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章删除处理
-     *
+     * 勋章删除处理.
      */
     public function doDelAction()
     {
@@ -304,8 +300,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章颁发列表页
-     *
+     * 勋章颁发列表页.
      */
     public function awardAction()
     {
@@ -338,7 +333,7 @@ Wind::import('ADMIN:library.AdminBaseController');
 
         list($start, $perpage) = Pw::page2limit($page, $perpage);
         $list = $medals = $users = array();
-        $count = 0 ;
+        $count = 0;
         if (false == $_empty) {
             $list = $this->_getMedalLogDs()->getMedalLogList($uid, PwMedalLog::STATUS_AWARDED, $_medalIds, $start, $perpage);
             foreach ($list as $medal) {
@@ -368,8 +363,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章收回
-     *
+     * 勋章收回.
      */
     public function doStopAction()
     {
@@ -382,8 +376,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 批量勋章收回
-     *
+     * 批量勋章收回.
      */
     public function batchStopAction()
     {
@@ -395,8 +388,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章颁发
-     *
+     * 勋章颁发.
      */
     public function addAwardAction()
     {
@@ -482,8 +474,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 审核勋章
-     *
+     * 审核勋章.
      */
     public function approvalAction()
     {
@@ -536,8 +527,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 审核勋章操作
-     *
+     * 审核勋章操作.
      */
     public function doEditApplyAction()
     {
@@ -558,7 +548,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             //$dm->setAwardStatus(5);
             $resource = $ds->deleteInfo($logId);
             $this->_getMedalService()->sendNotice($log['uid'], $log['log_id'], $log['medal_id'], 4);
-            if (! $resource) {
+            if (!$resource) {
                 $this->showError('MEDAL:fail');
             }
         }
@@ -566,8 +556,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     }
 
     /**
-     * 勋章申请批量操作
-     *
+     * 勋章申请批量操作.
      */
     public function batchPassAction()
     {

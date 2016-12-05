@@ -3,8 +3,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwHookDao extends PwBaseDao
 {
@@ -13,9 +13,10 @@ class PwHookDao extends PwBaseDao
     protected $_dataStruct = array('name', 'app_name', 'app_id', 'created_time', 'modified_time', 'document');
 
     /**
-     * 添加钩子定义
+     * 添加钩子定义.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function add($fields)
@@ -29,10 +30,11 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 编辑钩子
+     * 编辑钩子.
      *
-     * @param  string $name
-     * @param  array  $fields
+     * @param string $name
+     * @param array  $fields
+     *
      * @return bool
      */
     public function update($name, $fields)
@@ -41,9 +43,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 批量注册钩子定义，返回影响行数
+     * 批量注册钩子定义，返回影响行数.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return int
      */
     public function batchAdd($fields)
@@ -66,9 +69,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据App_id删除钩子信息
+     * 根据App_id删除钩子信息.
      *
-     * @param  string $app_id
+     * @param string $app_id
+     *
      * @return bool
      */
     public function delByAppId($app_id)
@@ -79,9 +83,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据应用名称删除
+     * 根据应用名称删除.
      *
-     * @param  string   $appName
+     * @param string $appName
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function delByAppName($appName)
@@ -92,9 +97,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据钩子名称删除钩子定义
+     * 根据钩子名称删除钩子定义.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return bool
      */
     public function delByName($name)
@@ -105,9 +111,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据名称批量删除hook
+     * 根据名称批量删除hook.
      *
-     * @param  array    $names
+     * @param array $names
+     *
      * @return Ambigous <rowCount, boolean, number>
      */
     public function batchDelByName($names)
@@ -118,9 +125,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据hook name 更新，返回影响行数
+     * 根据hook name 更新，返回影响行数.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return int
      */
     public function updateByName($name)
@@ -134,9 +142,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据name查找hook注册信息，返回hook数据
+     * 根据name查找hook注册信息，返回hook数据.
      *
-     * @param  string $appId
+     * @param string $appId
+     *
      * @return array
      */
     public function find($name)
@@ -150,9 +159,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据应用ID查找Hook信息
+     * 根据应用ID查找Hook信息.
      *
-     * @param  int      $appIds
+     * @param int $appIds
+     *
      * @return Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function findByAppId($appId)
@@ -163,9 +173,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据Hook名称获取Hook信息
+     * 根据Hook名称获取Hook信息.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return array
      */
     public function findByName($name)
@@ -176,9 +187,10 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据hook name查找hook注册信息，返回hook数据
+     * 根据hook name查找hook注册信息，返回hook数据.
      *
-     * @param  string $names
+     * @param string $names
+     *
      * @return array
      */
     public function batchFindByName($names)
@@ -189,12 +201,13 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 分页查找钩子信息
+     * 分页查找钩子信息.
      *
-     * @param  int           $num   默认为10
-     * @param  int           $start
-     * @param  int           $index
-     * @param  string        $order
+     * @param int    $num   默认为10
+     * @param int    $start
+     * @param int    $index
+     * @param string $order
+     *
      * @return bool|Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function findByPage($num = 10, $start = 0, $index = 'name', $order = 'name')
@@ -209,11 +222,12 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 根据hook名称搜索
+     * 根据hook名称搜索.
      *
-     * @param  string $name
-     * @param  int    $num
-     * @param  int    $start
+     * @param string $name
+     * @param int    $num
+     * @param int    $start
+     *
      * @return array
      */
     public function searchHook($fields, $num = 10, $start = 0)
@@ -227,7 +241,7 @@ class PwHookDao extends PwBaseDao
     }
 
     /**
-     * 获取数据总条数
+     * 获取数据总条数.
      *
      * @return int
      */

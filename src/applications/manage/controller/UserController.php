@@ -3,13 +3,13 @@
 Wind::import('APPS:manage.controller.BaseManageController');
 
 /**
- * 前台管理面板 - 用户审核
+ * 前台管理面板 - 用户审核.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: UserController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package
  */
 class UserController extends BaseManageController
 {
@@ -61,7 +61,7 @@ class UserController extends BaseManageController
     }
 
     /**
-     * 电子邮件用户激活
+     * 电子邮件用户激活.
      */
     public function emailAction()
     {
@@ -94,8 +94,7 @@ class UserController extends BaseManageController
     }
 
     /**
-     * 批量审核用户
-     *
+     * 批量审核用户.
      */
     public function docheckAction()
     {
@@ -130,8 +129,7 @@ class UserController extends BaseManageController
     }
 
     /**
-     * 批量激活用户
-     *
+     * 批量激活用户.
      */
     public function doactiveAction()
     {
@@ -166,7 +164,7 @@ class UserController extends BaseManageController
     }
 
     /**
-     * 删除用户 批量
+     * 删除用户 批量.
      */
     public function deleteAction()
     {
@@ -181,7 +179,7 @@ class UserController extends BaseManageController
     }
 
     /**
-     * 获得用户的状态DS
+     * 获得用户的状态DS.
      *
      * @return PwUserRegisterCheck
      */

@@ -1,12 +1,12 @@
 <?php
 /**
- * seo扩展
+ * seo扩展.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package modules.seo.service
  */
 class PwSeoExtends
 {
@@ -14,7 +14,7 @@ class PwSeoExtends
     private $codes = array();
 
     /**
-     * 获取seo配置
+     * 获取seo配置.
      *
      * @return array
      */
@@ -30,7 +30,7 @@ class PwSeoExtends
     }
 
     /**
-     * 获取菜单
+     * 获取菜单.
      *
      * @return array
      */
@@ -48,9 +48,10 @@ class PwSeoExtends
     }
 
     /**
-     * 获得模式下的所有页面
+     * 获得模式下的所有页面.
      *
-     * @param  string $mod
+     * @param string $mod
+     *
      * @return array
      */
     public function getPages($mode)
@@ -67,10 +68,11 @@ class PwSeoExtends
     }
 
     /**
-     * 根据模式获取可使用占位符
+     * 根据模式获取可使用占位符.
      *
-     * @param  string $page
-     * @param  string $mode
+     * @param string $page
+     * @param string $mode
+     *
      * @return array
      */
     public function getCodes($mode)
@@ -87,10 +89,11 @@ class PwSeoExtends
     }
 
     /**
-     * 获取某个页面的默认seo数据
+     * 获取某个页面的默认seo数据.
      *
-     * @param  string $page
-     * @param  string $mode
+     * @param string $page
+     * @param string $mode
+     *
      * @return array
      */
     public function getDefaultSeoByPage($page, $mode)

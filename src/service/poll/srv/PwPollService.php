@@ -8,20 +8,19 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwPollService.php 2552 2012-01-12 11:28:21Z mingxing.sun $
- * @package poll
- * @subpackage service.srv
  */
-
 class PwPollService
 {
     /**
-     * 用户投票
+     * 用户投票.
      *
-     * @param  int   $userid
-     * @param  int   $pollid
-     * @param  array $option
-     * @return bool  || PwError
+     * @param int   $userid
+     * @param int   $pollid
+     * @param array $option
+     *
+     * @return bool || PwError
      */
     public function doVote($userid, $pollid, $option)
     {
@@ -73,9 +72,10 @@ class PwPollService
     }
 
     /**
-     * 删除投票
+     * 删除投票.
      *
-     * @param  unknown_type $pollid
+     * @param unknown_type $pollid
+     *
      * @return bool
      */
     public function deletePoll($pollid)
@@ -96,7 +96,7 @@ class PwPollService
     }
 
     /**
-     * 重置选项投票数
+     * 重置选项投票数.
      *
      * @param int $optionid
      */
@@ -122,8 +122,10 @@ class PwPollService
     }
 
     /**
-     * 获取单条投票记录
-     * @param  int   $pollid 投票记录ID
+     * 获取单条投票记录.
+     *
+     * @param int $pollid 投票记录ID
+     *
      * @return array
      */
     public function getPoll($pollid)
@@ -162,7 +164,7 @@ class PwPollService
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */
@@ -172,7 +174,7 @@ class PwPollService
     }
 
     /**
-     * get PwPollOption
+     * get PwPollOption.
      *
      * @return PwPollOption
      */
@@ -182,7 +184,7 @@ class PwPollService
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */
@@ -192,7 +194,7 @@ class PwPollService
     }
 
     /**
-     * get PwThreadPoll
+     * get PwThreadPoll.
      *
      * @return PwThreadPoll
      */

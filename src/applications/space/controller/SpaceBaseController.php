@@ -4,19 +4,21 @@
 Wind::import('SRV:space.bo.PwSpaceModel');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class SpaceBaseController extends PwBaseController
 {
     public $space;
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/library/base/PwBaseController::beforeAction()
      */
     public function beforeAction($handlerAdapter)
@@ -62,7 +64,8 @@ class SpaceBaseController extends PwBaseController
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/library/base/PwBaseController::afterAction()
      */
     public function afterAction($handlerAdapter)

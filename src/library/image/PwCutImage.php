@@ -1,25 +1,26 @@
 <?php
 /**
- * 用于门户的缩略/截取算法
+ * 用于门户的缩略/截取算法.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCutImage.php 22257 2012-12-20 09:50:37Z gao.wanggao $
- * @package
  */
 class PwCutImage
 {
     /**
-     * 需处理的文件，绝对路径
+     * 需处理的文件，绝对路径.
      *
      * @var string
      */
     public $image;
 
     /**
-     * 处理后的图片大小
+     * 处理后的图片大小.
      *
      * @var int
      */
@@ -35,28 +36,28 @@ class PwCutImage
     public $outImage;
 
     /**
-     * 图片品质
+     * 图片品质.
      *
      * @var int
      */
     public $quality = 90;
 
     /**
-     * 强制缩略图，空白填充
+     * 强制缩略图，空白填充.
      *
      * @var bool
      */
     public $forceThumb = false;
 
     /**
-     * true剪切 false按比例缩小
+     * true剪切 false按比例缩小.
      *
      * @var bool
      */
     public $forceScale = false;
 
     /**
-     * 图片剪切的左上角坐标
+     * 图片剪切的左上角坐标.
      *
      * @var int
      */
@@ -65,7 +66,7 @@ class PwCutImage
     public $cutY = 0;
 
     /**
-     * 旋转角度
+     * 旋转角度.
      *
      * @var int
      */
@@ -78,8 +79,7 @@ class PwCutImage
     private $_backImage;
 
     /**
-     * 图片剪切或缩略
-     *
+     * 图片剪切或缩略.
      */
     public function cut()
     {
@@ -145,8 +145,7 @@ class PwCutImage
     }
 
     /**
-     * 图片旋转
-     *
+     * 图片旋转.
      */
     public function rotate()
     {
