@@ -18,7 +18,7 @@ curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ```
 **解释**：你下载的是源码。
-**解决方案**:请看上方 ==关于下载==
+**解决方案**:请看上方 关于下载
 
 *2.插件应用zip包在系统后台-插件与模板-应用管理-本地上传后安装失败，而且所有插件应用都安装失败。
 
