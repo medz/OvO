@@ -5,21 +5,18 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台菜单管理操作类
+ * 后台菜单管理操作类.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: RecycleController.php 28789 2013-05-23 10:11:36Z jieyin $
- * @package admin
- * @subpackage controller
  */
-
 class RecycleController extends AdminBaseController
 {
     /**
-     * 菜单管理主入口
-     *
+     * 菜单管理主入口.
      */
     public function run()
     {

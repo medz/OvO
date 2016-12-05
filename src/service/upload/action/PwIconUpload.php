@@ -12,6 +12,7 @@ class PwIconUpload extends PwUploadAction
         $this->dir = $dir;
         $this->ftype = array('jpg' => 2000, 'png' => '2000', 'gif' => 2000);
     }
+
     /* (non-PHPdoc)
      * @see PwUploadAction::getSaveName()
      */
@@ -48,11 +49,11 @@ class PwIconUpload extends PwUploadAction
          foreach ($uploaddb as $key => $value) {
              $this->attachs = array(
                 'attname' => $value['attname'],
-                'type' => $value['type'],
-                'path' => $value['fileuploadurl'],
-                'size' => $value['size'],
-                'width' => $this->width,
-                'height' => $this->height,
+                'type'    => $value['type'],
+                'path'    => $value['fileuploadurl'],
+                'size'    => $value['size'],
+                'width'   => $this->width,
+                'height'  => $this->height,
             );
          }
 

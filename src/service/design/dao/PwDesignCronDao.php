@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignCronDao.php 10783 2012-05-30 05:25:30Z gao.wanggao $
- * @package
  */
 class PwDesignCronDao extends PwBaseDao
 {

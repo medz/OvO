@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalInfo.php 7639 2012-04-10 07:20:01Z gao.wanggao $
- * @package
  */
-
 class PwMedalInfo
 {
     const ATUO_AWARD = 1;
@@ -15,8 +15,9 @@ class PwMedalInfo
 
     const SYSTEM_AWARD = 1;
     const USER_AWARD = 2;
+
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
      * @param int $medalId
      */
@@ -31,7 +32,7 @@ class PwMedalInfo
     }
 
     /**
-     * 获取多条记录
+     * 获取多条记录.
      *
      * @param array $medalIds
      */
@@ -45,7 +46,7 @@ class PwMedalInfo
     }
 
     /**
-     * 统计内容
+     * 统计内容.
      *
      * @param int $type
      */
@@ -57,7 +58,7 @@ class PwMedalInfo
     }
 
     /**
-     * 内容分页
+     * 内容分页.
      *
      * @param int $receiveType receive_type
      * @param int $awardType   award_type
@@ -76,7 +77,7 @@ class PwMedalInfo
 
     /**
      * 按获取条件某获取勋章
-     * 勋章多时慎用
+     * 勋章多时慎用.
      */
     public function getInfoListByAwardtype($awardType, $isopen = null)
     {
@@ -90,7 +91,7 @@ class PwMedalInfo
 
     /**
      * 获取某类型的勋章
-     * 勋章多时慎用
+     * 勋章多时慎用.
      */
     public function getInfoListByReceiveType($receiveType, $isopen = null)
     {
@@ -104,7 +105,7 @@ class PwMedalInfo
 
     /**
      * 按类型获取条件获取开启的勋章
-     * 勋章多时慎用
+     * 勋章多时慎用.
      */
     public function getOpenMedalList($awardType, $receiveType)
     {
@@ -119,7 +120,7 @@ class PwMedalInfo
 
     /**
      * 获取所有开启的勋章
-     * 勋章多时慎用
+     * 勋章多时慎用.
      */
     public function getAllOpenMedal()
     {
@@ -128,7 +129,7 @@ class PwMedalInfo
 
     /**
      * 获取所有的勋章
-     * 勋章多时慎用
+     * 勋章多时慎用.
      */
     public function getAllMedal()
     {

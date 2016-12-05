@@ -2,19 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * PwHook action拦截过滤器抽象接口定义
+ * PwHook action拦截过滤器抽象接口定义.
  *
  * 通过继承该接口,可以实现在Controller层注入扩展实现.该接口默认调用'run'方法.
  * 支持多参数扩展.
+ *
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-2
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwBaseHookInjector.php 8692 2012-04-24 05:56:29Z jieyin $
- * @package src
- * @subpackage library.filter
  */
 abstract class PwBaseHookInjector extends WindActionFilter
 {

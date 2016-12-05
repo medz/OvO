@@ -2,7 +2,7 @@
 
 Wind::import('SRV:task.dm.PwTaskUserDm');
 /**
- * 任务获取BP
+ * 任务获取BP.
  *
  * 申领任务：
  * 1、判断该任务是否能够被当前用户申领：
@@ -15,8 +15,8 @@ Wind::import('SRV:task.dm.PwTaskUserDm');
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskApply.php 11641 2012-06-11 09:26:41Z xiaoxia.xuxx $
- * @package src.service.task.srv
  */
 class PwTaskApply
 {
@@ -24,7 +24,7 @@ class PwTaskApply
     private $gids = array();
 
     /**
-     * 申请初始化
+     * 申请初始化.
      *
      * @param int $uid 用户ID
      */
@@ -39,9 +39,10 @@ class PwTaskApply
     }
 
     /**
-     * 申请任务入口
+     * 申请任务入口.
      *
-     * @param  int          $taskId 任务ID
+     * @param int $taskId 任务ID
+     *
      * @return true|PwError
      */
     public function apply($taskId)
@@ -62,13 +63,14 @@ class PwTaskApply
     }
 
     /**
-     * 自动接受任务接口
+     * 自动接受任务接口.
      *
      * 自动接受之后，将接受成功的一个ID更新到task_cache表
      * 1：如果该任务是自动发放的任务，自动任务完成之后更新pw_task_cache"表：
      * 1-1：如果该任务是周期任务：更新task_ids中完成的自动周期任务的ID列表
      *
-     * @param  array $taskIds
+     * @param array $taskIds
+     *
      * @return bool
      */
     public function autoApplies($taskIds)
@@ -109,9 +111,10 @@ class PwTaskApply
     }
 
     /**
-     * 添加一个任务申领
+     * 添加一个任务申领.
      *
-     * @param  array    $task
+     * @param array $task
+     *
      * @return Ambigous <boolean, PwError>
      */
     private function doApply($task)
@@ -128,7 +131,7 @@ class PwTaskApply
     }
 
     /**
-     * 判断任务是否允许申请
+     * 判断任务是否允许申请.
      *
      * 1、判断该任务是否能够被当前用户申领：
      * 1-1：是否没有过期
@@ -139,7 +142,8 @@ class PwTaskApply
      * 1-6：该用户是否已申领过该任务（该任务非周期任务）
      * 1-7：该任务为周期任务，该用户是否已完成该任务，并且该任务周期是否已达到下次申领时间。
      *
-     * @param  array        $task 任务信息
+     * @param array $task 任务信息
+     *
      * @return bool|PwError
      */
     private function allowTaskApplied($task)
@@ -195,7 +199,7 @@ class PwTaskApply
     }
 
     /**
-     * 获得任务DS
+     * 获得任务DS.
      *
      * @return PwTask
      */

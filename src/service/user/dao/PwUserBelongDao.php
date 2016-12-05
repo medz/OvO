@@ -2,13 +2,13 @@
 
 /**
  * 用户及用户组对应关系表
- * 在关联获取中，用户及用户组的关系保存在`belong`字段中传递
+ * 在关联获取中，用户及用户组的关系保存在`belong`字段中传递.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBelongDao.php 18619 2012-09-24 10:00:31Z xiaoxia.xuxx $
- * @package src.service.user.dao
  */
 class PwUserBelongDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwUserBelongDao extends PwBaseDao
     protected $_dataStruct = array('uid', 'gid', 'endtime');
 
     /**
-     * 获得某个用户的所有拥有的组
+     * 获得某个用户的所有拥有的组.
      *
-     * @param  int   $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function getByUid($uid)
@@ -38,9 +39,10 @@ class PwUserBelongDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID列表获取ID
+     * 根据用户ID列表获取ID.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchUserByUid($uids)
@@ -52,9 +54,10 @@ class PwUserBelongDao extends PwBaseDao
     }
 
     /**
-     * 删除用户数据
+     * 删除用户数据.
      *
-     * @param  int      $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return bool|int
      */
     public function delete($uid)
@@ -66,10 +69,11 @@ class PwUserBelongDao extends PwBaseDao
     }
 
     /**
-     * 更新用户组信息
+     * 更新用户组信息.
      *
-     * @param  int      $uid    用户ID
-     * @param  array    $fields 用户数据
+     * @param int   $uid    用户ID
+     * @param array $fields 用户数据
+     *
      * @return bool|int
      */
     public function edit($uid, $fields)
@@ -104,9 +108,10 @@ class PwUserBelongDao extends PwBaseDao
     }
 
     /**
-     * 批量删除用户信息
+     * 批量删除用户信息.
      *
-     * @param  array $uids 用户ID
+     * @param array $uids 用户ID
+     *
      * @return bool
      */
     public function batchDeleteByUids($uids)

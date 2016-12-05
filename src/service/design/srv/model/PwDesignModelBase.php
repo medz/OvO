@@ -1,12 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
- * @version $Id: PwDesignModelBase.php 25400 2013-03-14 08:35:54Z gao.wanggao $
  *
- * @package
+ * @version $Id: PwDesignModelBase.php 25400 2013-03-14 08:35:54Z gao.wanggao $
  */
 abstract class PwDesignModelBase
 {
@@ -15,7 +15,8 @@ abstract class PwDesignModelBase
     private $_viewSet = array();
 
     /**
-     * 根据设置获取数据
+     * 根据设置获取数据.
+     *
      * @param array $field  可能的查询参数
      * @param int   $order
      * @param int   $limit
@@ -26,7 +27,8 @@ abstract class PwDesignModelBase
     abstract protected function getData($param, $order, $limit, $offset);
 
     /**
-     * 模块增加额外属性
+     * 模块增加额外属性.
+     *
      * @param string $model
      *
      * @return array
@@ -34,7 +36,8 @@ abstract class PwDesignModelBase
     abstract public function decorateAddProperty($model);
 
     /**
-     * 模块修改额外属性
+     * 模块修改额外属性.
+     *
      * @param string $model
      *
      * @return array
@@ -44,6 +47,7 @@ abstract class PwDesignModelBase
     /**
      * 保存属性时的额外修改
      * Enter description here ...
+     *
      * @param array $property
      */
     public function decorateSaveProperty($property, $moduleid)
@@ -72,7 +76,8 @@ abstract class PwDesignModelBase
     }
 
     /**
-     * 用于对推送数据类型的扩展
+     * 用于对推送数据类型的扩展.
+     *
      * @param array $ids
      */
     protected function fetchData($ids)
@@ -81,7 +86,8 @@ abstract class PwDesignModelBase
     }
 
     /**
-     * 格式化时间
+     * 格式化时间.
+     *
      * @param int $time
      */
     final protected function _formatTime($time)
@@ -94,7 +100,8 @@ abstract class PwDesignModelBase
     }
 
     /**
-     * 格式化标题
+     * 格式化标题.
+     *
      * @param string $string
      */
     final protected function _formatTitle($string)
@@ -107,7 +114,8 @@ abstract class PwDesignModelBase
     }
 
     /**
-     * 格式化简介
+     * 格式化简介.
+     *
      * @param string $time
      */
     final protected function _formatDes($string)
@@ -153,6 +161,7 @@ abstract class PwDesignModelBase
     /**
      * 对单个标签进行进得key转换
      * Enter description here ...
+     *
      * @param unknown_type $sign
      */
     private function _transformSign($sign)

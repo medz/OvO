@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 投票业务模型
+ * 投票业务模型.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadPollBo.php 18510 2012-09-19 01:55:21Z jieyin $
- * @package poll
  */
-
 class PwThreadPollBo
 {
     public $tid;
@@ -26,7 +25,7 @@ class PwThreadPollBo
     }
 
     /**
-     * 初始化信息
+     * 初始化信息.
      */
     protected function _init()
     {
@@ -47,7 +46,7 @@ class PwThreadPollBo
     }
 
     /**
-     * 检测信息是否初始化
+     * 检测信息是否初始化.
      *
      * @return bool
      */
@@ -57,7 +56,7 @@ class PwThreadPollBo
     }
 
     /**
-     * 获得投票信息
+     * 获得投票信息.
      *
      * @param array $data
      */
@@ -126,7 +125,7 @@ class PwThreadPollBo
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */
@@ -136,7 +135,7 @@ class PwThreadPollBo
     }
 
     /**
-     * get PwPollOption
+     * get PwPollOption.
      *
      * @return PwPollOption
      */
@@ -146,7 +145,7 @@ class PwThreadPollBo
     }
 
     /**
-     * get PwThreadPoll
+     * get PwThreadPoll.
      *
      * @return PwThreadPoll
      */
@@ -156,7 +155,7 @@ class PwThreadPollBo
     }
 
     /**
-     * get PwThread
+     * get PwThread.
      *
      * @return PwThread
      */

@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysVerifyServiceControl
 {
     public function doubleControl($data)
@@ -10,30 +10,30 @@ class ACloudSysVerifyServiceControl
 
     public function aseControl($data)
     {
-        if (! is_array($data) || ! isset($data ['ciphertext']) || ! $data ['ciphertext']) {
+        if (!is_array($data) || !isset($data['ciphertext']) || !$data['ciphertext']) {
             return false;
         }
         $keysService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
         $keys = $keysService->getKey123(1);
-        if (! $keys || strlen($keys ['key1']) != 128 || strlen($keys ['key2']) != 128 || strlen($keys ['key3']) != 128) {
+        if (!$keys || strlen($keys['key1']) != 128 || strlen($keys['key2']) != 128 || strlen($keys['key3']) != 128) {
             return false;
         }
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreAes');
         $aesService = new ACloudSysCoreAes();
-        $key = $aesService->encrypt($keys ['key3'], $keys ['key2'], 256);
-        if (! $key) {
+        $key = $aesService->encrypt($keys['key3'], $keys['key2'], 256);
+        if (!$key) {
             return false;
         }
-        $plaintext = $aesService->strcode($data ['ciphertext'], $key, 'DECODE');
-        if (! $plaintext) {
+        $plaintext = $aesService->strcode($data['ciphertext'], $key, 'DECODE');
+        if (!$plaintext) {
             return false;
         }
         $params = ACloudSysCoreHttp::splitHttpQuery($plaintext);
-        if (! is_array($params)) {
+        if (!is_array($params)) {
             return false;
         }
         $tmp = ACloudSysCoreCommon::arrayIntersectAssoc($params, $data);
-        if (is_array($tmp) && count($tmp) > 0 && (count($tmp) == count($params)) && ($tmp ['securecode'] === $data ['securecode'])) {
+        if (is_array($tmp) && count($tmp) > 0 && (count($tmp) == count($params)) && ($tmp['securecode'] === $data['securecode'])) {
             return true;
         }
 
@@ -44,7 +44,7 @@ class ACloudSysVerifyServiceControl
     {
         $keysService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
         $key1 = $keysService->getKey1(1);
-        if (! $key1 || strlen($key1) != 128 || ! is_array($data) || count($data) < 4) {
+        if (!$key1 || strlen($key1) != 128 || !is_array($data) || count($data) < 4) {
             return false;
         }
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreVerify');
@@ -58,15 +58,15 @@ class ACloudSysVerifyServiceControl
     public function apiControl($data)
     {
         $appsService = ACloudSysCoreCommon::loadSystemClass('apps', 'config.service');
-        if (! $data || ! is_array($data) || ! isset($data ['app_id']) || ! $data ['app_id']) {
+        if (!$data || !is_array($data) || !isset($data['app_id']) || !$data['app_id']) {
             return false;
         }
-        $app = $appsService->getApp($data ['app_id']);
-        if (! $app || strlen($app ['app_token']) != 128) {
+        $app = $appsService->getApp($data['app_id']);
+        if (!$app || strlen($app['app_token']) != 128) {
             return false;
         }
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreVerify');
-        if (ACloudSysCoreVerify::verifyWithOAuth($data, $app ['app_token'])) {
+        if (ACloudSysCoreVerify::verifyWithOAuth($data, $app['app_token'])) {
             return true;
         }
 
@@ -75,7 +75,7 @@ class ACloudSysVerifyServiceControl
 
     public function identifyControl($data)
     {
-        if (! is_array($data) || ! $data) {
+        if (!is_array($data) || !$data) {
             return false;
         }
         $initService = ACloudSysCoreCommon::loadSystemClass('init', 'open.service');
@@ -88,12 +88,12 @@ class ACloudSysVerifyServiceControl
     {
         return true;
         $ip = ACloudSysCoreCommon::getIp();
-        if ($this->spiderControl() || ! $ip) {
+        if ($this->spiderControl() || !$ip) {
             return false;
         }
         list($ip1, $ip2, $ip3) = explode('.', $ip);
         $envService = ACloudSysCoreCommon::loadSystemClass('env', 'open.service');
-        if (! in_array($ip1.'.'.$ip2.'.'.$ip3.'.x', $envService->getIpLists())) {
+        if (!in_array($ip1.'.'.$ip2.'.'.$ip3.'.x', $envService->getIpLists())) {
             return false;
         }
 
@@ -102,7 +102,7 @@ class ACloudSysVerifyServiceControl
 
     public function spiderControl()
     {
-        $user_agent = strtolower($_SERVER ['HTTP_USER_AGENT']);
+        $user_agent = strtolower($_SERVER['HTTP_USER_AGENT']);
         $allow_spiders = array('Baiduspider', 'Googlebot');
         foreach ($allow_spiders as $spider) {
             $spider = strtolower($spider);

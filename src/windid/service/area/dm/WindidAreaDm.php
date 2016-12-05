@@ -1,22 +1,23 @@
 <?php
 
 /**
- * 地区的DM
+ * 地区的DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidAreaDm.php 23673 2013-01-14 09:11:23Z jieyin $
- * @package windid.service.area.dm
  */
 class WindidAreaDm extends PwBaseDm
 {
     public $areaid;
 
     /**
-     * 设置地区ID
+     * 设置地区ID.
      *
-     * @param  int          $areaid
+     * @param int $areaid
+     *
      * @return WindidAreaDm
      */
     public function setAreaid($areaid)
@@ -27,9 +28,10 @@ class WindidAreaDm extends PwBaseDm
     }
 
     /**
-     * 设置地区名字
+     * 设置地区名字.
      *
-     * @param  string       $name
+     * @param string $name
+     *
      * @return WindidAreaDm
      */
     public function setName($name)
@@ -40,9 +42,10 @@ class WindidAreaDm extends PwBaseDm
     }
 
     /**
-     * 设置上级地区ID
+     * 设置上级地区ID.
      *
-     * @param  int          $parentid
+     * @param int $parentid
+     *
      * @return WindidAreaDm
      */
     public function setParentid($parentid)
@@ -53,9 +56,10 @@ class WindidAreaDm extends PwBaseDm
     }
 
     /**
-     * 路径-省-市-区
+     * 路径-省-市-区.
      *
-     * @param  string       $joinName
+     * @param string $joinName
+     *
      * @return WindidAreaDm
      */
     public function setJoinname($joinName)

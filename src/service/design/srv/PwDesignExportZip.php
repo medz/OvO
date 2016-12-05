@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignExportZip.php 24989 2013-02-28 02:53:30Z gao.wanggao $
- * @package
  */
 class PwDesignExportZip
 {
@@ -94,7 +95,6 @@ class PwDesignExportZip
         return $section;
     }*/
 
-
     protected function decompileTpl($section)
     {
         Wind::import('SRV:design.bo.PwDesignModuleBo');
@@ -108,14 +108,14 @@ class PwDesignExportZip
                 $_html .= '</pw-list>';
                 $section = str_replace($matches[0][$k], $_html, $section);
                 $this->_moduleConf[$k] = array(
-                    'itemid' => $k,
-                    'name' => $module['module_name'],
-                    'model' => $bo->getModel(),
-                    'id' => $v,
+                    'itemid'   => $k,
+                    'name'     => $module['module_name'],
+                    'model'    => $bo->getModel(),
+                    'id'       => $v,
                     'titlenum' => strval($property['titlenum']),
-                    'desnum' => strval($property['desnum']),
-                    'timefmt' => $property['timefmt'],
-                    'limit' => strval($property['limit']), );
+                    'desnum'   => strval($property['desnum']),
+                    'timefmt'  => $property['timefmt'],
+                    'limit'    => strval($property['limit']), );
             }
         }
 

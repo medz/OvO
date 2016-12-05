@@ -1,19 +1,20 @@
 <?php
 /**
- * 任务树帮助类
+ * 任务树帮助类.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskTreeHelper.php 4670 2012-02-23 01:41:42Z xiaoxia.xuxx $
- * @package service.task.srv.helper
  */
 class PwTaskTreeHelper
 {
     /**
-     * 获得一颗有序的任务树
+     * 获得一颗有序的任务树.
      *
-     * @param  array $tasks
+     * @param array $tasks
+     *
      * @return array
      */
     public static function getTaskTree($tasks)
@@ -52,11 +53,12 @@ class PwTaskTreeHelper
     }
 
     /**
-     * 将树展示出来
+     * 将树展示出来.
      *
-     * @param  array  $tree
-     * @param  array  $accepts 为空则不做过滤操作，否则要判断节点id是否在accept中
-     * @param  string $split
+     * @param array  $tree
+     * @param array  $accepts 为空则不做过滤操作，否则要判断节点id是否在accept中
+     * @param string $split
+     *
      * @return array
      */
     public static function cookTree($tree, $accepts = array(), $split = '|- ')

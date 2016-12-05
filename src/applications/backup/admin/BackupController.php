@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 数据库
+ * 数据库.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class BackupController extends AdminBaseController
 {
@@ -37,8 +37,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 数据库还原列表
-     *
+     * 数据库还原列表.
      */
     public function restoreAction()
     {
@@ -62,8 +61,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 数据库还原子目录列表
-     *
+     * 数据库还原子目录列表.
      */
     public function subcatAction()
     {
@@ -101,8 +99,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 批量删除备份
-     *
+     * 批量删除备份.
      */
     public function batchdeleteAction()
     {
@@ -124,8 +121,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 备份
-     *
+     * 备份.
      */
     public function dobackAction()
     {
@@ -191,8 +187,8 @@ class BackupController extends AdminBaseController
             $referer = 'admin/backup/backup/doback?'."start=$start&tableid=$tableid&sizelimit=$sizelimit&step=$step&insertmethod=$insertmethod&compress=$compress&tabledbname=$tabledbname&dirname=$dirname";
             $this->showMessage(array('BACKUP:bakup_step', array(
                 '{currentTableName}' => $currentTableName,
-                '{currentPos}' => $currentPos,
-                '{createdFileNum}' => $createdFileNum,
+                '{currentPos}'       => $currentPos,
+                '{createdFileNum}'   => $createdFileNum,
             )), $referer, true);
         } else {
             unlink(WindSecurity::escapePath($tabledbTmpSaveDir.$tabledbname.'.tmp'));
@@ -203,8 +199,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 简单优化数据表
-     *
+     * 简单优化数据表.
      */
     public function optimizeAction()
     {
@@ -222,8 +217,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 简单修复数据表
-     *
+     * 简单修复数据表.
      */
     public function repairAction()
     {
@@ -241,8 +235,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 导入数据表
-     *
+     * 导入数据表.
      */
     public function importAction()
     {
@@ -278,8 +271,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * 组装系统表白名单wind_structure.sql获取
-     *
+     * 组装系统表白名单wind_structure.sql获取.
      */
     protected function _buildTables($tables)
     {
@@ -304,7 +296,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * PwBackupDs
+     * PwBackupDs.
      *
      * @return PwBackup
      */
@@ -314,7 +306,7 @@ class BackupController extends AdminBaseController
     }
 
     /**
-     * PwBackupService
+     * PwBackupService.
      *
      * @return PwBackupService
      */

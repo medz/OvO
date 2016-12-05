@@ -1,16 +1,15 @@
 <?php
 
 
-
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 24214 2013-01-23 03:18:19Z gao.wanggao $
- * @package
  */
-
 class IndexController extends PwBaseController
 {
     /* (non-PHPdoc)
@@ -54,15 +53,15 @@ class IndexController extends PwBaseController
             }
 
             $medalJson[] = array(
-                'id' => $medal['medal_id'],
-                'status' => $medal['award_status'],
-                'name' => $medal['name'],
-                'type' => $medal['receive_type'],
+                'id'          => $medal['medal_id'],
+                'status'      => $medal['award_status'],
+                'name'        => $medal['name'],
+                'type'        => $medal['receive_type'],
                 'description' => $medal['descrip'],
-                'time' => $medal['expired_days'] ? $medal['expired_days'] : 0,
-                'small' => $medal['icon'],
-                'big' => $medal['image'],
-                'condition' => $medal['award_condition'],
+                'time'        => $medal['expired_days'] ? $medal['expired_days'] : 0,
+                'small'       => $medal['icon'],
+                'big'         => $medal['image'],
+                'condition'   => $medal['award_condition'],
                 //'behavior'=>isset($behaviors[$awardTypes[$medal['award_type']]]) ? $behaviors[$awardTypes[$medal['award_type']]] : 0,
             );
         }
@@ -220,8 +219,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 我的勋章排序
-     *
+     * 我的勋章排序.
      */
     public function doOrderAction()
     {
@@ -245,8 +243,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 领取勋章
-     *
+     * 领取勋章.
      */
     public function doAwardAction()
     {

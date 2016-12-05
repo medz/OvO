@@ -3,15 +3,15 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 9, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwThreadSortDm.php 17002 2012-08-30 07:49:23Z peihong.zhangph $
  */
-
 defined('WEKIT_VERSION') || exit('Forbidden');
-
-
 
 class PwThreadSortDm extends PwBaseDm
 {

@@ -2,22 +2,23 @@
 
 
 /**
- *
  * 广告标签解析
  * <code>
  * <advertisement id="**" />
- * </code>
+ * </code>.
  *
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z zhudong $
- * @package wind
  */
 class PwTemplateCompilerAdvertisement extends AbstractWindTemplateCompiler
 {
     protected $id = ''; //广告位ID
-    protected $sys = ''; //是否为默认广告位
+    protected $sys = '';
+
+ //是否为默认广告位
     /* (non-PHPdoc)
      * @see AbstractWindTemplateCompiler::compile()
      */
@@ -57,7 +58,6 @@ class PwTemplateCompilerAdvertisement extends AbstractWindTemplateCompiler
 
         return $html;
     }
-
 
     /* (non-PHPdoc)
      * @see AbstractWindTemplateCompiler::getProperties()

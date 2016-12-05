@@ -3,13 +3,13 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * 友情链接DAO
+ * 友情链接DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:53Z yishuo $
- * @package PwLinkDao
  */
 class PwLinkDao extends PwBaseDao
 {
@@ -18,9 +18,10 @@ class PwLinkDao extends PwBaseDao
     protected $_dataStruct = array('lid', 'vieworder', 'name', 'url', 'descrip', 'logo', 'iflogo', 'ifcheck', 'contact');
 
     /**
-     * 添加一条链接
+     * 添加一条链接.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addLink($data)
@@ -29,9 +30,10 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 删除一条链接
+     * 删除一条链接.
      *
-     * @param  int  $lid
+     * @param int $lid
+     *
      * @return bool
      */
     public function delete($lid)
@@ -40,9 +42,10 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 删除多条信息
+     * 删除多条信息.
      *
-     * @param  array $lids
+     * @param array $lids
+     *
      * @return bool
      */
     public function batchDelete($lids)
@@ -51,10 +54,11 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 修改一条信息
+     * 修改一条信息.
      *
-     * @param  int   $lid
-     * @param  array $data
+     * @param int   $lid
+     * @param array $data
+     *
      * @return bool
      */
     public function updateLink($lid, $data)
@@ -63,9 +67,10 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 获取一条信息
+     * 获取一条信息.
      *
-     * @param  int   $lid
+     * @param int $lid
+     *
      * @return array
      */
     public function getLink($lid)
@@ -74,9 +79,10 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 获取链接数量
+     * 获取链接数量.
      *
-     * @param  int   $ifcheck 0 未审核| 1已审核
+     * @param int $ifcheck 0 未审核| 1已审核
+     *
      * @return array
      */
     public function countLinks($ifcheck)
@@ -94,11 +100,12 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 获取链接
+     * 获取链接.
      *
-     * @param  int   $ifcheck 0 未审核| 1已审核
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $ifcheck 0 未审核| 1已审核
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getLinks($start, $limit, $ifcheck)
@@ -116,9 +123,10 @@ class PwLinkDao extends PwBaseDao
     }
 
     /**
-     * 根据lids获取链接
+     * 根据lids获取链接.
      *
-     * @param  array $lids
+     * @param array $lids
+     *
      * @return array
      */
     public function getLinksByLids($lids)

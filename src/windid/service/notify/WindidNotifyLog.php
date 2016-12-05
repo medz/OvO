@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotifyLog.php 24773 2013-02-21 02:59:06Z jieyin $
- * @package
  */
 class WindidNotifyLog
 {
@@ -64,7 +65,6 @@ class WindidNotifyLog
 
         return $this->_getDao()->update($dm->logid, $dm->getData(), $dm->getIncreaseData());
     }
-
 
     public function deleteLog($id)
     {

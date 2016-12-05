@@ -2,18 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('COM:utility.WindUtility');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpaceUpload.php 28882 2013-05-28 10:51:23Z gao.wanggao $
- * @package
  */
-
 class PwSpaceUpload extends PwUploadAction
 {
     public $dir;
@@ -104,11 +103,11 @@ class PwSpaceUpload extends PwUploadAction
     {
         foreach ($uploaddb as $key => $value) {
             $this->attachs = array(
-                'name' => $value['name'],
-                'type' => $value['type'],
-                'path' => $this->dir.$this->filename,
-                'size' => $value['size'],
-                'width' => $this->width,
+                'name'   => $value['name'],
+                'type'   => $value['type'],
+                'path'   => $this->dir.$this->filename,
+                'size'   => $value['size'],
+                'width'  => $this->width,
                 'height' => $this->height,
             );
         }

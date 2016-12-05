@@ -1,20 +1,20 @@
 <?php
 
 /**
- * 加精DM
+ * 加精DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwThreadDigestDm.php 22320 2012-12-21 08:14:25Z xiaoxia.xuxx $
- * @package src.service.forum.dm
  */
 class PwThreadDigestDm extends PwBaseDm
 {
     public $tid;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $tid
      */
@@ -24,9 +24,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置tid
+     * 设置tid.
      *
-     * @param  int              $tid
+     * @param int $tid
+     *
      * @return PwThreadDigestDm
      */
     public function setTid($tid)
@@ -37,9 +38,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置板块ID
+     * 设置板块ID.
      *
-     * @param  int              $fid
+     * @param int $fid
+     *
      * @return PwThreadDigestDm
      */
     public function setFid($fid)
@@ -50,9 +52,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置版块的分类ID
+     * 设置版块的分类ID.
      *
-     * @param  int              $cid
+     * @param int $cid
+     *
      * @return PwThreadDigestDm
      */
     public function setCid($cid)
@@ -65,7 +68,8 @@ class PwThreadDigestDm extends PwBaseDm
     /**
      * 设置帖子的状态
      *
-     * @param  int              $disabled
+     * @param int $disabled
+     *
      * @return PwThreadDigestDm
      */
     public function setDisabled($disabled)
@@ -76,9 +80,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置主题类型的ID
+     * 设置主题类型的ID.
      *
-     * @param  int              $topic_type
+     * @param int $topic_type
+     *
      * @return PwThreadDigestDm
      */
     public function setTopicType($topic_type)
@@ -89,9 +94,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子的创建时间
+     * 设置帖子的创建时间.
      *
-     * @param  int              $created_time
+     * @param int $created_time
+     *
      * @return PwThreadDigestDm
      */
     public function setCreatedTime($created_time)
@@ -102,9 +108,10 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子的最后回复时间
+     * 设置帖子的最后回复时间.
      *
-     * @param  int              $lastpost_time
+     * @param int $lastpost_time
+     *
      * @return PwThreadDigestDm
      */
     public function setLastpostTime($lastpost_time)
@@ -115,11 +122,12 @@ class PwThreadDigestDm extends PwBaseDm
     }
 
     /**
-     * 加精的操作者
+     * 加精的操作者.
      *
-     * @param  string           $username
-     * @param  int              $uid
-     * @param  int              $time
+     * @param string $username
+     * @param int    $uid
+     * @param int    $time
+     *
      * @return PwThreadDigestDm
      */
     public function setOperator($username, $uid, $time)

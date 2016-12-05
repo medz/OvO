@@ -2,13 +2,13 @@
 
 //TODO 话题屏蔽-对应类型获取临时解决方案
 /**
- * 添加话题屏蔽的管理日志
+ * 添加话题屏蔽的管理日志.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAddTagShieldLog.php 21242 2012-12-03 07:50:27Z xiaoxia.xuxx $
- * @package src.service.log.srv.operator
  */
 class PwAddTagShieldLog extends PwBaseHookService
 {
@@ -19,7 +19,7 @@ class PwAddTagShieldLog extends PwBaseHookService
     public $ifShield = true;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int      $tagId
      * @param int      $typeId
@@ -36,9 +36,10 @@ class PwAddTagShieldLog extends PwBaseHookService
     }
 
     /**
-     * 设置是否屏蔽还是取消屏蔽
+     * 设置是否屏蔽还是取消屏蔽.
      *
-     * @param  bool              $ifShield
+     * @param bool $ifShield
+     *
      * @return PwAddTagShieldLog
      */
     public function setIfShield($ifShield = true)
@@ -49,7 +50,7 @@ class PwAddTagShieldLog extends PwBaseHookService
     }
 
     /**
-     * 执行
+     * 执行.
      */
     public function execute()
     {

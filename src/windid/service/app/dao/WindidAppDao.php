@@ -4,15 +4,14 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidAppDao.php 24169 2013-01-22 09:19:23Z jieyin $
- * @package windid.service.app.dao
  */
 class WindidAppDao extends WindidBaseDao
 {
     protected $_table = 'app';
     protected $_pk = 'id';
     protected $_dataStruct = array('id', 'name', 'siteurl', 'siteip', 'secretkey', 'apifile', 'charset', 'issyn', 'isnotify');
-
 
     public function get($id)
     {
@@ -44,7 +43,6 @@ class WindidAppDao extends WindidBaseDao
         return $this->getConnection()->execute($sql);
     }
 
-
     public function update($id, $data)
     {
         return $this->_update($id, $data);
@@ -54,7 +52,6 @@ class WindidAppDao extends WindidBaseDao
     {
         return $this->_delete($id);
     }
-
 
     public function batchDelete($ids)
     {

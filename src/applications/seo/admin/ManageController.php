@@ -2,7 +2,7 @@
 
 Wind::import('APPS:seo.admin.AdminBaseSeoController');
 /**
- * seo后台设置
+ * seo后台设置.
  *
  * 1、设置seo信息，可以直接输入文字，也支持参数选择；
  * 2、定位到输入框，可以弹出可以使用的参数，选择后显示到输入框；
@@ -36,8 +36,8 @@ Wind::import('APPS:seo.admin.AdminBaseSeoController');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package modules.seo.admin
  */
 class ManageController extends AdminBaseSeoController
 {
@@ -51,8 +51,7 @@ class ManageController extends AdminBaseSeoController
     }
 
     /**
-     * bbs模式的seo设置
-     *
+     * bbs模式的seo设置.
      */
     public function bbsAction()
     {
@@ -99,8 +98,7 @@ class ManageController extends AdminBaseSeoController
     }
 
     /**
-     * 更新seo
-     *
+     * 更新seo.
      */
     public function doRunAction()
     {

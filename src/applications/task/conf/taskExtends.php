@@ -7,7 +7,7 @@
  * 	credit:积分
  *  group:用户组
  *  对应的在SRC:service.task.srv.reward下可以看到PwTaskCreditRewardDo 和PwTaskGroupRewardDo
- *  注： XXX的第一个字母要大写其他字母和配置保持一致
+ *  注： XXX的第一个字母要大写其他字母和配置保持一致.
  *
  * condition：配置任务的完成条件扩展项
  *    完成条件可以根据需求归类，第一类是完成条件的大类（如member,bbs）
@@ -20,53 +20,53 @@
 return array(
     'reward' => array(
         'credit' => array(
-            'title' => '积分',
+            'title'       => '积分',
             'setting_url' => 'task/taskReward/run',
         ),
         'group' => array(
-            'title' => '用户组',
+            'title'       => '用户组',
             'setting_url' => 'task/taskReward/group',
         ),
     ),
     'condition' => array(
         'member' => array(
-            'title' => '会员信息类',
+            'title'    => '会员信息类',
             'children' => array(
                 'profile' => array(
-                    'title' => '完善资料',
+                    'title'       => '完善资料',
                     'setting_url' => 'task/taskConditionMember/profile',
                 ),
                 'avatar' => array(
-                    'title' => '上传头像',
+                    'title'       => '上传头像',
                     'setting_url' => 'task/taskConditionMember/avatar',
                 ),
                 'msg' => array(
-                    'title' => '发送消息',
+                    'title'       => '发送消息',
                     'setting_url' => 'task/taskConditionMember/sendMsg',
                 ),
                 'fans' => array(
-                    'title' => '求粉丝',
+                    'title'       => '求粉丝',
                     'setting_url' => 'task/taskConditionMember/fans',
                 ),
                 'punch' => array(
-                    'title' => '打卡签到',
+                    'title'       => '打卡签到',
                     'setting_url' => 'task/taskConditionMember/punch',
                 ),
             ),
         ),
         'bbs' => array(
-            'title' => '论坛操作类',
+            'title'    => '论坛操作类',
             'children' => array(
                 'postThread' => array(
-                    'title' => '发帖子',
+                    'title'       => '发帖子',
                     'setting_url' => 'task/taskConditionBbs/run',
                 ),
                 'reply' => array(
-                    'title' => '回复帖子',
+                    'title'       => '回复帖子',
                     'setting_url' => 'task/taskConditionBbs/reply',
                 ),
                 'like' => array(
-                    'title' => '喜欢帖子',
+                    'title'       => '喜欢帖子',
                     'setting_url' => 'task/taskConditionBbs/like',
                 ),
             ),

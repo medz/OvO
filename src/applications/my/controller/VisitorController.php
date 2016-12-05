@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 访问脚印
+ * 访问脚印.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: VisitorController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package wind
  */
 class VisitorController extends PwBaseController
 {
@@ -21,7 +21,7 @@ class VisitorController extends PwBaseController
     }
 
     /**
-     * 谁看过我
+     * 谁看过我.
      */
     public function run()
     {
@@ -102,7 +102,7 @@ class VisitorController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -112,7 +112,7 @@ class VisitorController extends PwBaseController
     }
 
     /**
-     * PwSpace
+     * PwSpace.
      *
      * @return PwSpace
      */

@@ -3,12 +3,13 @@
 Wind::import('SRV:medal.bo.PwUserMedalBo');
 /**
  * 勋章自动回收流程
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class PwAutoRecoverMedal
 {
@@ -43,9 +44,8 @@ class PwAutoRecoverMedal
         return $this->recoverMedals($intersect);
     }
 
-
     /**
-     * 判断应该回收的勋章
+     * 判断应该回收的勋章.
      *
      * @param int $awardType    @source PwMedalService->awardTypes()
      * @param int $nowCondition

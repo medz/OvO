@@ -1,17 +1,14 @@
 <?php
 
 
-
 /**
- *
  * 在FORM表单中统一加入Token,由PwCsrfFilter.php进行统一提交验证
  *
  * @author liusanbian <liusanbian@aliyun.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wekit
- * @subpackage engine.extension.viewer
  */
 class PwTemplateCompilerCsrftoken extends AbstractWindTemplateCompiler
 {

@@ -4,15 +4,14 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子管理操作-压帖
+ * 帖子管理操作-压帖.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDown.php 24736 2013-02-19 09:24:40Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoDown extends PwThreadManageDo
 {
     public $downtime;

@@ -16,7 +16,7 @@ defined('WEKIT_VERSION') or exit(403);
  * 节点定义: 'Key' => array('节点名称', 子菜单, 'icon', 'tip' ,'父节点key'),
  */
 return array(
-    'fresh' => array('新鲜事', '', ''),
+    'fresh'      => array('新鲜事', '', ''),
     'post_fresh' => array('发布新鲜事', 'fresh', '', true),
 );
 /**=====配置结束于此=====**/

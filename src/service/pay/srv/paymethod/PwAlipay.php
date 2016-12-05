@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:pay.srv.paymethod.PwPayAbstract');
 
 /**
- * 在线支付 - 支付宝支付方式
+ * 在线支付 - 支付宝支付方式.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAlipay.php 26892 2013-04-18 01:24:54Z yetianshi $
- * @package forum
  */
-
 class PwAlipay extends PwPayAbstract
 {
     public $alipay;
@@ -54,13 +53,13 @@ class PwAlipay extends PwPayAbstract
             'payment_type' => '1',
 
             '_input_charset' => $this->charset,
-            'seller_email' => $this->alipay,
-            'notify_url' => $this->baseurl,
-            'return_url' => $this->baseurl,
+            'seller_email'   => $this->alipay,
+            'notify_url'     => $this->baseurl,
+            'return_url'     => $this->baseurl,
 
             'out_trade_no' => $vo->getOrderNo(),
-            'subject' => $vo->getTitle(),
-            'body' => $vo->getBody(),
+            'subject'      => $vo->getTitle(),
+            'body'         => $vo->getBody(),
 
             'extend_param' => 'isv^pw11',
             //'extra_common_param' => ''//$this->formatExtra($extra),

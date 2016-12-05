@@ -2,13 +2,13 @@
 
 
 /**
- * 消息Controller
+ * 消息Controller.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class MessageController extends PwBaseController
 {
@@ -28,7 +28,8 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 会话列表
+     * 会话列表.
+     *
      * @see WindController::run()
      */
     public function run()
@@ -58,8 +59,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 发消息
-     *
+     * 发消息.
      */
     public function addAction()
     {
@@ -77,8 +77,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * do发消息
-     *
+     * do发消息.
      */
     public function doAddMessageAction()
     {
@@ -114,8 +113,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 弹窗发消息
-     *
+     * 弹窗发消息.
      */
     public function popAction()
     {
@@ -140,8 +138,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * do发消息dialog
-     *
+     * do发消息dialog.
      */
     public function doAddDialogAction()
     {
@@ -164,8 +161,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 对话详细列表
-     *
+     * 对话详细列表.
      */
     public function dialogAction()
     {
@@ -197,8 +193,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 删除单条消息
-     *
+     * 删除单条消息.
      */
     public function deletemessageAction()
     {
@@ -222,8 +217,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 删除对话
-     *
+     * 删除对话.
      */
     public function deleteDialogAction()
     {
@@ -249,8 +243,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 搜索
-     *
+     * 搜索.
      */
     public function searchAction()
     {
@@ -268,8 +261,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 设置
-     *
+     * 设置.
      */
     public function setAction()
     {
@@ -286,9 +278,9 @@ class MessageController extends PwBaseController
         $config = array(
             'message_tone_Y' => $this->loginUser->info['message_tone'] ? 'checked' : '',
             'message_tone_N' => $this->loginUser->info['message_tone'] ? '' : 'checked',
-            'privacy_N' => $config['privacy'] > 0 ? '' : 'checked',
-            'privacy_Y' => $config['privacy'] > 0 ? 'checked' : '',
-            'blacklist' => $config['blacklist'] ? $config['blacklist'] : '',
+            'privacy_N'      => $config['privacy'] > 0 ? '' : 'checked',
+            'privacy_Y'      => $config['privacy'] > 0 ? 'checked' : '',
+            'blacklist'      => $config['blacklist'] ? $config['blacklist'] : '',
         );
         foreach ($config as $k => $v) {
             $this->setOutput($v, $k);
@@ -307,8 +299,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * do设置
-     *
+     * do设置.
      */
     public function doSetAction()
     {
@@ -338,8 +329,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 标记已读
-     *
+     * 标记已读.
      */
     public function checkReadedAction()
     {
@@ -353,8 +343,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 加入黑名单
-     *
+     * 加入黑名单.
      */
     public function addBlackAction()
     {
@@ -374,8 +363,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 获取我关注的人
-     *
+     * 获取我关注的人.
      */
     public function followsAction()
     {
@@ -401,8 +389,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 组装用户
-     *
+     * 组装用户.
      */
     private function _buildUsers($attentions)
     {
@@ -430,7 +417,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 更新用户表未读消息计数
+     * 更新用户表未读消息计数.
      *
      * @param int $uid
      * @param int $num
@@ -463,8 +450,8 @@ class MessageController extends PwBaseController
 
         return $match[1] ? $match[1] : $message;
     }
+
     /**
-     *
      * @return PwUser
      */
     private function _getUserDs()
@@ -473,7 +460,6 @@ class MessageController extends PwBaseController
     }
 
     /**
-     *
      * @return PwMessageService
      */
     private function _getMessageService()
@@ -482,7 +468,6 @@ class MessageController extends PwBaseController
     }
 
     /**
-     *
      * @return PwMessageMessages
      */
     private function _getMessageDs()
@@ -501,7 +486,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * PwUserBehavior
+     * PwUserBehavior.
      *
      * @return PwUserBehavior
      */
@@ -511,7 +496,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * PwNoticeService
+     * PwNoticeService.
      *
      * @return PwNoticeService
      */
@@ -521,7 +506,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * 获得PwUserBlack DS
+     * 获得PwUserBlack DS.
      *
      * @return PwUserBlack
      */
@@ -531,7 +516,7 @@ class MessageController extends PwBaseController
     }
 
     /**
-     * PwCheckVerifyService
+     * PwCheckVerifyService.
      *
      * @return PwCheckVerifyService
      */

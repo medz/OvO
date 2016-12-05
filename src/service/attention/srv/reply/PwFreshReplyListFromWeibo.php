@@ -6,15 +6,14 @@ Wind::import('SRV:forum.srv.post.PwReplyPost');
 Wind::import('SRV:forum.srv.PwPost');
 
 /**
- * 新鲜事回复
+ * 新鲜事回复.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshReplyListFromWeibo.php 20581 2012-10-31 08:46:10Z jieyin $
- * @package src.service.user.srv
  */
-
 class PwFreshReplyListFromWeibo
 {
     protected $weibo_id;

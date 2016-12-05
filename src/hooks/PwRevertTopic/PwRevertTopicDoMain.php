@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子删除扩展服务接口--虚拟删除到回收站
+ * 帖子删除扩展服务接口--虚拟删除到回收站.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRevertTopicDoMain.php 13302 2012-07-05 03:45:43Z jieyin $
- * @package forum
  */
-
 class PwRevertTopicDoMain extends iPwGleanDoHookProcess
 {
     public $fids = array();

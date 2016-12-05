@@ -5,15 +5,16 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyle.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package service.style
  */
 class PwStyle
 {
     /**
-     * 添加
+     * 添加.
      *
-     * @param  PwStyleDm    $dm
+     * @param PwStyleDm $dm
+     *
      * @return PwError|bool
      */
     public function addStyle(PwStyleDm $dm)
@@ -26,10 +27,11 @@ class PwStyle
     }
 
     /**
-     * 修改
+     * 修改.
      *
-     * @param  int   $styleid
-     * @param  array $data
+     * @param int   $styleid
+     * @param array $data
+     *
      * @return bool
      */
     public function updateStyle(PwStyleDm $dm)
@@ -42,9 +44,10 @@ class PwStyle
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int     $styleid
+     * @param int $styleid
+     *
      * @return booelan
      */
     public function deleteStyle($styleid)
@@ -53,7 +56,7 @@ class PwStyle
     }
 
     /**
-     * 统计风格数
+     * 统计风格数.
      *
      * @return int
      */
@@ -75,9 +78,10 @@ class PwStyle
     /**
      * 获取所有风格
      *
-     * @param  int    $offset
-     * @param  int    $limit
-     * @param  string $orderBy
+     * @param int    $offset
+     * @param int    $limit
+     * @param string $orderBy
+     *
      * @return array
      */
     public function getStyleListByType($type = 'site', $num = 10, $start = 0)
@@ -86,9 +90,10 @@ class PwStyle
     }
 
     /**
-     * 获取风格详细信息
+     * 获取风格详细信息.
      *
-     * @param  int   $styleid
+     * @param int $styleid
+     *
      * @return array
      */
     public function getStyle($styleid)
@@ -121,9 +126,10 @@ class PwStyle
     }
 
     /**
-     * 根据应用ID查找应用
+     * 根据应用ID查找应用.
      *
-     * @param  string  $appId
+     * @param string $appId
+     *
      * @return PwError boolean
      */
     public function findByAppId($appId)

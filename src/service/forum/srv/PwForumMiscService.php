@@ -6,20 +6,21 @@ Wind::import('SRV:forum.dm.PwForumDm');
 Wind::import('SRV:forum.bo.PwForumBo');
 
 /**
- * 版块服务接口(不常用的业务逻辑)
+ * 版块服务接口(不常用的业务逻辑).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumMiscService.php 18802 2012-09-27 10:17:30Z jieyin $
- * @package src.service.user.srv
  */
 class PwForumMiscService
 {
     /**
-     * 用户被禁言的时候同步删除该用户的版主权限
+     * 用户被禁言的时候同步删除该用户的版主权限.
      *
-     * @param  string $manage 被禁言的用户名
+     * @param string $manage 被禁言的用户名
+     *
      * @return bool
      */
     public function updateDataByUser($manage)
@@ -40,7 +41,7 @@ class PwForumMiscService
     }
 
     /**
-     * 纠正版块额外的数据(上级版块、是否含有子版等统计数据)
+     * 纠正版块额外的数据(上级版块、是否含有子版等统计数据).
      */
     public function correctData()
     {
@@ -85,7 +86,7 @@ class PwForumMiscService
     }
 
     /**
-     * 重新统计所有版块的帖子数
+     * 重新统计所有版块的帖子数.
      */
     public function countAllForumStatistics()
     {

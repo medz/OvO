@@ -10,10 +10,9 @@ Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDoFresh.php 16258 2012-08-21 11:03:06Z jieyin $
- * @package forum
  */
-
 class PwPostDoFresh extends PwPostDoBase
 {
     public $uid;

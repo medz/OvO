@@ -7,13 +7,13 @@ Wind::import('SRV:user.PwUserBan');
 Wind::import('APPS:profile.service.PwUserProfileExtends');
 
 /**
- * 用户资料页面
+ * 用户资料页面.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 28946 2013-05-31 04:59:50Z jieyin $
- * @package src.products.u.controller.profile
  */
 class IndexController extends BaseProfileController
 {
@@ -78,7 +78,7 @@ class IndexController extends BaseProfileController
     }
 
     /**
-     * 编辑用户信息
+     * 编辑用户信息.
      */
     public function dorunAction()
     {
@@ -107,7 +107,6 @@ class IndexController extends BaseProfileController
                 $this->showError(array('USER:user.edit.sign.length.over', array('{max}' => $len)));
             }
 
-
             $ubb = new PwUbbCodeConvertConfig();
             $ubb->isConverImg = $this->loginUser->getPermission('sign_ubb_img') ? true : false;
             $userDm->setBbsSign($bbsSign)
@@ -124,7 +123,7 @@ class IndexController extends BaseProfileController
     }
 
     /**
-     * 联系方式
+     * 联系方式.
      */
     public function contactAction()
     {
@@ -138,7 +137,7 @@ class IndexController extends BaseProfileController
     }
 
     /**
-     * 编辑联系方式
+     * 编辑联系方式.
      */
     public function docontactAction()
     {
@@ -238,10 +237,11 @@ class IndexController extends BaseProfileController
     }
 
     /**
-     * 编辑用户
+     * 编辑用户.
      *
-     * @param  PwUserInfoDm $dm
-     * @param  int          $type
+     * @param PwUserInfoDm $dm
+     * @param int          $type
+     *
      * @return bool|PwError
      */
     private function _editUser($dm, $type = PwUser::FETCH_MAIN)
@@ -259,7 +259,7 @@ class IndexController extends BaseProfileController
     }
 
     /**
-     * 设置地区显示
+     * 设置地区显示.
      *
      * @return array
      */

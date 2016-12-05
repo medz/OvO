@@ -5,12 +5,11 @@ Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwFtpSave');
 Wind::import('APPCENTER:service.srv.helper.PwSftpSave');
 /**
- *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwPatchUpdate.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwPatchUpdate
 {
@@ -25,7 +24,7 @@ class PwPatchUpdate
     }
 
     /**
-     * 获取线上补丁列表
+     * 获取线上补丁列表.
      *
      * @return Ambigous <multitype:, boolean, string>
      */
@@ -220,23 +219,23 @@ class PwPatchUpdate
     private function _getDefaultDirectory()
     {
         return array(
-            'ROOT' => '..',
-            'CONF' => '../conf',
-            'DATA' => '../data',
-            'SRC' => '../src',
-            'APPS' => '../src/applications',
-            'EXT' => '../src/extensions',
-            'HOOK' => '../src/hooks',
-            'LIB' => '../src/library',
-            'SRV' => '../src/service',
-            'REP' => '../src/repository',
+            'ROOT'   => '..',
+            'CONF'   => '../conf',
+            'DATA'   => '../data',
+            'SRC'    => '../src',
+            'APPS'   => '../src/applications',
+            'EXT'    => '../src/extensions',
+            'HOOK'   => '../src/hooks',
+            'LIB'    => '../src/library',
+            'SRV'    => '../src/service',
+            'REP'    => '../src/repository',
             'WINDID' => '../src/windid',
             'ACLOUD' => '../src/aCloud',
             'PUBLIC' => '../www',
             'THEMES' => '../www/themes',
-            'TPL' => '../www/template',
+            'TPL'    => '../www/template',
             'ATTACH' => '../www/attachment',
-            'HTML' => '../www/html', );
+            'HTML'   => '../www/html', );
     }
 
     /**

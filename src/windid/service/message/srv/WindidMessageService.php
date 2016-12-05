@@ -7,17 +7,18 @@ Wind::import('WSRV:message.dm.WindidMessageDm');
  * @author peihong <peihong.zhangph@aliyun-inc.com>
  * @copyright Â©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageService.php 24834 2013-02-22 06:43:43Z jieyin $
- * @package windid.service.message.srv
  */
 class WindidMessageService
 {
     private $_blackList = array();
 
     /**
-     * èŽ·å–æœªè¯»æ¶ˆæ¯æ•°
+     * èŽ·å–æœªè¯»æ¶ˆæ¯æ•°.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function getUnRead($uid)
@@ -28,12 +29,13 @@ class WindidMessageService
     }
 
     /**
-     * æ ‡è®°å·²è¯»
+     * æ ‡è®°å·²è¯».
      *
-     * @param  int   $uid
-     * @param  int   $dialogId
-     * @param  array $messageIds
-     * @return æ    ‡è®°æˆåŠŸçš„æ¡æ•°
+     * @param int   $uid
+     * @param int   $dialogId
+     * @param array $messageIds
+     *
+     * @return æ ‡è®°æˆåŠŸçš„æ¡æ•°
      */
     public function read($uid, $dialogId, $messageIds = array())
     {
@@ -72,7 +74,7 @@ class WindidMessageService
     }
 
     /**
-     * æ›´æ–°æ¶ˆæ¯æ•°
+     * æ›´æ–°æ¶ˆæ¯æ•°.
      *
      * @param int $uid
      * @param int $num
@@ -106,9 +108,10 @@ class WindidMessageService
     /**
      * æŒ‰ç”¨æˆ·IDå‘é€ç§ä¿¡
      *
-     * @param  int              $uid
-     * @param  string           $content
-     * @param  int              $fromUid
+     * @param int    $uid
+     * @param string $content
+     * @param int    $fromUid
+     *
      * @return WindidError|bool
      */
     public function sendMessageByUid($uid, $content, $fromUid = 0)
@@ -184,9 +187,10 @@ class WindidMessageService
     /**
      * æŒ‰ç”¨æˆ·åç¾¤å‘é€ç§ä¿¡
      *
-     * @param  array        $usernames
-     * @param  content      $content
-     * @param  int          $from_uid
+     * @param array   $usernames
+     * @param content $content
+     * @param int     $from_uid
+     *
      * @return PwError|bool
      */
     public function sendMessageByUsernames($usernames, $content, $from_uid = 0)
@@ -203,11 +207,12 @@ class WindidMessageService
     }
 
     /**
-     * æ ¹æ®uidsç¾¤å‘æ¶ˆæ¯
+     * æ ¹æ®uidsç¾¤å‘æ¶ˆæ¯.
      *
-     * @param  array        $uids
-     * @param  string       $content
-     * @param  int          $from_uid
+     * @param array  $uids
+     * @param string $content
+     * @param int    $from_uid
+     *
      * @return PwError|bool
      */
     public function sendMessageByUids($uids, $content, $from_uid = 0)
@@ -323,7 +328,7 @@ class WindidMessageService
     }*/
 
     /**
-     * é‡æ–°ç»Ÿè®¡æŸä¼šè¯çš„ç»Ÿè®¡æ•°
+     * é‡æ–°ç»Ÿè®¡æŸä¼šè¯çš„ç»Ÿè®¡æ•°.
      *
      * @param int $dialogId
      */
@@ -343,7 +348,7 @@ class WindidMessageService
     }
 
     /**
-     * é‡æ–°è®¡ç®—ç”¨æˆ·ç§ä¿¡æ•°
+     * é‡æ–°è®¡ç®—ç”¨æˆ·ç§ä¿¡æ•°.
      *
      * @param int $uid
      */
@@ -363,11 +368,12 @@ class WindidMessageService
     }
 
     /**
-     * æœç´¢æ¶ˆæ¯
+     * æœç´¢æ¶ˆæ¯.
      *
-     * @param  array        $search array('fromuid', 'keyword', 'username', 'starttime', 'endtime')
-     * @param  int          $start
-     * @param  int          $limit
+     * @param array $search array('fromuid', 'keyword', 'username', 'starttime', 'endtime')
+     * @param int   $start
+     * @param int   $limit
+     *
      * @return array(count, list)
      */
     public function searchMessage($search, $start = 0, $limit = 10)
@@ -428,8 +434,8 @@ class WindidMessageService
     }
 
     /**
+     * ç»„è£…æœ€è¿‘ä¸€æ¡æ¶ˆæ¯çš„ä¿¡æ¯.
      *
-     * ç»„è£…æœ€è¿‘ä¸€æ¡æ¶ˆæ¯çš„ä¿¡æ¯
      * @param int    $fromUid
      * @param int    $toUid
      * @param string $messageContent

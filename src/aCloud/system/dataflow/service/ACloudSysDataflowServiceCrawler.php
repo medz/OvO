@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysDataFlowServiceCrawler
 {
@@ -11,18 +11,18 @@ class ACloudSysDataFlowServiceCrawler
         list($tableName, $page, $perpage) = array(trim($tableName), intval($page), intval($perpage));
         $page < 1 && $page = 1;
         $this->setPerpage($perpage);
-        if (! $tableName) {
+        if (!$tableName) {
             return '';
         }
         $tableSettingService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $tableSetting = $tableSettingService->getSettingByTableNameWithReplace($tableName);
-        if (! ACloudSysCoreS::isArray($tableSetting)) {
+        if (!ACloudSysCoreS::isArray($tableSetting)) {
             return '';
         }
-        if (! $tableSetting ['status']) {
+        if (!$tableSetting['status']) {
             return '';
         }
-        list($total, $data) = $tableSetting ['primary_key'] ? $this->getTableDataByPrimaryKey($tableSetting, $tableName, $page) : $this->getTableDataWithoutPrimaryKey($tableSetting, $tableName, $page);
+        list($total, $data) = $tableSetting['primary_key'] ? $this->getTableDataByPrimaryKey($tableSetting, $tableName, $page) : $this->getTableDataWithoutPrimaryKey($tableSetting, $tableName, $page);
         if ($total < 1) {
             return '';
         }
@@ -34,15 +34,15 @@ class ACloudSysDataFlowServiceCrawler
     public function crawlTableMaxId($tableName)
     {
         $tableName = trim($tableName);
-        if (! $tableName) {
+        if (!$tableName) {
             return '';
         }
         $tableSettingService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $tableSetting = $tableSettingService->getSettingByTableNameWithReplace($tableName);
-        if (! ACloudSysCoreS::isArray($tableSetting)) {
+        if (!ACloudSysCoreS::isArray($tableSetting)) {
             return '';
         }
-        if (! $tableSetting ['status']) {
+        if (!$tableSetting['status']) {
             return '';
         }
         $maxId = $this->getMaxPrimaryKeyId($tableSetting);
@@ -53,7 +53,7 @@ class ACloudSysDataFlowServiceCrawler
     public function crawlTableByIdRange($startId, $endId, $tableName)
     {
         list($tableName, $startId, $endId) = array(trim($tableName), intval($startId), intval($endId));
-        if (! $tableName) {
+        if (!$tableName) {
             return '';
         }
         if ($startId < 0 || $startId > $endId || $endId < 1) {
@@ -61,13 +61,13 @@ class ACloudSysDataFlowServiceCrawler
         }
         $tableSettingService = ACloudSysCoreCommon::loadSystemClass('table.settings', 'config.service');
         $tableSetting = $tableSettingService->getSettingByTableNameWithReplace($tableName);
-        if (! ACloudSysCoreS::isArray($tableSetting)) {
+        if (!ACloudSysCoreS::isArray($tableSetting)) {
             return '';
         }
-        if (! $tableSetting ['status']) {
+        if (!$tableSetting['status']) {
             return '';
         }
-        if (! $tableSetting ['primary_key']) {
+        if (!$tableSetting['primary_key']) {
             return '';
         }
         $data = $this->getDataByPrimaryKeyRange($tableSetting, $startId, $endId);
@@ -89,7 +89,7 @@ class ACloudSysDataFlowServiceCrawler
         $perpage < 1 && $perpage = $this->perpage;
         $sqlLogService = ACloudSysCoreCommon::loadSystemClass('sql.log', 'config.service');
         $result = $sqlLogService->getSqlLogsByTimestamp($startTime, $endTime, $page, $perpage);
-        if (! ACloudSysCoreS::isArray($result)) {
+        if (!ACloudSysCoreS::isArray($result)) {
             return '';
         }
 
@@ -120,18 +120,18 @@ class ACloudSysDataFlowServiceCrawler
     public function crawlDeletedId($type, $startId, $endId)
     {
         list($type, $startId, $endId) = array(trim(strtolower($type)), intval($startId), intval($endId));
-        if (! $type) {
+        if (!$type) {
             return '';
         }
         if ($startId < 0 || $startId > $endId || $endId < 1) {
             return '';
         }
         list($commonFactory, $method) = array($this->getVerCommonFactory(), 'getVersionCommon'.ucfirst($type));
-        if (! method_exists($commonFactory, $method)) {
+        if (!method_exists($commonFactory, $method)) {
             return '';
         }
         $service = $commonFactory->$method ();
-        if (! $service || ! is_object($service) || ! method_exists($service, 'getDeletedId')) {
+        if (!$service || !is_object($service) || !method_exists($service, 'getDeletedId')) {
             return '';
         }
         $result = $service->getDeletedId($startId, $endId);
@@ -275,13 +275,13 @@ class ACloudSysDataFlowServiceCrawler
     {
         list($offset, $limit) = $this->getPageRange($page);
         $generalDataService = ACloudSysCoreCommon::loadSystemClass('generaldata', 'config.service');
-        $countSql = sprintf('SELECT COUNT(*) as count FROM %s', ACloudSysCoreS::sqlMetadata($tableSetting ['name']));
+        $countSql = sprintf('SELECT COUNT(*) as count FROM %s', ACloudSysCoreS::sqlMetadata($tableSetting['name']));
         list($count) = $generalDataService->executeSql($countSql);
-        $count = $count ['count'];
+        $count = $count['count'];
         if ($count < 1) {
             return array(0, array());
         }
-        $dataSql = sprintf('SELECT * FROM %s %s', ACloudSysCoreS::sqlMetadata($tableSetting ['name']), ACloudSysCoreS::sqlLimit($offset, $limit));
+        $dataSql = sprintf('SELECT * FROM %s %s', ACloudSysCoreS::sqlMetadata($tableSetting['name']), ACloudSysCoreS::sqlLimit($offset, $limit));
         $data = $generalDataService->executeSql($dataSql);
 
         return array($count, $data);
@@ -298,16 +298,16 @@ class ACloudSysDataFlowServiceCrawler
     private function getMaxPrimaryKeyId($tableSetting)
     {
         $generalDataService = ACloudSysCoreCommon::loadSystemClass('generaldata', 'config.service');
-        $countSql = sprintf('SELECT MAX(%s) as count FROM %s', ACloudSysCoreS::sqlMetadata($tableSetting ['primary_key']), ACloudSysCoreS::sqlMetadata($tableSetting ['name']));
+        $countSql = sprintf('SELECT MAX(%s) as count FROM %s', ACloudSysCoreS::sqlMetadata($tableSetting['primary_key']), ACloudSysCoreS::sqlMetadata($tableSetting['name']));
         list($result) = $generalDataService->executeSql($countSql);
 
-        return $result ['count'];
+        return $result['count'];
     }
 
     private function getDataByPrimaryKeyRange($tableSetting, $start, $end)
     {
         $generalDataService = ACloudSysCoreCommon::loadSystemClass('generaldata', 'config.service');
-        $dataSql = sprintf('SELECT * FROM %s WHERE %s >= %s AND %s <= %s', ACloudSysCoreS::sqlMetadata($tableSetting ['name']), ACloudSysCoreS::sqlMetadata($tableSetting ['primary_key']), ACloudSysCoreS::sqlEscape($start), ACloudSysCoreS::sqlMetadata($tableSetting ['primary_key']), ACloudSysCoreS::sqlEscape($end));
+        $dataSql = sprintf('SELECT * FROM %s WHERE %s >= %s AND %s <= %s', ACloudSysCoreS::sqlMetadata($tableSetting['name']), ACloudSysCoreS::sqlMetadata($tableSetting['primary_key']), ACloudSysCoreS::sqlEscape($start), ACloudSysCoreS::sqlMetadata($tableSetting['primary_key']), ACloudSysCoreS::sqlEscape($end));
 
         return $generalDataService->executeSql($dataSql);
     }

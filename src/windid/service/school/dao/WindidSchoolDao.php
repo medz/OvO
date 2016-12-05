@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 学校库DAO
+ * 学校库DAO.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidSchoolDao.php 24011 2013-01-18 07:53:03Z jieyin $
- * @package service.school.dao
  */
 class WindidSchoolDao extends WindidBaseDao
 {
@@ -16,9 +16,10 @@ class WindidSchoolDao extends WindidBaseDao
     protected $_dataStruct = array('schoolid', 'name', 'areaid', 'first_char', 'typeid');
 
     /**
-     * 获取学校的详细信息
+     * 获取学校的详细信息.
      *
-     * @param  int   $schoolid
+     * @param int $schoolid
+     *
      * @return array
      */
     public function getSchool($schoolid)
@@ -27,9 +28,10 @@ class WindidSchoolDao extends WindidBaseDao
     }
 
     /**
-     * 根据学校ID列表批量获取学校信息
+     * 根据学校ID列表批量获取学校信息.
      *
-     * @param  array $schoolids
+     * @param array $schoolids
+     *
      * @return array
      */
     public function fetchSchool($schoolids)
@@ -38,9 +40,10 @@ class WindidSchoolDao extends WindidBaseDao
     }
 
     /**
-     * 根据地区获得学校列表
+     * 根据地区获得学校列表.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array
      */
     public function getSchoolByAreaidAndTypeid($areaid, $typeid = 3)
@@ -54,7 +57,8 @@ class WindidSchoolDao extends WindidBaseDao
     /**
      * 添加一个学校
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addSchool($data)
@@ -65,7 +69,8 @@ class WindidSchoolDao extends WindidBaseDao
     /**
      * 批量添加学校
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function batchAddSchool($data)
@@ -99,7 +104,8 @@ class WindidSchoolDao extends WindidBaseDao
     /**
      * 删除学校
      *
-     * @param  int $schoolid
+     * @param int $schoolid
+     *
      * @return int
      */
     public function deleteSchool($schoolid)
@@ -110,7 +116,8 @@ class WindidSchoolDao extends WindidBaseDao
     /**
      * 批量删除学校
      *
-     * @param  array $schoolids
+     * @param array $schoolids
+     *
      * @return int
      */
     public function batchDeleteSchool($schoolids)
@@ -121,7 +128,8 @@ class WindidSchoolDao extends WindidBaseDao
     /**
      * 根据学校名搜索学校
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return array
      */
     public function searchSchool($condition, $limit, $start)
@@ -137,9 +145,10 @@ class WindidSchoolDao extends WindidBaseDao
     }
 
     /**
-     * 统计数据
+     * 统计数据.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearchSchool($condition)
@@ -155,9 +164,10 @@ class WindidSchoolDao extends WindidBaseDao
     }
 
     /**
-     * 构建查询条件
+     * 构建查询条件.
      *
-     * @param  array $conditions
+     * @param array $conditions
+     *
      * @return array
      */
     private function _buildCondition($conditions)

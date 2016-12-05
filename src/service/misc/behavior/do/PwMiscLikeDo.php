@@ -4,8 +4,8 @@
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMiscLikeDo.php 20027 2012-10-22 11:49:23Z gao.wanggao $
- * @package
  */
 class PwMiscLikeDo
 {

@@ -3,22 +3,23 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseDao');
 /**
- * 后台配置管理
+ * 后台配置管理.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class AdminConfigDao extends AdminBaseDao
 {
     protected $_table = 'admin_config';
 
     /**
-     * 根据空间名字获得该配置信息
+     * 根据空间名字获得该配置信息.
      *
-     * @param  stirng $namespace 空间名字
+     * @param stirng $namespace 空间名字
+     *
      * @return array
      */
     public function getConfigs($namespace)
@@ -30,9 +31,10 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 根据空间名字获得该配置信息
+     * 根据空间名字获得该配置信息.
      *
-     * @param  array $namespace 空间名字序列
+     * @param array $namespace 空间名字序列
+     *
      * @return array
      */
     public function fetchConfigs($namespace)
@@ -44,10 +46,11 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 获取某个配置
+     * 获取某个配置.
      *
-     * @param  string $namespace
-     * @param  string $name
+     * @param string $namespace
+     * @param string $name
+     *
      * @return array
      */
     public function getConfigByName($namespace, $name)
@@ -59,9 +62,10 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 批量设置配置项
+     * 批量设置配置项.
      *
      * @param  array $data 待设置的配置项
+     *
      * @return bool
      */
     public function storeConfigs($data)
@@ -74,12 +78,13 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 存储配置项
+     * 存储配置项.
      *
      * @param  string $namespace 配置项命名空间
      * @param  string $name      配置项名
      * @param  mixed  $value     配置项的值
      * @param  string $descrip   配置项描述
+     *
      * @return bool
      */
     public function storeConfig($namespace, $name, $value, $descrip = null)
@@ -102,9 +107,10 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 删除配置项
+     * 删除配置项.
      *
      * @param  string $namespace 配置项所属空间
+     *
      * @return bool
      */
     public function deleteConfig($namespace)
@@ -117,10 +123,11 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 删除配置项
+     * 删除配置项.
      *
      * @param  string $namespace 配置项所属空间
      * @param  string $name      配置项名字
+     *
      * @return bool
      */
     public function deleteConfigByName($namespace, $name)
@@ -133,9 +140,10 @@ class AdminConfigDao extends AdminBaseDao
     }
 
     /**
-     * 将数据转换为字符串
+     * 将数据转换为字符串.
      *
      * @param  mixed $value 待处理的数据
+     *
      * @return array 返回处理后的数据，第一个代表该数据的类型，第二个代表该数据处理后的数据串
      */
     private function _toString($value)

@@ -8,8 +8,8 @@ Wind::import('SRV:user.dm.PwUserInfoDm');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFindPassword.php 24177 2013-01-22 10:36:09Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwFindPassword
 {
@@ -25,7 +25,7 @@ class PwFindPassword
     const WAY_MOBILE = 'mobile';
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param string $username
      */
@@ -50,9 +50,10 @@ class PwFindPassword
     }
 
     /**
-     * 检查邮箱是否正确
+     * 检查邮箱是否正确.
      *
-     * @param  string       $email 邮箱
+     * @param string $email 邮箱
+     *
      * @return bool|PwError
      */
     public function checkEmail($email)
@@ -71,9 +72,10 @@ class PwFindPassword
     }
 
     /**
-     * 发送重置邮件
+     * 发送重置邮件.
      *
-     * @param  string $state 加密串
+     * @param string $state 加密串
+     *
      * @return bool
      */
     public function sendResetEmail($state)
@@ -95,10 +97,11 @@ class PwFindPassword
     }
 
     /**
-     * 重置的邮箱验证码是否有效
+     * 重置的邮箱验证码是否有效.
      *
-     * @param  string       $email 重置的email地址
-     * @param  string       $code  重置码
+     * @param string $email 重置的email地址
+     * @param string $code  重置码
+     *
      * @return PwError|bool
      */
     public function checkResetEmail($email, $code)
@@ -123,12 +126,13 @@ class PwFindPassword
     }
 
     /**
-     * 获得信息的标题和内容
+     * 获得信息的标题和内容.
      *
      * @param string $titleKey 标题key
      * @param  string $contentKey 内容key
-     * @param  string $username 用户名
-     * @param  string $url      链接地址
+     * @param string $username 用户名
+     * @param string $url      链接地址
+     *
      * @return array
      */
     private function _buildTitleAndContent($username, $url = '')
@@ -146,7 +150,7 @@ class PwFindPassword
     }
 
     /**
-     * 获得邮箱的模糊显示
+     * 获得邮箱的模糊显示.
      *
      * @return string
      */
@@ -201,7 +205,7 @@ class PwFindPassword
     }
 
     /**
-     * 是否绑定email
+     * 是否绑定email.
      *
      * @return bool
      */
@@ -209,7 +213,6 @@ class PwFindPassword
     {
         return $this->info['email'] ? true : false;
     }
-
 
     /**
      * 是否绑定手机号码
@@ -222,7 +225,7 @@ class PwFindPassword
     }
 
     /**
-     * 判断当天通过邮箱找回密码是否已经超过次数限制
+     * 判断当天通过邮箱找回密码是否已经超过次数限制.
      *
      * @return bool
      */
@@ -232,7 +235,7 @@ class PwFindPassword
     }
 
     /**
-     * 判断当天通过手机找回密码是否已经超过次数限制
+     * 判断当天通过手机找回密码是否已经超过次数限制.
      *
      * @return bool
      */
@@ -244,7 +247,8 @@ class PwFindPassword
     /**
      * 更改成功
      *
-     * @param  string $type
+     * @param string $type
+     *
      * @return bool
      */
     public function success($type)
@@ -258,11 +262,12 @@ class PwFindPassword
     }
 
     /**
-     * 创建找回密码的唯一标识
+     * 创建找回密码的唯一标识.
      *
-     * @param  string $username 需要找回密码的用户名
-     * @param  string $way      找回方式标识
-     * @param  string $value    找回方式对应的值
+     * @param string $username 需要找回密码的用户名
+     * @param string $way      找回方式标识
+     * @param string $value    找回方式对应的值
+     *
      * @return string
      */
     public static function createFindPwdIdentify($username, $way, $value)
@@ -273,10 +278,11 @@ class PwFindPassword
     }
 
     /**
-     * 解析找回密码的标识
+     * 解析找回密码的标识.
      *
-     * @param  string $identify
-     * @return array  array($username, $way, $value)
+     * @param string $identify
+     *
+     * @return array array($username, $way, $value)
      */
     public static function parserFindPwdIdentify($identify)
     {
@@ -284,9 +290,10 @@ class PwFindPassword
     }
 
     /**
-     * 根据方式获取对应的用户字段
+     * 根据方式获取对应的用户字段.
      *
-     * @param  string $way
+     * @param string $way
+     *
      * @return string
      */
     public static function getField($way)
@@ -295,13 +302,15 @@ class PwFindPassword
     }
 
     /**
-     * 获得尝试错误记录
+     * 获得尝试错误记录.
      *
      * 在findpwd中保存格式为：0000-00-00:num|0000-00-00:num
      * 0000-00-00:最后更新该记录的时间
      * num : 最后更新记录的时候此种方式已经尝试的次数
      * |: 在|左侧的，是用“邮箱”方式找回的记录，在|右侧，是用“手机”方式找回的记录
-     * @param  string       $type 找回类型
+     *
+     * @param string $type 找回类型
+     *
      * @return bool|PwError
      */
     private function allowFindBy($type = self::WAY_EMAIL)
@@ -325,13 +334,15 @@ class PwFindPassword
     }
 
     /**
-     * 设置重新找回记录
+     * 设置重新找回记录.
      *
      * 在findpwd中保存格式为：0000-00-00:num|0000-00-00:num
      * 0000-00-00:最后更新该记录的时间
      * num : 最后更新记录的时候此种方式已经尝试的次数
      * |: 在|左侧的，是用“邮箱”方式找回的记录，在|右侧，是用“手机”方式找回的记录
-     * @param  string $type
+     *
+     * @param string $type
+     *
      * @return true
      */
     public function setRecode($type = self::WAY_EMAIL)

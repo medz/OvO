@@ -7,8 +7,8 @@ Wind::import('APPS:api.controller.OpenBaseController');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: AvatarController.php 28965 2013-05-31 11:36:01Z jieyin $
- * @package windid.service.avatar
  */
 class AvatarController extends OpenBaseController
 {
@@ -52,10 +52,11 @@ class AvatarController extends OpenBaseController
     }
 
     /**
-     * 获取用户头像
+     * 获取用户头像.
      *
      * @param $uid
      * @param $size big middle small
+     *
      * @return string
      */
     public function getAction()
@@ -68,12 +69,12 @@ class AvatarController extends OpenBaseController
         $this->output($result);
     }
 
-
     /**
-     * 还原头像
+     * 还原头像.
      *
-     * @param  int    $uid
-     * @param  string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     * @param int    $uid
+     * @param string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     *
      * @return bool
      */
     public function defaultAction()
@@ -91,6 +92,7 @@ class AvatarController extends OpenBaseController
      *
      * @param int $uid 用户uid
      * @param  int          $getHtml 获取代码|配置
+     *
      * @return string|array
      */
     public function getFlashAction()
@@ -99,7 +101,7 @@ class AvatarController extends OpenBaseController
     }
 
     /**
-     * 上传头像
+     * 上传头像.
      */
     public function doavatarAction()
     {

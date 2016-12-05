@@ -5,8 +5,8 @@ Wind::import('SRV:design.srv.model.PwDesignModelBase');
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignImageDataService.php 24831 2013-02-22 04:39:08Z gao.wanggao $
- * @package
  */
 class PwDesignImageDataService extends PwDesignModelBase
 {
@@ -36,7 +36,7 @@ class PwDesignImageDataService extends PwDesignModelBase
             }
             $property['image'] = $result;
         }
-        $property['html_tpl'] = '<for:><a href="{url}"><img src="{image}" ' ;
+        $property['html_tpl'] = '<for:><a href="{url}"><img src="{image}" ';
         $property['html_tpl'] .= $property['intro'] ? 'title="{intro}" ' : '';
         $property['html_tpl'] .= $property['width'] ? 'width="{width}" ' : '';
         $property['html_tpl'] .= $property['height'] ? 'height="{height}" ' : '';

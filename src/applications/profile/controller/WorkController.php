@@ -4,13 +4,13 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:work.dm.PwWorkDm');
 
 /**
- * 用户资料-工作经历扩展
+ * 用户资料-工作经历扩展.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WorkController.php 28852 2013-05-28 02:46:06Z jieyin $
- * @package src.productions.u.controller.profile
  */
 class WorkController extends BaseProfileController
 {
@@ -41,7 +41,7 @@ class WorkController extends BaseProfileController
     }
 
     /**
-     * 添加工作经历
+     * 添加工作经历.
      */
     public function addAction()
     {
@@ -59,7 +59,7 @@ class WorkController extends BaseProfileController
     }
 
     /**
-     * 删除工作经历
+     * 删除工作经历.
      */
     public function deleteAction()
     {
@@ -76,7 +76,7 @@ class WorkController extends BaseProfileController
     }
 
     /**
-     * 编辑工作经历
+     * 编辑工作经历.
      */
     public function editAction()
     {
@@ -93,7 +93,7 @@ class WorkController extends BaseProfileController
     }
 
     /**
-     * 获得年及月列表
+     * 获得年及月列表.
      */
     private function setYearAndMonth()
     {
@@ -103,7 +103,7 @@ class WorkController extends BaseProfileController
     }
 
     /**
-     * 返回用户工作经历
+     * 返回用户工作经历.
      *
      * @return PwWork
      */

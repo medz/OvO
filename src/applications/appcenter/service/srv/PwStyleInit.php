@@ -2,19 +2,18 @@
 
 Wind::import('APPCENTER:service.dm.PwStyleDm');
 /**
- * 风格安装初始化
+ * 风格安装初始化.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyleInit.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package src.applications.appcenter
  */
 class PwStyleInit
 {
     /**
-     * 安装过程中风格的初始化
-     *
+     * 安装过程中风格的初始化.
      */
     public function init()
     {
@@ -65,10 +64,10 @@ class PwStyleInit
         $fields = array();
         foreach ($install->getInstallLog() as $key => $value) {
             $_tmp = array(
-                'app_id' => $install->getAppId(),
-                'log_type' => $key,
-                'data' => $value,
-                'created_time' => time(),
+                'app_id'        => $install->getAppId(),
+                'log_type'      => $key,
+                'data'          => $value,
+                'created_time'  => time(),
                 'modified_time' => time(), );
             $fields[] = $_tmp;
         }
@@ -78,7 +77,6 @@ class PwStyleInit
     }
 
     /**
-     *
      * @return PwStyle
      */
     private function _styleDs()

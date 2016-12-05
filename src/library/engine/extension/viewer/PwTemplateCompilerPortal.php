@@ -3,12 +3,13 @@
 
 Wind::import('SRV:design.srv.PwPortalCompile');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTemplateCompilerPortal.php 25125 2013-03-05 03:29:29Z gao.wanggao $
- * @package
  */
 class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
 {
@@ -160,7 +161,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     }
 
     /**
-     * 必须放在转换的最后一步
+     * 必须放在转换的最后一步.
      */
     protected function compileEnd($content)
     {
@@ -174,6 +175,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     /**
      * 兼容框架怪异的template标签
      * Enter description here ...
+     *
      * @param unknown_type $content
      */
     protected function compileTemplate($content)

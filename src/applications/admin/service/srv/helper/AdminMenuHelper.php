@@ -1,23 +1,24 @@
 <?php
 /**
- * 菜单处理帮助类
+ * 菜单处理帮助类.
  *
  * 主要职责:<code>
  * 1. parseMenuConfig, 解析菜单配置
  * </code>
+ *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminMenuHelper.php 23424 2013-01-09 09:31:45Z xiaoxia.xuxx $
- * @package admin
- * @subpackage library
  */
 class AdminMenuHelper
 {
     /**
-     * 重新设置menus的结构,将menus的结构设置为一级节点以及所以子节点模式
+     * 重新设置menus的结构,将menus的结构设置为一级节点以及所以子节点模式.
      *
      * 如果含有三级菜单，则将三级菜单合并到一级菜单中，同时二级菜单不要
+     *
      * @example <code>
      * 一级菜单
      * config: parent=>'root'
@@ -32,7 +33,9 @@ class AdminMenuHelper
      * config的items格式为:
      *  array('config3' => array(), 'config4' => array(), 'config2' => array());
      * </code>
-     * @param  array $menus
+     *
+     * @param array $menus
+     *
      * @return array
      */
     public static function resetMenuStruts($menus)
@@ -59,12 +62,13 @@ class AdminMenuHelper
     }
 
     /**
-     * 递归的方式调用,将复合的节点设置合并为单节点设置方式
+     * 递归的方式调用,将复合的节点设置合并为单节点设置方式.
      *
-     * @param  array  $menus
-     * @param  array  $allMenus 处理结果集,引用方式传递
-     * @param  array  $_menus   处理结果集,引用方式传递
-     * @param  string $pNode    默认为'',父节点key值
+     * @param array  $menus
+     * @param array  $allMenus 处理结果集,引用方式传递
+     * @param array  $_menus   处理结果集,引用方式传递
+     * @param string $pNode    默认为'',父节点key值
+     *
      * @return array
      */
     public static function verifyMenuConfig($menus, $allMenus, &$_menus = array(), $pNode = 'root')
@@ -89,12 +93,12 @@ class AdminMenuHelper
                 $menu[4] = $pNode;
             }
             $_tmp = array(
-                'id' => $key,
-                'name' => $menu[0],
-                'icon' => isset($menu[2]) ? $menu[2] : '',
-                'tip' => isset($menu[3]) ? $menu[3] : '',
+                'id'     => $key,
+                'name'   => $menu[0],
+                'icon'   => isset($menu[2]) ? $menu[2] : '',
+                'tip'    => isset($menu[3]) ? $menu[3] : '',
                 'parent' => $menu[4],
-                'top' => isset($menu[5]) ? $menu[5] : '', );
+                'top'    => isset($menu[5]) ? $menu[5] : '', );
             if (is_array($menu[1])) {
                 $_tmp['items'] = $menu[1];
             } else {
@@ -107,7 +111,7 @@ class AdminMenuHelper
     }
 
     /**
-     * 解析菜单配置
+     * 解析菜单配置.
      *
      * 将菜单配置解析为需要的格式并返回<code>
      * 一个菜单个配置格式中包含: 菜单名称, 路由信息, 菜单图标, 菜单tip, 父节点, 上一个菜单
@@ -117,7 +121,9 @@ class AdminMenuHelper
      * 将上述菜单按照结构化的方式解析并返回.
      * key => array('key1','key2');
      * </code>
-     * @param  array $menus 原始菜单
+     *
+     * @param array $menus 原始菜单
+     *
      * @return array
      */
     public static function resolveMenuStruct($menus)
@@ -142,10 +148,12 @@ class AdminMenuHelper
     }
 
     /**
-     * 解析菜单上下层节点关系
+     * 解析菜单上下层节点关系.
      *
      * 在此方法中只处理本层的上下层节点关系,如果某个节点的上个节点在本层中不存在,则默认按照书写顺写.
-     * @param  array $menus
+     *
+     * @param array $menus
+     *
      * @return array
      */
     private static function _parseMenuTops($menus)
@@ -180,7 +188,7 @@ class AdminMenuHelper
     }
 
     /**
-     * 获取菜单内容,并解析菜单权限信息
+     * 获取菜单内容,并解析菜单权限信息.
      *
      * @param string $key
      * @param array  $menu

@@ -46,11 +46,13 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_Hash
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: Hash.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
@@ -59,7 +61,7 @@
  * @see Crypt_Hash::Crypt_Hash()
  */
 /**
- * Toggles the internal implementation
+ * Toggles the internal implementation.
  */
 define('CRYPT_HASH_MODE_INTERNAL', 1);
 /*
@@ -76,63 +78,70 @@ define('CRYPT_HASH_MODE_HASH', 3);
  * Pure-PHP implementations of keyed-hash message authentication codes (HMACs) and various cryptographic hashing functions.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_Hash
  */
 class Crypt_Hash
 {
     /**
-     * Byte-length of compression blocks / key (Internal HMAC)
+     * Byte-length of compression blocks / key (Internal HMAC).
      *
      * @see Crypt_Hash::setAlgorithm()
-     * @var Integer
+     *
+     * @var int
      */
     public $b;
 
     /**
-     * Byte-length of hash output (Internal HMAC)
+     * Byte-length of hash output (Internal HMAC).
      *
      * @see Crypt_Hash::setHash()
-     * @var Integer
+     *
+     * @var int
      */
     public $l = false;
 
     /**
-     * Hash Algorithm
+     * Hash Algorithm.
      *
      * @see Crypt_Hash::setHash()
-     * @var String
+     *
+     * @var string
      */
     public $hash;
 
     /**
-     * Key
+     * Key.
      *
      * @see Crypt_Hash::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $key = '';
 
     /**
-     * Outer XOR (Internal HMAC)
+     * Outer XOR (Internal HMAC).
      *
      * @see Crypt_Hash::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $opad;
 
     /**
-     * Inner XOR (Internal HMAC)
+     * Inner XOR (Internal HMAC).
      *
      * @see Crypt_Hash::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $ipad;
 
     /**
      * Default Constructor.
      *
-     * @param  optional String $hash
+     * @param optional String $hash
+     *
      * @return Crypt_Hash
      */
     public function Crypt_Hash($hash = 'sha1')
@@ -154,11 +163,11 @@ class Crypt_Hash
     }
 
     /**
-     * Sets the key for HMACs
+     * Sets the key for HMACs.
      *
      * Keys can be of any length.
      *
-     * @param String $key
+     * @param string $key
      */
     public function setKey($key)
     {
@@ -168,7 +177,7 @@ class Crypt_Hash
     /**
      * Sets the hash function.
      *
-     * @param String $hash
+     * @param string $hash
      */
     public function setHash($hash)
     {
@@ -278,8 +287,9 @@ class Crypt_Hash
     /**
      * Compute the HMAC.
      *
-     * @param  String $text
-     * @return String
+     * @param string $text
+     *
+     * @return string
      */
     public function hash($text)
     {
@@ -325,9 +335,9 @@ class Crypt_Hash
     }
 
     /**
-     * Returns the hash length (in bytes)
+     * Returns the hash length (in bytes).
      *
-     * @return Integer
+     * @return int
      */
     public function getLength()
     {
@@ -335,9 +345,9 @@ class Crypt_Hash
     }
 
     /**
-     * Wrapper for MD5
+     * Wrapper for MD5.
      *
-     * @param String $text
+     * @param string $text
      */
     public function _md5($m)
     {
@@ -345,9 +355,9 @@ class Crypt_Hash
     }
 
     /**
-     * Wrapper for SHA1
+     * Wrapper for SHA1.
      *
-     * @param String $text
+     * @param string $text
      */
     public function _sha1($m)
     {
@@ -355,11 +365,11 @@ class Crypt_Hash
     }
 
     /**
-     * Pure-PHP implementation of MD2
+     * Pure-PHP implementation of MD2.
      *
      * See {@link http://tools.ietf.org/html/rfc1319 RFC1319}.
      *
-     * @param String $text
+     * @param string $text
      */
     public function _md2($m)
     {
@@ -427,11 +437,11 @@ class Crypt_Hash
     }
 
     /**
-     * Pure-PHP implementation of SHA256
+     * Pure-PHP implementation of SHA256.
      *
      * See {@link http://en.wikipedia.org/wiki/SHA_hash_functions#SHA-256_.28a_SHA-2_variant.29_pseudocode SHA-256 (a SHA-2 variant) pseudocode - Wikipedia}.
      *
-     * @param String $text
+     * @param string $text
      */
     public function _sha256($m)
     {
@@ -532,9 +542,9 @@ class Crypt_Hash
     }
 
     /**
-     * Pure-PHP implementation of SHA384 and SHA512
+     * Pure-PHP implementation of SHA384 and SHA512.
      *
-     * @param String $text
+     * @param string $text
      */
     public function _sha512($m)
     {
@@ -714,12 +724,14 @@ class Crypt_Hash
     }
 
     /**
-     * Right Rotate
+     * Right Rotate.
      *
-     * @param Integer $int
-     * @param Integer $amt
+     * @param int $int
+     * @param int $amt
+     *
      * @see _sha256()
-     * @return Integer
+     *
+     * @return int
      */
     public function _rightRotate($int, $amt)
     {
@@ -730,12 +742,14 @@ class Crypt_Hash
     }
 
     /**
-     * Right Shift
+     * Right Shift.
      *
-     * @param Integer $int
-     * @param Integer $amt
+     * @param int $int
+     * @param int $amt
+     *
      * @see _sha256()
-     * @return Integer
+     *
+     * @return int
      */
     public function _rightShift($int, $amt)
     {
@@ -745,11 +759,13 @@ class Crypt_Hash
     }
 
     /**
-     * Not
+     * Not.
      *
-     * @param Integer $int
+     * @param int $int
+     *
      * @see _sha256()
-     * @return Integer
+     *
+     * @return int
      */
     public function _not($int)
     {
@@ -757,14 +773,16 @@ class Crypt_Hash
     }
 
     /**
-     * Add
+     * Add.
      *
      * _sha256() adds multiple unsigned 32-bit integers.  Since PHP doesn't support unsigned integers and since the
      * possibility of overflow exists, care has to be taken.  Math_BigInteger() could be used but this should be faster.
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
+     *
      * @see _sha256()
      */
     public function _add()
@@ -784,13 +802,14 @@ class Crypt_Hash
     }
 
     /**
-     * String Shift
+     * String Shift.
      *
      * Inspired by array_shift
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
      */
     public function _string_shift(&$string, $index = 1)
     {

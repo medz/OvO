@@ -1,16 +1,16 @@
 <?php
 /**
- * 用户组数据模型
+ * 用户组数据模型.
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 1, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserGroupDm.php 16536 2012-08-24 07:59:16Z peihong.zhangph $
  */
-
-
-
 class PwUserGroupDm extends PwBaseDm
 {
     private $groupType = 'member';
@@ -56,8 +56,7 @@ class PwUserGroupDm extends PwBaseDm
     }
 
     /**
-     *
-     * 添加用户组校验
+     * 添加用户组校验.
      */
     protected function _beforeAdd()
     {

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 标签和用户的关系表
+ * 标签和用户的关系表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserTagRelationDao.php 10043 2012-05-16 04:51:07Z jinlong.panjl $
- * @package src.service.usertag.dao
  */
 class PwUserTagRelationDao extends PwBaseDao
 {
@@ -15,10 +15,11 @@ class PwUserTagRelationDao extends PwBaseDao
     protected $_dataStruct = array('uid', 'tag_id', 'created_time');
 
     /**
-     * 根据用户ID获得用户的标签关系
+     * 根据用户ID获得用户的标签关系.
      *
-     * @param  int   $uid
-     * @param  int   $tag_id
+     * @param int $uid
+     * @param int $tag_id
+     *
      * @return array
      */
     public function getRelationByUidAndTagid($uid, $tag_id)
@@ -30,9 +31,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID获得用户的标签关系
+     * 根据用户ID获得用户的标签关系.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getRelationByUid($uid)
@@ -44,9 +46,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID统计该用户已经拥有的标签数组
+     * 根据用户ID统计该用户已经拥有的标签数组.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function countByUid($uid)
@@ -58,9 +61,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据标签ID获得该标签的相关用户记录数量
+     * 根据标签ID获得该标签的相关用户记录数量.
      *
-     * @param  int   $tag_id
+     * @param int $tag_id
+     *
      * @return array
      */
     public function countRelationByTagid($tag_id)
@@ -72,9 +76,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据标签ID获得该标签的相关用户记录
+     * 根据标签ID获得该标签的相关用户记录.
      *
-     * @param  int   $tag_id
+     * @param int $tag_id
+     *
      * @return array
      */
     public function getRelationByTagid($tag_id, $limit, $start)
@@ -86,10 +91,11 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 删除关系
+     * 删除关系.
      *
-     * @param  int  $uid
-     * @param  int  $tag_id
+     * @param int $uid
+     * @param int $tag_id
+     *
      * @return bool
      */
     public function deleteRelation($uid, $tag_id)
@@ -104,10 +110,11 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 批量删除关系
+     * 批量删除关系.
      *
-     * @param  int   $uid
-     * @param  array $tag_ids
+     * @param int   $uid
+     * @param array $tag_ids
+     *
      * @return bool
      */
     public function batchDeleteRelation($uid, $tag_ids)
@@ -118,7 +125,7 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据标签ID列表批量删除标签关系
+     * 根据标签ID列表批量删除标签关系.
      *
      * @param array $tag_ids
      */
@@ -130,9 +137,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除该用户的关系
+     * 根据用户ID删除该用户的关系.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteRelationByUid($uid)
@@ -144,9 +152,10 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID列表批量删除数据
+     * 根据用户ID列表批量删除数据.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function batchDeleteRelationByUids($uids)
@@ -157,11 +166,12 @@ class PwUserTagRelationDao extends PwBaseDao
     }
 
     /**
-     * 添加关系
+     * 添加关系.
      *
-     * @param  int  $uid
-     * @param  int  $tag_id
-     * @param  int  $created_time
+     * @param int $uid
+     * @param int $tag_id
+     * @param int $created_time
+     *
      * @return bool
      */
     public function addRelation($uid, $tag_id, $created_time)

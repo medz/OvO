@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 出售帖 / 帖子购买
+ * 出售帖 / 帖子购买.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: BuythreadController.php 28868 2013-05-28 04:06:20Z jieyin $
- * @package forum
  */
-
 class BuythreadController extends PwBaseController
 {
     public function run()
@@ -35,10 +34,10 @@ class BuythreadController extends PwBaseController
         $cType = PwCreditBo::getInstance()->cType;
         foreach ($record as $key => $value) {
             $data[] = array(
-                'uid' => $value['created_userid'],
-                'username' => $users[$value['created_userid']]['username'],
-                'cost' => $value['cost'],
-                'ctype' => $cType[$value['ctype']],
+                'uid'          => $value['created_userid'],
+                'username'     => $users[$value['created_userid']]['username'],
+                'cost'         => $value['cost'],
+                'ctype'        => $cType[$value['ctype']],
                 'created_time' => Pw::time2str($value['created_time']),
             );
         }

@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
-
 class PwWordUpload extends PwUploadAction
 {
     public $isLocal = true;

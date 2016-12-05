@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignImportTxt.php 23476 2013-01-10 05:10:23Z gao.wanggao $
- * @package
  */
 class PwDesignImportTxt
 {
@@ -15,7 +16,6 @@ class PwDesignImportTxt
     private $_structures = array();
     private $_oldstruct = array();
     private $_content = '';
-
 
     public function checkTxt($filename = '', $content = '')
     {

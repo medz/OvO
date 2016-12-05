@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
  * 获取某个类型的新鲜事
  *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFetchFreshByTypeAndSrcId.php 14776 2012-07-26 10:25:06Z jieyin $
- * @package attention
  */
-
 class PwFetchFreshByTypeAndSrcId implements iPwDataSource
 {
     public $type;

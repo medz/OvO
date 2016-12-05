@@ -1,21 +1,22 @@
 <?php
  /**
-  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+  *
   * @author $Author: gao.wanggao $ foxsee@aliyun.com
+  *
   * @version $Id: PwBaseCode.php 20486 2012-10-30 07:50:14Z gao.wanggao $
-  * @package
   */
  class PwBaseCode
  {
      /**
-     * 验证码长度
+     * 验证码长度.
      *
      * @var int
      */
     public static $verifyLength = 4;
 
     /**
-     * 1.数字 2.字母 3.数字+字母 4,随机加减，5.汉字6.自定义问题 7语音
+     * 1.数字 2.字母 3.数字+字母 4,随机加减，5.汉字6.自定义问题 7语音.
      *
      * @var int
      */
@@ -60,7 +61,6 @@
 
     /**
      * 设置验证码
-     *
      */
     protected static function setRandCode()
     {
@@ -106,7 +106,7 @@
      }
 
     /**
-     * 获取验证码背景文件
+     * 获取验证码背景文件.
      *
      * @return array
      */
@@ -125,7 +125,7 @@
     }
 
     /**
-     * 获取字体列表
+     * 获取字体列表.
      *
      * @return array
      */
@@ -137,7 +137,7 @@
     }
 
     /**
-     * 获取英文字体列表
+     * 获取英文字体列表.
      *
      * @return array
      */
@@ -155,7 +155,7 @@
     }
 
     /**
-     * 获取中文字体列表
+     * 获取中文字体列表.
      *
      * @return array
      */

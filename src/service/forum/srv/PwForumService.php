@@ -11,17 +11,16 @@ Wind::import('SRV:forum.PwForum');
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumService.php 24758 2013-02-20 06:55:42Z jieyin $
- * @package forum
  */
-
 class PwForumService
 {
     protected static $_forums = null;
     protected static $_map = null;
 
     /**
-     * 获取版块列表
+     * 获取版块列表.
      *
      * @return array
      */
@@ -33,9 +32,10 @@ class PwForumService
     }
 
     /**
-     * 获取用户所有可以访问的版块列表
+     * 获取用户所有可以访问的版块列表.
      *
-     * @param  PwUserBo $user
+     * @param PwUserBo $user
+     *
      * @return array
      */
     public function getAllowVisitForum(PwUserBo $user, $forums = null)
@@ -52,11 +52,12 @@ class PwForumService
     }
 
     /**
-     * 获取用户所有禁止访问的版块列表
+     * 获取用户所有禁止访问的版块列表.
      *
      * @param PwUserBo $user
      * @param array    $forums 版块列表
      * @param  bool     $includeHide 是否包含隐藏版块
+     *
      * @return array
      */
     public function getForbidVisitForum(PwUserBo $user, $forums = null, $includeHide = false)
@@ -75,9 +76,10 @@ class PwForumService
     }
 
     /**
-     * 获取指定版块的信息（使用全部版块缓存，如果没有这个前提，直接使用 forum.PwForum->fetchForum 接口比较合算）
+     * 获取指定版块的信息（使用全部版块缓存，如果没有这个前提，直接使用 forum.PwForum->fetchForum 接口比较合算）.
      *
-     * @param  array $fids;
+     * @param array $fids;
+     *
      * @return array
      */
     public function fetchForum($fids)
@@ -86,7 +88,7 @@ class PwForumService
     }
 
     /**
-     * 获取版块层级列表
+     * 获取版块层级列表.
      *
      * @return array
      */
@@ -103,7 +105,7 @@ class PwForumService
     }
 
     /**
-     * 获取分类和版块列表（子版除外）
+     * 获取分类和版块列表（子版除外）.
      *
      * @return array
      */
@@ -126,10 +128,11 @@ class PwForumService
     }
 
     /**
-     * 根据层级列表，递归获取链级列表
+     * 根据层级列表，递归获取链级列表.
      *
-     * @param  int   $parentid 获取该版的所属
-     * @param  array $map      版块层级列表
+     * @param int   $parentid 获取该版的所属
+     * @param array $map      版块层级列表
+     *
      * @return array
      */
     public function getForumsByLevel($parentid, $map)
@@ -151,10 +154,11 @@ class PwForumService
     }
 
     /**
-     * 根据层级列表，递归获取链级列表
+     * 根据层级列表，递归获取链级列表.
      *
-     * @param  int   $parentid 获取该版的所属
-     * @param  array $map      版块层级列表
+     * @param int   $parentid 获取该版的所属
+     * @param array $map      版块层级列表
+     *
      * @return array
      */
     public function findOptionInMap($parentid, $map, $lang = array())
@@ -172,9 +176,10 @@ class PwForumService
     }
 
     /**
-     * 获取版块的select/option
+     * 获取版块的select/option.
      *
-     * @param  mixed  $selected 选中的fid序列
+     * @param mixed $selected 选中的fid序列
+     *
      * @return string option的html
      */
     public function getForumOption($selected = array())
@@ -184,9 +189,9 @@ class PwForumService
         $option_html = '';
         $option_arr = $this->findOptionInMap(0, $map, array(
             'category' => '&gt;&gt; ',
-            'forum' => ' &nbsp;|- ',
-            'sub' => ' &nbsp; &nbsp;|-  ',
-            'sub2' => '&nbsp;&nbsp; &nbsp; &nbsp;|-  ',
+            'forum'    => ' &nbsp;|- ',
+            'sub'      => ' &nbsp; &nbsp;|-  ',
+            'sub2'     => '&nbsp;&nbsp; &nbsp; &nbsp;|-  ',
         ));
         foreach ($option_arr as $key => $value) {
             $option_html .= '<option value="'.$key.'"'.(in_array($key, $selected) ? ' selected' : '').'>'.strip_tags($value).'</option>';
@@ -196,9 +201,10 @@ class PwForumService
     }
 
     /**
-     * 获取上级版块id序列
+     * 获取上级版块id序列.
      *
-     * @param  int   $fid 版块id
+     * @param int $fid 版块id
+     *
      * @return array
      */
     public function getParentFids($fid)
@@ -215,9 +221,10 @@ class PwForumService
     }
 
     /**
-     * 获取分类id
+     * 获取分类id.
      *
-     * @param  int $fid
+     * @param int $fid
+     *
      * @return int
      */
     public function getCateId($fid)
@@ -232,9 +239,10 @@ class PwForumService
     }
 
     /**
-     * 获取用户加入的版块列表
+     * 获取用户加入的版块列表.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getJoinForum($uid)
@@ -253,7 +261,7 @@ class PwForumService
     }
 
     /**
-     * 重新统计本版及上级版块的帖子统计数
+     * 重新统计本版及上级版块的帖子统计数.
      *
      * @param mixed $forum (int fid | object PwForumBo)
      */
@@ -275,7 +283,7 @@ class PwForumService
     }
 
     /**
-     * 更新版块帖子统计数
+     * 更新版块帖子统计数.
      *
      * @param mixed $forum    int 版块fid | object PwForumBo
      * @param int   $topic    主题更新数

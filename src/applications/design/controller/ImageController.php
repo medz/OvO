@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ImageController.php 22589 2012-12-25 11:12:47Z gao.wanggao $
- * @package
  */
 class ImageController extends PwBaseController
 {
@@ -26,9 +27,6 @@ class ImageController extends PwBaseController
         header('Location: '.$image);
         exit;
     }
-
-
-
 
     private function _getImageService()
     {

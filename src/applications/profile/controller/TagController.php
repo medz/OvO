@@ -3,13 +3,13 @@
 Wind::import('APPS:.profile.controller.BaseProfileController');
 
 /**
- * 个性标签
+ * 个性标签.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class TagController extends BaseProfileController
 {
@@ -34,7 +34,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 添加标签
+     * 添加标签.
      */
     public function doAddAction()
     {
@@ -48,7 +48,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 添加用户标签
+     * 添加用户标签.
      */
     public function doAddByidAction()
     {
@@ -61,7 +61,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 删除用户的标签
+     * 删除用户的标签.
      */
     public function doDeleteAction()
     {
@@ -77,7 +77,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 获得热门标签
+     * 获得热门标签.
      */
     public function hotAction()
     {
@@ -98,7 +98,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 标签的DS
+     * 标签的DS.
      *
      * @return PwUserTag
      */
@@ -108,7 +108,7 @@ class TagController extends BaseProfileController
     }
 
     /**
-     * 获得DS
+     * 获得DS.
      *
      * @return PwUserTagRelation
      */

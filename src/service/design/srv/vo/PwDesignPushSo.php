@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPushSo.php 16933 2012-08-29 09:25:02Z gao.wanggao $
- * @package
  */
 class PwDesignPushSo
 {
@@ -35,6 +36,7 @@ class PwDesignPushSo
     /**
      * 小于结束时间
      * Enter description here ...
+     *
      * @param unknown_type $time
      */
     public function setLtEndTime($time)
@@ -45,6 +47,7 @@ class PwDesignPushSo
     /**
      * 大于结束时间
      * Enter description here ...
+     *
      * @param unknown_type $time
      */
     public function setGtEndTime($time)

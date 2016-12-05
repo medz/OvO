@@ -2,12 +2,13 @@
 
 Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>
+ * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
+ *
  * @author $Author: xiaoxia.xuxx $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLoginDoUpdateOnline.php 18341 2012-09-14 06:53:14Z xiaoxia.xuxx $
- * @package
  */
 class PwLoginDoUpdateOnline extends PwUserLoginDoBase
 {

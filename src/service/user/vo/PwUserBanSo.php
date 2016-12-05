@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户禁止信息的搜索的Data-object
+ * 用户禁止信息的搜索的Data-object.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserBanSo.php 21659 2012-12-12 07:00:13Z xiaoxia.xuxx $
- * @package src.service.user.do
  */
 class PwUserBanSo
 {
@@ -17,9 +17,10 @@ class PwUserBanSo
     private $keywords = '';
 
     /**
-     * 设置搜索的类型'username'/'uid'
+     * 设置搜索的类型'username'/'uid'.
      *
-     * @param  string      $type
+     * @param string $type
+     *
      * @return PwUserBanSo
      */
     public function setType($type)
@@ -33,7 +34,8 @@ class PwUserBanSo
     /**
      * 设置搜索类型对应的值
      *
-     * @param  string      $keywords
+     * @param string $keywords
+     *
      * @return PwUserBanSo
      */
     public function setKeywords($keywords)
@@ -45,9 +47,10 @@ class PwUserBanSo
     }
 
     /**
-     * 设置 创建禁止的人
+     * 设置 创建禁止的人.
      *
-     * @param  string      $created_username
+     * @param string $created_username
+     *
      * @return PwUserBanSo
      */
     public function setCreatedUsername($created_username)
@@ -68,9 +71,10 @@ class PwUserBanSo
     }
 
     /**
-     * 设置禁止开始的时间
+     * 设置禁止开始的时间.
      *
-     * @param  string      $start_time
+     * @param string $start_time
+     *
      * @return PwUserBanSo
      */
     public function setStartTime($start_time)
@@ -82,9 +86,10 @@ class PwUserBanSo
     }
 
     /**
-     * 设置禁止结束的时间
+     * 设置禁止结束的时间.
      *
-     * @param  string      $end_time
+     * @param string $end_time
+     *
      * @return PwUserBanSo
      */
     public function setEndTime($end_time)
@@ -96,7 +101,7 @@ class PwUserBanSo
     }
 
     /**
-     * 以数组格式获得数据
+     * 以数组格式获得数据.
      *
      * @return array
      */
@@ -119,9 +124,10 @@ class PwUserBanSo
     }
 
     /**
-     * 获得搜索条件
+     * 获得搜索条件.
      *
-     * @param  string $field
+     * @param string $field
+     *
      * @return string
      */
     public function getCondition($field)
@@ -130,7 +136,7 @@ class PwUserBanSo
     }
 
     /**
-     * 获得分页数据
+     * 获得分页数据.
      *
      * @return array
      */

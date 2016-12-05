@@ -1,20 +1,19 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
-
 class PwEmotionService
 {
     private $_cacheKey = 'all_emotions';
 
     /**
-     * 更新表情缓存
-     *
+     * 更新表情缓存.
      */
     public function updateCache()
     {
@@ -24,8 +23,7 @@ class PwEmotionService
     }
 
     /**
-     * 从缓存读取所有表情
-     *
+     * 从缓存读取所有表情.
      */
     public function getAllEmotion()
     {
@@ -33,15 +31,14 @@ class PwEmotionService
     }
 
     /**
-     * 从数据库读取所有表情
-     *
+     * 从数据库读取所有表情.
      */
     public function getAllEmotionNoCache()
     {
         $list = Wekit::load('emotion.PwEmotion')->getAllEmotion();
         $emotions = array(
             'emotion' => array(),
-            'name' => array(),
+            'name'    => array(),
         );
         foreach ($list as $v) {
             $tmp['emotion_folder'] = $v['emotion_folder'];
@@ -54,8 +51,7 @@ class PwEmotionService
     }
 
     /**
-     * 读取表情文件夹
-     *
+     * 读取表情文件夹.
      */
     public function getFolderList()
     {
@@ -63,7 +59,7 @@ class PwEmotionService
     }
 
     /**
-     * 读取表情列表
+     * 读取表情列表.
      *
      * @param stting $folder
      */
@@ -75,7 +71,7 @@ class PwEmotionService
     }
 
     /**
-     * 表情应用场景
+     * 表情应用场景.
      *
      * @param string $select
      */
@@ -93,7 +89,7 @@ class PwEmotionService
     }
 
     /**
-     * PwEmotion
+     * PwEmotion.
      *
      * @return PwEmotion
      */

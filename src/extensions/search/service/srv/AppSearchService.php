@@ -1,6 +1,6 @@
 <?php
 /**
- * 本地搜索
+ * 本地搜索.
  */
 class AppSearchService
 {
@@ -94,9 +94,8 @@ class AppSearchService
         return new $className();
     }
 
-
     /**
-     * 获取类型
+     * 获取类型.
      *
      * @return array
      */
@@ -104,13 +103,13 @@ class AppSearchService
     {
         return array(
             'thread' => self::SEARCH_TYPE_THREAD,
-            'user' => self::SEARCH_TYPE_USER,
-            'forum' => self::SEARCH_TYPE_FORUM,
+            'user'   => self::SEARCH_TYPE_USER,
+            'forum'  => self::SEARCH_TYPE_FORUM,
         );
     }
 
     /**
-     * 获取类型名称
+     * 获取类型名称.
      *
      * @return array
      */
@@ -118,11 +117,10 @@ class AppSearchService
     {
         return array(
             self::SEARCH_TYPE_THREAD => '帖子',
-            self::SEARCH_TYPE_USER => '用户',
-            self::SEARCH_TYPE_FORUM => '版块',
+            self::SEARCH_TYPE_USER   => '用户',
+            self::SEARCH_TYPE_FORUM  => '版块',
         );
     }
-
 
     private function _getTypeId($type)
     {
@@ -159,9 +157,9 @@ class AppSearchService
         $timestamp = Pw::getTime();
         $times = array(
             'today' => $timestamp - 86400,
-            'week' => $timestamp - 7 * 86400,
+            'week'  => $timestamp - 7 * 86400,
             'month' => $timestamp - 30 * 86400,
-            'year' => $timestamp - 365 * 86400,
+            'year'  => $timestamp - 365 * 86400,
         );
 
         return $times[$daytime];
@@ -172,9 +170,9 @@ class AppSearchService
     {
         return array(
             'today' => '最近一天',
-            'week' => '最近一周',
+            'week'  => '最近一周',
             'month' => '最近一月',
-            'year' => '最近一年',
+            'year'  => '最近一年',
         );
     }
 

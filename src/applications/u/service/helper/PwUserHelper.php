@@ -2,18 +2,18 @@
 
 Wind::import('SRV:user.PwUser');
 /**
- * 帮助类
+ * 帮助类.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserHelper.php 21282 2012-12-04 03:25:54Z xiaoxia.xuxx $
- * @package products.u.srv
  */
 class PwUserHelper
 {
     /**
-     * 获得登录类型
+     * 获得登录类型.
      *
      * @return array
      */
@@ -23,7 +23,7 @@ class PwUserHelper
     }
 
     /**
-     * 获得登录框中的登录方式的提示信息
+     * 获得登录框中的登录方式的提示信息.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class PwUserHelper
     }
 
     /**
-     * 获得出生日期的时间距离
+     * 获得出生日期的时间距离.
      *
      * @return array array(array(year), array(month), array(day))
      */
@@ -55,7 +55,7 @@ class PwUserHelper
     }
 
     /**
-     * 注册中需要附加的字段映射表
+     * 注册中需要附加的字段映射表.
      *
      * @return array
      */
@@ -64,20 +64,21 @@ class PwUserHelper
         $fields = array(
             'location' => array('title' => '现居住地', 'segment' => 'area'),
             'hometown' => array('title' => '家乡', 'segment' => 'area'),
-            'mobile' => array('title' => '手机', 'segment' => 'input'),
-            'qq' => array('title' => 'QQ', 'segment' => 'input'),
-            'msn' => array('title' => 'MSN', 'segment' => 'input'),
-            'aliww' => array('title' => '阿里旺旺', 'segment' => 'input'),
+            'mobile'   => array('title' => '手机', 'segment' => 'input'),
+            'qq'       => array('title' => 'QQ', 'segment' => 'input'),
+            'msn'      => array('title' => 'MSN', 'segment' => 'input'),
+            'aliww'    => array('title' => '阿里旺旺', 'segment' => 'input'),
         );
 
         return $fields;
     }
 
     /**
-     * 判断获得密码强度
+     * 判断获得密码强度.
      *
-     * @param  string $pwd 密码强度
-     * @return int    返回强度级别：(1：弱,2: 一般, 3： 强, 4：非常强)
+     * @param string $pwd 密码强度
+     *
+     * @return int 返回强度级别：(1：弱,2: 一般, 3： 强, 4：非常强)
      */
     public static function checkPwdStrong($pwd)
     {
@@ -88,15 +89,15 @@ class PwUserHelper
         while ($i < $len) {
             $ascii = ord($pwd[$i]);
             if ($ascii >= 48 && $ascii <= 57) { //数字
-                $mode['d'] ++;
+                $mode['d']++;
             } elseif ($ascii >= 65 && $ascii <= 90) { //大写字母
-                $mode['A'] ++;
+                $mode['A']++;
             } elseif ($ascii >= 97 && $ascii <= 122) { //小写
-                $mode['a'] ++;
+                $mode['a']++;
             } else {
-                $mode['f'] ++;
+                $mode['f']++;
             }
-            $i ++;
+            $i++;
         }
         /*全是小写字母或是大写字母或是字符*/
         if ($mode['a'] == $len || $mode['A'] == $len || $mode['f'] == $len) {
@@ -147,7 +148,7 @@ class PwUserHelper
     }
 
     /**
-     * 获得安全问题
+     * 获得安全问题.
      *
      * @return array
      */

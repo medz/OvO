@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Windid工具库
+ * Windid工具库.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidError.php 24834 2013-02-22 06:43:43Z jieyin $
- * @package Windid.library
  */
-
 class WindidError
 {
     const SUCCESS = 1;

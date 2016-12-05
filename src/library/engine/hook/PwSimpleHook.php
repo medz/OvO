@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * pw扩展机制
+ * pw扩展机制.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSimpleHook.php 20816 2012-11-12 06:47:39Z jieyin $
- * @package wekit
- * @subpackage engine.hook
  */
 class PwSimpleHook
 {
@@ -40,7 +39,8 @@ class PwSimpleHook
     /**
      * 获取钩子实例对象
      *
-     * @param  string       $hookKey 钩子名
+     * @param string $hookKey 钩子名
+     *
      * @return PwSimpleHook
      */
     public static function getInstance($hookKey)
@@ -72,9 +72,10 @@ class PwSimpleHook
 
     /**
      * 为所有注册的扩展服务运行指定方法;
-     * 模式:当有一个方法出错(不返回true)时，中断运行
+     * 模式:当有一个方法出错(不返回true)时，中断运行.
      *
-     * @param  string             $method 方法名
+     * @param string $method 方法名
+     *
      * @return true|PwError对象
      */
     public function runWithVerified()
@@ -94,11 +95,12 @@ class PwSimpleHook
 
     /**
      * 为所有注册的扩展服务运行指定方法;
-     * 模式:自上而下传递$value变量
+     * 模式:自上而下传递$value变量.
      *
-     * @param  string $method 方法名
-     * @param  mixed  $value  传递的值
-     * @return mixed  处理后的值
+     * @param string $method 方法名
+     * @param mixed  $value  传递的值
+     *
+     * @return mixed 处理后的值
      */
     public function runWithFilters($value)
     {

@@ -5,13 +5,13 @@ Wind::import('SRV:medal.bo.PwUserMedalBo');
  * 自动勋章颁发流程
  * <1>checkAutoMedal()
  * <2>checkNeedAward()
- * <3>awardMedal()
+ * <3>awardMedal().
  *
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAutoAwardMedal.php 18821 2012-09-28 03:47:15Z xiaoxia.xuxx $
- * @package
  */
 class PwAutoAwardMedal
 {
@@ -25,8 +25,6 @@ class PwAutoAwardMedal
     private $userBo = null;
 
     /**
-     *
-     *
      * @param PwUserBo $userBo
      */
     public function __construct(PwUserBo $userBo)
@@ -36,7 +34,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 自动勋章颁发流程 发放所有满足条件的
+     * 自动勋章颁发流程 发放所有满足条件的.
      *
      * @param int $awardType    @source PwMedalService->awardTypes()
      * @param int $nowCondition
@@ -54,7 +52,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 自动勋章颁发流程 发放条件最高
+     * 自动勋章颁发流程 发放条件最高.
      *
      * @param int $awardType    @source PwMedalService->awardTypes()
      * @param int $nowCondition
@@ -72,10 +70,11 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 对自动勋章进行判断，是否达到发放条件
+     * 对自动勋章进行判断，是否达到发放条件.
      *
-     * @param  int  $awardType
-     * @param  int  $nowCondition
+     * @param int $awardType
+     * @param int $nowCondition
+     *
      * @return bool
      */
     protected function checkAutoMedal($awardType, $nowCondition)
@@ -111,7 +110,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 判断是否需要更新勋章
+     * 判断是否需要更新勋章.
      *
      * @return bool
      */
@@ -134,7 +133,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 自动勋章发放 所有满足条件的勋章
+     * 自动勋章发放 所有满足条件的勋章.
      *
      * 写入状态为可领取
      */
@@ -157,8 +156,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 判断是否需要更新勋章 条件最高的一个
-     *
+     * 判断是否需要更新勋章 条件最高的一个.
      */
     protected function checkNeedMaxAward()
     {
@@ -170,7 +168,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 自动勋章发放 条件最高的一个
+     * 自动勋章发放 条件最高的一个.
      *
      * 写入状态为可领取
      */
@@ -191,9 +189,10 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 更新现有连续行为勋章
+     * 更新现有连续行为勋章.
      *
-     * @param  int  $awardType
+     * @param int $awardType
+     *
      * @return bool
      */
     protected function updateBehaviorMedal($awardType)
@@ -220,7 +219,7 @@ class PwAutoAwardMedal
     }
 
     /**
-     * 添加可以获取的勋章ID
+     * 添加可以获取的勋章ID.
      *
      * @param int $medalId
      */

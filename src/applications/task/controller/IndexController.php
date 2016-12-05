@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 任务系统前台
+ * 任务系统前台.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: IndexController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package src.products.task.controller
  */
 class IndexController extends PwBaseController
 {
@@ -58,7 +58,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 展示可以申领的任务列表
+     * 展示可以申领的任务列表.
      */
     public function applicableListAction()
     {
@@ -80,7 +80,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 展示已完成的任务列表
+     * 展示已完成的任务列表.
      */
     public function completeListAction()
     {
@@ -153,7 +153,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 获得奖励
+     * 获得奖励.
      */
     public function rewardAction()
     {
@@ -170,7 +170,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 获得页数
+     * 获得页数.
      *
      * @return int
      */
@@ -185,17 +185,17 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 获得任务的模式
+     * 获得任务的模式.
      *
      * @return array
      */
     private function _getTaskMode()
     {
         $mode = array(1 => array('class' => 'task_mode_end', 'button' => '去做任务'), //已经领取
-            2 => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经关闭
-            3 => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经过期
-            4 => array('class' => 'task_mode_end', 'button' => '继续完成'), //正在进行中
-            5 => array('class' => 'task_mode_arrow', 'button' => '领取奖励'), ); //已完成
+            2           => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经关闭
+            3           => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经过期
+            4           => array('class' => 'task_mode_end', 'button' => '继续完成'), //正在进行中
+            5           => array('class' => 'task_mode_arrow', 'button' => '领取奖励'), ); //已完成
         return $mode;
     }
 }

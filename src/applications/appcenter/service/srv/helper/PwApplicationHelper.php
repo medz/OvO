@@ -5,17 +5,18 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwApplicationHelper.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwApplicationHelper
 {
     /**
-     * 解析sql语句，并返回解析后的结果
+     * 解析sql语句，并返回解析后的结果.
      *
-     * @param  string                           $strSQL
-     * @param  string                           $charset
-     * @param  string                           $dbprefix
+     * @param string $strSQL
+     * @param string $charset
+     * @param string $dbprefix
+     *
      * @return array($sqlStatement,$sqlOptions)
      */
     public static function sqlParser($strSQL, $charset, $dbprefix, $engine)
@@ -59,8 +60,8 @@ class PwApplicationHelper
     }
 
     /**
+     * @param string $logfile
      *
-     * @param  string $logfile
      * @return array
      */
     public static function readInstallLog($logfile, $key = '')
@@ -74,7 +75,7 @@ class PwApplicationHelper
     }
 
     /**
-     * 写log
+     * 写log.
      *
      * @param string $logfile
      * @param array  $data
@@ -95,7 +96,8 @@ class PwApplicationHelper
     /**
      * 获取在线应用中心访问地址
      *
-     * @param  array  $args
+     * @param array $args
+     *
      * @return string
      */
     public static function acloudUrl($args)
@@ -119,9 +121,10 @@ class PwApplicationHelper
     /**
      * 使用socket请求
      *
-     * @param  unknown_type $url
-     * @param  unknown_type $tmpdir
-     * @return Ambigous     <multitype:boolean string , mixed, boolean, NULL, string, string>
+     * @param unknown_type $url
+     * @param unknown_type $tmpdir
+     *
+     * @return Ambigous <multitype:boolean string , mixed, boolean, NULL, string, string>
      */
     public static function requestAcloudUseSocket($url, $tmpdir = '')
     {
@@ -154,7 +157,7 @@ class PwApplicationHelper
     }
 
     /**
-     * 请求一个Aclude数据信息
+     * 请求一个Aclude数据信息.
      *
      * @param array  $args
      * @param string $tmpdir
@@ -170,8 +173,8 @@ class PwApplicationHelper
             $_tmp = $tmpdir.'/tmp.'.Pw::getTime();
             $fp = fopen($_tmp, 'w');
             $opt = array(
-                CURLOPT_FILE => $fp,
-                CURLOPT_HEADER => 0,
+                CURLOPT_FILE           => $fp,
+                CURLOPT_HEADER         => 0,
                 CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_SSL_VERIFYHOST => false, );
             $http->send('GET', $opt);
@@ -203,13 +206,14 @@ class PwApplicationHelper
     }
 
     /**
-     * 将原安装包中的文件目录，移动到指定位置
+     * 将原安装包中的文件目录，移动到指定位置.
      *
      * 将原安装包中的文件目录移动到指定位置
      *
-     * @param  原位置    $source
-     * @param  目标位置 $target
-     * @return bool         PwError
+     * @param 原位置    $source
+     * @param 目标位置 $target
+     *
+     * @return bool PwError
      */
     public static function mvSourcePack($source, $target)
     {
@@ -217,10 +221,11 @@ class PwApplicationHelper
     }
 
     /**
-     * 复制文件夹及文件夹内容
+     * 复制文件夹及文件夹内容.
      *
-     * @param  string $source
-     * @param  string $target
+     * @param string $source
+     * @param string $target
+     *
      * @return bool
      */
     public static function copyRecursive($source, $target, $ignore = array())
@@ -253,10 +258,11 @@ class PwApplicationHelper
     }
 
     /**
-     * 从应用平台下载安装包到本地,
+     * 从应用平台下载安装包到本地,.
      *
-     * @param  string $url
-     * @param  string $tmpdir
+     * @param string $url
+     * @param string $tmpdir
+     *
      * @return string
      */
     public static function download($url, $tmpdir)
@@ -280,8 +286,9 @@ class PwApplicationHelper
      * 解压压缩包,将源文件解压至目标文件
      * 目前只支持zip文件的解压，返回解后包文件绝对路径地址
      *
-     * @param  string $source
-     * @param  string $target
+     * @param string $source
+     * @param string $target
+     *
      * @return string
      */
     public static function extract($source, $target)

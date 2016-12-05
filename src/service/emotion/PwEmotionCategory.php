@@ -1,17 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwEmotion.php 6800 2012-03-26 09:37:53Z gao.wanggao $
- * @package
  */
-
 class PwEmotionCategory
 {
     /**
-     * 获取一条分类信息
+     * 获取一条分类信息.
      *
      * @param int $categoryId
      */
@@ -26,7 +26,7 @@ class PwEmotionCategory
     }
 
     /**
-     * 获取多条分类信息
+     * 获取多条分类信息.
      *
      * @param array $categoryIds
      */
@@ -40,7 +40,7 @@ class PwEmotionCategory
     }
 
     /**
-     * 获取分类列表
+     * 获取分类列表.
      *
      * @param string $app
      * @param bool   $isOpen

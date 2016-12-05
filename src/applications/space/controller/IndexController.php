@@ -2,19 +2,19 @@
 
 Wind::import('APPS:space.controller.SpaceBaseController');
 /**
- * 新鲜事
+ * 新鲜事.
  *
  * @version $Id: IndexController.php 25054 2013-03-01 03:14:54Z jieyin $
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
- * @package space
  */
-
 class IndexController extends SpaceBaseController
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see wekit/wind/web/WindController::run()
      */
     public function run()
@@ -60,15 +60,12 @@ class IndexController extends SpaceBaseController
         $this->setTemplate('index_run');
     }
 
-
     /**
-     * 回复
-     *
+     * 回复.
      */
     public function replyAction()
     {
         $id = (int) $this->getInput('id');
-
 
         Wind::import('SRV:attention.srv.PwFreshReplyList');
         $reply = new PwFreshReplyList($id);
@@ -86,8 +83,7 @@ class IndexController extends SpaceBaseController
     }
 
     /**
-     * 阅读更多
-     *
+     * 阅读更多.
      */
     public function readAction()
     {
@@ -102,7 +98,6 @@ class IndexController extends SpaceBaseController
             $array = Wekit::load('forum.PwThread')->getPost($fresh['src_id']);
             $thread = new PwThreadBo($array['tid']);
         }
-
 
         $array['content'] = WindSecurity::escapeHTML($array['content']);
         $array['content'] = str_replace("\n", '<br />', $array['content']);
@@ -129,7 +124,6 @@ class IndexController extends SpaceBaseController
         if (!$fresh = $freshDisplay->gather()) {
             $this->showError('fresh.exists.not');
         }
-
 
         Wind::import('SRV:attention.srv.PwFreshReplyList');
 

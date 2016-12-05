@@ -6,8 +6,8 @@
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogLogin.php 21359 2012-12-05 08:01:23Z xiaoxia.xuxx $
- * @package src.service.log
  */
 class PwLogLogin
 {
@@ -15,9 +15,10 @@ class PwLogLogin
     const ERROR_SAFEQ = 2; //安全问题及答案错误
 
     /**
-     * 搜索日志
+     * 搜索日志.
      *
-     * @param  PwLogSo $so
+     * @param PwLogSo $so
+     *
      * @return array
      */
     public function search(PwLogSo $so, $limit, $offset)
@@ -26,9 +27,10 @@ class PwLogLogin
     }
 
     /**
-     * 根据条件统计日志
+     * 根据条件统计日志.
      *
-     * @param  PwLogSo $so
+     * @param PwLogSo $so
+     *
      * @return int
      */
     public function coutSearch(PwLogSo $so)
@@ -37,9 +39,10 @@ class PwLogLogin
     }
 
     /**
-     * 添加日志
+     * 添加日志.
      *
-     * @param  PwLogLoginDm $dm
+     * @param PwLogLoginDm $dm
+     *
      * @return int
      */
     public function addLog(PwLogLoginDm $dm)
@@ -52,9 +55,10 @@ class PwLogLogin
     }
 
     /**
-     * 批量添加日志
+     * 批量添加日志.
      *
-     * @param  array $dms
+     * @param array $dms
+     *
      * @return bool
      */
     public function batchAddLog($dms)
@@ -77,9 +81,10 @@ class PwLogLogin
     }
 
     /**
-     * 根据日志ID删除日志
+     * 根据日志ID删除日志.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return int
      */
     public function deleteLog($id)
@@ -92,9 +97,10 @@ class PwLogLogin
     }
 
     /**
-     * 根据日志ID列表批量删除日志
+     * 根据日志ID列表批量删除日志.
      *
-     * @param  array $logids
+     * @param array $logids
+     *
      * @return int
      */
     public function batchDeleteLog($logids)
@@ -107,9 +113,10 @@ class PwLogLogin
     }
 
     /**
-     * 清除某一个时间点之前的记录
+     * 清除某一个时间点之前的记录.
      *
-     * @param  string $time
+     * @param string $time
+     *
      * @return bool
      */
     public function clearLogBeforeDatetime($time)

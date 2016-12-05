@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 用户查询DAO
+ * 用户查询DAO.
  */
 class PwUserSearchDao extends PwBaseDao
 {
@@ -10,12 +10,13 @@ class PwUserSearchDao extends PwBaseDao
     protected $_infoTable = 'user_info';
 
     /**
-     * 根据查询条件查询用户数据
+     * 根据查询条件查询用户数据.
      *
-     * @param  array $condition
-     * @param  int   $limit
-     * @param  int   $start
-     * @param  array $orderby
+     * @param array $condition
+     * @param int   $limit
+     * @param int   $start
+     * @param array $orderby
+     *
      * @return array
      */
     public function searchUser($condition, $limit, $start, $orderby)
@@ -32,7 +33,8 @@ class PwUserSearchDao extends PwBaseDao
     /**
      * 根据查询条件统计
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearchUser($condition)
@@ -47,7 +49,7 @@ class PwUserSearchDao extends PwBaseDao
 
     /**
      * 总是获取相关三张表的所有数据
-     * 门户数据获取
+     * 门户数据获取.
      *
      * @param array $condition
      * @param int   $limit
@@ -66,10 +68,11 @@ class PwUserSearchDao extends PwBaseDao
     }
 
     /**
-     * 根据条件组合需要的表
+     * 根据条件组合需要的表.
      *
-     * @param  array  $mergeWhere
-     * @param  array  $mergeOrderBy
+     * @param array $mergeWhere
+     * @param array $mergeOrderBy
+     *
      * @return string
      */
     private function _getMergeTabl($mergeWhere = array('d' => 0, 'i' => 0), $mergeOrderBy = array('d' => 0, 'i' => 0))
@@ -86,9 +89,10 @@ class PwUserSearchDao extends PwBaseDao
     }
 
     /**
-     * 组装查询信息
+     * 组装查询信息.
      *
-     * @param  array  $condition
+     * @param array $condition
+     *
      * @return string
      */
     private function _buildCondition($condition)
@@ -154,9 +158,10 @@ class PwUserSearchDao extends PwBaseDao
     }
 
     /**
-     * 构建orderBy
+     * 构建orderBy.
      *
-     * @param  array $orderby
+     * @param array $orderby
+     *
      * @return array
      */
     protected function _buildOrderby($orderby)

@@ -4,13 +4,13 @@ Wind::import('APPS:manage.controller.BaseManageController');
 Wind::import('SRV:report.dm.PwReportDm');
 
 /**
- * 前台管理面板 - 举报管理
+ * 前台管理面板 - 举报管理.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ReportController.php 28816 2013-05-24 09:45:25Z jieyin $
- * @package wind
  */
 class ReportController extends BaseManageController
 {
@@ -29,8 +29,7 @@ class ReportController extends BaseManageController
     }
 
     /**
-     * 举报管理
-     *
+     * 举报管理.
      */
     public function run()
     {
@@ -60,8 +59,7 @@ class ReportController extends BaseManageController
     }
 
     /**
-     * 忽略
-     *
+     * 忽略.
      */
     public function deleteAction()
     {
@@ -81,8 +79,7 @@ class ReportController extends BaseManageController
     }
 
     /**
-     * 标记处理
-     *
+     * 标记处理.
      */
     public function dealCheckAction()
     {
@@ -106,10 +103,10 @@ class ReportController extends BaseManageController
         $reports = $this->_getReportDs()->fetchReport($ids);
         $notice = Wekit::load('message.srv.PwNoticeService');
         $extendParams = array(
-            'operateUserId' => $this->loginUser->uid,
+            'operateUserId'   => $this->loginUser->uid,
             'operateUsername' => $this->loginUser->username,
-            'operateTime' => Pw::getTime(),
-            'operateType' => $action,
+            'operateTime'     => Pw::getTime(),
+            'operateType'     => $action,
         );
         foreach ($reports as $v) {
             $this->_getReportService()->sendNotice($v, $extendParams);

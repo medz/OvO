@@ -2,12 +2,13 @@
 
 Wind::import('APPS:design.admin.DesignBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: TemplateController.php 28936 2013-05-31 02:50:17Z gao.wanggao $
- * @package
  */
 class TemplateController extends DesignBaseController
 {

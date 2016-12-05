@@ -4,13 +4,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.srv.reply.weibo.PwWeiboDoBase');
 /**
- * 微博 - 敏感词
+ * 微博 - 敏感词.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwWeiboDoWord extends PwWeiboDoBase
 {

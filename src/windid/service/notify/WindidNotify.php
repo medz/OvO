@@ -5,8 +5,8 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotify.php 24398 2013-01-30 02:45:05Z jieyin $
- * @package windid.notify
  */
 class WindidNotify
 {
@@ -27,9 +27,10 @@ class WindidNotify
     }
 
     /**
-     * 根据appid获得消息信息
+     * 根据appid获得消息信息.
      *
-     * @param  int         $appid
+     * @param int $appid
+     *
      * @return array|false
      */
     public function getByAppId($appid)

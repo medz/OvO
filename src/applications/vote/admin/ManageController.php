@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 投票系统后台
+ * 投票系统后台.
  *
  * @author mingxing.sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 4731 2012-02-23 08:36:01Z mingxing.sun $
- * @package src.modules.vote
  */
-
 class ManageController extends AdminBaseController
 {
     public function run()
@@ -32,7 +31,6 @@ class ManageController extends AdminBaseController
         }
 
         $pollOpenForum = $this->_getPollOpenForum($forumIds);
-
 
         $cateIds = array();
         foreach ($map[0] as $value) {
@@ -64,7 +62,7 @@ class ManageController extends AdminBaseController
         Wind::import('SRV:usergroup.dm.PwUserPermissionDm');
 
         foreach ($groups as $value) {
-            $dm = new PwUserPermissionDm($value ['gid']);
+            $dm = new PwUserPermissionDm($value['gid']);
             $dm->setPermission('allow_add_vote', in_array($value['gid'], $view['allow_add_vote']) ? 1 : 0);
             $dm->setPermission('allow_participate_vote', in_array($value['gid'], $view['allow_participate_vote']) ? 1 : 0);
             $dm->setPermission('allow_view_vote', in_array($value['gid'], $view['allow_view_vote']) ? 1 : 0);
@@ -220,7 +218,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwUserGroups
+     * get PwUserGroups.
      *
      * @return PwUserGroups
      */
@@ -230,7 +228,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwForumService
+     * get PwForumService.
      *
      * @return PwForumService
      */
@@ -240,7 +238,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwUserPermission
+     * get PwUserPermission.
      *
      * @return PwUserPermission
      */
@@ -250,7 +248,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwForum
+     * get PwForum.
      *
      * @return PwForum
      */

@@ -3,14 +3,14 @@
 Wind::import('APPS:api.controller.OpenBaseController');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ConfigController.php 24719 2013-02-17 06:50:42Z jieyin $
- * @package
  */
-
 class ConfigController extends OpenBaseController
 {
     public function getAction()

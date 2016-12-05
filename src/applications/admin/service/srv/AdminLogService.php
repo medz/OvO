@@ -5,9 +5,8 @@
  * @author Zerol Lin <zerol.lin@me.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package admin
- * @subpackage service.srv
  */
 class AdminLogService
 {
@@ -52,8 +51,9 @@ class AdminLogService
      * Enter description here .
      * ..
      *
-     * @param  WindHttpRequest         $request
-     * @param  int                     $offset
+     * @param WindHttpRequest $request
+     * @param int             $offset
+     *
      * @return array(countLoginFailed, lastLoginTime)
      */
     public function checkLoginFailed($request, $offset = 2048)

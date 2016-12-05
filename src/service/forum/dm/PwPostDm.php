@@ -2,20 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
-
-
 /**
- * 帖子数据模型(insert, update)
+ * 帖子数据模型(insert, update).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDm.php 21175 2012-11-29 12:25:29Z jieyin $
- * @package forum
  */
-
 abstract class PwPostDm extends PwBaseDm
 {
     public $forum;
@@ -29,7 +24,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子标题
+     * 设置帖子标题.
      *
      * @param string $title 帖子标题
      */
@@ -41,7 +36,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子内容
+     * 设置帖子内容.
      *
      * @param string $content 帖子内容
      */
@@ -53,7 +48,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子所属版块
+     * 设置帖子所属版块.
      *
      * @param int $fid 版块id
      */
@@ -65,7 +60,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子作者信息
+     * 设置帖子作者信息.
      *
      * @param int    $uid      用户id
      * @param string $username 用户名
@@ -82,7 +77,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子编辑人信息
+     * 设置帖子编辑人信息.
      *
      * @param int    $uid      编辑人id
      * @param string $username 编辑人用户名
@@ -100,7 +95,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子创建时间
+     * 设置帖子创建时间.
      *
      * @param int $time 时间戳
      */
@@ -112,9 +107,10 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子是否可用
+     * 设置帖子是否可用.
      *
-     * @param  int      $disabled <0.可用 1.不可用/未审核 2.不可用/被删除>
+     * @param int $disabled <0.可用 1.不可用/未审核 2.不可用/被删除>
+     *
      * @return PwPostDm
      */
     public function setDisabled($disabled)
@@ -137,7 +133,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子附件数量
+     * 设置帖子附件数量.
      *
      * @param int $num 数量
      */
@@ -149,7 +145,7 @@ abstract class PwPostDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子附件包含信息
+     * 设置帖子附件包含信息.
      *
      * @param int $ifupload 位运算存储值(1.是否包含图片 2.是否包含txt 3.是否包含zip)
      */

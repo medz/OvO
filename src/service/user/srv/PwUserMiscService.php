@@ -3,18 +3,18 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 用户服务接口(不常用的业务逻辑)
+ * 用户服务接口(不常用的业务逻辑).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserMiscService.php 20650 2012-11-01 09:10:44Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwUserMiscService
 {
     /**
-     * 根据版主名单更新数据<1.pw_user_belong 2.pw_user中的groups字段>
+     * 根据版主名单更新数据<1.pw_user_belong 2.pw_user中的groups字段>.
      *
      * @param array $manager 所有的版主名单
      */
@@ -62,9 +62,10 @@ class PwUserMiscService
     }
 
     /**
-     * 获取用户ID列表里的用户附加组信息
+     * 获取用户ID列表里的用户附加组信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function getBelongs($uids)
@@ -79,11 +80,12 @@ class PwUserMiscService
     }
 
     /**
-     * 判断被选为版主的用户是否都是合法用户
+     * 判断被选为版主的用户是否都是合法用户.
      *
      * 这些用户不允许是有禁言用户和未验证用户
      *
-     * @param  array        $mangers
+     * @param array $mangers
+     *
      * @return PwError|true
      */
     public function filterForumManger($mangers)

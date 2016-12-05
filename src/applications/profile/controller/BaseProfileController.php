@@ -3,13 +3,13 @@
 Wind::import('APPS:u.service.helper.PwUserHelper');
 
 /**
- * 左边导航和资料tab扩展
+ * 左边导航和资料tab扩展.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: BaseProfileController.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package src.products.u.controller.profile
  */
 class BaseProfileController extends PwBaseController
 {
@@ -43,7 +43,7 @@ class BaseProfileController extends PwBaseController
     }
 
     /**
-     * 设置当前设置项
+     * 设置当前设置项.
      *
      * @param string $left
      */
@@ -71,7 +71,7 @@ class BaseProfileController extends PwBaseController
     }
 
     /**
-     * 设置面包屑
+     * 设置面包屑.
      *
      * @param string $title
      * @param string $url

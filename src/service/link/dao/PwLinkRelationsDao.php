@@ -1,12 +1,12 @@
 <?php
 /**
- * 友情链接关系DAO
+ * 友情链接关系DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwLinkRelationsDao
  */
 class PwLinkRelationsDao extends PwBaseDao
 {
@@ -14,9 +14,10 @@ class PwLinkRelationsDao extends PwBaseDao
     protected $_dataStruct = array('lid', 'typeid');
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addLinkRelations($data)
@@ -25,9 +26,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据lid删除
+     * 根据lid删除.
      *
-     * @param  int  $lid
+     * @param int $lid
+     *
      * @return bool
      */
     public function delRelationsByLid($lid)
@@ -39,9 +41,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据lid批量删除
+     * 根据lid批量删除.
      *
-     * @param  int  $lid
+     * @param int $lid
+     *
      * @return bool
      */
     public function batchDelRelationsByLid($lid)
@@ -52,9 +55,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据typeid删除
+     * 根据typeid删除.
      *
-     * @param  int  $typeid
+     * @param int $typeid
+     *
      * @return bool
      */
     public function delRelationsByTypeid($typeid)
@@ -66,9 +70,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据typeid获取数据
+     * 根据typeid获取数据.
      *
-     * @param  int $typeid
+     * @param int $typeid
+     *
      * @return int
      */
     public function getByTypeId($typeid)
@@ -86,9 +91,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据lid获取数据
+     * 根据lid获取数据.
      *
-     * @param  int $lid
+     * @param int $lid
+     *
      * @return int
      */
     public function getByLinkId($lid)
@@ -100,9 +106,10 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 根据链接ID批量获取与类型的对于关系
+     * 根据链接ID批量获取与类型的对于关系.
      *
-     * @param  array $linkids
+     * @param array $linkids
+     *
      * @return array
      */
     public function fetchByLinkId($linkids)
@@ -114,7 +121,7 @@ class PwLinkRelationsDao extends PwBaseDao
     }
 
     /**
-     * 统计分类数量
+     * 统计分类数量.
      *
      * @return array
      */

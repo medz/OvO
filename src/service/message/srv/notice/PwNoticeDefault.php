@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 13, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwNoticeThreadreply.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 
 class PwNoticeDefault extends PwNoticeAction
@@ -36,8 +38,8 @@ class PwNoticeDefault extends PwNoticeAction
     }
 
     /**
+     * 忽略一个回复通知.
      *
-     * 忽略一个回复通知
      * @param array $notice
      */
     public function ignoreNotice($notice, $ignore = 1)

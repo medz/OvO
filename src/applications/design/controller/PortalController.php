@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PortalController.php 24103 2013-01-21 10:15:47Z gao.wanggao $
- * @package
  */
 class PortalController extends PwBaseController
 {
@@ -23,7 +24,6 @@ class PortalController extends PwBaseController
             $this->showError('DESIGN:permissions.fail');
         }
     }
-
 
     public function addAction()
     {
@@ -137,7 +137,6 @@ class PortalController extends PwBaseController
             $this->showError('page.status.404');
         }
 
-
         //版块域名
         $domain_isopen = Wekit::C('domain', 'special.isopen');
         if ($domain_isopen) {
@@ -218,7 +217,6 @@ class PortalController extends PwBaseController
             $cover = (preg_match("/^http:\/\/(.*)$/", $cover)) ? $cover : '';
         }
 
-
         Wind::import('SRV:design.dm.PwDesignPortalDm');
         $dm = new PwDesignPortalDm($id);
         $dm->setPageName($pagename)
@@ -279,7 +277,6 @@ class PortalController extends PwBaseController
 
         return $bhv->getAttachInfo();
     }
-
 
     protected function _getPermissionsService()
     {

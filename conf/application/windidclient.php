@@ -10,8 +10,8 @@ return array(
     'web-apps' => array(
         'windidclient' => array(
             'default-module' => 'windidclient',
-            'root-path' => 'APPS:windidclient',
-            'modules' => array(),
+            'root-path'      => 'APPS:windidclient',
+            'modules'        => array(),
         ),
     ),
 );

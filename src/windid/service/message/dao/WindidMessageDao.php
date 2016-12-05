@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 消息基础表
+ * 消息基础表.
  *
  * @author peihong.zhang
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package forum
  */
-
 class WindidMessageDao extends WindidBaseDao
 {
     protected $_pk = 'message_id';
@@ -17,9 +16,10 @@ class WindidMessageDao extends WindidBaseDao
     protected $_dataStruct = array('message_id', 'from_uid', 'to_uid', 'content', 'created_time');
 
     /**
-     * 获取单条消息
+     * 获取单条消息.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getMessage($id)
@@ -36,9 +36,10 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 添加单条消息
+     * 添加单条消息.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function addMessage($fields)
@@ -53,9 +54,10 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 删除单条消息
+     * 删除单条消息.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteMessage($id)
@@ -67,9 +69,10 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 删除多条消息
+     * 删除多条消息.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function deleteMessages($ids)
@@ -81,9 +84,10 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 根据Ids获取消息
+     * 根据Ids获取消息.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function getMessagesByIds($ids)
@@ -95,11 +99,12 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 搜索消息数量
+     * 搜索消息数量.
      *
-     * @param  int   $from_uid
-     * @param  int   $starttime
-     * @param  int   $endtime
+     * @param int $from_uid
+     * @param int $starttime
+     * @param int $endtime
+     *
      * @return array
      */
     public function countMessage($data)
@@ -113,7 +118,7 @@ class WindidMessageDao extends WindidBaseDao
     }
 
     /**
-     * 搜索消息
+     * 搜索消息.
      */
     public function searchMessage($data, $start, $limit)
     {

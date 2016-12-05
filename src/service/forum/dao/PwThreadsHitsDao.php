@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadsHitsDao.php 18768 2012-09-27 07:09:04Z jieyin $
- * @package forum
  */
-
 class PwThreadsHitsDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_hits';

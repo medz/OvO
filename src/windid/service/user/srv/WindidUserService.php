@@ -1,22 +1,24 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserService.php 32086 2014-08-21 12:11:43Z gao.wanggao $
- * @package
  */
 class WindidUserService
 {
     /**
-     * 用户登录
+     * 用户登录.
      *
-     * @param  string $userid
-     * @param  string $password
-     * @param  int    $type     $type 1-uid ,2-username 3-email
-     * @param  string $question
-     * @param  string $answer
+     * @param string $userid
+     * @param string $password
+     * @param int    $type     $type 1-uid ,2-username 3-email
+     * @param string $question
+     * @param string $answer
+     *
      * @return array
      */
     public function login($userid, $password, $type = 2, $ifcheck = false, $question = '', $answer = '')
@@ -51,11 +53,12 @@ class WindidUserService
     }
 
     /**
-     * 检查用户提交的信息是否符合windid配置规范
+     * 检查用户提交的信息是否符合windid配置规范.
      *
-     * @param  string $input
-     * @param  int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
-     * @param  int    $uid
+     * @param string $input
+     * @param int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
+     * @param int    $uid
+     *
      * @return bool
      */
     public function checkUserInput($input, $type, $username = '', $uid = 0)
@@ -79,11 +82,12 @@ class WindidUserService
     }
 
     /**
-     * 验证安全问题
+     * 验证安全问题.
      *
-     * @param  int  $uid
-     * @param  int  $question
-     * @param  int  $answer
+     * @param int $uid
+     * @param int $question
+     * @param int $answer
+     *
      * @return bool
      */
     public function checkQuestion($uid, $question, $answer)
@@ -97,11 +101,12 @@ class WindidUserService
     }
 
     /**
-     * 获取一个用户基本资料
+     * 获取一个用户基本资料.
      *
-     * @param  multi $userid
-     * @param  int   $type      1-uid ,2-username 3-email
-     * @param  int   $fetchMode
+     * @param multi $userid
+     * @param int   $type      1-uid ,2-username 3-email
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function getUser($userid, $type = 1, $fetchMode = 1)
@@ -125,11 +130,12 @@ class WindidUserService
     }
 
     /**
-     * 批量获取用户信息
+     * 批量获取用户信息.
      *
-     * @param  array $uids/$username
-     * @param  int   $type           1-uid ,2-username
-     * @param  int   $fetchMode
+     * @param array $uids/$username
+     * @param int   $type           1-uid ,2-username
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function fecthUser($userids, $type = 1, $fetchMode = 1)
@@ -200,13 +206,13 @@ class WindidUserService
 							<embed src="'.Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" quality="high" bgcolor="#ffffff" width="700" height="430" name="mycamera" align="middle" allowScriptAccess="never" allowFullScreen="false" scale="exactfit"  wmode="transparent" FlashVars="'.$postUrl.'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 						</object>'
                        : array(
-                            'width' => '500',
-                            'height' => '405',
-                            'id' => 'uploadAvatar',
-                            'name' => 'uploadAvatar',
-                            'src' => Wekit::app('windid')->url->res.'swf/avatar/avatar.swf',
-                            'wmode' => 'transparent',
-                            'postUrl' => Wekit::app('windid')->url->base.'/index.php?m=api&c=avatar&a=doAvatar&uid='.$uid.'&windidkey='.$key2.'&time='.$time.'&clientid='.$appId.'&type=normal&jcallback=avatarNormal',
+                            'width'    => '500',
+                            'height'   => '405',
+                            'id'       => 'uploadAvatar',
+                            'name'     => 'uploadAvatar',
+                            'src'      => Wekit::app('windid')->url->res.'swf/avatar/avatar.swf',
+                            'wmode'    => 'transparent',
+                            'postUrl'  => Wekit::app('windid')->url->base.'/index.php?m=api&c=avatar&a=doAvatar&uid='.$uid.'&windidkey='.$key2.'&time='.$time.'&clientid='.$appId.'&type=normal&jcallback=avatarNormal',
                                'token' => $key2,
                         );
     }
@@ -245,7 +251,7 @@ class WindidUserService
     }
 
     /**
-     * 获取用户积分
+     * 获取用户积分.
      *
      * @param int $uid
      */
@@ -258,9 +264,10 @@ class WindidUserService
     }
 
     /**
-     * 批量获取用户积分
+     * 批量获取用户积分.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fecthUserCredit($uids)
@@ -276,7 +283,7 @@ class WindidUserService
     }
 
     /**
-     * 更新用户积分
+     * 更新用户积分.
      *
      * @param int $uid
      * @param int $cType (1-8)
@@ -296,7 +303,7 @@ class WindidUserService
     }
 
     /**
-     * 删除某的黑名单 $blackUid为空删除所有
+     * 删除某的黑名单 $blackUid为空删除所有.
      *
      * @param int $uid
      * @param int $blackUid

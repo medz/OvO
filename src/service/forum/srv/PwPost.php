@@ -3,7 +3,7 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 帖子发布流程
+ * 帖子发布流程.
  *
  * -> 1.check 检查帖子发布运行环境
  * -> 2.appendDo(*) 增加帖子发布时的行为动作,例:投票、附件等(可选)
@@ -12,8 +12,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPost.php 28950 2013-05-31 05:58:25Z jieyin $
- * @package forum
  */
 class PwPost extends PwBaseHookService
 {
@@ -34,7 +34,7 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 发帖之前检测
+     * 发帖之前检测.
      *
      * @return bool
      */
@@ -70,7 +70,7 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 检测是否拥有该版操作权限
+     * 检测是否拥有该版操作权限.
      *
      * @return bool
      */
@@ -88,7 +88,7 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 检测是否允许发帖
+     * 检测是否允许发帖.
      *
      * @return bool
      */
@@ -144,7 +144,7 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 各应用获取该用户dm来设置，以达到更新用户信息的目的
+     * 各应用获取该用户dm来设置，以达到更新用户信息的目的.
      *
      * @return object PwUserInfoDm
      */
@@ -159,9 +159,10 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 发布
+     * 发布.
      *
-     * @param  object $postDm 帖子数据模型
+     * @param object $postDm 帖子数据模型
+     *
      * @return bool
      */
     public function execute(PwPostDm $postDm)
@@ -197,7 +198,7 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 更新用户信息 /积分/发帖数/等
+     * 更新用户信息 /积分/发帖数/等.
      */
     public function updateUser()
     {
@@ -232,12 +233,13 @@ class PwPost extends PwBaseHookService
     }
 
     /**
-     * 判断当前的时间，是否在允许的时间段内
+     * 判断当前的时间，是否在允许的时间段内.
      *
-     * @param  int  $startHour 开始时间/小时
-     * @param  int  $startMin  开始时间/分钟
-     * @param  int  $endHour   结束时间/小时
-     * @param  int  $endMin    结束时间/分钟
+     * @param int $startHour 开始时间/小时
+     * @param int $startMin  开始时间/分钟
+     * @param int $endHour   结束时间/小时
+     * @param int $endMin    结束时间/分钟
+     *
      * @return bool
      */
     public static function inTime($startHour, $startMin, $endHour, $endMin)

@@ -1,18 +1,18 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreDefine');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreS');
 class ACloudSysCoreCommon
 {
     public static function getGlobal($key, $default = null)
     {
-        return (isset($GLOBALS [$key])) ? $GLOBALS [$key] : $default;
+        return (isset($GLOBALS[$key])) ? $GLOBALS[$key] : $default;
     }
 
     public static function setGlobal($key, $value)
     {
-        $GLOBALS [$key] = $value;
+        $GLOBALS[$key] = $value;
     }
 
     public static function getSiteSign()
@@ -24,7 +24,7 @@ class ACloudSysCoreCommon
 
     public static function getSiteUnique()
     {
-        return isset($_SERVER ['SERVER_NAME']) ? trim($_SERVER ['SERVER_NAME']) : trim(ACloudSysCoreDefine::ACLOUD_V);
+        return isset($_SERVER['SERVER_NAME']) ? trim($_SERVER['SERVER_NAME']) : trim(ACloudSysCoreDefine::ACLOUD_V);
     }
 
     public static function showError($message)
@@ -37,10 +37,10 @@ class ACloudSysCoreCommon
     {
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
         $chars_length = (strlen($chars) - 1);
-        $string = $chars {rand(0, $chars_length)};
+        $string = $chars[rand(0, $chars_length)];
         for ($i = 1; $i < $length; $i = strlen($string)) {
-            $r = $chars {rand(0, $chars_length)};
-            if ($r != $string {$i - 1}) {
+            $r = $chars[rand(0, $chars_length)];
+            if ($r != $string[$i - 1]) {
                 $string .= $r;
             }
         }
@@ -51,22 +51,22 @@ class ACloudSysCoreCommon
     public static function getIp()
     {
         static $ip = null;
-        if (! $ip) {
-            if (isset($_SERVER ['HTTP_X_FORWARDED_FOR']) && $_SERVER ['HTTP_X_FORWARDED_FOR'] && $_SERVER ['REMOTE_ADDR']) {
-                if (strstr($_SERVER ['HTTP_X_FORWARDED_FOR'], ',')) {
-                    $x = explode(',', $_SERVER ['HTTP_X_FORWARDED_FOR']);
-                    $_SERVER ['HTTP_X_FORWARDED_FOR'] = trim(end($x));
+        if (!$ip) {
+            if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] && $_SERVER['REMOTE_ADDR']) {
+                if (strstr($_SERVER['HTTP_X_FORWARDED_FOR'], ',')) {
+                    $x = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+                    $_SERVER['HTTP_X_FORWARDED_FOR'] = trim(end($x));
                 }
-                if (preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER ['HTTP_X_FORWARDED_FOR'])) {
-                    $ip = $_SERVER ['HTTP_X_FORWARDED_FOR'];
+                if (preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
                 }
-            } elseif (isset($_SERVER ['HTTP_CLIENT_IP']) && $_SERVER ['HTTP_CLIENT_IP'] && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER ['HTTP_CLIENT_IP'])) {
-                $ip = $_SERVER ['HTTP_CLIENT_IP'];
+            } elseif (isset($_SERVER['HTTP_CLIENT_IP']) && $_SERVER['HTTP_CLIENT_IP'] && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['HTTP_CLIENT_IP'])) {
+                $ip = $_SERVER['HTTP_CLIENT_IP'];
             }
-            if (! $ip && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER ['REMOTE_ADDR'])) {
-                $ip = $_SERVER ['REMOTE_ADDR'];
+            if (!$ip && preg_match('/^([0-9]{1,3}\.){3}[0-9]{1,3}$/', $_SERVER['REMOTE_ADDR'])) {
+                $ip = $_SERVER['REMOTE_ADDR'];
             }
-            ! $ip && $ip = 'Unknown';
+            !$ip && $ip = 'Unknown';
         }
 
         return $ip;
@@ -74,7 +74,7 @@ class ACloudSysCoreCommon
 
     public static function getDirName($path = null)
     {
-        if (! empty($path)) {
+        if (!empty($path)) {
             if (strpos($path, '\\') !== false) {
                 return substr($path, 0, strrpos($path, '\\')).'/';
             } elseif (strpos($path, '/') !== false) {
@@ -100,7 +100,7 @@ class ACloudSysCoreCommon
                 if (is_dir($path.$filename.'/')) {
                     self::listDir($path.$filename.'/');
                 } else {
-                    $result [] = $path.$filename;
+                    $result[] = $path.$filename;
                 }
             }
         }
@@ -112,11 +112,11 @@ class ACloudSysCoreCommon
     public static function getSiteUserAgent()
     {
         list($key, $ua) = array('_ac_app_ua', '');
-        if (! $_COOKIE || ! isset($_COOKIE [$key]) || ! $_COOKIE [$key]) {
-            $ua = substr(md5($_SERVER ['HTTP_USER_AGENT'].'\t'.rand(1000, 9999).'\t'.time()), 8, 18);
+        if (!$_COOKIE || !isset($_COOKIE[$key]) || !$_COOKIE[$key]) {
+            $ua = substr(md5($_SERVER['HTTP_USER_AGENT'].'\t'.rand(1000, 9999).'\t'.time()), 8, 18);
             setcookie($key, $ua, time() + 86400 * 365 * 5);
         }
-        $ua = $ua ? $ua : $_COOKIE [$key];
+        $ua = $ua ? $ua : $_COOKIE[$key];
 
         return (strlen($ua) == 18) ? ACloudSysCoreS::escapeChar($ua) : '';
     }
@@ -154,16 +154,16 @@ class ACloudSysCoreCommon
     {
         static $classes = array();
         $className = str_replace(' ', '', sprintf('ACloudSys%s', ucwords(str_replace('.', ' ', $module.' '.$className))));
-        if (isset($classes [$className])) {
-            return $classes [$className];
+        if (isset($classes[$className])) {
+            return $classes[$className];
         }
         $class = Wind::import(sprintf('ACLOUD:system.%s.%s', $module, $className));
-        if (! class_exists($className)) {
+        if (!class_exists($className)) {
             self::showError('cann`t find class');
         }
-        $classes [$className] = new $className ();
+        $classes[$className] = new $className ();
 
-        return $classes [$className];
+        return $classes[$className];
     }
 
     public static function loadAppClass($appName)
@@ -171,16 +171,16 @@ class ACloudSysCoreCommon
         static $classes = array();
         $appName = strtolower($appName);
         $class = sprintf('ACloudApp%sGuiding', ucfirst($appName));
-        if (isset($classes [$class])) {
-            return $classes [$class];
+        if (isset($classes[$class])) {
+            return $classes[$class];
         }
         $class = Wind::import(sprintf('ACLOUD:app.%s.%s', $appName, $class));
-        if (! class_exists($class)) {
+        if (!class_exists($class)) {
             self::showError('cann`t find class');
         }
-        $classes [$class] = new $class ();
+        $classes[$class] = new $class ();
 
-        return $classes [$class];
+        return $classes[$class];
     }
 
     public static function loadApps($page)
@@ -198,12 +198,12 @@ class ACloudSysCoreCommon
 
     public static function arrayCombination($array, $ik, $vk)
     {
-        if (! is_array($array)) {
+        if (!is_array($array)) {
             return array();
         }
         $tmp = array();
         foreach ($array as $a) {
-            (isset($a [$ik]) && isset($a [$vk])) && $tmp [$a [$ik]] = $a [$vk];
+            (isset($a[$ik]) && isset($a[$vk])) && $tmp[$a[$ik]] = $a[$vk];
         }
 
         return $tmp;
@@ -211,18 +211,18 @@ class ACloudSysCoreCommon
 
     public static function arrayIntersectAssoc($array1, $array2)
     {
-        if (! is_array($array1) || ! is_array($array2)) {
+        if (!is_array($array1) || !is_array($array2)) {
             return array();
         }
         $tmp = array();
-        if (! function_exists('array_intersect_assoc')) {
+        if (!function_exists('array_intersect_assoc')) {
             $tmp = array_intersect_assoc($array1, $array2);
         } else {
             foreach ($array1 as $k => $v) {
-                if (! isset($array2 [$k]) || $array2 [$k] != $v) {
+                if (!isset($array2[$k]) || $array2[$k] != $v) {
                     continue;
                 }
-                $tmp [$k] = $v;
+                $tmp[$k] = $v;
             }
         }
 
@@ -242,7 +242,7 @@ class ACloudSysCoreCommon
     {
         $t_array = explode(' ', microtime());
 
-        return $t_array [0] + $t_array [1];
+        return $t_array[0] + $t_array[1];
     }
 
     public static function convertToUTF8($str)
@@ -268,7 +268,7 @@ class ACloudSysCoreCommon
         if (is_array($str)) {
             foreach ($str as $key => $value) {
                 is_object($value) && $value = get_object_vars($value);
-                $str [$key] = self::convert($value, $toEncoding, $fromEncoding, $ifMb);
+                $str[$key] = self::convert($value, $toEncoding, $fromEncoding, $ifMb);
             }
 
             return $str;
@@ -277,14 +277,14 @@ class ACloudSysCoreCommon
                 return mb_convert_encoding($str, $toEncoding, $fromEncoding);
             } else {
                 static $sConvertor = null;
-                ! $toEncoding && $toEncoding = 'GBK';
-                ! $fromEncoding && $fromEncoding = 'GBK';
-                if (! isset($sConvertor) && ! is_object($sConvertor)) {
+                !$toEncoding && $toEncoding = 'GBK';
+                !$fromEncoding && $fromEncoding = 'GBK';
+                if (!isset($sConvertor) && !is_object($sConvertor)) {
                     require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreCharset');
                     $sConvertor = new ACloudSysCoreCharset();
                 }
 
-                return $sConvertor->Convert($str, $fromEncoding, $toEncoding, ! $ifMb);
+                return $sConvertor->Convert($str, $fromEncoding, $toEncoding, !$ifMb);
             }
         }
     }
@@ -296,9 +296,9 @@ class ACloudSysCoreCommon
         $key = substr(md5($key), 8, 18);
         $keyLen = strlen($key);
         $strLen = strlen($string);
-        for ($i = 0; $i < $strLen; $i ++) {
+        for ($i = 0; $i < $strLen; $i++) {
             $k = $i % $keyLen;
-            $code .= $string [$i] ^ $key [$k];
+            $code .= $string[$i] ^ $key[$k];
         }
 
         return $action != 'DECODE' ? base64_encode($code) : $code;

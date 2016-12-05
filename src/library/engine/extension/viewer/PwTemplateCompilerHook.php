@@ -2,7 +2,7 @@
 
 
 /**
- * hook标签解析
+ * hook标签解析.
  *
  * 示例：
  * <code>
@@ -26,19 +26,18 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTemplateCompilerHook.php 24895 2013-02-25 10:36:16Z jieyin $
- * @package wekit
- * @subpackage engine.extension.viewer
  */
 class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
 {
     /**
-     * 调用的类名
+     * 调用的类名.
      */
     protected $class;
 
     /**
-     * 调用的方法名
+     * 调用的方法名.
      */
     protected $method;
 
@@ -48,20 +47,21 @@ class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
     protected $args;
 
     /**
-     * 该钩子下所有钩子片段集中缓存的位置
+     * 该钩子下所有钩子片段集中缓存的位置.
+     *
      * @var string
      */
     protected $alias = '';
 
     /**
-     * 钩子名称
+     * 钩子名称.
      *
      * @var string
      */
     protected $name = 'hook';
 
     /**
-     * 是否需要显示页面提示，默认为true
+     * 是否需要显示页面提示，默认为true.
      */
     protected $display;
 

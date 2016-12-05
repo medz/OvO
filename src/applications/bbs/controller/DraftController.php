@@ -3,13 +3,13 @@
 Wind::import('SRV:draft.dm.PwDraftDm');
 
 /**
- * 草稿箱
+ * 草稿箱.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class DraftController extends PwBaseController
 {
@@ -25,7 +25,6 @@ class DraftController extends PwBaseController
 
     /**
      * 添加草稿
-     *
      */
     public function doAddAction()
     {
@@ -46,8 +45,7 @@ class DraftController extends PwBaseController
     }
 
     /**
-     * do删除
-     *
+     * do删除.
      */
     public function doDeleteAction()
     {
@@ -66,7 +64,6 @@ class DraftController extends PwBaseController
 
     /**
      * 发帖页我的草稿
-     *
      */
     public function myDraftsAction()
     {
@@ -84,7 +81,7 @@ class DraftController extends PwBaseController
     }
 
     /**
-     * 草稿DS
+     * 草稿DS.
      *
      * @return PwDraft
      */

@@ -2,22 +2,23 @@
 
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 /**
- * 系统升级帮助类
+ * 系统升级帮助类.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwSystemHelper.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwSystemHelper
 {
     /**
-     * 解析sql语句，并返回解析后的结果
+     * 解析sql语句，并返回解析后的结果.
      *
-     * @param  string                           $strSQL
-     * @param  string                           $charset
-     * @param  string                           $dbprefix
+     * @param string $strSQL
+     * @param string $charset
+     * @param string $dbprefix
+     *
      * @return array($sqlStatement,$sqlOptions)
      */
     public static function sqlParser($strSQL, $charset, $dbprefix, $engine)
@@ -108,9 +109,10 @@ class PwSystemHelper
     }
 
     /**
-     * 解析md5sum文件
+     * 解析md5sum文件.
      *
-     * @param  unknown_type         $md5sum
+     * @param unknown_type $md5sum
+     *
      * @return multitype:multitype:
      */
     public static function resolveMd5($md5sum)
@@ -134,8 +136,9 @@ class PwSystemHelper
     /**
      * 计算sourcepath相对于targetpath的相对路径值
      *
-     * @param  unknown_type $sourcePath
-     * @param  unknown_type $targetPath
+     * @param unknown_type $sourcePath
+     * @param unknown_type $targetPath
+     *
      * @return string
      */
     public static function resolveRelativePath($sourcePath, $targetPath)
@@ -184,10 +187,11 @@ class PwSystemHelper
     }
 
     /**
-     * 使用socket下载
+     * 使用socket下载.
      *
-     * @param  unknown_type      $url
-     * @param  unknown_type      $file
+     * @param unknown_type $url
+     * @param unknown_type $file
+     *
      * @return multitype:boolean unknown
      */
     public static function downloadUseSocket($url, $file)
@@ -202,12 +206,13 @@ class PwSystemHelper
     }
 
     /**
-     * 下载
+     * 下载.
      *
-     * @param  unknown_type $url
-     * @param  unknown_type $file
-     * @param  unknown_type $useSocket
-     * @return Ambigous     <multitype:boolean, multitype:boolean unknown_type >|multitype:boolean string |multitype:boolean unknown
+     * @param unknown_type $url
+     * @param unknown_type $file
+     * @param unknown_type $useSocket
+     *
+     * @return Ambigous <multitype:boolean, multitype:boolean unknown_type >|multitype:boolean string |multitype:boolean unknown
      */
     public static function download($url, $file, $useSocket = false)
     {
@@ -218,8 +223,8 @@ class PwSystemHelper
         WindFolder::mkRecur(dirname($file));
         $fp = fopen($file, 'w');
         $opt = array(
-            CURLOPT_FILE => $fp,
-            CURLOPT_HEADER => 0,
+            CURLOPT_FILE           => $fp,
+            CURLOPT_HEADER         => 0,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => false, );
         $http->send('GET', $opt);
@@ -233,7 +238,7 @@ class PwSystemHelper
     }
 
     /**
-     * 根据升级列表校对md5
+     * 根据升级列表校对md5.
      *
      * 返回有更改的/无更改的/新增的
      */
@@ -260,8 +265,9 @@ class PwSystemHelper
      * 解压压缩包,将源文件解压至目标文件
      * 目前只支持zip文件的解压，返回解后包文件绝对路径地址
      *
-     * @param  string $source
-     * @param  string $target
+     * @param string $source
+     * @param string $target
+     *
      * @return string
      */
     public static function extract($source, $target)
@@ -281,9 +287,10 @@ class PwSystemHelper
     }
 
     /**
-     * 检查升级文件目录可写
+     * 检查升级文件目录可写.
      *
-     * @param  unknown_type      $fileList
+     * @param unknown_type $fileList
+     *
      * @return multitype:boolean unknown |boolean
      */
     public static function checkFolder($fileList)
@@ -312,9 +319,10 @@ class PwSystemHelper
     }
 
     /**
-     * 检查目录可写
+     * 检查目录可写.
      *
-     * @param  string $pathfile
+     * @param string $pathfile
+     *
      * @return bool
      */
     public static function checkWriteAble($pathfile)
@@ -325,7 +333,7 @@ class PwSystemHelper
         $isDir = substr($pathfile, -1) == '/' ? true : false;
         if ($isDir) {
             if (is_dir($pathfile)) {
-                mt_srand((double) microtime() * 1000000);
+                mt_srand((float) microtime() * 1000000);
                 $pathfile = $pathfile.'pw_'.uniqid(mt_rand()).'.tmp';
             } else {
                 return self::checkWriteAble(dirname($pathfile).'/');

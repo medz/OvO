@@ -10,10 +10,9 @@ Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDoPoll.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package forum
  */
-
 class PwPostDoPoll extends PwPostDoBase
 {
     public $tid = null;
@@ -38,7 +37,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * 添加投票与投票关系内容
+     * 添加投票与投票关系内容.
      */
     public function addThread($tid)
     {
@@ -46,7 +45,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * 更新投票内容
+     * 更新投票内容.
      */
     public function updateThread($tid)
     {
@@ -54,7 +53,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * 设置检查
+     * 设置检查.
      */
     public function check($postDm)
     {
@@ -196,7 +195,6 @@ class PwPostDoPoll extends PwPostDoBase
         return true;
     }
 
-
     private function _afterUpdate($pollid)
     {
         $optionList = $this->_getPollOptionDS()->getByPollid($pollid);
@@ -221,8 +219,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * 上次投票项图片
-     *
+     * 上次投票项图片.
      */
     public function uploadOptionImage()
     {
@@ -328,7 +325,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * get PwThreadPollBo
+     * get PwThreadPollBo.
      *
      * @return PwThreadPollBo
      */
@@ -345,7 +342,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * get PwPollService
+     * get PwPollService.
      *
      * @return PwPollService
      */
@@ -355,7 +352,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */
@@ -365,7 +362,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * get PwPollOption
+     * get PwPollOption.
      *
      * @return PwPollOption
      */
@@ -375,7 +372,7 @@ class PwPostDoPoll extends PwPostDoBase
     }
 
     /**
-     * get PwThreadPoll
+     * get PwThreadPoll.
      *
      * @return PwThreadPoll
      */

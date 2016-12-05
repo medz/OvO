@@ -9,8 +9,8 @@ Wind::import('SRV:credit.bo.PwCreditBo');
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PunchController extends PwBaseController
 {
@@ -35,7 +35,6 @@ class PunchController extends PwBaseController
 
     /**
      * 自己打卡
-     *
      */
     public function punchAction()
     {
@@ -69,22 +68,21 @@ class PunchController extends PwBaseController
         // 奖励积分
         if ($awardNum) {
             $this->_creditBo->addLog('punch', array($reward['type'] => $awardNum), $this->loginUser, array(
-                'cname' => $this->_creditBo->cUnit[$reward['type']],
+                'cname'  => $this->_creditBo->cUnit[$reward['type']],
                 'affect' => $awardNum, )
             );
             $this->_creditBo->set($userInfo['uid'], $reward['type'], $awardNum);
         }
         $result = array(
             'behaviornum' => $havePunch ? $behavior['number'] : $behavior['number'] + 1,
-            'reward' => $awardNum.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
+            'reward'      => $awardNum.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
         );
         Pw::echoJson(array('state' => 'success', 'data' => $result));
         exit;
     }
 
     /**
-     * 帮好友打卡弹窗
-     *
+     * 帮好友打卡弹窗.
      */
     public function friendAction()
     {
@@ -111,7 +109,7 @@ class PunchController extends PwBaseController
         $friendReward = array(
             'cUnit' => $this->_creditBo->cUnit[$reward['type']],
             'cType' => $this->_creditBo->cType[$reward['type']],
-            'cNum' => $punchFriend['rewardNum'],
+            'cNum'  => $punchFriend['rewardNum'],
         );
 
         $this->setOutput($result, 'friendNum');
@@ -121,8 +119,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * 获取用户关注数据，滚动ajax输出
-     *
+     * 获取用户关注数据，滚动ajax输出.
      */
     public function getfollowAction()
     {
@@ -168,7 +165,6 @@ class PunchController extends PwBaseController
 
     /**
      * do帮别人打卡
-     *
      */
     public function dofriendAction()
     {
@@ -205,16 +201,16 @@ class PunchController extends PwBaseController
             $this->_punchBehavior($v, $this->config['punch.friend.reward']['rewardMeNum'], $behaviorNum);
             $creditUids = array(
                 $this->loginUser->uid => array($this->config['punch.reward']['type'] => $awardNum),
-                $v['uid'] => array($this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']),
+                $v['uid']             => array($this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']),
             );
             // 奖励积分
             $this->_creditBo->addLog('punch', array($this->config['punch.reward']['type'] => $awardNum), $this->loginUser, array(
-                'cname' => $this->_creditBo->cType[$this->config['punch.reward']['type']],
+                'cname'  => $this->_creditBo->cType[$this->config['punch.reward']['type']],
                 'affect' => $awardNum, )
             );
 
             $this->_creditBo->addLog('punch', array($this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']), $userBo, array(
-                'cname' => $this->_creditBo->cType[$this->config['punch.reward']['type']],
+                'cname'  => $this->_creditBo->cType[$this->config['punch.reward']['type']],
                 'affect' => $this->config['punch.friend.reward']['rewardMeNum'], )
             );
             $this->_creditBo->execute($creditUids);
@@ -225,7 +221,7 @@ class PunchController extends PwBaseController
             $awardNums = $awardNum * count($punchUsers);
             $result = array(
                 'usernames' => implode(',', $punchUsers),
-                'reward' => $awardNums.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
+                'reward'    => $awardNums.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
             );
         }
         Pw::echoJson(array('state' => 'success', 'data' => $result));
@@ -254,8 +250,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * 请求获取tip
-     *
+     * 请求获取tip.
      */
     public function punchtipAction()
     {
@@ -264,12 +259,12 @@ class PunchController extends PwBaseController
         $reward = $this->config['punch.reward'];
         if (!$punchData) {
             $data = array(
-                'cUnit' => $this->_creditBo->cUnit[$reward['type']],
-                'cType' => $this->_creditBo->cType[$reward['type']],
-                'todaycNum' => $reward['min'],
+                'cUnit'        => $this->_creditBo->cUnit[$reward['type']],
+                'cType'        => $this->_creditBo->cType[$reward['type']],
+                'todaycNum'    => $reward['min'],
                 'tomorrowcNum' => $reward['min'] + $reward['step'],
-                'step' => $reward['step'],
-                'max' => $reward['max'],
+                'step'         => $reward['step'],
+                'max'          => $reward['max'],
             );
             Pw::echoJson(array('state' => 'success', 'data' => $data));
             exit;
@@ -284,21 +279,22 @@ class PunchController extends PwBaseController
         $awardNum = ($reward['min'] + $steps * $reward['step'] > $reward['max']) ? $reward['max'] : $reward['min'] + $steps * $reward['step'];
         $tomorrowcNum = $awardNum + $reward['step'];
         $data = array(
-            'cUnit' => $this->_creditBo->cUnit[$reward['type']],
-            'cType' => $this->_creditBo->cType[$reward['type']],
-            'todaycNum' => $awardNum,
+            'cUnit'        => $this->_creditBo->cUnit[$reward['type']],
+            'cType'        => $this->_creditBo->cType[$reward['type']],
+            'todaycNum'    => $awardNum,
             'tomorrowcNum' => $tomorrowcNum > $reward['max'] ? $reward['max'] : $tomorrowcNum,
-            'step' => $reward['step'],
-            'max' => $reward['max'],
+            'step'         => $reward['step'],
+            'max'          => $reward['max'],
         );
         Pw::echoJson(array('state' => 'success', 'data' => $data));
         exit;
     }
 
     /**
-     * 打卡 - 更新用户数据
+     * 打卡 - 更新用户数据.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     private function _punchBehavior($userInfo, $awardNum, $behaviorNum = '')
@@ -306,11 +302,11 @@ class PunchController extends PwBaseController
         $reward = $this->config['punch.reward'];
         $punchData = array(
             'username' => $this->loginUser->username,
-            'time' => Pw::getTime(),
-            'cNum' => $awardNum,
-            'cUnit' => $this->_creditBo->cUnit[$reward['type']],
-            'cType' => $this->_creditBo->cType[$reward['type']],
-            'days' => $behaviorNum,
+            'time'     => Pw::getTime(),
+            'cNum'     => $awardNum,
+            'cUnit'    => $this->_creditBo->cUnit[$reward['type']],
+            'cType'    => $this->_creditBo->cType[$reward['type']],
+            'days'     => $behaviorNum,
         );
 
         // 更新用户data表信息
@@ -344,7 +340,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * PwUserBehavior
+     * PwUserBehavior.
      *
      * @return PwUserBehavior
      */
@@ -354,7 +350,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -374,7 +370,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * PwPunchService
+     * PwPunchService.
      *
      * @return PwPunchService
      */
@@ -384,7 +380,7 @@ class PunchController extends PwBaseController
     }
 
     /**
-     * PwUser
+     * PwUser.
      *
      * @return PwUser
      */

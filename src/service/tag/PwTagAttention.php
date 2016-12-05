@@ -1,19 +1,20 @@
 <?php
 /**
- * 话题关注DS
+ * 话题关注DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package PwTag
  */
 class PwTagAttention
 {
     /**
-     * 统计我关注的话题
+     * 统计我关注的话题.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function countAttentionByUid($uid)
@@ -27,9 +28,10 @@ class PwTagAttention
     }
 
     /**
-     * 获取我关注的话题
+     * 获取我关注的话题.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getAttentionByUid($uid)
@@ -43,10 +45,11 @@ class PwTagAttention
     }
 
     /**
-     * 判断是否关注某话题
+     * 判断是否关注某话题.
      *
-     * @param  int   $uid
-     * @param  array $tagId
+     * @param int   $uid
+     * @param array $tagId
+     *
      * @return bool
      */
     public function isAttentioned($uid, $tagId)
@@ -61,7 +64,7 @@ class PwTagAttention
     }
 
     /**
-     * 根据tagIds获取用户的关注话题
+     * 根据tagIds获取用户的关注话题.
      *
      * @param int   $uid
      * @param array $tagIds
@@ -77,9 +80,10 @@ class PwTagAttention
     }
 
     /**
-     * 统计关注话题的用户
+     * 统计关注话题的用户.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function countAttentionByTagId($tagId)
@@ -93,11 +97,12 @@ class PwTagAttention
     }
 
     /**
-     * 获取关注话题的用户
+     * 获取关注话题的用户.
      *
-     * @param  int   $tagId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $tagId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getAttentionUids($tagId, $start, $limit)
@@ -111,10 +116,11 @@ class PwTagAttention
     }
 
     /**
-     * 关注话题
+     * 关注话题.
      *
-     * @param  int   $uid
-     * @param  int   $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return array
      */
     public function addAttention($uid, $tagId)
@@ -129,10 +135,11 @@ class PwTagAttention
     }
 
     /**
-     * 删除一条关注
+     * 删除一条关注.
      *
-     * @param  int   $uid
-     * @param  int   $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return array
      */
     public function deleteAttention($uid, $tagId)
@@ -147,7 +154,7 @@ class PwTagAttention
     }
 
     /**
-     * 批量删除关注
+     * 批量删除关注.
      *
      * @param array $tagIds
      */

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 可能认识的人计划任务DAO
+ * 可能认识的人计划任务DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwAttentionRecommendCronDao extends PwBaseDao
 {

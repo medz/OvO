@@ -5,8 +5,8 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskUser.php 16415 2012-08-23 07:53:40Z xiaoxia.xuxx $
- * @package service.task
  */
 class PwTaskUser
 {
@@ -20,7 +20,8 @@ class PwTaskUser
     /**
      * 添加或修改一个用户任务
      *
-     * @param  PwTaskUserDm $data
+     * @param PwTaskUserDm $data
+     *
      * @return bool
      */
     public function replaceUserTask(PwTaskUserDm $dm)
@@ -35,9 +36,10 @@ class PwTaskUser
     /**
      * 更新一条用户任务
      *
-     * @param  int          $taskid
-     * @param  int          $uid
-     * @param  PwTaskUserDm $dm
+     * @param int          $taskid
+     * @param int          $uid
+     * @param PwTaskUserDm $dm
+     *
      * @return PwError|bool
      */
     public function update($taskid, $uid, PwTaskUserDm $dm)
@@ -51,9 +53,10 @@ class PwTaskUser
     }
 
     /**
-     * 根据任务id删除pw_task_user表记录
+     * 根据任务id删除pw_task_user表记录.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($taskid)
@@ -66,9 +69,10 @@ class PwTaskUser
     }
 
     /**
-     * 根据用户id删除pw_task_user记录
+     * 根据用户id删除pw_task_user记录.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)
@@ -81,9 +85,10 @@ class PwTaskUser
     }
 
     /**
-     * 根据用户id删除pw_task_user记录
+     * 根据用户id删除pw_task_user记录.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function batchDeleteByUid($uids)
@@ -98,8 +103,9 @@ class PwTaskUser
     /**
      * 根据是否周期性查询用户任务
      *
-     * @param  int   $uid
-     * @param  int   $isPeriod 1代表周期性任务，0代表非周期性任务
+     * @param int $uid
+     * @param int $isPeriod 1代表周期性任务，0代表非周期性任务
+     *
      * @return array
      */
     public function getByIsPeriod($uid, $isPeriod)
@@ -112,10 +118,11 @@ class PwTaskUser
     }
 
     /**
-     * 取一条任务记录
+     * 取一条任务记录.
      *
-     * @param  int   $uid
-     * @param  int   $taskid
+     * @param int $uid
+     * @param int $taskid
+     *
      * @return array
      */
     public function get($uid, $taskid)
@@ -130,8 +137,9 @@ class PwTaskUser
     /**
      * 取多条用户任务
      *
-     * @param  int   $uid
-     * @param  array $taskids
+     * @param int   $uid
+     * @param array $taskids
+     *
      * @return array
      */
     public function gets($uid, $taskids)
@@ -144,15 +152,16 @@ class PwTaskUser
     }
 
     /**
-     * 根据任务状态，获取我的任务列表
+     * 根据任务状态，获取我的任务列表.
      *
      * @param int $uid
      * @param status 用户任务状态 （使用位运算，如3表示已申请+完成任务未领奖励）
      * 1 表示已申请，
      * 2 表示完成任务未领奖励，
      * 4 表示已领奖励
-     * @param  int   $num
-     * @param  int   $start
+     * @param int $num
+     * @param int $start
+     *
      * @return array
      */
     public function getMyTaskByStatus($uid, $status, $num = 10, $start = 0)
@@ -161,13 +170,14 @@ class PwTaskUser
     }
 
     /**
-     * 根据状态查询我的任务总数
+     * 根据状态查询我的任务总数.
      *
-     * @param  int $uid
-     * @param  int $status 同@method getMyTaskByStatus
-     *                     1 表示已申请，
-     *                     2 表示完成任务未领奖励，
-     *                     4 表示已领奖励
+     * @param int $uid
+     * @param int $status 同@method getMyTaskByStatus
+     *                    1 表示已申请，
+     *                    2 表示完成任务未领奖励，
+     *                    4 表示已领奖励
+     *
      * @return int
      */
     public function countMyTasksByStatus($uid, $status)

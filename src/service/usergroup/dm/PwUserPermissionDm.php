@@ -1,16 +1,16 @@
 <?php
 /**
- * 用户组权限数据模型
+ * 用户组权限数据模型.
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 1, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserPermissionDm.php 21226 2012-12-03 03:57:42Z jieyin $
  */
-
-
-
 class PwUserPermissionDm extends PwBaseDm
 {
     private $gid = 0;
@@ -33,7 +33,7 @@ class PwUserPermissionDm extends PwBaseDm
     }
 
     /**
-     * 返回格式化数组,For Dao
+     * 返回格式化数组,For Dao.
      */
     public function getData()
     {

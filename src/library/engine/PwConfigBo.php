@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 配置管理
+ * 配置管理.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwConfigBo.php 24753 2013-02-20 06:00:25Z jieyin $
- * @package src
- * @subpackage service.config.bo
  */
 class PwConfigBo
 {

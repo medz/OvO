@@ -9,8 +9,9 @@ class ACloudVerCommonPermissions extends ACloudVerCommonBase
     /**
      * Enter description here ...
      *
-     * @param  unknown_type $uid
-     * @return Ambigous     <multitype:unknown , multitype:unknown NULL >
+     * @param unknown_type $uid
+     *
+     * @return Ambigous <multitype:unknown , multitype:unknown NULL >
      */
     public function isUserBanned($uid)
     {
@@ -30,7 +31,7 @@ class ACloudVerCommonPermissions extends ACloudVerCommonBase
     }
 
     /**
-     * 判断指定用户是否有访问指定版块的权限
+     * 判断指定用户是否有访问指定版块的权限.
      *
      * @param int $uid
      * @param int $fid

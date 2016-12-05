@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('Friend_INVALID_PARAMS', 101);
 define('Friend_NOT_EXISTS', 102);
@@ -22,7 +22,7 @@ class ACloudVerCommonFriend extends ACloudVerCommonBase
     {
         $result = $this->getAttention()->getFollows($uid, $offset, $limit);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -32,7 +32,7 @@ class ACloudVerCommonFriend extends ACloudVerCommonBase
     {
         $result = $this->getAttentionService()->addFollow($uid, $touid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -42,7 +42,7 @@ class ACloudVerCommonFriend extends ACloudVerCommonBase
     {
         $result = $this->getAttentionService()->deleteFollow($uid, $touid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -52,7 +52,7 @@ class ACloudVerCommonFriend extends ACloudVerCommonBase
     {
         $result = $this->getAttention()->getFans($uid, $offset, $limit);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);

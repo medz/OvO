@@ -2,14 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseDao');
 /**
- * 用户文件管理
+ * 用户文件管理.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminRoleDao.php 21801 2012-12-13 09:31:09Z yishuo $
- * @package admin
- * @subpackage service.dao
  */
 class AdminRoleDao extends PwBaseDao
 {
@@ -17,9 +16,10 @@ class AdminRoleDao extends PwBaseDao
     protected $_dataStruct = array('id', 'name', 'auths', 'created_time', 'modified_time');
 
     /**
-     * 添加后台角色
+     * 添加后台角色.
      *
-     * @param  array       $fields
+     * @param array $fields
+     *
      * @return bool|number
      */
     public function add($fields)
@@ -33,9 +33,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 删除后台角色设置
+     * 删除后台角色设置.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function del($id)
@@ -50,9 +51,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 更新角色定义
+     * 更新角色定义.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function updateById($id, $fields)
@@ -67,10 +69,11 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 分页查找用户角色,并返回结果列表
+     * 分页查找用户角色,并返回结果列表.
      *
-     * @param  int   $start
-     * @param  int   $count
+     * @param int $start
+     * @param int $count
+     *
      * @return array
      */
     public function find($start, $count)
@@ -81,9 +84,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 根据主键name查找数据
+     * 根据主键name查找数据.
      *
-     * @param  array $names
+     * @param array $names
+     *
      * @return array
      */
     public function findByNames($names)
@@ -97,9 +101,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 根据角色名称查找一条数据
+     * 根据角色名称查找一条数据.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return array
      */
     public function findByName($name)
@@ -113,9 +118,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 根据主键ID查找数据
+     * 根据主键ID查找数据.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function findByIds($ids)
@@ -129,9 +135,10 @@ class AdminRoleDao extends PwBaseDao
     }
 
     /**
-     * 根据主键ID查找一条数据
+     * 根据主键ID查找一条数据.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function findById($id)

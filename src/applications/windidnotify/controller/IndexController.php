@@ -7,12 +7,13 @@ Wind::import('APPS:windidnotify.service.PwWindidInform');
 Wind::import('WINDID:service.base.WindidUtility');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 29741 2013-06-28 07:54:24Z gao.wanggao $
- * @package
  */
 class IndexController extends PwBaseController
 {

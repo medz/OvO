@@ -4,13 +4,13 @@
 Wind::import('COM:utility.WindUtility');
 
 /**
- * 话题图标上传
+ * 话题图标上传.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTagUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package wind
  */
 class PwTagUpload extends PwUploadAction
 {
@@ -20,7 +20,7 @@ class PwTagUpload extends PwUploadAction
     private $dir = 'tag/';
 
     /**
-     * 构造方法
+     * 构造方法.
      *
      * @param int $width
      * @param int $height
@@ -105,7 +105,7 @@ class PwTagUpload extends PwUploadAction
     }
 
     /**
-     * 获得上传文件保存的路径
+     * 获得上传文件保存的路径.
      *
      * @return string
      */

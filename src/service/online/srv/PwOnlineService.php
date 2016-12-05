@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 在线服务记录接口
+ * 在线服务记录接口.
  *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOnlineService.php 28793 2013-05-24 03:55:18Z jieyin $
- * @package
  */
-
 class PwOnlineService
 {
     public $time; //当前时间
@@ -28,6 +27,7 @@ class PwOnlineService
 
     /**
      * 切换版块时更新状态
+     *
      * @param int $fid
      */
     public function forumOnline($fid)
@@ -82,7 +82,8 @@ class PwOnlineService
     /**
      * 浏览时更新状态
      *
-     * @param  string      $clientIp
+     * @param string $clientIp
+     *
      * @return bool|string
      */
     public function visitOnline($clientIp)
@@ -160,7 +161,7 @@ class PwOnlineService
     }
 
     /**
-     * 标记一个访问者
+     * 标记一个访问者.
      *
      * @param string $ip
      * @param int    $createdTime
@@ -175,9 +176,10 @@ class PwOnlineService
     }
 
     /**
-     * 获取本地的访问标记
+     * 获取本地的访问标记.
      *
      * @param $isRefresh  bool 是否强制刷新
+     *
      * @return bool|array
      */
     public function getVisitor($isRefresh = false)

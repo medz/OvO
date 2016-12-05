@@ -4,13 +4,13 @@ Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
 Wind::import('SRV:word.PwWord');
 
 /**
- * 发帖子检测敏感词
+ * 发帖子检测敏感词.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwPostDoWord extends PwPostDoBase
 {

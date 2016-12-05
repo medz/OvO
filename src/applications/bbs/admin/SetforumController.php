@@ -2,22 +2,20 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台菜单管理操作类
+ * 后台菜单管理操作类.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: SetforumController.php 28796 2013-05-24 05:38:40Z jieyin $
- * @package admin
- * @subpackage controller
  */
 class SetforumController extends AdminBaseController
 {
     private $perpage = 20;
 
     /**
-     * 菜单管理主入口
-     *
+     * 菜单管理主入口.
      */
     public function run()
     {
@@ -35,8 +33,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 添加版块、修改版块排序、修改版主等操作
-     *
+     * 添加版块、修改版块排序、修改版主等操作.
      */
     public function dorunAction()
     {
@@ -127,8 +124,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 编辑版块信息
-     *
+     * 编辑版块信息.
      */
     public function editAction()
     {
@@ -450,7 +446,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 搜索版块名称 for ajax
+     * 搜索版块名称 for ajax.
      */
     public function searchforumAction()
     {
@@ -474,7 +470,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 删除一个版块
+     * 删除一个版块.
      */
     public function deleteforumAction()
     {
@@ -492,7 +488,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 删除板块logo
+     * 删除板块logo.
      */
     public function deletelogoAction()
     {
@@ -516,7 +512,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 删除板块icon
+     * 删除板块icon.
      */
     public function deleteiconAction()
     {
@@ -540,7 +536,7 @@ class SetforumController extends AdminBaseController
     }
 
     /**
-     * 保存主题分类
+     * 保存主题分类.
      *
      * @param $fid
      */

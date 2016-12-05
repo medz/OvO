@@ -6,15 +6,16 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwBackupDao extends PwBaseDao
 {
     /**
-     * 获取一个表的总行数
+     * 获取一个表的总行数.
      *
      * @param $table
+     *
      * @return table status string
      */
     public function getTableStatus($table)
@@ -26,11 +27,12 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 获取数据
+     * 获取数据.
      *
      * @param $table
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $start
+     * @param int $limit
+     *
      * @return table status string
      */
     public function getData($table, $limit, $start)
@@ -50,9 +52,10 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 获取表的字段数
+     * 获取表的字段数.
      *
      * @param $table
+     *
      * @return int
      */
     public function getColumnCount($table)
@@ -64,9 +67,10 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 获取create table 信息
+     * 获取create table 信息.
      *
      * @param $table
+     *
      * @return create table string
      */
     public function getCreateTable($table)
@@ -78,7 +82,7 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 获取所有表
+     * 获取所有表.
      *
      * @return tables
      */
@@ -91,9 +95,10 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 优化表
+     * 优化表.
      *
-     * @param  string $tables table1,table2,table3....
+     * @param string $tables table1,table2,table3....
+     *
      * @return tables
      */
     public function optimizeTables($table)
@@ -105,9 +110,10 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 修复表
+     * 修复表.
      *
-     * @param  string $tables table1,table2,table3....
+     * @param string $tables table1,table2,table3....
+     *
      * @return tables
      */
     public function repairTables($table)
@@ -119,7 +125,7 @@ class PwBackupDao extends PwBaseDao
     }
 
     /**
-     * 执行Sql
+     * 执行Sql.
      *
      * @return tables
      */
@@ -134,6 +140,7 @@ class PwBackupDao extends PwBaseDao
      * 获取表前缀
      *
      * @param $table
+     *
      * @return create table string
      */
     public function getTablePrefix()

@@ -2,13 +2,13 @@
 
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 /**
- * 帐号管理--禁止/解禁消息扩展
+ * 帐号管理--禁止/解禁消息扩展.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwNoticeCredit.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package src.service.task.srv.notice
  */
 class PwNoticeCredit extends PwNoticeAction
 {
@@ -72,7 +72,7 @@ class PwNoticeCredit extends PwNoticeAction
     }
 
     /**
-     * 忽略
+     * 忽略.
      *
      * @param array $notice
      */

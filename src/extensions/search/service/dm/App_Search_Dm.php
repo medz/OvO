@@ -2,8 +2,7 @@
 
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
- * 搜索记录DM
- *
+ * 搜索记录DM.
  */
 class App_Search_Dm extends PwUserInfoDm
 {

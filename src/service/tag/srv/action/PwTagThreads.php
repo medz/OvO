@@ -5,7 +5,8 @@ Wind::import('SRV:tag.srv.action.PwTagAction');
 class PwTagThreads extends PwTagAction
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see PwTagAction::getContents()
      */
     public function getContents($ids)
@@ -42,9 +43,10 @@ class PwTagThreads extends PwTagAction
     }
 
     /**
-     * 获取用户所有禁止访问的版块列表
+     * 获取用户所有禁止访问的版块列表.
      *
-     * @param  PwUserBo $user
+     * @param PwUserBo $user
+     *
      * @return array
      */
     protected function getForbidVisitForum(PwUserBo $user, $forums)
@@ -60,8 +62,8 @@ class PwTagThreads extends PwTagAction
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwThread
      */
     private function _getThreadDs()
@@ -70,8 +72,8 @@ class PwTagThreads extends PwTagAction
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwForum
      */
     private function _getForumDs()

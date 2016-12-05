@@ -1,21 +1,20 @@
 <?php
 
 
-
 /**
  * 文件缓存实现
- *	明文缓存
+ *	明文缓存.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z yishuo $
- * @package wind
  */
 class PwFileCache extends AbstractWindCache
 {
     /**
-     * 缓存目录
+     * 缓存目录.
      *
      * @var string
      */
@@ -29,14 +28,14 @@ class PwFileCache extends AbstractWindCache
     private $cacheFileSuffix = 'txt';
 
     /**
-     * 缓存子目录的长度
+     * 缓存子目录的长度.
      *
      * @var int
      */
     private $cacheDirectoryLevel = 0;
 
     /**
-     * 保存缓存目录列表
+     * 保存缓存目录列表.
      *
      * 如果用户已经访问过统一个缓存，则会直接从该列表中获取该具体值而不重新计算。
      *
@@ -94,7 +93,7 @@ class PwFileCache extends AbstractWindCache
     protected function buildData($value, $expires = 0, IWindCacheDependency $dependency = null)
     {
         $data = array(
-            self::DATA => $value,
+            self::DATA   => $value,
             self::EXPIRE => $expires ? $expires + time() : 0,
             );
 
@@ -139,7 +138,7 @@ class PwFileCache extends AbstractWindCache
     }
 
     /**
-     * 设置缓存目录
+     * 设置缓存目录.
      *
      * @param string $dir 缓存目录，必须是<b>可写可读</b>权限
      */
@@ -151,7 +150,7 @@ class PwFileCache extends AbstractWindCache
     }
 
     /**
-     * 获得缓存目录
+     * 获得缓存目录.
      *
      * @return string $cacheDir 返回配置的缓存目录
      */
@@ -181,7 +180,7 @@ class PwFileCache extends AbstractWindCache
     }
 
     /**
-     * 设置缓存存放的目录下子目录的长度
+     * 设置缓存存放的目录下子目录的长度.
      *
      * @param int $cacheDirectoryLevel 该值将会决定缓存目录下子缓存目录的长度，最小为0（不建子目录），最大为32（md5值最长32），缺省为0
      */
@@ -191,7 +190,7 @@ class PwFileCache extends AbstractWindCache
     }
 
     /**
-     * 返回缓存存放的目录下子目录的长度
+     * 返回缓存存放的目录下子目录的长度.
      *
      * 该值将会决定缓存目录下子缓存目录的长度，最小为0（不建子目录），最大为32（md5值最长32），缺省为0
      *
@@ -214,7 +213,7 @@ class PwFileCache extends AbstractWindCache
     }
 
     /**
-     * 是否缓存key已经存在缓存访问列表中
+     * 是否缓存key已经存在缓存访问列表中.
      *
      * <ul>
      * <li>如果缓存key已经在缓存访问列表中,则将会直接返回存在的值</li>
@@ -222,6 +221,7 @@ class PwFileCache extends AbstractWindCache
      * </ul>
      *
      * @param  string      $key 待检查的缓存key
+     *
      * @return string|bool 如果存在则返回被保存的值，如果不存在则返回false;
      */
     private function checkCacheDir($key)

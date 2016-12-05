@@ -4,7 +4,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> Dec 3, 2012
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright © 2003-2010 phpwind.com
  * @license
  */

@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 举报DS
+ * 举报DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwReport
 {
     /**
      * 添加私信
      *
-     * @param  PwReportDm $dm
+     * @param PwReportDm $dm
+     *
      * @return bool
      */
     public function addReport(PwReportDm $dm)
@@ -27,9 +28,10 @@ class PwReport
     }
 
     /**
-     * 单条更新
+     * 单条更新.
      *
-     * @param  PwReportDm $dm
+     * @param PwReportDm $dm
+     *
      * @return bool
      */
     public function updateReport(PwReportDm $dm)
@@ -42,10 +44,11 @@ class PwReport
     }
 
     /**
-     * 批量更新
+     * 批量更新.
      *
-     * @param  array      $ids
-     * @param  PwReportDm $dm
+     * @param array      $ids
+     * @param PwReportDm $dm
+     *
      * @return bool
      */
     public function batchUpdateReport($ids, PwReportDm $dm)
@@ -61,9 +64,10 @@ class PwReport
     }
 
     /**
-     * 单条删除
+     * 单条删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteReport($id)
@@ -77,9 +81,10 @@ class PwReport
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDeleteReport($ids)
@@ -94,7 +99,8 @@ class PwReport
     /**
      * 获取单条
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function getReport($id)
@@ -108,9 +114,10 @@ class PwReport
     }
 
     /**
-     * 批量获取
+     * 批量获取.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function fetchReport($ids)
@@ -123,10 +130,11 @@ class PwReport
     }
 
     /**
-     * 根据举报来源和是否处理统计数量
+     * 根据举报来源和是否处理统计数量.
      *
-     * @param  int   $type
-     * @param  int   $ifcheck
+     * @param int $type
+     * @param int $ifcheck
+     *
      * @return array
      */
     public function countByType($ifcheck, $type = null)
@@ -138,13 +146,14 @@ class PwReport
     }
 
     /**
-     * 根据举报来源和是否处理取列表
+     * 根据举报来源和是否处理取列表.
      *
-     * @param  int   $type
-     * @param  int   $ifcheck
+     * @param int $type
+     * @param int $ifcheck
+     *
      * @return array
      */
-    public function getListByType($ifcheck, $type = null, $limit, $start)
+    public function getListByType($ifcheck, $type, $limit, $start)
     {
         $type = intval($type);
         $ifcheck = intval($ifcheck);
@@ -153,7 +162,7 @@ class PwReport
     }
 
     /**
-     * 获取举报收件人
+     * 获取举报收件人.
      *
      * @return array
      */

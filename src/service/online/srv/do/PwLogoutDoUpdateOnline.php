@@ -8,8 +8,8 @@ Wind::import('SRV:user.srv.logout.PwLogoutDoBase');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogoutDoUpdateOnline.php 17060 2012-08-31 01:50:31Z gao.wanggao $
- * @package src.service.user.srv.logout.do
  */
 class PwLogoutDoUpdateOnline extends PwLogoutDoBase
 {

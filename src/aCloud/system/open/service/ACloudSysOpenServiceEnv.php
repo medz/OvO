@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysOpenServiceEnv
 {
     public function checkFunctions()
@@ -8,7 +8,7 @@ class ACloudSysOpenServiceEnv
         $keys = array('fsockopen', 'parse_url', 'gethostbyname', 'md5_file', 'http_build_query', 'curl_init');
         $data = array();
         foreach ($keys as $key) {
-            $data [$key] = function_exists($key);
+            $data[$key] = function_exists($key);
         }
 
         return $data;
@@ -42,13 +42,13 @@ class ACloudSysOpenServiceEnv
         $keys = array('SERVER_SOFTWARE', 'SERVER_PROTOCOL', 'HTTP_USER_AGENT', 'HTTP_ACCEPT_LANGUAGE', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_CHARSET', 'HTTP_CONNECTION');
         $params = array();
         foreach ($keys as $key) {
-            $params [$key] = isset($_SERVER [$key]) ? $_SERVER [$key] : 'unknow';
+            $params[$key] = isset($_SERVER[$key]) ? $_SERVER[$key] : 'unknow';
         }
-        $params ['ACLOUD_V'] = ACloudSysCoreDefine::ACLOUD_V;
-        $params ['ACLOUD_VERSION'] = ACloudSysCoreDefine::ACLOUD_VERSION;
-        $params ['ACLOUD_HOST_API'] = ACloudSysCoreDefine::ACLOUD_HOST_API;
-        $params ['ACLOUD_HOST_APP'] = ACloudSysCoreDefine::ACLOUD_HOST_APP;
-        $params ['ACLOUD_API_VERSION'] = ACloudSysCoreDefine::ACLOUD_API_VERSION;
+        $params['ACLOUD_V'] = ACloudSysCoreDefine::ACLOUD_V;
+        $params['ACLOUD_VERSION'] = ACloudSysCoreDefine::ACLOUD_VERSION;
+        $params['ACLOUD_HOST_API'] = ACloudSysCoreDefine::ACLOUD_HOST_API;
+        $params['ACLOUD_HOST_APP'] = ACloudSysCoreDefine::ACLOUD_HOST_APP;
+        $params['ACLOUD_API_VERSION'] = ACloudSysCoreDefine::ACLOUD_API_VERSION;
 
         require_once Wind::getRealPath(sprintf('ACLOUD:version.%s.core.ACloudVerCoreSite', ACloudSysCoreDefine::ACLOUD_VERSION));
         $hookService = new ACloudVerCoreSite();
@@ -63,7 +63,7 @@ class ACloudSysOpenServiceEnv
         $tmp = array();
         foreach ($sysFiles as $file) {
             $filename = basename($file);
-            $tmp [$filename] = md5_file($file);
+            $tmp[$filename] = md5_file($file);
         }
 
         return $tmp;
@@ -79,14 +79,14 @@ class ACloudSysOpenServiceEnv
     private function buildPostParams($method, $data)
     {
         $params = array();
-        $params ['method'] = $method;
-        $params ['version'] = ACLOUD_V;
-        $params ['siteurl'] = ACloudSysCoreCommon::getGlobal('g_siteurl');
-        $params ['sitename'] = ACloudSysCoreCommon::getGlobal('g_sitename');
-        $params ['charset'] = ACloudSysCoreCommon::getGlobal('g_charset');
-        $params ['ip'] = ACloudSysCoreCommon::getIp();
-        $params ['ua'] = $_SERVER ['HTTP_USER_AGENT'];
-        $params ['posttime'] = time();
+        $params['method'] = $method;
+        $params['version'] = ACLOUD_V;
+        $params['siteurl'] = ACloudSysCoreCommon::getGlobal('g_siteurl');
+        $params['sitename'] = ACloudSysCoreCommon::getGlobal('g_sitename');
+        $params['charset'] = ACloudSysCoreCommon::getGlobal('g_charset');
+        $params['ip'] = ACloudSysCoreCommon::getIp();
+        $params['ua'] = $_SERVER['HTTP_USER_AGENT'];
+        $params['posttime'] = time();
 
         return $params;
     }

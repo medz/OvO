@@ -9,6 +9,7 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Zerol Lin <zerol.lin@me.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
  */
 class AdminlogController extends AdminBaseController

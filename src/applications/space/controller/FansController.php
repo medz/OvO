@@ -2,14 +2,13 @@
 
 Wind::import('APPS:space.controller.SpaceBaseController');
 /**
- * the last known user to change this file in the repository <$LastChangedBy$>
+ * the last known user to change this file in the repository <$LastChangedBy$>.
  *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
- * @version $Id$
- * @package
  *
+ * @version $Id$
  */
 class FansController extends SpaceBaseController
 {

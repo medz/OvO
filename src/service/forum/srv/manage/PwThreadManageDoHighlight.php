@@ -4,15 +4,14 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子管理操作-加亮
+ * 帖子管理操作-加亮.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoHighlight.php 24735 2013-02-19 03:23:38Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoHighlight extends PwThreadManageDo
 {
     public $hightlight;

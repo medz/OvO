@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedBase');
 class ACloudVerCustomizedFactory
 {
@@ -9,81 +9,81 @@ class ACloudVerCustomizedFactory
     public function getInstance()
     {
         static $instance = null;
-        if (! is_null($instance)) {
+        if (!is_null($instance)) {
             return $instance;
         }
-        $instance = new ACloudVerCustomizedFactory();
+        $instance = new self();
 
         return $instance;
     }
 
     public function getVersionCustomizedThread()
     {
-        if (! isset($this->service ['VersionCustomizedThread']) || ! $this->service ['VersionCustomizedThread']) {
+        if (!isset($this->service['VersionCustomizedThread']) || !$this->service['VersionCustomizedThread']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedThread');
-            $this->service ['VersionCustomizedThread'] = new ACloudVerCustomizedThread();
+            $this->service['VersionCustomizedThread'] = new ACloudVerCustomizedThread();
         }
 
-        return $this->service ['VersionCustomizedThread'];
+        return $this->service['VersionCustomizedThread'];
     }
 
     public function getVersionCustomizedPost()
     {
-        if (! isset($this->service ['VersionCustomizedPost']) || ! $this->service ['VersionCustomizedPost']) {
+        if (!isset($this->service['VersionCustomizedPost']) || !$this->service['VersionCustomizedPost']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedPost');
-            $this->service ['VersionCustomizedPost'] = new ACloudVerCustomizedPost();
+            $this->service['VersionCustomizedPost'] = new ACloudVerCustomizedPost();
         }
 
-        return $this->service ['VersionCustomizedPost'];
+        return $this->service['VersionCustomizedPost'];
     }
 
     public function getVersionCustomizedUser()
     {
-        if (! isset($this->service ['VersionCustomizedUser']) || ! $this->service ['VersionCustomizedUser']) {
+        if (!isset($this->service['VersionCustomizedUser']) || !$this->service['VersionCustomizedUser']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedUser');
-            $this->service ['VersionCustomizedUser'] = new ACloudVerCustomizedUser();
+            $this->service['VersionCustomizedUser'] = new ACloudVerCustomizedUser();
         }
 
-        return $this->service ['VersionCustomizedUser'];
+        return $this->service['VersionCustomizedUser'];
     }
 
     public function getVersionCustomizedForum()
     {
-        if (! isset($this->service ['VersionCustomizedForum']) || ! $this->service ['VersionCustomizedForum']) {
+        if (!isset($this->service['VersionCustomizedForum']) || !$this->service['VersionCustomizedForum']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedForum');
-            $this->service ['VersionCustomizedForum'] = new ACloudVerCustomizedForum();
+            $this->service['VersionCustomizedForum'] = new ACloudVerCustomizedForum();
         }
 
-        return $this->service ['VersionCustomizedForum'];
+        return $this->service['VersionCustomizedForum'];
     }
 
     public function getVersionCustomizedMessage()
     {
-        if (! isset($this->service ['VersionCustomizedMessage']) || ! $this->service ['VersionCustomizedMessage']) {
+        if (!isset($this->service['VersionCustomizedMessage']) || !$this->service['VersionCustomizedMessage']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedMessage');
-            $this->service ['VersionCustomizedMessage'] = new ACloudVerCustomizedMessage();
+            $this->service['VersionCustomizedMessage'] = new ACloudVerCustomizedMessage();
         }
 
-        return $this->service ['VersionCustomizedMessage'];
+        return $this->service['VersionCustomizedMessage'];
     }
 
     public function getVersionCustomizedFriend()
     {
-        if (! isset($this->service ['VersionCustomizedFriend']) || ! $this->service ['VersionCustomizedFriend']) {
+        if (!isset($this->service['VersionCustomizedFriend']) || !$this->service['VersionCustomizedFriend']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedFriend');
-            $this->service ['VersionCustomizedFriend'] = new ACloudVerCustomizedFriend();
+            $this->service['VersionCustomizedFriend'] = new ACloudVerCustomizedFriend();
         }
 
-        return $this->service ['VersionCustomizedFriend'];
+        return $this->service['VersionCustomizedFriend'];
     }
 
     public function getVersionCustomizedCredit()
     {
-        if (! isset($this->service ['VersionCustomizedCredit']) || ! $this->service ['VersionCustomizedCredit']) {
+        if (!isset($this->service['VersionCustomizedCredit']) || !$this->service['VersionCustomizedCredit']) {
             require_once Wind::getRealPath('ACLOUD_VER:customized.ACloudVerCustomizedCredit');
-            $this->service ['VersionCustomizedCredit'] = new ACloudVerCustomizedCredit();
+            $this->service['VersionCustomizedCredit'] = new ACloudVerCustomizedCredit();
         }
 
-        return $this->service ['VersionCustomizedCredit'];
+        return $this->service['VersionCustomizedCredit'];
     }
 }

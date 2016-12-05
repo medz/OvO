@@ -3,15 +3,14 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwHookInjectDm extends PwBaseDm
 {
     private $id;
 
     /**
-     *
      * @return field_type
      */
     public function getId()
@@ -20,7 +19,6 @@ class PwHookInjectDm extends PwBaseDm
     }
 
     /**
-     *
      * @param field_type $id
      */
     public function setId($id)
@@ -29,12 +27,14 @@ class PwHookInjectDm extends PwBaseDm
 
         return $this;
     }
+
     public function setAppId($v)
     {
         $this->_data['app_id'] = $v;
 
         return $this;
     }
+
     public function setAppName($v)
     {
         $this->_data['app_name'] = $v;

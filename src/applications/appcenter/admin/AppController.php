@@ -4,20 +4,20 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwManifest');
 /**
- * 后台 - 我的应用
+ * 后台 - 我的应用.
  *
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AppController.php 28922 2013-05-30 08:02:34Z long.shi $
- * @package appcenter.admin
  */
 class AppController extends AdminBaseController
 {
     private $perpage = 10;
 
     /**
-     * 应用已安装
+     * 应用已安装.
      *
      * @see WindController::run()
      */
@@ -36,7 +36,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 获取应用更新信息及卸载信息
+     * 获取应用更新信息及卸载信息.
      */
     public function refreshAction()
     {
@@ -49,16 +49,16 @@ class AppController extends AdminBaseController
         foreach (explode(',', $app_ids) as $v) {
             $data[$v] = array(
                 'update_url' => '',
-                'admin_url' => trim($apps[$v]['admin_url'], '\'"'),
+                'admin_url'  => trim($apps[$v]['admin_url'], '\'"'),
                 'update_url' => $apps[$v]['update'] ? 1 : 0,
-                'open_new' => $apps[$v]['open_new'] ? 1 : 0, );
+                'open_new'   => $apps[$v]['open_new'] ? 1 : 0, );
         }
         $this->setOutput($data, 'data');
         $this->showMessage('success');
     }
 
     /**
-     * 本地安装 - 上传
+     * 本地安装 - 上传.
      */
     public function uploadAction()
     {
@@ -106,7 +106,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 本地安装, 打印本地安装页面
+     * 本地安装, 打印本地安装页面.
      */
     public function installAction()
     {
@@ -125,8 +125,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 目录扫描安装
-     *
+     * 目录扫描安装.
      */
     public function toInstallAction()
     {
@@ -143,7 +142,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 本地安装, 分步模式执行应用安装
+     * 本地安装, 分步模式执行应用安装.
      */
     public function doInstallAction()
     {
@@ -187,7 +186,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 测试升级流程
+     * 测试升级流程.
      */
     public function testUpgradeAction()
     {
@@ -210,7 +209,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 删除已上传压缩包
+     * 删除已上传压缩包.
      */
     public function delFileAction()
     {
@@ -222,8 +221,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 删除应用目录
-     *
+     * 删除应用目录.
      */
     public function delFolderAction()
     {
@@ -236,7 +234,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 应用搜索
+     * 应用搜索.
      */
     public function searchAction()
     {
@@ -254,16 +252,16 @@ class AppController extends AdminBaseController
         $this->setOutput(
             array(
                 'perpage' => $this->perpage,
-                'page' => $page,
-                'count' => $count,
-                'apps' => $apps,
+                'page'    => $page,
+                'count'   => $count,
+                'apps'    => $apps,
                 'keyword' => $keyword,
-                'search' => 1, ));
+                'search'  => 1, ));
         $this->setTemplate('app_run');
     }
 
     /**
-     * 获取扩展信息
+     * 获取扩展信息.
      */
     public function hookAction()
     {
@@ -279,7 +277,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 卸载
+     * 卸载.
      */
     public function uninstallAction()
     {
@@ -322,7 +320,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 升级
+     * 升级.
      */
     public function upgradeAction()
     {
@@ -338,8 +336,7 @@ class AppController extends AdminBaseController
     }
 
     /**
-     * 导出压缩包
-     *
+     * 导出压缩包.
      */
     public function exportAction()
     {
@@ -365,7 +362,6 @@ class AppController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwApplication
      */
     private function _appDs()
@@ -374,7 +370,6 @@ class AppController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwInstallApplication
      */
     private function _installService()

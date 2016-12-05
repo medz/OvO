@@ -2,12 +2,13 @@
 
 Wind::import('APPS:design.admin.DesignBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: DataController.php 28818 2013-05-24 10:10:46Z gao.wanggao $
- * @package
  */
 class DataController extends DesignBaseController
 {
@@ -174,7 +175,6 @@ class DataController extends DesignBaseController
         $this->setOutput(ceil($count / $perpage), 'totalpage');
     }
 
-
     public function dopushAction()
     {
         $pushid = (int) $this->getInput('pushid', 'post');
@@ -310,7 +310,6 @@ class DataController extends DesignBaseController
         $this->showError('operate.fail');
     }
 
-
     private function _uploadFile($key, $moduleid = 0)
     {
         Wind::import('SRV:upload.action.PwDesignDataUpload');
@@ -390,12 +389,10 @@ class DataController extends DesignBaseController
         return array(array_unique($three), array_unique($two), array_unique($one));
     }
 
-
     private function _getPushService()
     {
         return Wekit::load('design.srv.PwPushService');
     }
-
 
     private function _getDesignService()
     {

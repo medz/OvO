@@ -3,18 +3,21 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Jan 9, 2012
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwMessageMessages.php 3407 2012-01-11 09:00:39Z peihong.zhangph $
  */
-
 class PwMessageMessages
 {
     /**
-     * 获取用户消息配置
+     * 获取用户消息配置.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getMessageConfig($uid)
@@ -28,9 +31,10 @@ class PwMessageMessages
     }
 
     /**
-     * 批量获取用户消息配置
+     * 批量获取用户消息配置.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchMessageConfig($uids)
@@ -43,9 +47,10 @@ class PwMessageMessages
     }
 
     /**
-     * 用户配置
+     * 用户配置.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function setMessageConfig($uid, $privacy, $notice_types)
@@ -55,18 +60,17 @@ class PwMessageMessages
             return array();
         }
         $data = array(
-            'uid' => $uid,
-            'privacy' => $privacy,
+            'uid'          => $uid,
+            'privacy'      => $privacy,
             'notice_types' => $notice_types,
         );
 
         return $this->_getMessageConfigDao()->setMessageConfig($data);
     }
 
-
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageConfigDao
      */
     private function _getMessageConfigDao()

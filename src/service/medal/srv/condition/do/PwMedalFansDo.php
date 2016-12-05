@@ -1,20 +1,22 @@
 <?php
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>
+ * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
+ *
  * @author $Author: xiaoxia.xuxx $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalFansDo.php 18820 2012-09-28 03:45:04Z xiaoxia.xuxx $
- * @package
  */
 class PwMedalFansDo
 {
     /**
-     * 添加关注
+     * 添加关注.
      *
-     * @param  int  $uid
-     * @param  int  $touid
+     * @param int $uid
+     * @param int $touid
+     *
      * @return bool
      */
     public function addFollow($uid, $touid)
@@ -32,10 +34,11 @@ class PwMedalFansDo
     }
 
     /**
-     * 删除关注
+     * 删除关注.
      *
-     * @param  int  $uid
-     * @param  int  $touid
+     * @param int $uid
+     * @param int $touid
+     *
      * @return bool
      */
     public function delFollow($uid, $touid)

@@ -8,15 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwThreadAttachDownload
 {
     /**
-     * 统计附件的出售额
+     * 统计附件的出售额.
      *
-     * @param  int $aid 附件id
+     * @param int $aid 附件id
+     *
      * @return int
      */
     public function sumCost($aid)
@@ -29,9 +30,10 @@ class PwThreadAttachDownload
     }
 
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
-     * @param  int   $id 记录id
+     * @param int $id 记录id
+     *
      * @return array
      */
     public function get($id)
@@ -44,9 +46,10 @@ class PwThreadAttachDownload
     }
 
     /**
-     * 获取某个附件的所有购买记录
+     * 获取某个附件的所有购买记录.
      *
-     * @param  int  $aid 附件id
+     * @param int $aid 附件id
+     *
      * @return bool
      */
     public function countByAid($aid)
@@ -59,11 +62,12 @@ class PwThreadAttachDownload
     }
 
     /**
-     * 获取某个附件的所有购买记录
+     * 获取某个附件的所有购买记录.
      *
-     * @param  int  $aid    附件id
-     * @param  int  $limit  获取列表行数
-     * @param  int  $offset 获取列表开始偏移量
+     * @param int $aid    附件id
+     * @param int $limit  获取列表行数
+     * @param int $offset 获取列表开始偏移量
+     *
      * @return bool
      */
     public function getByAid($aid, $limit = 20, $offset = 0)
@@ -76,10 +80,11 @@ class PwThreadAttachDownload
     }
 
     /**
-     * 获取附件(A)中用户(B)的购买记录
+     * 获取附件(A)中用户(B)的购买记录.
      *
-     * @param  int  $aid 帖子(A)
-     * @param  int  $uid 用户(B)
+     * @param int $aid 帖子(A)
+     * @param int $uid 用户(B)
+     *
      * @return bool
      */
     public function getByAidAndUid($aid, $uid)
@@ -92,7 +97,7 @@ class PwThreadAttachDownload
     }
 
     /**
-     * 添加一条记录
+     * 添加一条记录.
      *
      * @param PwThreadBuyDm $dm 帖子购买记录数据模型
      *                          return mixed

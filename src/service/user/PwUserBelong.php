@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户所属组信息表
+ * 用户所属组信息表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserBelong.php 11842 2012-06-13 12:08:19Z jieyin $
- * @package src.service.user
  */
 class PwUserBelong
 {
     /**
-     * 根据用户Id获得该用户拥有的用户组
+     * 根据用户Id获得该用户拥有的用户组.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getUserBelongs($uid)
@@ -36,9 +37,10 @@ class PwUserBelong
     }
 
     /**
-     * 根据用户ID列表批量获得这些用户的拥有组
+     * 根据用户ID列表批量获得这些用户的拥有组.
      *
-     * @param  array $uids 用户ID列表
+     * @param array $uids 用户ID列表
+     *
      * @return array
      */
     public function fetchUserByUid($uids)
@@ -51,9 +53,10 @@ class PwUserBelong
     }
 
     /**
-     * 根据用户ID删除信息
+     * 根据用户ID删除信息.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)
@@ -66,9 +69,10 @@ class PwUserBelong
     }
 
     /**
-     * 根据用户ID列表删除记录信息
+     * 根据用户ID列表删除记录信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchDeleteByUids($uids)
@@ -81,10 +85,11 @@ class PwUserBelong
     }
 
     /**
-     * 根据用户ID更新用户关联用户信息
+     * 根据用户ID更新用户关联用户信息.
      *
-     * @param  int          $uid
-     * @param  array        $$belongs
+     * @param int   $uid
+     * @param array $$belongs
+     *
      * @return PwError|bool
      */
     public function update($uid, $belongs)
@@ -100,7 +105,7 @@ class PwUserBelong
     }
 
     /**
-     * 获得用户所属用户组DAo
+     * 获得用户所属用户组DAo.
      *
      * @return PwUserBelongDao
      */

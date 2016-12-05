@@ -1,12 +1,12 @@
 <?php
 /**
- * 用户关注数据表
+ * 用户关注数据表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttentionDao.php 22660 2012-12-26 07:45:31Z jinlong.panjl $
- * @package src.service.user.dao
  */
 class PwAttentionDao extends PwBaseDao
 {

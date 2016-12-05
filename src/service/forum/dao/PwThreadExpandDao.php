@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadExpandDao.php 22350 2012-12-21 10:06:31Z jieyin $
- * @package forum
  */
-
 class PwThreadExpandDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads';
@@ -57,9 +56,10 @@ class PwThreadExpandDao extends PwBaseDao
     }
 
     /**
-     * 根据uid统计审核和未审核的帖子
+     * 根据uid统计审核和未审核的帖子.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countDisabledThreadByUid($uid)
@@ -71,11 +71,12 @@ class PwThreadExpandDao extends PwBaseDao
     }
 
     /**
-     * 根据uid获取审核和未审核的帖子
+     * 根据uid获取审核和未审核的帖子.
      *
-     * @param  int $uid
-     * @param  int $limit
-     * @param  int $offset
+     * @param int $uid
+     * @param int $limit
+     * @param int $offset
+     *
      * @return int
      */
     public function getDisabledThreadByUid($uid, $limit, $offset)

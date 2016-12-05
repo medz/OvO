@@ -10,8 +10,8 @@ Wind::import('SRV:task.dm.PwTaskDmFactory');
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 24028 2013-01-21 03:22:10Z xiaoxia.xuxx $
- * @package src.modules.task
  */
 class ManageController extends AdminBaseController
 {
@@ -41,7 +41,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 开启操作
+     * 开启操作.
      */
     public function openAction()
     {
@@ -67,7 +67,6 @@ class ManageController extends AdminBaseController
 
     /**
      * 添加任务
-     *
      */
     public function addAction()
     {
@@ -90,8 +89,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 添加任务提交
-     *
+     * 添加任务提交.
      */
     public function doAddAction()
     {
@@ -104,7 +102,6 @@ class ManageController extends AdminBaseController
 
     /**
      * 编辑任务
-     *
      */
     public function editAction()
     {
@@ -143,8 +140,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 编辑任务提交
-     *
+     * 编辑任务提交.
      */
     public function doEditAction()
     {
@@ -166,7 +162,6 @@ class ManageController extends AdminBaseController
 
     /**
      * 删除任务
-     *
      */
     public function delAction()
     {
@@ -194,7 +189,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 设置dm
+     * 设置dm.
      *
      * @return PwTaskDm
      */
@@ -232,7 +227,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 获取任务id
+     * 获取任务id.
      *
      * @return int
      */
@@ -245,7 +240,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 上传图标
+     * 上传图标.
      *
      * @return string
      */

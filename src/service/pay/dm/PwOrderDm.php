@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 订单数据模型
+ * 订单数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOrderDm.php 7431 2012-04-06 01:54:39Z jieyin $
- * @package forum
  */
-
 class PwOrderDm extends PwBaseDm
 {
     public $id;
@@ -58,7 +55,7 @@ class PwOrderDm extends PwBaseDm
     }
 
     /**
-     * 指定使用的支付工具
+     * 指定使用的支付工具.
      *
      * @param int $paymethod <1.支付宝 2.财付通 3.贝宝 4.快钱>
      */

@@ -7,8 +7,8 @@ Wind::import('APPCENTER:service.srv.iPwInstall');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwPatchInstall.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package appcenter
  */
 class PwPatchInstall implements iPwInstall
 {
@@ -30,7 +30,6 @@ class PwPatchInstall implements iPwInstall
     }
 
     /**
-     *
      * @param PwInstallApplication $install
      */
     public function afterInstall($install)

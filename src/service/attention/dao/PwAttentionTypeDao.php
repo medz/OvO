@@ -1,12 +1,12 @@
 <?php
 /**
- * 用户关注数据表
+ * 用户关注数据表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttentionTypeDao.php 7059 2012-03-29 05:20:59Z jieyin $
- * @package src.service.user.dao
  */
 class PwAttentionTypeDao extends PwBaseDao
 {
@@ -27,9 +27,10 @@ class PwAttentionTypeDao extends PwBaseDao
     }
 
     /**
-     * 增加一个分类
+     * 增加一个分类.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function addType($fields)
@@ -38,9 +39,10 @@ class PwAttentionTypeDao extends PwBaseDao
     }
 
     /**
-     * 修改一个分类
+     * 修改一个分类.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function editType($id, $fields)
@@ -49,9 +51,10 @@ class PwAttentionTypeDao extends PwBaseDao
     }
 
     /**
-     * 删除一条分类
+     * 删除一条分类.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteType($id)

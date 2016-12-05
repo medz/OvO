@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('HOOK:PwRevertReply.PwRevertReplyDoMain');
 //Wind::import('SRV:forum.srv.operation.do.PwDeleteReplyDoDirectDelete');
 //Wind::import('SRV:forum.srv.operation.do.PwDeleteArticleDoAttachDelete');
@@ -10,15 +9,14 @@ Wind::import('HOOK:PwRevertReply.PwRevertReplyDoMain');
 //Wind::import('SRV:forum.srv.operation.do.PwDeleteReplyDoFreshDelete');
 
 /**
- * 回复回收站帖子及其关联操作(扩展)
+ * 回复回收站帖子及其关联操作(扩展).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRevertReply.php 13302 2012-07-05 03:45:43Z jieyin $
- * @package forum
  */
-
 class PwRevertReply extends PwGleanDoProcess
 {
     public $data = array();

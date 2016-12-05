@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 回复通过审核及其关联操作(扩展)
+ * 回复通过审核及其关联操作(扩展).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPassReply.php 15534 2012-08-09 02:22:13Z jieyin $
- * @package forum
  */
-
 class PwPassReply extends PwGleanDoProcess
 {
     public $data = array();

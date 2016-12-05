@@ -8,15 +8,16 @@ Wind::import('SRV:user.dm.PwUserInfoDm');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttentionService.php 22660 2012-12-26 07:45:31Z jinlong.panjl $
- * @package src.service.user.srv
  */
 class PwAttentionService
 {
     /**
-     * 获取用户所有的分类(包括默认分类)
+     * 获取用户所有的分类(包括默认分类).
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getAllType($uid)
@@ -33,10 +34,11 @@ class PwAttentionService
     }
 
     /**
-     * 获取该用户所关注用户的分类
+     * 获取该用户所关注用户的分类.
      *
-     * @param  int   $uid
-     * @param  array $touids
+     * @param int   $uid
+     * @param array $touids
+     *
      * @return array
      */
     public function getUserType($uid, $touids)
@@ -51,10 +53,11 @@ class PwAttentionService
     }
 
     /**
-     * 用户(A)关注了用户(B)
+     * 用户(A)关注了用户(B).
      *
-     * @param  int   $uid   用户A
-     * @param  int   $touid 用户B
+     * @param int $uid   用户A
+     * @param int $touid 用户B
+     *
      * @return bool| object PwError()
      */
     public function addFollow($uid, $touid)
@@ -74,11 +77,11 @@ class PwAttentionService
             $array = array();
             foreach ($fresh as $key => $value) {
                 $array[] = array(
-                    'uid' => $uid,
-                    'fresh_id' => $value['id'],
-                    'type' => $value['type'],
+                    'uid'            => $uid,
+                    'fresh_id'       => $value['id'],
+                    'type'           => $value['type'],
                     'created_userid' => $value['created_userid'],
-                    'created_time' => $value['created_time'],
+                    'created_time'   => $value['created_time'],
                 );
             }
             $this->_getFresh()->batchAddRelation($array);
@@ -90,10 +93,11 @@ class PwAttentionService
     }
 
     /**
-     * 用户(A)取消了对用户(B)关注
+     * 用户(A)取消了对用户(B)关注.
      *
-     * @param  int   $uid   用户A
-     * @param  int   $touid 用户B
+     * @param int $uid   用户A
+     * @param int $touid 用户B
+     *
      * @return bool| object PwError()
      */
     public function deleteFollow($uid, $touid)
@@ -133,7 +137,7 @@ class PwAttentionService
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -153,7 +157,6 @@ class PwAttentionService
     }
 
     /**
-     *
      * @return PwAttentionRecommendFriendsService
      */
     protected function _getRecommendService()
@@ -162,7 +165,7 @@ class PwAttentionService
     }
 
     /**
-     * PwUser
+     * PwUser.
      *
      * @return PwUser
      */

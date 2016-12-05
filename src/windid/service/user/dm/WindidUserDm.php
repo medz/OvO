@@ -3,12 +3,12 @@
 Wind::import('WINDID:library.WindidUtility');
 
 /**
- * 用户信息数据模型
+ * 用户信息数据模型.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserDm.php 24943 2013-02-27 03:52:21Z jieyin $
- * @package windid.service.user.dm
  */
 class WindidUserDm extends PwBaseDm
 {
@@ -21,7 +21,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置用户名字
+     * 设置用户名字.
      *
      * @param string $username
      */
@@ -35,7 +35,8 @@ class WindidUserDm extends PwBaseDm
     /**
      * 设置用户密码
      *
-     * @param  string       $password 新密码
+     * @param string $password 新密码
+     *
      * @return WindidUserDm
      */
     public function setPassword($password)
@@ -54,7 +55,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置用户email
+     * 设置用户email.
      *
      * @param string $email
      */
@@ -66,7 +67,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置安全问题
+     * 设置安全问题.
      *
      * @param string $question
      */
@@ -85,7 +86,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置注册IP
+     * 设置注册IP.
      *
      * @param string $regip
      */
@@ -111,7 +112,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置注册时间戳
+     * 设置注册时间戳.
      *
      * @param string $regdate
      */
@@ -123,7 +124,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置性别
+     * 设置性别.
      *
      * @param int $gender
      */
@@ -135,7 +136,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-年
+     * 设置生日-年.
      *
      * @param int $year
      */
@@ -147,7 +148,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-月
+     * 设置生日-月.
      *
      * @param string $month
      */
@@ -159,7 +160,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-日
+     * 设置生日-日.
      *
      * @param string $bday
      */
@@ -195,7 +196,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置主页
+     * 设置主页.
      *
      * @param string $homepage
      */
@@ -219,7 +220,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置msn
+     * 设置msn.
      *
      * @param stirng $msn
      */
@@ -255,7 +256,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置支付帐号
+     * 设置支付帐号.
      *
      * @param string $alipay
      */
@@ -267,8 +268,8 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
+     * 更新消息数.
      *
-     * 更新消息数
      * @param int $num
      */
     public function addMessages($num)
@@ -279,7 +280,7 @@ class WindidUserDm extends PwBaseDm
     }
 
     /**
-     * 设置未读消息数
+     * 设置未读消息数.
      *
      * @param int $messages
      */

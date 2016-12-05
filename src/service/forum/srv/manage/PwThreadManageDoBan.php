@@ -3,13 +3,13 @@
 Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 
 /**
- * 帖子-禁止
+ * 帖子-禁止.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoBan.php 23904 2013-01-17 05:27:48Z xiaoxia.xuxx $
- * @package src.service.forum.srv.manage
  */
 class PwThreadManageDoBan extends PwThreadManageDo
 {
@@ -24,21 +24,21 @@ class PwThreadManageDoBan extends PwThreadManageDo
      * 获得用户权限
      * 0：没权限
      * 1：全局
-     * 2：本版
+     * 2：本版.
      *
      * @var int
      */
     private $right = 0;
 
     /**
-     * 当前登录用户的Bo
+     * 当前登录用户的Bo.
      *
      * @var PwUserBo
      */
     private $loginUser = null;
 
     /**
-     * 构造方法
+     * 构造方法.
      *
      * @param PwThreadManage $srv
      * @param PwUserBo       $bo
@@ -101,7 +101,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 获得帖子的发表者
+     * 获得帖子的发表者.
      *
      * @return array
      */
@@ -121,7 +121,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
 
     /**
      * 判断是否有权限
-     * 删除全站或是本版帖子
+     * 删除全站或是本版帖子.
      *
      * @return int
      */
@@ -158,9 +158,10 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 设置禁止设置
+     * 设置禁止设置.
      *
-     * @param  array               $dmList
+     * @param array $dmList
+     *
      * @return PwThreadManageDoBan
      */
     public function setBanInfo($banInfo)
@@ -171,9 +172,10 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 设置禁止的用户ID
+     * 设置禁止的用户ID.
      *
-     * @param  array               $uids
+     * @param array $uids
+     *
      * @return PwThreadManageDoBan
      */
     public function setBanUids($uids)
@@ -184,9 +186,10 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 删除操作
+     * 删除操作.
      *
-     * @param  array               $deletes
+     * @param array $deletes
+     *
      * @return PwThreadManageDoBan
      */
     public function setDeletes($deletes)
@@ -197,7 +200,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 管理组下的用户组不允许被禁止
+     * 管理组下的用户组不允许被禁止.
      *
      * @param array $groupid
      */
@@ -251,9 +254,10 @@ class PwThreadManageDoBan extends PwThreadManageDo
     }
 
     /**
-     * 删除帖子
+     * 删除帖子.
      *
-     * @param  array $param
+     * @param array $param
+     *
      * @return bool
      */
     private function _delThreads()

@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子附件购买记录
+ * 帖子附件购买记录.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadAttachBuyDm.php 13665 2012-07-10 10:45:23Z jieyin $
- * @package attach
  */
-
 class PwThreadAttachBuyDm extends PwBaseDm
 {
     public function setAid($aid)

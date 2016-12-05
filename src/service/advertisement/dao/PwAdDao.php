@@ -2,22 +2,19 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- *
- * 广告位Dao
+ * 广告位Dao.
  *
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z zhudong $
- * @package wind
  */
-
 class PwAdDao extends PwBaseDao
 {
     protected $_table = 'advertisement';
     protected $_pk = 'pid';
     protected $_dataStruct = array('pid', 'identifier', 'type_id', 'width', 'height', 'status', 'schedule', 'show_type', 'condition');
-
 
     public function getAllAd()
     {

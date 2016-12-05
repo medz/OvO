@@ -3,13 +3,13 @@
 Wind::import('APPS:manage.controller.BaseManageController');
 
 /**
- * 前台管理面板 - 回收站
+ * 前台管理面板 - 回收站.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: RecycleController.php 28816 2013-05-24 09:45:25Z jieyin $
- * @package src.applications.manage.controller
  */
 class RecycleController extends BaseManageController
 {
@@ -26,8 +26,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 菜单管理主入口
-     *
+     * 菜单管理主入口.
      */
     public function run()
     {
@@ -98,7 +97,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 删除主题
+     * 删除主题.
      */
     public function doDeleteTopicAction()
     {
@@ -116,7 +115,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 还原主题
+     * 还原主题.
      */
     public function doRevertTopicAction()
     {
@@ -133,7 +132,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 回收站-回复
+     * 回收站-回复.
      */
     public function replyAction()
     {
@@ -204,7 +203,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 删除回复
+     * 删除回复.
      */
     public function doDeleteReplyAction()
     {
@@ -222,7 +221,7 @@ class RecycleController extends BaseManageController
     }
 
     /**
-     * 还原回复
+     * 还原回复.
      */
     public function doRevertReplyAction()
     {

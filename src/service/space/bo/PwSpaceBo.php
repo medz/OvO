@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpaceBo.php 25545 2013-03-19 05:51:44Z gao.wanggao $
- * @package
  */
  class PwSpaceBo
  {
@@ -22,8 +23,6 @@
     const FOLLOWED = 4;            //关注主人的
     const FRIEND = 5;            //互相关注
 
-
-
     public function __construct($spaceUid)
     {
         $this->spaceUid = (int) $spaceUid;
@@ -34,6 +33,7 @@
     /**
      * 设置访问用户
      * Enter description here ...
+     *
      * @param unknown_type $visitUid
      */
     public function setVisitUid($visitUid)
@@ -51,7 +51,7 @@
     }
 
     /**
-     * 判断某个key显示权限
+     * 判断某个key显示权限.
      *
      * @param string $key
      */
@@ -118,12 +118,10 @@
 
          $this->space['backbround'] = 'style="';
          $this->space['backbround'] .= 'background-image: url( '.$image.');';
-         $this->space['backbround'] .= 'background-repeat:'.$repeat.';' ;
-         $this->space['backbround'] .= 'background-attachment:'.$fixed.';' ;
+         $this->space['backbround'] .= 'background-repeat:'.$repeat.';';
+         $this->space['backbround'] .= 'background-attachment:'.$fixed.';';
          $this->space['backbround'] .= 'background-position:top '.$align.';';
          $this->space['backbround'] .= '"';
-
-         return;
      }
 
      private function _getDomain()
@@ -140,7 +138,7 @@
 
     /**
      * 获取访问者和空间的关系
-     * 0未登录,1未关注,2本人,3主人关注的, 4,关注主人的 5互相关注
+     * 0未登录,1未关注,2本人,3主人关注的, 4,关注主人的 5互相关注.
      */
     private function _getTome($spaceUid, $visitUid)
     {

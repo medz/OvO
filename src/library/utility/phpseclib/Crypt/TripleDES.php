@@ -44,16 +44,18 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_TripleDES
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: TripleDES.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Crypt_DES
+ * Include Crypt_DES.
  */
 require_once 'DES.php';
 
@@ -75,93 +77,102 @@ define('CRYPT_DES_MODE_CBC3', CRYPT_DES_MODE_CBC);
  * Pure-PHP implementation of Triple DES.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_TerraDES
  */
 class Crypt_TripleDES
 {
     /**
-     * The Three Keys
+     * The Three Keys.
      *
      * @see Crypt_TripleDES::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $key = "\0\0\0\0\0\0\0\0";
 
     /**
-     * The Encryption Mode
+     * The Encryption Mode.
      *
      * @see Crypt_TripleDES::Crypt_TripleDES()
-     * @var Integer
+     *
+     * @var int
      */
     public $mode = CRYPT_DES_MODE_CBC;
 
     /**
-     * Continuous Buffer status
+     * Continuous Buffer status.
      *
      * @see Crypt_TripleDES::enableContinuousBuffer()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $continuousBuffer = false;
 
     /**
-     * Padding status
+     * Padding status.
      *
      * @see Crypt_TripleDES::enablePadding()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $padding = true;
 
     /**
-     * The Initialization Vector
+     * The Initialization Vector.
      *
      * @see Crypt_TripleDES::setIV()
-     * @var String
+     *
+     * @var string
      */
     public $iv = "\0\0\0\0\0\0\0\0";
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_TripleDES::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $encryptIV = "\0\0\0\0\0\0\0\0";
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_TripleDES::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $decryptIV = "\0\0\0\0\0\0\0\0";
 
     /**
-     * The Crypt_DES objects
+     * The Crypt_DES objects.
      *
-     * @var Array
+     * @var array
      */
     public $des;
 
     /**
-     * mcrypt resource for encryption
+     * mcrypt resource for encryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::encrypt()
-     * @var String
+     *
+     * @var string
      */
     public $enmcrypt;
 
     /**
-     * mcrypt resource for decryption
+     * mcrypt resource for decryption.
      *
      * The mcrypt resource can be recreated every time something needs to be created or it can be created just once.
      * Since mcrypt operates in continuous mode, by default, it'll need to be recreated when in non-continuous mode.
      *
      * @see Crypt_AES::decrypt()
-     * @var String
+     *
+     * @var string
      */
     public $demcrypt;
 
@@ -170,7 +181,8 @@ class Crypt_TripleDES
      *
      * @see setKey()
      * @see setIV()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $changed = true;
 
@@ -180,7 +192,8 @@ class Crypt_TripleDES
      * Determines whether or not the mcrypt extension should be used.  $mode should only, at present, be
      * CRYPT_DES_MODE_ECB or CRYPT_DES_MODE_CBC.  If not explictly set, CRYPT_DES_MODE_CBC will be used.
      *
-     * @param  optional Integer $mode
+     * @param optional Integer $mode
+     *
      * @return Crypt_TripleDES
      */
     public function Crypt_TripleDES($mode = CRYPT_DES_MODE_CBC)
@@ -263,7 +276,7 @@ class Crypt_TripleDES
      *
      * If the key is not explicitly set, it'll be assumed to be all zero's.
      *
-     * @param String $key
+     * @param string $key
      */
     public function setKey($key)
     {
@@ -286,12 +299,12 @@ class Crypt_TripleDES
     }
 
     /**
-     * Sets the initialization vector. (optional)
+     * Sets the initialization vector. (optional).
      *
      * SetIV is not required when CRYPT_DES_MODE_ECB is being used.  If not explictly set, it'll be assumed
      * to be all zero's.
      *
-     * @param String $iv
+     * @param string $iv
      */
     public function setIV($iv)
     {
@@ -305,15 +318,16 @@ class Crypt_TripleDES
     }
 
     /**
-     * Generate CTR XOR encryption key
+     * Generate CTR XOR encryption key.
      *
      * Encrypt the output of this and XOR it against the ciphertext / plaintext to get the
      * plaintext / ciphertext in CTR mode.
      *
      * @see Crypt_DES::decrypt()
      * @see Crypt_DES::encrypt()
-     * @param Integer $length
-     * @param String  $iv
+     *
+     * @param int    $length
+     * @param string $iv
      */
     public function _generate_xor($length, &$iv)
     {
@@ -344,7 +358,7 @@ class Crypt_TripleDES
     /**
      * Encrypts a message.
      *
-     * @param String $plaintext
+     * @param string $plaintext
      */
     public function encrypt($plaintext)
     {
@@ -435,7 +449,7 @@ class Crypt_TripleDES
     /**
      * Decrypts a message.
      *
-     * @param String $ciphertext
+     * @param string $ciphertext
      */
     public function decrypt($ciphertext)
     {
@@ -613,7 +627,7 @@ class Crypt_TripleDES
     }
 
     /**
-     * Pads a string
+     * Pads a string.
      *
      * Pads a string using the RSA PKCS padding standards so that its length is a multiple of the blocksize (8).
      * 8 - (strlen($text) & 7) bytes are added, each of which is equal to chr(8 - (strlen($text) & 7)
@@ -642,7 +656,7 @@ class Crypt_TripleDES
     }
 
     /**
-     * Unpads a string
+     * Unpads a string.
      *
      * If padding is enabled and the reported padding length is invalid the encryption key will be assumed to be wrong
      * and false will be returned.

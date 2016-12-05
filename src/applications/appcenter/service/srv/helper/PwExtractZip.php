@@ -1,14 +1,13 @@
 <?php
 /**
- * Zip文件解压工具类
+ * Zip文件解压工具类.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwExtractZip.php 7688 2012-04-10 11:22:26Z long.shi $
- * @package wind
  */
-
 class PwExtractZip
 {
     const EOF_CENTRAL_DIRECTORY = 0x06054b50; //end of central directory record
@@ -18,9 +17,11 @@ class PwExtractZip
     private $fileHandle = '';
 
     /**
-     * 解压缩一个文件
+     * 解压缩一个文件.
+     *
      * @param $zipfile string 待解压的ZIP文件包
      * @param $zipfile string 获取单个压缩包中的文件名
+     *
      * @return array 解压缩后的数据，其中包括时间、文件名、数据
      */
     public function extract($zipPack, $aFile = '')
@@ -55,9 +56,9 @@ class PwExtractZip
                     continue;
                 }
                 $extractedData[$i] = array(
-                    'filename' => $centralDirectoryData['filename'],
+                    'filename'  => $centralDirectoryData['filename'],
                     'timestamp' => $centralDirectoryData['time'],
-                    'data' => $data,
+                    'data'      => $data,
                 );
             } elseif ($aFile === $centralDirectoryData['filename']) {
                 $data = $this->_readLocalFileHeaderAndData($centralDirectoryData);
@@ -149,15 +150,17 @@ class PwExtractZip
     }
 
     /**
-     * 取得压缩数据中的'Local file header'区块跟压缩的数据
+     * 取得压缩数据中的'Local file header'区块跟压缩的数据.
+     *
      * @param $centralDirectoryData array 'Central directory' 区块数据
+     *
      * @return array
      */
     private function _readLocalFileHeaderAndData($centralDirectoryData)
     {
         fseek($this->fileHandle, $centralDirectoryData['localheaderoffset']);
         $localFileHeaderSignature = unpack('Vsignature', fread($this->fileHandle, 4));
-        if ($localFileHeaderSignature['signature'] != PwExtractZip::LOCAL_FILE_HEADER) {
+        if ($localFileHeaderSignature['signature'] != self::LOCAL_FILE_HEADER) {
             return false;
         }
         $localFileHeaderData = fread($this->fileHandle, 26);
@@ -182,9 +185,11 @@ class PwExtractZip
     }
 
     /**
-     * 解压被压缩的数据
+     * 解压被压缩的数据.
+     *
      * @param $data string 被压缩的数据
      * @param $compressMethod int 压缩的方式
+     *
      * @return string 解压后的数据
      */
     private function _unCompressData($data, $compressMethod)
@@ -205,9 +210,11 @@ class PwExtractZip
     }
 
     /**
-     * 校验 'Local file header' 跟 'Central directory'
-     * @param  unknown_type $localFileHeaderData
-     * @param  unknown_type $centralDirectoryData
+     * 校验 'Local file header' 跟 'Central directory'.
+     *
+     * @param unknown_type $localFileHeaderData
+     * @param unknown_type $centralDirectoryData
+     *
      * @return bool
      */
     private function _checkLocalFileHeaderAndCentralDir($localFileHeaderData, $centralDirectoryData)
@@ -216,13 +223,14 @@ class PwExtractZip
     }
 
     /**
-     * 读取'Central directory' 区块数据
+     * 读取'Central directory' 区块数据.
+     *
      * @return string
      */
     private function _readCentralDirectoryData()
     {
         $centralDirectorySignature = unpack('Vsignature', fread($this->fileHandle, 4)); // 'Central directory' 区块的标记
-        if ($centralDirectorySignature['signature'] != PwExtractZip::CENTRAL_DIRECTORY) {
+        if ($centralDirectorySignature['signature'] != self::CENTRAL_DIRECTORY) {
             return false;
         }
         $centralDirectoryData = fread($this->fileHandle, 42); // 'Central directory' 区块除标记, file name, extra field, file comment 外的数据
@@ -235,15 +243,17 @@ class PwExtractZip
     }
 
     /**
-     * 读取'end of central directory record'区块数据
+     * 读取'end of central directory record'区块数据.
+     *
      * @param $filesize int 文件大小
+     *
      * @return string
      */
     private function _findEOFCentralDirectoryRecord($filesize)
     {
         fseek($this->fileHandle, $filesize - 22); // 'End of central directory record' 一般在没有注释的情况下位于该位置
         $EofCentralDirSignature = unpack('Vsignature', fread($this->fileHandle, 4));
-        if ($EofCentralDirSignature['signature'] != PwExtractZip::EOF_CENTRAL_DIRECTORY) { // 'End of central directory record' 不在末尾22个字节的位置，即有注释的情况
+        if ($EofCentralDirSignature['signature'] != self::EOF_CENTRAL_DIRECTORY) { // 'End of central directory record' 不在末尾22个字节的位置，即有注释的情况
             $maxLength = 65535 + 22; //'End of central directory record' 区块最大可能的长度，因为保存注释长度的区块的长度为2字节，2个字节最大可保存的长度是65535，即0xFFFF。22为'End of central directory record' 除去注释后的长度
             $maxLength > $filesize && $maxLength = $filesize; //最大不能超多整个文件的大小
             fseek($this->fileHandle, $filesize - $maxLength);
@@ -251,7 +261,7 @@ class PwExtractZip
             while ($searchPos < $filesize) {
                 fseek($this->fileHandle, $searchPos);
                 $sigData = unpack('Vsignature', fread($this->fileHandle, 4));
-                if ($sigData['signature'] == PwExtractZip::EOF_CENTRAL_DIRECTORY) {
+                if ($sigData['signature'] == self::EOF_CENTRAL_DIRECTORY) {
                     break;
                 }
                 $searchPos++;
@@ -264,9 +274,11 @@ class PwExtractZip
     }
 
     /**
-     * 还原DOS格式的时间为时间戳
+     * 还原DOS格式的时间为时间戳.
+     *
      * @param $time
      * @param $date
+     *
      * @return int
      */
     private function _recoverFromDosFormatTime($time, $date)

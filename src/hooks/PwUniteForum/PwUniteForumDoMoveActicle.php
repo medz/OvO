@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:forum.vo.PwThreadSo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 Wind::import('SRV:forum.dm.PwReplyDm');
 
 /**
- * 合并版块--移动帖子
+ * 合并版块--移动帖子.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUniteForumDoMoveActicle.php 21318 2012-12-04 09:24:09Z jieyin $
- * @package forum
  */
-
 class PwUniteForumDoMoveActicle extends iPwDoHookProcess
 {
     public function run($ids)

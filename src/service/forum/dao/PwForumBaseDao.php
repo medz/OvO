@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumBaseDao.php 10801 2012-05-30 06:18:39Z jieyin $
- * @package forum
  */
-
 class PwForumBaseDao extends PwBaseDao
 {
     public function getForum($fid)

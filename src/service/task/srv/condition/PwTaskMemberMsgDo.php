@@ -5,13 +5,13 @@ Wind::import('SRV:task.srv.PwTaskComplete');
 Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
 
 /**
- * 用户发消息的任务扩展
+ * 用户发消息的任务扩展.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskMemberMsgDo.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package service.task.srv.condition
  */
 class PwTaskMemberMsgDo extends PwMessageDoBase implements PwTaskCompleteInterface
 {

@@ -1,12 +1,12 @@
 <?php
 /**
- * 用户关注数据表
+ * 用户关注数据表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshRelationDao.php 19501 2012-10-15 08:36:20Z jieyin $
- * @package src.service.user.dao
  */
 class PwFreshRelationDao extends PwBaseDao
 {

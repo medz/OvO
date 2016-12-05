@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && define('ACLOUD_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+!defined('ACLOUD_PATH') && define('ACLOUD_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 Wind::register(ACLOUD_PATH, 'ACLOUD');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreCommon');
 define('ACLOUD_VERSION_PATH', ACLOUD_PATH.'/version/'.ACloudSysCoreDefine::ACLOUD_VERSION);

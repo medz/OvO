@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 地区库的service
+ * 地区库的service.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidAreaService.php 28948 2013-05-31 05:02:59Z jieyin $
- * @package service.area.srv
  */
 class WindidAreaService
 {
     /**
-     * 获取地区的省市信息
+     * 获取地区的省市信息.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array 返回array('省', '市', '县')
      */
     public function getAreaInfo($areaid)
@@ -29,9 +30,10 @@ class WindidAreaService
 
     /**
      * 根据地区ID获得该地区的从第一级开始的路径
-     * 返回一个数组，该数组从第一个元素为最顶层的路径
+     * 返回一个数组，该数组从第一个元素为最顶层的路径.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array
      */
     public function getAreaRout($areaid)
@@ -56,9 +58,10 @@ class WindidAreaService
     }
 
     /**
-     * 根据地区ID列表获得地区
+     * 根据地区ID列表获得地区.
      *
-     * @param  array $areaids
+     * @param array $areaids
+     *
      * @return array
      */
     public function fetchAreaInfo($areaids)
@@ -76,9 +79,10 @@ class WindidAreaService
 
     /**
      * 批量获取地区的路径
-     * 返回地区，每一个地区的路径元素都保存 省级/市级/地区级
+     * 返回地区，每一个地区的路径元素都保存 省级/市级/地区级.
      *
-     * @param  array $areaids
+     * @param array $areaids
+     *
      * @return array
      */
     public function fetchAreaRout($areaids)
@@ -119,9 +123,10 @@ class WindidAreaService
 
     /**
      * 获得地区数据
-     * 支持3三级： 省-市-区
+     * 支持3三级： 省-市-区.
      *
-     * @param  int   $selected
+     * @param int $selected
+     *
      * @return array
      */
     public function getAreaTree()
@@ -147,10 +152,11 @@ class WindidAreaService
     }
 
     /**
-     * 构建地区树
+     * 构建地区树.
      *
-     * @param  array $areas
-     * @param  int   $parentid
+     * @param array $areas
+     * @param int   $parentid
+     *
      * @return array
      */
     private function _buildTree(&$areas, $parentid)
@@ -179,9 +185,10 @@ class WindidAreaService
     }
 
     /**
-     * 根据地区ID获得该地区下级
+     * 根据地区ID获得该地区下级.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array
      */
     public function getAreaByParentid($areaid, $selected = 0)
@@ -196,7 +203,7 @@ class WindidAreaService
     }
 
     /**
-     * 更新缓存
+     * 更新缓存.
      *
      * @return bool
      */
@@ -221,7 +228,7 @@ class WindidAreaService
     }
 
     /**
-     * 获得windid的地区DS
+     * 获得windid的地区DS.
      *
      * @return WindidArea
      */

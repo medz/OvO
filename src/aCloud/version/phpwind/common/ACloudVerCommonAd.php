@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudVerCommonAd extends ACloudVerCommonBase
 {
@@ -15,7 +15,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdService()->addAdPosition($id, $identifier, $type, $width, $height, $status, $schedule);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, 'success');
@@ -25,7 +25,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdService()->editAdPosition($id, $identifier, $type, $width, $height, $status, $schedule, $showType, $condition);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, 'success');
@@ -35,7 +35,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdService()->changeAdPositionStatus($id, $status);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, 'success');
@@ -45,7 +45,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdDs()->getModes();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -55,7 +55,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdDs()->getDefaultPosition();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -65,7 +65,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdService()->getInstalledPosition();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -75,7 +75,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdDs()->getPages();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -85,7 +85,7 @@ class ACloudVerCommonAd extends ACloudVerCommonBase
     {
         $result = $this->getAdService()->getPortals();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);

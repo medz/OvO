@@ -4,13 +4,13 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:education.srv.helper.PwEducationHelper');
 Wind::import('SRV:education.dm.PwEducationDm');
 /**
- * 教育经历
+ * 教育经历.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: EducationController.php 28848 2013-05-28 02:21:12Z jieyin $
- * @package src.productions.u.controller.profile
  */
 class EducationController extends BaseProfileController
 {
@@ -30,7 +30,7 @@ class EducationController extends BaseProfileController
     }
 
     /**
-     * 添加教育经历
+     * 添加教育经历.
      */
     public function addAction()
     {
@@ -47,7 +47,7 @@ class EducationController extends BaseProfileController
     }
 
     /**
-     * 删除教育经历
+     * 删除教育经历.
      */
     public function deleteAction()
     {
@@ -64,7 +64,7 @@ class EducationController extends BaseProfileController
     }
 
     /**
-     * 编辑教育经历
+     * 编辑教育经历.
      */
     public function editAction()
     {
@@ -81,7 +81,7 @@ class EducationController extends BaseProfileController
     }
 
     /**
-     * 返回用户教育经历
+     * 返回用户教育经历.
      *
      * @return PwEducation
      */
@@ -91,7 +91,7 @@ class EducationController extends BaseProfileController
     }
 
     /**
-     * 返回用户教育经历Service
+     * 返回用户教育经历Service.
      *
      * @return PwEducationService
      */

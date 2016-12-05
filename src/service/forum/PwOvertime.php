@@ -3,18 +3,19 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 各种帖子附加信息过期时间
+ * 各种帖子附加信息过期时间.
  *
  * @author peihong <jhqblxt@gmail.com> Mar 26, 2012
+ *
  * @link
+ *
  * @copyright
  * @license
  */
-
 class PwOvertime
 {
     /**
-     * 设置某帖子过期时间
+     * 设置某帖子过期时间.
      *
      * @param int    $tid
      * @param string $type
@@ -36,10 +37,11 @@ class PwOvertime
     }
 
     /**
-     * 获取帖子莫个类型的操作过期时间
+     * 获取帖子莫个类型的操作过期时间.
      *
-     * @param  int    $tid
-     * @param  string $type
+     * @param int    $tid
+     * @param string $type
+     *
      * @return array
      */
     public function getOvertimeByTidAndType($tid, $type)
@@ -50,11 +52,12 @@ class PwOvertime
     }
 
     /**
-     * 设置多个帖子的操作过期时间
+     * 设置多个帖子的操作过期时间.
      *
-     * @param  array  $tids
-     * @param  string $type     类型
-     * @param  int    $overtime
+     * @param array  $tids
+     * @param string $type     类型
+     * @param int    $overtime
+     *
      * @return bool
      */
     public function batchAdd($tids, $type, $overtime)
@@ -65,8 +68,8 @@ class PwOvertime
         $data = array();
         foreach ($tids as $tid) {
             $data[] = array(
-                'tid' => $tid,
-                'm_type' => $type,
+                'tid'      => $tid,
+                'm_type'   => $type,
                 'overtime' => $overtime,
             );
         }
@@ -75,9 +78,10 @@ class PwOvertime
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -90,10 +94,11 @@ class PwOvertime
     }
 
     /**
-     * 删除多个帖子的操作过期时间
+     * 删除多个帖子的操作过期时间.
      *
-     * @param  array  $tids
-     * @param  string $type 类型
+     * @param array  $tids
+     * @param string $type 类型
+     *
      * @return bool
      */
     public function batchDeleteByTidAndType($tids, $type)

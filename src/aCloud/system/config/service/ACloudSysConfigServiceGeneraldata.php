@@ -1,13 +1,13 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceGeneralData
 {
     public function executeSql($sql)
     {
         $sql = trim($sql);
-        if (! $sql) {
+        if (!$sql) {
             return false;
         }
         $versionFilterService = $this->getVersionFilterService();
@@ -18,7 +18,7 @@ class ACloudSysConfigServiceGeneralData
     public function getVersionFilterService()
     {
         static $service = null;
-        if (! is_null($service)) {
+        if (!is_null($service)) {
             return $service;
         }
         require_once Wind::getRealPath('ACLOUD_VER:config.ACloudVerConfigFilter');

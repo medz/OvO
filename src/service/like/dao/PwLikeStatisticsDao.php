@@ -2,18 +2,18 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeStatisticsDao.php 8553 2012-04-20 06:52:03Z gao.wanggao $
- * @package
  */
 class PwLikeStatisticsDao extends PwBaseDao
 {
     protected $_table = 'like_statistics';
     protected $_dataStruct = array('signkey', 'likeid', 'fromid', 'typeid', 'number');
-
 
     public function getInfo($signkey)
     {
@@ -41,10 +41,10 @@ class PwLikeStatisticsDao extends PwBaseDao
 
     public function getInfoList($signkey, $offset, $limit, $typeid)
     {
-        $where = ' WHERE signkey = ? ' ;
+        $where = ' WHERE signkey = ? ';
         $array = array($signkey);
         if ($typeid) {
-            $where .= ' AND typeid = ? ' ;
+            $where .= ' AND typeid = ? ';
             $array[] = $typeid;
         }
         $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY number DESC %s ', $this->getTable(), $where, $this->sqlLimit($limit, $offset));
@@ -68,7 +68,6 @@ class PwLikeStatisticsDao extends PwBaseDao
 
         return $smt->getValue(array($signkey));
     }
-
 
     public function addInfo($data)
     {

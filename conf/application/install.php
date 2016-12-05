@@ -5,7 +5,6 @@ defined('WEKIT_VERSION') or exit(403);
  * 应用安装配置
  */
 
-
 return array(
     'components' => array(
         'windView' => array(
@@ -16,14 +15,14 @@ return array(
     'web-apps' => array(
         'install' => array(
             'root-path' => 'APPS:install',
-            'modules' => array(
+            'modules'   => array(
                 'default' => array(
-                    'controller-path' => 'INSTALL:controller',
+                    'controller-path'   => 'INSTALL:controller',
                     'controller-suffix' => 'Controller',
-                    'template-path' => 'TPL:install',
-                    'compile-path' => 'DATA:compile.template.install',
-                    'error-handler' => 'INSTALL:controller.MessageController',
-                    'theme-package' => 'THEMES:',
+                    'template-path'     => 'TPL:install',
+                    'compile-path'      => 'DATA:compile.template.install',
+                    'error-handler'     => 'INSTALL:controller.MessageController',
+                    'theme-package'     => 'THEMES:',
                 ),
             ),
         ),

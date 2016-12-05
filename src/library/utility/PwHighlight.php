@@ -4,11 +4,12 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
  * @author peihong <jhqblxt@gmail.com> Dec 26, 2011
+ *
  * @link
+ *
  * @copyright
  * @license
  */
-
 class PwHighlight
 {
     protected $color;
@@ -42,8 +43,7 @@ class PwHighlight
     //end set method
 
     /**
-     *
-     * get highlight string for database saving
+     * get highlight string for database saving.
      */
     public function getHighlight()
     {
@@ -60,10 +60,10 @@ class PwHighlight
     }
 
     /**
+     * explode highlight format to array.
      *
-     * explode highlight format to array
+     * @param string $highlight
      *
-     * @param  string $highlight
      * @return array
      */
     public function parseHighlight($highlight)
@@ -71,9 +71,9 @@ class PwHighlight
         $value = array();
         if (preg_match('/^(#[0-9a-f]{3}([0-9a-f]{3})?)?~(1?)~(1?)~(1?)$/i', $highlight, $m)) {
             $value = array(
-                'color' => $m[1],
-                'bold' => $m[3],
-                'italic' => $m[4],
+                'color'     => $m[1],
+                'bold'      => $m[3],
+                'italic'    => $m[4],
                 'underline' => $m[5],
             );
         }
@@ -82,8 +82,8 @@ class PwHighlight
     }
 
     /**
+     * explode highlight string to CSS.
      *
-     * explode highlight string to CSS
      * @param string $highlight
      */
     public function getStyle($highlight)

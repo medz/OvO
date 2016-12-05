@@ -9,20 +9,20 @@
  * 5.special里的属性可以注释，但不能修改
  * 6.normal为自定义 的设置属性 array('表单类型','标题','说明','多选值(如为变量名可选为以array还是html显示)','其它属性(类型long为长表单,short为短表单,multiple可多选)')
  * 7.表单类型为text  select   radio checkbox textarea 中一种
- * </note>
+ * </note>.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: config.php 23959 2013-01-17 08:36:09Z gao.wanggao $
- * @package src.service.design.srv.model.user
  */
 return array(
-    'model' => 'user',
-    'name' => '用户',
-    'type' => 'user',
+    'model'   => 'user',
+    'name'    => '用户',
+    'type'    => 'user',
     'refresh' => true,
-    'sign' => array(
+    'sign'    => array(
         array('{uid}', '用户ID', 'uid'),
         array('{username}', '用户名字', 'username'),
         array('{url}', '空间链接', 'url'),
@@ -60,26 +60,26 @@ return array(
     ),
 
     'standardSign' => array(
-        'sTitle' => '{username}',
-        'sUrl' => '{url}',
+        'sTitle'  => '{username}',
+        'sUrl'    => '{url}',
         'sFromId' => '{uid}',
-        'sIntro' => '{profile}',
+        'sIntro'  => '{profile}',
     ),
 
     //以下为查询及显示条件
     'special' => array(
-        'limit' => array('text', '显示条数', '默认10条', '', 'short'),
+        'limit'   => array('text', '显示条数', '默认10条', '', 'short'),
         'timefmt' => array('select', '时间格式', '', array('m-d' => '04-26', 'Y-m-d' => '2012-04-2', 'Y-m-d H:i:s' => '2012-04-26 11:30', 'H:i:s' => '11:30:59', 'n月j日' => '4月26日', 'y年n月j日' => '12年4月26日', 'auto' => '几天前')),
         'isblank' => array('radio', '链接打开方式', '', array('0' => '当前窗口', '1' => '新窗口'), ''),
     ),
 
     'normal' => array(
         'usernames' => array('text', '用户名', '多个用户名之间采用空格隔开', '', 'long'),
-        'gid' => array('select', '用户组', '', 'gidOptions|html', ''),
-        'gender' => array('checkbox', '性别', '', array('0' => '男性', '1' => '女性')),
-        'hometown' => array('html', '家乡', '', '', 'user_area|hometown'),
-        'location' => array('html', '居住地', '', '', 'user_area|location'),
-        'orderby' => array(
+        'gid'       => array('select', '用户组', '', 'gidOptions|html', ''),
+        'gender'    => array('checkbox', '性别', '', array('0' => '男性', '1' => '女性')),
+        'hometown'  => array('html', '家乡', '', '', 'user_area|hometown'),
+        'location'  => array('html', '居住地', '', '', 'user_area|location'),
+        'orderby'   => array(
             'select',
             '用户排序方式',
             '',

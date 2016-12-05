@@ -2,13 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台安全 - ip限制
+ * 后台安全 - ip限制.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: SafeController.php 28784 2013-05-23 09:53:55Z jieyin $
- * @package admin.controller
  */
 class SafeController extends AdminBaseController
 {
@@ -24,7 +24,7 @@ class SafeController extends AdminBaseController
     }
 
     /**
-     * 保存设置
+     * 保存设置.
      */
     public function addAction()
     {

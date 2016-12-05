@@ -4,13 +4,13 @@ Wind::import('SRV:user.srv.bantype.PwUserBanTypeInterface');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 用户禁止-发言类型
+ * 用户禁止-发言类型.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserBanSpeak.php 22749 2012-12-27 03:14:34Z xiaoxia.xuxx $
- * @package src.service.user.srv.bantype
  */
 class PwUserBanSpeak implements PwUserBanTypeInterface
 {
@@ -73,7 +73,7 @@ class PwUserBanSpeak implements PwUserBanTypeInterface
     }
 
     /**
-     * 获得USERDs
+     * 获得USERDs.
      *
      * @return PwUser
      */

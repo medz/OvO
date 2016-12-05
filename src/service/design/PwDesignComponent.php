@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignComponent.php 21926 2012-12-17 06:08:05Z gao.wanggao $
- * @package
  */
 class PwDesignComponent
 {
@@ -48,7 +49,7 @@ class PwDesignComponent
         $data['comp_tpl'] = $tpl;
         if ($issys) {
             $sysId = $this->_getDao()->getMaxSysid();
-            $data['sys_id'] = (int) + 1;
+            $data['sys_id'] = (int) +1;
         }
 
         return $this->_getDao()->addComponent($data);

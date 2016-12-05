@@ -2,13 +2,13 @@
 
 
 /**
- * 應用上傳工具類
+ * 應用上傳工具類.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwApplicationUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package appcenter.service.srv.helper
  */
 class PwApplicationUpload
 {
@@ -139,14 +139,14 @@ class PwUploadFile
     public function getInfo()
     {
         return array(
-            'id' => $this->id,
-            'attname' => $this->attname,
-            'name' => $this->name,
-            'size' => $this->size,
-            'type' => $this->type,
-            'ifthumb' => $this->ifthumb,
+            'id'            => $this->id,
+            'attname'       => $this->attname,
+            'name'          => $this->name,
+            'size'          => $this->size,
+            'type'          => $this->type,
+            'ifthumb'       => $this->ifthumb,
             'fileuploadurl' => $this->fileuploadurl,
-            'ext' => $this->ext,
+            'ext'           => $this->ext,
         );
     }
 

@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeStatistics.php 8980 2012-05-01 06:22:59Z gao.wanggao $
- * @package
  */
 class PwLikeStatistics
 {
     /**
-     * 获取内容
+     * 获取内容.
      *
      * @param string $signkey
      */
@@ -20,7 +21,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 获取内容
+     * 获取内容.
      *
      * @param string $signkey
      * @param int    $likeid
@@ -31,7 +32,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 获取多个key内容
+     * 获取多个key内容.
      *
      * @param array $signkeys
      */
@@ -41,7 +42,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 分页获取内容
+     * 分页获取内容.
      *
      * @param string $signkey
      * @param int    $start
@@ -57,7 +58,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 获取该key中的最小统计数
+     * 获取该key中的最小统计数.
      *
      * @param string $signkey
      */
@@ -67,7 +68,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 统计该key的数量
+     * 统计该key的数量.
      *
      * @param string $signkey
      */
@@ -77,7 +78,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 添加内容
+     * 添加内容.
      *
      * @param PwLikeStatisticsDm $dm
      */
@@ -93,7 +94,7 @@ class PwLikeStatistics
     }
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param string $key
      */
@@ -101,7 +102,6 @@ class PwLikeStatistics
     {
         return $this->_getLikeStatisticsDao()->deleteInfo($key);
     }
-
 
     private function _getLikeStatisticsDao()
     {

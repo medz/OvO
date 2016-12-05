@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreCharset
 {
     public $TableHandle = 0;
@@ -9,21 +9,23 @@ class ACloudSysCoreCharset
     public $TableIndex = array();
     public $TableEncode = array();
     public $IndexPoint = array(
-        'GBKtoUTF8' => 0,
-        'GBKtoUNICODE' => 0,
-        'UTF8toGBK' => 512,
-        'BIG5toUTF8' => 1024,
+        'GBKtoUTF8'     => 0,
+        'GBKtoUNICODE'  => 0,
+        'UTF8toGBK'     => 512,
+        'BIG5toUTF8'    => 1024,
         'BIG5toUNICODE' => 1024,
-        'UTF8toBIG5' => 1536,
-        'CHSStoCHST' => 2048,
-        'CHSTtoCHSS' => 2560,
+        'UTF8toBIG5'    => 1536,
+        'CHSStoCHST'    => 2048,
+        'CHSTtoCHSS'    => 2560,
     );
+
     public function ACloudSysCoreCharset($SourceLang = '', $TargetLang = '', $ForceTable = false)
     {
         if ($SourceLang && $TargetLang) {
             $this->initConvert($SourceLang, $TargetLang, $ForceTable);
         }
     }
+
     public function initConvert($SourceLang, $TargetLang, $ForceTable)
     {
         if (($SourceLang = $this->_getCharset($SourceLang)) && ($TargetLang = $this->_getCharset($TargetLang)) && $SourceLang != $TargetLang) {
@@ -32,6 +34,7 @@ class ACloudSysCoreCharset
             $this->IconvEnabled || is_resource($this->TableHandle) || $this->TableHandle = fopen($this->_getCharsetFilePath().'encode.table', 'r');
         }
     }
+
     public function _getCharset($lang)
     {
         switch (strtoupper(substr($lang, 0, 2))) {
@@ -53,6 +56,7 @@ class ACloudSysCoreCharset
 
         return $lang;
     }
+
     public function _UNICODEtoUTF8($c)
     {
         if ($c < 0x80) {
@@ -71,6 +75,7 @@ class ACloudSysCoreCharset
 
         return $c;
     }
+
     public function _CHSUTF8toU($c)
     {
         switch (strlen($c)) {
@@ -86,6 +91,7 @@ class ACloudSysCoreCharset
 
         return 32;
     }
+
     public function _getTableIndex()
     {
         if (!isset($this->TableIndex[$this->EncodeLang])) {
@@ -101,6 +107,7 @@ class ACloudSysCoreCharset
             }
         }
     }
+
     public function _CHStoUTF8($srcText)
     {
         $this->_getTableIndex();
@@ -122,6 +129,7 @@ class ACloudSysCoreCharset
 
         return $tarText;
     }
+
     public function _CHSConvertST($srcText)
     {
         $this->_getTableIndex();
@@ -146,11 +154,12 @@ class ACloudSysCoreCharset
 
         return $tarText;
     }
+
     public function _UTF8toCHS($srcText)
     {
         $this->_getTableIndex();
         $tarText = '';
-        $i = 0 ;
+        $i = 0;
         while ($i < strlen($srcText)) {
             $c = ord($srcText[$i++]);
             switch ($c >> 4) {
@@ -186,6 +195,7 @@ class ACloudSysCoreCharset
 
         return $tarText;
     }
+
     public function _CHStoUNICODE($srcText, $SourceLang = '')
     {
         $tarText = '';
@@ -216,6 +226,7 @@ class ACloudSysCoreCharset
 
         return $tarText;
     }
+
     public function Convert($srcText, $SourceLang = '', $TargetLang = '', $ForceTable = false)
     {
         if ($SourceLang && $TargetLang) {
@@ -243,6 +254,7 @@ class ACloudSysCoreCharset
                 return $srcText;
         }
     }
+
     public function CHSConvert($srcText, $SourceLang = 'GBK')
     {
         if (strtoupper(substr($SourceLang, 0, 3)) == 'GBK') {
@@ -267,6 +279,7 @@ class ACloudSysCoreCharset
 
         return $srcText;
     }
+
     public function _getCharsetFilePath()
     {
         return ACloud_Pri_Core_Common::getDirName(__FILE__).'/encode/';

@@ -5,14 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:attach.dm.PwAttachDm');
 
 /**
- * 附件数据模型
+ * 附件数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadAttachDm.php 12856 2012-06-27 05:56:28Z jieyin $
- * @package attach
  */
-
 class PwThreadAttachDm extends PwAttachDm
 {
     public function setFid($fid)

@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 举报Controller
+ * 举报Controller.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
-
 class IndexController extends PwBaseController
 {
     public function beforeAction($handlerAdapter)
@@ -24,8 +23,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * 举报弹窗
-     *
+     * 举报弹窗.
      */
     public function reportAction()
     {
@@ -35,8 +33,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * do举报
-     *
+     * do举报.
      */
     public function doReportAction()
     {

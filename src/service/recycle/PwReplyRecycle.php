@@ -3,21 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 主题回收站记录
+ * 主题回收站记录.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwReplyRecycle.php 14354 2012-07-19 10:36:06Z jieyin $
- * @package fresh
  */
-
 class PwReplyRecycle
 {
     /**
-     * 获取多条回收站记录
+     * 获取多条回收站记录.
      *
-     * @param  array $pids
+     * @param array $pids
+     *
      * @return array
      */
     public function fetchRecord($pids)
@@ -30,7 +30,7 @@ class PwReplyRecycle
     }
 
     /**
-     * 添加一条回收站记录(帖子)
+     * 添加一条回收站记录(帖子).
      *
      * @param PwReplyRecycleDm $dm
      *                             return bool
@@ -45,9 +45,10 @@ class PwReplyRecycle
     }
 
     /**
-     * 批量添加回收站记录(帖子)
+     * 批量添加回收站记录(帖子).
      *
-     * @param  array $dms PwReplyRecycleDm的对象集合
+     * @param array $dms PwReplyRecycleDm的对象集合
+     *
      * @return bool
      */
     public function batchAdd($dms)
@@ -69,9 +70,10 @@ class PwReplyRecycle
     }
 
     /**
-     * 批量删除回收站记录
+     * 批量删除回收站记录.
      *
-     * @param  array $pids
+     * @param array $pids
+     *
      * @return bool
      */
     public function batchDelete($pids)
@@ -84,9 +86,10 @@ class PwReplyRecycle
     }
 
     /**
-     * 统计回收站帖子数(搜索)
+     * 统计回收站帖子数(搜索).
      *
-     * @param  object $so
+     * @param object $so
+     *
      * @return int
      */
     public function countSearchRecord(PwRecycleReplySo $so)
@@ -95,9 +98,10 @@ class PwReplyRecycle
     }
 
     /**
-     * 搜索回收站的帖子
+     * 搜索回收站的帖子.
      *
-     * @param  array $param
+     * @param array $param
+     *
      * @return array
      */
     public function searchRecord(PwRecycleReplySo $so, $limit = 20, $offset = 0)

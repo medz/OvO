@@ -2,18 +2,18 @@
 
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
- * 用户的业务接口
+ * 用户的业务接口.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserService.php 24736 2013-02-19 09:24:40Z jieyin $
- * @package src.service.user.srv
  */
 class PwUserService
 {
     /**
-     * 验证用户
+     * 验证用户.
      *
      * 返回错误码 PwError->getError():
      * <ul>
@@ -27,6 +27,7 @@ class PwUserService
      * @param int    $type     验证类型 <1：用户id, 2: 用户名, 3：用户email>
      * @param  string        $question 安全问题
      * @param  string        $answer   安全问题的答案
+     *
      * @return PwError|array
      */
     public function verifyUser($username, $password, $type = 1, $question = null, $answer = null)
@@ -67,10 +68,11 @@ class PwUserService
      * <li>系统组 》荣誉组 》会员组</li>
      * <li>然后按组内的id顺序进行变更。</li>
      * </ol>
-     * </pre>
+     * </pre>.
      *
-     * @param  int   $groupid    用户当前用户组
-     * @param  array $userGroups 用户拥有的组
+     * @param int   $groupid    用户当前用户组
+     * @param array $userGroups 用户拥有的组
+     *
      * @return array (gid, groups)
      */
     public function caculateUserGroupid($groupid, $userGroups)
@@ -114,11 +116,12 @@ class PwUserService
     }
 
     /**
-     * 创建登录用户标识
+     * 创建登录用户标识.
      *
-     * @param  int    $uid        用户ID
-     * @param  string $password   用户密码
-     * @param  int    $rememberme 是否采用记住当前用户，记住则保存1年
+     * @param int    $uid        用户ID
+     * @param string $password   用户密码
+     * @param int    $rememberme 是否采用记住当前用户，记住则保存1年
+     *
      * @return bool
      */
     public function createIdentity($uid, $password, $rememberme = 0)
@@ -129,10 +132,11 @@ class PwUserService
     }
 
     /**
-     * 更新用户登录信息
+     * 更新用户登录信息.
      *
-     * @param  int    $uid 用户ID
-     * @param  string $ip  用户IP
+     * @param int    $uid 用户ID
+     * @param string $ip  用户IP
+     *
      * @return bool
      */
     public function updateLastLoginData($uid, $ip)
@@ -144,9 +148,10 @@ class PwUserService
     }
 
     /**
-     * 判断该用户是否有设置安全问题
+     * 判断该用户是否有设置安全问题.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function isSetSafecv($uid)
@@ -158,9 +163,10 @@ class PwUserService
 
     /**
      * 判断用户是否必须设置安全问题
-     * 如果当前用户所有拥有的组(包括附加组)中有一个组是必须要设置安全问题和答案的，则该用户必须设置安全问题和答案
+     * 如果当前用户所有拥有的组(包括附加组)中有一个组是必须要设置安全问题和答案的，则该用户必须设置安全问题和答案.
      *
-     * @param  int  $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return bool
      */
     public function mustSettingSafeQuestion($uid)
@@ -172,9 +178,10 @@ class PwUserService
     }
 
     /**
-     * 根据用户ID获得该用户拥有的用户组
+     * 根据用户ID获得该用户拥有的用户组.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getGidsByUid($uid)
@@ -188,10 +195,11 @@ class PwUserService
     }
 
     /**
-     * 还原头像
+     * 还原头像.
      *
-     * @param  int    $uid
-     * @param  string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     * @param int    $uid
+     * @param string $type 还原类型-一种默认头像face*,一种是禁止头像ban*
+     *
      * @return bool
      */
     public function restoreDefualtAvatar($uid, $type = 'face')
@@ -205,9 +213,10 @@ class PwUserService
     }
 
     /**
-     * 获得安全问题
+     * 获得安全问题.
      *
-     * @param  int|null $id
+     * @param int|null $id
+     *
      * @return array
      */
     public function getSafeQuestion($id = null)
@@ -227,7 +236,7 @@ class PwUserService
     }
 
     /**
-     * 获得用户Ds
+     * 获得用户Ds.
      *
      * @return PwUser
      */
@@ -237,7 +246,7 @@ class PwUserService
     }
 
     /**
-     * 获得用户组Ds
+     * 获得用户组Ds.
      *
      * @return PwUserGroups
      */
@@ -247,7 +256,7 @@ class PwUserService
     }
 
     /**
-     * 获得windidUser
+     * 获得windidUser.
      *
      * @return WindidUserApi
      */

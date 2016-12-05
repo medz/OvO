@@ -2,19 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**
- * ubb转换
+ * ubb转换.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSimpleUbbCode.php 24383 2013-01-29 10:09:39Z jieyin $
- * @package lib.utility
  */
-
 class PwSimpleUbbCode
 {
     protected static $_code = array();
@@ -23,9 +21,10 @@ class PwSimpleUbbCode
     protected static $_emotion = null;
 
     /**
-     * 转换段落
+     * 转换段落.
      *
      * @param  string $message 源内容
+     *
      * @return string 转化后的内容
      */
     public static function convertParagraph($message)
@@ -38,10 +37,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转换同名ubb标签到html
+     * 转换同名ubb标签到html.
      *
      * @param  string $message 源内容
      * @param mixed $tag 要转化的标签 <例: 1.单个 string u/b/ 2.多个 array('u','b')>
+     *
      * @return string 转化后的内容
      */
     public static function convertTag($message, $tag)
@@ -55,9 +55,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化hr标签
+     * 转化hr标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertHr($message)
@@ -66,9 +67,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化list标签
+     * 转化list标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertList($message)
@@ -83,9 +85,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化font标签
+     * 转化font标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertFont($message)
@@ -97,9 +100,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化color标签
+     * 转化color标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertColor($message)
@@ -111,9 +115,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化backcolor标签
+     * 转化backcolor标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertBackColor($message)
@@ -125,10 +130,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化size标签
+     * 转化size标签.
      *
      * @param  string $message 内容
-     * @param  int    $maxSize 最大字体限制 <0.不限制>
+     * @param int $maxSize 最大字体限制 <0.不限制>
+     *
      * @return string
      */
     public static function convertSize($message, $maxSize = 0)
@@ -139,9 +145,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化email标签
+     * 转化email标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertEmail($message)
@@ -156,9 +163,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化align标签
+     * 转化align标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertAlign($message)
@@ -169,9 +177,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化glow标签
+     * 转化glow标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function convertGlow($message)
@@ -181,10 +190,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化table标签
+     * 转化table标签.
      *
      * @param  string $message 内容
-     * @param  int    $max 嵌套时，最大解析层级
+     * @param int $max 嵌套时，最大解析层级
+     *
      * @return string
      */
     public static function convertTable($message, $max = 0)
@@ -210,9 +220,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 解析表情
+     * 解析表情.
      *
-     * @param  string $message
+     * @param string $message
+     *
      * @return string
      */
     public static function parseEmotion($message)
@@ -231,9 +242,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 解析附件
+     * 解析附件.
      *
-     * @param  string $message
+     * @param string $message
+     *
      * @return string
      */
     public static function parseAttachment($message, $config)
@@ -251,11 +263,12 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化img标签
+     * 转化img标签.
      *
      * @param  string $message   内容
-     * @param  int    $maxWidth  最大宽度限制
-     * @param  int    $maxHeight 最大高度限制
+     * @param int $maxWidth  最大宽度限制
+     * @param int $maxHeight 最大高度限制
+     *
      * @return string
      */
     public static function parseImg($message, $maxWidth = 0, $maxHeight = 0)
@@ -271,10 +284,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化url标签
+     * 转化url标签.
      *
      * @param  string $message  内容
-     * @param  int    $checkurl
+     * @param int $checkurl
+     *
      * @return string
      */
     public static function parseUrl($message, $checkurl = 0)
@@ -300,9 +314,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化code标签
+     * 转化code标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function parseCode($message)
@@ -318,10 +333,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化post标签
+     * 转化post标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parsePost($message, $config)
@@ -337,10 +353,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化hide标签
+     * 转化hide标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parseHide($message, $config)
@@ -356,10 +373,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化sell标签
+     * 转化sell标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parseSell($message, $config)
@@ -375,9 +393,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化quote标签
+     * 转化quote标签.
      *
      * @param  string $message 内容
+     *
      * @return string
      */
     public static function parseQuote($message)
@@ -402,10 +421,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化flash标签
+     * 转化flash标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parseFlash($message, $config)
@@ -434,10 +454,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化 wmv|mp3|rm 等视频媒体标签
+     * 转化 wmv|mp3|rm 等视频媒体标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parseMedia($message, $config)
@@ -487,10 +508,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 转化iframe标签
+     * 转化iframe标签.
      *
      * @param  string $message 内容
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function parseIframe($message, $config)
@@ -521,10 +543,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 检测内容中是否包含标签
+     * 检测内容中是否包含标签.
      *
      * @param  string $message 内容
-     * @param  string $tag 标签
+     * @param string $tag 标签
+     *
      * @return bool
      */
     public static function hasTag($message, $tag)
@@ -538,9 +561,8 @@ class PwSimpleUbbCode
         return false;
     }
 
-
         /**
-         * 过滤ubb标签属性防止xss注入
+         * 过滤ubb标签属性防止xss注入.
          */
         public static function filterUbb($matches)
         {
@@ -556,10 +578,11 @@ class PwSimpleUbbCode
         }
 
     /**
-     * 转化ubb标签
+     * 转化ubb标签.
      *
      * @param string $message
      * @param  object $config  ubb转换配置
+     *
      * @return string
      */
     public static function convert($message, $length, PwUbbCodeConvertConfig $config = null)
@@ -640,9 +663,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成表情html标签
+     * 生成表情html标签.
      *
      * @param  int    $key 表情序号
+     *
      * @return string 表情html
      */
     public static function createEmotion($length, $key)
@@ -656,9 +680,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成附件html标签
+     * 生成附件html标签.
      *
-     * @param  int    $aid 附件id
+     * @param int $aid 附件id
+     *
      * @return string 附件html
      */
     public static function createAttachment($length, $aid, $config)
@@ -667,12 +692,13 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成img标签
+     * 生成img标签.
      *
-     * @param  string $path      图片地址
-     * @param  int    $maxWidth  最大宽度限制
-     * @param  int    $maxHeight 最大高度限制
-     * @param  string $original  原图地址
+     * @param string $path      图片地址
+     * @param int    $maxWidth  最大宽度限制
+     * @param int    $maxHeight 最大高度限制
+     * @param string $original  原图地址
+     *
      * @return string 图片html
      */
     public static function createImg($length, $path, $maxWidth = 0, $maxHeight = 0, $original = '')
@@ -681,13 +707,14 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成a标签
+     * 生成a标签.
      *
      * @param string $url 链接地址
      * @param  string $name       链接内容
-     * @param  string $protocol   链接协议头
-     * @param  int    $isdownload 链接是否为下载样式
-     * @param  int    $checkurl
+     * @param string $protocol   链接协议头
+     * @param int    $isdownload 链接是否为下载样式
+     * @param int    $checkurl
+     *
      * @return string
      */
     public static function createUrl($length, $url, $name, $protocol, $isdownload = 0, $checkurl = 0)
@@ -702,11 +729,12 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成code标签内容
+     * 生成code标签内容.
      *
      * @param  string $str     内容
      * @param string $brush 代码语法
      * @param  string $toolbar 是否有工具栏
+     *
      * @return string
      */
     public static function createCode($length, $str, $brush, $toolbar)
@@ -717,10 +745,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成post标签内容
+     * 生成post标签内容.
      *
      * @param  stirng $str    内容
      * @param  object $config ubb转换配置
+     *
      * @return string
      */
     public static function createPost($length, $str, $config)
@@ -731,11 +760,12 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成hide标签内容
+     * 生成hide标签内容.
      *
      * @param int $cost 需要的积分
      * @param  stirng $str    隐藏的内容
      * @param  object $config ubb转换配置
+     *
      * @return string
      */
     public static function createHide($length, $cost, $str, $config)
@@ -746,11 +776,12 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成sell标签内容
+     * 生成sell标签内容.
      *
      * @param int $cost 需要的积分
      * @param  stirng $str    隐藏的内容
      * @param  object $config ubb转换配置
+     *
      * @return string
      */
     public static function createSell($length, $cost, $str, $config)
@@ -764,9 +795,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成quote标签内容
+     * 生成quote标签内容.
      *
      * @param  stirng $str 隐藏的内容
+     *
      * @return string
      */
     public static function createQoute($length, $str, $username)
@@ -779,13 +811,14 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成播放器
+     * 生成播放器.
      *
-     * @param  stirng $url    url地址
-     * @param  int    $width  宽度
-     * @param  int    $height 高度
-     * @param  int    $auto   是否为自动播放<1.是 2.否>
-     * @param  string $type   播放器类型 <可选: audio|video>
+     * @param stirng $url    url地址
+     * @param int    $width  宽度
+     * @param int    $height 高度
+     * @param int    $auto   是否为自动播放<1.是 2.否>
+     * @param string $type   播放器类型 <可选: audio|video>
+     *
      * @return string
      */
     public static function createPlayer($length, $url, $width = 0, $height = 0, $auto = 0, $type = 'video')
@@ -794,9 +827,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成 flash 链接
+     * 生成 flash 链接.
      *
-     * @param  string $url
+     * @param string $url
+     *
      * @return string
      */
     public static function createFlashLink($length, $url)
@@ -805,9 +839,10 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成视频链接
+     * 生成视频链接.
      *
-     * @param  string $url
+     * @param string $url
+     *
      * @return string
      */
     public static function createMediaLink($length, $url)
@@ -824,10 +859,11 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成iframe标签内容
+     * 生成iframe标签内容.
      *
      * @param string $url
      * @param  object $config ubb转换配置
+     *
      * @return string
      */
     public static function createIframe($length, $url, $config)
@@ -838,13 +874,14 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成table标签内容
+     * 生成table标签内容.
      *
-     * @param  string $text
-     * @param  int    $width       宽度
-     * @param  string $bgColor     背景色
-     * @param  string $borderColor 边框色
-     * @param  int    $borderWidth 边框大小
+     * @param string $text
+     * @param int    $width       宽度
+     * @param string $bgColor     背景色
+     * @param string $borderColor 边框色
+     * @param int    $borderWidth 边框大小
+     *
      * @return string
      */
     public static function createTable($length, $text, $width = '', $bgColor = '', $borderColor = '', $borderWidth = '', $align = '')
@@ -880,13 +917,14 @@ class PwSimpleUbbCode
     }
 
     /**
-     * 生成td标签
+     * 生成td标签.
      *
-     * @param  string $tag     标签 <tr|td>
-     * @param  int    $col     多列
-     * @param  int    $row     多行
-     * @param  int    $width   宽度
-     * @param  string $tdStyle 样式
+     * @param string $tag     标签 <tr|td>
+     * @param int    $col     多列
+     * @param int    $row     多行
+     * @param int    $width   宽度
+     * @param string $tdStyle 样式
+     *
      * @return string
      */
     public static function createTd($tag, $col, $row, $width, $tdStyle = '')

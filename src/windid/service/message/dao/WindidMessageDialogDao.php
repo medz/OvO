@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 消息聚合表
+ * 消息聚合表.
  *
  * @author peihong.zhang
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageDialogDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package forum
  */
-
 class WindidMessageDialogDao extends WindidBaseDao
 {
     protected $_pk = 'dialog_id';
@@ -19,7 +18,8 @@ class WindidMessageDialogDao extends WindidBaseDao
     /**
      * 获取一条
      *
-     * @param  int   $dialogId
+     * @param int $dialogId
+     *
      * @return array
      */
     public function getDialog($dialogId)
@@ -30,8 +30,9 @@ class WindidMessageDialogDao extends WindidBaseDao
     /**
      * 根据uid获取一条
      *
-     * @param  int   $toUid
-     * @param  int   $fromUid
+     * @param int $toUid
+     * @param int $fromUid
+     *
      * @return array
      */
     public function getDialogByUid($toUid, $fromUid)
@@ -45,8 +46,9 @@ class WindidMessageDialogDao extends WindidBaseDao
     /**
      * 获取多条
      *
-     * @param  int   $uid
-     * @param  array $fromUids
+     * @param int   $uid
+     * @param array $fromUids
+     *
      * @return array
      */
     public function getDialogByUids($uid, $fromUids)
@@ -58,10 +60,11 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 获取多条未读对话
+     * 获取多条未读对话.
      *
-     * @param  int   $uid
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $limit
+     *
      * @return array
      */
     public function getUnreadDialogsByUid($uid, $limit)
@@ -73,9 +76,10 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 添加消息聚合
+     * 添加消息聚合.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function addDialog($fields)
@@ -90,11 +94,12 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 更新对话表
+     * 更新对话表.
      *
-     * @param  int   $dialogId
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $dialogId
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return bool
      */
     public function updateDialog($dialogId, $fields = array(), $increaseFields = array())
@@ -111,11 +116,12 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 批量更新对话表
+     * 批量更新对话表.
      *
-     * @param  int   $dialogId
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $dialogId
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return bool
      */
     public function batchUpdateDialog($dialogIds, $fields = array(), $increaseFields = array())
@@ -132,9 +138,10 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 统计用户私信数量
+     * 统计用户私信数量.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function countUserMessages($uid)
@@ -146,10 +153,11 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 获取消息列表数量
+     * 获取消息列表数量.
      *
-     * @param  int $uid
-     * @param  int $from_uid
+     * @param int $uid
+     * @param int $from_uid
+     *
      * @return int
      */
     public function countDialogs($uid)
@@ -161,11 +169,12 @@ class WindidMessageDialogDao extends WindidBaseDao
     }
 
     /**
-     * 消息列表
+     * 消息列表.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogs($uid, $start, $limit)

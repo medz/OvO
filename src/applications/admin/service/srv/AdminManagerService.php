@@ -1,6 +1,6 @@
 <?php
 /**
- * 后台服务类
+ * 后台服务类.
  *
  * 后台用户服务类,职责:<ol>
  * <li>login,用户登录</li>
@@ -11,9 +11,8 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-17
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminManagerService.php 23734 2013-01-15 09:10:00Z jieyin $
- * @package admin
- * @subpackage library.service
  */
 class AdminManagerService
 {

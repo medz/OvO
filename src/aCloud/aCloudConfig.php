@@ -10,15 +10,15 @@ return array(
     /**=====配置开始于此=====**/
     'web-apps' => array(
         'acloud' => array(
-            'charset' => 'utf-8',
+            'charset'   => 'utf-8',
             'root-path' => 'SRC:aCloud',
-            'modules' => array(
+            'modules'   => array(
                 'default' => array(
                     'controller-path' => '',
-                    'error-handler' => '',
-                    'template-path' => '',
-                    'compile-path' => '',
-                    'theme-package' => '',
+                    'error-handler'   => '',
+                    'template-path'   => '',
+                    'compile-path'    => '',
+                    'theme-package'   => '',
                 ),
             ),
         ),

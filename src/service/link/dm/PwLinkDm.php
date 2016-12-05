@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
- * 友情链接数据模型
+ * 友情链接数据模型.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午01:42:16Z yishuo $
- * @package wind
  */
 class PwLinkDm extends PwBaseDm
 {
@@ -21,9 +20,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置顺序
+     * 设置顺序.
      *
-     * @param  int      $vieworder
+     * @param int $vieworder
+     *
      * @return PwLinkDm
      */
     public function setVieworder($vieworder)
@@ -34,9 +34,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置名称
+     * 设置名称.
      *
-     * @param  string   $name
+     * @param string $name
+     *
      * @return PwLinkDm
      */
     public function setName($name)
@@ -47,9 +48,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置url链接
+     * 设置url链接.
      *
-     * @param  string   $url
+     * @param string $url
+     *
      * @return PwLinkDm
      */
     public function setUrl($url)
@@ -60,9 +62,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置友情链接描述
+     * 设置友情链接描述.
      *
-     * @param  string   $descrip
+     * @param string $descrip
+     *
      * @return PwLinkDm
      */
     public function setDescrip($descrip)
@@ -73,9 +76,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置友情链接logo
+     * 设置友情链接logo.
      *
-     * @param  string   $logo
+     * @param string $logo
+     *
      * @return PwLinkDm
      */
     public function setLogo($logo)
@@ -86,9 +90,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置友情链接iflogo
+     * 设置友情链接iflogo.
      *
-     * @param  int      $iflogo
+     * @param int $iflogo
+     *
      * @return PwLinkDm
      */
     public function setIflogo($iflogo)
@@ -99,9 +104,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置友情链接是否启用  1启用 | 0非
+     * 设置友情链接是否启用  1启用 | 0非.
      *
-     * @param  int      $ifcheck
+     * @param int $ifcheck
+     *
      * @return PwLinkDm
      */
     public function setIfcheck($ifcheck)
@@ -112,9 +118,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置联系方式
+     * 设置联系方式.
      *
-     * @param  string   $contact
+     * @param string $contact
+     *
      * @return PwLinkDm
      */
     public function setContact($contact)
@@ -125,9 +132,10 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 设置类型
+     * 设置类型.
      *
-     * @param  int      $typeid
+     * @param int $typeid
+     *
      * @return PwLinkDm
      */
     public function setType($typeid)
@@ -138,7 +146,7 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 获取类型
+     * 获取类型.
      *
      * @return array
      */
@@ -148,7 +156,7 @@ class PwLinkDm extends PwBaseDm
     }
 
     /**
-     * 获取lid
+     * 获取lid.
      *
      * @return array
      */

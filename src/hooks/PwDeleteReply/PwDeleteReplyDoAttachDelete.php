@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子删除扩展服务接口--虚拟删除到回收站
+ * 帖子删除扩展服务接口--虚拟删除到回收站.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteReplyDoAttachDelete.php 23356 2013-01-09 03:20:51Z jieyin $
- * @package forum
  */
-
 class PwDeleteReplyDoAttachDelete extends iPwGleanDoHookProcess
 {
     public $tids = array();

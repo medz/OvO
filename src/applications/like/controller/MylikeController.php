@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: MylikeController.php 6836 2012-03-27 04:05:46Z gao.wanggao $
- * @package
  */
 class MylikeController extends PwBaseController
 {
@@ -54,12 +55,12 @@ class MylikeController extends PwBaseController
                     continue;
                 }
                 $tagJson[] = array(
-                    'id' => $_tagid,
+                    'id'    => $_tagid,
                     'value' => $tagLists[$_tagid]['tagname'],
                 );
             }
             $json[] = array(
-                'id' => $_log['logid'],
+                'id'    => $_log['logid'],
                 'items' => $tagJson,
             );
         }
@@ -149,8 +150,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 增加喜欢
-     *
+     * 增加喜欢.
      */
     public function doLikeAction()
     {
@@ -175,7 +175,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 删除我的喜欢
+     * 删除我的喜欢.
      *
      * 如果喜欢内容总喜欢数小于1，同时删除喜欢内容
      */
@@ -193,7 +193,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 编辑喜欢所属分类
+     * 编辑喜欢所属分类.
      */
     public function doLogTagAction()
     {
@@ -229,8 +229,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 分类添加
-     *
+     * 分类添加.
      */
     public function doAddTagAction()
     {
@@ -247,8 +246,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 分类删除
-     *
+     * 分类删除.
      */
     public function doDelTagAction()
     {
@@ -268,8 +266,7 @@ class MylikeController extends PwBaseController
     }
 
     /**
-     * 编辑分类
-     *
+     * 编辑分类.
      */
     public function doEditTagAction()
     {

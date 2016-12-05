@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright  ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class PwCronService
 {
     /**
-     * 判断一个系统任务是否存在，不存在就加一个,存在就启动并更新运行时间
+     * 判断一个系统任务是否存在，不存在就加一个,存在就启动并更新运行时间.
      */
     public function getSysCron($cronFile, $time = 0)
     {
@@ -119,7 +120,7 @@ class PwCronService
     }
 
     /**
-     * 获得下次执行时间
+     * 获得下次执行时间.
      *
      * @param string $loopType
      * @param int    $day
@@ -227,7 +228,6 @@ class PwCronService
 
         return true;
     }
-
 
     private function _getMouthDays($month, $isLeapYear)
     {

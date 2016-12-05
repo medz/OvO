@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD_VER:dataflow.ACloudVerDataFlowAggregate');
 class ACloudSysDataFlowServiceAggregate
 {
@@ -8,22 +8,22 @@ class ACloudSysDataFlowServiceAggregate
 
     public function __construct()
     {
-        if (! isset($this->service ['parse']) || ! $this->service ['parse']) {
-            $this->service ['parse'] = new Aggregate_SQLParseExtension();
+        if (!isset($this->service['parse']) || !$this->service['parse']) {
+            $this->service['parse'] = new Aggregate_SQLParseExtension();
         }
-        if (! isset($this->service ['operate']) || ! $this->service ['operate']) {
-            $this->service ['operate'] = new Aggregate_SQLLogExtension();
+        if (!isset($this->service['operate']) || !$this->service['operate']) {
+            $this->service['operate'] = new Aggregate_SQLLogExtension();
         }
     }
 
     public function collectSQL($sql, $params)
     {
-        list($bool, $operate, $tableName, $fields) = $this->service ['parse']->parseSQL($sql);
-        if (! $bool) {
+        list($bool, $operate, $tableName, $fields) = $this->service['parse']->parseSQL($sql);
+        if (!$bool) {
             return false;
         }
 
-        return $this->service ['operate']->operate($operate, $tableName, $sql, $fields, $params);
+        return $this->service['operate']->operate($operate, $tableName, $sql, $fields, $params);
     }
 }
 
@@ -39,11 +39,11 @@ class Aggregate_SQLParseExtension
     public function parseSQL($sql)
     {
         list($sql, $info) = array(trim($sql), array());
-        if (! $sql) {
+        if (!$sql) {
             return array(false, '', '', $info);
         }
         list($bool, $operate, $tableName) = $this->matchOperateAndTableName($sql);
-        if (! $bool) {
+        if (!$bool) {
             return array(false, '', '', $info);
         }
         if (ACloudSysCoreS::inArray($operate, array('insert', 'replace'))) {
@@ -58,12 +58,12 @@ class Aggregate_SQLParseExtension
     private function matchOperateAndTableName($sql)
     {
         preg_match('/^(DELETE|INSERT|REPLACE)\s+(.+?\s)?`?'.$this->prefix.'(\w+)`?\s+/i', $sql, $match);
-        if (! $match) {
+        if (!$match) {
             return array(false, false, false);
         }
         list(, $operate, , $tableName) = $match;
         list($operate, $tableName) = array(strtolower($operate), strtolower($tableName));
-        if (! ACloudSysCoreS::inArray($tableName, $this->getTables())) {
+        if (!ACloudSysCoreS::inArray($tableName, $this->getTables())) {
             return array(false, false, false);
         }
 
@@ -98,8 +98,8 @@ class Aggregate_SQLLogExtension
 
     private function operateAddLog($tableName, $fields)
     {
-        list($type, $insertId) = array(ACloudVerDataFlowAggregate::getTypeByTableName($tableName), $fields ['insertid']);
-        if (is_null($type) || ! $insertId) {
+        list($type, $insertId) = array(ACloudVerDataFlowAggregate::getTypeByTableName($tableName), $fields['insertid']);
+        if (is_null($type) || !$insertId) {
             return false;
         }
         $sign = ACloudSysCoreCommon::getSiteSign();
@@ -109,7 +109,7 @@ class Aggregate_SQLLogExtension
 
     private function buildSql($sql)
     {
-        if (! ACloudSysCoreS::isArray($this->getParams())) {
+        if (!ACloudSysCoreS::isArray($this->getParams())) {
             return $sql;
         }
 

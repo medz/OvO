@@ -5,8 +5,8 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwGuestOnlineDao.php 17070 2012-08-31 02:23:44Z gao.wanggao $
- * @package
  */
 class PwGuestOnlineDao extends PwBaseDao
 {

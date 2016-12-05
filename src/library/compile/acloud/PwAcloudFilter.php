@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
- * Acloud服务相关
+ * Acloud服务相关.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAcloudFilter.php 22371 2012-12-21 13:10:32Z yishuo $
- * @package wekit.compile.acloud
  */
 class PwAcloudFilter extends AbstractWindBootstrap
 {
@@ -57,7 +56,7 @@ class PwAcloudFilter extends AbstractWindBootstrap
     }
 
     /**
-     * 获得收集页面
+     * 获得收集页面.
      *
      * @return AbstractCollect
      */

@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignModelBo.php 23901 2013-01-17 03:52:47Z gao.wanggao $
- * @package
  */
 class PwDesignModelBo
 {
@@ -83,7 +84,6 @@ class PwDesignModelBo
 
         return $_configParser->parse($configPath);
     }
-
 
     private function _setModleInfo()
     {

@@ -4,18 +4,21 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 9, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwSpecialSort.php 22514 2012-12-25 06:12:19Z jieyin $
  */
-
 class PwSpecialSort
 {
     /**
-     * 获取某个版块特殊排序的帖子
+     * 获取某个版块特殊排序的帖子.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getSpecialSortByFid($fid)
@@ -28,10 +31,11 @@ class PwSpecialSort
     }
 
     /**
-     * 根据排序类型及参数获取相关Tids
+     * 根据排序类型及参数获取相关Tids.
      *
-     * @param  string $sortType
-     * @param  int    $extra
+     * @param string $sortType
+     * @param int    $extra
+     *
      * @return array
      */
     public function getSpecialSortByTypeExtra($sortType, $extra = 0)
@@ -42,9 +46,10 @@ class PwSpecialSort
     }
 
     /**
-     * 获取某个帖子特殊排序情况
+     * 获取某个帖子特殊排序情况.
      *
-     * @param  int   $tid
+     * @param int $tid
+     *
      * @return array
      */
     public function getSpecialSortByTid($tid)
@@ -57,8 +62,7 @@ class PwSpecialSort
     }
 
     /**
-     *
-     * 添加特殊排序
+     * 添加特殊排序.
      *
      * @param PwSpecialSortDm $dm
      */
@@ -73,9 +77,10 @@ class PwSpecialSort
     }
 
     /**
-     * 批量添加排序帖子
+     * 批量添加排序帖子.
      *
-     * @param  array $dms
+     * @param array $dms
+     *
      * @return bool
      */
     public function batchAdd($dms)
@@ -94,9 +99,10 @@ class PwSpecialSort
     }
 
     /**
-     * 删除1个帖子的排序信息
+     * 删除1个帖子的排序信息.
      *
-     * @param  int  $tid
+     * @param int $tid
+     *
      * @return bool
      */
     public function deleteSpecialSortByTid($tid)
@@ -109,9 +115,10 @@ class PwSpecialSort
     }
 
     /**
-     * 删除多个帖子的排序信息
+     * 删除多个帖子的排序信息.
      *
-     * @param  array $tids
+     * @param array $tids
+     *
      * @return bool
      */
     public function batchDeleteSpecialSortByTid($tids)
@@ -125,6 +132,7 @@ class PwSpecialSort
 
     /**
      * Enter description here ...
+     *
      * @return PwSpecialSortDao
      */
     protected function _getDao()

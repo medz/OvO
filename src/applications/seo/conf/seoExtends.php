@@ -1,6 +1,6 @@
 <?php
 /**
- * seo菜单扩展配置文件
+ * seo菜单扩展配置文件.
  *
  * 配置项说明：
  * array(
@@ -17,43 +17,43 @@
 return array(
     'bbs' => array(
         'title' => '论坛',
-        'url' => 'seo/manage/bbs',
-        'page' => array(
+        'url'   => 'seo/manage/bbs',
+        'page'  => array(
             'forumlist' => array(
-                'title' => '版块导航页',
+                'title'   => '版块导航页',
                 'default' => array(
-                    'title' => '{sitename}',
+                    'title'       => '{sitename}',
                     'description' => '',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array('{sitename}'),
             ),
             'new' => array(
-                'title' => '本站新帖',
+                'title'   => '本站新帖',
                 'default' => array(
-                    'title' => '本站新帖 - 第{page}页 - {sitename}',
+                    'title'       => '本站新帖 - 第{page}页 - {sitename}',
                     'description' => '【{sitename}】中的最新帖子列表',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array('{sitename}', '{page}'),
             ),
             'thread' => array(
-                'title' => '帖子列表页',
+                'title'   => '帖子列表页',
                 'default' => array(
-                    'title' => '{classification} - {forumname} - 第{page}页 - {sitename}',
+                    'title'       => '{classification} - {forumname} - 第{page}页 - {sitename}',
                     'description' => '{forumdescription}',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array(
                     '{sitename}', '{forumname}', '{forumdescription}', '{classification}',
                 ),
             ),
             'read' => array(
-                'title' => '帖子阅读页',
+                'title'   => '帖子阅读页',
                 'default' => array(
-                    'title' => '{title} - {forumname} - 第{page}页 - {sitename}',
+                    'title'       => '{title} - {forumname} - 第{page}页 - {sitename}',
                     'description' => '{description}',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array(
                     '{sitename}', '{forumname}', '{title}', '{description}', '{tags}', '{page}',
@@ -63,23 +63,23 @@ return array(
     ),
     'area' => array(
         'title' => '门户',
-        'url' => 'seo/manage/area',
-        'page' => array(
+        'url'   => 'seo/manage/area',
+        'page'  => array(
             'index' => array(
-                'title' => '首页',
+                'title'   => '首页',
                 'default' => array(
-                    'title' => '{sitename}',
+                    'title'       => '{sitename}',
                     'description' => '',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array('{sitename}'),
             ),
             'custom' => array(
-                'title' => '自定义页面',
+                'title'   => '自定义页面',
                 'default' => array(
-                    'title' => '{sitename}',
+                    'title'       => '{sitename}',
                     'description' => '',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array('{sitename}', '{pagename}'),
             ),
@@ -87,14 +87,14 @@ return array(
     ),
     'like' => array(
         'title' => '喜欢',
-        'url' => 'seo/manage/like',
-        'page' => array(
+        'url'   => 'seo/manage/like',
+        'page'  => array(
             'hot' => array(
-                'title' => '热门喜欢',
+                'title'   => '热门喜欢',
                 'default' => array(
-                    'title' => '热门喜欢-{sitename}',
+                    'title'       => '热门喜欢-{sitename}',
                     'description' => '【{sitename}】中大家最喜欢的帖子',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array(
                     '{sitename}',
@@ -104,14 +104,14 @@ return array(
     ),
     'topic' => array(
         'title' => '话题',
-        'url' => 'seo/manage/topic',
-        'page' => array(
+        'url'   => 'seo/manage/topic',
+        'page'  => array(
             'hot' => array(
-                'title' => '热门话题',
+                'title'   => '热门话题',
                 'default' => array(
-                    'title' => '热门话题-{sitename}',
+                    'title'       => '热门话题-{sitename}',
                     'description' => '【{sitename}】中大家讨论最多的话题',
-                    'keywords' => '',
+                    'keywords'    => '',
                 ),
                 'code' => array(
                     '{sitename}',

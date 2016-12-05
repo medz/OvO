@@ -7,15 +7,14 @@ Wind::import('SRV:credit.dm.PwCreditLogDm');
 Wind::import('SRV:credit.srv.PwCreditOperationConfig');
 
 /**
- * 积分对象 (单列对象-通过方法 getInstance 获取)
+ * 积分对象 (单列对象-通过方法 getInstance 获取).
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditBo.php 22230 2012-12-19 21:45:20Z xiaoxia.xuxx $
- * @package src.service.credit
  */
-
 class PwCreditBo
 {
     public $cType = array();
@@ -51,10 +50,11 @@ class PwCreditBo
     }
 
     /**
-     * 获取积分设置
+     * 获取积分设置.
      *
-     * @param  string $key
-     * @param  int    $gid 用户组id
+     * @param string $key
+     * @param int    $gid 用户组id
+     *
      * @return array
      */
     public function getStrategy($key)
@@ -65,12 +65,13 @@ class PwCreditBo
     }
 
     /**
-     * 设置用户积分(+-)
+     * 设置用户积分(+-).
      *
-     * @param  int  $uid   用户UID
-     * @param  int  $cType 积分类型
-     * @param  int  $point +-的值
-     * @param  bool $delay 是否实时进行数据库操作
+     * @param int  $uid   用户UID
+     * @param int  $cType 积分类型
+     * @param int  $point +-的值
+     * @param bool $delay 是否实时进行数据库操作
+     *
      * @return bool
      */
     public function set($uid, $cType, $point, $delay = false)
@@ -91,11 +92,12 @@ class PwCreditBo
     }
 
     /**
-     * 设置用户多个积分(+-)
+     * 设置用户多个积分(+-).
      *
-     * @param  int   $uid   用户UID
-     * @param  array $setv  积分值 array('1' => ??, '2' => ??, ...)
-     * @param  bool  $delay 是否实时进行数据库操作
+     * @param int   $uid   用户UID
+     * @param array $setv  积分值 array('1' => ??, '2' => ??, ...)
+     * @param bool  $delay 是否实时进行数据库操作
+     *
      * @return bool
      */
     public function sets($uid, $setv, $delay = false)
@@ -113,11 +115,12 @@ class PwCreditBo
     }
 
     /**
-     * 设置多个用户多个积分(+-)
+     * 设置多个用户多个积分(+-).
      *
-     * @param  array $uids  用户UID array(1, 2, 3, ...)
-     * @param  array $setv  积分值 array('1' => ??, '2' => ??, ...)
-     * @param  bool  $delay 是否实时进行数据库操作
+     * @param array $uids  用户UID array(1, 2, 3, ...)
+     * @param array $setv  积分值 array('1' => ??, '2' => ??, ...)
+     * @param bool  $delay 是否实时进行数据库操作
+     *
      * @return bool
      */
     public function setus($uids, $setv, $delay = false)
@@ -139,13 +142,14 @@ class PwCreditBo
     }
 
     /**
-     * 积分操作
+     * 积分操作.
      *
      * @param  string $operation 积分相关操作,根据后台设置
-     * @param  object $user      被操作用户
-     * @param  bool   $delay     是否实时进行数据库操作
-     * @param  array  $log       日志信息描述
-     * @param  array  $creditset 特殊的积分设置
+     * @param object $user      被操作用户
+     * @param bool   $delay     是否实时进行数据库操作
+     * @param array  $log       日志信息描述
+     * @param array  $creditset 特殊的积分设置
+     *
      * @return bool
      */
     public function operate($operation, PwUserBo $user, $delay = false, $log = array(), $creditset = array())
@@ -172,7 +176,7 @@ class PwCreditBo
     }
 
     /**
-     * 对给定数据进行数据库积分增减操作
+     * 对给定数据进行数据库积分增减操作.
      *
      * @param array $arr   操作数据 array(1 => array('1' => ??, '2' => ??), 2 => array(), 3 => array(), ...)
      * @param bool  $isAdd true,增加操作|false,设置操作
@@ -198,7 +202,7 @@ class PwCreditBo
     }
 
     /**
-     * 记录积分日志
+     * 记录积分日志.
      *
      * @param string $operation 操作类型
      * @param array  $setv      积分值 array('1' => ??, '2' => ??, ...)
@@ -295,9 +299,10 @@ class PwCreditBo
     }
 
     /**
-     * 检测积分是为空
+     * 检测积分是为空.
      *
-     * @param  array $credit
+     * @param array $credit
+     *
      * @return bool
      */
     private function _checkCreditSetEmpty($credit)

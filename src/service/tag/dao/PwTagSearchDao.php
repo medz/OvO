@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 话题搜索DAO
+ * 话题搜索DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwTagSearchDao extends PwBaseDao
 {

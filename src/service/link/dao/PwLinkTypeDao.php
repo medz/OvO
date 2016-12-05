@@ -1,12 +1,12 @@
 <?php
 /**
- * 友情链接分类DAO
+ * 友情链接分类DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwLinkTypeDao
  */
 class PwLinkTypeDao extends PwBaseDao
 {
@@ -15,9 +15,10 @@ class PwLinkTypeDao extends PwBaseDao
     protected $_dataStruct = array('typeid', 'typename', 'vieworder');
 
     /**
-     * 添加一条分类
+     * 添加一条分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addLinkType($data)
@@ -26,9 +27,10 @@ class PwLinkTypeDao extends PwBaseDao
     }
 
     /**
-     * 删除一条分类
+     * 删除一条分类.
      *
-     * @param  int  $typeId
+     * @param int $typeId
+     *
      * @return bool
      */
     public function delete($typeId)
@@ -40,10 +42,12 @@ class PwLinkTypeDao extends PwBaseDao
     {
         return $this->_update($typeId, $data);
     }
+
     /**
-     * 修改多条分类
+     * 修改多条分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function updateLinkTypes($data)
@@ -64,9 +68,10 @@ class PwLinkTypeDao extends PwBaseDao
     }
 
     /**
-     * 根据名称获取
+     * 根据名称获取.
      *
-     * @param  string $typename
+     * @param string $typename
+     *
      * @return int
      */
     public function getByName($typename)
@@ -78,7 +83,7 @@ class PwLinkTypeDao extends PwBaseDao
     }
 
     /**
-     * 获取所有分类
+     * 获取所有分类.
      *
      * @return int
      */

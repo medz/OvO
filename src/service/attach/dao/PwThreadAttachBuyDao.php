@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadAttachBuyDao.php 19393 2012-10-13 10:34:41Z jinlong.panjl $
- * @package attach
  */
-
 class PwThreadAttachBuyDao extends PwBaseDao
 {
     protected $_table = 'attachs_thread_buy';

@@ -3,12 +3,12 @@
 Wind::import('WSRV:user.validator.WindidUserValidator');
 
 /**
- * 用户信息数据模型
+ * 用户信息数据模型.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidCreditDm.php 24811 2013-02-21 10:37:46Z jieyin $
- * @package windid.service.user.dm
  */
 class WindidCreditDm extends PwBaseDm
 {

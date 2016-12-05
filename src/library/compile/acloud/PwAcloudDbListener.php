@@ -6,8 +6,8 @@ require_once Wind::getRealPath('ACLOUD:aCloud');
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright 2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwAcloudDbListener extends WindEnhancedListener
 {

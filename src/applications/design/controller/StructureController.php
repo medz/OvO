@@ -3,12 +3,13 @@
 
 Wind::import('SRV:design.bo.PwDesignStructureBo');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: StructureController.php 28899 2013-05-29 07:23:48Z gao.wanggao $
- * @package
  */
 class StructureController extends PwBaseController
 {
@@ -93,16 +94,16 @@ class StructureController extends PwBaseController
         $background['position'] = $bgposition;
         foreach ($title as $k => $value) {
             $_tmp = array(
-                'title' => WindSecurity::escapeHTML($title[$k]),
-                'link' => $link[$k],
-                'image' => $image[$k],
-                'float' => $float[$k],
-                'margin' => (int) $margin[$k],
-                'fontsize' => (int) $fontsize[$k],
-                'fontcolor' => $fontcolor[$k],
-                'fontbold' => $fontbold[$k],
+                'title'         => WindSecurity::escapeHTML($title[$k]),
+                'link'          => $link[$k],
+                'image'         => $image[$k],
+                'float'         => $float[$k],
+                'margin'        => (int) $margin[$k],
+                'fontsize'      => (int) $fontsize[$k],
+                'fontcolor'     => $fontcolor[$k],
+                'fontbold'      => $fontbold[$k],
                 'fontunderline' => $fontunderline[$k],
-                'fontitalic' => $fontitalic[$k],
+                'fontitalic'    => $fontitalic[$k],
             );
             $style = $this->_buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);
@@ -117,15 +118,15 @@ class StructureController extends PwBaseController
 
                     $html .= '<li role="tab">';
                     $html .= '<a data-id="'.$tab[$k].'" href="'.$_tmp['link'].'"';
-                    $html .= $jstyle ? ' style="'.$jstyle.'"' : '' ;
+                    $html .= $jstyle ? ' style="'.$jstyle.'"' : '';
                     $html .= '>';
                     $html .= $jtitle;
                     $html .= '</a>';
-                    $html .= '</li>' ;
+                    $html .= '</li>';
                     $_tmp['tab'] = $tab[$k];
                 } else {
                     $html .= '<span';
-                    $html .= $jstyle && !$_tmp['link'] ? ' style="'.$jstyle.'"' : '' ;
+                    $html .= $jstyle && !$_tmp['link'] ? ' style="'.$jstyle.'"' : '';
                     $html .= '>';
                     $html .= $_tmp['link'] ? '<a href="'.$_tmp['link'].'" style="'.$jstyle.'">' : '';
                     $html .= $jtitle;
@@ -261,7 +262,6 @@ class StructureController extends PwBaseController
             $this->showError($resource->getError());
         }
 
-
         $style = $dm->getStyle();
         //$style = array('font'=>$font, 'link'=>$link, 'border'=>$border, 'margin'=>$margin, 'padding'=>$padding, 'background'=>$background, 'styleclass'=>$styleclass);
         $styleSrv = $this->_getStyleService();
@@ -285,7 +285,7 @@ class StructureController extends PwBaseController
     {
         return array(
                 'float' => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font' => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
+                'font'  => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
                 //'background'=>array('color'=>$style['bgcolor'],'image'=>$style['bgimage'],'position'=>$style['bgposition']),
         );
     }

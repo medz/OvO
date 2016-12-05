@@ -5,13 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.manage.do.PwThreadManageCopyDoBase');
 
 /**
- * 帖子复制 - 投票
+ * 帖子复制 - 投票.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
 {
@@ -21,7 +21,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     {
         $special = $topicDm->getField('special');
         if ($special != 1) {
-            return ;
+            return;
         }
 
         return $this->copyPoll($topicDm->tid, $newTid);
@@ -110,7 +110,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     }
 
     /**
-     * get PwThreadPoll
+     * get PwThreadPoll.
      *
      * @return PwThreadPoll
      */
@@ -120,7 +120,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */
@@ -130,7 +130,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     }
 
     /**
-     * get PwPollOption
+     * get PwPollOption.
      *
      * @return PwPollOption
      */
@@ -140,7 +140,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */

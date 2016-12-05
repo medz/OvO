@@ -1,12 +1,13 @@
 <?php
 /**
  * 设计备份还原服务
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRestoreService.php 22964 2013-01-04 05:37:43Z gao.wanggao $
- * @package
  */
 class PwRestoreService
 {
@@ -93,7 +94,6 @@ class PwRestoreService
 
         return true;
     }
-
 
     protected function restoreData($pageid, $issnap = 0)
     {

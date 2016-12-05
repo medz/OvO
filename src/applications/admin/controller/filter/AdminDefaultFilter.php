@@ -6,13 +6,13 @@
  * <li>设置后台所需全局变量信息</li>
  * <li>配置信息设置</li>
  * <li>检查后台用户是否登录</li>
- * </ol>
+ * </ol>.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-13
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminDefaultFilter.php 24363 2013-01-29 08:24:25Z jieyin $
- * @package wind
  */
 class AdminDefaultFilter extends PwBaseFilter
 {

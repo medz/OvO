@@ -5,13 +5,13 @@ Wind::import('SRV:user.srv.PwLoginService');
 Wind::import('APPS:u.service.helper.PwUserHelper');
 
 /**
- * 登录
+ * 登录.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: LoginController.php 24383 2013-01-29 10:09:39Z jieyin $
- * @package products.u.controller
  */
 class LoginController extends PwBaseController
 {
@@ -63,7 +63,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 快捷登录
+     * 快捷登录.
      */
     public function fastAction()
     {
@@ -74,7 +74,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 页面登录
+     * 页面登录.
      */
     public function dorunAction()
     {
@@ -135,7 +135,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 页头登录
+     * 页头登录.
      */
     public function dologinAction()
     {
@@ -214,7 +214,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 显示安全问题
+     * 显示安全问题.
      */
     public function showquestionAction()
     {
@@ -285,7 +285,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 验证安全问题
+     * 验证安全问题.
      */
     public function checkquestionAction()
     {
@@ -301,7 +301,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 设置安全问题弹窗
+     * 设置安全问题弹窗.
      */
     public function setquestionAction()
     {
@@ -322,7 +322,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 执行设置安全问题
+     * 执行设置安全问题.
      */
     public function dosettingAction()
     {
@@ -386,7 +386,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 提示信息
+     * 提示信息.
      */
     public function showAction()
     {
@@ -397,7 +397,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 检查用户输入的用户名
+     * 检查用户输入的用户名.
      */
     public function checknameAction()
     {
@@ -419,8 +419,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 退出
-     *
+     * 退出.
      */
     public function logoutAction()
     {
@@ -450,7 +449,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 检查用户信息合法性
+     * 检查用户信息合法性.
      *
      * @return string
      */
@@ -475,7 +474,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 获得安全问题列表
+     * 获得安全问题列表.
      *
      * @return array
      */
@@ -513,7 +512,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 获得用户DS
+     * 获得用户DS.
      *
      * @return PwUser
      */
@@ -533,7 +532,7 @@ class LoginController extends PwBaseController
     }
 
     /**
-     * 过滤来源URL
+     * 过滤来源URL.
      *
      * TODO
      *

@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 系统默认全局filter
+ * 系统默认全局filter.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-2
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwGlobalFilter.php 25328 2013-03-12 10:11:25Z jieyin $
- * @package src
- * @subpackage library.filter
  */
 class PwGlobalFilter extends PwBaseFilter
 {
@@ -104,9 +103,9 @@ class PwGlobalFilter extends PwBaseFilter
         /*[设置给PwGlobalFilters需要的变量]*/
         $_var = array(
             'current' => $this->forward->getWindView()->templateName,
-            'a' => $this->router->getAction(),
-            'c' => $this->router->getController(),
-            'm' => $this->router->getModule(), );
+            'a'       => $this->router->getAction(),
+            'c'       => $this->router->getController(),
+            'm'       => $this->router->getModule(), );
         $this->getResponse()->setData($_var, '_aCloud_');
     }
 
@@ -141,7 +140,7 @@ class PwGlobalFilter extends PwBaseFilter
     }
 
     /**
-     * 门户流程控制
+     * 门户流程控制.
      */
     protected function runDesign()
     {

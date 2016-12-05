@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPageBo.php 22471 2012-12-24 12:06:23Z gao.wanggao $
- * @package
  */
 class PwDesignPageBo
 {
@@ -200,7 +201,6 @@ class PwDesignPageBo
         return true;
     }
 
-
     private function _getStructureCss()
     {
         $css = array();
@@ -246,7 +246,6 @@ class PwDesignPageBo
         return $css;
     }
 
-
     private function _formatStyle($bold = '', $underline = '', $italic = '', $color = '')
     {
         if ($bold) {
@@ -279,7 +278,6 @@ class PwDesignPageBo
     {
         return Wekit::load('design.PwDesignPush');
     }
-
 
     private function _getDataDs()
     {

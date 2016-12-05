@@ -2,25 +2,24 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台菜单管理操作类
+ * 后台菜单管理操作类.
  *
  * 后台菜单管理操作类<code>
  * 1. run 后台权限入口
  * </code>
+ *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AuthController.php 28781 2013-05-23 09:33:37Z jieyin $
- * @package admin
- * @subpackage controller
  */
 class AuthController extends AdminBaseController
 {
     private $perpage = 10;
 
     /**
-     * 菜单管理主入口
-     *
+     * 菜单管理主入口.
      */
     public function run()
     {
@@ -36,8 +35,7 @@ class AuthController extends AdminBaseController
     }
 
     /**
-     * 删除后台用户操作
-     *
+     * 删除后台用户操作.
      */
     public function delAction()
     {
@@ -54,8 +52,7 @@ class AuthController extends AdminBaseController
     }
 
     /**
-     * 展示编辑用户操作界面
-     *
+     * 展示编辑用户操作界面.
      */
     public function editAction()
     {
@@ -87,8 +84,7 @@ class AuthController extends AdminBaseController
     }
 
     /**
-     * 编辑用户
-     *
+     * 编辑用户.
      */
     public function doEditAction()
     {
@@ -103,8 +99,7 @@ class AuthController extends AdminBaseController
     }
 
     /**
-     * 搜索用户操作
-     *
+     * 搜索用户操作.
      */
     public function addAction()
     {
@@ -115,8 +110,7 @@ class AuthController extends AdminBaseController
     }
 
     /**
-     * 添加用户权限
-     *
+     * 添加用户权限.
      */
     public function doAddAction()
     {

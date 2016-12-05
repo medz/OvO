@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子数据模型(insert, update)
+ * 帖子数据模型(insert, update).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditLogDm.php 20415 2012-10-29 07:51:48Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwCreditLogDm extends PwBaseDm
 {
     public function setCtype($ctype)

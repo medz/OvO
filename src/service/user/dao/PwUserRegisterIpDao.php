@@ -1,12 +1,12 @@
 <?php
 /**
- * 注册IP记录表数据接口
+ * 注册IP记录表数据接口.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserRegisterIpDao.php 22969 2013-01-04 06:03:43Z xiaoxia.xuxx $
- * @package service.user.dao
  */
 class PwUserRegisterIpDao extends PwBaseDao
 {
@@ -15,9 +15,10 @@ class PwUserRegisterIpDao extends PwBaseDao
     protected $_dataStruct = array('ip', 'last_regdate', 'num');
 
     /**
-     * 根据IP查询数据
+     * 根据IP查询数据.
      *
-     * @param  string $ip ip地址
+     * @param string $ip ip地址
+     *
      * @return array
      */
     public function get($ip)
@@ -26,10 +27,11 @@ class PwUserRegisterIpDao extends PwBaseDao
     }
 
     /**
-     * 跟新某个IP的数据
+     * 跟新某个IP的数据.
      *
-     * @param  string $ip   IP
-     * @param  int    $date 日期
+     * @param string $ip   IP
+     * @param int    $date 日期
+     *
      * @return int
      */
     public function update($ip, $date)

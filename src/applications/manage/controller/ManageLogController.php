@@ -4,13 +4,13 @@ Wind::import('APPS:manage.controller.BaseManageController');
 Wind::import('SRV:log.so.PwLogSo');
 
 /**
- * 前台管理日志
+ * 前台管理日志.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageLogController.php 24023 2013-01-21 03:04:37Z xiaoxia.xuxx $
- * @package src.applications.manage.controller
  */
 class ManageLogController extends BaseManageController
 {
@@ -68,8 +68,7 @@ class ManageLogController extends BaseManageController
     }
 
     /**
-     * 获得版块列表
-     *
+     * 获得版块列表.
      */
     private function _getForumList()
     {
@@ -90,11 +89,12 @@ class ManageLogController extends BaseManageController
     }
 
     /**
-     * 构建版块树
+     * 构建版块树.
      *
-     * @param  int   $parentid
-     * @param  array $map
-     * @param  int   $level
+     * @param int   $parentid
+     * @param array $map
+     * @param int   $level
+     *
      * @return array
      */
     private function _buildForumTree($parentid, $map, $level = '')

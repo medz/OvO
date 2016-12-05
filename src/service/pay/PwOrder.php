@@ -8,14 +8,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOrder.php 7491 2012-04-06 10:14:44Z jieyin $
- * @package forum
  */
-
 class PwOrder
 {
     /**
-     * 获取一个订单
+     * 获取一个订单.
      *
      * @param int $id 订单id
      *                return array
@@ -30,7 +29,7 @@ class PwOrder
     }
 
     /**
-     * 获取一个订单
+     * 获取一个订单.
      *
      * @param string $orderno 订单号
      *                        return array
@@ -54,12 +53,13 @@ class PwOrder
     }
 
     /**
-     * 获取用户某一类型的订单
+     * 获取用户某一类型的订单.
      *
-     * @param  int   $uid
-     * @param  int   $type
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $uid
+     * @param int $type
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getOrderByUidAndType($uid, $type, $limit = 20, $offset = 0)
@@ -72,7 +72,7 @@ class PwOrder
     }
 
     /**
-     * 增加一个订单
+     * 增加一个订单.
      *
      * @param object $dm 订单数据模型
      *                   return mixed
@@ -87,7 +87,7 @@ class PwOrder
     }
 
     /**
-     * 更新一个订单
+     * 更新一个订单.
      *
      * @param object $dm 订单数据模型
      *                   return mixed

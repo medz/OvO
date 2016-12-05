@@ -3,16 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- *
  * 广告服务
  *
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z zhudong $
- * @package wind
  */
-
 class PwAdService
 {
     public function addAdPosition($id, $identifier, $type, $width, $height, $status, $schedule)
@@ -189,6 +187,7 @@ class PwAdService
 
         return false;
     }
+
     /*
     public function buildUrl($params){
         foreach ($params as $value) {

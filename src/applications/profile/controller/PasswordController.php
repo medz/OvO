@@ -3,13 +3,13 @@
 Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:user.validator.PwUserValidator');
 /**
- * 用户密码设置
+ * 用户密码设置.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PasswordController.php 24759 2013-02-20 07:02:37Z jieyin $
- * @package src.products.u.controller.profile
  */
 class PasswordController extends BaseProfileController
 {
@@ -69,7 +69,7 @@ class PasswordController extends BaseProfileController
     }
 
     /**
-     * 设置安全问题
+     * 设置安全问题.
      */
     public function questionAction()
     {
@@ -83,7 +83,7 @@ class PasswordController extends BaseProfileController
     }
 
     /**
-     * 设置安全问题
+     * 设置安全问题.
      */
     public function dosetQAction()
     {
@@ -140,7 +140,7 @@ class PasswordController extends BaseProfileController
     }
 
     /**
-     * 检查密码强度
+     * 检查密码强度.
      */
     public function checkpwdStrongAction()
     {
@@ -150,7 +150,7 @@ class PasswordController extends BaseProfileController
     }
 
     /**
-     * 密码校验
+     * 密码校验.
      */
     public function checkpwdAction()
     {
@@ -175,8 +175,10 @@ class PasswordController extends BaseProfileController
 
     /**
      * 检查原密码
-     * @param  int          $uid
-     * @param  string       $pwd
+     *
+     * @param int    $uid
+     * @param string $pwd
+     *
      * @return PwError|true
      */
     private function checkOldPwd($uid, $pwd)

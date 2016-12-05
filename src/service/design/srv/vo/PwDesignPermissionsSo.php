@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPermissionsSo.php 11914 2012-06-14 08:32:07Z gao.wanggao $
- * @package
  */
 class PwDesignPermissionsSo
 {
@@ -22,7 +23,6 @@ class PwDesignPermissionsSo
 
         return $this;
     }
-
 
     public function setDesignId($ids)
     {

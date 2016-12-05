@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 教育经历DAO
+ * 教育经历DAO.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z yishuo $
- * @package src.service.user.hooks.experience_education.dao
  */
 class PwEducationDao extends PwBaseDao
 {
@@ -15,9 +15,10 @@ class PwEducationDao extends PwBaseDao
     protected $_dataStruct = array('id', 'uid', 'schoolid', 'degree', 'start_time');
 
     /**
-     * 添加教育经历
+     * 添加教育经历.
      *
-     * @param  array    $data
+     * @param array $data
+     *
      * @return bool|int
      */
     public function add($data)
@@ -32,11 +33,12 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 更新教育经历
+     * 更新教育经历.
      *
-     * @param  int      $id   教育经历ID
-     * @param  int      $uid  用户ID
-     * @param  array    $data
+     * @param int   $id   教育经历ID
+     * @param int   $uid  用户ID
+     * @param array $data
+     *
      * @return bool|int
      */
     public function update($id, $uid, $data)
@@ -51,10 +53,11 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 删除教育经历
+     * 删除教育经历.
      *
-     * @param  int      $id  教育经历ID
-     * @param  int      $uid 对应用户ID
+     * @param int $id  教育经历ID
+     * @param int $uid 对应用户ID
+     *
      * @return bool|int
      */
     public function delete($id, $uid)
@@ -66,10 +69,11 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 根据教育经历ID获取该教育经历详细信息
+     * 根据教育经历ID获取该教育经历详细信息.
      *
-     * @param  int   $id  经历ID
-     * @param  int   $uid 用户ID
+     * @param int $id  经历ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function get($id, $uid)
@@ -81,9 +85,10 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除用户教育经历
+     * 根据用户ID删除用户教育经历.
      *
-     * @param  int      $uid
+     * @param int $uid
+     *
      * @return bool|int
      */
     public function deleteByUid($uid)
@@ -95,11 +100,12 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID获得该用户的教育经历列表
+     * 根据用户ID获得该用户的教育经历列表.
      *
-     * @param  int   $uid   用户ID
-     * @param  int   $limit 返回条数
-     * @param  int   $start 开始位置
+     * @param int $uid   用户ID
+     * @param int $limit 返回条数
+     * @param int $start 开始位置
+     *
      * @return array
      */
     public function getByUid($uid, $limit, $start)
@@ -111,9 +117,10 @@ class PwEducationDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID统计该用户的教育经历
+     * 根据用户ID统计该用户的教育经历.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)

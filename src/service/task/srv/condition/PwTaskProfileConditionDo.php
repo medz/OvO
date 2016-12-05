@@ -8,8 +8,8 @@ Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package src.service.task.srv.condition
  */
 class PwTaskProfileConditionDo implements PwTaskCompleteInterface
 {
@@ -17,9 +17,10 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
     private $userDm = null;
 
     /**
-     * 更新用户
+     * 更新用户.
      *
-     * @param  PwUserInfoDm $userDm
+     * @param PwUserInfoDm $userDm
+     *
      * @return bool
      */
     public function editUser($userDm)
@@ -50,9 +51,10 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
     }
 
     /**
-     * 计算完成进度
+     * 计算完成进度.
      *
-     * @param  array $step
+     * @param array $step
+     *
      * @return array
      */
     private function _caculatePercent($step)
@@ -64,7 +66,7 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
                 break;
             }
             if ($this->userDm->getField($key)) {
-                $percent ++;
+                $percent++;
             }
         }
         $percent && $step['step'] = $percent;

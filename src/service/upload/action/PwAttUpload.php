@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:attach.dm.PwThreadAttachDm');
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('COM:utility.WindUtility');
 
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package upload
  */
-
 class PwAttUpload extends PwUploadAction
 {
     public $forum;
@@ -172,11 +170,11 @@ class PwAttUpload extends PwUploadAction
             $this->_getService()->updateAttach($dm);
 
             $this->attachs[$aid] = array(
-                'aid' => $aid,
-                'name' => $rt['name'],
-                'type' => $rt['type'],
-                'path' => $rt['fileuploadurl'],
-                'size' => $rt['size'],
+                'aid'     => $aid,
+                'name'    => $rt['name'],
+                'type'    => $rt['type'],
+                'path'    => $rt['fileuploadurl'],
+                'size'    => $rt['size'],
                 'descrip' => $value['desc'],
                 'ifthumb' => $rt['ifthumb'],
             );
@@ -208,11 +206,11 @@ class PwAttUpload extends PwUploadAction
             $aid = $srv->addAttach($att);
 
             $this->attachs[$aid] = array(
-                'aid' => $aid,
-                'name' => $value['name'],
-                'type' => $value['type'],
-                'path' => $value['fileuploadurl'],
-                'size' => $value['size'],
+                'aid'     => $aid,
+                'name'    => $value['name'],
+                'type'    => $value['type'],
+                'path'    => $value['fileuploadurl'],
+                'size'    => $value['size'],
                 'descrip' => $value['descrip'],
                 'ifthumb' => $value['ifthumb'],
             );

@@ -9,8 +9,8 @@
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserProfileMenu.php 21352 2012-12-05 06:48:57Z xiaoxia.xuxx $
- * @package src.products.u.service
  */
 class PwUserProfileMenu
 {
@@ -21,7 +21,7 @@ class PwUserProfileMenu
     private $first = null;
 
     /**
-     * 获取左侧菜单扩展的菜单项
+     * 获取左侧菜单扩展的菜单项.
      *
      * @return array
      */
@@ -29,18 +29,17 @@ class PwUserProfileMenu
     {
         return $this->registerMenus();
     }
-    /**
-     *
-     */
+
     public function getFirstMenu()
     {
         return $this->first;
     }
 
     /**
-     * 获得某个菜单项的tabs
+     * 获得某个菜单项的tabs.
      *
-     * @param  string $left
+     * @param string $left
+     *
      * @return array
      */
     public function getTabs($left)
@@ -51,10 +50,11 @@ class PwUserProfileMenu
     }
 
     /**
-     * 获得当前的菜单项
+     * 获得当前的菜单项.
      *
-     * @param  string $left
-     * @param  string $tab
+     * @param string $left
+     * @param string $tab
+     *
      * @return string
      */
     public function getCurrentTab($left, $tab = '')
@@ -76,7 +76,7 @@ class PwUserProfileMenu
     }
 
     /**
-     * 获得菜单列表
+     * 获得菜单列表.
      *
      * @return array
      */
@@ -103,7 +103,7 @@ class PwUserProfileMenu
     }
 
     /**
-     * 获得缺省的设置页
+     * 获得缺省的设置页.
      *
      * @return array
      */

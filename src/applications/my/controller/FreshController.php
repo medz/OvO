@@ -10,8 +10,8 @@ Wind::import('SRV:attention.srv.dataSource.PwFetchAttentionFresh');
  *
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: FreshController.php 28843 2013-05-28 01:57:37Z jieyin $
- * @package wind
  */
 class FreshController extends PwBaseController
 {
@@ -187,7 +187,6 @@ class FreshController extends PwBaseController
             $array = $this->_getThread()->getPost($fresh['src_id']);
             $thread = new PwThreadBo($array['tid']);
         }
-
 
         $array['content'] = WindSecurity::escapeHTML($array['content']);
         $array['content'] = str_replace("\n", '<br />', $array['content']);

@@ -2,13 +2,13 @@
 
 
 /**
- * 普通前台路由，供后台框架使用
+ * 普通前台路由，供后台框架使用.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwCommonRoute.php 25189 2013-03-06 10:28:01Z jieyin $
- * @package library
  */
 class PwCommonRoute extends AbstractPwRoute
 {

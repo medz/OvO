@@ -61,11 +61,13 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_Rijndael
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVIII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: Rijndael.php 24136 2013-01-22 06:20:20Z xiaoxia.xuxx $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
@@ -114,64 +116,71 @@ define('CRYPT_RIJNDAEL_MODE_MCRYPT', 2);
  * Pure-PHP implementation of Rijndael.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_Rijndael
  */
 class Crypt_Rijndael
 {
     /**
-     * The Encryption Mode
+     * The Encryption Mode.
      *
      * @see Crypt_Rijndael::Crypt_Rijndael()
-     * @var Integer
+     *
+     * @var int
      */
     public $mode;
 
     /**
-     * The Key
+     * The Key.
      *
      * @see Crypt_Rijndael::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $key = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
 
     /**
-     * The Initialization Vector
+     * The Initialization Vector.
      *
      * @see Crypt_Rijndael::setIV()
-     * @var String
+     *
+     * @var string
      */
     public $iv = '';
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_Rijndael::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $encryptIV = '';
 
     /**
-     * A "sliding" Initialization Vector
+     * A "sliding" Initialization Vector.
      *
      * @see Crypt_Rijndael::enableContinuousBuffer()
-     * @var String
+     *
+     * @var string
      */
     public $decryptIV = '';
 
     /**
-     * Continuous Buffer status
+     * Continuous Buffer status.
      *
      * @see Crypt_Rijndael::enableContinuousBuffer()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $continuousBuffer = false;
 
     /**
-     * Padding status
+     * Padding status.
      *
      * @see Crypt_Rijndael::enablePadding()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $padding = true;
 
@@ -181,7 +190,8 @@ class Crypt_Rijndael
      * @see setKey()
      * @see setBlockLength()
      * @see setKeyLength()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $changed = true;
 
@@ -189,54 +199,62 @@ class Crypt_Rijndael
      * Has the key length explicitly been set or should it be derived from the key, itself?
      *
      * @see setKeyLength()
-     * @var Boolean
+     *
+     * @var bool
      */
     public $explicit_key_length = false;
 
     /**
-     * The Key Schedule
+     * The Key Schedule.
      *
      * @see _setup()
-     * @var Array
+     *
+     * @var array
      */
     public $w;
 
     /**
-     * The Inverse Key Schedule
+     * The Inverse Key Schedule.
      *
      * @see _setup()
-     * @var Array
+     *
+     * @var array
      */
     public $dw;
 
     /**
-     * The Block Length
+     * The Block Length.
      *
      * @see setBlockLength()
-     * @var Integer
+     *
+     * @var int
+     *
      * @internal The max value is 32, the min value is 16.  All valid values are multiples of 4.  Exists in conjunction with
      *     $Nb because we need this value and not $Nb to pad strings appropriately.
      */
     public $block_size = 16;
 
     /**
-     * The Block Length divided by 32
+     * The Block Length divided by 32.
      *
      * @see setBlockLength()
-     * @var Integer
+     *
+     * @var int
+     *
      * @internal The max value is 256 / 32 = 8, the min value is 128 / 32 = 4.  Exists in conjunction with $block_size
      *    because the encryption / decryption / key schedule creation requires this number and not $block_size.  We could
      *    derive this from $block_size or vice versa, but that'd mean we'd have to do multiple shift operations, so in lieu
      *    of that, we'll just precompute it once.
-     *
      */
     public $Nb = 4;
 
     /**
-     * The Key Length
+     * The Key Length.
      *
      * @see setKeyLength()
-     * @var Integer
+     *
+     * @var int
+     *
      * @internal The max value is 256 / 8 = 32, the min value is 128 / 8 = 16.  Exists in conjunction with $key_size
      *    because the encryption / decryption / key schedule creation requires this number and not $key_size.  We could
      *    derive this from $key_size or vice versa, but that'd mean we'd have to do multiple shift operations, so in lieu
@@ -245,90 +263,101 @@ class Crypt_Rijndael
     public $key_size = 16;
 
     /**
-     * The Key Length divided by 32
+     * The Key Length divided by 32.
      *
      * @see setKeyLength()
-     * @var Integer
+     *
+     * @var int
+     *
      * @internal The max value is 256 / 32 = 8, the min value is 128 / 32 = 4
      */
     public $Nk = 4;
 
     /**
-     * The Number of Rounds
+     * The Number of Rounds.
      *
-     * @var Integer
+     * @var int
+     *
      * @internal The max value is 14, the min value is 10.
      */
     public $Nr;
 
     /**
-     * Shift offsets
+     * Shift offsets.
      *
-     * @var Array
+     * @var array
      */
     public $c;
 
     /**
-     * Precomputed mixColumns table
+     * Precomputed mixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $t0;
 
     /**
-     * Precomputed mixColumns table
+     * Precomputed mixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $t1;
 
     /**
-     * Precomputed mixColumns table
+     * Precomputed mixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $t2;
 
     /**
-     * Precomputed mixColumns table
+     * Precomputed mixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $t3;
 
     /**
-     * Precomputed invMixColumns table
+     * Precomputed invMixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $dt0;
 
     /**
-     * Precomputed invMixColumns table
+     * Precomputed invMixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $dt1;
 
     /**
-     * Precomputed invMixColumns table
+     * Precomputed invMixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $dt2;
 
     /**
-     * Precomputed invMixColumns table
+     * Precomputed invMixColumns table.
      *
      * @see Crypt_Rijndael()
-     * @var Array
+     *
+     * @var array
      */
     public $dt3;
 
@@ -338,7 +367,8 @@ class Crypt_Rijndael
      * Determines whether or not the mcrypt extension should be used.  $mode should only, at present, be
      * CRYPT_RIJNDAEL_MODE_ECB or CRYPT_RIJNDAEL_MODE_CBC.  If not explictly set, CRYPT_RIJNDAEL_MODE_CBC will be used.
      *
-     * @param  optional Integer $mode
+     * @param optional Integer $mode
+     *
      * @return Crypt_Rijndael
      */
     public function Crypt_Rijndael($mode = CRYPT_RIJNDAEL_MODE_CBC)
@@ -457,7 +487,7 @@ class Crypt_Rijndael
      *
      * If the key is not explicitly set, it'll be assumed to be all null bytes.
      *
-     * @param String $key
+     * @param string $key
      */
     public function setKey($key)
     {
@@ -466,12 +496,12 @@ class Crypt_Rijndael
     }
 
     /**
-     * Sets the initialization vector. (optional)
+     * Sets the initialization vector. (optional).
      *
      * SetIV is not required when CRYPT_RIJNDAEL_MODE_ECB is being used.  If not explictly set, it'll be assumed
      * to be all zero's.
      *
-     * @param String $iv
+     * @param string $iv
      */
     public function setIV($iv)
     {
@@ -479,12 +509,12 @@ class Crypt_Rijndael
     }
 
     /**
-     * Sets the key length
+     * Sets the key length.
      *
      * Valid key lengths are 128, 160, 192, 224, and 256.  If the length is less than 128, it will be rounded up to
      * 128.  If the length is greater then 128 and invalid, it will be rounded down to the closest valid amount.
      *
-     * @param Integer $length
+     * @param int $length
      */
     public function setKeyLength($length)
     {
@@ -502,12 +532,12 @@ class Crypt_Rijndael
     }
 
     /**
-     * Sets the block length
+     * Sets the block length.
      *
      * Valid block lengths are 128, 160, 192, 224, and 256.  If the length is less than 128, it will be rounded up to
      * 128.  If the length is greater then 128 and invalid, it will be rounded down to the closest valid amount.
      *
-     * @param Integer $length
+     * @param int $length
      */
     public function setBlockLength($length)
     {
@@ -523,15 +553,16 @@ class Crypt_Rijndael
     }
 
     /**
-     * Generate CTR XOR encryption key
+     * Generate CTR XOR encryption key.
      *
      * Encrypt the output of this and XOR it against the ciphertext / plaintext to get the
      * plaintext / ciphertext in CTR mode.
      *
      * @see Crypt_Rijndael::decrypt()
      * @see Crypt_Rijndael::encrypt()
-     * @param Integer $length
-     * @param String  $iv
+     *
+     * @param int    $length
+     * @param string $iv
      */
     public function _generate_xor($length, &$iv)
     {
@@ -575,7 +606,8 @@ class Crypt_Rijndael
      * length.
      *
      * @see Crypt_Rijndael::decrypt()
-     * @param String $plaintext
+     *
+     * @param string $plaintext
      */
     public function encrypt($plaintext)
     {
@@ -626,7 +658,8 @@ class Crypt_Rijndael
      * it is.
      *
      * @see Crypt_Rijndael::encrypt()
-     * @param String $ciphertext
+     *
+     * @param string $ciphertext
      */
     public function decrypt($ciphertext)
     {
@@ -673,10 +706,11 @@ class Crypt_Rijndael
     }
 
     /**
-     * Encrypts a block
+     * Encrypts a block.
      *
-     * @param  String $in
-     * @return String
+     * @param string $in
+     *
+     * @return string
      */
     public function _encryptBlock($in)
     {
@@ -759,10 +793,11 @@ class Crypt_Rijndael
     }
 
     /**
-     * Decrypts a block
+     * Decrypts a block.
      *
-     * @param  String $in
-     * @return String
+     * @param string $in
+     *
+     * @return string
      */
     public function _decryptBlock($in)
     {
@@ -835,11 +870,10 @@ class Crypt_Rijndael
     }
 
     /**
-     * Setup Rijndael
+     * Setup Rijndael.
      *
      * Validates all the variables and calculates $Nr - the number of rounds that need to be performed - and $w - the key
      * key schedule.
-     *
      */
     public function _setup()
     {
@@ -951,8 +985,7 @@ class Crypt_Rijndael
     }
 
     /**
-     * Performs S-Box substitutions
-     *
+     * Performs S-Box substitutions.
      */
     public function _subWord($word)
     {
@@ -996,8 +1029,7 @@ class Crypt_Rijndael
     }
 
     /**
-     * Performs inverse S-Box substitutions
-     *
+     * Performs inverse S-Box substitutions.
      */
     public function _invSubWord($word)
     {
@@ -1070,7 +1102,7 @@ class Crypt_Rijndael
     }
 
     /**
-     * Pads a string
+     * Pads a string.
      *
      * Pads a string using the RSA PKCS padding standards so that its length is a multiple of the blocksize.
      * $block_size - (strlen($text) % $block_size) bytes are added, each of which is equal to
@@ -1178,13 +1210,14 @@ class Crypt_Rijndael
     }
 
     /**
-     * String Shift
+     * String Shift.
      *
      * Inspired by array_shift
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
      */
     public function _string_shift(&$string, $index = 1)
     {

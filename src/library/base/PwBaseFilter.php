@@ -1,25 +1,24 @@
 <?php
 
 
-
 /**
- * 系统默认全局filter
+ * 系统默认全局filter.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwBaseFilter.php 28262 2013-05-07 17:52:20Z jieyin $
- * @package src
- * @subpackage library.filter
  */
 abstract class PwBaseFilter extends WindActionFilter
 {
     /**
-     * 显示信息
+     * 显示信息.
      *
      * @param string $message 消息信息
      * @param string $referer 跳转地址
      * @param bool   $referer 是否刷新页面
+     *
      * @see WindSimpleController::showMessage()
      */
     protected function showMessage($message = '', $referer = '', $refresh = false)
@@ -30,7 +29,7 @@ abstract class PwBaseFilter extends WindActionFilter
     }
 
     /**
-     * 显示错误
+     * 显示错误.
      *
      * @param string $error   消息信息
      * @param string $referer 跳转地址

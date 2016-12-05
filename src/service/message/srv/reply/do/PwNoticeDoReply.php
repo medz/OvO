@@ -8,8 +8,8 @@ Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwNoticeDoReply extends PwPostDoBase
 {
@@ -41,8 +41,8 @@ class PwNoticeDoReply extends PwPostDoBase
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwNoticeService
      */
     protected function _getNoticeService()

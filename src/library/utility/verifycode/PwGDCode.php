@@ -5,9 +5,10 @@
  * GD库验证码
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $ foxsee@aliyun.com
+ *
  * @version $Id: PwGDCode.php 23362 2013-01-09 04:19:41Z gao.wanggao $
- * @package
  */
 class PwGDCode extends PwBaseCode
 {
@@ -62,7 +63,6 @@ class PwGDCode extends PwBaseCode
         self::$_codeY = mt_rand($_y + 5, $_y + 10);
     }
 
-
     private static function _setRandBackground()
     {
         $red = self::$isRandBackground ? mt_rand(100, 200) : 255;
@@ -94,8 +94,6 @@ class PwGDCode extends PwBaseCode
         }
         $key = self::$isRandFont ? array_rand($_fontList, 1) : 0;
         self::$_font = $_path.'/'.$_fontList[$key];
-
-        return;
     }
 
     private static function _setRandSize()
@@ -135,7 +133,6 @@ class PwGDCode extends PwBaseCode
             }
         }
     }
-
 
     private static function _setRandGraph()
     {
@@ -187,6 +184,7 @@ class PwGDCode extends PwBaseCode
             imagesetpixel(self::$_image, mt_rand(0, self::$verifyWidth), mt_rand(0, self::$verifyHeight), $_color);
         }
     }
+
     private static function _setImageEarc()
     {
         $_tmp = mt_rand(5, 10);
@@ -276,7 +274,7 @@ class PwGDCode extends PwBaseCode
             self::_setRandGraph();
             self::_writeImage();
             ob_start();
-            imageGif(self::$_image);
+            imagegif(self::$_image);
             $frame[] = ob_get_contents();
             $delay[] = 100;
             imagedestroy(self::$_image);
@@ -285,6 +283,7 @@ class PwGDCode extends PwBaseCode
         $gif = new GifMerge($frame, 0, 0, 0, 0, $delay, 0, 0, 'C_MEMORY');
         echo $gif->getAnimation();
     }
+
     private static function _writeImage()
     {
         for ($i = 0; $i < self::$_codeLen; $i++) {
@@ -295,7 +294,7 @@ class PwGDCode extends PwBaseCode
             self::_setRandX();
             self::_setRandY();
             self::_setRandColor();
-            ImageTTFText(self::$_image, self::$_size, self::$_angle, (self::$_codeX * $i + 10), self::$_codeY, self::$_color, self::$_font, $_text);
+            imagettftext(self::$_image, self::$_size, self::$_angle, (self::$_codeX * $i + 10), self::$_codeY, self::$_color, self::$_font, $_text);
         }
     }
 

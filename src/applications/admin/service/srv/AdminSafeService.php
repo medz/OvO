@@ -5,13 +5,13 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class AdminSafeService
 {
     /**
-     * 设置受限Ip
+     * 设置受限Ip.
      *
      * @return bool PwError
      */
@@ -28,7 +28,7 @@ class AdminSafeService
     }
 
     /**
-     * 获取受限IP
+     * 获取受限IP.
      *
      * @return array
      */
@@ -41,9 +41,10 @@ class AdminSafeService
     }
 
     /**
-     * 验证后台登录ip
+     * 验证后台登录ip.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return bool
      */
     public function ipLegal($ip)

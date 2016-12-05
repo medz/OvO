@@ -1,19 +1,20 @@
 <?php
 /**
- * 用户注册的审核/激活DS
+ * 用户注册的审核/激活DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserRegisterCheck.php 7687 2012-04-10 11:17:58Z xiaoxia.xuxx $
- * @package src.service.user
  */
 class PwUserRegisterCheck
 {
     /**
      * 根据用户的ID获得用户的状态
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getInfo($uid)
@@ -26,7 +27,7 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 获得没有激活的用户
+     * 获得没有激活的用户.
      *
      * @return array
      */
@@ -36,7 +37,7 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 统计没有激活的用户
+     * 统计没有激活的用户.
      *
      * @return int
      */
@@ -46,10 +47,11 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 获得没有激活的用户列表
+     * 获得没有激活的用户列表.
      *
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getUnActivedList($limit, $start)
@@ -58,7 +60,7 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 统计没有激活的用户
+     * 统计没有激活的用户.
      *
      * @return int
      */
@@ -70,9 +72,10 @@ class PwUserRegisterCheck
     /**
      * 添加用户的状态
      *
-     * @param  int      $uids      用户ID
-     * @param  int      $ifchecked 是否已经审核
-     * @param  int      $ifactived 是否已经激活
+     * @param int $uids      用户ID
+     * @param int $ifchecked 是否已经审核
+     * @param int $ifactived 是否已经激活
+     *
      * @return bool|int
      */
     public function addInfo($uid, $ifchecked = 1, $ifactived = 1)
@@ -85,9 +88,10 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 审核通过用户
+     * 审核通过用户.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function checkUser($uid)
@@ -100,9 +104,10 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 批量审核用户
+     * 批量审核用户.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchCheckUser($uids)
@@ -115,9 +120,10 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 激活用户
+     * 激活用户.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function activeUser($uid)
@@ -130,9 +136,10 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 批量激活用户
+     * 批量激活用户.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchActiveUser($uids)
@@ -147,7 +154,8 @@ class PwUserRegisterCheck
     /**
      * 根据用户ID删除用户的状态
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteUser($uid)
@@ -160,9 +168,10 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 根据用户的ID列表删除批量删除
+     * 根据用户的ID列表删除批量删除.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchDeleteUser($uids)
@@ -175,7 +184,7 @@ class PwUserRegisterCheck
     }
 
     /**
-     * 返回用户注册审核/激活DAO
+     * 返回用户注册审核/激活DAO.
      *
      * @return PwUserRegisterCheckDao
      */

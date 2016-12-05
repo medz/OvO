@@ -2,15 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
- * 公告管理基础表数据模型
+ * 公告管理基础表数据模型.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAnnounceDm.php 2781 下午01:42:16Z mingxing.sun $
- * @package wind
  */
 class PwAnnounceDm extends PwBaseDm
 {
@@ -23,9 +22,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置顺序
+     * 设置顺序.
      *
      * @param int 公告显示顺序
+     *
      * @return object
      */
     public function setVieworder($vieworder)
@@ -36,9 +36,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置用户ID
+     * 设置用户ID.
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return object
      */
     public function setUid($uid)
@@ -49,9 +50,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置公告类别ID 0为文字公告  1为链接公告
+     * 设置公告类别ID 0为文字公告  1为链接公告.
      *
-     * @param  int    $typeid
+     * @param int $typeid
+     *
      * @return object
      */
     public function setTypeid($typeid)
@@ -64,7 +66,8 @@ class PwAnnounceDm extends PwBaseDm
     /**
      * 设置公告链接地址
      *
-     * @param  string $url
+     * @param string $url
+     *
      * @return object
      */
     public function setUrl($url)
@@ -75,9 +78,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置公告标题
+     * 设置公告标题.
      *
-     * @param  string $subject
+     * @param string $subject
+     *
      * @return object
      */
     public function setSubject($subject)
@@ -88,9 +92,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置公告内容
+     * 设置公告内容.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return object
      */
     public function setContent($content)
@@ -101,9 +106,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置公告发布时间
+     * 设置公告发布时间.
      *
-     * @param  int    $startDate
+     * @param int $startDate
+     *
      * @return object
      */
     public function setStartDate($startDate)
@@ -115,9 +121,10 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 设置公告结束时间
+     * 设置公告结束时间.
      *
-     * @param  int    $endDate
+     * @param int $endDate
+     *
      * @return object
      */
     public function setEndDate($endDate)
@@ -129,7 +136,7 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 预处理机制
+     * 预处理机制.
      *
      * @return bool
      */
@@ -156,7 +163,7 @@ class PwAnnounceDm extends PwBaseDm
     }
 
     /**
-     * 添加前预处理
+     * 添加前预处理.
      *
      * @return bool
      */

@@ -6,15 +6,15 @@
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserProfileExtends.php 23702 2013-01-15 06:09:39Z xiaoxia.xuxx $
- * @package src.products.u.service
  */
 class PwUserProfileExtends extends PwBaseHookService
 {
     public $current = '';
     public $left = '';
     /**
-     * 当前登录用户
+     * 当前登录用户.
      *
      * @var PwUserBo
      */
@@ -27,7 +27,7 @@ class PwUserProfileExtends extends PwBaseHookService
     }
 
     /**
-     * 设置当前的菜单项
+     * 设置当前的菜单项.
      *
      * @param string $left
      * @param string $tab
@@ -39,7 +39,7 @@ class PwUserProfileExtends extends PwBaseHookService
     }
 
     /**
-     * 执行
+     * 执行.
      */
     public function execute()
     {

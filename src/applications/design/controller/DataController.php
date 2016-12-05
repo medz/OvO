@@ -2,12 +2,13 @@
 
 Wind::import('APPS:design.controller.DesignBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: DataController.php 24487 2013-01-31 02:50:53Z gao.wanggao $
- * @package
  */
 class DataController extends DesignBaseController
 {
@@ -20,7 +21,6 @@ class DataController extends DesignBaseController
             $this->showError('DESIGN:permissions.fail');
         }
     }
-
 
     public function run()
     {
@@ -248,7 +248,6 @@ class DataController extends DesignBaseController
         $this->showMessage('operate.success');
     }
 
-
     public function pushAction()
     {
         $page = (int) $this->getInput('page', 'get');
@@ -282,7 +281,6 @@ class DataController extends DesignBaseController
         $this->setOutput($perpage, 'perpage');
         $this->setOutput(ceil($count / $perpage), 'totalpage');
     }
-
 
     public function dopushAction()
     {

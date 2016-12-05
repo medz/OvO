@@ -9,8 +9,8 @@ Wind::import('WINDID:library.WindidError');
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminUserDependenceService.php 24807 2013-02-21 09:24:27Z jieyin $
- * @package wind
  */
 class AdminUserDependenceService implements IAdminUserDependenceService
 {

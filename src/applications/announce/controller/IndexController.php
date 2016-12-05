@@ -2,16 +2,16 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 公告管理前台展示逻辑处理
+ * 公告管理前台展示逻辑处理.
  *
  * 1. run 权限入口
  * </code>
+ *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: IndexController.php 3219 2012-01-12 06:43:45Z mingxing.sun $
- * @package announce
- * @subpackage controller
  */
 class IndexController extends PwBaseController
 {

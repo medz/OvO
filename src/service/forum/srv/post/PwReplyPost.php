@@ -11,10 +11,9 @@ Wind::import('SRV:forum.dm.PwReplyDm');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwReplyPost.php 28950 2013-05-31 05:58:25Z jieyin $
- * @package forum
  */
-
 class PwReplyPost extends PwPostAction
 {
     public $tid;
@@ -125,7 +124,7 @@ class PwReplyPost extends PwPostAction
     }
 
     /**
-     * 回帖后续操作<更新版块、缓存等信息>
+     * 回帖后续操作<更新版块、缓存等信息>.
      */
     public function afterPost()
     {

@@ -1,7 +1,6 @@
 <?php
 
 
-
 /**
  * 喜欢列表组装服务
  *
@@ -12,11 +11,12 @@
  * <4>PwBuildLikeService->_getReplyFrom??? 增加喜欢回复内容
  * <5>PwLikeService->_getSpecialAndBeLikeuid 增加被喜欢信息
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBuildLikeService.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package
  */
 class PwBuildLikeService
 {
@@ -35,8 +35,9 @@ class PwBuildLikeService
 
         return $tags;
     }
+
     /**
-     * 分页获取喜欢记录
+     * 分页获取喜欢记录.
      *
      * @param int $uid
      * @param int $page
@@ -67,7 +68,7 @@ class PwBuildLikeService
     }
 
     /**
-     * 获取我关注的喜欢
+     * 获取我关注的喜欢.
      *
      * @param int $uid
      * @param int $start
@@ -155,7 +156,7 @@ class PwBuildLikeService
     }
 
     /**
-     * 喜欢对应关系转换
+     * 喜欢对应关系转换.
      *
      * 根据业务规则增加查询类型appendId
      */
@@ -179,8 +180,7 @@ class PwBuildLikeService
     }
 
     /**
-     * 获取喜欢内容
-     *
+     * 获取喜欢内容.
      */
     public function getLikeInfo()
     {
@@ -263,7 +263,7 @@ class PwBuildLikeService
     }
 
     /**
-     * 喜欢内容扩展
+     * 喜欢内容扩展.
      *
      * @param array $infoids
      */
@@ -368,7 +368,7 @@ class PwBuildLikeService
     }
 
     /**
-     * 喜欢回复扩展
+     * 喜欢回复扩展.
      *
      * @param array $infoids
      */
@@ -399,6 +399,7 @@ class PwBuildLikeService
             $this->_replyInfo[$info['pid']] = $data;
         }
     }
+
     //TODO
     private function _getThreadAttachs($tids = array())
     {
@@ -415,6 +416,7 @@ class PwBuildLikeService
 
         return $attachs;
     }
+
     //TODO
     private function _getPostAttachs($pids = array())
     {

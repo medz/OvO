@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
  /**
-  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+  *
   * @author $Author: gao.wanggao $ Foxsee@aliyun.com
   * @copyright ?2003-2103 phpwind.com
   * @license http://www.phpwind.com
+  *
   * @version $Id: PwMedalInfoDao.php 8501 2012-04-19 09:32:42Z gao.wanggao $
-  * @package
   */
  class PwMedalInfoDao extends PwBaseDao
  {
@@ -35,7 +36,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $where = '';
          $_array = array();
          if ($type > 0) {
-             $where = ' WHERE medal_type = ? ' ;
+             $where = ' WHERE medal_type = ? ';
              $_array = array($type);
          }
          $sql = $this->_bindSql('SELECT COUNT(*) AS count FROM %s %s ', $this->getTable(), $where);
@@ -50,17 +51,17 @@ Wind::import('SRC:library.base.PwBaseDao');
          $_array = array();
          $order = ' ORDER BY receive_type ASC , vieworder ASC ';
          if ($receiveType > 0) {
-             $where .= ' AND receive_type = ? ' ;
+             $where .= ' AND receive_type = ? ';
              $order = ' ORDER BY vieworder ASC ';
              $_array[] = $receiveType;
          }
          if ($awardType > 0) {
-             $where .= ' AND award_type = ? ' ;
+             $where .= ' AND award_type = ? ';
              $order = ' ORDER BY vieworder ASC ';
              $_array[] = $awardType;
          }
          if (isset($isopen)) {
-             $where .= ' AND isopen = ? ' ;
+             $where .= ' AND isopen = ? ';
              $order = ' ORDER BY vieworder ASC ';
              $_array[] = $isopen;
          }

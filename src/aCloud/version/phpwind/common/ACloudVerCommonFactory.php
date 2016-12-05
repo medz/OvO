@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonBase');
 class ACloudVerCommonFactory
 {
@@ -9,161 +9,161 @@ class ACloudVerCommonFactory
     public function getInstance()
     {
         static $instance = null;
-        if (! is_null($instance)) {
+        if (!is_null($instance)) {
             return $instance;
         }
-        $instance = new ACloudVerCommonFactory();
+        $instance = new self();
 
         return $instance;
     }
 
     public function getVersionCommonPermissions()
     {
-        if (! isset($this->service ['VersionCommonPermissions']) || ! $this->service ['VersionCommonPermissions']) {
+        if (!isset($this->service['VersionCommonPermissions']) || !$this->service['VersionCommonPermissions']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonPermissions');
-            $this->service ['VersionCommonPermissions'] = new ACloudVerCommonPermissions();
+            $this->service['VersionCommonPermissions'] = new ACloudVerCommonPermissions();
         }
 
-        return $this->service ['VersionCommonPermissions'];
+        return $this->service['VersionCommonPermissions'];
     }
 
     public function getVersionCommonSearch()
     {
-        if (! isset($this->service ['VersionCommonSearch']) || ! $this->service ['VersionCommonSearch']) {
+        if (!isset($this->service['VersionCommonSearch']) || !$this->service['VersionCommonSearch']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonSearch');
-            $this->service ['VersionCommonSearch'] = new ACloudVerCommonSearch();
+            $this->service['VersionCommonSearch'] = new ACloudVerCommonSearch();
         }
 
-        return $this->service ['VersionCommonSearch'];
+        return $this->service['VersionCommonSearch'];
     }
 
     public function getVersionCommonSite()
     {
-        if (! isset($this->service ['VersionCommonSite']) || ! $this->service ['VersionCommonSite']) {
+        if (!isset($this->service['VersionCommonSite']) || !$this->service['VersionCommonSite']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonSite');
-            $this->service ['VersionCommonSite'] = new ACloudVerCommonSite();
+            $this->service['VersionCommonSite'] = new ACloudVerCommonSite();
         }
 
-        return $this->service ['VersionCommonSite'];
+        return $this->service['VersionCommonSite'];
     }
 
     public function getVersionCommonUser()
     {
-        if (! isset($this->service ['VersionCommonUser']) || ! $this->service ['VersionCommonUser']) {
+        if (!isset($this->service['VersionCommonUser']) || !$this->service['VersionCommonUser']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonUser');
-            $this->service ['VersionCommonUser'] = new ACloudVerCommonUser();
+            $this->service['VersionCommonUser'] = new ACloudVerCommonUser();
         }
 
-        return $this->service ['VersionCommonUser'];
+        return $this->service['VersionCommonUser'];
     }
 
     public function getVersionCommonForum()
     {
-        if (! isset($this->service ['VersionCommonForum']) || ! $this->service ['VersionCommonForum']) {
+        if (!isset($this->service['VersionCommonForum']) || !$this->service['VersionCommonForum']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonForum');
-            $this->service ['VersionCommonForum'] = new ACloudVerCommonForum();
+            $this->service['VersionCommonForum'] = new ACloudVerCommonForum();
         }
 
-        return $this->service ['VersionCommonForum'];
+        return $this->service['VersionCommonForum'];
     }
 
     public function getVersionCommonThread()
     {
-        if (! isset($this->service ['VersionCommonThread']) || ! $this->service ['VersionCommonThread']) {
+        if (!isset($this->service['VersionCommonThread']) || !$this->service['VersionCommonThread']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonThread');
-            $this->service ['VersionCommonThread'] = new ACloudVerCommonThread();
+            $this->service['VersionCommonThread'] = new ACloudVerCommonThread();
         }
 
-        return $this->service ['VersionCommonThread'];
+        return $this->service['VersionCommonThread'];
     }
 
     public function getVersionCommonPost()
     {
-        if (! isset($this->service ['VersionCommonPost']) || ! $this->service ['VersionCommonPost']) {
+        if (!isset($this->service['VersionCommonPost']) || !$this->service['VersionCommonPost']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonPost');
-            $this->service ['VersionCommonPost'] = new ACloudVerCommonPost();
+            $this->service['VersionCommonPost'] = new ACloudVerCommonPost();
         }
 
-        return $this->service ['VersionCommonPost'];
+        return $this->service['VersionCommonPost'];
     }
 
     public function getVersionCommonAttach()
     {
-        if (! isset($this->service ['VersionCommonAttach']) || ! $this->service ['VersionCommonAttach']) {
+        if (!isset($this->service['VersionCommonAttach']) || !$this->service['VersionCommonAttach']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonAttach');
-            $this->service ['VersionCommonAttach'] = new ACloudVerCommonAttach();
+            $this->service['VersionCommonAttach'] = new ACloudVerCommonAttach();
         }
 
-        return $this->service ['VersionCommonAttach'];
+        return $this->service['VersionCommonAttach'];
     }
 
     public function getVersionCommonDiary()
     {
-        if (! isset($this->service ['VersionCommonDiary']) || ! $this->service ['VersionCommonDiary']) {
+        if (!isset($this->service['VersionCommonDiary']) || !$this->service['VersionCommonDiary']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonDiary');
-            $this->service ['VersionCommonDiary'] = new ACloudVerCommonDiary();
+            $this->service['VersionCommonDiary'] = new ACloudVerCommonDiary();
         }
 
-        return $this->service ['VersionCommonDiary'];
+        return $this->service['VersionCommonDiary'];
     }
 
     public function getVersionCommonColony()
     {
-        if (! isset($this->service ['VersionCommonColony']) || ! $this->service ['VersionCommonColony']) {
+        if (!isset($this->service['VersionCommonColony']) || !$this->service['VersionCommonColony']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonColony');
-            $this->service ['VersionCommonColony'] = new ACloudVerCommonColony();
+            $this->service['VersionCommonColony'] = new ACloudVerCommonColony();
         }
 
-        return $this->service ['VersionCommonColony'];
+        return $this->service['VersionCommonColony'];
     }
 
     public function getVersionCommonApplication()
     {
-        if (! isset($this->service ['VersionCommonApplication']) || ! $this->service ['VersionCommonApplication']) {
+        if (!isset($this->service['VersionCommonApplication']) || !$this->service['VersionCommonApplication']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonApplication');
-            $this->service ['VersionCommonApplication'] = new ACloudVerCommonApplication();
+            $this->service['VersionCommonApplication'] = new ACloudVerCommonApplication();
         }
 
-        return $this->service ['VersionCommonApplication'];
+        return $this->service['VersionCommonApplication'];
     }
 
     public function getVersionCommonMessage()
     {
-        if (! isset($this->service ['VersionCommonMessage']) || ! $this->service ['VersionCommonMessage']) {
+        if (!isset($this->service['VersionCommonMessage']) || !$this->service['VersionCommonMessage']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonMessage');
-            $this->service ['VersionCommonMessage'] = new ACloudVerCommonMessage();
+            $this->service['VersionCommonMessage'] = new ACloudVerCommonMessage();
         }
 
-        return $this->service ['VersionCommonMessage'];
+        return $this->service['VersionCommonMessage'];
     }
 
     public function getVersionCommonFriend()
     {
-        if (! isset($this->service ['VersionCommonFriend']) || ! $this->service ['VersionCommonFriend']) {
+        if (!isset($this->service['VersionCommonFriend']) || !$this->service['VersionCommonFriend']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonFriend');
-            $this->service ['VersionCommonFriend'] = new ACloudVerCommonFriend();
+            $this->service['VersionCommonFriend'] = new ACloudVerCommonFriend();
         }
 
-        return $this->service ['VersionCommonFriend'];
+        return $this->service['VersionCommonFriend'];
     }
 
     public function getVersionCommonAd()
     {
-        if (! isset($this->service ['VersionCommonAd']) || ! $this->service ['VersionCommonAd']) {
+        if (!isset($this->service['VersionCommonAd']) || !$this->service['VersionCommonAd']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonAd');
-            $this->service ['VersionCommonAd'] = new ACloudVerCommonAd();
+            $this->service['VersionCommonAd'] = new ACloudVerCommonAd();
         }
 
-        return $this->service ['VersionCommonAd'];
+        return $this->service['VersionCommonAd'];
     }
 
     public function getVersionCommonUtility()
     {
-        if (! isset($this->service ['VersionCommonUtility']) || ! $this->service ['VersionCommonUtility']) {
+        if (!isset($this->service['VersionCommonUtility']) || !$this->service['VersionCommonUtility']) {
             require_once Wind::getRealPath('ACLOUD_VER:common.ACloudVerCommonUtility');
-            $this->service ['VersionCommonUtility'] = new ACloudVerCommonUtility();
+            $this->service['VersionCommonUtility'] = new ACloudVerCommonUtility();
         }
 
-        return $this->service ['VersionCommonUtility'];
+        return $this->service['VersionCommonUtility'];
     }
 }

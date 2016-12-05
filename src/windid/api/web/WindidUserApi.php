@@ -1,43 +1,46 @@
 <?php
 /**
  * windid用户接口
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserApi.php 24943 2013-02-27 03:52:21Z jieyin $
- * @package
  */
 class WindidUserApi
 {
     /**
-     * 用户登录
+     * 用户登录.
      *
-     * @param  string $userid
-     * @param  string $password
-     * @param  int    $type     $type 1-uid ,2-username 3-email
-     * @param  string $question
-     * @param  string $answer
+     * @param string $userid
+     * @param string $password
+     * @param int    $type     $type 1-uid ,2-username 3-email
+     * @param string $question
+     * @param string $answer
+     *
      * @return array
      */
     public function login($userid, $password, $type = 2, $ifcheck = false, $question = '', $answer = '')
     {
         $params = array(
-            'userid' => $userid,
+            'userid'   => $userid,
             'password' => $password,
-            'type' => $type,
-            'ifcheck' => $ifcheck,
+            'type'     => $type,
+            'ifcheck'  => $ifcheck,
             'question' => $question,
-            'answer' => $answer,
+            'answer'   => $answer,
         );
 
         return WindidApi::open('user/login', array(), $params);
     }
 
     /**
-     * 本地登录成功后同步登录通知
+     * 本地登录成功后同步登录通知.
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return string
      */
     public function synLogin($uid)
@@ -50,10 +53,11 @@ class WindidUserApi
     }
 
     /**
-     * 本地登出成功后同步登出
+     * 本地登出成功后同步登出.
      *
-     * @param  int    $uid
-     * @param  string $backurl
+     * @param int    $uid
+     * @param string $backurl
+     *
      * @return string
      */
     public function synLogout($uid)
@@ -66,111 +70,117 @@ class WindidUserApi
     }
 
     /**
-     * 检查用户提交的信息是否符合windid配置规范
+     * 检查用户提交的信息是否符合windid配置规范.
      *
-     * @param  string $input
-     * @param  int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
-     * @param  int    $uid
+     * @param string $input
+     * @param int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
+     * @param int    $uid
+     *
      * @return bool
      */
     public function checkUserInput($input, $type, $username = '', $uid = 0)
     {
         $params = array(
-            'input' => $input,
-            'type' => $type,
+            'input'    => $input,
+            'type'     => $type,
             'username' => $username,
-            'uid' => $uid,
+            'uid'      => $uid,
         );
 
         return WindidApi::open('user/checkInput', array(), $params);
     }
 
     /**
-     * 验证安全问题
+     * 验证安全问题.
      *
-     * @param  int  $uid
-     * @param  int  $question
-     * @param  int  $answer
+     * @param int $uid
+     * @param int $question
+     * @param int $answer
+     *
      * @return bool
      */
     public function checkQuestion($uid, $question, $answer)
     {
         $params = array(
-            'uid' => $uid,
+            'uid'      => $uid,
             'question' => $question,
-            'answer' => $answer,
+            'answer'   => $answer,
         );
 
         return WindidApi::open('user/checkQuestion', array(), $params);
     }
 
     /**
-     * 获取一个用户基本资料
+     * 获取一个用户基本资料.
      *
-     * @param  multi $userid
-     * @param  int   $type      1-uid ,2-username 3-email
-     * @param  int   $fetchMode
+     * @param multi $userid
+     * @param int   $type      1-uid ,2-username 3-email
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function getUser($userid, $type = 1, $fetchMode = 1)
     {
         $params = array(
             'userid' => $userid,
-            'type' => $type,
-            'fetch' => $fetchMode,
+            'type'   => $type,
+            'fetch'  => $fetchMode,
         );
 
         return WindidApi::open('user/get', $params);
     }
 
     /**
-     * 批量获取用户信息
+     * 批量获取用户信息.
      *
-     * @param  array $uids/$username
-     * @param  int   $type           1-uid ,2-username
-     * @param  int   $fetchMode
+     * @param array $uids/$username
+     * @param int   $type           1-uid ,2-username
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function fecthUser($userids, $type = 1, $fetchMode = 1)
     {
         $params = array(
             'userids' => $userids,
-            'type' => $type,
-            'fetch' => $fetchMode,
+            'type'    => $type,
+            'fetch'   => $fetchMode,
         );
 
         return WindidApi::open('user/fecth', $params);
     }
 
     /**
-     * 用户注册
+     * 用户注册.
      *
-     * @param  string $username
-     * @param  string $email
-     * @param  string $password
-     * @param  string $question
-     * @param  string $answer
-     * @param  string $regip
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @param string $question
+     * @param string $answer
+     * @param string $regip
+     *
      * @return int
      */
     public function register($username, $email, $password, $question = '', $answer = '', $regip = '')
     {
         $params = array(
             'username' => $username,
-            'email' => $email,
+            'email'    => $email,
             'password' => $password,
             'question' => $question,
-            'answer' => $answer,
-            'regip' => $regip,
+            'answer'   => $answer,
+            'regip'    => $regip,
         );
 
         return WindidApi::open('user/addUser', array(), $params);
     }
 
     /**
-     * 添加用户对象接口，使用前必须使用WidnidApi::getDm('user') 设置数据
+     * 添加用户对象接口，使用前必须使用WidnidApi::getDm('user') 设置数据.
      *
-     * @param  WindidUserDm $dm
+     * @param WindidUserDm $dm
+     *
      * @return int
      */
     public function addDmUser(WindidUserDm $dm)
@@ -188,7 +198,7 @@ class WindidUserApi
     }
 
     /**
-     * 修改用户基本信息
+     * 修改用户基本信息.
      *
      * @param int    $uid
      * @param string $password 是否校验密码
@@ -202,7 +212,7 @@ class WindidUserApi
     }
 
     /**
-     * 修改用户资料
+     * 修改用户资料.
      *
      * @param int   $uid
      * @param array $editInfo
@@ -232,7 +242,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除一个用户
+     * 删除一个用户.
      *
      * @param int $uid
      */
@@ -246,7 +256,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除多个用户
+     * 删除多个用户.
      *
      * @param array $uids
      */
@@ -260,7 +270,7 @@ class WindidUserApi
     }
 
     /**
-     * 获取用户积分
+     * 获取用户积分.
      *
      * @param int $uid
      */
@@ -274,9 +284,10 @@ class WindidUserApi
     }
 
     /**
-     * 批量获取用户积分
+     * 批量获取用户积分.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fecthUserCredit($uids)
@@ -289,7 +300,7 @@ class WindidUserApi
     }
 
     /**
-     * 更新用户积分
+     * 更新用户积分.
      *
      * @param int $uid
      * @param int $cType (1-8)
@@ -298,7 +309,7 @@ class WindidUserApi
     public function editCredit($uid, $cType, $value, $isset = false)
     {
         $params = array(
-            'uid' => $uid,
+            'uid'   => $uid,
             'cType' => $cType,
             'value' => $value,
             'isset' => $isset,
@@ -331,7 +342,7 @@ class WindidUserApi
     }
 
     /**
-     * 清空一个积分字段
+     * 清空一个积分字段.
      *
      * @param int $num >8
      */
@@ -345,9 +356,10 @@ class WindidUserApi
     }
 
     /**
-     * 获取用户黑名单
+     * 获取用户黑名单.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array uids
      */
     public function getBlack($uid)
@@ -369,7 +381,7 @@ class WindidUserApi
     }
 
     /**
-     * 增加黑名单
+     * 增加黑名单.
      *
      * @param int $uid
      * @param int $blackUid
@@ -377,7 +389,7 @@ class WindidUserApi
     public function addBlack($uid, $blackUid)
     {
         $params = array(
-            'uid' => $uid,
+            'uid'      => $uid,
             'blackUid' => $blackUid,
         );
 
@@ -387,7 +399,7 @@ class WindidUserApi
     public function replaceBlack($uid, $blackList)
     {
         $params = array(
-            'uid' => $uid,
+            'uid'       => $uid,
             'blackList' => $blackList,
         );
 
@@ -395,7 +407,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除某的黑名单 $blackUid为空删除所有
+     * 删除某的黑名单 $blackUid为空删除所有.
      *
      * @param int $uid
      * @param int $blackUid
@@ -403,7 +415,7 @@ class WindidUserApi
     public function delBlack($uid, $blackUid = '')
     {
         $params = array(
-            'uid' => $uid,
+            'uid'      => $uid,
             'blackUid' => $blackUid,
         );
 

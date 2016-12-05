@@ -3,17 +3,19 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Jan 9, 2012
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwMessageNotices.php 3407 2012-01-11 09:00:39Z peihong.zhangph $
  */
-
 class PwMessageNotices
 {
     /**
+     * 获取一条通知内容.
      *
-     * 获取一条通知内容
      * @param int $id
      */
     public function getNotice($id)
@@ -25,8 +27,8 @@ class PwMessageNotices
     }
 
     /**
+     * 获取上一条通知内容.
      *
-     * 获取上一条通知内容
      * @param int $id
      */
     public function getPrevNotice($uid, $id)
@@ -38,8 +40,8 @@ class PwMessageNotices
     }
 
     /**
+     * 获取上一条通知内容.
      *
-     * 获取上一条通知内容
      * @param int $id
      */
     public function getNextNotice($uid, $id)
@@ -51,7 +53,7 @@ class PwMessageNotices
     }
 
     /**
-     * 根据用户UID获取通知列表 按更新时间倒序
+     * 根据用户UID获取通知列表 按更新时间倒序.
      *
      * @param int $uid
      * @param int $type  类型ID
@@ -64,8 +66,8 @@ class PwMessageNotices
     }
 
     /**
+     * 根据用户UID获取通知列表 按未读升序、更新时间倒序.
      *
-     * 根据用户UID获取通知列表 按未读升序、更新时间倒序
      * @param int $uid
      * @param int $num
      */
@@ -75,7 +77,8 @@ class PwMessageNotices
     }
 
     /**
-     * 获取未读通知数
+     * 获取未读通知数.
+     *
      * @param int $uid
      */
     public function getUnreadNoticeCount($uid)
@@ -84,8 +87,7 @@ class PwMessageNotices
     }
 
     /**
-     *
-     * 添加通知
+     * 添加通知.
      *
      * @param PwMessageNoticesDm $dm
      */
@@ -100,7 +102,7 @@ class PwMessageNotices
     }
 
     /**
-     * 更新通知信息
+     * 更新通知信息.
      *
      * @param PwMessageNoticesDm $dm
      *                               return bool
@@ -119,7 +121,7 @@ class PwMessageNotices
     }
 
     /**
-     * 更新通知信息
+     * 更新通知信息.
      *
      * @param array              $ids
      * @param PwMessageNoticesDm $dm
@@ -135,7 +137,7 @@ class PwMessageNotices
     }
 
     /**
-     * 根据uid和type更新通知
+     * 根据uid和type更新通知.
      *
      * @param array              $ids
      * @param PwMessageNoticesDm $dm
@@ -153,8 +155,7 @@ class PwMessageNotices
     }
 
     /**
-     *
-     * 删除通知
+     * 删除通知.
      *
      * @param int $id
      */
@@ -164,8 +165,7 @@ class PwMessageNotices
     }
 
     /**
-     *
-     * 批量删除通知
+     * 批量删除通知.
      *
      * @param array $ids
      */
@@ -173,13 +173,14 @@ class PwMessageNotices
     {
         return $this->_getDao()->deleteNoticeByIds($ids);
     }
+
     public function deleteNoticeByIdsAndUid($uid, $ids)
     {
         return $this->_getDao()->deleteNoticeByIdsAndUid($uid, $ids);
     }
 
     /**
-     * 根据类型删除通知
+     * 根据类型删除通知.
      *
      * @param int $uid
      * @param int $type
@@ -192,7 +193,7 @@ class PwMessageNotices
     }
 
     /**
-     * 根据uid删除通知
+     * 根据uid删除通知.
      *
      * @param int $uid
      * @param bool
@@ -203,7 +204,7 @@ class PwMessageNotices
     }
 
     /**
-     * 根据类型批量删除通知
+     * 根据类型批量删除通知.
      *
      * @param int   $uid
      * @param int   $type
@@ -227,6 +228,7 @@ class PwMessageNotices
 
     /**
      * Enter description here ...
+     *
      * @return PwMessageNoticesDao
      */
     protected function _getDao()

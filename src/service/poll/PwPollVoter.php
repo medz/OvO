@@ -10,18 +10,18 @@ Wind::import('SRV:poll.PwPoll');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPollVoter.php 3576 2012-01-12 11:48:47Z mingxing.sun $
- * @package poll
  */
-
 class PwPollVoter
 {
     /**
-     * 添加
+     * 添加.
      *
-     * @param  int $userid
-     * @param  int $pollid
-     * @param  int $optionid
+     * @param int $userid
+     * @param int $pollid
+     * @param int $optionid
+     *
      * @return int
      */
     public function add($userid, $pollid, $optionid)
@@ -39,9 +39,10 @@ class PwPollVoter
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $pollid
+     * @param int $pollid
+     *
      * @return bool
      */
     public function deleteByPollid($pollid)
@@ -55,7 +56,7 @@ class PwPollVoter
     }
 
     /**
-     * 统计我参与的投票数
+     * 统计我参与的投票数.
      *
      * @param unknown_type $uid
      */
@@ -70,7 +71,7 @@ class PwPollVoter
     }
 
     /**
-     * 根据投票id,获得参与者
+     * 根据投票id,获得参与者.
      *
      * @param unknown_type $pollid
      */
@@ -85,11 +86,12 @@ class PwPollVoter
     }
 
     /**
-     * 获取我参与的投票
+     * 获取我参与的投票.
      *
      * @param int $uid 用户ID
      * @param $limit
      * @param $offset
+     *
      * @return array
      */
     public function getPollByUid($uid, $limit, $offset)
@@ -103,9 +105,10 @@ class PwPollVoter
     }
 
     /**
-     * 统计关注的人的投票数
+     * 统计关注的人的投票数.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return int
      */
     public function countByUids($uids)
@@ -118,11 +121,12 @@ class PwPollVoter
     }
 
     /**
-     * 关注的人的投票
+     * 关注的人的投票.
      *
-     * @param  array $uids
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param array $uids
+     * @param int   $limit
+     * @param int   $offset
+     *
      * @return array
      */
     public function fetchPollByUid($uids, $limit, $offset)
@@ -135,10 +139,11 @@ class PwPollVoter
     }
 
     /**
-     * 统计某个选项参与人员数
+     * 统计某个选项参与人员数.
      *
-     * @param  int $pollid
-     * @param  int $optionid
+     * @param int $pollid
+     * @param int $optionid
+     *
      * @return int
      */
     public function countUserByOptionid($optionid)
@@ -152,12 +157,13 @@ class PwPollVoter
     }
 
     /**
-     * 获取某个选项参与人员
+     * 获取某个选项参与人员.
      *
-     * @param  int   $pollid   投票ID
-     * @param  int   $optionid 投票项ID
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $pollid   投票ID
+     * @param int $optionid 投票项ID
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getUserByOptionid($optionid, $limit = 20, $offset = 0)
@@ -171,7 +177,7 @@ class PwPollVoter
     }
 
     /**
-     * 在指定投票范围内查找用户投票
+     * 在指定投票范围内查找用户投票.
      *
      * @param unknown_type $pollids
      */
@@ -196,10 +202,11 @@ class PwPollVoter
     }
 
     /**
-     * 该用户是否投过票
+     * 该用户是否投过票.
      *
-     * @param  int  $userid
-     * @param  int  $pollid
+     * @param int $userid
+     * @param int $pollid
+     *
      * @return bool
      */
     public function isVoted($userid, $pollid)
@@ -215,9 +222,10 @@ class PwPollVoter
     }
 
     /**
-     * 统计某个投票人数
+     * 统计某个投票人数.
      *
-     * @param  int $pollid
+     * @param int $pollid
+     *
      * @return int
      */
     public function countUser($pollid)
@@ -231,9 +239,10 @@ class PwPollVoter
     }
 
     /**
-     * 统计某个选项参与次数
+     * 统计某个选项参与次数.
      *
-     * @param  int $optionid
+     * @param int $optionid
+     *
      * @return int
      */
     public function countByOptionid($optionid)
@@ -247,7 +256,7 @@ class PwPollVoter
     }
 
     /**
-     * get PwPollVoterDao
+     * get PwPollVoterDao.
      *
      * @return PwPollVoterDao
      */

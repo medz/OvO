@@ -3,20 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 用户策略的積分設置DS
+ * 用户策略的積分設置DS.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditLog.php 9609 2012-05-08 07:57:23Z jieyin $
- * @package src.service.credit
  */
 class PwCreditLog
 {
     /**
-     * 统计用户积分日志条数
+     * 统计用户积分日志条数.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countLogByUid($uid)
@@ -29,11 +30,12 @@ class PwCreditLog
     }
 
     /**
-     * 获取用户的积分日志
+     * 获取用户的积分日志.
      *
-     * @param  int   $uid
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $uid
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getLogByUid($uid, $limit = 20, $offset = 0)
@@ -46,9 +48,10 @@ class PwCreditLog
     }
 
     /**
-     * 批量添加积分日志
+     * 批量添加积分日志.
      *
-     * @param  array $dmArr PwCreditLogDm dm数组
+     * @param array $dmArr PwCreditLogDm dm数组
+     *
      * @return bool
      */
     public function batchAdd($dmArr)
@@ -71,9 +74,10 @@ class PwCreditLog
     }
 
     /**
-     * 统计搜索影响记录
+     * 统计搜索影响记录.
      *
-     * @param  object $sc 搜索条件
+     * @param object $sc 搜索条件
+     *
      * @return int
      */
     public function countBySearch(PwCreditLogSc $sc)
@@ -82,11 +86,12 @@ class PwCreditLog
     }
 
     /**
-     * 搜索积分日志
+     * 搜索积分日志.
      *
-     * @param  object $sc     搜索条件
-     * @param  int    $limit
-     * @param  int    $offset
+     * @param object $sc     搜索条件
+     * @param int    $limit
+     * @param int    $offset
+     *
      * @return array
      */
     public function searchLog(PwCreditLogSc $sc, $limit = 20, $offset = 0)
@@ -95,9 +100,10 @@ class PwCreditLog
     }
 
     /**
-     * 获取某用户的积分操作次数记录
+     * 获取某用户的积分操作次数记录.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getOperate($uid)
@@ -106,7 +112,7 @@ class PwCreditLog
     }
 
     /**
-     * 批量更新用户积分操作次数
+     * 批量更新用户积分操作次数.
      *
      * @param array $data
      * @例：array(
@@ -114,6 +120,7 @@ class PwCreditLog
      *		array($uid2, 'post_reply', 5, 1336462272)
      *		...
      * )
+     *
      * @return bool
      */
     public function batchAddOperate($data)
@@ -126,7 +133,7 @@ class PwCreditLog
     }
 
     /**
-     * 返回策略设置DAO
+     * 返回策略设置DAO.
      *
      * @return PwCreditStrategyDao
      */

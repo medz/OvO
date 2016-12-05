@@ -1,11 +1,12 @@
 <?php
 /**
  * 传统发件箱，收件箱服务
- * the last known user to change this
+ * the last known user to change this.
+ *
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidBoxMessage.php 24705 2013-02-16 05:18:04Z jieyin $
- * @package
  */
 class WindidBoxMessage
 {

@@ -3,12 +3,13 @@
 Wind::import('WSRV:notify.dm.WindidNotifyLogDm');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotifyServer.php 29745 2013-06-28 09:07:39Z gao.wanggao $
- * @package
  */
 class WindidNotifyServer
 {
@@ -39,7 +40,6 @@ class WindidNotifyServer
         return true;
     }
 
-
     public function logSend($logid)
     {
         $logDs = $this->_getNotifyLogDs();
@@ -53,9 +53,10 @@ class WindidNotifyServer
     }
 
     /**
-     * 通知客户端
+     * 通知客户端.
      *
-     * @param  int  $i 通知次数
+     * @param int $i 通知次数
+     *
      * @return bool
      */
     protected function _queueSend($nums)
@@ -92,8 +93,8 @@ class WindidNotifyServer
             $array = array(
                 'windidkey' => WindidUtility::appKey($v['appid'], $time, $apps[$appid]['secretkey'], array('operation' => $notifys[$nid]['operation']), $post[$k]),
                 'operation' => $notifys[$nid]['operation'],
-                'clientid' => $v['appid'],
-                'time' => $time,
+                'clientid'  => $v['appid'],
+                'time'      => $time,
             );
 
             $urls[$k] = WindidUtility::buildClientUrl($apps[$appid]['siteurl'], $apps[$appid]['apifile']).http_build_query($array);

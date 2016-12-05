@@ -1,19 +1,20 @@
 <?php
 /**
- * 地区库DS
+ * 地区库DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidArea.php 24398 2013-01-30 02:45:05Z jieyin $
- * @package windid.service.area
  */
 class WindidArea
 {
     /**
-     * 根据地区上一级ID获得下一级的所有数据
+     * 根据地区上一级ID获得下一级的所有数据.
      *
-     * @param  int   $parentid 父级地区ID
+     * @param int $parentid 父级地区ID
+     *
      * @return array
      */
     public function getAreaByParentid($parentid)
@@ -22,9 +23,10 @@ class WindidArea
     }
 
     /**
-     * 根据地区ID获得该地区信息
+     * 根据地区ID获得该地区信息.
      *
-     * @param  int   $areaid 地区ID
+     * @param int $areaid 地区ID
+     *
      * @return array
      */
     public function getArea($areaid)
@@ -38,9 +40,10 @@ class WindidArea
     }
 
     /**
-     * 根据地区ID列表批量获取这些地区信息
+     * 根据地区ID列表批量获取这些地区信息.
      *
-     * @param  array $areaids
+     * @param array $areaids
+     *
      * @return array
      */
     public function fetchByAreaid($areaids)
@@ -53,7 +56,7 @@ class WindidArea
     }
 
     /**
-     * 获取所有的地区数据
+     * 获取所有的地区数据.
      *
      * @return array
      */
@@ -63,9 +66,10 @@ class WindidArea
     }
 
     /**
-     * 添加地区
+     * 添加地区.
      *
-     * @param  WindidAreaDm $dm 地区的DM
+     * @param WindidAreaDm $dm 地区的DM
+     *
      * @return bool
      */
     public function addArea(WindidAreaDm $dm)
@@ -78,9 +82,10 @@ class WindidArea
     }
 
     /**
-     * 批量对某一级的地区添加子地区
+     * 批量对某一级的地区添加子地区.
      *
-     * @param  array $dms 地区添加
+     * @param array $dms 地区添加
+     *
      * @return bool
      */
     public function batchAddArea($dms)
@@ -103,9 +108,10 @@ class WindidArea
     }
 
     /**
-     * 根据地区ID更新一个地区信息
+     * 根据地区ID更新一个地区信息.
      *
-     * @param  WindidAreaDm $dm 地区Dm
+     * @param WindidAreaDm $dm 地区Dm
+     *
      * @return bool
      */
     public function updateArea(WindidAreaDm $dm)
@@ -118,9 +124,10 @@ class WindidArea
     }
 
     /**
-     * 根据地区ID删除地区信息
+     * 根据地区ID删除地区信息.
      *
-     * @param  int  $areaid 地区ID
+     * @param int $areaid 地区ID
+     *
      * @return bool
      */
     public function deleteArea($areaid)
@@ -133,9 +140,10 @@ class WindidArea
     }
 
     /**
-     * 批量删除地区信息
+     * 批量删除地区信息.
      *
-     * @param  array       $areaids 地区ID列表
+     * @param array $areaids 地区ID列表
+     *
      * @return bool|number
      */
     public function batchDeleteArea($areaids)
@@ -148,7 +156,7 @@ class WindidArea
     }
 
     /**
-     * 获取地区的DAO
+     * 获取地区的DAO.
      *
      * @return WindidAreaDao
      */

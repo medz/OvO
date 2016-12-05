@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttach.php 20516 2012-10-30 09:50:29Z jieyin $
- * @package attach
  */
-
 class PwAttach
 {
     /**
-     * 获取一个附件信息
+     * 获取一个附件信息.
      *
-     * @param  int   $aid
+     * @param int $aid
+     *
      * @return array
      */
     public function getAttach($aid)
@@ -30,9 +30,10 @@ class PwAttach
     }
 
     /**
-     * 获取多个附件信息
+     * 获取多个附件信息.
      *
-     * @param  array $aids
+     * @param array $aids
+     *
      * @return array
      */
     public function fetchAttach($aids)

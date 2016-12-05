@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 单个帖子的业务模型
+ * 单个帖子的业务模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadBo.php 22963 2013-01-04 05:17:05Z jieyin $
- * @package forum
  */
-
 class PwThreadBo
 {
     public $tid;

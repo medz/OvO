@@ -1,11 +1,11 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysOpenServiceApply
 {
     public function verifying($data)
     {
-        if (! is_array($data) || count($data) < 7) {
+        if (!is_array($data) || count($data) < 7) {
             return false;
         }
         $keysService = $this->getKeysService();

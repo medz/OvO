@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidAreaApi.php 28948 2013-05-31 05:02:59Z jieyin $
- * @package
  */
 class WindidAreaApi
 {

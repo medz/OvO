@@ -8,17 +8,17 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadBuy.php 24066 2013-01-21 07:30:33Z jinlong.panjl $
- * @package forum
  */
-
 class PwThreadBuy
 {
     /**
-     * 统计帖子的出售额
+     * 统计帖子的出售额.
      *
-     * @param  int $tid 帖子id
-     * @param  int $pid 回复id
+     * @param int $tid 帖子id
+     * @param int $pid 回复id
+     *
      * @return int
      */
     public function sumCost($tid, $pid = 0)
@@ -31,11 +31,12 @@ class PwThreadBuy
     }
 
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
-     * @param  int   $tid 帖子id
-     * @param  int   $pid 回复id
-     * @param  int   $uid 用户id
+     * @param int $tid 帖子id
+     * @param int $pid 回复id
+     * @param int $uid 用户id
+     *
      * @return array
      */
     public function get($tid, $pid, $uid)
@@ -48,10 +49,11 @@ class PwThreadBuy
     }
 
     /**
-     * 获取某帖子一楼层的所有购买记录
+     * 获取某帖子一楼层的所有购买记录.
      *
-     * @param  int  $tid 帖子id
-     * @param  int  $pid 回复id
+     * @param int $tid 帖子id
+     * @param int $pid 回复id
+     *
      * @return bool
      */
     public function countByTidAndPid($tid, $pid)
@@ -64,10 +66,11 @@ class PwThreadBuy
     }
 
     /**
-     * 获取某帖子一楼层的所有购买记录
+     * 获取某帖子一楼层的所有购买记录.
      *
-     * @param  int  $tid 帖子id
-     * @param  int  $pid 回复id
+     * @param int $tid 帖子id
+     * @param int $pid 回复id
+     *
      * @return bool
      */
     public function getByTidAndPid($tid, $pid, $limit = 20, $offset = 0)
@@ -80,10 +83,11 @@ class PwThreadBuy
     }
 
     /**
-     * 获取帖子(A)中用户(B)的所有购买记录
+     * 获取帖子(A)中用户(B)的所有购买记录.
      *
-     * @param  int  $tid 帖子(A)
-     * @param  int  $uid 用户(B)
+     * @param int $tid 帖子(A)
+     * @param int $uid 用户(B)
+     *
      * @return bool
      */
     public function getByTidAndUid($tid, $uid)
@@ -96,7 +100,7 @@ class PwThreadBuy
     }
 
     /**
-     * 添加一条记录
+     * 添加一条记录.
      *
      * @param PwThreadBuyDm $dm 帖子购买记录数据模型
      *                          return mixed
@@ -111,7 +115,7 @@ class PwThreadBuy
     }
 
     /**
-     * PwThreadsBuyDao
+     * PwThreadsBuyDao.
      *
      * @return PwThreadsBuyDao
      */

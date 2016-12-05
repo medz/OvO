@@ -7,21 +7,20 @@ Wind::import('ADMIN:service.srv.helper.AdminMenuHelper');
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminMenuService.php 23734 2013-01-15 09:10:00Z jieyin $
- * @package admin
- * @subpackage service.srv
  */
 class AdminMenuService
 {
     /**
-     * 菜单清单
+     * 菜单清单.
      *
      * @var array
      */
     protected $menuTable = null;
 
     /**
-     * 根据用户ID获取用户权限表
+     * 根据用户ID获取用户权限表.
      *
      * 后台菜单存储方式分为三种:<code>
      * 1. conf/mainmenu.php, 可以将菜单直接写入mainmenu.php
@@ -43,7 +42,9 @@ class AdminMenuService
      *          Array(...)))
      *          )
      *          </code>
-     * @param  int   $uid
+     *
+     * @param int $uid
+     *
      * @return array
      */
     public function getMyMenus($dm)
@@ -71,9 +72,10 @@ class AdminMenuService
     }
 
     /**
-     * 获取我的常用菜单
+     * 获取我的常用菜单.
      *
-     * @param  AdminUserBo $user
+     * @param AdminUserBo $user
+     *
      * @return array
      */
     public function getCustomMenus(AdminUserBo $user)
@@ -109,7 +111,7 @@ class AdminMenuService
     }
 
     /**
-     * 获得当前的菜单权限结构信息表
+     * 获得当前的菜单权限结构信息表.
      *
      * @example <code>
      *          //'default' 当权限的m设置为空时则为'default'.
@@ -117,6 +119,7 @@ class AdminMenuService
      *          'install' => Array('run' => admin_install),
      *          'auth' => Array('_all' => admin_auth))
      *          </code>
+     *
      * @return array
      */
     public function getMenuAuthStruts()
@@ -137,6 +140,7 @@ class AdminMenuService
      *          'admin_install' => array('应用菜单安装', 'install/run', '', '',
      *          'admin'),
      *          'admin_auth' => array('菜单权限', 'auth/*', '', '', 'admin'),</code>
+     *
      * @return array
      */
     private function _getMenuTable()

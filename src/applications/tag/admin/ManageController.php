@@ -4,15 +4,14 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:tag.dm.PwTagDm');
 
 /**
- * 话题后台
+ * 话题后台.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package ManageController
  */
-
 class ManageController extends AdminBaseController
 {
     private $perpage = 10;
@@ -70,8 +69,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 保存添加的话题
+     * 保存添加的话题.
      */
     public function doaddAction()
     {
@@ -116,8 +114,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 编辑话题
+     * 编辑话题.
      */
     public function editAction()
     {
@@ -141,8 +138,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 保存话题
+     * 保存话题.
      */
     public function doeditAction()
     {
@@ -194,16 +190,14 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 合并关联话题
+     * 合并关联话题.
      */
     public function mergeAction()
     {
     }
 
     /**
-     *
-     * 删除话题
+     * 删除话题.
      */
     public function deleteAction()
     {
@@ -218,8 +212,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 取消热门话题
+     * 取消热门话题.
      */
     public function deletehotAction()
     {
@@ -239,8 +232,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 设置热门话题
+     * 设置热门话题.
      */
     public function sethotAction()
     {
@@ -261,8 +253,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 合并关联话题
+     * 合并关联话题.
      */
     public function domergeAction()
     {
@@ -299,8 +290,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 移动分类
+     * 移动分类.
      */
     public function moveAction()
     {
@@ -309,8 +299,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 移动分类
+     * 移动分类.
      */
     public function domoveAction()
     {
@@ -333,8 +322,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 话题分类列表
+     * 话题分类列表.
      */
     public function categoryAction()
     {
@@ -343,8 +331,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 编辑分类
+     * 编辑分类.
      */
     public function editCategoryAction()
     {
@@ -354,8 +341,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 提交编辑
+     * 提交编辑.
      */
     public function doEditCategoryAction()
     {
@@ -377,8 +363,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
-     * 设置分类列表
+     * 设置分类列表.
      */
     public function setCategoryAction()
     {
@@ -485,7 +470,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 添加关联话题
+     * 添加关联话题.
      *
      * @param int    $tagId   关联到哪个话题Id
      * @param string $tagName 话题名称
@@ -524,8 +509,8 @@ class ManageController extends AdminBaseController
     }
 
     /**
+     * 组装tags数据.
      *
-     * 组装tags数据
      * @param array $tags
      */
     private function _buildTagData($tags, $categories)
@@ -548,7 +533,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 上传话题图标
+     * 上传话题图标.
      *
      * @return string
      */
@@ -593,7 +578,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 分类DS
+     * 分类DS.
      *
      * @return PwTagCateGory
      */

@@ -12,8 +12,8 @@ Wind::import('SRV:user.validator.PwUserValidator');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLoginService.php 24931 2013-02-27 01:16:51Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwLoginService extends PwBaseHookService
 {
@@ -21,9 +21,9 @@ class PwLoginService extends PwBaseHookService
     private $ipLimit = 100;
 
     /**
-     * 尝试次数达到最高次数之后，一段时间30分钟内不能再登录
+     * 尝试次数达到最高次数之后，一段时间30分钟内不能再登录.
      *
-     * @var int $trySpace
+     * @var int
      */
     private $trySpace = 1800;
 
@@ -34,13 +34,14 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 用户登录
+     * 用户登录.
      *
      * @param string $username 用户登录的帐号
      * @param string $password 用户登录的密码
      * @param string $ip       登录IP
      * @param  string   $safeQuestion 安全问题
      * @param  string   $safeAnswer   安全问题答案
+     *
      * @return bool|int
      */
     public function login($username, $password, $ip, $safeQuestion = null, $safeAnswer = '')
@@ -60,9 +61,10 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 登录检查输入
+     * 登录检查输入.
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return array
      */
     public function checkInput($username)
@@ -94,7 +96,7 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 设置登录cookie
+     * 设置登录cookie.
      *
      * @param PwUserBo $userBo
      * @param string   $ip
@@ -115,7 +117,7 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 登录扩展点 m_PwLoginService
+     * 登录扩展点 m_PwLoginService.
      *
      * @see PwUserLoginDoBase::welcome()
      */
@@ -132,9 +134,10 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 创建登录标识
+     * 创建登录标识.
      *
-     * @param  array  $userInfo 用户信息
+     * @param array $userInfo 用户信息
+     *
      * @return string
      */
     public static function createLoginIdentify($userInfo)
@@ -145,10 +148,11 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 解析登录标识
+     * 解析登录标识.
      *
-     * @param  string $identify 需要解析的标识
-     * @return array  array($uid, $password)
+     * @param string $identify 需要解析的标识
+     *
+     * @return array array($uid, $password)
      */
     public static function parseLoginIdentify($identify)
     {
@@ -161,7 +165,7 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 获得用户Ds
+     * 获得用户Ds.
      *
      * @return PwUser
      */
@@ -171,7 +175,7 @@ class PwLoginService extends PwBaseHookService
     }
 
     /**
-     * 获得windidDS
+     * 获得windidDS.
      *
      * @return WindidUserApi
      */

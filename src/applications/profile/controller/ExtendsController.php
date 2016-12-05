@@ -5,13 +5,13 @@ Wind::import('SRV:user.PwUserBan');
 Wind::import('APPS:profile.service.PwUserProfileExtends');
 
 /**
- * 用户资料页面
+ * 用户资料页面.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ExtendsController.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package src.products.u.controller.profile
  */
 class ExtendsController extends PwBaseController
 {
@@ -52,7 +52,7 @@ class ExtendsController extends PwBaseController
     }
 
     /**
-     * 接受表单处理
+     * 接受表单处理.
      */
     public function dorunAction()
     {

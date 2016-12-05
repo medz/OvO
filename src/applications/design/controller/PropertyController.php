@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PropertyController.php 24726 2013-02-18 06:15:04Z gao.wanggao $
- * @package
  */
 class PropertyController extends PwBaseController
 {
@@ -89,7 +90,6 @@ class PropertyController extends PwBaseController
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
         Wind::import('SRV:design.srv.model.'.$model.'.'.$cls);
         $service = new $cls();
-
 
         $ds = $this->_getModuleDs();
         Wind::import('SRV:design.dm.PwDesignModuleDm');

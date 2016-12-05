@@ -1,13 +1,12 @@
 <?php
 /**
- * 开发者模式,动态编译器
+ * 开发者模式,动态编译器.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-23
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwCompile.php 7049 2012-03-29 03:20:38Z liusanbian $
- * @package wekit
- * @subpackage compile
  */
 class PwCompile extends WindHandlerInterceptor
 {
@@ -36,7 +35,7 @@ class PwCompile extends WindHandlerInterceptor
     }
 
     /**
-     * 返回当前注册的编译器
+     * 返回当前注册的编译器.
      */
     protected function getCompiler()
     {

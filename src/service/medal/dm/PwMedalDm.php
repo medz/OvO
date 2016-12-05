@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalDm.php 8501 2012-04-19 09:32:42Z gao.wanggao $
- * @package
  */
 class PwMedalDm extends PwBaseDm
 {
@@ -31,7 +32,6 @@ class PwMedalDm extends PwBaseDm
 
         return $this;
     }
-
 
     public function setImage($image)
     {
@@ -110,7 +110,6 @@ class PwMedalDm extends PwBaseDm
 
         return $this;
     }
-
 
     protected function _beforeAdd()
     {

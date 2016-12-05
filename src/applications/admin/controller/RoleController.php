@@ -2,14 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台角色管理
+ * 后台角色管理.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: RoleController.php 28783 2013-05-23 09:42:22Z jieyin $
- * @package admin
- * @subpackage controller
  */
 class RoleController extends AdminBaseController
 {
@@ -23,7 +22,7 @@ class RoleController extends AdminBaseController
     }
 
     /**
-     * 展示添加角色界面
+     * 展示添加角色界面.
      */
     public function addAction()
     {
@@ -46,7 +45,7 @@ class RoleController extends AdminBaseController
     }
 
     /**
-     * 添加角色
+     * 添加角色.
      */
     public function doAddAction()
     {
@@ -59,7 +58,7 @@ class RoleController extends AdminBaseController
     }
 
     /**
-     * 编辑界面展示
+     * 编辑界面展示.
      */
     public function editAction()
     {
@@ -91,7 +90,7 @@ class RoleController extends AdminBaseController
     }
 
     /**
-     * 编辑角色
+     * 编辑角色.
      */
     public function doEditAction()
     {
@@ -104,7 +103,7 @@ class RoleController extends AdminBaseController
     }
 
     /**
-     * 删除角色
+     * 删除角色.
      */
     public function delAction()
     {

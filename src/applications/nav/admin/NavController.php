@@ -3,21 +3,20 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 导航模块控制器
+ * 导航模块控制器.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $
+ *
  * @version $Id: NavController.php 3897 2012-01-17 07:08:43Z gao.wanggao $
- * @package nav
  */
-
 class NavController extends AdminBaseController
 {
     private $_navType = '';
 
     /**
-     * 导航列表
-     *
+     * 导航列表.
      */
     public function run()
     {
@@ -29,8 +28,7 @@ class NavController extends AdminBaseController
     }
 
     /**
-     * 导航批量修改处理器
-     *
+     * 导航批量修改处理器.
      */
     public function dorunAction()
     {
@@ -120,9 +118,9 @@ class NavController extends AdminBaseController
         $this->_getNavService()->updateConfig();
         $this->showMessage('ADMIN:success');
     }
+
     /**
-     * 导航修改表单
-     *
+     * 导航修改表单.
      */
     public function editAction()
     {
@@ -145,8 +143,7 @@ class NavController extends AdminBaseController
     }
 
     /**
-     * 导航修改处理器
-     *
+     * 导航修改处理器.
      */
     public function doeditAction()
     {
@@ -182,8 +179,7 @@ class NavController extends AdminBaseController
     }
 
     /**
-     * 导航删除处理器
-     *
+     * 导航删除处理器.
      */
     public function delAction()
     {
@@ -199,7 +195,6 @@ class NavController extends AdminBaseController
         $this->_getNavService()->updateConfig();
         $this->showMessage('ADMIN:success');
     }
-
 
     private function _getNavType()
     {
@@ -219,8 +214,7 @@ class NavController extends AdminBaseController
     }
 
     /**
-     * 导航公共TAB切换器
-     *
+     * 导航公共TAB切换器.
      */
     private function _navTab()
     {
@@ -230,9 +224,10 @@ class NavController extends AdminBaseController
     }
 
     /**
-     * 组装顶级导航下拉选项
+     * 组装顶级导航下拉选项.
      *
-     * @param  int    $select 当前选中的ID
+     * @param int $select 当前选中的ID
+     *
      * @return string
      */
     private function _getRootNavOption($select = '')

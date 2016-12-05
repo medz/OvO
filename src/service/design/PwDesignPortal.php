@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>
+ * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>.
+ *
  * @author $Author: long.shi $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPortal.php 18647 2012-09-25 07:36:25Z long.shi $
- * @package
  */
 class PwDesignPortal
 {

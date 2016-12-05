@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 根据用户获取帖子列表
+ * 根据用户获取帖子列表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFetchReplyByTidAndPids.php 11974 2012-06-15 04:03:36Z jieyin $
- * @package forum
  */
-
 class PwFetchReplyByTidAndPids implements iPwDataSource
 {
     public $tid;

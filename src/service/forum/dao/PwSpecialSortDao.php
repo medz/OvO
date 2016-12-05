@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 5, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwSpecialSortDao.php 3217 2011-12-14 06:42:36Z yishuo $
  */
-
 class PwSpecialSortDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_sort';

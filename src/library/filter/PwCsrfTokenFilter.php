@@ -1,14 +1,13 @@
 <?php
 
 
-
 /**
- *
- * CSRF安全处理filter
+ * CSRF安全处理filter.
  *
  * @author liusanbian <liusanbian@aliyun.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
  */
 class PwCsrfTokenFilter extends WindActionFilter
@@ -19,7 +18,7 @@ class PwCsrfTokenFilter extends WindActionFilter
     public function preHandle()
     {
         if (true !== $this->getRequest()->isPost() || empty($_POST)) {
-            return ;
+            return;
         }
         /* @var $windToken IWindSecurityToken */
         $windToken = Wind::getComponent('windToken');

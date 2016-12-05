@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
 
 /**
- * 帖子列表数据接口 / 主题分类
+ * 帖子列表数据接口 / 主题分类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTypeThread.php 16394 2012-08-23 06:28:06Z long.shi $
- * @package forum
  */
-
 class PwTypeThread extends PwThreadDataSource
 {
     public $fid;

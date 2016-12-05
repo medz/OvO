@@ -2,20 +2,21 @@
 
 
 /**
- * 风格模型
+ * 风格模型.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyleDm.php 18955 2012-10-09 07:42:19Z long.shi $
- * @package service.style.dm
  */
 class PwStyleDm extends PwBaseDm
 {
     /**
-     * 设置应用id
+     * 设置应用id.
      *
-     * @param  int       $styleid
+     * @param int $styleid
+     *
      * @return PwStyleDm
      */
     public function setAppid($appid)
@@ -26,9 +27,10 @@ class PwStyleDm extends PwBaseDm
     }
 
     /**
-     * 设置名称
+     * 设置名称.
      *
-     * @param  string    $name
+     * @param string $name
+     *
      * @return PwStyleDm
      */
     public function setName($name)
@@ -39,9 +41,10 @@ class PwStyleDm extends PwBaseDm
     }
 
     /**
-     * 设置logo
+     * 设置logo.
      *
-     * @param  string    $logo
+     * @param string $logo
+     *
      * @return PwStyleDm
      */
     public function setLogo($logo)
@@ -52,9 +55,10 @@ class PwStyleDm extends PwBaseDm
     }
 
     /**
-     * 设置风格类型，site/space
+     * 设置风格类型，site/space.
      *
-     * @param  string    $type
+     * @param string $type
+     *
      * @return PwStyleDm
      */
     public function setType($type)
@@ -65,9 +69,10 @@ class PwStyleDm extends PwBaseDm
     }
 
     /**
-     * 设置风格文件夹名
+     * 设置风格文件夹名.
      *
-     * @param  string    $package
+     * @param string $package
+     *
      * @return PwStyleDm
      */
     public function setAlias($alias)
@@ -83,9 +88,10 @@ class PwStyleDm extends PwBaseDm
     }
 
     /**
-     * 设置是否默认
+     * 设置是否默认.
      *
-     * @param  int       $iscurrent
+     * @param int $iscurrent
+     *
      * @return PwStyleDm
      */
     public function setIsCurrent($iscurrent)
@@ -134,7 +140,6 @@ class PwStyleDm extends PwBaseDm
     {
         $this->_data['author_name'] = $value;
     }
-
 
     /* (non-PHPdoc)
      * @see PwBaseDm::_beforeAdd()

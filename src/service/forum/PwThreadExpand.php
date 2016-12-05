@@ -5,24 +5,24 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.PwThread');
 
 /**
- * 帖子扩展服务,不经常用的接口
+ * 帖子扩展服务,不经常用的接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadExpand.php 22254 2012-12-20 08:03:33Z jinlong.panjl $
- * @package forum
  */
-
 class PwThreadExpand
 {
     /**
-     * 获取版块(A)中搜索帖子最后回复时间大于(B)的帖子
+     * 获取版块(A)中搜索帖子最后回复时间大于(B)的帖子.
      *
-     * @param  int   $fid
-     * @param  int   $lastpostTime
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $fid
+     * @param int $lastpostTime
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getThreadByFidOverTime($fid, $lastpostTime, $limit = 10, $offset = 0)
@@ -36,12 +36,13 @@ class PwThreadExpand
     }
 
     /**
-     * 获取版块(A)中搜索帖子最后回复时间小于(B)的帖子
+     * 获取版块(A)中搜索帖子最后回复时间小于(B)的帖子.
      *
-     * @param  int   $fid
-     * @param  int   $lastpostTime
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $fid
+     * @param int $lastpostTime
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getThreadByFidUnderTime($fid, $lastpostTime, $limit = 10, $offset = 0)
@@ -55,9 +56,10 @@ class PwThreadExpand
     }
 
     /**
-     * 获取多个用户的帖子
+     * 获取多个用户的帖子.
      *
-     * @param  array $uids uid序列
+     * @param array $uids uid序列
+     *
      * @return array
      */
     public function fetchThreadByUid($uids)
@@ -70,11 +72,12 @@ class PwThreadExpand
     }
 
     /**
-     * 统计用户某段时间在版块(A)发帖数排行
+     * 统计用户某段时间在版块(A)发帖数排行.
      *
-     * @param  int   $fid
-     * @param  int   $time
-     * @param  int   $num
+     * @param int $fid
+     * @param int $time
+     * @param int $num
+     *
      * @return array
      */
     public function countUserThreadByFidAndTime($fid, $time, $num)
@@ -88,11 +91,12 @@ class PwThreadExpand
     }
 
     /**
-     * 统计用户某段时间在版块(A)回复数排行
+     * 统计用户某段时间在版块(A)回复数排行.
      *
-     * @param  int   $fid
-     * @param  int   $time
-     * @param  int   $num
+     * @param int $fid
+     * @param int $time
+     * @param int $num
+     *
      * @return array
      */
     public function countUserPostByFidAndTime($fid, $time, $num)
@@ -116,9 +120,10 @@ class PwThreadExpand
     }
 
     /**
-     * 根据uid统计审核和未审核的帖子
+     * 根据uid统计审核和未审核的帖子.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countDisabledThreadByUid($uid)
@@ -132,7 +137,7 @@ class PwThreadExpand
     }
 
     /**
-     * 根据uid获取审核和未审核的帖子
+     * 根据uid获取审核和未审核的帖子.
      *
      * @param int $uid    用户id
      * @param int $limit  个数
@@ -151,9 +156,10 @@ class PwThreadExpand
     }
 
     /**
-     * 统计用户的审核和未审核回复数
+     * 统计用户的审核和未审核回复数.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countDisabledPostByUid($uid)
@@ -166,7 +172,7 @@ class PwThreadExpand
     }
 
     /**
-     * 获取用户的审核和未审核回复
+     * 获取用户的审核和未审核回复.
      *
      * @param int $uid    用户id
      * @param int $limit  个数

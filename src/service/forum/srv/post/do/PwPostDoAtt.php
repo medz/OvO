@@ -13,10 +13,9 @@ Wind::import('SRV:attach.dm.PwThreadAttachDm');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDoAtt.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package forum
  */
-
 class PwPostDoAtt extends PwPostDoBase
 {
     public $post;
@@ -60,8 +59,8 @@ class PwPostDoAtt extends PwPostDoBase
             $isImg = ($value['type'] == 'img');
             $v = array(
                 /*'special' => isset($oldatt_special[$key]) ? $oldatt_special[$key] : $value['special'],*/
-                'ctype' => isset($oldatt_ctype[$key]) ? $oldatt_ctype[$key] : $value['ctype'],
-                'cost' => isset($oldatt_cost[$key]) ? $oldatt_cost[$key] : $value['cost'],
+                'ctype'   => isset($oldatt_ctype[$key]) ? $oldatt_ctype[$key] : $value['ctype'],
+                'cost'    => isset($oldatt_cost[$key]) ? $oldatt_cost[$key] : $value['cost'],
                 'descrip' => isset($oldatt_desc[$key]) ? $oldatt_desc[$key] : $value['descrip'],
             );
             if ($v['cost'] > 0 && $this->post->forum->forumset['allowsell'] && $this->post->user->getPermission('allow_thread_extend.sell')) {
@@ -160,7 +159,7 @@ class PwPostDoAtt extends PwPostDoBase
     }
 
     /**
-     * 更新积分
+     * 更新积分.
      */
     protected function _operateCredit($operate)
     {

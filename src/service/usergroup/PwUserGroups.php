@@ -6,18 +6,20 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * 用户组基础服务
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Oct 31, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwUserGroups.php 18966 2012-10-09 08:15:59Z xiaoxia.xuxx $
  */
-
 class PwUserGroups
 {
     protected $_allowGroupTypes = array('member', 'system', 'special', 'default');
 
     /**
-     * 按会员组类型获取组列表
+     * 按会员组类型获取组列表.
      *
      * @return array
      */
@@ -27,7 +29,7 @@ class PwUserGroups
     }
 
     /**
-     * 获取用户组类型名
+     * 获取用户组类型名.
      */
     public function getTypeNames()
     {
@@ -35,9 +37,10 @@ class PwUserGroups
     }
 
     /**
-     * 获取一个会员组详细信息
+     * 获取一个会员组详细信息.
      *
-     * @param  int   $gid
+     * @param int $gid
+     *
      * @return array
      */
     public function getGroupByGid($gid)
@@ -50,9 +53,10 @@ class PwUserGroups
     }
 
     /**
-     * 根据一组gid获取用户组
+     * 根据一组gid获取用户组.
      *
-     * @param  array $gids
+     * @param array $gids
+     *
      * @return array
      */
     public function fetchGroup($gids)
@@ -65,9 +69,10 @@ class PwUserGroups
     }
 
     /**
-     * 按会员组类型获取组列表
+     * 按会员组类型获取组列表.
      *
-     * @param  string $groupType
+     * @param string $groupType
+     *
      * @return array
      */
     public function getGroupsByType($groupType)
@@ -80,9 +85,10 @@ class PwUserGroups
     }
 
     /**
-     * 获取几个类型的所有用户组
+     * 获取几个类型的所有用户组.
      *
-     * @param  array $groupTypes
+     * @param array $groupTypes
+     *
      * @return array
      */
     public function getGroupsByTypes($groupTypes)
@@ -114,7 +120,7 @@ class PwUserGroups
     }
 
     /**
-     * 获取所有系统和特殊用户组
+     * 获取所有系统和特殊用户组.
      */
     public function getSystemAndSpecialGroups()
     {
@@ -122,7 +128,7 @@ class PwUserGroups
     }
 
     /**
-     * 获取所有不可升级的用户组
+     * 获取所有不可升级的用户组.
      */
     public function getNonUpgradeGroups()
     {
@@ -130,9 +136,10 @@ class PwUserGroups
     }
 
     /**
-     * 检查会员组类型
+     * 检查会员组类型.
      *
-     * @param  string $groupType
+     * @param string $groupType
+     *
      * @return bool
      */
     public function checkGroupType($groupType)
@@ -141,7 +148,7 @@ class PwUserGroups
     }
 
     /**
-     * 获取所有用户组信息
+     * 获取所有用户组信息.
      *
      * @return array
      */
@@ -151,7 +158,7 @@ class PwUserGroups
     }
 
     /**
-     * 获取所有分好类的组
+     * 获取所有分好类的组.
      *
      * @return array
      */
@@ -169,9 +176,10 @@ class PwUserGroups
     }
 
     /**
-     * 添加用户组
+     * 添加用户组.
      *
-     * @param  PwUserGroupDm $dm
+     * @param PwUserGroupDm $dm
+     *
      * @return bool
      */
     public function addGroup($dm)
@@ -186,9 +194,10 @@ class PwUserGroups
     }
 
     /**
-     * 更新用户组信息
+     * 更新用户组信息.
      *
-     * @param  PwUserGroupDm $dm
+     * @param PwUserGroupDm $dm
+     *
      * @return bool
      */
     public function updateGroup($dm)
@@ -204,9 +213,10 @@ class PwUserGroups
     }
 
     /**
-     * 批量更新用户组基本信息
+     * 批量更新用户组基本信息.
      *
-     * @param  array (PwUserGroupDm) $groups
+     * @param array (PwUserGroupDm) $groups
+     *
      * @return bool
      */
     public function updateGroups($groups)
@@ -226,7 +236,7 @@ class PwUserGroups
     }
 
     /**
-     * 删除用户组
+     * 删除用户组.
      *
      * @param int $gid
      */
@@ -237,6 +247,7 @@ class PwUserGroups
 
     /**
      * Enter description here ...
+     *
      * @return PwUserGroupsDao
      */
     protected function _getDao()

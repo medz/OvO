@@ -5,11 +5,12 @@ Wind::import('SRV:forum.srv.PwThreadManage');
 
 /**
  * @author peihong <jhqblxt@gmail.com> Dec 2, 2011
+ *
  * @link
+ *
  * @copyright
  * @license
  */
-
 class MasingleController extends PwBaseController
 {
     public $action;
@@ -103,9 +104,10 @@ class MasingleController extends PwBaseController
     }
 
     /**
-     * 已阅操作
+     * 已阅操作.
      *
-     * @param  obj                     $manage
+     * @param obj $manage
+     *
      * @return PwThreadManageDoInspect
      */
     protected function _getInspectManage($manage)
@@ -123,9 +125,10 @@ class MasingleController extends PwBaseController
     }
 
     /**
-     * 屏蔽操作
+     * 屏蔽操作.
      *
-     * @param  obj                     $manage
+     * @param obj $manage
+     *
      * @return PwThreadManageDoInspect
      */
     protected function _getShieldManage($manage)
@@ -145,9 +148,10 @@ class MasingleController extends PwBaseController
     }
 
     /**
-     * 提醒操作
+     * 提醒操作.
      *
-     * @param  obj                     $manage
+     * @param obj $manage
+     *
      * @return PwThreadManageDoInspect
      */
     protected function _getRemindManage($manage)
@@ -167,9 +171,10 @@ class MasingleController extends PwBaseController
     }
 
     /**
-     * 帖内置顶操作
+     * 帖内置顶操作.
      *
-     * @param  obj                     $manage
+     * @param obj $manage
+     *
      * @return PwThreadManageDoInspect
      */
     protected function _getToppedReplyManage($manage)
@@ -195,7 +200,7 @@ class MasingleController extends PwBaseController
     }
 
     /**
-     * send messages
+     * send messages.
      */
     protected function _sendMessage($action, $threads)
     {

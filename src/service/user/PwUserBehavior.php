@@ -3,16 +3,17 @@
  * 用户行为服务
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBehavior.php 23666 2013-01-14 08:34:43Z jinlong.panjl $
- * @package
  */
 class PwUserBehavior
 {
     /**
-     * 获取用户的单一行为记录
+     * 获取用户的单一行为记录.
      *
      * @param int    $uid
      * @param string $behavior
@@ -35,7 +36,7 @@ class PwUserBehavior
     }
 
     /**
-     * 获取多个用户的所有行为
+     * 获取多个用户的所有行为.
      *
      * @param array $uids
      */
@@ -49,7 +50,7 @@ class PwUserBehavior
     }
 
     /**
-     * 获取一个用户的所有行为
+     * 获取一个用户的所有行为.
      *
      * @param int $uid
      */
@@ -64,7 +65,7 @@ class PwUserBehavior
     }
 
     /**
-     * 用户连续天数的行为记录&&用户累计行为记录
+     * 用户连续天数的行为记录&&用户累计行为记录.
      *
      * @param int    $uid
      * @param string $behavior 行为标记
@@ -88,7 +89,7 @@ class PwUserBehavior
             if ($yesterday > 0 && $_time >= $yesterday) {
                 return false;
             } elseif ($yesterday > 0 && $_time >= ($yesterday - 86400)) {
-                $number ++;
+                $number++;
             } elseif ($yesterday > 0 && $_time < ($yesterday - 86400)) {
                 $number = 1;
             } else {  // 累计行为记录
@@ -106,7 +107,7 @@ class PwUserBehavior
     }
 
     /**
-     * 用户(每天)的行为,次日重新计数
+     * 用户(每天)的行为,次日重新计数.
      *
      * @param int    $uid
      * @param string $behavior
@@ -125,7 +126,7 @@ class PwUserBehavior
             $_time = (int) $info['extend_info'];
             $number = (int) $info['number'];
             if ($_time >= $yesterday) {
-                $number ++;
+                $number++;
             } else {
                 $number = 1;
             }
@@ -141,7 +142,7 @@ class PwUserBehavior
     }
 
     /**
-     * 用户(每天)的行为,次日重新计数 | $num幅度
+     * 用户(每天)的行为,次日重新计数 | $num幅度.
      *
      * @param int    $uid
      * @param string $behavior
@@ -174,7 +175,7 @@ class PwUserBehavior
     }
 
     /**
-     * 单纯记录key-value信息
+     * 单纯记录key-value信息.
      *
      * @param int    $uid
      * @param string $behavior

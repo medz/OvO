@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPermissions.php 17399 2012-09-05 07:12:51Z gao.wanggao $
- * @package
  */
 class PwDesignPermissions
 {
@@ -32,7 +33,7 @@ class PwDesignPermissions
         return $this->_getDao()->search($vo->getData());
     }
 
-    public function addInfo($designType = self::TYPE_PAGE, $designId, $uid, $permissions = self::IS_ADMIN)
+    public function addInfo($designType, $designId, $uid, $permissions = self::IS_ADMIN)
     {
         $designType = (int) $designType;
         $designId = (int) $designId;
@@ -70,7 +71,6 @@ class PwDesignPermissions
         return $this->_getDao()->delete($id);
     }
 
-
     public function batchDelete($ids)
     {
         if (!is_array($ids) || !$ids) {
@@ -80,7 +80,7 @@ class PwDesignPermissions
         return $this->_getDao()->batchDelete($ids);
     }
 
-    public function deleteByTypeAndDesignId($type = self::TYPE_MODULE, $id)
+    public function deleteByTypeAndDesignId($type, $id)
     {
         $id = (int) $id;
         if ($id < 1 || $type < 1) {

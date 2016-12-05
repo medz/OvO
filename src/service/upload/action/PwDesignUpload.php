@@ -2,18 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('COM:utility.WindUtility');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignUpload.php 23975 2013-01-17 10:20:11Z jieyin $
- * @package
  */
-
 class PwDesignUpload extends PwUploadAction
 {
     public function __construct()
@@ -97,12 +96,12 @@ class PwDesignUpload extends PwUploadAction
     {
         foreach ($uploaddb as $key => $value) {
             $this->attachs = array(
-                'name' => $value['name'],
-                'type' => $value['type'],
-                'path' => $this->dir,
+                'name'     => $value['name'],
+                'type'     => $value['type'],
+                'path'     => $this->dir,
                 'filename' => $this->filename,
-                'size' => $value['size'],
-                'ext' => $value['ext'],
+                'size'     => $value['size'],
+                'ext'      => $value['ext'],
             );
         }
 

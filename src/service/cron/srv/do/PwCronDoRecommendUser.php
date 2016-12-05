@@ -3,13 +3,13 @@
 Wind::import('SRV:cron.srv.base.AbstractCronBase');
 
 /**
- * 可能认识的人队列更新
+ * 可能认识的人队列更新.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwCronDoRecommendUser extends AbstractCronBase
 {

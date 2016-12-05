@@ -1,21 +1,21 @@
 <?php
 
 /**
- * 在线统计记录
+ * 在线统计记录.
  *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOnlineStatistics.php 16817 2012-08-28 12:30:51Z gao.wanggao $
- * @package
  */
-
 class PwOnlineStatistics
 {
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
-     * @param  string $key
+     * @param string $key
+     *
      * @return array
      */
     public function getInfo($key)
@@ -24,18 +24,19 @@ class PwOnlineStatistics
     }
 
     /**
-     * 增加一条记录
+     * 增加一条记录.
      *
-     * @param  string $key
-     * @param  int    $count
+     * @param string $key
+     * @param int    $count
+     *
      * @return bool
      */
     public function addInfo($key, $number = 0, $time = 0)
     {
         $number = (int) $number;
         $data = array(
-            'signkey' => $key,
-            'number' => $number,
+            'signkey'      => $key,
+            'number'       => $number,
             'created_time' => $time,
         );
 
@@ -43,7 +44,7 @@ class PwOnlineStatistics
     }
 
     /**
-     * 删除一条记录
+     * 删除一条记录.
      *
      * @param string $key
      */

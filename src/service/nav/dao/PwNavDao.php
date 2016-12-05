@@ -7,10 +7,9 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author $Author: gao.wanggao $
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNavDao.php 24004 2013-01-18 06:18:11Z gao.wanggao $
- * @package nav
  */
-
 class PwNavDao extends PwBaseDao
 {
     protected $_pk = 'navid';
@@ -18,9 +17,10 @@ class PwNavDao extends PwBaseDao
     protected $_dataStruct = array('navid', 'parentid', 'rootid', 'type', 'sign', 'name', 'style', 'link', 'alt', 'image', 'target', 'isshow', 'orderid');
 
     /**
-     * 根据ID获取一条导航信息
+     * 根据ID获取一条导航信息.
      *
-     * @param  int   $navId ID
+     * @param int $navId ID
+     *
      * @return array
      */
     public function getNav($navid)
@@ -29,9 +29,10 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 获取多条导航信息
+     * 获取多条导航信息.
      *
-     * @param  array    $navids
+     * @param array $navids
+     *
      * @return Ambigous <multitype:, multitype:multitype: Ambigous <multitype:, multitype:unknown , mixed> >
      */
     public function fetchNav($navids)
@@ -40,10 +41,11 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 获取某类型导航列表
+     * 获取某类型导航列表.
      *
-     * @param  string $type   导航类型
-     * @param  int    $isShow 是否显示
+     * @param string $type   导航类型
+     * @param int    $isShow 是否显示
+     *
      * @return array
      */
     public function getNavByType($type, $isShow)
@@ -69,9 +71,10 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 获取顶级导航列表
+     * 获取顶级导航列表.
      *
-     * @param  string $type 导航类型
+     * @param string $type 导航类型
+     *
      * @return array
      */
     public function getRootNav($type, $isShow)
@@ -89,9 +92,10 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 获取顶级导航的子导航列表
+     * 获取顶级导航的子导航列表.
      *
-     * @param  int   $navId 父导航ID
+     * @param int $navId 父导航ID
+     *
      * @return array
      */
     public function getChildNav($navId, $isShow)
@@ -109,10 +113,11 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 获取导航最大排序
+     * 获取导航最大排序.
      *
-     * @param  string $type     导航类型
-     * @param  int    $parentid 父ID
+     * @param string $type     导航类型
+     * @param int    $parentid 父ID
+     *
      * @return int
      */
     public function getNavMaxOrder($type = '', $parentid = 0)
@@ -124,19 +129,22 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 添加一条导航
+     * 添加一条导航.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addNav($data)
     {
         return $this->_add($data, true);
     }
+
     /**
-     * 修改一条导航
+     * 修改一条导航.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function updateNav($navid, $data)
@@ -145,9 +153,10 @@ class PwNavDao extends PwBaseDao
     }
 
     /**
-     * 删除一条导航
+     * 删除一条导航.
      *
-     * @param  int  $navId
+     * @param int $navId
+     *
      * @return bool
      */
     public function delNav($navid)

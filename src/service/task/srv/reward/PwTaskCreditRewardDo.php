@@ -3,13 +3,13 @@
 Wind::import('SRV:task.srv.reward.PwTaskRewardDoBase');
 Wind::import('SRV:credit.bo.PwCreditBo');
 /**
- * 奖励-积分
+ * 奖励-积分.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskCreditRewardDo.php 18510 2012-09-19 01:55:21Z jieyin $
- * @package wind
  */
 class PwTaskCreditRewardDo extends PwTaskRewardDoBase
 {
@@ -44,7 +44,7 @@ class PwTaskCreditRewardDo extends PwTaskRewardDoBase
     }
 
     /**
-     * 获得用户DS
+     * 获得用户DS.
      *
      * @return PwUser
      */

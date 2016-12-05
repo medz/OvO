@@ -3,13 +3,13 @@
 Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 
 /**
- * 帖内管理操作 - 提醒
+ * 帖内管理操作 - 提醒.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwThreadManageDoRemind extends PwThreadManageDo
 {
@@ -72,9 +72,10 @@ class PwThreadManageDoRemind extends PwThreadManageDo
     }
 
     /**
-     * 格式化提醒
+     * 格式化提醒.
      *
-     * @param  string $reason
+     * @param string $reason
+     *
      * @return string reason,username,time
      */
     protected function _buildRemind()

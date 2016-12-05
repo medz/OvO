@@ -1,13 +1,13 @@
 <?php
 /**
  * windid虚拟类，用于windid的通知DS层兼容
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
- * @version $Id: PwWindidStd.php 24765 2013-02-20 09:47:22Z jieyin $
- * @package
  *
+ * @version $Id: PwWindidStd.php 24765 2013-02-20 09:47:22Z jieyin $
  */
 class PwWindidStd
 {

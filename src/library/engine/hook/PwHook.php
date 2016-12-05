@@ -3,14 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * pw组件调用机制
+ * pw组件调用机制.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwHook.php 24919 2013-02-26 11:36:12Z jieyin $
- * @package wekit
- * @subpackage engine
  */
 class PwHook
 {
@@ -25,7 +24,7 @@ class PwHook
     private static $prehooks = array();
 
     /**
-     * 预设查询键值，批量查询缓存(性能优化设置)
+     * 预设查询键值，批量查询缓存(性能优化设置).
      *
      * @param array $keys 查询键值 <例：array('c_read_run', 'm_PwThreadDisplay')>
      */
@@ -37,8 +36,7 @@ class PwHook
     }
 
     /**
-     * 初始化注册列表
-     *
+     * 初始化注册列表.
      */
     public static function initRegistry()
     {
@@ -50,9 +48,10 @@ class PwHook
     }
 
     /**
-     * 获得指定扩展点的全部扩展调用
+     * 获得指定扩展点的全部扩展调用.
      *
-     * @param  string $registerKey
+     * @param string $registerKey
+     *
      * @return array
      */
     public static function getRegistry($registerKey)
@@ -72,7 +71,7 @@ class PwHook
     }
 
     /**
-     * 手动注册钩子
+     * 手动注册钩子.
      *
      * @param string $registerKey 钩子名
      * @param array  $inject      注入信息 <array('class' => 'SRV:forum.srv.PwThreadDisplay', 'method' => 'escapeSpace', 'loadway' => '...', ...)>
@@ -83,15 +82,16 @@ class PwHook
     }
 
     /**
-     * 模板视图hook渲染方法
+     * 模板视图hook渲染方法.
      *
-     * 模板Hook挂在实现{@example<pre>
+     * 模板Hook挂在实现{@example <pre>
      * 按照如下写法实现在模板中的钩子挂在.
      * <hook class='$a' method='display1' />
      * 上面的写法将被解析为:
      * PwHook::display(array($a,'display1'),$args,$viewer);
      * </pre>}
      * <note>注意: 是用模板标签方式调用无需显示调用该方法.</note>
+     *
      * @param string|array       $callback
      * @param array              $args
      * @param string             $alias
@@ -108,7 +108,7 @@ class PwHook
     }
 
     /**
-     * 编译扩展的模板内容并显示
+     * 编译扩展的模板内容并显示.
      *
      * @param string $hookname 扩展接口名称
      * @param string $template 模板名称
@@ -144,7 +144,7 @@ class PwHook
      * <div> i am from segment {$data}</div>
      * 如上将会被编译成：
      * function templateName($data) {
-     * }
+     * }.
      *
      * 模板标签：
      * <segment alias='' name='' args='' tpl='' />
@@ -158,6 +158,7 @@ class PwHook
      * @param string          $func
      * @param string          $alias
      * @param WindViewResolve $viewer
+     *
      * @return
      */
     public static function segment($template, $args, $func = '', $alias = '', $viewer = null)
@@ -209,7 +210,7 @@ class PwHook
     }
 
     /**
-     * 获得指定扩展点的全部扩展调用
+     * 获得指定扩展点的全部扩展调用.
      *
      * 过滤当前挂在的所有{@see $filters},根据filter的表达式定义过滤当前需要被执行的所有filter,
      * 并返回.该方法在{@see PwBaseController::runHook}中被使用.当前表达式参数解析支持,
@@ -219,8 +220,10 @@ class PwHook
      * 如果为true则注册该过滤器,如果为false则不注册该过滤器,当expression不定义时,
      * 则认为在任何条件下都注册该过滤器.
      * </code>}
-     * @param  array             $filters
-     * @param  PwBaseHookService $service
+     *
+     * @param array             $filters
+     * @param PwBaseHookService $service
+     *
      * @return array
      */
     public static function resolveActionHook($filters, $service = null)
@@ -263,8 +266,9 @@ class PwHook
     }
 
     /**
-     * @param  string $key
-     * @param  string $method get/post
+     * @param string $key
+     * @param string $method get/post
+     *
      * @return mixed
      */
     private static function _getRequest($key, $method = 'get')
@@ -297,7 +301,7 @@ class PwHook
     }
 
     /**
-     * 解析模板内容并返回
+     * 解析模板内容并返回.
      *
      * 将输入的模板内容解析为方法数组{@example <pre>
      * 以下模板内容将解析为:
@@ -317,7 +321,9 @@ class PwHook
      * 'testHook1' => array('content', array('data'))
      * );
      * </pre>}
-     * @param  string $template
+     *
+     * @param string $template
+     *
      * @return array
      */
     private static function _resolveTemplate($template, $_prefix)
@@ -350,7 +356,7 @@ class PwHook
     }
 
     /**
-     * 解析hook-action标签中的属性
+     * 解析hook-action标签中的属性.
      *
      * 该标签支持两个属性，分别是：
      * <ul>
@@ -359,7 +365,8 @@ class PwHook
      * </ul>
      * PwHook::$methods中每一个元素都含有name和args两个子元素
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return string
      */
     private static function _pregContent($content)

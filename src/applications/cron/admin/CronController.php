@@ -3,12 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
  /**
-  * the last known user to change this file in the repository  <$LastChangedBy$>
+  * the last known user to change this file in the repository  <$LastChangedBy$>.
+  *
   * @author $Author$ Foxsee@aliyun.com
   * @copyright ©2003-2103 phpwind.com
   * @license http://www.phpwind.com
+  *
   * @version $Id$
-  * @package
   */
  class CronController extends AdminBaseController
  {
@@ -24,7 +25,7 @@ Wind::import('ADMIN:library.AdminBaseController');
              } elseif ($day == 99) {
                  $cron['type'] .= '最后一天';
              } else {
-                 $cron['type'] .= $day ? $day.'日' : '' ;
+                 $cron['type'] .= $day ? $day.'日' : '';
              }
              if ($cron['loop_type'] == 'week' || $cron['loop_type'] == 'month') {
                  $cron['type'] .= $hour.'时';

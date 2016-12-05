@@ -1,18 +1,18 @@
 <?php
 
 /**
- * 可能认识的人  推荐关注
+ * 可能认识的人  推荐关注.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwAttentionRecommendFriendsService
 {
     /**
-     * 更新某用户潜在好友
+     * 更新某用户潜在好友.
      *
      * @param int $uid
      */
@@ -61,9 +61,10 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * 获取推荐用户缓存数据
+     * 获取推荐用户缓存数据.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array RecommentUsers
      */
     public function getRecommentUser(PwUserBo $loginUser)
@@ -80,9 +81,9 @@ class PwAttentionRecommendFriendsService
             }
             list($uid, $username, $cnt, $sameUser) = explode(',', $v);
             $array[$uid] = array(
-                'uid' => $uid,
+                'uid'      => $uid,
                 'username' => $username,
-                'cnt' => $cnt,
+                'cnt'      => $cnt,
             );
             $sameUser && $array[$uid]['sameUser'] = unserialize($sameUser);
         }
@@ -91,10 +92,11 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * 获取推荐关注的用户
+     * 获取推荐关注的用户.
      *
-     * @param  int   $uid
-     * @param  int   $num
+     * @param int $uid
+     * @param int $num
+     *
      * @return array uids
      */
     public function getPotentialAttention(PwUserBo $loginUser, $num)
@@ -112,10 +114,11 @@ class PwAttentionRecommendFriendsService
 
     /**
      * 根据规则获取推荐关注 |
-     * 已取消
+     * 已取消.
      *
      * @param $uid
      * @param $num
+     *
      * @return array
      */
     public function getRecommendAttention($uid, $num)
@@ -124,11 +127,12 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * 组装关注用户数据
+     * 组装关注用户数据.
      *
      * @param int $uid 用户uid
      * @param  array $recommendUids 推荐关注uids
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array
      */
     public function buildUserInfo($uid, $recommendUids, $num)
@@ -148,9 +152,10 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * 获取在线用户
+     * 获取在线用户.
      *
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array uids
      */
     public function getOnlneUids($num)
@@ -245,7 +250,7 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * PwUserOnline
+     * PwUserOnline.
      *
      * @return PwUserOnline
      */
@@ -255,7 +260,7 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * PwUser
+     * PwUser.
      *
      * @return PwUser
      */
@@ -265,7 +270,7 @@ class PwAttentionRecommendFriendsService
     }
 
     /**
-     * PwOnlineCountService
+     * PwOnlineCountService.
      *
      * @return PwOnlineCountService
      */

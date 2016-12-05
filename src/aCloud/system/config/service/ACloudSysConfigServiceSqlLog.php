@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceSqlLog
 {
@@ -46,17 +46,17 @@ class ACloudSysConfigServiceSqlLog
     public function addSqlLog($fields)
     {
         $fields = $this->checkFields($fields);
-        if (! ACloudSysCoreS::isArray($fields)) {
+        if (!ACloudSysCoreS::isArray($fields)) {
             return false;
         }
-        (! isset($fields ['created_time']) || ! $fields ['created_time']) && $fields ['created_time'] = time();
+        (!isset($fields['created_time']) || !$fields['created_time']) && $fields['created_time'] = time();
 
         return $this->getSqlLogDao()->insert($fields);
     }
 
     public function deleteSqlLogsByIds($ids)
     {
-        if (! ACloudSysCoreS::isArray($ids)) {
+        if (!ACloudSysCoreS::isArray($ids)) {
             return false;
         }
 
@@ -66,9 +66,9 @@ class ACloudSysConfigServiceSqlLog
     private function checkFields($fields)
     {
         $result = array();
-        isset($fields ['id']) && $result ['id'] = intval($fields ['id']);
-        isset($fields ['log']) && $result ['log'] = trim($fields ['log']);
-        isset($fields ['created_time']) && $result ['created_time'] = intval($fields ['created_time']);
+        isset($fields['id']) && $result['id'] = intval($fields['id']);
+        isset($fields['log']) && $result['log'] = trim($fields['log']);
+        isset($fields['created_time']) && $result['created_time'] = intval($fields['created_time']);
 
         return $result;
     }

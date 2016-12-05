@@ -4,15 +4,14 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('WINDID:service.school.dm.WindidSchoolDm');
 Wind::import('WINDID:service.school.vo.WindidSchoolSo');
 
-
 /**
- * 全局-资料库-学校库
+ * 全局-资料库-学校库.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: SchooldataController.php 24834 2013-02-22 06:43:43Z jieyin $
- * @package applications.config.admin
  */
 class SchooldataController extends AdminBaseController
 {
@@ -34,7 +33,7 @@ class SchooldataController extends AdminBaseController
         $list = array();
         $areaRoute = WindidApi::api('area')->getAreaRout($areaid);
         $_rout = array('all' => array('disable' => 'li_disabled'), 'province' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'),
-            'city' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), 'area' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
+            'city'           => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), 'area' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
         switch (count($areaRoute)) {
             case 1:
                 $_rout['all']['disable'] = '';
@@ -127,7 +126,7 @@ class SchooldataController extends AdminBaseController
     }
 
     /**
-     * 学校Ds
+     * 学校Ds.
      *
      * @return WindidSchool
      */

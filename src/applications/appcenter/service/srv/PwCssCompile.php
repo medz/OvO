@@ -1,17 +1,17 @@
 <?php
 /**
- * 编译css ，界面设置
+ * 编译css ，界面设置.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwCssCompile.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package appcenter
  */
 class PwCssCompile
 {
     /**
-     * 编译css ，界面设置
+     * 编译css ，界面设置.
      *
      * @param array $__css
      */

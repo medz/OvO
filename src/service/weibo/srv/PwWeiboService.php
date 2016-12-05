@@ -10,16 +10,16 @@ Wind::import('SRV:weibo.PwWeibo');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWeiboService.php 17151 2012-08-31 08:21:36Z jieyin $
- * @package fresh
  */
-
 class PwWeiboService
 {
     /**
-     * 添加一条微博评论
+     * 添加一条微博评论.
      *
-     * @param  object       $dm PwWeiboCommnetDm
+     * @param object $dm PwWeiboCommnetDm
+     *
      * @return bool|PwError
      */
     public function addComment(PwWeiboCommnetDm $dm, PwUserBo $user)

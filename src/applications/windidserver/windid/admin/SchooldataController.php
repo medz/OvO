@@ -4,15 +4,14 @@ Wind::import('APPS:windid.admin.WindidBaseController');
 Wind::import('WSRV:school.dm.WindidSchoolDm');
 Wind::import('WSRV:school.vo.WindidSchoolSo');
 
-
 /**
- * 全局-资料库-学校库
+ * 全局-资料库-学校库.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: SchooldataController.php 24837 2013-02-22 06:59:57Z jieyin $
- * @package applications.config.admin
  */
 class SchooldataController extends WindidBaseController
 {
@@ -34,7 +33,7 @@ class SchooldataController extends WindidBaseController
         $list = array();
         $areaRoute = Wekit::load('WSRV:area.srv.WindidAreaService')->getAreaRout($areaid);
         $_rout = array('all' => array('disable' => 'li_disabled'), 'province' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'),
-            'city' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), 'area' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
+            'city'           => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), 'area' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
         switch (count($areaRoute)) {
             case 1:
                 $_rout['all']['disable'] = '';
@@ -125,7 +124,7 @@ class SchooldataController extends WindidBaseController
     }
 
     /**
-     * 学校Ds
+     * 学校Ds.
      *
      * @return WindidSchool
      */
@@ -135,7 +134,7 @@ class SchooldataController extends WindidBaseController
     }
 
     /**
-     * 学校的service
+     * 学校的service.
      *
      * @return WindidSchoolService
      */

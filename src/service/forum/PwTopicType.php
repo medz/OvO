@@ -4,15 +4,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
  * @author peihong <jhqblxt@gmail.com> Nov 23, 2011
+ *
  * @link
+ *
  * @copyright
  * @license
  */
-
 class PwTopicType
 {
     /**
-     * 增加主题分类
+     * 增加主题分类.
      *
      * @param PwTopicTypeDm $dm 版块数据模型
      *                          return mixed
@@ -28,7 +29,7 @@ class PwTopicType
     }
 
     /**
-     * 增加主题分类
+     * 增加主题分类.
      *
      * @param PwTopicTypeDm $dm 版块数据模型
      *                          return mixed
@@ -73,7 +74,7 @@ class PwTopicType
     }
 
     /**
-     * 根据FID获取主题分类数据
+     * 根据FID获取主题分类数据.
      *
      * @param int  $fid         版块ID
      * @param bool $filterAdmin true-过滤掉管理专用的项
@@ -118,7 +119,7 @@ class PwTopicType
     }
 
     /**
-     * 删除一个主题分类
+     * 删除一个主题分类.
      *
      * @param int $id
      */
@@ -138,7 +139,7 @@ class PwTopicType
     }
 
     /**
-     * 根据parentid删除一组 topic types
+     * 根据parentid删除一组 topic types.
      *
      * @param int $parentid
      */
@@ -148,11 +149,9 @@ class PwTopicType
     }
 
     /**
-     *
      * Enter description here ...
      *
      * @return PwTopicTypeDao
-     *
      */
     protected function _getDao()
     {

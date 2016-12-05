@@ -5,8 +5,8 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwPatchDao.php 21505 2012-12-10 10:21:57Z long.shi $
- * @package wind
  */
 class PwPatchDao extends PwBaseDao
 {
@@ -16,8 +16,9 @@ class PwPatchDao extends PwBaseDao
     /**
      * 获取一个补丁
      *
-     * @param  unknown_type $id
-     * @return Ambigous     <multitype:, multitype:unknown , mixed>
+     * @param unknown_type $id
+     *
+     * @return Ambigous <multitype:, multitype:unknown , mixed>
      */
     public function get($id)
     {
@@ -27,31 +28,33 @@ class PwPatchDao extends PwBaseDao
     /**
      * 添加一个补丁
      *
-     * @param  unknown_type $id
-     * @param  unknown_type $rule
-     * @param  unknown_type $name
-     * @param  unknown_type $status
-     * @param  unknown_type $time
-     * @return Ambigous     <boolean, number, string, rowCount>
+     * @param unknown_type $id
+     * @param unknown_type $rule
+     * @param unknown_type $name
+     * @param unknown_type $status
+     * @param unknown_type $time
+     *
+     * @return Ambigous <boolean, number, string, rowCount>
      */
     public function add($id, $rule, $name, $status, $time, $desc)
     {
         return $this->_add(
             array(
-                'id' => $id,
-                'rule' => $rule,
-                'name' => $name,
-                'status' => $status,
-                'time' => $time,
+                'id'          => $id,
+                'rule'        => $rule,
+                'name'        => $name,
+                'status'      => $status,
+                'time'        => $time,
                 'description' => $desc, ), false);
     }
 
     /**
      * 更新补丁状态
      *
-     * @param  unknown_type $id
-     * @param  unknown_type $status
-     * @return Ambigous     <boolean, number, rowCount>
+     * @param unknown_type $id
+     * @param unknown_type $status
+     *
+     * @return Ambigous <boolean, number, rowCount>
      */
     public function update($id, $status)
     {
@@ -61,8 +64,9 @@ class PwPatchDao extends PwBaseDao
     /**
      * 更新旧补丁状态
      *
-     * @param  unknown_type $newest
-     * @return Ambigous     <rowCount, boolean, number>
+     * @param unknown_type $newest
+     *
+     * @return Ambigous <rowCount, boolean, number>
      */
     public function updateOldPatch($newest)
     {
@@ -74,8 +78,9 @@ class PwPatchDao extends PwBaseDao
     /**
      * 删除一个补丁
      *
-     * @param  unknown_type $id
-     * @return Ambigous     <number, boolean, rowCount>
+     * @param unknown_type $id
+     *
+     * @return Ambigous <number, boolean, rowCount>
      */
     public function delete($id)
     {
@@ -83,8 +88,7 @@ class PwPatchDao extends PwBaseDao
     }
 
     /**
-     * 获取补丁列表
-     *
+     * 获取补丁列表.
      */
     public function getList()
     {

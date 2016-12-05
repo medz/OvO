@@ -4,13 +4,13 @@ Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:usertag.so.PwUserTagSo');
 
 /**
- * 用户个人标签
+ * 用户个人标签.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
 class TagController extends AdminBaseController
 {
@@ -42,7 +42,7 @@ class TagController extends AdminBaseController
     }
 
     /**
-     * 删除标签
+     * 删除标签.
      */
     public function deleteAction()
     {
@@ -58,7 +58,7 @@ class TagController extends AdminBaseController
     }
 
     /**
-     * 设置为热门标签
+     * 设置为热门标签.
      */
     public function setHotAction()
     {
@@ -74,7 +74,7 @@ class TagController extends AdminBaseController
     }
 
     /**
-     * 取消热门标签
+     * 取消热门标签.
      */
     public function cancleHotAction()
     {

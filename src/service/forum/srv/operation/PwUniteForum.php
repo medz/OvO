@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('HOOK:PwUniteForum.PwUniteForumDoMoveActicle');
 Wind::import('HOOK:PwUniteForum.PwUniteForumDoMoveAttach');
 
 /**
- * 删除帖子及其关联操作(扩展)
+ * 删除帖子及其关联操作(扩展).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUniteForum.php 22211 2012-12-19 17:45:08Z jieyin $
- * @package forum
  */
-
 class PwUniteForum extends PwDoProcess
 {
     public $fid;

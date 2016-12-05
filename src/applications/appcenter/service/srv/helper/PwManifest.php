@@ -3,14 +3,14 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwManifest
 {
     private $manifest;
     /**
-     * 应用配置信息
+     * 应用配置信息.
      *
      * @var array
      */
@@ -22,7 +22,7 @@ class PwManifest
      */
     private $installationService = null;
     /**
-     * 钩子信息
+     * 钩子信息.
      *
      * @var array
      */
@@ -35,14 +35,14 @@ class PwManifest
     private $injectServices = null;
 
     /**
-     * 模块配置
+     * 模块配置.
      *
      * @var array
      */
     private $module = null;
 
     /**
-     * manifest path
+     * manifest path.
      *
      * @param string $manifest
      */
@@ -60,7 +60,6 @@ class PwManifest
     }
 
     /**
-     *
      * @return field_type
      */
     public function getManifest()
@@ -69,7 +68,6 @@ class PwManifest
     }
 
     /**
-     *
      * @return multitype:
      */
     public function getApplication($key = '', $default = '')
@@ -82,7 +80,6 @@ class PwManifest
     }
 
     /**
-     *
      * @return multitype:
      */
     public function getInstallationService()
@@ -98,7 +95,6 @@ class PwManifest
     }
 
     /**
-     *
      * @return multitype:
      */
     public function getHooks()
@@ -117,7 +113,6 @@ class PwManifest
     }
 
     /**
-     *
      * @return multitype:
      */
     public function getInjectServices()
@@ -137,12 +132,12 @@ class PwManifest
                         continue;
                     }
                     $this->injectServices[] = array(
-                        'hook_name' => $key,
-                        'alias' => 'ext_'.$_k,
-                        'class' => $_v['class'],
-                        'method' => (empty($_v['method']) ? '' : $_v['method']),
-                        'loadway' => (empty($_v['loadway']) ? '' : $_v['loadway']),
-                        'expression' => (empty($_v['expression']) ? '' : $_v['expression']),
+                        'hook_name'   => $key,
+                        'alias'       => 'ext_'.$_k,
+                        'class'       => $_v['class'],
+                        'method'      => (empty($_v['method']) ? '' : $_v['method']),
+                        'loadway'     => (empty($_v['loadway']) ? '' : $_v['loadway']),
+                        'expression'  => (empty($_v['expression']) ? '' : $_v['expression']),
                         'description' => (empty($_v['description']) ? '' : $_v['description']),
                         );
                 }
@@ -155,9 +150,10 @@ class PwManifest
     }
 
     /**
-     * 解析配置
+     * 解析配置.
      *
-     * @param  array|string $value
+     * @param array|string $value
+     *
      * @return array
      */
     private function _resolvedConfig($key)

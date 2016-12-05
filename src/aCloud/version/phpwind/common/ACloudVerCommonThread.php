@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('THREAD_INVALID_PARAMS', 301);
 define('THREAD_USER_NOT_RIGHT', 302);
@@ -16,7 +16,7 @@ define('THREAD_ALLOW_READ', 315);
 class ACloudVerCommonThread extends ACloudVerCommonBase
 {
     /**
-     * 获取单个帖子信息
+     * 获取单个帖子信息.
      *
      * @param int $tid 帖子id
      *                 return array
@@ -29,14 +29,14 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
         }
         $result = $this->_getThread()->getThread($tid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
     }
 
     /**
-     * 获取用户的帖子
+     * 获取用户的帖子.
      *
      * @param int $uid    用户id
      * @param int $limit  个数
@@ -46,12 +46,12 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
     public function getByUid($uid, $offset = 0, $limit = 20)
     {
         $userBo = new PwUserBo($uid);
-        if (! $userBo->isExists()) {
+        if (!$userBo->isExists()) {
             return $this->buildResponse(THREAD_USER_NOT_EXIST);
         }
         $result = $this->_getThread()->getThreadByUid($uid, $limit, $offset);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -97,7 +97,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
     }
 
     /**
-     * 获取某个版块的帖子列表
+     * 获取某个版块的帖子列表.
      *
      * @param int $fid    版块id
      * @param int $limit  个数
@@ -112,7 +112,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
         }
         $result = $this->_getThread()->getThreadByFid($fid, $limit, $offset);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -127,7 +127,8 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
     }
 
     /**
-     * 发表帖子
+     * 发表帖子.
+     *
      * @param int    $tid
      * @param int    $fid
      * @param string $subject
@@ -137,7 +138,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
     public function postThread($uid, $fid, $subject, $content)
     {
         $userBo = new PwUserBo($uid);
-        if (! $userBo->isExists()) {
+        if (!$userBo->isExists()) {
             return $this->buildResponse(THREAD_USER_NOT_EXIST);
         }
         Wind::import('SRV:forum.srv.PwPost');
@@ -147,7 +148,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
         $postDm = $pwPost->getDm();
         $postDm->setFid($fid)->setTitle($subject)->setContent($content)->setAuthor($uid, $userBo->username, $userBo->ip);
         if (($result = $pwPost->execute($postDm)) !== true) {
-            $this->buildResponse(- 1, $result->getError());
+            $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -171,7 +172,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
         $sql = sprintf('SELECT t.* FROM %s t WHERE t.fid != 0 AND t.ischeck = 1 AND t.tid >= %s AND t.tid <= %s', ACloudSysCoreS::sqlMetadata('{{bbs_threads}}'), ACloudSysCoreS::sqlEscape($startId), ACloudSysCoreS::sqlEscape($endId));
         $query = Wind::getComponent('db')->query($sql);
         $result = $query->fetchAll(null, PDO::FETCH_ASSOC);
-        if (! ACloudSysCoreS::isArray($result)) {
+        if (!ACloudSysCoreS::isArray($result)) {
             return array();
         }
         $result = $this->getContentAndForumInfo($result);
@@ -201,7 +202,7 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
         $sql = sprintf('SELECT t.* FROM %s t WHERE t.fid != 0 AND t.ischeck = 1 AND t.modified_time >= %s AND t.modified_time <= %s %s', ACloudSysCoreS::sqlMetadata('{{bbs_threads}}'), ACloudSysCoreS::sqlEscape($startTime), ACloudSysCoreS::sqlEscape($endTime), ACloudSysCoreS::sqlLimit($offset, $perpage));
         $query = Wind::getComponent('db')->query($sql);
         $result = $query->fetchAll(null, PDO::FETCH_ASSOC);
-        if (! ACloudSysCoreS::isArray($result)) {
+        if (!ACloudSysCoreS::isArray($result)) {
             return array();
         }
         $result = $this->getContentAndForumInfo($result);
@@ -213,16 +214,16 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
     {
         $tids = $fids = array();
         foreach ($result as $value) {
-            $tids [] = $value ['tid'];
-            $fids [] = $value ['fid'];
+            $tids[] = $value['tid'];
+            $fids[] = $value['fid'];
         }
         $query = Wind::getComponent('db')->query(sprintf('SELECT * FROM %s WHERE tid IN(%s)', ACloudSysCoreS::sqlMetadata('{{bbs_threads_content}}'), ACloudSysCoreS::sqlImplode(array_unique($tids))));
         $contents = $query->fetchAll('tid', PDO::FETCH_ASSOC);
         $query = Wind::getComponent('db')->query(sprintf('SELECT fid, name as forumname FROM %s WHERE fid IN(%s)', ACloudSysCoreS::sqlMetadata('{{bbs_forum}}'), ACloudSysCoreS::sqlImplode(array_unique($fids))));
         $forums = $query->fetchAll('fid', PDO::FETCH_ASSOC);
         foreach ($result as $key => $thread) {
-            $result [$key] = array_merge($thread, (array) $contents [$thread ['tid']]);
-            $result [$key] ['forumname'] = isset($forums [$thread ['fid']]) ? $forums [$thread ['fid']] ['forumname'] : '';
+            $result[$key] = array_merge($thread, (array) $contents[$thread['tid']]);
+            $result[$key]['forumname'] = isset($forums[$thread['fid']]) ? $forums[$thread['fid']]['forumname'] : '';
         }
 
         return $result;
@@ -230,11 +231,11 @@ class ACloudVerCommonThread extends ACloudVerCommonBase
 
     private function _buildThreadData($data)
     {
-        list($result, $siteUrl) = array(array(), ACloudSysCoreCommon::getGlobal('g_siteurl', $_SERVER ['SERVER_NAME']));
+        list($result, $siteUrl) = array(array(), ACloudSysCoreCommon::getGlobal('g_siteurl', $_SERVER['SERVER_NAME']));
         foreach ($data as $value) {
-            $value ['threadurl'] = 'http://'.$siteUrl.'/read.php?tid='.$value ['tid'];
-            $value ['forumurl'] = 'http://'.$siteUrl.'/index.php?m=bbs&c=thread&fid='.$value ['fid'];
-            $result [$value ['tid']] = $value;
+            $value['threadurl'] = 'http://'.$siteUrl.'/read.php?tid='.$value['tid'];
+            $value['forumurl'] = 'http://'.$siteUrl.'/index.php?m=bbs&c=thread&fid='.$value['fid'];
+            $result[$value['tid']] = $value;
         }
 
         return $result;

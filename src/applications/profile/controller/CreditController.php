@@ -6,13 +6,13 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**
- * 积分相关查询
+ * 积分相关查询.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: CreditController.php 24975 2013-02-27 09:24:54Z jieyin $
- * @package src.products.u.controller.profile
  */
 class CreditController extends BaseProfileController
 {
@@ -26,7 +26,7 @@ class CreditController extends BaseProfileController
     }
 
     /**
-     *  积分首页--我的积分
+     *  积分首页--我的积分.
      */
     public function run()
     {
@@ -112,7 +112,7 @@ class CreditController extends BaseProfileController
     }
 
     /**
-     * 积分转换
+     * 积分转换.
      */
     public function doexchangeAction()
     {
@@ -160,7 +160,7 @@ class CreditController extends BaseProfileController
     }
 
     /**
-     * 积分转账
+     * 积分转账.
      */
     public function dotransferAction()
     {
@@ -298,7 +298,7 @@ class CreditController extends BaseProfileController
     }
 
     /**
-     * 现金充值记录
+     * 现金充值记录.
      */
     public function orderAction()
     {
@@ -325,7 +325,7 @@ class CreditController extends BaseProfileController
     }
 
     /**
-     * 积分日志
+     * 积分日志.
      */
     public function logAction()
     {

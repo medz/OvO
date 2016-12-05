@@ -6,10 +6,9 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserOnlineDao.php 17060 2012-08-31 01:50:31Z gao.wanggao $
- * @package
  */
-
 class PwUserOnlineDao extends PwBaseDao
 {
     protected $_table = 'online_user';

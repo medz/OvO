@@ -6,16 +6,16 @@
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserOnline.php 17060 2012-08-31 01:50:31Z gao.wanggao $
- * @package
  */
-
 class PwUserOnline
 {
     /**
      * 判断一个用户是否在线
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function isOnline($uid)
@@ -29,7 +29,8 @@ class PwUserOnline
     /**
      * 判断多个用户是否在线
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array 返回在线用户UID的数组
      */
     public function isOnlines($uids)
@@ -43,9 +44,10 @@ class PwUserOnline
     }
 
     /**
-     * 获取一条用户在线信息
+     * 获取一条用户在线信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getInfo($uid)
@@ -56,9 +58,10 @@ class PwUserOnline
     }
 
     /**
-     * 批量取得用户在线信息
+     * 批量取得用户在线信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchUserOnline($uids)
@@ -71,10 +74,11 @@ class PwUserOnline
     }
 
     /**
-     * 分页取得在线用户ID
+     * 分页取得在线用户ID.
      *
-     * @param  int   $size
-     * @param  int   $page
+     * @param int $size
+     * @param int $page
+     *
      * @return array
      */
     public function getInfoList($fid = 0, $start = 0, $limit = 10)
@@ -87,10 +91,11 @@ class PwUserOnline
     }
 
     /**
-     * 统计在线用户
+     * 统计在线用户.
      *
-     * @param  int $fid
-     * @param  int $tid
+     * @param int $fid
+     * @param int $tid
+     *
      * @return int
      */
     public function getOnlineCount($fid = 0, $tid = 0)
@@ -102,9 +107,10 @@ class PwUserOnline
     }
 
     /**
-     * 添加一条在线信息
+     * 添加一条在线信息.
      *
-     * @param  PwOnlineDm $dm
+     * @param PwOnlineDm $dm
+     *
      * @return bool
      */
     public function replaceInfo(PwOnlineDm $dm)
@@ -118,9 +124,10 @@ class PwUserOnline
     }
 
     /**
-     * 删除一条在线信息
+     * 删除一条在线信息.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteInfo($uid)
@@ -134,9 +141,10 @@ class PwUserOnline
     }
 
     /**
-     * 删除多条在线信息
+     * 删除多条在线信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return int
      */
     public function deleteInfos($uids)
@@ -149,9 +157,10 @@ class PwUserOnline
     }
 
     /**
-     * 删除过期的在线信息
+     * 删除过期的在线信息.
      *
-     * @param  int $modify_time
+     * @param int $modify_time
+     *
      * @return int
      */
     public function deleteInfoByTime($modify_time)

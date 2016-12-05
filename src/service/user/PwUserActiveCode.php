@@ -6,8 +6,8 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserActiveCode.php 7291 2012-04-01 03:39:14Z xiaoxia.xuxx $
- * @package src.service.user
  */
 class PwUserActiveCode
 {
@@ -15,10 +15,11 @@ class PwUserActiveCode
     const RESETPWD = 2; //找回密码
 
     /**
-     * 根据用户ID获得信息
+     * 根据用户ID获得信息.
      *
-     * @param  int   $uid    用户ID
-     * @param  int   $typeid 类型
+     * @param int $uid    用户ID
+     * @param int $typeid 类型
+     *
      * @return array
      */
     public function getInfoByUid($uid, $typeid = self::REGIST)
@@ -33,11 +34,12 @@ class PwUserActiveCode
     /**
      * 添加激活码
      *
-     * @param  int    $uid    用户ID
-     * @param  string $email  发送激活码的Email
-     * @param  string $code   激活码
-     * @param  int    $time   发送激活码时间
-     * @param  int    $typeid 激活码类型
+     * @param int    $uid    用户ID
+     * @param string $email  发送激活码的Email
+     * @param string $code   激活码
+     * @param int    $time   发送激活码时间
+     * @param int    $typeid 激活码类型
+     *
      * @return mixed
      */
     public function addActiveCode($uid, $email, $code, $time, $typeid = self::REGIST)
@@ -54,10 +56,11 @@ class PwUserActiveCode
     }
 
     /**
-     * 激活帐号
+     * 激活帐号.
      *
-     * @param  int  $uid        用户ID
-     * @param  int  $activeTime 激活时间
+     * @param int $uid        用户ID
+     * @param int $activeTime 激活时间
+     *
      * @return bool
      */
     public function activeCode($uid, $activeTime)
@@ -70,9 +73,10 @@ class PwUserActiveCode
     }
 
     /**
-     * 根据用户ID删除信息
+     * 根据用户ID删除信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return mixed
      */
     public function deleteInfoByUid($uid)

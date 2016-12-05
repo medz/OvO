@@ -3,14 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 缩略图生成方式
+ * 缩略图生成方式.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: PwImageThumb.php 22380 2012-12-21 14:54:07Z jieyin $
- * @package lib.image
  */
-
 class PwImageThumb
 {
     const TYPE_INTACT = 1; //等比缩略
@@ -47,7 +47,7 @@ class PwImageThumb
     }
 
     /**
-     * 设置宽度
+     * 设置宽度.
      */
     public function setWidth($width)
     {
@@ -55,7 +55,7 @@ class PwImageThumb
     }
 
     /**
-     * 设置高度
+     * 设置高度.
      */
     public function setHeight($height)
     {
@@ -63,7 +63,7 @@ class PwImageThumb
     }
 
     /**
-     * 设置缩略方式 <1.等比缩略 2.居中截取 3.等比填充>
+     * 设置缩略方式 <1.等比缩略 2.居中截取 3.等比填充>.
      */
     public function setType($type)
     {
@@ -71,7 +71,7 @@ class PwImageThumb
     }
 
     /**
-     * 设置图片质量
+     * 设置图片质量.
      */
     public function setQuality($quality)
     {
@@ -79,7 +79,7 @@ class PwImageThumb
     }
 
     /**
-     * 是否启用强制模式 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>
+     * 是否启用强制模式 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>.
      */
     public function setForceMode($forcemode)
     {
@@ -87,7 +87,7 @@ class PwImageThumb
     }
 
     /**
-     * 生成缩略图
+     * 生成缩略图.
      */
     public function execute()
     {
@@ -108,11 +108,11 @@ class PwImageThumb
 
         $thumb = call_user_func($this->imageCreateFunc, $compute->canvasW, $compute->canvasH);
         if (function_exists('ImageColorAllocate')) {
-            $black = ImageColorAllocate($thumb, 255, 255, 255);
+            $black = imagecolorallocate($thumb, 255, 255, 255);
             if ($this->imageCreateFunc == 'imagecreatetruecolor' && function_exists('imagefilledrectangle')) {
                 imagefilledrectangle($thumb, 0, 0, $compute->canvasW, $compute->canvasH, $black);
             } elseif ($this->imageCreateFunc == 'imagecreate' && function_exists('ImageColorTransparent')) {
-                $bgTransparent = ImageColorTransparent($thumb, $black);
+                $bgTransparent = imagecolortransparent($thumb, $black);
             }
         }
         call_user_func($this->imageCopyFunc, $thumb, $this->image->getSource(), $compute->dstX, $compute->dstY, $compute->srcX, $compute->srcY, $compute->dstW, $compute->dstH, $compute->srcW, $compute->srcH);
@@ -123,7 +123,7 @@ class PwImageThumb
     }
 
     /**
-     * 选用缩略图生成策略
+     * 选用缩略图生成策略.
      */
     public function compute()
     {
@@ -142,7 +142,7 @@ class PwImageThumb
     }
 
     /**
-     * 生成图片
+     * 生成图片.
      *
      * @param resource $image    图片内容
      * @param string $filename 图片地址
@@ -159,7 +159,7 @@ class PwImageThumb
     }
 
     /**
-     * 检测缩略图环境要求是否满足
+     * 检测缩略图环境要求是否满足.
      *
      * return bool
      */
@@ -239,7 +239,7 @@ abstract class PwImageThumbCompute
 }
 
 /**
- * 等比缩略算法
+ * 等比缩略算法.
  */
 class PwImageThumbIntactCompute extends PwImageThumbCompute
 {
@@ -298,7 +298,7 @@ class PwImageThumbIntactCompute extends PwImageThumbCompute
 }
 
 /**
- * 居中截取算法
+ * 居中截取算法.
  */
 class PwImageThumbCenterCompute extends PwImageThumbCompute
 {

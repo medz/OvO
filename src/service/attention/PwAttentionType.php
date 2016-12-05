@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 用户关注分类
+ * 用户关注分类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttentionType.php 19348 2012-10-13 03:52:48Z jinlong.panjl $
- * @package src.service.attention
  */
-
 class PwAttentionType
 {
     public function getType($id)
@@ -22,9 +21,10 @@ class PwAttentionType
     }
 
     /**
-     * 获取用户拥有的分类信息
+     * 获取用户拥有的分类信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getTypeByUid($uid)
@@ -33,10 +33,11 @@ class PwAttentionType
     }
 
     /**
-     * 添加一个分类
+     * 添加一个分类.
      *
-     * @param  int         $uid
-     * @param  string      $name
+     * @param int    $uid
+     * @param string $name
+     *
      * @return bool|object
      */
     public function addType($uid, $name)
@@ -54,10 +55,11 @@ class PwAttentionType
     }
 
     /**
-     * 修改分类名称
+     * 修改分类名称.
      *
-     * @param  int         $id
-     * @param  string      $name
+     * @param int    $id
+     * @param string $name
+     *
      * @return bool|object
      */
     public function editType($id, $name)
@@ -73,9 +75,10 @@ class PwAttentionType
     }
 
     /**
-     * 删除某个分类
+     * 删除某个分类.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteType($id)
@@ -94,10 +97,11 @@ class PwAttentionType
     \*********** 以下是用户分组接口 **************/
 
     /**
-     * 获取用户所属的分组信息
+     * 获取用户所属的分组信息.
      *
-     * @param  int   $uid
-     * @param  array $toUids
+     * @param int   $uid
+     * @param array $toUids
+     *
      * @return array
      */
     public function getUserType($uid, $touids)
@@ -115,12 +119,13 @@ class PwAttentionType
     }
 
     /**
-     * 获取用户(A)指定分类的关注用户
+     * 获取用户(A)指定分类的关注用户.
      *
-     * @param  int   $uid    用户(A)
-     * @param  int   $typeid 分类id
-     * @param  int   $limit
-     * @param  int   $offset
+     * @param int $uid    用户(A)
+     * @param int $typeid 分类id
+     * @param int $limit
+     * @param int $offset
+     *
      * @return array
      */
     public function getUserByType($uid, $typeid, $limit = 20, $offset = 0)
@@ -133,11 +138,12 @@ class PwAttentionType
     }
 
     /**
-     * 保存用户多个分类
+     * 保存用户多个分类.
      *
-     * @param  int  $uid
-     * @param  int  $touid
-     * @param  int  $typeid
+     * @param int $uid
+     * @param int $touid
+     * @param int $typeid
+     *
      * @return bool
      */
     public function addUserType($uid, $touid, $typeid)
@@ -150,11 +156,12 @@ class PwAttentionType
     }
 
     /**
-     * 删除用户多个分类
+     * 删除用户多个分类.
      *
-     * @param  int  $uid
-     * @param  int  $touid
-     * @param  int  $typeids
+     * @param int $uid
+     * @param int $touid
+     * @param int $typeids
+     *
      * @return bool
      */
     public function deleteByUidAndTouidAndType($uid, $touid, $typeid)
@@ -167,11 +174,12 @@ class PwAttentionType
     }
 
     /**
-     * 保存用户分类
+     * 保存用户分类.
      *
-     * @param  int   $uid
-     * @param  int   $touid
-     * @param  array $typeids
+     * @param int   $uid
+     * @param int   $touid
+     * @param array $typeids
+     *
      * @return bool
      */
     public function saveUserType($uid, $touid, $typeids)
@@ -188,10 +196,11 @@ class PwAttentionType
     }
 
     /**
-     * 删除用户的分类
+     * 删除用户的分类.
      *
-     * @param  int  $uid
-     * @param  int  $touid
+     * @param int $uid
+     * @param int $touid
+     *
      * @return bool
      */
     public function deleteUserType($uid, $touid)
@@ -204,7 +213,7 @@ class PwAttentionType
     }
 
     /**
-     * 删除某个分组所有的用户关系
+     * 删除某个分组所有的用户关系.
      */
     public function deleteUserTypeByType($typeid)
     {

@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 帖子搜索条件
+ * 帖子搜索条件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditLogSc.php 8147 2012-04-16 09:37:12Z jieyin $
- * @package forum
  */
-
 class PwCreditLogSc
 {
     protected $_data = array();
@@ -27,7 +26,7 @@ class PwCreditLogSc
     }
 
     /**
-     * 搜索帖子标题
+     * 搜索帖子标题.
      */
     public function setCtype($ctype)
     {
@@ -37,7 +36,7 @@ class PwCreditLogSc
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      */
     public function setUserid($uid)
     {
@@ -47,7 +46,7 @@ class PwCreditLogSc
     }
 
     /**
-     * 发帖时间区间，起始
+     * 发帖时间区间，起始.
      */
     public function setCreateTimeStart($time)
     {

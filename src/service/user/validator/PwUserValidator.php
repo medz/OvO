@@ -1,19 +1,20 @@
 <?php
 /**
- * 用户的相关验证方法
+ * 用户的相关验证方法.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserValidator.php 24943 2013-02-27 03:52:21Z jieyin $
- * @package  src.service.user.validator
  */
 class PwUserValidator
 {
     /**
-     * 检测用户名的合法性
+     * 检测用户名的合法性.
      *
-     * @param  string       $username
+     * @param string $username
+     *
      * @return bool|PwError
      */
     public static function isUsernameHasIllegalChar($username)
@@ -27,9 +28,10 @@ class PwUserValidator
     }
 
     /**
-     * 检查用户的手机号码是否合法
+     * 检查用户的手机号码是否合法.
      *
-     * @param  string       $password 用户密码
+     * @param string $password 用户密码
+     *
      * @return PwError|bool
      */
     public static function isMobileValid($mobile)
@@ -42,9 +44,10 @@ class PwUserValidator
     }
 
     /**
-     * 检测固定电话号码是否正确
+     * 检测固定电话号码是否正确.
      *
-     * @param  string       $telPhone
+     * @param string $telPhone
+     *
      * @return true|PwError
      */
     public static function isTelPhone($telPhone)
@@ -57,10 +60,11 @@ class PwUserValidator
     }
 
     /**
-     * 验证支付宝帐号
+     * 验证支付宝帐号.
      *
      * @param  string       $alipay   待检查的支付宝帐号
-     * @param  string       $username 排除的用户名
+     * @param string $username 排除的用户名
+     *
      * @return true|PwError
      */
     public static function isAlipayValid($alipay, $username = '')
@@ -71,12 +75,12 @@ class PwUserValidator
         return true;
     }
 
-
     /**
-     * 检查用户的邮箱
+     * 检查用户的邮箱.
      *
      * @param  string       $email    待检查的用户邮箱
      * @param  string       $username 待检查的用户名
+     *
      * @return bool|PwError
      */
     public static function isEmailValid($email, $username = '', $uid = 0)
@@ -90,10 +94,11 @@ class PwUserValidator
     }
 
     /**
-     * 验证用户名
+     * 验证用户名.
      *
-     * @param  string       $username 验证的用户名
-     * @param  int          $uid      排除的用户ID
+     * @param string $username 验证的用户名
+     * @param int    $uid      排除的用户ID
+     *
      * @return PwError|bool
      */
     public static function isUsernameValid($username, $uid = 0)
@@ -119,10 +124,11 @@ class PwUserValidator
     }
 
     /**
-     * 检查用户的username是否存在
+     * 检查用户的username是否存在.
      *
      * @param  string $username  待检查的用户名
-     * @param  int  $exceptUid 排除的用户ID
+     * @param int $exceptUid 排除的用户ID
+     *
      * @return bool
      */
     public static function checkUsernameExist($username, $exceptUid = 0)
@@ -141,10 +147,11 @@ class PwUserValidator
     }
 
     /**
-     * 检查用户的密码是否合法
+     * 检查用户的密码是否合法.
      *
-     * @param  string       $password 用户密码
-     * @param  string       $username 用户名
+     * @param string $password 用户密码
+     * @param string $username 用户名
+     *
      * @return PwError|bool
      */
     public static function isPwdValid($password, $username)
@@ -169,10 +176,11 @@ class PwUserValidator
      * 检查密码复杂度
      * 检查用户名和密码是否允许相同
      * 如果设置不允许相同而相同则返回PwError
-     * 其余返回true
+     * 其余返回true.
      *
-     * @param  string       $password 用户密码
-     * @param  string       $username 用户名
+     * @param string $password 用户密码
+     * @param string $username 用户名
+     *
      * @return bool|PwError
      */
     public static function checkPwdComplex($password, $username)
@@ -199,7 +207,7 @@ class PwUserValidator
     }
 
     /**
-     * 显示用户密码的支持信息
+     * 显示用户密码的支持信息.
      *
      * @return array(string, args)
      */
@@ -228,7 +236,7 @@ class PwUserValidator
     }
 
     /**
-     * 显示用户名的验证支持信息
+     * 显示用户名的验证支持信息.
      *
      * @return array(string, args)
      */
@@ -243,9 +251,10 @@ class PwUserValidator
     }
 
     /**
-     * 构造用户密码复杂度的校验规则
+     * 构造用户密码复杂度的校验规则.
      *
      * @param  array  $config 复杂规则的配置
+     *
      * @return string
      */
     private static function buildPwdComplexMsg($config)
@@ -259,17 +268,18 @@ class PwUserValidator
     }
 
     /**
-     * 复杂度判断
+     * 复杂度判断.
      *
      * @param string $password 密码
      * @param  int    $config   配置
+     *
      * @return bool
      */
     private static function _complexCaculate($password, $config)
     {
         $pwdLen = strlen($password);
         $complex = 0;
-        for ($i = 0; $i < $pwdLen; $i ++) {
+        for ($i = 0; $i < $pwdLen; $i++) {
             $ascii = ord($password[$i]);
             //必须含有小写字母 97-122
             if (1 == ($config & 1) && $ascii >= 97 && $ascii <= 122) {

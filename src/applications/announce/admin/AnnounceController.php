@@ -4,13 +4,13 @@ defined('WEKIT_VERSION') or exit(403);
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRC:service.announce.dm.PwAnnounceDm');
 /**
- * 管理公告页
+ * 管理公告页.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AnnounceController.php 28786 2013-05-23 09:57:58Z jieyin $
- * @package modules.admin
  */
 class AnnounceController extends AdminBaseController
 {
@@ -34,23 +34,17 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 添加公告
-     *
+     * 添加公告.
      */
     public function addAction()
     {
     }
 
-
     /**
 
-     * 添加公告处理
-
-     *
-
+     * 添加公告处理.
 
      */
-
     public function doAddAction()
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
@@ -76,8 +70,7 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 公告列表页处理
-     *
+     * 公告列表页处理.
      */
     public function doRunAction()
     {
@@ -97,8 +90,7 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 通过多个公告ID批量删除多条公告
-     *
+     * 通过多个公告ID批量删除多条公告.
      */
     public function doBatchDeleteAction()
     {
@@ -113,8 +105,7 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 通过单个公告ID删除单条公告
-     *
+     * 通过单个公告ID删除单条公告.
      */
     public function doDeleteAction()
     {
@@ -126,8 +117,7 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 编辑公告处理
-     *
+     * 编辑公告处理.
      */
     public function doUpdateAction()
     {
@@ -153,8 +143,7 @@ class AnnounceController extends AdminBaseController
     }
 
     /**
-     * 编辑公告
-     *
+     * 编辑公告.
      */
     public function updateAction()
     {
