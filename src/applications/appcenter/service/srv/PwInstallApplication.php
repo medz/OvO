@@ -199,7 +199,7 @@ class PwInstallApplication
      * 2. 将安装包移动到目标位置
      * 3. 注册相应的安装程序进行安装
      *
-     * @param  string  $step
+     * @param string $step
      *                       需要执行的安装步骤
      * @return PwError true next
      */

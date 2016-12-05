@@ -167,9 +167,9 @@ class WindidMessageApi
     /**
      * 发送消息
      *
-     * @param  array  $uids    收件人uids
+     * @param array $uids 收件人uids
      * @param  string $content 消息内容
-     * @param  int    $fromUid 发件人
+     * @param  int $fromUid 发件人
      * @return int
      */
     public function send($uids, $content, $fromUid = 0)

@@ -12,7 +12,7 @@ class PwDesignDisplay
     /**
      * 获取模块展示数据
      *
-     * @param int  $moduleId 模块ID
+     * @param int $moduleId 模块ID
      * @param bool $isextend 是否包括扩展数据
      * @param bool $isreserv 是否包括预定数据
      */

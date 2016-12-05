@@ -145,9 +145,9 @@ class PwImageThumb
      * 生成图片
      *
      * @param resource $image    图片内容
-     * @param string   $filename 图片地址
-     * @param int      $quality  图片质量
-     *                           return void
+     * @param string $filename 图片地址
+     * @param int    $quality  图片质量
+     *                         return void
      */
     public function makeImage($image, $filename, $quality = '90')
     {

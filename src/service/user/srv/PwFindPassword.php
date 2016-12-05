@@ -125,10 +125,10 @@ class PwFindPassword
     /**
      * 获得信息的标题和内容
      *
-     * @param  string $titleKey   标题key
+     * @param string $titleKey 标题key
      * @param  string $contentKey 内容key
-     * @param  string $username   用户名
-     * @param  string $url        链接地址
+     * @param  string $username 用户名
+     * @param  string $url      链接地址
      * @return array
      */
     private function _buildTitleAndContent($username, $url = '')

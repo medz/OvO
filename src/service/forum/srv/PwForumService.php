@@ -54,8 +54,8 @@ class PwForumService
     /**
      * 获取用户所有禁止访问的版块列表
      *
-     * @param  PwUserBo $user
-     * @param  array    $forums      版块列表
+     * @param PwUserBo $user
+     * @param array    $forums 版块列表
      * @param  bool     $includeHide 是否包含隐藏版块
      * @return array
      */

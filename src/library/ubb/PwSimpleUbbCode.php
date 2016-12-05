@@ -41,7 +41,7 @@ class PwSimpleUbbCode
      * 转换同名ubb标签到html
      *
      * @param  string $message 源内容
-     * @param  mixed  $tag     要转化的标签 <例: 1.单个 string u/b/ 2.多个 array('u','b')>
+     * @param mixed $tag 要转化的标签 <例: 1.单个 string u/b/ 2.多个 array('u','b')>
      * @return string 转化后的内容
      */
     public static function convertTag($message, $tag)
@@ -184,7 +184,7 @@ class PwSimpleUbbCode
      * 转化table标签
      *
      * @param  string $message 内容
-     * @param  int    $max     嵌套时，最大解析层级
+     * @param  int    $max 嵌套时，最大解析层级
      * @return string
      */
     public static function convertTable($message, $max = 0)
@@ -524,7 +524,7 @@ class PwSimpleUbbCode
      * 检测内容中是否包含标签
      *
      * @param  string $message 内容
-     * @param  string $tag     标签
+     * @param  string $tag 标签
      * @return bool
      */
     public static function hasTag($message, $tag)
@@ -558,7 +558,7 @@ class PwSimpleUbbCode
     /**
      * 转化ubb标签
      *
-     * @param  string $message
+     * @param string $message
      * @param  object $config  ubb转换配置
      * @return string
      */
@@ -683,7 +683,7 @@ class PwSimpleUbbCode
     /**
      * 生成a标签
      *
-     * @param  string $url        链接地址
+     * @param string $url 链接地址
      * @param  string $name       链接内容
      * @param  string $protocol   链接协议头
      * @param  int    $isdownload 链接是否为下载样式
@@ -705,7 +705,7 @@ class PwSimpleUbbCode
      * 生成code标签内容
      *
      * @param  string $str     内容
-     * @param  string $brush   代码语法
+     * @param string $brush 代码语法
      * @param  string $toolbar 是否有工具栏
      * @return string
      */
@@ -733,7 +733,7 @@ class PwSimpleUbbCode
     /**
      * 生成hide标签内容
      *
-     * @param  int    $cost   需要的积分
+     * @param int $cost 需要的积分
      * @param  stirng $str    隐藏的内容
      * @param  object $config ubb转换配置
      * @return string
@@ -748,7 +748,7 @@ class PwSimpleUbbCode
     /**
      * 生成sell标签内容
      *
-     * @param  int    $cost   需要的积分
+     * @param int $cost 需要的积分
      * @param  stirng $str    隐藏的内容
      * @param  object $config ubb转换配置
      * @return string
@@ -826,7 +826,7 @@ class PwSimpleUbbCode
     /**
      * 生成iframe标签内容
      *
-     * @param  string $url
+     * @param string $url
      * @param  object $config ubb转换配置
      * @return string
      */

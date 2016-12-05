@@ -18,9 +18,9 @@ class PwPollVoterService
     /**
    * 获取我关注的人参与的投票批量ID
    *
-   * @param int $uids 多个用户ID
-   * @param int $limit
-   * @param int $offset
+   * @param  int   $uids   多个用户ID
+   * @param  int   $limit
+   * @param  int   $offset
    * @return array
    */
   public function fetchVoteByUid($uids, $limit, $offset)

@@ -14,7 +14,7 @@ abstract class App_SearchAction
     /**
      * 检查关键字查询条件
      *
-     * @param  string $keyword
+     * @param string $keyword
      * @return string 关键字
      */
     protected function _checkKeywordCondition($keyword)

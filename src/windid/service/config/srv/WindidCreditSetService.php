@@ -17,7 +17,7 @@ class WindidCreditSetService
      * 设置用户积分
      *
      * @param  array $credit 积分配置信息<array('1' => array('name'=>?,'unit'=>?,'descrip'=>?), '2' => ?, ...)>
-     * @param  array $new    新增加的积分
+     * @param  array $new 新增加的积分
      * @return bool
      */
     public function setCredits($credits, $newCredit = array())

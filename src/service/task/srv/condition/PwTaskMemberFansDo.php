@@ -17,7 +17,7 @@ class PwTaskMemberFansDo implements PwTaskCompleteInterface
     /**
      * 加关注的完成条件
      *
-     * @param int $uid   用户A
+     * @param int $uid 用户A
      * @param int $toUid 被关注的用户B
      * @return
      */

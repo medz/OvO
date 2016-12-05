@@ -500,7 +500,7 @@ class Pw
      * 注：只作用于二维数组
      *
      * @param  array  $data 待收集的二维列表
-     * @param  string $key  需要收集的
+     * @param  string $key 需要收集的
      * @return array
      */
     public static function collectByKey($data, $key)
