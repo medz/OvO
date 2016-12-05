@@ -262,7 +262,7 @@ class PwFresh
     /**
      * 按时间清除一批我关注的新鲜事数据
      *
-     * @param  int  $uid   用户id
+     * @param int $uid 用户id
      * @param  int  $limit 清除条数
      * @return bool
      */

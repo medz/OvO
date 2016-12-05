@@ -122,7 +122,7 @@ class PwUserValidator
      * 检查用户的username是否存在
      *
      * @param  string $username  待检查的用户名
-     * @param  int    $exceptUid 排除的用户ID
+     * @param  int  $exceptUid 排除的用户ID
      * @return bool
      */
     public static function checkUsernameExist($username, $exceptUid = 0)
@@ -261,7 +261,7 @@ class PwUserValidator
     /**
      * 复杂度判断
      *
-     * @param  string $password 密码
+     * @param string $password 密码
      * @param  int    $config   配置
      * @return bool
      */

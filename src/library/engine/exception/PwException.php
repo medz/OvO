@@ -24,8 +24,8 @@ class PwException extends WindActionException
     /**
      * 根据exception code返回构建的异常信息描述
      *
-     * @param  string $message 用户自定义的信息
-     * @param  array  $vars    异常信息中的变量值
+     * @param string $message 用户自定义的信息
+     * @param array  $vars    异常信息中的变量值
      * @return string 组装后的异常信息
      */
     public function buildMessage($message, $vars)

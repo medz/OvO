@@ -74,7 +74,7 @@ class AdminConfig
     /**
      * 批量设置配置信息
      *
-     * @param  string $namespace 模块名称
+     * @param string $namespace 模块名称
      * @param  array  $array     配置信息数组 array('name' => array('value' => '', 'descrip' => '')
      * @return bool
      */

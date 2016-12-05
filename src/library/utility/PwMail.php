@@ -45,8 +45,8 @@ class PwMail
     /**
      * 普通发邮件方法
      *
-     * @param  string $toUser  收件人
-     * @param  string $subject 邮件标题
+     * @param string $toUser  收件人
+     * @param string $subject 邮件标题
      * @param  string $content 邮件内容
      * @return bool
      */

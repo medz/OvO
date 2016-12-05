@@ -54,10 +54,10 @@ class PwTaskService
     /**
      * 开启一个任务
      *
-     * @param  int          $id
+     * @param int $id
      * @param  int          $status 开启1或是关闭0
-     * @param  int          $order  顺序
-     * @param  string       $title  标题
+     * @param  int          $order 顺序
+     * @param  string       $title 标题
      * @return PwError|bool
      */
     public function openTask($id, $status, $order = '', $title = '')

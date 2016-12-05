@@ -36,9 +36,9 @@ class PwLoginService extends PwBaseHookService
     /**
      * 用户登录
      *
-     * @param  string   $username     用户登录的帐号
-     * @param  string   $password     用户登录的密码
-     * @param  string   $ip           登录IP
+     * @param string $username 用户登录的帐号
+     * @param string $password 用户登录的密码
+     * @param string $ip       登录IP
      * @param  string   $safeQuestion 安全问题
      * @param  string   $safeAnswer   安全问题答案
      * @return bool|int

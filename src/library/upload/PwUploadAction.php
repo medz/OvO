@@ -68,8 +68,8 @@ abstract class PwUploadAction
     /**
      * 缩略图生成配置
      *
-     * @param  string $filename 文件名
-     * @param  string $dir      存储路径
+     * @param string $filename 文件名
+     * @param string $dir      存储路径
      * @return array  配置
      *                         例:array(
      *                         array(0.缩略图文件名, 1.缩略图存储地址, 2.限制宽, 3.限制高, 4.缩略图生成方式(*), 5.强制生成(*)),

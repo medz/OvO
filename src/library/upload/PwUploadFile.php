@@ -146,7 +146,7 @@ class PwUploadFile
     /**
      * 生成缩略图
      *
-     * @param PwImage $image     图片对象
+     * @param PwImage $image 图片对象
      * @param array   $thumbInfo 缩略图配置
      * @param object 存储对象
      */
@@ -173,7 +173,7 @@ class PwUploadFile
     /**
      * 图片生成水印
      *
-     * @param PwImage $image   图片对象
+     * @param PwImage $image 图片对象
      * @param array   $options 生成方案配置
      */
     public static function watermark(PwImage $image, $options = array())

@@ -83,7 +83,7 @@ class PwInviteCode
     /**
      * 根据用户ID和时间，查询该用户在该时间点之后已经购买的
      *
-     * @param  int $uid  用户ID
+     * @param int $uid 用户ID
      * @param  int $time 计算的其实时间
      * @return int
      */
