@@ -561,13 +561,13 @@ class IndexController extends WindController
     private function _getRecommendEnvironment()
     {
         return array(
-            'os' => 'Linux',
-            'version' => '>7.x.x',
-            'mysql' => '>5.4.x',
+            'os'        => 'Linux',
+            'version'   => '>7.x.x',
+            'mysql'     => '>5.4.x',
             'pdo_mysql' => '必须',
-            'upload' => '>2M',
-            'space' => '>50M',
-            'gd' => '>2.0.28',
+            'upload'    => '>2M',
+            'space'     => '>50M',
+            'gd'        => '>2.0.28',
         );
     }
 
@@ -579,13 +579,13 @@ class IndexController extends WindController
     private function _getLowestEnvironment()
     {
         return array(
-            'os' => '不限制',
-            'version' => '5.3.12',
-            'mysql' => '5.0',
+            'os'        => '不限制',
+            'version'   => '5.3.12',
+            'mysql'     => '5.0',
             'pdo_mysql' => '必须',
-            'upload' => '不限制',
-            'space' => '50M',
-            'gd' => '2.0',
+            'upload'    => '不限制',
+            'space'     => '50M',
+            'gd'        => '2.0',
         );
     }
 
