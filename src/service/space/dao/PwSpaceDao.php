@@ -2,18 +2,18 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpaceDao.php 6219 2012-03-19 08:39:40Z gao.wanggao $
- * @package
  */
 class PwSpaceDao extends PwBaseDao
 {
     protected $_table = 'space';
     protected $_dataStruct = array('uid', 'space_name', 'space_descrip', 'space_domain', 'space_style', 'back_image', 'visit_count', 'space_privacy', 'visitors', 'tovisitors');
-
 
     public function getSpace($uid)
     {

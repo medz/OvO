@@ -1,11 +1,13 @@
 <?php
 /**
  * @author peihong <jhqblxt@gmail.com> Mar 26, 2012
+ *
  * @link
+ *
  * @license
+ *
  * @version $Id: PwOvertimeDao.php 6075 2012-03-16 05:54:18Z peihong.zhangph $
  */
-
 class PwPostsToppedDao extends PwBaseDao
 {
     protected $_pk = 'pid';

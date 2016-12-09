@@ -4,12 +4,13 @@ Wind::import('APPS:api.controller.OpenBaseController');
 
 /**
  * windid用户接口
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: UserController.php 24768 2013-02-20 11:03:35Z jieyin $
- * @package
  */
 class UserController extends OpenBaseController
 {
@@ -68,7 +69,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 批量获取用户信息
+     * 批量获取用户信息.
      */
     public function fecthAction()
     {
@@ -80,7 +81,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 增加一个用户
+     * 增加一个用户.
      */
     public function addUserAction()
     {
@@ -131,7 +132,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 修改用户信息
+     * 修改用户信息.
      */
     public function editUserAction()
     {
@@ -183,7 +184,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 删除一个用户
+     * 删除一个用户.
      */
     public function deleteAction()
     {
@@ -197,7 +198,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 删除多个用户
+     * 删除多个用户.
      */
     public function batchDeleteAction()
     {
@@ -213,7 +214,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 获取用户积分
+     * 获取用户积分.
      *
      * @param int $uid
      */
@@ -224,9 +225,10 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 批量获取用户积分
+     * 批量获取用户积分.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fecthCreditAction()
@@ -237,7 +239,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 更新用户积分
+     * 更新用户积分.
      *
      * @param int $uid
      * @param int $cType (1-8)
@@ -288,7 +290,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 清空一个积分字段
+     * 清空一个积分字段.
      *
      * @param int $num >8
      */
@@ -299,9 +301,10 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 获取用户黑名单
+     * 获取用户黑名单.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array uids
      */
     public function getBlackAction()
@@ -318,7 +321,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 增加黑名单
+     * 增加黑名单.
      *
      * @param int $uid
      * @param int $blackUid
@@ -338,7 +341,7 @@ class UserController extends OpenBaseController
     }
 
     /**
-     * 删除某的黑名单 $blackUid为空删除所有
+     * 删除某的黑名单 $blackUid为空删除所有.
      *
      * @param int $uid
      * @param int $blackUid

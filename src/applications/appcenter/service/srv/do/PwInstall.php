@@ -4,12 +4,11 @@ Wind::import('APPCENTER:service.srv.iPwInstall');
 Wind::import('APPCENTER:service.dm.PwApplicationDm');
 Wind::import('APPCENTER:service.srv.helper.PwSystemHelper');
 /**
- *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInstall.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwInstall implements iPwInstall
 {
@@ -213,8 +212,8 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     *
      * @see iPwInstall::afterInstall()
+     *
      * @param PwInstallApplication $install
      */
     public function afterInstall($install)
@@ -241,8 +240,8 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     *
      * @see iPwInstall::rollback()
+     *
      * @param PwInstallApplication $install
      */
     public function rollback($install)
@@ -272,10 +271,11 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     * 注册数据文件
+     * 注册数据文件.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function registeData($install)
     {
@@ -340,10 +340,11 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     * 注册钩子信息
+     * 注册钩子信息.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function registeHooks($install)
     {
@@ -366,8 +367,9 @@ class PwInstall implements iPwInstall
     /**
      * 注册注入服务
      *
-     * @param  PwInstallApplication $install
-     * @return true                 PwError
+     * @param PwInstallApplication $install
+     *
+     * @return true PwError
      */
     public function registeInjectServices($install)
     {
@@ -396,10 +398,11 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     * 注册应用信息
+     * 注册应用信息.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function registeApplication($install)
     {
@@ -444,10 +447,11 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     * 注册静态资源
+     * 注册静态资源.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function registeResource($install)
     {
@@ -472,7 +476,6 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     *
      * @return PwHookInject
      */
     private function _loadPwHookInject()
@@ -481,7 +484,6 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     *
      * @return PwHooks
      */
     private function _loadPwHooks()
@@ -490,7 +492,6 @@ class PwInstall implements iPwInstall
     }
 
     /**
-     *
      * @return PwApplication
      */
     private function _load()

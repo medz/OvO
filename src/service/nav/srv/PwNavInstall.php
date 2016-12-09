@@ -3,20 +3,20 @@
 Wind::import('APPCENTER:service.srv.iPwInstall');
 Wind::import('SRV:nav.dm.PwNavDm');
 /**
- * 应用 - 导航安装
+ * 应用 - 导航安装.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwNavInstall.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package nav
  */
 class PwNavInstall implements iPwInstall
 {
     private $link = '';
 
     /**
-     * 注册主导航
+     * 注册主导航.
      */
     public function install($install)
     {
@@ -29,7 +29,7 @@ class PwNavInstall implements iPwInstall
     }
 
     /**
-     * 注册底部导航
+     * 注册底部导航.
      *
      * @param unknown_type $install
      */
@@ -44,7 +44,7 @@ class PwNavInstall implements iPwInstall
     }
 
     /**
-     * 注册我的导航
+     * 注册我的导航.
      *
      * @param unknown_type $install
      */
@@ -130,9 +130,10 @@ class PwNavInstall implements iPwInstall
      *
      * ..
      *
-     * @param  unknown_type         $type
-     * @param  PwInstallApplication $install
-     * @return PwError              boolean
+     * @param unknown_type         $type
+     * @param PwInstallApplication $install
+     *
+     * @return PwError boolean
      */
     protected function _install($type, $install)
     {
@@ -166,7 +167,6 @@ class PwNavInstall implements iPwInstall
     }
 
     /**
-     *
      * @return PwNav
      */
     private function _navDs()

@@ -3,15 +3,14 @@
 Wind::import('APPS:manage.controller.BaseManageController');
 
 /**
- * 帖子审核管理
+ * 帖子审核管理.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ContentController.php 28815 2013-05-24 09:39:50Z jieyin $
- * @package forum
  */
-
 class ContentController extends BaseManageController
 {
     /* (non-PHPdoc)

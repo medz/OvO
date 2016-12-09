@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 帖子审核管理
+ * 帖子审核管理.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ContentcheckController.php 27729 2013-04-28 02:00:50Z jieyin $
- * @package forum
  */
-
 class ContentcheckController extends AdminBaseController
 {
     public function run()
@@ -60,10 +59,10 @@ class ContentcheckController extends AdminBaseController
         $this->setOutput(Wekit::load('forum.srv.PwForumService')->getForumList($fid), 'forumlist');
         $this->setOutput(Wekit::load('forum.srv.PwForumService')->getForumOption($fid), 'option_html');
         $this->setOutput(array(
-            'author' => $author,
+            'author'             => $author,
             'created_time_start' => $createdTimeStart,
-            'created_time_end' => $createdTimeEnd,
-            'fid' => $fid,
+            'created_time_end'   => $createdTimeEnd,
+            'fid'                => $fid,
         ), 'args');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');

@@ -2,24 +2,22 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子缓存数据接口
+ * 帖子缓存数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadDbCache.php 22201 2012-12-19 15:38:16Z jieyin $
- * @package src.service.user
  */
 class PwThreadDbCache extends PwBaseMapDbCache
 {
     protected $keys = array(
-        'thread' => array('thread_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwThreadsDao', 'getThread')),
+        'thread'        => array('thread_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwThreadsDao', 'getThread')),
         'threadcontent' => array('threadcontent_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwThreadsContentDao', 'getThread')),
-        'thread_list' => array('thread_list_%s_%s_%s_%s', array('fver', 'fid', 'limit', 'offset'), PwCache::USE_DBCACHE, 'forum', 0),
-        'thread_fver' => array('thread_fver_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, 0),
+        'thread_list'   => array('thread_list_%s_%s_%s_%s', array('fver', 'fid', 'limit', 'offset'), PwCache::USE_DBCACHE, 'forum', 0),
+        'thread_fver'   => array('thread_fver_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, 0),
     );
 
     public function getKeysByTid($tid)
@@ -140,7 +138,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
     }
 
     /**
-     * 清除一个版块的列表缓存缓存
+     * 清除一个版块的列表缓存缓存.
      *
      * @param int $fid
      */
@@ -150,7 +148,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
     }
 
     /**
-     * 更新一个帖子，清除所属版块的列表缓存
+     * 更新一个帖子，清除所属版块的列表缓存.
      *
      * @param int $tid
      * @param int $fid
@@ -165,7 +163,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
     }
 
     /**
-     * 更新多个帖子时，清除所属版块的列表缓存
+     * 更新多个帖子时，清除所属版块的列表缓存.
      *
      * @param array $tids
      * @param int   $fid

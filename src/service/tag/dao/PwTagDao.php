@@ -3,13 +3,13 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * 话题DAO
+ * 话题DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:53Z yishuo $
- * @package PwTagDao
  */
 class PwTagDao extends PwBaseDao
 {
@@ -21,9 +21,10 @@ class PwTagDao extends PwBaseDao
     protected $_dataStruct = array('tag_id', 'parent_tag_id', 'ifhot', 'tag_name', 'tag_logo', 'iflogo', 'excerpt', 'content_count', 'attention_count', 'created_userid', 'seo_title', 'seo_description', 'seo_keywords');
 
     /**
-     * 添加一条话题
+     * 添加一条话题.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addTag($data)
@@ -32,9 +33,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 删除一条话题
+     * 删除一条话题.
      *
-     * @param  int  $tagId
+     * @param int $tagId
+     *
      * @return bool
      */
     public function delete($tagId)
@@ -43,9 +45,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 批量删除话题
+     * 批量删除话题.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function batchDelete($tagIds)
@@ -54,11 +57,12 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 修改一条话题
+     * 修改一条话题.
      *
-     * @param  int   $tagId
-     * @param  array $data
-     * @param  array $increaseData
+     * @param int   $tagId
+     * @param array $data
+     * @param array $increaseData
+     *
      * @return bool
      */
     public function update($tagId, $data = array(), $increaseData = array())
@@ -67,11 +71,12 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 批量修改话题
+     * 批量修改话题.
      *
-     * @param  array $tagIds
-     * @param  array $data
-     * @param  array $increaseData
+     * @param array $tagIds
+     * @param array $data
+     * @param array $increaseData
+     *
      * @return bool
      */
     public function batchUpdate($tagIds, $fields, $increaseFields = array())
@@ -80,9 +85,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 获取一条话题
+     * 获取一条话题.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function getTag($tagId)
@@ -91,9 +97,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 批量获取话题
+     * 批量获取话题.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return array
      */
     public function fetchTag($tagIds)
@@ -105,9 +112,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 根据归属话题获取话题
+     * 根据归属话题获取话题.
      *
-     * @param  int   $parentTagId
+     * @param int $parentTagId
+     *
      * @return array
      */
     public function getTagByParent($parentTagId)
@@ -119,9 +127,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 根据话题名称获取一条话题
+     * 根据话题名称获取一条话题.
      *
-     * @param  string $tagName
+     * @param string $tagName
+     *
      * @return array
      */
     public function getTagByName($tagName)
@@ -133,9 +142,10 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 根据话题名称批量获取话题
+     * 根据话题名称批量获取话题.
      *
-     * @param  array $tagNames
+     * @param array $tagNames
+     *
      * @return array
      */
     public function getTagsByNames($tagNames)
@@ -147,15 +157,16 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 搜索话题count -- 只供后台搜索使用
+     * 搜索话题count -- 只供后台搜索使用.
      *
-     * @param  string $name
-     * @param  int    $ifHot
-     * @param  int    $categoryId
-     * @param  int    $attentionCountStart
-     * @param  int    $attentionCountEnd
-     * @param  int    $contentCountStart
-     * @param  int    $contentCountEnd
+     * @param string $name
+     * @param int    $ifHot
+     * @param int    $categoryId
+     * @param int    $attentionCountStart
+     * @param int    $attentionCountEnd
+     * @param int    $contentCountStart
+     * @param int    $contentCountEnd
+     *
      * @return int
      */
     public function countTagByCondition($name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd)
@@ -199,17 +210,18 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 搜索话题列表 -- 只供后台搜索使用
+     * 搜索话题列表 -- 只供后台搜索使用.
      *
-     * @param  int    $start
-     * @param  int    $limit
-     * @param  string $name
-     * @param  int    $ifHot
-     * @param  int    $categoryId
-     * @param  int    $attentionCountStart
-     * @param  int    $attentionCountEnd
-     * @param  int    $contentCountStart
-     * @param  int    $contentCountEnd
+     * @param int    $start
+     * @param int    $limit
+     * @param string $name
+     * @param int    $ifHot
+     * @param int    $categoryId
+     * @param int    $attentionCountStart
+     * @param int    $attentionCountEnd
+     * @param int    $contentCountStart
+     * @param int    $contentCountEnd
+     *
      * @return array
      */
     public function getTagByCondition($start, $limit, $name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd)
@@ -253,11 +265,12 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 获取我关注的话题
+     * 获取我关注的话题.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getAttentionTag($uid, $start, $limit)
@@ -269,10 +282,11 @@ class PwTagDao extends PwBaseDao
     }
 
     /**
-     * 根据参数获取相关话题
+     * 根据参数获取相关话题.
      *
-     * @param  int   $typeId
-     * @param  array $paramIds
+     * @param int   $typeId
+     * @param array $paramIds
+     *
      * @return array
      */
     public function getTagsByParamIds($typeId, $paramIds)

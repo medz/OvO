@@ -1,13 +1,13 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysBenchServiceAdministor
 {
     public function isOpen()
     {
         $this->checkTables();
         $service = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
-        if (! $service->getExtra('ac_isopen')) {
+        if (!$service->getExtra('ac_isopen')) {
             return false;
         }
 
@@ -17,7 +17,7 @@ class ACloudSysBenchServiceAdministor
         $isAdvanced = $service->getExtra('ac_install_advanced');
         list($lastaccess) = $this->getLastAccessInfo();
         list($bool, $message) = ($isAdvanced != 1 && (time() - $lastaccess >= 7200)) ? $this->checkLogin() : array(true, '');
-        if (! $bool) {
+        if (!$bool) {
             return false;
         }
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
@@ -28,7 +28,7 @@ class ACloudSysBenchServiceAdministor
 
     public function getSiteInfo()
     {
-        return array(ACloudSysCoreCommon::getGlobal('g_sitename', Wekit::C('site', 'info.name')), ACloudSysCoreCommon::getGlobal('g_siteurl', 'http://'.$_SERVER ['HTTP_HOST']), ACloudSysCoreCommon::getGlobal('g_charset'), ACloudSysCoreDefine::ACLOUD_V);
+        return array(ACloudSysCoreCommon::getGlobal('g_sitename', Wekit::C('site', 'info.name')), ACloudSysCoreCommon::getGlobal('g_siteurl', 'http://'.$_SERVER['HTTP_HOST']), ACloudSysCoreCommon::getGlobal('g_charset'), ACloudSysCoreDefine::ACLOUD_V);
     }
 
     public function getEnvInfo()
@@ -36,15 +36,15 @@ class ACloudSysBenchServiceAdministor
         $envService = ACloudSysCoreCommon::loadSystemClass('env', 'open.service');
         $tableInfo = $this->getTableInfo();
         $data = array();
-        $data [] = array('k' => 'parse_url函数', 't' => 1, 'v' => function_exists('parse_url') ? 1 : 0);
-        $data [] = array('k' => 'fsockopen函数', 't' => 1, 'v' => function_exists('fsockopen') ? 1 : 0);
-        $data [] = array('k' => 'curl_init函数', 't' => 1, 'v' => function_exists('curl_init') ? 1 : 0);
-        $data [] = array('k' => 'DNS解析函数', 't' => 1, 'v' => function_exists('gethostbyname') ? 1 : 0);
-        $data [] = array('k' => '云服务域名解析', 't' => 0, 'v' => function_exists('gethostbyname') ? gethostbyname(ACloudSysCoreDefine::ACLOUD_HOST_API) : '0.0.0.0');
-        $data [] = array('k' => '云服务端口测试', 't' => 0, 'v' => $envService->getNetWorkSpeed().'s');
-        $data [] = array('k' => '云服务网络互通', 't' => 1, 'v' => ($envService->getNetWorkInterflow()) ? 1 : 0);
-        $data [] = array('k' => '云服务入口文件', 't' => 1, 'v' => ($envService->hasIndexFile()) ? 1 : 0);
-        $data [] = array('k' => '云服务数据表缺失', 't' => 0, 'v' => ($tableInfo ? implode(',', $tableInfo) : '没有缺失数据表'));
+        $data[] = array('k' => 'parse_url函数', 't' => 1, 'v' => function_exists('parse_url') ? 1 : 0);
+        $data[] = array('k' => 'fsockopen函数', 't' => 1, 'v' => function_exists('fsockopen') ? 1 : 0);
+        $data[] = array('k' => 'curl_init函数', 't' => 1, 'v' => function_exists('curl_init') ? 1 : 0);
+        $data[] = array('k' => 'DNS解析函数', 't' => 1, 'v' => function_exists('gethostbyname') ? 1 : 0);
+        $data[] = array('k' => '云服务域名解析', 't' => 0, 'v' => function_exists('gethostbyname') ? gethostbyname(ACloudSysCoreDefine::ACLOUD_HOST_API) : '0.0.0.0');
+        $data[] = array('k' => '云服务端口测试', 't' => 0, 'v' => $envService->getNetWorkSpeed().'s');
+        $data[] = array('k' => '云服务网络互通', 't' => 1, 'v' => ($envService->getNetWorkInterflow()) ? 1 : 0);
+        $data[] = array('k' => '云服务入口文件', 't' => 1, 'v' => ($envService->hasIndexFile()) ? 1 : 0);
+        $data[] = array('k' => '云服务数据表缺失', 't' => 0, 'v' => ($tableInfo ? implode(',', $tableInfo) : '没有缺失数据表'));
 
         return $data;
     }
@@ -53,8 +53,8 @@ class ACloudSysBenchServiceAdministor
     {
         $extrasService = ACloudSysCoreCommon::loadSystemClass('extras', 'config.service');
         $data = array();
-        $data ['siteurl'] = ($siteurl = $extrasService->getExtra('ac_apply_siteurl')) ? $siteurl : '暂无';
-        $data ['lasttime'] = ($lasttime = $extrasService->getExtra('ac_apply_lasttime')) ? date('Y-m-d H:i:s', $lasttime) : '暂无';
+        $data['siteurl'] = ($siteurl = $extrasService->getExtra('ac_apply_siteurl')) ? $siteurl : '暂无';
+        $data['lasttime'] = ($lasttime = $extrasService->getExtra('ac_apply_lasttime')) ? date('Y-m-d H:i:s', $lasttime) : '暂无';
 
         return $data;
     }
@@ -78,8 +78,8 @@ class ACloudSysBenchServiceAdministor
         $tables = $dao->checkTables();
         $tmp = array();
         foreach ($tables as $table => $v) {
-            if (! $v) {
-                $tmp [] = $table;
+            if (!$v) {
+                $tmp[] = $table;
             }
         }
 
@@ -97,16 +97,16 @@ class ACloudSysBenchServiceAdministor
     public function checkLogin()
     {
         $params = array();
-        $params ['method'] = 'login.check';
-        $params ['ip'] = ACloudSysCoreCommon::getIp();
-        $params ['ua'] = $_SERVER ['HTTP_USER_AGENT'];
-        $params ['posttime'] = time();
+        $params['method'] = 'login.check';
+        $params['ip'] = ACloudSysCoreCommon::getIp();
+        $params['ua'] = $_SERVER['HTTP_USER_AGENT'];
+        $params['posttime'] = time();
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreVerify');
         $params = $this->buildPostParams($params);
-        $params ['sign'] = ACloudSysCoreVerify::createSignWithOAuth($params);
+        $params['sign'] = ACloudSysCoreVerify::createSignWithOAuth($params);
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreHttp');
         $result = ACloudSysCoreHttp::sendPost($params);
-        if (! is_object($result) || $result->code != 100) {
+        if (!is_object($result) || $result->code != 100) {
             return array(false, $result->msg);
         }
 
@@ -117,7 +117,7 @@ class ACloudSysBenchServiceAdministor
     {
         $params = $this->buildPostParams();
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreVerify');
-        $params ['accesssign'] = ACloudSysCoreVerify::createSignWithOAuth($params);
+        $params['accesssign'] = ACloudSysCoreVerify::createSignWithOAuth($params);
         require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreHttp');
 
         return sprintf('http://%s/index.php?%s', ACloudSysCoreDefine::ACLOUD_HOST_API, ACloudSysCoreHttp::httpBuildQuery(array_merge($params, $data)));
@@ -125,7 +125,7 @@ class ACloudSysBenchServiceAdministor
 
     public function localInstall($siteurl, $charset, $keys)
     {
-        if (! $siteurl || ! $charset || ! is_array($keys)) {
+        if (!$siteurl || !$charset || !is_array($keys)) {
             return false;
         }
         $this->checkTables();
@@ -140,12 +140,12 @@ class ACloudSysBenchServiceAdministor
     public function localSetKeys($id, $keys)
     {
         $id = intval($id);
-        if (! $keys || ! isset($keys [$id])) {
+        if (!$keys || !isset($keys[$id])) {
             return false;
         }
-        $key1 = isset($keys [$id] ['key1']) ? $keys [$id] ['key1'] : '';
-        $key2 = isset($keys [$id] ['key2']) ? $keys [$id] ['key2'] : '';
-        $key3 = isset($keys [$id] ['key3']) ? $keys [$id] ['key3'] : '';
+        $key1 = isset($keys[$id]['key1']) ? $keys[$id]['key1'] : '';
+        $key2 = isset($keys[$id]['key2']) ? $keys[$id]['key2'] : '';
+        $key3 = isset($keys[$id]['key3']) ? $keys[$id]['key3'] : '';
         $keyService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
         if (strlen($key1) != 128 || strlen($key2) != 128 || strlen($key3) != 128) {
             return false;
@@ -183,11 +183,11 @@ class ACloudSysBenchServiceAdministor
     public function buildPostParams($data = array())
     {
         $params = array();
-        $params ['siteurl'] = ACloudSysCoreCommon::getGlobal('g_siteurl', 'http://'.$_SERVER ['HTTP_HOST']);
-        $params ['charset'] = ACloudSysCoreCommon::getGlobal('g_charset');
-        $params ['footprint'] = ACloudSysCoreCommon::randCode(60);
-        $params ['version'] = ACloudSysCoreDefine::ACLOUD_V;
-        $params ['accesstime'] = time();
+        $params['siteurl'] = ACloudSysCoreCommon::getGlobal('g_siteurl', 'http://'.$_SERVER['HTTP_HOST']);
+        $params['charset'] = ACloudSysCoreCommon::getGlobal('g_charset');
+        $params['footprint'] = ACloudSysCoreCommon::randCode(60);
+        $params['version'] = ACloudSysCoreDefine::ACLOUD_V;
+        $params['accesstime'] = time();
 
         return array_merge($params, is_array($data) ? $data : array());
     }
@@ -201,7 +201,7 @@ class ACloudSysBenchServiceAdministor
         $extrasService->setExtra('ac_apply_charset', ACloudSysCoreCommon::getGlobal('g_charset'));
         $extrasService->setExtra('ac_apply_lasttime', time());
         list($bool, $message) = $this->checkApplyCondition($siteUrl);
-        if (! $bool) {
+        if (!$bool) {
             return array($bool, $message);
         }
         $keyService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
@@ -212,11 +212,11 @@ class ACloudSysBenchServiceAdministor
 
     public function checkApplyCondition($siteUrl)
     {
-        if (! $siteUrl) {
+        if (!$siteUrl) {
             return array(false, '站点地址不能为空');
         }
         $envService = ACloudSysCoreCommon::loadSystemClass('env', 'open.service');
-        if (! $envService->hasIndexFile()) {
+        if (!$envService->hasIndexFile()) {
             return array(false, 'aCloud安装包的代码不完整，请重新安装覆盖');
         }
         $tableInfo = $this->getTableInfo();
@@ -230,10 +230,10 @@ class ACloudSysBenchServiceAdministor
     public function getApplySubmitUrl()
     {
         $params = array();
-        $params ['timestamp'] = time();
-        $params ['rand'] = ACloudSysCoreCommon::randCode(32);
-        $params ['ua'] = isset($_SERVER ['HTTP_USER_AGENT']) ? $_SERVER ['HTTP_USER_AGENT'] : 'default';
-        $params ['ip'] = ACloudSysCoreCommon::getIp();
+        $params['timestamp'] = time();
+        $params['rand'] = ACloudSysCoreCommon::randCode(32);
+        $params['ua'] = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'default';
+        $params['ip'] = ACloudSysCoreCommon::getIp();
 
         return sprintf('http://%s/?c=apply&%s', ACloudSysCoreDefine::ACLOUD_HOST_API, http_build_query($params));
     }

@@ -6,8 +6,8 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwMobileConfigService
 {
@@ -34,7 +34,8 @@ class PwMobileConfigService
     /**
      * 设置方案到系统
      *
-     * @param  string       $storageType
+     * @param string $storageType
+     *
      * @return true|pwError
      */
     public function setPlatComponents($platType)

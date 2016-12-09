@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户手机DM
+ * 用户手机DM.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwUserMobileDm extends PwBaseDm
 {
@@ -20,9 +20,10 @@ class PwUserMobileDm extends PwBaseDm
     }
 
     /**
-     * 设置用户UID
+     * 设置用户UID.
      *
-     * @param  int            $uid
+     * @param int $uid
+     *
      * @return PwUserMobileDm
      */
     public function setUid($uid)
@@ -33,9 +34,10 @@ class PwUserMobileDm extends PwBaseDm
     }
 
     /**
-     * 设置手机
+     * 设置手机.
      *
-     * @param  int            $mobile
+     * @param int $mobile
+     *
      * @return PwUserMobileDm
      */
     public function setMobile($mobile)
@@ -46,9 +48,10 @@ class PwUserMobileDm extends PwBaseDm
     }
 
     /**
-     * 设置num
+     * 设置num.
      *
-     * @param  int            $num
+     * @param int $num
+     *
      * @return PwUserMobileDm
      */
     public function setNumber($num)
@@ -59,9 +62,10 @@ class PwUserMobileDm extends PwBaseDm
     }
 
     /**
-     * 设置时间
+     * 设置时间.
      *
-     * @param  int            $create_time
+     * @param int $create_time
+     *
      * @return PwUserMobileDm
      */
     public function setCreteTime($create_time)
@@ -74,7 +78,8 @@ class PwUserMobileDm extends PwBaseDm
     /**
      * 设置验证码
      *
-     * @param  int            $code
+     * @param int $code
+     *
      * @return PwUserMobileDm
      */
     public function setCode($code)

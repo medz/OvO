@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreDao');
 class ACloudSysConfigDaoApps extends ACloudSysCoreDao
 {
@@ -11,7 +11,7 @@ class ACloudSysConfigDaoApps extends ACloudSysCoreDao
         $sql = sprintf('INSERT INTO %s %s', $this->tablename, $this->buildClause($fields));
         $this->query($sql);
 
-        return $this->get($fields ['app_id']);
+        return $this->get($fields['app_id']);
     }
 
     public function update($fields, $id)

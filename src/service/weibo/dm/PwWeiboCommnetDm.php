@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 微博数据模型
+ * 微博数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWeiboCommnetDm.php 5758 2012-03-10 07:50:25Z jieyin $
- * @package weibo
  */
-
 class PwWeiboCommnetDm extends PwBaseDm
 {
     protected $isTransmit;

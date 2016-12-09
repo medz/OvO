@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 粉丝controller
+ * 粉丝controller.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: FansController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package forum
  */
-
 class FansController extends PwBaseController
 {
     public function beforeAction($handlerAdapter)
@@ -49,7 +48,7 @@ class FansController extends PwBaseController
     }
 
     /**
-     * PwAttention
+     * PwAttention.
      *
      * @return PwAttention
      */
@@ -59,7 +58,7 @@ class FansController extends PwBaseController
     }
 
     /**
-     * PwAttentionRecommendFriendsService
+     * PwAttentionRecommendFriendsService.
      *
      * @return PwAttentionRecommendFriendsService
      */

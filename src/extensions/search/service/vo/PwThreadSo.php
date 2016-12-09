@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 /**
- * 帖子搜索条件
+ * 帖子搜索条件.
  */
 class PwThreadSo
 {
@@ -20,7 +20,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索多个tid
+     * 搜索多个tid.
      */
     public function setTid($tid)
     {
@@ -30,7 +30,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索帖子标题
+     * 搜索帖子标题.
      */
     public function setKeywordOfTitle($keyword)
     {
@@ -40,7 +40,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索帖子内容
+     * 搜索帖子内容.
      */
     public function setKeywordOfContent($keyword)
     {
@@ -50,7 +50,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索帖子标题或内容
+     * 搜索帖子标题或内容.
      */
     public function setKeywordOfTitleOrContent($keyword)
     {
@@ -60,7 +60,7 @@ class PwThreadSo
     }
 
     /**
-     * 帖子是否可用
+     * 帖子是否可用.
      */
     public function setDisabled($disabled)
     {
@@ -70,7 +70,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索版块
+     * 搜索版块.
      */
     public function setFid($fid)
     {
@@ -87,7 +87,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索主题分类
+     * 搜索主题分类.
      */
     public function setTopicType($type)
     {
@@ -97,7 +97,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索作者
+     * 搜索作者.
      */
     public function setAuthor($authors)
     {
@@ -111,7 +111,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索多个作者id
+     * 搜索多个作者id.
      */
     public function setAuthorId($authorid)
     {
@@ -124,7 +124,7 @@ class PwThreadSo
     }
 
     /**
-     * 搜索多个主题类型
+     * 搜索多个主题类型.
      */
     public function setSpecial($special)
     {
@@ -134,7 +134,7 @@ class PwThreadSo
     }
 
     /**
-     * 多个置顶级
+     * 多个置顶级.
      */
     public function setTopped($topped)
     {
@@ -144,7 +144,7 @@ class PwThreadSo
     }
 
     /**
-     * 是否精华
+     * 是否精华.
      */
     public function setDigest($digest)
     {
@@ -154,7 +154,7 @@ class PwThreadSo
     }
 
     /**
-     * 是否包含图片
+     * 是否包含图片.
      */
     public function setHasImage($bool)
     {
@@ -164,7 +164,7 @@ class PwThreadSo
     }
 
     /**
-     * 点击率区间，起始
+     * 点击率区间，起始.
      */
     public function setHitsStart($hits)
     {
@@ -184,7 +184,7 @@ class PwThreadSo
     }
 
     /**
-     * 回复数区间，起始
+     * 回复数区间，起始.
      */
     public function setRepliesStart($replies)
     {
@@ -211,7 +211,7 @@ class PwThreadSo
     }
 
     /**
-     * 发帖时间区间，起始
+     * 发帖时间区间，起始.
      */
     public function setCreateTimeStart($time)
     {
@@ -231,7 +231,7 @@ class PwThreadSo
     }
 
     /**
-     * 回复时间区间，起始
+     * 回复时间区间，起始.
      */
     public function setLastpostTimeStart($start)
     {
@@ -251,7 +251,7 @@ class PwThreadSo
     }
 
     /**
-     * 发帖时间排序
+     * 发帖时间排序.
      */
     public function orderbyCreatedTime($asc)
     {
@@ -261,7 +261,7 @@ class PwThreadSo
     }
 
     /**
-     * 回复时间排序
+     * 回复时间排序.
      */
     public function orderbyLastPostTime($asc)
     {
@@ -271,7 +271,7 @@ class PwThreadSo
     }
 
     /**
-     * 回复数排序
+     * 回复数排序.
      */
     public function orderbyReplies($asc)
     {
@@ -281,7 +281,7 @@ class PwThreadSo
     }
 
     /**
-     * 点击数排序
+     * 点击数排序.
      */
     public function orderbyHits($asc)
     {
@@ -291,7 +291,7 @@ class PwThreadSo
     }
 
     /**
-     * 喜欢数排序
+     * 喜欢数排序.
      */
     public function orderbyLike($asc)
     {

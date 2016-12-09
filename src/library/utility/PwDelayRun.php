@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 方法延迟调用
+ * 方法延迟调用.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDelayRun.php 19848 2012-10-19 01:46:31Z jieyin $
- * @package controller
  */
-
 class PwDelayRun
 {
     private static $instance = null;

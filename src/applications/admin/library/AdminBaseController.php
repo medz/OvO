@@ -3,9 +3,8 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-25
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminBaseController.php 28892 2013-05-29 06:41:54Z jieyin $
- * @package admin
- * @subpackage library
  */
 class AdminBaseController extends WindController
 {
@@ -35,12 +34,13 @@ class AdminBaseController extends WindController
     }
 
     /**
-     * 显示信息
+     * 显示信息.
      *
      * @param string $message 消息信息
      * @param string $referer 跳转地址
      * @param bool   $referer 是否刷新页面
      * @param string $action  处理句柄
+     *
      * @see WindSimpleController::showMessage()
      */
     protected function showMessage($message = '', $referer = '', $refresh = false)
@@ -52,7 +52,7 @@ class AdminBaseController extends WindController
     }
 
     /**
-     * 显示错误
+     * 显示错误.
      *
      * @param array $error array('',array())
      */
@@ -65,9 +65,10 @@ class AdminBaseController extends WindController
     }
 
     /**
-     * 判断用户是否是创始人
+     * 判断用户是否是创始人.
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return bool
      */
     protected function isFounder($username)

@@ -3,8 +3,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwErrorHandler.php 28685 2013-05-20 07:17:32Z gao.wanggao $
- * @package wind
  */
 class PwErrorHandler extends WindError
 {
@@ -39,7 +39,7 @@ class PwErrorHandler extends WindError
                 array(
                     'referer' => null,
                     'refresh' => null,
-                    'state' => 'fail',
+                    'state'   => 'fail',
                     'message' => $message, ));
             exit();
         }
@@ -67,7 +67,7 @@ class PwErrorHandler extends WindError
     }
 
     /**
-     * 错误视图渲染
+     * 错误视图渲染.
      *
      * @param array $__vars
      */

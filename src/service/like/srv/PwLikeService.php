@@ -3,14 +3,15 @@
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeService.php 20027 2012-10-22 11:49:23Z gao.wanggao $
- * @package
  */
  class PwLikeService
  {
      /**
      * 喜欢增加策略
      * Enter description here ...
+     *
      * @param PwUserBo $userBo
      * @param int      $typeid
      * @param int      $fromid
@@ -56,7 +57,7 @@
         }
 
         //更新喜欢内容
-        $count ++;
+        $count++;
         $this->_updateLikeCount($typeid, $fromid, $count);
         $likeDs->updateUsers($likeid, $uid);
 
@@ -88,7 +89,6 @@
         return array('likeCount' => $likeNumber, 'extend' => $extend);
     }
 
-
      public function delLike($uid, $logid)
      {
          $info = $this->allowEditLike($uid, $logid);
@@ -105,7 +105,6 @@
          list($beLikeUid, $isspecial, $count, $fid) = $this->_getSourceInfo($likeInfo['typeid'], $likeInfo['fromid']);
          $count--;
          $this->_updateLikeCount($likeInfo['typeid'], $likeInfo['fromid'], $count);
-
 
         //删除喜欢tag
         if ($info['tagids']) {
@@ -133,7 +132,7 @@
      }
 
     /**
-     * 标签更新策略  不再使用
+     * 标签更新策略  不再使用.
      *
      * @param int   $uid
      * @param array $tagids
@@ -201,6 +200,7 @@
     /**
      * 新增分类
      * Enter description here ...
+     *
      * @param int    $logid
      * @param string $tagname
      */
@@ -227,9 +227,9 @@
         return $this->_getLikeTagDs()->addInfo($dm);
     }
 
-
     /**
-     * 对喜欢所属分类进行增减
+     * 对喜欢所属分类进行增减.
+     *
      * @param int $type 1 增加， 0 减
      */
     public function editLogTag($logid, $tagid, $type = 0)
@@ -259,7 +259,7 @@
     }
 
     /**
-     * 获取喜欢榜单
+     * 获取喜欢榜单.
      *
      * @param string $key
      * @param int    $start
@@ -296,7 +296,7 @@
     }
 
     /**
-     * 新标签过滤
+     * 新标签过滤.
      *
      * @param string $tagnames
      * @param array  $tagids
@@ -317,11 +317,12 @@
     }
 
     /**
-     * 喜欢增加策略后续操作：更新喜欢排行榜
+     * 喜欢增加策略后续操作：更新喜欢排行榜.
      *
      * $signKeys 排行榜时间，按相对时间排行
      * $countKeys 每种排行的当前记录数
      * $maxStatis 最大记录数
+     *
      * @param int $likeid
      * @param int $count
      */
@@ -330,7 +331,7 @@
         $signKeys = array('day7' => 604800, 'day2' => 172800, 'day1' => 86400);
         $countKeys = array('day7_count', 'day2_count', 'day1_count');
         $minInfo = $this->_getLikeStatisticsDs()->getMinInfo('day7');
-        $minCount = $minInfo ? $minInfo['number'] : 0 ;
+        $minCount = $minInfo ? $minInfo['number'] : 0;
         $maxStatis = 100;
         $time = Pw::getTime();
         if ($minCount > $count) {
@@ -339,7 +340,7 @@
         foreach ($signKeys as $key => $value) {
             $startTime = $time - $value;
             $keyInfo = $this->_getLikeStatisticsDs()->getLikeStatistics($key.'_count');
-            $keyCount = $keyInfo ? $keyInfo['number'] : 0 ;
+            $keyCount = $keyInfo ? $keyInfo['number'] : 0;
             if ($minCount < $count || $keyCount < $maxStatis) {
                 $logCount = $this->_getLikeLogDs()->getLikeidCount($likeid, $startTime);
                 Wind::import('SRV:like.dm.PwLikeStatisticsDm');
@@ -365,7 +366,7 @@
     }
 
     /**
-     * 判断喜欢编辑部权限
+     * 判断喜欢编辑部权限.
      *
      * @param $logid
      */
@@ -397,7 +398,6 @@
 
          return $info;
      }
-
 
      private function _getSourceInfo($typeid, $fromid)
      {
@@ -490,6 +490,7 @@
      {
          return Wekit::load('like.PwLikeRelations');
      }
+
     /*
     private function _getHook() {
         return new PwHookService('PwLikeService', 'PwLikeDoBase');

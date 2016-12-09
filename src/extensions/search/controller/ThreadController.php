@@ -5,7 +5,7 @@ Wind::import('EXT:search.service.AppSearchRecord');
 Wind::import('SRV:seo.bo.PwSeoBo');
 
 /**
- * 本地搜索
+ * 本地搜索.
  */
 class ThreadController extends PwBaseController
 {
@@ -89,7 +89,8 @@ class ThreadController extends PwBaseController
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/library/base/PwBaseController::afterAction()
      */
     public function afterAction($handlerAdapter)
@@ -99,7 +100,7 @@ class ThreadController extends PwBaseController
     }
 
     /**
-     * 取得系统运行所耗时间 **
+     * 取得系统运行所耗时间 **.
      */
     private static function _getExecTime()
     {

@@ -1,12 +1,12 @@
 <?php
 /**
- * 话题分类关系DAO
+ * 话题分类关系DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwTagCategoryRelationDao
  */
 class PwTagCategoryRelationDao extends PwBaseDao
 {
@@ -14,9 +14,10 @@ class PwTagCategoryRelationDao extends PwBaseDao
     protected $_dataStruct = array('tag_id', 'category_id');
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addRelations($data)
@@ -37,9 +38,10 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据category_id删除
+     * 根据category_id删除.
      *
-     * @param  int  $categoryId
+     * @param int $categoryId
+     *
      * @return bool
      */
     public function deleteByCategoryId($categoryId)
@@ -51,9 +53,10 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_id删除
+     * 根据tag_id删除.
      *
-     * @param  int  $tagId
+     * @param int $tagId
+     *
      * @return bool
      */
     public function deleteByTagId($tagId)
@@ -65,9 +68,10 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_ids删除
+     * 根据tag_ids删除.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function deleteByTagIds($tagIds)
@@ -78,10 +82,11 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据category_id获取数据
+     * 根据category_id获取数据.
      *
-     * @param  int   $categoryId
-     * @param  int   $num
+     * @param int $categoryId
+     * @param int $num
+     *
      * @return array
      */
     public function getByCategoryId($categoryId, $num)
@@ -93,7 +98,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 统计分类话题数
+     * 统计分类话题数.
      *
      * @return array
      */
@@ -106,9 +111,10 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据$tagId获取数据
+     * 根据$tagId获取数据.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function getByTagId($tagId)
@@ -120,10 +126,11 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据分类id　及　tag_ids获取数据
+     * 根据分类id　及　tag_ids获取数据.
      *
-     * @param  array $tagIds
-     * @param  int   $categoryId
+     * @param array $tagIds
+     * @param int   $categoryId
+     *
      * @return array
      */
     public function getByCategoryAndTagIds($tagIds, $categoryId)
@@ -135,7 +142,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_ids获取数据
+     * 根据tag_ids获取数据.
      *
      * @param array $tagIds
      */

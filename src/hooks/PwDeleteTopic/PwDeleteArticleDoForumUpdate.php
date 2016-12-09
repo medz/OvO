@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子删除扩展服务接口--虚拟删除到回收站
+ * 帖子删除扩展服务接口--虚拟删除到回收站.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteArticleDoForumUpdate.php 23312 2013-01-08 07:59:39Z jieyin $
- * @package forum
  */
-
 class PwDeleteArticleDoForumUpdate extends iPwGleanDoHookProcess
 {
     public $record = array();
@@ -51,10 +48,10 @@ class PwDeleteArticleDoForumUpdate extends iPwGleanDoHookProcess
         $thread = current($thread);
 
         return array(
-            'tid' => $thread['tid'],
+            'tid'      => $thread['tid'],
             'username' => $thread['lastpost_username'],
-            'subject' => ($thread['replies'] ? 'Re:' : '').$thread['subject'],
-            'time' => $thread['lastpost_time'],
+            'subject'  => ($thread['replies'] ? 'Re:' : '').$thread['subject'],
+            'time'     => $thread['lastpost_time'],
         );
     }
 }

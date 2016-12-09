@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户搜索
+ * 用户搜索.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidUserSo.php 23620 2013-01-14 02:44:14Z jieyin $
- * @package service.user.vo
  */
 class WindidUserSo
 {
@@ -15,9 +15,10 @@ class WindidUserSo
     protected $_orderby = array();
 
     /**
-     * 根据用户名搜索
+     * 根据用户名搜索.
      *
-     * @param  string   $name
+     * @param string $name
+     *
      * @return PwUserSo
      */
     public function setUsername($name)
@@ -28,9 +29,10 @@ class WindidUserSo
     }
 
     /**
-     * 设置查询的用户ID
+     * 设置查询的用户ID.
      *
-     * @param  int|array $uid
+     * @param int|array $uid
+     *
      * @return PwUserSo
      */
     public function setUid($uid)
@@ -41,9 +43,10 @@ class WindidUserSo
     }
 
     /**
-     * 设置查询的email
+     * 设置查询的email.
      *
-     * @param  string   $email
+     * @param string $email
+     *
      * @return PwUserSo
      */
     public function setEmail($email)
@@ -53,12 +56,11 @@ class WindidUserSo
         return $this;
     }
 
-
-
     /**
-     * 设置用户的性别  | 该查询字段没有索引
+     * 设置用户的性别  | 该查询字段没有索引.
      *
-     * @param  int      $gender
+     * @param int $gender
+     *
      * @return PwUserSo
      */
     public function setGender($gender)
@@ -71,7 +73,8 @@ class WindidUserSo
     /**
      * 设置居住地地址
      *
-     * @param  int      $areaid
+     * @param int $areaid
+     *
      * @return PwUserSo
      */
     public function setLocation($areaid)
@@ -84,7 +87,8 @@ class WindidUserSo
     /**
      * 设置家庭地址
      *
-     * @param  int      $areaid
+     * @param int $areaid
+     *
      * @return PwUserSo
      */
     public function setHometown($areaid)
@@ -95,7 +99,7 @@ class WindidUserSo
     }
 
     /**
-     * 获得查询数据
+     * 获得查询数据.
      *
      * @return array
      */
@@ -105,7 +109,7 @@ class WindidUserSo
     }
 
     /**
-     * 获得排序数据
+     * 获得排序数据.
      *
      * @return array
      */

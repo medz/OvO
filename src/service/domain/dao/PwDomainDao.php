@@ -2,13 +2,13 @@
 
 
 /**
- * pw_domain
+ * pw_domain.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $id$
- * @package service.domain.dao
  */
 class PwDomainDao extends PwBaseDao
 {
@@ -17,9 +17,10 @@ class PwDomainDao extends PwBaseDao
     protected $_dataStruct = array('domain_key', 'domain_type', 'domain', 'root', 'first', 'id');
 
     /**
-     * 添加一个个性域名
+     * 添加一个个性域名.
      *
-     * @param  array       $data
+     * @param array $data
+     *
      * @return bool|number
      */
     public function replaceDomain($data)
@@ -33,10 +34,11 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据type更新
+     * 根据type更新.
      *
-     * @param  string        $type
-     * @param  array         $data
+     * @param string $type
+     * @param array  $data
+     *
      * @return bool|Ambigous <number, boolean, rowCount>
      */
     public function updateByDomainType($type, $data)
@@ -50,10 +52,11 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据key更新
+     * 根据key更新.
      *
-     * @param  string        $key
-     * @param  array         $data
+     * @param string $key
+     * @param array  $data
+     *
      * @return bool|Ambigous <number, boolean, rowCount>
      */
     public function updateByDomainKey($key, $data)
@@ -67,9 +70,10 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据type删除
+     * 根据type删除.
      *
-     * @param  unknown_type $type
+     * @param unknown_type $type
+     *
      * @return number
      */
     public function deleteByDomainType($type)
@@ -80,9 +84,10 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据key删除
+     * 根据key删除.
      *
-     * @param  unknown_type $key
+     * @param unknown_type $key
+     *
      * @return number
      */
     public function deleteByDomainKey($key)
@@ -93,10 +98,11 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据key获取
+     * 根据key获取.
      *
-     * @param  unknown_type $key
-     * @return Ambigous     <multitype:, multitype:unknown , mixed>
+     * @param unknown_type $key
+     *
+     * @return Ambigous <multitype:, multitype:unknown , mixed>
      */
     public function getByDomainKey($key)
     {
@@ -106,10 +112,11 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据域名和根域名获取
+     * 根据域名和根域名获取.
      *
-     * @param  string $domain
-     * @param  string $root
+     * @param string $domain
+     * @param string $root
+     *
      * @return array
      */
     public function getByDomainAndRoot($domain, $root)
@@ -120,7 +127,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据首字母查询
+     * 根据首字母查询.
      *
      * @return array
      */
@@ -132,7 +139,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据类型查询
+     * 根据类型查询.
      *
      * @return array
      */
@@ -144,7 +151,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据域名和类型查询
+     * 根据域名和类型查询.
      *
      * @return array
      */
@@ -156,7 +163,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据域名查询
+     * 根据域名查询.
      *
      * @return array
      */
@@ -168,8 +175,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 获取所有域名
-     *
+     * 获取所有域名.
      */
     public function getAll()
     {
@@ -179,7 +185,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据类型和id查询
+     * 根据类型和id查询.
      *
      * @return array
      */
@@ -191,7 +197,7 @@ class PwDomainDao extends PwBaseDao
     }
 
     /**
-     * 根据某一类型和id批量查询
+     * 根据某一类型和id批量查询.
      *
      * @return array
      */

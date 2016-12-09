@@ -4,23 +4,25 @@ Wind::import('WSRV:user.WindidUser');
 
 /**
  * windid用户接口
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserApi.php 24768 2013-02-20 11:03:35Z jieyin $
- * @package
  */
 class WindidUserApi
 {
     /**
-     * 用户登录
+     * 用户登录.
      *
-     * @param  string $userid
-     * @param  string $password
-     * @param  int    $type     $type 1-uid ,2-username 3-email
-     * @param  string $question
-     * @param  string $answer
+     * @param string $userid
+     * @param string $password
+     * @param int    $type     $type 1-uid ,2-username 3-email
+     * @param string $question
+     * @param string $answer
+     *
      * @return array
      */
     public function login($userid, $password, $type = 2, $ifcheck = false, $question = '', $answer = '')
@@ -29,9 +31,10 @@ class WindidUserApi
     }
 
     /**
-     * 本地登录成功后同步登录通知
+     * 本地登录成功后同步登录通知.
      *
-     * @param  int    $uid
+     * @param int $uid
+     *
      * @return string
      */
     public function synLogin($uid)
@@ -46,10 +49,11 @@ class WindidUserApi
     }
 
     /**
-     * 本地登出成功后同步登出
+     * 本地登出成功后同步登出.
      *
-     * @param  int    $uid
-     * @param  string $backurl
+     * @param int    $uid
+     * @param string $backurl
+     *
      * @return string
      */
     public function synLogout($uid)
@@ -64,11 +68,12 @@ class WindidUserApi
     }
 
     /**
-     * 检查用户提交的信息是否符合windid配置规范
+     * 检查用户提交的信息是否符合windid配置规范.
      *
-     * @param  string $input
-     * @param  int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
-     * @param  int    $uid
+     * @param string $input
+     * @param int    $type  综合检查类型： 1-用户名, 2-密码,  3-邮箱
+     * @param int    $uid
+     *
      * @return bool
      */
     public function checkUserInput($input, $type, $username = '', $uid = 0)
@@ -79,11 +84,12 @@ class WindidUserApi
     }
 
     /**
-     * 验证安全问题
+     * 验证安全问题.
      *
-     * @param  int  $uid
-     * @param  int  $question
-     * @param  int  $answer
+     * @param int $uid
+     * @param int $question
+     * @param int $answer
+     *
      * @return bool
      */
     public function checkQuestion($uid, $question, $answer)
@@ -94,11 +100,12 @@ class WindidUserApi
     }
 
     /**
-     * 获取一个用户基本资料
+     * 获取一个用户基本资料.
      *
-     * @param  multi $userid
-     * @param  int   $type      1-uid ,2-username 3-email
-     * @param  int   $fetchMode
+     * @param multi $userid
+     * @param int   $type      1-uid ,2-username 3-email
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function getUser($userid, $type = 1, $fetchMode = 1)
@@ -107,11 +114,12 @@ class WindidUserApi
     }
 
     /**
-     * 批量获取用户信息
+     * 批量获取用户信息.
      *
-     * @param  array $uids/$username
-     * @param  int   $type           1-uid ,2-username
-     * @param  int   $fetchMode
+     * @param array $uids/$username
+     * @param int   $type           1-uid ,2-username
+     * @param int   $fetchMode
+     *
      * @return array
      */
     public function fecthUser($userids, $type = 1, $fetchMode = 1)
@@ -120,14 +128,15 @@ class WindidUserApi
     }
 
     /**
-     * 用户注册
+     * 用户注册.
      *
-     * @param  string $username
-     * @param  string $email
-     * @param  string $password
-     * @param  string $question
-     * @param  string $answer
-     * @param  string $regip
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @param string $question
+     * @param string $answer
+     * @param string $regip
+     *
      * @return int
      */
     public function register($username, $email, $password, $question = '', $answer = '', $regip = '')
@@ -145,7 +154,7 @@ class WindidUserApi
     }
 
     /**
-     * 添加用户对象接口，使用前必须使用WidnidApi::getDm('user') 设置数据
+     * 添加用户对象接口，使用前必须使用WidnidApi::getDm('user') 设置数据.
      *
      * @param WindidUserDm $dm
      */
@@ -163,7 +172,7 @@ class WindidUserApi
     }
 
     /**
-     * 修改用户基本信息
+     * 修改用户基本信息.
      *
      * @param int    $uid
      * @param string $password
@@ -177,7 +186,7 @@ class WindidUserApi
     }
 
     /**
-     * 修改用户资料
+     * 修改用户资料.
      *
      * @param int   $uid
      * @param array $editInfo
@@ -201,7 +210,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除一个用户
+     * 删除一个用户.
      *
      * @param int $uid
      */
@@ -217,7 +226,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除多个用户
+     * 删除多个用户.
      *
      * @param array $uids
      */
@@ -235,7 +244,7 @@ class WindidUserApi
     }
 
     /**
-     * 获取用户积分
+     * 获取用户积分.
      *
      * @param int $uid
      */
@@ -245,9 +254,10 @@ class WindidUserApi
     }
 
     /**
-     * 批量获取用户积分
+     * 批量获取用户积分.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fecthUserCredit($uids)
@@ -256,7 +266,7 @@ class WindidUserApi
     }
 
     /**
-     * 更新用户积分
+     * 更新用户积分.
      *
      * @param int $uid
      * @param int $cType (1-8)
@@ -288,9 +298,8 @@ class WindidUserApi
         return WindidUtility::result($result);
     }
 
-
     /**
-     * 清空一个积分字段
+     * 清空一个积分字段.
      *
      * @param int $num >8
      */
@@ -302,9 +311,10 @@ class WindidUserApi
     }
 
     /**
-     * 获取用户黑名单
+     * 获取用户黑名单.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array uids
      */
     public function getBlack($uid)
@@ -318,7 +328,7 @@ class WindidUserApi
     }
 
     /**
-     * 增加黑名单
+     * 增加黑名单.
      *
      * @param int $uid
      * @param int $blackUid
@@ -331,7 +341,7 @@ class WindidUserApi
     }
 
     /**
-     * 批量替换黑名单
+     * 批量替换黑名单.
      *
      * @param $uid
      * @param $blackList array
@@ -344,7 +354,7 @@ class WindidUserApi
     }
 
     /**
-     * 删除某的黑名单 $blackUid为空删除所有
+     * 删除某的黑名单 $blackUid为空删除所有.
      *
      * @param int $uid
      * @param int $blackUid

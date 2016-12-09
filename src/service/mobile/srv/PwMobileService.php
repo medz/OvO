@@ -6,8 +6,8 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwMobileService
 {
@@ -22,7 +22,7 @@ class PwMobileService
     }
 
     /**
-     * 获取剩余短信数量
+     * 获取剩余短信数量.
      *
      * @return int
      */
@@ -70,7 +70,6 @@ class PwMobileService
 
     /**
      * 验证验证码
-     *
      */
     public function checkVerify($mobile, $inputCode)
     {
@@ -95,7 +94,6 @@ class PwMobileService
 
     /**
      * 获取验证码
-     *
      */
     public function getVerify($mobile)
     {
@@ -111,7 +109,7 @@ class PwMobileService
     }
 
     /**
-     * 用户连续天数的行为记录&&用户累计行为记录
+     * 用户连续天数的行为记录&&用户累计行为记录.
      *
      * @param int    $uid
      * @param string $behavior 行为标记
@@ -173,7 +171,7 @@ class PwMobileService
     }
 
     /**
-     * 设置平台类型
+     * 设置平台类型.
      */
     public function setPlat()
     {

@@ -1,19 +1,20 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalCache.php 22363 2012-12-21 12:16:44Z gao.wanggao $
- * @package
  */
-
 class PwMedalCache
 {
     /**
-     * 从缓存表获取一个用户的勋章
+     * 从缓存表获取一个用户的勋章.
      *
      * 非cahce:PwMedalService->getUserMedal($uid)
+     *
      * @param string $userMedals
      */
     public function fetchMedal($medalIds)
@@ -25,7 +26,7 @@ class PwMedalCache
         $cacheDs = Wekit::cache();
         $medals = $cacheDs->get('medal_all');
         $attachUrl = Pw::getPath('').'medal/';
-        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/' ;
+        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($medalIds as $id) {
             if (!isset($medals[$id])) {
                 continue;
@@ -41,7 +42,8 @@ class PwMedalCache
 
     /**
      * 从用户缓存表获取多个用户的勋章
-     * 非cahce:PwMedalService->fetchUserMedal($uid)
+     * 非cahce:PwMedalService->fetchUserMedal($uid).
+     *
      * @param array $userMedals array[uid]=medalid
      */
     public function fetchUserMedal($userMedals)
@@ -58,7 +60,7 @@ class PwMedalCache
         $cacheDs = Wekit::cache();
         $medals = $cacheDs->get('medal_all');
         $attachUrl = Pw::getPath('').'medal/';
-        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/' ;
+        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($_userMedalIds as $uid => $medalIds) {
             $_medalInfo = array();
             foreach ($medalIds as $id) {
@@ -79,10 +81,11 @@ class PwMedalCache
     }
 
     /**
-     * 组装我参与的勋章及自动勋章列表
+     * 组装我参与的勋章及自动勋章列表.
      *
      * 非cahce:PwUserMedalBo->getMyAndAutoMedal()
      * Enter description here ...
+     *
      * @param int $uid
      */
     public function getMyAndAutoMedal($uid)
@@ -100,7 +103,7 @@ class PwMedalCache
         $autoMedalIds = $cacheDs->get('medal_auto');
         $medals = $cacheDs->get('medal_all');
         $attachUrl = Pw::getPath('').'medal/';
-        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/' ;
+        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         $medalIds = array_merge($myMedalIds, $autoMedalIds);
         $medalIds = array_unique($medalIds);
         foreach ($medalIds as $id) {

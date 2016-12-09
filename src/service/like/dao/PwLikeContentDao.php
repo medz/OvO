@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeContentDao.php 8487 2012-04-19 08:09:57Z gao.wanggao $
- * @package
  */
 class PwLikeContentDao extends PwBaseDao
 {

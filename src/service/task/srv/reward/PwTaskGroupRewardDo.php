@@ -3,13 +3,13 @@
 Wind::import('SRV:task.srv.reward.PwTaskRewardDoBase');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
- * 用户组奖励
+ * 用户组奖励.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskGroupRewardDo.php 22230 2012-12-19 21:45:20Z xiaoxia.xuxx $
- * @package src.service.srv.reward
  */
 class PwTaskGroupRewardDo extends PwTaskRewardDoBase
 {

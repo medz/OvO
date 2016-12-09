@@ -11,10 +11,9 @@ Wind::import('SRV:forum.dm.PwTopicDm');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTopicPost.php 28950 2013-05-31 05:58:25Z jieyin $
- * @package forum
  */
-
 class PwTopicPost extends PwPostAction
 {
     protected $tid;
@@ -128,7 +127,7 @@ class PwTopicPost extends PwPostAction
     }
 
     /**
-     * 发帖后续操作<更新版块、缓存等信息>
+     * 发帖后续操作<更新版块、缓存等信息>.
      */
     public function afterPost()
     {

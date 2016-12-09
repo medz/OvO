@@ -3,20 +3,21 @@
 Wind::import('SRV:task.srv.PwTaskComplete');
 Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
 /**
- * 上传头像的扩展
+ * 上传头像的扩展.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskMemberAvatarDo.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package service.task.srv.condition
  */
 class PwTaskMemberAvatarDo implements PwTaskCompleteInterface
 {
     /**
-     * 更新用户头像
+     * 更新用户头像.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function uploadAvatar($uid)

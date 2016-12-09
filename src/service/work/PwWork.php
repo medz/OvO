@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户工作经历DS
+ * 用户工作经历DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWork.php 1532 2012-1-13上午10:41:23 xiaoxiao $
- * @package src.service.user.hooks.experience_work
  */
 class PwWork
 {
     /**
-     * 添加工作经历
+     * 添加工作经历.
      *
-     * @param  PwWorkDm    $dm
+     * @param PwWorkDm $dm
+     *
      * @return PwError|int
      */
     public function addWorkExperience($dm)
@@ -30,10 +31,11 @@ class PwWork
     }
 
     /**
-     * 更新工作经历
+     * 更新工作经历.
      *
-     * @param  id               $id
-     * @param  PwWorkDm         $dm
+     * @param id       $id
+     * @param PwWorkDm $dm
+     *
      * @return PwError|bool|int
      */
     public function editWorkExperience($id, $dm)
@@ -53,10 +55,11 @@ class PwWork
     }
 
     /**
-     * 删除工作经历
+     * 删除工作经历.
      *
-     * @param  int         $id  工作经历ID
-     * @param  int         $uid 对应用户ID
+     * @param int $id  工作经历ID
+     * @param int $uid 对应用户ID
+     *
      * @return PwError|int
      */
     public function deleteWorkExperience($id, $uid)
@@ -69,10 +72,11 @@ class PwWork
     }
 
     /**
-     * 根据ID获得用户工作经历
+     * 根据ID获得用户工作经历.
      *
-     * @param  int           $id  经历ID
-     * @param  int           $uid 用户ID
+     * @param int $id  经历ID
+     * @param int $uid 用户ID
+     *
      * @return PwError|array
      */
     public function getWorkExperienceById($id, $uid)
@@ -85,9 +89,10 @@ class PwWork
     }
 
     /**
-     * 根据用户ID删除用户的工作经历
+     * 根据用户ID删除用户的工作经历.
      *
-     * @param  int         $uid
+     * @param int $uid
+     *
      * @return PwError|int
      */
     public function deleteWorkExperienceByUid($uid)
@@ -100,11 +105,12 @@ class PwWork
     }
 
     /**
-     * 根据用户ID获得用户工作经历列表
+     * 根据用户ID获得用户工作经历列表.
      *
-     * @param  int   $uid
-     * @param  int   $number 返回条数，默认为10
-     * @param  int   $start  开始搜索的位置
+     * @param int $uid
+     * @param int $number 返回条数，默认为10
+     * @param int $start  开始搜索的位置
+     *
      * @return array
      */
     public function getByUid($uid, $number = 10, $start = 0)
@@ -117,9 +123,10 @@ class PwWork
     }
 
     /**
-     * 根据用户ID统计该用户拥有的工作经历
+     * 根据用户ID统计该用户拥有的工作经历.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countByUid($uid)
@@ -132,7 +139,7 @@ class PwWork
     }
 
     /**
-     * 获得工作经历相关dao
+     * 获得工作经历相关dao.
      *
      * @return PwWorkDao
      */

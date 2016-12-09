@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignAsynImageService.php 23371 2013-01-09 06:18:14Z gao.wanggao $
- * @package
  */
 class PwDesignAsynImageService
 {
@@ -54,7 +55,7 @@ class PwDesignAsynImageService
         $data = $ds->getData($dataid);
         $extend = unserialize($data['extend_info']);
         if ($thumbUrl) {
-            $extend['standard_image'] .= $thumb.'|||' ;
+            $extend['standard_image'] .= $thumb.'|||';
             $extend[$sign] = $thumbUrl;
         }
         $dm = new PwDesignDataDm($dataid);

@@ -1,15 +1,16 @@
 <?php
 /**
- * 搜索用户DS
+ * 搜索用户DS.
  */
 class PwUserSearch
 {
     /**
-     * 根据条件搜索用户
+     * 根据条件搜索用户.
      *
-     * @param  PwUserSo $vo
-     * @param  int      $limit 查询条数
-     * @param  int      $start 开始查询的位置
+     * @param PwUserSo $vo
+     * @param int      $limit 查询条数
+     * @param int      $start 开始查询的位置
+     *
      * @return array
      */
     public function searchUser(PwUserSo $vo, $limit = 10, $start = 0)
@@ -19,11 +20,12 @@ class PwUserSearch
 
     /**
      * 总是获取相关三张表的所有数据
-     * 门户数据获取
+     * 门户数据获取.
      *
-     * @param  PwUserSo $vo
-     * @param  int      $limit
-     * @param  int      $start
+     * @param PwUserSo $vo
+     * @param int      $limit
+     * @param int      $start
+     *
      * @return array
      */
     public function searchUserAllData(PwUserSo $vo, $limit = 10, $start = 0)
@@ -32,9 +34,10 @@ class PwUserSearch
     }
 
     /**
-     * 根据条件统计用户
+     * 根据条件统计用户.
      *
-     * @param  PwUserSo $vo
+     * @param PwUserSo $vo
+     *
      * @return array
      */
     public function countSearchUser(PwUserSo $vo)
@@ -43,7 +46,7 @@ class PwUserSearch
     }
 
     /**
-     * 获取用户搜索的DAO
+     * 获取用户搜索的DAO.
      *
      * @return PwUserSearchDao
      */

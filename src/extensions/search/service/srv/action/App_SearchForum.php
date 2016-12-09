@@ -9,7 +9,8 @@ class App_SearchForum extends App_SearchAction
     /**
      * 搜索统计
      *
-     * @param  PwThreadSo $so
+     * @param PwThreadSo $so
+     *
      * @return int
      */
     public function countSearch($so)
@@ -18,24 +19,27 @@ class App_SearchForum extends App_SearchAction
     }
 
     /**
-     * 搜索
+     * 搜索.
      *
-     * @param  PwThreadSo $so
-     * @param  int        $limit 查询条数
-     * @param  int        $start 开始查询的位置
+     * @param PwThreadSo $so
+     * @param int        $limit 查询条数
+     * @param int        $start 开始查询的位置
+     *
      * @return array
      */
     public function search($so, $limit = 20, $start = 0)
     {
         return $this->_getSearch()->searchDesignForum($so, $limit, $start);
     }
+
     /**
-     * 组装数据
-     * @param  array        $threads
-     * @param  string       $keywords
+     * 组装数据.
+     *
+     * @param array  $threads
+     * @param string $keywords
+     *
      * @return unknown_type
      */
-
     public function build($list, $keywords)
     {
         $user = array();
@@ -48,7 +52,7 @@ class App_SearchForum extends App_SearchAction
     }
 
     /**
-     * PwForum
+     * PwForum.
      *
      * @return PwForum
      */

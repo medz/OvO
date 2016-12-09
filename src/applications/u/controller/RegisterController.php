@@ -5,13 +5,13 @@ Wind::import('APPS:u.service.helper.PwUserHelper');
 Wind::import('SRV:user.validator.PwUserValidator');
 
 /**
- * 用户登录/注册controller
+ * 用户登录/注册controller.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: RegisterController.php 24493 2013-01-31 03:40:55Z jieyin $
- * @package src.products.u.controller
  */
 class RegisterController extends PwBaseController
 {
@@ -48,7 +48,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 邀请码链接
+     * 邀请码链接.
      */
     public function inviteAction()
     {
@@ -63,7 +63,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 检查邀请码是否可以用
+     * 检查邀请码是否可以用.
      */
     public function checkInvitecodeAction()
     {
@@ -78,7 +78,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 执行用户注册
+     * 执行用户注册.
      */
     public function dorunAction()
     {
@@ -101,7 +101,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 发送激活邮箱
+     * 发送激活邮箱.
      */
     public function sendActiveEmailAction()
     {
@@ -131,7 +131,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 再次发送激活邮件
+     * 再次发送激活邮件.
      */
     public function sendActiveEmailAgainAction()
     {
@@ -145,7 +145,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 更改邮箱
+     * 更改邮箱.
      */
     public function editEmailAction()
     {
@@ -168,7 +168,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 激活邮箱链接
+     * 激活邮箱链接.
      */
     public function activeEmailAction()
     {
@@ -200,7 +200,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 完成注册，显示欢迎信息
+     * 完成注册，显示欢迎信息.
      */
     public function welcomeAction()
     {
@@ -219,8 +219,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 用户引导页面
-     *
+     * 用户引导页面.
      */
     public function guideAction()
     {
@@ -249,7 +248,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 检查邮箱唯一性
+     * 检查邮箱唯一性.
      */
     public function checkemailAction()
     {
@@ -262,7 +261,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 检查用户名的唯一性
+     * 检查用户名的唯一性.
      */
     public function checkusernameAction()
     {
@@ -275,7 +274,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 检查密码复杂度是否符合
+     * 检查密码复杂度是否符合.
      */
     public function checkpwdAction()
     {
@@ -289,7 +288,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 检查密码强度
+     * 检查密码强度.
      */
     public function checkpwdStrongAction()
     {
@@ -348,7 +347,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 验证用户标识
+     * 验证用户标识.
      *
      * @return string
      */
@@ -370,7 +369,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 初始化
+     * 初始化.
      */
     private function init()
     {
@@ -390,9 +389,9 @@ class RegisterController extends PwBaseController
         $this->setOutput(array('location', 'hometown'), 'areaFields');
     }
 
-
     /**
      * 判断是否需要展示验证码
+     *
      * @return bool
      */
     private function _showVerify()
@@ -411,7 +410,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 关闭
+     * 关闭.
      */
     public function closeAction()
     {
@@ -424,7 +423,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 获得用户DS
+     * 获得用户DS.
      *
      * @return PwUser
      */
@@ -439,7 +438,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 获取注册的信息
+     * 获取注册的信息.
      *
      * @return PwUserInfoDm
      */
@@ -518,7 +517,7 @@ class RegisterController extends PwBaseController
     }
 
     /**
-     * 注册的相关配置
+     * 注册的相关配置.
      *
      * @return array
      */

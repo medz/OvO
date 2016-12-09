@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidConfigApi.php 24718 2013-02-17 06:42:06Z jieyin $
- * @package
  */
-
 class WindidConfigApi
 {
     public function get($name)
@@ -41,7 +41,7 @@ class WindidConfigApi
     {
         $params = array(
             'namespace' => $namespace,
-            'name' => $name,
+            'name'      => $name,
         );
 
         return WindidApi::open('config/getConfigByName', $params);
@@ -57,7 +57,7 @@ class WindidConfigApi
     }
 
     /**
-     * 设置配置
+     * 设置配置.
      *
      * @param string $namespace 命名空间
      * @param array  $keys
@@ -66,8 +66,8 @@ class WindidConfigApi
     {
         $params = array(
             'namespace' => $namespace,
-            'key' => $key,
-            'value' => $value,
+            'key'       => $key,
+            'value'     => $value,
         );
 
         return WindidApi::open('config/setConfig', array(), $params);
@@ -77,7 +77,7 @@ class WindidConfigApi
     {
         $params = array(
             'namespace' => $namespace,
-            'data' => $data,
+            'data'      => $data,
         );
 
         return WindidApi::open('config/setConfigs', array(), $params);
@@ -96,7 +96,7 @@ class WindidConfigApi
     {
         $params = array(
             'namespace' => $namespace,
-            'name' => $name,
+            'name'      => $name,
         );
 
         return WindidApi::open('config/deleteConfigByName', array(), $params);

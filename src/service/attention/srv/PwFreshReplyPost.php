@@ -4,19 +4,17 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.PwFresh');
 
-
 Wind::import('SRV:weibo.PwWeibo');
 
 /**
- * 新鲜事回复
+ * 新鲜事回复.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshReplyPost.php 15354 2012-08-03 09:29:10Z jieyin $
- * @package src.service.user.srv
  */
-
 class PwFreshReplyPost
 {
     public $bhv;

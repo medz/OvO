@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 13, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwNoticeMessage.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 
 class PwNoticeMessage extends PwNoticeAction
@@ -21,7 +23,8 @@ class PwNoticeMessage extends PwNoticeAction
     }
 
     /**
-     * 帖子管理通知相关扩展参数组装
+     * 帖子管理通知相关扩展参数组装.
+     *
      * @see PwNoticeAction::formatExtendParams()
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
@@ -56,7 +59,6 @@ class PwNoticeMessage extends PwNoticeAction
     }
 
     /**
-     *
      * @return PwMessageMessages
      */
     private function _getWindid()
@@ -65,7 +67,6 @@ class PwNoticeMessage extends PwNoticeAction
     }
 
     /**
-     *
      * @return PwMessageService
      */
     private function _getMessagesService()
@@ -74,7 +75,6 @@ class PwNoticeMessage extends PwNoticeAction
     }
 
     /**
-     *
      * @return PwUser
      */
     private function _getUserDs()

@@ -3,20 +3,18 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台设置-站点设置-站点信息设置/全局参数设置
+ * 后台设置-站点设置-站点信息设置/全局参数设置.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-7
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ConfigController.php 3935 2012-02-02 02:37:34Z gao.wanggao $
- * @package admin
- * @subpackage controller.config
  */
 class ConfigController extends AdminBaseController
 {
     /**
-     * 站点设置-站点信息设置
-     *
+     * 站点设置-站点信息设置.
      */
     public function run()
     {
@@ -33,8 +31,7 @@ class ConfigController extends AdminBaseController
     }
 
     /**
-     * 配置增加表单处理器
-     *
+     * 配置增加表单处理器.
      */
     public function dorunAction()
     {
@@ -55,11 +52,8 @@ class ConfigController extends AdminBaseController
         $this->showMessage('ADMIN:success');
     }
 
-
-
     /**
-     * 站点设置
-     *
+     * 站点设置.
      */
     public function siteAction()
     {
@@ -67,13 +61,9 @@ class ConfigController extends AdminBaseController
         $this->setOutput($config, 'config');
     }
 
-
-
     /**
-     * 全局配置增加表单处理器
-     *
+     * 全局配置增加表单处理器.
      */
-
     public function dositeAction()
     {
         $configSet = new PwConfigSet('site');

@@ -11,7 +11,6 @@ class PwJsCompress extends AbstractPwCompiler
         $JS_DEV_PATH = Wind::getRealDir('PUBLIC:res.js.dev');
         $JS_BUILD_PATH = Wind::getRealDir('PUBLIC:res.js.build');
 
-
         $files = $this->_getFiles($JS_DEV_PATH);
         foreach ($files as $file) {
             $newfile = $JS_BUILD_PATH.substr($file, strlen($JS_DEV_PATH));
@@ -99,15 +98,14 @@ class PwJsCompress extends AbstractPwCompiler
  * SOFTWARE.
  * --
  *
- * @package JSMin
  * @author Ryan Grove <ryan@wonko.com>
  * @copyright 2002 Douglas Crockford <douglas@crockford.com> (jsmin.c)
  * @copyright 2008 Ryan Grove <ryan@wonko.com> (PHP port)
  * @license http://opensource.org/licenses/mit-license.php MIT License
+ *
  * @version 1.1.1 (2008-03-02)
+ *
  * @link http://code.google.com/p/jsmin-php/
- *
- *
  */
 class jscompress
 {
@@ -123,7 +121,7 @@ class jscompress
 
     public static function pack($js)
     {
-        $jsmin = new jscompress($js);
+        $jsmin = new self($js);
 
         return $jsmin->min();
     }

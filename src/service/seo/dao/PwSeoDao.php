@@ -2,13 +2,13 @@
 
 
 /**
- * Pw_seo表的dao
+ * Pw_seo表的dao.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package service.seo.dao
  */
 class PwSeoDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwSeoDao extends PwBaseDao
     protected $_dataStruct = array('mod', 'page', 'param', 'title', 'keywords', 'description');
 
     /**
-     * 批量更新或添加seo数据
+     * 批量更新或添加seo数据.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function batchReplaceSeo($data)
@@ -48,11 +49,12 @@ class PwSeoDao extends PwBaseDao
     }
 
     /**
-     * 获取单条记录
+     * 获取单条记录.
      *
-     * @param  string $mod
-     * @param  string $page
-     * @param  string $param
+     * @param string $mod
+     * @param string $page
+     * @param string $param
+     *
      * @return array
      */
     public function getByModAndPageAndParam($mod, $page, $param)
@@ -63,10 +65,11 @@ class PwSeoDao extends PwBaseDao
     }
 
     /**
-     * 根据模式和页面批量获取
+     * 根据模式和页面批量获取.
      *
-     * @param  string $mod
-     * @param  string $page
+     * @param string $mod
+     * @param string $page
+     *
      * @return array
      */
     public function getByModAndPage($mod, $page)
@@ -78,9 +81,10 @@ class PwSeoDao extends PwBaseDao
     }
 
     /**
-     * 根据模式获取
+     * 根据模式获取.
      *
-     * @param  string $mod
+     * @param string $mod
+     *
      * @return array
      */
     public function getByMod($mod)
@@ -92,11 +96,12 @@ class PwSeoDao extends PwBaseDao
     }
 
     /**
-     * 根据参数获取多个seo数据
+     * 根据参数获取多个seo数据.
      *
-     * @param  string $mod
-     * @param  string $page
-     * @param  array  $params
+     * @param string $mod
+     * @param string $page
+     * @param array  $params
+     *
      * @return array
      */
     public function getByParams($mod, $page, $params = array())
@@ -109,9 +114,10 @@ class PwSeoDao extends PwBaseDao
     }
 
     /**
-     * 组装数据
+     * 组装数据.
      *
-     * @param  array $result
+     * @param array $result
+     *
      * @return array
      */
     private function _buildResult($result)
@@ -120,13 +126,13 @@ class PwSeoDao extends PwBaseDao
         foreach ($result as $v) {
             if (!$v['param']) {
                 $seo[$v['page']][0] = array(
-                    'title' => $v['title'],
-                    'keywords' => $v['keywords'],
+                    'title'       => $v['title'],
+                    'keywords'    => $v['keywords'],
                     'description' => $v['description'], );
             } else {
                 $seo[$v['page']][$v['param']] = array(
-                    'title' => $v['title'],
-                    'keywords' => $v['keywords'],
+                    'title'       => $v['title'],
+                    'keywords'    => $v['keywords'],
                     'description' => $v['description'], );
             }
         }

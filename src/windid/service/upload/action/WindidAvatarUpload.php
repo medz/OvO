@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidAvatarUpload.php 28884 2013-05-29 02:44:27Z jieyin $
- * @package upload
  */
-
 class WindidAvatarUpload extends PwUploadAction
 {
     public $isLocal = false;

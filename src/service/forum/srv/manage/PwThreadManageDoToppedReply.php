@@ -4,15 +4,14 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwPostsToppedDm');
 
 /**
- * 帖子管理操作-回复置顶
+ * 帖子管理操作-回复置顶.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoTopped.php 14442 2012-07-20 09:10:11Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoToppedReply extends PwThreadManageDo
 {
     public $topped = 0;
@@ -85,7 +84,7 @@ class PwThreadManageDoToppedReply extends PwThreadManageDo
     }
 
     /**
-     * PwPostsTopped
+     * PwPostsTopped.
      *
      * @return PwPostsTopped
      */

@@ -6,12 +6,13 @@ Wind::import('SRV:space.srv.profile.do.PwSpaceProfileDoInterface');
 Wind::import('SRV:education.srv.helper.PwEducationHelper');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>
+ * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
+ *
  * @author gao.wanggao Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpaceProfileDoEducation.php 9091 2012-05-03 03:42:01Z xiaoxia.xuxx $
- * @package
  */
 class PwSpaceProfileDoEducation implements PwSpaceProfileDoInterface
 {

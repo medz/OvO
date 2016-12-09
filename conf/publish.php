@@ -12,12 +12,11 @@ return array(
  * 可访问目录
  */
 
-'PUBLIC_URL' => '',
+'PUBLIC_URL'    => '',
 'PUBLIC_ATTACH' => '/attachment',
-'PUBLIC_HTML' => '/html',
-'PUBLIC_RES' => '/res',
+'PUBLIC_HTML'   => '/html',
+'PUBLIC_RES'    => '/res',
 'PUBLIC_THEMES' => '/themes',
-
 
 /**=====配置结束于此=====**/
 );

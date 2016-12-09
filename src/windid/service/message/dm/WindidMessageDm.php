@@ -1,13 +1,12 @@
 <?php
 
 /**
- *
  * @author peihong.zhangph
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageDm.php 24834 2013-02-22 06:43:43Z jieyin $
  */
-
 class WindidMessageDm extends PwBaseDm
 {
     public $id;
@@ -19,9 +18,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置消息创建者uid
+     * 设置消息创建者uid.
      *
-     * @param  int             $uid
+     * @param int $uid
+     *
      * @return WindidMessageDm
      */
     public function setCreatedUserId($uid)
@@ -33,9 +33,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置收件人uid
+     * 设置收件人uid.
      *
-     * @param  int             $uid
+     * @param int $uid
+     *
      * @return WindidMessageDm
      */
     public function setToUid($uid)
@@ -47,9 +48,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置发件人uid
+     * 设置发件人uid.
      *
-     * @param  int             $uid
+     * @param int $uid
+     *
      * @return WindidMessageDm
      */
     public function setFromUid($uid)
@@ -61,9 +63,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置内容
+     * 设置内容.
      *
-     * @param  string          $content
+     * @param string $content
+     *
      * @return WindidMessageDm
      */
     public function setContent($content)
@@ -74,9 +77,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置$lastMessage
+     * 设置$lastMessage.
      *
-     * @param  array           $lastMessage
+     * @param array $lastMessage
+     *
      * @return WindidMessageDm
      */
     public function setLastMessage($lastMessage)
@@ -87,9 +91,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置消息id
+     * 设置消息id.
      *
-     * @param  int             $messageId
+     * @param int $messageId
+     *
      * @return WindidMessageDm
      */
     public function setMessageId($messageId)
@@ -101,9 +106,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置$dialogId
+     * 设置$dialogId.
      *
-     * @param  int             $dialogId
+     * @param int $dialogId
+     *
      * @return WindidMessageDm
      */
     public function setDialogId($dialogId)
@@ -114,9 +120,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置未读数
+     * 设置未读数.
      *
-     * @param  int             $num
+     * @param int $num
+     *
      * @return WindidMessageDm
      */
     public function setUnreadCount($num)
@@ -127,9 +134,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置消息数
+     * 设置消息数.
      *
-     * @param  int             $num
+     * @param int $num
+     *
      * @return WindidMessageDm
      */
     public function setMessageCount($num)
@@ -140,9 +148,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置新增已读数
+     * 设置新增已读数.
      *
-     * @param  int             $num
+     * @param int $num
+     *
      * @return WindidMessageDm
      */
     public function increaseUnreadCount($num = 1)
@@ -153,9 +162,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置新增消息总数
+     * 设置新增消息总数.
      *
-     * @param  int             $num
+     * @param int $num
+     *
      * @return WindidMessageDm
      */
     public function increaseMessageCount($num = 1)
@@ -166,9 +176,10 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 设置更新时间
+     * 设置更新时间.
      *
-     * @param  int             $time
+     * @param int $time
+     *
      * @return WindidMessageDm
      */
     public function setModifiedTime($time)
@@ -184,7 +195,6 @@ class WindidMessageDm extends PwBaseDm
 
         return $this;
     }
-
 
     public function setIsRead($isread = 0)
     {
@@ -232,10 +242,8 @@ class WindidMessageDm extends PwBaseDm
         $this->_data['modified_time'] = Pw::getTime();
     }
 
-
     /**
-     * 设置创建时间
-     *
+     * 设置创建时间.
      */
     private function _setCreatedTime()
     {
@@ -250,7 +258,7 @@ class WindidMessageDm extends PwBaseDm
     }
 
     /**
-     * 检查消息内容
+     * 检查消息内容.
      *
      * @return bool
      */

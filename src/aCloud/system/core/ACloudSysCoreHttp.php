@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreHttp
 {
     public static function getCloudApi()
@@ -23,7 +23,7 @@ class ACloudSysCoreHttp
             return http_build_query($params);
         }
 
-        if (! $params || ! is_array($params)) {
+        if (!$params || !is_array($params)) {
             return '';
         }
         $query = '';
@@ -36,14 +36,14 @@ class ACloudSysCoreHttp
 
     public static function splitHttpQuery($query)
     {
-        if (! $query) {
+        if (!$query) {
             return array();
         }
         $query = explode('&', $query);
         $params = array();
         foreach ($query as $q) {
             list($key, $value) = explode('=', $q);
-            $params [$key] = urldecode($value);
+            $params[$key] = urldecode($value);
         }
 
         return $params;

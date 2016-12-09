@@ -12,15 +12,16 @@ Wind::import('SRV:user.PwUserBan');
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBanService.php 23904 2013-01-17 05:27:48Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwUserBanService
 {
     /**
-     * 根据用户名/用户ID批量禁止用户
+     * 根据用户名/用户ID批量禁止用户.
      *
-     * @param  array $dmList PwUserBanInfoDm 列表
+     * @param array $dmList PwUserBanInfoDm 列表
+     *
      * @return bool
      */
     public function banUser($dmList)
@@ -50,11 +51,12 @@ class PwUserBanService
     }
 
     /**
-     * 根据条件检索
+     * 根据条件检索.
      *
-     * @param  PwUserBanSo $searchDo
-     * @param  int         $limit    返回条数
-     * @param  int         $start    开始位置
+     * @param PwUserBanSo $searchDo
+     * @param int         $limit    返回条数
+     * @param int         $start    开始位置
+     *
      * @return array
      */
     public function searchBanInfo(PwUserBanSo $searchDo, $limit = 10, $start = 0)
@@ -69,9 +71,10 @@ class PwUserBanService
     }
 
     /**
-     * 解除禁止操作
+     * 解除禁止操作.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -92,7 +95,8 @@ class PwUserBanService
 
     /**
      * 获得禁止类型
-     * //TODO 【用户禁止】禁止类型扩展
+     * //TODO 【用户禁止】禁止类型扩展.
+     *
      * @return array
      */
     public function getBanType()
@@ -107,14 +111,15 @@ class PwUserBanService
     }
 
     /**
-     * 自动禁止用户
+     * 自动禁止用户.
      *
      * 用户积分有变动的时候执行
      * 在用户s_PwUserDataDao_update处作为hook执行
      *
-     * @param  int   $uid
-     * @param  array $fields
-     * @param  array $increaseFields
+     * @param int   $uid
+     * @param array $fields
+     * @param array $increaseFields
+     *
      * @return array
      */
     public function autoBan($uid, $fields, $increaseFields)
@@ -156,10 +161,11 @@ class PwUserBanService
     }
 
     /**
-     * 发送消息
+     * 发送消息.
      *
-     * @param  array $notice
-     * @param  int   $type   消息类型《1：禁止，2：解禁，3：自动解禁》
+     * @param array $notice
+     * @param int   $type   消息类型《1：禁止，2：解禁，3：自动解禁》
+     *
      * @return bool
      */
     public function sendNotice($bans, $type = 1)
@@ -187,9 +193,10 @@ class PwUserBanService
     }
 
     /**
-     * 组装输出列表信息
+     * 组装输出列表信息.
      *
-     * @param  array $item
+     * @param array $item
+     *
      * @return array
      */
     private function _buildList($item)
@@ -215,7 +222,7 @@ class PwUserBanService
     }
 
     /**
-     * 获得用户禁止
+     * 获得用户禁止.
      *
      * @return PwUserBan
      */

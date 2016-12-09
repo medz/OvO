@@ -1,21 +1,22 @@
 <?php
 /**
- * 对seo部署缓存策略
+ * 对seo部署缓存策略.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwSeoService.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package wind
  */
 class PwSeoService
 {
     /**
-     * 从缓存里取seo数据
+     * 从缓存里取seo数据.
      *
-     * @param  string $mod
-     * @param  string $page
-     * @param  string $param
+     * @param string $mod
+     * @param string $page
+     * @param string $param
+     *
      * @return array
      */
     public function getByModAndPageAndParamWithCache($mod, $page, $param)
@@ -31,9 +32,10 @@ class PwSeoService
     }
 
     /**
-     * 更新seo，同时更新缓存
+     * 更新seo，同时更新缓存.
      *
-     * @param  array        $dms
+     * @param array $dms
+     *
      * @return bool|PwError
      */
     public function batchReplaceSeoWithCache($dms)

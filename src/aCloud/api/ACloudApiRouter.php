@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 define('ACLOUD_API_ILLEGAL_CALL', 10000);
 
 class ACloudApiRouter
@@ -12,7 +12,7 @@ class ACloudApiRouter
         $request = $_GET + $_POST;
         unset($request['m']);
         unset($request['c']);
-        if (! ACloudSysCoreCommon::loadSystemClass('control', 'verify.service')->apiControl($request)) {
+        if (!ACloudSysCoreCommon::loadSystemClass('control', 'verify.service')->apiControl($request)) {
             $this->outputControlError();
         }
         $result = ACloudSysCoreCommon::loadSystemClass('api', 'core.proxy')->call($method, $request);

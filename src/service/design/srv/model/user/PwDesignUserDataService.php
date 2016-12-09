@@ -8,18 +8,19 @@ Wind::import('SRV:education.srv.helper.PwEducationHelper');
  *  decorateAddProperty 为插入表单值修饰
  *  decorateEditProperty 为修改表单值修饰
  *  getData 获取数据
- * </note>
+ * </note>.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDesignUserDataService.php 24726 2013-02-18 06:15:04Z gao.wanggao $
- * @package src.service.design.srv.model.user
  */
 class PwDesignUserDataService extends PwDesignModelBase
 {
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateAddProperty()
      */
     public function decorateAddProperty($model)
@@ -31,7 +32,8 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateEditProperty()
      */
     public function decorateEditProperty($moduleBo)
@@ -45,7 +47,8 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::decorateSaveProperty()
      */
     public function decorateSaveProperty($property, $moduleid)
@@ -116,7 +119,8 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 用于推送时的指定数据获取
+     * 用于推送时的指定数据获取.
+     *
      * @see src/service/design/srv/model/PwDesignModelBase::_fetchData()
      */
     protected function fetchData($ids)
@@ -130,9 +134,10 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 构建模板用的标签
+     * 构建模板用的标签.
      *
-     * @param  array  $list
+     * @param array $list
+     *
      * @return string
      */
     private function _buildSignKey($list)
@@ -226,10 +231,11 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 用户工作经历
+     * 用户工作经历.
      *
-     * @param  PwWork $ds
-     * @param  int    $uid
+     * @param PwWork $ds
+     * @param int    $uid
+     *
      * @return array
      */
     private function _buildWork(PwWork $ds, $uid)
@@ -248,10 +254,11 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 用户教育经历
+     * 用户教育经历.
      *
-     * @param  PwEducation $ds
-     * @param  int         $uid
+     * @param PwEducation $ds
+     * @param int         $uid
+     *
      * @return array
      */
     private function _buildEducation(PwEducation $ds, $uid)
@@ -273,9 +280,10 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 构造用户组
+     * 构造用户组.
      *
-     * @param  string $gid
+     * @param string $gid
+     *
      * @return string
      */
     private function _buildGids($gid)
@@ -305,9 +313,10 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 构建推送的地区库---获取地区库的省/市/区
+     * 构建推送的地区库---获取地区库的省/市/区.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array
      */
     private function _buildArea($areaid)
@@ -327,7 +336,7 @@ class PwDesignUserDataService extends PwDesignModelBase
     }
 
     /**
-     * 用户DS
+     * 用户DS.
      *
      * @return PwUser
      */

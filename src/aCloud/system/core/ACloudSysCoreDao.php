@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreDao
 {
     public function fetchOne($sql)
@@ -40,7 +40,7 @@ class ACloudSysCoreDao
 
     public function buildClause($arrays, $expr = null)
     {
-        if (! is_array($arrays) && ! $expr) {
+        if (!is_array($arrays) && !$expr) {
             return '';
         }
         $sets = ' SET ';

@@ -1,17 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSpace.php 6270 2012-03-20 02:09:11Z gao.wanggao $
- * @package
  */
-
 class PwSpace
 {
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
      * @param int $uid
      */
@@ -26,7 +26,7 @@ class PwSpace
     }
 
     /**
-     * 获取多条记录
+     * 获取多条记录.
      *
      * @param array $uids
      */
@@ -75,7 +75,6 @@ class PwSpace
 
         return $this->_getDao()->updateInfo($dm->uid, $dm->getData());
     }
-
 
     public function updateNumber($uid)
     {

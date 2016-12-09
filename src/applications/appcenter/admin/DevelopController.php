@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('APPCENTER:service.srv.PwGenerateApplication');
 /**
- * 开发助手
+ * 开发助手.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: DevelopController.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package appcenter.admin
  */
 class DevelopController extends AdminBaseController
 {
@@ -24,8 +24,7 @@ class DevelopController extends AdminBaseController
     }
 
     /**
-     * 编辑
-     *
+     * 编辑.
      */
     public function editAction()
     {
@@ -37,8 +36,7 @@ class DevelopController extends AdminBaseController
     }
 
     /**
-     * 编辑xml
-     *
+     * 编辑xml.
      */
     public function editxmlAction()
     {
@@ -52,8 +50,7 @@ class DevelopController extends AdminBaseController
     }
 
     /**
-     * 编辑我的扩展
-     *
+     * 编辑我的扩展.
      */
     public function edithookAction()
     {
@@ -68,8 +65,7 @@ class DevelopController extends AdminBaseController
     }
 
     /**
-     * 显示添加扩展页面
-     *
+     * 显示添加扩展页面.
      */
     public function addhookAction()
     {
@@ -81,8 +77,7 @@ class DevelopController extends AdminBaseController
     }
 
     /**
-     * 添加扩展 提交
-     *
+     * 添加扩展 提交.
      */
     public function doEditHookAction()
     {

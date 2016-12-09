@@ -1,13 +1,14 @@
 <?php
 /**
- * 系统任务列表
+ * 系统任务列表.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jinlong.panjl $>
+ *
  * @author $Author: jinlong.panjl $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: systemCron.php 22664 2012-12-26 07:55:11Z jinlong.panjl $
- * @package
  */
 
 return array(

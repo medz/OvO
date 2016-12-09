@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCache.php 23636 2013-01-14 03:52:39Z jieyin $
- * @package forum
  */
-
 class PwCache
 {
     const USE_MEN = 1;
@@ -43,7 +42,7 @@ class PwCache
     }
 
     /**
-     * 是否可以使用mem(redis)缓存
+     * 是否可以使用mem(redis)缓存.
      *
      * @return bool
      */
@@ -53,9 +52,10 @@ class PwCache
     }
 
     /**
-     * 获取分布式缓存部署的key
+     * 获取分布式缓存部署的key.
      *
-     * @param  array $keys
+     * @param array $keys
+     *
      * @return array
      */
     public function getDistributed($keys)
@@ -81,7 +81,7 @@ class PwCache
     }
 
     /**
-     * 预设查询键值，批量查询缓存(性能优化设置)
+     * 预设查询键值，批量查询缓存(性能优化设置).
      *
      * @param array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
      */
@@ -95,8 +95,9 @@ class PwCache
     /**
      * 构造查询键值
      *
-     * @param  string $key   键值
-     * @param  array  $param 多维键值参数
+     * @param string $key   键值
+     * @param array  $param 多维键值参数
+     *
      * @return string
      */
     public function bulidKey($key, $param = array())
@@ -116,7 +117,8 @@ class PwCache
     /**
      * 批量构造查询键值
      *
-     * @param  array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     * @param array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     *
      * @return array
      */
     public function bulidKeys($keys)
@@ -130,10 +132,11 @@ class PwCache
     }
 
     /**
-     * 获取单个缓存 (有缓存性能优化)
+     * 获取单个缓存 (有缓存性能优化).
      *
-     * @param  string $key   键值
-     * @param  array  $param 多维键值参数
+     * @param string $key   键值
+     * @param array  $param 多维键值参数
+     *
      * @return mixed
      */
     public function get($key, $param = array())
@@ -150,9 +153,10 @@ class PwCache
     }
 
     /**
-     * 获取多个个缓存 (有缓存性能优化)
+     * 获取多个个缓存 (有缓存性能优化).
      *
-     * @param  array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     * @param array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     *
      * @return array
      */
     public function fetch($keys)
@@ -176,10 +180,11 @@ class PwCache
     }
 
     /**
-     * 设置单个缓存
+     * 设置单个缓存.
      *
-     * @param  string $key   键值
-     * @param  array  $param 多维键值参数
+     * @param string $key   键值
+     * @param array  $param 多维键值参数
+     *
      * @return bool
      */
     public function set($key, $value, $param = array(), $expires = 0)
@@ -192,10 +197,11 @@ class PwCache
     }
 
     /**
-     * 删除单个缓存
+     * 删除单个缓存.
      *
-     * @param  string $key   键值
-     * @param  array  $param 多维键值参数
+     * @param string $key   键值
+     * @param array  $param 多维键值参数
+     *
      * @return bool
      */
     public function delete($key, $param = array())
@@ -207,9 +213,10 @@ class PwCache
     }
 
     /**
-     * 删除多个缓存
+     * 删除多个缓存.
      *
-     * @param  array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     * @param array $keys 查询键值 <例：array('config', 'level', array('group', array($gid)))>
+     *
      * @return bool
      */
     public function batchDelete($keys)
@@ -322,9 +329,9 @@ class PwCache
                 break;
             case self::USE_DB:
                 $config = array(
-                    'table-name' => Wekit::V('db.table.name'),
-                    'field-key' => 'cache_key',
-                    'field-value' => 'cache_value',
+                    'table-name'   => Wekit::V('db.table.name'),
+                    'field-key'    => 'cache_key',
+                    'field-value'  => 'cache_value',
                     'field-expire' => 'cache_expire',
                 );
                 $mod = 'default';
@@ -334,7 +341,7 @@ class PwCache
                 !isset($servers[$mod]) && $mod = 'default';
                 $config = array(
                     'key-prefix' => Wekit::V('mem.key.prefix'),
-                    'servers' => $servers[$mod],
+                    'servers'    => $servers[$mod],
                 );
                 break;
             case self::USE_REDIS:
@@ -342,7 +349,7 @@ class PwCache
                 !isset($servers[$mod]) && $mod = 'default';
                 $config = array(
                     'key-prefix' => Wekit::V('redis.key.prefix'),
-                    'servers' => $servers[$mod],
+                    'servers'    => $servers[$mod],
                 );
                 break;
         }

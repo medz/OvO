@@ -1,17 +1,17 @@
 <?php
 /**
- * 话题分类DS
+ * 话题分类DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package PwTag
  */
 class PwTagCateGory
 {
     /**
-     * 添加分类关系 一个话题多个分类
+     * 添加分类关系 一个话题多个分类.
      *
      * @param int   $tagId
      * @param array $cateGoryIds
@@ -38,7 +38,7 @@ class PwTagCateGory
     }
 
     /**
-     * 更新分类关系
+     * 更新分类关系.
      *
      * @param $dms
      * return bool
@@ -55,9 +55,10 @@ class PwTagCateGory
     }
 
     /**
-     * 删除分类
+     * 删除分类.
      *
-     * @param  int  $categoryId
+     * @param int $categoryId
+     *
      * @return bool
      */
     public function deleteCategory($categoryId)
@@ -73,9 +74,10 @@ class PwTagCateGory
     }
 
     /**
-     * 获取话题分类
+     * 获取话题分类.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function getCategoriesByTagId($tagId)
@@ -97,7 +99,7 @@ class PwTagCateGory
     }
 
     /**
-     * 更新一条分类
+     * 更新一条分类.
      *
      * @param PwTagDm $dm
      *                    return bool
@@ -112,9 +114,10 @@ class PwTagCateGory
     }
 
     /**
-     * 批量添加分类
+     * 批量添加分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addTagCategory(PwTagDm $dm)
@@ -127,7 +130,7 @@ class PwTagCateGory
     }
 
     /**
-     * 获取单条分类
+     * 获取单条分类.
      *
      * @return int
      */
@@ -142,7 +145,7 @@ class PwTagCateGory
     }
 
     /**
-     * 获取所有话题分类
+     * 获取所有话题分类.
      *
      * @return int
      */
@@ -152,7 +155,7 @@ class PwTagCateGory
     }
 
     /**
-     * 统计分类话题数 (只提供后台使用)
+     * 统计分类话题数 (只提供后台使用).
      *
      * @return array
      */
@@ -170,7 +173,7 @@ class PwTagCateGory
     }
 
     /**
-     * 删除内容关系数据表
+     * 删除内容关系数据表.
      *
      * @param array $tagIds
      */
@@ -184,7 +187,7 @@ class PwTagCateGory
     }
 
     /**
-     * 根据tag_ids获取数据
+     * 根据tag_ids获取数据.
      *
      * @param array $tagIds
      */

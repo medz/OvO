@@ -1,18 +1,18 @@
 <?php
 
 /**
- * 奖励扩展点的接口
+ * 奖励扩展点的接口.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskRewardDoBase.php 16435 2012-08-23 09:18:44Z xiaoxia.xuxx $
- * @package src.service.mission.srv.do
  */
 abstract class PwTaskRewardDoBase
 {
     /**
-     * PwTaskGainReward
+     * PwTaskGainReward.
      *
      * @var PwTaskGainReward
      */
@@ -21,7 +21,7 @@ abstract class PwTaskRewardDoBase
     protected $rewardType = '';
 
     /**
-     * 创建构造函数
+     * 创建构造函数.
      *
      * @param PwTaskGainReward $srv
      */
@@ -31,11 +31,12 @@ abstract class PwTaskRewardDoBase
     }
 
     /**
-     * 奖励获取
+     * 奖励获取.
      *
-     * @param  int    $uid      用户ID
-     * @param  array  $reward   奖励设置
-     * @param  string $taskname 任务名字
+     * @param int    $uid      用户ID
+     * @param array  $reward   奖励设置
+     * @param string $taskname 任务名字
+     *
      * @return bool
      */
     public function gainReward($uid, $reward, $taskname)
@@ -47,9 +48,10 @@ abstract class PwTaskRewardDoBase
      * <note>
      * 返回的奖励里必须设置有type=> 配置的奖励扩展  比如credit扩展 则type=credit
      * 如上：credit和taskExtends里配置的Reward里的key一致
-     * </note>
+     * </note>.
      *
-     * @param  array $reward
+     * @param array $reward
+     *
      * @return array
      */
     public function checkReward($reward)

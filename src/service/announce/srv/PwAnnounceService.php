@@ -7,17 +7,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwAnnounceService.php 2552 2012-01-12 11:28:21Z mingxing.sun $
- * @package announce
- * @subpackage service.srv
  */
-
 class PwAnnounceService
 {
     /**
-     * 批量格式化公告记录，添加用户名
+     * 批量格式化公告记录，添加用户名.
      *
      * @param $announceInfo
+     *
      * @return array
      */
     public function formatAnnouncesUsername($announceInfos)
@@ -40,7 +39,7 @@ class PwAnnounceService
 
     /**
      * 通过公告记录组装前台显示效果
-     * 帖子列表滚动展示标题用
+     * 帖子列表滚动展示标题用.
      *
      * @return array
      */
@@ -58,6 +57,7 @@ class PwAnnounceService
 
         return $announces;
     }
+
     /**
      * 加载PwUser Ds 服务
      *
@@ -69,7 +69,7 @@ class PwAnnounceService
     }
 
     /**
-     * 获取公告接口 DS
+     * 获取公告接口 DS.
      *
      * @return PwAnnounce
      */

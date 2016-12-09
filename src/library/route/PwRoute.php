@@ -2,36 +2,36 @@
 
 
 /**
- * 前台路由
+ * 前台路由.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwRoute.php 25816 2013-03-25 06:10:30Z long.shi $
- * @package library
  */
 class PwRoute extends AbstractPwRoute
 {
     private $entrance = 'CONF:entrance';
     /**
-     * 特殊规则的rewrite
+     * 特殊规则的rewrite.
      */
     private $rewrite_special = false;
 
     /**
-     * 普通规则的rewrite
+     * 普通规则的rewrite.
      */
     private $rewrite_common = false;
 
     /**
-     * 符合特殊情况时，url串省略mca参数
+     * 符合特殊情况时，url串省略mca参数.
      */
     private $omit_mca = false;
     public $dynamicDomain = array();
     public $dynamic = array();
     public $dynamicHost = '';
     /**
-     * 符合特殊二级域名时,后面皆可省略的情况
+     * 符合特殊二级域名时,后面皆可省略的情况.
      */
     private $onlydomain = false;
     protected $params = array('a' => 3, 'c' => 2, 'm' => 1);
@@ -65,12 +65,13 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 解析url - 公开方法
+     * 解析url - 公开方法.
      *
      * 返回false 表示外链
      * 返回array 为解析好的参数
      *
-     * @param  string $url
+     * @param string $url
+     *
      * @return array
      */
     public function matchUrl($url)
@@ -110,9 +111,10 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 检查url绝对路径
+     * 检查url绝对路径.
      *
-     * @param  string $url
+     * @param string $url
+     *
      * @return string
      */
     public function checkUrl($url)
@@ -130,9 +132,10 @@ class PwRoute extends AbstractPwRoute
     /**
      * 解析url - 普通伪静态
      *
-     * @param  WindHttpRequest $request
-     * @param  string          $path
-     * @return array           null
+     * @param WindHttpRequest $request
+     * @param string          $path
+     *
+     * @return array null
      */
     private function _matchCommon($path)
     {
@@ -150,11 +153,12 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 解析url - 二级域名
+     * 解析url - 二级域名.
      *
-     * @param  WindHttpRequest $request
-     * @param  string          $path
-     * @return array           null
+     * @param WindHttpRequest $request
+     * @param string          $path
+     *
+     * @return array null
      */
     private function _matchDomain($host)
     {
@@ -187,9 +191,10 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 解析脚本
+     * 解析脚本.
      *
-     * @param  WindHttpRequest $request
+     * @param WindHttpRequest $request
+     *
      * @return array
      */
     private function _matchScript($script, $scriptUrl)
@@ -223,7 +228,8 @@ class PwRoute extends AbstractPwRoute
      * @param array $route
      * @param
      *        	array WindRouter
-     * @param  array  $args
+     * @param array $args
+     *
      * @return string
      */
     private function _buildCommon($router, $route, $args)
@@ -257,10 +263,11 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 生成url - 二级域名
+     * 生成url - 二级域名.
      *
-     * @param  array  $route
-     * @param  array  $args
+     * @param array $route
+     * @param array $args
+     *
      * @return string
      */
     private function _buildDomain($_m, $_c, $_a, $args)
@@ -299,13 +306,14 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 生成url串
+     * 生成url串.
      *
-     * @param  string     $_m
-     * @param  string     $_c
-     * @param  string     $_a
-     * @param  WindRouter $router
-     * @param  array      $args
+     * @param string     $_m
+     * @param string     $_c
+     * @param string     $_a
+     * @param WindRouter $router
+     * @param array      $args
+     *
      * @return string
      */
     private function _buildUrl($_m, $_c, $_a, $router, $args)
@@ -391,10 +399,11 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 解析url串
+     * 解析url串.
      *
-     * @param  WindHttpRequest $request
-     * @param  string          $path
+     * @param WindHttpRequest $request
+     * @param string          $path
+     *
      * @return array
      */
     private function _matchPath($path, $rawDecode = false)
@@ -434,9 +443,9 @@ class PwRoute extends AbstractPwRoute
                                 $forum = Wekit::load('forum.PwForum')->getForum($matches['fid']);
                                 $action = array(
                                     'category' => array('m' => 'bbs', 'c' => 'cate', 'a' => 'run'),
-                                    'forum' => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
-                                    'sub' => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
-                                    'sub2' => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
+                                    'forum'    => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
+                                    'sub'      => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
+                                    'sub2'     => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
                                     );
                                 $forum_type = isset($forum['type']) ? $forum['type'] : 'forum';
 
@@ -474,7 +483,8 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 万事俱备
+     * 万事俱备.
+     *
      * @param $request WindHttpRequest
      */
     protected function init($build = false, $request = null)
@@ -506,7 +516,7 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 初始化配置
+     * 初始化配置.
      *
      * @return array
      */
@@ -521,32 +531,32 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 初始化配置
+     * 初始化配置.
      *
      * @return array
      */
     private function _getDomainKey()
     {
         return array(
-            'bbs/cate/run' => 'fid',
-            'bbs/thread/run' => 'fid',
-            'bbs/read/run' => 'fid',
+            'bbs/cate/run'      => 'fid',
+            'bbs/thread/run'    => 'fid',
+            'bbs/read/run'      => 'fid',
             'special/index/run' => 'id', );
     }
 
     private function _getType($type)
     {
         $all = array(
-            'bbs/cate/run' => 'forum',
-            'bbs/thread/run' => 'forum',
-            'bbs/read/run' => 'forum',
+            'bbs/cate/run'      => 'forum',
+            'bbs/thread/run'    => 'forum',
+            'bbs/read/run'      => 'forum',
             'special/index/run' => 'special', );
 
         return isset($all[$type]) ? $all[$type] : '';
     }
 
     /**
-     * 根据类型获取域名
+     * 根据类型获取域名.
      *
      * @return array
      */
@@ -568,14 +578,14 @@ class PwRoute extends AbstractPwRoute
         return array($domain[$domain_type], $domain_type);
     }
 
-
     /**
-     * 获取域名
+     * 获取域名.
      *
-     * @param  string $key
-     * @param  string $value
-     * @param  string $type  域名类型 forum, special
-     * @return array  $key => $value 键值对
+     * @param string $key
+     * @param string $value
+     * @param string $type  域名类型 forum, special
+     *
+     * @return array $key => $value 键值对
      */
     private function _getDomain($key = 'domain', $value = 'domain', $type = 'forum', $absolute = false)
     {
@@ -599,7 +609,7 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 初始化配置
+     * 初始化配置.
      *
      * @return array
      */
@@ -614,7 +624,7 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 初始化配置
+     * 初始化配置.
      *
      * @return array
      */
@@ -630,9 +640,10 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 获取应用域名
+     * 获取应用域名.
      *
-     * @param  string $_m
+     * @param string $_m
+     *
      * @return string
      */
     private function _getModuleDomain($_m)
@@ -647,11 +658,12 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 分析参数
+     * 分析参数.
      *
-     * @param  AbstractWindRouter $router
-     * @param  string             $action
-     * @param  array              $args
+     * @param AbstractWindRouter $router
+     * @param string             $action
+     * @param array              $args
+     *
      * @return array
      */
     private function _resolveMca($router, $action, $args)
@@ -675,11 +687,12 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 生成脚本文件
+     * 生成脚本文件.
      *
-     * @param  string $_m
-     * @param  string $_c
-     * @param  string $_a
+     * @param string $_m
+     * @param string $_c
+     * @param string $_a
+     *
      * @return string
      */
     private function _buildScript($_m, $_c, $_a, &$args)
@@ -705,9 +718,10 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 获取待验证有效的url串
+     * 获取待验证有效的url串.
      *
-     * @param  string $path
+     * @param string $path
+     *
      * @return string
      */
     private function _getRawPath($path)
@@ -719,9 +733,10 @@ class PwRoute extends AbstractPwRoute
     }
 
     /**
-     * 过滤无效url
+     * 过滤无效url.
      *
-     * @param  string        $rawpath
+     * @param string $rawpath
+     *
      * @throws WindException
      */
     private function _filterIllegal($rawpath)

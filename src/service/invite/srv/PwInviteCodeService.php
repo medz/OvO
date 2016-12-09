@@ -3,20 +3,21 @@
 Wind::import('SRV:invite.dm.PwInviteCodeDm');
 Wind::import('SRV:credit.bo.PwCreditBo');
 /**
- * 邀请码的服务类
+ * 邀请码的服务类.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteCodeService.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package service.invite.srv
  */
 class PwInviteCodeService
 {
     /**
-     * 检查该邀请码是否可以使用
+     * 检查该邀请码是否可以使用.
      *
-     * @param  string       $code
+     * @param string $code
+     *
      * @return PwError|true
      */
     public function allowUseInviteCode($code)
@@ -38,11 +39,12 @@ class PwInviteCodeService
     }
 
     /**
-     * 搜索邀请码列表
+     * 搜索邀请码列表.
      *
-     * @param  PwInviteCodeSo $search  搜索的条件
-     * @param  int            $page    搜索的开始位置
-     * @param  int            $perpage
+     * @param PwInviteCodeSo $search  搜索的条件
+     * @param int            $page    搜索的开始位置
+     * @param int            $perpage
+     *
      * @return array
      */
     public function searchInvitecodeList(PwInviteCodeSo $search, $limit = 10, $start = 0)
@@ -76,9 +78,10 @@ class PwInviteCodeService
     /**
      * 购买邀请码
      *
-     * @param  PwUserBo $user       购买的用户
-     * @param  int      $num        购买的数量
-     * @param  int      $creditType 用于购买的积分类型
+     * @param PwUserBo $user       购买的用户
+     * @param int      $num        购买的数量
+     * @param int      $creditType 用于购买的积分类型
+     *
      * @return bool
      */
     public function buyInviteCodes(PwUserBo $user, $num, $creditType)
@@ -112,9 +115,10 @@ class PwInviteCodeService
     /**
      * 判断用户是否可以购买邀请码
      *
-     * @param  PwUserBo     $user       购买的用户
-     * @param  int          $num        购买的数量
-     * @param  int          $creditType 用于购买的积分类型
+     * @param PwUserBo $user       购买的用户
+     * @param int      $num        购买的数量
+     * @param int      $creditType 用于购买的积分类型
+     *
      * @return bool|PwError
      */
     public function allowBuyInviteCode(PwUserBo $user, $num, $creditType)
@@ -143,7 +147,8 @@ class PwInviteCodeService
     /**
      * 生成邀请码
      *
-     * @param  int    $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return string
      */
     public function createInviteCode($uid)
@@ -160,12 +165,13 @@ class PwInviteCodeService
      * @param array 已经有的数据
      * @param int $uid 购买的用户ID
      * @param int $num 购买的数量
+     *
      * @return
      */
     private function createCodes($data, $uid, $num)
     {
         $codes = array();
-        for ($i = 0; $i < $num; $i ++) {
+        for ($i = 0; $i < $num; $i++) {
             $codes[] = $this->createInviteCode($uid);
         }
         $existCodes = $this->_getDs()->fetchCode($codes);
@@ -179,7 +185,7 @@ class PwInviteCodeService
     }
 
     /**
-     * 获得邀请码的DS
+     * 获得邀请码的DS.
      *
      * @return PwInviteCode
      */

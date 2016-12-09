@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Dec 13, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: PwNoticeThreadreply.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 
 class PwNoticeThreadreply extends PwNoticeAction
@@ -22,7 +24,8 @@ class PwNoticeThreadreply extends PwNoticeAction
     }
 
     /**
-     * 回复提醒相关扩展参数组装
+     * 回复提醒相关扩展参数组装.
+     *
      * @see PwNoticeAction::formatExtendParams()
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
@@ -53,8 +56,8 @@ class PwNoticeThreadreply extends PwNoticeAction
     }
 
     /**
+     * 忽略一个回复通知.
      *
-     * 忽略一个回复通知
      * @param array $notice
      */
     public function ignoreNotice($notice, $ignore = 1)
@@ -69,7 +72,8 @@ class PwNoticeThreadreply extends PwNoticeAction
     }
 
     /**
-     * 获取主题及最新回复
+     * 获取主题及最新回复.
+     *
      * @see PwNoticeAction::getDetailList()
      */
     public function getDetailList($notice)
@@ -87,8 +91,8 @@ class PwNoticeThreadreply extends PwNoticeAction
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwForum
      */
     private function _getForumDs()
@@ -97,8 +101,8 @@ class PwNoticeThreadreply extends PwNoticeAction
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwThread
      */
     private function _getThreadDs()

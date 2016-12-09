@@ -8,15 +8,14 @@ Wind::import('APPCENTER:service.srv.helper.PwManifest');
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwInstallApplication.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package products
- * @subpackage appcenter.service.srv
  */
 class PwInstallApplication
 {
     const CONF_PATH = 'APPCENTER:conf.install.php';
     /**
-     * 安装包临时存放位置
+     * 安装包临时存放位置.
      *
      * @var string
      */
@@ -24,13 +23,12 @@ class PwInstallApplication
     protected $tmpPackage = '';
     protected $tmpInstallLog = '';
     /**
-     * 应用配置信息
+     * 应用配置信息.
      *
      * @var array
      */
     protected $_config = array();
     /**
-     *
      * @var PwManifest
      */
     protected $_manifest = null;
@@ -40,7 +38,7 @@ class PwInstallApplication
     private $_step = false;
 
     /**
-     * 初始化安装程序
+     * 初始化安装程序.
      */
     public function __construct()
     {
@@ -51,7 +49,7 @@ class PwInstallApplication
     }
 
     /**
-     * 在线安装服务统一调用入口
+     * 在线安装服务统一调用入口.
      *
      * 1. 校验ID，是否合法，是否已经安装
      * 2. 下载安装包到本地
@@ -60,8 +58,9 @@ class PwInstallApplication
      * 5. 解析应用配置
      * 6. 校验版本是否合法，编码是否合法等
      *
-     * @param  int     $id
-     * @param  string  $hash
+     * @param int    $id
+     * @param string $hash
+     *
      * @return PwError true
      */
     public function install($id)
@@ -93,10 +92,11 @@ class PwInstallApplication
     }
 
     /**
-     * 纯在线应用安装服务接口统一调用入口
+     * 纯在线应用安装服务接口统一调用入口.
      *
-     * @param  string  $id
-     *                     appID
+     * @param string $id
+     *                   appID
+     *
      * @return PwError true
      */
     public function onlineInstall($id)
@@ -121,9 +121,10 @@ class PwInstallApplication
     }
 
     /**
-     * 本地化安装统一调用入口
+     * 本地化安装统一调用入口.
      *
-     * @param  string  $installPack
+     * @param string $installPack
+     *
      * @return PwError true
      */
     public function localInstall($installPack)
@@ -146,12 +147,13 @@ class PwInstallApplication
     }
 
     /**
-     * 解压压缩包
+     * 解压压缩包.
      *
      * step 2
      *
-     * @param  string $packageFile
-     * @return true   PwError
+     * @param string $packageFile
+     *
+     * @return true PwError
      */
     public function extractPackage($packageFile)
     {
@@ -167,11 +169,12 @@ class PwInstallApplication
 
     /**
      * 初始化安装信息，并注册安装程序到安装流程中
-     * 注册应用安装信息，到应用安装流程中
+     * 注册应用安装信息，到应用安装流程中.
      *
      * step 3
      *
-     * @param  array   $manifest
+     * @param array $manifest
+     *
      * @return PwError true
      */
     public function initInstall($manifest = '', $extends = array())
@@ -201,6 +204,7 @@ class PwInstallApplication
      *
      * @param string $step
      *                       需要执行的安装步骤
+     *
      * @return PwError true next
      */
     public function doInstall($step, $hash)
@@ -247,10 +251,10 @@ class PwInstallApplication
                 $fields = array();
                 foreach ($install->getInstallLog() as $key => $value) {
                     $_tmp = array(
-                        'app_id' => $install->getAppId(),
-                        'log_type' => $key,
-                        'data' => $value,
-                        'created_time' => WEKIT_TIMESTAMP,
+                        'app_id'        => $install->getAppId(),
+                        'log_type'      => $key,
+                        'data'          => $value,
+                        'created_time'  => WEKIT_TIMESTAMP,
                         'modified_time' => WEKIT_TIMESTAMP, );
                     $fields[] = $_tmp;
                 }
@@ -269,7 +273,7 @@ class PwInstallApplication
     }
 
     /**
-     * 当应用安装发生错误时，回滚处理
+     * 当应用安装发生错误时，回滚处理.
      *
      * step 5
      *
@@ -291,10 +295,9 @@ class PwInstallApplication
     }
 
     /**
-     * 清理安装过程中产生的临时信息
+     * 清理安装过程中产生的临时信息.
      *
      * step 5
-     *
      */
     public function clear()
     {
@@ -311,7 +314,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @param string $key
      */
     public function getInstallLog($key = '')
@@ -320,7 +322,7 @@ class PwInstallApplication
     }
 
     /**
-     * 收集安装日志
+     * 收集安装日志.
      *
      * @param string $key
      * @param array  $value
@@ -331,7 +333,7 @@ class PwInstallApplication
     }
 
     /**
-     * 收集安装日志
+     * 收集安装日志.
      *
      * @param string $key
      * @param array  $value
@@ -345,7 +347,7 @@ class PwInstallApplication
     }
 
     /**
-     * 下载应用
+     * 下载应用.
      *
      * @return bool|PwError
      */
@@ -371,7 +373,7 @@ class PwInstallApplication
     }
 
     /**
-     * 单文件下载
+     * 单文件下载.
      *
      * @return PwError
      */
@@ -410,7 +412,7 @@ class PwInstallApplication
     }
 
     /**
-     * 获取线上应用基本信息，包括应用中心提交应用填写的描述、logo等
+     * 获取线上应用基本信息，包括应用中心提交应用填写的描述、logo等.
      *
      * @return PwError|array
      */
@@ -425,14 +427,14 @@ class PwInstallApplication
         }
         $manifest = array(
             'application' => array(
-                'name' => $data['info']['app_name'],
-                'version' => $data['info']['version'],
-                'pw-version' => $data['info']['bbs_version'],
+                'name'        => $data['info']['app_name'],
+                'version'     => $data['info']['version'],
+                'pw-version'  => $data['info']['bbs_version'],
                 'description' => trim($data['info']['description'], '\'"'),
-                'logo' => $data['info']['icon'],
+                'logo'        => $data['info']['icon'],
                 'author-name' => trim($data['info']['app_author'], '\'"'),
-                'website' => $data['info']['author_url'],
-                'charset' => ACloudSysCoreCommon::getGlobal('g_charset'),
+                'website'     => $data['info']['author_url'],
+                'charset'     => ACloudSysCoreCommon::getGlobal('g_charset'),
                 ), );
 
         return $manifest;
@@ -462,7 +464,7 @@ class PwInstallApplication
     }
 
     /**
-     * 获取安装流程注入
+     * 获取安装流程注入.
      *
      * @return array
      */
@@ -517,8 +519,8 @@ class PwInstallApplication
             if ($this->_step) {
                 PwApplicationHelper::writeInstallLog($file,
                     array(
-                        'services' => $service,
-                        'rollback' => $rollback,
+                        'services'     => $service,
+                        'rollback'     => $rollback,
                         'installation' => base64_encode(serialize($this)), ));
             }
             $install = $this;
@@ -528,7 +530,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return PwManifest
      */
     public function getManifest()
@@ -537,7 +538,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return string
      */
     public function getTmpPath()
@@ -546,7 +546,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @param string $path
      */
     public function setTmpPath($path)
@@ -555,7 +554,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return string
      */
     public function getTmpPackage()
@@ -564,7 +562,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @param string
      */
     public function setTmpPackage($package)
@@ -573,7 +570,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return string
      */
     public function getHash()
@@ -582,7 +578,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return string
      */
     public function getAppId()
@@ -591,7 +586,6 @@ class PwInstallApplication
     }
 
     /**
-     *
      * @return PwApplicationLog
      */
     private function _loadInstallLog()

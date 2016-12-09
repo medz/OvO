@@ -2,10 +2,11 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ foxsee@aliyun.com
+ *
  * @version $Id: PwAudioCode.php 20894 2012-11-16 07:07:59Z jieyin $
- * @package
  */
 class PwAudioCode extends PwBaseCode
 {
@@ -54,7 +55,6 @@ class PwAudioCode extends PwBaseCode
 
         return self::$_audioVerify;
     }
-
 
     private static function _getMP3Audio()
     {

@@ -6,8 +6,8 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserTagSo.php 8704 2012-04-24 08:57:33Z xiaoxia.xuxx $
- * @package src.service.usertag.so
  */
 class PwUserTagSo
 {
@@ -19,9 +19,10 @@ class PwUserTagSo
     }
 
     /**
-     * 设置标签名字
+     * 设置标签名字.
      *
-     * @param  string      $name
+     * @param string $name
+     *
      * @return PwUserTagSo
      */
     public function setName($name)
@@ -32,9 +33,10 @@ class PwUserTagSo
     }
 
     /**
-     * 设置是否热门
+     * 设置是否热门.
      *
-     * @param  string      $hot
+     * @param string $hot
+     *
      * @return PwUserTagSo
      */
     public function setIfhot($hot)
@@ -45,9 +47,10 @@ class PwUserTagSo
     }
 
     /**
-     * 设置最少使用的用户数
+     * 设置最少使用的用户数.
      *
-     * @param  int         $count
+     * @param int $count
+     *
      * @return PwUserTagSo
      */
     public function setMinCount($count)
@@ -58,9 +61,10 @@ class PwUserTagSo
     }
 
     /**
-     * 设置最多使用的用户数
+     * 设置最多使用的用户数.
      *
-     * @param  int         $count
+     * @param int $count
+     *
      * @return PwUserTagSo
      */
     public function setMaxCount($count)

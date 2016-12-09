@@ -4,13 +4,13 @@
  * 用户行为禁止：
  *  1：禁止用户发言
  *  2: 禁止用户使用头像
- *  4： 禁止用户使用签名
+ *  4： 禁止用户使用签名.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBan.php 16415 2012-08-23 07:53:40Z xiaoxia.xuxx $
- * @package src.service.user
  */
 class PwUserBan
 {
@@ -20,9 +20,10 @@ class PwUserBan
     const BAN_ALL = 7;
 
     /**
-     * 获得用户所有禁止信息
+     * 获得用户所有禁止信息.
      *
-     * @param  int   $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function getBanInfo($uid)
@@ -35,10 +36,11 @@ class PwUserBan
     }
 
     /**
-     * 根据用户ID和禁止类型获得该用户的禁止信息
+     * 根据用户ID和禁止类型获得该用户的禁止信息.
      *
-     * @param  int   $uid    用户ID
-     * @param  int   $typeid 禁止类型
+     * @param int $uid    用户ID
+     * @param int $typeid 禁止类型
+     *
      * @return array
      */
     public function getBanInfoByTypeid($uid, $typeid = self::BAN_SIGN)
@@ -51,11 +53,12 @@ class PwUserBan
     }
 
     /**
-     * 根据禁止类型及其ID获得用户uid的禁止信息
+     * 根据禁止类型及其ID获得用户uid的禁止信息.
      *
-     * @param  int   $uid    用户ID
-     * @param  int   $typeid 禁止类型
-     * @param  int   $fid    版块ID
+     * @param int $uid    用户ID
+     * @param int $typeid 禁止类型
+     * @param int $fid    版块ID
+     *
      * @return array
      */
     public function getBanInfoByTypeidAndFid($uid, $typeid = self::BAN_SPEAK, $fid = 0)
@@ -68,10 +71,11 @@ class PwUserBan
     }
 
     /**
-     * 根据用户ID获得用户禁止信息
+     * 根据用户ID获得用户禁止信息.
      *
-     * @param  array $uids   用户ID列表
-     * @param  int   $typeid 禁止类型
+     * @param array $uids   用户ID列表
+     * @param int   $typeid 禁止类型
+     *
      * @return array
      */
     public function fetchBanInfoByUid($uids, $typeid = self::BAN_SPEAK)
@@ -84,9 +88,10 @@ class PwUserBan
     }
 
     /**
-     * 根据禁止ID批量获取
+     * 根据禁止ID批量获取.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetchBanInfo($ids)
@@ -99,9 +104,10 @@ class PwUserBan
     }
 
     /**
-     * 添加禁言用户
+     * 添加禁言用户.
      *
-     * @param  PwUserBanInfoDm $dm 用户禁止DM
+     * @param PwUserBanInfoDm $dm 用户禁止DM
+     *
      * @return bool
      */
     public function addBanInfo(PwUserBanInfoDm $dm)
@@ -114,9 +120,10 @@ class PwUserBan
     }
 
     /**
-     * 批量禁止用户
+     * 批量禁止用户.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return array
      */
     public function batchAddBanInfo($data)
@@ -129,9 +136,10 @@ class PwUserBan
     }
 
     /**
-     * 根据用户ID删除用户的屏蔽信息
+     * 根据用户ID删除用户的屏蔽信息.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByUid($uid)
@@ -145,9 +153,10 @@ class PwUserBan
     }
 
     /**
-     * 根据用户ID批量删除该用户信息
+     * 根据用户ID批量删除该用户信息.
      *
-     * @param  array    $uids 用户ID列表
+     * @param array $uids 用户ID列表
+     *
      * @return int|bool
      */
     public function batchDeleteByUids($uids)
@@ -160,9 +169,10 @@ class PwUserBan
     }
 
     /**
-     * 根据ID列表删除禁止记录
+     * 根据ID列表删除禁止记录.
      *
-     * @param  array $ids 禁止记录ID列表
+     * @param array $ids 禁止记录ID列表
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -175,9 +185,10 @@ class PwUserBan
     }
 
     /**
-     * 根据搜索条件统计总条数
+     * 根据搜索条件统计总条数.
      *
-     * @param  PwUserBanSo $searchVo
+     * @param PwUserBanSo $searchVo
+     *
      * @return int
      */
     public function countWithCondition(PwUserBanSo $searchVo)
@@ -186,11 +197,12 @@ class PwUserBan
     }
 
     /**
-     * 根据搜索条件返回检索结果列表
+     * 根据搜索条件返回检索结果列表.
      *
-     * @param  PwUserBanSo $searchVo
-     * @param  int         $start    开始检索位置
-     * @param  int         $limit    返回条数
+     * @param PwUserBanSo $searchVo
+     * @param int         $start    开始检索位置
+     * @param int         $limit    返回条数
+     *
      * @return array
      */
     public function searchBanInfo(PwUserBanSo $searchVo, $limit = 10, $start = 0)
@@ -199,7 +211,7 @@ class PwUserBan
     }
 
     /**
-     * 获得用户禁止DAO
+     * 获得用户禁止DAO.
      *
      * @return PwUserBanDao
      */

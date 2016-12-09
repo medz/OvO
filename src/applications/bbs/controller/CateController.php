@@ -6,14 +6,13 @@ Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('SRV:forum.srv.PwThreadList');
 
 /**
- * 分类页面
+ * 分类页面.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: CateController.php 28799 2013-05-24 06:47:37Z yetianshi $
- * @package forum
  */
-
 class CateController extends PwBaseController
 {
     /* (non-PHPdoc)
@@ -103,7 +102,6 @@ class CateController extends PwBaseController
             //$this->addCompileDir($pwforum->foruminfo['style']);
         }
 
-
         //seo设置
         Wind::import('SRV:seo.bo.PwSeoBo');
         $seoBo = PwSeoBo::getInstance();
@@ -113,16 +111,16 @@ class CateController extends PwBaseController
         }
         $seoBo->init('bbs', 'thread', $fid);
         $seoBo->set(array(
-            '{forumname}' => $pwforum->foruminfo['name'],
+            '{forumname}'        => $pwforum->foruminfo['name'],
             '{forumdescription}' => Pw::substrs($pwforum->foruminfo['descrip'], 100, 0, false),
-            '{classification}' => '',
-            '{page}' => $threadList->page,
+            '{classification}'   => '',
+            '{page}'             => $threadList->page,
         ));
         Wekit::setV('seo', $seoBo);
     }
 
     /**
-     * 主题分类
+     * 主题分类.
      */
     public function topictypesAction()
     {

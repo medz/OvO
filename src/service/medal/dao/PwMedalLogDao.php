@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
  /**
-  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+  *
   * @author $Author: gao.wanggao $ Foxsee@aliyun.com
   * @copyright ?2003-2103 phpwind.com
   * @license http://www.phpwind.com
+  *
   * @version $Id: PwMedalLogDao.php 12575 2012-06-23 10:09:56Z gao.wanggao $
-  * @package
   */
  class PwMedalLogDao extends PwBaseDao
  {
@@ -56,11 +57,11 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function getInfoList($uid, $status, $medalId, $offset, $limit)
      {
-         $where = ' WHERE 1 ' ;
+         $where = ' WHERE 1 ';
          $_array = array();
 
          if ($uid > 0) {
-             $where .= ' AND uid = ? ' ;
+             $where .= ' AND uid = ? ';
              $_array[] = $uid;
          }
 
@@ -81,11 +82,11 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function countInfo($uid, $status, $medalId)
      {
-         $where = ' WHERE 1 ' ;
+         $where = ' WHERE 1 ';
          $_array = array();
 
          if ($uid > 0) {
-             $where .= ' AND uid = ? ' ;
+             $where .= ' AND uid = ? ';
              $_array[] = $uid;
          }
 
@@ -105,14 +106,13 @@ Wind::import('SRC:library.base.PwBaseDao');
          return $smt->getValue($_array);
      }
 
-
      public function getMedalLogList($uid, $status, $medalIds, $offset, $limit)
      {
-         $where = ' WHERE 1 ' ;
+         $where = ' WHERE 1 ';
          $_array = array();
 
          if ($uid > 0) {
-             $where .= ' AND uid = ? ' ;
+             $where .= ' AND uid = ? ';
              $_array[] = $uid;
          }
 
@@ -132,11 +132,11 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function countMedalLogList($uid, $status, $medalIds)
      {
-         $where = ' WHERE 1 ' ;
+         $where = ' WHERE 1 ';
          $_array = array();
 
          if ($uid > 0) {
-             $where .= ' AND uid = ? ' ;
+             $where .= ' AND uid = ? ';
              $_array[] = $uid;
          }
 

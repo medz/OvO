@@ -3,13 +3,13 @@
 Wind::import('SRV:word.srv.filter.PwFilterAction');
 
 /**
- * 敏感词过滤算法
+ * 敏感词过滤算法.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwFilterDfa extends PwFilterAction
 {
@@ -21,9 +21,10 @@ class PwFilterDfa extends PwFilterAction
     }
 
     /**
-     * 生成敏感词字典
+     * 生成敏感词字典.
      *
-     * @param  array $words
+     * @param array $words
+     *
      * @return array
      */
     public function createData($words)
@@ -63,7 +64,7 @@ class PwFilterDfa extends PwFilterAction
     }
 
     /**
-     * 保存敏感词字典
+     * 保存敏感词字典.
      *
      * @param array $nodes
      */
@@ -74,9 +75,10 @@ class PwFilterDfa extends PwFilterAction
     }
 
    /**
-    * 检测敏感词 | 如果有敏感词直接返回true
+    * 检测敏感词 | 如果有敏感词直接返回true.
     *
     * @param string $s
+    *
     * @return bool
     */
    public function check($s)
@@ -112,9 +114,10 @@ class PwFilterDfa extends PwFilterAction
    }
 
     /**
-     * 检测敏感词 | 检测所有敏感词并返回
+     * 检测敏感词 | 检测所有敏感词并返回.
      *
-     * @param  string $s
+     * @param string $s
+     *
      * @return array
      */
     public function match($s)
@@ -155,9 +158,10 @@ class PwFilterDfa extends PwFilterAction
     }
 
     /**
-     * 替换敏感词
+     * 替换敏感词.
      *
-     * @param  string $s 需要查找的文本
+     * @param string $s 需要查找的文本
+     *
      * @return string $s 替换后的文本
      */
     public function replace($s)

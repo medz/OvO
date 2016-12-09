@@ -1,12 +1,12 @@
 <?php
 
 /**
- * windid用户信息数据模型
+ * windid用户信息数据模型.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditDm.php 24707 2013-02-16 06:39:01Z jieyin $
- * @package windid.service.user.dm
  */
 class PwCreditDm
 {
@@ -50,9 +50,10 @@ class PwCreditDm
     }
 
     /**
-     * 积分字段合法性检查
+     * 积分字段合法性检查.
      *
-     * @param  int  $key
+     * @param int $key
+     *
      * @return bool
      */
     private function _isLegal(&$key)

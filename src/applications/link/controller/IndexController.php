@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
- * 友情链接
+ * 友情链接.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class IndexController extends PwBaseController
 {
@@ -39,7 +38,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * PwLink
+     * PwLink.
      *
      * @return PwLink
      */

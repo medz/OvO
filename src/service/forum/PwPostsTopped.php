@@ -3,20 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 帖内置顶
+ * 帖内置顶.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwPostsTopped
 {
     /**
      * 获取某个帖子的所有置顶楼层
      *
-     * @param  int   $tid
+     * @param int $tid
+     *
      * @return array
      */
     public function getByTid($tid, $limit = 20, $offset = 0)
@@ -32,7 +33,8 @@ class PwPostsTopped
     /**
      * 增加一个置顶楼层
      *
-     * @param  PwPostsToppedDm $dm
+     * @param PwPostsToppedDm $dm
+     *
      * @return bool
      */
     public function addTopped(PwPostsToppedDm $dm)
@@ -47,7 +49,8 @@ class PwPostsTopped
     /**
      * 删除某个置顶楼层
      *
-     * @param  int  $pid
+     * @param int $pid
+     *
      * @return bool
      */
     public function deleteTopped($pid)
@@ -63,7 +66,8 @@ class PwPostsTopped
     /**
      * 删除某个置顶楼层
      *
-     * @param  int  $pid
+     * @param int $pid
+     *
      * @return bool
      */
     public function batchDeleteTopped($pids)
@@ -78,7 +82,8 @@ class PwPostsTopped
     /**
      * 删除某个置顶楼层
      *
-     * @param  int  $pid
+     * @param int $pid
+     *
      * @return bool
      */
     public function updateTopped($pid, PwPostsToppedDm $dm)
@@ -95,7 +100,7 @@ class PwPostsTopped
     }
 
     /**
-     * PwPostsToppedDao
+     * PwPostsToppedDao.
      *
      * @return PwPostsToppedDao
      */

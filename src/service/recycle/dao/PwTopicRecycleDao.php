@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 主题回收站记录数据表
+ * 主题回收站记录数据表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTopicRecycleDao.php 14354 2012-07-19 10:36:06Z jieyin $
- * @package src.service.user.dao
  */
 class PwTopicRecycleDao extends PwBaseDao
 {

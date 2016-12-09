@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 用户数据表
+ * 用户数据表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserDataDao.php 24810 2013-02-21 10:32:03Z jieyin $
- * @package src.service.user.dao
  */
 class PwUserDataDao extends PwBaseDao
 {
@@ -19,9 +19,10 @@ class PwUserDataDao extends PwBaseDao
     protected $_defaultBaseInstance = 'user.dao.PwUserDefaultDao';
 
     /**
-     * 根据用户ID获得用户的数据
+     * 根据用户ID获得用户的数据.
      *
-     * @param  int   $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function getUserByUid($uid)
@@ -32,9 +33,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 根据用户名获得用户信息
+     * 根据用户名获得用户信息.
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return array
      */
     public function getUserByName($username)
@@ -47,9 +49,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 根据用户email获得用户信息
+     * 根据用户email获得用户信息.
      *
-     * @param  string $email
+     * @param string $email
+     *
      * @return array
      */
     public function getUserByEmail($email)
@@ -62,9 +65,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID列表获取ID
+     * 根据用户ID列表获取ID.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchUserByUid($uids)
@@ -78,9 +82,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 根据用户名列表批量获取用户信息
+     * 根据用户名列表批量获取用户信息.
      *
-     * @param  array $usernames
+     * @param array $usernames
+     *
      * @return array
      */
     public function fetchUserByName($usernames)
@@ -94,9 +99,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 插入用户数据
+     * 插入用户数据.
      *
-     * @param  array $fields 用户数据
+     * @param array $fields 用户数据
+     *
      * @return int
      */
     public function addUser($fields)
@@ -110,10 +116,11 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID更新用户数据
+     * 根据用户ID更新用户数据.
      *
-     * @param  int      $uid    用户ID
-     * @param  array    $fields 用户数据
+     * @param int   $uid    用户ID
+     * @param array $fields 用户数据
+     *
      * @return bool|int
      */
     public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
@@ -125,9 +132,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 删除用户数据
+     * 删除用户数据.
      *
-     * @param  int $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return int
      */
     public function deleteUser($uid)
@@ -139,9 +147,10 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 批量删除用户信息
+     * 批量删除用户信息.
      *
-     * @param  array $uids 用户ID
+     * @param array $uids 用户ID
+     *
      * @return int
      */
     public function batchDeleteUser($uids)
@@ -153,7 +162,7 @@ class PwUserDataDao extends PwBaseDao
     }
 
     /**
-     * 获得数据表结构
+     * 获得数据表结构.
      *
      * @return array
      */

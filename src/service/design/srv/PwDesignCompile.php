@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignCompile.php 28769 2013-05-23 03:48:46Z gao.wanggao $
- * @package
  */
 class PwDesignCompile
 {
@@ -16,7 +17,6 @@ class PwDesignCompile
     protected $structNames = array();
     protected $segments = array();
     protected $pageBo;
-
 
     private $_uri = '';
     private $_mode = '';
@@ -96,7 +96,6 @@ class PwDesignCompile
         $this->pageid = (int) $this->pageBo->pageid;
     }
 
-
     /**
      * 判断是否需进行门户编辑
      * Enter description here ...
@@ -167,7 +166,7 @@ class PwDesignCompile
     }
 
     /**
-     * 刷新当前页面数据
+     * 刷新当前页面数据.
      */
     public function refreshPage()
     {
@@ -183,7 +182,6 @@ class PwDesignCompile
         //Wekit::load('design.srv.PwDesignService')->clearCompile();
         return true;
     }
-
 
     public function afterDesign()
     {
@@ -203,7 +201,6 @@ class PwDesignCompile
             Wekit::load('design.srv.PwPageBakService')->doSnap($this->pageid);
         }
     }
-
 
     public function compileSegment($segmentId)
     {
@@ -243,6 +240,7 @@ class PwDesignCompile
     /**
      * 用于模版中模块的编译
      * Enter description here ...
+     *
      * @param $moduleId
      */
     public function compileModule($module = '')
@@ -306,7 +304,6 @@ class PwDesignCompile
         return $this->_compileSign($html, $bo->moduleid, $standard['sTitle'], $standard['sUrl'], $view['isblank']);
     }
 
-
     public function compileTitle($struct = '')
     {
         if (!$struct) {
@@ -368,6 +365,7 @@ class PwDesignCompile
     /**
      * 用于segment中模块的转换
      * Enter description here ...
+     *
      * @param unknown_type $content <design id="D_mod_60" role="module"></design>
      */
     public function replaceModule($content = '')

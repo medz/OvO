@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 地区库DAO
+ * 地区库DAO.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidAreaDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package windid.service.area.dao
  */
 class WindidAreaDao extends WindidBaseDao
 {
@@ -16,9 +16,10 @@ class WindidAreaDao extends WindidBaseDao
     protected $_dataStruct = array('areaid', 'name', 'parentid', 'joinname');
 
     /**
-     * 根据上一级ID获得下一级的所有地区
+     * 根据上一级ID获得下一级的所有地区.
      *
-     * @param  int   $parentid
+     * @param int $parentid
+     *
      * @return array
      */
     public function getAreaByParentid($parentid)
@@ -30,9 +31,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 根据地区ID获得该地区的相关信息
+     * 根据地区ID获得该地区的相关信息.
      *
-     * @param  int   $areaid
+     * @param int $areaid
+     *
      * @return array
      */
     public function getArea($areaid)
@@ -41,9 +43,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 根据地区ID列表批量获取地区列表
+     * 根据地区ID列表批量获取地区列表.
      *
-     * @param  array $areaids
+     * @param array $areaids
+     *
      * @return array
      */
     public function fetchByAreaid($areaids)
@@ -52,7 +55,7 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 获取所有的地区
+     * 获取所有的地区.
      *
      * @return array
      */
@@ -64,9 +67,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 添加地区
+     * 添加地区.
      *
-     * @param  array $data 地区数据
+     * @param array $data 地区数据
+     *
      * @return int
      */
     public function addArea($data)
@@ -75,9 +79,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 批量添加数据
+     * 批量添加数据.
      *
-     * @param  array $data 地区数据
+     * @param array $data 地区数据
+     *
      * @return int
      */
     public function batchAddArea($data)
@@ -98,10 +103,11 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 更新地区数据
+     * 更新地区数据.
      *
-     * @param  int   $areaid 地区ID
-     * @param  array $data   地区数据
+     * @param int   $areaid 地区ID
+     * @param array $data   地区数据
+     *
      * @return int
      */
     public function updateArea($areaid, $data)
@@ -110,9 +116,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 根据地区ID删除地区信息
+     * 根据地区ID删除地区信息.
      *
-     * @param  int  $areaid
+     * @param int $areaid
+     *
      * @return bool
      */
     public function deleteArea($areaid)
@@ -121,9 +128,10 @@ class WindidAreaDao extends WindidBaseDao
     }
 
     /**
-     * 根据地区ID批量删除地区数据
+     * 根据地区ID批量删除地区数据.
      *
-     * @param  array $areaids
+     * @param array $areaids
+     *
      * @return int
      */
     public function batchDeleteArea($areaids)

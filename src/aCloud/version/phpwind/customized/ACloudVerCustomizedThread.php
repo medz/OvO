@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('THREAD_INVALID_PARAMS', 301);
 define('THREAD_USER_NOT_RIGHT', 302);
@@ -23,7 +23,7 @@ Wind::import('SRV:forum.bo.PwThreadBo');
 class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 {
     /**
-     * 获取单个帖子信息
+     * 获取单个帖子信息.
      *
      * @param int $tid 帖子id
      *                 return array
@@ -36,48 +36,47 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         }
             //TODO 权限
 
-
         $thread = new PwThreadBo($tid);
         $thread = $thread->info;
         if ($thread instanceof PwError) {
-            return $this->buildResponse(- 1, $thread->getError());
+            return $this->buildResponse(-1, $thread->getError());
         }
         $result = array();
         $user = Wekit::getLoginUser();
 
-        $result ['tid'] = $thread ['tid'];
-        $result ['fid'] = $thread ['fid'];
-        $result ['icon'] = Pw::getAvatar($thread ['created_userid']);
-        $result ['titlefont'] = ''; //TODO 标题字体
-        $result ['author'] = $thread ['created_username'];
-        $result ['authorid'] = $thread ['created_userid'];
-        $result ['subject'] = $thread ['subject'];
-        $result ['type'] = $thread ['topic_type'];
-        $result ['postdate'] = $thread ['create_time'];
-        $result ['lastpost'] = $thread ['lastpost_time'];
-        $result ['lastposter'] = $thread ['lastpost_username'];
-        $result ['hits'] = $thread ['hits'];
-        $result ['replies'] = $thread ['replies'];
-        $result ['topped'] = $thread ['topped'];
-        $result ['locked'] = $thread ['locked'];
-        $result ['digest'] = $thread ['digest'];
-        $result ['special'] = $thread ['special'];
-        $result ['state'] = $thread ['thread_status']; //帖子状态
-        $result ['tpcstatus'] = $thread ['thread_status'];
-        $result ['specialsort'] = $thread ['special_sort'];
-        $result ['uid'] = $user->uid;
-        $result ['groupid'] = $user->gid;
-        $result ['userip'] = $user->ip;
-        $result ['ifsign'] = $user->bbs_sign;
-        $result ['ipfrom'] = $thread ['created_ip'];
-        $result ['content'] = $thread ['content'];
-        $result ['attachlist'] = $thread ['attach'];
+        $result['tid'] = $thread['tid'];
+        $result['fid'] = $thread['fid'];
+        $result['icon'] = Pw::getAvatar($thread['created_userid']);
+        $result['titlefont'] = ''; //TODO 标题字体
+        $result['author'] = $thread['created_username'];
+        $result['authorid'] = $thread['created_userid'];
+        $result['subject'] = $thread['subject'];
+        $result['type'] = $thread['topic_type'];
+        $result['postdate'] = $thread['create_time'];
+        $result['lastpost'] = $thread['lastpost_time'];
+        $result['lastposter'] = $thread['lastpost_username'];
+        $result['hits'] = $thread['hits'];
+        $result['replies'] = $thread['replies'];
+        $result['topped'] = $thread['topped'];
+        $result['locked'] = $thread['locked'];
+        $result['digest'] = $thread['digest'];
+        $result['special'] = $thread['special'];
+        $result['state'] = $thread['thread_status']; //帖子状态
+        $result['tpcstatus'] = $thread['thread_status'];
+        $result['specialsort'] = $thread['special_sort'];
+        $result['uid'] = $user->uid;
+        $result['groupid'] = $user->gid;
+        $result['userip'] = $user->ip;
+        $result['ifsign'] = $user->bbs_sign;
+        $result['ipfrom'] = $thread['created_ip'];
+        $result['content'] = $thread['content'];
+        $result['attachlist'] = $thread['attach'];
 
         return $this->buildResponse(0, $result);
     }
 
     /**
-     * 获取用户的帖子
+     * 获取用户的帖子.
      *
      * @param int $uid    用户id
      * @param int $limit  个数
@@ -87,30 +86,29 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
     public function getByUid($uid, $offset = 0, $limit = 20)
     {
         $user = PwUserBo::getInstance($uid);
-        if (! $user->username) {
+        if (!$user->username) {
             return $this->buildResponse(THREAD_USER_NOT_EXIST, '用户不存在');
         }
         $thread = $this->_getThread()->getThreadByUid($uid, $limit, $offset);
         if ($thread instanceof PwError) {
-            return $this->buildResponse(- 1, $thread->getError());
+            return $this->buildResponse(-1, $thread->getError());
         }
         $result = array();
         $thread = array_values($thread);
         foreach ($thread as $k => $v) {
-            $result [$k] ['tid'] = $v ['tid'];
-            $result [$k] ['fid'] = $v ['fid'];
-            $forum = $this->_getForum()->getForum($v ['fid']);
-            $result [$k] ['forumname'] = $forum ['name'];
-            $result [$k] ['icon'] = Pw::getAvatar($user->uid);
-            $result [$k] ['author'] = $user->username;
-            $result [$k] ['authorid'] = $user->uid;
-            $result [$k] ['subject'] = $v ['subject'];
-            $result [$k] ['postdate'] = $v ['created_time'];
+            $result[$k]['tid'] = $v['tid'];
+            $result[$k]['fid'] = $v['fid'];
+            $forum = $this->_getForum()->getForum($v['fid']);
+            $result[$k]['forumname'] = $forum['name'];
+            $result[$k]['icon'] = Pw::getAvatar($user->uid);
+            $result[$k]['author'] = $user->username;
+            $result[$k]['authorid'] = $user->uid;
+            $result[$k]['subject'] = $v['subject'];
+            $result[$k]['postdate'] = $v['created_time'];
         }
 
         return $this->buildResponse(0, array('threads' => $result));
     }
-
 
     public function getLatestThread($fids, $offset, $limit)
     {
@@ -153,7 +151,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
             return $this->buildResponse(THREAD_INVALID_PARAMS, '参数错误');
         }
         $userBo = new PwUserBo($uid);
-        if (! $userBo->isExists()) {
+        if (!$userBo->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS, '用户不存在');
         }
         $fids = array_keys($this->_getForumUser()->getFroumByUid($uid));
@@ -192,7 +190,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
     }
 
     /**
-     * 获取版块的置顶帖
+     * 获取版块的置顶帖.
      *
      * @param int $fid    版块id
      * @param int $limit  个数
@@ -207,10 +205,10 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         }
         $tops = $this->_getSpecialSortDs()->getSpecialSortByFid($fid);
         if ($tops instanceof PwError) {
-            return $this->buildResponse(- 1, $tops->getError());
+            return $this->buildResponse(-1, $tops->getError());
         }
         $forum = $this->_getForum()->getForum($fid);
-        if (! $forum) {
+        if (!$forum) {
             return $this->buildResponse(THREAD_FORUM_NOT_EXIST, '版块不存在');
         }
 
@@ -219,7 +217,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         if ($specialCount > $offset) {
             $topThreads = $this->_getThread()->fetchThreadByTid(array_keys($tops), $limit, $offset);
             if ($topThreads instanceof PwError) {
-                return $this->buildResponse(- 1, $topThreads->getError());
+                return $this->buildResponse(-1, $topThreads->getError());
             }
             if ($specialCount - $offset < $limit) {
                 $limit = min($limit - $specialCount + $offset, $limit);
@@ -231,24 +229,24 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 
         $result = array();
         foreach ($topThreads as $v) {
-            $tid = $v ['tid'];
-            $result [$tid] ['tid'] = $tid;
-            $result [$tid] ['fid'] = $v ['fid'];
-            $result [$tid] ['author'] = $v ['created_username'];
-            $result [$tid] ['authorid'] = $v ['created_userid'];
-            $result [$tid] ['subject'] = $v ['subject'];
-            $result [$tid] ['postdate'] = $v ['created_time'];
-            $result [$tid] ['hits'] = $v ['hits'];
-            $result [$tid] ['replies'] = $v ['replies'];
-            $result [$tid] ['forumname'] = $forum ['name'];
-            $result [$tid] ['icon'] = Pw::getAvatar($v ['created_userid']);
+            $tid = $v['tid'];
+            $result[$tid]['tid'] = $tid;
+            $result[$tid]['fid'] = $v['fid'];
+            $result[$tid]['author'] = $v['created_username'];
+            $result[$tid]['authorid'] = $v['created_userid'];
+            $result[$tid]['subject'] = $v['subject'];
+            $result[$tid]['postdate'] = $v['created_time'];
+            $result[$tid]['hits'] = $v['hits'];
+            $result[$tid]['replies'] = $v['replies'];
+            $result[$tid]['forumname'] = $forum['name'];
+            $result[$tid]['icon'] = Pw::getAvatar($v['created_userid']);
         }
 
         return $this->buildResponse(0, array('threads' => $result, 'count' => $specialCount));
     }
 
     /**
-     * 获取某个版块的帖子列表
+     * 获取某个版块的帖子列表.
      *
      * @param int $fid    版块id
      * @param int $limit  个数
@@ -263,23 +261,23 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         }
         $result = $this->_getThread()->getThreadByFid($fid, $limit, $offset);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
         $threads = array();
         $forumStatics = $this->_getForum()->getForum($fid, 2);
-        $count = $forumStatics ['threads'];
+        $count = $forumStatics['threads'];
         foreach ($result as $k => $v) {
-            $threads [$k] ['tid'] = $v ['tid'];
-            $threads [$k] ['fid'] = $v ['fid'];
-            $threads [$k] ['author'] = $v ['created_username'];
-            $threads [$k] ['authorid'] = $v ['created_userid'];
-            $threads [$k] ['subject'] = $v ['subject'];
-            $threads [$k] ['postdate'] = $v ['created_time'];
-            $forum = $this->_getForum()->getForum($v ['fid']);
-            $threads [$k] ['forumname'] = $forum ['name'];
-            $threads [$k] ['hits'] = $v ['hits'];
-            $threads [$k] ['replies'] = $v ['replies'];
-            $threads [$k] ['icon'] = Pw::getAvatar($v ['created_userid']);
+            $threads[$k]['tid'] = $v['tid'];
+            $threads[$k]['fid'] = $v['fid'];
+            $threads[$k]['author'] = $v['created_username'];
+            $threads[$k]['authorid'] = $v['created_userid'];
+            $threads[$k]['subject'] = $v['subject'];
+            $threads[$k]['postdate'] = $v['created_time'];
+            $forum = $this->_getForum()->getForum($v['fid']);
+            $threads[$k]['forumname'] = $forum['name'];
+            $threads[$k]['hits'] = $v['hits'];
+            $threads[$k]['replies'] = $v['replies'];
+            $threads[$k]['icon'] = Pw::getAvatar($v['created_userid']);
         }
 
         return $this->buildResponse(0, array('count' => $count, 'threads' => $threads));
@@ -294,8 +292,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
     }
 
     /**
-     *
-     * 获取帖子详细页只看楼主的回复
+     * 获取帖子详细页只看楼主的回复.
      *
      * @param int $tid
      * @param int $uid
@@ -307,7 +304,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
             return $this->buildResponse(THREAD_INVALID_PARAMS, '参数错误');
         }
         $user = PwUserBo::getInstance($uid);
-        if (! $user->isExists()) {
+        if (!$user->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS, '用户不存在');
         }
         list($start, $limit) = Pw::page2limit($page, $limit);
@@ -326,7 +323,8 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
     }
 
     /**
-     * 发表帖子
+     * 发表帖子.
+     *
      * @param int    $tid
      * @param int    $fid
      * @param string $subject
@@ -336,11 +334,11 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
     public function postThread($uid, $fid, $subject, $content)
     {
         list($uid, $fid, $subject, $content) = array(intval($uid), intval($fid), trim($subject), trim($content));
-        if ($uid < 1 || $fid < 1 || ! $subject || ! $content) {
+        if ($uid < 1 || $fid < 1 || !$subject || !$content) {
             return $this->buildResponse(THREAD_INVALID_PARAMS, '参数错误');
         }
         $user = PwUserBo::getInstance($uid);
-        if (! $user->isExists()) {
+        if (!$user->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS, '用户不存在');
         }
         Wind::import('SRV:forum.srv.PwPost');
@@ -350,7 +348,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         $postDm = $pwPost->getDm();
         $postDm->setFid($fid)->setTitle($subject)->setContent($content)->setAuthor($uid, $user->username, $user->ip);
         if (($result = $pwPost->execute($postDm)) !== true) {
-            $this->buildResponse(- 1, $result->getError());
+            $this->buildResponse(-1, $result->getError());
         }
         $tid = $pwPost->getNewId();
 
@@ -359,7 +357,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 
     public function getLatestThreadsByFids($fids, $offset, $limit)
     {
-        if (! ACloudSysCoreS::isArray($fids)) {
+        if (!ACloudSysCoreS::isArray($fids)) {
             return $this->buildResponse(0, array());
         }
         Wind::import('SRV:forum.vo.PwThreadSo');

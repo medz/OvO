@@ -1,20 +1,20 @@
 <?php
 /**
  * @author jinling.sujl <emily100813@gmail.com> 2010-11-2
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright &copy; 2003-2010 phpwind.com
  * @license
  */
-
-
 class AcloudVerCommonUtility extends ACloudVerCommonBase
 {
     /**
+     * 获取缩略图片.
      *
-     * 获取缩略图片
+     * @param string $attachurl
+     * @param int    $ifthumb   $ifthumb&1：原图      $ifthumb&2：缩略图     $ifthumb&1：mini图
      *
-     * @param  string $attachurl
-     * @param  int    $ifthumb   $ifthumb&1：原图      $ifthumb&2：缩略图     $ifthumb&1：mini图
      * @return string
      */
     public function getThumbAttach($attachurl, $ifthumb = false)
@@ -26,11 +26,11 @@ class AcloudVerCommonUtility extends ACloudVerCommonBase
     }
 
     /**
-     *
      * 获取mini图地址
      *
-     * @param  string $path
-     * @param  int    $ifthumb $ifthumb&1：原图      $ifthumb&2：缩略图     $ifthumb&1：mini图
+     * @param string $path
+     * @param int    $ifthumb $ifthumb&1：原图      $ifthumb&2：缩略图     $ifthumb&1：mini图
+     *
      * @return string
      */
     public function getMiniUrl($path, $ifthumb, $where = null)

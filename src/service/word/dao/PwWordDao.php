@@ -10,10 +10,9 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author Mingqu Luo <luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwWordDao.php 17015 2012-08-30 08:32:05Z hejin $
- * @package wind
  */
-
 class PwWordDao extends PwBaseDao
 {
     protected $_table = 'word';
@@ -168,8 +167,7 @@ class PwWordDao extends PwBaseDao
     }
 
     /**
-     * 获得所有敏感词(需谨慎)
-     *
+     * 获得所有敏感词(需谨慎).
      */
     public function fetchAllWord()
     {
@@ -180,8 +178,7 @@ class PwWordDao extends PwBaseDao
     }
 
     /**
-     * 清空数据(需谨慎)
-     *
+     * 清空数据(需谨慎).
      */
     public function truncate()
     {
@@ -191,8 +188,7 @@ class PwWordDao extends PwBaseDao
     }
 
     /**
-     * 更新所有类型(需谨慎，仅后台使用)
-     *
+     * 更新所有类型(需谨慎，仅后台使用).
      */
     public function updateAll($fieldData)
     {

@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jinlong.panjl $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jinlong.panjl $>.
+ *
  * @author $Author: jinlong.panjl $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNoticeMedal.php 17946 2012-09-10 09:54:00Z jinlong.panjl $
- * @package
  */
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 
@@ -20,7 +21,6 @@ class PwNoticeMedal extends PwNoticeAction
     }
 
     /**
-     *
      * @see PwNoticeAction::formatExtendParams()
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
@@ -82,7 +82,7 @@ class PwNoticeMedal extends PwNoticeAction
     }
 
     /**
-     * 忽略
+     * 忽略.
      *
      * @param array $notice
      */
@@ -100,8 +100,8 @@ class PwNoticeMedal extends PwNoticeAction
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageNotices
      */
     private function _getNoticesDs()

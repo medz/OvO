@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeDm.php 12966 2012-06-28 02:06:41Z gao.wanggao $
- * @package
  */
 class PwLikeDm extends PwBaseDm
 {
@@ -17,7 +18,6 @@ class PwLikeDm extends PwBaseDm
             $this->likeid = (int) $likeid;
         }
     }
-
 
     public function setTypeid($typeid)
     {
@@ -39,7 +39,6 @@ class PwLikeDm extends PwBaseDm
 
         return $this;
     }
-
 
     public function setUsers($uid)
     {
@@ -63,7 +62,7 @@ class PwLikeDm extends PwBaseDm
     }
 
     /**
-     * 无字段对应,用于被喜欢用户的记录
+     * 无字段对应,用于被喜欢用户的记录.
      *
      * @param int $uid
      */

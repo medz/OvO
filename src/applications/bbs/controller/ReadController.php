@@ -4,17 +4,17 @@ Wind::import('SRV:forum.srv.PwThreadDisplay');
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**
- * 帖子阅读页
+ * 帖子阅读页.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: ReadController.php 24888 2013-02-25 08:12:54Z jieyin $
- * @package forum
  */
 class ReadController extends PwBaseController
 {
     /**
-     * 帖子阅读页
+     * 帖子阅读页.
      */
     public function run()
     {
@@ -118,12 +118,12 @@ class ReadController extends PwBaseController
         $seoBo->init('bbs', 'read');
         $seoBo->set(
             array(
-                '{forumname}' => $threadDisplay->forum->foruminfo['name'],
-                '{title}' => $threadDisplay->thread->info['subject'],
-                '{description}' => Pw::substrs($threadDisplay->thread->info['content'], 100, 0, false),
+                '{forumname}'     => $threadDisplay->forum->foruminfo['name'],
+                '{title}'         => $threadDisplay->thread->info['subject'],
+                '{description}'   => Pw::substrs($threadDisplay->thread->info['content'], 100, 0, false),
                 '{classfication}' => $threadDisplay->thread->info['topic_type'],
-                '{tags}' => $threadInfo['tags'],
-                '{page}' => $threadDisplay->page,
+                '{tags}'          => $threadInfo['tags'],
+                '{page}'          => $threadDisplay->page,
             )
         );
         Wekit::setV('seo', $seoBo);
@@ -141,7 +141,7 @@ class ReadController extends PwBaseController
     }
 
     /**
-     * 帖子阅读页-楼层跳转
+     * 帖子阅读页-楼层跳转.
      */
     public function jumpAction()
     {
@@ -162,7 +162,7 @@ class ReadController extends PwBaseController
     }
 
     /**
-     * 帖子阅读页-下一页
+     * 帖子阅读页-下一页.
      */
     public function nextAction()
     {
@@ -181,7 +181,7 @@ class ReadController extends PwBaseController
     }
 
     /**
-     * 帖子阅读页-上一页
+     * 帖子阅读页-上一页.
      */
     public function preAction()
     {
@@ -200,7 +200,7 @@ class ReadController extends PwBaseController
     }
 
     /**
-     * 查看帖子操作日志
+     * 查看帖子操作日志.
      */
     public function logAction()
     {

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户注册的审核/激活DS
+ * 用户注册的审核/激活DS.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserRegisterCheckDao.php 7687 2012-04-10 11:17:58Z xiaoxia.xuxx $
- * @package src.service.user.dao
  */
 class PwUserRegisterCheckDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     protected $_dataStruct = array('uid', 'ifchecked', 'ifactived');
 
     /**
-     * 根据用户ID获得用户的状态信息
+     * 根据用户ID获得用户的状态信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getInfo($uid)
@@ -30,11 +31,12 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 根据用户的审核状态获得用户的记录
+     * 根据用户的审核状态获得用户的记录.
      *
-     * @param  int   $ifchecked
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $ifchecked
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getInfoByIfchecked($ifchecked, $limit, $start)
@@ -46,9 +48,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 获得没有激活用户的统计总数
+     * 获得没有激活用户的统计总数.
      *
-     * @param  int $ifchecked
+     * @param int $ifchecked
+     *
      * @return int
      */
     public function countByIfchecked($ifchecked)
@@ -60,11 +63,12 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 根据用户激活字段获得用户的记录
+     * 根据用户激活字段获得用户的记录.
      *
-     * @param  int   $ifactived
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $ifactived
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getInfoByIfactived($ifactived, $limit, $start)
@@ -76,9 +80,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 获得没有激活用户的统计总数
+     * 获得没有激活用户的统计总数.
      *
-     * @param  int $ifactived
+     * @param int $ifactived
+     *
      * @return int
      */
     public function countByIfactived($ifactived)
@@ -92,9 +97,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     /**
      * 设置用户的状态
      *
-     * @param  int  $uid       用户ID
-     * @param  int  $ifchecked 用户是否已审核
-     * @param  int  $ifactived 用户是否已经激活
+     * @param int $uid       用户ID
+     * @param int $ifchecked 用户是否已审核
+     * @param int $ifactived 用户是否已经激活
+     *
      * @return bool
      */
     public function addInfo($uid, $ifchecked, $ifactived)
@@ -108,8 +114,9 @@ class PwUserRegisterCheckDao extends PwBaseDao
     /**
      * 更新用户的状态
      *
-     * @param  int   $uid  用户ID
-     * @param  array $data 用户信息
+     * @param int   $uid  用户ID
+     * @param array $data 用户信息
+     *
      * @return bool
      */
     public function updateInfo($uid, $data)
@@ -124,10 +131,11 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 批量修改用户
+     * 批量修改用户.
      *
-     * @param  array $uids
-     * @param  array $data
+     * @param array $uids
+     * @param array $data
+     *
      * @return bool
      */
     public function batchUpdateInfo($uids, $data)
@@ -141,9 +149,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除该用户的状态信息
+     * 根据用户ID删除该用户的状态信息.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteInfo($uid)
@@ -155,9 +164,10 @@ class PwUserRegisterCheckDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID批量删除用户状态记录信息
+     * 根据用户ID批量删除用户状态记录信息.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return bool
      */
     public function batchDeleteInfo($uids)

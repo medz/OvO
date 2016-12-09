@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 关注完发通知
+ * 关注完发通知.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwNoticeFansDo
 {

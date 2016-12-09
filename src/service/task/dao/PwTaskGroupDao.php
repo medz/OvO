@@ -2,13 +2,13 @@
 
 
 /**
- * Pw_task_group的dao
+ * Pw_task_group的dao.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskGroupDao.php 9238 2012-05-04 03:12:52Z long.shi $
- * @package service.task.dao
  */
 class PwTaskGroupDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwTaskGroupDao extends PwBaseDao
     protected $_dataStruct = array('taskid', 'gid', 'is_auto', 'end_time');
 
     /**
-     * 批量添加任务用户组信息
+     * 批量添加任务用户组信息.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function batchReplaceTaskGroups($data)
@@ -43,9 +44,10 @@ class PwTaskGroupDao extends PwBaseDao
     }
 
     /**
-     * 根据任务id删除
+     * 根据任务id删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteByTaskId($id)
@@ -56,15 +58,16 @@ class PwTaskGroupDao extends PwBaseDao
     }
 
     /**
-     * 获取id不在此范围内的可申请任务列表
+     * 获取id不在此范围内的可申请任务列表.
      *
-     * @param  array $noIds
-     * @param  int   $num
-     * @param  int   $start
-     * @param  int   $endTime
+     * @param array $noIds
+     * @param int   $num
+     * @param int   $start
+     * @param int   $endTime
+     *
      * @return array
      */
-    public function getApplicableTasks($noIds = array(), $gids, $num = 10, $start = 0, $endTime)
+    public function getApplicableTasks($noIds, $gids, $num, $start, $endTime)
     {
         $where = '1';
         if ($noIds) {
@@ -80,14 +83,15 @@ class PwTaskGroupDao extends PwBaseDao
     }
 
     /**
-     * 查询id不在此范围内的可申请任务数量
+     * 查询id不在此范围内的可申请任务数量.
      *
-     * @param  array $noIds
-     * @param  array $gids
-     * @param  int   $endTime
+     * @param array $noIds
+     * @param array $gids
+     * @param int   $endTime
+     *
      * @return int
      */
-    public function countApplicableTasks($noIds = array(), $gids, $endTime)
+    public function countApplicableTasks($noIds, $gids, $endTime)
     {
         $where = '1';
         if ($noIds) {
@@ -104,10 +108,11 @@ class PwTaskGroupDao extends PwBaseDao
     /**
      * 获取通过自动申请过滤的任务
      *
-     * @param  int   $last_id
-     * @param  array $gids
-     * @param  int   $limit
-     * @param  int   $endTime
+     * @param int   $last_id
+     * @param array $gids
+     * @param int   $limit
+     * @param int   $endTime
+     *
      * @return int
      */
     public function getAutoApplicableTask($last_id, $gids, $limit, $endTime)

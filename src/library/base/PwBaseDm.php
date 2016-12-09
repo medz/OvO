@@ -5,14 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('COM:dao.WindDao');
 
 /**
- * phpwind dm层基类
+ * phpwind dm层基类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBaseDm.php 20005 2012-10-22 09:39:05Z peihong.zhangph $
- * @package lib.base.dm
  */
-
 abstract class PwBaseDm
 {
     protected $_data = array();
@@ -21,7 +20,7 @@ abstract class PwBaseDm
     protected $_status = array();
 
     /**
-     * 获取数据信息
+     * 获取数据信息.
      *
      * @return array
      */
@@ -31,7 +30,7 @@ abstract class PwBaseDm
     }
 
     /**
-     * 获取递增的数据信息
+     * 获取递增的数据信息.
      *
      * @return array
      */
@@ -41,7 +40,7 @@ abstract class PwBaseDm
     }
 
     /**
-     * 获取位运算的数据信息
+     * 获取位运算的数据信息.
      *
      * @return array
      */
@@ -51,7 +50,7 @@ abstract class PwBaseDm
     }
 
     /**
-     * 获取所有合并的数据，新增数据时(insert)调用
+     * 获取所有合并的数据，新增数据时(insert)调用.
      *
      * @return array
      */
@@ -91,9 +90,10 @@ abstract class PwBaseDm
     }
 
     /**
-     * 获取data中的数据
+     * 获取data中的数据.
      *
-     * @param  string $field
+     * @param string $field
+     *
      * @return mixed
      */
     public function getField($field)
@@ -102,14 +102,14 @@ abstract class PwBaseDm
     }
 
     /**
-     * 添加数据前的操作
+     * 添加数据前的操作.
      *
      * @return bool
      */
     abstract protected function _beforeAdd();
 
     /**
-     * 更新数据前的操作
+     * 更新数据前的操作.
      *
      * @return bool
      */

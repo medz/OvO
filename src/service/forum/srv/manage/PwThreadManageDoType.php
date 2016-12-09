@@ -4,15 +4,14 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子管理操作-主题分类
+ * 帖子管理操作-主题分类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDigest.php 14445 2012-07-20 09:16:44Z jinlong.panjl $
- * @package forum
  */
-
 class PwThreadManageDoType extends PwThreadManageDo
 {
     protected $tids;
@@ -54,9 +53,10 @@ class PwThreadManageDoType extends PwThreadManageDo
     }
 
     /**
-     * 设置主题分类的一级分类
+     * 设置主题分类的一级分类.
      *
-     * @param  int                  $topictype
+     * @param int $topictype
+     *
      * @return PwThreadManageDoType
      */
     public function setTopictype($topictype, $subTopicType = '')
@@ -69,7 +69,7 @@ class PwThreadManageDoType extends PwThreadManageDo
     }
 
     /**
-     *	获得本板块的所有主题分类
+     *	获得本板块的所有主题分类.
      *
      *  @return array
      */
@@ -119,7 +119,7 @@ class PwThreadManageDoType extends PwThreadManageDo
     }
 
     /**
-     * 检查主题分类
+     * 检查主题分类.
      *
      * @return PwError|bool
      */
@@ -148,7 +148,7 @@ class PwThreadManageDoType extends PwThreadManageDo
     }
 
     /**
-     * 帖子处理DS
+     * 帖子处理DS.
      *
      * @return PwThread
      */
@@ -158,7 +158,7 @@ class PwThreadManageDoType extends PwThreadManageDo
     }
 
     /**
-     * 版块DM
+     * 版块DM.
      *
      * @return PwForum
      */

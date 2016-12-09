@@ -1,12 +1,12 @@
 <?php
 /**
- * 话题分类DAO
+ * 话题分类DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwTagCategoryDao
  */
 class PwTagCategoryDao extends PwBaseDao
 {
@@ -15,9 +15,10 @@ class PwTagCategoryDao extends PwBaseDao
     protected $_dataStruct = array('category_id', 'category_name', 'alias', 'vieworder', 'tag_count', 'seo_title', 'seo_description', 'seo_keywords');
 
     /**
-     * 添加一条分类
+     * 添加一条分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addTagCategory($data)
@@ -26,9 +27,10 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 删除一条分类
+     * 删除一条分类.
      *
-     * @param  int  $categoryId
+     * @param int $categoryId
+     *
      * @return bool
      */
     public function delete($categoryId)
@@ -37,10 +39,11 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 修改一条分类
+     * 修改一条分类.
      *
-     * @param  int   $categoryId
-     * @param  array $data
+     * @param int   $categoryId
+     * @param array $data
+     *
      * @return bool
      */
     public function update($categoryId, $data)
@@ -49,9 +52,10 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 批量添加分类
+     * 批量添加分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addCategorys($data)
@@ -76,9 +80,10 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 修改多条分类
+     * 修改多条分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function updateCategorys($data)
@@ -104,9 +109,10 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 根据category_id获取话题分类
+     * 根据category_id获取话题分类.
      *
      *@param int $id
+     *
      * @return int
      */
     public function get($id)
@@ -115,7 +121,7 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 获取所有话题分类
+     * 获取所有话题分类.
      *
      * @return int
      */
@@ -128,7 +134,7 @@ class PwTagCategoryDao extends PwBaseDao
     }
 
     /**
-     * 获取所有话题分类
+     * 获取所有话题分类.
      *
      * @return int
      */

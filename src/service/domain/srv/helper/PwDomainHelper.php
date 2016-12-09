@@ -1,19 +1,20 @@
 <?php
 /**
- * 帮助类
+ * 帮助类.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDomainHelper.php 20723 2012-11-05 11:25:00Z long.shi $
- * @package domain.srv.helper
  */
 class PwDomainHelper
 {
     /**
-     * 解析url，分成各块，分别为主机、是否https，脚本文件，路径
+     * 解析url，分成各块，分别为主机、是否https，脚本文件，路径.
      *
-     * @param  string  $url
+     * @param string $url
+     *
      * @return PwError array
      */
     public static function parse_url($url)
@@ -42,7 +43,7 @@ class PwDomainHelper
     }
 
     /**
-     * 判断是否是子域名
+     * 判断是否是子域名.
      *
      * 此方法不够严谨，如果遇到主域名正好就是域名后缀的时候，类似www.info.com,www.net.cn时有bug。
      *

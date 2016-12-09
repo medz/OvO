@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignStyle.php 22041 2012-12-18 10:31:33Z gao.wanggao $
- * @package
  */
 class PwDesignStyle
 {
@@ -13,7 +14,7 @@ class PwDesignStyle
     private $_style = array();
 
     /**
-     * 设置HTML DOM ID
+     * 设置HTML DOM ID.
      *
      * @param string $domId
      */
@@ -23,7 +24,7 @@ class PwDesignStyle
     }
 
     /**
-     * 根据样式数组组装style
+     * 根据样式数组组装style.
      *
      * @param array $style
      */
@@ -72,7 +73,7 @@ class PwDesignStyle
     }
 
     /**
-     * 获取一个DOM的CSS样式
+     * 获取一个DOM的CSS样式.
      *
      * @return array
      */
@@ -82,7 +83,7 @@ class PwDesignStyle
     }
 
     /**
-     * 获取一个DOM 的链接样式
+     * 获取一个DOM 的链接样式.
      *
      * @param array $style
      */
@@ -97,16 +98,17 @@ class PwDesignStyle
     }
 
     /**
-     * 根据样式数组格式化一个标题的样式
+     * 根据样式数组格式化一个标题的样式.
      *
-     * @param  array $style
+     * @param array $style
+     *
      * @return array
      */
     public function buildTitleStyle($style)
     {
         return array(
-                'float' => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font' => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
+                'float'      => array('type' => $style['float'], 'margin' => $style['margin']),
+                'font'       => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
                 'background' => array('color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']),
         );
     }

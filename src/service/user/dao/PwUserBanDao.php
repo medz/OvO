@@ -4,13 +4,13 @@
  * 用户行为禁止：
  *    1: 禁止用户发言
  *    2: 禁止用户使用头像
- *    4: 禁止用户使用签名
+ *    4: 禁止用户使用签名.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserBanDao.php 16415 2012-08-23 07:53:40Z xiaoxia.xuxx $
- * @package src.service.user.dao
  */
 class PwUserBanDao extends PwBaseDao
 {
@@ -19,9 +19,10 @@ class PwUserBanDao extends PwBaseDao
     protected $_dataStruct = array('id', 'uid', 'typeid', 'fid', 'end_time', 'created_time', 'created_userid', 'reason');
 
     /**
-     * 获取用户ID禁止信息
+     * 获取用户ID禁止信息.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getBanInfo($uid)
@@ -33,10 +34,11 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据用户的禁止类型获取用户iD禁止信息
+     * 根据用户的禁止类型获取用户iD禁止信息.
      *
-     * @param  int   $uid    用户ID
-     * @param  int   $typeid 禁止类型
+     * @param int $uid    用户ID
+     * @param int $typeid 禁止类型
+     *
      * @return array
      */
     public function getBanInfoByTypeid($uid, $typeid)
@@ -48,11 +50,12 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据禁止类型及禁止类型中的具体ID获得用户uid的禁止信息
+     * 根据禁止类型及禁止类型中的具体ID获得用户uid的禁止信息.
      *
-     * @param  int   $uid
-     * @param  int   $typeid
-     * @param  int   $fid
+     * @param int $uid
+     * @param int $typeid
+     * @param int $fid
+     *
      * @return array
      */
     public function getBanInfoByTypeidAndFid($uid, $typeid, $fid)
@@ -64,10 +67,11 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID列表及版块ID获得用户禁止信息
+     * 根据用户ID列表及版块ID获得用户禁止信息.
      *
-     * @param  array $uids
-     * @param  int   $typeid 用户禁止类型
+     * @param array $uids
+     * @param int   $typeid 用户禁止类型
+     *
      * @return array
      */
     public function fetchBanInfoByUid($uids, $typeid)
@@ -79,9 +83,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据禁止ID列表获取禁止数据
+     * 根据禁止ID列表获取禁止数据.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetchBanInfo($ids)
@@ -90,9 +95,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 添加用户禁止记录
+     * 添加用户禁止记录.
      *
-     * @param  array $data 禁言信息
+     * @param array $data 禁言信息
+     *
      * @return int
      */
     public function addBanInfo($data)
@@ -106,9 +112,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 批量禁止用户
+     * 批量禁止用户.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return array
      */
     public function batchAddBanInfo($data)
@@ -137,9 +144,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据禁止ID列表删除禁止记录
+     * 根据禁止ID列表删除禁止记录.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -148,9 +156,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID删除用户的屏蔽信息
+     * 根据用户ID删除用户的屏蔽信息.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function deleteByUid($uid)
@@ -162,9 +171,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID批量删除该用户信息
+     * 根据用户ID批量删除该用户信息.
      *
-     * @param  array $uids 用户ID列表
+     * @param array $uids 用户ID列表
+     *
      * @return int
      */
     public function batchDeleteByUids($uids)
@@ -175,9 +185,10 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据条件统计数据
+     * 根据条件统计数据.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countByCondition($condition)
@@ -190,11 +201,12 @@ class PwUserBanDao extends PwBaseDao
     }
 
     /**
-     * 根据条件检索数据
+     * 根据条件检索数据.
      *
-     * @param  array $condition 查询条件
-     * @param  int   $limit     返回条数
-     * @param  int   $start     记录查询开始
+     * @param array $condition 查询条件
+     * @param int   $limit     返回条数
+     * @param int   $start     记录查询开始
+     *
      * @return array
      */
     public function fetchBanInfoByCondition($condition, $limit = 10, $start = 0)
@@ -211,9 +223,10 @@ class PwUserBanDao extends PwBaseDao
      * 搜索条件支持：
      * <pre>
      *   array('username/uid' => '', 'created_userid' => '', 'start_time' => '时间戳', 'end_time' => '时间戳');
-     * </pre>
+     * </pre>.
      *
-     * @param  array  $condition
+     * @param array $condition
+     *
      * @return string
      */
     private function _buildCondition($condition)

@@ -8,8 +8,8 @@ Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyleService.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package service.style.srv
  */
 class PwStyleService
 {
@@ -69,9 +69,10 @@ class PwStyleService
     }
 
     /**
-     * 设置全局TPL配置
+     * 设置全局TPL配置.
      *
-     * @param  array $style
+     * @param array $style
+     *
      * @return bool
      */
     private function _setConfigBo($style)
@@ -88,7 +89,6 @@ class PwStyleService
     }
 
     /**
-     *
      * @return PwStyle
      */
     private function _styleDs()

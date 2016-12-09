@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:pay.srv.paymethod.PwPayAbstract');
 
 /**
- * 在线支付 - 财付通支付方式
+ * 在线支付 - 财付通支付方式.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTenpay.php 24975 2013-02-27 09:24:54Z jieyin $
- * @package forum
  */
-
 class PwTenpay extends PwPayAbstract
 {
     public $tenpay;
@@ -50,17 +49,17 @@ class PwTenpay extends PwPayAbstract
         $strSpBillNo = substr($strTransactionId, -10);
 
         $param = array(
-            'cmdno' => '1',
-            'date' => $strBillDate,
-            'bargainor_id' => $this->tenpay,
+            'cmdno'          => '1',
+            'date'           => $strBillDate,
+            'bargainor_id'   => $this->tenpay,
             'transaction_id' => $strTransactionId,
-            'sp_billno' => $strSpBillNo,
-            'total_fee' => $vo->getFee() * 100,
-            'bank_type' => 0,
-            'fee_type' => 1,
-            'return_url' => $this->baseurl,
-            'attach' => 'my_magic_string',
-            'desc' => Pw::convert($vo->getTitle(), 'gbk'),
+            'sp_billno'      => $strSpBillNo,
+            'total_fee'      => $vo->getFee() * 100,
+            'bank_type'      => 0,
+            'fee_type'       => 1,
+            'return_url'     => $this->baseurl,
+            'attach'         => 'my_magic_string',
+            'desc'           => Pw::convert($vo->getTitle(), 'gbk'),
         );
 
         return $this->_bulidUrl($this->tenpay_url, $this->tenpay_key, $param);

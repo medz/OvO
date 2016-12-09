@@ -8,30 +8,31 @@
  * 4.standardSign指定的格式为array('列表标题','url','来源ID','简介')
  * 5.special里的属性可以注释，但不能修改
  * 6.normal为自定义 的设置属性 array('表单类型','标题','说明','多选值(如为变量名可选为以array还是html显示)','其它属性(类型long为长表单,short为短表单,multiple可多选)')
- * 7.表单类型为text,select,radio,checkbox,textarea,html(自定义html)  中一种
+ * 7.表单类型为text,select,radio,checkbox,textarea,html(自定义html)  中一种.
  *
  * 8.自定义html的实现：1)'name'=>array('html','标题','说明','','template|key1')，template为模版文件名,key1为勾子名
  * 					2)在template\design\property\目录，新建模板文件, 定义'key1'的模板勾子
  * 					3)<input name="property[abc]" value="{$property[abc]}">',表单name必须以property命名
  * </note>
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: config.php 25436 2013-03-15 08:45:34Z gao.wanggao $
- * @package
  */
 return array(
-    'model' => 'thread',
-    'name' => '帖子',
-    'type' => 'bbs',
-    'refresh' => true,
+    'model'        => 'thread',
+    'name'         => '帖子',
+    'type'         => 'bbs',
+    'refresh'      => true,
     'standardSign' => array('sTitle' => '{title}', 'sUrl' => '{url}', 'sFromId' => '{tid}', 'sIntro' => '{intro}'),
-    'special' => array(
+    'special'      => array(
         'titlenum' => array('text', '标题长度', '0为不限制', '', 'short'),
-        'desnum' => array('text', '内容长度', '0为不限制', '', 'short'),
-        'limit' => array('text', '显示条数', '默认10条', '', 'short'),
-        'timefmt' => array('select', '时间格式', '', array('m-d' => '04-26', 'Y-m-d' => '2012-04-26', 'Y-m-d H:i:s' => '2012-04-26 11:30', 'H:i:s' => '11:30:59', 'n月j日' => '4月26日', 'y年n月j日' => '12年4月26日', 'auto' => '几天前')),
-        'isblank' => array('radio', '链接打开方式', '', array('0' => '当前窗口', '1' => '新窗口'), ''),
+        'desnum'   => array('text', '内容长度', '0为不限制', '', 'short'),
+        'limit'    => array('text', '显示条数', '默认10条', '', 'short'),
+        'timefmt'  => array('select', '时间格式', '', array('m-d' => '04-26', 'Y-m-d' => '2012-04-26', 'Y-m-d H:i:s' => '2012-04-26 11:30', 'H:i:s' => '11:30:59', 'n月j日' => '4月26日', 'y年n月j日' => '12年4月26日', 'auto' => '几天前')),
+        'isblank'  => array('radio', '链接打开方式', '', array('0' => '当前窗口', '1' => '新窗口'), ''),
     ),
 
     'sign' => array(
@@ -68,21 +69,21 @@ return array(
     ),
 
     'normal' => array(
-        'tids' => array('text', '帖子tid', '多个tid之间采用空格隔开', '', 'long'),
+        'tids'      => array('text', '帖子tid', '多个tid之间采用空格隔开', '', 'long'),
         'usernames' => array('text', '用户名', '多个用户名之间采用空格隔开', '', 'long'),
-        'keywords' => array('text', '标题关键字', '', '', 'long'),
-        'fids' => array('select', '版块', '', 'forumOption|html', 'multiple'),
-        'special' => array('checkbox', '主题类型', '', 'specileType|array'),
-        'istop' => array('checkbox', '置顶', '', array('1' => '本版置顶', '2' => '分类置顶', '3' => '全局置顶')),
-        'isdigest' => array('radio', '精华', '', array('0' => '不限', '1' => '是')),
-        'ispic' => array('radio', '图片', '', array('0' => '不限', '1' => '是')),
+        'keywords'  => array('text', '标题关键字', '', '', 'long'),
+        'fids'      => array('select', '版块', '', 'forumOption|html', 'multiple'),
+        'special'   => array('checkbox', '主题类型', '', 'specileType|array'),
+        'istop'     => array('checkbox', '置顶', '', array('1' => '本版置顶', '2' => '分类置顶', '3' => '全局置顶')),
+        'isdigest'  => array('radio', '精华', '', array('0' => '不限', '1' => '是')),
+        'ispic'     => array('radio', '图片', '', array('0' => '不限', '1' => '是')),
         //'isattach'	=>array('radio','附件','',array('0'=>'不限','1'=>'是')),
         //'ismusic'	=>array('radio','音乐','',array('0'=>'否','1'=>'是')),
         //'isvideo'	=>array('radio','视频','',array('0'=>'否','1'=>'是')),
         //'isflash'	=>array('radio','flash','',array('0'=>'否','1'=>'是')),
         'createdtime' => array('select', '主题发布时间', '', array('0' => '不限制', '3600' => '1小时以内', '86400' => '1天以内', '604800' => '1周以内', '2592000' => '1月以内')),
-        'posttime' => array('select', '回复主题时间', '', array('0' => '不限制', '3600' => '1小时以内', '86400' => '1天以内', '604800' => '1周以内', '2592000' => '1月以内')),
-        'order' => array('select', '主题排序方式', '', array('1' => '最新发布时间', '2' => '最新回复时间', '3' => '回复数由多到少', '4' => '浏览数由多到少', '5' => '喜欢数由多到少')),
+        'posttime'    => array('select', '回复主题时间', '', array('0' => '不限制', '3600' => '1小时以内', '86400' => '1天以内', '604800' => '1周以内', '2592000' => '1月以内')),
+        'order'       => array('select', '主题排序方式', '', array('1' => '最新发布时间', '2' => '最新回复时间', '3' => '回复数由多到少', '4' => '浏览数由多到少', '5' => '喜欢数由多到少')),
         'ishighlight' => array('radio', '显示加亮效果', '', array('0' => '否', '1' => '是')),
     ),
 );

@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子附件附件展示 / ubb解析
+ * 帖子附件附件展示 / ubb解析.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttachDisplay.php 28804 2013-05-24 08:00:00Z hao.lin $
- * @package forum|attach
  */
-
 class PwAttachDisplay
 {
     public $attachs;
@@ -145,15 +142,15 @@ class PwAttachDisplay
             $attr && $img = substr($img, 0, -3).$attr.' />';
 
             $attach += array(
-                'url' => $url,
-                'img' => $img,
+                'url'     => $url,
+                'img'     => $img,
                 'miniUrl' => Pw::getPath($attach['path'], $attach['ifthumb']),
             );
         } else {
             $atype = 'downattach';
             $attach += array(
                 'cname' => '',
-                'ext' => strtolower(substr(strrchr($attach['name'], '.'), 1)),
+                'ext'   => strtolower(substr(strrchr($attach['name'], '.'), 1)),
             );
         }
 

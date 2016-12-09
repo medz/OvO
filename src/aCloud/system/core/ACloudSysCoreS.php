@@ -1,16 +1,16 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreS
 {
     public static function isArray($params)
     {
-        return (! is_array($params) || ! count($params)) ? false : true;
+        return (!is_array($params) || !count($params)) ? false : true;
     }
 
     public static function inArray($param, $params)
     {
-        return (! in_array((string) $param, (array) $params)) ? false : true;
+        return (!in_array((string) $param, (array) $params)) ? false : true;
     }
 
     public static function htmlEscape($param)
@@ -25,22 +25,22 @@ class ACloudSysCoreS
 
     public static function gp($keys, $method = null, $cvtype = 1, $istrim = true)
     {
-        ! is_array($keys) && $keys = array($keys);
+        !is_array($keys) && $keys = array($keys);
         $result = array();
         foreach ($keys as $key) {
             if ($key == 'GLOBALS') {
                 continue;
             }
-            $GLOBALS [$key] = null;
-            if ($method != 'P' && isset($_GET [$key])) {
-                $GLOBALS [$key] = $_GET [$key];
-            } elseif ($method != 'G' && isset($_POST [$key])) {
-                $GLOBALS [$key] = $_POST [$key];
+            $GLOBALS[$key] = null;
+            if ($method != 'P' && isset($_GET[$key])) {
+                $GLOBALS[$key] = $_GET[$key];
+            } elseif ($method != 'G' && isset($_POST[$key])) {
+                $GLOBALS[$key] = $_POST[$key];
             }
-            if (isset($GLOBALS [$key]) && ! empty($cvtype) || $cvtype == 2) {
-                $GLOBALS [$key] = self::escapeChar($GLOBALS [$key], $cvtype == 2, $istrim);
+            if (isset($GLOBALS[$key]) && !empty($cvtype) || $cvtype == 2) {
+                $GLOBALS[$key] = self::escapeChar($GLOBALS[$key], $cvtype == 2, $istrim);
             }
-            $result [] = $GLOBALS [$key];
+            $result[] = $GLOBALS[$key];
         }
 
         return $result;
@@ -48,16 +48,16 @@ class ACloudSysCoreS
 
     public static function getGP($key, $method = null)
     {
-        if ($method == 'G' || $method != 'P' && isset($_GET [$key])) {
-            return $_GET [$key];
+        if ($method == 'G' || $method != 'P' && isset($_GET[$key])) {
+            return $_GET[$key];
         }
 
-        return $_POST [$key];
+        return $_POST[$key];
     }
 
     public static function escapePath($fileName, $ifCheck = true)
     {
-        if (! self::_escapePath($fileName, $ifCheck)) {
+        if (!self::_escapePath($fileName, $ifCheck)) {
             exit('Forbidden');
         }
 
@@ -68,7 +68,7 @@ class ACloudSysCoreS
     {
         $tmpname = strtolower($fileName);
         $tmparray = array('://', "\0");
-        $ifCheck && $tmparray [] = '..';
+        $ifCheck && $tmparray[] = '..';
         if (str_replace($tmparray, '', $tmpname) != $tmpname) {
             return false;
         }
@@ -87,11 +87,11 @@ class ACloudSysCoreS
     {
         if (is_array($mixed)) {
             foreach ($mixed as $key => $value) {
-                $mixed [$key] = self::escapeChar($value, $isint, $istrim);
+                $mixed[$key] = self::escapeChar($value, $isint, $istrim);
             }
         } elseif ($isint) {
             $mixed = (int) $mixed;
-        } elseif (! is_numeric($mixed) && ($istrim ? $mixed = trim($mixed) : $mixed) && $mixed) {
+        } elseif (!is_numeric($mixed) && ($istrim ? $mixed = trim($mixed) : $mixed) && $mixed) {
             $mixed = self::escapeStr($mixed);
         }
 
@@ -113,7 +113,7 @@ class ACloudSysCoreS
     {
         if (is_array($var)) {
             foreach ($var as $key => $value) {
-                self::checkVar($var [$key]);
+                self::checkVar($var[$key]);
             }
         } else {
             $var = str_replace(array('..', ')', '<', '='), array('&#46;&#46;', '&#41;', '&#60;', '&#61;'), $var);
@@ -125,9 +125,9 @@ class ACloudSysCoreS
         if (is_array($array)) {
             foreach ($array as $key => $value) {
                 if (is_array($value)) {
-                    self::slashes($array [$key]);
+                    self::slashes($array[$key]);
                 } else {
-                    $array [$key] = addslashes($value);
+                    $array[$key] = addslashes($value);
                 }
             }
         }
@@ -138,23 +138,23 @@ class ACloudSysCoreS
         $server = array();
         $array = (array) $keys;
         foreach ($array as $key) {
-            $server [$key] = null;
-            if (isset($_SERVER [$key])) {
-                $server [$key] = str_replace(array('<', '>', '"', "'", '%3C', '%3E', '%22', '%27', '%3c', '%3e'), '', $_SERVER [$key]);
+            $server[$key] = null;
+            if (isset($_SERVER[$key])) {
+                $server[$key] = str_replace(array('<', '>', '"', "'", '%3C', '%3E', '%22', '%27', '%3c', '%3e'), '', $_SERVER[$key]);
             }
         }
 
-        return is_array($keys) ? $server : $server [$keys];
+        return is_array($keys) ? $server : $server[$keys];
     }
 
     public static function sqlEscape($var, $strip = true, $isArray = false)
     {
         if (is_array($var)) {
-            if (! $isArray) {
+            if (!$isArray) {
                 return " '' ";
             }
             foreach ($var as $key => $value) {
-                $var [$key] = trim(self::sqlEscape($value, $strip));
+                $var[$key] = trim(self::sqlEscape($value, $strip));
             }
 
             return $var;
@@ -172,7 +172,7 @@ class ACloudSysCoreS
 
     public static function sqlSingle($array, $strip = true)
     {
-        if (! self::isArray($array)) {
+        if (!self::isArray($array)) {
             return '';
         }
         $array = self::sqlEscape($array, $strip, true);
@@ -186,12 +186,12 @@ class ACloudSysCoreS
 
     public static function sqlMulti($array, $strip = true)
     {
-        if (! self::isArray($array)) {
+        if (!self::isArray($array)) {
             return '';
         }
         $str = '';
         foreach ($array as $val) {
-            if (! empty($val) && self::isArray($val)) {
+            if (!empty($val) && self::isArray($val)) {
                 $str .= ($str ? ', ' : ' ').'('.self::sqlImplode($val, $strip).') ';
             }
         }
@@ -206,7 +206,7 @@ class ACloudSysCoreS
 
     public static function sqlMetadata($data, $tlists = array())
     {
-        if (empty($tlists) || ! self::inArray($data, $tlists)) {
+        if (empty($tlists) || !self::inArray($data, $tlists)) {
             $data = str_replace(array('`', ' '), '', $data);
         }
 

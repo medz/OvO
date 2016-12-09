@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostsReplyDao.php 13302 2012-07-05 03:45:43Z jieyin $
- * @package forum
  */
-
 class PwPostsReplyDao extends PwBaseDao
 {
     protected $_table = 'bbs_posts_reply';

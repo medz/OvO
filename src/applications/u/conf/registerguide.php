@@ -1,7 +1,9 @@
 <?php
 /**
  * @author xiaoxia.xu <x_824@sina.com> 2010-11-2
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright ©2003-2010 phpwind.com
  * @license
  */
@@ -14,13 +16,13 @@
  */
 return array(
     'profile' => array(
-        'title' => '完善资料',
+        'title'   => '完善资料',
         'setting' => '',
-        'guide' => 'guide/interest/run',
+        'guide'   => 'guide/interest/run',
     ),
     'attention' => array(
-        'title' => '推荐关注',
+        'title'   => '推荐关注',
         'setting' => 'admin/u/attentionGuide',
-        'guide' => 'guide/attention/run',
+        'guide'   => 'guide/attention/run',
     ),
 );

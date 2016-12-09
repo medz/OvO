@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignImportZip.php 24904 2013-02-26 04:01:46Z gao.wanggao $
- * @package
  */
 class PwDesignImportZip
 {
@@ -41,6 +42,7 @@ class PwDesignImportZip
     /**
      * 检查并导入zip文件
      * Enter description here ...
+     *
      * @param string $filename
      */
     public function checkZip($filename)
@@ -112,6 +114,7 @@ class PwDesignImportZip
     /**
      * 导入应用中心模版
      * Enter description here ...
+     *
      * @param string $folder
      */
     public function appcenterToLocal($folder)
@@ -148,7 +151,6 @@ class PwDesignImportZip
         return false;
     }
 
-
     protected function replaceTpl($section)
     {
         Wind::import('SRV:design.dm.PwDesignModuleDm');
@@ -167,7 +169,7 @@ class PwDesignImportZip
     }
 
     /**
-     * 替换frame标签
+     * 替换frame标签.
      */
     protected function filterTemplate($string)
     {
@@ -195,6 +197,7 @@ class PwDesignImportZip
     /**
      * 给style.css 加个随机码
      * Enter description here ...
+     *
      * @param unknown_type $section
      */
     protected function compileStyle($section)

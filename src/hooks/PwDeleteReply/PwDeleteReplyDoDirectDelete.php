@@ -2,19 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子删除扩展服务接口--虚拟删除到回收站
+ * 帖子删除扩展服务接口--虚拟删除到回收站.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteReplyDoDirectDelete.php 13278 2012-07-05 02:08:39Z jieyin $
- * @package forum
  */
-
 class PwDeleteReplyDoDirectDelete extends iPwGleanDoHookProcess
 {
     protected $recode = array();

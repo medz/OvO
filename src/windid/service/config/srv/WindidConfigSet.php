@@ -2,14 +2,13 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 /**
- * 配置管理
+ * 配置管理.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-6
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidConfigSet.php 24443 2013-01-30 08:08:06Z jieyin $
- * @package src
- * @subpackage service.config.bo
  */
 class WindidConfigSet
 {
@@ -25,11 +24,12 @@ class WindidConfigSet
     }
 
     /**
-     * 设置一个配置选项
+     * 设置一个配置选项.
      *
      * @param  string      $name    配置项
      * @param  mixed       $value   配置值
-     * @param  string      $descrip 描述
+     * @param string $descrip 描述
+     *
      * @return PwConfigSet
      */
     public function set($name, $value, $descrip = null)
@@ -50,7 +50,7 @@ class WindidConfigSet
     }
 
     /**
-     * 将数据持久化到数据库
+     * 将数据持久化到数据库.
      */
     public function flush()
     {

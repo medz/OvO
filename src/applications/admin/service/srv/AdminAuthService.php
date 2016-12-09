@@ -5,16 +5,16 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminAuthService.php 24805 2013-02-21 09:14:12Z jieyin $
- * @package admin
- * @subpackage service.srv
  */
 class AdminAuthService
 {
     /**
-     * 删除后台用户
+     * 删除后台用户.
      *
-     * @param  int         $id
+     * @param int $id
+     *
      * @return int|PwError
      */
     public function del($id)
@@ -31,10 +31,11 @@ class AdminAuthService
     }
 
     /**
-     * 添加用户角色定义
+     * 添加用户角色定义.
      *
-     * @param  string        $username
-     * @param  array         $roles
+     * @param string $username
+     * @param array  $roles
+     *
      * @return array|PwError
      */
     public function add($username, $roles)
@@ -63,7 +64,7 @@ class AdminAuthService
     }
 
     /**
-     * 编辑用户权限
+     * 编辑用户权限.
      *
      * @param int   $id
      * @param array $roles
@@ -89,10 +90,11 @@ class AdminAuthService
     }
 
     /**
-     * 获取用户权限列表
+     * 获取用户权限列表.
      *
-     * @param  int           $page
-     * @param  int           $perpage
+     * @param int $page
+     * @param int $perpage
+     *
      * @return array|PwError
      */
     public function fetchByPage($page, $perpage)

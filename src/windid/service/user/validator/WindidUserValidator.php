@@ -3,12 +3,12 @@
 Wind::import('WSRV:config.WindidConfig');
 
 /**
- * 用户信息合法性校验器
+ * 用户信息合法性校验器.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserValidator.php 24943 2013-02-27 03:52:21Z jieyin $
- * @package Windid.library
  */
 class WindidUserValidator
 {
@@ -16,7 +16,7 @@ class WindidUserValidator
                                          '..', '$', '{', '}', '`', '(', ')', );
 
     /**
-     * 检查用户名是否通过
+     * 检查用户名是否通过.
      *
      * @param string $username 用户名
      *                         return bool|WindidValidatorException true|失败时返回一个错误对象
@@ -80,10 +80,11 @@ class WindidUserValidator
     }
 
     /**
-     * 验证邮箱是否通过
+     * 验证邮箱是否通过.
      *
-     * @param  string                        $email 邮箱
-     * @param  int                           $uid
+     * @param string $email 邮箱
+     * @param int    $uid
+     *
      * @return bool|WindidValidatorException true|失败时返回一个错误对象
      */
     public static function checkEmail($email, $uid = 0, $username = '')
@@ -106,9 +107,10 @@ class WindidUserValidator
     }
 
     /**
-     * 是否含有非法字符
+     * 是否含有非法字符.
      *
      * @param  string $str 待检查的字符串
+     *
      * @return string
      */
     private static function hasIllegalChar($str)
@@ -117,10 +119,11 @@ class WindidUserValidator
     }
 
     /**
-     * 用户名长度是否有效
+     * 用户名长度是否有效.
      *
-     * @param  string $username 判断的长度
-     * @param  string $charset
+     * @param string $username 判断的长度
+     * @param string $charset
+     *
      * @return bool
      */
     private static function isNameLenValid($username, $charset = 'utf8')
@@ -131,9 +134,10 @@ class WindidUserValidator
     }
 
     /**
-     * 检查用户邮箱
+     * 检查用户邮箱.
      *
      * @param  string   $email 待检查的邮箱
+     *
      * @return bool|int
      */
     private static function isEmailValid($email)
@@ -155,7 +159,7 @@ class WindidUserValidator
     }
 
     /**
-     * 获得注册配置信息
+     * 获得注册配置信息.
      *
      * @return WindidConfig
      */
@@ -170,9 +174,10 @@ class WindidUserValidator
     }
 
     /**
-     * email是否在白名单中
+     * email是否在白名单中.
      *
      * @param  string $email 待检查的email
+     *
      * @return bool
      */
     private static function _inEmailWhiteList($email)
@@ -190,9 +195,10 @@ class WindidUserValidator
     }
 
     /**
-     * email是否在黑名单中
+     * email是否在黑名单中.
      *
      * @param  string $email 待检查的email
+     *
      * @return bool
      */
     private static function _inEmailBlackList($email)

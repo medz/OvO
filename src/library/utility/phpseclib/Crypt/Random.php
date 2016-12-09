@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * Random Number Generator
+ * Random Number Generator.
  *
  * PHP versions 4 and 5
  *
@@ -32,11 +32,13 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_Random
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: Random.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
@@ -50,9 +52,10 @@
  * a PHP-based web app that stores its data in an SQL database can collect more entropy than this function
  * can.
  *
- * @param  optional Integer $min
- * @param  optional Integer $max
- * @return Integer
+ * @param optional Integer $min
+ * @param optional Integer $max
+ *
+ * @return int
  */
 function crypt_random($min = 0, $max = 0x7FFFFFFF)
 {

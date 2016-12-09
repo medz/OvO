@@ -51,8 +51,7 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
-     * 忽略消息
+     * 忽略消息.
      */
     public function ignoreAction()
     {
@@ -65,8 +64,7 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
-     * 删除消息
+     * 删除消息.
      */
     public function deleteAction()
     {
@@ -85,8 +83,7 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
-     * 顶部快捷列表
+     * 顶部快捷列表.
      */
     public function minilistAction()
     {
@@ -104,8 +101,7 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
-     * 具体通知详细页
+     * 具体通知详细页.
      */
     public function detaillistAction()
     {
@@ -125,8 +121,7 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
-     * 具体通知详细页
+     * 具体通知详细页.
      */
     public function detailAction()
     {
@@ -149,8 +144,8 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageNotices
      */
     protected function _getNoticeDs()
@@ -159,8 +154,8 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwNoticeService
      */
     protected function _getNoticeService()
@@ -169,8 +164,8 @@ class NoticeController extends PwBaseController
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwUser
      */
     protected function _getUserDs()
@@ -179,8 +174,8 @@ class NoticeController extends PwBaseController
     }
 
     /**
+     * 设置已读.
      *
-     * 设置已读
      * @param int   $unreadCount
      * @param array $noticeList
      */
@@ -197,7 +192,7 @@ class NoticeController extends PwBaseController
                 if ($v['is_read']) {
                     continue;
                 }
-                $readnum ++;
+                $readnum++;
                 $ids[] = $v['id'];
             }
             $ids && $this->_getNoticeDs()->batchUpdateNotice($ids, $dm);

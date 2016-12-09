@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 版块数据模型
+ * 版块数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumDm.php 18802 2012-09-27 10:17:30Z jieyin $
- * @package forum
  */
-
 class PwForumDm extends PwBaseDm
 {
     public $fid;
@@ -93,7 +90,7 @@ class PwForumDm extends PwBaseDm
     }
 
     /**
-     * 该方法在 PwForumMiscService.correctData() 中调用,其他情况下不能随意使用
+     * 该方法在 PwForumMiscService.correctData() 中调用,其他情况下不能随意使用.
      */
     public function setFup($fup)
     {

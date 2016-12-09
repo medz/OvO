@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 财付通支付
+ * 财付通支付.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: TenpayController.php 24284 2013-01-25 03:28:25Z xiaoxia.xuxx $
- * @package forum
  */
-
 class TenpayController extends PwBaseController
 {
     protected $_var = array();

@@ -8,8 +8,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class MobileController extends AdminBaseController
 {
@@ -37,7 +37,7 @@ class MobileController extends AdminBaseController
     }
 
     /**
-     * 后台设置-手机设置
+     * 后台设置-手机设置.
      */
     public function dosetAction()
     {
@@ -62,7 +62,7 @@ class MobileController extends AdminBaseController
     }
 
     /**
-     * 后台设置-短信平台
+     * 后台设置-短信平台.
      */
     public function run()
     {
@@ -80,7 +80,7 @@ class MobileController extends AdminBaseController
     }
 
     /**
-     * 方式设置列表页
+     * 方式设置列表页.
      */
     public function dorunAction()
     {

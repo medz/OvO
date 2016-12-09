@@ -1,20 +1,19 @@
 <?php
 /**
  * App喜欢来源扩展
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class PwLikeSourceDao extends PwBaseDao
 {
     protected $_pk = 'sid';
     protected $_table = 'like_source';
     protected $_dataStruct = array('sid', 'subject', 'source_url', 'from_app', 'fromid', 'like_count');
-
-
 
     public function getSource($sid)
     {

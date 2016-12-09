@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 单个版块的业务模型
+ * 单个版块的业务模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumBo.php 25814 2013-03-25 05:42:52Z jieyin $
- * @package forum
  */
-
 class PwForumBo
 {
     public $fid;
@@ -31,7 +28,7 @@ class PwForumBo
     }
 
     /**
-     * 检测是否为正常的版块
+     * 检测是否为正常的版块.
      *
      * @return bool
      */
@@ -45,7 +42,7 @@ class PwForumBo
     }
 
     /**
-     * 检测是否为开放版块
+     * 检测是否为开放版块.
      *
      * @return bool
      */
@@ -55,7 +52,7 @@ class PwForumBo
     }
 
     /**
-     * 检测是否为子版块
+     * 检测是否为子版块.
      *
      * @return bool
      */
@@ -65,20 +62,22 @@ class PwForumBo
     }
 
     /**
-     * 检测用户是否加入该版块
+     * 检测用户是否加入该版块.
      *
-     * @param  int  $uid 用户id
+     * @param int $uid 用户id
+     *
      * @return bool
      */
     public function isJoin($uid)
     {
-        return !!Wekit::load('forum.PwForumUser')->get($uid, $this->fid);
+        return (bool) Wekit::load('forum.PwForumUser')->get($uid, $this->fid);
     }
 
     /**
-     * 检测用户是否是该版块的版主
+     * 检测用户是否是该版块的版主.
      *
-     * @param  string $username 用户名
+     * @param string $username 用户名
+     *
      * @return bool
      */
     public function isBM($username)
@@ -97,9 +96,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块访问权限
+     * 检测用户版块访问权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowVisit(PwUserBo $user)
@@ -112,9 +112,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块帖子阅读权限
+     * 检测用户版块帖子阅读权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowRead(PwUserBo $user)
@@ -127,9 +128,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块发表主题权限
+     * 检测用户版块发表主题权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowPost(PwUserBo $user)
@@ -142,9 +144,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块发表回复权限
+     * 检测用户版块发表回复权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowReply(PwUserBo $user)
@@ -157,9 +160,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块上传权限
+     * 检测用户版块上传权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowUpload(PwUserBo $user)
@@ -172,9 +176,10 @@ class PwForumBo
     }
 
     /**
-     * 检测用户版块下载权限
+     * 检测用户版块下载权限.
      *
-     * @param  object $user 用户
+     * @param object $user 用户
+     *
      * @return bool
      */
     public function allowDownload(PwUserBo $user)
@@ -187,7 +192,7 @@ class PwForumBo
     }
 
     /**
-     * 获取上级版块链
+     * 获取上级版块链.
      *
      * @return array
      */
@@ -211,7 +216,7 @@ class PwForumBo
     }
 
     /**
-     * 版块导航条信息
+     * 版块导航条信息.
      *
      * @return string
      */
@@ -228,9 +233,10 @@ class PwForumBo
     }
 
     /**
-     * 生成导航条节点信息
+     * 生成导航条节点信息.
      *
-     * @param  array  $guide 节点信息
+     * @param array $guide 节点信息
+     *
      * @return string
      */
     public function bulidGuide($guide)
@@ -243,7 +249,7 @@ class PwForumBo
     }
 
     /**
-     * 获取子版列表
+     * 获取子版列表.
      *
      * @return array
      */
@@ -276,7 +282,7 @@ class PwForumBo
     }
 
     /**
-     * 获取版主列表
+     * 获取版主列表.
      *
      * @return array
      */
@@ -290,7 +296,7 @@ class PwForumBo
     }
 
     /**
-     * 获取所有上级分类id
+     * 获取所有上级分类id.
      *
      * @return array
      */
@@ -300,7 +306,7 @@ class PwForumBo
     }
 
     /**
-     * 获取所有上级版块列表
+     * 获取所有上级版块列表.
      *
      * @return array
      */
@@ -319,7 +325,7 @@ class PwForumBo
     }
 
     /**
-     * 获取分类id
+     * 获取分类id.
      *
      * @return int
      */
@@ -334,9 +340,10 @@ class PwForumBo
     }
 
     /**
-     * 获取帖子类型
+     * 获取帖子类型.
      *
-     * @param  PwUserBo $user
+     * @param PwUserBo $user
+     *
      * @return array
      */
     public function getThreadType(PwUserBo $user)
@@ -357,7 +364,7 @@ class PwForumBo
     }
 
     /**
-     * 获取本版积分设置
+     * 获取本版积分设置.
      */
     public function getCreditSet($operate = '')
     {
@@ -370,11 +377,12 @@ class PwForumBo
     }
 
     /**
-     * 增加一个主题时，更新版块信息
+     * 增加一个主题时，更新版块信息.
      *
-     * @param  int    $tid      帖子id
-     * @param  string $username 用户名
-     * @param  string $subject  帖子标题
+     * @param int    $tid      帖子id
+     * @param string $username 用户名
+     * @param string $subject  帖子标题
+     *
      * @return bool
      */
     public function addThread($tid, $username, $subject)
@@ -385,7 +393,7 @@ class PwForumBo
     }
 
     /**
-     * 增加一个回复时，更新版块信息
+     * 增加一个回复时，更新版块信息.
      *
      * @param int    $tid      帖子id
      * @param string $username 用户名

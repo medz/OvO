@@ -2,13 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 常用菜单定制
+ * 常用菜单定制.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: CustomController.php 24202 2013-01-23 02:18:05Z jieyin $
- * @package admin.controller
  */
 class CustomController extends AdminBaseController
 {
@@ -41,8 +41,7 @@ class CustomController extends AdminBaseController
     }
 
     /**
-     * 保存设置
-     *
+     * 保存设置.
      */
     public function doRunAction()
     {

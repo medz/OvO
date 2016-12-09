@@ -5,14 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.bo.PwForumBo');
 
 /**
- * 版块会员
+ * 版块会员.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: UserController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package forum
  */
-
 class UserController extends PwBaseController
 {
     public function run()

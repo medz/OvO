@@ -1,17 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalUser.php 20389 2012-10-29 03:41:38Z gao.wanggao $
- * @package
  */
-
 class PwMedalUser
 {
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
      * @param int $uid
      */
@@ -26,7 +26,7 @@ class PwMedalUser
     }
 
     /**
-     * 获取多条记录
+     * 获取多条记录.
      *
      * @param array $uid
      */
@@ -40,7 +40,7 @@ class PwMedalUser
     }
 
     /**
-     * 获取指定多个用户勋章的排行
+     * 获取指定多个用户勋章的排行.
      *
      * @param array $uids
      * @param int   $start
@@ -56,7 +56,7 @@ class PwMedalUser
     }
 
     /**
-     * 获取勋章总排行
+     * 获取勋章总排行.
      *
      * @param int $limit
      */
@@ -68,6 +68,7 @@ class PwMedalUser
     /**
      * 获取勋章需要更新的用户，用于计划任务
      * Enter description here ...
+     *
      * @param int $expiredTime
      */
     public function getExpiredMedalUser($expiredTime = 0, $start = 0, $limit = 10)
@@ -83,6 +84,7 @@ class PwMedalUser
     /**
      * 统计勋章需要更新的用户总数
      * Enter description here ...
+     *
      * @param int $expiredTime
      */
     public function countExpiredMedalUser($expiredTime = 0)
@@ -107,6 +109,7 @@ class PwMedalUser
     /**
      * 分页获取勋章统计
      * Enter description here ...
+     *
      * @param int $start
      * @param int $perpage
      */

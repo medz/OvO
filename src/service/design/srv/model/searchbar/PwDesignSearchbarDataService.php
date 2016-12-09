@@ -5,8 +5,8 @@ Wind::import('SRV:design.srv.model.PwDesignModelBase');
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignSearchbarDataService.php 24726 2013-02-18 06:15:04Z gao.wanggao $
- * @package
  */
 class PwDesignSearchbarDataService extends PwDesignModelBase
 {

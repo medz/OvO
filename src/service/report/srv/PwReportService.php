@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 举报
+ * 举报.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwReportService
 {
@@ -17,12 +17,13 @@ class PwReportService
     const REPORT_TYPE_PHOTO = 4;
 
     /**
-     * 获取举报列表
+     * 获取举报列表.
      *
-     * @param  int    $ifcheck
-     * @param  string $type
-     * @param  int    $limit
-     * @param  int    $start
+     * @param int    $ifcheck
+     * @param string $type
+     * @param int    $limit
+     * @param int    $start
+     *
      * @return array
      */
     public function getReceiverList($ifcheck, $type, $limit, $start)
@@ -51,11 +52,12 @@ class PwReportService
     }
 
     /**
-     * 发送举报
+     * 发送举报.
      *
-     * @param  string $type
-     * @param  int    $type_id
-     * @param  string $reason
+     * @param string $type
+     * @param int    $type_id
+     * @param string $reason
+     *
      * @return bool
      */
     public function sendReport($type, $type_id, $reason)
@@ -101,11 +103,12 @@ class PwReportService
     }
 
     /**
-     * 发送通知
+     * 发送通知.
      *
-     * @param  array  $data
-     * @param  int    $fid
-     * @param  string $hrefUrl
+     * @param array  $data
+     * @param int    $fid
+     * @param string $hrefUrl
+     *
      * @return array
      */
     public function sendNotice($data, $extendParams = null)
@@ -121,15 +124,15 @@ class PwReportService
             $uids = array($data['author_userid'], $data['created_userid']);
             $users = $this->_getUserDs()->fetchUserByUid($uids);
             $extendParams = array(
-                'fromUser' => $users[$data['created_userid']]['username'],
+                'fromUser'   => $users[$data['created_userid']]['username'],
                 'fromUserId' => $users[$data['created_userid']]['uid'],
-                'username' => $users[$data['author_userid']]['username'],
-                'authorId' => $users[$data['author_userid']]['uid'],
-                'content' => $data['content'],
-                'type' => $data['type'],
-                'type_id' => $data['type_id'],
-                'hrefUrl' => $data['content_url'],
-                'reason' => $data['reason'],
+                'username'   => $users[$data['author_userid']]['username'],
+                'authorId'   => $users[$data['author_userid']]['uid'],
+                'content'    => $data['content'],
+                'type'       => $data['type'],
+                'type_id'    => $data['type_id'],
+                'hrefUrl'    => $data['content_url'],
+                'reason'     => $data['reason'],
             );
         }
         $notice = Wekit::load('message.srv.PwNoticeService');
@@ -143,7 +146,8 @@ class PwReportService
     /**
      * 获取举报消息发送对象
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     private function getReceiver($type)
@@ -162,32 +166,32 @@ class PwReportService
     }
 
     /**
-     * 获取举报类型
+     * 获取举报类型.
      *
      * @return array
      */
     public function getTypeMap()
     {
         return array(
-            'thread' => self::REPORT_TYPE_THREAD,
-            'post' => self::REPORT_TYPE_POST,
+            'thread'  => self::REPORT_TYPE_THREAD,
+            'post'    => self::REPORT_TYPE_POST,
             'message' => self::REPORT_TYPE_MESSAGE,
-            'photo' => self::REPORT_TYPE_PHOTO,
+            'photo'   => self::REPORT_TYPE_PHOTO,
         );
     }
 
     /**
-     * 获取举报类型名称
+     * 获取举报类型名称.
      *
      * @return array
      */
     public function getTypeName()
     {
         return array(
-            self::REPORT_TYPE_THREAD => '帖子',
-            self::REPORT_TYPE_POST => '回复',
+            self::REPORT_TYPE_THREAD  => '帖子',
+            self::REPORT_TYPE_POST    => '回复',
             self::REPORT_TYPE_MESSAGE => '消息',
-            self::REPORT_TYPE_PHOTO => '照片',
+            self::REPORT_TYPE_PHOTO   => '照片',
         );
     }
 

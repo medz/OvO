@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 版块门户调用搜索条件
+ * 版块门户调用搜索条件.
  *
  * @author $Author: jinlong.panjl $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumSo.php 20513 2012-10-30 09:29:24Z jinlong.panjl $
- * @package
  */
-
 class PwForumSo
 {
     protected $_data = array();
@@ -28,7 +27,7 @@ class PwForumSo
     }
 
     /**
-     * 搜索版块名称
+     * 搜索版块名称.
      */
     public function setName($name)
     {
@@ -38,7 +37,7 @@ class PwForumSo
     }
 
     /**
-     * 搜索版块
+     * 搜索版块.
      */
     public function setFid($fid)
     {
@@ -48,7 +47,7 @@ class PwForumSo
     }
 
     /**
-     * 回复总数排序
+     * 回复总数排序.
      */
     public function orderbyPosts($asc)
     {
@@ -58,7 +57,7 @@ class PwForumSo
     }
 
     /**
-     * 总帖数排序
+     * 总帖数排序.
      */
     public function orderbyArticle($asc)
     {
@@ -68,7 +67,7 @@ class PwForumSo
     }
 
     /**
-     * 主题总数排序
+     * 主题总数排序.
      */
     public function orderbyThreads($asc)
     {
@@ -78,7 +77,7 @@ class PwForumSo
     }
 
     /**
-     * 最后回复排序
+     * 最后回复排序.
      */
     public function orderbyLastPostTime($asc)
     {
@@ -88,7 +87,7 @@ class PwForumSo
     }
 
     /**
-     * 今日发帖排序
+     * 今日发帖排序.
      */
     public function orderbyTodaythreads($asc)
     {
@@ -98,7 +97,7 @@ class PwForumSo
     }
 
     /**
-     * 今日回复排序
+     * 今日回复排序.
      */
     public function orderbyTodayposts($asc)
     {

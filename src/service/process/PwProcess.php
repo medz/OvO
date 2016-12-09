@@ -1,17 +1,19 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class PwProcess
 {
     /**
      * 获取一条进程信息
      * Enter description here ...
+     *
      * @param string $flag
      */
     public function getProcess($flag)
@@ -24,7 +26,7 @@ class PwProcess
     }
 
     /**
-     * 更新一条进程信息
+     * 更新一条进程信息.
      *
      * @param string $flag
      * @param string $time 过期时间
@@ -52,7 +54,7 @@ class PwProcess
     }
 
     /**
-     * 删除缰死的进程
+     * 删除缰死的进程.
      *
      * @param int $time
      */

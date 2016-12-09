@@ -1,12 +1,12 @@
 <?php
 /**
- * 话题DS
+ * 话题DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package PwTag
  */
 class PwTag
 {
@@ -17,11 +17,11 @@ class PwTag
     public $typeMap = array(
         self::TYPE_THREAD_TOPIC => 'threads',
         self::TYPE_THREAD_REPLY => 'posts',
-        self::TYPE_WEIBO => 'weibo',
+        self::TYPE_WEIBO        => 'weibo',
     );
 
     /**
-     * 添加一条话题
+     * 添加一条话题.
      *
      * @param PwTagDao $dm
      */
@@ -38,7 +38,7 @@ class PwTag
     }
 
     /**
-     * 更新一条话题
+     * 更新一条话题.
      *
      * @param PwTagDao $dm
      *                     return bool
@@ -56,7 +56,7 @@ class PwTag
     }
 
     /**
-     * 批量更新话题
+     * 批量更新话题.
      *
      * @param array $tagDms
      *                      return bool
@@ -75,7 +75,7 @@ class PwTag
     }
 
     /**
-     * 批量删除话题
+     * 批量删除话题.
      *
      * @param array $tagIds
      */
@@ -102,7 +102,7 @@ class PwTag
             return false;
         }
         $data = array(
-            'tag_id' => $tagId,
+            'tag_id'      => $tagId,
             'update_time' => $updateTime,
         );
 
@@ -123,8 +123,8 @@ class PwTag
         $data = array();
         foreach ($fields as $v) {
             $data[] = array(
-                'tag_id' => $v['tag_id'],
-                'is_reply' => $v['is_reply'],
+                'tag_id'      => $v['tag_id'],
+                'is_reply'    => $v['is_reply'],
                 'update_time' => $v['update_time'],
             );
         }
@@ -133,10 +133,11 @@ class PwTag
     }
 
     /**
-     * 更新tag update表的tagid
+     * 更新tag update表的tagid.
      *
-     * @param  int   $fromTagId
-     * @param  int   $toTagId
+     * @param int $fromTagId
+     * @param int $toTagId
+     *
      * @return array
      */
     public function updateTagRecordByTagId($fromTagId, $toTagId)
@@ -153,8 +154,9 @@ class PwTag
     /**
      * 更新tag relation表的tagid,content id 合并业务需要
      *
-     * @param  int   $fromTagId
-     * @param  int   $toTagId
+     * @param int $fromTagId
+     * @param int $toTagId
+     *
      * @return array
      */
     public function updateTagRelationByTagId($fromTagId, $toTagId)
@@ -169,7 +171,7 @@ class PwTag
     }
 
     /**
-     * 添加内容关系
+     * 添加内容关系.
      *
      * @param PwTagDm
      * return bool
@@ -191,7 +193,7 @@ class PwTag
     }
 
     /**
-     * 批量添加内容关系
+     * 批量添加内容关系.
      *
      * @param array $dms
      *                   return bool
@@ -216,7 +218,7 @@ class PwTag
     }
 
     /**
-     * 更新内容关系
+     * 更新内容关系.
      *
      * @param PwTagDm
      * return bool
@@ -234,7 +236,7 @@ class PwTag
     }
 
     /**
-     * 批量删除内容关系
+     * 批量删除内容关系.
      *
      * @param int   $typeId
      * @param int   $paramId
@@ -255,14 +257,14 @@ class PwTag
     }
 
     /**
-     * 删除内容关系
+     * 删除内容关系.
      *
      * @param int $typeId
      * @param int $paramId
      * @param int $tagId
      *                     return bool
      */
-    public function deleteRelation($typeId, $paramId = null, $tagId)
+    public function deleteRelation($typeId, $paramId, $tagId)
     {
         $typeId = intval($typeId);
         $paramId = intval($paramId);
@@ -277,10 +279,11 @@ class PwTag
     }
 
     /**
-     * 批量删除内容关系
+     * 批量删除内容关系.
      *
-     * @param  int   $typeId
-     * @param  array $paramIds
+     * @param int   $typeId
+     * @param array $paramIds
+     *
      * @return bool
      */
     public function batchDeleteRelation($typeId, $paramIds)
@@ -294,10 +297,11 @@ class PwTag
     }
 
     /**
-     * 根据tagId统计内容关系数
+     * 根据tagId统计内容关系数.
      *
-     * @param  int   $tagId
-     * @param  int   $typeId
+     * @param int $tagId
+     * @param int $typeId
+     *
      * @return array
      */
     public function countRelationsByTagId($tagId, $typeId, $ifcheck = 1)
@@ -313,8 +317,8 @@ class PwTag
     }
 
     /**
+     * 清空热门话题数据表.
      *
-     * 清空热门话题数据表
      * @param array $tagIds
      */
     public function deleteTagRecords($tagIds)
@@ -326,7 +330,7 @@ class PwTag
     }
 
     /**
-     * 删除内容关系数据表
+     * 删除内容关系数据表.
      *
      * @param array $tagIds
      */
@@ -339,8 +343,8 @@ class PwTag
     }
 
     /**
+     * 批量修改话题.
      *
-     * 批量修改话题
      * @param array   $tagIds
      * @param PwTagDm $dm
      */
@@ -354,9 +358,10 @@ class PwTag
     }
 
     /**
-     * 获取一条话题
+     * 获取一条话题.
      *
-     * @param  int   $tagId
+     * @param int $tagId
+     *
      * @return array
      */
     public function getTag($tagId)
@@ -370,9 +375,10 @@ class PwTag
     }
 
     /**
-     * 根据归属话题获取话题
+     * 根据归属话题获取话题.
      *
-     * @param  int   $parentTagId
+     * @param int $parentTagId
+     *
      * @return array
      */
     public function getTagByParent($parentTagId)
@@ -386,9 +392,10 @@ class PwTag
     }
 
     /**
-     * 根据话题名称获取一条话题
+     * 根据话题名称获取一条话题.
      *
-     * @param  string $tagName
+     * @param string $tagName
+     *
      * @return array
      */
     public function getTagByName($tagName)
@@ -397,9 +404,10 @@ class PwTag
     }
 
     /**
-     * 根据话题名称批量获取话题
+     * 根据话题名称批量获取话题.
      *
-     * @param  array $tagNames
+     * @param array $tagNames
+     *
      * @return array
      */
     public function getTagsByNames($tagNames)
@@ -412,15 +420,16 @@ class PwTag
     }
 
     /**
-     * 搜索话题count -- 只供后台搜索使用
+     * 搜索话题count -- 只供后台搜索使用.
      *
-     * @param  string $name
-     * @param  int    $ifHot
-     * @param  int    $categoryId
-     * @param  int    $attentionCountStart
-     * @param  int    $attentionCountEnd
-     * @param  int    $contentCountStart
-     * @param  int    $contentCountEnd
+     * @param string $name
+     * @param int    $ifHot
+     * @param int    $categoryId
+     * @param int    $attentionCountStart
+     * @param int    $attentionCountEnd
+     * @param int    $contentCountStart
+     * @param int    $contentCountEnd
+     *
      * @return int
      */
     public function countTagByCondition($name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd)
@@ -429,17 +438,18 @@ class PwTag
     }
 
     /**
-     * 搜索话题列表 -- 只供后台搜索使用
+     * 搜索话题列表 -- 只供后台搜索使用.
      *
-     * @param  int    $start
-     * @param  int    $limit
-     * @param  string $name
-     * @param  int    $ifHot
-     * @param  int    $categoryId
-     * @param  int    $attentionCountStart
-     * @param  int    $attentionCountEnd
-     * @param  int    $contentCountStart
-     * @param  int    $contentCountEnd
+     * @param int    $start
+     * @param int    $limit
+     * @param string $name
+     * @param int    $ifHot
+     * @param int    $categoryId
+     * @param int    $attentionCountStart
+     * @param int    $attentionCountEnd
+     * @param int    $contentCountStart
+     * @param int    $contentCountEnd
+     *
      * @return array
      */
     public function getTagByCondition($start, $limit, $name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd)
@@ -448,8 +458,7 @@ class PwTag
     }
 
     /**
-     *
-     * 根据参数获取相关话题
+     * 根据参数获取相关话题.
      */
     public function getTagsByParamIds($typeId, $paramIds)
     {
@@ -462,9 +471,10 @@ class PwTag
     }
 
     /**
-     * 删除过期数据
+     * 删除过期数据.
      *
-     * @param  int  $updateTime
+     * @param int $updateTime
+     *
      * @return bool
      */
     public function deleteExpireHotTag($updateTime)
@@ -478,12 +488,13 @@ class PwTag
     }
 
     /**
-     * 统计热门话题榜
+     * 统计热门话题榜.
      *
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array
      */
-    public function getCountHotTag($categoryId = 0, $num)
+    public function getCountHotTag($categoryId, $num)
     {
         $categoryId = intval($categoryId);
         $num = intval($num);
@@ -498,13 +509,14 @@ class PwTag
     }
 
     /**
-     * 根据tagId取话题内容关系
+     * 根据tagId取话题内容关系.
      *
-     * @param  int   $tagId
-     * @param  int   $typeId
+     * @param int $tagId
+     * @param int $typeId
+     *
      * @return array
      */
-    public function getTagRelation($tagId, $typeId, $ifcheck = 1, $offset, $num = 4)
+    public function getTagRelation($tagId, $typeId, $ifcheck, $offset, $num = 4)
     {
         $tagId = intval($tagId);
         $typeId = intval($typeId);
@@ -517,11 +529,12 @@ class PwTag
     }
 
     /**
-     * 获取我关注的话题榜
+     * 获取我关注的话题榜.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getAttentionByUid($uid, $start, $limit)
@@ -535,9 +548,10 @@ class PwTag
     }
 
     /**
-     * 批量获取话题
+     * 批量获取话题.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return array
      */
     public function fetchTag($tagIds)
@@ -550,10 +564,11 @@ class PwTag
     }
 
     /**
-     * 根据应用类型和id获取话题关系
+     * 根据应用类型和id获取话题关系.
      *
-     * @param  int   $typeId
-     * @param  int   $paramId
+     * @param int $typeId
+     * @param int $paramId
+     *
      * @return array
      */
     public function getTagRelationByType($typeId, $paramId)
@@ -568,10 +583,11 @@ class PwTag
     }
 
     /**
-     * 根据应用类型和id获取话题
+     * 根据应用类型和id获取话题.
      *
-     * @param  int   $typeId
-     * @param  int   $paramId
+     * @param int $typeId
+     * @param int $paramId
+     *
      * @return array
      */
     public function getTagByType($typeId, $paramId)
@@ -582,10 +598,11 @@ class PwTag
     }
 
     /**
-     * 根据类型和IDs批量获取数据
+     * 根据类型和IDs批量获取数据.
      *
-     * @param  int   $typeId
-     * @param  array $paramIds
+     * @param int   $typeId
+     * @param array $paramIds
+     *
      * @return array
      */
     public function fetchByTypeIdAndParamIds($typeId, $paramIds)

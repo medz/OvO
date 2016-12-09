@@ -5,11 +5,12 @@ Wind::import('SRC:library.base.PwBaseDao');
  * 喜欢记录DAO服务
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeLogDao.php 7776 2012-04-11 12:27:20Z gao.wanggao $
- * @package
  */
 class PwLikeLogDao extends PwBaseDao
 {
@@ -85,7 +86,6 @@ class PwLikeLogDao extends PwBaseDao
 
         return $smt->update(array($logid));
     }
-
 
     public function updateReplyCount($logid)
     {

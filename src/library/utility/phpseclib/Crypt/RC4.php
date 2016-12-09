@@ -52,11 +52,13 @@
  * MA  02111-1307  USA
  *
  * @category   Crypt
- * @package    Crypt_RC4
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: RC4.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
@@ -65,7 +67,7 @@
  * @see Crypt_RC4::Crypt_RC4()
  */
 /**
- * Toggles the internal implementation
+ * Toggles the internal implementation.
  */
 define('CRYPT_RC4_MODE_INTERNAL', 1);
 /*
@@ -86,70 +88,77 @@ define('CRYPT_RC4_DECRYPT', 1);
  * Pure-PHP implementation of RC4.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Crypt_RC4
  */
 class Crypt_RC4
 {
     /**
-     * The Key
+     * The Key.
      *
      * @see Crypt_RC4::setKey()
-     * @var String
+     *
+     * @var string
      */
     public $key = "\0";
 
     /**
-     * The Key Stream for encryption
+     * The Key Stream for encryption.
      *
      * If CRYPT_RC4_MODE == CRYPT_RC4_MODE_MCRYPT, this will be equal to the mcrypt object
      *
      * @see Crypt_RC4::setKey()
-     * @var Array
+     *
+     * @var array
      */
     public $encryptStream = false;
 
     /**
-     * The Key Stream for decryption
+     * The Key Stream for decryption.
      *
      * If CRYPT_RC4_MODE == CRYPT_RC4_MODE_MCRYPT, this will be equal to the mcrypt object
      *
      * @see Crypt_RC4::setKey()
-     * @var Array
+     *
+     * @var array
      */
     public $decryptStream = false;
 
     /**
-     * The $i and $j indexes for encryption
+     * The $i and $j indexes for encryption.
      *
      * @see Crypt_RC4::_crypt()
-     * @var Integer
+     *
+     * @var int
      */
     public $encryptIndex = 0;
 
     /**
-     * The $i and $j indexes for decryption
+     * The $i and $j indexes for decryption.
      *
      * @see Crypt_RC4::_crypt()
-     * @var Integer
+     *
+     * @var int
      */
     public $decryptIndex = 0;
 
     /**
-     * MCrypt parameters
+     * MCrypt parameters.
      *
      * @see Crypt_RC4::setMCrypt()
-     * @var Array
+     *
+     * @var array
      */
     public $mcrypt = array('', '');
 
     /**
-     * The Encryption Algorithm
+     * The Encryption Algorithm.
      *
      * Only used if CRYPT_RC4_MODE == CRYPT_RC4_MODE_MCRYPT.  Only possible values are MCRYPT_RC4 or MCRYPT_ARCFOUR.
      *
      * @see Crypt_RC4::Crypt_RC4()
-     * @var Integer
+     *
+     * @var int
      */
     public $mode;
 
@@ -158,7 +167,8 @@ class Crypt_RC4
      *
      * Determines whether or not the mcrypt extension should be used.
      *
-     * @param  optional Integer $mode
+     * @param optional Integer $mode
+     *
      * @return Crypt_RC4
      */
     public function Crypt_RC4()
@@ -194,7 +204,7 @@ class Crypt_RC4
      * Keys can be between 1 and 256 bytes long.  If they are longer then 256 bytes, the first 256 bytes will
      * be used.  If no key is explicitly set, it'll be assumed to be a single null byte.
      *
-     * @param String $key
+     * @param string $key
      */
     public function setKey($key)
     {
@@ -236,7 +246,8 @@ class Crypt_RC4
      * {@link http://www.rsa.com/rsalabs/node.asp?id=2009 http://www.rsa.com/rsalabs/node.asp?id=2009}
      * {@link http://en.wikipedia.org/wiki/Related_key_attack http://en.wikipedia.org/wiki/Related_key_attack}
      *
-     * @param String $iv
+     * @param string $iv
+     *
      * @see Crypt_RC4::setKey()
      */
     public function setIV($iv)
@@ -244,11 +255,12 @@ class Crypt_RC4
     }
 
     /**
-     * Sets MCrypt parameters. (optional)
+     * Sets MCrypt parameters. (optional).
      *
      * If MCrypt is being used, empty strings will be used, unless otherwise specified.
      *
      * @link http://php.net/function.mcrypt-module-open#function.mcrypt-module-open
+     *
      * @param optional Integer $algorithm_directory
      * @param optional Integer $mode_directory
      */
@@ -264,7 +276,8 @@ class Crypt_RC4
      * Encrypts a message.
      *
      * @see Crypt_RC4::_crypt()
-     * @param String $plaintext
+     *
+     * @param string $plaintext
      */
     public function encrypt($plaintext)
     {
@@ -278,7 +291,8 @@ class Crypt_RC4
      * Atleast if the continuous buffer is disabled.
      *
      * @see Crypt_RC4::_crypt()
-     * @param String $ciphertext
+     *
+     * @param string $ciphertext
      */
     public function decrypt($ciphertext)
     {
@@ -290,8 +304,9 @@ class Crypt_RC4
      *
      * @see Crypt_RC4::encrypt()
      * @see Crypt_RC4::decrypt()
-     * @param String  $text
-     * @param Integer $mode
+     *
+     * @param string $text
+     * @param int    $mode
      */
     public function _crypt($text, $mode)
     {
@@ -436,7 +451,6 @@ class Crypt_RC4
      *
      * Will be called, automatically, if you're using PHP5.  If you're using PHP4, call it yourself.  Only really
      * needs to be called if mcrypt is being used.
-     *
      */
     public function __destruct()
     {
@@ -447,7 +461,6 @@ class Crypt_RC4
 
     /**
      * Properly close the MCrypt objects.
-     *
      */
     public function _closeMCrypt()
     {

@@ -1,13 +1,13 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudApiCommonGeneralApi
 {
     public function get($apiSetting, $request)
     {
         $sql = ACloudSysCoreCommon::loadSystemClass('sqlbuilder')->buildSelectSql($apiSetting, $request);
-        if (! $sql) {
+        if (!$sql) {
             return array(4006, array());
         }
         $data = ACloudSysCoreCommon::loadSystemClass('generaldata', 'config.service')->executeSql($sql);

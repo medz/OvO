@@ -3,12 +3,13 @@
 Wind::import('APPS:api.controller.OpenBaseController');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: AppController.php 24191 2013-01-22 14:05:09Z jieyin $
- * @package
  */
 class AppController extends OpenBaseController
 {

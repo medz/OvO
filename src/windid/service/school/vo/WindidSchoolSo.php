@@ -5,17 +5,18 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidSchoolSo.php 23620 2013-01-14 02:44:14Z jieyin $
- * @package service.school.vo
  */
 class WindidSchoolSo
 {
     private $_data = array();
 
     /**
-     * 搜索学校名
+     * 搜索学校名.
      *
-     * @param  string         $name
+     * @param string $name
+     *
      * @return WindidSchoolSo
      */
     public function setName($name)
@@ -26,9 +27,10 @@ class WindidSchoolSo
     }
 
     /**
-     * 搜索类型小学1；中学2；大学3
+     * 搜索类型小学1；中学2；大学3.
      *
-     * @param  int            $typeid
+     * @param int $typeid
+     *
      * @return WindidSchoolSo
      */
     public function setTypeid($typeid)
@@ -41,7 +43,8 @@ class WindidSchoolSo
     /**
      * 根据地区搜索学校
      *
-     * @param  int            $areaid
+     * @param int $areaid
+     *
      * @return WindidSchoolSo
      */
     public function setAreaid($areaid)
@@ -52,9 +55,10 @@ class WindidSchoolSo
     }
 
     /**
-     * 根据第一个字母来搜索
+     * 根据第一个字母来搜索.
      *
-     * @param  string         $first_char
+     * @param string $first_char
+     *
      * @return WindidSchoolSo
      */
     public function setFirstChar($first_char)
@@ -65,7 +69,7 @@ class WindidSchoolSo
     }
 
     /**
-     * 返回搜索的条件数组
+     * 返回搜索的条件数组.
      *
      * @return array
      */

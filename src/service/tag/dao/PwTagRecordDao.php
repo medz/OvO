@@ -1,12 +1,12 @@
 <?php
 /**
- * 热门话题榜数据DAO
+ * 热门话题榜数据DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:16:28Z yishuo $
- * @package PwTagRecordDao
  */
 class PwTagRecordDao extends PwBaseDao
 {
@@ -15,7 +15,7 @@ class PwTagRecordDao extends PwBaseDao
     protected $_dataStruct = array('tag_id', 'is_reply', 'update_time');
 
     /**
-     * 添加
+     * 添加.
      *
      * @param int $tagId
      * @param int $updateTime
@@ -26,10 +26,11 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 更新tag update表的tagid
+     * 更新tag update表的tagid.
      *
-     * @param  int  $fromTagId
-     * @param  int  $toTagId
+     * @param int $fromTagId
+     * @param int $toTagId
+     *
      * @return bool
      */
     public function updateTagRecordByTagId($fromTagId, $toTagId)
@@ -41,9 +42,10 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 批量添加
+     * 批量添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function batchAddTagRecord($data)
@@ -65,9 +67,10 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_id删除
+     * 根据tag_id删除.
      *
-     * @param  int  $tagId
+     * @param int $tagId
+     *
      * @return bool
      */
     public function deleteByTagId($tagId)
@@ -79,9 +82,10 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据tag_ids批量删除
+     * 根据tag_ids批量删除.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function deleteByTagIds($tagIds)
@@ -92,9 +96,10 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据时间删除
+     * 根据时间删除.
      *
-     * @param  int  $updateTime
+     * @param int $updateTime
+     *
      * @return bool
      */
     public function deleteByTime($updateTime)
@@ -106,9 +111,10 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 统计热门话题榜
+     * 统计热门话题榜.
      *
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array
      */
     public function getHotTags($num)
@@ -120,10 +126,11 @@ class PwTagRecordDao extends PwBaseDao
     }
 
     /**
-     * 根据话题分类统计热门话题榜
+     * 根据话题分类统计热门话题榜.
      *
-     * @param  int   $categoryId
-     * @param  int   $num
+     * @param int $categoryId
+     * @param int $num
+     *
      * @return array
      */
     public function getHotTagsByCategory($categoryId, $num)

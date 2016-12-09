@@ -10,13 +10,13 @@
  * 2.实现getVerify()和checkVerify方法
  *
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwVerifyService.php 23350 2013-01-09 02:40:57Z gao.wanggao $
- * @package
  */
-
 class PwVerifyService
 {
     protected $sHook;
@@ -25,8 +25,9 @@ class PwVerifyService
     {
         $this->sHook = PwSimpleHook::getInstance($hookKey);
     }
+
     /**
-     * 返回验证码类型
+     * 返回验证码类型.
      *
      * @return array
      */

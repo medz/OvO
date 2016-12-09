@@ -2,13 +2,13 @@
 
 
 /**
- * pw_task的dao
+ * pw_task的dao.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskDao.php 18748 2012-09-27 03:45:32Z xiaoxia.xuxx $
- * @package service.task.dao
  */
 class PwTaskDao extends PwBaseDao
 {
@@ -34,7 +34,8 @@ class PwTaskDao extends PwBaseDao
     /**
      * 添加一条任务
      *
-     * @param  array    $data
+     * @param array $data
+     *
      * @return bool|int
      */
     public function add($data)
@@ -45,8 +46,9 @@ class PwTaskDao extends PwBaseDao
     /**
      * 更新一条任务
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return bool
      */
     public function update($id, $data)
@@ -60,7 +62,8 @@ class PwTaskDao extends PwBaseDao
     /**
      * 删除一条任务
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -71,7 +74,8 @@ class PwTaskDao extends PwBaseDao
     /**
      * 根据id获取任务
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -80,9 +84,10 @@ class PwTaskDao extends PwBaseDao
     }
 
     /**
-     * 查询id在范围之内的列表
+     * 查询id在范围之内的列表.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetch($ids = array())
@@ -94,10 +99,11 @@ class PwTaskDao extends PwBaseDao
     }
 
     /**
-     * 获取任务列表，根据顺序排序
+     * 获取任务列表，根据顺序排序.
      *
-     * @param  int   $num
-     * @param  int   $start
+     * @param int $num
+     * @param int $start
+     *
      * @return array
      */
     public function getTaskList($num = 10, $start = 0)
@@ -109,7 +115,7 @@ class PwTaskDao extends PwBaseDao
     }
 
     /**
-     * 获取所有任务的id和名称
+     * 获取所有任务的id和名称.
      *
      * @return array
      */
@@ -123,7 +129,8 @@ class PwTaskDao extends PwBaseDao
     /**
      * 查询某个自动任务的所有后置的自动任务
      *
-     * @param  int   $pre_id
+     * @param int $pre_id
+     *
      * @return array
      */
     public function getNextAutoTasks($pre_id, $startTime, $endTime)
@@ -145,7 +152,8 @@ class PwTaskDao extends PwBaseDao
     /**
      * 获得级联任务链的下一个任务
      *
-     * @param  array $pre_id
+     * @param array $pre_id
+     *
      * @return array
      */
     public function fetchNextTaskList($pre_id)
@@ -156,7 +164,7 @@ class PwTaskDao extends PwBaseDao
     }
 
     /**
-     * 统计任务数
+     * 统计任务数.
      *
      * @return int
      */

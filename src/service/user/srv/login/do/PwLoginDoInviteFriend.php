@@ -3,13 +3,13 @@
 Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
 
 /**
- * 执行登录之后用户
+ * 执行登录之后用户.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z yishuo $
- * @package src.service.user.srv.login
  */
 class PwLoginDoInviteFriend extends PwUserLoginDoBase
 {
@@ -17,7 +17,7 @@ class PwLoginDoInviteFriend extends PwUserLoginDoBase
     private $srv = null;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param PwLoginService $pwUserLogin
      * @param string         $code

@@ -1,19 +1,19 @@
 <?php
 
 /**
- * 教育经历帮助类
+ * 教育经历帮助类.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z yishuo $
- * @package src.service.user.hooks.experience_education.srv
  */
 class PwEducationHelper
 {
     /**
      * 返回教育时间
-     * 倒序返回-倒退100年
+     * 倒序返回-倒退100年.
      *
      * @return array
      */
@@ -25,9 +25,10 @@ class PwEducationHelper
     }
 
     /**
-     * 检查教育时间是否非法
+     * 检查教育时间是否非法.
      *
-     * @param  int $year
+     * @param int $year
+     *
      * @return int
      */
     public static function checkEducationYear($year)
@@ -43,9 +44,10 @@ class PwEducationHelper
     }
 
     /**
-     * 获得学历
+     * 获得学历.
      *
-     * @param  string $select 需要返回的数据key
+     * @param string $select 需要返回的数据key
+     *
      * @return array
      */
     public static function getDegrees($selected = '')
@@ -65,9 +67,10 @@ class PwEducationHelper
     }
 
     /**
-     * 检查是否符合
+     * 检查是否符合.
      *
-     * @param  string $degree
+     * @param string $degree
+     *
      * @return bool
      */
     public static function checkDegree($degree)

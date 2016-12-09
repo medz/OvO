@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:weibo.dm.PwWeiboCommnetDm');
 
 /**
- * 新鲜事回复
+ * 新鲜事回复.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshReplyByWeibo.php 22521 2012-12-25 07:06:32Z jinlong.panjl $
- * @package src.service.user.srv
  */
-
 class PwFreshReplyByWeibo
 {
     protected $dm;
@@ -92,7 +91,6 @@ class PwFreshReplyByWeibo
     }
 
     /**
-     *
      * @return PwHookService
      */
     private function _getHook()

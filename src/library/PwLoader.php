@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 类库加载工具
+ * 类库加载工具.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLoader.php 21410 2012-12-06 11:30:51Z jieyin $
- * @package Lib
  */
 class PwLoader
 {
@@ -22,7 +22,7 @@ class PwLoader
     }
 
     /**
-     * 加载类库(单例)
+     * 加载类库(单例).
      *
      * @param string $path 路径
      *                     return object
@@ -37,7 +37,7 @@ class PwLoader
     }
 
     /**
-     * 加载Dao(单例)
+     * 加载Dao(单例).
      *
      * @param string $path 路径
      *                     return object
@@ -56,7 +56,7 @@ class PwLoader
     }
 
     /**
-     * 获取Dao组合(单例)
+     * 获取Dao组合(单例).
      *
      * @param int    $index  索引键
      * @param array  $daoMap dao列表
@@ -96,7 +96,7 @@ class PwLoader
     }
 
     /**
-     * 加载类库
+     * 加载类库.
      *
      * @param string $path 路径
      *                     return object

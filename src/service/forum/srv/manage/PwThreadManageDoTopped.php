@@ -6,15 +6,14 @@ Wind::import('SRV:forum.dm.PwThreadSortDm');
 Wind::import('SRV:forum.PwThread');
 
 /**
- * 帖子管理操作-置顶
+ * 帖子管理操作-置顶.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoTopped.php 24747 2013-02-20 03:13:43Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoTopped extends PwThreadManageDo
 {
     public $topped = 0;
@@ -48,9 +47,10 @@ class PwThreadManageDoTopped extends PwThreadManageDo
     }
 
     /**
-     * 设置置顶方式
+     * 设置置顶方式.
      *
-     * @param  int  $topped
+     * @param int $topped
+     *
      * @return bool
      */
     public function setTopped($topped)
@@ -175,7 +175,7 @@ class PwThreadManageDoTopped extends PwThreadManageDo
     }
 
     /**
-     * 添加日志的
+     * 添加日志的.
      */
     private function _addManageLog()
     {

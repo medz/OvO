@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 用户缓存数据接口
+ * 用户缓存数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserDbCache.php 21135 2012-11-29 02:10:03Z jieyin $
- * @package src.service.user
  */
 class PwUserDbCache extends PwBaseMapDbCache
 {
     protected $keys = array(
-        'user' => array('user_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserDao', 'getUserByUid')),
+        'user'     => array('user_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserDao', 'getUserByUid')),
         'userdata' => array('userdata_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserDataDao', 'getUserByUid')),
         'userinfo' => array('userinfo_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserInfoDao', 'getUserByUid')),
     );

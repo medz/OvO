@@ -5,8 +5,8 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotifyDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package windid.service.notify.dao
  */
 class WindidNotifyDao extends WindidBaseDao
 {
@@ -15,9 +15,10 @@ class WindidNotifyDao extends WindidBaseDao
     protected $_dataStruct = array('appid', 'operation', 'param', 'timestamp');
 
     /**
-     * 根据ID获取信息
+     * 根据ID获取信息.
      *
-     * @param  int        $nid
+     * @param int $nid
+     *
      * @return array|bool
      */
     public function get($nid)
@@ -29,10 +30,12 @@ class WindidNotifyDao extends WindidBaseDao
     {
         return $this->_fetch($nids, 'nid');
     }
+
     /**
-     * 根据应用ID获取信息
+     * 根据应用ID获取信息.
      *
-     * @param  int         $appid 应用ID
+     * @param int $appid 应用ID
+     *
      * @return array|false
      */
     public function getByAppid($appid)
@@ -55,7 +58,6 @@ class WindidNotifyDao extends WindidBaseDao
         return $this->getConnection()->execute($sql);
     }
 
-
     public function update($nid, $data)
     {
         return $this->_update($nid, $data);
@@ -65,7 +67,6 @@ class WindidNotifyDao extends WindidBaseDao
     {
         return $this->_delete($nid);
     }
-
 
     public function batchDelete($nids)
     {

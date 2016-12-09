@@ -1,6 +1,6 @@
 <?php
 /**
- * 搜索记录Ds
+ * 搜索记录Ds.
  */
 class AppSearchRecord
 {
@@ -9,9 +9,10 @@ class AppSearchRecord
     const TYPE_FORUM = 3; // 搜索版块
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  PwRecordDm $dm
+     * @param PwRecordDm $dm
+     *
      * @return bool
      */
     public function addRecord(App_SearchRecordDm $dm)
@@ -26,7 +27,8 @@ class AppSearchRecord
     /**
      * 添加替换 - 最多保存20条
      *
-     * @param  PwRecordDm $dm
+     * @param PwRecordDm $dm
+     *
      * @return bool
      */
     public function replaceRecord(App_SearchRecordDm $dm)
@@ -44,7 +46,8 @@ class AppSearchRecord
     /**
      * 删除一条
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteRecord($id)
@@ -58,10 +61,11 @@ class AppSearchRecord
     }
 
     /**
-     * 根据用户和类型删除
+     * 根据用户和类型删除.
      *
-     * @param  int  $uid
-     * @param  int  $type
+     * @param int $uid
+     * @param int $type
+     *
      * @return bool
      */
     public function deleteByUidAndType($uid, $type)
@@ -76,10 +80,11 @@ class AppSearchRecord
     }
 
     /**
-     * 根据uid获取num条数据
+     * 根据uid获取num条数据.
      *
-     * @param  int   $uid
-     * @param  int   $num
+     * @param int $uid
+     * @param int $num
+     *
      * @return array
      */
     public function getByUidAndType($uid, $type)
@@ -94,9 +99,10 @@ class AppSearchRecord
     }
 
     /**
-     * 根据用户统计草稿箱数量
+     * 根据用户统计草稿箱数量.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function countByUidAndType($uid, $type)
@@ -111,9 +117,10 @@ class AppSearchRecord
     }
 
     /**
-     * 获取一条数据
+     * 获取一条数据.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getRecord($id)
@@ -127,10 +134,11 @@ class AppSearchRecord
     }
 
     /**
-     * 编辑
+     * 编辑.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return array
      */
     public function updateRecord($id, App_SearchRecordDm $dm)
@@ -145,9 +153,10 @@ class AppSearchRecord
     /*==================以下是关键词统计====================*/
 
     /**
-     * 添加
+     * 添加.
      *
-     * @param  PwRecordDm $dm
+     * @param PwRecordDm $dm
+     *
      * @return bool
      */
     public function add(App_SearchRecordDm $dm)
@@ -160,9 +169,10 @@ class AppSearchRecord
     }
 
     /**
-     * 获取一条数据
+     * 获取一条数据.
      *
-     * @param  int   $keywords
+     * @param int $keywords
+     *
      * @return array
      */
     public function getByTypeAndKey($keywords, $type)
@@ -175,10 +185,11 @@ class AppSearchRecord
     }
 
     /**
-     * 编辑
+     * 编辑.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return array
      */
     public function update($keywords, $type, App_SearchRecordDm $dm)
@@ -191,9 +202,10 @@ class AppSearchRecord
     }
 
     /**
-     * 根据TYPE获取num条数据
+     * 根据TYPE获取num条数据.
      *
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array
      */
     public function getByType($type, $num)

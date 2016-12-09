@@ -6,11 +6,8 @@ Wind::import('SRV:forum.bo.PwThreadBo');
 Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('SRV:attach.srv.PwAttachDisplay');
 
-
-
-
 /**
- * 帖子显示流程
+ * 帖子显示流程.
  *
  * -> 1.check 检查帖子显示运行环境
  * -> 2.appendDo(*) 增加帖子显示时的行为动作,例:投票、悬赏等(可选)
@@ -20,10 +17,9 @@ Wind::import('SRV:attach.srv.PwAttachDisplay');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadDisplay.php 29739 2013-06-28 07:45:34Z taishici $
- * @package forum
  */
-
 class PwThreadDisplay extends PwBaseHookService
 {
     public $page = 1;
@@ -64,7 +60,7 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 检查帖子显示运行环境
+     * 检查帖子显示运行环境.
      *
      * @return bool|PwError
      */
@@ -102,13 +98,13 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 逻辑处理，数据准备
+     * 逻辑处理，数据准备.
      */
     public function execute(PwReadDataSource $ds)
     {
         PwHook::registerHook('s_PwUbbCode_convert', array(
-            'class' => 'SRV:forum.srv.PwThreadDisplay',
-            'method' => 'escapeSpace',
+            'class'   => 'SRV:forum.srv.PwThreadDisplay',
+            'method'  => 'escapeSpace',
             'loadway' => 'static',
         ));
         $this->_ds = $ds;
@@ -119,7 +115,7 @@ class PwThreadDisplay extends PwBaseHookService
         $this->maxpage = $ds->maxpage;
         $start = $ds->firstFloor;
         $this->bulidUsers($ds->getUser());
-        $this->readdb = & $ds->getData();
+        $this->readdb = &$ds->getData();
         $this->_initAttachs($ds->getAttach());
 
         foreach ($this->readdb as $key => $read) {
@@ -129,10 +125,11 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 加工帖子数据
+     * 加工帖子数据.
      *
-     * @param  array $read 帖子数据(来自数据库)
-     * @param  int   $lou  楼层
+     * @param array $read 帖子数据(来自数据库)
+     * @param int   $lou  楼层
+     *
      * @return array
      */
     public function bulidRead($read, $lou)
@@ -159,7 +156,7 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 获取主题信息
+     * 获取主题信息.
      *
      * @return array
      */
@@ -169,7 +166,7 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 获取帖子内容数据
+     * 获取帖子内容数据.
      *
      * @return array
      */
@@ -189,7 +186,7 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 获取用户信息
+     * 获取用户信息.
      *
      * @return array
      */
@@ -204,9 +201,10 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 获取楼层名称
+     * 获取楼层名称.
      *
-     * @param  int    $lou 楼层号
+     * @param int $lou 楼层号
+     *
      * @return string
      */
     public function getFloorName($lou)
@@ -243,7 +241,7 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 帖子内容中，图片懒加载设置
+     * 帖子内容中，图片懒加载设置.
      *
      * @param bool $isLazy
      */
@@ -253,9 +251,10 @@ class PwThreadDisplay extends PwBaseHookService
     }
 
     /**
-     * 准备用户显示信息
+     * 准备用户显示信息.
      *
-     * @param  array $uids 用户id序列
+     * @param array $uids 用户id序列
+     *
      * @return array
      */
     public function bulidUsers($uids)
@@ -281,7 +280,6 @@ class PwThreadDisplay extends PwBaseHookService
 
         return $str;
     }
-
 
     protected function _bulidContent($read)
     {
@@ -356,10 +354,10 @@ class PwThreadDisplay extends PwBaseHookService
     protected function _getGuestInfo()
     {
         $info = array(
-            'groupid' => 2,
-            'postnum' => 0,
-            'fans' => 0,
-            'follows' => 0,
+            'groupid'   => 2,
+            'postnum'   => 0,
+            'fans'      => 0,
+            'follows'   => 0,
             'lastvisit' => Pw::getTime(),
         );
         Wind::import('SRV:credit.bo.PwCreditBo');

@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignService.php 28208 2013-05-07 09:58:07Z gao.wanggao $
- * @package
  */
 class PwDesignService
 {
@@ -32,19 +33,18 @@ class PwDesignService
     public function getDesignModelType($select = '')
     {
         $array = array(
-            'bbs' => '论坛模型',
-            'user' => '用户模型',
+            'bbs'   => '论坛模型',
+            'user'  => '用户模型',
             'space' => '空间模型',
             'other' => '其它模型',
-            'api' => '扩展模型',
+            'api'   => '扩展模型',
         );
 
         return $select ? $array[$select] : $array;
     }
 
     /**
-     * 获取应用中心门户模版
-     *
+     * 获取应用中心门户模版.
      */
     public function getDesignAppStyle($page = 1, $perpage = 10)
     {
@@ -85,17 +85,17 @@ class PwDesignService
     public function getSysStyleClass($select = '')
     {
         $array = array(
-            '默认' => 'box_wrap',
+            '默认'  => 'box_wrap',
             '无样式' => 'box_no',
-            '灰色' => 'layout_boxA',
-            '浅蓝' => 'layout_boxB',
-            '红色' => 'layout_boxC',
-            '橙色' => 'layout_boxD',
-            '黄色' => 'layout_boxE',
-            '绿色' => 'layout_boxF',
-            '青色' => 'layout_boxG',
-            '蓝色' => 'layout_boxH',
-            '紫色' => 'layout_boxI',
+            '灰色'  => 'layout_boxA',
+            '浅蓝'  => 'layout_boxB',
+            '红色'  => 'layout_boxC',
+            '橙色'  => 'layout_boxD',
+            '黄色'  => 'layout_boxE',
+            '绿色'  => 'layout_boxF',
+            '青色'  => 'layout_boxG',
+            '蓝色'  => 'layout_boxH',
+            '紫色'  => 'layout_boxI',
         );
 
         return $select ? $array[$select] : $array;
@@ -118,7 +118,7 @@ class PwDesignService
     public function getSysBorderStyle($select = '')
     {
         $array = array(
-            'solid' => '实线',
+            'solid'  => '实线',
             'dotted' => '点线',
             'dashed' => '虚线',
             'double' => '双实线',
@@ -143,6 +143,7 @@ class PwDesignService
     /**
      * 获取模型自定义标签
      * Enter description here ...
+     *
      * @param string $string
      */
     public function getModelSignkey($string)
@@ -163,6 +164,7 @@ class PwDesignService
     /**
      * 判断提交的模块模版是否合法
      * Enter description here ...
+     *
      * @param string $string
      */
     public function checkTemplate($string)
@@ -198,7 +200,7 @@ class PwDesignService
     }
 
     /**
-     *	过滤白名单
+     *	过滤白名单.
      */
     public function filterTemplate($string)
     {
@@ -259,7 +261,7 @@ class PwDesignService
     }
 
     /**
-     * 自定义页默认模版
+     * 自定义页默认模版.
      */
     public function defaultTemplate($pageid, $tplPath)
     {
@@ -273,7 +275,7 @@ class PwDesignService
     }
 
     /**
-     * 递归复制文件夹
+     * 递归复制文件夹.
      */
     public function copyRecur($fromFolder, $toFolder)
     {
@@ -296,8 +298,6 @@ class PwDesignService
 
         return true;
     }
-
-
 
     private function _transformSign($sign)
     {

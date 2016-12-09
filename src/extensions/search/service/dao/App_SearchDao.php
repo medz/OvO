@@ -3,7 +3,7 @@
 Wind::import('SRC:library.base.PwBaseDao');
 
 /**
- * 搜索记录
+ * 搜索记录.
  */
 class App_SearchDao extends PwBaseDao
 {
@@ -12,9 +12,10 @@ class App_SearchDao extends PwBaseDao
     protected $_dataStruct = array('keywords', 'search_type', 'num');
 
     /**
-     * 获取信息
+     * 获取信息.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($keywords, $type)
@@ -26,9 +27,10 @@ class App_SearchDao extends PwBaseDao
     }
 
     /**
-     * 单条添加
+     * 单条添加.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function add($data)
@@ -37,9 +39,10 @@ class App_SearchDao extends PwBaseDao
     }
 
     /**
-     * 单条删除
+     * 单条删除.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function deleteByTypeAndKey($keywords, $type)
@@ -50,9 +53,10 @@ class App_SearchDao extends PwBaseDao
     }
 
     /**
-     * 根据TYPE获取num条数据
+     * 根据TYPE获取num条数据.
      *
-     * @param  int   $num
+     * @param int $num
+     *
      * @return array
      */
     public function getByAndType($type, $num)
@@ -62,11 +66,13 @@ class App_SearchDao extends PwBaseDao
 
         return $smt->queryAll(array($type, $num));
     }
+
     /**
-     * 根据类型删除
+     * 根据类型删除.
      *
-     * @param  int  $uid
-     * @param  int  $type
+     * @param int $uid
+     * @param int $type
+     *
      * @return bool
      */
     public function deleteByUidAndType($type)
@@ -76,12 +82,12 @@ class App_SearchDao extends PwBaseDao
         $result = $smt->update(array($type));
     }
 
-
     /**
-     * 单条修改
+     * 单条修改.
      *
-     * @param  int   $id
-     * @param  array $data
+     * @param int   $id
+     * @param array $data
+     *
      * @return bool
      */
     public function update($keywords, $type, $fields, $increaseFields = array(), $bitFields = array())

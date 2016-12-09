@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台设置-注册登录设置
+ * 后台设置-注册登录设置.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: RegistController.php 4132 2012-02-11 05:35:07Z xiaoxia.xuxx $
- * @package
  */
 class RegistController extends AdminBaseController
 {
@@ -47,8 +47,7 @@ class RegistController extends AdminBaseController
     }
 
     /**
-     * 配置增加表单处理器
-     *
+     * 配置增加表单处理器.
      */
     public function dorunAction()
     {
@@ -111,8 +110,7 @@ class RegistController extends AdminBaseController
     }
 
     /**
-     * 站点设置
-     *
+     * 站点设置.
      */
     public function loginAction()
     {
@@ -131,8 +129,7 @@ class RegistController extends AdminBaseController
     }
 
     /**
-     * 全局配置增加表单处理器
-     *
+     * 全局配置增加表单处理器.
      */
     public function dologinAction()
     {
@@ -153,7 +150,7 @@ class RegistController extends AdminBaseController
     }
 
     /**
-     * 用户引导页面
+     * 用户引导页面.
      */
     public function guideAction()
     {
@@ -162,9 +159,8 @@ class RegistController extends AdminBaseController
         $this->setOutput($guideService->getGuideList(), 'list');
     }
 
-
     /**
-     * 用户引导页面设置
+     * 用户引导页面设置.
      */
     public function doguideAction()
     {

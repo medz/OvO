@@ -2,13 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDm');
 /**
- * 导航数据模型
+ * 导航数据模型.
  *
  * @author $Author: gao.wanggao $
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNavDm.php 24004 2013-01-18 06:18:11Z gao.wanggao $
- * @package nav
  */
 class PwNavDm extends PwBaseDm
 {
@@ -20,7 +20,6 @@ class PwNavDm extends PwBaseDm
             $this->navid = (int) $navid;
         }
     }
-
 
     public function setParentid($parentid)
     {
@@ -46,6 +45,7 @@ class PwNavDm extends PwBaseDm
     /**
      * TODO 根据链接来获取参数，需要确定重写规则后修改
      * Enter description here ...
+     *
      * @param unknown_type $link
      */
     public function setSign($router)
@@ -127,7 +127,7 @@ class PwNavDm extends PwBaseDm
     }
 
     /**
-     * 用于缓存批量子父导航新添加关系绑定
+     * 用于缓存批量子父导航新添加关系绑定.
      *
      * @param string $tempid
      */

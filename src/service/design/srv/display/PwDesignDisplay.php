@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignDisplay.php 23256 2013-01-07 08:14:28Z gao.wanggao $
- * @package
  */
 class PwDesignDisplay
 {
     /**
-     * 获取模块展示数据
+     * 获取模块展示数据.
      *
      * @param int $moduleId 模块ID
      * @param bool $isextend 是否包括扩展数据

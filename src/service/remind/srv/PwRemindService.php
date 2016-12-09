@@ -6,15 +6,16 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwRemindService
 {
     /**
-     * 根据内容组装@提醒人
+     * 根据内容组装@提醒人.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return array
      */
     public function bulidRemind($content)
@@ -44,9 +45,10 @@ class PwRemindService
     }
 
     /**
-     * 增加@提醒人
+     * 增加@提醒人.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return array
      */
     public function addRemind($uid, $reminds)
@@ -63,9 +65,10 @@ class PwRemindService
     }
 
     /**
-     * 组装最新@人数据
+     * 组装最新@人数据.
      *
-     * @param  array  $users array('uid' => username)
+     * @param array $users array('uid' => username)
+     *
      * @return string uid,username,uid,username....
      */
     public function buildUsers($uid, $reminds, $maxNum = 0)
@@ -98,9 +101,10 @@ class PwRemindService
     }
 
     /**
-     * 格式化用户数组
+     * 格式化用户数组.
      *
-     * @param  array  $users array('uid' => username)
+     * @param array $users array('uid' => username)
+     *
      * @return string uid,username,uid,username....
      */
     public function formatReminds($users)
@@ -125,7 +129,7 @@ class PwRemindService
     }
 
     /**
-     * PwUser
+     * PwUser.
      *
      * @return PwUser
      */

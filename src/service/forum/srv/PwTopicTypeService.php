@@ -5,10 +5,11 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwTopicTypeService
 {
     /**
-     * 主题分类特殊显示需求(列表页排序)
+     * 主题分类特殊显示需求(列表页排序).
      *
      * @param $type
-     * @param  array $topictypes
+     * @param array $topictypes
+     *
      * @return array
      */
     public function sortTopictype($type, $topictypes)
@@ -64,7 +65,7 @@ class PwTopicTypeService
     }
 
     /**
-     * 从A版块复制主题分类至B版块
+     * 从A版块复制主题分类至B版块.
      *
      * @param int $fromFid
      * @param int $toFid

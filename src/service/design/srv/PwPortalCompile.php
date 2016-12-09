@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPortalCompile.php 24221 2013-01-23 04:05:43Z gao.wanggao $
- * @package
  */
 class PwPortalCompile
 {
@@ -34,6 +35,7 @@ class PwPortalCompile
     /**
      * 生成自定义页模版
      * Enter description here ...
+     *
      * @param $compileStr
      */
     public function compilePortal($compileStr)
@@ -61,6 +63,7 @@ class PwPortalCompile
     /**
      * 对标签进行编译
      * Enter description here ...
+     *
      * @param unknown_type $content
      */
     public function compileDesign($content, $segment = '')
@@ -78,6 +81,7 @@ class PwPortalCompile
     /**
      * 对pw-tpl标签进行编译
      * Enter description here ...
+     *
      * @param unknown_type $tplId
      */
     public function compileTpl($section, $compile = false)
@@ -139,6 +143,7 @@ class PwPortalCompile
     /**
      * 修改模块
      * Enter description here ...
+     *
      * @param int    $id
      * @param string $repace
      */
@@ -167,6 +172,7 @@ class PwPortalCompile
     /**
      * 修改主标题
      * Enter description here ...
+     *
      * @param string $name
      * @param string $repace
      */
@@ -279,8 +285,6 @@ class PwPortalCompile
 
         return $section;
     }
-
-
 
     protected function compileList($section, $segment = '')
     {
@@ -395,7 +399,7 @@ class PwPortalCompile
         $isDir = substr($pathfile, -1) == '/' ? true : false;
         if ($isDir) {
             if (is_dir($pathfile)) {
-                mt_srand((double) microtime() * 1000000);
+                mt_srand((float) microtime() * 1000000);
                 $pathfile = $pathfile.'pw_'.uniqid(mt_rand()).'.tmp';
             } elseif (@mkdir($pathfile)) {
                 return $this->_checkWriteAble($pathfile);

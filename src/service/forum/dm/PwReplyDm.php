@@ -5,15 +5,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.dm.PwPostDm');
 
 /**
- * 帖子数据模型(insert, update)
+ * 帖子数据模型(insert, update).
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwReplyDm.php 17954 2012-09-10 10:45:12Z jieyin $
- * @package forum
  */
-
 class PwReplyDm extends PwPostDm
 {
     public $pid;

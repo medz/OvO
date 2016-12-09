@@ -1,12 +1,12 @@
 <?php
 /**
- * 应用开发模式
+ * 应用开发模式.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDebugFilter.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wind
  */
 class PwDebugFilter extends PwBaseFilter
 {

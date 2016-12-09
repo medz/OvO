@@ -3,7 +3,7 @@
 Wind::import('SRV:task.dm.PwTaskUserDm');
 Wind::import('SRV:task.srv.PwTaskApply');
 /**
- * 获取奖励的BP
+ * 获取奖励的BP.
  *
  * 1：如果该任务是自动发放的任务，自动任务完成之后更新pw_task_cache"表：
  * 1-1：如果该任务是周期任务：更新task_ids中完成的自动周期任务的ID列表
@@ -16,8 +16,8 @@ Wind::import('SRV:task.srv.PwTaskApply');
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskGainReward.php 23446 2013-01-09 11:59:46Z xiaoxia.xuxx $
- * @package src.service.task.srv
  */
 class PwTaskGainReward extends PwBaseHookService
 {
@@ -48,7 +48,7 @@ class PwTaskGainReward extends PwBaseHookService
     }
 
     /**
-     * 初始化
+     * 初始化.
      *
      * @return PwError|bool
      */
@@ -74,7 +74,7 @@ class PwTaskGainReward extends PwBaseHookService
     }
 
     /**
-     * 获取奖励
+     * 获取奖励.
      *
      * 1：如果该任务是自动发放的任务，自动任务完成之后更新pw_task_cache"表：
      * 1-1：如果该任务是周期任务：更新task_ids中完成的自动周期任务的ID列表
@@ -84,7 +84,8 @@ class PwTaskGainReward extends PwBaseHookService
      * 1-2-3：这些任务是没有过期的任务
      * 1-2-4：这些任务是当前用户所在组可以申领的任务
      *
-     * @param  int          $task_id 任务ID
+     * @param int $task_id 任务ID
+     *
      * @return bool|PwError
      */
     public function gainReward()
@@ -115,7 +116,8 @@ class PwTaskGainReward extends PwBaseHookService
     /**
      * 1：如果该任务是自动发放的任务，自动任务完成之后更新pw_task_cache"表：
      * 1-1：如果该任务是周期任务：更新task_ids中完成的自动周期任务的ID列表
-     * array(0 => id, 1 => array());
+     * array(0 => id, 1 => array());.
+     *
      * @return bool
      */
     private function updateUserCache()
@@ -134,9 +136,10 @@ class PwTaskGainReward extends PwBaseHookService
     }
 
     /**
-     * 将该任务的后置自动任务发送给用户
+     * 将该任务的后置自动任务发送给用户.
      *
-     * @param  int  $task_id
+     * @param int $task_id
+     *
      * @return bool
      */
     private function sendNextAutoApplicableTaskList()
@@ -154,9 +157,10 @@ class PwTaskGainReward extends PwBaseHookService
     }
 
     /**
-     * 判断一个任务状态是否可以继续申领奖励
+     * 判断一个任务状态是否可以继续申领奖励.
      *
-     * @param  array        $task
+     * @param array $task
+     *
      * @return bool|PwError
      */
     private function allowContinue($task)
@@ -188,7 +192,7 @@ class PwTaskGainReward extends PwBaseHookService
     }
 
     /**
-     * 获得任务DS
+     * 获得任务DS.
      *
      * @return PwTask
      */

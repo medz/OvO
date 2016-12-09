@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: yanchixia $>
+ * the last known user to change this file in the repository  <$LastChangedBy: yanchixia $>.
+ *
  * @author $Author: yanchixia $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNavBo.php 24273 2013-01-24 03:24:52Z yanchixia $
- * @package
  */
 class PwNavBo
 {
@@ -19,7 +20,6 @@ class PwNavBo
         $this->forum['cateid'] = $cateid;
         $this->forum['tid'] = $tid;
     }
-
 
     public function isForum()
     {
@@ -45,6 +45,7 @@ class PwNavBo
     /**
      * 根据类型从数据库获取导航
      * Enter description here ...
+     *
      * @param string $type    @see navtype/system.php
      * @param bool   $current 是否需要当前定位
      */
@@ -103,6 +104,7 @@ class PwNavBo
     /**
      * 根据类型从配置缓存中获取导航
      * Enter description here ...
+     *
      * @param string $type    @see navtype/system.php
      * @param bool   $current 是否需要当前定位
      */
@@ -155,7 +157,6 @@ class PwNavBo
 
         return $list;
     }
-
 
     /**
      * 可能的路由等级

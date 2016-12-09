@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeTag.php 8487 2012-04-19 08:09:57Z gao.wanggao $
- * @package
  */
 class PwLikeTag
 {
     /**
-     * 获取一条内容
+     * 获取一条内容.
      *
      * @param int $tagid
      */
@@ -25,7 +26,7 @@ class PwLikeTag
     }
 
     /**
-     * 批量获取内容
+     * 批量获取内容.
      *
      * @param array $tagids
      */
@@ -39,7 +40,7 @@ class PwLikeTag
     }
 
     /**
-     * 根据用户ID获取内容
+     * 根据用户ID获取内容.
      *
      * @param int $uid
      */
@@ -54,7 +55,7 @@ class PwLikeTag
     }
 
     /**
-     * 添加内容
+     * 添加内容.
      *
      * @param PwLikeTagDm $dm
      */
@@ -69,7 +70,7 @@ class PwLikeTag
     }
 
     /**
-     * 修改内容
+     * 修改内容.
      *
      * @param int         $tagid
      * @param PwLikeTagDm $dm
@@ -101,7 +102,7 @@ class PwLikeTag
     }
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param int $tagid
      */

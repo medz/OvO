@@ -2,16 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
- *
- * 广告位数据模型
+ * 广告位数据模型.
  *
  * @author Zhu Dong <zhudong0808@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z zhudong $
- * @package wind
  */
 class PwAdDm extends PwBaseDm
 {

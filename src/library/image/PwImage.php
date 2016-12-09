@@ -2,17 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
  * image 对象
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: PwImage.php 22380 2012-12-21 14:54:07Z jieyin $
- * @package lib.image
  */
-
 class PwImage
 {
     public $filename;    //文件地址
@@ -33,7 +31,7 @@ class PwImage
     }
 
     /**
-     * 分析图片
+     * 分析图片.
      *
      * return void
      */
@@ -60,7 +58,7 @@ class PwImage
     }
 
     /**
-     * 判断是否为正常的图像
+     * 判断是否为正常的图像.
      *
      * return bool
      */
@@ -70,7 +68,7 @@ class PwImage
     }
 
     /**
-     * 获取该图像的标识符
+     * 获取该图像的标识符.
      *
      * return resource
      */
@@ -100,7 +98,7 @@ class PwImage
     }
 
     /**
-     * 重新绘制图片(防止非法图片造成攻击)
+     * 重新绘制图片(防止非法图片造成攻击).
      */
     public function repaint()
     {
@@ -119,7 +117,7 @@ class PwImage
     }
 
     /**
-     * 生成缩略图
+     * 生成缩略图.
      *
      * @param string $thumbUrl    缩略图地址
      * @param int    $thumbWidth  宽度

@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadCateIndex.php 17054 2012-08-30 10:51:39Z jieyin $
- * @package forum
  */
-
 class PwThreadCateIndex
 {
     /**
-     * 统计分类(A)下帖子数
+     * 统计分类(A)下帖子数.
      *
-     * @param  int $cid 分类(A)
+     * @param int $cid 分类(A)
+     *
      * @return int
      */
     public function count($cid)
@@ -30,10 +30,11 @@ class PwThreadCateIndex
     }
 
     /**
-     * 统计分类(A)下且不在版块序列(B)中的帖子数
+     * 统计分类(A)下且不在版块序列(B)中的帖子数.
      *
      * @param int $cid 分类(A)
      * @param array fids 版块序列(B)
+     *
      * @return int
      */
     public function countNotInFids($cid, $fids)
@@ -46,12 +47,13 @@ class PwThreadCateIndex
     }
 
     /**
-     * 获取分类(A)的帖子
+     * 获取分类(A)的帖子.
      *
-     * @param  int    $cid    分类(A)
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order  排序方式
+     * @param int    $cid    分类(A)
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function fetch($cid, $limit = 20, $offset = 0, $order = 'lastpost')
@@ -65,13 +67,14 @@ class PwThreadCateIndex
     }
 
     /**
-     * 获取分类(A)下且不在版块序列(B)中的帖子
+     * 获取分类(A)下且不在版块序列(B)中的帖子.
      *
      * @param int $cid 分类(A)
      * @param array fids 版块序列(B)
-     * @param  int    $limit
-     * @param  int    $offset
-     * @param  string $order  排序方式
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $order  排序方式
+     *
      * @return array
      */
     public function fetchNotInFid($cid, $fids, $limit, $offset, $order = 'lastpost')
@@ -85,10 +88,11 @@ class PwThreadCateIndex
     }
 
     /**
-     * 删除分类(A)下多条数据
+     * 删除分类(A)下多条数据.
      *
-     * @param  int  $cid   分类(A)
-     * @param  int  $limit
+     * @param int $cid   分类(A)
+     * @param int $limit
+     *
      * @return bool
      */
     public function deleteOver($cid, $limit)

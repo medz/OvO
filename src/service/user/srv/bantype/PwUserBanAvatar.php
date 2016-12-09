@@ -4,13 +4,13 @@ Wind::import('SRV:user.srv.bantype.PwUserBanTypeInterface');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 用户禁止类型-禁止头像 扩展
+ * 用户禁止类型-禁止头像 扩展.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserBanAvatar.php 22230 2012-12-19 21:45:20Z xiaoxia.xuxx $
- * @package src.service.user.srv.bantype
  */
 class PwUserBanAvatar implements PwUserBanTypeInterface
 {

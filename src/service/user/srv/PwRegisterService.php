@@ -6,13 +6,13 @@ Wind::import('SRV:credit.bo.PwCreditBo');
 Wind::import('SRV:user.PwUser');
 
 /**
- * 用户注册
+ * 用户注册.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRegisterService.php 25182 2013-03-06 07:54:07Z long.shi $
- * @package src.service.user.srv
  */
 class PwRegisterService extends PwBaseHookService
 {
@@ -34,9 +34,10 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 检查是否设置同一IP设置一段时间内不能注册
+     * 检查是否设置同一IP设置一段时间内不能注册.
      *
      * @param  string       $ip 待检查的IP
+     *
      * @return true|PwError
      */
     public function checkIp($ip)
@@ -56,7 +57,7 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 设置用户信息
+     * 设置用户信息.
      *
      * @param PwUserInfoDm $userForm
      */
@@ -66,7 +67,7 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 返回用户信息的DM
+     * 返回用户信息的DM.
      *
      * @return PwUserInfoDm
      */
@@ -76,7 +77,7 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 用户注册信息
+     * 用户注册信息.
      *
      * @return bool|int
      */
@@ -104,12 +105,13 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 同步用户数据
+     * 同步用户数据.
      *
      * 如果本地有用户数据
      * 如果本地没有用户数据，则将用户数据从windid同步过来
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function sysUser($uid)
@@ -137,12 +139,13 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 需要发送新用户激活邮件
+     * 需要发送新用户激活邮件.
      *
-     * @param  string $username 用户名
-     * @param  string $email    用户邮件
-     * @param  string $statu    激活标志
-     * @param  int    $uid      用户ID
+     * @param string $username 用户名
+     * @param string $email    用户邮件
+     * @param string $statu    激活标志
+     * @param int    $uid      用户ID
+     *
      * @return bool
      */
     public function sendEmailActive($username, $email, $statu = '', $uid = 0)
@@ -175,10 +178,11 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 检查是否已经发送了激活邮箱
+     * 检查是否已经发送了激活邮箱.
      *
-     * @param  int    $uid   用户ID
-     * @param  string $email 用户邮箱
+     * @param int    $uid   用户ID
+     * @param string $email 用户邮箱
+     *
      * @return bool
      */
     public function checkIfActiveEmailSend($uid, $email)
@@ -199,11 +203,12 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 激活email
+     * 激活email.
      *
-     * @param  int    $uid   用户ID
-     * @param  string $email 用户Email
-     * @param  string $code  激活码
+     * @param int    $uid   用户ID
+     * @param string $email 用户Email
+     * @param string $code  激活码
+     *
      * @return bool
      */
     public function activeEmail($uid, $email, $code)
@@ -238,11 +243,12 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 发送欢迎信息
+     * 发送欢迎信息.
      *
-     * @param  int    $uid      用户ID
-     * @param  string $username 用户名
-     * @param  string $email    邮箱
+     * @param int    $uid      用户ID
+     * @param string $username 用户名
+     * @param string $email    邮箱
+     *
      * @return bool
      */
     public function sendWelcomeMsg($uid, $username, $email)
@@ -269,10 +275,11 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 构造用户标志
+     * 构造用户标志.
      *
-     * @param  int    $uid 用户ID
-     * @param  string $pwd 用户密码
+     * @param int    $uid 用户ID
+     * @param string $pwd 用户密码
+     *
      * @return string
      */
     public static function createRegistIdentify($uid, $pwd)
@@ -283,10 +290,11 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 检查用户标志
+     * 检查用户标志.
      *
-     * @param  string $identify
-     * @return array  array($uid, $password);
+     * @param string $identify
+     *
+     * @return array array($uid, $password);
      */
     public static function parserRegistIdentify($identify)
     {
@@ -294,9 +302,10 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     *  完成注册的后期执行
+     *  完成注册的后期执行.
      *
-     * @param  PwUserInfoDm $userDm
+     * @param PwUserInfoDm $userDm
+     *
      * @return array
      */
     protected function afterRegister(PwUserInfoDm $userDm)
@@ -320,10 +329,11 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 过滤用户DM同时设置用户的相关信息
+     * 过滤用户DM同时设置用户的相关信息.
      *
-     * @param  PwUserInfoDm $userDm
-     * @param  array        $hasCredit
+     * @param PwUserInfoDm $userDm
+     * @param array        $hasCredit
+     *
      * @return PwUserInfoDm
      */
     protected function filterUserDm(PwUserInfoDm $userDm, $hasCredit = array())
@@ -356,9 +366,10 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 获取注册可以添加的积分
+     * 获取注册可以添加的积分.
      *
-     * @param  array $_credit 已有的积分
+     * @param array $_credit 已有的积分
+     *
      * @return array
      */
     private function _getRegisterAddCredit($_credit = array())
@@ -381,12 +392,13 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 获得信息的标题和内容
+     * 获得信息的标题和内容.
      *
      * @param string $titleKey 标题key
      * @param  string $contentKey 内容key
-     * @param  string $username 用户名
-     * @param  string $url      链接地址
+     * @param string $username 用户名
+     * @param string $url      链接地址
+     *
      * @return array
      */
     private function _buildTitleAndContent($titleKey, $contentKey, $username, $url = '')
@@ -404,10 +416,11 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 更新注册IP
+     * 更新注册IP.
      *
-     * @param  string $ip   注册的IP
-     * @param  int    $time 注册时间
+     * @param string $ip   注册的IP
+     * @param int    $time 注册时间
+     *
      * @return bool
      */
     private function updateRegisterIp($ip, $time)
@@ -422,9 +435,10 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 更新用户注册相关的审核/激活表
+     * 更新用户注册相关的审核/激活表.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     private function updateRegisterCheck($uid)
@@ -440,7 +454,7 @@ class PwRegisterService extends PwBaseHookService
     }
 
     /**
-     * 获得用户DS
+     * 获得用户DS.
      *
      * @return PwUser
      */

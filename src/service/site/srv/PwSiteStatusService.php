@@ -5,8 +5,8 @@
  * @author $Author: jinlong.panjl $ foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSiteStatusService.php 19357 2012-10-13 06:56:54Z jinlong.panjl $
- * @package
  */
 class PwSiteStatusService
 {

@@ -6,9 +6,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author JianMin Chen <sky_hold@163.com> 2012-7-17
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: EditorController.php 28806 2013-05-24 08:06:26Z jieyin $
- * @package admin
- * @subpackage controller.config
  */
 class EditorController extends AdminBaseController
 {
@@ -22,7 +21,7 @@ class EditorController extends AdminBaseController
     }
 
     /**
-     * 后台设置-编辑器设置
+     * 后台设置-编辑器设置.
      */
     public function dorunAction()
     {

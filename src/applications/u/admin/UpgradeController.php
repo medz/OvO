@@ -3,15 +3,17 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台用户组提升方案
+ * 后台用户组提升方案.
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Nov 21, 2011
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: UpgradeController.php 28862 2013-05-28 03:20:14Z jieyin $
  */
-
 class UpgradeController extends AdminBaseController
 {
     /* (non-PHPdoc)
@@ -30,8 +32,7 @@ class UpgradeController extends AdminBaseController
     }
 
     /**
-     * 配置增加表单处理器
-     *
+     * 配置增加表单处理器.
      */
     public function dosaveAction()
     {

@@ -3,20 +3,21 @@
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:hook.dm.PwHookDm');
 /**
- * hook管理
+ * hook管理.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 28812 2013-05-24 09:08:16Z jieyin $
- * @package hook
  */
 class ManageController extends AdminBaseController
 {
     private $perpage = 30;
     private $sep = "\r\n";
+
     /**
-     * hook列表
+     * hook列表.
      *
      * @see WindController::run()
      */
@@ -29,14 +30,14 @@ class ManageController extends AdminBaseController
         $hooks = $this->_hookDs()->fetchList($num, $start, 'name');
         $this->setOutput(
             array(
-                'page' => $page,
+                'page'    => $page,
                 'perpage' => $this->perpage,
-                'count' => $count,
-                'hooks' => $hooks, ));
+                'count'   => $count,
+                'hooks'   => $hooks, ));
     }
 
     /**
-     * 展示添加hook页面
+     * 展示添加hook页面.
      */
     public function addAction()
     {
@@ -47,7 +48,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 添加hook
+     * 添加hook.
      */
     public function doAddAction()
     {
@@ -73,7 +74,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * hook编辑展示
+     * hook编辑展示.
      */
     public function editAction()
     {
@@ -90,7 +91,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * hook编辑
+     * hook编辑.
      */
     public function doEditAction()
     {
@@ -112,7 +113,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 删除hook
+     * 删除hook.
      */
     public function delAction()
     {
@@ -125,7 +126,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 搜索页
+     * 搜索页.
      */
     public function searchAction()
     {
@@ -139,17 +140,17 @@ class ManageController extends AdminBaseController
         $hooks = $this->_hookDs()->searchHook($so, $num, $start);
         $this->setOutput(
             array(
-                'page' => $page,
-                'perpage' => $this->perpage,
-                'name' => $name,
+                'page'     => $page,
+                'perpage'  => $this->perpage,
+                'name'     => $name,
                 'app_name' => $app_name,
-                'hooks' => $hooks,
-                'search' => 1, ));
+                'hooks'    => $hooks,
+                'search'   => 1, ));
         $this->setTemplate('manage_run');
     }
 
     /**
-     * hook详细页
+     * hook详细页.
      */
     public function detailAction()
     {
@@ -163,7 +164,6 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwHooks
      */
     private function _hookDs()
@@ -172,7 +172,6 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwHookInject
      */
     private function _injectDs()

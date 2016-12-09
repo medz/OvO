@@ -7,16 +7,17 @@
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogDm.php 21359 2012-12-05 08:01:23Z xiaoxia.xuxx $
- * @package src.service.log.dm
  */
 class PwLogDm extends PwBaseDm
 {
     /**
      * 设置操作对象
      *
-     * @param  int     $uid
-     * @param  string  $username
+     * @param int    $uid
+     * @param string $username
+     *
      * @return PwLogDm
      */
     public function setOperatedUser($uid, $username = '')
@@ -28,10 +29,11 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置操作者
+     * 设置操作者.
      *
-     * @param  int     $uid
-     * @param  string  $username
+     * @param int    $uid
+     * @param string $username
+     *
      * @return PwLogDm
      */
     public function setCreatedUser($uid, $username = '')
@@ -43,9 +45,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置操作类型
+     * 设置操作类型.
      *
-     * @param  int     $typeid
+     * @param int $typeid
+     *
      * @return PwLogDm
      */
     public function setTypeid($typeid)
@@ -56,9 +59,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置版块ID
+     * 设置版块ID.
      *
-     * @param  int     $fid
+     * @param int $fid
+     *
      * @return PwLogDm
      */
     public function setFid($fid)
@@ -69,9 +73,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置创建时间
+     * 设置创建时间.
      *
-     * @param  string  $time
+     * @param string $time
+     *
      * @return PwLogDm
      */
     public function setCreatedTime($time)
@@ -82,9 +87,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子ID
+     * 设置帖子ID.
      *
-     * @param  int     $tid
+     * @param int $tid
+     *
      * @return PwLogDm
      */
     public function setTid($tid)
@@ -95,9 +101,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子回复ID
+     * 设置帖子回复ID.
      *
-     * @param  int     $pid
+     * @param int $pid
+     *
      * @return PwLogDm
      */
     public function setPid($pid)
@@ -110,7 +117,8 @@ class PwLogDm extends PwBaseDm
     /**
      * 设置IP地址
      *
-     * @param  string  $ip
+     * @param string $ip
+     *
      * @return PwLogDm
      */
     public function setIp($ip)
@@ -121,9 +129,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置扩展信息
+     * 设置扩展信息.
      *
-     * @param  string  $extends
+     * @param string $extends
+     *
      * @return PwLogDm
      */
     public function setExtends($extends)
@@ -134,9 +143,10 @@ class PwLogDm extends PwBaseDm
     }
 
     /**
-     * 设置操作描述
+     * 设置操作描述.
      *
-     * @param  string  $content
+     * @param string $content
+     *
      * @return PwLogDm
      */
     public function setContent($content)

@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: DesignController.php 29033 2013-06-05 02:56:40Z gao.wanggao $
- * @package
  */
 class DesignController extends PwBaseController
 {
@@ -148,7 +149,6 @@ class DesignController extends PwBaseController
         $this->showMessage('operate.success', urldecode($uri));
     }
 
-
     /**
      * 恢复上一次数据
      * Enter description here ...
@@ -208,6 +208,7 @@ class DesignController extends PwBaseController
     /**
      * 清空当前页设计数据
      * Enter description here ...
+     *
      * @see ImportController->dorunAction
      */
     public function doclearAction()
@@ -228,7 +229,6 @@ class DesignController extends PwBaseController
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
         }
-
 
         $ids = explode(',', $pageInfo['module_ids']);
         $names = explode(',', $pageInfo['module_names']);

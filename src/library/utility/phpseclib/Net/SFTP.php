@@ -45,16 +45,18 @@
  * MA  02111-1307  USA
  *
  * @category   Net
- * @package    Net_SFTP
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMIX Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: SFTP.php 21967 2012-12-17 11:38:24Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Net_SSH2
+ * Include Net_SSH2.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Net.SSH2');
 /**#@+
@@ -100,104 +102,115 @@ define('NET_SFTP_STRING', 2);
  * Pure-PHP implementations of SFTP.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Net_SFTP
  */
 class Net_SFTP extends Net_SSH2
 {
     /**
-     * Packet Types
+     * Packet Types.
      *
      * @see Net_SFTP::Net_SFTP()
-     * @var Array
+     *
+     * @var array
      */
     public $packet_types = array();
 
     /**
-     * Status Codes
+     * Status Codes.
      *
      * @see Net_SFTP::Net_SFTP()
-     * @var Array
+     *
+     * @var array
      */
     public $status_codes = array();
 
     /**
-     * The Request ID
+     * The Request ID.
      *
      * The request ID exists in the off chance that a packet is sent out-of-order.  Of course, this library doesn't support
      * concurrent actions, so it's somewhat academic, here.
      *
-     * @var Integer
+     * @var int
+     *
      * @see Net_SFTP::_send_sftp_packet()
      */
     public $request_id = false;
 
     /**
-     * The Packet Type
+     * The Packet Type.
      *
      * The request ID exists in the off chance that a packet is sent out-of-order.  Of course, this library doesn't support
      * concurrent actions, so it's somewhat academic, here.
      *
-     * @var Integer
+     * @var int
+     *
      * @see Net_SFTP::_get_sftp_packet()
      */
     public $packet_type = -1;
 
     /**
-     * Packet Buffer
+     * Packet Buffer.
      *
-     * @var String
+     * @var string
+     *
      * @see Net_SFTP::_get_sftp_packet()
      */
     public $packet_buffer = '';
 
     /**
-     * Extensions supported by the server
+     * Extensions supported by the server.
      *
-     * @var Array
+     * @var array
+     *
      * @see Net_SFTP::_initChannel()
      */
     public $extensions = array();
 
     /**
-     * Server SFTP version
+     * Server SFTP version.
      *
-     * @var Integer
+     * @var int
+     *
      * @see Net_SFTP::_initChannel()
      */
     public $version;
 
     /**
-     * Current working directory
+     * Current working directory.
      *
-     * @var String
+     * @var string
+     *
      * @see Net_SFTP::_realpath()
      * @see Net_SFTP::chdir()
      */
     public $pwd = false;
 
     /**
-     * Packet Type Log
+     * Packet Type Log.
      *
      * @see Net_SFTP::getLog()
-     * @var Array
+     *
+     * @var array
      */
     public $packet_type_log = array();
 
     /**
-     * Packet Log
+     * Packet Log.
      *
      * @see Net_SFTP::getLog()
-     * @var Array
+     *
+     * @var array
      */
     public $packet_log = array();
 
     /**
-     * Error information
+     * Error information.
      *
      * @see Net_SFTP::getSFTPErrors()
      * @see Net_SFTP::getLastSFTPError()
-     * @var String
+     *
+     * @var string
      */
     public $errors = array();
 
@@ -206,9 +219,10 @@ class Net_SFTP extends Net_SSH2
      *
      * Connects to an SFTP server
      *
-     * @param  String           $host
-     * @param  optional Integer $port
-     * @param  optional Integer $timeout
+     * @param string           $host
+     * @param optional Integer $port
+     * @param optional Integer $timeout
+     *
      * @return Net_SFTP
      */
     public function Net_SFTP($host, $port = 22, $timeout = 10)
@@ -220,12 +234,12 @@ class Net_SFTP extends Net_SSH2
             /* the format of SSH_FXP_OPEN changed between SFTPv4 and SFTPv5+:
                    SFTPv5+: http://tools.ietf.org/html/draft-ietf-secsh-filexfer-13#section-8.1.1
                pre-SFTPv5 : http://tools.ietf.org/html/draft-ietf-secsh-filexfer-04#section-6.3 */
-            3 => 'NET_SFTP_OPEN',
-            4 => 'NET_SFTP_CLOSE',
-            5 => 'NET_SFTP_READ',
-            6 => 'NET_SFTP_WRITE',
-            8 => 'NET_SFTP_FSTAT',
-            9 => 'NET_SFTP_SETSTAT',
+            3  => 'NET_SFTP_OPEN',
+            4  => 'NET_SFTP_CLOSE',
+            5  => 'NET_SFTP_READ',
+            6  => 'NET_SFTP_WRITE',
+            8  => 'NET_SFTP_FSTAT',
+            9  => 'NET_SFTP_SETSTAT',
             11 => 'NET_SFTP_OPENDIR',
             12 => 'NET_SFTP_READDIR',
             13 => 'NET_SFTP_REMOVE',
@@ -287,11 +301,12 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Login
+     * Login.
      *
-     * @param  String          $username
-     * @param  optional String $password
-     * @return Boolean
+     * @param string          $username
+     * @param optional String $password
+     *
+     * @return bool
      */
     public function login($username, $password = '')
     {
@@ -400,9 +415,9 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns the current directory name
+     * Returns the current directory name.
      *
-     * @return Mixed
+     * @return mixed
      */
     public function pwd()
     {
@@ -410,16 +425,18 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Canonicalize the Server-Side Path Name
+     * Canonicalize the Server-Side Path Name.
      *
      * SFTP doesn't provide a mechanism by which the current working directory can be changed, so we'll emulate it.  Returns
      * the absolute (canonicalized) path.  If $mode is set to NET_SFTP_CONFIRM_DIR (as opposed to NET_SFTP_CONFIRM_NONE,
      * which is what it is set to by default), false is returned if $dir is not a valid directory.
      *
      * @see Net_SFTP::chdir()
-     * @param  String           $dir
-     * @param  optional Integer $mode
-     * @return Mixed
+     *
+     * @param string           $dir
+     * @param optional Integer $mode
+     *
+     * @return mixed
      */
     public function _realpath($dir)
     {
@@ -496,10 +513,11 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Changes the current directory
+     * Changes the current directory.
      *
-     * @param  String  $dir
-     * @return Boolean
+     * @param string $dir
+     *
+     * @return bool
      */
     public function chdir($dir)
     {
@@ -559,10 +577,11 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns a list of files in the given directory
+     * Returns a list of files in the given directory.
      *
-     * @param  optional String $dir
-     * @return Mixed
+     * @param optional String $dir
+     *
+     * @return mixed
      */
     public function nlist($dir = '.')
     {
@@ -570,10 +589,11 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns a list of files in the given directory
+     * Returns a list of files in the given directory.
      *
-     * @param  optional String $dir
-     * @return Mixed
+     * @param optional String $dir
+     *
+     * @return mixed
      */
     public function rawlist($dir = '.')
     {
@@ -685,12 +705,13 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns the file size, in bytes, or false, on failure
+     * Returns the file size, in bytes, or false, on failure.
      *
      * Files larger than 4GB will show up as being exactly 4GB.
      *
-     * @param  optional String $dir
-     * @return Mixed
+     * @param optional String $dir
+     *
+     * @return mixed
      */
     public function size($filename)
     {
@@ -732,9 +753,10 @@ class Net_SFTP extends Net_SSH2
      *
      * Returns the new file permissions on success or FALSE on error.
      *
-     * @param  Integer $mode
-     * @param  String  $filename
-     * @return Mixed
+     * @param int    $mode
+     * @param string $filename
+     *
+     * @return mixed
      */
     public function chmod($mode, $filename)
     {
@@ -803,8 +825,9 @@ class Net_SFTP extends Net_SSH2
     /**
      * Creates a directory.
      *
-     * @param  String  $dir
-     * @return Boolean
+     * @param string $dir
+     *
+     * @return bool
      */
     public function mkdir($dir)
     {
@@ -844,8 +867,9 @@ class Net_SFTP extends Net_SSH2
     /**
      * Removes a directory.
      *
-     * @param  String  $dir
-     * @return Boolean
+     * @param string $dir
+     *
+     * @return bool
      */
     public function rmdir($dir)
     {
@@ -895,10 +919,12 @@ class Net_SFTP extends Net_SSH2
      * Currently, only binary mode is supported.  As such, if the line endings need to be adjusted, you will need to take
      * care of that, yourself.
      *
-     * @param  String           $remote_file
-     * @param  String           $data
-     * @param  optional Integer $flags
-     * @return Boolean
+     * @param string           $remote_file
+     * @param string           $data
+     * @param optional Integer $flags
+     *
+     * @return bool
+     *
      * @internal ASCII mode for SFTPv4/5/6 can be supported by adding a new function - Net_SFTP::setMode().
      */
     public function put($remote_file, $data, $mode = NET_SFTP_STRING)
@@ -1007,13 +1033,14 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Reads multiple successive SSH_FXP_WRITE responses
+     * Reads multiple successive SSH_FXP_WRITE responses.
      *
      * Sending an SSH_FXP_WRITE packet and immediately reading its response isn't as efficient as blindly sending out $i
      * SSH_FXP_WRITEs, in succession, and then reading $i responses.
      *
-     * @param  Integer $i
-     * @return Boolean
+     * @param int $i
+     *
+     * @return bool
      */
     public function _read_put_responses($i)
     {
@@ -1043,9 +1070,10 @@ class Net_SFTP extends Net_SSH2
      * the operation was unsuccessful.  If $local_file is defined, returns true or false depending on the success of the
      * operation
      *
-     * @param  String          $remote_file
-     * @param  optional String $local_file
-     * @return Mixed
+     * @param string          $remote_file
+     * @param optional String $local_file
+     *
+     * @return mixed
      */
     public function get($remote_file, $local_file = false)
     {
@@ -1169,8 +1197,9 @@ class Net_SFTP extends Net_SSH2
     /**
      * Deletes a file on the SFTP server.
      *
-     * @param  String  $path
-     * @return Boolean
+     * @param string $path
+     *
+     * @return bool
      */
     public function delete($path)
     {
@@ -1208,11 +1237,12 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Renames a file or a directory on the SFTP server
+     * Renames a file or a directory on the SFTP server.
      *
-     * @param  String  $oldname
-     * @param  String  $newname
-     * @return Boolean
+     * @param string $oldname
+     * @param string $newname
+     *
+     * @return bool
      */
     public function rename($oldname, $newname)
     {
@@ -1252,12 +1282,13 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Parse Attributes
+     * Parse Attributes.
      *
      * See '7.  File Attributes' of draft-ietf-secsh-filexfer-13 for more info.
      *
-     * @param  String $response
-     * @return Array
+     * @param string $response
+     *
+     * @return array
      */
     public function _parseAttributes(&$response)
     {
@@ -1303,15 +1334,17 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Sends SFTP Packets
+     * Sends SFTP Packets.
      *
      * See '6. General Packet Format' of draft-ietf-secsh-filexfer-13 for more info.
      *
-     * @param Integer $type
-     * @param String  $data
+     * @param int    $type
+     * @param string $data
+     *
      * @see Net_SFTP::_get_sftp_packet()
      * @see Net_SSH2::_send_channel_packet()
-     * @return Boolean
+     *
+     * @return bool
      */
     public function _send_sftp_packet($type, $data)
     {
@@ -1335,7 +1368,7 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Receives SFTP Packets
+     * Receives SFTP Packets.
      *
      * See '6. General Packet Format' of draft-ietf-secsh-filexfer-13 for more info.
      *
@@ -1344,7 +1377,8 @@ class Net_SFTP extends Net_SSH2
      * messages containing one SFTP packet.
      *
      * @see Net_SFTP::_send_sftp_packet()
-     * @return String
+     *
+     * @return string
      */
     public function _get_sftp_packet()
     {
@@ -1407,7 +1441,7 @@ class Net_SFTP extends Net_SSH2
      *
      * Returns a string if NET_SFTP_LOGGING == NET_SFTP_LOG_COMPLEX, an array if NET_SFTP_LOGGING == NET_SFTP_LOG_SIMPLE and false if !defined('NET_SFTP_LOGGING')
      *
-     * @return String or Array
+     * @return string or Array
      */
     public function getSFTPLog()
     {
@@ -1426,9 +1460,9 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns all errors
+     * Returns all errors.
      *
-     * @return String
+     * @return string
      */
     public function getSFTPErrors()
     {
@@ -1436,9 +1470,9 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Returns the last error
+     * Returns the last error.
      *
-     * @return String
+     * @return string
      */
     public function getLastSFTPError()
     {
@@ -1446,9 +1480,9 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Get supported SFTP versions
+     * Get supported SFTP versions.
      *
-     * @return Array
+     * @return array
      */
     public function getSupportedVersions()
     {
@@ -1461,10 +1495,11 @@ class Net_SFTP extends Net_SSH2
     }
 
     /**
-     * Disconnect
+     * Disconnect.
      *
-     * @param  Integer $reason
-     * @return Boolean
+     * @param int $reason
+     *
+     * @return bool
      */
     public function _disconnect($reason)
     {

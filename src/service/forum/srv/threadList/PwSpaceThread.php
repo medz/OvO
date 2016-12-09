@@ -5,20 +5,20 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
 
 /**
- * 空间-帖子列表页-访问他人空间的列表
+ * 空间-帖子列表页-访问他人空间的列表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwSpaceThread.php 19290 2012-10-12 08:13:34Z xiaoxia.xuxx $
- * @package wind
  */
 class PwSpaceThread extends PwThreadDataSource
 {
     private $spaceid = 0;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $spaceid
      * @param int $loginUid

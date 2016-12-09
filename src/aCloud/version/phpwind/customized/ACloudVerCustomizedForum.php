@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('FORUM_INVALID_PARAMS', 401);
 define('FORUM_FAVOR_MAX', 402);
@@ -10,7 +10,7 @@ define('FORUM_NOT_EXISTS', 404);
 class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
 {
     /**
-     * 获取版块列表
+     * 获取版块列表.
      *
      * @return array
      */
@@ -19,7 +19,7 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
         $forumDs = $this->_getPwForum();
         $forumResult = $forumDs->getForumList(PwForum::FETCH_MAIN | PwForum::FETCH_STATISTICS);
         if ($forumResult instanceof PwError) {
-            return $this->buildResponse(- 1, $forumResult->getError());
+            return $this->buildResponse(-1, $forumResult->getError());
         }
         $forumDomain = $this->_getDomainDs()->getByType('forum');
         $key = Pw::collectByKey($forumDomain, 'id');
@@ -32,35 +32,36 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
             if (isset($forumDomain[$k])) {
                 $v['domain'] = $forumDomain[$k]['domain'];
             }
-            if ($v ['type'] == 'category') {
-                $cates [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => '', 'domain' => $v['domain']);
-            } elseif ($v ['type'] == 'forum') {
+            if ($v['type'] == 'category') {
+                $cates[$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => '', 'domain' => $v['domain']);
+            } elseif ($v['type'] == 'forum') {
                 Wind::import('SRV:forum.bo.PwForumBo');
                 $pwforum = new PwForumBo($v['fid'], true);
                 if ($pwforum->allowVisit(Wekit::getLoginUser()) !== true) {
                     continue;
                 }
-                $forums [$v ['parentid']] [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $v ['todayposts'], 'domain' => $v['domain']);
-            } elseif ($v ['type'] == 'sub') {
-                $subForums [$v ['parentid']] [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $v ['todayposts'], 'domain' => $v['domain']);
-            } elseif ($v ['type'] == 'sub2') {
-                $secondSubForums [$v ['parentid']] [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $v ['todayposts'], 'domain' => $v['domain']);
+                $forums[$v['parentid']][$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $v['todayposts'], 'domain' => $v['domain']);
+            } elseif ($v['type'] == 'sub') {
+                $subForums[$v['parentid']][$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $v['todayposts'], 'domain' => $v['domain']);
+            } elseif ($v['type'] == 'sub2') {
+                $secondSubForums[$v['parentid']][$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $v['todayposts'], 'domain' => $v['domain']);
             }
-            $count ++;
+            $count++;
         }
         $result = array();
         foreach ($cates as $k => $v) {
-            $v ['child'] = isset($forums [$k]) ? $this->_buildForums($forums [$k], $subForums, $secondSubForums) : array();
-            $result [] = $v;
+            $v['child'] = isset($forums[$k]) ? $this->_buildForums($forums[$k], $subForums, $secondSubForums) : array();
+            $result[] = $v;
         }
 
         return $this->buildResponse(0, array('count' => $count, 'forums' => $result));
     }
 
     /**
-     * 根据版块id获取版块列表
+     * 根据版块id获取版块列表.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getForumByFid($fid)
@@ -71,17 +72,18 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
         }
         $result = $this->_getPwForum()->getForum($fid, PwForum::FETCH_MAIN | PwForum::FETCH_STATISTICS);
         if (result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
         $domain = $this->_getDomainDs()->getByTypeAndId('forum', $fid);
 
-        return $this->buildResponse(0, array('forum' => array('fid' => $result ['fid'], 'forumname' => $result ['name'], 'todaypost' => $result ['todayposts']), 'todaythreads' => $result['todaythreads'], 'domain' => $domain['domain']));
+        return $this->buildResponse(0, array('forum' => array('fid' => $result['fid'], 'forumname' => $result['name'], 'todaypost' => $result['todayposts']), 'todaythreads' => $result['todaythreads'], 'domain' => $domain['domain']));
     }
 
     /**
-     * 根据版块id获取子版块
+     * 根据版块id获取子版块.
      *
-     * @param  int   $fid
+     * @param int $fid
+     *
      * @return array
      */
     public function getChildForumByFid($fid)
@@ -94,7 +96,7 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
         $map = $forumService->getForumMap();
         $forumList = $forumService->getForumsByLevel($fid, $map);
         if ($forumList instanceof PwError) {
-            return $this->buildResponse(- 1, $forumList->getError());
+            return $this->buildResponse(-1, $forumList->getError());
         }
         $forums = $subForums = $secondSubForums = array();
         $count = 0;
@@ -105,31 +107,31 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
             if (isset($domains[$v['fid']])) {
                 $v['domain'] = $domains[$v['fid']]['domain'];
             }
-            $statistics = $this->_getPwForum()->getForum($v ['fid'], PwForum::FETCH_STATISTICS);
-            if ($v ['type'] == 'forum') {
+            $statistics = $this->_getPwForum()->getForum($v['fid'], PwForum::FETCH_STATISTICS);
+            if ($v['type'] == 'forum') {
                 //TODO 用户版块访问权限
-                $forums [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $statistics ['todayposts'], 'domain' => $v['domain']);
-            } elseif ($v ['type'] == 'sub') {
-                $subForums [$v ['parentid']] [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $statistics ['todayposts'], 'domain' => $v['domain']);
-            } elseif ($v ['type'] == 'sub2') {
-                $secondSubForums [$v ['parentid']] [$v ['fid']] = array('fid' => $v ['fid'], 'forumname' => strip_tags($v ['name']), 'type' => $v ['type'], 'todaypost' => $statistics ['todayposts'], 'domain' => $v['domain']);
+                $forums[$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $statistics['todayposts'], 'domain' => $v['domain']);
+            } elseif ($v['type'] == 'sub') {
+                $subForums[$v['parentid']][$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $statistics['todayposts'], 'domain' => $v['domain']);
+            } elseif ($v['type'] == 'sub2') {
+                $secondSubForums[$v['parentid']][$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => $statistics['todayposts'], 'domain' => $v['domain']);
             }
-            $count ++;
+            $count++;
         }
         $result = array();
         foreach ($forums as $k => $v) {
-            $v ['child'] = isset($subForums [$k]) ? $this->_fetchSubForum($subForums [$k], $secondSubForums) : array();
-            $result [] = $v;
+            $v['child'] = isset($subForums[$k]) ? $this->_fetchSubForum($subForums[$k], $secondSubForums) : array();
+            $result[] = $v;
         }
 
         return $this->buildResponse(0, array('count' => $count, 'forums' => $result));
     }
 
     /**
+     * 获取指定版块中的主题分类信息.
      *
-     * 获取指定版块中的主题分类信息
+     * @param int $fid
      *
-     * @param  int   $fid
      * @return array
      */
     public function getTopicType($fid)
@@ -144,13 +146,12 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
         return $this->buildResponse(0, array('info' => $result));
     }
 
-
     private function _buildForums($forums, $subForums, $secondSubForums)
     {
         $result = array();
         foreach ($forums as $fid => $forum) {
-            $forum ['child'] = (isset($subForums [$fid]) && $subForums [$fid]) ? $this->_buildSubForums($subForums [$fid], $secondSubForums) : array();
-            $result [] = $forum;
+            $forum['child'] = (isset($subForums[$fid]) && $subForums[$fid]) ? $this->_buildSubForums($subForums[$fid], $secondSubForums) : array();
+            $result[] = $forum;
         }
 
         return $result;
@@ -160,8 +161,8 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
     {
         $result = array();
         foreach ($subForums as $fid => $subForum) {
-            $subForum ['child'] = (isset($secondSubForums [$fid]) && $secondSubForums [$fid]) ? $secondSubForums [$fid] : array();
-            $result [] = $subForum;
+            $subForum['child'] = (isset($secondSubForums[$fid]) && $secondSubForums[$fid]) ? $secondSubForums[$fid] : array();
+            $result[] = $subForum;
         }
 
         return $result;
@@ -171,8 +172,8 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
     {
         $result = array();
         foreach ($subForums as $fid => $subForum) {
-            $subForum ['child'] = (isset($secondSubForums [$fid]) && $secondSubForums [$fid]) ? $secondSubForums [$fid] : array();
-            $result [$fid] = $subForum;
+            $subForum['child'] = (isset($secondSubForums[$fid]) && $secondSubForums[$fid]) ? $secondSubForums[$fid] : array();
+            $result[$fid] = $subForum;
         }
 
         return $result;

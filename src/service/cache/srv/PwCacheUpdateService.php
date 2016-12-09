@@ -8,14 +8,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCacheUpdateService.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package forum
  */
-
 class PwCacheUpdateService
 {
     /**
-     * 更新所有缓存
+     * 更新所有缓存.
      */
     public function updateAll()
     {
@@ -25,7 +24,7 @@ class PwCacheUpdateService
     }
 
     /**
-     * 更新全局配置 config
+     * 更新全局配置 config.
      */
     public function updateConfig()
     {
@@ -33,7 +32,7 @@ class PwCacheUpdateService
     }
 
     /**
-     * 获取全局缓存数据
+     * 获取全局缓存数据.
      *
      * @return array
      */
@@ -53,7 +52,7 @@ class PwCacheUpdateService
     }
 
     /**
-     * 更新用户组缓存
+     * 更新用户组缓存.
      */
     public function updateGroup()
     {
@@ -64,7 +63,7 @@ class PwCacheUpdateService
     }
 
     /**
-     * 更新勋章缓存
+     * 更新勋章缓存.
      */
     public function updateMedal()
     {

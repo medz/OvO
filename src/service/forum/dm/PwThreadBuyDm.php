@@ -2,17 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 帖子购买记录
+ * 帖子购买记录.
  *
  * @author peihong <jhqblxt@gmail.com> Nov 23, 2011
+ *
  * @link
+ *
  * @version $Id: PwThreadBuyDm.php 10131 2012-05-18 03:54:34Z jieyin $
+ *
  * @license
  */
-
 class PwThreadBuyDm extends PwBaseDm
 {
     public function setTid($tid)

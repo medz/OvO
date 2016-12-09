@@ -5,14 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- *
- * 词语过滤Controller
+ * 词语过滤Controller.
  *
  * @author Mingqu Luo <luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: ManageController.php 28865 2013-05-28 03:34:43Z jieyin $
- * @package wind
  */
 class ManageController extends AdminBaseController
 {
@@ -253,8 +252,8 @@ class ManageController extends AdminBaseController
         $this->setOutput($ischeckAll, 'ischeckAll');
         $this->setOutput(array(
             'keyword' => $keyword,
-            'type' => $type,
-            '_check' => $ischeckAll,
+            'type'    => $type,
+            '_check'  => $ischeckAll,
             'perpage' => $perpage,
         ), 'args');
 
@@ -384,14 +383,14 @@ class ManageController extends AdminBaseController
 
         $this->setOutput(array(
                         'lasttime' => $this->_getWordSyncService()->lastTimeFromPlatform,
-                        'syncnum' => $this->_getWordSyncService()->getSyncNum(),
+                        'syncnum'  => $this->_getWordSyncService()->getSyncNum(),
         ), 'sync');
 
         return true;
     }
 
     /**
-     * get PwWordService
+     * get PwWordService.
      *
      * @return PwWordService
      */
@@ -401,7 +400,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwWordFilter
+     * get PwWordFilter.
      *
      * @return PwWordFilter
      */
@@ -411,7 +410,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * get PwWord
+     * get PwWord.
      *
      * @return PwWord
      */

@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * IP地址查询
+ * IP地址查询.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwIptable
 {
@@ -18,6 +18,7 @@ class PwIptable
 
     /**
      * @param $dirName
+     *
      * @return unknown_type
      */
     public function __construct($dirName = null)
@@ -29,9 +30,10 @@ class PwIptable
     }
 
     /**
-     * 根据域名地址获取IP所属地
+     * 根据域名地址获取IP所属地.
      *
-     * @param  string $domain
+     * @param string $domain
+     *
      * @return string
      */
     public function getIpFromByDomain($domain)
@@ -45,9 +47,10 @@ class PwIptable
     }
 
     /**
-     * 根据IP地址获取IP所属地
+     * 根据IP地址获取IP所属地.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return string
      */
     public function getIpFrom($ip)
@@ -66,7 +69,8 @@ class PwIptable
     /**
      * 判断是否是正确的IP地址
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return bool
      */
     private function _isCorrectIpAddress($ip)
@@ -75,9 +79,10 @@ class PwIptable
     }
 
     /**
-     * 从ip索引文件获取
+     * 从ip索引文件获取.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return string
      */
     private function _getIpFromIndex($ip)
@@ -88,9 +93,10 @@ class PwIptable
     }
 
     /**
-     * 从ip纯真库获取
+     * 从ip纯真库获取.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return string
      */
     private function _getIpFromWry($ip)
@@ -102,11 +108,12 @@ class PwIptable
 }
 
 /**
- * 根据二分法从ip纯真库查找
+ * 根据二分法从ip纯真库查找.
  *
  * @param $fp
  * @param $firstip
  * @param $lastip
+ *
  * @return $totalip
  */
 class IpTableWry
@@ -128,9 +135,10 @@ class IpTableWry
     }
 
     /**
-     * 根据所给 IP 地址或域名返回所在地区信息
+     * 根据所给 IP 地址或域名返回所在地区信息.
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return string
      */
     public function getIpFromWry($ip)
@@ -209,7 +217,7 @@ class IpTableWry
     }
 
     /**
-     * 返回读取的长整型数
+     * 返回读取的长整型数.
      *
      * @return int
      */
@@ -221,7 +229,7 @@ class IpTableWry
     }
 
     /**
-     * 返回读取的3个字节的长整型数
+     * 返回读取的3个字节的长整型数.
      *
      * @return int
      */
@@ -235,7 +243,8 @@ class IpTableWry
     /**
      * 返回压缩后可进行比较的IP地址
      *
-     * @param  string $ip
+     * @param string $ip
+     *
      * @return string
      */
     private function packip($ip)
@@ -244,9 +253,10 @@ class IpTableWry
     }
 
     /**
-     * 返回读取的字符串
+     * 返回读取的字符串.
      *
-     * @param  string $data
+     * @param string $data
+     *
      * @return string
      */
     private function getstring($data = '')
@@ -261,7 +271,7 @@ class IpTableWry
     }
 
     /**
-     * 返回地区信息
+     * 返回地区信息.
      *
      * @return string
      */
@@ -290,11 +300,12 @@ class IpTableWry
 }
 
 /**
- * 根据索引文件从文件里查找
+ * 根据索引文件从文件里查找.
  *
  * @param $_bsize
  * @param $_dirName
  * @param $_indexFile
+ *
  * @return string
  */
 class IpTableIndex
@@ -305,6 +316,7 @@ class IpTableIndex
 
     /**
      * @param $dirName
+     *
      * @return unknown_type
      */
     public function __construct($fileName = null)
@@ -315,9 +327,10 @@ class IpTableIndex
     }
 
     /**
-     * 通过ipindex从文本获取IP信息
+     * 通过ipindex从文本获取IP信息.
      *
      * @param $ip
+     *
      * @return string
      */
     public function getIpFromIndex($ip)
@@ -399,10 +412,11 @@ class IpTableIndex
     }
 
     /**
-     * 从index.dat查找索引IP
+     * 从index.dat查找索引IP.
      *
      * @param $ip_1
      * @param $ip_2
+     *
      * @return array
      */
     private function _getIPIndex($ip_1, $ip_2)
@@ -431,12 +445,13 @@ class IpTableIndex
     }
 
     /**
-     * 从index.dat查找索引IP
+     * 从index.dat查找索引IP.
      *
      * @param $db
      * @param $s
      * @param $ip
      * @param $l_d
+     *
      * @return unknown_type
      */
     private function _s_ip($db, $s, $ip, $l_d = null)
@@ -465,6 +480,7 @@ class IpTableIndex
 
     /**
      * @param $d_ip
+     *
      * @return string
      */
     private function _d_ip($d_ip)

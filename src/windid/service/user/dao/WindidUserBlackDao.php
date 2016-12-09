@@ -1,15 +1,14 @@
 <?php
 
 /**
- * 用户黑名单
+ * 用户黑名单.
  *
  * @author peihong.zhang
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserBlackDao.php 23820 2013-01-16 06:14:07Z jieyin $
- * @package forum
  */
-
 class WindidUserBlackDao extends WindidBaseDao
 {
     protected $_pk = 'uid';
@@ -19,7 +18,8 @@ class WindidUserBlackDao extends WindidBaseDao
     /**
      * 获取单条
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getBlacklist($uid)
@@ -30,7 +30,8 @@ class WindidUserBlackDao extends WindidBaseDao
     /**
      * 获取单条
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchBlacklist($uids)
@@ -39,9 +40,10 @@ class WindidUserBlackDao extends WindidBaseDao
     }
 
     /**
-     * 更新
+     * 更新.
      *
-     * @param  array $blacklist(serialized array)
+     * @param array $blacklist(serialized array)
+     *
      * @return bool
      */
     public function replaceBlacklist($data)
@@ -52,9 +54,10 @@ class WindidUserBlackDao extends WindidBaseDao
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteBlacklist($uid)

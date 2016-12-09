@@ -2,13 +2,13 @@
 
 Wind::import('SRV:user.srv.register.do.PwRegisterDoBase');
 /**
- * 用户注册-更新站点统计信息
+ * 用户注册-更新站点统计信息.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwRegisterDoUpdateBbsInfo.php 24134 2013-01-22 06:19:24Z xiaoxia.xuxx $
- * @package src.service.user.srv.register.do
  */
 class PwRegisterDoUpdateBbsInfo extends PwRegisterDoBase
 {

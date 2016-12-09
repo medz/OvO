@@ -7,15 +7,15 @@ Wind::import('SRV:tag.dm.PwTagDm');
  * @author peihong <peihong.zhangph@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwTagService.php 3833 2012-02-16 03:32:27Z peihong.zhangph $
- * @package src.service.tag.srv
  */
 class PwTagService
 {
     private $expireDay = 7;
 
     /**
-     * 批量添加话题
+     * 批量添加话题.
      *
      * @param array $dmArray
      */
@@ -76,7 +76,7 @@ class PwTagService
     }
 
     /**
-     * 批量更新帖子话题
+     * 批量更新帖子话题.
      *
      * @param int   $typeId
      * @param int   $paramId
@@ -101,9 +101,10 @@ class PwTagService
     }
 
     /**
-     * 批量将话题parent_id置0
+     * 批量将话题parent_id置0.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function clearTagsByParentIds($tagIds)
@@ -119,8 +120,8 @@ class PwTagService
     }
 
     /**
+     * 根据类型名获取最新.
      *
-     * 根据类型名获取最新
      * @param int    $tagId
      * @param string $typeName
      * @param int    $num
@@ -164,8 +165,8 @@ class PwTagService
     }
 
     /**
+     * 获取热门话题.
      *
-     * 获取热门话题
      * @param ing $categoryId
      * @param ing $num
      */
@@ -184,8 +185,8 @@ class PwTagService
     }
 
     /**
+     * 获取内容的其它话题.
      *
-     * 获取内容的其它话题
      * @param string $typeName
      * @param array  $params        内容参数ID
      * @param array $excludeTagIds 需排除的当前话题列表 format: array(tag_id_param_id,..);
@@ -207,8 +208,8 @@ class PwTagService
     }
 
     /**
+     * 获取关注会员.
      *
-     * 获取关注会员
      * @param unknown_type $tagId
      */
     public function getTagMembers($tagId, $offset, $num = 20)
@@ -224,11 +225,12 @@ class PwTagService
     }
 
     /**
-     * 获取我关注的话题
+     * 获取我关注的话题.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getAttentionTags($uid, $start, $limit)
@@ -245,11 +247,12 @@ class PwTagService
     }
 
     /**
-     * 根据应用类型和id获取话题
+     * 根据应用类型和id获取话题.
      *
      * @param string $type
      * @param int    $paramId
      * @param  int    $uid     带关注
+     *
      * @return array
      */
     public function getTagByType($type, $paramId)
@@ -272,10 +275,11 @@ class PwTagService
     }
 
     /**
-     * 话题小名片
+     * 话题小名片.
      *
      * @param string $name
      * @param  int    $uid  带关注
+     *
      * @return array
      */
     public function getTagCard($name, $uid = null)
@@ -293,8 +297,8 @@ class PwTagService
     }
 
     /**
+     * 根据类型名获取类型ID.
      *
-     * 根据类型名获取类型ID
      * @param string $typeName
      */
     public function getTypeIdByTypeName($typeName)
@@ -305,10 +309,11 @@ class PwTagService
     }
 
     /**
-     * 关注话题
+     * 关注话题.
      *
-     * @param  int   $uid
-     * @param  int   $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return array
      */
     public function addAttention($uid, $tagId)
@@ -330,10 +335,11 @@ class PwTagService
     }
 
     /**
-     * 取消关注的话题
+     * 取消关注的话题.
      *
-     * @param  int   $uid
-     * @param  int   $tagId
+     * @param int $uid
+     * @param int $tagId
+     *
      * @return array
      */
     public function deleteAttention($uid, $tagId)
@@ -348,9 +354,10 @@ class PwTagService
     }
 
     /**
-     * 批量删除话题 -- 只供管理话题删除接口
+     * 批量删除话题 -- 只供管理话题删除接口.
      *
-     * @param  array $tagIds
+     * @param array $tagIds
+     *
      * @return bool
      */
     public function deleteByTagIds($tagIds)
@@ -379,8 +386,8 @@ class PwTagService
     }
 
     /**
+     * 取消某话题的关联话题.
      *
-     * 取消某话题的关联话题
      * @param int $tagId
      */
     public function removeRelatedTopic($tagId)
@@ -403,17 +410,18 @@ class PwTagService
     }
 
     /**
-     * 搜索话题列表
+     * 搜索话题列表.
      *
-     * @param  int    $start
-     * @param  int    $limit
-     * @param  string $name
-     * @param  int    $ifHot
-     * @param  int    $categoryId
-     * @param  int    $attentionCountStart
-     * @param  int    $attentionCountEnd
-     * @param  int    $contentCountStart
-     * @param  int    $contentCountEnd
+     * @param int    $start
+     * @param int    $limit
+     * @param string $name
+     * @param int    $ifHot
+     * @param int    $categoryId
+     * @param int    $attentionCountStart
+     * @param int    $attentionCountEnd
+     * @param int    $contentCountStart
+     * @param int    $contentCountEnd
+     *
      * @return array
      */
     public function getTagByCondition($start, $limit, $name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd)
@@ -439,10 +447,11 @@ class PwTagService
     }
 
     /**
-     * 批量删除内容关系
+     * 批量删除内容关系.
      *
-     * @param  string $type
-     * @param  array  $paramIds
+     * @param string $type
+     * @param array  $paramIds
+     *
      * @return bool
      */
     public function batchDeleteRelation($typeId, $paramIds)
@@ -451,9 +460,10 @@ class PwTagService
     }
 
     /**
-     * 解析话题 #话题#
+     * 解析话题 #话题#.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return string
      */
     public function parserTags($content)
@@ -478,8 +488,8 @@ class PwTagService
     }
 
     /**
+     * 获取类型ID和类型名的对应关系.
      *
-     * 获取类型ID和类型名的对应关系
      * @return array
      */
     private function _getTypeMap()
@@ -488,8 +498,8 @@ class PwTagService
     }
 
     /**
+     * 获取Tag实现方法.
      *
-     * 获取Tag实现方法
      * @param string $typeName
      */
     private function _getTagAction($typeName)
@@ -501,7 +511,7 @@ class PwTagService
         $className = 'PwTag'.ucfirst($typeName);
         Wind::import('SRV:tag.srv.action.'.$className);
 
-        return new $className;
+        return new $className();
     }
 
     protected function _formatTags($tags)
@@ -523,7 +533,7 @@ class PwTagService
     }
 
     /**
-     * 话题DS
+     * 话题DS.
      *
      * @return PwTag
      */
@@ -533,7 +543,7 @@ class PwTagService
     }
 
     /**
-     * 分类DS
+     * 分类DS.
      *
      * @return PwTagCateGory
      */
@@ -543,7 +553,7 @@ class PwTagService
     }
 
     /**
-     * 关注DS
+     * 关注DS.
      *
      * @return PwTagAttention
      */
@@ -553,8 +563,8 @@ class PwTagService
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwUser
      */
     private function _getUserDs()

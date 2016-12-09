@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignAsynImageDm.php 22292 2012-12-21 05:09:20Z gao.wanggao $
- * @package
  */
 class PwDesignAsynImageDm extends PwBaseDm
 {
@@ -73,7 +74,6 @@ class PwDesignAsynImageDm extends PwBaseDm
 
         return $this;
     }
-
 
     protected function _beforeAdd()
     {

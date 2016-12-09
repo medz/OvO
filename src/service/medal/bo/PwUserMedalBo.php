@@ -1,11 +1,12 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>
+ * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
+ *
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserMedalBo.php 18821 2012-09-28 03:47:15Z xiaoxia.xuxx $
- * @package
  */
  class PwUserMedalBo
  {
@@ -20,11 +21,8 @@
          $this->getMedals();
      }
 
-
-
     /**
-     * 获取已经领取的勋章
-     *
+     * 获取已经领取的勋章.
      */
     public function getAlreadyMedals()
     {
@@ -39,8 +37,7 @@
     }
 
     /**
-     * 组装我参与的勋章及自动勋章列表
-     *
+     * 组装我参与的勋章及自动勋章列表.
      */
     public function getMyAndAutoMedal()
     {
@@ -69,8 +66,7 @@
     }
 
     /**
-     * 获取我参与的勋章
-     *
+     * 获取我参与的勋章.
      */
     protected function getMedals()
     {

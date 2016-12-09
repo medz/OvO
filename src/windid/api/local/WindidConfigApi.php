@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidConfigApi.php 24719 2013-02-17 06:50:42Z jieyin $
- * @package
  */
-
 class WindidConfigApi
 {
     public function get($name)
@@ -44,7 +44,7 @@ class WindidConfigApi
     }
 
     /**
-     * 设置配置
+     * 设置配置.
      *
      * @param string $namespace 命名空间
      * @param array  $keys

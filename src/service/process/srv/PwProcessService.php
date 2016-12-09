@@ -1,17 +1,19 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy$>
+ * the last known user to change this file in the repository  <$LastChangedBy$>.
+ *
  * @author $Author$ Foxsee@aliyun.com
  * @copyright  ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package
  */
 class PwProcessService
 {
     /**
      * 判断一个进程是否存在
      * Enter description here ...
+     *
      * @param string $flag
      */
     public function isProcess($flag)
@@ -31,8 +33,10 @@ class PwProcessService
     /**
      * 对进程进行加锁
      * Enter description here ...
-     * @param  string $flag
-     * @param  int    $expiredTime
+     *
+     * @param string $flag
+     * @param int    $expiredTime
+     *
      * @return bool
      */
     public function lockProcess($flag, $expiredTime = 30)
@@ -52,6 +56,7 @@ class PwProcessService
     /**
      * 对进程进行解锁
      * Enter description here ...
+     *
      * @param string $flag
      */
     public function unlockProcess($flag)

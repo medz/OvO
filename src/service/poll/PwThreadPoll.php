@@ -2,23 +2,22 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
  * 帖子投票关系基础DS服务
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadPoll.php 17614 2012-09-07 03:14:46Z yanchixia $
- * @package poll
  */
-
 class PwThreadPoll
 {
     /**
-     * 添加帖子投票关系
+     * 添加帖子投票关系.
      *
-     * @param  object $dm
+     * @param object $dm
+     *
      * @return int
      */
     public function addPoll(PwThreadPollDm $dm)
@@ -31,9 +30,10 @@ class PwThreadPoll
     }
 
     /**
-     * 根据投票ID删除关系信息
+     * 根据投票ID删除关系信息.
      *
-     * @param  int  $pollid
+     * @param int $pollid
+     *
      * @return bool
      */
     public function deleteByPollid($pollid)
@@ -48,9 +48,10 @@ class PwThreadPoll
     }
 
     /**
-     * 删除投票帖
+     * 删除投票帖.
      *
-     * @param  int  $tid
+     * @param int $tid
+     *
      * @return bool
      */
     public function deletePoll($tid)
@@ -64,7 +65,7 @@ class PwThreadPoll
     }
 
     /**
-     * 批量删除投票帖
+     * 批量删除投票帖.
      *
      * @param unknown_type $tids
      */
@@ -78,9 +79,10 @@ class PwThreadPoll
     }
 
     /**
-     * 根据tid获取投票关系信息
+     * 根据tid获取投票关系信息.
      *
-     * @param  int   $tid
+     * @param int $tid
+     *
      * @return array
      */
     public function getPoll($tid)
@@ -94,9 +96,10 @@ class PwThreadPoll
     }
 
     /**
-     * 根据tids获取投票关系信息
+     * 根据tids获取投票关系信息.
      *
-     * @param  int   $tids
+     * @param int $tids
+     *
      * @return array
      */
     public function fetchPoll($tids)
@@ -109,7 +112,7 @@ class PwThreadPoll
     }
 
     /**
-     * 根据pollid获取投票关系内容
+     * 根据pollid获取投票关系内容.
      *
      * @param int $pollid 投票ID
      *                    return array
@@ -125,9 +128,10 @@ class PwThreadPoll
     }
 
     /**
-     * 通过帖子ID获取批量关系信息
+     * 通过帖子ID获取批量关系信息.
      *
-     * @param  array $pollids
+     * @param array $pollids
+     *
      * @return array
      */
     public function fetchByPollid($pollids)
@@ -140,7 +144,7 @@ class PwThreadPoll
     }
 
     /**
-     * get PwThreadPollDao
+     * get PwThreadPollDao.
      *
      * @return PwThreadPollDao
      */

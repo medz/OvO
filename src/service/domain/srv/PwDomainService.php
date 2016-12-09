@@ -2,18 +2,18 @@
 
 
 /**
- * 域名service
+ * 域名service.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwDomainService.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package domain.srv
  */
 class PwDomainService
 {
     /**
-     * 获取二级域名设置的扩展
+     * 获取二级域名设置的扩展.
      *
      * @return array
      */
@@ -27,7 +27,7 @@ class PwDomainService
     }
 
     /**
-     * 获取伪静态设置的扩展
+     * 获取伪静态设置的扩展.
      *
      * @return mixed
      */
@@ -41,7 +41,7 @@ class PwDomainService
     }
 
     /**
-     * 清除tpl缓存
+     * 清除tpl缓存.
      *
      * @return bool
      */
@@ -54,10 +54,11 @@ class PwDomainService
     }
 
     /**
-     * 检测域名是否合法
+     * 检测域名是否合法.
      *
-     * @param  string       $domain
-     * @param  string       $root   根域名
+     * @param string $domain
+     * @param string $root   根域名
+     *
      * @return PwError|bool
      */
     public function isDomainValid($domain, $root, $key)
@@ -89,11 +90,12 @@ class PwDomainService
     }
 
     /**
-     * 检测域名是否合法
+     * 检测域名是否合法.
      *
-     * @param  unknown_type $domain
-     * @param  unknown_type $type
-     * @param  unknown_type $key
+     * @param unknown_type $domain
+     * @param unknown_type $type
+     * @param unknown_type $key
+     *
      * @return PwError|bool
      */
     public function isNameValid($domain, $key)
@@ -125,8 +127,7 @@ class PwDomainService
     }
 
     /**
-     * 更新域名所有缓存
-     *
+     * 更新域名所有缓存.
      */
     public function flushAll()
     {
@@ -135,7 +136,7 @@ class PwDomainService
     }
 
     /**
-     * 更新某个首字母的缓存
+     * 更新某个首字母的缓存.
      *
      * @param char $first
      */

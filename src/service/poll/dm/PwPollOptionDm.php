@@ -2,19 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- *
- * 投票选项Dm
+ * 投票选项Dm.
  *
  * @author Mingqu Luo<luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
-
 class PwPollOptionDm extends PwBaseDm
 {
     public $id;
@@ -25,9 +21,10 @@ class PwPollOptionDm extends PwBaseDm
     }
 
     /**
-     * 设置投票ID
+     * 设置投票ID.
      *
-     * @param  int            $pollid
+     * @param int $pollid
+     *
      * @return PwPollOptionDm
      */
     public function setPollid($pollid)
@@ -38,9 +35,10 @@ class PwPollOptionDm extends PwBaseDm
     }
 
     /**
-     * 增加投票数
+     * 增加投票数.
      *
-     * @param  int            $votedNum
+     * @param int $votedNum
+     *
      * @return PwPollOptionDm
      */
     public function addVotedNum($votedNum)
@@ -51,9 +49,10 @@ class PwPollOptionDm extends PwBaseDm
     }
 
     /**
-     * 设置投票数
+     * 设置投票数.
      *
-     * @param  int            $votedNum
+     * @param int $votedNum
+     *
      * @return PwPollOptionDm
      */
     public function setVotedNum($votedNum)
@@ -64,9 +63,10 @@ class PwPollOptionDm extends PwBaseDm
     }
 
     /**
-     * 设置投票选项内容
+     * 设置投票选项内容.
      *
-     * @param  string         $content
+     * @param string $content
+     *
      * @return PwPollOptionDm
      */
     public function setContent($content)
@@ -77,9 +77,10 @@ class PwPollOptionDm extends PwBaseDm
     }
 
     /**
-     * 设置词语来源
+     * 设置词语来源.
      *
-     * @param  string         $image
+     * @param string $image
+     *
      * @return PwPollOptionDm
      */
     public function setImage($image)

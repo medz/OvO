@@ -2,13 +2,13 @@
 
 
 /**
- * 任务体系的数据模型
+ * 任务体系的数据模型.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskDm.php 20911 2012-11-19 06:56:00Z xiaoxia.xuxx $
- * @package service.task.dm
  */
 class PwTaskDm extends PwBaseDm
 {
@@ -19,7 +19,7 @@ class PwTaskDm extends PwBaseDm
     protected $decoration = null;
 
     /**
-     * 任务id
+     * 任务id.
      *
      * @var int
      */
@@ -28,7 +28,7 @@ class PwTaskDm extends PwBaseDm
     protected $groups = array();
 
     /**
-     * 组装任务用户组数据
+     * 组装任务用户组数据.
      *
      * @return array
      */
@@ -54,7 +54,7 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 获取任务id
+     * 获取任务id.
      *
      * @return int
      */
@@ -64,7 +64,7 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务id
+     * 设置任务id.
      *
      * @param int $id
      */
@@ -76,9 +76,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的是否自动申请
+     * 设置任务的是否自动申请.
      *
-     * @param  int      $isAuto
+     * @param int $isAuto
+     *
      * @return PwTaskDm
      */
     public function setIsAuto($isAuto)
@@ -89,9 +90,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的是否显示所有
+     * 设置任务的是否显示所有.
      *
-     * @param  int      $isDisplayAll
+     * @param int $isDisplayAll
+     *
      * @return PwTaskDm
      */
     public function setIsDisplayAll($isDisplayAll)
@@ -102,9 +104,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的顺序
+     * 设置任务的顺序.
      *
-     * @param  int      $view_order
+     * @param int $view_order
+     *
      * @return PwTaskDm
      */
     public function setViewOrder($view_order)
@@ -115,9 +118,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务是否启用
+     * 设置任务是否启用.
      *
-     * @param  int      $is_open
+     * @param int $is_open
+     *
      * @return PwTaskDm
      */
     public function setIsOpen($is_open)
@@ -128,9 +132,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的开始时间
+     * 设置任务的开始时间.
      *
-     * @param  int      $startTime
+     * @param int $startTime
+     *
      * @return PwTaskDm
      */
     public function setStartTime($startTime)
@@ -141,9 +146,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的结束时间
+     * 设置任务的结束时间.
      *
-     * @param  int      $endTime
+     * @param int $endTime
+     *
      * @return PwTaskDm
      */
     public function setEndTime($endTime)
@@ -156,7 +162,8 @@ class PwTaskDm extends PwBaseDm
     /**
      * 设置任务的周期
      *
-     * @param  int      $period
+     * @param int $period
+     *
      * @return PwTaskDm
      */
     public function setPeriod($period)
@@ -169,7 +176,8 @@ class PwTaskDm extends PwBaseDm
     /**
      * 设置任务的前置任务
      *
-     * @param  int      $id
+     * @param int $id
+     *
      * @return PwTaskDm
      */
     public function setPreTask($id)
@@ -180,9 +188,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务名称
+     * 设置任务名称.
      *
-     * @param  string   $title
+     * @param string $title
+     *
      * @return PwTaskDm
      */
     public function setTitle($title)
@@ -193,9 +202,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的描述
+     * 设置任务的描述.
      *
-     * @param  string   $description
+     * @param string $description
+     *
      * @return PwTaskDm
      */
     public function setDescription($description)
@@ -206,9 +216,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的图标
+     * 设置任务的图标.
      *
-     * @param  string   $icon
+     * @param string $icon
+     *
      * @return PwTaskDm
      */
     public function setIcon($icon)
@@ -219,9 +230,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的用户组
+     * 设置任务的用户组.
      *
-     * @param  array    $userGroups
+     * @param array $userGroups
+     *
      * @return PwTaskDm
      */
     public function setUserGroups($userGroups)
@@ -232,9 +244,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的奖励
+     * 设置任务的奖励.
      *
-     * @param  string   $reward
+     * @param string $reward
+     *
      * @return PwTaskDm
      */
     public function setReward($reward)
@@ -245,9 +258,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置任务的完成条件
+     * 设置任务的完成条件.
      *
-     * @param  array    $conditions
+     * @param array $conditions
+     *
      * @return PwTaskDm
      */
     public function setConditions($conditions)
@@ -315,7 +329,7 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 处理过滤数据
+     * 处理过滤数据.
      *
      * 关于完成条件：
      * 传递过来url: 去做任务的链接，支持{tid}的占位符格式，将会利用$conditions中的变量去替换url中的占位变量
@@ -349,7 +363,7 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 处理过滤数据
+     * 处理过滤数据.
      *
      * 关于奖励：
      * 传递过来"key": 该key表明“value”中对应的值的组成，传递过来一个descript占位字串，也由key中对应的组成
@@ -379,8 +393,9 @@ class PwTaskDm extends PwBaseDm
     /**
      * 返回替换后的地址
      *
-     * @param  array  $vars   替换参数
-     * @param  string $string 带替换的字符串
+     * @param array  $vars   替换参数
+     * @param string $string 带替换的字符串
+     *
      * @return string 返回替换后的字符串
      */
     protected function getReplace($vars, $string)
@@ -394,9 +409,10 @@ class PwTaskDm extends PwBaseDm
     }
 
     /**
-     * 设置奖励
+     * 设置奖励.
      *
-     * @param  PwTaskRewardDoBase $reward
+     * @param PwTaskRewardDoBase $reward
+     *
      * @return PwTaskDm
      */
     public function setRewardDecoration(PwTaskRewardDoBase $reward)

@@ -3,12 +3,13 @@
 Wind::import('WSRV:notify.dm.WindidNotifyLogDm');
 /**
  * 客户端通知服务
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotifyService.php 29741 2013-06-28 07:54:24Z gao.wanggao $
- * @package
  */
 class WindidNotifyService
 {
@@ -27,7 +28,7 @@ class WindidNotifyService
     }
 
     /**
-     * 写入通知信息
+     * 写入通知信息.
      *
      * @param int   $method
      * @param array $data
@@ -66,7 +67,7 @@ class WindidNotifyService
     }
 
     /**
-     * 同步登录登出
+     * 同步登录登出.
      *
      * @param string $notify
      * @param int    $uid
@@ -90,16 +91,15 @@ class WindidNotifyService
             $array = array(
                 'windidkey' => WindidUtility::appKey($val['id'], $time, $val['secretkey'], array('uid' => $uid), array()),
                 'operation' => $operation,
-                'uid' => $uid,
-                'clientid' => $val['id'],
-                'time' => $time,
+                'uid'       => $uid,
+                'clientid'  => $val['id'],
+                'time'      => $time,
             );
             $data[] = WindidUtility::buildClientUrl($val['siteurl'], $val['apifile']).http_build_query($array);
         }
 
         return $syn ? array() : $data;
     }
-
 
     private function _getAppDs()
     {

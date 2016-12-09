@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 附件上传页面
+ * 附件上传页面.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: UploadController.php 28799 2013-05-24 06:47:37Z yetianshi $
- * @package forum
  */
-
 class UploadController extends PwBaseController
 {
     public function run()

@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignPermissionsDao.php 17399 2012-09-05 07:12:51Z gao.wanggao $
- * @package
  */
 class PwDesignPermissionsDao extends PwBaseDao
 {
@@ -46,7 +47,6 @@ class PwDesignPermissionsDao extends PwBaseDao
 
         return $smt->update(array($permissions, $id));
     }
-
 
     public function delete($id)
     {

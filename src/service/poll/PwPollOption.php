@@ -3,21 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 投票选项DS
+ * 投票选项DS.
  *
  * @author Mingqu Luo<luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package wind
  */
-
 class PwPollOption
 {
     /**
-     * 获得单条选项信息
+     * 获得单条选项信息.
      *
-     * @param  int   $optionId
+     * @param int $optionId
+     *
      * @return array
      */
     public function get($optionid)
@@ -31,9 +31,10 @@ class PwPollOption
     }
 
     /**
-     * 获得多条选项信息
+     * 获得多条选项信息.
      *
-     * @param  array $optionIds
+     * @param array $optionIds
+     *
      * @return array
      */
     public function fetch($optionids)
@@ -46,7 +47,7 @@ class PwPollOption
     }
 
     /**
-     * 根据投票id获得投票选项
+     * 根据投票id获得投票选项.
      *
      * @param unknown_type $pollid
      */
@@ -61,7 +62,7 @@ class PwPollOption
     }
 
     /**
-     * 根据投票ids获得投票选项
+     * 根据投票ids获得投票选项.
      *
      * @param unknown_type $pollid
      */
@@ -75,9 +76,10 @@ class PwPollOption
     }
 
     /**
-     * 统计该投票的选项数
+     * 统计该投票的选项数.
      *
-     * @param  int $pollid
+     * @param int $pollid
+     *
      * @return int
      */
     public function countByPollid($pollid)
@@ -91,7 +93,7 @@ class PwPollOption
     }
 
     /**
-     * 添加
+     * 添加.
      *
      * @param PwPollOptionDm $dm
      */
@@ -110,9 +112,10 @@ class PwPollOption
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $optionid
+     * @param int $optionid
+     *
      * @return bool
      */
     public function delete($optionid)
@@ -126,9 +129,10 @@ class PwPollOption
     }
 
     /**
-     * 根据pollid删除
+     * 根据pollid删除.
      *
-     * @param  unknown_type $pollid
+     * @param unknown_type $pollid
+     *
      * @return bool
      */
     public function deleteByPollid($pollid)
@@ -142,7 +146,7 @@ class PwPollOption
     }
 
     /**
-     * 更新
+     * 更新.
      *
      * @param PwPollOptionDm $dm
      */
@@ -156,9 +160,10 @@ class PwPollOption
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $optionIds 选项
+     * @param array $optionIds 选项
+     *
      * @return int
      */
     public function batchDelete($optionIds)
@@ -167,7 +172,7 @@ class PwPollOption
     }
 
     /**
-     * 批量更新
+     * 批量更新.
      *
      * @param array          $optionids
      * @param PwPollOptionDm $dm
@@ -185,7 +190,7 @@ class PwPollOption
     }
 
     /**
-     * get PwPollOptionDao
+     * get PwPollOptionDao.
      *
      * @return PwPollOptionDao
      */

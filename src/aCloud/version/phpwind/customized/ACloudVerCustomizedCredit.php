@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 class ACloudVerCustomizedCredit extends ACloudVerCustomizedBase

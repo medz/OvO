@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Mingqu Luo <luo.mingqu@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwWordService.php 17009 2012-08-30 08:19:36Z hejin $
- * @package wind
  */
-
 class PwWordService
 {
     /**
-     * 获得敏感词
+     * 获得敏感词.
      *
-     * @param  array $word
+     * @param array $word
+     *
      * @return array
      */
     public function findWord($word = array())
@@ -38,10 +38,11 @@ class PwWordService
     }
 
     /**
-     * 是否存在敏感词
+     * 是否存在敏感词.
      *
-     * @param  string $word
-     * @param  int    $excludeId 排除ID
+     * @param string $word
+     * @param int    $excludeId 排除ID
+     *
      * @return bool
      */
     public function isExistWord($word, $excludeId = 0)
@@ -59,10 +60,11 @@ class PwWordService
     }
 
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int    $type
-     * @param  string $keyword
+     * @param int    $type
+     * @param string $keyword
+     *
      * @return bool
      */
     public function deleteByCondition($type = 1, $keyword = '')
@@ -83,7 +85,7 @@ class PwWordService
     }
 
     /**
-     * get PwWord
+     * get PwWord.
      *
      * @return PwWord
      */

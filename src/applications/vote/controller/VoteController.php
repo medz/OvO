@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: VoteController.php 24134 2013-01-22 06:19:24Z xiaoxia.xuxx $
- * @package poll
  */
-
 class VoteController extends PwBaseController
 {
     public function beforeAction($handlerAdapter)
@@ -87,7 +86,7 @@ class VoteController extends PwBaseController
         }
 
         $response = array(
-            'cate' => $cate,
+            'cate'  => $cate,
             'forum' => $forum,
         );
 
@@ -113,7 +112,7 @@ class VoteController extends PwBaseController
     }
 
     /**
-     * get PwPollService
+     * get PwPollService.
      *
      * @return PwPollService
      */

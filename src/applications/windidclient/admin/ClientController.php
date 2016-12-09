@@ -4,12 +4,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ClientController.php 29745 2013-06-28 09:07:39Z gao.wanggao $
- * @package
  */
 class ClientController extends AdminBaseController
 {
@@ -32,8 +33,8 @@ class ClientController extends AdminBaseController
         $array = array(
             'windidkey' => WindidUtility::appKey($client['id'], $time, $client['secretkey'], array('operation' => 999), array('testdata' => 1)),
             'operation' => 999,
-            'clientid' => $client['id'],
-            'time' => $time,
+            'clientid'  => $client['id'],
+            'time'      => $time,
         );
         $post = array('testdata' => 1);
         $url = WindidUtility::buildClientUrl($client['siteurl'], $client['apifile']).http_build_query($array);

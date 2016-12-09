@@ -57,39 +57,41 @@
  * MA  02111-1307  USA
  *
  * @category   Net
- * @package    Net_SSH2
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: SSH2.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Math_BigInteger
+ * Include Math_BigInteger.
  *
  * Used to do Diffie-Hellman key exchange and DSA/RSA signature verification.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Math.BigInteger');
 /**
- * Include Crypt_Random
+ * Include Crypt_Random.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.Random');
 /**
- * Include Crypt_Hash
+ * Include Crypt_Hash.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.Hash');
 /**
- * Include Crypt_TripleDES
+ * Include Crypt_TripleDES.
  */
 //require_once('phpseclib/Crypt/TripleDES.php');
 require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.TripleDES');
 /**
- * Include Crypt_RC4
+ * Include Crypt_RC4.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.RC4');
 /**
- * Include Crypt_AES
+ * Include Crypt_AES.
  */
 require_once Wind::getRealPath('LIB:utility.phpseclib.Crypt.AES');
 /**#@+
@@ -139,134 +141,146 @@ define('NET_SSH2_LOG_COMPLEX', 2);
  * Pure-PHP implementation of SSHv2.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Net_SSH2
  */
 class Net_SSH2
 {
     /**
-     * The SSH identifier
+     * The SSH identifier.
      *
-     * @var String
+     * @var string
      */
     public $identifier = 'SSH-2.0-phpseclib_0.2';
 
     /**
-     * The Socket Object
+     * The Socket Object.
      *
-     * @var Object
+     * @var object
      */
     public $fsock;
 
     /**
-     * Execution Bitmap
+     * Execution Bitmap.
      *
      * The bits that are set reprsent functions that have been called already.  This is used to determine
      * if a requisite function has been successfully executed.  If not, an error should be thrown.
      *
-     * @var Integer
+     * @var int
      */
     public $bitmap = 0;
 
     /**
-     * Error information
+     * Error information.
      *
      * @see Net_SSH2::getErrors()
      * @see Net_SSH2::getLastError()
-     * @var String
+     *
+     * @var string
      */
     public $errors = array();
 
     /**
-     * Server Identifier
+     * Server Identifier.
      *
      * @see Net_SSH2::getServerIdentification()
-     * @var String
+     *
+     * @var string
      */
     public $server_identifier = '';
 
     /**
-     * Key Exchange Algorithms
+     * Key Exchange Algorithms.
      *
      * @see Net_SSH2::getKexAlgorithims()
-     * @var Array
+     *
+     * @var array
      */
     public $kex_algorithms;
 
     /**
-     * Server Host Key Algorithms
+     * Server Host Key Algorithms.
      *
      * @see Net_SSH2::getServerHostKeyAlgorithms()
-     * @var Array
+     *
+     * @var array
      */
     public $server_host_key_algorithms;
 
     /**
-     * Encryption Algorithms: Client to Server
+     * Encryption Algorithms: Client to Server.
      *
      * @see Net_SSH2::getEncryptionAlgorithmsClient2Server()
-     * @var Array
+     *
+     * @var array
      */
     public $encryption_algorithms_client_to_server;
 
     /**
-     * Encryption Algorithms: Server to Client
+     * Encryption Algorithms: Server to Client.
      *
      * @see Net_SSH2::getEncryptionAlgorithmsServer2Client()
-     * @var Array
+     *
+     * @var array
      */
     public $encryption_algorithms_server_to_client;
 
     /**
-     * MAC Algorithms: Client to Server
+     * MAC Algorithms: Client to Server.
      *
      * @see Net_SSH2::getMACAlgorithmsClient2Server()
-     * @var Array
+     *
+     * @var array
      */
     public $mac_algorithms_client_to_server;
 
     /**
-     * MAC Algorithms: Server to Client
+     * MAC Algorithms: Server to Client.
      *
      * @see Net_SSH2::getMACAlgorithmsServer2Client()
-     * @var Array
+     *
+     * @var array
      */
     public $mac_algorithms_server_to_client;
 
     /**
-     * Compression Algorithms: Client to Server
+     * Compression Algorithms: Client to Server.
      *
      * @see Net_SSH2::getCompressionAlgorithmsClient2Server()
-     * @var Array
+     *
+     * @var array
      */
     public $compression_algorithms_client_to_server;
 
     /**
-     * Compression Algorithms: Server to Client
+     * Compression Algorithms: Server to Client.
      *
      * @see Net_SSH2::getCompressionAlgorithmsServer2Client()
-     * @var Array
+     *
+     * @var array
      */
     public $compression_algorithms_server_to_client;
 
     /**
-     * Languages: Server to Client
+     * Languages: Server to Client.
      *
      * @see Net_SSH2::getLanguagesServer2Client()
-     * @var Array
+     *
+     * @var array
      */
     public $languages_server_to_client;
 
     /**
-     * Languages: Client to Server
+     * Languages: Client to Server.
      *
      * @see Net_SSH2::getLanguagesClient2Server()
-     * @var Array
+     *
+     * @var array
      */
     public $languages_client_to_server;
 
     /**
-     * Block Size for Server to Client Encryption
+     * Block Size for Server to Client Encryption.
      *
      * "Note that the length of the concatenation of 'packet_length',
      *  'padding_length', 'payload', and 'random padding' MUST be a multiple
@@ -277,73 +291,81 @@ class Net_SSH2
      *
      * @see Net_SSH2::Net_SSH2()
      * @see Net_SSH2::_send_binary_packet()
-     * @var Integer
+     *
+     * @var int
      */
     public $encrypt_block_size = 8;
 
     /**
-     * Block Size for Client to Server Encryption
+     * Block Size for Client to Server Encryption.
      *
      * @see Net_SSH2::Net_SSH2()
      * @see Net_SSH2::_get_binary_packet()
-     * @var Integer
+     *
+     * @var int
      */
     public $decrypt_block_size = 8;
 
     /**
-     * Server to Client Encryption Object
+     * Server to Client Encryption Object.
      *
      * @see Net_SSH2::_get_binary_packet()
-     * @var Object
+     *
+     * @var object
      */
     public $decrypt = false;
 
     /**
-     * Client to Server Encryption Object
+     * Client to Server Encryption Object.
      *
      * @see Net_SSH2::_send_binary_packet()
-     * @var Object
+     *
+     * @var object
      */
     public $encrypt = false;
 
     /**
-     * Client to Server HMAC Object
+     * Client to Server HMAC Object.
      *
      * @see Net_SSH2::_send_binary_packet()
-     * @var Object
+     *
+     * @var object
      */
     public $hmac_create = false;
 
     /**
-     * Server to Client HMAC Object
+     * Server to Client HMAC Object.
      *
      * @see Net_SSH2::_get_binary_packet()
-     * @var Object
+     *
+     * @var object
      */
     public $hmac_check = false;
 
     /**
-     * Size of server to client HMAC
+     * Size of server to client HMAC.
      *
      * We need to know how big the HMAC will be for the server to client direction so that we know how many bytes to read.
      * For the client to server side, the HMAC object will make the HMAC as long as it needs to be.  All we need to do is
      * append it.
      *
      * @see Net_SSH2::_get_binary_packet()
-     * @var Integer
+     *
+     * @var int
      */
     public $hmac_size = false;
 
     /**
-     * Server Public Host Key
+     * Server Public Host Key.
      *
      * @see Net_SSH2::getServerPublicHostKey()
-     * @var String
+     *
+     * @var string
      */
     public $server_public_host_key;
 
     /**
-     * Session identifer
+     * Session identifer.
      *
      * "The exchange hash H from the first key exchange is additionally
      *  used as the session identifier, which is a unique identifier for
@@ -352,169 +374,187 @@ class Net_SSH2
      *  -- http://tools.ietf.org/html/rfc4253#section-7.2
      *
      * @see Net_SSH2::_key_exchange()
-     * @var String
+     *
+     * @var string
      */
     public $session_id = false;
 
     /**
-     * Message Numbers
+     * Message Numbers.
      *
      * @see Net_SSH2::Net_SSH2()
-     * @var Array
+     *
+     * @var array
      */
     public $message_numbers = array();
 
     /**
-     * Disconnection Message 'reason codes' defined in RFC4253
+     * Disconnection Message 'reason codes' defined in RFC4253.
      *
      * @see Net_SSH2::Net_SSH2()
-     * @var Array
+     *
+     * @var array
      */
     public $disconnect_reasons = array();
 
     /**
-     * SSH_MSG_CHANNEL_OPEN_FAILURE 'reason codes', defined in RFC4254
+     * SSH_MSG_CHANNEL_OPEN_FAILURE 'reason codes', defined in RFC4254.
      *
      * @see Net_SSH2::Net_SSH2()
-     * @var Array
+     *
+     * @var array
      */
     public $channel_open_failure_reasons = array();
 
     /**
-     * Terminal Modes
+     * Terminal Modes.
      *
      * @link http://tools.ietf.org/html/rfc4254#section-8
      * @see Net_SSH2::Net_SSH2()
-     * @var Array
+     *
+     * @var array
      */
     public $terminal_modes = array();
 
     /**
-     * SSH_MSG_CHANNEL_EXTENDED_DATA's data_type_codes
+     * SSH_MSG_CHANNEL_EXTENDED_DATA's data_type_codes.
      *
      * @link http://tools.ietf.org/html/rfc4254#section-5.2
      * @see Net_SSH2::Net_SSH2()
-     * @var Array
+     *
+     * @var array
      */
     public $channel_extended_data_type_codes = array();
 
     /**
-     * Send Sequence Number
+     * Send Sequence Number.
      *
      * See 'Section 6.4.  Data Integrity' of rfc4253 for more info.
      *
      * @see Net_SSH2::_send_binary_packet()
-     * @var Integer
+     *
+     * @var int
      */
     public $send_seq_no = 0;
 
     /**
-     * Get Sequence Number
+     * Get Sequence Number.
      *
      * See 'Section 6.4.  Data Integrity' of rfc4253 for more info.
      *
      * @see Net_SSH2::_get_binary_packet()
-     * @var Integer
+     *
+     * @var int
      */
     public $get_seq_no = 0;
 
     /**
-     * Server Channels
+     * Server Channels.
      *
      * Maps client channels to server channels
      *
      * @see Net_SSH2::_get_channel_packet()
      * @see Net_SSH2::exec()
-     * @var Array
+     *
+     * @var array
      */
     public $server_channels = array();
 
     /**
-     * Channel Buffers
+     * Channel Buffers.
      *
      * If a client requests a packet from one channel but receives two packets from another those packets should
      * be placed in a buffer
      *
      * @see Net_SSH2::_get_channel_packet()
      * @see Net_SSH2::exec()
-     * @var Array
+     *
+     * @var array
      */
     public $channel_buffers = array();
 
     /**
-     * Channel Status
+     * Channel Status.
      *
      * Contains the type of the last sent message
      *
      * @see Net_SSH2::_get_channel_packet()
-     * @var Array
+     *
+     * @var array
      */
     public $channel_status = array();
 
     /**
-     * Packet Size
+     * Packet Size.
      *
      * Maximum packet size indexed by channel
      *
      * @see Net_SSH2::_send_channel_packet()
-     * @var Array
+     *
+     * @var array
      */
     public $packet_size_client_to_server = array();
 
     /**
-     * Message Number Log
+     * Message Number Log.
      *
      * @see Net_SSH2::getLog()
-     * @var Array
+     *
+     * @var array
      */
     public $message_number_log = array();
 
     /**
-     * Message Log
+     * Message Log.
      *
      * @see Net_SSH2::getLog()
-     * @var Array
+     *
+     * @var array
      */
     public $message_log = array();
 
     /**
-     * The Window Size
+     * The Window Size.
      *
      * Bytes the other party can send before it must wait for the window to be adjusted (0x7FFFFFFF = 4GB)
      *
-     * @var Integer
+     * @var int
+     *
      * @see Net_SSH2::_send_channel_packet()
      * @see Net_SSH2::exec()
      */
     public $window_size = 0x7FFFFFFF;
 
     /**
-     * Window size
+     * Window size.
      *
      * Window size indexed by channel
      *
      * @see Net_SSH2::_send_channel_packet()
-     * @var Array
+     *
+     * @var array
      */
     public $window_size_client_to_server = array();
 
     /**
-     * Server signature
+     * Server signature.
      *
      * Verified against $this->session_id
      *
      * @see Net_SSH2::getServerPublicHostKey()
-     * @var String
+     *
+     * @var string
      */
     public $signature = '';
 
     /**
-     * Server signature format
+     * Server signature format.
      *
      * ssh-rsa or ssh-dss.
      *
      * @see Net_SSH2::getServerPublicHostKey()
-     * @var String
+     *
+     * @var string
      */
     public $signature_format = '';
 
@@ -523,20 +563,21 @@ class Net_SSH2
      *
      * Connects to an SSHv2 server
      *
-     * @param  String           $host
-     * @param  optional Integer $port
-     * @param  optional Integer $timeout
+     * @param string           $host
+     * @param optional Integer $port
+     * @param optional Integer $timeout
+     *
      * @return Net_SSH2
      */
     public function Net_SSH2($host, $port = 22, $timeout = 10)
     {
         $this->message_numbers = array(
-            1 => 'NET_SSH2_MSG_DISCONNECT',
-            2 => 'NET_SSH2_MSG_IGNORE',
-            3 => 'NET_SSH2_MSG_UNIMPLEMENTED',
-            4 => 'NET_SSH2_MSG_DEBUG',
-            5 => 'NET_SSH2_MSG_SERVICE_REQUEST',
-            6 => 'NET_SSH2_MSG_SERVICE_ACCEPT',
+            1  => 'NET_SSH2_MSG_DISCONNECT',
+            2  => 'NET_SSH2_MSG_IGNORE',
+            3  => 'NET_SSH2_MSG_UNIMPLEMENTED',
+            4  => 'NET_SSH2_MSG_DEBUG',
+            5  => 'NET_SSH2_MSG_SERVICE_REQUEST',
+            6  => 'NET_SSH2_MSG_SERVICE_ACCEPT',
             20 => 'NET_SSH2_MSG_KEXINIT',
             21 => 'NET_SSH2_MSG_NEWKEYS',
             30 => 'NET_SSH2_MSG_KEXDH_INIT',
@@ -546,31 +587,31 @@ class Net_SSH2
             52 => 'NET_SSH2_MSG_USERAUTH_SUCCESS',
             53 => 'NET_SSH2_MSG_USERAUTH_BANNER',
 
-            80 => 'NET_SSH2_MSG_GLOBAL_REQUEST',
-            81 => 'NET_SSH2_MSG_REQUEST_SUCCESS',
-            82 => 'NET_SSH2_MSG_REQUEST_FAILURE',
-            90 => 'NET_SSH2_MSG_CHANNEL_OPEN',
-            91 => 'NET_SSH2_MSG_CHANNEL_OPEN_CONFIRMATION',
-            92 => 'NET_SSH2_MSG_CHANNEL_OPEN_FAILURE',
-            93 => 'NET_SSH2_MSG_CHANNEL_WINDOW_ADJUST',
-            94 => 'NET_SSH2_MSG_CHANNEL_DATA',
-            95 => 'NET_SSH2_MSG_CHANNEL_EXTENDED_DATA',
-            96 => 'NET_SSH2_MSG_CHANNEL_EOF',
-            97 => 'NET_SSH2_MSG_CHANNEL_CLOSE',
-            98 => 'NET_SSH2_MSG_CHANNEL_REQUEST',
-            99 => 'NET_SSH2_MSG_CHANNEL_SUCCESS',
+            80  => 'NET_SSH2_MSG_GLOBAL_REQUEST',
+            81  => 'NET_SSH2_MSG_REQUEST_SUCCESS',
+            82  => 'NET_SSH2_MSG_REQUEST_FAILURE',
+            90  => 'NET_SSH2_MSG_CHANNEL_OPEN',
+            91  => 'NET_SSH2_MSG_CHANNEL_OPEN_CONFIRMATION',
+            92  => 'NET_SSH2_MSG_CHANNEL_OPEN_FAILURE',
+            93  => 'NET_SSH2_MSG_CHANNEL_WINDOW_ADJUST',
+            94  => 'NET_SSH2_MSG_CHANNEL_DATA',
+            95  => 'NET_SSH2_MSG_CHANNEL_EXTENDED_DATA',
+            96  => 'NET_SSH2_MSG_CHANNEL_EOF',
+            97  => 'NET_SSH2_MSG_CHANNEL_CLOSE',
+            98  => 'NET_SSH2_MSG_CHANNEL_REQUEST',
+            99  => 'NET_SSH2_MSG_CHANNEL_SUCCESS',
             100 => 'NET_SSH2_MSG_CHANNEL_FAILURE',
         );
         $this->disconnect_reasons = array(
-            1 => 'NET_SSH2_DISCONNECT_HOST_NOT_ALLOWED_TO_CONNECT',
-            2 => 'NET_SSH2_DISCONNECT_PROTOCOL_ERROR',
-            3 => 'NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED',
-            4 => 'NET_SSH2_DISCONNECT_RESERVED',
-            5 => 'NET_SSH2_DISCONNECT_MAC_ERROR',
-            6 => 'NET_SSH2_DISCONNECT_COMPRESSION_ERROR',
-            7 => 'NET_SSH2_DISCONNECT_SERVICE_NOT_AVAILABLE',
-            8 => 'NET_SSH2_DISCONNECT_PROTOCOL_VERSION_NOT_SUPPORTED',
-            9 => 'NET_SSH2_DISCONNECT_HOST_KEY_NOT_VERIFIABLE',
+            1  => 'NET_SSH2_DISCONNECT_HOST_NOT_ALLOWED_TO_CONNECT',
+            2  => 'NET_SSH2_DISCONNECT_PROTOCOL_ERROR',
+            3  => 'NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED',
+            4  => 'NET_SSH2_DISCONNECT_RESERVED',
+            5  => 'NET_SSH2_DISCONNECT_MAC_ERROR',
+            6  => 'NET_SSH2_DISCONNECT_COMPRESSION_ERROR',
+            7  => 'NET_SSH2_DISCONNECT_SERVICE_NOT_AVAILABLE',
+            8  => 'NET_SSH2_DISCONNECT_PROTOCOL_VERSION_NOT_SUPPORTED',
+            9  => 'NET_SSH2_DISCONNECT_HOST_KEY_NOT_VERIFIABLE',
             10 => 'NET_SSH2_DISCONNECT_CONNECTION_LOST',
             11 => 'NET_SSH2_DISCONNECT_BY_APPLICATION',
             12 => 'NET_SSH2_DISCONNECT_TOO_MANY_CONNECTIONS',
@@ -680,9 +721,9 @@ class Net_SSH2
     }
 
     /**
-     * Key Exchange
+     * Key Exchange.
      *
-     * @param String $kexinit_payload_server
+     * @param string $kexinit_payload_server
      */
     public function _key_exchange($kexinit_payload_server)
     {
@@ -1219,11 +1260,13 @@ class Net_SSH2
     }
 
     /**
-     * Login
+     * Login.
      *
-     * @param  String          $username
-     * @param  optional String $password
-     * @return Boolean
+     * @param string          $username
+     * @param optional String $password
+     *
+     * @return bool
+     *
      * @internal It might be worthwhile, at some point, to protect against {@link http://tools.ietf.org/html/rfc4251#section-9.3.9 traffic analysis}
      *           by sending dummy SSH_MSG_IGNORE messages.
      */
@@ -1311,11 +1354,13 @@ class Net_SSH2
     }
 
     /**
-     * Login with an RSA private key
+     * Login with an RSA private key.
      *
-     * @param  String    $username
-     * @param  Crypt_RSA $password
-     * @return Boolean
+     * @param string    $username
+     * @param Crypt_RSA $password
+     *
+     * @return bool
+     *
      * @internal It might be worthwhile, at some point, to protect against {@link http://tools.ietf.org/html/rfc4251#section-9.3.9 traffic analysis}
      *           by sending dummy SSH_MSG_IGNORE messages.
      */
@@ -1403,10 +1448,11 @@ class Net_SSH2
     }
 
     /**
-     * Execute Command
+     * Execute Command.
      *
-     * @param  String $command
-     * @return String
+     * @param string $command
+     *
+     * @return string
      */
     public function exec($command)
     {
@@ -1476,8 +1522,7 @@ class Net_SSH2
     }
 
     /**
-     * Disconnect
-     *
+     * Disconnect.
      */
     public function disconnect()
     {
@@ -1489,7 +1534,6 @@ class Net_SSH2
      *
      * Will be called, automatically, if you're supporting just PHP5.  If you're supporting PHP4, you'll need to call
      * disconnect().
-     *
      */
     public function __destruct()
     {
@@ -1497,12 +1541,13 @@ class Net_SSH2
     }
 
     /**
-     * Gets Binary Packets
+     * Gets Binary Packets.
      *
      * See '6. Binary Packet Protocol' of rfc4253 for more info.
      *
      * @see Net_SSH2::_send_binary_packet()
-     * @return String
+     *
+     * @return string
      */
     public function _get_binary_packet()
     {
@@ -1565,12 +1610,13 @@ class Net_SSH2
     }
 
     /**
-     * Filter Binary Packets
+     * Filter Binary Packets.
      *
      * Because some binary packets need to be ignored...
      *
      * @see Net_SSH2::_get_binary_packet()
-     * @return String
+     *
+     * @return string
      */
     public function _filter($payload)
     {
@@ -1652,12 +1698,13 @@ class Net_SSH2
     }
 
     /**
-     * Gets channel data
+     * Gets channel data.
      *
      * Returns the data as a string if it's available and false if not.
      *
      * @param $client_channel
-     * @return Mixed
+     *
+     * @return mixed
      */
     public function _get_channel_packet($client_channel)
     {
@@ -1775,13 +1822,15 @@ class Net_SSH2
     }
 
     /**
-     * Sends Binary Packets
+     * Sends Binary Packets.
      *
      * See '6. Binary Packet Protocol' of rfc4253 for more info.
      *
-     * @param String $data
+     * @param string $data
+     *
      * @see Net_SSH2::_get_binary_packet()
-     * @return Boolean
+     *
+     * @return bool
      */
     public function _send_binary_packet($data)
     {
@@ -1838,13 +1887,14 @@ class Net_SSH2
     }
 
     /**
-     * Sends channel data
+     * Sends channel data.
      *
      * Spans multiple SSH_MSG_CHANNEL_DATAs if appropriate
      *
-     * @param  Integer $client_channel
-     * @param  String  $data
-     * @return Boolean
+     * @param int    $client_channel
+     * @param string $data
+     *
+     * @return bool
      */
     public function _send_channel_packet($client_channel, $data)
     {
@@ -1889,10 +1939,11 @@ class Net_SSH2
     }
 
     /**
-     * Disconnect
+     * Disconnect.
      *
-     * @param  Integer $reason
-     * @return Boolean
+     * @param int $reason
+     *
+     * @return bool
      */
     public function _disconnect($reason)
     {
@@ -1907,13 +1958,14 @@ class Net_SSH2
     }
 
     /**
-     * String Shift
+     * String Shift.
      *
      * Inspired by array_shift
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
      */
     public function _string_shift(&$string, $index = 1)
     {
@@ -1924,13 +1976,13 @@ class Net_SSH2
     }
 
     /**
-     * Define Array
+     * Define Array.
      *
      * Takes any number of arrays whose indices are integers and whose values are strings and defines a bunch of
      * named constants from it, using the value as the name of the constant and the index as the value of the constant.
      * If any of the constants that would be defined already exists, none of the constants will be defined.
      *
-     * @param Array $array
+     * @param array $array
      */
     public function _define_array()
     {
@@ -1951,7 +2003,7 @@ class Net_SSH2
      *
      * Returns a string if NET_SSH2_LOGGING == NET_SSH2_LOG_COMPLEX, an array if NET_SSH2_LOGGING == NET_SSH2_LOG_SIMPLE and false if !defined('NET_SSH2_LOGGING')
      *
-     * @return String or Array
+     * @return string or Array
      */
     public function getLog()
     {
@@ -1972,11 +2024,12 @@ class Net_SSH2
     }
 
     /**
-     * Formats a log for printing
+     * Formats a log for printing.
      *
-     * @param  Array  $message_log
-     * @param  Array  $message_number_log
-     * @return String
+     * @param array $message_log
+     * @param array $message_number_log
+     *
+     * @return string
      */
     public function _format_log($message_log, $message_number_log)
     {
@@ -2013,9 +2066,9 @@ class Net_SSH2
     }
 
     /**
-     * Returns all errors
+     * Returns all errors.
      *
-     * @return String
+     * @return string
      */
     public function getErrors()
     {
@@ -2023,9 +2076,9 @@ class Net_SSH2
     }
 
     /**
-     * Returns the last error
+     * Returns the last error.
      *
-     * @return String
+     * @return string
      */
     public function getLastError()
     {
@@ -2035,7 +2088,7 @@ class Net_SSH2
     /**
      * Return the server identification.
      *
-     * @return String
+     * @return string
      */
     public function getServerIdentification()
     {
@@ -2045,7 +2098,7 @@ class Net_SSH2
     /**
      * Return a list of the key exchange algorithms the server supports.
      *
-     * @return Array
+     * @return array
      */
     public function getKexAlgorithms()
     {
@@ -2055,7 +2108,7 @@ class Net_SSH2
     /**
      * Return a list of the host key (public key) algorithms the server supports.
      *
-     * @return Array
+     * @return array
      */
     public function getServerHostKeyAlgorithms()
     {
@@ -2065,7 +2118,7 @@ class Net_SSH2
     /**
      * Return a list of the (symmetric key) encryption algorithms the server supports, when receiving stuff from the client.
      *
-     * @return Array
+     * @return array
      */
     public function getEncryptionAlgorithmsClient2Server()
     {
@@ -2075,7 +2128,7 @@ class Net_SSH2
     /**
      * Return a list of the (symmetric key) encryption algorithms the server supports, when sending stuff to the client.
      *
-     * @return Array
+     * @return array
      */
     public function getEncryptionAlgorithmsServer2Client()
     {
@@ -2085,7 +2138,7 @@ class Net_SSH2
     /**
      * Return a list of the MAC algorithms the server supports, when receiving stuff from the client.
      *
-     * @return Array
+     * @return array
      */
     public function getMACAlgorithmsClient2Server()
     {
@@ -2095,7 +2148,7 @@ class Net_SSH2
     /**
      * Return a list of the MAC algorithms the server supports, when sending stuff to the client.
      *
-     * @return Array
+     * @return array
      */
     public function getMACAlgorithmsServer2Client()
     {
@@ -2105,7 +2158,7 @@ class Net_SSH2
     /**
      * Return a list of the compression algorithms the server supports, when receiving stuff from the client.
      *
-     * @return Array
+     * @return array
      */
     public function getCompressionAlgorithmsClient2Server()
     {
@@ -2115,7 +2168,7 @@ class Net_SSH2
     /**
      * Return a list of the compression algorithms the server supports, when sending stuff to the client.
      *
-     * @return Array
+     * @return array
      */
     public function getCompressionAlgorithmsServer2Client()
     {
@@ -2125,7 +2178,7 @@ class Net_SSH2
     /**
      * Return a list of the languages the server supports, when sending stuff to the client.
      *
-     * @return Array
+     * @return array
      */
     public function getLanguagesServer2Client()
     {
@@ -2135,7 +2188,7 @@ class Net_SSH2
     /**
      * Return a list of the languages the server supports, when receiving stuff from the client.
      *
-     * @return Array
+     * @return array
      */
     public function getLanguagesClient2Server()
     {
@@ -2148,7 +2201,7 @@ class Net_SSH2
      * Caching this the first time you connect to a server and checking the result on subsequent connections
      * is recommended.  Returns false if the server signature is not signed correctly with the public host key.
      *
-     * @return Mixed
+     * @return mixed
      */
     public function getServerPublicHostKey()
     {

@@ -7,12 +7,13 @@ Wind::import('SRV:design.srv.model.PwDesignModelBase');
  *  decorateAddProperty 为插入表单值修饰
  *  decorateEditProperty 为修改表单值修饰
  *  _getData 获取数据
- * </note>
+ * </note>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignForumDataService.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package
  */
 class PwDesignForumDataService extends PwDesignModelBase
 {
@@ -64,7 +65,6 @@ class PwDesignForumDataService extends PwDesignModelBase
         return $this->_buildSignKey($list);
     }
 
-
     private function _buildSignKey($list)
     {
         $_username = array();
@@ -108,7 +108,6 @@ class PwDesignForumDataService extends PwDesignModelBase
         return Wekit::load('forum.PwThread')->fetchThread($tids);
     }
 
-
     private function _getForum($fids)
     {
         return Wekit::load('forum.PwForum')->fetchForum($fids);
@@ -117,6 +116,7 @@ class PwDesignForumDataService extends PwDesignModelBase
     /**
      * 过滤版块名称html
      * Enter description here ...
+     *
      * @param string $forumname
      */
     private function _filterForumHtml($forumname)
@@ -124,7 +124,6 @@ class PwDesignForumDataService extends PwDesignModelBase
         return strip_tags($forumname);
         //return  preg_replace('/<SPAN(.*)>(.*)<\/SPAN>/isU', '\\2', $forumname);
     }
-
 
     private function _getFroumService()
     {

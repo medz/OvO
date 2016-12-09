@@ -6,13 +6,13 @@ Wind::import('SRV:forum.srv.manage.do.PwThreadManageCopyDoBase');
 Wind::import('SRV:attach.dm.PwThreadAttachDm');
 
 /**
- * 帖子复制 - 附件
+ * 帖子复制 - 附件.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
 {
@@ -22,12 +22,12 @@ class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
     {
         $ifupload = $topicDm->getField('ifupload');
         if (!$ifupload) {
-            return ;
+            return;
         }
         $tid = $topicDm->tid;
         $this->attachs = $this->_getService()->getAttachByTid($tid, array(0));
         if (!$this->attachs) {
-            return ;
+            return;
         }
         foreach ($this->attachs as $v) {
             $dm = new PwThreadAttachDm();
@@ -48,8 +48,7 @@ class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
                 ->setCreatedUser($v['created_userid'])
                 ->setCreatedTime($v['created_time'])
                 ->setApp($v['app'])
-                ->setDescrip($v['descrip'])
-            ;
+                ->setDescrip($v['descrip']);
             $this->_getService()->addAttach($dm);
         }
     }

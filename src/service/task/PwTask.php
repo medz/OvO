@@ -2,20 +2,21 @@
 
 Wind::import('SRV:task.dm.PwTaskDm');
 /**
- * 任务体系的data service
+ * 任务体系的data service.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTask.php 18748 2012-09-27 03:45:32Z xiaoxia.xuxx $
- * @package service.task
  */
 class PwTask
 {
     /**
-     * 添加pw_task表记录
+     * 添加pw_task表记录.
      *
-     * @param  PwTaskDm    $dm
+     * @param PwTaskDm $dm
+     *
      * @return PwError|int
      */
     public function addTask($dm)
@@ -44,10 +45,11 @@ class PwTask
     }
 
     /**
-     * 更新一条任务信息（for pw_task表）
+     * 更新一条任务信息（for pw_task表）.
      *
-     * @param  int          $id
-     * @param  PwTaskDm     $dm
+     * @param int      $id
+     * @param PwTaskDm $dm
+     *
      * @return PwError|bool
      */
     public function updateTask($dm)
@@ -70,10 +72,11 @@ class PwTask
     }
 
     /**
-     * 更新用户缓存表
+     * 更新用户缓存表.
      *
-     * @param  int          $uid
-     * @param  array        $cache array($last_id, array($id1, $id2,..))
+     * @param int   $uid
+     * @param array $cache array($last_id, array($id1, $id2,..))
+     *
      * @return PwError|bool
      */
     public function updateUserTaskCache($uid, $cache = array(0, array()))
@@ -89,7 +92,8 @@ class PwTask
     /**
      * 删除一条任务
      *
-     * @param  int          $id
+     * @param int $id
+     *
      * @return PwError|bool
      */
     public function deleteTask($id)
@@ -104,10 +108,11 @@ class PwTask
     }
 
     /**
-     * 获取任务列表
+     * 获取任务列表.
      *
-     * @param  int   $num
-     * @param  int   $start
+     * @param int $num
+     * @param int $start
+     *
      * @return array
      */
     public function getTaskList($num = 10, $start = 0)
@@ -118,7 +123,8 @@ class PwTask
     /**
      * 根据任务ID列表获取该任务的下级任务
      *
-     * @param  array $taskIds
+     * @param array $taskIds
+     *
      * @return array
      */
     public function fetchNextTaskList($taskIds)
@@ -131,9 +137,10 @@ class PwTask
     }
 
     /**
-     * 获取一条记录
+     * 获取一条记录.
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -142,9 +149,10 @@ class PwTask
     }
 
     /**
-     * 获取一条或多条任务信息
+     * 获取一条或多条任务信息.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function gets($ids)
@@ -157,25 +165,27 @@ class PwTask
     }
 
     /**
-     * 获取id不在此范围内的可申请任务列表
+     * 获取id不在此范围内的可申请任务列表.
      *
-     * @param  array $no_periods 用户已进行或已完成的非周期性任务id
-     * @param  array $gids
-     * @param  int   $start
-     * @param  int   $num
-     * @param  int   $endTime
+     * @param array $no_periods 用户已进行或已完成的非周期性任务id
+     * @param array $gids
+     * @param int   $start
+     * @param int   $num
+     * @param int   $endTime
+     *
      * @return array
      */
-    public function getApplicableTasks($no_periods, $gids, $num = 10, $start = 0, $endTime)
+    public function getApplicableTasks($no_periods, $gids, $num, $start, $endTime)
     {
         //查询pw_task_group中不在这些id中的记录
         return $this->_taskGroupDao()->getApplicableTasks($no_periods, $gids, (int) $num, (int) $start, (int) $endTime);
     }
 
     /**
-     * 根据用户id查询用户任务的缓存
+     * 根据用户id查询用户任务的缓存.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getTaskCacheByUid($uid)
@@ -189,12 +199,13 @@ class PwTask
     }
 
     /**
-     * 获取通过通过自动申请过滤的任务id
+     * 获取通过通过自动申请过滤的任务id.
      *
-     * @param  int   $last_id 上次自动申请的任务id缓存
-     * @param  array $gids
-     * @param  int   $limit   返回条数
-     * @param  int   $endTime
+     * @param int   $last_id 上次自动申请的任务id缓存
+     * @param array $gids
+     * @param int   $limit   返回条数
+     * @param int   $endTime
+     *
      * @return array
      */
     public function getAutoApplicableTask($last_id, $gids, $limit = 1, $endTime = 0)
@@ -209,11 +220,12 @@ class PwTask
     }
 
     /**
-     * 获取id不在此范围内的可申请任务列表
+     * 获取id不在此范围内的可申请任务列表.
      *
-     * @param  int   $pre_id
-     * @param  int   $startTime
-     * @param  int   $endTime
+     * @param int $pre_id
+     * @param int $startTime
+     * @param int $endTime
+     *
      * @return array
      */
     public function getNextAutoTasks($pre_id, $startTime, $endTime)
@@ -236,7 +248,7 @@ class PwTask
     }
 
     /**
-     * 统计任务数
+     * 统计任务数.
      *
      * @return int
      */
@@ -246,13 +258,13 @@ class PwTask
     }
 
     /**
-     * 获取id不在此范围内的可申请任务数量
+     * 获取id不在此范围内的可申请任务数量.
      *
      * @param array $noIds
      * @param array $gids
      * @param int   $endTime
      */
-    public function countApplicableTasks($noIds = array(), $gids, $endTime)
+    public function countApplicableTasks($noIds, $gids, $endTime)
     {
         return $this->_taskGroupDao()->countApplicableTasks($noIds, $gids, (int) $endTime);
     }

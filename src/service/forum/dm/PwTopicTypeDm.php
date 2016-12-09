@@ -1,16 +1,16 @@
 <?php
 /**
- * 主题分类模型
+ * 主题分类模型.
  *
  * @author peihong <jhqblxt@gmail.com> Nov 23, 2011
+ *
  * @link
+ *
  * @version $Id: PwTopicTypeDm.php 15230 2012-08-02 05:55:42Z peihong.zhangph $
+ *
  * @license
  */
 defined('WEKIT_VERSION') || exit('Forbidden');
-
-
-
 
 class PwTopicTypeDm extends PwBaseDm
 {

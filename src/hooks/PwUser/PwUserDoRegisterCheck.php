@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户状态的hook
+ * 用户状态的hook.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package src.hooks.PwUser
  */
 class PwUserDoRegisterCheck
 {
     /**
-     * 根据用户ID删除用户的状态数据记录
+     * 根据用户ID删除用户的状态数据记录.
      *
-     * @param  int          $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return bool|PwError
      */
     public function deleteUser($uid)
@@ -23,9 +24,10 @@ class PwUserDoRegisterCheck
     }
 
     /**
-     * 根据用户ID列表批量删除用户数据
+     * 根据用户ID列表批量删除用户数据.
      *
-     * @param  array        $uids
+     * @param array $uids
+     *
      * @return bool|PwError
      */
     public function batchDeleteUser($uids)
@@ -34,7 +36,7 @@ class PwUserDoRegisterCheck
     }
 
     /**
-     * 获得状态DS
+     * 获得状态DS.
      *
      * @return PwUserRegisterCheck
      */

@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidMessageApi.php 24706 2013-02-16 06:02:32Z jieyin $
- * @package
  */
-
 class WindidMessageApi
 {
     /**
@@ -21,9 +21,10 @@ class WindidMessageApi
     }
 
     /**
-     * 获取用户未读消息数
+     * 获取用户未读消息数.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function getUnRead($uid)
@@ -32,9 +33,10 @@ class WindidMessageApi
     }
 
     /**
-     * 统计一个会话的消息数
+     * 统计一个会话的消息数.
      *
-     * @param  int $dialogId
+     * @param int $dialogId
+     *
      * @return int
      */
     public function countMessage($dialogId)
@@ -43,11 +45,12 @@ class WindidMessageApi
     }
 
     /**
-     * 获取消息列表
+     * 获取消息列表.
      *
-     * @param  int   $dialogId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $dialogId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getMessageList($dialogId, $start = 0, $limit = 10)
@@ -56,7 +59,7 @@ class WindidMessageApi
     }
 
     /**
-     * 获取一条对话信息
+     * 获取一条对话信息.
      *
      * @param int $dialogId
      */
@@ -66,9 +69,10 @@ class WindidMessageApi
     }
 
     /**
-     * 按会话ids获取对话消息列表
+     * 按会话ids获取对话消息列表.
      *
-     * @param  array $dialogIds
+     * @param array $dialogIds
+     *
      * @return array
      */
     public function fetchDialog($dialogIds)
@@ -77,7 +81,7 @@ class WindidMessageApi
     }
 
     /**
-     * 获取消息分组信息
+     * 获取消息分组信息.
      *
      * @param int $toUid
      * @param int $fromUid
@@ -88,7 +92,7 @@ class WindidMessageApi
     }
 
     /**
-     * 获取多组消息分组信息
+     * 获取多组消息分组信息.
      *
      * @param int $uid
      * @param int $from_uids
@@ -99,11 +103,12 @@ class WindidMessageApi
     }
 
     /**
-     * 获取对话消息列表
+     * 获取对话消息列表.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogList($uid, $start = 0, $limit = 10)
@@ -112,9 +117,10 @@ class WindidMessageApi
     }
 
     /**
-     * 统计分组消息列表数量
+     * 统计分组消息列表数量.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countDialog($uid)
@@ -123,10 +129,11 @@ class WindidMessageApi
     }
 
     /**
-     * 获取多条未读对话
+     * 获取多条未读对话.
      *
-     * @param  int   $uid
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $limit
+     *
      * @return array
      */
     public function getUnreadDialogsByUid($uid, $limit = 10)
@@ -135,11 +142,12 @@ class WindidMessageApi
     }
 
     /**
-     * 搜索消息
+     * 搜索消息.
      *
-     * @param  array        $search array('fromuid', 'keyword', 'username', 'starttime', 'endtime')
-     * @param  int          $start
-     * @param  int          $limit
+     * @param array $search array('fromuid', 'keyword', 'username', 'starttime', 'endtime')
+     * @param int   $start
+     * @param int   $limit
+     *
      * @return array(count, list)
      */
     public function searchMessage($search, $start = 0, $limit = 10)
@@ -148,7 +156,7 @@ class WindidMessageApi
     }
 
     /**
-     * 更新消息数
+     * 更新消息数.
      *
      * @param int $uid
      * @param int $num
@@ -165,11 +173,12 @@ class WindidMessageApi
     }
 
     /**
-     * 发送消息
+     * 发送消息.
      *
      * @param array $uids 收件人uids
      * @param  string $content 消息内容
-     * @param  int $fromUid 发件人
+     * @param int $fromUid 发件人
+     *
      * @return int
      */
     public function send($uids, $content, $fromUid = 0)
@@ -188,12 +197,13 @@ class WindidMessageApi
     }
 
     /**
-     * 标记已读
+     * 标记已读.
      *
-     * @param  int   $uid
-     * @param  int   $dialogId
-     * @param  array $messageIds
-     * @return int   标记成功的条数
+     * @param int   $uid
+     * @param int   $dialogId
+     * @param array $messageIds
+     *
+     * @return int 标记成功的条数
      */
     public function read($uid, $dialogId, $messageIds = array())
     {
@@ -253,7 +263,7 @@ class WindidMessageApi
     /********************** 传统收件箱，发件箱接口start *********************/
 
     /**
-     * 发件箱
+     * 发件箱.
      *
      * @return array
      */
@@ -263,7 +273,7 @@ class WindidMessageApi
     }
 
     /**
-     * 收件箱
+     * 收件箱.
      *
      * @return array
      */

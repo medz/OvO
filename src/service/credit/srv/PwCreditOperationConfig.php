@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 积分操作行为配置
+ * 积分操作行为配置.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditOperationConfig.php 19180 2012-10-11 07:31:36Z jieyin $
- * @package src.service.credit
  */
 class PwCreditOperationConfig
 {
@@ -36,10 +36,11 @@ class PwCreditOperationConfig
     }
 
     /**
-     * 获取描述
+     * 获取描述.
      *
      * @param string $operate
      * @param  array  $var     待解析字符变量
+     *
      * @return string
      */
     public function getDescrip($operate, $var = array())
@@ -67,12 +68,14 @@ class PwCreditOperationConfig
     }
 
     /**
-     * judge if the operate is in the "global->credit->strategy"
+     * judge if the operate is in the "global->credit->strategy".
      *
      * @author  xiaoxia.xuxx
      * @changeTime 2012-8-27
-     * @param  string $operate [description]
-     * @return bool   [description]
+     *
+     * @param string $operate [description]
+     *
+     * @return bool [description]
      */
     public function isCreditPop($operate)
     {
@@ -84,7 +87,7 @@ class PwCreditOperationConfig
     }
 
     /**
-     * 获取所有操作
+     * 获取所有操作.
      *
      * @return array
      */
@@ -94,7 +97,7 @@ class PwCreditOperationConfig
     }
 
     /**
-     * 获取分类
+     * 获取分类.
      *
      * @return array
      */

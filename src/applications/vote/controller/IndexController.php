@@ -3,24 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 投票基础业务处理
+ * 投票基础业务处理.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-12
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: IndexController.php 3219 2012-01-12 06:43:45Z mingxing.sun $
- * @package modules
- * @subpackage controller
  */
-
 class IndexController extends PwBaseController
 {
     public $page = 1;
     public $perpage = 20;
 
     /**
-     * 查看投票参与人员
-     *
+     * 查看投票参与人员.
      */
     public function memberAction()
     {
@@ -152,7 +149,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * get PwPoll
+     * get PwPoll.
      *
      * @return PwPoll
      */
@@ -162,7 +159,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * get PwPollOption
+     * get PwPollOption.
      *
      * @return PwPollOption
      */
@@ -172,7 +169,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * get PwPollService
+     * get PwPollService.
      *
      * @return PwPollService
      */
@@ -182,7 +179,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * get PwPollVoter
+     * get PwPollVoter.
      *
      * @return PwPollVoter
      */
@@ -192,7 +189,7 @@ class IndexController extends PwBaseController
     }
 
     /**
-     * get PwUser
+     * get PwUser.
      *
      * @return PwUser
      */

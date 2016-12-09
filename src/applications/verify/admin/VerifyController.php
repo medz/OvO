@@ -3,13 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * 后台设置-验证机制配置
+ * 后台设置-验证机制配置.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: VerifyController.php 28863 2013-05-28 03:22:39Z jieyin $
- * @package
  */
 class VerifyController extends AdminBaseController
 {
@@ -28,8 +28,7 @@ class VerifyController extends AdminBaseController
     }
 
     /**
-     * 配置增加表单处理器
-     *
+     * 配置增加表单处理器.
      */
     public function dorunAction()
     {
@@ -67,8 +66,7 @@ class VerifyController extends AdminBaseController
     }
 
     /**
-     * 站点设置
-     *
+     * 站点设置.
      */
     public function setAction()
     {
@@ -82,8 +80,7 @@ class VerifyController extends AdminBaseController
     }
 
     /**
-     * 全局配置增加表单处理器
-     *
+     * 全局配置增加表单处理器.
      */
     public function dosetAction()
     {

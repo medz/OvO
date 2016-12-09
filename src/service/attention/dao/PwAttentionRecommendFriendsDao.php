@@ -1,20 +1,19 @@
 <?php
 
 /**
- * 可能认识的人DAO
+ * 可能认识的人DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwAttentionRecommendFriendsDao extends PwBaseDao
 {
     protected $_Attentiontable = 'attention';
     protected $_table = 'attention_recommend_friends';
     protected $_dataStruct = array('uid', 'recommend_uid', 'recommend_username', 'cnt', 'recommend_user');
-
 
     public function get($uid, $limit, $offset)
     {

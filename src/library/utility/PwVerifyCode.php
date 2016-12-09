@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 验证码接口
+ * 验证码接口.
  *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwVerifyCode.php 23697 2013-01-15 05:17:30Z jieyin $
- * @package
  */
 class PwVerifyCode
 {
@@ -22,7 +22,6 @@ class PwVerifyCode
 
     /**
      * 验证验证码
-     *
      */
     public function checkVerify($inputCode = '')
     {
@@ -46,7 +45,6 @@ class PwVerifyCode
 
     /**
      * 读取语音验证码
-     *
      */
     public function getAudioVerify()
     {

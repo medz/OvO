@@ -2,19 +2,19 @@
 
 
 /**
- * page标签解析
+ * page标签解析.
  *
  * 职责：编译模板page标签
  * 支持参数类型：<code>
  * 模板名称,当前页,总条数,每页显示多少条,url
  * <page tpl='' current='' count='' per='' url='read.php?tid=$tid&page=' args='' />
  * </code>
+ *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTemplateCompilerPage.php 3580 2012-05-25 03:34:14Z yishuo $
- * @package viewer
- * @subpackage compiler
  */
 class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
 {
@@ -25,41 +25,41 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
      */
     protected $tpl = '';
     /**
-     * 分页跳转url
+     * 分页跳转url.
      *
      * @var string
      */
     protected $url = '';
     /**
-     * 字符型数字,总共有多少页
+     * 字符型数字,总共有多少页.
      *
      * @var string
      */
     protected $total = '0';
     /**
-     * 字符型数字,当前page
+     * 字符型数字,当前page.
      *
      * @var string
      */
     protected $page = '1';
     /**
-     * 字符型数字,总条数
+     * 字符型数字,总条数.
      *
      * @var string
      */
     protected $count = '0';
     /**
-     * 字符型数字,每页显示的条数
+     * 字符型数字,每页显示的条数.
      *
      * @var string
      */
     protected $per = '0';
 
     /**
-     *
-     * URL参数,http query
+     * URL参数,http query.
      *
      * @var array
+     *
      * @deprecated
      */
     protected $args = 'array()';
@@ -92,7 +92,7 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
     }
 
     /**
-     * 获得page页模板内容
+     * 获得page页模板内容.
      *
      * @return string|mixed
      */

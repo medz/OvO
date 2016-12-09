@@ -6,9 +6,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-15
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: StorageController.php 28785 2013-05-23 09:54:16Z jieyin $
- * @package admin
- * @subpackage controller.config
  */
 class StorageController extends AdminBaseController
 {
@@ -20,7 +19,7 @@ class StorageController extends AdminBaseController
     }
 
     /**
-     * 后台设置-ftp设置
+     * 后台设置-ftp设置.
      */
     public function ftpAction()
     {
@@ -29,7 +28,7 @@ class StorageController extends AdminBaseController
     }
 
     /**
-     * 后台设置-ftp设置
+     * 后台设置-ftp设置.
      */
     public function doftpAction()
     {

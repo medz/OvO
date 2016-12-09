@@ -1,16 +1,17 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeLog.php 8487 2012-04-19 08:09:57Z gao.wanggao $
- * @package
  */
 class PwLikeLog
 {
     /**
-     * 根据logid获取内容
+     * 根据logid获取内容.
      *
      * @param int $logid
      */
@@ -25,8 +26,8 @@ class PwLikeLog
     }
 
     /**
+     * 根据用户ID和喜欢ID获取内容.
      *
-     * 根据用户ID和喜欢ID获取内容
      * @param unknown_type $uid
      * @param unknown_type $likeid
      */
@@ -42,7 +43,7 @@ class PwLikeLog
     }
 
     /**
-     * 获取多条喜欢内容
+     * 获取多条喜欢内容.
      *
      * @param array $logids
      */
@@ -56,7 +57,7 @@ class PwLikeLog
     }
 
     /**
-     * 分页获取喜欢列表
+     * 分页获取喜欢列表.
      *
      * @param int|array $uids
      * @param int       $start
@@ -76,9 +77,8 @@ class PwLikeLog
         return $this->_getLikeLogDao()->getInfoList($uids, $start, $limit);
     }
 
-
     /**
-     * 统计喜欢数
+     * 统计喜欢数.
      *
      * @param int $uid
      * @param int $tagid
@@ -91,7 +91,7 @@ class PwLikeLog
     }
 
     /**
-     * 按时间统计喜欢数
+     * 按时间统计喜欢数.
      *
      * @param int $likeid
      * @param int $time
@@ -105,7 +105,7 @@ class PwLikeLog
     }
 
     /**
-     * 增加内容
+     * 增加内容.
      *
      * @param PwLikeDm $dm
      */
@@ -120,7 +120,7 @@ class PwLikeLog
     }
 
     /**
-     * 更新内容
+     * 更新内容.
      *
      * @param int      $logid
      * @param PwLikeDm $dm
@@ -136,7 +136,7 @@ class PwLikeLog
     }
 
     /**
-     * 删除信息
+     * 删除信息.
      *
      * @param int $logid
      */
@@ -149,7 +149,6 @@ class PwLikeLog
 
         return $this->_getLikeLogDao()->deleteInfo($logid);
     }
-
 
     private function _getLikeLogDao()
     {

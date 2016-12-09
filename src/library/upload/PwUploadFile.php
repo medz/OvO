@@ -2,13 +2,10 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
  * 上传文件对象
  *
  * @author Jianmin Chen <sky_hold@163.com>
- * @package upload
  */
 class PwUploadFile
 {
@@ -39,20 +36,20 @@ class PwUploadFile
     public function getInfo()
     {
         return array(
-            'id' => $this->id,
-            'attname' => $this->attname,
-            'name' => $this->name,
-            'size' => $this->size,
-            'type' => $this->type,
-            'ifthumb' => $this->ifthumb,
+            'id'            => $this->id,
+            'attname'       => $this->attname,
+            'name'          => $this->name,
+            'size'          => $this->size,
+            'type'          => $this->type,
+            'ifthumb'       => $this->ifthumb,
             'fileuploadurl' => $this->fileuploadurl,
-            'ext' => $this->ext,
-            'thumb' => $this->_thumb,
+            'ext'           => $this->ext,
+            'thumb'         => $this->_thumb,
         );
     }
 
     /**
-     * 是否是图片
+     * 是否是图片.
      *
      * @return bool
      */
@@ -62,7 +59,7 @@ class PwUploadFile
     }
 
     /**
-     * 是否是文本
+     * 是否是文本.
      *
      * @return bool
      */
@@ -72,10 +69,11 @@ class PwUploadFile
     }
 
     /**
-     * 附件处理
+     * 附件处理.
      *
      * @param PwUploadAction $bhv 上传行为
      * @param object 存储对象
+     *
      * @return bool|PwError
      */
     public function operate($bhv, $store)
@@ -94,10 +92,11 @@ class PwUploadFile
     }
 
     /**
-     * 图片处理
+     * 图片处理.
      *
      * @param PwUploadAction $bhv 上传行为
      * @param object 存储对象
+     *
      * @return bool|PwError
      */
     public function operateImage($bhv, $store)
@@ -127,7 +126,7 @@ class PwUploadFile
     }
 
     /**
-     * 文本处理
+     * 文本处理.
      *
      * @return bool|PwError
      */
@@ -144,7 +143,7 @@ class PwUploadFile
     }
 
     /**
-     * 生成缩略图
+     * 生成缩略图.
      *
      * @param PwImage $image 图片对象
      * @param array   $thumbInfo 缩略图配置
@@ -171,7 +170,7 @@ class PwUploadFile
     }
 
     /**
-     * 图片生成水印
+     * 图片生成水印.
      *
      * @param PwImage $image 图片对象
      * @param array   $options 生成方案配置
@@ -193,7 +192,6 @@ class PwUploadFile
         if ($image->width < $config['mark.limitwidth'] || $image->height < $config['mark.limitheight']) {
             return;
         }
-
 
         $watermark = new PwImageWatermark($image);
         $watermark->setPosition($config['mark.position'])

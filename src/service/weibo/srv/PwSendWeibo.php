@@ -10,10 +10,9 @@ Wind::import('SRV:weibo.PwWeibo');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwSendWeibo.php 5519 2012-03-06 07:13:36Z jieyin $
- * @package fresh
  */
-
 class PwSendWeibo
 {
     public $user;
@@ -29,9 +28,10 @@ class PwSendWeibo
     }
 
     /**
-     * 发布一条微博
+     * 发布一条微博.
      *
-     * @param  object       $dm PwWeiboDm
+     * @param object $dm PwWeiboDm
+     *
      * @return bool|PwError
      */
     public function send(PwWeiboDm $dm)

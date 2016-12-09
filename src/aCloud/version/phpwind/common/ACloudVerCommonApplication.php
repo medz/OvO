@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudVerCommonApplication extends ACloudVerCommonBase
 {
@@ -8,7 +8,7 @@ class ACloudVerCommonApplication extends ACloudVerCommonBase
     {
         $result = $this->getPwInstallApplication()->onlineInstall($appId);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -18,7 +18,7 @@ class ACloudVerCommonApplication extends ACloudVerCommonBase
     {
         $result = $this->getPwInstallApplication()->install($appId);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -28,7 +28,7 @@ class ACloudVerCommonApplication extends ACloudVerCommonBase
     {
         $result = $this->getPwUninstallApplication()->uninstall($appId);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);
@@ -38,7 +38,7 @@ class ACloudVerCommonApplication extends ACloudVerCommonBase
     {
         $result = $this->getPwUpdateApplication()->upgrade($appId);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, $result);

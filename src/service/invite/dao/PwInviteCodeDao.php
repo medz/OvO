@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 邀请码基本信息表
+ * 邀请码基本信息表.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwInviteCodeDao.php 19073 2012-10-10 08:33:40Z xiaoxia.xuxx $
- * @package service.invite.dao
  */
 class PwInviteCodeDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwInviteCodeDao extends PwBaseDao
     protected $_dataStruct = array('code', 'created_userid', 'invited_userid', 'ifused', 'created_time', 'modified_time');
 
     /**
-     * 根据邀请码获取该条邀请码信息
+     * 根据邀请码获取该条邀请码信息.
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return array
      */
     public function getCode($code)
@@ -27,11 +28,12 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据创建用户ID获得该用户邀请成功的邀请用户
+     * 根据创建用户ID获得该用户邀请成功的邀请用户.
      *
-     * @param  int   $uid
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $uid
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getUsedCodeByCreatedUid($uid, $limit = 18, $start = 0)
@@ -43,9 +45,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID统计该用户邀请的人
+     * 根据用户ID统计该用户邀请的人.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countUsedCodeByCreatedUid($uid)
@@ -57,11 +60,12 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据条件获得该用户的邀请码信息
+     * 根据条件获得该用户的邀请码信息.
      *
-     * @param  array $condition 查询条件
-     * @param  int   $limit     查询条数
-     * @param  int   $offset    开始查询的位置
+     * @param array $condition 查询条件
+     * @param int   $limit     查询条数
+     * @param int   $offset    开始查询的位置
+     *
      * @return array
      */
     public function searchCode($condition, $limit, $offset)
@@ -74,9 +78,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据查询条件获取信息
+     * 根据查询条件获取信息.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearchCode($condition)
@@ -89,10 +94,11 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据用户ID及时间统计大于这个时间的用户购买的邀请码数量
+     * 根据用户ID及时间统计大于这个时间的用户购买的邀请码数量.
      *
-     * @param  int $uid
-     * @param  int $time
+     * @param int $uid
+     * @param int $time
+     *
      * @return int
      */
     public function countByUidAndTime($uid, $time)
@@ -104,9 +110,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 批量检查该code是否存在，并返回存在的codes
+     * 批量检查该code是否存在，并返回存在的codes.
      *
-     * @param  array $codes
+     * @param array $codes
+     *
      * @return array
      */
     public function fetchCode($codes)
@@ -120,6 +127,7 @@ class PwInviteCodeDao extends PwBaseDao
      * 添加邀请码
      *
      * @param array $data
+     *
      * @return
      */
     public function addCode($data)
@@ -130,7 +138,8 @@ class PwInviteCodeDao extends PwBaseDao
     /**
      * 批量添加邀请码
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function batchAddCode($data)
@@ -155,7 +164,7 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 更新
+     * 更新.
      *
      * @param string $code
      * @param array  $data
@@ -166,9 +175,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 根据邀请码删除信息
+     * 根据邀请码删除信息.
      *
-     * @param  string $code
+     * @param string $code
+     *
      * @return bool
      */
     public function deleteCode($code)
@@ -177,9 +187,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 批量删除邀请码信息
+     * 批量删除邀请码信息.
      *
-     * @param  array $codes
+     * @param array $codes
+     *
      * @return bool
      */
     public function batchDeleteCode($codes)
@@ -188,9 +199,10 @@ class PwInviteCodeDao extends PwBaseDao
     }
 
     /**
-     * 构建查询条件
+     * 构建查询条件.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return array
      */
     private function _buildCondition($condition)

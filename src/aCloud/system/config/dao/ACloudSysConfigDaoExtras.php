@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 require_once Wind::getRealPath('ACLOUD:system.core.ACloudSysCoreDao');
 class ACloudSysConfigDaoExtras extends ACloudSysCoreDao
 {
@@ -11,7 +11,7 @@ class ACloudSysConfigDaoExtras extends ACloudSysCoreDao
         $sql = sprintf('REPLACE INTO %s %s', $this->tablename, $this->buildClause($fields));
         $this->query($sql);
 
-        return $this->get($fields ['ekey']);
+        return $this->get($fields['ekey']);
     }
 
     public function update($fields, $ekey)
@@ -23,7 +23,7 @@ class ACloudSysConfigDaoExtras extends ACloudSysCoreDao
 
     public function get($ekey)
     {
-        if (! $this->checkTable()) {
+        if (!$this->checkTable()) {
             return array();
         }
 
@@ -32,7 +32,7 @@ class ACloudSysConfigDaoExtras extends ACloudSysCoreDao
 
     public function getsByKeys($keys)
     {
-        if (! $this->checkTable()) {
+        if (!$this->checkTable()) {
             return array();
         }
 
@@ -51,7 +51,7 @@ class ACloudSysConfigDaoExtras extends ACloudSysCoreDao
 
     public function gets()
     {
-        if (! $this->checkTable()) {
+        if (!$this->checkTable()) {
             return array();
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('ATTACH_INVALID_PARAMS', 851);
 
@@ -12,10 +12,10 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
     }
 
     /**
+     * 获取帖子图片附件地址信息.
      *
-     * 获取帖子图片附件地址信息
+     * @param array $aids
      *
-     * @param  array $aids
      * @return array 图片地址
      */
     public function getImgAttaches($aids)
@@ -61,7 +61,7 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
         $sql = sprintf('SELECT * FROM %s WHERE aid >= %s AND aid <= %s', ACloudSysCoreS::sqlMetadata('{{attachs_thread}}'), ACloudSysCoreS::sqlEscape($startId), ACloudSysCoreS::sqlEscape($endId));
         $query = Wind::getComponent('db')->query($sql);
         $result = $query->fetchAll(null, PDO::FETCH_ASSOC);
-        if (! ACloudSysCoreS::isArray($result)) {
+        if (!ACloudSysCoreS::isArray($result)) {
             return array();
         }
 
@@ -80,16 +80,15 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
     }
 
     /**
-     *
-     * 云存储api（同步附件）
+     * 云存储api（同步附件）.
      *
      * @param string $dir
      */
     public function getAttachesForStorage($dir)
     {
-        $attachDir = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH ;
+        $attachDir = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH;
         $dir = trim($dir);
-        if (! $dir) {
+        if (!$dir) {
             return array();
         }
         $result = array();
@@ -98,7 +97,7 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
             if ($fileName == '.' || $fileName == '..' || preg_match('/\.(htm|html|db)$/i', $fileName)) {
                 continue;
             }
-            $result [] = array('attachurl' => str_replace(Wind::getRealDir('PUBLIC:'), $baseUrl, $fileName), 'dir' => str_replace(Wind::getRealDir('PUBLIC:'), '', $fileName));
+            $result[] = array('attachurl' => str_replace(Wind::getRealDir('PUBLIC:'), $baseUrl, $fileName), 'dir' => str_replace(Wind::getRealDir('PUBLIC:'), '', $fileName));
         }
 
         return $result;
@@ -112,7 +111,7 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
                 continue;
             }
             $tmp = $this->_listDirectories($dir);
-            $tmp [] = array('dir' => str_replace(array(Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH, '\\'), array('', '/'), $dir));
+            $tmp[] = array('dir' => str_replace(array(Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH, '\\'), array('', '/'), $dir));
             $dirs = array_merge($dirs, $tmp);
         }
 
@@ -123,8 +122,8 @@ class ACloudVerCommonAttach extends ACloudVerCommonBase
     {
         $result = array();
         foreach ($data as $value) {
-            $value ['attachurl'] = Pw::getPath($value ['path'], $value ['ifthumb']);
-            $result [$value ['aid']] = $value;
+            $value['attachurl'] = Pw::getPath($value['path'], $value['ifthumb']);
+            $result[$value['aid']] = $value;
         }
 
         return $result;

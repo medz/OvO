@@ -1,6 +1,6 @@
 <?php
 /**
- * 后台用户服务类
+ * 后台用户服务类.
  *
  * 后台用户服务类,职责:<ol>
  * <li>login,用户登录</li>
@@ -11,9 +11,8 @@
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-17
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: AdminUserService.php 24131 2013-01-22 05:55:40Z yishuo $
- * @package admin
- * @subpackage library.service
  */
 class AdminUserService
 {
@@ -23,9 +22,10 @@ class AdminUserService
     private $_founder = null;
 
     /**
-     * 根据用户ID获取用户列表,支持数组或者int
+     * 根据用户ID获取用户列表,支持数组或者int.
      *
-     * @param  array|int     $uids
+     * @param array|int $uids
+     *
      * @return array|PwError
      */
     public function getUserByUids($uids)
@@ -38,11 +38,12 @@ class AdminUserService
     }
 
     /**
-     * 根据用户名来判断用户的合法性
+     * 根据用户名来判断用户的合法性.
      *
      * 合法用户返回true，非法用户返回false
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return array
      */
     public function verifyUserByUsername($username)
@@ -55,13 +56,14 @@ class AdminUserService
     }
 
     /**
-     * 验证用户是否有访问菜单的权限
+     * 验证用户是否有访问菜单的权限.
      *
-     * @param  AdminUserBo $user 用户ID
-     * @param  string      $m    路由信息Module
-     * @param  string      $c    路由信息Controller
-     * @param  string      $a    路由信息Action
-     * @return true        Error
+     * @param AdminUserBo $user 用户ID
+     * @param string      $m    路由信息Module
+     * @param string      $c    路由信息Controller
+     * @param string      $a    路由信息Action
+     *
+     * @return true Error
      */
     public function verifyUserMenuAuth($user, $m, $c, $a)
     {
@@ -100,8 +102,9 @@ class AdminUserService
      * 3. array('home') 只有home菜单权限
      * </pre>
      *
-     * @param  AdminUserBo $user
-     * @return array       PwError -1
+     * @param AdminUserBo $user
+     *
+     * @return array PwError -1
      */
     public function getAuths($user)
     {
@@ -140,8 +143,9 @@ class AdminUserService
      * $loginInfo: AdminUser
      * </code>
      *
-     * @param  string $username 用户名
-     * @param  string $password 密码
+     * @param string $username 用户名
+     * @param string $password 密码
+     *
      * @return bool
      */
     public function login($username, $password)
@@ -164,7 +168,7 @@ class AdminUserService
             return array();
         }
         list($type, $uid, $password) = explode("\t", Pw::decrypt($userCookie));
-        if ($type == AdminUserService::FOUNDER) {
+        if ($type == self::FOUNDER) {
             $srv = $this->loadFounderService();
         } else {
             $srv = $this->loadManagerService();

@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwLikeRelationsDao.php 5754 2012-03-10 07:01:17Z gao.wanggao $
- * @package
  */
 class PwLikeRelationsDao extends PwBaseDao
 {
@@ -24,7 +25,7 @@ class PwLikeRelationsDao extends PwBaseDao
 
     public function getInfoList($tagid, $offset, $limit)
     {
-        $where = ' WHERE tagid = ? ' ;
+        $where = ' WHERE tagid = ? ';
         $sql = $this->_bindSql('SELECT * FROM %s %s  %s ', $this->getTable(), $where, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 

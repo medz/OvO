@@ -7,8 +7,8 @@ Wind::import('WSRV:base.WindidError');
 
 /**
  * @author Jianmin Chen <sky_hold@163.com>
+ *
  * @version $Id: windidBoot.php 24569 2013-02-01 02:23:37Z jieyin $
- * @package wekit
  */
 class windidBoot extends bootstrap
 {
@@ -23,7 +23,7 @@ class windidBoot extends bootstrap
     }
 
     /**
-     * 获取全局配置
+     * 获取全局配置.
      *
      * @return array
      */
@@ -33,7 +33,7 @@ class windidBoot extends bootstrap
     }
 
     /**
-     * 获取当前时间戳
+     * 获取当前时间戳.
      *
      * @return int
      */
@@ -48,7 +48,7 @@ class windidBoot extends bootstrap
     }
 
     /**
-     * 获得登录用户信息
+     * 获得登录用户信息.
      *
      * @return PwUserBo
      */
@@ -58,8 +58,7 @@ class windidBoot extends bootstrap
     }
 
     /**
-     * 在frontBoot的onResponse时被调用
-     *
+     * 在frontBoot的onResponse时被调用.
      */
     public function beforeStart($front = null)
     {

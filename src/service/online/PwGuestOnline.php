@@ -6,17 +6,17 @@
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwGuestOnline.php 17060 2012-08-31 01:50:31Z gao.wanggao $
- * @package
  */
-
 class PwGuestOnline
 {
     /**
-     * 获取一条游客信息
+     * 获取一条游客信息.
      *
-     * @param  int   $ip
-     * @param  int   $created_time
+     * @param int $ip
+     * @param int $created_time
+     *
      * @return array
      */
     public function getInfo($ip, $created_time)
@@ -31,10 +31,11 @@ class PwGuestOnline
     }
 
     /**
-     * 统计在线游客数
+     * 统计在线游客数.
      *
-     * @param  int $fid
-     * @param  int $tid
+     * @param int $fid
+     * @param int $tid
+     *
      * @return int
      */
     public function getOnlineCount($fid = 0, $tid = 0)
@@ -46,9 +47,10 @@ class PwGuestOnline
     }
 
     /**
-     * 添加一条游客信息
+     * 添加一条游客信息.
      *
-     * @param  PwOnlineDm $dm
+     * @param PwOnlineDm $dm
+     *
      * @return bool
      */
     public function replaceInfo(PwOnlineDm $dm)
@@ -62,10 +64,11 @@ class PwGuestOnline
     }
 
     /**
-     * 删除一条游客信息
+     * 删除一条游客信息.
      *
-     * @param  int  $ip
-     * @param  int  $createdTime
+     * @param int $ip
+     * @param int $createdTime
+     *
      * @return bool
      */
     public function deleteInfo($ip, $createdTime)
@@ -80,9 +83,10 @@ class PwGuestOnline
     }
 
     /**
-     * 删除过期的游客信息
+     * 删除过期的游客信息.
      *
-     * @param  int $modifyTime
+     * @param int $modifyTime
+     *
      * @return int
      */
     public function deleteInfoByTime($modifyTime)

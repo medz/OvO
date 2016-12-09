@@ -17,8 +17,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 保存搜索设置
-     *
+     * 保存搜索设置.
      */
     public function doRunAction()
     {

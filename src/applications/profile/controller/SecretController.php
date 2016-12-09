@@ -3,13 +3,13 @@
 Wind::import('APPS:.profile.controller.BaseProfileController');
 
 /**
- * 隐私设置
+ * 隐私设置.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: SecretController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package src.products.u.controller.profile
  */
 class SecretController extends BaseProfileController
 {
@@ -63,7 +63,7 @@ class SecretController extends BaseProfileController
     }
 
     /**
-     * 设置黑名单
+     * 设置黑名单.
      */
     public function blackAction()
     {
@@ -82,7 +82,7 @@ class SecretController extends BaseProfileController
     }
 
     /**
-     * do设置黑名单
+     * do设置黑名单.
      */
     public function doblackAction()
     {
@@ -119,7 +119,7 @@ class SecretController extends BaseProfileController
     }
 
     /**
-     * 获得个人设置的菜单
+     * 获得个人设置的菜单.
      */
     private function getProfileMenu()
     {

@@ -5,13 +5,13 @@ Wind::import('SRV:user.vo.PwUserSo');
 Wind::import('SRV:user.srv.PwClearUserService');
 
 /**
- * 后台用户管理界面
+ * 后台用户管理界面.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ManageController.php 24850 2013-02-25 02:20:12Z jieyin $
- * @package
  */
 class ManageController extends AdminBaseController
 {
@@ -67,8 +67,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 添加用户
-     *
+     * 添加用户.
      */
     public function addAction()
     {
@@ -117,8 +116,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 编辑用户信息
-     *
+     * 编辑用户信息.
      */
     public function editAction()
     {
@@ -147,8 +145,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 编辑用户信息操作
-     *
+     * 编辑用户信息操作.
      */
     public function doEditAction()
     {
@@ -227,8 +224,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 编辑用户积分
-     *
+     * 编辑用户积分.
      */
     public function editCreditAction()
     {
@@ -251,8 +247,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 设置用户积分
-     *
+     * 设置用户积分.
      */
     public function doEditCreditAction()
     {
@@ -276,8 +271,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 设置用户组
-     *
+     * 设置用户组.
      */
     public function editGroupAction()
     {
@@ -309,8 +303,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 操作用户组设置
-     *
+     * 操作用户组设置.
      */
     public function doEditGroupAction()
     {
@@ -396,7 +389,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 恢复系统头像
+     * 恢复系统头像.
      */
     public function defaultAvatarAction()
     {
@@ -409,8 +402,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 清理用户信息
-     *
+     * 清理用户信息.
      */
     public function clearAction()
     {
@@ -421,8 +413,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 清理用户操作
-     *
+     * 清理用户操作.
      */
     public function doClearAction()
     {
@@ -467,7 +458,7 @@ class ManageController extends AdminBaseController
     }
 
     /**
-     * 设置地区显示
+     * 设置地区显示.
      *
      * @return array
      */

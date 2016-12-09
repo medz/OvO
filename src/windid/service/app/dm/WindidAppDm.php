@@ -1,12 +1,12 @@
 <?php
 
 /**
- * 应用的数据映射文件
+ * 应用的数据映射文件.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidAppDm.php 23935 2013-01-17 07:06:50Z jieyin $
- * @package windid.service.app.dm
  */
 class WindidAppDm extends PwBaseDm
 {
@@ -25,7 +25,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置app名字
+     * 设置app名字.
      *
      * @param string $name
      */
@@ -37,7 +37,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置app名字
+     * 设置app名字.
      *
      * @param string $name
      */
@@ -49,7 +49,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置访问路径
+     * 设置访问路径.
      *
      * @param string $siteurl
      */
@@ -61,7 +61,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置应用私钥
+     * 设置应用私钥.
      *
      * @param string $secretkey
      */
@@ -80,7 +80,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置链接访问的api文件
+     * 设置链接访问的api文件.
      *
      * @param string $apifile
      */
@@ -92,7 +92,7 @@ class WindidAppDm extends PwBaseDm
     }
 
     /**
-     * 设置是否允许同步登录
+     * 设置是否允许同步登录.
      *
      * @param int $synlogin
      */

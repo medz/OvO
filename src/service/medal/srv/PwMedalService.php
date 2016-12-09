@@ -1,18 +1,20 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>
+ * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
+ *
  * @author $Author: xiaoxia.xuxx $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalService.php 22364 2012-12-21 12:32:59Z xiaoxia.xuxx $
- * @package
  */
 class PwMedalService
 {
     /**
-     * 从勋章用户表获取一个用户的勋章
+     * 从勋章用户表获取一个用户的勋章.
      *
      * 全局缓存从pwMedalCahce.php里取
+     *
      * @param int $uid
      */
     public function getUserMedal($uid)
@@ -38,9 +40,10 @@ class PwMedalService
     }
 
     /**
-     * 从勋章用户表获取多个用户的勋章
+     * 从勋章用户表获取多个用户的勋章.
      *
      * 全局缓存从pwMedalCahce.php里取
+     *
      * @param array $uid
      */
     public function fetchUserMedal($uids)
@@ -61,7 +64,7 @@ class PwMedalService
         $_allMedalId = array_unique($_allMedalId);
         $medals = $this->_getMedalDs()->fetchMedalInfo($_allMedalId);
         $attachUrl = Pw::getPath('').'medal/';
-        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/' ;
+        $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($_userMedalIds as $uid => $medalIds) {
             $_medalInfo = array();
             foreach ($medalIds as $medalId) {
@@ -81,7 +84,7 @@ class PwMedalService
     }
 
     /**
-     * 勋章领取，用于申请任务的勋章
+     * 勋章领取，用于申请任务的勋章.
      *
      * @param int $logId
      * @param int $uid
@@ -109,7 +112,7 @@ class PwMedalService
     }
 
     /**
-     * 颁发勋章，用于完成的自动任务获取的勋章
+     * 颁发勋章，用于完成的自动任务获取的勋章.
      *
      * @param int $uid
      * @param int $medalId
@@ -175,7 +178,7 @@ class PwMedalService
     }
 
     /**
-     * 停用勋章
+     * 停用勋章.
      *
      * @param int $logid
      */
@@ -198,8 +201,7 @@ class PwMedalService
     }
 
     /**
-     * 回收用户过期勋章
-     *
+     * 回收用户过期勋章.
      */
     public function recoverMedal($uid)
     {
@@ -251,8 +253,7 @@ class PwMedalService
     }
 
     /**
-     * 勋章缓存更新策略
-     *
+     * 勋章缓存更新策略.
      */
     public function updateCache()
     {
@@ -262,7 +263,7 @@ class PwMedalService
     }
 
     /**
-     * 获取所有勋章缓存内容
+     * 获取所有勋章缓存内容.
      *
      * @return array
      */
@@ -272,10 +273,10 @@ class PwMedalService
         $all = $this->_getMedalDs()->getAllMedal();
         foreach ($all as $medal) {
             $medalAll[$medal['medal_id']] = array(
-                'name' => $medal['name'],
-                'path' => $medal['path'],
+                'name'  => $medal['name'],
+                'path'  => $medal['path'],
                 'image' => $medal['image'],
-                'icon' => $medal['icon'],
+                'icon'  => $medal['icon'],
             );
         }
 
@@ -283,7 +284,7 @@ class PwMedalService
     }
 
     /**
-     * 获取所有自动勋章缓存内容
+     * 获取所有自动勋章缓存内容.
      *
      * @return array
      */
@@ -299,14 +300,14 @@ class PwMedalService
     }
 
     /**
-     * 判断勋章用户组与用户组的领取权限
+     * 判断勋章用户组与用户组的领取权限.
      *
      * @param string $userGids  1,2,3,4
      * @param string $medalGids 1,2,3,4
      */
     public function allowAwardMedal($userGids, $medalGids = '')
     {
-        $medalGids = !is_array($medalGids) && $medalGids ? explode(',', $medalGids) : $medalGids ;
+        $medalGids = !is_array($medalGids) && $medalGids ? explode(',', $medalGids) : $medalGids;
         $userGids = !is_array($userGids) && $userGids ? explode(',', $userGids) : $userGids;
         if ($medalGids && !array_intersect($userGids, $medalGids)) {
             return false;
@@ -334,15 +335,15 @@ class PwMedalService
     public function awardTypes($type = '')
     {
         $_array = array(
-            1 => 'login_days',
-            2 => 'post_days',
-            3 => 'thread_days',
-            4 => 'safa_times',
-            5 => 'fans_number',
-            6 => 'belike_times',
-            7 => 'thread_count',
-            8 => 'follow_number',
-            9 => 'like_count',
+            1  => 'login_days',
+            2  => 'post_days',
+            3  => 'thread_days',
+            4  => 'safa_times',
+            5  => 'fans_number',
+            6  => 'belike_times',
+            7  => 'thread_count',
+            8  => 'follow_number',
+            9  => 'like_count',
             10 => 'login_count',
         );
         if (!empty($type)) {

@@ -3,16 +3,16 @@
 Wind::import('APPS:u.service.helper.PwUserHelper');
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright Copyright ©2003-2010 phpwind.com
  * @license
  */
-
 class UErrorController extends PwErrorController
 {
     /**
-     * 用户注册信息错误
-     *
+     * 用户注册信息错误.
      */
     public function regErrorAction()
     {
@@ -33,8 +33,7 @@ class UErrorController extends PwErrorController
     }
 
     /**
-     * 用户注册信息错误
-     *
+     * 用户注册信息错误.
      */
     public function loginErrorAction()
     {

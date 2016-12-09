@@ -2,19 +2,17 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 Wind::import('SRV:recycle.dm.PwTopicRecycleDm');
 
 /**
- * 帖子删除扩展服务接口--虚拟删除到回收站
+ * 帖子删除扩展服务接口--虚拟删除到回收站.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDeleteTopicDoVirtualDelete.php 15975 2012-08-16 09:40:09Z xiaoxia.xuxx $
- * @package forum
  */
-
 class PwDeleteTopicDoVirtualDelete extends iPwGleanDoHookProcess
 {
     protected $record = array();

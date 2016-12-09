@@ -62,43 +62,45 @@
  * MA  02111-1307  USA
  *
  * @category   Net
- * @package    Net_SSH1
+ *
  * @author     Jim Wigginton <terrafrost@php.net>
  * @copyright  MMVII Jim Wigginton
  * @license    http://www.gnu.org/licenses/lgpl.txt
+ *
  * @version    $Id: SSH1.php 21939 2012-12-17 07:13:16Z long.shi $
+ *
  * @link       http://phpseclib.sourceforge.net
  */
 
 /**
- * Include Math_BigInteger
+ * Include Math_BigInteger.
  *
  * Used to do RSA encryption.
  */
 require_once 'phpseclib/Math/BigInteger.php';
 
 /**
- * Include Crypt_Null
+ * Include Crypt_Null.
  */
 //require_once('Crypt/Null.php');
 
 /**
- * Include Crypt_DES
+ * Include Crypt_DES.
  */
 require_once 'phpseclib/Crypt/DES.php';
 
 /**
- * Include Crypt_TripleDES
+ * Include Crypt_TripleDES.
  */
 require_once 'phpseclib/Crypt/TripleDES.php';
 
 /**
- * Include Crypt_RC4
+ * Include Crypt_RC4.
  */
 require_once 'phpseclib/Crypt/RC4.php';
 
 /**
- * Include Crypt_Random
+ * Include Crypt_Random.
  */
 require_once 'phpseclib/Crypt/Random.php';
 
@@ -250,120 +252,127 @@ define('NET_SSH1_MASK_SHELL', 0x00000004);
  * Pure-PHP implementation of SSHv1.
  *
  * @author  Jim Wigginton <terrafrost@php.net>
+ *
  * @version 0.1.0
- * @package Net_SSH1
  */
 class Net_SSH1
 {
     /**
-     * The SSH identifier
+     * The SSH identifier.
      *
-     * @var String
+     * @var string
      */
     public $identifier = 'SSH-1.5-phpseclib';
 
     /**
-     * The Socket Object
+     * The Socket Object.
      *
-     * @var Object
+     * @var object
      */
     public $fsock;
 
     /**
-     * The cryptography object
+     * The cryptography object.
      *
-     * @var Object
+     * @var object
      */
     public $crypto = false;
 
     /**
-     * Execution Bitmap
+     * Execution Bitmap.
      *
      * The bits that are set reprsent functions that have been called already.  This is used to determine
      * if a requisite function has been successfully executed.  If not, an error should be thrown.
      *
-     * @var Integer
+     * @var int
      */
     public $bitmap = 0;
 
     /**
-     * The Server Key Public Exponent
+     * The Server Key Public Exponent.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getServerKeyPublicExponent()
-     * @var String
+     *
+     * @var string
      */
     public $server_key_public_exponent;
 
     /**
-     * The Server Key Public Modulus
+     * The Server Key Public Modulus.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getServerKeyPublicModulus()
-     * @var String
+     *
+     * @var string
      */
     public $server_key_public_modulus;
 
     /**
-     * The Host Key Public Exponent
+     * The Host Key Public Exponent.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getHostKeyPublicExponent()
-     * @var String
+     *
+     * @var string
      */
     public $host_key_public_exponent;
 
     /**
-     * The Host Key Public Modulus
+     * The Host Key Public Modulus.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getHostKeyPublicModulus()
-     * @var String
+     *
+     * @var string
      */
     public $host_key_public_modulus;
 
     /**
-     * Supported Ciphers
+     * Supported Ciphers.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getSupportedCiphers()
-     * @var Array
+     *
+     * @var array
      */
     public $supported_ciphers = array(
-        NET_SSH1_CIPHER_NONE => 'No encryption',
-        NET_SSH1_CIPHER_IDEA => 'IDEA in CFB mode',
-        NET_SSH1_CIPHER_DES => 'DES in CBC mode',
-        NET_SSH1_CIPHER_3DES => 'Triple-DES in CBC mode',
+        NET_SSH1_CIPHER_NONE       => 'No encryption',
+        NET_SSH1_CIPHER_IDEA       => 'IDEA in CFB mode',
+        NET_SSH1_CIPHER_DES        => 'DES in CBC mode',
+        NET_SSH1_CIPHER_3DES       => 'Triple-DES in CBC mode',
         NET_SSH1_CIPHER_BROKEN_TSS => 'TRI\'s Simple Stream encryption CBC',
-        NET_SSH1_CIPHER_RC4 => 'RC4',
-        NET_SSH1_CIPHER_BLOWFISH => 'Blowfish',
+        NET_SSH1_CIPHER_RC4        => 'RC4',
+        NET_SSH1_CIPHER_BLOWFISH   => 'Blowfish',
     );
 
     /**
-     * Supported Authentications
+     * Supported Authentications.
      *
      * Logged for debug purposes
      *
      * @see Net_SSH1::getSupportedAuthentications()
-     * @var Array
+     *
+     * @var array
      */
     public $supported_authentications = array(
-        NET_SSH1_AUTH_RHOSTS => '.rhosts or /etc/hosts.equiv',
-        NET_SSH1_AUTH_RSA => 'pure RSA authentication',
-        NET_SSH1_AUTH_PASSWORD => 'password authentication',
+        NET_SSH1_AUTH_RHOSTS     => '.rhosts or /etc/hosts.equiv',
+        NET_SSH1_AUTH_RSA        => 'pure RSA authentication',
+        NET_SSH1_AUTH_PASSWORD   => 'password authentication',
         NET_SSH1_AUTH_RHOSTS_RSA => '.rhosts with RSA host authentication',
     );
 
     /**
-     * Server Identification
+     * Server Identification.
      *
      * @see Net_SSH1::getServerIdentification()
-     * @var String
+     *
+     * @var string
      */
     public $server_identification = '';
 
@@ -372,10 +381,11 @@ class Net_SSH1
      *
      * Connects to an SSHv1 server
      *
-     * @param  String           $host
-     * @param  optional Integer $port
-     * @param  optional Integer $timeout
-     * @param  optional Integer $cipher
+     * @param string           $host
+     * @param optional Integer $port
+     * @param optional Integer $timeout
+     * @param optional Integer $cipher
+     *
      * @return Net_SSH1
      */
     public function Net_SSH1($host, $port = 22, $timeout = 10, $cipher = NET_SSH1_CIPHER_3DES)
@@ -532,11 +542,12 @@ class Net_SSH1
     }
 
     /**
-     * Login
+     * Login.
      *
-     * @param  String          $username
-     * @param  optional String $password
-     * @return Boolean
+     * @param string          $username
+     * @param optional String $password
+     *
+     * @return bool
      */
     public function login($username, $password = '')
     {
@@ -603,7 +614,9 @@ class Net_SSH1
      *
      * @see Net_SSH1::interactiveRead()
      * @see Net_SSH1::interactiveWrite()
-     * @param  String $cmd
+     *
+     * @param string $cmd
+     *
      * @return mixed
      */
     public function exec($cmd)
@@ -663,11 +676,12 @@ class Net_SSH1
     }
 
     /**
-     * Creates an interactive shell
+     * Creates an interactive shell.
      *
      * @see Net_SSH1::interactiveRead()
      * @see Net_SSH1::interactiveWrite()
-     * @return Boolean
+     *
+     * @return bool
      */
     public function _initShell()
     {
@@ -706,8 +720,10 @@ class Net_SSH1
      * Inputs a command into an interactive shell.
      *
      * @see Net_SSH1::interactiveRead()
-     * @param  String  $cmd
-     * @return Boolean
+     *
+     * @param string $cmd
+     *
+     * @return bool
      */
     public function interactiveWrite($cmd)
     {
@@ -744,7 +760,8 @@ class Net_SSH1
      * there's not going to be much recourse.
      *
      * @see Net_SSH1::interactiveRead()
-     * @return String
+     *
+     * @return string
      */
     public function interactiveRead()
     {
@@ -772,8 +789,7 @@ class Net_SSH1
     }
 
     /**
-     * Disconnect
-     *
+     * Disconnect.
      */
     public function disconnect()
     {
@@ -785,7 +801,6 @@ class Net_SSH1
      *
      * Will be called, automatically, if you're supporting just PHP5.  If you're supporting PHP4, you'll need to call
      * disconnect().
-     *
      */
     public function __destruct()
     {
@@ -793,9 +808,9 @@ class Net_SSH1
     }
 
     /**
-     * Disconnect
+     * Disconnect.
      *
-     * @param String $msg
+     * @param string $msg
      */
     public function _disconnect($msg = 'Client Quit')
     {
@@ -808,7 +823,7 @@ class Net_SSH1
     }
 
     /**
-     * Gets Binary Packets
+     * Gets Binary Packets.
      *
      * See 'The Binary Packet Protocol' of protocol-1.5.txt for more info.
      *
@@ -816,7 +831,8 @@ class Net_SSH1
      * http://www.securiteam.com/securitynews/5LP042K3FY.html
      *
      * @see Net_SSH1::_send_binary_packet()
-     * @return Array
+     *
+     * @return array
      */
     public function _get_binary_packet()
     {
@@ -854,13 +870,15 @@ class Net_SSH1
     }
 
     /**
-     * Sends Binary Packets
+     * Sends Binary Packets.
      *
      * Returns true on success, false on failure.
      *
      * @see Net_SSH1::_get_binary_packet()
-     * @param  String  $data
-     * @return Boolean
+     *
+     * @param string $data
+     *
+     * @return bool
      */
     public function _send_binary_packet($data)
     {
@@ -890,7 +908,7 @@ class Net_SSH1
     }
 
     /**
-     * Cyclic Redundancy Check (CRC)
+     * Cyclic Redundancy Check (CRC).
      *
      * PHP's crc32 function is implemented slightly differently than the one that SSH v1 uses, so
      * we've reimplemented it. A more detailed discussion of the differences can be found after
@@ -898,8 +916,10 @@ class Net_SSH1
      *
      * @see Net_SSH1::_get_binary_packet()
      * @see Net_SSH1::_send_binary_packet()
-     * @param  String  $data
-     * @return Integer
+     *
+     * @param string $data
+     *
+     * @return int
      */
     public function _crc($data)
     {
@@ -989,13 +1009,14 @@ class Net_SSH1
     }
 
     /**
-     * String Shift
+     * String Shift.
      *
      * Inspired by array_shift
      *
-     * @param  String           $string
-     * @param  optional Integer $index
-     * @return String
+     * @param string           $string
+     * @param optional Integer $index
+     *
+     * @return string
      */
     public function _string_shift(&$string, $index = 1)
     {
@@ -1006,15 +1027,17 @@ class Net_SSH1
     }
 
     /**
-     * RSA Encrypt
+     * RSA Encrypt.
      *
      * Returns mod(pow($m, $e), $n), where $n should be the product of two (large) primes $p and $q and where $e
      * should be a number with the property that gcd($e, ($p - 1) * ($q - 1)) == 1.  Could just make anything that
      * calls this call modexp, instead, but I think this makes things clearer, maybe...
      *
      * @see Net_SSH1::Net_SSH1()
-     * @param  Math_BigInteger $m
-     * @param  Array           $key
+     *
+     * @param Math_BigInteger $m
+     * @param array           $key
+     *
      * @return Math_BigInteger
      */
     public function _rsa_crypt($m, $key)
@@ -1058,13 +1081,14 @@ class Net_SSH1
     }
 
     /**
-     * Return the server key public exponent
+     * Return the server key public exponent.
      *
      * Returns, by default, the base-10 representation.  If $raw_output is set to true, returns, instead,
      * the raw bytes.  This behavior is similar to PHP's md5() function.
      *
-     * @param  optional Boolean $raw_output
-     * @return String
+     * @param optional Boolean $raw_output
+     *
+     * @return string
      */
     public function getServerKeyPublicExponent($raw_output = false)
     {
@@ -1072,13 +1096,14 @@ class Net_SSH1
     }
 
     /**
-     * Return the server key public modulus
+     * Return the server key public modulus.
      *
      * Returns, by default, the base-10 representation.  If $raw_output is set to true, returns, instead,
      * the raw bytes.  This behavior is similar to PHP's md5() function.
      *
-     * @param  optional Boolean $raw_output
-     * @return String
+     * @param optional Boolean $raw_output
+     *
+     * @return string
      */
     public function getServerKeyPublicModulus($raw_output = false)
     {
@@ -1086,13 +1111,14 @@ class Net_SSH1
     }
 
     /**
-     * Return the host key public exponent
+     * Return the host key public exponent.
      *
      * Returns, by default, the base-10 representation.  If $raw_output is set to true, returns, instead,
      * the raw bytes.  This behavior is similar to PHP's md5() function.
      *
-     * @param  optional Boolean $raw_output
-     * @return String
+     * @param optional Boolean $raw_output
+     *
+     * @return string
      */
     public function getHostKeyPublicExponent($raw_output = false)
     {
@@ -1100,13 +1126,14 @@ class Net_SSH1
     }
 
     /**
-     * Return the host key public modulus
+     * Return the host key public modulus.
      *
      * Returns, by default, the base-10 representation.  If $raw_output is set to true, returns, instead,
      * the raw bytes.  This behavior is similar to PHP's md5() function.
      *
-     * @param  optional Boolean $raw_output
-     * @return String
+     * @param optional Boolean $raw_output
+     *
+     * @return string
      */
     public function getHostKeyPublicModulus($raw_output = false)
     {
@@ -1120,8 +1147,9 @@ class Net_SSH1
      * is set to true, returns, instead, an array of constants.  ie. instead of array('Triple-DES in CBC mode'), you'll
      * get array(NET_SSH1_CIPHER_3DES).
      *
-     * @param  optional Boolean $raw_output
-     * @return Array
+     * @param optional Boolean $raw_output
+     *
+     * @return array
      */
     public function getSupportedCiphers($raw_output = false)
     {
@@ -1135,8 +1163,9 @@ class Net_SSH1
      * is set to true, returns, instead, an array of constants.  ie. instead of array('password authentication'), you'll
      * get array(NET_SSH1_AUTH_PASSWORD).
      *
-     * @param  optional Boolean $raw_output
-     * @return Array
+     * @param optional Boolean $raw_output
+     *
+     * @return array
      */
     public function getSupportedAuthentications($raw_output = false)
     {
@@ -1146,7 +1175,7 @@ class Net_SSH1
     /**
      * Return the server identification.
      *
-     * @return String
+     * @return string
      */
     public function getServerIdentification()
     {

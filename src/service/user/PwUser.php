@@ -5,13 +5,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 用户操作数据接口
+ * 用户操作数据接口.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUser.php 24770 2013-02-20 11:22:38Z jieyin $
- * @package src.service.user
  */
 class PwUser
 {
@@ -29,10 +29,11 @@ class PwUser
     const STATUS_SIGN_USEUBB = 6; //该用户签名是否使用UBB
 
     /**
-     * 根据用户ID获得用户数据信息
+     * 根据用户ID获得用户数据信息.
      *
-     * @param  int   $uid  用户ID
-     * @param  int   $type 获得信息的类型
+     * @param int $uid  用户ID
+     * @param int $type 获得信息的类型
+     *
      * @return array
      */
     public function getUserByUid($uid, $type = self::FETCH_MAIN)
@@ -45,10 +46,11 @@ class PwUser
     }
 
     /**
-     * 根据用户名字获得用户数据信息
+     * 根据用户名字获得用户数据信息.
      *
-     * @param  string $username 用户名
-     * @param  int    $type     获得信息的类型
+     * @param string $username 用户名
+     * @param int    $type     获得信息的类型
+     *
      * @return array
      */
     public function getUserByName($username, $type = self::FETCH_MAIN)
@@ -61,10 +63,11 @@ class PwUser
     }
 
     /**
-     * 通过邮箱获取用户信息
+     * 通过邮箱获取用户信息.
      *
-     * @param  string $email 邮箱
-     * @param  int    $type  用户信息类型
+     * @param string $email 邮箱
+     * @param int    $type  用户信息类型
+     *
      * @return array
      */
     public function getUserByEmail($email, $type = self::FETCH_MAIN)
@@ -77,7 +80,7 @@ class PwUser
     }
 
     /**
-     * 跟据用户ID列表获取用户列表
+     * 跟据用户ID列表获取用户列表.
      *
      * @param array $uids 用户列表
      * @param int   $type
@@ -93,13 +96,14 @@ class PwUser
     }
 
     /**
-     * 根据用户名
+     * 根据用户名.
      *
-     * @param  array $names 用户名列表
-     * @param  int   $type
+     * @param array $names 用户名列表
+     * @param int   $type
+     *
      * @return array
      */
-    public function fetchUserByName($names, $type = PwUser::FETCH_MAIN)
+    public function fetchUserByName($names, $type = self::FETCH_MAIN)
     {
         //getUserListByNames($names, $type = PwUser::FETCH_MAIN) {
         if (empty($names) || !is_array($names)) {
@@ -110,10 +114,11 @@ class PwUser
     }
 
     /**
-     * 编辑用户信息
+     * 编辑用户信息.
      *
-     * @param  PwUserInfoDm $dm   用户信息DM
-     * @param  int          $type 更新类型
+     * @param PwUserInfoDm $dm   用户信息DM
+     * @param int          $type 更新类型
+     *
      * @return bool|PwError
      */
     public function editUser(PwUserInfoDm $dm, $type = self::FETCH_ALL)
@@ -134,9 +139,10 @@ class PwUser
     }
 
     /**
-     * 更新用户积分
+     * 更新用户积分.
      *
-     * @param  object $dm
+     * @param object $dm
+     *
      * @return bool
      */
     public function updateCredit(PwCreditDm $dm)
@@ -153,10 +159,11 @@ class PwUser
     }
 
     /**
-     * 添加用户
+     * 添加用户.
      *
-     * @param  PwUserInfoDm $dm   用户信息DM
-     * @param  int          $type 添加表
+     * @param PwUserInfoDm $dm   用户信息DM
+     * @param int          $type 添加表
+     *
      * @return int|PwError
      */
     public function addUser(PwUserInfoDm $dm)
@@ -175,14 +182,15 @@ class PwUser
     }
 
     /**
-     * 激活用户
+     * 激活用户.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function activeUser($uid)
     {
-        if (!$data = $this->_getWindid()->getUser($uid, 1, PwUser::FETCH_ALL)) {
+        if (!$data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
             return false;
         }
         $data['password'] = md5(WindUtility::generateRandStr(16));
@@ -192,7 +200,7 @@ class PwUser
 
     public function synEditUser($uid, $changepwd = 0)
     {
-        if (!$data = $this->_getWindid()->getUser($uid, 1, PwUser::FETCH_ALL)) {
+        if (!$data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
             return false;
         }
         $changepwd && $data['password'] = md5(WindUtility::generateRandStr(16));
@@ -201,9 +209,10 @@ class PwUser
     }
 
     /**
-     * 删除用户信息
+     * 删除用户信息.
      *
-     * @param  int  $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return bool
      */
     public function deleteUser($uid)
@@ -219,9 +228,10 @@ class PwUser
     }
 
     /**
-     * 根据用户ID列表批量删除用户信息
+     * 根据用户ID列表批量删除用户信息.
      *
-     * @param  array $uids 用户ID列表
+     * @param array $uids 用户ID列表
+     *
      * @return bool
      */
     public function batchDeleteUserByUid($uids)
@@ -238,7 +248,7 @@ class PwUser
     }
 
     /**
-     * 获得用户中心对像
+     * 获得用户中心对像.
      *
      * @return PwBaseDao
      */
@@ -253,7 +263,7 @@ class PwUser
     }
 
     /**
-     * 获得windidDS
+     * 获得windidDS.
      *
      * @return WindidUser
      */

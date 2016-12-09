@@ -6,18 +6,19 @@
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLog.php 24747 2013-02-20 03:13:43Z jieyin $
- * @package src.service.log
  */
 class PwLog
 {
     /**
-     * 通过帖子ID获取该该帖子的操作记录
+     * 通过帖子ID获取该该帖子的操作记录.
      *
-     * @param  int   $tid
-     * @param  int   $pid   帖子回复ID
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $tid
+     * @param int $pid   帖子回复ID
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getLogBytid($tid, $pid, $limit = 10, $start = 0)
@@ -39,9 +40,10 @@ class PwLog
     }
 
     /**
-     * 搜索日志
+     * 搜索日志.
      *
-     * @param  PwLogSo $so
+     * @param PwLogSo $so
+     *
      * @return array
      */
     public function search(PwLogSo $so, $limit, $offset)
@@ -50,9 +52,10 @@ class PwLog
     }
 
     /**
-     * 根据条件统计日志
+     * 根据条件统计日志.
      *
-     * @param  PwLogSo $so
+     * @param PwLogSo $so
+     *
      * @return int
      */
     public function coutSearch(PwLogSo $so)
@@ -61,9 +64,10 @@ class PwLog
     }
 
     /**
-     * 添加日志
+     * 添加日志.
      *
-     * @param  PwLogDm $dm
+     * @param PwLogDm $dm
+     *
      * @return int
      */
     public function addLog(PwLogDm $dm)
@@ -76,9 +80,10 @@ class PwLog
     }
 
     /**
-     * 批量添加日志
+     * 批量添加日志.
      *
-     * @param  array $dms
+     * @param array $dms
+     *
      * @return bool
      */
     public function batchAddLog($dms)
@@ -101,9 +106,10 @@ class PwLog
     }
 
     /**
-     * 根据日志ID删除日志
+     * 根据日志ID删除日志.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return int
      */
     public function deleteLog($id)
@@ -116,9 +122,10 @@ class PwLog
     }
 
     /**
-     * 根据日志ID列表批量删除日志
+     * 根据日志ID列表批量删除日志.
      *
-     * @param  array $logids
+     * @param array $logids
+     *
      * @return int
      */
     public function batchDeleteLog($logids)
@@ -131,9 +138,10 @@ class PwLog
     }
 
     /**
-     * 清除某一个时间点之前的记录
+     * 清除某一个时间点之前的记录.
      *
-     * @param  string $time
+     * @param string $time
+     *
      * @return bool
      */
     public function clearLogBeforeDatetime($time)

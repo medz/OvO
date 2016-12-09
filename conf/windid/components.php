@@ -11,16 +11,16 @@ defined('WEKIT_VERSION') or exit(403);
  */
 return array(
     'pwWidget' => array(
-        'path' => 'LIB:engine.component.PwWidget',
+        'path'  => 'LIB:engine.component.PwWidget',
         'scope' => 'singleton',
     ),
     'pwComponent' => array(
-        'path' => 'LIB:engine.component.PwComponent',
-        'scope' => 'singleton',
+        'path'   => 'LIB:engine.component.PwComponent',
+        'scope'  => 'singleton',
         'config' => array('resource' => 'CONF:pwcomponents.php'),
     ),
     'security' => array(
-        'path' => 'WIND:security.WindXxtea',
+        'path'  => 'WIND:security.WindXxtea',
         'scope' => 'singleton',
     ),
     'windLogger' => array(
@@ -30,7 +30,7 @@ return array(
         'config' => array(
             'routes' => array(
                 'pw' => array(
-                    'class' => 'LIB:route.PwCommonRoute',
+                    'class'   => 'LIB:route.PwCommonRoute',
                     'default' => true,
                 ),
             ),
@@ -49,41 +49,41 @@ return array(
         'config' => array('resource' => 'CONF:windid.database.php'),
     ),
     'windToken' => array(
-        'path' => 'LIB:engine.extension.token.PwCsrfToken',
+        'path'  => 'LIB:engine.extension.token.PwCsrfToken',
         'scope' => 'singleton',
     ),
     'windCookie' => array(
-        'path' => 'WIND:http.cookie.WindNormalCookie',
+        'path'  => 'WIND:http.cookie.WindNormalCookie',
         'scope' => 'singleton',
     ),
     'windiddb' => array(
-        'path' => 'WIND:db.WindConnection',
-        'scope' => 'singleton',
+        'path'   => 'WIND:db.WindConnection',
+        'scope'  => 'singleton',
         'config' => array('resource' => 'CONF:windid.database.php'),
     ),
     'httptransfer' => array(
-        'path' => 'WIND:http.transfer.WindHttpSocket',
+        'path'  => 'WIND:http.transfer.WindHttpSocket',
         'scope' => 'prototype',
     ),
     'storage' => array(
-        'path' => 'LIB:storage.PwStorageLocal',
+        'path'  => 'LIB:storage.PwStorageLocal',
         'scope' => 'singleton',
     ),
     'localStorage' => array(
-        'path' => 'LIB:storage.PwStorageLocal',
+        'path'  => 'LIB:storage.PwStorageLocal',
         'scope' => 'singleton',
     ),
     'fileCache' => array(
         'path' => 'LIB:engine.extension.cache.PwFileCache',
 // 		'path' => 'WIND:cache.strategy.WindFileCache',
-        'scope' => 'application',
+        'scope'  => 'application',
         'config' => array(
-            'dir' => 'DATA:cache',    //缓存文件存放的目录,注意可读可写
-            'suffix' => 'txt',    //缓存文件的后缀,默认为txt后缀
-            'dir-level' => '0',    //缓存文件存放目录的子目录长度,默认为0不分子目录
+            'dir'           => 'DATA:cache',    //缓存文件存放的目录,注意可读可写
+            'suffix'        => 'txt',    //缓存文件的后缀,默认为txt后缀
+            'dir-level'     => '0',    //缓存文件存放目录的子目录长度,默认为0不分子目录
             'security-code' => '',    //继承自AbstractWindCache,安全码配置
-            'key-prefix' => 'pw_',     //继承自AbstractWindCache,缓存key前缀
-            'expires' => '0',    //继承自AbstractWindCache,缓存过期时间配置
+            'key-prefix'    => 'pw_',     //继承自AbstractWindCache,缓存key前缀
+            'expires'       => '0',    //继承自AbstractWindCache,缓存过期时间配置
         ),
     ),
 );

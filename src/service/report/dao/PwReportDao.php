@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 举报DAO
+ * 举报DAO.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwReportDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwReportDao extends PwBaseDao
     protected $_pk = 'id';
 
     /**
-     * 添加单条消息
+     * 添加单条消息.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return bool
      */
     public function add($fields)
@@ -29,7 +30,8 @@ class PwReportDao extends PwBaseDao
     /**
      * 删除单条
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return bool
      */
     public function delete($id)
@@ -38,9 +40,10 @@ class PwReportDao extends PwBaseDao
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return bool
      */
     public function batchDelete($ids)
@@ -51,8 +54,9 @@ class PwReportDao extends PwBaseDao
     /**
      * 更新单条
      *
-     * @param  int   $id
-     * @param  array $fields
+     * @param int   $id
+     * @param array $fields
+     *
      * @return bool
      */
     public function update($id, $fields)
@@ -61,10 +65,11 @@ class PwReportDao extends PwBaseDao
     }
 
     /**
-     * 批量更新
+     * 批量更新.
      *
-     * @param  array $ids
-     * @param  array $fields
+     * @param array $ids
+     * @param array $fields
+     *
      * @return bool
      */
     public function batchUpdate($ids, $fields)
@@ -75,7 +80,8 @@ class PwReportDao extends PwBaseDao
     /**
      * 取一条
      *
-     * @param  int   $id
+     * @param int $id
+     *
      * @return array
      */
     public function get($id)
@@ -84,9 +90,10 @@ class PwReportDao extends PwBaseDao
     }
 
     /**
-     * 批量取
+     * 批量取.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetch($ids)
@@ -95,10 +102,11 @@ class PwReportDao extends PwBaseDao
     }
 
     /**
-     * 根据举报来源和是否处理统计数量
+     * 根据举报来源和是否处理统计数量.
      *
-     * @param  int   $type
-     * @param  int   $ifcheck
+     * @param int $type
+     * @param int $ifcheck
+     *
      * @return array
      */
     public function countByType($ifcheck, $type)
@@ -116,10 +124,11 @@ class PwReportDao extends PwBaseDao
     }
 
     /**
-     * 根据举报来源和是否处理取列表
+     * 根据举报来源和是否处理取列表.
      *
-     * @param  int   $type
-     * @param  int   $ifcheck
+     * @param int $type
+     * @param int $ifcheck
+     *
      * @return array
      */
     public function getListByType($ifcheck, $type, $limit, $start)

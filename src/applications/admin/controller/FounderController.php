@@ -3,19 +3,19 @@
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 /**
- * 后台创始人管理相关操作类
+ * 后台创始人管理相关操作类.
  *
  * 创始人管理相关操作<code>
  * 1. run 创始人管理首页
  * 2. add 添加创始人
  * 3. del 删除创始人
  * </code>
+ *
  * @author Qiong Wu <papa0924@gmail.com> 2011-11-10
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: FounderController.php 28782 2013-05-23 09:37:11Z jieyin $
- * @package admin
- * @subpackage library
  */
 class FounderController extends AdminBaseController
 {
@@ -31,7 +31,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 添加创始人
+     * 添加创始人.
      */
     public function addAction()
     {
@@ -45,7 +45,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 展示创始人添加页
+     * 展示创始人添加页.
      */
     public function showAction()
     {
@@ -59,7 +59,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 添加创始人
+     * 添加创始人.
      */
     public function doAddAction()
     {
@@ -73,7 +73,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 编辑创始人
+     * 编辑创始人.
      */
     public function editAction()
     {
@@ -89,7 +89,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 修改创始人
+     * 修改创始人.
      */
     public function doEditAction()
     {
@@ -103,7 +103,7 @@ class FounderController extends AdminBaseController
     }
 
     /**
-     * 删除创始人
+     * 删除创始人.
      */
     public function delAction()
     {

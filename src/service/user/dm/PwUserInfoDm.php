@@ -6,13 +6,13 @@ Wind::import('SRV:user.validator.PwUserValidator');
 Wind::import('SRV:user.PwUser');
 
 /**
- * 用户数据dm操作
+ * 用户数据dm操作.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUserInfoDm.php 24943 2013-02-27 03:52:21Z jieyin $
- * @package src.service.user.dm
  */
 class PwUserInfoDm extends PwBaseDm
 {
@@ -23,7 +23,7 @@ class PwUserInfoDm extends PwBaseDm
     protected $_password;
 
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $uid
      */
@@ -33,9 +33,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户ID
+     * 设置用户ID.
      *
-     * @param  int          $uid
+     * @param int $uid
+     *
      * @return PwUserInfoDm
      */
     public function setUid($uid)
@@ -47,7 +48,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 获取用户WindidDm
+     * 获取用户WindidDm.
      *
      * @return WindidUserDm
      */
@@ -62,7 +63,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户名字
+     * 设置用户名字.
      *
      * @param string $username
      */
@@ -77,7 +78,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 设置老的密码，进行验证
      *
-     * @param  string       $oldPwd
+     * @param string $oldPwd
+     *
      * @return PwUserInfoDm
      */
     public function setOldPwd($oldPwd)
@@ -90,7 +92,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 设置用户密码
      *
-     * @param  string       $password 新密码
+     * @param string $password 新密码
+     *
      * @return PwUserInfoDm
      */
     public function setPassword($password)
@@ -103,7 +106,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户email
+     * 设置用户email.
      *
      * @param string $email
      */
@@ -116,10 +119,11 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置安全问题
+     * 设置安全问题.
      *
-     * @param  string     $question
-     * @param  string     $answer
+     * @param string $question
+     * @param string $answer
+     *
      * @return PwUserInfo
      */
     public function setQuestion($question, $answer)
@@ -133,7 +137,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 更新状态
      *
-     * @param  int          $status
+     * @param int $status
+     *
      * @return PwUserInfoDm
      */
     public function updateStatus($status)
@@ -144,9 +149,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户当前用户组
+     * 设置用户当前用户组.
      *
-     * @param  int          $gid
+     * @param int $gid
+     *
      * @return PwUserInfoDm
      */
     public function setGroupid($gid)
@@ -160,7 +166,7 @@ class PwUserInfoDm extends PwBaseDm
 
     /**
      * 设置用户拥有的组
-     * 注:使用该方法之前，一定要先使用 setGroupid()
+     * 注:使用该方法之前，一定要先使用 setGroupid().
      *
      * @param array $groups 拥有的组
      * @example:
@@ -191,7 +197,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置注册IP
+     * 设置注册IP.
      *
      * @param string $regip
      */
@@ -203,7 +209,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置注册时间戳
+     * 设置注册时间戳.
      *
      * @param string $regdate
      */
@@ -216,7 +222,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置性别
+     * 设置性别.
      *
      * @param int $gender
      */
@@ -229,7 +235,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-年
+     * 设置生日-年.
      *
      * @param int $year
      */
@@ -242,7 +248,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-月
+     * 设置生日-月.
      *
      * @param string $month
      */
@@ -255,7 +261,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置生日-日
+     * 设置生日-日.
      *
      * @param string $bday
      */
@@ -298,7 +304,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置主页
+     * 设置主页.
      *
      * @param string $homepage
      */
@@ -324,7 +330,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置msn
+     * 设置msn.
      *
      * @param stirng $msn
      */
@@ -375,7 +381,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置支付帐号
+     * 设置支付帐号.
      *
      * @param string $alipay
      */
@@ -392,7 +398,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 设置帐号状态
      *
-     * @param  int          $status
+     * @param int $status
+     *
      * @return PwUserInfoDm
      */
     public function setStatus($status)
@@ -403,9 +410,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置是否是为验证用户
+     * 设置是否是为验证用户.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setUncheck($bool)
@@ -416,9 +424,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置是否是未激活用户
+     * 设置是否是未激活用户.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setUnactive($bool)
@@ -429,9 +438,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户被禁止头像
+     * 设置用户被禁止头像.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setBanAvatar($bool)
@@ -442,9 +452,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 用户被禁止签名
+     * 用户被禁止签名.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setBanSign($bool)
@@ -455,9 +466,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置该用户是否允许使用UBB
+     * 设置该用户是否允许使用UBB.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setSignUseubb($bool)
@@ -468,9 +480,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置该用户是否后后台权限
+     * 设置该用户是否后后台权限.
      *
-     * @param  bool         $bool
+     * @param bool $bool
+     *
      * @return PwUserInfoDm
      */
     public function setAllowLoginAdmin($bool)
@@ -481,9 +494,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置真是姓名
+     * 设置真是姓名.
      *
-     * @param  string       $realname
+     * @param string $realname
+     *
      * @return PwUserInfoDm
      */
     public function setRealname($realname)
@@ -495,7 +509,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置个人简介
+     * 设置个人简介.
      *
      * @param string $profile
      */
@@ -508,9 +522,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置帖子签名
+     * 设置帖子签名.
      *
-     * @param  string       $bbs_sign
+     * @param string $bbs_sign
+     *
      * @return PwUserInfoDm
      */
     public function setBbsSign($bbs_sign)
@@ -521,7 +536,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置最后登录时间
+     * 设置最后登录时间.
      *
      * @param int $lastvisit
      */
@@ -533,7 +548,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置最后登录IP
+     * 设置最后登录IP.
      *
      * @param string $lastloginip
      */
@@ -559,9 +574,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 添加用户的帖子数
+     * 添加用户的帖子数.
      *
-     * @param  int          $num
+     * @param int $num
+     *
      * @return PwUserInfoDm
      */
     public function addPostnum($num)
@@ -572,9 +588,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户的帖子数
+     * 设置用户的帖子数.
      *
-     * @param  int          $num
+     * @param int $num
+     *
      * @return PwUserInfoDm
      */
     public function setPostnum($num)
@@ -585,9 +602,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 添加用户的精华数
+     * 添加用户的精华数.
      *
-     * @param  int          $num
+     * @param int $num
+     *
      * @return PwUserInfoDm
      */
     public function addDigest($num)
@@ -598,9 +616,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户的精华数
+     * 设置用户的精华数.
      *
-     * @param  int          $num
+     * @param int $num
+     *
      * @return PwUserInfoDm
      */
     public function setDigest($num)
@@ -639,7 +658,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 增加关注统计数
+     * 增加关注统计数.
      *
      * @param int $follow 增加的关注数
      */
@@ -651,7 +670,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 增加粉丝统计数
+     * 增加粉丝统计数.
      *
      * @param int $fans 增加的粉丝数
      */
@@ -663,7 +682,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置未读通知数
+     * 设置未读通知数.
      *
      * @param int $notices
      */
@@ -675,7 +694,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置未读消息数
+     * 设置未读消息数.
      *
      * @param int $messages
      */
@@ -688,7 +707,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置在线时间
+     * 设置在线时间.
      *
      * @param int $online
      */
@@ -700,7 +719,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 增加在线时间
+     * 增加在线时间.
      *
      * @param int $online
      */
@@ -712,9 +731,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置尝试密码的次数记录
+     * 设置尝试密码的次数记录.
      *
-     * @param  string       $trypwd
+     * @param string $trypwd
+     *
      * @return PwUserInfoDm
      */
     public function setTrypwd($trypwd)
@@ -725,9 +745,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置找回密码的次数记录
+     * 设置找回密码的次数记录.
      *
-     * @param  string       $findwd
+     * @param string $findwd
+     *
      * @return PwUserInfoDm
      */
     public function setFindpwd($findwd)
@@ -738,7 +759,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 上次发帖内容hash串
+     * 上次发帖内容hash串.
      *
      * @param string $str hash串
      */
@@ -750,7 +771,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户普通组的等级
+     * 设置用户普通组的等级.
      *
      * @param int $memberid
      */
@@ -762,9 +783,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置注册原因
+     * 设置注册原因.
      *
-     * @param  string       $regreason
+     * @param string $regreason
+     *
      * @return PwUserInfoDm
      */
     public function setRegreason($regreason)
@@ -777,7 +799,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 设置固定电话号码
      *
-     * @param  string       $phone
+     * @param string $phone
+     *
      * @return PwUserInfoDm
      */
     public function setTelphone($phone)
@@ -790,7 +813,8 @@ class PwUserInfoDm extends PwBaseDm
     /**
      * 设置通信地址
      *
-     * @param  string       $address
+     * @param string $address
+     *
      * @return PwUserInfoDm
      */
     public function setAddress($address)
@@ -801,9 +825,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置邮政变面
+     * 设置邮政变面.
      *
-     * @param  string       $zipcode
+     * @param string $zipcode
+     *
      * @return PwUserInfoDm
      */
     public function setZipcode($zipcode)
@@ -826,9 +851,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置消息提醒声音
+     * 设置消息提醒声音.
      *
-     * @param  int          $message_tone
+     * @param int $message_tone
+     *
      * @return PwUserInfoDm
      */
     public function setMessage_tone($message_tone)
@@ -849,7 +875,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置用户资料隐私设置
+     * 设置用户资料隐私设置.
      */
     public function setSecret($secrets)
     {
@@ -859,7 +885,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置打卡信息
+     * 设置打卡信息.
      */
     public function setPunch($punch)
     {
@@ -869,7 +895,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置加入板块
+     * 设置加入板块.
      */
     public function setJoinForum($join_forum)
     {
@@ -879,7 +905,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置可能感兴趣的人
+     * 设置可能感兴趣的人.
      */
     public function setRecommendFriend($recommend_friend)
     {
@@ -889,9 +915,10 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置最后积分变动的日志
+     * 设置最后积分变动的日志.
      *
-     * @param  string       $log
+     * @param string $log
+     *
      * @return PwUserInfoDm
      */
     public function setLastCreditAffectLog($log)
@@ -902,7 +929,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 勋章ID
+     * 勋章ID.
      *
      * @param array $medalids
      */
@@ -914,7 +941,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 更新通知数
+     * 更新通知数.
      *
      * @param int $num
      */
@@ -926,7 +953,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 更新消息数
+     * 更新消息数.
      *
      * @param int $num
      */
@@ -939,7 +966,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 更新用户组信息
+     * 更新用户组信息.
      */
     public function getUserBelongs()
     {
@@ -989,7 +1016,7 @@ class PwUserInfoDm extends PwBaseDm
     }
 
     /**
-     * 检查转换数据
+     * 检查转换数据.
      *
      * @return bool|PwError
      */

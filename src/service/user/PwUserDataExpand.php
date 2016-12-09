@@ -6,13 +6,13 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserDataExpand.php 24718 2013-02-17 06:42:06Z jieyin $
- * @package wind
  */
 class PwUserDataExpand
 {
     /**
-     * 获得表结构
+     * 获得表结构.
      *
      * @return array
      */
@@ -30,9 +30,10 @@ class PwUserDataExpand
     }
 
     /**
-     * 更新用户data表添加credit字段
+     * 更新用户data表添加credit字段.
      *
-     * @param  int  $num
+     * @param int $num
+     *
      * @return bool
      */
     public function alterAddCredit($num)
@@ -43,9 +44,10 @@ class PwUserDataExpand
     }
 
     /**
-     * 删除用户积分字段（1-8不允许删除）
+     * 删除用户积分字段（1-8不允许删除）.
      *
-     * @param  int  $num
+     * @param int $num
+     *
      * @return bool
      */
     public function alterDropCredit($num)
@@ -56,9 +58,10 @@ class PwUserDataExpand
     }
 
     /**
-     * 将用户积分的某一列清空
+     * 将用户积分的某一列清空.
      *
-     * @param  int  $num
+     * @param int $num
+     *
      * @return bool
      */
     public function clearCredit($num)
@@ -79,7 +82,7 @@ class PwUserDataExpand
     }
 
     /**
-     * 获得windidDS
+     * 获得windidDS.
      *
      * @return WindidUser
      */

@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUpload.php 28967 2013-05-31 11:40:43Z jieyin $
- * @package upload
  */
-
 class PwUpload
 {
     protected $bhv;        // 上传行为配置
@@ -31,7 +28,7 @@ class PwUpload
     }
 
     /**
-     * 检查是否可以上传
+     * 检查是否可以上传.
      *
      * @return bool|PwError
      */
@@ -41,7 +38,7 @@ class PwUpload
     }
 
     /**
-     * 获取已上传附件个数
+     * 获取已上传附件个数.
      *
      * @return int
      */
@@ -51,9 +48,10 @@ class PwUpload
     }
 
     /**
-     * 检查上传文件是否符合规定
+     * 检查上传文件是否符合规定.
      *
-     * @param  PwUploadFile $file
+     * @param PwUploadFile $file
+     *
      * @return bool|PwError
      */
     public function checkFile($file)
@@ -80,9 +78,10 @@ class PwUpload
     }
 
     /**
-     * 过滤文件名
+     * 过滤文件名.
      *
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return string
      */
     public function filterFileName($filename)
@@ -91,7 +90,7 @@ class PwUpload
     }
 
     /**
-     * 上传附件主流程
+     * 上传附件主流程.
      *
      * @return mixed
      */
@@ -128,9 +127,10 @@ class PwUpload
     }
 
     /**
-     * 保存文件
+     * 保存文件.
      *
-     * @param  PwUploadFile $file
+     * @param PwUploadFile $file
+     *
      * @return bool|PwError
      */
     public function saveFile($file)
@@ -148,7 +148,7 @@ class PwUpload
     }
 
     /**
-     * 统计待上传附件个数
+     * 统计待上传附件个数.
      *
      * @return int
      */
@@ -165,9 +165,10 @@ class PwUpload
     }
 
     /**
-     * 判断是否是正常的上传文件
+     * 判断是否是正常的上传文件.
      *
-     * @param  string $tmp_name
+     * @param string $tmp_name
+     *
      * @return bool
      */
     public static function isUploadedFile($tmp_name)
@@ -182,10 +183,11 @@ class PwUpload
     }
 
     /**
-     * 移动上传文件
+     * 移动上传文件.
      *
-     * @param  string $tmp_name 源文件
-     * @param  string $filename 移动后的文件地址
+     * @param string $tmp_name 源文件
+     * @param string $filename 移动后的文件地址
+     *
      * @return bool
      */
     public static function moveUploadedFile($tmp_name, $filename)
@@ -207,10 +209,11 @@ class PwUpload
     }
 
     /**
-     * 复制文件
+     * 复制文件.
      *
-     * @param  string $srcfile 源文件
-     * @param  string $dstfile 目标文件地址
+     * @param string $srcfile 源文件
+     * @param string $dstfile 目标文件地址
+     *
      * @return bool
      */
     public static function copyFile($srcfile, $dstfile)
@@ -233,7 +236,7 @@ class PwUpload
     }
 
     /**
-     * 创建目录
+     * 创建目录.
      *
      * @param string $path
      */

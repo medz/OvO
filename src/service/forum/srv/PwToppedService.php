@@ -127,8 +127,8 @@ class PwToppedService
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwForum
      */
     private function _getForumDs()

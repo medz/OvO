@@ -3,13 +3,13 @@
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 
 /**
- * 阿里云短信平台
+ * 阿里云短信平台.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwPlatAliyun
 {
@@ -23,7 +23,7 @@ class PwPlatAliyun
     }
 
     /**
-     * 获取剩余短信数量
+     * 获取剩余短信数量.
      *
      * @return int
      */

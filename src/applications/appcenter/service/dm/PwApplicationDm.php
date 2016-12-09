@@ -3,9 +3,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwApplicationDm.php 20013 2012-10-22 10:25:47Z jieyin $
- * @package products
- * @subpackage appcenter.service.dm
  */
 class PwApplicationDm extends PwBaseDm
 {
@@ -90,15 +89,16 @@ class PwApplicationDm extends PwBaseDm
     {
         $type = $type === self::LOG_TYPE_FILE ? $type : self::LOG_TYPE_DB;
         $this->_data_log[] = array(
-            'app_id' => $this->_data['app_id'],
-            'created_time' => Pw::getTime(),
+            'app_id'        => $this->_data['app_id'],
+            'created_time'  => Pw::getTime(),
             'modified_time' => Pw::getTime(),
-            'data' => $log,
-            'log_type' => $type, );
+            'data'          => $log,
+            'log_type'      => $type, );
     }
 
     /**
      * @see PwBaseDm::getData()
+     *
      * @return multitype:
      */
     public function getLogData()

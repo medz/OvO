@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 在线支付 - 支付宝支付方式
+ * 在线支付 - 支付宝支付方式.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPayService.php 7431 2012-04-06 01:54:39Z jieyin $
- * @package forum
  */
-
 class PwPayService
 {
     public function getPayMethod($paymethod)

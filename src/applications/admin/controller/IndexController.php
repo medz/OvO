@@ -2,7 +2,7 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台应用主题框架操作处理类
+ * 后台应用主题框架操作处理类.
  *
  * 后台应用默认操作处理类,操作方法：<ul>
  * <li>run,后台主体框架页面处理</li>
@@ -12,15 +12,13 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-13
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: IndexController.php 32087 2014-11-02 13:46:50Z gao.wanggao $
- * @package admin
- * @subpackage controller
  */
 class IndexController extends AdminBaseController
 {
     /**
-     * 后台主体框架页面
-     *
+     * 后台主体框架页面.
      */
     public function run()
     {
@@ -42,8 +40,7 @@ class IndexController extends AdminBaseController
     }
 
     /**
-     * 后台退出
-     *
+     * 后台退出.
      */
     public function logoutAction()
     {
@@ -59,8 +56,7 @@ class IndexController extends AdminBaseController
     }
 
     /**
-     * 后台登录操作
-     *
+     * 后台登录操作.
      */
     public function loginAction()
     {
@@ -100,7 +96,7 @@ class IndexController extends AdminBaseController
     }
 
     /**
-     * 检测用户的验证码是否正确
+     * 检测用户的验证码是否正确.
      */
     private function checkVerify()
     {
@@ -140,7 +136,7 @@ class IndexController extends AdminBaseController
         }
         $rand = $this->getInput('rand', 'get');
         $config = Wekit::C('verify');
-        $config['type'] = $config['type'] ? $config['type'] : 'image' ;
+        $config['type'] = $config['type'] ? $config['type'] : 'image';
 
         //windid登陆验证码显示
         if (in_array('windidlogin', Wekit::C()->verify->get('showverify', array()))) {
@@ -168,12 +164,12 @@ class IndexController extends AdminBaseController
 				src="'.$url.'">';
             if ($config['voice']) {
                 $url = WindUrlHelper::createUrl('index/showVerify', array(
-                    'getAudio' => 1,
-                    'songVolume' => 100,
-                    'autoStart' => 'false',
-                    'repeatPlay' => 'false',
+                    'getAudio'     => 1,
+                    'songVolume'   => 100,
+                    'autoStart'    => 'false',
+                    'repeatPlay'   => 'false',
                     'showDownload' => 'false',
-                    'rand' => Pw::getTime(),
+                    'rand'         => Pw::getTime(),
                 ));
                 $html .= '<embed height="20" width="25"
 				type="application/x-shockwave-flash"
@@ -188,12 +184,12 @@ class IndexController extends AdminBaseController
 				height="'.$config['height'].'" >';
             if ($config['voice']) {
                 $url = WindUrlHelper::createUrl('index/showVerify', array(
-                    'getAudio' => 1,
-                    'songVolume' => 100,
-                    'autoStart' => 'false',
-                    'repeatPlay' => 'false',
+                    'getAudio'     => 1,
+                    'songVolume'   => 100,
+                    'autoStart'    => 'false',
+                    'repeatPlay'   => 'false',
                     'showDownload' => 'false',
-                    'rand' => Pw::getTime(),
+                    'rand'         => Pw::getTime(),
                 ));
                 $html .= '<span title="点击后键入您听到的内容"><embed wmode="transparent" height="20" width="25"
 				type="application/x-shockwave-flash"

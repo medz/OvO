@@ -4,13 +4,13 @@ define('WIND_SETUP', 'update');
 define('NEXT_VERSION', '9.0');
 
 /**
- * 87to90升级流程
+ * 87to90升级流程.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: UpgradeController.php 24779 2013-02-21 06:24:27Z xiaoxia.xuxx $
- * @package applications.install.controller
  */
 class UpgradeController extends WindController
 {
@@ -55,7 +55,7 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 87升级到9更新缓存
+     * 87升级到9更新缓存.
      */
     public function run()
     {
@@ -110,7 +110,7 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 头像转移
+     * 头像转移.
      */
     public function avatarAction()
     {
@@ -162,7 +162,7 @@ class UpgradeController extends WindController
     /**
      * 获得ftp对象
      *
-     * @return WindSocketFtp|NULL
+     * @return WindSocketFtp|null
      */
     private function _getFtp()
     {
@@ -170,11 +170,11 @@ class UpgradeController extends WindController
         $ftp = $attachDir = null;
         if ($db_ftp['db_ifftp']) {
             $ftp = new WindSocketFtp(array(
-                'server' => $db_ftp['ftp_server'],
-                'port' => $db_ftp['ftp_port'],
-                'user' => $db_ftp['ftp_user'],
-                'pwd' => $db_ftp['ftp_pass'],
-                'dir' => $db_ftp['ftp_dir'],
+                'server'  => $db_ftp['ftp_server'],
+                'port'    => $db_ftp['ftp_port'],
+                'user'    => $db_ftp['ftp_user'],
+                'pwd'     => $db_ftp['ftp_pass'],
+                'dir'     => $db_ftp['ftp_dir'],
                 'timeout' => $db_ftp['ftp_timeout'],
             ));
             $attachDir = $db_ftp['db_ftpweb'];
@@ -189,11 +189,12 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 获得开始结束的ID
+     * 获得开始结束的ID.
      *
-     * @param  int   $start
-     * @param  int   $max
-     * @param  bool  $isFtp
+     * @param int  $start
+     * @param int  $max
+     * @param bool $isFtp
+     *
      * @return array
      */
     private function _getStartAndLimit($start_uid, $end_uid, $isFtp = true)
@@ -219,9 +220,10 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 检查文件
+     * 检查文件.
      *
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return bool
      */
     private function checkFile($filename)
@@ -238,7 +240,7 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 获取ftp配置文件
+     * 获取ftp配置文件.
      *
      * @return array
      */
@@ -258,10 +260,11 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 获得用户87中的头像
+     * 获得用户87中的头像.
      *
-     * @param  string $attachDir
-     * @param  int    $tempuid
+     * @param string $attachDir
+     * @param int    $tempuid
+     *
      * @return string
      */
     private function _getOldAvatarPath($attachDir, $tempuid)
@@ -277,7 +280,7 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 获得最大的用户ID
+     * 获得最大的用户ID.
      *
      * @return int
      */
@@ -307,7 +310,7 @@ class UpgradeController extends WindController
     }
 
     /**
-     * windid更新
+     * windid更新.
      *
      * @return bool
      */
@@ -347,8 +350,9 @@ class UpgradeController extends WindController
 
         return true;
     }
+
     /**
-     * 自定义页面升级  start
+     * 自定义页面升级  start.
      *
      * @return bool
      */
@@ -364,7 +368,6 @@ class UpgradeController extends WindController
                 $dirList[$k] = $v['id'];
             }
         }
-
 
         $dir = Wind::getRealDir('THEMES:portal.local.');
         $_dir = array();
@@ -414,10 +417,11 @@ class UpgradeController extends WindController
     }
 
     /**
-     * 复制目录
+     * 复制目录.
      *
-     * @param  string $fromFolder
-     * @param  string $toFolder
+     * @param string $fromFolder
+     * @param string $toFolder
+     *
      * @return bool
      */
     protected function copyRecur($fromFolder, $toFolder)
@@ -449,7 +453,7 @@ class UpgradeController extends WindController
 
     private function _tpl()
     {
-        return  <<<TPL
+        return  <<<'TPL'
 <!doctype html>
 <html>
 <head>
@@ -458,22 +462,22 @@ class UpgradeController extends WindController
 <body>
 <design role="start"/>
 	<!--# 
-	\$wrapall = !\$portal['header'] ? 'custom_wrap' : 'wrap';
+	$wrapall = !$portal['header'] ? 'custom_wrap' : 'wrap';
 	#-->
-	<div class="{\$wrapall}">
-	<!--# if(\$portal['header']){ #-->
+	<div class="{$wrapall}">
+	<!--# if($portal['header']){ #-->
 	<template source='TPL:common.header' load='true' />
 	<!--# } #-->
 	<div class="main_wrap">
-	<!--# if(\$portal['navigate']){ #-->
-		<div class="bread_crumb">{@\$headguide|html}</div>
+	<!--# if($portal['navigate']){ #-->
+		<div class="bread_crumb">{@$headguide|html}</div>
 	<!--# } #-->
 		<div class="main cc">
 			<design role="tips" id="nodesign"/>
 			<design role="segment" id="segment1"/>
 		</div>
 	</div>
-	<!--# if(\$portal['footer']){ #-->
+	<!--# if($portal['footer']){ #-->
 	<template source='TPL:common.footer' load='true' />
 	<!--# } #-->
 	</div>
@@ -485,10 +489,10 @@ Wind.use('jquery', 'global');
 </html>
 TPL;
     }
-    /**
-     * 自定义页面升级 end
-     */
 
+    /**
+     * 自定义页面升级 end.
+     */
 
     /* (non-PHPdoc)
      * @see WindSimpleController::setDefaultTemplateName()
@@ -500,12 +504,13 @@ TPL;
     }
 
     /**
-     * 显示信息
+     * 显示信息.
      *
      * @param string $message 消息信息
      * @param string $referer 跳转地址
      * @param bool   $referer 是否刷新页面
      * @param string $action  处理句柄
+     *
      * @see WindSimpleController::showMessage()
      */
     protected function showMessage($message = '', $lang = true, $referer = '', $refresh = false)
@@ -516,7 +521,7 @@ TPL;
     }
 
     /**
-     * 显示错误
+     * 显示错误.
      *
      * @param array $error array('',array())
      */

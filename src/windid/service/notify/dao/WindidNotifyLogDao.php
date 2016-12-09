@@ -1,18 +1,18 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidNotifyLogDao.php 24773 2013-02-21 02:59:06Z jieyin $
- * @package
  */
 class WindidNotifyLogDao extends WindidBaseDao
 {
     protected $_table = 'notify_log';
     protected $_pk = 'logid';
     protected $_dataStruct = array('logid', 'nid', 'appid', 'complete', 'send_num', 'reason');
-
 
     public function get($id)
     {

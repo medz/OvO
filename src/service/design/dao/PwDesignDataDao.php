@@ -2,12 +2,13 @@
 
 Wind::import('SRC:library.base.PwBaseDao');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignDataDao.php 19070 2012-10-10 08:19:50Z gao.wanggao $
- * @package
  */
 class PwDesignDataDao extends PwBaseDao
 {
@@ -96,7 +97,6 @@ class PwDesignDataDao extends PwBaseDao
         return $smt->getValue(array($moduleid));
     }
 
-
     public function addData($data)
     {
         return $this->_add($data, true);
@@ -119,7 +119,6 @@ class PwDesignDataDao extends PwBaseDao
     {
         return $this->_delete($id);
     }
-
 
     public function batchDelete($ids)
     {

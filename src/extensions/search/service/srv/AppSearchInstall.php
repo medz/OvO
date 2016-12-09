@@ -20,11 +20,13 @@ class AppSearchInstall implements iPwInstall
 
         return true;
     }
+
     /**
-     * 注册静态资源
+     * 注册静态资源.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function NregisteResource($install)
     {

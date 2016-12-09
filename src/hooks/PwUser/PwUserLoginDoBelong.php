@@ -3,13 +3,13 @@
 Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
 Wind::import('SRV:task.srv.PwTaskApply');
 /**
- * 当前第一次登录DO
+ * 当前第一次登录DO.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package src.service.task.srv.condition
  */
 class PwUserLoginDoBelong extends PwUserLoginDoBase
 {

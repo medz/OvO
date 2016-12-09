@@ -2,19 +2,18 @@
 
 define('WIND_SETUP', 'install');
 /**
- * 安装流程
+ * 安装流程.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright (c)2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $$Id$$
- * @package application
  */
 class IndexController extends WindController
 {
     /**
-     *
-     * 定义需要导入默认数据sql文件
+     * 定义需要导入默认数据sql文件.
      *
      * @var array
      */
@@ -76,7 +75,8 @@ class IndexController extends WindController
     }
 
     /**
-     * 协议
+     * 协议.
+     *
      * @see WindAction::run()
      */
     public function run()
@@ -86,7 +86,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 检测环境
+     * 检测环境.
      */
     public function checkAction()
     {
@@ -114,7 +114,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 数据库信息配置
+     * 数据库信息配置.
      */
     public function infoAction()
     {
@@ -128,7 +128,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 创建数据库
+     * 创建数据库.
      */
     public function databaseAction()
     {
@@ -221,15 +221,15 @@ class IndexController extends WindController
         }
 
         $database = array(
-            'dsn' => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
-            'user' => $input['dbuser'],
-            'pwd' => $input['dbpw'],
-            'charset' => $charset,
+            'dsn'         => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
+            'user'        => $input['dbuser'],
+            'pwd'         => $input['dbpw'],
+            'charset'     => $charset,
             'tableprefix' => $input['dbprefix'],
-            'engine' => $input['engine'],
-            'founder' => array(
-                'manager' => $input['manager'],
-                'manager_pwd' => $input['manager_pwd'],
+            'engine'      => $input['engine'],
+            'founder'     => array(
+                'manager'       => $input['manager'],
+                'manager_pwd'   => $input['manager_pwd'],
                 'manager_email' => $input['manager_email'], ), );
         WindFile::savePhpData($this->_getTempFile(), $database);
 
@@ -252,7 +252,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 创建数据表
+     * 创建数据表.
      */
     public function tableAction()
     {
@@ -285,7 +285,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 导入默认数据
+     * 导入默认数据.
      */
     public function dataAction()
     {
@@ -312,12 +312,12 @@ class IndexController extends WindController
 
         //数据库配置
         $database = array(
-            'dsn' => $db['dsn'],
-            'user' => $db['user'],
-            'pwd' => $db['pwd'],
-            'charset' => $db['charset'],
+            'dsn'         => $db['dsn'],
+            'user'        => $db['user'],
+            'pwd'         => $db['pwd'],
+            'charset'     => $db['charset'],
             'tableprefix' => $db['tableprefix'],
-            'engine' => $db['engine'], );
+            'engine'      => $db['engine'], );
         WindFile::savePhpData($this->_getDatabaseFile(), $database);
 
         //写入windid配置信息
@@ -327,7 +327,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 安装完成
+     * 安装完成.
      */
     public function finishAction()
     {
@@ -410,12 +410,13 @@ class IndexController extends WindController
     }
 
     /**
-     * 显示信息
+     * 显示信息.
      *
      * @param string $message 消息信息
      * @param string $referer 跳转地址
      * @param bool   $referer 是否刷新页面
      * @param string $action  处理句柄
+     *
      * @see WindSimpleController::showMessage()
      */
     protected function showMessage($message = '', $lang = true, $referer = '', $refresh = false)
@@ -426,7 +427,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 显示错误
+     * 显示错误.
      *
      * @param array $error array('',array())
      */
@@ -443,10 +444,11 @@ class IndexController extends WindController
     }
 
     /**
-     * WIND SQL 格式解析
+     * WIND SQL 格式解析.
      *
-     * @param  string     $strSQL  SQL语句字串
-     * @param  string     $charset 字符集
+     * @param string $strSQL  SQL语句字串
+     * @param string $charset 字符集
+     *
      * @return array(SQL, log)
      */
     private function _sqlParser($strSQL, $charset, $dbprefix, $engine)
@@ -497,7 +499,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 获得当前的环境信息
+     * 获得当前的环境信息.
      *
      * @return array
      */
@@ -535,24 +537,24 @@ class IndexController extends WindController
         }
 
         return array(
-            'os_ischeck' => true,
-            'version_ischeck' => $version_ischeck,
-            'mysql_ischeck' => $mysql_ischeck,
+            'os_ischeck'        => true,
+            'version_ischeck'   => $version_ischeck,
+            'mysql_ischeck'     => $mysql_ischeck,
             'pdo_mysql_ischeck' => $pdo_mysql_ischeck,
-            'upload_ischeck' => $upload_ischeck,
-            'space_ischeck' => $space_ischeck,
-            'gd_ischeck' => $gd_ischeck,
-            'gd' => $gd,
-            'os' => PHP_OS,
-            'version' => phpversion(),
-            'mysql' => $mysql,
-            'pdo_mysql' => $pdo_mysql_ischeck,
-            'upload' => $currentUpload,
-            'space' => $space, );
+            'upload_ischeck'    => $upload_ischeck,
+            'space_ischeck'     => $space_ischeck,
+            'gd_ischeck'        => $gd_ischeck,
+            'gd'                => $gd,
+            'os'                => PHP_OS,
+            'version'           => phpversion(),
+            'mysql'             => $mysql,
+            'pdo_mysql'         => $pdo_mysql_ischeck,
+            'upload'            => $currentUpload,
+            'space'             => $space, );
     }
 
     /**
-     * 获取推荐的环境配置信息
+     * 获取推荐的环境配置信息.
      *
      * @return array
      */
@@ -588,7 +590,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 检查目录权限
+     * 检查目录权限.
      *
      * @return array
      */
@@ -604,7 +606,7 @@ class IndexController extends WindController
         $files_writeble[] = DATA_PATH.'tmp/';
         $files_writeble[] = DATA_PATH.'design/';
         $files_writeble[] = EXT_PATH; //扩展应用目录
-        $files_writeble[] = ATTACH_PATH ; //本地附近目录
+        $files_writeble[] = ATTACH_PATH; //本地附近目录
         $files_writeble[] = HTML_PATH; //本地静态文件可写目录
         $files_writeble[] = THEMES_PATH; //风格目录
         $files_writeble[] = THEMES_PATH.'extres/';
@@ -641,9 +643,10 @@ class IndexController extends WindController
     }
 
     /**
-     * 检查目录可写
+     * 检查目录可写.
      *
-     * @param  string $pathfile
+     * @param string $pathfile
+     *
      * @return bool
      */
     private function _checkWriteAble($pathfile)
@@ -654,7 +657,7 @@ class IndexController extends WindController
         $isDir = in_array(substr($pathfile, -1), array('/', '\\')) ? true : false;
         if ($isDir) {
             if (is_dir($pathfile)) {
-                mt_srand((double) microtime() * 1000000);
+                mt_srand((float) microtime() * 1000000);
                 $pathfile = $pathfile.'pw_'.uniqid(mt_rand()).'.tmp';
             } elseif (@mkdir($pathfile)) {
                 return self::_checkWriteAble($pathfile);
@@ -674,11 +677,12 @@ class IndexController extends WindController
     }
 
     /**
-     * 创建创始人
+     * 创建创始人.
      *
-     * @param  string  $manager
-     * @param  string  $manager_pwd
-     * @param  string  $manager_email
+     * @param string $manager
+     * @param string $manager_pwd
+     * @param string $manager_email
+     *
      * @return PwError
      */
     private function _writeFounder($manager, $manager_pwd, $manager_email)
@@ -730,7 +734,6 @@ class IndexController extends WindController
         Wekit::loadDaoFromMap(PwUser::FETCH_ALL, $daoMap, 'PwUser')->addUser($userDm->getSetData());
         //特殊操作
 
-
         //$uid = Wekit::load('user.PwUser')->addUser($userDm);
         //TODO 创始人添加完成：恢复默认数据：开始
         $config = new PwConfigSet('register');
@@ -740,7 +743,6 @@ class IndexController extends WindController
         ->set('security.password.max', 15)
         ->set('security.password.min', 6)
         ->flush();
-
 
         $windidConfig = new WindidConfigSet('reg');
         $windidConfig->set('security.ban.username', '创始人,管理员,版主,斑竹,admin')
@@ -830,7 +832,7 @@ class IndexController extends WindController
     }
 
     /**
-     * 检查目录
+     * 检查目录.
      *
      * @return array
      */

@@ -2,19 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * phpwind dao层基类
+ * phpwind dao层基类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBaseDao.php 29721 2013-06-27 10:57:28Z hao.lin $
- * @package lib
- * @subpackage base.dao
  */
-
 class PwBaseDao extends WindDao
 {
     protected $_table;
@@ -30,7 +26,7 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 设置当前dao的基础DAO类
+     * 设置当前dao的基础DAO类.
      *
      * @param PwBaseDao $instance
      */
@@ -40,10 +36,12 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 获取当前dao类的基础DAO类
+     * 获取当前dao类的基础DAO类.
      *
      * 获取当前dao类的基础DAO类,当baseInstance没有设置时,调用defaultBaseInstance
+     *
      * @throws Exception
+     *
      * @return PwBaseDao
      */
     public function getBaseInstance()
@@ -59,7 +57,7 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 获取当前dao表名称
+     * 获取当前dao表名称.
      *
      * @return string
      */
@@ -71,7 +69,7 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 获取当前dao表字段结构
+     * 获取当前dao表字段结构.
      *
      * @return array
      */
@@ -81,9 +79,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组装,将数组组装成`key`=value的形式返回
+     * sql组装,将数组组装成`key`=value的形式返回.
      *
      * @param  array  $array 待组装的数据
+     *
      * @return string
      */
     public function sqlSingle($array)
@@ -92,9 +91,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组装,将数组组装成`key`=`key`+value的形式返回
+     * sql组装,将数组组装成`key`=`key`+value的形式返回.
      *
      * @param  array  $array 待组装的数据
+     *
      * @return string
      */
     public function sqlSingleIncrease($array)
@@ -112,9 +112,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组装,将数组组装成类似`key`=`key`|value等位运算形式返回
+     * sql组装,将数组组装成类似`key`=`key`|value等位运算形式返回.
      *
      * @param  array  $array 待组装的数据
+     *
      * @return string
      */
     public function sqlSingleBit($array)
@@ -137,9 +138,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组装,将数组组装成('a1','b1','c1'),('a2','b2','c2')的形式返回
+     * sql组装,将数组组装成('a1','b1','c1'),('a2','b2','c2')的形式返回.
      *
      * @param  array  $array 待组装的数据
+     *
      * @return string
      */
     public function sqlMulti($array)
@@ -148,9 +150,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组装,将数组组装成('a1','b1','c1')的形式返回
+     * sql组装,将数组组装成('a1','b1','c1')的形式返回.
      *
      * @param  array  $array 待组装的数据
+     *
      * @return string
      */
     public function sqlImplode($array)
@@ -159,10 +162,11 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 组装sql limit表达式串,并返回组装后的结果
+     * 组装sql limit表达式串,并返回组装后的结果.
      *
-     * @param  int    $limit
-     * @param  int    $offset
+     * @param int $limit
+     * @param int $offset
+     *
      * @return string
      */
     public function sqlLimit($limit, $offset = 0)
@@ -175,11 +179,12 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * sql组合语句,(sqlSingle, sqlSingleIncrease) `key`=value,`key`=`key`+value
+     * sql组合语句,(sqlSingle, sqlSingleIncrease) `key`=value,`key`=`key`+value.
      *
-     * @param  array  $updateFields   更新操作的字段
-     * @param  array  $IncreaseFields 增减操作的字段
-     * @param  array  $bitFields
+     * @param array $updateFields   更新操作的字段
+     * @param array $IncreaseFields 增减操作的字段
+     * @param array $bitFields
+     *
      * @return string
      */
     public function sqlMerge($updateFields, $increaseFields, $bitFields = array())
@@ -201,10 +206,11 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 绑定tablename,并返回绑定后结果
+     * 绑定tablename,并返回绑定后结果.
      *
-     * @param  string $sql   需要绑定tablename的sql语句
-     * @param  string $table 默认为当前表
+     * @param string $sql   需要绑定tablename的sql语句
+     * @param string $table 默认为当前表
+     *
      * @return string
      */
     protected function _bindTable($sql, $table = '')
@@ -215,9 +221,10 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 绑定sql中的变量,并返回绑定后结果
+     * 绑定sql中的变量,并返回绑定后结果.
      *
-     * @param  string $sql 需要绑定变量参数的sql语句
+     * @param string $sql 需要绑定变量参数的sql语句
+     *
      * @return string
      */
     protected function _bindSql($sql)
@@ -228,10 +235,11 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 过滤当前表结构
+     * 过滤当前表结构.
      *
-     * @param  array                                $array
-     * @param  array                                $allow
+     * @param array $array
+     * @param array $allow
+     *
      * @return multitype:|unknown|multitype:unknown
      */
     protected function _filterStruct($array, $allow = array())
@@ -252,10 +260,11 @@ class PwBaseDao extends WindDao
     }
 
     /**
-     * 结果集合并
+     * 结果集合并.
      *
-     * @param  array              $array1
-     * @param  array              $array2
+     * @param array $array1
+     * @param array $array2
+     *
      * @return multitype:Ambigous <multitype:, unknown>
      */
     protected function _margeArray($array1, $array2)

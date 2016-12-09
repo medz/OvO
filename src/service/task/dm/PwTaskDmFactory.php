@@ -6,16 +6,17 @@
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskDmFactory.php 16740 2012-08-28 06:02:13Z xiaoxia.xuxx $
- * @package src.service.task.dm
  */
 class PwTaskDmFactory
 {
     /**
      * 获取完成条件对应的任务DM对象
      *
-     * @param  string   $condition member/bbs
-     * @param  string   $child
+     * @param string $condition member/bbs
+     * @param string $child
+     *
      * @return PwTaskDm
      */
     public static function getInstance($condition, $child)
@@ -50,10 +51,11 @@ class PwTaskDmFactory
     }
 
     /**
-     * 添加奖励
+     * 添加奖励.
      *
-     * @param  PwTaskDm $dm
-     * @param  array    $reward
+     * @param PwTaskDm $dm
+     * @param array    $reward
+     *
      * @return PwTaskDm
      */
     public static function addRewardDecoration(PwTaskDm $dm, $reward)

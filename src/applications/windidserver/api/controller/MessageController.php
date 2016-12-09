@@ -3,14 +3,14 @@
 Wind::import('APPS:api.controller.OpenBaseController');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: MessageController.php 24706 2013-02-16 06:02:32Z jieyin $
- * @package
  */
-
 class MessageController extends OpenBaseController
 {
     public function getMessageByIdAction()
@@ -87,7 +87,7 @@ class MessageController extends OpenBaseController
     }
 
     /**
-     * 搜索消息
+     * 搜索消息.
      *
      * @return array(count, list)
      */

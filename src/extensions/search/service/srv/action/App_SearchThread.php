@@ -7,9 +7,10 @@ class App_SearchThread extends App_SearchAction
     protected $fid = 0;
 
     /**
-     * 搜索统计帖子
+     * 搜索统计帖子.
      *
-     * @param  PwThreadSo $so
+     * @param PwThreadSo $so
+     *
      * @return int
      */
     public function countSearch($so)
@@ -18,11 +19,12 @@ class App_SearchThread extends App_SearchAction
     }
 
     /**
-     * 搜索帖子
+     * 搜索帖子.
      *
-     * @param  PwThreadSo $so
-     * @param  int        $limit 查询条数
-     * @param  int        $start 开始查询的位置
+     * @param PwThreadSo $so
+     * @param int        $limit 查询条数
+     * @param int        $start 开始查询的位置
+     *
      * @return array
      */
     public function search($so, $limit = 20, $start = 0)
@@ -31,9 +33,11 @@ class App_SearchThread extends App_SearchAction
     }
 
     /**
-     * 组装帖子数据
-     * @param  array        $threads
-     * @param  string       $keywords
+     * 组装帖子数据.
+     *
+     * @param array  $threads
+     * @param string $keywords
+     *
      * @return unknown_type
      */
     public function build($list, $keywords)
@@ -59,7 +63,8 @@ class App_SearchThread extends App_SearchAction
     }
 
     /**
-     * PwThread
+     * PwThread.
+     *
      * @return PwThread
      */
     protected function _getThreadSearch()

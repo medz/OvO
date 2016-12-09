@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户黑名单
+ * 用户黑名单.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidUserBlack.php 24398 2013-01-30 02:45:05Z jieyin $
- * @package wind
  */
 class WindidUserBlack
 {
     /**
-     * 获取用户黑名单
+     * 获取用户黑名单.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getBlacklist($uid)
@@ -33,9 +34,10 @@ class WindidUserBlack
     }
 
     /**
-     * 批量获取用户黑名单
+     * 批量获取用户黑名单.
      *
-     * @param  array $uids
+     * @param array $uids
+     *
      * @return array
      */
     public function fetchBlacklist($uids)
@@ -48,8 +50,8 @@ class WindidUserBlack
     }
 
     /**
+     * 添加用户黑名单.
      *
-     * 添加用户黑名单
      * @param int $uid
      * @param int $blackUid
      */
@@ -80,11 +82,11 @@ class WindidUserBlack
         return $this->_getBlacklistDao()->replaceBlacklist($data);
     }
 
-
     /**
-     * 删除
+     * 删除.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteBlacklist($uid)

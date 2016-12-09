@@ -3,19 +3,18 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * pw扩展机制
+ * pw扩展机制.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBaseHookService.php 23093 2013-01-06 04:04:36Z jieyin $
- * @package wekit
- * @subpackage engine.hook
  */
 abstract class PwBaseHookService
 {
     /**
-     * 外部注入的所有扩展实现的集合
+     * 外部注入的所有扩展实现的集合.
      *
      * @var array
      */
@@ -69,10 +68,11 @@ abstract class PwBaseHookService
     }
 
     /**
-     * 指定扩展服务的接口名(或基类)
+     * 指定扩展服务的接口名(或基类).
      *
      * 该抽象方法返回一个类型定义{@see PwBaseHookService::appendDo}
      * 注入到该服务的扩展必须为该类型.
+     *
      * @return string
      */
     abstract protected function _getInterfaceName();
@@ -81,6 +81,7 @@ abstract class PwBaseHookService
      * 为当前服务添加扩展服务
      *
      * 通过调用该方法,向该服务中注入扩展服务,参考{@see PwHookInjector::preHandle}实现.
+     *
      * @param object $do 扩展服务
      */
     public function appendDo($do)
@@ -110,9 +111,10 @@ abstract class PwBaseHookService
 
     /**
      * 为所有注册的扩展服务运行指定方法;
-     * 模式:当有一个方法出错(不返回true)时，中断运行
+     * 模式:当有一个方法出错(不返回true)时，中断运行.
      *
-     * @param  string             $method 方法名
+     * @param string $method 方法名
+     *
      * @return true|PwError对象
      */
     public function runWithVerified($method)
@@ -132,11 +134,12 @@ abstract class PwBaseHookService
 
     /**
      * 为所有注册的扩展服务运行指定方法;
-     * 模式:自上而下传递$value变量
+     * 模式:自上而下传递$value变量.
      *
-     * @param  string $method 方法名
-     * @param  mixed  $value  传递的值
-     * @return mixed  处理后的值
+     * @param string $method 方法名
+     * @param mixed  $value  传递的值
+     *
+     * @return mixed 处理后的值
      */
     public function runWithFilters($method, $value)
     {
@@ -153,9 +156,10 @@ abstract class PwBaseHookService
     }
 
     /**
-     * 获取当前对象的某一个属性的值;
+     * 获取当前对象的某一个属性的值;.
      *
-     * @param  string $var 属性名
+     * @param string $var 属性名
+     *
      * @return mixed
      */
     public function getAttribute($var)
@@ -180,8 +184,9 @@ abstract class PwBaseHookService
     /**
      * 返回当前结果集中对应的属性的值
      *
-     * @param  mixed $result
-     * @param  array $attributes
+     * @param mixed $result
+     * @param array $attributes
+     *
      * @return mixed
      */
     private function _getAttribute($result, $attributes)

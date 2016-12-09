@@ -3,13 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * db缓存数据接口
+ * db缓存数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwBaseDbCache.php 20973 2012-11-22 10:33:45Z jieyin $
- * @package src.service.user
  */
 abstract class PwBaseDbCache
 {

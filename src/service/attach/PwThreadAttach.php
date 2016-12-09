@@ -8,16 +8,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadAttach.php 24314 2013-01-28 08:09:53Z jieyin $
- * @package attach
  */
-
 class PwThreadAttach
 {
     /**
-     * 获取一个附件信息
+     * 获取一个附件信息.
      *
-     * @param  int   $aid
+     * @param int $aid
+     *
      * @return array
      */
     public function getAttach($aid)
@@ -30,9 +30,10 @@ class PwThreadAttach
     }
 
     /**
-     * 获取多个附件信息
+     * 获取多个附件信息.
      *
-     * @param  array $aids
+     * @param array $aids
+     *
      * @return array
      */
     public function fetchAttach($aids)
@@ -45,10 +46,11 @@ class PwThreadAttach
     }
 
     /**
-     * 获取帖子(A)中回复序列(B)中的附件信息
+     * 获取帖子(A)中回复序列(B)中的附件信息.
      *
-     * @param  int   $tid  帖子(A)
-     * @param  array $pids 回复序列(B)
+     * @param int   $tid  帖子(A)
+     * @param array $pids 回复序列(B)
+     *
      * @return array
      */
     public function getAttachByTid($tid, $pids)
@@ -61,9 +63,10 @@ class PwThreadAttach
     }
 
     /**
-     * 获取用户临时存取的附件
+     * 获取用户临时存取的附件.
      *
-     * @param  int   $userid
+     * @param int $userid
+     *
      * @return array
      */
     public function getTmpAttachByUserid($userid)
@@ -72,11 +75,12 @@ class PwThreadAttach
     }
 
     /**
-     * 统计帖子中某个类型的附件的个数
+     * 统计帖子中某个类型的附件的个数.
      *
-     * @param  int    $tid  帖子id
-     * @param  int    $pid  回复id
-     * @param  string $type 附件类型
+     * @param int    $tid  帖子id
+     * @param int    $pid  回复id
+     * @param string $type 附件类型
+     *
      * @return int
      */
     public function countType($tid, $pid, $type)
@@ -85,9 +89,10 @@ class PwThreadAttach
     }
 
     /**
-     * 获取多个tid下的所有附件
+     * 获取多个tid下的所有附件.
      *
      * @param array tids
+     *
      * @return array
      */
     public function fetchAttachByTid($tids)
@@ -100,10 +105,11 @@ class PwThreadAttach
     }
 
     /**
-     * 根据指定tid,pid,获取多个附件
+     * 根据指定tid,pid,获取多个附件.
      *
      * @param array tids
      * @param array pids
+     *
      * @return array
      */
     public function fetchAttachByTidAndPid($tids, $pids)
@@ -116,10 +122,11 @@ class PwThreadAttach
     }
 
     /**
-     * 获取多个帖子中的指定楼层的附件信息
+     * 获取多个帖子中的指定楼层的附件信息.
      *
-     * @param  array $tids 帖子序列
-     * @param  int   $pid  指定楼层
+     * @param array $tids 帖子序列
+     * @param int   $pid  指定楼层
+     *
      * @return array
      */
     public function fetchAttachByTidsAndPid($tids, $pid = 0)
@@ -133,9 +140,10 @@ class PwThreadAttach
     }
 
     /**
-     * 增加一个附件
+     * 增加一个附件.
      *
-     * @param  PwThreadAttachDm $dm
+     * @param PwThreadAttachDm $dm
+     *
      * @return bool|PwError
      */
     public function addAttach(PwThreadAttachDm $dm)
@@ -153,9 +161,10 @@ class PwThreadAttach
     }
 
     /**
-     * 更新附件信息
+     * 更新附件信息.
      *
-     * @param  PwThreadAttachDm $dm
+     * @param PwThreadAttachDm $dm
+     *
      * @return bool
      */
     public function updateAttach(PwThreadAttachDm $dm)
@@ -176,10 +185,11 @@ class PwThreadAttach
     }
 
     /**
-     * 批量更新附件信息
+     * 批量更新附件信息.
      *
-     * @param  array            $aids
-     * @param  PwThreadAttachDm $dm
+     * @param array            $aids
+     * @param PwThreadAttachDm $dm
+     *
      * @return bool
      */
     public function batchUpdateAttach($aids, PwThreadAttachDm $dm)
@@ -198,10 +208,11 @@ class PwThreadAttach
     }
 
     /**
-     * 更新多个帖子的所属版块
+     * 更新多个帖子的所属版块.
      *
-     * @param  array $tids
-     * @param  int   $fid
+     * @param array $tids
+     * @param int   $fid
+     *
      * @return bool
      */
     public function batchUpdateFidByTid($tids, $fid)
@@ -214,9 +225,10 @@ class PwThreadAttach
     }
 
     /**
-     * 删除单个附件
+     * 删除单个附件.
      *
-     * @param  int  $aid
+     * @param int $aid
+     *
      * @return bool
      */
     public function deleteAttach($aid)
@@ -227,9 +239,10 @@ class PwThreadAttach
     }
 
     /**
-     * 删除多个附件
+     * 删除多个附件.
      *
-     * @param  array $aids
+     * @param array $aids
+     *
      * @return bool
      */
     public function batchDeleteAttach($aids)
@@ -248,7 +261,6 @@ class PwThreadAttach
     }
 
     /**
-     *
      * @return PwThreadAttachDao
      */
     protected function _getDao()

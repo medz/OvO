@@ -6,17 +6,19 @@
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogSo.php 21170 2012-11-29 12:05:09Z xiaoxia.xuxx $
- * @package src.service.log.so
  */
 class PwLogSo
 {
     private $_data = array();
     private $_orderData = array();
+
     /**
      * 设置搜索条件-操作对象
      *
-     * @param  string  $username
+     * @param string $username
+     *
      * @return PwLogSo
      */
     public function setOperatedUsername($username)
@@ -29,10 +31,12 @@ class PwLogSo
 
         return $this;
     }
+
     /**
-     * 设置搜索条件-操作者
+     * 设置搜索条件-操作者.
      *
-     * @param  string  $username
+     * @param string $username
+     *
      * @return PwLogSo
      */
     public function setCreatedUsername($username)
@@ -47,9 +51,10 @@ class PwLogSo
     }
 
     /**
-     * 设置搜索条件-操作类型
+     * 设置搜索条件-操作类型.
      *
-     * @param  int     $typeid
+     * @param int $typeid
+     *
      * @return PwLogSo
      */
     public function setTypeid($typeid)
@@ -64,9 +69,10 @@ class PwLogSo
     }
 
     /**
-     * 设置搜索条件-版块ID
+     * 设置搜索条件-版块ID.
      *
-     * @param  int     $fid
+     * @param int $fid
+     *
      * @return PwLogSo
      */
     public function setFid($fid)
@@ -81,9 +87,10 @@ class PwLogSo
     }
 
     /**
-     * 设置搜索条件-开始搜索的时间
+     * 设置搜索条件-开始搜索的时间.
      *
-     * @param  string  $time
+     * @param string $time
+     *
      * @return PwLogSo
      */
     public function setStartTime($time)
@@ -100,7 +107,8 @@ class PwLogSo
     /**
      * 设置搜索条件-搜索时间结束
      *
-     * @param  string  $time
+     * @param string $time
+     *
      * @return PwLogSo
      */
     public function setEndTime($time)
@@ -117,7 +125,8 @@ class PwLogSo
     /**
      * 设置搜索条件-IP地址
      *
-     * @param  string  $ip
+     * @param string $ip
+     *
      * @return PwLogSo
      */
     public function setIp($ip)
@@ -130,10 +139,12 @@ class PwLogSo
 
         return $this;
     }
+
     /**
-     * 设置搜索条件-关键字
+     * 设置搜索条件-关键字.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return PwLogSo
      */
     public function setKeywords($key)
@@ -148,7 +159,7 @@ class PwLogSo
     }
 
     /**
-     * 获取搜索的条件--DAO
+     * 获取搜索的条件--DAO.
      *
      * @return array
      */
@@ -158,7 +169,7 @@ class PwLogSo
     }
 
     /**
-     * 获取搜索的条件
+     * 获取搜索的条件.
      *
      * @return array
      */

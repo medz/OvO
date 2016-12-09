@@ -2,13 +2,13 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 添加友情链接
+ * 添加友情链接.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: LinkController.php 28814 2013-05-24 09:31:14Z jieyin $
- * @package controller.config
  */
 class LinkController extends AdminBaseController
 {
@@ -31,8 +31,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * dorun
-     *
+     * dorun.
      */
     public function dorunAction()
     {
@@ -53,8 +52,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 添加友情链接
-     *
+     * 添加友情链接.
      */
     public function addAction()
     {
@@ -63,8 +61,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * do添加友情链接
-     *
+     * do添加友情链接.
      */
     public function doaddAction()
     {
@@ -93,8 +90,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 编辑友情链接
-     *
+     * 编辑友情链接.
      */
     public function editAction()
     {
@@ -112,8 +108,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * do编辑友情链接
-     *
+     * do编辑友情链接.
      */
     public function doeditAction()
     {
@@ -144,8 +139,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 删除友情链接
-     *
+     * 删除友情链接.
      */
     public function doDeleteAction()
     {
@@ -160,8 +154,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 分类列表
-     *
+     * 分类列表.
      */
     public function typesAction()
     {
@@ -171,8 +164,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 编辑分类列表
-     *
+     * 编辑分类列表.
      */
     public function dotypesAction()
     {
@@ -210,16 +202,14 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 添加分类
-     *
+     * 添加分类.
      */
     public function addTypeAction()
     {
     }
 
     /**
-     * do添加分类
-     *
+     * do添加分类.
      */
     public function doAddTypeAction()
     {
@@ -240,8 +230,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 删除分类
-     *
+     * 删除分类.
      */
     public function doDeleteTypeAction()
     {
@@ -257,8 +246,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 审核友情链接
-     *
+     * 审核友情链接.
      */
     public function checkAction()
     {
@@ -279,8 +267,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * do审核友情链接
-     *
+     * do审核友情链接.
      */
     public function doCheckAction()
     {
@@ -312,8 +299,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * 设置current
-     *
+     * 设置current.
      */
     private function setTab($action)
     {
@@ -323,7 +309,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * PwLinkService
+     * PwLinkService.
      *
      * @return PwLinkService
      */
@@ -333,7 +319,7 @@ class LinkController extends AdminBaseController
     }
 
     /**
-     * PwLink
+     * PwLink.
      *
      * @return PwLink
      */

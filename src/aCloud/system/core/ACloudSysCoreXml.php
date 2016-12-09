@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreXml
 {
     public function createXML($docs, $charset, $totalPages = null)
@@ -9,9 +9,9 @@ class ACloudSysCoreXml
         $xml = '';
         $xml .= '<?xml version="1.0" encoding="'.$charset.'"?>';
         $xml .= '<root>';
-        $xml .= '<docinfo '.ACloudSysCoreXml::createAttribute('version', ACloudSysCoreDefine::ACLOUD_XML_VERSION).' '.ACloudSysCoreXml::createAttribute('charset', $charset).' '.ACloudSysCoreXml::createAttribute('totalpages', $totalPages).' />';
+        $xml .= '<docinfo '.self::createAttribute('version', ACloudSysCoreDefine::ACLOUD_XML_VERSION).' '.self::createAttribute('charset', $charset).' '.self::createAttribute('totalpages', $totalPages).' />';
         $xml .= '<docs>';
-        $xml .= ACloudSysCoreXml::buildXML($docs);
+        $xml .= self::buildXML($docs);
         $xml .= '</docs>';
         $xml .= '</root>';
 
@@ -25,7 +25,7 @@ class ACloudSysCoreXml
 
     public function buildXML($docs)
     {
-        if (! $docs || ! is_array($docs)) {
+        if (!$docs || !is_array($docs)) {
             return '';
         }
         $docStr = '';

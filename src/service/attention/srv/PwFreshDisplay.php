@@ -4,22 +4,18 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.PwFresh');
 
-
 Wind::import('SRV:weibo.PwWeibo');
 Wind::import('SRV:attention.srv.freshDisplay.PwFreshAttachDisplay');
 
-
-
 /**
- * 新鲜事列表
+ * 新鲜事列表.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFreshDisplay.php 22678 2012-12-26 09:22:23Z jieyin $
- * @package src.service.user.srv
  */
-
 class PwFreshDisplay
 {
     protected $fresh = array();
@@ -27,7 +23,7 @@ class PwFreshDisplay
     protected $fresh_map = array(
         PwFresh::TYPE_THREAD_REPLY => 'PwReplyFresh',
         PwFresh::TYPE_THREAD_TOPIC => 'PwTopicFresh',
-        PwFresh::TYPE_WEIBO => 'PwWeiboFresh',
+        PwFresh::TYPE_WEIBO        => 'PwWeiboFresh',
     );
 
     public function __construct(iPwDataSource $ds)
@@ -44,9 +40,10 @@ class PwFreshDisplay
     }
 
     /**
-     * 聚合内容
+     * 聚合内容.
      *
      * @param  array $relation 新鲜事关联
+     *
      * @return array
      */
     public function gather()
@@ -99,10 +96,11 @@ abstract class PwBaseFresh
     }
 
     /**
-     * 构建板块的链接
+     * 构建板块的链接.
      *
-     * @param  int    $fid
-     * @param  string $fname
+     * @param int    $fid
+     * @param string $fname
+     *
      * @return string
      */
     protected function _bulidFrom($fid, $fname)
@@ -159,13 +157,13 @@ class PwTopicFresh extends PwBaseFresh
         !$topic['word_version'] && $topic['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($topic['content'], $topic['word_version']);
 
         $result = array(
-            'replies' => $topic['replies'],
-            'like_count' => $topic['like_count'],
+            'replies'          => $topic['replies'],
+            'like_count'       => $topic['like_count'],
             'created_username' => $topic['created_username'],
-            'title' => $topic['subject'],
-            'content' => $topic['content'],
-            'from' => $this->_bulidFrom($forum['fid'], $forum['name']),
-            'pic' => $topic['pic'],
+            'title'            => $topic['subject'],
+            'content'          => $topic['content'],
+            'from'             => $this->_bulidFrom($forum['fid'], $forum['name']),
+            'pic'              => $topic['pic'],
         );
         if ($errcode) {
             $result += $errcode;
@@ -223,26 +221,26 @@ class PwReplyFresh extends PwBaseFresh
         !$reply['word_version'] && $reply['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($reply['content'], $reply['word_version']);
 
         $result = array(
-            'replies' => $reply['replies'],
-            'like_count' => $reply['like_count'],
+            'replies'          => $reply['replies'],
+            'like_count'       => $reply['like_count'],
             'created_username' => $reply['created_username'],
-            'content' => $reply['content'],
-            'from' => $from,
-            'pic' => $pic,
-            'quote' => array(
+            'content'          => $reply['content'],
+            'from'             => $from,
+            'pic'              => $pic,
+            'quote'            => array(
                 //'id' => $id,
-                'tid' => $quote['tid'],
-                'type' => PwFresh::TYPE_THREAD_TOPIC,
-                'src_id' => $quote['tid'],
-                'replies' => $quote['replies'],
-                'like_count' => $quote['like_count'],
-                'created_userid' => $quote['created_userid'],
+                'tid'              => $quote['tid'],
+                'type'             => PwFresh::TYPE_THREAD_TOPIC,
+                'src_id'           => $quote['tid'],
+                'replies'          => $quote['replies'],
+                'like_count'       => $quote['like_count'],
+                'created_userid'   => $quote['created_userid'],
                 'created_username' => $quote['created_username'],
-                'created_time' => $quote['created_time'],
-                'subject' => $quote['subject'],
-                'content' => $quote['content'],
-                'url' => WindUrlHelper::createUrl('bbs/read/run', array('tid' => $quote['tid'])),
-                'from' => $from,
+                'created_time'     => $quote['created_time'],
+                'subject'          => $quote['subject'],
+                'content'          => $quote['content'],
+                'url'              => WindUrlHelper::createUrl('bbs/read/run', array('tid' => $quote['tid'])),
+                'from'             => $from,
             ),
         );
         if ($errcode) {
@@ -258,9 +256,9 @@ class PwWeiboFresh extends PwBaseFresh
     protected $_weibo;
     protected $_relation = array();
     protected $_from = array(
-        0 => array('新鲜事'),
+        0                   => array('新鲜事'),
         PwWeibo::TYPE_MEDAL => array('勋章', 'medal/index/run'),
-        PwWeibo::TYPE_LIKE => array('喜欢', 'like/like/run'),
+        PwWeibo::TYPE_LIKE  => array('喜欢', 'like/like/run'),
     );
 
     public function __construct($ids)
@@ -289,11 +287,11 @@ class PwWeiboFresh extends PwBaseFresh
         $weibo['useubb'] = 1;
         $weibo = $this->_bulidContent($weibo, $errcode);
         $result = array(
-            'replies' => $weibo['comments'],
-            'like_count' => $weibo['like_count'],
+            'replies'          => $weibo['comments'],
+            'like_count'       => $weibo['like_count'],
             'created_username' => $weibo['created_username'],
-            'content' => $weibo['content'],
-            'from' => $this->_bulidFrom($weibo['type'], ''),
+            'content'          => $weibo['content'],
+            'from'             => $this->_bulidFrom($weibo['type'], ''),
         );
         if ($weibo['src_id']) {
             $quote = $this->_weibo->fetchOne($weibo['src_id']);
@@ -301,16 +299,16 @@ class PwWeiboFresh extends PwBaseFresh
             $quote = $this->_bulidContent($quote, $_tmp);
             $result['quote'] = array(
                 //'id' => $id,
-                'type' => PwFresh::TYPE_WEIBO,
-                'src_id' => $quote['weibo_id'],
-                'replies' => $quote['comments'],
-                'like_count' => $quote['like_count'],
-                'created_userid' => $quote['created_userid'],
+                'type'             => PwFresh::TYPE_WEIBO,
+                'src_id'           => $quote['weibo_id'],
+                'replies'          => $quote['comments'],
+                'like_count'       => $quote['like_count'],
+                'created_userid'   => $quote['created_userid'],
                 'created_username' => $quote['created_username'],
-                'created_time' => $quote['created_time'],
-                'content' => $quote['content'],
-                'url' => WindUrlHelper::createUrl('space/index/fresh', array('uid' => $quote['created_userid'], 'weiboid' => $quote['weibo_id'])),
-                'from' => $this->_bulidFrom($quote['type'], ''),
+                'created_time'     => $quote['created_time'],
+                'content'          => $quote['content'],
+                'url'              => WindUrlHelper::createUrl('space/index/fresh', array('uid' => $quote['created_userid'], 'weiboid' => $quote['weibo_id'])),
+                'from'             => $this->_bulidFrom($quote['type'], ''),
             );
         }
         //if ($errcode) $result += $errcode;

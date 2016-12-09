@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAnnounceDao.php 5140 2012-02-29 08:21:33Z mingxing.sun $
- * @package announce
  */
-
 class PwAnnounceDao extends PwBaseDao
 {
     protected $_table = 'announce';
@@ -19,9 +18,10 @@ class PwAnnounceDao extends PwBaseDao
     protected $_dataStruct = array('aid', 'vieworder', 'created_userid', 'typeid', 'url', 'subject', 'content', 'start_date', 'end_date');
 
     /**
-     * 添加一条公告信息
+     * 添加一条公告信息.
      *
-     * @param  array $fields
+     * @param array $fields
+     *
      * @return int
      */
     public function addAnnounce($fields)
@@ -30,9 +30,10 @@ class PwAnnounceDao extends PwBaseDao
     }
 
     /**
-     * 删除一条公告信息
+     * 删除一条公告信息.
      *
-     * @param  int  $aid
+     * @param int $aid
+     *
      * @return bool
      */
     public function deleteAnnounce($aid)
@@ -41,9 +42,10 @@ class PwAnnounceDao extends PwBaseDao
     }
 
     /**
-     * 批量删除公告信息
+     * 批量删除公告信息.
      *
-     * @param  array $aids
+     * @param array $aids
+     *
      * @return bool
      */
     public function batchDeleteAnnounce($aids)
@@ -52,9 +54,11 @@ class PwAnnounceDao extends PwBaseDao
     }
 
     /**
-     * 更新一条公告信息
-     * @param  int   $aid
-     * @param  array $fields
+     * 更新一条公告信息.
+     *
+     * @param int   $aid
+     * @param array $fields
+     *
      * @return bool
      */
     public function updateAnnounce($aid, $fields)
@@ -63,10 +67,11 @@ class PwAnnounceDao extends PwBaseDao
     }
 
     /**
-     * 获取公告信息
+     * 获取公告信息.
      *
      * @param $offset
      * @param $limit
+     *
      * @return array
      */
     public function getAnnounceOrderByVieworder($limit, $offset)
@@ -79,11 +84,12 @@ class PwAnnounceDao extends PwBaseDao
 
     /**
      * 通过时间获取公告信息
-     * 业务为获取正在发布中的公告信息
+     * 业务为获取正在发布中的公告信息.
      *
      * @param $time
      * @param $offset
      * @param $limit
+     *
      * @return array
      */
     public function getAnnounceByTimeOrderByVieworder($time, $limit, $offset)
@@ -94,9 +100,8 @@ class PwAnnounceDao extends PwBaseDao
         return $smt->queryAll(array($time, $time), 'aid');
     }
 
-
     /**
-     * 获取公告数
+     * 获取公告数.
      *
      * @return int
      */
@@ -112,7 +117,8 @@ class PwAnnounceDao extends PwBaseDao
      * 获取某一时间内的公告数
      * 业务为获取发布中公告的数量值
      *
-     * @param  int $time
+     * @param int $time
+     *
      * @return int
      */
     public function countAnnounceByTime($time)
@@ -124,9 +130,10 @@ class PwAnnounceDao extends PwBaseDao
     }
 
     /**
-     * 获取一条公告信息
+     * 获取一条公告信息.
      *
-     * @param  int   $aid
+     * @param int $aid
+     *
      * @return array
      */
     public function getAnnounce($aid)

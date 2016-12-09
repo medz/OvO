@@ -6,13 +6,13 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidApp.php 24398 2013-01-30 02:45:05Z jieyin $
- * @package windid.service.app
  */
 class WindidApp
 {
     /**
-     * 获取单个应用
+     * 获取单个应用.
      *
      * @return array
      */
@@ -31,7 +31,7 @@ class WindidApp
     }
 
     /**
-     * 获取应用列表
+     * 获取应用列表.
      *
      * @return array
      */
@@ -41,10 +41,11 @@ class WindidApp
     }
 
     /**
-     * 添加一个应用
+     * 添加一个应用.
      *
-     * @param  WindidAppDm $dm 应用数据对象
-     * @return int         注册的应用id
+     * @param WindidAppDm $dm 应用数据对象
+     *
+     * @return int 注册的应用id
      */
     public function addApp(WindidAppDm $dm)
     {
@@ -56,9 +57,10 @@ class WindidApp
     }
 
     /**
-     * 删除一个应用
+     * 删除一个应用.
      *
-     * @param  int  $id 应用id
+     * @param int $id 应用id
+     *
      * @return bool true|false
      */
     public function delApp($id)
@@ -69,11 +71,12 @@ class WindidApp
     }
 
     /**
-     * 编辑应用信息
+     * 编辑应用信息.
      *
-     * @param  int         $id 应用id
-     * @param  WindidAppDm $dm 应用信息
-     * @return bool        true|false
+     * @param int         $id 应用id
+     * @param WindidAppDm $dm 应用信息
+     *
+     * @return bool true|false
      */
     public function editApp(WindidAppDm $dm)
     {
@@ -85,7 +88,7 @@ class WindidApp
     }
 
     /**
-     * 获得应用Dao
+     * 获得应用Dao.
      *
      * @return WindidAppDao
      */

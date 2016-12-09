@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDoAttInjector.php 17614 2012-09-07 03:14:46Z yanchixia $
- * @package forum
  */
-
 class PwPostDoAttInjector extends PwBaseHookInjector
 {
     public function run()

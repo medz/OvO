@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户标签DAO
+ * 用户标签DAO.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserTagDao.php 17269 2012-09-04 08:04:26Z xiaoxia.xuxx $
- * @package src.service.usertag.dao
  */
 class PwUserTagDao extends PwBaseDao
 {
@@ -16,9 +16,10 @@ class PwUserTagDao extends PwBaseDao
     protected $_dataStruct = array('tag_id', 'name', 'ifhot', 'used_count');
 
     /**
-     * 根据标签ID获得该标签信息
+     * 根据标签ID获得该标签信息.
      *
-     * @param  int   $tag_id
+     * @param int $tag_id
+     *
      * @return array
      */
     public function getTag($tag_id)
@@ -27,9 +28,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 根据标签ID列表批量获取标签信息
+     * 根据标签ID列表批量获取标签信息.
      *
-     * @param  array $tag_ids
+     * @param array $tag_ids
+     *
      * @return array
      */
     public function fetchTag($tag_ids)
@@ -38,9 +40,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 根据标签名字获取标签
+     * 根据标签名字获取标签.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return array
      */
     public function getTagByName($name)
@@ -52,10 +55,11 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 获得热门标签
+     * 获得热门标签.
      *
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getHotTag($limit, $start = 0)
@@ -66,7 +70,7 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 统计热门标签
+     * 统计热门标签.
      *
      * @return int
      */
@@ -78,9 +82,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 添加标签
+     * 添加标签.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addTag($data)
@@ -89,9 +94,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 批量添加标签
+     * 批量添加标签.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function batchAddTag($data)
@@ -112,10 +118,11 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 修改标签
+     * 修改标签.
      *
-     * @param  int   $tag_id 标签ID
-     * @param  array $data   标签数据
+     * @param int   $tag_id 标签ID
+     * @param array $data   标签数据
+     *
      * @return int
      */
     public function updateTag($tag_id, $data, $incrementData)
@@ -124,10 +131,11 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 批量修改标签
+     * 批量修改标签.
      *
-     * @param  array $tag_ids
-     * @param  int   $ifhot
+     * @param array $tag_ids
+     * @param int   $ifhot
+     *
      * @return bool
      */
     public function batchUpdateTag($tag_ids, $ifhot)
@@ -139,9 +147,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 根据标签ID删除标签
+     * 根据标签ID删除标签.
      *
-     * @param  int $tag_id
+     * @param int $tag_id
+     *
      * @return int
      */
     public function deleteTag($tag_id)
@@ -152,9 +161,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 批量删除标签
+     * 批量删除标签.
      *
-     * @param  array $tag_ids
+     * @param array $tag_ids
+     *
      * @return bool
      */
     public function batchDeleteTag($tag_ids)
@@ -164,13 +174,13 @@ class PwUserTagDao extends PwBaseDao
         return $this->_batchDelete($tag_ids);
     }
 
-
     /**
-     * 根据条件搜索标签
+     * 根据条件搜索标签.
      *
-     * @param  array $condition
-     * @param  int   $limit
-     * @param  int   $start
+     * @param array $condition
+     * @param int   $limit
+     * @param int   $start
+     *
      * @return array
      */
     public function searchTag($condition, $limit, $start = 0)
@@ -183,9 +193,10 @@ class PwUserTagDao extends PwBaseDao
     }
 
     /**
-     * 根据条件统计标签
+     * 根据条件统计标签.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearchTag($condition)
@@ -199,8 +210,10 @@ class PwUserTagDao extends PwBaseDao
 
     /**
      * 标签搜索
-     *  TODO
-     * @param  array $condition
+     *  TODO.
+     *
+     * @param array $condition
+     *
      * @return array
      */
     private function _buildConditions($condition)

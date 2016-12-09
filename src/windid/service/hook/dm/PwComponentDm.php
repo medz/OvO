@@ -1,7 +1,7 @@
 <?php
 
 /**
- * name: 		组件的名字，唯一用于在应用中获取对应组件的对象实例
+ * name: 		组件的名字，唯一用于在应用中获取对应组件的对象实例.
  path: 		该组件的实现
  scope: 		组件对象的范围： {singleton: 单例; application: 整个应用； prototype: 当前使用}
  initMethod: 在应用对象生成时执行的方法
@@ -11,8 +11,8 @@
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwComponentDm extends PwBaseDm
 {

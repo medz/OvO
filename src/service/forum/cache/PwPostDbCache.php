@@ -2,21 +2,19 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 回复缓存数据接口
+ * 回复缓存数据接口.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostDbCache.php 22207 2012-12-19 17:13:36Z jieyin $
- * @package src.service.user
  */
 class PwPostDbCache extends PwBaseDbCache
 {
     protected $keys = array(
-        'post' => array('post_%s', array('pid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwPostsDao', 'getPost')),
+        'post'      => array('post_%s', array('pid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwPostsDao', 'getPost')),
         'post_list' => array('post_list_%s_%s_%s_%s_%s', array('tver', 'tid', 'limit', 'offset', 'asc'), PwCache::USE_DBCACHE, 'forum', 0),
         'post_tver' => array('post_tver_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, 0),
     );
@@ -122,7 +120,7 @@ class PwPostDbCache extends PwBaseDbCache
     }*/
 
     /**
-     * 清除一个帖子的列表缓存
+     * 清除一个帖子的列表缓存.
      *
      * @param int $tid
      */
@@ -132,7 +130,7 @@ class PwPostDbCache extends PwBaseDbCache
     }
 
     /**
-     * 更新一个回复，清除所属帖子的列表缓存
+     * 更新一个回复，清除所属帖子的列表缓存.
      *
      * @param int $pid
      * @param int $tid
@@ -147,7 +145,7 @@ class PwPostDbCache extends PwBaseDbCache
     }
 
     /**
-     * 更新多个回复时，清除所属帖子的列表缓存
+     * 更新多个回复时，清除所属帖子的列表缓存.
      *
      * @param array $tids
      * @param int   $fid

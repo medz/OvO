@@ -1,14 +1,15 @@
 <?php
 
 /**
- * 搜索记录DM
+ * 搜索记录DM.
  */
 class App_SearchRecordDm extends PwBaseDm
 {
     /**
-     * 设置关键词
+     * 设置关键词.
      *
-     * @param  string           $keywords
+     * @param string $keywords
+     *
      * @return PwSearchRecordDm
      */
     public function setKeywords($keywords)
@@ -19,9 +20,10 @@ class App_SearchRecordDm extends PwBaseDm
     }
 
     /**
-     * 设置类型
+     * 设置类型.
      *
-     * @param  int              $search_type
+     * @param int $search_type
+     *
      * @return PwSearchRecordDm
      */
     public function setSearchType($search_type)
@@ -32,9 +34,10 @@ class App_SearchRecordDm extends PwBaseDm
     }
 
     /**
-     * 设置创建人
+     * 设置创建人.
      *
-     * @param  int              $created_userid
+     * @param int $created_userid
+     *
      * @return PwSearchRecordDm
      */
     public function setCreatedUserid($created_userid)
@@ -45,9 +48,10 @@ class App_SearchRecordDm extends PwBaseDm
     }
 
     /**
-     * 设置创建时间
+     * 设置创建时间.
      *
-     * @param  int              $created_time
+     * @param int $created_time
+     *
      * @return PwSearchRecordDm
      */
     public function setCreatedTime($created_time)
@@ -81,7 +85,7 @@ class App_SearchRecordDm extends PwBaseDm
     }
 
     /**
-     * 检查数据
+     * 检查数据.
      *
      * @return PwError
      */

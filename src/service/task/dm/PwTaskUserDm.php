@@ -2,20 +2,21 @@
 
 
 /**
- * 用户任务模型
+ * 用户任务模型.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskUserDm.php 5463 2012-03-05 08:45:22Z long.shi $
- * @package service.task.dm
  */
 class PwTaskUserDm extends PwBaseDm
 {
     /**
-     * 设置uid
+     * 设置uid.
      *
-     * @param  int          $uid
+     * @param int $uid
+     *
      * @return PwTaskUserDM
      */
     public function setUid($uid)
@@ -26,9 +27,10 @@ class PwTaskUserDm extends PwBaseDm
     }
 
     /**
-     * 设置任务id
+     * 设置任务id.
      *
-     * @param  int          $taskid
+     * @param int $taskid
+     *
      * @return PwTaskUserDM
      */
     public function setTaskid($taskid)
@@ -41,7 +43,8 @@ class PwTaskUserDm extends PwBaseDm
     /**
      * 设置用户任务状态
      *
-     * @param  int          $taskStatus
+     * @param int $taskStatus
+     *
      * @return PwTaskUserDM
      */
     public function setTaskStatus($taskStatus)
@@ -52,9 +55,10 @@ class PwTaskUserDm extends PwBaseDm
     }
 
     /**
-     * 设置任务是否周期性
+     * 设置任务是否周期性.
      *
-     * @param  int          $is_period
+     * @param int $is_period
+     *
      * @return PwTaskUserDM
      */
     public function setIsPeriod($is_period)
@@ -65,9 +69,10 @@ class PwTaskUserDm extends PwBaseDm
     }
 
     /**
-     * 设置任务完成度
+     * 设置任务完成度.
      *
-     * @param  string       $step
+     * @param string $step
+     *
      * @return PwTaskUserDM
      */
     public function setStep($step)
@@ -78,9 +83,10 @@ class PwTaskUserDm extends PwBaseDm
     }
 
     /**
-     * 设置任务完成时间
+     * 设置任务完成时间.
      *
-     * @param  int          $finish_time
+     * @param int $finish_time
+     *
      * @return PwTaskUserDM
      */
     public function setFinishTime($finish_time)
@@ -91,9 +97,10 @@ class PwTaskUserDm extends PwBaseDm
     }
 
     /**
-     * 设置任务创建时间
+     * 设置任务创建时间.
      *
-     * @param  int          $created_time
+     * @param int $created_time
+     *
      * @return PwTaskUserDM
      */
     public function setCreatedTime($created_time)

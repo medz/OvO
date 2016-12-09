@@ -6,9 +6,8 @@ Wind::import('ADMIN:library.AdminBaseController');
  * @author Qiong Wu <papa0924@gmail.com> 2011-12-15
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package admin
- * @subpackage controller.config
  */
 class WatermarkController extends AdminBaseController
 {
@@ -24,7 +23,7 @@ class WatermarkController extends AdminBaseController
     }
 
     /**
-     * 后台设置-水印管理
+     * 后台设置-水印管理.
      */
     public function dorunAction()
     {
@@ -49,27 +48,24 @@ class WatermarkController extends AdminBaseController
     }
 
     /**
-     * 水印预览
+     * 水印预览.
      */
     public function viewAction()
     {
         $config = array('mark.limitwidth' => abs(intval($this->getInput('markLimitwidth', 'post'))),
-            'mark.limitheight' => abs(intval($this->getInput('markLimitheight', 'post'))),
-            'mark.position' => $this->getInput('markPosition', 'post'),
-            'mark.gif' => $this->getInput('markGif', 'post'),
-            'mark.type' => $this->getInput('markType', 'post'),
-            'mark.text' => $this->getInput('markText', 'post'),
-            'mark.fontfamily' => $this->getInput('markFontfamily', 'post'),
-            'mark.fontsize' => $this->getInput('markFontsize', 'post'),
-            'mark.fontcolor' => $this->getInput('markFontcolor', 'post'),
-            'mark.quality' => abs(intval($this->getInput('markQuality', 'post'))),
-            'mark.file' => $this->getInput('markFile', 'post'),
-            'mark.transparency' => abs(intval($this->getInput('markTransparency', 'post'))),
-            'mark.quality' => abs(intval($this->getInput('markQuality', 'post'))),
+            'mark.limitheight'            => abs(intval($this->getInput('markLimitheight', 'post'))),
+            'mark.position'               => $this->getInput('markPosition', 'post'),
+            'mark.gif'                    => $this->getInput('markGif', 'post'),
+            'mark.type'                   => $this->getInput('markType', 'post'),
+            'mark.text'                   => $this->getInput('markText', 'post'),
+            'mark.fontfamily'             => $this->getInput('markFontfamily', 'post'),
+            'mark.fontsize'               => $this->getInput('markFontsize', 'post'),
+            'mark.fontcolor'              => $this->getInput('markFontcolor', 'post'),
+            'mark.quality'                => abs(intval($this->getInput('markQuality', 'post'))),
+            'mark.file'                   => $this->getInput('markFile', 'post'),
+            'mark.transparency'           => abs(intval($this->getInput('markTransparency', 'post'))),
+            'mark.quality'                => abs(intval($this->getInput('markQuality', 'post'))),
         );
-
-
-
 
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $watermark = new PwImageWatermark($image);
@@ -94,7 +90,7 @@ class WatermarkController extends AdminBaseController
     }
 
     /**
-     * 后台设置-水印策略设置
+     * 后台设置-水印策略设置.
      */
     public function setAction()
     {
@@ -106,9 +102,8 @@ class WatermarkController extends AdminBaseController
         $this->setOutput($watermarkExt, 'watermarkExt');
     }
 
-
     /**
-     * 后台设置-水印策略设置
+     * 后台设置-水印策略设置.
      */
     public function dosetAction()
     {
@@ -127,7 +122,7 @@ class WatermarkController extends AdminBaseController
     }
 
     /**
-     * 获取字体列表
+     * 获取字体列表.
      *
      * @return array
      */
@@ -139,7 +134,7 @@ class WatermarkController extends AdminBaseController
     }
 
     /**
-     * 获取水印文件列表
+     * 获取水印文件列表.
      *
      * @return array
      */

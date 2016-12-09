@@ -1,11 +1,11 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 class ACloudSysCoreOauth
 {
     public static function createHttpQuery($params)
     {
-        if (! $params || ! is_array($params)) {
+        if (!$params || !is_array($params)) {
             return '';
         }
         ksort($params);

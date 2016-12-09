@@ -1,12 +1,12 @@
 <?php
 /**
- * ((\$[a-zA-Z]+->)|([a-zA-Z]+::)|\$)([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\[\]"]*)
+ * ((\$[a-zA-Z]+->)|([a-zA-Z]+::)|\$)([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\[\]"]*).
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com/license.php
+ *
  * @version $Id$
- * @package wind
  */
 class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
 {
@@ -46,7 +46,8 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
     }
 
     /**
-     * @param  array  $matches
+     * @param array $matches
+     *
      * @return string
      */
     private function _variable($matches)
@@ -58,9 +59,10 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
     }
 
     /**
-     * 分析其中的脚本
+     * 分析其中的脚本.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return string
      */
     private function _compile($content)
@@ -94,9 +96,10 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
     }
 
     /**
-     * 编译其中的php语句
+     * 编译其中的php语句.
      *
-     * @param  array  $matches
+     * @param array $matches
+     *
      * @return string
      */
     private function _parse($matches)

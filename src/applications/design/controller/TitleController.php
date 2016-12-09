@@ -2,12 +2,13 @@
 
 Wind::import('APPS:design.controller.DesignBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: TitleController.php 28899 2013-05-29 07:23:48Z gao.wanggao $
- * @package
  */
 class TitleController extends DesignBaseController
 {
@@ -66,16 +67,16 @@ class TitleController extends DesignBaseController
         }
         foreach ($title as $k => $value) {
             $_tmp = array(
-                'title' => $title[$k],
-                'link' => $link[$k],
-                'image' => $image[$k],
-                'float' => $float[$k],
-                'margin' => $margin[$k],
-                'fontsize' => $fontsize[$k],
-                'fontcolor' => $fontcolor[$k],
-                'fontbold' => $fontbold[$k],
+                'title'         => $title[$k],
+                'link'          => $link[$k],
+                'image'         => $image[$k],
+                'float'         => $float[$k],
+                'margin'        => $margin[$k],
+                'fontsize'      => $fontsize[$k],
+                'fontcolor'     => $fontcolor[$k],
+                'fontbold'      => $fontbold[$k],
                 'fontunderline' => $fontunderline[$k],
-                'fontitalic' => $fontitalic[$k],
+                'fontitalic'    => $fontitalic[$k],
             );
             $style = $this->_buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);
@@ -83,7 +84,7 @@ class TitleController extends DesignBaseController
             $jtitle = $image[$k] ? '<img src="'.$_tmp['image'].'" title="'.WindSecurity::escapeHTML($_tmp['title']).'">' : WindSecurity::escapeHTML($_tmp['title']);
             if ($jtitle) {
                 $html .= '<span ';
-                $html .= $jstyle ? 'style="'.$jstyle.'"' : '' ;
+                $html .= $jstyle ? 'style="'.$jstyle.'"' : '';
                 $html .= '>';
                 $html .= $_tmp['link'] ? '<a href="'.$_tmp['link'].'">' : '';
                 $html .= $jtitle;
@@ -116,8 +117,8 @@ class TitleController extends DesignBaseController
     private function _buildTitleStyle($style)
     {
         return array(
-                'float' => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font' => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
+                'float'      => array('type' => $style['float'], 'margin' => $style['margin']),
+                'font'       => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
                 'background' => array('color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']),
         );
     }

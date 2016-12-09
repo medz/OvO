@@ -2,12 +2,13 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: yetianshi $>
+ * the last known user to change this file in the repository  <$LastChangedBy: yetianshi $>.
+ *
  * @author $Author: yetianshi $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ApiController.php 28830 2013-05-27 03:37:39Z yetianshi $
- * @package
  */
 class ApiController extends PwBaseController
 {
@@ -88,7 +89,6 @@ class ApiController extends PwBaseController
         echo $dom->saveXML();
         exit;
     }
-
 
     private function _getScriptDs()
     {

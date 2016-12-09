@@ -4,8 +4,8 @@
  * @author $Author: gao.wanggao $
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNavService.php 19259 2012-10-12 06:22:59Z gao.wanggao $
- * @package  nav
  */
 class PwNavService
 {

@@ -2,14 +2,14 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PortalController.php 28818 2013-05-24 10:10:46Z gao.wanggao $
- * @package
  */
-
 class PortalController extends AdminBaseController
 {
     public function run()
@@ -125,7 +125,6 @@ class PortalController extends AdminBaseController
         return Wekit::load('design.PwDesignModule');
     }
 
-
     private function _getBakDs()
     {
         return Wekit::load('design.PwDesignBak');
@@ -145,7 +144,6 @@ class PortalController extends AdminBaseController
     {
         return Wekit::load('design.PwDesignPush');
     }
-
 
     private function _getPortalDs()
     {

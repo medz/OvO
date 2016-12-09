@@ -8,19 +8,18 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com> 2012-01-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwPollVoterService.php 2552 2012-01-12 11:28:21Z mingxing.sun $
- * @package poll
- * @subpackage service.srv
  */
-
 class PwPollVoterService
 {
     /**
-   * 获取我关注的人参与的投票批量ID
+   * 获取我关注的人参与的投票批量ID.
    *
-   * @param  int   $uids   多个用户ID
-   * @param  int   $limit
-   * @param  int   $offset
+   * @param int $uids   多个用户ID
+   * @param int $limit
+   * @param int $offset
+   *
    * @return array
    */
   public function fetchVoteByUid($uids, $limit, $offset)
@@ -38,7 +37,7 @@ class PwPollVoterService
   }
 
   /**
-   * get PwPollVoter
+   * get PwPollVoter.
    *
    * @return PwPollVoter
    */

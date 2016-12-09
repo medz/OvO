@@ -4,7 +4,6 @@ require_once 'windid/src/windid/WindidApi.php';
 require_once 'windid/src/windid/service/client/bo/WindidClientBo.php';
 require_once 'windid/src/windid/library/WindidUtility.php';
 
-
 $notify = array(
     '999' => 'test',        //通讯测试接口
     '101' => 'addUser',        //注册用户
@@ -32,7 +31,6 @@ if ($time - $_time > 120) {
     showError('timeout');
 }
 
-
 $operation = (int) getInput('operation', 'get');
 $uid = (int) getInput('uid', 'get');
 if (!$uid) {
@@ -52,8 +50,6 @@ if ($result == true) {
 }
 showError('fail');
 
-
-
 function getInput($key, $method = 'get')
 {
     switch ($method) {
@@ -65,7 +61,6 @@ function getInput($key, $method = 'get')
             return null;
     }
 }
-
 
 function showError($message = '', $referer = '', $refresh = false)
 {
@@ -79,14 +74,12 @@ function showMessage($message = '', $referer = '', $refresh = false)
     exit();
 }
 
-
 class notify
 {
     public function test($uid)
     {
         return $uid ? true : false;
     }
-
 
     public function addUser($uid)
     {

@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
- * css编译器
+ * css编译器.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwCssCompress.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package wekit.compile.compiler
  */
 class PwCssCompress extends AbstractPwCompiler
 {
@@ -39,8 +38,9 @@ class PwCssCompress extends AbstractPwCompiler
     }
 
     /**
-     * @param  string  $stylePackage
-     * @param  booelan $isManifestChanged
+     * @param string  $stylePackage
+     * @param booelan $isManifestChanged
+     *
      * @return bool
      */
     private function _doCss($stylePackage)
@@ -66,9 +66,10 @@ class PwCssCompress extends AbstractPwCompiler
     }
 
     /**
-     * 压缩
+     * 压缩.
      *
-     * @param  string $data
+     * @param string $data
+     *
      * @return string
      */
     private function _compress($data)

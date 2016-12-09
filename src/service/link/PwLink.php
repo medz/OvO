@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 友情链接DS
+ * 友情链接DS.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 下午03:18:51Z yishuo $
- * @package PwLink
  */
 class PwLink
 {
     /**
-     * 删除一条友情链接
+     * 删除一条友情链接.
      *
-     * @param  int  $lid
+     * @param int $lid
+     *
      * @return bool
      */
     public function deleteLink($lid)
@@ -28,9 +29,10 @@ class PwLink
     }
 
     /**
-     * 删除多条信息
+     * 删除多条信息.
      *
-     * @param  array $lids
+     * @param array $lids
+     *
      * @return bool
      */
     public function batchDelete($lids)
@@ -43,9 +45,10 @@ class PwLink
     }
 
     /**
-     * 获取一条链接
+     * 获取一条链接.
      *
-     * @param  int   $lid
+     * @param int $lid
+     *
      * @return array
      */
     public function getLink($lid)
@@ -59,11 +62,12 @@ class PwLink
     }
 
     /**
-     * 根据分类获取链接
+     * 根据分类获取链接.
      *
-     * @param  int   $ifcheck 0 未审核| 1已审核
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $ifcheck 0 未审核| 1已审核
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getLinks($start, $limit, $ifcheck = 1)
@@ -72,11 +76,12 @@ class PwLink
     }
 
     /**
-     * 获取链接数量
+     * 获取链接数量.
      *
-     * @param  int   $ifcheck 0 未审核| 1已审核
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $ifcheck 0 未审核| 1已审核
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function countLinks($ifcheck = 0)
@@ -85,9 +90,10 @@ class PwLink
     }
 
     /**
-     * 根据分类获取链接
+     * 根据分类获取链接.
      *
-     * @param  array $lids
+     * @param array $lids
+     *
      * @return array
      */
     public function getLinksByLids($lids)
@@ -100,9 +106,10 @@ class PwLink
     }
 
     /**
-     * 添加一条分类
+     * 添加一条分类.
      *
-     * @param  array    $data
+     * @param array $data
+     *
      * @return int|bool
      */
     public function addLinkType($typename, $vieworder)
@@ -115,9 +122,10 @@ class PwLink
     }
 
     /**
-     * 删除分类
+     * 删除分类.
      *
-     * @param  int  $typeId
+     * @param int $typeId
+     *
      * @return bool
      */
     public function deleteType($typeId)
@@ -131,9 +139,10 @@ class PwLink
     }
 
     /**
-     * 修改多条分类
+     * 修改多条分类.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return bool
      */
     public function updateLinkType($typeId, $name, $vieworder)
@@ -144,7 +153,7 @@ class PwLink
             return false;
         }
         $data = array(
-            'typename' => $name,
+            'typename'  => $name,
             'vieworder' => $vieworder,
         );
 
@@ -152,9 +161,10 @@ class PwLink
     }
 
     /**
-     * 根据名称获取typeid
+     * 根据名称获取typeid.
      *
-     * @param  string $typeName
+     * @param string $typeName
+     *
      * @return int
      */
     public function getTypeByName($typeName)
@@ -167,7 +177,7 @@ class PwLink
     }
 
     /**
-     * 获取所有分类
+     * 获取所有分类.
      *
      * @return array
      */
@@ -177,9 +187,10 @@ class PwLink
     }
 
     /**
-     * 根据分类typeid获取关系
+     * 根据分类typeid获取关系.
      *
-     * @param  int   $typeid
+     * @param int $typeid
+     *
      * @return array
      */
     public function getByTypeId($typeid = null)
@@ -188,9 +199,10 @@ class PwLink
     }
 
     /**
-     * 根据链接ID获取关系
+     * 根据链接ID获取关系.
      *
-     * @param  int   $linkId
+     * @param int $linkId
+     *
      * @return array
      */
     public function getRelationsByTypeId($linkId)
@@ -204,9 +216,10 @@ class PwLink
     }
 
     /**
-     * 根据链接ID列表批量获取该链接和类型关系
+     * 根据链接ID列表批量获取该链接和类型关系.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return array
      */
     public function fetchRelationsByLinkid($ids)
@@ -219,9 +232,10 @@ class PwLink
     }
 
     /**
-     * 根据lid删除
+     * 根据lid删除.
      *
-     * @param  int  $lid
+     * @param int $lid
+     *
      * @return bool
      */
     public function delRelationsByLid($lid)
@@ -237,7 +251,8 @@ class PwLink
     /**
      * Enter description here ...
      *
-     * @param  unknown_type  $lids
+     * @param unknown_type $lids
+     *
      * @return bool|Ambigous <boolean, rowCount, number>
      */
     public function batchDelRelationsByLid($lids)
@@ -250,9 +265,10 @@ class PwLink
     }
 
     /**
-     * 根据typeid删除
+     * 根据typeid删除.
      *
-     * @param  int  $typeid
+     * @param int $typeid
+     *
      * @return bool
      */
     public function delRelationsByTypeid($typeid)
@@ -268,8 +284,9 @@ class PwLink
     /**
      * Enter description here ...
      *
-     * @param  unknown_type $lid
-     * @param  unknown_type $typeId
+     * @param unknown_type $lid
+     * @param unknown_type $typeId
+     *
      * @return bool
      */
     public function addRelation($lid, $typeId)
@@ -283,7 +300,7 @@ class PwLink
     }
 
     /**
-     * 统计分类数量
+     * 统计分类数量.
      *
      * @return array
      */
@@ -293,9 +310,10 @@ class PwLink
     }
 
     /**
-     * 添加友情链接
+     * 添加友情链接.
      *
-     * @param  PwLinksDm $dm
+     * @param PwLinksDm $dm
+     *
      * @return bool
      */
     public function addLink(PwLinkDm $dm)
@@ -308,9 +326,10 @@ class PwLink
     }
 
     /**
-     * 更新友情链接
+     * 更新友情链接.
      *
-     * @param  PwLinksDm $dm
+     * @param PwLinksDm $dm
+     *
      * @return bool
      */
     public function updateLink(PwLinkDm $dm)
@@ -323,11 +342,12 @@ class PwLink
     }
 
     /**
-     * 根据条件搜索
+     * 根据条件搜索.
      *
-     * @param  PwUserSo $vo
-     * @param  int      $limit 查询条数
-     * @param  int      $start 开始查询的位置
+     * @param PwUserSo $vo
+     * @param int      $limit 查询条数
+     * @param int      $start 开始查询的位置
+     *
      * @return array
      */
     public function searchLink(PwLinkSo $vo, $limit = 10, $start = 0)
@@ -338,7 +358,8 @@ class PwLink
     /**
      * 根据条件统计
      *
-     * @param  PwUserSo $vo
+     * @param PwUserSo $vo
+     *
      * @return array
      */
     public function countSearchLink(PwLinkSo $vo)
@@ -347,7 +368,7 @@ class PwLink
     }
 
     /**
-     * PwLinkDao
+     * PwLinkDao.
      *
      * @return PwLinkDao
      */
@@ -357,7 +378,7 @@ class PwLink
     }
 
     /**
-     * PwLinkTypeDao
+     * PwLinkTypeDao.
      *
      * @return PwLinkTypeDao
      */
@@ -367,7 +388,7 @@ class PwLink
     }
 
     /**
-     * PwLinkRelationsDao
+     * PwLinkRelationsDao.
      *
      * @return PwLinkRelationsDao
      */
@@ -377,7 +398,7 @@ class PwLink
     }
 
     /**
-     * PwLinkSearchDao
+     * PwLinkSearchDao.
      *
      * @return PwLinkSearchDao
      */

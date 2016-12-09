@@ -6,8 +6,8 @@
   * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
   * @copyright ©2003-2103 phpwind.com
   * @license http://www.phpwind.com
+  *
   * @version $Id$
-  * @package wind
   */
  class PwPunchService
  {
@@ -86,7 +86,7 @@
     }
 
     /**
-     * 获取打卡配置返回打卡和帮朋友打卡是否开启
+     * 获取打卡配置返回打卡和帮朋友打卡是否开启.
      *
      * @param array $punchData
      *                         return bool
@@ -101,7 +101,7 @@
     }
 
     /**
-     * 格式化时间
+     * 格式化时间.
      *
      * @param int $timestamp
      *                       return bool

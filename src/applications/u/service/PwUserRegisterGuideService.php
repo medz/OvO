@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 用户注册引导service
+ * 用户注册引导service.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserRegisterGuideService.php 20274 2012-10-25 07:49:56Z yishuo $
- * @package srv.products.u.service
  */
 class PwUserRegisterGuideService
 {
@@ -24,9 +24,10 @@ class PwUserRegisterGuideService
     }
 
     /**
-     * 根据类型获得下一个用户引导数据
+     * 根据类型获得下一个用户引导数据.
      *
-     * @param  string     $key
+     * @param string $key
+     *
      * @return array|null
      */
     public function getNextGuide($key)
@@ -76,9 +77,10 @@ class PwUserRegisterGuideService
     }
 
     /**
-     * 设置配置
+     * 设置配置.
      *
-     * @param  array  $config
+     * @param array $config
+     *
      * @return bolean
      */
     public function setConfig($config)
@@ -89,7 +91,7 @@ class PwUserRegisterGuideService
     }
 
     /**
-     * 获得guide配置
+     * 获得guide配置.
      *
      * @return array
      */
@@ -101,7 +103,7 @@ class PwUserRegisterGuideService
     }
 
     /**
-     * 排序数组
+     * 排序数组.
      *
      * 返回排序好的队列，队列中的每个项包含：
      * 1、pre: 该元素的前一个项的key
@@ -109,7 +111,8 @@ class PwUserRegisterGuideService
      * 3、value: 该项的具体值
      * 4、order
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return array
      */
     private function orderList($data)
@@ -167,7 +170,7 @@ class PwUserRegisterGuideService
     }
 
     /**
-     * 获得开启的注册引导向
+     * 获得开启的注册引导向.
      *
      * @return array
      */
@@ -189,7 +192,8 @@ class PwUserRegisterGuideService
 
     /**
      * 获取数据
-     * //TODO 数据库操作
+     * //TODO 数据库操作.
+     *
      * @return array
      */
     private function _getData()

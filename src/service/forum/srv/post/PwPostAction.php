@@ -6,15 +6,14 @@ Wind::import('SRV:forum.bo.PwForumBo');
 Wind::import('SRV:user.dm.PwUserInfoDm');
 
 /**
- * 帖子操作行为基类
+ * 帖子操作行为基类.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPostAction.php 28950 2013-05-31 05:58:25Z jieyin $
- * @package forum
  */
-
 abstract class PwPostAction extends PwBaseHookService
 {
     public $forum;
@@ -39,7 +38,7 @@ abstract class PwPostAction extends PwBaseHookService
     abstract public function isInit();
 
     /**
-     * 当前的帖子类型
+     * 当前的帖子类型.
      */
     public function getSpecial()
     {
@@ -47,35 +46,35 @@ abstract class PwPostAction extends PwBaseHookService
     }
 
     /**
-     * 检测是否有操作权限
+     * 检测是否有操作权限.
      *
      * return bool
      */
     abstract public function check();
 
     /**
-     * 获取数据模型
+     * 获取数据模型.
      *
      * return object PwPostDm
      */
     abstract public function getDm();
 
     /**
-     * 获取数据
+     * 获取数据.
      *
      * return array
      */
     abstract public function getInfo();
 
     /**
-     * 获取附件数据
+     * 获取附件数据.
      *
      * return array
      */
     abstract public function getAttachs();
 
     /**
-     * 数据处理
+     * 数据处理.
      *
      * @param object $postDm 帖子数据模型
      *                       return void
@@ -83,7 +82,7 @@ abstract class PwPostAction extends PwBaseHookService
     abstract public function dataProcessing(PwPostDm $postDm);
 
     /**
-     * 发布
+     * 发布.
      *
      * return bool
      */
@@ -92,7 +91,7 @@ abstract class PwPostAction extends PwBaseHookService
     abstract public function getNewId();
 
     /**
-     * 发布前置动作
+     * 发布前置动作.
      *
      * return bool
      */
@@ -102,7 +101,7 @@ abstract class PwPostAction extends PwBaseHookService
     }
 
     /**
-     * 发布后置动作
+     * 发布后置动作.
      *
      * return bool
      */
@@ -134,7 +133,7 @@ abstract class PwPostAction extends PwBaseHookService
     abstract public function isForumContentCheck();
 
     /**
-     * 检查发帖时间间隔
+     * 检查发帖时间间隔.
      */
     public function checkPostPertime()
     {
@@ -157,9 +156,10 @@ abstract class PwPostAction extends PwBaseHookService
     }
 
     /**
-     * 检查主题分类
+     * 检查主题分类.
      *
-     * @param  PwPostDm     $postDm
+     * @param PwPostDm $postDm
+     *
      * @return bool|PwError
      */
     public function checkTopictype(PwPostDm $postDm)
@@ -186,9 +186,10 @@ abstract class PwPostAction extends PwBaseHookService
     }
 
     /**
-     * 检测是否内容重复
+     * 检测是否内容重复.
      *
      * @param  string       $str 内容
+     *
      * @return bool|PwError
      */
     public function checkContentHash($str)

@@ -3,12 +3,14 @@
  * Enter description here ...
  *
  * @author peihong.zhangph <peihong.zhangph@aliyun-inc.com> Jan 9, 2012
+ *
  * @link http://www.phpwind.com
+ *
  * @copyright 2011 phpwind.com
  * @license
+ *
  * @version $Id: WindidMessage.php 24705 2013-02-16 05:18:04Z jieyin $
  */
-
 class WindidMessage
 {
     //base methods
@@ -69,7 +71,7 @@ class WindidMessage
     //relation methods
 
     /**
-     * 添加私信联系
+     * 添加私信联系.
      *
      * @param WindidMessageDm $dm
      */
@@ -81,6 +83,7 @@ class WindidMessage
     /**
      * 批量修改私信为已读状态
      * Enter description here ...
+     *
      * @param array $relationIds
      */
     public function batchReadRelation($relationIds)
@@ -93,10 +96,11 @@ class WindidMessage
     }
 
     /**
-     * 删除单条用户消息关系
+     * 删除单条用户消息关系.
      *
-     * @param  int  $messageId
-     * @param  int  $dialogId
+     * @param int $messageId
+     * @param int $dialogId
+     *
      * @return bool
      */
     public function deleteRelation($dialogId, $messageId)
@@ -145,9 +149,10 @@ class WindidMessage
     }
 
     /**
-     * 获取对话数量
+     * 获取对话数量.
      *
-     * @param  int                $dialogId
+     * @param int $dialogId
+     *
      * @return array(total,reads)
      */
     public function countDialogMessages($dialogId)
@@ -161,9 +166,10 @@ class WindidMessage
     }
 
     /**
-     * 获取对话数量
+     * 获取对话数量.
      *
-     * @param  int                  $uid
+     * @param int $uid
+     *
      * @return array(total,unreads)
      */
     public function countUserMessages($uid)
@@ -177,8 +183,8 @@ class WindidMessage
     }
 
     /**
+     * 按对话ids统计未读消息数.
      *
-     * 按对话ids统计未读消息数
      * @param array $dialogIds
      */
     public function countUnreadMessageByDialogIds($dialogIds)
@@ -193,7 +199,7 @@ class WindidMessage
     // dialog methods
 
     /**
-     * 添加私信对话信息
+     * 添加私信对话信息.
      *
      * @param WindidMessageDm $dm
      */
@@ -210,7 +216,7 @@ class WindidMessage
     }
 
     /**
-     * 更新私信对话信息
+     * 更新私信对话信息.
      *
      * @param WindidMessageDm $dm
      *                            return bool
@@ -234,7 +240,7 @@ class WindidMessage
     }
 
     /**
-     * 获取消息分组信息
+     * 获取消息分组信息.
      *
      * @param int $toUid
      * @param int $fromUid
@@ -251,7 +257,7 @@ class WindidMessage
     }
 
     /**
-     * 获取多组消息分组信息
+     * 获取多组消息分组信息.
      *
      * @param int $uid
      * @param int $from_uids
@@ -272,10 +278,11 @@ class WindidMessage
     }
 
     /**
-     * 获取多条未读对话
+     * 获取多条未读对话.
      *
-     * @param  int   $uid
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $limit
+     *
      * @return array
      */
     public function getUnreadDialogsByUid($uid, $limit = 20)
@@ -289,9 +296,10 @@ class WindidMessage
     }
 
     /**
-     * 统计分组消息列表数量
+     * 统计分组消息列表数量.
      *
-     * @param  int $uid
+     * @param int $uid
+     *
      * @return int
      */
     public function countDialogs($uid)
@@ -305,7 +313,7 @@ class WindidMessage
     }
 
     /**
-     * 获取一条对话信息
+     * 获取一条对话信息.
      *
      * @param int $dialogId
      */
@@ -322,11 +330,12 @@ class WindidMessage
     }
 
     /**
-     * 获取对话消息列表
+     * 获取对话消息列表.
      *
-     * @param  int   $uid
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $uid
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogs($uid, $start, $limit)
@@ -359,9 +368,10 @@ class WindidMessage
     }
 
     /**
-     * 按会话ids获取对话消息列表
+     * 按会话ids获取对话消息列表.
      *
-     * @param  array $dialogIds
+     * @param array $dialogIds
+     *
      * @return array
      */
     public function fetchDialog($dialogIds)
@@ -384,12 +394,14 @@ class WindidMessage
     }
 
     //TODO move to service
+
     /**
-     * 获取对话列表
+     * 获取对话列表.
      *
-     * @param  int   $dialogId
-     * @param  int   $start
-     * @param  int   $limit
+     * @param int $dialogId
+     * @param int $start
+     * @param int $limit
+     *
      * @return array
      */
     public function getDialogMessages($dialogId, $limit = 10, $start = 0)
@@ -414,10 +426,12 @@ class WindidMessage
     }
 
     //TODO move to service
+
     /**
-     * 批量删除消息
+     * 批量删除消息.
      *
-     * @param  int  $ids
+     * @param int $ids
+     *
      * @return bool
      */
     public function batchDeleteRelation($ids)
@@ -430,8 +444,8 @@ class WindidMessage
     }
 
     /**
+     * 根据消息id获取消息联系.
      *
-     * 根据消息id获取消息联系
      * @param array $messageIds
      */
     public function getRelationsByMessageIds($messageIds)
@@ -444,7 +458,8 @@ class WindidMessage
     }
 
     /**
-     * 获取收件箱，发件箱私信状态列表
+     * 获取收件箱，发件箱私信状态列表.
+     *
      * @param $messageIds
      * @param $issend
      */
@@ -459,10 +474,11 @@ class WindidMessage
     }
 
     /**
-     * 统计未读数
+     * 统计未读数.
      *
-     * @param  int   $uid
-     * @param  array $fromUids
+     * @param int   $uid
+     * @param array $fromUids
+     *
      * @return bool
      */
     public function countUnreadByUidAndFrom($uid, $fromUids)
@@ -496,11 +512,12 @@ class WindidMessage
     }
 
     /**
+     * 更新为已读.
      *
-     * 更新为已读
-     * @param  int   $dialogId
-     * @param  array $messageIds
-     * @return int   (affect rows)
+     * @param int   $dialogId
+     * @param array $messageIds
+     *
+     * @return int (affect rows)
      */
     public function readMessages($dialogId, $messageIds)
     {
@@ -525,16 +542,16 @@ class WindidMessage
     }
 
     /**
-     * 搜索消息数量
+     * 搜索消息数量.
      *
-     * @param  int $from_uid
+     * @param int $from_uid
+     *
      * @return int
      */
     public function countMessage(WindidMessageSo $vo)
     {
         return $this->_getDao()->countMessage($vo->getData());
     }
-
 
     /**
      * @return WindidMessageDao

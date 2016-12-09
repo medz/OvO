@@ -3,13 +3,13 @@
 Wind::import('SRV:user.PwUserBan');
 
 /**
- * 用户Ban的BP
+ * 用户Ban的BP.
  *
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwBanBp.php 23904 2013-01-17 05:27:48Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwBanBp
 {
@@ -18,8 +18,9 @@ class PwBanBp
     private $banInfo = array();
     private $endCallBack = array();
     private $banType = array();
+
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $uid
      */
@@ -33,7 +34,7 @@ class PwBanBp
     }
 
     /**
-     * 初始化所有的禁止信息
+     * 初始化所有的禁止信息.
      */
     public function checkIfBan()
     {
@@ -52,7 +53,7 @@ class PwBanBp
     }
 
     /**
-     * 检查是否有禁止信息
+     * 检查是否有禁止信息.
      *
      * @return bool
      */
@@ -62,7 +63,7 @@ class PwBanBp
     }
 
     /**
-     * 解除禁止
+     * 解除禁止.
      *
      * @return false|mixed
      */
@@ -72,7 +73,7 @@ class PwBanBp
     }
 
     /**
-     * 调取解除禁止发言之后的返回结果
+     * 调取解除禁止发言之后的返回结果.
      *
      * @return mixed
      */
@@ -82,7 +83,7 @@ class PwBanBp
     }
 
     /**
-     * 获得禁止信息
+     * 获得禁止信息.
      *
      * @return array
      */
@@ -92,7 +93,7 @@ class PwBanBp
     }
 
     /**
-     * 检查是否有禁止签名信息
+     * 检查是否有禁止签名信息.
      *
      * @return bool
      */
@@ -102,7 +103,7 @@ class PwBanBp
     }
 
     /**
-     * 解除禁止签名
+     * 解除禁止签名.
      *
      * @return false|mixed
      */
@@ -112,7 +113,7 @@ class PwBanBp
     }
 
     /**
-     * 调取解除禁止签名之后的返回结果
+     * 调取解除禁止签名之后的返回结果.
      *
      * @return mixed
      */
@@ -122,7 +123,7 @@ class PwBanBp
     }
 
     /**
-     * 获得禁止签名信息
+     * 获得禁止签名信息.
      *
      * @return array
      */
@@ -132,7 +133,7 @@ class PwBanBp
     }
 
     /**
-     * 检查是否有禁止头像信息
+     * 检查是否有禁止头像信息.
      *
      * @return bool
      */
@@ -142,7 +143,7 @@ class PwBanBp
     }
 
     /**
-     * 解除禁止头像
+     * 解除禁止头像.
      *
      * @return false|mixed
      */
@@ -152,7 +153,7 @@ class PwBanBp
     }
 
     /**
-     * 调取解除禁止头像之后的返回结果
+     * 调取解除禁止头像之后的返回结果.
      *
      * @return mixed
      */
@@ -162,7 +163,7 @@ class PwBanBp
     }
 
     /**
-     * 获得禁止头像信息
+     * 获得禁止头像信息.
      *
      * @return array
      */
@@ -172,7 +173,7 @@ class PwBanBp
     }
 
     /**
-     * 如果用户没有禁止发言记录，但是用户组ID确实禁止发言用户组，则将用户信息进行修复
+     * 如果用户没有禁止发言记录，但是用户组ID确实禁止发言用户组，则将用户信息进行修复.
      *
      * @return mixed
      */
@@ -182,7 +183,7 @@ class PwBanBp
     }
 
     /**
-     * 如果用户没有禁止签名记录，但是用户状态确实有禁止签名标签，将状态修复
+     * 如果用户没有禁止签名记录，但是用户状态确实有禁止签名标签，将状态修复.
      *
      * @return mixed
      */
@@ -192,7 +193,7 @@ class PwBanBp
     }
 
     /**
-     * 如果用户没有禁止头像记录，但是用户状态确实有禁止头像标签，将状态修复
+     * 如果用户没有禁止头像记录，但是用户状态确实有禁止头像标签，将状态修复.
      *
      * @return mixed
      */
@@ -202,9 +203,10 @@ class PwBanBp
     }
 
     /**
-     * 禁止信息的错误修复
+     * 禁止信息的错误修复.
      *
-     * @param  int        $type
+     * @param int $type
+     *
      * @return bool|mixed
      */
     private function _recoverBanError($type = PwUserBan::BAN_SPEAK)
@@ -216,9 +218,10 @@ class PwBanBp
     }
 
     /**
-     * 判断莫类是否被禁止
+     * 判断莫类是否被禁止.
      *
-     * @param  int  $type
+     * @param int $type
+     *
      * @return bool
      */
     private function _checkIfBan($type = PwUserBan::BAN_SPEAK)
@@ -235,9 +238,10 @@ class PwBanBp
     }
 
     /**
-     * 解除某类禁止类型的有时间期限的禁止
+     * 解除某类禁止类型的有时间期限的禁止.
      *
-     * @param  int  $type
+     * @param int $type
+     *
      * @return bool
      */
     private function _endDateTimeBanSpeak($type = PwUserBan::BAN_SPEAK)
@@ -251,9 +255,10 @@ class PwBanBp
     }
 
     /**
-     * 获得某类禁止记录
+     * 获得某类禁止记录.
      *
-     * @param  int   $type
+     * @param int $type
+     *
      * @return array
      */
     private function _getBanInfo($type = PwUserBan::BAN_SPEAK)
@@ -265,9 +270,10 @@ class PwBanBp
     }
 
     /**
-     * 获得某类禁止被解除之后返回的信息
+     * 获得某类禁止被解除之后返回的信息.
      *
-     * @param  int   $type
+     * @param int $type
+     *
      * @return mixed
      */
     private function _callEndDateTimeBan($type = PwUserBan::BAN_SPEAK)
@@ -276,9 +282,10 @@ class PwBanBp
     }
 
     /**
-     * 解除到期的禁止记录
+     * 解除到期的禁止记录.
      *
-     * @param  array $banInfo
+     * @param array $banInfo
+     *
      * @return mixed
      */
     private function _autoEndBan($type = PwUserBan::BAN_SPEAK)
@@ -313,7 +320,7 @@ class PwBanBp
     }
 
     /**
-     * 获得用户禁止
+     * 获得用户禁止.
      *
      * @return PwUserBan
      */

@@ -4,13 +4,13 @@ Wind::import('APPCENTER:service.srv.do.PwInstall');
 Wind::import('APPCENTER:service.dm.PwStyleDm');
 Wind::import('APPCENTER:service.srv.helper.PwSystemHelper');
 /**
- * 风格安装流程bp
+ * 风格安装流程bp.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwStyleInstall.php 28799 2013-05-24 06:47:37Z yetianshi $
- * @package service.style.srv
  */
 class PwStyleInstall extends PwInstall
 {
@@ -124,9 +124,10 @@ class PwStyleInstall extends PwInstall
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see PwInstall::afterInstall()
+     *
      * @param PwInstallApplication $install
      */
     public function afterInstall($install)
@@ -147,8 +148,8 @@ class PwStyleInstall extends PwInstall
     }
 
     /**
-     *
      * @see PwInstall::rollback()
+     *
      * @param PwInstallApplication $install
      */
     public function rollback($install)
@@ -164,10 +165,11 @@ class PwStyleInstall extends PwInstall
     }
 
     /**
-     * 注册应用信息
+     * 注册应用信息.
      *
-     * @param  PwInstallApplication $install
-     * @return PwError              true
+     * @param PwInstallApplication $install
+     *
+     * @return PwError true
      */
     public function registeApplication($install)
     {
@@ -199,7 +201,6 @@ class PwStyleInstall extends PwInstall
     }
 
     /**
-     *
      * @param PwInstallApplication $install
      */
     protected function getStyleType($install)
@@ -214,7 +215,6 @@ class PwStyleInstall extends PwInstall
     }
 
     /**
-     *
      * @return PwStyle
      */
     private function _load()

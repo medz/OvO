@@ -2,16 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
 /**
- * 通过时间获取投票基础信息
+ * 通过时间获取投票基础信息.
  *
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwFetchPollByUid.php 5519 2012-01-12 07:13:36Z mingxing.sun $
- * @package poll
  */
-
 class PwFetchPollByUid implements iPwDataSource
 {
     public $uid = 0;

@@ -1,27 +1,28 @@
 <?php
 /**
- * 在线服务统计接口
+ * 在线服务统计接口.
  *
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwOnlineCountService.php 18618 2012-09-24 09:31:00Z jieyin $
- * @package
  */
 class PwOnlineCountService
 {
     /**
-     * Statistics记录更新间隔时间
-     *
+     * Statistics记录更新间隔时间.
      */
     public $cacheTime = 600;
 
     /**
-     * 获得最新的在线用户列表
+     * 获得最新的在线用户列表.
      *
      * @param $fid
      * @param $limit
+     *
      * @return array
      */
     public function getLastVisitor($fid = 0, $limit = 10)
@@ -30,12 +31,13 @@ class PwOnlineCountService
     }
 
     /**
-     * 分页显示在线用户列表
+     * 分页显示在线用户列表.
      *
-     * @param  int   $fid
-     * @param  int   $page
-     * @param  int   $limit
-     * @param  bool  $isExact 是否需要获取精确的记录
+     * @param int  $fid
+     * @param int  $page
+     * @param int  $limit
+     * @param bool $isExact 是否需要获取精确的记录
+     *
      * @return array
      */
     public function getVisitorList($fid = 0, $page = 1, $limit = 10, $isExact = false)
@@ -65,11 +67,13 @@ class PwOnlineCountService
     }
 
     /**
-     * 统计在线用户人数
+     * 统计在线用户人数.
      *
      * $fid $tid都为0时统计总在线人数
-     * @param  int $fid
-     * @param  int $tid
+     *
+     * @param int $fid
+     * @param int $tid
+     *
      * @return int
      */
     public function getUserOnlineCount($fid = 0, $tid = 0)
@@ -99,11 +103,13 @@ class PwOnlineCountService
     }
 
     /**
-     * 统计在线游客人数
+     * 统计在线游客人数.
      *
      * $fid $tid都为0时统计总在线人数
-     * @param  int $fid
-     * @param  int $tid
+     *
+     * @param int $fid
+     * @param int $tid
+     *
      * @return int
      */
     public function getGuestOnlineCount($fid = 0, $tid = 0)
@@ -133,7 +139,7 @@ class PwOnlineCountService
     }
 
     /**
-     * 获取历史最高在线信息
+     * 获取历史最高在线信息.
      *
      * @return int
      */
@@ -145,9 +151,9 @@ class PwOnlineCountService
         $time = $maxUser['created_time'] > $maxGuest['created_time'] ? $maxUser['created_time'] : $maxGuest['created_time'];
         $number = $maxUser['number'] + $maxGuest['number'];
 
-        return array('signkey' => 'maxonline',
+        return array('signkey'     => 'maxonline',
                     'created_time' => $time,
-                    'number' => $number,
+                    'number'       => $number,
         );
     }
 }

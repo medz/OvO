@@ -3,15 +3,14 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * ubb转换配置
+ * ubb转换配置.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUbbCodeConvertConfig.php 21135 2012-11-29 02:10:03Z jieyin $
- * @package lib.utility
  */
-
 class PwUbbCodeConvertConfig
 {
     public $isConvertPost = false;

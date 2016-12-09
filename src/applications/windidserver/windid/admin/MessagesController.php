@@ -2,12 +2,13 @@
 
 Wind::import('APPS:windid.admin.WindidBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: MessagesController.php 23833 2013-01-16 06:41:42Z jieyin $
- * @package
  */
 class MessagesController extends WindidBaseController
 {
@@ -50,8 +51,7 @@ class MessagesController extends WindidBaseController
     }
 
     /**
-     * 删除消息
-     *
+     * 删除消息.
      */
     public function deleteMessagesAction()
     {
@@ -64,7 +64,6 @@ class MessagesController extends WindidBaseController
         $this->showMessage('WINDID:success');
     }
 
-
     private function _getMessageService()
     {
         return Wekit::load('WSRV:message.srv.WindidMessageService');
@@ -74,9 +73,10 @@ class MessagesController extends WindidBaseController
     {
         return Wekit::load('WSRV:message.WindidMessage');
     }
+
     /**
-     *
      * Enter description here ...
+     *
      * @return PwUser
      */
     private function _getUserDs()

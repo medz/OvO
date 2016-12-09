@@ -80,7 +80,7 @@ class GifMerge
         if ($this->mod == 'C_FILE') {
             if (!$this->fin = fopen($fp, 'rb')) {
                 if ($this->debug) {
-                    print "Error file open: $fp\<br>";
+                    echo "Error file open: $fp\<br>";
                 }
 
                 return;
@@ -94,7 +94,7 @@ class GifMerge
         $this->getbytes(6);
         if (!$this->arrcmp($this->buffer, $this->gif, 3)) {
             if ($this->debug) {
-                print "Isn't GIF file!\n<br>";
+                echo "Isn't GIF file!\n<br>";
             }
 
             return;
@@ -221,7 +221,7 @@ class GifMerge
         $use_trans = false;
         if ($this->transparent) {
             for ($i = 0; $i < $outsize; $i++) {
-                if ($outtable [3 * $i] == $this->trans1 && $outtable [3 * $i + 1] == $this->trans2 && $outtable [3 * $i + 2] == $this->trans3) {
+                if ($outtable[3 * $i] == $this->trans1 && $outtable[3 * $i + 1] == $this->trans2 && $outtable[3 * $i + 2] == $this->trans3) {
                     break;
                 }
             }
@@ -230,7 +230,7 @@ class GifMerge
                 $use_trans = true;
             } else {
                 if ($this->debug) {
-                    print "Transparent color not found!\n<br>";
+                    echo "Transparent color not found!\n<br>";
                 }
             }
         }
@@ -259,7 +259,7 @@ class GifMerge
         $this->putbytes($head, 9);
         if ($outtable != $this->global_out) {
             if ($this->debug) {
-                print "Using local color table.\n<br>";
+                echo "Using local color table.\n<br>";
             }
             $this->putbytes($outtable, (3 * $outsize));
         }
@@ -282,13 +282,13 @@ class GifMerge
         switch ($this->buffer[0]) {
             case 0xf9:
                 if ($this->debug) {
-                    print "Skipping Graphic Control Extension.\n<br>";
+                    echo "Skipping Graphic Control Extension.\n<br>";
                 }
                 $this->getbytes(6);
             break;
             case 0xfe:
                 if ($this->debug) {
-                    print "Skipping Comment Extension.\n<br>";
+                    echo "Skipping Comment Extension.\n<br>";
                 }
                 for (; ;) {
                     $this->getbytes(1);
@@ -300,7 +300,7 @@ class GifMerge
             break;
             case 0x01:
                 if ($this->debug) {
-                    print "Skipping Plain Text Extension.\n<br>";
+                    echo "Skipping Plain Text Extension.\n<br>";
                 }
                 $this->getbytes(13);
                 for (; ;) {
@@ -313,7 +313,7 @@ class GifMerge
             break;
                case 0xff:
                 if ($this->debug) {
-                    print "Skipping Application Extension.\n<br>";
+                    echo "Skipping Application Extension.\n<br>";
                 }
                 $this->getbytes(9);
                 $this->getbytes(3);
@@ -327,7 +327,7 @@ class GifMerge
             break;
             default:
                 if ($this->debug) {
-                    print "Skipping unrecognized extension.\n<br>";
+                    echo "Skipping unrecognized extension.\n<br>";
                 }
                 for (; ;) {
                     $this->getbytes(1);
@@ -342,7 +342,7 @@ class GifMerge
     private function arrcmp($b, $s, $l)
     {
         for ($i = 0; $i < $l; $i++) {
-            if ($s{$i} != $b{$i}) {
+            if ($s[$i] != $b[$i]) {
                 return false;
             }
         }

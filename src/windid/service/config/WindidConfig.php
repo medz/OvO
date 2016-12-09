@@ -3,20 +3,21 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 配置服务接口
+ * 配置服务接口.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidConfig.php 24443 2013-01-30 08:08:06Z jieyin $
- * @package config
  */
 class WindidConfig
 {
     /**
-     * 根据空间名字获得该配置信息
+     * 根据空间名字获得该配置信息.
      *
-     * @param  stirng $namespace 空间名字
+     * @param stirng $namespace 空间名字
+     *
      * @return array
      */
     public function getConfig($namespace)
@@ -29,9 +30,10 @@ class WindidConfig
     }
 
     /**
-     * 根据空间名字获得该配置信息
+     * 根据空间名字获得该配置信息.
      *
-     * @param  array $namespace 空间名字
+     * @param array $namespace 空间名字
+     *
      * @return array
      */
     public function fetchConfig($namespace)
@@ -44,10 +46,11 @@ class WindidConfig
     }
 
     /**
-     * 获取某个配置
+     * 获取某个配置.
      *
-     * @param  string $namespace
-     * @param  string $name
+     * @param string $namespace
+     * @param string $name
+     *
      * @return array
      */
     public function getConfigByName($namespace, $name)
@@ -60,9 +63,10 @@ class WindidConfig
     }
 
     /**
-     * 根据配置模块获得配置信息
+     * 根据配置模块获得配置信息.
      *
-     * @param  string $namespace 模块空间
+     * @param string $namespace 模块空间
+     *
      * @return array
      */
     public function getValues($namespace)
@@ -77,10 +81,11 @@ class WindidConfig
     }
 
     /**
-     * 批量设置配置信息
+     * 批量设置配置信息.
      *
      * @param string $namespace 模块名称
      * @param  array  $array     配置信息数组 array('name' => array('value' => '', 'descrip' => '')
+     *
      * @return bool
      */
     public function setConfigs($namespace, $array)
@@ -96,12 +101,13 @@ class WindidConfig
     }
 
     /**
-     * 设置配置信息
+     * 设置配置信息.
      *
      * @param  string $namespace 配置模块
      * @param  string $name      配置项的名字
      * @param  string $value     配置项的值
      * @param  string $decrip    配置项的描述
+     *
      * @return bool
      */
     public function setConfig($namespace, $name, $value, $decrip = null)
@@ -114,9 +120,10 @@ class WindidConfig
     }
 
     /**
-     * 删除配置项
+     * 删除配置项.
      *
      * @param  string $namespace 配置项所属空间
+     *
      * @return bool
      */
     public function deleteConfig($namespace)
@@ -129,10 +136,11 @@ class WindidConfig
     }
 
     /**
-     * 删除配置项
+     * 删除配置项.
      *
      * @param  string $namespace 配置项所属空间
      * @param  string $name      配置项名字
+     *
      * @return bool
      */
     public function deleteConfigByName($namespace, $name)

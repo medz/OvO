@@ -2,18 +2,15 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * ubb转换配置
+ * ubb转换配置.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwUbbCodeConvertThread.php 24066 2013-01-21 07:30:33Z jinlong.panjl $
- * @package lib.utility
  */
-
 class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
 {
     public $thread;
@@ -58,7 +55,7 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
     }
 
     /**
-     * 是否已回复该帖
+     * 是否已回复该帖.
      */
     public function isPost()
     {

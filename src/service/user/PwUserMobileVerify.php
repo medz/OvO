@@ -6,15 +6,16 @@
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id$
- * @package wind
  */
 class PwUserMobileVerify
 {
     /**
      * 取一条
      *
-     * @param  int   $mobile
+     * @param int $mobile
+     *
      * @return array
      */
     public function getMobileVerify($mobile)
@@ -27,9 +28,10 @@ class PwUserMobileVerify
     }
 
     /**
-     * 批量取
+     * 批量取.
      *
-     * @param  array $mobiles
+     * @param array $mobiles
+     *
      * @return array
      */
     public function fetchMobileVerify($mobiles)
@@ -44,8 +46,9 @@ class PwUserMobileVerify
     /**
      * 添加单条
      *
-     * @param  int   $uid
-     * @param  int   $mobile
+     * @param int $uid
+     * @param int $mobile
+     *
      * @return array
      */
     public function addMobileVerify(PwUserMobileDm $dm)
@@ -60,7 +63,8 @@ class PwUserMobileVerify
     /**
      * 删除单条
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function delete($mobile)
@@ -73,9 +77,10 @@ class PwUserMobileVerify
     }
 
     /**
-     * 删除过期数据
+     * 删除过期数据.
      *
-     * @param  int  $uid
+     * @param int $uid
+     *
      * @return bool
      */
     public function deleteByExpiredTime($expired_time)
@@ -86,9 +91,10 @@ class PwUserMobileVerify
     }
 
     /**
-     * 批量删除
+     * 批量删除.
      *
-     * @param  array $mobiles
+     * @param array $mobiles
+     *
      * @return bool
      */
     public function batchDelete($mobiles)
@@ -101,10 +107,11 @@ class PwUserMobileVerify
     }
 
     /**
-     * 更新
+     * 更新.
      *
-     * @param  int  $mobile
-     * @param  int  $mobile
+     * @param int $mobile
+     * @param int $mobile
+     *
      * @return bool
      */
     public function updateMobile($mobile, PwUserMobileDm $dm)
@@ -117,10 +124,11 @@ class PwUserMobileVerify
     }
 
     /**
-     * 更新
+     * 更新.
      *
-     * @param  int  $expiredTime
-     * @param  int  $mobile
+     * @param int $expiredTime
+     * @param int $mobile
+     *
      * @return bool
      */
     public function updateByExpiredTime($expiredTime, PwUserMobileDm $dm)

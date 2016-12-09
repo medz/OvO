@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 积分策略设置具体内容DAO
+ * 积分策略设置具体内容DAO.
  *
  * @author JianMin Chen <sky_hold@163.com> 2011-12-19
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwCreditLogDao.php 6512 2012-03-21 08:28:48Z jieyin $
- * @package src.service.credit.dao
  */
 class PwCreditLogDao extends PwBaseDao
 {

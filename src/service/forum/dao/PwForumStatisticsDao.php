@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwForumStatisticsDao.php 13278 2012-07-05 02:08:39Z jieyin $
- * @package forum
  */
-
 class PwForumStatisticsDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum_statistics';

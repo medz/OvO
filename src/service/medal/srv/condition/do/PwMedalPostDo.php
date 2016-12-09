@@ -6,8 +6,8 @@ Wind::import('SRV:medal.srv.PwAutoAwardMedal');
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwMedalPostDo.php 20488 2012-10-30 08:00:43Z jieyin $
- * @package
  */
 class PwMedalPostDo extends PwPostDoBase
 {
@@ -36,13 +36,13 @@ class PwMedalPostDo extends PwPostDoBase
         $time = Pw::getTime();
         $behavior = $ds->getBehaviorList($this->userBo->uid);
 
-        $condition = isset($behavior['post_days']['number']) ? (int) $behavior['post_days']['number'] : 0 ;
+        $condition = isset($behavior['post_days']['number']) ? (int) $behavior['post_days']['number'] : 0;
         $bp = new PwAutoAwardMedal($this->userBo);
         $bp->autoAwardMedal(2, $condition);
 
         $posts = Wekit::load('forum.PwThread')->getPostByTid($tid, 1, 0, true);
         if (array_key_exists($pid, $posts)) {
-            $condition = isset($behavior['safa_times']['number']) ? (int) $behavior['safa_times']['number'] : 0 ;
+            $condition = isset($behavior['safa_times']['number']) ? (int) $behavior['safa_times']['number'] : 0;
             $bp->autoAwardMedal(4, $condition);
         }
 

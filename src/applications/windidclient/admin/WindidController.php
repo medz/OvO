@@ -3,12 +3,13 @@
 Wind::import('ADMIN:library.AdminBaseController');
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
+ *
  * @author $Author: jieyin $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: WindidController.php 28890 2013-05-29 06:23:04Z jieyin $
- * @package
  */
 class WindidController extends AdminBaseController
 {

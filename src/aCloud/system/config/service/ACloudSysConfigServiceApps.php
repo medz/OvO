@@ -1,19 +1,19 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 class ACloudSysConfigServiceApps
 {
     public function addApp($fields)
     {
-        if (! $fields ['app_id'] || ! $fields ['app_token'] || strlen($fields ['app_token']) != 128) {
+        if (!$fields['app_id'] || !$fields['app_token'] || strlen($fields['app_token']) != 128) {
             return false;
         }
         $data = array();
-        $data ['app_id'] = $fields ['app_id'];
-        $data ['app_name'] = $fields ['app_name'];
-        $data ['app_token'] = $fields ['app_token'];
-        $data ['created_time'] = $data ['modified_time'] = time();
+        $data['app_id'] = $fields['app_id'];
+        $data['app_name'] = $fields['app_name'];
+        $data['app_token'] = $fields['app_token'];
+        $data['created_time'] = $data['modified_time'] = time();
 
         return $this->getAppsDao()->insert($data);
     }
@@ -35,7 +35,7 @@ class ACloudSysConfigServiceApps
 
     public function updateApp($fields, $appId)
     {
-        $fields ['modified_time'] = time();
+        $fields['modified_time'] = time();
 
         return $this->getAppsDao()->update($fields, $appId);
     }

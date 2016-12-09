@@ -2,14 +2,14 @@
 
 
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>
+ * the last known user to change this file in the repository  <$LastChangedBy: long.shi $>.
+ *
  * @author $Author: long.shi $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: IndexController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package
  */
-
 class IndexController extends PwBaseController
 {
     public function run()

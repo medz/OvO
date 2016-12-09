@@ -7,13 +7,13 @@
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogLoginDm.php 21359 2012-12-05 08:01:23Z xiaoxia.xuxx $
- * @package src.service.log.dm
  */
 class PwLogLoginDm extends PwBaseDm
 {
     /**
-     * 构造函数
+     * 构造函数.
      *
      * @param int $uid
      */
@@ -23,9 +23,10 @@ class PwLogLoginDm extends PwBaseDm
     }
 
     /**
-     * 设置登录的用户名
+     * 设置登录的用户名.
      *
-     * @param  string       $username
+     * @param string $username
+     *
      * @return PwLogLoginDm
      */
     public function setUsername($username)
@@ -36,9 +37,10 @@ class PwLogLoginDm extends PwBaseDm
     }
 
     /**
-     * 设置尝试错误的类型
+     * 设置尝试错误的类型.
      *
-     * @param  int          $typeid
+     * @param int $typeid
+     *
      * @return PwLogLoginDm
      */
     public function setTypeid($typeid = '')
@@ -49,9 +51,10 @@ class PwLogLoginDm extends PwBaseDm
     }
 
     /**
-     * 设置创建时间
+     * 设置创建时间.
      *
-     * @param  string       $time
+     * @param string $time
+     *
      * @return PwLogLoginDm
      */
     public function setCreatedTime($time)
@@ -64,7 +67,8 @@ class PwLogLoginDm extends PwBaseDm
     /**
      * 设置IP地址
      *
-     * @param  string       $ip
+     * @param string $ip
+     *
      * @return PwLogLoginDm
      */
     public function setIp($ip)

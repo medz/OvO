@@ -1,11 +1,13 @@
 <?php
 /**
  * @author peihong <jhqblxt@gmail.com> Nov 23, 2011
+ *
  * @link
+ *
  * @license
+ *
  * @version $Id: PwTopicTypeDao.php 16808 2012-08-28 10:05:30Z peihong.zhangph $
  */
-
 class PwTopicTypeDao extends PwBaseDao
 {
     protected $_table = 'bbs_topic_type';

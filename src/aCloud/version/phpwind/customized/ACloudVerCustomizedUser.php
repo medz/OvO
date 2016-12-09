@@ -1,6 +1,6 @@
 <?php
 
-! defined('ACLOUD_PATH') && exit('Forbidden');
+!defined('ACLOUD_PATH') && exit('Forbidden');
 
 define('USER_INVALID_PARAMS', 201);
 define('USER_INVALID_USERNAME', 202);
@@ -17,9 +17,10 @@ define('FORUM_FAVOR_ALREADY', 211);
 class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
 {
     /**
-     * 根据用户ID获得用户所有相关信息
+     * 根据用户ID获得用户所有相关信息.
      *
-     * @param  int   $uid 用户ID
+     * @param int $uid 用户ID
+     *
      * @return array
      */
     public function getByUid($uid)
@@ -33,32 +34,33 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         $group = $this->getUserGroup()->getGroupByGid($groupId);
         $loginUser = Wekit::getLoginUser();
         $subjectNum = $this->getThread()->countThreadByUid($uid);    //用户发的主题数
-        $result = $this->buildInfo($userInfo, $loginUser, $group ['name'], $subjectNum);
+        $result = $this->buildInfo($userInfo, $loginUser, $group['name'], $subjectNum);
 
         return $this->buildResponse(0, $result);
     }
 
     /**
-     * 根据用户名字获得用户数据信息
+     * 根据用户名字获得用户数据信息.
      *
-     * @param  string $username 用户名
+     * @param string $username 用户名
+     *
      * @return array
      */
     public function getByName($username)
     {
         $username = trim($username);
-        if (! $username) {
+        if (!$username) {
             return $this->buildResponse(USER_INVALID_USERNAME, '参数错误');
         }
         $userInfo = $this->getUser()->getUserByName(trim($username), PwUser::FETCH_ALL);
         if ($userInfo instanceof PwError) {
-            return $this->buildResponse(- 1, $userInfo->getError());
+            return $this->buildResponse(-1, $userInfo->getError());
         }
         $groupId = ($userInfo['groupid'] == 0) ? $userInfo['memberid'] : $userInfo['groupid'];
         $group = $this->getUserGroup()->getGroupByGid($groupId);
         $loginUser = Wekit::getLoginUser();
-        $subjectNum = $this->getThread()->countThreadByUid($userInfo ['uid']);
-        $result = $this->buildInfo($userInfo, $loginUser, $group ['name'], $subjectNum);
+        $subjectNum = $this->getThread()->countThreadByUid($userInfo['uid']);
+        $result = $this->buildInfo($userInfo, $loginUser, $group['name'], $subjectNum);
 
         return $this->buildResponse(0, $result);
     }
@@ -86,9 +88,10 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
     }
 
     /**
-     * 获取某用户加入的版块
+     * 获取某用户加入的版块.
      *
-     * @param  int   $uid
+     * @param int $uid
+     *
      * @return array
      */
     public function getFavoritesForumByUid($uid)
@@ -98,12 +101,12 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
             return $this->buildResponse(USER_INVALID_USERNAME, '参数错误');
         }
         $loginUser = Wekit::getLoginUser();
-        if ($loginUser ['uid'] == 0) {
+        if ($loginUser['uid'] == 0) {
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
         $result = $this->getForumUser()->getFroumByUid($uid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
         $fids = array_keys($result);
         $forumInfo = $this->getForum()->fetchForum($fids, 3);
@@ -111,19 +114,20 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
 
         $forums = array();
         foreach ($result as $k => $v) {
-            $forums [$k] ['fid'] = $v ['fid'];
-            $forums [$k] ['forumname'] = $forumInfo [$v ['fid']] ['name'];
-            $forums [$k] ['todaypost'] = $forumInfo [$v ['fid']] ['todayposts'];
+            $forums[$k]['fid'] = $v['fid'];
+            $forums[$k]['forumname'] = $forumInfo[$v['fid']]['name'];
+            $forums[$k]['todaypost'] = $forumInfo[$v['fid']]['todayposts'];
         }
 
         return $this->buildResponse(0, array('forums' => $forums, 'count' => count($forums)));
     }
 
     /**
-     * 加入版块
+     * 加入版块.
      *
-     * @param  int $uid
-     * @param  int $fid
+     * @param int $uid
+     * @param int $fid
+     *
      * @return int $count
      */
     public function addFavoritesForumByUid($uid, $fid)
@@ -133,7 +137,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
         $loginUser = Wekit::getLoginUser();
-        if ($loginUser ['uid'] == 0) {
+        if ($loginUser['uid'] == 0) {
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
         if ($this->getForumUser()->get($uid, $fid)) {
@@ -141,7 +145,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         }
         $result = $this->getForumUser()->join($uid, $fid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
         $count = count($this->getForumUser()->getFroumByUid($uid));
 
@@ -149,10 +153,11 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
     }
 
     /**
-     * 退出版块
+     * 退出版块.
      *
-     * @param  int   $uid
-     * @param  int   $fid
+     * @param int $uid
+     * @param int $fid
+     *
      * @return array
      */
     public function deleteFavoritesForumByUid($uid, $fid)
@@ -162,12 +167,12 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
         $loginUser = Wekit::getLoginUser();
-        if ($loginUser ['uid'] == 0) {
+        if ($loginUser['uid'] == 0) {
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
         $result = $this->getForumUser()->quit($uid, $fid);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
         $count = count($this->getForumUser()->getFroumByUid($uid));
 
@@ -175,10 +180,11 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
     }
 
     /**
-     * 用户登录
+     * 用户登录.
      *
-     * @param  string $username 用户登录的帐号
-     * @param  string $password 用户登录的密码
+     * @param string $username 用户登录的帐号
+     * @param string $password 用户登录的密码
+     *
      * @return array
      */
     public function userLogin($username, $password)
@@ -190,23 +196,23 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         $ip = Wind::getApp()->getRequest()->getClientIp();
         $result = $this->getLoginService()->login($username, $password, $ip);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
-        return $this->buildResponse(0, array('uid' => $result ['uid']));
+        return $this->buildResponse(0, array('uid' => $result['uid']));
     }
 
     /**
-     * 用户注册信息
+     * 用户注册信息.
      *
      * @return bool|int
      */
     public function userRegister($username, $password, $email)
     {
-        if (! trim($username)) {
+        if (!trim($username)) {
             return $this->buildResponse(USER_INVALID_USERNAME, '参数错误');
         }
-        if (! $password || ! $email || WindValidator::isEmail($email) !== true) {
+        if (!$password || !$email || WindValidator::isEmail($email) !== true) {
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
         Wind::import('SRV:user.srv.PwRegisterService');
@@ -223,17 +229,18 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         $registerService->setUserDm($userDm);
         $result = $registerService->register();
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
-        return $this->buildResponse(0, array('uid' => $result ['uid']));
+        return $this->buildResponse(0, array('uid' => $result['uid']));
     }
 
     /**
-     * 编辑email
+     * 编辑email.
      *
-     * @param  int          $uid   用户id
-     * @param  int          $email email
+     * @param int $uid   用户id
+     * @param int $email email
+     *
      * @return bool|PwError
      */
     public function updateEmail($uid, $email)
@@ -243,10 +250,10 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
         $loginUser = Wekit::getLoginUser();
-        if ($loginUser ['uid'] == 0) {
+        if ($loginUser['uid'] == 0) {
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
-        if (! $email || WindValidator::isEmail($email) !== true) {
+        if (!$email || WindValidator::isEmail($email) !== true) {
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
 
@@ -255,7 +262,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         $userDm->setEmail($email);
         $result = $this->getUser()->editUser($userDm, PwUser::FETCH_MAIN);
         if ($result instanceof PwError) {
-            return $this->buildResponse(- 1, $result->getError());
+            return $this->buildResponse(-1, $result->getError());
         }
 
         return $this->buildResponse(0, array('uid' => $uid));
@@ -264,21 +271,21 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
     private function buildInfo($userInfo, $loginUser, $groupName, $subjectNum)
     {
         $result = array();
-        $result ['uid'] = $userInfo ['uid'];
-        $result ['username'] = $userInfo ['username'];
-        $result ['gender'] = $userInfo ['gender'];
-        $result ['icon'] = Pw::getAvatar($userInfo ['uid']);
-        $result ['birthday'] = $userInfo ['byear'].'-'.$userInfo ['bmonth'].'-'.$userInfo ['bday'];
-        $result ['honor'] = ''; //自定义头衔
-        $result ['postnum'] = $userInfo ['postnum'];
-        $result ['ltitle'] = $groupName;
-        $isFollowed = $this->getAttention()->isFollowed($user->uid, $userInfo ['uid']);
-        $result ['isfollowed'] = ($isFollowed == true) ? 1 : 0;
-        $result ['replycount'] = $userInfo ['postnum'] - $subjectNum ;
-        $result ['favorcount'] = 0; //个人收藏数
-        $result ['messages'] = $userInfo['messages'];
-        $result ['notices'] = $userInfo['notices'];
-        $result ['weibo'] = $this->getWeiboInfo($userInfo ['uid'], $userInfo ['fans'], $userInfo ['follows']);
+        $result['uid'] = $userInfo['uid'];
+        $result['username'] = $userInfo['username'];
+        $result['gender'] = $userInfo['gender'];
+        $result['icon'] = Pw::getAvatar($userInfo['uid']);
+        $result['birthday'] = $userInfo['byear'].'-'.$userInfo['bmonth'].'-'.$userInfo['bday'];
+        $result['honor'] = ''; //自定义头衔
+        $result['postnum'] = $userInfo['postnum'];
+        $result['ltitle'] = $groupName;
+        $isFollowed = $this->getAttention()->isFollowed($user->uid, $userInfo['uid']);
+        $result['isfollowed'] = ($isFollowed == true) ? 1 : 0;
+        $result['replycount'] = $userInfo['postnum'] - $subjectNum;
+        $result['favorcount'] = 0; //个人收藏数
+        $result['messages'] = $userInfo['messages'];
+        $result['notices'] = $userInfo['notices'];
+        $result['weibo'] = $this->getWeiboInfo($userInfo['uid'], $userInfo['fans'], $userInfo['follows']);
 
         return $result;
     }
@@ -286,11 +293,11 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
     private function getWeiboInfo($uid, $fans, $follows)
     {
         $weiboDs = $this->getWeibo();
-        $result ['followedweibo'] = 0; //统计用户关注的微博
-        $result ['userweibo'] = 0; //统计用户的总微博数
-        $result ['referweibo'] = 0; //获取提到我的微博
-        $result ['fans'] = $fans;
-        $result ['follows'] = $follows;
+        $result['followedweibo'] = 0; //统计用户关注的微博
+        $result['userweibo'] = 0; //统计用户的总微博数
+        $result['referweibo'] = 0; //获取提到我的微博
+        $result['fans'] = $fans;
+        $result['follows'] = $follows;
 
         return $result;
     }

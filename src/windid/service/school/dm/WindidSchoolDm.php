@@ -1,22 +1,23 @@
 <?php
 
 /**
- * 学校DM
+ * 学校DM.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: WindidSchoolDm.php 24834 2013-02-22 06:43:43Z jieyin $
- * @package service.school.dm
  */
 class WindidSchoolDm extends PwBaseDm
 {
     private $schoolid = 0;
 
     /**
-     * 设置学校ID
+     * 设置学校ID.
      *
-     * @param  int            $schoolid
+     * @param int $schoolid
+     *
      * @return WindidSchoolDm
      */
     public function setSchoolid($schoolid)
@@ -27,7 +28,7 @@ class WindidSchoolDm extends PwBaseDm
     }
 
     /**
-     * 获得学校ID
+     * 获得学校ID.
      *
      * @return int
      */
@@ -37,9 +38,10 @@ class WindidSchoolDm extends PwBaseDm
     }
 
     /**
-     * 学校名称
+     * 学校名称.
      *
-     * @param  string         $name
+     * @param string $name
+     *
      * @return WindidSchoolDm
      */
     public function setName($name)
@@ -50,9 +52,10 @@ class WindidSchoolDm extends PwBaseDm
     }
 
     /**
-     * 设置首字母
+     * 设置首字母.
      *
-     * @param  string         $first_char
+     * @param string $first_char
+     *
      * @return WindidSchoolDm
      */
     public function setFirstChar($first_char)
@@ -63,9 +66,10 @@ class WindidSchoolDm extends PwBaseDm
     }
 
     /**
-     * 设置类型
+     * 设置类型.
      *
-     * @param  int            $typeid
+     * @param int $typeid
+     *
      * @return WindidSchoolDm
      */
     public function setTypeid($typeid)
@@ -76,9 +80,10 @@ class WindidSchoolDm extends PwBaseDm
     }
 
     /**
-     * 设置地区
+     * 设置地区.
      *
-     * @param  int            $areaid
+     * @param int $areaid
+     *
      * @return WindidSchoolDm
      */
     public function setAreaid($areaid)

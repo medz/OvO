@@ -10,8 +10,8 @@ Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: FixupController.php 24585 2013-02-01 04:02:37Z jieyin $
- * @package appcenter.admin
  */
 class FixupController extends AdminBaseController
 {
@@ -35,7 +35,6 @@ class FixupController extends AdminBaseController
 
     /**
      * 更新补丁
-     *
      */
     public function doRunAction()
     {
@@ -87,7 +86,6 @@ class FixupController extends AdminBaseController
     }
 
     /**
-     *
      * @return PwPatchUpdate
      */
     private function _service()

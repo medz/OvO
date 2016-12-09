@@ -7,18 +7,18 @@ Wind::import('SRV:credit.srv.PwCreditOperationConfig');
 Wind::import('SRV:credit.bo.PwCreditBo');
 
 /**
- * 积分设置
+ * 积分设置.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: CreditController.php 4132 2012-02-11 05:35:07Z xiaoxia.xuxx $
- * @package src.products.admin.controller
  */
 class CreditController extends AdminBaseController
 {
     /**
-     * 积分设置-展示页面
+     * 积分设置-展示页面.
      *
      * @see WindController::run()
      */
@@ -34,7 +34,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分设置-保存设置操作
+     * 积分设置-保存设置操作.
      */
     public function doSettingAction()
     {
@@ -49,7 +49,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 删除积分操作
+     * 删除积分操作.
      */
     public function doDeleteAction()
     {
@@ -68,7 +68,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分策略-展示策略页面
+     * 积分策略-展示策略页面.
      */
     public function strategyAction()
     {
@@ -85,7 +85,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分策略-编辑策略操作
+     * 积分策略-编辑策略操作.
      */
     public function editStrategyAction()
     {
@@ -109,7 +109,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分充值-展示页面
+     * 积分充值-展示页面.
      */
     public function rechargeAction()
     {
@@ -121,7 +121,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分充值-充值设置操作
+     * 积分充值-充值设置操作.
      */
     public function dorechargeAction()
     {
@@ -136,7 +136,7 @@ class CreditController extends AdminBaseController
             if ($rate[$key] && !isset($recharge[$value])) {
                 $recharge[$value] = array(
                     'rate' => intval($rate[$key]),
-                    'min' => $min[$key] ? $min[$key] : '', );
+                    'min'  => $min[$key] ? $min[$key] : '', );
             }
         }
         $config = new PwConfigSet('credit');
@@ -146,7 +146,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分转换-展示页面
+     * 积分转换-展示页面.
      */
     public function exchangeAction()
     {
@@ -159,7 +159,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分转换-编辑操作
+     * 积分转换-编辑操作.
      */
     public function doexchangeAction()
     {
@@ -189,9 +189,9 @@ class CreditController extends AdminBaseController
             $exchange[$vkey] = array(
                 'credit1' => $value,
                 'credit2' => $credit2[$key],
-                'value1' => $value1[$key],
-                'value2' => $value2[$key],
-                'ifopen' => $ifopen[$key] ? 1 : 0, );
+                'value1'  => $value1[$key],
+                'value2'  => $value2[$key],
+                'ifopen'  => $ifopen[$key] ? 1 : 0, );
         }
         $config = new PwConfigSet('credit');
         $config->set('exchange', $exchange)->flush();
@@ -216,7 +216,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分转账设置页面
+     * 积分转账设置页面.
      */
     public function transferAction()
     {
@@ -228,7 +228,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分转账设置操作
+     * 积分转账设置操作.
      */
     public function dotransferAction()
     {
@@ -246,8 +246,8 @@ class CreditController extends AdminBaseController
             }
             $transfer[$key] = array(
                 'ifopen' => $ifopen[$key] ? 1 : 0,
-                'rate' => $rate[$key] ? intval($rate[$key]) : '',
-                'min' => $min[$key] ? intval($min[$key]) : '', );
+                'rate'   => $rate[$key] ? intval($rate[$key]) : '',
+                'min'    => $min[$key] ? intval($min[$key]) : '', );
         }
         $config = new PwConfigSet('credit');
         $config->set('transfer', $transfer)->flush();
@@ -256,7 +256,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 积分日志页面
+     * 积分日志页面.
      */
     public function logAction()
     {
@@ -315,7 +315,7 @@ class CreditController extends AdminBaseController
     }
 
     /**
-     * 设置当前选项卡被选中
+     * 设置当前选项卡被选中.
      *
      * @param string $action
      *                       操作名
@@ -323,12 +323,12 @@ class CreditController extends AdminBaseController
     private function setCurrentTab($action)
     {
         $headerTab = array(
-            'run' => '',
+            'run'      => '',
             'strategy' => '',
             'recharge' => '',
             'exchange' => '',
             'transfer' => '',
-            'log' => '', );
+            'log'      => '', );
         $headerTab[$action] = 'current';
         $this->setOutput($headerTab, 'currentTabs');
     }

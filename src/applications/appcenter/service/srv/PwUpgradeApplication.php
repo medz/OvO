@@ -7,8 +7,8 @@ Wind::import('APPCENTER:service.srv.PwInstallApplication');
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUpgradeApplication.php 25900 2013-03-26 10:35:44Z long.shi $
- * @package appcenter.service.srv
  */
 class PwUpgradeApplication extends PwInstallApplication
 {
@@ -16,9 +16,10 @@ class PwUpgradeApplication extends PwInstallApplication
     protected $_revertLog = array();
 
     /**
-     * 纯在线应用升级
+     * 纯在线应用升级.
      *
-     * @param  string           $id
+     * @param string $id
+     *
      * @return PwError|Ambigous <PwError, boolean>|boolean
      */
     public function onlineUpgrade($id)
@@ -43,7 +44,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 在线升级服务统一调用入口
+     * 在线升级服务统一调用入口.
      *
      * 1. 下载升级包到本地
      * 2. 校验hash值，检查合法性
@@ -53,8 +54,9 @@ class PwUpgradeApplication extends PwInstallApplication
      * 7. 包文件对比、覆盖
      * 8. 升级 ：备份，恢复
      *
-     * @param  int     $id
-     * @param  string  $hash
+     * @param int    $id
+     * @param string $hash
+     *
      * @return PwError true
      */
     public function upgrade($id)
@@ -87,7 +89,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 升级流程
+     * 升级流程.
      *
      * @return PwError|bool
      */
@@ -124,7 +126,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 获取安装流程注入
+     * 获取安装流程注入.
      *
      * @return array
      */
@@ -173,7 +175,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 当应用安装发生错误时，回滚处理
+     * 当应用安装发生错误时，回滚处理.
      *
      * step 5
      *
@@ -196,8 +198,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 备份
-     *
+     * 备份.
      */
     public function backUp()
     {
@@ -227,8 +228,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 恢复备份
-     *
+     * 恢复备份.
      */
     public function revert()
     {
@@ -250,10 +250,9 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 清理安装过程中产生的临时信息
+     * 清理安装过程中产生的临时信息.
      *
      * step 5
-     *
      */
     public function clear()
     {
@@ -269,8 +268,7 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     * 写升级日志
-     *
+     * 写升级日志.
      */
     public function log()
     {
@@ -278,10 +276,10 @@ class PwUpgradeApplication extends PwInstallApplication
         $fields = array();
         foreach ($this->getInstallLog() as $key => $value) {
             $_tmp = array(
-                'app_id' => $this->_appId,
-                'log_type' => $key,
-                'data' => $value,
-                'created_time' => WEKIT_TIMESTAMP,
+                'app_id'        => $this->_appId,
+                'log_type'      => $key,
+                'data'          => $value,
+                'created_time'  => WEKIT_TIMESTAMP,
                 'modified_time' => WEKIT_TIMESTAMP, );
             $fields[] = $_tmp;
         }
@@ -289,7 +287,6 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     *
      * @param string $key
      */
     public function getBackLog($key)
@@ -307,7 +304,6 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     *
      * @param string $key
      */
     public function getRevertLog($key)
@@ -316,7 +312,6 @@ class PwUpgradeApplication extends PwInstallApplication
     }
 
     /**
-     *
      * @return PwApplicationLog
      */
     private function _loadInstallLog()

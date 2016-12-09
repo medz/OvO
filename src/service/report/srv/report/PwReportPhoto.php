@@ -2,13 +2,13 @@
 
 Wind::import('SRV:report.srv.report.PwReportAction');
 /**
- * 照片举报
+ * 照片举报.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $id$
- * @package album.service.srv
  */
 class PwReportPhoto extends PwReportAction
 {

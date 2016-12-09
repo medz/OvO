@@ -1,12 +1,12 @@
 <?php
 /**
- * 后台创始人服务类
+ * 后台创始人服务类.
  *
  * @author Qiong Wu <papa0924@gmail.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: codetemplates(windframework_docs_zend_8.0).xml 2781 2011-09-22 03:59:17Z yishuo $
- * @package wind
  */
 class AdminFounderService
 {
@@ -34,9 +34,9 @@ class AdminFounderService
         }
         if (!$user = $this->loadUserService()->getUserByName($username)) {
             $user = array(
-                'uid' => 0,
+                'uid'      => 0,
                 'username' => $username,
-                'groupid' => 3,
+                'groupid'  => 3,
             );
         }
 
@@ -44,7 +44,7 @@ class AdminFounderService
     }
 
     /**
-     * 添加创始人
+     * 添加创始人.
      *
      * @param string $username
      * @param string $password
@@ -84,12 +84,13 @@ class AdminFounderService
     }
 
     /**
-     * 编辑创始人
+     * 编辑创始人.
      *
-     * @param  string $username
-     * @param  string $password
-     * @param  string $email
-     * @return bool   PwError
+     * @param string $username
+     * @param string $password
+     * @param string $email
+     *
+     * @return bool PwError
      */
     public function edit($username, $password, $email)
     {
@@ -122,8 +123,9 @@ class AdminFounderService
     /**
      * 校验密码
      *
-     * @param  string    $pwd1 加密后
-     * @param  string    $pwd2 加密前
+     * @param string $pwd1 加密后
+     * @param string $pwd2 加密前
+     *
      * @return false|pwd 不相等返回false，相同则返回md5pwd
      */
     public function checkPwd($pwd1, $pwd2)
@@ -137,9 +139,10 @@ class AdminFounderService
     }
 
     /**
-     * 创始密码人加密
+     * 创始密码人加密.
      *
-     * @param  string $password
+     * @param string $password
+     *
      * @return string
      */
     public function encryptPwd($password)
@@ -150,10 +153,11 @@ class AdminFounderService
     }
 
     /**
-     * 根据用户名删除创始人
+     * 根据用户名删除创始人.
      *
-     * @param  string $username
-     * @return bool   PwError
+     * @param string $username
+     *
+     * @return bool PwError
      */
     public function del($username)
     {
@@ -173,9 +177,10 @@ class AdminFounderService
     }
 
     /**
-     * 根据用户名查看是否创始人
+     * 根据用户名查看是否创始人.
      *
-     * @param  string $username
+     * @param string $username
+     *
      * @return bool
      */
     public function isFounder($username)
@@ -186,7 +191,7 @@ class AdminFounderService
     }
 
     /**
-     * 读取创始人配置文件
+     * 读取创始人配置文件.
      *
      * @return array
      */
@@ -201,7 +206,7 @@ class AdminFounderService
     }
 
     /**
-     * 判断创始人配置文件是否可写
+     * 判断创始人配置文件是否可写.
      */
     public function isWriteable()
     {
@@ -209,7 +214,7 @@ class AdminFounderService
     }
 
     /**
-     * 更新创始人信息
+     * 更新创始人信息.
      *
      * @return bool PwError
      */
@@ -221,7 +226,7 @@ class AdminFounderService
     }
 
     /**
-     * 获取创始人配置文件
+     * 获取创始人配置文件.
      *
      * @return string
      */

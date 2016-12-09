@@ -5,10 +5,9 @@
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwAttachDao.php 20516 2012-10-30 09:50:29Z jieyin $
- * @package attach
  */
-
 class PwAttachDao extends PwBaseDao
 {
     protected $_table = 'attachs';

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') or exit(403);
 /**
- * 编辑器扩展
+ * 编辑器扩展.
  *
  * @author pw <pw@aliyun-inc.com>
  * @copyright http://www.phpwind.net/u-htm-uid-1793211.html
@@ -11,13 +11,14 @@ defined('WEKIT_VERSION') or exit(403);
 class AppDemo_PwEditor_AppDo
 {
     /**
-     * @param  array $var
+     * @param array $var
+     *
      * @return array
      */
     public function appDemoDo($var)
     {
         $var[] = array(
-            'name' => 'demo',
+            'name'   => 'demo',
             'params' => array('len' => 8, 'age' => 2),
         );
 

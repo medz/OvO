@@ -8,8 +8,8 @@ Wind::import('SRC:library.base.PwBaseDao');
  * @author xiaoxia.xu<xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwLogDao.php 24747 2013-02-20 03:13:43Z jieyin $
- * @package src.service.log.dao
  */
 class PwLogDao extends PwBaseDao
 {
@@ -18,12 +18,13 @@ class PwLogDao extends PwBaseDao
     protected $_dataStruct = array('id', 'typeid', 'created_userid', 'created_time', 'operated_uid', 'created_username', 'operated_username', 'ip', 'fid', 'tid', 'pid', 'extends', 'content');
 
     /**
-     * 根据tid获得该帖子的相关管理日志
+     * 根据tid获得该帖子的相关管理日志.
      *
-     * @param  int   $tid
-     * @param  int   $pid
-     * @param  int   $limit
-     * @param  int   $start
+     * @param int $tid
+     * @param int $pid
+     * @param int $limit
+     * @param int $start
+     *
      * @return array
      */
     public function getLogByTid($tid, $pid, $limit, $start = 0)
@@ -42,9 +43,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 添加日志
+     * 添加日志.
      *
-     * @param  array $data
+     * @param array $data
+     *
      * @return int
      */
     public function addLog($data)
@@ -53,9 +55,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 批量添加日志
+     * 批量添加日志.
      *
-     * @param  array $datas
+     * @param array $datas
+     *
      * @return int
      */
     public function batchAddLog($datas)
@@ -90,8 +93,10 @@ class PwLogDao extends PwBaseDao
 
     /**
 
-     * 根据日志ID删除某条日志
-     * @param  int $id
+     * 根据日志ID删除某条日志.
+     *
+     * @param int $id
+     *
      * @return int
      */
     public function deleteLog($id)
@@ -100,9 +105,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 根据日志ID列表删除日志
+     * 根据日志ID列表删除日志.
      *
-     * @param  array $ids
+     * @param array $ids
+     *
      * @return int
      */
     public function batchDeleteLog($ids)
@@ -111,9 +117,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 清除某个时间段之前的日志
+     * 清除某个时间段之前的日志.
      *
-     * @param  int $time
+     * @param int $time
+     *
      * @return int
      */
     public function clearLogBeforeDatetime($time)
@@ -124,7 +131,7 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 根据条件搜索日志
+     * 根据条件搜索日志.
      *
      * @param array $condition
      * @param int   $limit
@@ -139,9 +146,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 根据搜索条件统计结果
+     * 根据搜索条件统计结果.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return int
      */
     public function countSearch($condition)
@@ -153,9 +161,10 @@ class PwLogDao extends PwBaseDao
     }
 
     /**
-     * 后台搜索
+     * 后台搜索.
      *
-     * @param  array $condition
+     * @param array $condition
+     *
      * @return array
      */
     private function _buildCondition($condition)

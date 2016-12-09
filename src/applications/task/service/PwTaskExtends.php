@@ -6,17 +6,18 @@
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwTaskExtends.php 7054 2012-03-29 04:04:21Z xiaoxia.xuxx $
- * @package src.modules.task.service
  */
 class PwTaskExtends
 {
     private $config = null;
 
     /**
-     * 获得奖励扩展列表
+     * 获得奖励扩展列表.
      *
-     * @param  array $reward 设置的奖励值
+     * @param array $reward 设置的奖励值
+     *
      * @return array
      */
     public function getRewardTypeList($reward = array())
@@ -29,9 +30,10 @@ class PwTaskExtends
     }
 
     /**
-     * 获得完成条件扩展列表
+     * 获得完成条件扩展列表.
      *
-     * @param  array $condition 设置的条件值
+     * @param array $condition 设置的条件值
+     *
      * @return array
      */
     public function getConditionTypeList($condition = array())
@@ -49,10 +51,11 @@ class PwTaskExtends
     }
 
     /**
-     * 构建输出数据格式
+     * 构建输出数据格式.
      *
-     * @param  array  $data
-     * @param  string $var  传递给用户的参数
+     * @param array  $data
+     * @param string $var  传递给用户的参数
+     *
      * @return array
      */
     private function buildList($data, $var = '')
@@ -66,9 +69,10 @@ class PwTaskExtends
     }
 
     /**
-     * 获得扩展列表
+     * 获得扩展列表.
      *
-     * @param  string $type
+     * @param string $type
+     *
      * @return array
      */
     private function getExtendsList($type)

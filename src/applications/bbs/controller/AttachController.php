@@ -1,14 +1,13 @@
 <?php
 
 /**
- * 附件操作
+ * 附件操作.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: AttachController.php 28798 2013-05-24 06:20:13Z jieyin $
- * @package forum
  */
-
 class AttachController extends PwBaseController
 {
     public function run()
@@ -262,10 +261,10 @@ class AttachController extends PwBaseController
         $cType = PwCreditBo::getInstance()->cType;
         foreach ($record as $key => $value) {
             $data[] = array(
-                'uid' => $value['created_userid'],
-                'username' => $users[$value['created_userid']]['username'],
-                'cost' => $value['cost'],
-                'ctype' => $cType[$value['ctype']],
+                'uid'          => $value['created_userid'],
+                'username'     => $users[$value['created_userid']]['username'],
+                'cost'         => $value['cost'],
+                'ctype'        => $cType[$value['ctype']],
                 'created_time' => Pw::time2str($value['created_time']),
             );
         }
@@ -312,7 +311,7 @@ class AttachController extends PwBaseController
     }
 
     /**
-     * 检查购买积分
+     * 检查购买积分.
      */
     protected function _checkAttachCost($attach)
     {
@@ -343,7 +342,7 @@ class AttachController extends PwBaseController
     }
 
     /**
-     * 下载购买积分
+     * 下载购买积分.
      */
     protected function _checkAttachDownload($operate, $attach, PwForumBo $forum)
     {
@@ -381,7 +380,7 @@ class AttachController extends PwBaseController
     }
 
     /**
-     * 更新积分
+     * 更新积分.
      */
     protected function _operateCredit($operate, PwForumBo $forum)
     {

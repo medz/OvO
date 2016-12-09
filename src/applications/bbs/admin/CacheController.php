@@ -2,16 +2,14 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * 后台菜单管理操作类
+ * 后台菜单管理操作类.
  *
  * @author Qiong Wu <papa0924@gmail.com> 2011-10-21
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: CacheController.php 24341 2013-01-29 03:08:55Z jieyin $
- * @package admin
- * @subpackage controller
  */
-
 class CacheController extends AdminBaseController
 {
     public function run()
@@ -31,7 +29,7 @@ class CacheController extends AdminBaseController
     }
 
     /**
-     * css压缩
+     * css压缩.
      */
     public function buildCssAction()
     {
@@ -49,7 +47,7 @@ class CacheController extends AdminBaseController
     }
 
     /**
-     * 更新css缓存
+     * 更新css缓存.
      */
     public function doCssAction()
     {
@@ -58,7 +56,7 @@ class CacheController extends AdminBaseController
     }
 
     /**
-     * 更新hook缓存
+     * 更新hook缓存.
      */
     public function doHookAction()
     {

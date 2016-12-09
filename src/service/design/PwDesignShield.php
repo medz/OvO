@@ -1,13 +1,13 @@
 <?php
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwDesignShield.php 20146 2012-10-24 02:51:25Z gao.wanggao $
- * @package
  */
-
 class PwDesignShield
 {
     public function getShieldByModuleId($moduleid)
@@ -67,6 +67,7 @@ class PwDesignShield
     /**
      * 反转删除
      * Enter description here ...
+     *
      * @param array $ids
      */
     public function antiDelete($ids)

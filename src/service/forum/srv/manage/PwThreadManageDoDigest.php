@@ -4,15 +4,14 @@ Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
 Wind::import('SRV:forum.dm.PwTopicDm');
 
 /**
- * 帖子管理操作-精华
+ * 帖子管理操作-精华.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadManageDoDigest.php 24735 2013-02-19 03:23:38Z jieyin $
- * @package forum
  */
-
 class PwThreadManageDoDigest extends PwThreadManageDo
 {
     public $digest;
@@ -22,7 +21,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     protected $threads = array();
 
     /**
-     * 构造方法
+     * 构造方法.
      *
      * @param PwThreadManage $srv
      */
@@ -40,9 +39,10 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     }
 
     /**
-     * 设置精华
+     * 设置精华.
      *
-     * @param  int                    $digest
+     * @param int $digest
+     *
      * @return PwThreadManageDoDigest
      */
     public function setDigest($digest)
@@ -80,7 +80,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     }
 
     /**
-     * 精华处理
+     * 精华处理.
      *
      * @return bool
      */
@@ -115,7 +115,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     }
 
     /**
-     * 用户相关操作
+     * 用户相关操作.
      */
     private function _operateUser()
     {
@@ -141,7 +141,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     }
 
     /**
-     * 添加日志的
+     * 添加日志的.
      */
     private function _addManageLog()
     {

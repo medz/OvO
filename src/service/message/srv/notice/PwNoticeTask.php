@@ -2,13 +2,13 @@
 
 Wind::import('SRV:message.srv.notice.PwNoticeAction');
 /**
- * 任务消息扩展
+ * 任务消息扩展.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package src.service.task.srv.notice
  */
 class PwNoticeTask extends PwNoticeAction
 {
@@ -47,7 +47,7 @@ class PwNoticeTask extends PwNoticeAction
     }
 
     /**
-     * 忽略
+     * 忽略.
      *
      * @param array $notice
      */

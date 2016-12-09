@@ -1,13 +1,13 @@
 <?php
 
 /**
- * 清空用户数据
+ * 清空用户数据.
  *
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwClearUserService.php 24640 2013-02-01 09:51:40Z xiaoxia.xuxx $
- * @package src.service.user.srv
  */
 class PwClearUserService extends PwBaseHookService
 {
@@ -17,7 +17,7 @@ class PwClearUserService extends PwBaseHookService
     private $nowClearTypes = 0;
 
     /**
-     * 清理用户信息
+     * 清理用户信息.
      */
     public function __construct($uid = 0, PwUserBo $operator = null)
     {
@@ -26,9 +26,10 @@ class PwClearUserService extends PwBaseHookService
     }
 
     /**
-     * 执行
+     * 执行.
      *
      * @param  array $clearType 具体清理的项目
+     *
      * @return bool
      */
     public function run($clearType)
@@ -53,7 +54,7 @@ class PwClearUserService extends PwBaseHookService
     }
 
     /**
-     * 是否清楚帐号的所有信息(如果是返回true，否则返回false)
+     * 是否清楚帐号的所有信息(如果是返回true，否则返回false).
      *
      * @return bool
      */
@@ -61,8 +62,9 @@ class PwClearUserService extends PwBaseHookService
     {
         return $this->nowClearTypes == $this->totalClearTypes;
     }
+
     /**
-     * 返回支持的用户清理清理项目,可对类型进行扩展
+     * 返回支持的用户清理清理项目,可对类型进行扩展.
      *
      * @return array
      */
@@ -70,8 +72,8 @@ class PwClearUserService extends PwBaseHookService
     {
         //【用户清理】扩展-添加到hooks.PwClearUser下
         return array(
-            'topic' => array('title' => '主题', 'class' => 'SRC:hooks.PwClearUser.PwClearDoTopic'),  //主题
-            'post' => array('title' => '回复', 'class' => 'SRC:hooks.PwClearUser.PwClearDoPost'),  //回复
+            'topic'   => array('title' => '主题', 'class' => 'SRC:hooks.PwClearUser.PwClearDoTopic'),  //主题
+            'post'    => array('title' => '回复', 'class' => 'SRC:hooks.PwClearUser.PwClearDoPost'),  //回复
             'message' => array('title' => '消息', 'class' => 'SRC:hooks.PwClearUser.PwClearDoMessage'),  //消息
             //'fresh' => array('title' => '新鲜事', 'class' => 'SRC:hooks.PwClearUser.PwClearDoFresh')//新鲜事
         );
@@ -86,7 +88,7 @@ class PwClearUserService extends PwBaseHookService
     }
 
     /**
-     * 初始化
+     * 初始化.
      */
     private function init($clearType)
     {
@@ -99,7 +101,7 @@ class PwClearUserService extends PwBaseHookService
             }
             /* @var $instance iPwDoHookProcess */
             $this->appendDo(Wekit::getInstance($_type['class'], '', array($this)));
-            $num ++;
+            $num++;
         }
         $this->totalClearTypes = count($types);
         $this->nowClearTypes = $num;
@@ -108,7 +110,7 @@ class PwClearUserService extends PwBaseHookService
     }
 
     /**
-     * 获得用户Ds
+     * 获得用户Ds.
      *
      * @return PwUser
      */

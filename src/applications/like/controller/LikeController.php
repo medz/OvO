@@ -1,16 +1,15 @@
 <?php
 
 
-
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: jinlong.panjl $>
+ * the last known user to change this file in the repository  <$LastChangedBy: jinlong.panjl $>.
+ *
  * @author $Author: jinlong.panjl $ foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: LikeController.php 6265 2012-03-20 01:15:06Z jinlong.panjl $
- * @package
  */
-
 class LikeController extends PwBaseController
 {
     public function run()
@@ -21,6 +20,7 @@ class LikeController extends PwBaseController
         $seoBo->init('like', 'hot');
         Wekit::setV('seo', $seoBo);
     }
+
     public function dataAction()
     {
         $cron = false;
@@ -48,7 +48,7 @@ class LikeController extends PwBaseController
         $this->_getLikeContentService();
         foreach ($data as $k => $v) {
             $_data[$k] = unserialize($v['extend_info']);
-            $_data[$k]['fromtype'] = ($v['from_app'] == 'thread') ? PwLikeContent::THREAD : 0 ;
+            $_data[$k]['fromtype'] = ($v['from_app'] == 'thread') ? PwLikeContent::THREAD : 0;
             $_data[$k]['fromid'] = $v['from_id'];
             if ($v['end_time'] > 0 && $v['end_time'] < $time) {
                 $cron = true;
@@ -63,7 +63,6 @@ class LikeController extends PwBaseController
         $this->setOutput($_data, 'html');
         $this->showMessage('operate.success');
     }
-
 
     public function getLastAction()
     {

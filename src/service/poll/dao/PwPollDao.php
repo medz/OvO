@@ -8,10 +8,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @author MingXing Sun <mingxing.sun@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwPollDao.php 9051 2012-05-03 01:57:24Z hejin $
- * @package poll
  */
-
 class PwPollDao extends PwBaseDao
 {
     protected $_table = 'app_poll';

@@ -1,20 +1,21 @@
 <?php
 
 /**
- * 用户禁止DM
+ * 用户禁止DM.
  *
  * @author xiaoxia.xu <x_824@sina.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id: PwUserBanInfoDm.php 23904 2013-01-17 05:27:48Z xiaoxia.xuxx $
- * @package src.service.user.dm
  */
 class PwUserBanInfoDm extends PwBaseDm
 {
     /**
-     * 设置用户ID
+     * 设置用户ID.
      *
-     * @param  int             $uid
+     * @param int $uid
+     *
      * @return PwUserbanInfoDm
      */
     public function setUid($uid)
@@ -25,9 +26,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置类型
+     * 设置类型.
      *
-     * @param  int             $typeid
+     * @param int $typeid
+     *
      * @return PwUserbanInfoDm
      */
     public function setTypeid($typeid)
@@ -38,9 +40,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置类型ID
+     * 设置类型ID.
      *
-     * @param  int             $fid
+     * @param int $fid
+     *
      * @return PwUserbanInfoDm
      */
     public function setFid($fid)
@@ -51,9 +54,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置创建用户
+     * 设置创建用户.
      *
-     * @param  int             $userid
+     * @param int $userid
+     *
      * @return PwUserbanInfoDm
      */
     public function setCreatedUid($userid)
@@ -64,9 +68,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置开始时间
+     * 设置开始时间.
      *
-     * @param  int             $time
+     * @param int $time
+     *
      * @return PwUserbanInfoDm
      */
     public function setCreateTime($time)
@@ -77,9 +82,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置禁止时间
+     * 设置禁止时间.
      *
-     * @param  int             $time
+     * @param int $time
+     *
      * @return PwUserbanInfoDm
      */
     public function setEndTime($time)
@@ -90,9 +96,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置禁止原因
+     * 设置禁止原因.
      *
-     * @param  string          $reason
+     * @param string $reason
+     *
      * @return PwUserbanInfoDm
      */
     public function setReason($reason)
@@ -103,9 +110,10 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 设置操作者名字
+     * 设置操作者名字.
      *
-     * @param  string          $username
+     * @param string $username
+     *
      * @return PwUserbanInfoDm
      */
     public function setOperator($username)
@@ -116,7 +124,7 @@ class PwUserBanInfoDm extends PwBaseDm
     }
 
     /**
-     * 获得操作者名字
+     * 获得操作者名字.
      *
      * @return string
      */

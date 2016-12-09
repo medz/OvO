@@ -5,13 +5,14 @@
  * @author peihong <peihong.zhangph@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwNoticeService.php 3833 2012-01-12 03:32:27Z peihong.zhangph $
- * @package src.service.message.srv
  */
 class PwNoticeService
 {
     /**
-     * 发送通知
+     * 发送通知.
+     *
      * @param int    $uid
      * @param string $type
      * @param int    $param
@@ -65,8 +66,8 @@ class PwNoticeService
     }
 
     /**
+     * 发送一般通知(无类型).
      *
-     * 发送一般通知(无类型)
      * @param int    $uid
      * @param string $content
      * @param string $title
@@ -79,8 +80,8 @@ class PwNoticeService
     }
 
     /**
-     *
      * 按类型统计
+     *
      * @param unknown_type $uid
      */
     public function countNoticesByType($uid)
@@ -98,8 +99,8 @@ class PwNoticeService
                 $data[0]['count'] += $v['num'];
                 $data[$v['typeid']] = array(
                     'typename' => $typeNames[$type],
-                    'type' => $type,
-                    'count' => $v['num'],
+                    'type'     => $type,
+                    'count'    => $v['num'],
                 );
             }
             $data[0] && $data[0]['typename'] = '全部';
@@ -109,8 +110,7 @@ class PwNoticeService
     }
 
     /**
-     *
-     * (忽略|取消忽略)一个通知
+     * (忽略|取消忽略)一个通知.
      */
     public function ignoreNotice($id, $ignore = 1)
     {
@@ -136,8 +136,6 @@ class PwNoticeService
     }
 
     /**
-     *
-     *
      * @param array $notice
      */
     public function getDetailList($notice)
@@ -173,8 +171,8 @@ class PwNoticeService
             foreach ($messageInfos as $v) {
                 $noticeKey = array_search($v['from_uid'], $messageFromUids);
                 $extend = array(
-                    'title' => $this->_parseUrl($v['last_message']['content']),
-                    'unread_count' => $v['unread_count'],
+                    'title'         => $this->_parseUrl($v['last_message']['content']),
+                    'unread_count'  => $v['unread_count'],
                     'message_count' => $v['message_count'],
                 );
                 $noticeList[$noticeKey]['message_extend_params'] = $extend;
@@ -185,9 +183,10 @@ class PwNoticeService
     }
 
     /**
+     * 根据类型ID获取类型名.
      *
-     * 根据类型ID获取类型名
-     * @param  int    $typeid
+     * @param int $typeid
+     *
      * @return string
      */
     public function getTypenameByTypeid($typeid)
@@ -199,7 +198,7 @@ class PwNoticeService
     }
 
     /**
-     * 根据类型删除通知
+     * 根据类型删除通知.
      *
      * @param int    $uid
      * @param string $type
@@ -214,7 +213,7 @@ class PwNoticeService
     }
 
     /**
-     * 根据uid删除通知
+     * 根据uid删除通知.
      *
      * @param int $uid
      * @param bool
@@ -230,7 +229,7 @@ class PwNoticeService
     }
 
     /**
-     * 根据类型批量删除通知
+     * 根据类型批量删除通知.
      *
      * @param int    $uid
      * @param string $type
@@ -245,10 +244,11 @@ class PwNoticeService
     }
 
     /**
-     * 根据类型ID设置忽略
+     * 根据类型ID设置忽略.
      *
-     * @param  int  $typeId
-     * @param  int  $uid
+     * @param int $typeId
+     * @param int $uid
+     *
      * @return bool
      */
     public function setIgnoreNotice($typeId, $uid, $ignore = 1)
@@ -266,7 +266,7 @@ class PwNoticeService
     }
 
     /**
-     * 获取通知设置忽略类型
+     * 获取通知设置忽略类型.
      *
      * @return array
      */
@@ -285,10 +285,11 @@ class PwNoticeService
     }
 
     /**
-     * 某个类型是否被忽略
+     * 某个类型是否被忽略.
      *
-     * @param  int   $uid
-     * @param  int   $typeId
+     * @param int $uid
+     * @param int $typeId
+     *
      * @return array
      */
     public function isIgnoreNoticeType($uid, $typeId)
@@ -306,9 +307,10 @@ class PwNoticeService
     }
 
     /**
-     *
      * Enter description here ...
-     * @param  string         $type
+     *
+     * @param string $type
+     *
      * @return PwNoticeAction
      */
     protected function _getAction($type)
@@ -342,9 +344,10 @@ class PwNoticeService
     }
 
     /**
-     *
      * Enter description here ...
-     * @param  int            $typeId
+     *
+     * @param int $typeId
+     *
      * @return PwNoticeAction
      */
     protected function _getActionByTypeid($typeId)
@@ -358,8 +361,8 @@ class PwNoticeService
     private function _getNoticePrivateType()
     {
         return array(
-            'medal' => 4,
-            'task' => 5,
+            'medal'  => 4,
+            'task'   => 5,
             'credit' => 14,
         );
     }
@@ -367,54 +370,55 @@ class PwNoticeService
     private function _getTypes()
     {
         return array(
-            'message' => 1,
-            'default' => 2,
-            'threadmanage' => 3,
-            'medal' => 4,
-            'task' => 5,
-            'massmessage' => 6,
-            'report_thread' => 7,
-            'report_post' => 8,
+            'message'        => 1,
+            'default'        => 2,
+            'threadmanage'   => 3,
+            'medal'          => 4,
+            'task'           => 5,
+            'massmessage'    => 6,
+            'report_thread'  => 7,
+            'report_post'    => 8,
             'report_message' => 9,
-            'threadreply' => 10,
-            'attention' => 11,
-            'remind' => 12,
-            'ban' => 13,
-            'credit' => 14,
-            'postreply' => 15,
-            'report_photo' => 16,
-            'app' => 99,
+            'threadreply'    => 10,
+            'attention'      => 11,
+            'remind'         => 12,
+            'ban'            => 13,
+            'credit'         => 14,
+            'postreply'      => 15,
+            'report_photo'   => 16,
+            'app'            => 99,
         );
     }
 
     private function _getTypeNames()
     {
         return array(
-            'default' => '通知',
-            'message' => '私信',
-            'threadreply' => '回复提醒',
-            'threadmanage' => '管理提醒',
-            'medal' => '勋章',
-            'task' => '任务',
-            'massmessage' => '群发消息',
-            'report_thread' => '帖子举报',
-            'report_post' => '回复举报',
+            'default'        => '通知',
+            'message'        => '私信',
+            'threadreply'    => '回复提醒',
+            'threadmanage'   => '管理提醒',
+            'medal'          => '勋章',
+            'task'           => '任务',
+            'massmessage'    => '群发消息',
+            'report_thread'  => '帖子举报',
+            'report_post'    => '回复举报',
             'report_message' => '私信举报',
-            'attention' => '关注',
-            'remind' => '@提醒',
-            'ban' => '帐号管理',
-            'credit' => '积分变动',
-            'postreply' => '楼层回复',
-            'report_photo' => '照片举报',
-            'app' => '应用通知',
+            'attention'      => '关注',
+            'remind'         => '@提醒',
+            'ban'            => '帐号管理',
+            'credit'         => '积分变动',
+            'postreply'      => '楼层回复',
+            'report_photo'   => '照片举报',
+            'app'            => '应用通知',
         );
     }
 
     /**
-     * 检查通知设置权限
+     * 检查通知设置权限.
      *
-     * @param  int  $uid
-     * @param  int  $type
+     * @param int $uid
+     * @param int $type
+     *
      * @return bool
      */
     public function _checkPrivate($uid, $typeId)
@@ -442,15 +446,14 @@ class PwNoticeService
         return $types[$typeName];
     }
 
-
     private function _getWindid()
     {
         return WindidApi::api('message');
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageNotices
      */
     private function _getNoticesDs()
@@ -459,8 +462,8 @@ class PwNoticeService
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwMessageMessages
      */
     private function _getMessagesDs()
@@ -469,8 +472,8 @@ class PwNoticeService
     }
 
     /**
-     *
      * Enter description here ...
+     *
      * @return PwUser
      */
     private function _getUserDs()

@@ -34,15 +34,16 @@
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
+ *
  * @version $Id$
- * @package service.seo
  */
 class PwSeo
 {
     /**
-     * 更新或添加seo数据(可批量操作)
+     * 更新或添加seo数据(可批量操作).
      *
-     * @param  array $dms PwSeoDm数组
+     * @param array $dms PwSeoDm数组
+     *
      * @return bool
      */
     public function batchReplaceSeo($dms)
@@ -66,15 +67,16 @@ class PwSeo
     }
 
     /**
-     * 获取seo数据,
+     * 获取seo数据,.
      *
      * 以帖子列表页为例，
      * param为0时表示查询列表页的seo，
      * param为版块id时表示查询列表页下某个版块的seo，
      *
-     * @param  string $mod
-     * @param  string $page
-     * @param  string $param
+     * @param string $mod
+     * @param string $page
+     * @param string $param
+     *
      * @return array
      */
     public function getByModAndPageAndParam($mod, $page, $param)
@@ -83,10 +85,11 @@ class PwSeo
     }
 
     /**
-     * 根据模式和页面批量获取
+     * 根据模式和页面批量获取.
      *
-     * @param  string $mod
-     * @param  string $page
+     * @param string $mod
+     * @param string $page
+     *
      * @return array
      */
     public function getByModAndPage($mod, $page)
@@ -95,9 +98,10 @@ class PwSeo
     }
 
     /**
-     * 根据模式获取
+     * 根据模式获取.
      *
-     * @param  string $mod
+     * @param string $mod
+     *
      * @return array
      */
     public function getByMod($mod)
@@ -106,13 +110,14 @@ class PwSeo
     }
 
     /**
-     * 根据参数获取多个seo数据
+     * 根据参数获取多个seo数据.
      *
      * 参数组合：params = array(0,$fid)时表示查询列表页的普通seo和具体版块页的seo
      *
-     * @param  string $mod
-     * @param  string $page
-     * @param  array  $params
+     * @param string $mod
+     * @param string $page
+     * @param array  $params
+     *
      * @return array
      */
     public function getByParams($mod, $page, $params = array())

@@ -6,10 +6,9 @@
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwThreadsBaseDao.php 14442 2012-07-20 09:10:11Z jieyin $
- * @package forum
  */
-
 class PwThreadsBaseDao extends PwBaseDao
 {
     public function getThread($tid)

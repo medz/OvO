@@ -1,15 +1,14 @@
 <?php
 
 
-
 /**
- * 我的帖子回复
+ * 我的帖子回复.
  *
  * @author jinlong.panjl <jinlong.panjl@aliyun-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: ArticleController.php 23994 2013-01-18 03:51:46Z long.shi $
- * @package wind
  */
 class ArticleController extends PwBaseController
 {
@@ -63,7 +62,7 @@ class ArticleController extends PwBaseController
     }
 
     /**
-     * 回复列表
+     * 回复列表.
      */
     public function replyAction()
     {

@@ -2,17 +2,14 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-
-
 /**
- * 微博数据模型
+ * 微博数据模型.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @license http://www.phpwind.com
+ *
  * @version $Id: PwWeiboDm.php 8487 2012-04-19 08:09:57Z gao.wanggao $
- * @package weibo
  */
-
 class PwWeiboDm extends PwBaseDm
 {
     public $weibo_id;
@@ -44,9 +41,10 @@ class PwWeiboDm extends PwBaseDm
     }
 
     /**
-     * 设置微博来源类型
+     * 设置微博来源类型.
      *
      * @param  int    $type 必为 PwWeibo::TYPE_* 中的一种
+     *
      * @return object $this;
      */
     public function setType($type)

@@ -2,14 +2,14 @@
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
- * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
+ * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
+ *
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
+ *
  * @version $Id: PushController.php 28818 2013-05-24 10:10:46Z gao.wanggao $
- * @package
  */
-
 class PushController extends AdminBaseController
 {
     public function run()
@@ -82,7 +82,7 @@ class PushController extends AdminBaseController
         $perpage = 10;
         $pageids = $moduleids = $uids = array();
         $page = $page > 1 ? $page : 1;
-        $args['status'] = $status ;
+        $args['status'] = $status;
         if ($moduleid) {
             $args['moduleid'] = $moduleid;
         }
@@ -274,7 +274,6 @@ class PushController extends AdminBaseController
         }
         $this->showMessage('operate.success');
     }
-
 
     public function batchcheckAction()
     {
