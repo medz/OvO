@@ -23,7 +23,7 @@ class PwSimpleUbbCode
     /**
      * 转换段落.
      *
-     * @param  string $message 源内容
+     * @param string $message 源内容
      *
      * @return string 转化后的内容
      */
@@ -39,8 +39,8 @@ class PwSimpleUbbCode
     /**
      * 转换同名ubb标签到html.
      *
-     * @param  string $message 源内容
-     * @param mixed $tag 要转化的标签 <例: 1.单个 string u/b/ 2.多个 array('u','b')>
+     * @param string $message 源内容
+     * @param mixed  $tag     要转化的标签 <例: 1.单个 string u/b/ 2.多个 array('u','b')>
      *
      * @return string 转化后的内容
      */
@@ -57,7 +57,7 @@ class PwSimpleUbbCode
     /**
      * 转化hr标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -69,7 +69,7 @@ class PwSimpleUbbCode
     /**
      * 转化list标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class PwSimpleUbbCode
     /**
      * 转化font标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class PwSimpleUbbCode
     /**
      * 转化color标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -117,7 +117,7 @@ class PwSimpleUbbCode
     /**
      * 转化backcolor标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -132,8 +132,8 @@ class PwSimpleUbbCode
     /**
      * 转化size标签.
      *
-     * @param  string $message 内容
-     * @param int $maxSize 最大字体限制 <0.不限制>
+     * @param string $message 内容
+     * @param int    $maxSize 最大字体限制 <0.不限制>
      *
      * @return string
      */
@@ -147,7 +147,7 @@ class PwSimpleUbbCode
     /**
      * 转化email标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -165,7 +165,7 @@ class PwSimpleUbbCode
     /**
      * 转化align标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -179,7 +179,7 @@ class PwSimpleUbbCode
     /**
      * 转化glow标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -192,8 +192,8 @@ class PwSimpleUbbCode
     /**
      * 转化table标签.
      *
-     * @param  string $message 内容
-     * @param int $max 嵌套时，最大解析层级
+     * @param string $message 内容
+     * @param int    $max     嵌套时，最大解析层级
      *
      * @return string
      */
@@ -265,9 +265,9 @@ class PwSimpleUbbCode
     /**
      * 转化img标签.
      *
-     * @param  string $message   内容
-     * @param int $maxWidth  最大宽度限制
-     * @param int $maxHeight 最大高度限制
+     * @param string $message   内容
+     * @param int    $maxWidth  最大宽度限制
+     * @param int    $maxHeight 最大高度限制
      *
      * @return string
      */
@@ -286,8 +286,8 @@ class PwSimpleUbbCode
     /**
      * 转化url标签.
      *
-     * @param  string $message  内容
-     * @param int $checkurl
+     * @param string $message  内容
+     * @param int    $checkurl
      *
      * @return string
      */
@@ -316,7 +316,7 @@ class PwSimpleUbbCode
     /**
      * 转化code标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -335,8 +335,8 @@ class PwSimpleUbbCode
     /**
      * 转化post标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -355,8 +355,8 @@ class PwSimpleUbbCode
     /**
      * 转化hide标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -375,8 +375,8 @@ class PwSimpleUbbCode
     /**
      * 转化sell标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -395,7 +395,7 @@ class PwSimpleUbbCode
     /**
      * 转化quote标签.
      *
-     * @param  string $message 内容
+     * @param string $message 内容
      *
      * @return string
      */
@@ -423,8 +423,8 @@ class PwSimpleUbbCode
     /**
      * 转化flash标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -456,8 +456,8 @@ class PwSimpleUbbCode
     /**
      * 转化 wmv|mp3|rm 等视频媒体标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -510,8 +510,8 @@ class PwSimpleUbbCode
     /**
      * 转化iframe标签.
      *
-     * @param  string $message 内容
-     * @param  object $config  ubb转换配置
+     * @param string $message 内容
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -545,8 +545,8 @@ class PwSimpleUbbCode
     /**
      * 检测内容中是否包含标签.
      *
-     * @param  string $message 内容
-     * @param string $tag 标签
+     * @param string $message 内容
+     * @param string $tag     标签
      *
      * @return bool
      */
@@ -581,7 +581,7 @@ class PwSimpleUbbCode
      * 转化ubb标签.
      *
      * @param string $message
-     * @param  object $config  ubb转换配置
+     * @param object $config  ubb转换配置
      *
      * @return string
      */
@@ -665,7 +665,7 @@ class PwSimpleUbbCode
     /**
      * 生成表情html标签.
      *
-     * @param  int    $key 表情序号
+     * @param int $key 表情序号
      *
      * @return string 表情html
      */
@@ -709,8 +709,8 @@ class PwSimpleUbbCode
     /**
      * 生成a标签.
      *
-     * @param string $url 链接地址
-     * @param  string $name       链接内容
+     * @param string $url        链接地址
+     * @param string $name       链接内容
      * @param string $protocol   链接协议头
      * @param int    $isdownload 链接是否为下载样式
      * @param int    $checkurl
@@ -731,9 +731,9 @@ class PwSimpleUbbCode
     /**
      * 生成code标签内容.
      *
-     * @param  string $str     内容
-     * @param string $brush 代码语法
-     * @param  string $toolbar 是否有工具栏
+     * @param string $str     内容
+     * @param string $brush   代码语法
+     * @param string $toolbar 是否有工具栏
      *
      * @return string
      */
@@ -747,8 +747,8 @@ class PwSimpleUbbCode
     /**
      * 生成post标签内容.
      *
-     * @param  stirng $str    内容
-     * @param  object $config ubb转换配置
+     * @param stirng $str    内容
+     * @param object $config ubb转换配置
      *
      * @return string
      */
@@ -762,9 +762,9 @@ class PwSimpleUbbCode
     /**
      * 生成hide标签内容.
      *
-     * @param int $cost 需要的积分
-     * @param  stirng $str    隐藏的内容
-     * @param  object $config ubb转换配置
+     * @param int    $cost   需要的积分
+     * @param stirng $str    隐藏的内容
+     * @param object $config ubb转换配置
      *
      * @return string
      */
@@ -778,9 +778,9 @@ class PwSimpleUbbCode
     /**
      * 生成sell标签内容.
      *
-     * @param int $cost 需要的积分
-     * @param  stirng $str    隐藏的内容
-     * @param  object $config ubb转换配置
+     * @param int    $cost   需要的积分
+     * @param stirng $str    隐藏的内容
+     * @param object $config ubb转换配置
      *
      * @return string
      */
@@ -797,7 +797,7 @@ class PwSimpleUbbCode
     /**
      * 生成quote标签内容.
      *
-     * @param  stirng $str 隐藏的内容
+     * @param stirng $str 隐藏的内容
      *
      * @return string
      */
@@ -862,7 +862,7 @@ class PwSimpleUbbCode
      * 生成iframe标签内容.
      *
      * @param string $url
-     * @param  object $config ubb转换配置
+     * @param object $config ubb转换配置
      *
      * @return string
      */

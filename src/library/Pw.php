@@ -176,7 +176,7 @@ class Pw
     /**
      * 将json格式数据解密.
      *
-     * @param  string $value   待解密的数据
+     * @param string $value   待解密的数据
      * @param string $charset 解密后字符串编码
      *
      * @return mixed 解密后的数据
@@ -458,7 +458,7 @@ class Pw
     /**
      * 编码转换.
      *
-     * @param  string $string       内容字符串
+     * @param string $string       内容字符串
      * @param string $fromEncoding 原编码
      *
      * @return string
@@ -524,8 +524,8 @@ class Pw
      *
      * 注：只作用于二维数组
      *
-     * @param  array  $data 待收集的二维列表
-     * @param string $key 需要收集的
+     * @param array  $data 待收集的二维列表
+     * @param string $key  需要收集的
      *
      * @return array
      */

@@ -139,9 +139,9 @@ class PwThreadExpand
     /**
      * 根据uid获取审核和未审核的帖子.
      *
-     * @param int $uid    用户id
-     * @param int $limit  个数
-     * @param int $offset 起始偏移量
+     * @param int $uid       用户id
+     * @param int $limit     个数
+     * @param int $offset    起始偏移量
      * @param int $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *                       return array
      */

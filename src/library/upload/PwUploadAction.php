@@ -73,13 +73,13 @@ abstract class PwUploadAction
      * @param string $filename 文件名
      * @param string $dir      存储路径
      *
-     * @return array  配置
-     *                         例:array(
-     *                         array(0.缩略图文件名, 1.缩略图存储地址, 2.限制宽, 3.限制高, 4.缩略图生成方式(*), 5.强制生成(*)),
-     *                         array('abc.jpg', 'thumb/mini', 300, 300, 0, 0) 生成多个缩略图时，多条配置
-     *                         )
-     *                         (*4).缩略图生成方式 <0.等比缩略 1.居中截取 2.等比填充>
-     *                         (*5).强制生成 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>
+     * @return array 配置
+     *               例:array(
+     *               array(0.缩略图文件名, 1.缩略图存储地址, 2.限制宽, 3.限制高, 4.缩略图生成方式(*), 5.强制生成(*)),
+     *               array('abc.jpg', 'thumb/mini', 300, 300, 0, 0) 生成多个缩略图时，多条配置
+     *               )
+     *               (*4).缩略图生成方式 <0.等比缩略 1.居中截取 2.等比填充>
+     *               (*5).强制生成 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>
      */
     public function getThumbInfo($filename, $dir)
     {

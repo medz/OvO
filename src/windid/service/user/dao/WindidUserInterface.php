@@ -57,7 +57,7 @@ interface WindidUserInterface
     /**
      * 添加用户.
      *
-     * @param  array $data 待添加的用户信息
+     * @param array $data 待添加的用户信息
      *
      * @return bool
      */

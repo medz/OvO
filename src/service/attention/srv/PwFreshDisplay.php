@@ -42,7 +42,7 @@ class PwFreshDisplay
     /**
      * 聚合内容.
      *
-     * @param  array $relation 新鲜事关联
+     * @param array $relation 新鲜事关联
      *
      * @return array
      */

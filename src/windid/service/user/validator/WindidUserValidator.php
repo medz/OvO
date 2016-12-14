@@ -109,7 +109,7 @@ class WindidUserValidator
     /**
      * 是否含有非法字符.
      *
-     * @param  string $str 待检查的字符串
+     * @param string $str 待检查的字符串
      *
      * @return string
      */
@@ -136,7 +136,7 @@ class WindidUserValidator
     /**
      * 检查用户邮箱.
      *
-     * @param  string   $email 待检查的邮箱
+     * @param string $email 待检查的邮箱
      *
      * @return bool|int
      */
@@ -176,7 +176,7 @@ class WindidUserValidator
     /**
      * email是否在白名单中.
      *
-     * @param  string $email 待检查的email
+     * @param string $email 待检查的email
      *
      * @return bool
      */
@@ -197,7 +197,7 @@ class WindidUserValidator
     /**
      * email是否在黑名单中.
      *
-     * @param  string $email 待检查的email
+     * @param string $email 待检查的email
      *
      * @return bool
      */

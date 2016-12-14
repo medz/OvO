@@ -88,8 +88,8 @@ class PwInviteCode
     /**
      * 根据用户ID和时间，查询该用户在该时间点之后已经购买的.
      *
-     * @param int $uid 用户ID
-     * @param  int $time 计算的其实时间
+     * @param int $uid  用户ID
+     * @param int $time 计算的其实时间
      *
      * @return int
      */
@@ -143,7 +143,7 @@ class PwInviteCode
     /**
      * 更新邀请码信息.
      *
-     * @param  PwInviteCodeDm $dm 邀请码的购买者---当注册用户购买邀请码注册，成功之后更新该邀请码的购买者
+     * @param PwInviteCodeDm $dm 邀请码的购买者---当注册用户购买邀请码注册，成功之后更新该邀请码的购买者
      *
      * @return bool
      */

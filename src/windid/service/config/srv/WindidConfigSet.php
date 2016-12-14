@@ -26,8 +26,8 @@ class WindidConfigSet
     /**
      * 设置一个配置选项.
      *
-     * @param  string      $name    配置项
-     * @param  mixed       $value   配置值
+     * @param string $name    配置项
+     * @param mixed  $value   配置值
      * @param string $descrip 描述
      *
      * @return PwConfigSet

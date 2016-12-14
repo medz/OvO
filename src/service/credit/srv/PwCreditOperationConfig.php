@@ -39,7 +39,7 @@ class PwCreditOperationConfig
      * 获取描述.
      *
      * @param string $operate
-     * @param  array  $var     待解析字符变量
+     * @param array  $var     待解析字符变量
      *
      * @return string
      */

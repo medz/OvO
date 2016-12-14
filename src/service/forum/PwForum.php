@@ -21,7 +21,7 @@ class PwForum
     /**
      * 获取版块信息.
      *
-     * @param int $fid 版块id
+     * @param int $fid       版块id
      * @param int $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                       return array
      */
@@ -37,7 +37,7 @@ class PwForum
     /**
      * 批量获取版块信息.
      *
-     * @param array $fids 版块id
+     * @param array $fids      版块id
      * @param int   $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                         return array
      */
@@ -120,7 +120,7 @@ class PwForum
     /**
      * 更新版块信息.
      *
-     * @param object $dm 更新信息
+     * @param object $dm        更新信息
      * @param int    $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                          return bool
      */
@@ -161,8 +161,8 @@ class PwForum
     /**
      * 批量更新版块信息.
      *
-     * @param array  $fids 版块id序列
-     * @param object $dm   更新信息
+     * @param array  $fids      版块id序列
+     * @param object $dm        更新信息
      * @param int    $fetchmode 版块资料 <必然为FETCH_*的一种或者组合>
      *                          return bool
      */

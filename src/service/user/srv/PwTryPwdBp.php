@@ -47,12 +47,12 @@ class PwTryPwdBp
     /**
      * 获得登录用户信息.
      *
-     * @param  string $username     登录输入
-     * @param string $password 密码
-     * @param string $ip       尝试的IP地址
-     * @param  bool   $checkQ       是否验证安全问题
-     * @param  string $safeQuestion 安全问题
-     * @param  string $safeAnswer   安全问题答案
+     * @param string $username     登录输入
+     * @param string $password     密码
+     * @param string $ip           尝试的IP地址
+     * @param bool   $checkQ       是否验证安全问题
+     * @param string $safeQuestion 安全问题
+     * @param string $safeAnswer   安全问题答案
      *
      * @return array
      */
@@ -89,9 +89,9 @@ class PwTryPwdBp
     /**
      * 检查用户密码是否正确.
      *
-     * @param string $uid      用户uid
-     * @param string $password 密码
-     * @param string $ip       尝试的IP地址
+     * @param string $uid          用户uid
+     * @param string $password     密码
+     * @param string $ip           尝试的IP地址
      * @param bool   $checkQ       是否验证安全问题
      * @param string $safeQuestion 安全问题
      * @param string $safeAnswer   安全问题答案
@@ -106,9 +106,9 @@ class PwTryPwdBp
     /**
      * 检查安全问题和密码
      *
-     * @param int $uid 用户信息
-     * @param  string  $question 安全问题
-     * @param  string  $answer   安全问题答案
+     * @param int    $uid      用户信息
+     * @param string $question 安全问题
+     * @param string $answer   安全问题答案
      *
      * @return PwError
      */

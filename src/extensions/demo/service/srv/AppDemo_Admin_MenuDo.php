@@ -11,7 +11,7 @@ defined('WEKIT_VERSION') or exit(403);
 class AppDemo_Admin_MenuDo
 {
     /**
-     * @param  array $config 后台菜单配置
+     * @param array $config 后台菜单配置
      *
      * @return array
      */

@@ -188,7 +188,7 @@ abstract class PwPostAction extends PwBaseHookService
     /**
      * 检测是否内容重复.
      *
-     * @param  string       $str 内容
+     * @param string $str 内容
      *
      * @return bool|PwError
      */

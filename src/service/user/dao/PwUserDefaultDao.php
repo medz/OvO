@@ -89,7 +89,7 @@ class PwUserDefaultDao extends PwBaseDao
     /**
      * 添加用户.
      *
-     * @param  array $fields 待添加的用户信息
+     * @param array $fields 待添加的用户信息
      *
      * @return bool
      */

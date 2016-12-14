@@ -121,11 +121,11 @@ class PwLogService
      * 添加前台帖子管理的相关日志.
      *
      * @param PwUserBo $user        操作者
-     * @param string $type        操作类型
-     * @param array  $threads     被操作的帖子列表
-     * @param string $reason      操作原因
-     * @param string $extends
-     * @param bool   $useReplyMsg 是否使用回复的管理日志格式
+     * @param string   $type        操作类型
+     * @param array    $threads     被操作的帖子列表
+     * @param string   $reason      操作原因
+     * @param string   $extends
+     * @param bool     $useReplyMsg 是否使用回复的管理日志格式
      */
     public function addThreadManageLog(PwUserBo $user, $type, $threads, $reason, $extends = '', $useReplyMsg = false)
     {

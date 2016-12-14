@@ -289,7 +289,7 @@ class WindidUser
     /**
      * 根据提供的获取类型获取对应的dao类.
      *
-     * @param  int                 $type 装饰组合值
+     * @param int $type 装饰组合值
      *
      * @return WindidUserInterface
      */

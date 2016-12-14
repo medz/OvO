@@ -28,7 +28,7 @@ class PwClearUserService extends PwBaseHookService
     /**
      * 执行.
      *
-     * @param  array $clearType 具体清理的项目
+     * @param array $clearType 具体清理的项目
      *
      * @return bool
      */

@@ -25,8 +25,8 @@ class PwUserService
      * @param string $username 用户
      * @param string $password 用户密码
      * @param int    $type     验证类型 <1：用户id, 2: 用户名, 3：用户email>
-     * @param  string        $question 安全问题
-     * @param  string        $answer   安全问题的答案
+     * @param string $question 安全问题
+     * @param string $answer   安全问题的答案
      *
      * @return PwError|array
      */

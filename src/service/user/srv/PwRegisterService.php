@@ -36,7 +36,7 @@ class PwRegisterService extends PwBaseHookService
     /**
      * 检查是否设置同一IP设置一段时间内不能注册.
      *
-     * @param  string       $ip 待检查的IP
+     * @param string $ip 待检查的IP
      *
      * @return true|PwError
      */
@@ -394,10 +394,10 @@ class PwRegisterService extends PwBaseHookService
     /**
      * 获得信息的标题和内容.
      *
-     * @param string $titleKey 标题key
-     * @param  string $contentKey 内容key
-     * @param string $username 用户名
-     * @param string $url      链接地址
+     * @param string $titleKey   标题key
+     * @param string $contentKey 内容key
+     * @param string $username   用户名
+     * @param string $url        链接地址
      *
      * @return array
      */

@@ -220,7 +220,7 @@ class PwFileCache extends AbstractWindCache
      * <li>如果不存在则返回false.</li>
      * </ul>
      *
-     * @param  string      $key 待检查的缓存key
+     * @param string $key 待检查的缓存key
      *
      * @return string|bool 如果存在则返回被保存的值，如果不存在则返回false;
      */
