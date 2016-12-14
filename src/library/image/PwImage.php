@@ -124,8 +124,8 @@ class PwImage
      * @param int    $thumbHeight 高度
      * @param int    $quality     图片质量
      * @param int    $thumbType   缩略图生成方式 <1.等比缩略 2.居中截取 3.等比填充>
-     * @param int $forceMode 强制生成 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>
-     *                       return mixed
+     * @param int    $forceMode   强制生成 <0.当文件尺寸小于缩略要求时，不生成 1.都生成>
+     *                            return mixed
      */
     public function makeThumb($thumbUrl, $thumbWidth, $thumbHeight, $quality = 0, $thumbType = 0, $forceMode = 0)
     {

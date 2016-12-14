@@ -144,7 +144,7 @@ class PwCreditBo
     /**
      * 积分操作.
      *
-     * @param  string $operation 积分相关操作,根据后台设置
+     * @param string $operation 积分相关操作,根据后台设置
      * @param object $user      被操作用户
      * @param bool   $delay     是否实时进行数据库操作
      * @param array  $log       日志信息描述

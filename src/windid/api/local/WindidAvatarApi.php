@@ -58,8 +58,8 @@ class WindidAvatarApi
     /**
      * 获取头像上传代码
      *
-     * @param int $uid 用户uid
-     * @param  int          $getHtml 获取代码|配置
+     * @param int $uid     用户uid
+     * @param int $getHtml 获取代码|配置
      *
      * @return string|array
      */

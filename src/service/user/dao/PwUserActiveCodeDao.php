@@ -17,7 +17,7 @@ class PwUserActiveCodeDao extends PwBaseDao
     /**
      * 添加用户激活码
      *
-     * @param  array    $data 激活码相关数据
+     * @param array $data 激活码相关数据
      *
      * @return bool|int
      */

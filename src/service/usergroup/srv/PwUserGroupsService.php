@@ -222,7 +222,7 @@ class PwUserGroupsService
     /**
      * 获取多个用户组的权限缓存.
      *
-     * @param  array $gids 获取指定gid序列权限缓存内容
+     * @param array $gids 获取指定gid序列权限缓存内容
      *
      * @return array
      */
@@ -253,7 +253,7 @@ class PwUserGroupsService
     /**
      * 获取单个用户组的权限缓存.
      *
-     * @param  int   $gid 获取指定gid的缓存内容
+     * @param int $gid 获取指定gid的缓存内容
      *
      * @return array
      */

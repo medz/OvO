@@ -29,8 +29,8 @@ class PwThread
     /**
      * 获取单个帖子信息.
      *
-     * @param int $tid 帖子id
-     * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param int $tid       帖子id
+     * @param int $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return array
      */
@@ -46,8 +46,8 @@ class PwThread
     /**
      * 获取多个帖子信息.
      *
-     * @param array $tids tid序列
-     * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param array $tids      tid序列
+     * @param int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return array
      */
@@ -63,10 +63,10 @@ class PwThread
     /**
      * 获取某个版块的帖子列表 (按最后回复排序).
      *
-     * @param int $fid    版块id
-     * @param int $limit  个数
-     * @param int $offset 起始偏移量
-     * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param int $fid       版块id
+     * @param int $limit     个数
+     * @param int $offset    起始偏移量
+     * @param int $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return array
      */
@@ -124,10 +124,10 @@ class PwThread
     /**
      * 获取用户的帖子.
      *
-     * @param int $uid    用户id
-     * @param int $limit  个数
-     * @param int $offset 起始偏移量
-     * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param int $uid       用户id
+     * @param int $limit     个数
+     * @param int $offset    起始偏移量
+     * @param int $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return array
      */
@@ -143,11 +143,11 @@ class PwThread
     /**
      * 获取某个版块用户的帖子.
      *
-     * @param int   $fid    版块id
-     * @param mixed $uids   用户id (int|array)
-     * @param int   $limit  个数
-     * @param int   $offset 起始偏移量
-     * @param  int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param int   $fid       版块id
+     * @param mixed $uids      用户id (int|array)
+     * @param int   $limit     个数
+     * @param int   $offset    起始偏移量
+     * @param int   $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return array
      */
@@ -181,8 +181,8 @@ class PwThread
     /**
      * 更新帖子.
      *
-     * @param object $topicDm 帖子数据模型
-     * @param  int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param object $topicDm   帖子数据模型
+     * @param int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return mixed
      */
@@ -198,9 +198,9 @@ class PwThread
     /**
      * 批量更新帖子.
      *
-     * @param array  $tids    帖子id
-     * @param object $topicDm 帖子数据模型
-     * @param  int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
+     * @param array  $tids      帖子id
+     * @param object $topicDm   帖子数据模型
+     * @param int    $fetchmode 帖子资料 <必然为FETCH_*的一种或者组合>
      *
      * @return mixed
      */

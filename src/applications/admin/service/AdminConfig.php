@@ -79,7 +79,7 @@ class AdminConfig
      * 批量设置配置信息.
      *
      * @param string $namespace 模块名称
-     * @param  array  $array     配置信息数组 array('name' => array('value' => '', 'descrip' => '')
+     * @param array  $array     配置信息数组 array('name' => array('value' => '', 'descrip' => '')
      *
      * @return bool
      */
@@ -98,10 +98,10 @@ class AdminConfig
     /**
      * 设置配置信息.
      *
-     * @param  string $namespace 配置模块
-     * @param  string $name      配置项的名字
-     * @param  string $value     配置项的值
-     * @param  string $decrip    配置项的描述
+     * @param string $namespace 配置模块
+     * @param string $name      配置项的名字
+     * @param string $value     配置项的值
+     * @param string $decrip    配置项的描述
      *
      * @return bool
      */
@@ -117,7 +117,7 @@ class AdminConfig
     /**
      * 删除配置项.
      *
-     * @param  string $namespace 配置项所属空间
+     * @param string $namespace 配置项所属空间
      *
      * @return bool
      */
@@ -133,8 +133,8 @@ class AdminConfig
     /**
      * 删除配置项.
      *
-     * @param  string $namespace 配置项所属空间
-     * @param  string $name      配置项名字
+     * @param string $namespace 配置项所属空间
+     * @param string $name      配置项名字
      *
      * @return bool
      */

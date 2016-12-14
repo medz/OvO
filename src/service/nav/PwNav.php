@@ -37,8 +37,8 @@ class PwNav
     /**
      * 根据导航类型获得列表.
      *
-     * @param string $type 导航类型
-     * @param  int    $isshow 0不显示,1显示,2全部
+     * @param string $type   导航类型
+     * @param int    $isshow 0不显示,1显示,2全部
      *
      * @return array
      */
@@ -61,8 +61,8 @@ class PwNav
     /**
      * 根据某导航类型顶级列表.
      *
-     * @param string $type 导航类型
-     * @param  int    $isshow 0不显示,1显示,2全部
+     * @param string $type   导航类型
+     * @param int    $isshow 0不显示,1显示,2全部
      *
      * @return array
      */
@@ -74,8 +74,8 @@ class PwNav
     /**
      * 根据某导航的子导航列表.
      *
-     * @param int $navId 导航类型
-     * @param  int   $isshow 0不显示,1显示,2全部
+     * @param int $navId  导航类型
+     * @param int $isshow 0不显示,1显示,2全部
      *
      * @return array
      */

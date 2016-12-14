@@ -25,7 +25,7 @@ class Wekit
     /**
      * 运行当前应用.
      *
-     * @param string $name 应用名称默认‘phpwind’
+     * @param string $name       应用名称默认‘phpwind’
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
      */
     public static function run($name = 'phpwind', array $components = array())
@@ -236,8 +236,8 @@ class Wekit
     /**
      * 获取应用配置 config.
      *
-     * @param  string $namespace 配置域
-     * @param  string $key       配置键值
+     * @param string $namespace 配置域
+     * @param string $key       配置键值
      *
      * @return mixted
      */

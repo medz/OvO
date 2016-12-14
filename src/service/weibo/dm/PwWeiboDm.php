@@ -43,7 +43,7 @@ class PwWeiboDm extends PwBaseDm
     /**
      * 设置微博来源类型.
      *
-     * @param  int    $type 必为 PwWeibo::TYPE_* 中的一种
+     * @param int $type 必为 PwWeibo::TYPE_* 中的一种
      *
      * @return object $this;
      */

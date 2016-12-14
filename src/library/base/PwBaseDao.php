@@ -81,7 +81,7 @@ class PwBaseDao extends WindDao
     /**
      * sql组装,将数组组装成`key`=value的形式返回.
      *
-     * @param  array  $array 待组装的数据
+     * @param array $array 待组装的数据
      *
      * @return string
      */
@@ -93,7 +93,7 @@ class PwBaseDao extends WindDao
     /**
      * sql组装,将数组组装成`key`=`key`+value的形式返回.
      *
-     * @param  array  $array 待组装的数据
+     * @param array $array 待组装的数据
      *
      * @return string
      */
@@ -114,7 +114,7 @@ class PwBaseDao extends WindDao
     /**
      * sql组装,将数组组装成类似`key`=`key`|value等位运算形式返回.
      *
-     * @param  array  $array 待组装的数据
+     * @param array $array 待组装的数据
      *
      * @return string
      */
@@ -140,7 +140,7 @@ class PwBaseDao extends WindDao
     /**
      * sql组装,将数组组装成('a1','b1','c1'),('a2','b2','c2')的形式返回.
      *
-     * @param  array  $array 待组装的数据
+     * @param array $array 待组装的数据
      *
      * @return string
      */
@@ -152,7 +152,7 @@ class PwBaseDao extends WindDao
     /**
      * sql组装,将数组组装成('a1','b1','c1')的形式返回.
      *
-     * @param  array  $array 待组装的数据
+     * @param array $array 待组装的数据
      *
      * @return string
      */

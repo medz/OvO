@@ -33,7 +33,7 @@ class WindidMail
      *
      * @param string $toemail 收件人
      * @param string $subject 邮件标题
-     * @param  string $message 邮件内容
+     * @param string $message 邮件内容
      *
      * @return bool
      */

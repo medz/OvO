@@ -203,7 +203,7 @@ class PwInstallApplication
      * 3. 注册相应的安装程序进行安装
      *
      * @param string $step
-     *                       需要执行的安装步骤
+     *                     需要执行的安装步骤
      *
      * @return PwError true next
      */

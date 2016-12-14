@@ -177,7 +177,7 @@ class PwFresh
     /**
      * 获取某个类型的新鲜事.
      *
-     * @param  int   $type   新鲜事来源类型，必为常量 SEND_* 中的一种
+     * @param int $type   新鲜事来源类型，必为常量 SEND_* 中的一种
      * @param int $srcIds ID序列
      *
      * @return array
@@ -194,8 +194,8 @@ class PwFresh
     /**
      * 发送新鲜事.
      *
-     * @param  int $uid   发送者id
-     * @param  int $type  新鲜事来源类型，必为常量 SEND_* 中的一种
+     * @param int $uid   发送者id
+     * @param int $type  新鲜事来源类型，必为常量 SEND_* 中的一种
      * @param int $srcId 新鲜事来源id
      *
      * @return int
@@ -240,7 +240,7 @@ class PwFresh
     /**
      * 批量删除某一类型新鲜事.
      *
-     * @param  int  $type   新鲜事来源类型，必为常量 SEND_* 中的一种
+     * @param int $type   新鲜事来源类型，必为常量 SEND_* 中的一种
      * @param int $srcIds ID序列
      *
      * @return bool
@@ -274,8 +274,8 @@ class PwFresh
     /**
      * 按时间清除一批我关注的新鲜事数据.
      *
-     * @param int $uid 用户id
-     * @param  int  $limit 清除条数
+     * @param int $uid   用户id
+     * @param int $limit 清除条数
      *
      * @return bool
      */

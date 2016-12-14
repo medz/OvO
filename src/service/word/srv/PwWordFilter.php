@@ -40,8 +40,8 @@ class PwWordFilter
     /**
      * 返回替换以后的敏感词 （帖子替换敏感词扫描）.
      *
-     * @param  string $str     需要扫描的内容
-     * @param  int    $version 帖子表或者回复表中的word_version
+     * @param string $str     需要扫描的内容
+     * @param int    $version 帖子表或者回复表中的word_version
      *
      * @return string
      */

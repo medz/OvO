@@ -129,9 +129,9 @@ class PwAttentionRecommendFriendsService
     /**
      * 组装关注用户数据.
      *
-     * @param int $uid 用户uid
-     * @param  array $recommendUids 推荐关注uids
-     * @param int $num
+     * @param int   $uid           用户uid
+     * @param array $recommendUids 推荐关注uids
+     * @param int   $num
      *
      * @return array
      */

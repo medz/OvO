@@ -62,7 +62,7 @@ class PwUserValidator
     /**
      * 验证支付宝帐号.
      *
-     * @param  string       $alipay   待检查的支付宝帐号
+     * @param string $alipay   待检查的支付宝帐号
      * @param string $username 排除的用户名
      *
      * @return true|PwError
@@ -78,8 +78,8 @@ class PwUserValidator
     /**
      * 检查用户的邮箱.
      *
-     * @param  string       $email    待检查的用户邮箱
-     * @param  string       $username 待检查的用户名
+     * @param string $email    待检查的用户邮箱
+     * @param string $username 待检查的用户名
      *
      * @return bool|PwError
      */
@@ -126,8 +126,8 @@ class PwUserValidator
     /**
      * 检查用户的username是否存在.
      *
-     * @param  string $username  待检查的用户名
-     * @param int $exceptUid 排除的用户ID
+     * @param string $username  待检查的用户名
+     * @param int    $exceptUid 排除的用户ID
      *
      * @return bool
      */
@@ -253,7 +253,7 @@ class PwUserValidator
     /**
      * 构造用户密码复杂度的校验规则.
      *
-     * @param  array  $config 复杂规则的配置
+     * @param array $config 复杂规则的配置
      *
      * @return string
      */
@@ -271,7 +271,7 @@ class PwUserValidator
      * 复杂度判断.
      *
      * @param string $password 密码
-     * @param  int    $config   配置
+     * @param int    $config   配置
      *
      * @return bool
      */

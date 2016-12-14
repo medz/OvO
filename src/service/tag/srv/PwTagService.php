@@ -189,7 +189,7 @@ class PwTagService
      *
      * @param string $typeName
      * @param array  $params        内容参数ID
-     * @param array $excludeTagIds 需排除的当前话题列表 format: array(tag_id_param_id,..);
+     * @param array  $excludeTagIds 需排除的当前话题列表 format: array(tag_id_param_id,..);
      */
     public function getRelatedTags($typeName, $params, $excludeTagIds = array())
     {
@@ -251,7 +251,7 @@ class PwTagService
      *
      * @param string $type
      * @param int    $paramId
-     * @param  int    $uid     带关注
+     * @param int    $uid     带关注
      *
      * @return array
      */
@@ -278,7 +278,7 @@ class PwTagService
      * 话题小名片.
      *
      * @param string $name
-     * @param  int    $uid  带关注
+     * @param int    $uid  带关注
      *
      * @return array
      */
