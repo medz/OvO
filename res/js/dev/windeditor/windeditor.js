@@ -1149,7 +1149,7 @@
             //自动增高
 			if(_self.options.autoHeight) {
 				var body = $(_self.editorDoc.body);
-				$(_self.editorDoc.documentElement).css('overflowY','hidden');
+				$(_self.editorDoc.documentElement).css('overflowY','auto');
 				body.css('overflowY','hidden');
 				_self.iframe[0].scroll = 'no';
 				_self.iframe.css('overflow','hidden');
