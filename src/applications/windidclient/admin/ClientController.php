@@ -36,10 +36,10 @@ class ClientController extends AdminBaseController
                 $time,
                 $client['secretkey'],
                 array(
-                    'operation' => 999
+                    'operation' => 999,
                 ),
                 array(
-                    'testdata' => 1
+                    'testdata' => 1,
                 )
             ),
             'operation' => 999,
