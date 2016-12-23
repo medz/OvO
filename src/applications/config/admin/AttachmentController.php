@@ -60,6 +60,11 @@ class AttachmentController extends AdminBaseController
         }
 
         $windidStorages = WindidApi::api('avatar')->getStorages();
+
+        if (!is_array($windidStorages)) {
+            $windidStorages = array();
+        }
+
         $windidStorageType = Wekit::app('windid')->config->attachment->get('storage.type');
         foreach ($windidStorages as $key => $value) {
             if ($value['managelink']) {

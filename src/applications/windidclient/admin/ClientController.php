@@ -31,7 +31,17 @@ class ClientController extends AdminBaseController
         }
         $time = Pw::getTime();
         $array = array(
-            'windidkey' => WindidUtility::appKey($client['id'], $time, $client['secretkey'], array('operation' => 999), array('testdata' => 1)),
+            'windidkey' => WindidUtility::appKey(
+                $client['id'],
+                $time,
+                $client['secretkey'],
+                array(
+                    'operation' => 999
+                ),
+                array(
+                    'testdata' => 1
+                )
+            ),
             'operation' => 999,
             'clientid'  => $client['id'],
             'time'      => $time,
