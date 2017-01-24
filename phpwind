@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+if (PHP_SAPI !== 'cli') {
+    echo 'Warning: Composer should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
+}
+
+if (PHP_VERSION_ID < 53000) {
+    file_put_contents('php://stderr', sprintf(
+        "The project requires PHP 5.3 version or higher and your system has\n".
+        "PHP %s version installed.\n\n".
+        PHP_VERSION
+    ));
+    exit(1);
+}
+
+// Windows uses Path instead of PATH
+if (!isset($_SERVER['PATH']) && isset($_SERVER['Path'])) {
+    $_SERVER['PATH'] = $_SERVER['Path'];
+}
+
+error_reporting(-1);
+
+require __DIR__.'/bootstrap.php';
+
+$app = new \Pw\Console\Application();
+$app->run();

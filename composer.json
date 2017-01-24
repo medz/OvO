@@ -26,7 +26,8 @@
         "ext-mcrypt": "*",
         "ext-zlib": "*",
         "ext-zip": "*",
-        "medz/windframework": "*"
+        "medz/windframework": "^1.0",
+        "symfony/console": "^3.2"
     },
     "autoload": {
         "classmap": [
@@ -35,7 +36,8 @@
         ],
         "psr-4": {
             "Pw\\Ext\\": "src/extensions/",
-            "Pw\\App\\": "src/applications/"
+            "Pw\\App\\": "src/applications/",
+            "Pw\\": "fans/"
         }
     }
 }
