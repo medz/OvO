@@ -88,10 +88,11 @@ if(isset($matches[1]) && is_array($matches[1])){
 			}
 			var mini = 'fontName fontSize bold italic underline foreColor justifyLeft justifyCenter justifyRight insertLink insertPhoto'.split(' ');
 			// @提醒权限
-			var REMIND_OPEN = '{$loginUser->getPermission('remind_open')}',
-				VIDEO_OPEN = '{$loginUser->getPermission('allow_publish_vedio')}',
-				MUSIC_OPEN = '{$loginUser->getPermission('allow_publish_music')}',
-				TAO_OPEN = '{$loginUser->getPermission('allow_publish_tao')}';
+        
+      var REMIND_OPEN = '{$loginUser->getPermission('remind_open')}';
+      var VIDEO_OPEN = '{$loginUser->getPermission('allow_publish_vedio')}';
+      var MUSIC_OPEN = '{$loginUser->getPermission('allow_publish_music')}';
+			// var AO_OPEN = '{$loginUser->getPermission('allow_publish_tao')}';
 			//根据服务器端配置判断是否加载编辑器功能插件
 			var customPlugins = [];
 			if (ATTACH_CONFIG.ifopen == 1) { customPlugins.push('insertFile'); }
@@ -100,7 +101,7 @@ if(isset($matches[1]) && is_array($matches[1])){
 			if (EDIT_CONFIG.enhide.ifopen == 1) { customPlugins.push('insertHide'); }
 			if (EDIT_CONFIG.sell.ifopen == 1) { customPlugins.push('insertSell'); }
             if (REMIND_OPEN == 1) { customPlugins.push('atremind'); }
-            if (TAO_OPEN == 1){ customPlugins.push('insertTao'); }
+            // if (TAO_OPEN == 1){ customPlugins.push('insertTao'); }
             // 下面这货是啥？
             // customPlugins.push('insertShare');
 			// 插入代码和openApp的插件放最后
