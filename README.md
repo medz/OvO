@@ -1,6 +1,6 @@
 # phpwind Fans
 
-[![phpwind Fans](//pub.idqqimg.com/wpa/images/group.png)](//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7)
+[![phpwind Fans](https://pub.idqqimg.com/wpa/images/group.png)](//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7)
 
 
 # 目前最新：F 1.0.8
