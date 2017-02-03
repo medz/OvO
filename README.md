@@ -1,4 +1,9 @@
-# phpwind fans - 目前最新：F 1.0.8
+# phpwind Fans
+
+[![phpwind Fans](//pub.idqqimg.com/wpa/images/group.png)](//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7)
+
+
+# 目前最新：F 1.0.8
 phpwind Fans版本是原本暂定的phpwind10版本而来。基于官方最新的phpwind9.0.1开发，同步官方所有代码的基础上进行改良和长期维护。
 ## 关于下载
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
