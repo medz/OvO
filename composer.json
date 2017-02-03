@@ -37,7 +37,7 @@
         "psr-4": {
             "Pw\\Ext\\": "src/extensions/",
             "Pw\\App\\": "src/applications/",
-            "Pw\\": "fans/"
+            "Pw\\": "src/"
         }
     }
 }
