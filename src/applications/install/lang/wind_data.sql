@@ -53,7 +53,7 @@ INSERT INTO `pw_common_nav` (`navid`, `parentid`, `rootid`, `type`, `sign`, `nam
 (4, 0, 4, 'main', 'like|like|run|', '喜欢', '|||', 'index.php?m=like&c=like', '', 0, 1, 4),
 (5, 0, 5, 'main', '', 'phpwind Fans', '|||', 'https://github.com/medz/phpwind/releases', '', 1, 1, 7),
 (6, 0, 6, 'main', 'tag|index|run|', '话题', '|||', 'index.php?m=tag', '', 0, 1, 5),
-(7, 0, 7, 'main', 'appcenter|index|run|', '应用', '', 'index.php?m=appcenter', '', 0, 0, 6),
+(7, 0, 7, 'main', 'appcenter|index|run|', '应用', '', 'index.php?m=appcenter', '', 0, 1, 6),
 (8, 0, 8, 'my', 'space', '我的空间', '', 'index.php?m=space', '', 0, 1, 1),
 (9, 0, 9, 'my', 'fresh', '我的关注', '', 'index.php?m=my&c=fresh', '', 0, 1, 2),
 (10, 0, 10, 'my', 'forum', '我的版块', '', 'index.php?m=bbs&c=forum&a=my', '', 0, 1, 3),
