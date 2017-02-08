@@ -169,7 +169,7 @@ class CreditController extends AdminBaseController
             array('exchange_old', 'ifopen_old', 'credit1', 'credit2', 'value1', 'value2', 'ifopen'));
         $old = array();
         $exchange = Wekit::C('credit', 'exchange');
-        
+
         is_array($exchange) || $exchange = array();
         foreach ($exchange as $key => $value) {
             if (isset($exchange_old[$key])) {
