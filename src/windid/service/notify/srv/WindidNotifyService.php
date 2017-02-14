@@ -61,7 +61,12 @@ class WindidNotifyService
     public function shutdownSend($nid)
     {
         $url = Wekit::app('windid')->url->base.'/index.php?m=queue';
-        WindidUtility::buildRequest($url, array('nid' => $nid), false, 10);
+
+        $client = new \Guzzle\Http\Client();
+        $request = $client->post($url, null, array(
+            'nid' => $nid,
+        ));
+        $client->send($request);
 
         return true;
     }

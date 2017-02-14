@@ -47,8 +47,12 @@ class WindidApi
         if (!(strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0)) {
             return false;
         }
-        //$result = file_get_contents($url);
-        $result = WindidUtility::buildRequest($url, $postData);
+
+        $client = new \Guzzle\Http\Client();
+        $request = $client->post($url, null, $postData);
+        $response = $client->send($request);
+        $result = $response->getBody(true);
+
         if ($result === false) {
             return WindidError::SERVER_ERROR;
         }

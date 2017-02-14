@@ -48,7 +48,12 @@ class ClientController extends AdminBaseController
         );
         $post = array('testdata' => 1);
         $url = WindidUtility::buildClientUrl($client['siteurl'], $client['apifile']).http_build_query($array);
-        $result = WindidUtility::buildRequest($url, $post);
+
+        $client = new \Guzzle\Http\Client();
+        $request = $client->post($url, null, $post);
+        $response = $client->send($request);
+        $result = $response->getBody(true);
+
         if (trim($result) === 'success') {
             $this->showMessage('WINDID:success');
         }

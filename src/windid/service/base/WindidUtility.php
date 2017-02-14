@@ -57,84 +57,19 @@ class WindidUtility
         return md5($time.$str.md5($apiId.'||'.$secretkey));
     }
 
-    public static function buildRequest($url, $params = array(), $isreturn = true, $timeout = 10, $method = 'post')
-    {
-        $request = Wind::getComponent('httptransfer', array($url, $timeout));
-        $request->setWaitResponse($isreturn);
-        if ($method == 'post') {
-            if (!$params) {
-                $params = array('__data' => '1');
-            } //兼容部分版本post content不能为空的错误
-            return $request->post($params);
-        } else {
-            return $request->get($params);
-        }
-    }
-
     public static function buildMultiRequest($urls, $params = array())
     {
+        $client = new \Guzzle\Http\Client();
+
         $result = array();
         foreach ($urls as $k => $url) {
-            $request = Wind::getComponent('httptransfer', array($url));
-            $result[$k] = $request->post($params[$k]);
+
+            $request = $client->post($url, null, $params[$k]);
+            $response = $client->send($request);
+            $result[$k] = $response->getBody(true);
         }
 
         return $result;
-    }
-
-    public static function uploadRequest($url, $file, $timeout = 30)
-    {
-        if (function_exists('curl_init')) {
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, array('FileData' => '@'.$file));
-            curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
-            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            $response = curl_exec($curl);
-            curl_close($curl);
-
-            return $response;
-        } elseif (function_exists('fsockopen')) {
-            $urlArr = parse_url($url);
-            $port = isset($urlArr['port']) ? $urlArr['port'] : 80;
-            $boundary = '---------------------'.substr(md5(rand(0, 32000)), 0, 10);
-            $header = 'POST '.$urlArr['path'].'?'.$urlArr['query']." HTTP/1.0\r\n";
-            $header .= 'Host: '.$urlArr['host']."\r\n";
-            $header .= 'Content-type: multipart/form-data, boundary='.$boundary."\r\n";
-            if (!file_exists($file)) {
-                return false;
-            }
-            $imageInfo = @getimagesize($file);
-            $exts = array('1' => 'gif', '2' => 'jpg', '3' => 'png');
-            if (!isset($exts[$imageInfo[2]])) {
-                return false;
-            }
-            $ext = $exts[$imageInfo[2]];
-            $filename = rand(1000, 9999).'.'.$ext;
-            $data = '';
-            $data .= "--$boundary\r\n";
-            $data .= 'Content-Disposition: form-data; name="FileData"; filename="'.$filename."\"\r\n";
-            $data .= 'Content-Type: '.$imageInfo['mime']."\r\n\r\n";
-            $data .= WindFile::read($file)."\r\n";
-            $data .= "--$boundary--\r\n";
-            $header .= 'Content-length: '.strlen($data)."\r\n\r\n";
-            $fp = fsockopen($urlArr['host'], $port);
-            fwrite($fp, $header.$data);
-            $response = '';
-            while (!feof($fp)) {
-                $response .= fgets($fp, 128);
-            }
-            fclose($fp);
-            preg_match("/Content-Length:.?(\d+)/", $response, $matches);
-            if (isset($matches[1])) {
-                $response = substr($response, strlen($response) - intval($matches[1]));
-            }
-
-            return $response;
-        } else {
-            return false;
-        }
     }
 
     public static function buildClientUrl($url, $notiFile)

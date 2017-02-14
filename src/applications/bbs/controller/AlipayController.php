@@ -25,12 +25,13 @@ class AlipayController extends PwBaseController
         if (!$this->_conf['alipay']) {
             $this->paymsg('onlinepay.settings.alipay.error');
         }
-        $http = Wind::getComponent('httptransfer', array('http://notify.alipay.com/trade/notify_query.do'));
 
-        $veryfy_result2 = trim($http->post(array(
+        $client = new \Guzzle\Http\Client();
+        $response = $client->post('http://notify.alipay.com/trade/notify_query.do', null, array(
             'notify_id' => $this->_var['notify_id'],
             'partner'   => $this->_conf['alipaypartnerID'],
-        )), "\r\n");
+        ));
+        $veryfy_result2 = $response->getBody(true);
 
         //兼容支付宝urlencode之后伪静态+号无法rawurldecode的处理方案
         isset($this->_var['notify_time']) && $this->_var['notify_time'] = urldecode($this->_var['notify_time']);
