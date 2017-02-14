@@ -499,11 +499,7 @@ class LoginController extends PwBaseController
             return true;
         }
 
-        //ip限制,防止撞库; 错误三次,自动显示验证码
-        $ipDs = Wekit::load('user.PwUserLoginIpRecode');
-        $info = $ipDs->getRecode($this->getRequest()->getClientIp());
-
-        return is_array($info) && $info['error_count'] > 3 ? true : false;
+        return false;
     }
 
     private function _getWindid()
