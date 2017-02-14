@@ -63,7 +63,6 @@ class WindidUtility
 
         $result = array();
         foreach ($urls as $k => $url) {
-
             $request = $client->post($url, null, $params[$k]);
             $response = $client->send($request);
             $result[$k] = $response->getBody(true);
