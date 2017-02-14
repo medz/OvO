@@ -131,7 +131,6 @@ function disabledSubmit(){
 $filePath = Wind::getRealPath('ADMIN:conf.openplatformurl.php', true);
 $openPlatformUrl = Wind::getComponent('configParser')->parse($filePath);
 #-->
-<script src="{$openPlatformUrl}sitepush.php?a=platformPush" charset="UTF-8"></script>
 <!--# }elseif($ac_type == 'check' ){ #-->
 <div class="h_a">站点概况</div>
 <div class="table_full">

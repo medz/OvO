@@ -523,7 +523,6 @@ $ts = PW::getTime();
 $sitehash = Wekit::C('site', 'hash');
 $sign = md5($siteurl.$version.$uid.$ts.$sitehash);
 #-->
-<script src="{$openPlatformUrl}sitepush.php?a=notice&siteurl={$siteurl}&version={$version}&uid={$uid}&ts={$ts}&sign={$sign}" charset="UTF-8"></script>
 <!--# } #-->
 	</body>
 </html>
