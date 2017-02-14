@@ -514,8 +514,6 @@ function showTab(li) {
 <!--#
 $isFounder =  Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder($loginUser->username);
 if ($isFounder) {
-$filePath = Wind::getRealPath('ADMIN:conf.openplatformurl.php', true);
-$openPlatformUrl = Wind::getComponent('configParser')->parse($filePath);
 $siteurl = rawurlencode(Wekit::C('site', 'info.url'));
 $version = rawurlencode(NEXT_VERSION);
 $uid = $loginUser->uid;
