@@ -21,7 +21,14 @@ class TaskConditionBbsController extends AdminBaseController
         parent::beforeAction($handlerAdapter);
         $var = json_decode(urldecode($this->getInput('var', 'post')), true);
         if (is_array($var)) {
-            $this->setOutput($var, 'condition');
+
+            // fix 云盾(9920220) 绕过CSRC, 注入序列化数据代码.
+            $condition = array(
+                'fid' => (bool) (isset($var['fid']) ? $var['fid'] : 0),
+                'num' => (bool) (isset($var['num']) ? $var['num'] : 0),
+            );
+
+            $this->setOutput($condition, 'condition');
         }
     }
 
