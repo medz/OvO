@@ -33,7 +33,10 @@
     "autoload": {
         "classmap": [
             "src/Wekit.php",
-            "src/library/"
+            "src/library/",
+            "src/service/",
+            "src/bootstrap/",
+            "src/hooks/"
         ],
         "psr-4": {
             "Pw\\Ext\\": "src/extensions/",
