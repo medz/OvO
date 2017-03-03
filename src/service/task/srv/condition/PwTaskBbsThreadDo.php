@@ -44,6 +44,9 @@ class PwTaskBbsThreadDo extends PwPostDoBase implements PwTaskCompleteInterface
      */
     public function doTask($conditions, $step)
     {
+        if (!is_array($step)) {
+            $step = array();
+        }
         if ($conditions['fid'] != $this->fid) {
             return false;
         }
