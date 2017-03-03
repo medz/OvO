@@ -76,7 +76,6 @@ class PwRoute extends AbstractPwRoute
      */
     public function matchUrl($url)
     {
-         
         $r = PwDomainHelper::parse_url($url);
         list($host, $isSecure, $script, $path, $scriptUrl) = $r;
         if ($host && !PwDomainHelper::isMyBrother($host,

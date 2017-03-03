@@ -47,7 +47,7 @@ class DomainController extends AdminBaseController
 
         // 判断域名是否重复
         $unique = array();
-         
+
         $bo = new PwConfigSet('domain');
         $addons = $this->_service()->getDomainAddOns();
         foreach ($app as $key => $value) {

@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 帖子管理操作-屏蔽.
@@ -49,7 +48,6 @@ class PwThreadManageDoShield extends PwThreadManageDo
             $type = 'unshield';
         }
         if ($this->pids) {
-             
             $topicDm = new PwReplyDm(true);
             $topicDm->setIfshield($this->ifShield);
             $this->_getThreadDs()->batchUpdatePost($this->pids, $topicDm);
@@ -61,7 +59,6 @@ class PwThreadManageDoShield extends PwThreadManageDo
         }
 
         if ($this->tids) {
-             
             $topicDm = new PwTopicDm(true);
             $topicDm->setIfshield($this->ifShield);
             $this->_getThreadDs()->batchUpdateThread($this->tids, $topicDm, PwThread::FETCH_MAIN);

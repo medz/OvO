@@ -28,7 +28,6 @@ class PwPayAction1
         !$rmbrate && $rmbrate = 10;
         $num = round($this->_order['price'] * $rmbrate);
 
-         
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         $creditBo->addLog('olpay_credit', array($this->_order['buy'] => $num), PwUserBo::getInstance($this->_order['created_userid']), array(

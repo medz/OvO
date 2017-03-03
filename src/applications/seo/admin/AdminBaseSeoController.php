@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
+
 /**
  * seo模式的基础controller.
  *

@@ -47,8 +47,6 @@ class PwPassReply extends PwGleanDoProcess
 
     protected function run()
     {
-         
-         
         $dm = new PwReplyDm(true);
         $dm->setDisabled(0);
         Wekit::load('forum.PwThread')->batchUpdatePost($this->pids, $dm);

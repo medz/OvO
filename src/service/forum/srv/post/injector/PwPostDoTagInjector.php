@@ -19,7 +19,6 @@ class PwPostDoTagInjector extends PwBaseHookInjector
         if (!is_array($tagNames) || !count($tagNames)) {
             return;
         }
-         
 
         return new PwPostDoTag($this->bp, $tagNames);
     }
@@ -27,7 +26,6 @@ class PwPostDoTagInjector extends PwBaseHookInjector
     public function domodify()
     {
         $tagNames = (array) $this->getInput('tagnames', 'post');
-         
 
         return new PwPostDoTag($this->bp, $tagNames);
     }

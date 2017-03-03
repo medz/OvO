@@ -50,8 +50,6 @@ class PwPollService
             return new PwError('VOTE:most.times.limit', array('{mosttimes}' => $voteTimeslimit));
         }
 
-         
-
         foreach ($option as $optionid) {
             $this->_getPollVoterDs()->add($userid, $pollid, $optionid);
 
@@ -62,7 +60,7 @@ class PwPollService
 
         //更新该投票人数
         $voterNum = $this->_getPollVoterDs()->countUser($pollid);
-         
+
         $pollDm = new PwPollDm($pollid); /* @var $pollDm PwPollDm */
         $pollDm->setVoterNum($voterNum);
 
@@ -114,7 +112,6 @@ class PwPollService
             return true;
         }
 
-         
         $dm = new PwPollOptionDm($optionid); /* @var $dm PwPollOptionDm */
         $dm->setVotedNum($total);
 

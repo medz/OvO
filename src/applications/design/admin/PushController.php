@@ -32,7 +32,7 @@ class PushController extends AdminBaseController
             $moduleid = explode(',', $pageinfo['module_ids']);
         }
         $ds = $this->_getDataDs();
-         
+
         $vo = new PwDesignDataSo();
         if ($moduleid) {
             $vo->setModuleid($moduleid);
@@ -178,7 +178,6 @@ class PushController extends AdminBaseController
         $delImages = $extend['standard_image'];
         Wekit::load('design.srv.PwDesignImage')->clearFiles($this->bo->moduleid, explode('|||', $delImages));
         if (!$data['is_reservation']) {
-             
             $srv = new PwShieldData($data['module_id']);
             $srv->addShieldData();
         }
@@ -210,7 +209,7 @@ class PushController extends AdminBaseController
         $pushDs = $this->_getPushDs();
         $push = $pushDs->getPush($pushid);
         $pushDs->updateStatus($pushid, PwDesignPush::ISSHOW);
-         
+
         $srv = new PwAutoData($push['module_id']);
         $srv->addAutoData();
         $this->showMessage('operate.success');
@@ -227,7 +226,6 @@ class PushController extends AdminBaseController
         $push = $pushDs->getPush($pushid);
         //TODO 权限
         if ($this->_getPushDs()->deletePush($pushid)) {
-             
             $vo = new PwDesignDataSo();
             $vo->setModuleid($push['module_id']);
             $vo->setFromType(PwDesignData::FROM_PUSH);
@@ -248,7 +246,7 @@ class PushController extends AdminBaseController
     {
         $dataids = $this->getInput('dataids', 'post');
         $ds = $this->_getDataDs();
-         
+
         foreach ($dataids as $dataid) {
             $data = $ds->getData($dataid);
             if (!$data) {
@@ -287,7 +285,7 @@ class PushController extends AdminBaseController
             $moduleids[] = $pushInfo['module_id'];
         }
         $moduleids = array_unique($moduleids);
-         
+
         foreach ($moduleids as $moduleid) {
             $srv = new PwAutoData($moduleid);
             $srv->addAutoData();

@@ -1,6 +1,5 @@
 <?php
 
- 
 
 class PwTagThreads extends PwTagAction
 {

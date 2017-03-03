@@ -46,7 +46,6 @@ Wind::import('ADMIN:library.AdminBaseController');
 
      public function doaddAction()
      {
-          
          $type = $this->getInput('looptype', 'post');
          $isopen = $this->getInput('isopen', 'post');
          $filename = $this->getInput('filename', 'post');
@@ -126,7 +125,6 @@ Wind::import('ADMIN:library.AdminBaseController');
 
      public function doeditAction()
      {
-          
          $cronId = (int) $this->getInput('id', 'post');
          if ($cronId < 1) {
              $this->showError('operate.fail');

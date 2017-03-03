@@ -77,15 +77,15 @@ class PwAddTagShieldLog extends PwBaseHookService
     {
         switch ($this->typeId) {
             case PwTag::TYPE_THREAD_TOPIC:
-                 
+
                 $this->appendDo(new PwShieldTagDoTopic($this));
                 break;
             case PwTag::TYPE_THREAD_REPLY:
-                 
+
                 $this->appendDo(new PwShieldTagDoReply($this));
                 break;
             case PwTag::TYPE_WEIBO:
-                 
+
                 $this->appendDo(new PwShieldTagDoWeibo($this));
                 break;
             default:

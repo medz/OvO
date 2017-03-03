@@ -8,7 +8,6 @@
  *
  * @version $Id$
  */
- 
 
 class PwCronDoMedal extends AbstractCronBase
 {

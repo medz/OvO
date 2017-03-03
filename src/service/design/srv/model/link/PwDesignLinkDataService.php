@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 门户数据 - 友情链接.
@@ -33,7 +32,6 @@ class PwDesignLinkDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-         
         $so = new PwLinkSo();
 
         $so->setIfcheck(1);

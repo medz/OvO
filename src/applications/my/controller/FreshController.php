@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * Enter description here ...
  *
@@ -43,7 +40,7 @@ class FreshController extends PwBaseController
             $user = Wekit::load('attention.PwAttentionType')->getUserByType($this->loginUser->uid, $gid, 2000);
             $uids = array_keys($user);
             $count = $this->_getService()->countAttentionFreshByUid($this->loginUser->uid, $uids);
-             
+
             $dataSource = new PwFetchAttentionFreshByUid($this->loginUser->uid, $uids, $limit, $start);
         } else {
             $current = 'all';
@@ -52,7 +49,7 @@ class FreshController extends PwBaseController
                 $count > 250 && Wekit::load('attention.PwFresh')->deleteAttentionFresh($this->loginUser->uid, $count - 200);
                 $count = 200;
             }
-             
+
             $dataSource = new PwFetchAttentionFresh($this->loginUser->uid, $limit, $start);
         }
         $freshDisplay = new PwFreshDisplay($dataSource);
@@ -103,7 +100,7 @@ class FreshController extends PwBaseController
         $this->setOutput($url, 'url');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.fresh.run.title'), '', '');
@@ -114,7 +111,6 @@ class FreshController extends PwBaseController
     {
         $id = $this->getInput('id');
 
-         
         $reply = new PwFreshReplyList($id);
         $fresh = $reply->getData();
         $replies = $reply->getReplies(7);
@@ -135,7 +131,6 @@ class FreshController extends PwBaseController
         $content = $this->getInput('content', 'post');
         $transmit = $this->getInput('transmit', 'post');
 
-         
         $reply = new PwFreshReplyPost($id, $this->loginUser);
 
         if (($result = $reply->check()) !== true) {
@@ -160,7 +155,6 @@ class FreshController extends PwBaseController
         }*/
         $fresh = array();
         if ($transmit && ($newId = $reply->getNewFreshSrcId())) {
-             
             $data = $reply->getData();
             $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId($data['type'] == 3 ? 3 : 2, array($newId)));
             $fresh = $freshDisplay->gather();
@@ -176,7 +170,6 @@ class FreshController extends PwBaseController
 
     public function readAction()
     {
-         
         $id = $this->getInput('id');
         $fresh = $this->_getService()->getFresh($id);
         if ($fresh['type'] == 1) {
@@ -204,8 +197,6 @@ class FreshController extends PwBaseController
         $_getHtml = $this->getInput('_getHtml', 'get');
         list($content, $topictype, $subtopictype) = $this->getInput(array('content', 'topictype', 'sub_topictype'), 'post');
 
-         
-         
         $postAction = new PwTopicPost($fid);
         $pwpost = new PwPost($postAction);
         $this->runHook('c_fresh_post', $pwpost);
@@ -227,7 +218,6 @@ class FreshController extends PwBaseController
         if (!$postDm->getField('ischeck')) {
             $this->showMessage('BBS:post.topic.ischeck');
         } elseif ($_getHtml == 1) {
-             
             $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId(1, array($pwpost->getNewId())));
             $fresh = $freshDisplay->gather();
             $fresh = current($fresh);
@@ -246,8 +236,6 @@ class FreshController extends PwBaseController
         if (!$this->loginUser->getPermission('fresh_delete')) {
             $this->showError('permission.fresh.delete.deny');
         }
-         
-         
 
         $srv = new PwDeleteFresh(new PwGetFreshById($id), $this->loginUser);
         $srv->setIsDeductCredit(true)

@@ -59,8 +59,6 @@ class ManageController extends AdminBaseController
 
         $groups = $this->_getUserGroupsDs()->getAllGroups();
 
-         
-
         foreach ($groups as $value) {
             $dm = new PwUserPermissionDm($value['gid']);
             $dm->setPermission('allow_add_vote', in_array($value['gid'], $view['allow_add_vote']) ? 1 : 0);
@@ -114,7 +112,6 @@ class ManageController extends AdminBaseController
             }
         }
 
-         
         if ($openForum) {
             foreach ($openForum as $value) {
                 $_forum = $this->_getForumDs()->getForum($value, 4);

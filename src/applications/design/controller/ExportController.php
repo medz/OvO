@@ -34,7 +34,6 @@ class ExportController extends PwBaseController
             $charset = Wekit::app()->charset;
         }
 
-         
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
         if (!$pageInfo) {
@@ -57,7 +56,6 @@ class ExportController extends PwBaseController
 
     protected function doZip($pageBo, $charset = 'utf-8')
     {
-         
         $srv = new PwDesignExportZip($pageBo);
         $content = $srv->zip($charset);
         $pageInfo = $pageBo->getPage();
@@ -70,7 +68,6 @@ class ExportController extends PwBaseController
      */
     protected function doTxt($pageInfo, $charset = 'utf-8')
     {
-         
         $srv = new PwDesignExportTxt($pageInfo);
         $msg = $srv->txt($charset);
         $this->forceDownload($msg['content'], $msg['filename'].'_'.$charset, $msg['ext'], $charset);

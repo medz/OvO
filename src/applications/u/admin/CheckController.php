@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 /**
  * 新用户审核.

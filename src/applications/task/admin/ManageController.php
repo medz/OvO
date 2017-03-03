@@ -1,8 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
- 
 
 /**
  * 任务系统
@@ -246,8 +244,6 @@ class ManageController extends AdminBaseController
      */
     private function saveIcon()
     {
-         
-
         $taskUpload = new PwTaskIconUpload(80, 80);
         $upload = new PwUpload($taskUpload);
         if (($result = $upload->check()) === true) {

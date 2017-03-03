@@ -17,17 +17,14 @@ class ThreadController extends SpaceBaseController
      */
     public function run()
     {
-         
         list($page, $perpage) = $this->getInput(array('page', 'perpage'));
         !$perpage && $perpage = 20;
         $threadList = new PwThreadList();
         $threadList->setPage($page)->setPerpage($perpage);
         $dataSource = null;
         if ($this->space->spaceUid == $this->loginUser->uid) {
-             
             $dataSource = new PwMyThread($this->space->spaceUid);
         } else {
-             
             $dataSource = new PwSpaceThread($this->space->spaceUid);
         }
         $threadList->execute($dataSource);
@@ -47,7 +44,7 @@ class ThreadController extends SpaceBaseController
         $this->setOutput('thread', 'src');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
 
@@ -94,7 +91,7 @@ class ThreadController extends SpaceBaseController
         $this->setOutput('thread', 'src');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $des = $lang->getMessage('SEO:space.thread.post.description', array($this->space->spaceUser['username']));

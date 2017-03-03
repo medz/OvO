@@ -15,8 +15,6 @@ class PwThreadDisplayDoLikeInjector extends PwBaseHookInjector
 {
     public function run()
     {
-         
-
         return new PwThreadDisplayDoLike();
     }
 }

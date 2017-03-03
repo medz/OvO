@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
- 
-
 /**
  * 合并版块--移动帖子.
  *

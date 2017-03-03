@@ -205,7 +205,7 @@ class PwAttentionRecommendFriendsService
             }
             $user = rtrim($user, '|');
         }
-         
+
         $dm = new PwUserInfoDm($uid);
         $dm->setRecommendFriend($user);
 

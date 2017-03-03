@@ -19,7 +19,7 @@ class PortalController extends AdminBaseController
         $args = array();
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
-         
+
         $vo = new PwDesignPortalSo();
         $ds = $this->_getPortalDs();
         $count = $ds->countPartal($vo);
@@ -45,7 +45,7 @@ class PortalController extends AdminBaseController
         $portalid = (int) $this->getInput('id', 'post');
         $portal = $this->_getPortalDs()->getPortal($portalid);
         $pageInfo = $this->_getPageDs()->getPageByTypeAndUnique(PwDesignPage::PORTAL, $portalid);
-         
+
         $pageBo = new PwDesignPageBo($pageInfo['page_id']);
         if ($pageInfo) {
             $ids = explode(',', $pageInfo['module_ids']);

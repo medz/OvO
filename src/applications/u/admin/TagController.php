@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 /**
  * 用户个人标签.

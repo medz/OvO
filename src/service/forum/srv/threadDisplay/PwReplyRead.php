@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子内容页回复列表数据接口 / 普通列表.
  *

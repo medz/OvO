@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
 /**
  * 帖子发布 - 话题.
  *

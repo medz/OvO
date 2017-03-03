@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子列表数据接口 / 特殊列表.
  *
@@ -20,7 +18,6 @@ class PwSearchThread extends PwThreadDataSource
 
     public function __construct($forum)
     {
-         
         $this->forum = $forum;
         $this->so = new PwThreadSo();
         $this->so->setFid($forum->fid)->setDisabled(0);

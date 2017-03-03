@@ -24,14 +24,14 @@ class DesignBaseController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         $moduleid = $this->getInput('moduleid');
-         
+
         $this->bo = new PwDesignModuleBo($moduleid);
         $module = $this->bo->getModule();
         if (!$module || $module['page_id'] < 1) {
             $this->showError('operate.fail');
         }
         $this->pageid = $module['page_id'];
-         
+
         $pageBo = new PwDesignPageBo($module['page_id']);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');

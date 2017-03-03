@@ -122,7 +122,6 @@ class PwDesignModuleBo
      */
     public function getSignKey()
     {
-         
         $bo = new PwDesignModelBo($this->getModel());
 
         return $bo->getSignKeys();
@@ -134,7 +133,6 @@ class PwDesignModuleBo
      */
     public function getStandardSign()
     {
-         
         $bo = new PwDesignModelBo($this->getModel());
 
         return $bo->getStandardSign();

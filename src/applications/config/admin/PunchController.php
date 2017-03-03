@@ -19,7 +19,7 @@ class PunchController extends AdminBaseController
     public function run()
     {
         $config = Wekit::C()->getValues('site');
-         
+
         $transfer = Wekit::C('credit', 'transfer');
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
         $this->setOutput($config, 'config');

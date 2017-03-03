@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 帖子编辑相关服务
  *
@@ -132,7 +129,6 @@ class PwReplyModify extends PwPostAction
             $reply = $this->info['ischeck'] ? -1 : 1;
             Wekit::load('forum.srv.PwForumService')->updateStatistics($this->forum, 0, $reply, $reply);
 
-             
             $dm = new PwTopicDm($this->tid);
             $dm->addReplies($reply);
             $this->_getThreadService()->updateThread($dm, PwThread::FETCH_MAIN);

@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 默认站点首页.
@@ -22,7 +21,6 @@ class IndexController extends PwBaseController
 
         $threadList->setPage($page)->setPerpage(Wekit::C('bbs', 'thread.perpage'));
 
-         
         $forbidFids = Wekit::load('forum.srv.PwForumService')->getForbidVisitForum($this->loginUser, null, true);
         $dataSource = new PwNewThread($forbidFids);
         if ($order == 'postdate') {
@@ -61,7 +59,7 @@ class IndexController extends PwBaseController
         $this->setOutput($threadList->getUrlArgs(), 'urlargs');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $threadList->page <= 1 && $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.forum.run.title'), '', $lang->getMessage('SEO:bbs.forum.run.description'));

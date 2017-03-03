@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子发布-投票帖 相关服务
  *
@@ -76,8 +74,6 @@ class PwPostDoPoll extends PwPostDoBase
         $pollData = $this->poll['poll'];
         $optionData = $this->poll['option'];
 
-         
-
         $pollDm = new PwPollDm(); /* @var $pwPollDm PwPollDm */
         $pollDm->setIsViewResult($pollData['isviewresult']);
         $pollDm->setOptionLimit($pollData['optionlimit']);
@@ -91,8 +87,6 @@ class PwPostDoPoll extends PwPostDoBase
 
         $newPollid = $this->_getPollDS()->addPoll($pollDm);
 
-         
-
         foreach ($optionData as $key => $value) {
             if (!$value) {
                 continue;
@@ -102,8 +96,6 @@ class PwPostDoPoll extends PwPostDoBase
             $dm->setContent($value)->setPollid($newPollid)->setImage($image);
             $this->_getPollOptionDS()->add($dm);
         }
-
-         
 
         $threadPollDm = new PwThreadPollDm(); /* @var $threadPollDm PwThreadPollDm */
         $threadPollDm->setTid($tid)->setPollid($newPollid)->setCreatedUserid($this->user->uid);
@@ -127,8 +119,6 @@ class PwPostDoPoll extends PwPostDoBase
 
         $pollData = $this->poll['poll'];
 
-         
-
         $pollDm = new PwPollDm($this->info['poll_id']); /* @var $pwPollDm PwPollDm */
         $pollDm->setIsViewResult($pollData['isviewresult']);
         $pollDm->setOptionLimit($pollData['optionlimit']);
@@ -149,8 +139,6 @@ class PwPostDoPoll extends PwPostDoBase
     {
         $optionInfo = $this->info['option'];
         $optionData = $this->poll['option'];
-
-         
 
         $deleteIds = array();
         foreach (array_keys($optionInfo) as $_id) {
@@ -210,7 +198,6 @@ class PwPostDoPoll extends PwPostDoBase
             $flag = true;
         }
 
-         
         $dm = new PwPollDm($pollid);
         $dm->setIsIncludeImg($flag ? 1 : 0);
         $this->_getPollDs()->updatePoll($dm);
@@ -223,8 +210,6 @@ class PwPostDoPoll extends PwPostDoBase
      */
     public function uploadOptionImage()
     {
-         
-
         $bhv = new PwPollUpload($this->user);
 
         $upload = new PwUpload($bhv);
@@ -334,7 +319,6 @@ class PwPostDoPoll extends PwPostDoBase
         static $_instance = null;
 
         if ($_instance == null) {
-             
             $_instance = new PwThreadPollBo($this->tid);
         }
 

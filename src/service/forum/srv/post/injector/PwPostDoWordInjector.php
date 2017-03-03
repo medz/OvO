@@ -17,7 +17,6 @@ class PwPostDoWordInjector extends PwBaseHookInjector
     {
         $verifiedWord = $this->getInput('verifiedWord');
         $tagnames = $this->getInput('tagnames');
-         
 
         return new PwPostDoWord($this->bp, $verifiedWord, $tagnames);
     }
@@ -26,7 +25,6 @@ class PwPostDoWordInjector extends PwBaseHookInjector
     {
         $verifiedWord = $this->getInput('verifiedWord');
         $tagnames = $this->getInput('tagnames');
-         
 
         return new PwPostDoWord($this->bp, $verifiedWord, $tagnames);
     }

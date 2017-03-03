@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
- 
-
 /**
  * 积分对象 (单列对象-通过方法 getInstance 获取).
  *
@@ -262,7 +258,7 @@ class PwCreditBo
         if (!empty($this->_userLog)) {
             /* @var $userDs PwUser */
             $userDs = Wekit::load('user.PwUser');
-             
+
             foreach ($this->_userLog as $_uid => $_log) {
                 $_dm = new PwUserInfoDm($_uid);
                 $_dm->setLastCreditAffectLog(serialize($_log));

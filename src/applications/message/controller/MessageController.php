@@ -51,7 +51,7 @@ class MessageController extends PwBaseController
         $this->setOutput($dialogs, 'dialogs');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:mess.mess.run.title'), '', '');
@@ -291,7 +291,7 @@ class MessageController extends PwBaseController
         $this->setOutput($noticeTypeSet, 'noticeTypeSet');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:mess.mess.set.title'), '', '');
@@ -425,7 +425,7 @@ class MessageController extends PwBaseController
     private function _updateMessageCount($uid, $num)
     {
         //更新用户表未读数
-         
+
         $user = Wekit::load('user.PwUser');
         $dm = new PwUserInfoDm($uid);
         $dm->addMessages($num);

@@ -15,8 +15,6 @@ class PwThreadDisplayDoTagInjector extends PwBaseHookInjector
 {
     public function run()
     {
-         
-
         return new PwThreadDisplayDoTag();
     }
 }

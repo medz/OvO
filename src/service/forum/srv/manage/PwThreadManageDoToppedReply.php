@@ -1,7 +1,5 @@
 <?php
 
- 
- 
 
 /**
  * 帖子管理操作-回复置顶.
@@ -44,8 +42,6 @@ class PwThreadManageDoToppedReply extends PwThreadManageDo
 
     public function run()
     {
-         
-         
         $replyDm = new PwReplyDm($this->pid);
         $replyDm->setTopped($this->topped);
         $this->_getThreadDs()->updatePost($replyDm);

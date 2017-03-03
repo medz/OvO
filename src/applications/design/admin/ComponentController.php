@@ -22,7 +22,7 @@ class ComponentController extends AdminBaseController
         $args = array();
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
-         
+
         $vo = new PwDesignComponentSo();
         if ($flag) {
             $vo->setModelFlag($flag);
@@ -60,7 +60,7 @@ class ComponentController extends AdminBaseController
         if (!$flag) {
             $this->forwardRedirect(WindUrlHelper::createUrl('design/component/add1'));
         }
-         
+
         $bo = new PwDesignModelBo($flag);
         $this->setOutput($flag, 'flag');
         $this->setOutput($bo->getSignKeys(), 'signKeys');
@@ -90,7 +90,7 @@ class ComponentController extends AdminBaseController
         if (!$comp) {
             $this->showMessage('operate.fail');
         }
-         
+
         $bo = new PwDesignModelBo($comp['model_flag']);
         $this->setOutput($bo->getSignKeys(), 'signKeys');
         $this->setOutput($comp, 'comp');

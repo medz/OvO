@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 应用中心热门投票模型.
  *
@@ -34,7 +31,6 @@ class HotController extends PwBaseController
         $pollInfo = array();
 
         if ($total) {
-             
             $pollDisplay = new PwPollDisplay(new PwFetchPollByTime($startTime, $endTime, $limit, $start, array('voter_num' => 0, 'created_time' => 0)));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
@@ -54,7 +50,7 @@ class HotController extends PwBaseController
             ), 'pollGroup');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($this->page > 1) {

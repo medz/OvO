@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * the last known user to change this file in the repository <$LastChangedBy:
  * gao.wanggao $>.
@@ -48,7 +48,7 @@ class PwAutoData extends PwModuleData
         $ds = Wekit::load('design.PwDesignData');
         $pushDs = Wekit::load('design.PwDesignPush');
         $imageDs = Wekit::load('design.PwDesignAsynImage');
-         
+
         list($start, $end, $refresh) = $this->bo->refreshTime($this->time);
         foreach ($this->designData as $k => $v) {
             $k++;

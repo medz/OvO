@@ -1,9 +1,5 @@
 <?php
 
- 
-
- 
- 
 
 /**
  * 用户注册.
@@ -473,7 +469,6 @@ class PwRegisterService extends PwBaseHookService
 
     private function _recordIpLimit()
     {
-         
         $pwdBp = new PwTryPwdBp();
         $pwdBp->allowTryAgain($uid, Wind::getComponent('request')->getClientIp(), true);
     }

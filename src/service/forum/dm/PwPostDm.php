@@ -381,7 +381,6 @@ abstract class PwPostDm extends PwBaseDm
                 $flag = 1;
             }
         } else {
-             
             $type = key(PwCreditBo::getInstance()->cType);
             $flag = 1;
         }

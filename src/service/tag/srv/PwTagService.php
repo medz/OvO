@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 话题业务
  *
@@ -92,7 +92,7 @@ class PwTagService
         $dmArray && $this->addTags($dmArray);
         $types = $this->_getTypeMap();
         $tags = $this->getTagByType($types[$typeId], $paramId);
-         
+
         $dm = new PwTopicDm($paramId);
         $dm->setTags($this->_formatTags($tags));
         Wekit::load('forum.PwThread')->updateThread($dm, PwThread::FETCH_CONTENT);
@@ -112,7 +112,7 @@ class PwTagService
         if (!is_array($tagIds) || !count($tagIds)) {
             return false;
         }
-         
+
         $dm = new PwTagDm();
         $dm->setParent(0);
 
@@ -327,7 +327,7 @@ class PwTagService
         }
         $result = (int) $this->_getTagAttentionDs()->addAttention($uid, $tagId);
         // 更新话题表内容数
-         
+
         $dm = new PwTagDm($tagId);
         $dm->addAttentionCount($result);
 
@@ -346,7 +346,7 @@ class PwTagService
     {
         $result = (int) $this->_getTagAttentionDs()->deleteAttention($uid, $tagId);
         // 更新话题表内容数
-         
+
         $dm = new PwTagDm($tagId);
         $dm->addAttentionCount(-$result);
 
@@ -403,7 +403,6 @@ class PwTagService
             $this->_getTagDs()->updateTagRelationByTagId($tagId, $tag['tag_id']);
         }
 
-         
         $dm = new PwTagDm();
         $dm->setParent(0);
         $this->_getTagDs()->updateTags($childTagIds, $dm);
@@ -509,7 +508,6 @@ class PwTagService
             return null;
         }
         $className = 'PwTag'.ucfirst($typeName);
-         
 
         return new $className();
     }

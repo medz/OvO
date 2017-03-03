@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 版块相关页面.
@@ -21,7 +20,6 @@ class ForumController extends PwBaseController
         // $this->runHook('c_thread_run', $forumDisplay);
         $threadList->setPage($page)->setPerpage(Wekit::C('bbs', 'thread.perpage'));
 
-         
         $forbidFids = Wekit::load('forum.srv.PwForumService')->getForbidVisitForum($this->loginUser);
         $dataSource = new PwNewThread($forbidFids);
         if ($order == 'postdate') {
@@ -59,7 +57,7 @@ class ForumController extends PwBaseController
         $this->setOutput($threadList->getUrlArgs(), 'urlargs');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $threadList->page <= 1 && $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.forum.run.title'), '', $lang->getMessage('SEO:bbs.forum.run.description'));
@@ -83,7 +81,6 @@ class ForumController extends PwBaseController
         // $this->runHook('c_thread_run', $forumDisplay);
         $threadList->setPage($page)->setPerpage(Wekit::C('bbs', 'thread.perpage'));
 
-         
         $dataSource = new PwMyForumThread($this->loginUser);
         if ($order == 'postdate') {
             $dataSource->setOrderBy($order);
@@ -111,7 +108,7 @@ class ForumController extends PwBaseController
         $this->setOutput($threadList->getUrlArgs(), 'urlargs');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.forum.my.title'), '', '');
@@ -174,7 +171,6 @@ class ForumController extends PwBaseController
             $this->showError('operate.fail');
         }
 
-         
         $forum = new PwForumBo($fid);
         if (!$forum->isForum()) {
             $this->showError('BBS:forum.exists.not');
@@ -200,7 +196,6 @@ class ForumController extends PwBaseController
             $this->showError('operate.fail');
         }
 
-         
         $forum = new PwForumBo($fid);
         if (!$forum->isForum()) {
             $this->showError('BBS:forum.exists.not');
@@ -253,7 +248,7 @@ class ForumController extends PwBaseController
     {
         $fid = $this->getInput('fid');
         $password = $this->getInput('password', 'post');
-         
+
         $forum = new PwForumBo($fid);
         if (!$forum->isForum(true)) {
             $this->showError('BBS:forum.exists.not');
@@ -336,7 +331,6 @@ class ForumController extends PwBaseController
             $_tmpArray[$k] = strip_tags($joinForums[$k]);
         }
 
-         
         $dm = new PwUserInfoDm($uid);
         $dm->setJoinForum(self::_formatJoinForum($_tmpArray));
 

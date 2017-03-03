@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 为了用户可以及时的更新在线状态，用户退出之前更新用户的最后访问时间
@@ -27,7 +26,7 @@ class PwLogoutDoUpdateLastvisit extends PwLogoutDoBase
             return true;
         }
         $newLastVisit = $bo->info['lastvisit'] - ($onlineTime * 60);
-         
+
         $dm = new PwUserInfoDm($bo->uid);
         $dm->setLastvisit($newLastVisit);
         /* @var $userDs PwUser */

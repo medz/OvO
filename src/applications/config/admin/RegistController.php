@@ -23,7 +23,6 @@ class RegistController extends AdminBaseController
         $groups = $userGroup->getAllGroups();
         $groupTypes = $userGroup->getTypeNames();
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 

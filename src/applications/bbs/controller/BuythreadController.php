@@ -26,7 +26,7 @@ class BuythreadController extends PwBaseController
         if (!$count) {
             $this->showError('BBS:thread.buy.error.norecord');
         }
-         
+
         $record = Wekit::load('forum.PwThreadBuy')->getByTidAndPid($tid, $pid, $limit, $offset);
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_keys($record));
 
@@ -77,7 +77,7 @@ class BuythreadController extends PwBaseController
         $cost = substr($result['content'], $start, $end - $start);
 
         list($creditvalue, $credittype) = explode(',', $cost);
-         
+
         $creditBo = PwCreditBo::getInstance();
         isset($creditBo->cType[$credittype]) || $credittype = key($creditBo->cType);
         $creditType = $creditBo->cType[$credittype];
@@ -93,7 +93,7 @@ class BuythreadController extends PwBaseController
         }
 
         !$submit && $this->showMessage(array('BBS:thread.buy.message.buy', array('{count}' => $myCredit.$creditType, '{buyCount}' => -$creditvalue.$creditType)));
-         
+
         $dm = new PwThreadBuyDm();
         $dm->setTid($tid)
             ->setPid($pid)
@@ -119,12 +119,10 @@ class BuythreadController extends PwBaseController
         $creditBo->execute();
 
         if ($pid) {
-             
             $dm = new PwReplyDm($pid);
             $dm->addSellCount(1);
             Wekit::load('forum.PwThread')->updatePost($dm);
         } else {
-             
             $dm = new PwTopicDm($tid);
             $dm->addSellCount(1);
             Wekit::load('forum.PwThread')->updateThread($dm, PwThread::FETCH_CONTENT);

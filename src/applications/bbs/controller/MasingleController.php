@@ -1,7 +1,5 @@
 <?php
 
- 
- 
 
 /**
  * @author peihong <jhqblxt@gmail.com> Dec 2, 2011
@@ -89,7 +87,6 @@ class MasingleController extends PwBaseController
 
     protected function _getDeleteManage($manage)
     {
-         
         $do = new PwThreadManageDoDeleteReply($manage);
         if (!$this->doAction) {
             $this->setOutput('dodelete', 'doaction');
@@ -112,7 +109,6 @@ class MasingleController extends PwBaseController
      */
     protected function _getInspectManage($manage)
     {
-         
         $do = new PwThreadManageDoInspect($manage);
         if (!$this->doAction) {
             $this->showError('data.error');
@@ -133,7 +129,6 @@ class MasingleController extends PwBaseController
      */
     protected function _getShieldManage($manage)
     {
-         
         $do = new PwThreadManageDoShield($manage);
         if (!$this->doAction) {
             $this->setOutput('doshield', 'doaction');
@@ -156,7 +151,6 @@ class MasingleController extends PwBaseController
      */
     protected function _getRemindManage($manage)
     {
-         
         $do = new PwThreadManageDoRemind($manage);
         if (!$this->doAction) {
             $this->setOutput('doremind', 'doaction');
@@ -179,7 +173,6 @@ class MasingleController extends PwBaseController
      */
     protected function _getToppedReplyManage($manage)
     {
-         
         $do = new PwThreadManageDoToppedReply($manage);
         if (!$this->doAction) {
             $this->showError('data.error');

@@ -1,7 +1,5 @@
 <?php
 
- 
- 
 
 /**
  * 帖子阅读页.
@@ -38,10 +36,8 @@ class ReadController extends PwBaseController
             }
         }
         if ($uid) {
-             
             $dataSource = new PwUserRead($threadDisplay->thread, $uid);
         } else {
-             
             $dataSource = new PwCommonRead($threadDisplay->thread);
         }
         $dataSource->setPage($page)
@@ -111,7 +107,7 @@ class ReadController extends PwBaseController
         }
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $threadDisplay->page <= 1 && $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.read.run.title'), '', $lang->getMessage('SEO:bbs.read.run.description'));
@@ -151,7 +147,7 @@ class ReadController extends PwBaseController
             $post = Wekit::load('forum.PwThread')->getPost($pid);
             $tid = $post['tid'];
         }
-         
+
         $thread = Wekit::load('forum.PwThread')->getThread($tid);
         $pwforum = new PwForumBo($thread['fid']);
         $perpage = $pwforum->forumset['readperpage'] ? $pwforum->forumset['readperpage'] : Wekit::C('bbs', 'read.perpage');
@@ -205,7 +201,7 @@ class ReadController extends PwBaseController
     public function logAction()
     {
         list($tid, $fid) = $this->getInput(array('tid', 'fid'));
-         
+
         $forum = new PwForumBo($fid);
         $permission = $this->loginUser->getPermission('look_thread_log', $forum->isBM($this->loginUser->username), array());
         if ($permission) {
@@ -236,7 +232,6 @@ class ReadController extends PwBaseController
 
     protected function runReadDesign($fid = 0)
     {
-         
         $bo = new PwDesignPageBo();
         $pageid = $bo->getPageId('bbs/read/run', '帖子阅读页', $fid);
         $pageid && $this->forward->getWindView()->compileDir = 'DATA:compile.design.'.$pageid;

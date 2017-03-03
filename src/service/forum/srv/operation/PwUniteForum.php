@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 删除帖子及其关联操作(扩展).
@@ -60,7 +59,6 @@ class PwUniteForum extends PwDoProcess
 
         Wekit::load('forum.PwForum')->deleteForum($this->fid);
 
-         
         $dm = new PwForumDm($this->tofid);
         $dm->addThreads($forum->foruminfo['threads'])->addPosts($forum->foruminfo['posts']);
         Wekit::load('forum.PwForum')->updateForum($dm, PwForum::FETCH_STATISTICS);

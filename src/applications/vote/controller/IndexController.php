@@ -112,7 +112,6 @@ class IndexController extends PwBaseController
         $pollOptionDs = Wekit::load('poll.PwPollOption'); /* @var $pollOptionDs PwPollOption */
         $option = $pollOptionDs->get($optionid);
 
-         
         $dm = new PwPollOptionDm($optionid);
         $dm->setImage('');
         $this->_getPollOptionDS()->update($dm);
@@ -140,7 +139,6 @@ class IndexController extends PwBaseController
             $flag = true;
         }
 
-         
         $dm = new PwPollDm($pollid);
         $dm->setIsIncludeImg($flag ? 1 : 0);
         $this->_getPollDs()->updatePoll($dm);

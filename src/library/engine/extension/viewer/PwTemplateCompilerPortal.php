@@ -1,7 +1,6 @@
 <?php
 
 
- 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -31,7 +30,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
         foreach ($this->windViewTemplate->getCompiledBlockData() as $key => $value) {
             $content = str_replace('#'.$key.'#', ($value ? $value : ''), $content);
         }
-         
+
         $this->srv = PwDesignCompile::getInstance();
         //$this->srv = Wekit::load('design.srv.PwDesignCompile');
         $this->srv->setIsDesign($this->getRequest()->getPost('design'));

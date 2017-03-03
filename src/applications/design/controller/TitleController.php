@@ -103,7 +103,7 @@ class TitleController extends DesignBaseController
         if ($html) {
             $html = '<h2 class="cc design_tmode_h2"'.$bgStyle.'>'.$html.'</h2>';
         }
-         
+
         $dm = new PwDesignModuleDm($this->bo->moduleid);
         $dm->setTitle($array);
         $resource = $this->_getModuleDs()->updateModule($dm);

@@ -43,7 +43,7 @@ class NoticeController extends PwBaseController
         $this->setOutput($noticeList, 'noticeList');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:mess.notice.run.title'), '', '');
@@ -184,7 +184,7 @@ class NoticeController extends PwBaseController
         if ($unreadCount && $noticeList) {
             //更新用户的通知未读数
             $readnum = 0; //本次阅读数
-             
+
             $dm = new PwMessageNoticesDm();
             $dm->setRead(1);
             $ids = array();
@@ -198,7 +198,6 @@ class NoticeController extends PwBaseController
             $ids && $this->_getNoticeDs()->batchUpdateNotice($ids, $dm);
             $newUnreadCount = $unreadCount - $readnum;
             if ($newUnreadCount != $unreadCount) {
-                 
                 $dm = new PwUserInfoDm($this->loginUser->uid);
                 $dm->setNoticeCount($newUnreadCount);
                 $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA);

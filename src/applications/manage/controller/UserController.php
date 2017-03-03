@@ -53,7 +53,7 @@ class UserController extends BaseManageController
         $this->setOutput($list, 'list');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.user.run.title'), '', '');
@@ -86,7 +86,7 @@ class UserController extends BaseManageController
         $this->setOutput($list, 'list');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.user.email.title'), '', '');

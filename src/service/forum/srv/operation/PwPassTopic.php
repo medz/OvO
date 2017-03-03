@@ -43,7 +43,6 @@ class PwPassTopic extends PwGleanDoProcess
 
     protected function run()
     {
-         
         $dm = new PwTopicDm(true);
         $dm->setDisabled(0);
         Wekit::load('forum.PwThread')->batchUpdateThread($this->tids, $dm, PwThread::FETCH_MAIN);

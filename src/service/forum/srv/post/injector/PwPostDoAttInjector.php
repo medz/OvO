@@ -19,7 +19,6 @@ class PwPostDoAttInjector extends PwBaseHookInjector
         if (empty($_FILES) && empty($flashatt)) {
             return null;
         }
-         
 
         return new PwPostDoAtt($this->bp, $flashatt);
     }
@@ -27,7 +26,7 @@ class PwPostDoAttInjector extends PwBaseHookInjector
     public function domodify()
     {
         $flashatt = $this->getInput('flashatt', 'post');
-         
+
         $postAtt = new PwPostDoAtt($this->bp, $flashatt);
         if ($postAtt->hasAttach()) {
             $oldatt_desc = $this->getInput('oldatt_desc', 'post');

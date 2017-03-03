@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -59,7 +59,7 @@ class PwShieldData extends PwModuleData
     {
         $usedDataids = array();
         $ds = Wekit::load('design.PwDesignData');
-         
+
         $time = Pw::getTime();
         list($start, $end, $refresh) = $this->bo->refreshTime($time);
         $orderid = $ds->getMaxOrder($this->bo->moduleid);

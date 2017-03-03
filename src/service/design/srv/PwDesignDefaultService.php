@@ -14,8 +14,7 @@ class PwDesignDefaultService
     public function reviseDefaultData()
     {
         $ds = Wekit::load('design.PwDesignData');
-         
-         
+
         $vo = new PwDesignDataSo();
         $list = $ds->searchData($vo);
         foreach ($list as $k => $v) {
@@ -34,7 +33,7 @@ class PwDesignDefaultService
     public function likeModule()
     {
         $ds = $this->_getPageDs();
-         
+
         $dm = new PwDesignPageDm();
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('热门喜欢')
@@ -45,7 +44,6 @@ class PwDesignDefaultService
             return false;
         }
 
-         
         $vo = new PwDesignComponentSo();
         $vo->setCompname('瀑布流 ');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
@@ -56,7 +54,7 @@ class PwDesignDefaultService
         $tpl = $comp['comp_tpl'];
         $property = array('ispic' => 1, 'desnum' => 144, 'order' => 5, 'limit' => 100, 'timefmt' => 'm-d');
         $cache = array('expired' => 0, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
-         
+
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('thread')
             ->setPageId($pageid)
@@ -86,7 +84,7 @@ class PwDesignDefaultService
 </div>
 TPL;
         Wekit::load('design.PwDesignSegment')->replaceSegment('likedemo', $pageid, $tpl);
-         
+
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
 
@@ -96,7 +94,7 @@ TPL;
     public function tagModule()
     {
         $ds = $this->_getPageDs();
-         
+
         $dm = new PwDesignPageDm();
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('话题')
@@ -107,7 +105,6 @@ TPL;
             return false;
         }
 
-         
         $vo = new PwDesignComponentSo();
         $vo->setCompname('话题封面 [ 间隔 ]');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
@@ -118,7 +115,7 @@ TPL;
         $tpl = $comp['comp_tpl'];
         $property = array('islogo' => 1, 'order' => 5, 'limit' => 18, 'timefmt' => 'm-d');
         $cache = array('expired' => 15, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
-         
+
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('tag')
             ->setPageId($pageid)
@@ -146,7 +143,7 @@ TPL;
 </div>
 TPL;
         Wekit::load('design.PwDesignSegment')->replaceSegment('huatidemo', $pageid, $tpl);
-         
+
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
 

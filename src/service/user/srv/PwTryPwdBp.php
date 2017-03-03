@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 用户各种尝试密码相关业务
  *
@@ -230,8 +230,7 @@ class PwTryPwdBp
                 break;
                 //return array(1, $r[1]);
             case -13://用户密码错误
-                 
-                 
+
                 $dm = new PwLogLoginDm($info['uid']);
                 $dm->setUsername($info['username'])
                     ->setTypeid(PwLogLogin::ERROR_PWD)
@@ -242,8 +241,7 @@ class PwTryPwdBp
                 return $this->updateTryRecord($info['uid'], $this->ip, 'pwd');
                 //return array(-2, $r[1]);
             case -20://用户安全问题错误
-                 
-                 
+
                 $dm = new PwLogLoginDm($info['uid']);
                 $dm->setUsername($info['username'])
                     ->setIp($ip)

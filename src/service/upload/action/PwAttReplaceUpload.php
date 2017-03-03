@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
 Wind::import('COM:utility.WindUtility');
 
 /**
@@ -156,7 +154,6 @@ class PwAttReplaceUpload extends PwUploadAction
             $srv->updateAttach($att);
 
             if ($this->attach['tid'] && $this->attach['pid'] == 0 && $this->attach['type'] != $value['type']) {
-                 
                 $dm = new PwTopicDm($this->attach['tid']);
                 $dm->setHasAttach($value['type'], true);
                 if (!Wekit::load('attach.PwThreadAttach')->countType($this->attach['tid'], 0, $this->attach['type'])) {

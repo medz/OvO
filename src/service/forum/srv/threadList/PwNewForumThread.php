@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子列表数据接口 / 普通列表最新排序.
  *
@@ -26,7 +24,6 @@ class PwNewForumThread extends PwThreadDataSource
         $this->specialSortTids = array_keys($this->_getSpecialSortDs()->getSpecialSortByFid($forum->fid));
         $this->count = count($this->specialSortTids);
 
-         
         $this->so = new PwThreadSo();
         $this->so->setFid($forum->fid)->setDisabled(0)->orderbyCreatedTime(0);
     }

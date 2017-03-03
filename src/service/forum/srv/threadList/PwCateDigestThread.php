@@ -1,7 +1,6 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
- 
 
 /**
  * 帖子-版块分类下-精华帖子列表.

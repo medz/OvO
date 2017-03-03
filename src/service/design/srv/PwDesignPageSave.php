@@ -18,7 +18,6 @@ class PwDesignPageSave
      */
     public function getNewPageId($pageid, $uniqueid = 0, $isunique = false)
     {
-         
         $ds = $this->_getPageDs();
         $pageInfo = $ds->getPage($pageid);
         if (!$pageInfo) {

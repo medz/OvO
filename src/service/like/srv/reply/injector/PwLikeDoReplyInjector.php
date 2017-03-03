@@ -33,7 +33,6 @@ class PwLikeDoReplyInjector extends PwBaseHookInjector
         if (!isset($info['likeid'])) {
             return true;
         }
-         
 
         return new PwLikeDoReply($info['likeid']);
     }

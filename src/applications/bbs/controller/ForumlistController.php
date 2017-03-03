@@ -34,7 +34,7 @@ class ForumlistController extends PwBaseController
         $this->setTemplate('forum_list');
 
         //seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $seoBo->init('bbs', 'forumlist');
         Wekit::setV('seo', $seoBo);

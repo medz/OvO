@@ -17,7 +17,6 @@ class PwDesignPermissionsService
      */
     public function getPermissionsForUserGroup($uid)
     {
-         
         $userBo = new PwUserBo($uid);
         $designPermission = $userBo->getPermission('design_allow_manage.push');
 
@@ -37,7 +36,7 @@ class PwDesignPermissionsService
             return -1;
         }
         $ds = Wekit::load('design.PwDesignPermissions');
-         
+
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_PAGE)
             ->setDesignId($pageid)
@@ -61,7 +60,7 @@ class PwDesignPermissionsService
     public function getPermissionsForModule($uid, $moduleid, $pageid = 0)
     {
         $ds = Wekit::load('design.PwDesignPermissions');
-         
+
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_MODULE)
             ->setDesignId($moduleid)
@@ -91,7 +90,7 @@ class PwDesignPermissionsService
         if ($userGroupPermissions > 0) {
             return $pagelist;
         }
-        /* 
+        /*
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_PAGE)
             ->setUid($uid);

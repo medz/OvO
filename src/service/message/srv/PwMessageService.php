@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 私信业务
  *
@@ -158,7 +158,7 @@ class PwMessageService
         }
 
         /* @var $creditBo PwCreditBo */
-         
+
         $creditBo = PwCreditBo::getInstance();
         $creditBo->operate('sendmsg', new PwUserBo($fromUid));
         // 发消息扩展
@@ -386,7 +386,7 @@ class PwMessageService
     public function updateUserMessage($uid, $num = 1, $increase = true)
     {
         //更新用户表未读数
-         
+
         $dm = new PwUserInfoDm($uid);
         if ($increase) {
             $dm->addMessages($num);
@@ -406,7 +406,7 @@ class PwMessageService
         if (!$unread = $this->_getWindid()->getUnRead($uid)) {
             return true;
         }
-         
+
         $dm = new PwUserInfoDm($uid);
         $dm->setMessageCount($unread);
 

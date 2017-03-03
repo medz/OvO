@@ -1,7 +1,6 @@
 <?php
 
 !defined('ACLOUD_PATH') && exit('Forbidden');
- 
 
 class ACloudVerCustomizedCredit extends ACloudVerCustomizedBase
 {
@@ -12,12 +11,10 @@ class ACloudVerCustomizedCredit extends ACloudVerCustomizedBase
 
     public function setCredit($uid, $ctype, $point, $appName)
     {
-         
         $dm = new PwCreditDm($uid);
         $dm->addCredit($ctype, $point);
         $result = $this->_loadPwUserDS()->updateCredit($dm);
         if (!$result) {
-             
             $user = new PwUserBo($uid);
             PwCreditBo::getInstance()->addLog('app_default', array($ctype => $point), $user, array('appname' => $appName));
             PwCreditBo::getInstance()->execute();

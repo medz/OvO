@@ -34,7 +34,6 @@ class ContentController extends BaseManageController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwThreadSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
         $url = array();
@@ -67,7 +66,7 @@ class ContentController extends BaseManageController
         $this->setOutput($url, 'url');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.content.run.title'), '', '');
@@ -87,7 +86,7 @@ class ContentController extends BaseManageController
         foreach ($threaddb as $key => $value) {
             $fids[$value['fid']]++;
         }
-         
+
         $dm = new PwTopicDm(true);
         $dm->setDisabled(0);
         Wekit::load('forum.PwThread')->batchUpdateThread($tid, $dm, PwThread::FETCH_MAIN);
@@ -107,8 +106,6 @@ class ContentController extends BaseManageController
         }
         !is_array($tid) && $tid = array($tid);
 
-         
-         
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
 
@@ -124,7 +121,6 @@ class ContentController extends BaseManageController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwPostSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
         $url = array();
@@ -159,7 +155,7 @@ class ContentController extends BaseManageController
         $this->setOutput($url, 'url');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.content.reply.title'), '', '');
@@ -181,8 +177,6 @@ class ContentController extends BaseManageController
             $tids[$value['tid']]++;
         }
 
-         
-         
         $dm = new PwReplyDm(true);
         $dm->setDisabled(0);
         Wekit::load('forum.PwThread')->batchUpdatePost($pid, $dm);
@@ -209,8 +203,6 @@ class ContentController extends BaseManageController
         }
         !is_array($pid) && $pid = array($pid);
 
-         
-         
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();
 

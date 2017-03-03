@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
- 
 
 /**
  * 用户头像处理.
@@ -22,7 +21,6 @@ class AvatarController extends BaseProfileController
         $this->setCurrentLeft('avatar');
         $isAvatarBan = false;
         if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_BAN_AVATAR)) {
-             
             $banBp = new PwBanBp($this->loginUser->uid);
             if (false === $banBp->checkIfBanAvatar()) {
                 $banBp->recoveryBanAvatarError();
@@ -49,7 +47,7 @@ class AvatarController extends BaseProfileController
         $this->setTemplate('profile_avatar');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.avatar.run.title'), '', '');

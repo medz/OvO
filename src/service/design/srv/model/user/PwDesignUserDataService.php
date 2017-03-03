@@ -1,7 +1,6 @@
 <?php
 
- 
- 
+
 /**
  * 用户设置
  * <note>
@@ -78,7 +77,6 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     protected function getData($field, $order, $limit, $offset)
     {
-         
         $so = new PwUserSo();
         $field['uids'] && $so->setUid($field['uids']);
         $field['gid'] != '-1' && $so->setGid($field['gid']);
@@ -125,7 +123,6 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     protected function fetchData($ids)
     {
-         
         $so = new PwUserSo();
         $so->setUid($ids);
         $list = Wekit::load('user.PwUserSearch')->searchUserAllData($so);

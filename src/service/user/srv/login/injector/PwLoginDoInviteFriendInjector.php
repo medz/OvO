@@ -21,7 +21,6 @@ class PwLoginDoInviteFriendInjector extends PwBaseHookInjector
         $loginInvite = null;
         $invite = $this->getInput('invite');
         if (2 != Wekit::C('register', 'type') && $invite) {
-             
             $loginInvite = new PwLoginDoInviteFriend($this->bp, $invite);
         }
 

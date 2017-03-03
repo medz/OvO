@@ -98,12 +98,12 @@ class VoteController extends PwBaseController
     {
         switch ($appType) {
             case '0':
-                 
+
                 $bo = new PwThreadPollBo($typeid);
                 break;
 
             default:
-                 
+
                 $bo = new PwThreadPollBo($typeid);
                 break;
         }

@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
@@ -58,8 +58,6 @@ class PwDesignImageDataService extends PwDesignModelBase
 
     private function _uploadFile($moduleid = 0)
     {
-         
-
         $bhv = new PwDesignImageUpload($moduleid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

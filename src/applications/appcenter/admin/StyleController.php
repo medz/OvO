@@ -416,8 +416,6 @@ class StyleController extends AdminBaseController
      */
     private function _upload($key)
     {
-         
-
         $bhv = new PwIconUpload($key, 'background/');
         $upload = new PwUpload($bhv);
         $r = $upload->execute();

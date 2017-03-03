@@ -33,7 +33,6 @@ class ApiController extends PwBaseController
 
     protected function scriptFormat($moduleId)
     {
-         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {
@@ -51,7 +50,7 @@ class ApiController extends PwBaseController
     protected function jsonFormat($moduleId)
     {
         $_data = array();
-         
+
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {
@@ -65,7 +64,6 @@ class ApiController extends PwBaseController
 
     protected function xmlFormat($moduleId)
     {
-         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {

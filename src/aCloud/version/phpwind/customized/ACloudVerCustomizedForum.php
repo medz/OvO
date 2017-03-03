@@ -35,7 +35,6 @@ class ACloudVerCustomizedForum extends ACloudVerCustomizedBase
             if ($v['type'] == 'category') {
                 $cates[$v['fid']] = array('fid' => $v['fid'], 'forumname' => strip_tags($v['name']), 'type' => $v['type'], 'todaypost' => '', 'domain' => $v['domain']);
             } elseif ($v['type'] == 'forum') {
-                 
                 $pwforum = new PwForumBo($v['fid'], true);
                 if ($pwforum->allowVisit(Wekit::getLoginUser()) !== true) {
                     continue;

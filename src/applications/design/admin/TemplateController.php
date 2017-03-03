@@ -58,7 +58,7 @@ class TemplateController extends DesignBaseController
         $property = $this->bo->getProperty();
         $limit = $this->compileFor($tpl);
         $property['limit'] = $limit ? $limit : $property['limit'];
-         
+
         $dm = new PwDesignModuleDm($this->bo->moduleid);
         $dm->setModuleTpl($tpl)
             ->setCompid($compid)
@@ -70,7 +70,7 @@ class TemplateController extends DesignBaseController
 
         $module = $this->bo->getModule();
         Wekit::load('design.srv.PwSegmentService')->updateSegmentByPageId($module['page_id']);
-         
+
         $srv = new PwAutoData($this->bo->moduleid);
         $srv->addAutoData();
         $this->_getDesignService()->clearCompile();

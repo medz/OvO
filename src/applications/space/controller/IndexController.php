@@ -28,7 +28,6 @@ class IndexController extends SpaceBaseController
 
         // seo设置
 
-         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $des = Pw::substrs($this->space->space['space_descrip'], 100, 0, false);
@@ -67,7 +66,6 @@ class IndexController extends SpaceBaseController
     {
         $id = (int) $this->getInput('id');
 
-         
         $reply = new PwFreshReplyList($id);
         $fresh = $reply->getData();
         $replies = $reply->getReplies(7);
@@ -87,7 +85,6 @@ class IndexController extends SpaceBaseController
      */
     public function readAction()
     {
-         
         $id = (int) $this->getInput('id');
         $fresh = Wekit::load('attention.PwFresh')->getFresh($id);
         if ($fresh['type'] == 1) {
@@ -112,20 +109,15 @@ class IndexController extends SpaceBaseController
         list($id, $weiboid) = $this->getInput(array('id', 'weiboid'));
         $page = intval($this->getInput('page'));
         if ($weiboid) {
-             
             $dataSource = new PwFetchFreshByTypeAndSrcId(3, array($weiboid));
         } else {
-             
             $dataSource = new PwGetFreshById($id);
         }
 
-         
         $freshDisplay = new PwFreshDisplay($dataSource);
         if (!$fresh = $freshDisplay->gather()) {
             $this->showError('fresh.exists.not');
         }
-
-         
 
         $fresh = current($fresh);
         $id = $fresh['id'];

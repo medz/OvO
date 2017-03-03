@@ -1,7 +1,6 @@
 <?php
 
- 
- 
+
 Wind::import('APPS:u.service.helper.PwUserHelper');
 
 /**
@@ -55,7 +54,6 @@ class LoginController extends PwBaseController
         $this->setOutput($this->getInput('invite'), 'invite');
         $this->setTemplate('login');
 
-         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:u.login.run.title'), '', '');
@@ -108,7 +106,6 @@ class LoginController extends PwBaseController
             }
         }
 
-         
         $registerService = new PwRegisterService();
         $info = $registerService->sysUser($isSuccess['uid']);
 
@@ -150,7 +147,7 @@ class LoginController extends PwBaseController
         $result = Wekit::load('user.PwUser')->getUserByName($userForm['username']);
 
         //如果开启了验证码
-         
+
         $registerService = new PwRegisterService();
         $info = $registerService->sysUser($result['uid']);
         $identity = PwLoginService::createLoginIdentify($info);
@@ -191,7 +188,7 @@ class LoginController extends PwBaseController
                     $this->showError('USER:user.syn.error');
                 }
             }
-             
+
             $registerService = new PwRegisterService();
             $info = $registerService->sysUser($result['uid']);
             $identity = PwLoginService::createLoginIdentify($info);
@@ -259,7 +256,7 @@ class LoginController extends PwBaseController
             if ($question == -4) {
                 $question = $this->getInput('myquestion', 'post');
             }
-             
+
             $pwdBp = new PwTryPwdBp();
             $result = $pwdBp->checkQuestion($this->loginUser->uid, $question, $answer, $this->getRequest()->getClientIp());
             if ($result instanceof PwError) {
@@ -275,7 +272,7 @@ class LoginController extends PwBaseController
     public function checkpwdAction()
     {
         list($password, $username) = $this->getInput(array('password', 'username'), 'post');
-         
+
         $pwdBp = new PwTryPwdBp();
         $info = $pwdBp->author($username, $password, $this->getRequest()->getClientIp());
         if ($info instanceof PwError) {
@@ -291,7 +288,7 @@ class LoginController extends PwBaseController
     {
         $statu = $this->checkUserInfo();
         list($question, $answer) = $this->getInput(array('question', 'answer'), 'post');
-         
+
         $pwdBp = new PwTryPwdBp();
         $result = $pwdBp->checkQuestion($this->loginUser->uid, $question, $answer, $this->getRequest()->getClientIp());
         if ($result instanceof PwError) {
@@ -362,7 +359,6 @@ class LoginController extends PwBaseController
     {
         $identify = $this->checkUserInfo();
         if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
-             
             $identify = PwRegisterService::createRegistIdentify($this->loginUser->uid, $this->loginUser->info['password']);
             $this->forwardAction('u/register/sendActiveEmail', array('_statu' => $identify, 'from' => 'login'), true);
         }
@@ -407,7 +403,6 @@ class LoginController extends PwBaseController
             $this->showError('USER:user.error.-14');
         }
         if (!empty($info['safecv'])) {
-             
             $registerService = new PwRegisterService();
             $status = PwLoginService::createLoginIdentify($registerService->sysUser($info['uid']));
             $identify = base64_encode($status.'|');

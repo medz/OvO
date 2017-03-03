@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子复制 - 投票.
  *
@@ -54,7 +52,6 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             return;
         }
 
-         
         $pollDm = new PwPollDm(); /* @var $pollDm PwPollDm */
         $pollDm->setVoterNum($poll['voter_num']);
         $pollDm->setIsViewResult($poll['isafter_view']);
@@ -71,7 +68,6 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             $optionVoter[$value['option_id']][] = $value['uid'];
         }
 
-         
         foreach ($pollOption as $key => $value) {
             $pollOptionDm = new PwPollOptionDm();
             $pollOptionDm->setPollid($newPollid);
@@ -85,7 +81,6 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             }
         }
 
-         
         $threadPollDm = new PwThreadPollDm();
         $threadPollDm->setTid($newTid);
         $threadPollDm->setPollid($newPollid);
@@ -101,7 +96,6 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             return false;
         }
 
-         
         foreach ($uids as $value) {
             $this->_getPollVoterDs()->add($value, $pollid, $optionid);
         }

@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 帖子管理操作-删除帖子.
@@ -36,8 +35,6 @@ class PwThreadManageDoDeleteTopic extends PwThreadManageDo
     public function run()
     {
         if ($this->tids) {
-             
-             
             $service2 = new PwDeleteTopic(new PwFetchTopicByTid($this->tids), $this->srv->user);
             $service2->setRecycle(true)
                 ->setIsDeductCredit($this->isDeductCredit)

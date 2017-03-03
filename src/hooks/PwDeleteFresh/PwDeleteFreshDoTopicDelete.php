@@ -25,8 +25,6 @@ class PwDeleteFreshDoTopicDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->record) {
-             
-             
             $srv = new PwDeleteTopic(new PwFetchTopicByTid($this->record), $this->srv->user);
             $srv->setIsDeleteFresh(false)
                 ->setIsDeductCredit($this->srv->isDeductCredit)

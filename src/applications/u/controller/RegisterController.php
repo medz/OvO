@@ -1,8 +1,7 @@
 <?php
 
- 
+
 Wind::import('APPS:u.service.helper.PwUserHelper');
- 
 
 /**
  * 用户登录/注册controller.
@@ -40,7 +39,6 @@ class RegisterController extends PwBaseController
         $this->setOutput(WindUrlHelper::createUrl('bbs/index/run'), 'backurl');
         $this->setTemplate('register');
 
-         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:u.register.run.title'), '', '');
@@ -188,7 +186,7 @@ class RegisterController extends PwBaseController
         }
 
         //激活成功登录
-         
+
         $login = new PwLoginService();
         $login->setLoginCookie($this->loginUser, $this->getRequest()->getClientIp());
         /* @var $guideService PwUserRegisterGuideService */
@@ -211,7 +209,7 @@ class RegisterController extends PwBaseController
         if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
             $this->forwardAction('u/register/sendActiveEmail', array('_statu' => $statu), true);
         }
-         
+
         $login = new PwLoginService();
         $login->setLoginCookie($this->loginUser, $this->getRequest()->getClientIp());
 
@@ -334,7 +332,7 @@ class RegisterController extends PwBaseController
         if (!$config['active.phone']) {
             return new PwError('USER:mobile.reg.open.error');
         }
-         
+
         if (!PwUserValidator::isMobileValid($mobile)) {
             return new PwError('USER:error.mobile');
         }

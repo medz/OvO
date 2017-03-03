@@ -1,8 +1,5 @@
 <?php
 
- 
- 
- 
 
 /**
  * 帖子管理操作-复制.
@@ -32,7 +29,6 @@ class PwThreadManageDoCopy extends PwThreadManageDo
             return false;
         }
         if (isset($this->fid)) {
-             
             $forum = new PwForumBo($this->fid);
             if (!$forum->isForum()) {
                 return new PwError('BBS:manage.error.copy.targetforum');

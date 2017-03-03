@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
- 
-
 /**
  * 发帖.
  *
@@ -68,7 +64,7 @@ class PostController extends PwBaseController
         $this->_initTopictypes(0);
         $this->_initVar();
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.post.run.title'), '', '');
@@ -123,7 +119,7 @@ class PostController extends PwBaseController
         $this->_initVar();
         $this->setTemplate('post_run');
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.post.reply.title'), '', '');
@@ -183,8 +179,6 @@ class PostController extends PwBaseController
         $pid = $pwPost->getNewId();
 
         if ($_getHtml == 1) {
-             
-             
             $threadDisplay = new PwThreadDisplay($tid, $this->loginUser);
             $this->runHook('c_post_replyread', $threadDisplay);
             $dataSource = new PwReplyRead($tid, $pid);
@@ -251,7 +245,7 @@ class PostController extends PwBaseController
         $this->setOutput($this->post->forum->headguide().$this->post->forum->bulidGuide(array($headtitle, WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $this->post->forum->fid)))), 'headguide');
         $this->_initVar();
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.post.modify.title'), '', '');
@@ -293,7 +287,7 @@ class PostController extends PwBaseController
             case 'reply':
             case 'doreply':
                 $tid = $this->getInput('tid');
-                 
+
                 $postAction = new PwReplyPost($tid);
                 break;
             case 'modify':
@@ -301,17 +295,15 @@ class PostController extends PwBaseController
                 $tid = $this->getInput('tid');
                 $pid = $this->getInput('pid');
                 if ($pid) {
-                     
                     $postAction = new PwReplyModify($pid);
                 } else {
-                     
                     $postAction = new PwTopicModify($tid);
                 }
                 break;
             default:
                 $fid = $this->getInput('fid');
                 $special = $this->getInput('special');
-                 
+
                 $postAction = new PwTopicPost($fid);
                 $special && $postAction->setSpecial($special);
         }

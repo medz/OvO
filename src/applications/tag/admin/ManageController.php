@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 /**
  * 话题后台.
@@ -539,8 +538,6 @@ class ManageController extends AdminBaseController
      */
     private function uploadLogo()
     {
-         
-
         $tagUpload = new PwTagUpload(156, 156);
         $upload = new PwUpload($tagUpload);
         if (($result = $upload->check()) === true) {

@@ -24,7 +24,6 @@ class PwDeleteReplyDoPostUpdate extends iPwGleanDoHookProcess
 
     public function run($ids)
     {
-         
         $srv = Wekit::load('forum.PwThread');
         foreach ($this->record as $rpid => $value) {
             $dm = new PwReplyDm($rpid);

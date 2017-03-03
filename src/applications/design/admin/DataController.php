@@ -82,7 +82,7 @@ class DataController extends DesignBaseController
         if ($end && $endTime < $time) {
             $this->showError('DESIGN:endtimd.error');
         }
-         
+
         $dm = new PwDesignDataDm($dataid);
         $dm->setStyle($bold, $underline, $italic, $color)
             ->setExtend($data)
@@ -97,7 +97,6 @@ class DataController extends DesignBaseController
         }
         $this->_getDataDs()->updateData($dm);
         if ($info['from_type'] == PwDesignData::FROM_PUSH) {
-             
             $pushDm = new PwDesignPushDm($info['from_id']);
             $pushDm->setStyle($bold, $underline, $italic, $color)
                 ->setExtend($data)
@@ -136,7 +135,6 @@ class DataController extends DesignBaseController
         $delImages = $extend['standard_image'];
         Wekit::load('design.srv.PwDesignImage')->clearFiles($this->bo->moduleid, explode('|||', $delImages));
 
-         
         $srv = new PwShieldData($data['module_id']);
         $srv->addShieldData();
         $this->showMessage('operate.success');
@@ -180,7 +178,7 @@ class DataController extends DesignBaseController
         $pushid = (int) $this->getInput('pushid', 'post');
         $pushDs = $this->_getPushDs();
         $pushDs->updateStatus($pushid, PwDesignPush::ISSHOW);
-         
+
         $srv = new PwAutoData($this->bo->moduleid);
         $srv->addAutoData();
         $this->showMessage('operate.success');
@@ -209,8 +207,7 @@ class DataController extends DesignBaseController
         $vieworder_tmp = $this->getInput('vieworder_tmp', 'post');
         $vieworder_reserv = $this->getInput('vieworder_reserv', 'post');
         $isfixed = $this->getInput('isfixed', 'post');
-         
-         
+
         $ds = $this->_getDataDs();
 
         //转换排序数字
@@ -295,7 +292,7 @@ class DataController extends DesignBaseController
         foreach ($pushid as $id) {
             $ds->updateStatus($id, PwDesignPush::ISSHOW);
         }
-         
+
         $srv = new PwAutoData($this->bo->moduleid);
         $srv->addAutoData();
         $this->showMessage('operate.success');
@@ -312,8 +309,6 @@ class DataController extends DesignBaseController
 
     private function _uploadFile($key, $moduleid = 0)
     {
-         
-
         $bhv = new PwDesignDataUpload($key, $moduleid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

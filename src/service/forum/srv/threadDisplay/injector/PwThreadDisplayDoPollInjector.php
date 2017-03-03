@@ -15,8 +15,6 @@ class PwThreadDisplayDoPollInjector extends PwBaseHookInjector
 {
     public function run()
     {
-         
-
         return new PwThreadDisplayDoPoll($this->bp->tid, $this->bp->user);
     }
 }

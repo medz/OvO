@@ -1,6 +1,5 @@
 <?php
 
- 
 
 class installBoot extends bootstrap
 {

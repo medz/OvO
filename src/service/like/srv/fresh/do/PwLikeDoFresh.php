@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
  *
@@ -30,9 +29,7 @@ class PwLikeDoFresh extends PwPostDoBase
         $url = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $this->info['tid'], 'fid' => $this->info['fid']));
         $lang = Wind::getComponent('i18n');
         $content = $lang->getMessage('BBS:like.like.flesh').'[url='.$url.']'.$this->content.'[/url]';
-         
-         
-         
+
         $dm = new PwWeiboDm();
         $dm->setContent($content)
               ->setType(PwWeibo::TYPE_LIKE);
