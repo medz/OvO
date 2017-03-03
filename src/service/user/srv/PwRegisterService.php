@@ -162,7 +162,7 @@ class PwRegisterService extends PwBaseHookService
             $statu = self::createRegistIdentify($uid, $info['password']);
         }
         if (!Wind::getComponent('router')->getRoute('pw')) {
-            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance(Wind::import('LIB:route.PwRoute'), array('bbs')));
+            Wind::getComponent('router')->addRoute('pw', new PwRoute('bbs'));
         }
 
         $code = substr(md5(Pw::getTime()), mt_rand(1, 8), 8);
