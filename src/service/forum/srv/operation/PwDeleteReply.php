@@ -1,16 +1,5 @@
 <?php
 
-defined('WEKIT_VERSION') || exit('Forbidden');
-
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoVirtualDelete');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoDirectDelete');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoFreshDelete');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoAttachDelete');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoPostUpdate');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoForumUpdate');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoUserUpdate');
-Wind::import('HOOK:PwDeleteReply.PwDeleteReplyDoToppedDelete');
-
 /**
  * 删除帖子及其关联操作(扩展).
  *

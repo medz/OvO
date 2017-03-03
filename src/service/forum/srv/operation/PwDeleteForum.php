@@ -3,7 +3,6 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('HOOK:PwDeleteForum.PwDeleteForumDoDeleTeTopic');
 
 /**
  * 删除帖子及其关联操作(扩展).

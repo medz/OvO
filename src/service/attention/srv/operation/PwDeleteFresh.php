@@ -3,9 +3,6 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('SRV:attention.PwFresh');
-Wind::import('HOOK:PwDeleteFresh.PwDeleteFreshDoTopicDelete');
-Wind::import('HOOK:PwDeleteFresh.PwDeleteFreshDoReplyDelete');
-Wind::import('HOOK:PwDeleteFresh.PwDeleteFreshDoWeiboDelete');
 
 /**
  * 删除新鲜事及其关联操作(扩展).

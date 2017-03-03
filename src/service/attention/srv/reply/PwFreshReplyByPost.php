@@ -53,7 +53,6 @@ class PwFreshReplyByPost
     public function setIsTransmit($isTransmit)
     {
         if ($isTransmit) {
-            Wind::import('HOOK:PwPost.do.PwPostDoFresh');
             $fresh = new PwPostDoFresh($this->post);
             $this->post->appendDo($fresh);
         }

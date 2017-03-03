@@ -1,9 +1,5 @@
 <?php
 
-defined('WEKIT_VERSION') || exit('Forbidden');
-
-Wind::import('HOOK:PwDeleteWeibo.PwDeleteWeiboDoCommentDelete');
-
 /**
  * 删除新鲜事及其关联操作(扩展).
  *
