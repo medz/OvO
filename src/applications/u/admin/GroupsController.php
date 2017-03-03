@@ -108,7 +108,6 @@ class GroupsController extends AdminBaseController
 
         list($mainGid, $category, $gpermission, $groupname) = $this->getInput(array('gid', 'category', 'gpermission', 'groupname'), 'post');
         $permissionService = Wekit::load('usergroup.PwUserPermission');
-         
 
         $isManage = stripos($category, 'manage_') === 0;
         $permissionKeys = $this->_getPermissionService()->getPermissionKeys($isManage);
@@ -137,7 +136,6 @@ class GroupsController extends AdminBaseController
             if ($flag) {
                 $group = $this->_getGroupDs()->getGroupByGid($gid);
                 if ($groupname && $groupname != $group['name']) {
-                     
                     $dm = new PwUserGroupDm($gid);
                     $dm->setGroupName($groupname);
                     $this->_getGroupDs()->updateGroup($dm);
@@ -185,7 +183,6 @@ class GroupsController extends AdminBaseController
         list($rkey, $gpermission) = $this->getInput(array('rkey', 'gpermission'), 'post');
 
         $permissionService = Wekit::load('usergroup.PwUserPermission');
-         
 
         foreach ($gpermission as $key => $value) {
             $dm = new PwUserPermissionDm($key);
@@ -204,7 +201,6 @@ class GroupsController extends AdminBaseController
         list($groupType, $groupName, $groupPoints, $groupImage, $newGroupName, $newGroupPoints, $newGroupImage) = $this->getInput(array('grouptype', 'groupname', 'grouppoints', 'groupimage', 'newgroupname', 'newgrouppoints', 'newgroupimage'), 'post');
 
         $userGroupService = Wekit::load('usergroup.PwUserGroups'); /* @var $userGroupService PwUserGroups */
-         
 
         is_array($groupName) || $groupName = array();
         is_array($groupPoints) || $groupPoints = array();

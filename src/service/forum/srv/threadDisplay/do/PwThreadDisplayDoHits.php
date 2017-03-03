@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 点击率实时更新显示.
  *

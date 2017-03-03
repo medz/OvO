@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
 /**
  * 帖子回复 - 敏感词.
  *

@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 帖子列表页.
  *
@@ -62,18 +59,14 @@ class ThreadController extends PwBaseController
         !$orderby && $orderby = $defaultOrderby;
 
         if ($tab == 'digest') {
-             
             $dataSource = new PwDigestThread($pwforum->fid, $type, $orderby);
         } elseif ($type) {
-             
             $dataSource = new PwSearchThread($pwforum);
             $dataSource->setOrderby($orderby);
             $dataSource->setType($type, $this->_getSubTopictype($type));
         } elseif ($orderby == 'postdate') {
-             
             $dataSource = new PwNewForumThread($pwforum);
         } else {
-             
             $dataSource = new PwCommonThread($pwforum);
         }
         $orderby != $defaultOrderby && $dataSource->setUrlArg('orderby', $orderby);
@@ -108,7 +101,7 @@ class ThreadController extends PwBaseController
         }
 
         //seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($threadList->page <= 1) {

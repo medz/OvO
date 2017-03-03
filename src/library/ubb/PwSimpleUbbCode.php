@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * ubb转换.
  *

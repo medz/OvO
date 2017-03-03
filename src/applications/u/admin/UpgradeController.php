@@ -24,7 +24,6 @@ class UpgradeController extends AdminBaseController
         $config = Wekit::C()->getValues('site');
         $strategy = $config['upgradestrategy'];
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
         $this->setOutput($pwCreditBo, 'credits');
@@ -40,7 +39,7 @@ class UpgradeController extends AdminBaseController
         $member = $this->getInput('member', 'post');
 
         $strategy = array();
-         
+
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 

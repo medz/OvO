@@ -28,7 +28,7 @@ class ProfileController extends SpaceBaseController
         $this->setOutput('profile', 'src');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(

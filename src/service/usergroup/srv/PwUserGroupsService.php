@@ -108,7 +108,6 @@ class PwUserGroupsService
         $credit = $this->calculateCredit($strategy, $user);
         $memberid = $this->calculateLevel($credit);
         if ($memberid != $user['memberid']) {
-             
             $dm = new PwUserInfoDm($uid);
             $dm->setMemberid($memberid);
 

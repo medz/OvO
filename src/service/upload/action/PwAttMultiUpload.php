@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
 Wind::import('COM:utility.WindUtility');
 
 /**

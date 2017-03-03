@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 投票模型.
  *
@@ -51,7 +48,7 @@ class TaController extends PwBaseController
             foreach ($poll as $value) {
                 $pollid[] = $value['poll_id'];
             }
-             
+
             $pollDisplay = new PwPollDisplay(new PwFetchPollByPollid($pollid, count($pollid), 0));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
@@ -78,7 +75,7 @@ class TaController extends PwBaseController
         }
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:vote.ta.run.title'), '', '');
@@ -101,7 +98,6 @@ class TaController extends PwBaseController
         $pollInfo = array();
 
         if ($total) {
-             
             $pollDisplay = new PwPollDisplay(new PwFetchPollByUids($followUids, $limit, $start));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }

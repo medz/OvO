@@ -22,7 +22,7 @@ class AttachController extends PwBaseController
         if (!$attach) {
             $this->showError('BBS:thread.buy.attach.error');
         }
-         
+
         $forum = new PwForumBo($attach['fid']);
         if (!$forum->isForum()) {
             $this->showError('data.error');
@@ -42,7 +42,7 @@ class AttachController extends PwBaseController
             }
             $this->showError(array('permission.download.allow', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
         }
-         
+
         $creditBo = PwCreditBo::getInstance();
         // 购买积分检查
         if (($attach = $this->_checkAttachCost($attach)) instanceof PwError) {
@@ -71,7 +71,6 @@ class AttachController extends PwBaseController
 
         // 下载积分
         if ($reduceDownload) {
-             
             $dm = new PwThreadAttachBuyDm();
             $dm->setAid($aid)
                 ->setCreatedUserid($this->loginUser->uid)
@@ -82,7 +81,7 @@ class AttachController extends PwBaseController
             $this->_operateCredit('download_att', $forum);
         }
         //更新附件点击数
-         
+
         $dm = new PwThreadAttachDm($aid);
         $dm->addHits(1);
         Wekit::load('attach.PwThreadAttach')->updateAttach($dm);
@@ -187,7 +186,6 @@ class AttachController extends PwBaseController
             $this->showError('data.error');
         }
 
-         
         $forum = new PwForumBo($attach['fid']);
         if (!$forum->isForum()) {
             $this->showError('data.error');
@@ -211,7 +209,7 @@ class AttachController extends PwBaseController
         if ($attach['tid']) {
             if (!$attach['pid']) {
                 $thread = Wekit::load('forum.PwThread')->getThread($attach['tid'], PwThread::FETCH_ALL);
-                 
+
                 $dm = new PwTopicDm($attach['tid']);
                 if (!Wekit::load('attach.PwThreadAttach')->countType($attach['tid'], 0, $attach['type'])) {
                     $dm->setHasAttach($attach['type'], false);
@@ -221,7 +219,7 @@ class AttachController extends PwBaseController
                 }
             } else {
                 $thread = Wekit::load('forum.PwThread')->getPost($attach['pid']);
-                 
+
                 $dm = new PwReplyDm($attach['pid']);
             }
             if ($thread['aids'] > 0) {
@@ -252,7 +250,7 @@ class AttachController extends PwBaseController
         if (!$count) {
             $this->showError('BBS:thread.buy.error.norecord');
         }
-         
+
         $record = Wekit::load('attach.PwThreadAttachBuy')->getByAid($aid, $limit, $offset);
         !$record && $this->showError('BBS:thread.buy.error.norecord');
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_keys($record));
@@ -328,7 +326,6 @@ class AttachController extends PwBaseController
         if (!$attachbuy->getByAidAndUid($attach['aid'], $user->uid)) {
             $myCredit = $user->getCredit($attach['ctype']);
             if ($attach['cost'] > $myCredit) {
-                 
                 $creditBo = PwCreditBo::getInstance();
                 $creditType = $creditBo->cType[$attach['ctype']];
 
@@ -350,7 +347,7 @@ class AttachController extends PwBaseController
         if (1 != $user->getPermission('allow_download')) {
             return false;
         }
-         
+
         $creditBo = PwCreditBo::getInstance();
         $forumCredit = $forum->getCreditSet($operate);
         $downloadCredit = $this->_getDownloadCredit($operate, $user, $creditBo, $forumCredit);
@@ -384,7 +381,6 @@ class AttachController extends PwBaseController
      */
     protected function _operateCredit($operate, PwForumBo $forum)
     {
-         
         $credit = PwCreditBo::getInstance();
         $user = Wekit::getLoginUser();
         $credit->operate($operate, $user, true, array('forumname' => $forum->foruminfo['name']), $forum->getCreditSet($operate));
@@ -397,9 +393,9 @@ class AttachController extends PwBaseController
         if (!$attach['cost'] || $attach['created_userid'] == $user->uid) {
             return false;
         }
-         
+
         $creditBo = PwCreditBo::getInstance();
-         
+
         $dm = new PwThreadAttachBuyDm();
         $dm->setAid($attach['aid'])
             ->setCreatedUserid($user->uid)

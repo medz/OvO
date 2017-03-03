@@ -358,7 +358,6 @@ class UpgradeController extends WindController
      */
     protected function _designUpgrade()
     {
-         
         $vo = new PwDesignPortalSo();
         $vo->setIsopen(1);
         $list = $this->_getPortalDs()->searchPortal($vo, 0, 100);
@@ -391,7 +390,7 @@ class UpgradeController extends WindController
                     continue;
                 }
                 $tplPath = 'special_'.$file;
-                 
+
                 $dm = new PwDesignPortalDm($file);
                 $dm->setTemplate($tplPath);
                 Wekit::load('design.PwDesignPortal')->updatePortal($dm);
@@ -405,7 +404,7 @@ class UpgradeController extends WindController
             $result = $srv->defaultTemplate($k, $tplPath);
             if ($result) {
                 WindFile::write($dir.$tplPath.'/template/index.htm', $this->_tpl());
-                 
+
                 $dm = new PwDesignPortalDm($v);
                 $dm->setTemplate($tplPath);
                 Wekit::load('design.PwDesignPortal')->updatePortal($dm);

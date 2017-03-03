@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 任务消息扩展.
  *
@@ -56,7 +56,7 @@ class PwNoticeTask extends PwNoticeAction
         if (!$notice) {
             return false;
         }
-         
+
         $dm = new PwMessageNoticesDm();
         $dm->setIgnore($ignore);
         Wekit::load('message.PwMessageNotices')->batchUpdateNoticeByUidAndType($notice['uid'], $notice['typeid'], $dm);

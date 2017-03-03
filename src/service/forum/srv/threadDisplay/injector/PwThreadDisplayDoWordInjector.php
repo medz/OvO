@@ -15,8 +15,6 @@ class PwThreadDisplayDoWordInjector extends PwBaseHookInjector
 {
     public function run()
     {
-         
-
         return new PwThreadDisplayDoWord();
     }
 }

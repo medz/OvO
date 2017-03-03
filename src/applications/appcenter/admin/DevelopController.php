@@ -69,7 +69,6 @@ class DevelopController extends AdminBaseController
      */
     public function addhookAction()
     {
-         
         $hooks = Wekit::load('hook.PwHooks')->fetchList(0);
         $hooks = array_reverse($hooks, true);
         $this->setOutput($this->getInput('alias'), 'alias');

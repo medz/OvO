@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
- 
-
 /**
  * 帖子显示流程.
  *
@@ -360,7 +356,7 @@ class PwThreadDisplay extends PwBaseHookService
             'follows'   => 0,
             'lastvisit' => Pw::getTime(),
         );
-         
+
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $info['credit'.$key] = 0;
         }

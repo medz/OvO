@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * <note>
@@ -93,7 +93,6 @@ class PwDesignThreadDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-         
         $so = new PwThreadSo();
         $time = Pw::getTime();
         $so->setDisabled(0);

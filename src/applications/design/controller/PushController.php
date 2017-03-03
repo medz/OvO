@@ -93,7 +93,6 @@ class PushController extends PwBaseController
         $pushService = $this->_getPushService();
         $data = $pushService->getDataByFromid($fromtype, $fromid);
 
-         
         $bo = new PwDesignModuleBo($moduleid);
         $time = Pw::getTime();
         $startTime = $start ? Pw::str2time($start) : $time;
@@ -102,7 +101,7 @@ class PushController extends PwBaseController
             $this->showError('DESIGN:endtimd.error');
         }
         $pushDs = $this->_getPushDs();
-         
+
         $dm = new PwDesignPushDm();
         $dm->setFromid($fromid)
             ->setModuleId($moduleid)

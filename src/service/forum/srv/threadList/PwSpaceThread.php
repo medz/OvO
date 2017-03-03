@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 空间-帖子列表页-访问他人空间的列表.
  *

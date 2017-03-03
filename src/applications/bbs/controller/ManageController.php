@@ -1,7 +1,5 @@
 <?php
 
- 
- 
 
 /**
  * 帖子-管理操作.
@@ -184,7 +182,6 @@ class ManageController extends PwBaseController
 
     protected function _getDigestManage($manage)
     {
-         
         $do = new PwThreadManageDoDigest($manage);
         if (!$this->doAction) {
         } else {
@@ -199,7 +196,6 @@ class ManageController extends PwBaseController
 
     protected function _getToppedManage($manage)
     {
-         
         $do = new PwThreadManageDoTopped($manage);
         if (!$this->doAction) {
             $selectedFids = array();
@@ -232,7 +228,6 @@ class ManageController extends PwBaseController
 
     protected function _getUpManage($manage)
     {
-         
         $do = new PwThreadManageDoUp($manage);
         if (!$this->doAction) {
         } else {
@@ -246,7 +241,6 @@ class ManageController extends PwBaseController
 
     protected function _getHighlightManage($manage)
     {
-         
         $do = new PwThreadManageDoHighlight($manage);
         if (!$this->doAction) {
             if ($this->singleData) {
@@ -281,7 +275,6 @@ class ManageController extends PwBaseController
 
     protected function _getDeleteManage($manage)
     {
-         
         $do = new PwThreadManageDoDeleteTopic($manage);
         if (!$this->doAction) {
             $this->setOutput('dodelete', 'doaction');
@@ -296,7 +289,6 @@ class ManageController extends PwBaseController
 
     protected function _getDownManage($manage)
     {
-         
         $do = new PwThreadManageDoDown($manage);
         if (!$this->doAction) {
         } else {
@@ -309,7 +301,6 @@ class ManageController extends PwBaseController
 
     protected function _getLockManage($manage)
     {
-         
         $do = new PwThreadManageDoLock($manage);
         if (!$this->doAction) {
             if ($this->singleData) {
@@ -329,7 +320,6 @@ class ManageController extends PwBaseController
 
     protected function _getMoveManage($manage)
     {
-         
         $do = new PwThreadManageDoMove($manage);
         if (!$this->doAction) {
             $this->setOutput($this->_getFroumService()->getForumOption($do->fid), 'option_html');
@@ -344,7 +334,6 @@ class ManageController extends PwBaseController
 
     protected function _getTypeManage($manage)
     {
-         
         $do = new PwThreadManageDoType($manage);
         if (!$this->doAction) {
             $topicTypes = $do->getTopicTypes();
@@ -361,7 +350,6 @@ class ManageController extends PwBaseController
 
     protected function _getCopyManage($manage)
     {
-         
         $do = new PwThreadManageDoCopy($manage);
 
         if (!$this->doAction) {
@@ -382,7 +370,6 @@ class ManageController extends PwBaseController
      */
     protected function _getBanManage($manage)
     {
-         
         $do = new PwThreadManageDoBan($manage, $this->loginUser);
         if ($this->doAction) {
             $banInfo = new stdClass();

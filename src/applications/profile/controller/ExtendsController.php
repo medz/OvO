@@ -1,7 +1,6 @@
 <?php
 
- 
- 
+
 Wind::import('APPS:profile.service.PwUserProfileExtends');
 
 /**

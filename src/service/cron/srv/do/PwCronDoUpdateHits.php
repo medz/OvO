@@ -8,7 +8,6 @@
  *
  * @version $Id: PwCronDoUpdateHits.php 19367 2012-10-13 07:59:36Z gao.wanggao $
  */
- 
 
 class PwCronDoUpdateHits extends AbstractCronBase
 {

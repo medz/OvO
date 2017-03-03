@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
- 
-
 /**
  * 版块公共服务
  *

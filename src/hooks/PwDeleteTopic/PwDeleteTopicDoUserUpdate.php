@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 帖子删除扩展服务接口--更新用户发帖数，积分等信息.
  *
@@ -62,7 +59,6 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
      */
     protected function _operateCredit($value)
     {
-         
         $forum = new PwForumBo($value['fid']);
         PwCreditBo::getInstance()->operate(
             'delete_topic', PwUserBo::getInstance($value['created_userid']), true, array(

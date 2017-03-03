@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 帖子扩展服务,不经常用的接口.
  *

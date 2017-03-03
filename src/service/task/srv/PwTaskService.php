@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 任务服务
  *
@@ -45,7 +45,7 @@ class PwTaskService
         if (!$isSend) {
             return false;
         }
-         
+
         $userTask = new PwTaskApply($behavior['uid']);
         $userTask->autoApplies($this->getAutoApplicableTaskList($behavior['uid'], 1));
 
@@ -273,7 +273,7 @@ class PwTaskService
     public function getPreTasksByTaskId($taskid)
     {
         $tasks = $this->_taskDs()->getAll();
-         
+
         $taskTree = PwTaskTreeHelper::getTaskTree($tasks);
         unset($tasks[$taskid]);
         if ($taskid) {

@@ -55,7 +55,7 @@ class PwMobileService
         if ($result instanceof PwError) {
             return $result;
         }
-         
+
         $dm = new PwUserMobileDm();
         $dm->setMobile($mobile)
             ->setCode($code)
@@ -98,7 +98,7 @@ class PwMobileService
     public function getVerify($mobile)
     {
         $code = $this->_buildCode(4);
-         
+
         $dm = new PwUserMobileDm();
         $dm->setMobile($mobile)
             ->setCode($code);

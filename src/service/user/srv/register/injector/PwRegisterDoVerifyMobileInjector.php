@@ -20,7 +20,6 @@ class PwRegisterDoVerifyMobileInjector extends PwBaseHookInjector
     {
         $register = null;
         if ($this->bp->isOpenMobileCheck && $this->getInput('mobile') && $this->getInput('mobileCode')) {
-             
             $register = new PwRegisterDoVerifyMobile($this->bp);
         }
 

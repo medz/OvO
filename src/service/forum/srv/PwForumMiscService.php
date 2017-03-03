@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 版块服务接口(不常用的业务逻辑).
  *
@@ -92,7 +89,7 @@ class PwForumMiscService
     {
         $forums = $this->_getForum()->getForumOrderByType(false);
         $fids = array_keys($forums);
-         
+
         $dm = new PwForumDm(true);
         $dm->setThreads(0)->setPosts(0)->setArticle(0)->setSubThreads(0);
         $this->_getForum()->batchUpdateForum($fids, $dm, PwForum::FETCH_STATISTICS);

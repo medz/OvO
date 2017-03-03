@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 微博公共服务
  *
@@ -27,7 +25,7 @@ class PwWeiboService
         if (($result = $this->_getDs()->addComment($dm)) instanceof PwError) {
             return $result;
         }
-         
+
         $weibo_id = $dm->getField('weibo_id');
         $dm1 = new PwWeiboDm($weibo_id);
         $dm1->addComments(1);

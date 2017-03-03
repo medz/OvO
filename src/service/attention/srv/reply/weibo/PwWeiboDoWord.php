@@ -2,7 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
 /**
  * 微博 - 敏感词.
  *

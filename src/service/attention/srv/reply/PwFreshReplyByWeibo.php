@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 新鲜事回复.
  *
@@ -56,7 +54,6 @@ class PwFreshReplyByWeibo
             return $result;
         }
         if ($this->isTransmit) {
-             
             $dm2 = new PwWeiboDm();
             $dm2->setContent($this->dm->getField('content'));
             $dm2->setSrcId($this->dm->getField('weibo_id'));

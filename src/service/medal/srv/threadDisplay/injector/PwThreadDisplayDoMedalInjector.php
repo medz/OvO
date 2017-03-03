@@ -15,8 +15,6 @@ class PwThreadDisplayDoMedalInjector extends PwBaseHookInjector
 {
     public function run()
     {
-         
-
         return new PwThreadDisplayDoMedal();
     }
 }

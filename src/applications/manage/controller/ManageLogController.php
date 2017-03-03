@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('APPS:manage.controller.BaseManageController');
- 
 
 /**
  * 前台管理日志.

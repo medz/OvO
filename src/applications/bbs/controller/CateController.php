@@ -2,9 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
-
 /**
  * 分类页面.
  *
@@ -61,10 +58,8 @@ class CateController extends PwBaseController
 
         $isCommon = 0;
         if ($tab == 'digest') {
-             
             $dataSource = new PwCateDigestThread($pwforum->fid, $orderby);
         } else {
-             
             $srv = Wekit::load('forum.srv.PwForumService');
             $forbidFids = $srv->getForbidVisitForum($this->loginUser, $srv->getForumsByLevel($fid, $srv->getForumMap()), true);
             $dataSource = new PwCateThread($pwforum, $forbidFids);
@@ -103,7 +98,7 @@ class CateController extends PwBaseController
         }
 
         //seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($threadList->page <= 1) {

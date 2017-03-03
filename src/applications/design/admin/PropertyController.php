@@ -1,8 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
- 
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
  *
@@ -50,17 +49,16 @@ class PropertyController extends AdminBaseController
         if (!$model) {
             $this->showError('operate.fail');
         }
-         
+
         $bo = new PwDesignModelBo($model);
         if (!$bo->isModel()) {
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         $decorator = $service->decorateAddProperty($model);
 
-         
         $modelBo = new PwDesignModelBo($model);
         $cache['expired'] = 15;
         $this->setOutput($cache, 'cache');
@@ -76,7 +74,7 @@ class PropertyController extends AdminBaseController
         if (!$model) {
             $this->showError('operate.fail');
         }
-         
+
         $bo = new PwDesignModelBo($model);
         if (!$bo->isModel()) {
             $this->showError('operate.fail');
@@ -91,7 +89,7 @@ class PropertyController extends AdminBaseController
             $this->showError('DESIGN:maxlimit.error');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         if (method_exists($service, 'decorateSaveProperty')) {
             $property = $service->decorateSaveProperty($property);
@@ -101,7 +99,7 @@ class PropertyController extends AdminBaseController
         }
 
         $ds = $this->_getModuleDs();
-         
+
         $dm = new PwDesignModuleDm();
         $dm->setFlag($model)
             ->setName($name)
@@ -118,7 +116,6 @@ class PropertyController extends AdminBaseController
         }
         $moduleid = (int) $resource;
 
-         
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
         //调用模块token
@@ -126,7 +123,7 @@ class PropertyController extends AdminBaseController
         $this->_getScriptDs()->addScript((int) $moduleid, $token, 0);
 
         $tab = array('property', 'template');
-         
+
         $bo = new PwDesignModelBo($model);
         $modelInfo = $bo->getModel();
         if (is_array($modelInfo['tab'])) {
@@ -160,10 +157,10 @@ class PropertyController extends AdminBaseController
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         $decorator = $service->decorateEditProperty($this->bo);
-         
+
         $modelBo = new PwDesignModelBo($model);
         $property = $modelBo->getProperty();
         $vProperty = $isedit ? array() : $this->bo->getProperty();
@@ -193,7 +190,7 @@ class PropertyController extends AdminBaseController
         if (!$moduleid) {
             $this->showError('operate.fail');
         }
-         
+
         $moduleBo = new PwDesignModuleBo($moduleid);
         $_model = $moduleBo->getModel();
         if ($model != $_model) {
@@ -215,7 +212,7 @@ class PropertyController extends AdminBaseController
             $this->showError('DESIGN:maxlimit.error');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         if (method_exists($service, 'decorateSaveProperty')) {
             $property = $service->decorateSaveProperty($property);
@@ -223,7 +220,7 @@ class PropertyController extends AdminBaseController
                 $this->showError($property->getError());
             }
         }
-         
+
         $dm = new PwDesignModuleDm($moduleid);
         $dm->setFlag($model)
             ->setName($name)
@@ -239,7 +236,7 @@ class PropertyController extends AdminBaseController
 
         Wekit::load('design.srv.PwSegmentService')->updateSegmentByPageId($module['page_id']);
         $this->_getDesignService()->clearCompile();
-         
+
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
         $this->showMessage('operate.success');

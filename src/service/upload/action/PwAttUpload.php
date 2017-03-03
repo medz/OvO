@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
 Wind::import('COM:utility.WindUtility');
 
 /**
@@ -160,7 +158,6 @@ class PwAttUpload extends PwUploadAction
                     $value['cost'] = $max;
                 }
                 if (!in_array($value['ctype'], $this->user->getPermission('sell_credits', false, array()))) {
-                     
                     $value['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
                 $dm->setSpecial(2)

@@ -224,7 +224,7 @@ class PwOnlineService
         if ($uid < 0) {
             return false;
         }
-         
+
         $userDm = new PwUserInfoDm($uid);
         $userDm->setOnline($onlineTime);
         $ds = Wekit::load('user.PwUser');

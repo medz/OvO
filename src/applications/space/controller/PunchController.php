@@ -1,8 +1,6 @@
 <?php
 
 
- 
-
 /**
  * 每日打卡
  *
@@ -310,7 +308,7 @@ class PunchController extends PwBaseController
         );
 
         // 更新用户data表信息
-         
+
         $dm = new PwUserInfoDm($userInfo['uid']);
         $dm->setPunch($punchData);
         $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA);

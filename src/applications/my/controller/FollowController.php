@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * 首页.
@@ -85,7 +84,7 @@ class FollowController extends PwBaseController
         $this->setOutput($url, 'url');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.follow.run.title'), '', '');

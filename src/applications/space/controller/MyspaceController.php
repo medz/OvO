@@ -1,7 +1,6 @@
 <?php
 
 
- 
 /**
  * 我的空间
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
@@ -98,7 +97,6 @@ class MyspaceController extends PwBaseController
             }
         }
 
-         
         $word = PwWordFilter::getInstance();
         if ($word->filter($spaceName)) {
             $this->showError('SPACE:spacename.filter.fail');
@@ -107,7 +105,6 @@ class MyspaceController extends PwBaseController
             $this->showError('SPACE:descrip.filter.fail');
         }
 
-         
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setSpaceName($spaceName)
             ->setSpaceDescrip($descrip)
@@ -130,7 +127,7 @@ class MyspaceController extends PwBaseController
         if (!$style) {
             $this->showError('SPACE:fail');
         }
-         
+
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setSpaceStyle($style['alias']);
         $resource = $this->_getSpaceDs()->updateInfo($dm);
@@ -171,7 +168,6 @@ class MyspaceController extends PwBaseController
             $align = 'left';
         }
 
-         
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setBackImage($image, $repeat, $fixed, $align);
         $resource = $this->_getSpaceDs()->updateInfo($dm);
@@ -191,7 +187,6 @@ class MyspaceController extends PwBaseController
         $content = $this->getInput('content', 'post');
         $transmit = $this->getInput('transmit', 'post');
 
-         
         $reply = new PwFreshReplyPost($id, $this->loginUser);
 
         if (($result = $reply->check()) !== true) {
@@ -214,8 +209,6 @@ class MyspaceController extends PwBaseController
 
     private function _uploadImage()
     {
-         
-
         $bhv = new PwSpaceUpload($this->loginUser->uid);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

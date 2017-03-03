@@ -12,10 +12,6 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @package wind
  */
 Wind::import('ADMIN:library.AdminBaseController');
- 
- 
- 
- 
 
 class ArticleController extends AdminBaseController
 {
@@ -49,7 +45,7 @@ class ArticleController extends AdminBaseController
             $created_userid = $user['uid'];
         }
         // dm条件
-         
+
         $dm = new PwThreadSo();
         $keyword && $dm->setKeywordOfTitleOrContent($keyword);
         if ($fid) {
@@ -151,7 +147,7 @@ class ArticleController extends AdminBaseController
             $created_userid = $user['uid'];
         }
         // dm条件
-         
+
         $dm = new PwPostSo();
         $dm->setDisabled(0)->orderbyCreatedTime(false);
         $keyword && $dm->setKeywordOfTitleOrContent($keyword);

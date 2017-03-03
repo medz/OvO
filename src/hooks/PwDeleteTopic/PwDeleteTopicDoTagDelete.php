@@ -22,7 +22,7 @@ class PwDeleteTopicDoTagDelete extends iPwGleanDoHookProcess
             return false;
         }
         $ds->batchDeleteRelation(PwTag::TYPE_THREAD_TOPIC, $ids);
-         
+
         $dm = new PwTagDm();
         $dm->addContentCount(-1);
         $ds->updateTags($tagIds, $dm);

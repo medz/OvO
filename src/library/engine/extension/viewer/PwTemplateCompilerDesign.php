@@ -70,7 +70,6 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
 
     private function _beforeDesign()
     {
-         
         $this->service = PwDesignCompile::getInstance();
         //$this->service = Wekit::load('design.srv.PwDesignCompile');
         //纠结的template标签

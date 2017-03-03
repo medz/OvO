@@ -18,7 +18,6 @@ class VerifyController extends AdminBaseController
      */
     public function run()
     {
-         
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         $verifyType = $srv->getVerifyType();
 

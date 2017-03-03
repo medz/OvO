@@ -15,7 +15,7 @@ class LikeController extends PwBaseController
     public function run()
     {
         //seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $seoBo->init('like', 'hot');
         Wekit::setV('seo', $seoBo);
@@ -36,7 +36,7 @@ class LikeController extends PwBaseController
             $this->showMessage('operate.fail');
         } //返回成功信息
         $time = Pw::getTime();
-         
+
         $pageBo = new PwDesignPageBo();
         $ds = Wekit::load('design.PwDesignData');
         $vo = Wekit::load('design.srv.vo.PwDesignDataSo');

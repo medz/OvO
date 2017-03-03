@@ -18,8 +18,6 @@ define('POST_GP_LIMIT', 314);
 define('THREAD_ALLOW_READ', 315);
 define('USER_NOT_EXISTS', 316);
 
- 
-
 class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 {
     /**
@@ -112,7 +110,6 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 
     public function getLatestThread($fids, $offset, $limit)
     {
-         
         $fids = $fids ? explode(',', $fids) : '';
         $forums = $this->_getForum()->fetchForum($fids, PwForum::FETCH_MAIN);
         $uids = $result = array();
@@ -313,7 +310,6 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
             return $this->buildResponse(-1, $postResult->getError());
         }
 
-         
         $so = new PwPostSo();
         $so->setTid($tid)
         ->setAuthorId($uid);
@@ -341,8 +337,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         if (!$user->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS, '用户不存在');
         }
-         
-         
+
         $postAction = new PwTopicPost($fid);
         $pwPost = new PwPost($postAction);
         $postDm = $pwPost->getDm();
@@ -360,7 +355,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         if (!ACloudSysCoreS::isArray($fids)) {
             return $this->buildResponse(0, array());
         }
-         
+
         $uids = $result = array();
         $threaddb = array();
         $so = new PwThreadSo();

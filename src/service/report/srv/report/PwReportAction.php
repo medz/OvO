@@ -1,6 +1,6 @@
 <?php
 
- 
+
 abstract class PwReportAction
 {
     protected $fid = 0;

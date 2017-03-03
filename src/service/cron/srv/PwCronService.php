@@ -15,7 +15,6 @@ class PwCronService
      */
     public function getSysCron($cronFile, $time = 0)
     {
-         
         $ds = $this->_getCronDs();
         $cron = $ds->getCronByFile($cronFile);
         if ($cron['cron_id']) {
@@ -48,7 +47,7 @@ class PwCronService
     public function updateSysCron()
     {
         $ds = $this->_getCronDs();
-         
+
         $path = Wind::getRealPath('SRV:cron.srv.system.systemCron');
         if (!is_file($path)) {
             return false;
@@ -200,7 +199,7 @@ class PwCronService
         }
         list($day, $hour, $minute) = explode('-', $cron['loop_daytime']);
         $nexttime = $this->getNextTime($cron['loop_type'], $day, $hour, $minute);
-         
+
         $dm = new PwCronDm($cron['cron_id']);
         $dm->setSubject($cron['subject'])
             ->setCronfile($cron['cron_file'])

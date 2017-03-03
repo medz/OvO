@@ -100,7 +100,7 @@ class PwPollUpload extends PwUploadAction
     public function update($uploaddb)
     {
         //$ds = $this->_getAttachDs();
-        // 
+        //
         foreach ($uploaddb as $key => $value) {
             /*
             $dm = new PwPollAttachDm();

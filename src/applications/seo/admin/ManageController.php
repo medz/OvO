@@ -75,7 +75,7 @@ class ManageController extends AdminBaseSeoController
         $this->setTab('area');
         $seo = $this->_seoDs()->getByMod('area');
         $this->setOutput($seo, 'seo');
-         
+
         $list = Wekit::load('design.PwDesignPortal')->searchPortal(new PwDesignPortalSo(), 0, 0);
         $this->setOutput($list, 'list');
         $this->setTemplate('areaseo_run');

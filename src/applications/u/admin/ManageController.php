@@ -1,8 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
- 
 
 /**
  * 后台用户管理界面.
@@ -100,7 +98,7 @@ class ManageController extends AdminBaseController
                 $this->showError($result->getError());
             }
             //添加站点统计信息
-             
+
             $bbsDm = new PwBbsinfoDm();
             $bbsDm->setNewmember($dm->getField('username'))->addTotalmember(1);
             Wekit::load('site.PwBbsinfo')->updateInfo($bbsDm);
@@ -234,7 +232,6 @@ class ManageController extends AdminBaseController
         $userCredits = $pwUser->getUserByUid($info['uid'], PwUser::FETCH_DATA);
         $userCreditDb = array();
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 
@@ -262,7 +259,6 @@ class ManageController extends AdminBaseController
             $changes[$id] = $value - $org;
         }
 
-         
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         $creditBo->addLog('admin_set', $changes, new PwUserBo($this->loginUser->uid));
@@ -369,7 +365,6 @@ class ManageController extends AdminBaseController
             $this->showError('USER:user.forumadmin.add.error');
         }
 
-         
         $dm = new PwUserInfoDm($info['uid']);
         $dm->setGroupid($groupid)
             ->setGroups($clearGids);

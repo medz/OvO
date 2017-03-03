@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 class ManageController extends AdminBaseController
 {

@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -238,7 +238,7 @@ class PwModuleData
             return $data;
         }
         $ds = Wekit::load('design.PwDesignAsynImage');
-         
+
         foreach ((array) $this->multiSign['img'] as $k=>$v) {
             $data['standard_image'] = '';
             if (!$data[$k]) {

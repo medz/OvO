@@ -32,7 +32,7 @@ class PwNoticeService
             return false;
         }
         //aggregated notice
-         
+
         $dm = new PwMessageNoticesDm();
 
         $action->aggregate && $notice = $this->_getNoticesDs()->getNoticeByUid($uid, $typeId, $param);
@@ -56,7 +56,6 @@ class PwNoticeService
 
         //更新通知未读数
         if ($updateUnRead && (!$notice || $notice['is_read'])) {
-             
             $dm = new PwUserInfoDm($uid);
             $dm->addNotice(1);
             $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA);
@@ -121,7 +120,6 @@ class PwNoticeService
         if (!$notice) {
             return false;
         } else {
-             
             $dm = new PwMessageNoticesDm($id);
             $dm->setIgnore($ignore);
             $this->_getNoticesDs()->updateNotice($dm);
@@ -221,7 +219,7 @@ class PwNoticeService
     public function deleteNoticeByUid($uid)
     {
         $this->_getNoticesDs()->deleteNoticeByUid($uid);
-         
+
         $user = Wekit::load('user.PwUser');
         $dm = new PwUserInfoDm($uid);
         $dm->setNoticeCount(0);

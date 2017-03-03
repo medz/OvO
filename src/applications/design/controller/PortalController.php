@@ -58,7 +58,7 @@ class PortalController extends PwBaseController
         if ($ds->countPortalByPagename($pagename)) {
             $this->showError('DESIGN:pagename.already.exists');
         }
-         
+
         $dm = new PwDesignPortalDm();
         $dm->setPageName($pagename)
             ->setTitle($title)
@@ -101,7 +101,7 @@ class PortalController extends PwBaseController
                 if ($r instanceof PwError) {
                     $this->showError($r->getError());
                 }
-                 
+
                 $dm = new PwDomainDm();
                 $dm->setDomain($domain)
                 ->setDomainKey("special/index/run?id=$id")
@@ -116,7 +116,7 @@ class PortalController extends PwBaseController
         //二级域名end
 
         //seo
-         
+
         $dm = new PwSeoDm();
         $dm->setMod('area')
            ->setPage('custom')
@@ -179,7 +179,7 @@ class PortalController extends PwBaseController
                 if ($r instanceof PwError) {
                     $this->showError($r->getError());
                 }
-                 
+
                 $dm = new PwDomainDm();
                 $dm->setDomain($domain)
                 ->setDomainKey("special/index/run?id=$id")
@@ -217,7 +217,6 @@ class PortalController extends PwBaseController
             $cover = (preg_match("/^http:\/\/(.*)$/", $cover)) ? $cover : '';
         }
 
-         
         $dm = new PwDesignPortalDm($id);
         $dm->setPageName($pagename)
             ->setTitle($title)
@@ -235,13 +234,13 @@ class PortalController extends PwBaseController
         }
         $pageInfo = $this->_getPageDs()->getPageByTypeAndUnique(PwDesignPage::PORTAL, $id);
         //更新页面名称
-         
+
         $dm = new PwDesignPageDm($pageInfo['page_id']);
         $dm->setName($title);
         $this->_getPageDs()->updatePage($dm);
 
         //seo
-         
+
         $dm = new PwSeoDm();
         $dm->setMod('area')
            ->setPage('custom')
@@ -264,8 +263,6 @@ class PortalController extends PwBaseController
 
     private function _upload($portalId = 0)
     {
-         
-
         $bhv = new PwPortalUpload($portalId);
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

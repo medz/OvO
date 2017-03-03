@@ -67,8 +67,7 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
         if (!$this->user->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS);
         }
-         
-         
+
         $rightType = array(PwUserBan::BAN_AVATAR, PwUserBan::BAN_SIGN, PwUserBan::BAN_SPEAK);
         $dmArray = array();
         foreach ($rightType as $k => $v) {
@@ -172,7 +171,7 @@ class ACloudVerCommonUser extends ACloudVerCommonBase
             return $this->buildResponse(
             USER_INVALID_PARAMS);
         }
-         
+
         Wind::import('SRC:service.user.dm.PwUserInfoDm');
 
         $userDm = new PwUserInfoDm();

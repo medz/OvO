@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
- 
+
 /**
  * 词语过滤对外接口.
  *
@@ -185,7 +185,6 @@ class PwWordFilter
     {
         $algorithms = strtolower($this->_algorithms);
         $className = sprintf('PwFilter%s', ucfirst($algorithms));
-         
 
         return new $className($data);
     }

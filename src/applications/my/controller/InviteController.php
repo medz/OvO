@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 邀请好友.
  *
@@ -37,7 +37,6 @@ class InviteController extends PwBaseController
 //			$this->showError('USER:invite.close');
         }
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 
@@ -66,7 +65,7 @@ class InviteController extends PwBaseController
         $this->listCode();
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.invite.run.title'), '', '');
@@ -137,7 +136,6 @@ class InviteController extends PwBaseController
             $list = $userDs->fetchUserByUid($invitedUids);
         }
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 
@@ -168,7 +166,7 @@ class InviteController extends PwBaseController
         $this->setTemplate('invite_friend');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.invite.run.title'), '', '');

@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 /**
  * 用户禁止.
@@ -54,7 +53,6 @@ class ForbiddenController extends AdminBaseController
             $end_time = Pw::str2time($end_time);
         }
 
-         
         $_notice = array();
         $rightTypes = array_keys($this->_getService()->getBanType());
         foreach ($types as $type) {
@@ -97,7 +95,6 @@ class ForbiddenController extends AdminBaseController
         $default = array('autoForbidden.open' => 0, 'autoForbidden.condition' => array('autoForbidden.credit' => 0, 'autoForbidden.num' => 0), 'autoForbidden.day' => 0, 'autoForbidden.type' => array(), 'autoForbidden.reason' => '');
         $this->setOutput(array_merge($default, $config), 'config');
 
-         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
         $this->setOutput($pwCreditBo, 'creditBo');
@@ -140,7 +137,6 @@ class ForbiddenController extends AdminBaseController
      */
     public function listAction()
     {
-         
         $page = intval($this->getInput('page'));
         $perpage = 10;
         $page <= 0 && $page = 1;

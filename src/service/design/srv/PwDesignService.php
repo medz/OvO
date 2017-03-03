@@ -129,7 +129,6 @@ class PwDesignService
 
     public function getStandardSignkey($model)
     {
-         
         $bo = new PwDesignModelBo($model);
         $signKeys = $bo->getSignKeys();
         $standard = $bo->getStandardSign();

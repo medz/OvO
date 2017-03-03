@@ -40,7 +40,7 @@ class FansController extends PwBaseController
         //$this->setOutput($url, 'url');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.fans.run.title'), '', '');

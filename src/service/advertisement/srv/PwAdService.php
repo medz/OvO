@@ -32,7 +32,7 @@ class PwAdService
         if ($checkPostition) {
             return new PwError('ADVERTISEMENT:position.exists');
         }
-         
+
         $dm = new PwAdDm();
         $dm->setPid($id)
             ->setIdentifier($identifier)
@@ -66,7 +66,7 @@ class PwAdService
         if (!$checkPostition) {
             return new PwError('ADVERTISEMENT:position.not.exists');
         }
-         
+
         $dm = new PwAdDm($id);
         $dm->setIdentifier($identifier)
             ->setType($type)
@@ -98,7 +98,7 @@ class PwAdService
         if (!$checkPostition) {
             return new PwError('ADVERTISEMENT:position.not.exists');
         }
-         
+
         $dm = new PwAdDm($id);
         $dm->setStatus($status);
         $result = $this->_getAdDs()->editAdPosition($dm);

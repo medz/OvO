@@ -1,8 +1,7 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
- 
- 
+
 /**
  * 教育经历.
  *

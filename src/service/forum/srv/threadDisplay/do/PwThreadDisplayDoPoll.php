@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 /**
  * 投票展示.
  *
@@ -88,8 +86,6 @@ class PwThreadDisplayDoPoll extends PwThreadDisplayDoBase
      */
     private function _getThreadPollBo($tid)
     {
-         
-
         return new PwThreadPollBo($tid);
     }
 

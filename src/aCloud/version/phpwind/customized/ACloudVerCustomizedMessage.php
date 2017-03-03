@@ -189,12 +189,11 @@ class ACloudVerCustomizedMessage extends ACloudVerCustomizedBase
 
     public function sendFreshStat($uid, $content, $type)
     {
-         
         $userBo = new PwUserBo($uid);
-         
+
         $dm = new PwWeiboDm();
         $dm->setContent($content);
-         
+
         $weiboService = new PwSendWeibo($userBo);
         $result = $weiboService->send($dm);
         if ($result) {

@@ -1,9 +1,7 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
- 
- 
- 
+
 Wind::import('APPS:profile.service.PwUserProfileExtends');
 
 /**
@@ -43,7 +41,6 @@ class IndexController extends BaseProfileController
             $isAllowSign = true;
             $isSignBan = false;
             if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_BAN_SIGN)) {
-                 
                 $banBp = new PwBanBp($this->loginUser->uid);
                 if (false === $banBp->checkIfBanSign()) {
                     $banBp->recoveryBanSignError();
@@ -70,7 +67,7 @@ class IndexController extends BaseProfileController
         $this->setOutput($userInfo, 'userinfo');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.index.run.title'), '', '');
@@ -200,7 +197,7 @@ class IndexController extends BaseProfileController
         if (!$passwd || !$email) {
             $this->showError('USER:empty.error');
         }
-         
+
         $tryPwdBp = new PwTryPwdBp();
         if (($result = $tryPwdBp->checkPassword($this->loginUser->uid, $passwd, $this->getRequest()->getClientIp())) instanceof PwError) {
             list($error) = $result->getError();

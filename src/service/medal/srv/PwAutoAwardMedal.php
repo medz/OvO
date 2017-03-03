@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * 自动勋章颁发流程
  * <1>checkAutoMedal()

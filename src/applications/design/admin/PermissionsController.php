@@ -23,7 +23,7 @@ class PermissionsController extends AdminBaseController
                 $this->showError('permission.design.uid.empty');
             }
         }
-         
+
         $vo = new PwDesignPermissionsSo();
         if ($uid) {
             $vo->setUid($uid);
@@ -51,7 +51,7 @@ class PermissionsController extends AdminBaseController
         if ($uid < 1) {
             $this->showError('permission.design.uid.empty');
         }
-         
+
         $vo = new PwDesignPermissionsSo();
         $vo->setUid($uid);
         $list = $this->_getPermissionsDs()->searchPermissions($vo);
@@ -104,7 +104,7 @@ class PermissionsController extends AdminBaseController
         }
         $ds = $this->_getPermissionsDs();
         $type = ($pageInfo['page_type'] == PwDesignPage::PORTAL) ? 0 : 1;
-         
+
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_PAGE)
            ->setDesignId($designId);
@@ -130,7 +130,7 @@ class PermissionsController extends AdminBaseController
             $this->showError('operate.fail');
         }
         $ds = $this->_getPermissionsDs();
-         
+
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_MODULE)
            ->setDesignId($designId);
@@ -159,8 +159,6 @@ class PermissionsController extends AdminBaseController
         $ds = $this->_getPermissionsDs();
         //添加新用户  前端已修改为单用户提交
         if ($new_username) {
-             
-             
             $service = $this->_getPermissionsService();
             foreach ($new_username as $k => $name) {
                 if (!$name) {

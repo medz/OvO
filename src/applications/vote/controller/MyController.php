@@ -2,10 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
- 
- 
-
 /**
  * 我的投票.
  *
@@ -45,7 +41,6 @@ class MyController extends PwBaseController
                 $pollid[] = $value['poll_id'];
             }
 
-             
             $pollDisplay = new PwPollDisplay(new PwFetchPollByPollid($pollid, count($pollid)));
             $pollInfo = $this->_buildPoll($pollDisplay->gather(), 'my');
         }
@@ -65,7 +60,7 @@ class MyController extends PwBaseController
             ), 'pollGroup');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:vote.my.run.title'), '', '');

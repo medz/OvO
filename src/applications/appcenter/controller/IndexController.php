@@ -44,7 +44,7 @@ class IndexController extends PwBaseController
                 ));
         $this->setTemplate('app_index_run');
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:appcenter.appindex.run.title'), '', '');

@@ -25,8 +25,6 @@ class PwDeleteFreshDoWeiboDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->record) {
-             
-             
             $srv = new PwDeleteWeibo(new PwFetchWeiboById($this->record), $this->srv->user);
             $srv->execute();
 

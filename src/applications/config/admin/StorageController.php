@@ -66,7 +66,6 @@ class StorageController extends AdminBaseController
             $config->set($key, serialize($storage))->flush();
         }
 
-         
         $config = new PwConfigSet('site');
         $config->set('avatar.url', $avatarurl)->set('avatar.storage', $att_storage)->flush();
 

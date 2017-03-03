@@ -15,7 +15,6 @@ class PwMedalLikeDo
      */
     public function addLike(PwUserBo $userBo, PwLikeDm $dm)
     {
-         
         $data = $dm->getData();
         $ds = Wekit::load('user.PwUserBehavior');
         $behavior = $ds->getBehavior($data['belikeuid'], 'belike_times');
@@ -38,7 +37,7 @@ class PwMedalLikeDo
      */
     public function delLike($uid, $beLikeUid)
     {
-         
+
         //TODO 其它接口
         $ds = Wekit::load('user.PwUserBehavior');
         $behavior = $ds->getBehavior($beLikeUid, 'belike_times');

@@ -11,7 +11,6 @@
  *
  * @version $Id: PwNoticeThreadreply.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
- 
 
 class PwNoticeThreadreply extends PwNoticeAction
 {
@@ -65,7 +64,7 @@ class PwNoticeThreadreply extends PwNoticeAction
         if (!$notice) {
             return false;
         }
-         
+
         $dm = new PwTopicDm($notice['param']);
         $dm->setReplyNotice($ignore ? 0 : 1);
         $this->_getThreadDs()->updateThread($dm);

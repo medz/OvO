@@ -30,7 +30,7 @@ class TaskRewardController extends AdminBaseController
      */
     public function run()
     {
-         
+
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 

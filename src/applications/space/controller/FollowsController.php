@@ -60,7 +60,7 @@ class FollowsController extends SpaceBaseController
         $this->setOutput('follows', 'src');
 
         // seo设置
-         
+
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(

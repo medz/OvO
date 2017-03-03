@@ -8,7 +8,6 @@
  *
  * @version $Id: PwCronDoClearOnline.php 18771 2012-09-27 07:47:26Z gao.wanggao $
  */
- 
 
 class PwCronDoClearOnline extends AbstractCronBase
 {

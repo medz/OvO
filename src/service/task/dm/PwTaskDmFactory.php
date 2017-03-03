@@ -24,27 +24,21 @@ class PwTaskDmFactory
         $type = strtolower($condition).'-'.strtolower($child);
         switch ($type) {
             case 'member-msg':
-                 
 
                 return new PwTaskMemberMsgDm();
             case 'member-fans':
-                 
 
                 return new PwTaskMemberFansDm();
             case 'bbs-postthread':
-                 
 
                 return new PwTaskBbsPostDm();
             case 'bbs-reply':
-                 
 
                 return new PwTaskBbsReplyDm();
             case 'bbs-like':
-                 
 
                 return new PwTaskBbsLikeDm();
             default:
-                 
 
                 return new PwTaskDm();
         }

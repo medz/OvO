@@ -27,8 +27,6 @@ class UploadController extends PwBaseController
         }
         $fid = $this->getInput('fid', 'post');
 
-         
-
         $bhv = new PwAttMultiUpload($user, $fid);
 
         $upload = new PwUpload($bhv);
@@ -51,8 +49,6 @@ class UploadController extends PwBaseController
             $this->showError('login.not');
         }
         $aid = $this->getInput('aid');
-
-         
 
         $bhv = new PwAttReplaceUpload($this->loginUser, $aid);
 

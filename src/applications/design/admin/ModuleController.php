@@ -25,7 +25,7 @@ class ModuleController extends AdminBaseController
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
         $ds = $this->_getDesignModuleDs();
-         
+
         $vo = new PwDesignModuleSo();
         $vo->setIsUse(1);
         if ($isapi == 'api') {
@@ -56,7 +56,6 @@ class ModuleController extends AdminBaseController
         $list = $ds->searchModule($vo, $start, $perpage);
         $count = $ds->countModule($vo);
 
-         
         $pageDs = $this->_getPageDs();
         foreach ($list as $k => $v) {
             $list[$k]['pageInfo'] = $pageDs->getPage($v['page_id']);
@@ -114,7 +113,6 @@ class ModuleController extends AdminBaseController
 
     public function clearAction()
     {
-         
         $vo = new PwDesignModuleSo();
         $vo->setIsUse(0);
         $list = $this->_getDesignModuleDs()->searchModule($vo, 0, 0);

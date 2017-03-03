@@ -15,15 +15,11 @@ class PwSpaceProfileInjector extends PwBaseHookInjector
 {
     public function extendWork()
     {
-         
-
         return new PwSpaceProfileDoWork();
     }
 
     public function extendEducation()
     {
-         
-
         return new PwSpaceProfileDoEducation();
     }
 }

@@ -2,8 +2,6 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
- 
-
 class PwThreadDisplayDoWord extends PwThreadDisplayDoBase
 {
     public function bulidRead($read)

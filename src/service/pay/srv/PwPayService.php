@@ -17,19 +17,15 @@ class PwPayService
     {
         switch ($paymethod) {
             case 2:
-                 
 
                 return new PwTenpay();
             case 3:
-                 
 
                 return new PwPaypal();
             case 4:
-                 
 
                 return new PwBill();
             default:
-                 
 
                 return new PwAlipay();
         }

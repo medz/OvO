@@ -79,7 +79,7 @@ class PwDesignImportTxt
     protected function importModule($modules)
     {
         $ds = $this->_getModuleDs();
-         
+
         foreach ($modules as $k => $v) {
             $dm = new PwDesignModuleDm();
             if (!$v['module_name']) {
@@ -109,7 +109,6 @@ class PwDesignImportTxt
 
     protected function importStructure($structs)
     {
-         
         foreach ($structs as $k => $v) {
             //TODO structname 唯一性检查
             $name = 'I_'.WindUtility::generateRandStr(6);
@@ -176,7 +175,6 @@ class PwDesignImportTxt
 
     protected function updatePage()
     {
-         
         $moduleIds = implode(',', $this->newIds);
         $moduleIds = $moduleIds ? $moduleIds.','.$this->_pageInfo['module_ids'] : $this->_pageInfo['module_ids'];
         $moduleIds = array_filter(explode(',', $moduleIds));

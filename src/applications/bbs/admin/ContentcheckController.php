@@ -24,7 +24,6 @@ class ContentcheckController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwThreadSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
 
@@ -77,9 +76,6 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($tid) && $tid = array($tid);
 
-         
-         
-
         $service = new PwPassTopic(new PwFetchTopicByTid($tid));
         $service->execute();
 
@@ -94,8 +90,6 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($tid) && $tid = array($tid);
 
-         
-         
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
 
@@ -111,7 +105,6 @@ class ContentcheckController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwPostSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
         $args = array();
@@ -164,9 +157,6 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($pid) && $pid = array($pid);
 
-         
-         
-
         $service = new PwPassReply(new PwFetchReplyByPid($pid));
         $service->execute();
 
@@ -181,8 +171,6 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($pid) && $pid = array($pid);
 
-         
-         
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();
 

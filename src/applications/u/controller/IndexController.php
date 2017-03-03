@@ -31,7 +31,6 @@ class IndexController extends PwBaseController
         }
         $log = $this->loginUser->info['last_credit_affect_log'];
         if ($log) {
-             
             $dm = new PwUserInfoDm($this->loginUser->uid);
             $dm->setLastCreditAffectLog('');
             /* @var $userDs PwUser */

@@ -1,7 +1,5 @@
 <?php
 
- 
- 
 
 /**
  * 帖子管理操作-精华.
@@ -89,7 +87,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
         if (1 != $this->digest) {
             return Wekit::load('forum.PwThreadDigestIndex')->batchDeleteThread($this->tids);
         }
-         
+
         /* @var $srv PwForumService */
         $srv = Wekit::load('forum.srv.PwForumService');
         $digestDms = array();
@@ -121,8 +119,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     {
         $operation = $this->digest == 1 ? 'digest_topic' : 'remove_digest';
         $digestNum = $this->digest == 1 ? 1 : -1;
-         
-         
+
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
         $credit = PwCreditBo::getInstance();

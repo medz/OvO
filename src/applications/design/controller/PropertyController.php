@@ -25,13 +25,13 @@ class PropertyController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
-         
+
         $bo = new PwDesignModelBo($model);
         if (!$bo->isModel()) {
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         $decorator = $service->decorateAddProperty($model);
         $_models = array();
@@ -70,7 +70,7 @@ class PropertyController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
-         
+
         $bo = new PwDesignModelBo($model);
         if (!$bo->isModel()) {
             $this->showError('operate.fail');
@@ -88,11 +88,11 @@ class PropertyController extends PwBaseController
             $this->showError('DESIGN:maxlimit.error');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
 
         $ds = $this->_getModuleDs();
-         
+
         $dm = new PwDesignModuleDm();
         $dm->setPageId($pageid)
             ->setStruct($struct)
@@ -122,7 +122,6 @@ class PropertyController extends PwBaseController
             $this->showError($r->getError());
         }
 
-         
         $srv = new PwAutoData($resource);
         $srv->addAutoData();
 
@@ -136,7 +135,7 @@ class PropertyController extends PwBaseController
         $isedit = false;
         $model = $this->getInput('model', 'post');
         $moduleid = (int) $this->getInput('moduleid', 'post');
-         
+
         $moduleBo = new PwDesignModuleBo($moduleid);
         if ($model) {
             $isedit = true;
@@ -157,10 +156,10 @@ class PropertyController extends PwBaseController
             $this->showError('DESIGN:permissions.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         $decorator = $service->decorateEditProperty($moduleBo);
-         
+
         $modelBo = new PwDesignModelBo($model);
         $property = $modelBo->getProperty();
         $vProperty = $isedit ? array() : $moduleBo->getProperty();
@@ -191,7 +190,7 @@ class PropertyController extends PwBaseController
         if (!$moduleid) {
             $this->showError('operate.fail');
         }
-         
+
         $moduleBo = new PwDesignModuleBo($moduleid);
         $_model = $moduleBo->getModel();
         if ($model != $_model) {
@@ -204,7 +203,6 @@ class PropertyController extends PwBaseController
             $this->showError('operate.fail');
         }
 
-         
         $pageBo = new PwDesignPageBo($module['page_id']);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
@@ -233,7 +231,7 @@ class PropertyController extends PwBaseController
             $this->showError('DESIGN:maxlimit.error');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
-         
+
         $service = new $cls();
         if (method_exists($service, 'decorateSaveProperty')) {
             $property = $service->decorateSaveProperty($property, $moduleid);
@@ -241,7 +239,7 @@ class PropertyController extends PwBaseController
                 $this->showError($property->getError());
             }
         }
-         
+
         $dm = new PwDesignModuleDm($moduleid);
         $dm->setFlag($model)
             ->setName($name)
@@ -255,7 +253,6 @@ class PropertyController extends PwBaseController
             $this->showError($resource->getError());
         }
 
-         
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
         $this->showMessage('operate.success');
@@ -278,12 +275,12 @@ class PropertyController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
-         
+
         $pageBo = new PwDesignPageBo($module['page_id']);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
         }
-         
+
         $dm = new PwDesignModuleDm($moduleid);
         $dm->setIsused(0);
         $resource = $this->_getModuleDs()->updateModule($dm);
@@ -329,7 +326,7 @@ class PropertyController extends PwBaseController
 
         //对config里的tab进行过滤
         $tab = array('property', 'template');
-         
+
         $bo = new PwDesignModelBo($model);
         $modelInfo = $bo->getModel();
         if (is_array($modelInfo['tab'])) {

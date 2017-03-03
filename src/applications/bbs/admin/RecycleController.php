@@ -27,7 +27,6 @@ class RecycleController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwRecycleThreadSo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -86,8 +85,6 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-         
-         
         $srv = new PwDeleteTopic(new PwFetchTopicByTid($tids), new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -101,7 +98,6 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-         
         $srv = new PwRevertTopic($tids, new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -117,7 +113,6 @@ class RecycleController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-         
         $so = new PwRecycleReplySo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -176,8 +171,6 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-         
-         
         $srv = new PwDeleteReply(new PwFetchReplyByPid($pids), new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -191,7 +184,6 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-         
         $srv = new PwRevertReply($pids, new PwUserBo($this->loginUser->uid));
         $srv->execute();
         $this->showMessage('还原成功了');

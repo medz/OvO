@@ -29,7 +29,7 @@ class ImportController extends PwBaseController
     public function dorunAction()
     {
         $pageid = (int) $this->getInput('pageid', 'post');
-         
+
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
         if (!$pageInfo) {
@@ -75,22 +75,21 @@ class ImportController extends PwBaseController
         }
 
         //导入文件
-         
+
         $pageBo = new PwDesignPageBo($pageInfo['page_id']);
         $this->clearPage($pageInfo);
 
-         
         $srv = new PwDesignImportZip($pageBo);
         if (!$srv->appcenterToLocal($style['alias'])) {
             $this->showError('operate.fail');
         }
-         
+
         $dm = new PwDesignPortalDm($portalid);
         $dm->setTemplate($pageBo->getTplPath());
         $ds->updatePortal($dm);
         $this->_getDesignService()->clearCompile();
         //更新数据
-         
+
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -104,7 +103,7 @@ class ImportController extends PwBaseController
     protected function doZip($pageBo)
     {
         //$portal = $this->_getPortalDs()->getPortal($pageInfo['page_unique']);
-         
+
         $srv = new PwDesignImportZip($pageBo);
         if (!$srv->checkDirectory()) {
             $this->showError('DESIGN:directory.not.writeable');
@@ -119,7 +118,7 @@ class ImportController extends PwBaseController
             $this->showError($resource->getError());
         }
         /*
-         
+
         $dm = new PwDesignPortalDm($portal['id']);
         $dm->setTemplate($pageInfo['page_id'])//以pageid命名的文件夹
             ->setPageName($portal['pagename'])
@@ -128,7 +127,7 @@ class ImportController extends PwBaseController
         if ($resource instanceof PwError) $this->showError($resource->getError());
         */
         //更新数据
-         
+
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -160,7 +159,7 @@ class ImportController extends PwBaseController
             $this->showError($resource->getError());
         }
         //更新数据
-         
+
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -204,7 +203,6 @@ class ImportController extends PwBaseController
         $this->_getSegmentDs()->deleteSegmentByPageid($pageid);
         $bakDs->deleteByPageId($pageid);
 
-         
         $dm = new PwDesignPageDm($pageid);
         $dm->setModuleIds(array())->setStrucNames(array());
         $this->_getPageDs()->updatePage($dm);
@@ -213,8 +211,6 @@ class ImportController extends PwBaseController
 
     private function _uploadFile()
     {
-         
-
         $bhv = new PwDesignImportUpload();
         $upload = new PwUpload($bhv);
         if (($result = $upload->check()) === true) {

@@ -1,7 +1,6 @@
 <?php
 
 
- 
 /**
  * 用户找回密码服务
  *
@@ -39,7 +38,7 @@ class PwFindPassword
             if (!$info) {
                 return;
             }
-             
+
             $registerService = new PwRegisterService();
             $info = $registerService->sysUser($info['uid']);
             if ($info) {

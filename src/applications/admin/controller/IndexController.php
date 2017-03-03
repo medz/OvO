@@ -142,7 +142,6 @@ class IndexController extends AdminBaseController
         if (in_array('windidlogin', Wekit::C()->verify->get('showverify', array()))) {
             Wind::import('WINDID:service.verify.srv.PwVerifyService');
         } else {
-             
         }
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         if ($rand) {

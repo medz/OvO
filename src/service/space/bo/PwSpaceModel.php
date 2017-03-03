@@ -1,6 +1,6 @@
 <?php
 
- 
+
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
  *
@@ -150,8 +150,6 @@ class PwSpaceModel extends PwSpaceBo
 
     protected function modelFreshList($limit, $page)
     {
-         
-         
         $count = Wekit::load('attention.PwFresh')->countFreshByUid($this->spaceUid);
         $totalpage = ceil($count / $limit);
         $page > $totalpage && $page = $totalpage;

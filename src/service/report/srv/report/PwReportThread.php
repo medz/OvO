@@ -1,6 +1,5 @@
 <?php
 
- 
 
 class PwReportThread extends PwReportAction
 {

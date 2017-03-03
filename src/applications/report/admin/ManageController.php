@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
- 
 
 /**
  * 举报管理.

@@ -12,7 +12,6 @@ class PwCheckVerifyService
 {
     public function checkVerify($inputCode)
     {
-         
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         $config = Wekit::C('verify');
 

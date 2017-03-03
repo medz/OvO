@@ -1,6 +1,5 @@
 <?php
 
- 
 
 /**
  * log日志的服务
@@ -138,7 +137,7 @@ class PwLogService
         $langArgs['{operattype}'] = $typeTitle;
         $langArgs['{reason}'] = $reason ? $this->_buildSecurity($reason) : '无';
         $_logMsg = $useReplyMsg ? 'LOG:thread.reply.message' : 'LOG:thread.manage.message';
-         
+
         foreach ($threads as $thread) {
             $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', array('tid' => $thread['tid'])), $this->_buildSecurity($thread['subject']));
             $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username);

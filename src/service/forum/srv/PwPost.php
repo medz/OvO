@@ -114,7 +114,6 @@ class PwPost extends PwBaseHookService
     public function isBan()
     {
         if ($this->user->gid == 6) {
-             
             $banBp = new PwBanBp($this->user->uid);
             $memberid = 0;
             if (false === $banBp->checkIfBanSpeak()) {
@@ -202,7 +201,6 @@ class PwPost extends PwBaseHookService
      */
     public function updateUser()
     {
-         
         $credit = PwCreditBo::getInstance();
         if ($operation = $this->action->getCreditOperate()) {
             $credit->operate($operation, $this->user, true,

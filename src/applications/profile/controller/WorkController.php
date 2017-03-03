@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
- 
 
 /**
  * 用户资料-工作经历扩展.
