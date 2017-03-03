@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.dm.PwPostDm');
+ 
 
 /**
  * 帖子数据模型(insert, update).

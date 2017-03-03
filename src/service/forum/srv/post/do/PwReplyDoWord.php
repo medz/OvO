@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
+ 
 /**
  * 帖子回复 - 敏感词.
  *

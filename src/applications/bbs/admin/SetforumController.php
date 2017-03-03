@@ -51,7 +51,7 @@ class SetforumController extends AdminBaseController
         }
 
         $editArray = array();
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
         foreach ($vieworder as $key => $value) {
             $dm = new PwForumDm($key);
             $dm->setVieworder($value)->setManager($manager[$key]);
@@ -130,7 +130,7 @@ class SetforumController extends AdminBaseController
     {
         $fid = $this->getInput('fid');
 
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid, true);
         if (!$forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
@@ -179,7 +179,7 @@ class SetforumController extends AdminBaseController
         //forum list
         $this->setOutput($this->_getFroumService()->getForumOption(), 'forumList');
 
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $this->setOutput(PwCreditBo::getInstance()->cType, 'credittype');
         $this->setOutput(Wekit::load('forum.srv.PwThreadType')->getTtype(), 'threadtype');
         $this->setOutput($p, 'p');
@@ -202,7 +202,7 @@ class SetforumController extends AdminBaseController
 
         list($copyFids, $copyItems) = $this->getInput(array('copy_fids', 'copyitems'));
         !$copyItems && $copyItems = array();
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid, true);
         if (!$forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
@@ -223,7 +223,7 @@ class SetforumController extends AdminBaseController
         $fid = $this->getInput('fid', 'post');
         $tofid = $this->getInput('tofid', 'post');
 
-        Wind::import('SRV:forum.srv.operation.PwUniteForum');
+         
         $srv = new PwUniteForum($fid, $tofid);
         if (($result = $srv->execute()) instanceof PwError) {
             $this->showError($result->getError());
@@ -239,8 +239,8 @@ class SetforumController extends AdminBaseController
         $copyFids && $fids = array_merge($fids, $copyFids);
 
         list($forumname, $vieworder, $parentid, $descrip, $isshow, $isshowsub, $jumpurl, $seotitle, $seokeywords, $seodescription, $numofthreadtitle, $threadperpage, $readperpage, $newtime, $threadorderby, $minlengthofcontent, $locktime, $edittime, $allowtype, $typeorder, $contentcheck, $ifthumb, $thumbwidth, $thumbheight, $anticopy, $copycontent, $water, $waterimg, $allowhide, $allowsell, $anonymous, $manager, $creditset, $password, $allowvisit, $allowread, $allowpost, $allowreply, $allowupload, $allowdownload, $style) = $this->getInput(array('forumname', 'vieworder', 'parentid', 'descrip', 'isshow', 'isshowsub', 'jumpurl', 'seotitle', 'seokeywords', 'seodescription', 'numofthreadtitle', 'threadperpage', 'readperpage', 'newtime', 'threadorderby', 'minlengthofcontent', 'locktime', 'edittime', 'allowtype', 'typeorder', 'contentcheck', 'ifthumb', 'thumbwidth', 'thumbheight', 'anticopy', 'copycontent', 'water', 'waterimg', 'allowhide', 'allowsell', 'anonymous', 'manager', 'creditset', 'password', 'allowvisit', 'allowread', 'allowpost', 'allowreply', 'allowupload', 'allowdownload', 'style'));
-        Wind::import('SRV:forum.bo.PwForumBo');
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
+         
         $pwforum = Wekit::load('forum.PwForum');
         $copyItems = $copyItems ? array_flip($copyItems) : array();
         array_walk($copyItems, array($this, '_setCopyItems'));
@@ -383,7 +383,7 @@ class SetforumController extends AdminBaseController
     {
         //seo
         $seo = $this->getInput('seo');
-        Wind::import('SRV:seo.dm.PwSeoDm');
+         
         $dm = new PwSeoDm();
         $dm->setMod('bbs')
            ->setPage('thread')
@@ -417,7 +417,7 @@ class SetforumController extends AdminBaseController
             if ($r instanceof PwError) {
                 $this->showError($r->getError());
             }
-            Wind::import('SRV:domain.dm.PwDomainDm');
+             
             $dm = new PwDomainDm();
             $dm->setDomain($forumdomain)
             ->setDomainKey($domainKey)
@@ -436,7 +436,7 @@ class SetforumController extends AdminBaseController
     {
         list($fid, $name) = $this->getInput(array('fid', 'name'));
 
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
         $pwforum = Wekit::load('forum.PwForum');
         $dm = new PwForumDm($fid);
         $dm->setName($name);
@@ -476,7 +476,7 @@ class SetforumController extends AdminBaseController
     {
         $fid = $this->getInput('fid');
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteForum');
+         
         $srv = new PwDeleteForum($fid, new PwUserBo($this->loginUser->uid));
         if (($result = $srv->execute()) instanceof PwError) {
             $this->showError($result->getError());
@@ -494,13 +494,13 @@ class SetforumController extends AdminBaseController
     {
         $fid = $this->getInput('fid');
 
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid, true);
         if (!$forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
 
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
         $dm = new PwForumDm($fid);
         $dm->setLogo('');
         $pwforum = Wekit::load('forum.PwForum');
@@ -518,13 +518,13 @@ class SetforumController extends AdminBaseController
     {
         $fid = $this->getInput('fid');
 
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid, true);
         if (!$forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
 
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
         $dm = new PwForumDm($fid);
         $dm->setIcon('');
         $pwforum = Wekit::load('forum.PwForum');
@@ -551,7 +551,7 @@ class SetforumController extends AdminBaseController
         is_array($t_new_name) || $t_new_name = array();
         is_array($t_new_sub_name) || $t_new_sub_name = array();
 
-        Wind::import('SRV:forum.dm.PwTopicTypeDm');
+         
         $topicTypeService = Wekit::load('forum.PwTopicType'); /* @var $topicTypeService PwTopicType */
 
         //$logos = $this->_uploadTopicTypeIcon();
@@ -649,7 +649,7 @@ class SetforumController extends AdminBaseController
 
     private function _uploadTopicTypeIcon()
     {
-        Wind::import('SRV:upload.action.PwTopictypeUpload');
+         
 
         $bhv = new PwTopictypeUpload(16, 16);
         $upload = new PwUpload($bhv);
@@ -665,7 +665,7 @@ class SetforumController extends AdminBaseController
 
     private function _uploadImage($type, $fid)
     {
-        Wind::import('SRV:upload.action.PwForumUpload');
+         
 
         $bhv = new PwForumUpload($type, $fid);
         $upload = new PwUpload($bhv);

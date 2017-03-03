@@ -75,7 +75,7 @@ class SetbbsController extends AdminBaseController
             'aliww'     => '阿里旺旺',
             'birthday'  => '生日',
             'hometown'  => '家乡', );
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $allInfo[$key] = $value;
         }

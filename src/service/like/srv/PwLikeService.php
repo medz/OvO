@@ -30,7 +30,7 @@
         //判断是否存在喜欢内容
         $info = $likeDs->getInfoByTypeidFromid($typeid, $fromid);
         $likeid = isset($info['likeid']) ? (int) $info['likeid'] : 0;
-        Wind::import('SRV:like.dm.PwLikeDm');
+         
         $dm = new PwLikeDm();
         $dm->setTypeid($typeid)
             ->setFromid($fromid)
@@ -46,7 +46,7 @@
         }
 
         //写入喜欢记录
-        Wind::import('SRV:like.dm.PwLikeLogDm');
+         
         $logDm = new PwLikeLogDm();
         $logDm->setUid($uid)
             ->setLikeid($likeid)
@@ -62,7 +62,7 @@
         $likeDs->updateUsers($likeid, $uid);
 
         //写入用户喜欢统计
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $likeNumber = isset($userBo->info['likes']) ? intval($userBo->info['likes']) : 0;
         $likeNumber++;
         $infoDm = new PwUserInfoDm($uid);
@@ -71,9 +71,9 @@
         $userDs->editUser($infoDm, PwUser::FETCH_DATA);
 
         //用户积分
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forumBo = new PwForumBo($fid);
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $credit = PwCreditBo::getInstance();
         $credit->operate('belike', new PwUserBo($beLikeUid), true, array('forumname' => $userBo->username), $forumBo->getCreditSet('belike'));
         $credit->execute();
@@ -115,7 +115,7 @@
             }
         }
         //写入喜欢统计
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
          $userDs = Wekit::load('user.PwUser');
          $userStatistics = $userDs->getUserByUid($uid, PwUser::FETCH_DATA);
          $likeNumber = isset($userStatistics['likes']) ? intval($userStatistics['likes']) : 0;
@@ -159,7 +159,7 @@
         $newTags = $this->diffTagNames($tagnames, $uid);
         //写入新的Tag
         if ($newTags) {
-            Wind::import('SRV:like.dm.PwLikeTagDm');
+             
             foreach ($newTags as $newTag) {
                 $dm = new PwLikeTagDm();
                 $dm->setTagname($newTag)
@@ -172,7 +172,7 @@
         $logInfo = $this->_getLikeLogDs()->getLikeLog($logid);
 
         //更新log Tag
-        Wind::import('SRV:like.dm.PwLikeLogDm');
+         
         $logDm = new PwLikeLogDm($logid);
         $logDm->setTagids($_tagids);
         $this->_getLikeLogDs()->updateInfo($logDm);
@@ -218,7 +218,7 @@
                 return new PwError('BBS:like.tagname.is.already');
             }
         }
-        Wind::import('SRV:like.dm.PwLikeTagDm');
+         
         $dm = new PwLikeTagDm();
         $dm->setTagname($tagname)
             ->setUid($uid)
@@ -250,7 +250,7 @@
         }
 
         //更新log Tag
-        Wind::import('SRV:like.dm.PwLikeLogDm');
+         
         $logDm = new PwLikeLogDm($logid);
         $logDm->setTagids($tagids);
         $this->_getLikeLogDs()->updateInfo($logDm);
@@ -343,7 +343,7 @@
             $keyCount = $keyInfo ? $keyInfo['number'] : 0;
             if ($minCount < $count || $keyCount < $maxStatis) {
                 $logCount = $this->_getLikeLogDs()->getLikeidCount($likeid, $startTime);
-                Wind::import('SRV:like.dm.PwLikeStatisticsDm');
+                 
                 $dm = new PwLikeStatisticsDm();
                 $dm->setSignkey($key)
                     ->setLikeid($likeid)
@@ -407,8 +407,8 @@
                 $msg = Wekit::load('forum.PwThread')->getThread($fromid);
 
                 //needcheck
-                Wind::import('SRV:forum.srv.post.PwReplyPost');
-                Wind::import('SRV:forum.srv.PwPost');
+                 
+                 
                 $postAction = new PwReplyPost($fromid);
                 $post = new PwPost($postAction);
                 if ($post->getDisabled()) {
@@ -435,25 +435,25 @@
      {
          switch ($typeid) {
             case PwLikeContent::THREAD:
-                Wind::import('SRV:forum.dm.PwTopicDm');
+                 
                 $dm = new PwTopicDm($fromid);
                 $dm->setLikeCount($count);
 
                 return Wekit::load('forum.PwThread')->updateThread($dm, PwThread::FETCH_MAIN);
             case PwLikeContent::POST:
-                Wind::import('SRV:forum.dm.PwReplyDm');
+                 
                 $dm = new PwReplyDm($fromid);
                 $dm->setLikeCount($count);
 
                 return Wekit::load('forum.PwThread')->updatePost($dm);
             case PwLikeContent::WEIBO:
-                Wind::import('SRV:weibo.dm.PwWeiboDm');
+                 
                 $dm = new PwWeiboDm($fromid);
                 $dm->setLikeCount($count);
 
                 return Wekit::load('weibo.PwWeibo')->updateWeibo($dm);
             case PwLikeContent::APP:
-                Wind::import('SRV:like.dm.PwLikeSourceDm');
+                 
                 $dm = new PwLikeSourceDm($fromid);
                 $dm->setLikeCount($count);
 

@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attach.dm.PwThreadAttachDm');
-Wind::import('SRV:forum.bo.PwForumBo');
+ 
+ 
 Wind::import('COM:utility.WindUtility');
 
 /**

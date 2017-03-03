@@ -1,8 +1,8 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:task.dm.PwTaskDm');
-Wind::import('SRV:task.dm.PwTaskDmFactory');
+ 
+ 
 
 /**
  * 任务系统
@@ -246,7 +246,7 @@ class ManageController extends AdminBaseController
      */
     private function saveIcon()
     {
-        Wind::import('SRV:upload.action.PwTaskIconUpload');
+         
 
         $taskUpload = new PwTaskIconUpload(80, 80);
         $upload = new PwUpload($taskUpload);

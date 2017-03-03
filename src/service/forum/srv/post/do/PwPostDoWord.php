@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
-Wind::import('SRV:word.PwWord');
+ 
+ 
 
 /**
  * 发帖子检测敏感词.

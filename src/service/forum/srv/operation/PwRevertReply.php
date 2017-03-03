@@ -1,9 +1,9 @@
 <?php
 
-//Wind::import('SRV:forum.srv.operation.do.PwDeleteReplyDoDirectDelete');
-//Wind::import('SRV:forum.srv.operation.do.PwDeleteArticleDoAttachDelete');
-//Wind::import('SRV:forum.srv.operation.do.PwDeleteArticleDoForumUpdate');
-//Wind::import('SRV:forum.srv.operation.do.PwDeleteReplyDoFreshDelete');
+// 
+// 
+// 
+// 
 
 /**
  * 回复回收站帖子及其关联操作(扩展).

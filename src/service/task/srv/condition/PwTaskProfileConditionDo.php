@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
 /**
  * 完善资料-任务
  *

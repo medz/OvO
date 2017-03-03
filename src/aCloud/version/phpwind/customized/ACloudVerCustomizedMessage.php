@@ -189,12 +189,12 @@ class ACloudVerCustomizedMessage extends ACloudVerCustomizedBase
 
     public function sendFreshStat($uid, $content, $type)
     {
-        Wind::import('SRV:user.bo.PwUserBo');
+         
         $userBo = new PwUserBo($uid);
-        Wind::import('SRV:weibo.dm.PwWeiboDm');
+         
         $dm = new PwWeiboDm();
         $dm->setContent($content);
-        Wind::import('SRV:weibo.srv.PwSendWeibo');
+         
         $weiboService = new PwSendWeibo($userBo);
         $result = $weiboService->send($dm);
         if ($result) {

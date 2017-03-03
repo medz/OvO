@@ -37,7 +37,7 @@ class RecycleController extends BaseManageController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:recycle.vo.PwRecycleThreadSo');
+         
         $so = new PwRecycleThreadSo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -89,7 +89,7 @@ class RecycleController extends BaseManageController
         $this->setOutput($url, 'url');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.recycle.run.title'), '', '');
@@ -106,8 +106,8 @@ class RecycleController extends BaseManageController
             $this->showError('operate.fail');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+         
+         
         $srv = new PwDeleteTopic(new PwFetchTopicByTid($tids), $this->loginUser);
         $srv->execute();
 
@@ -124,7 +124,7 @@ class RecycleController extends BaseManageController
             $this->showError('operate.fail');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwRevertTopic');
+         
         $srv = new PwRevertTopic($tids, $this->loginUser);
         $srv->execute();
 
@@ -143,7 +143,7 @@ class RecycleController extends BaseManageController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:recycle.vo.PwRecycleReplySo');
+         
         $so = new PwRecycleReplySo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -195,7 +195,7 @@ class RecycleController extends BaseManageController
         $this->setOutput($url, 'url');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.recycle.reply.title'), '', '');
@@ -212,8 +212,8 @@ class RecycleController extends BaseManageController
             $this->showError('operate.fail');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+         
+         
         $srv = new PwDeleteReply(new PwFetchReplyByPid($pids), $this->loginUser);
         $srv->execute();
 
@@ -230,7 +230,7 @@ class RecycleController extends BaseManageController
             $this->showError('operate.fail');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwRevertReply');
+         
         $srv = new PwRevertReply($pids, $this->loginUser);
         $srv->execute();
 

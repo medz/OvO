@@ -60,7 +60,7 @@ class ManageController extends AdminBaseController
             $this->showError('WORD:replaceword.empty');
         }
 
-        Wind::import('SRV:word.dm.PwWordDm');
+         
 
         foreach ($wordList as $value) {
             if (!$value) {
@@ -118,7 +118,7 @@ class ManageController extends AdminBaseController
             $this->showError('WORD:replaceword.empty');
         }
 
-        Wind::import('SRV:word.dm.PwWordDm');
+         
         $dm = new PwWordDm($id); /* @var $dm PwWordDm */
 
         $dm->setWord($word['word'])->setWordType($word['type']);
@@ -210,7 +210,7 @@ class ManageController extends AdminBaseController
             $this->showError('WORD:replaceword.empty');
         }
 
-        Wind::import('SRV:word.dm.PwWordDm');
+         
         $dm = new PwWordDm(); /* @var $dm PwWordDm */
 
         $dm->setWordType($word['type'] ? $word['type'] : 1);
@@ -233,7 +233,7 @@ class ManageController extends AdminBaseController
 
         list($offset, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:word.vo.PwWordSo');
+         
         $wordSo = new PwWordSo(); /* @var $wordSo PwWordSo */
 
         $keyword && $wordSo->setWord($keyword);
@@ -289,7 +289,7 @@ class ManageController extends AdminBaseController
 
     public function doimportAction()
     {
-        Wind::import('SRV:upload.action.PwWordUpload');
+         
 
         $bhv = new PwWordUpload();
         $upload = new PwUpload($bhv);
@@ -328,7 +328,7 @@ class ManageController extends AdminBaseController
         $wordService = $this->_getWordService();
         $typeMap = $this->_getWordDS()->getTypeMap();
 
-        Wind::import('SRV:word.dm.PwWordDm');
+         
 
         foreach ($content as $value) {
             list($word, $type, $replace) = $this->_parseTextUseInImport($value, $typeMap);

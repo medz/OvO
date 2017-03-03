@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:credit.dm.PwCreditDm');
-Wind::import('SRV:credit.dm.PwCreditLogDm');
-Wind::import('SRV:credit.srv.PwCreditOperationConfig');
+ 
+ 
+ 
 
 /**
  * 积分对象 (单列对象-通过方法 getInstance 获取).
@@ -262,7 +262,7 @@ class PwCreditBo
         if (!empty($this->_userLog)) {
             /* @var $userDs PwUser */
             $userDs = Wekit::load('user.PwUser');
-            Wind::import('SRV:user.dm.PwUserInfoDm');
+             
             foreach ($this->_userLog as $_uid => $_log) {
                 $_dm = new PwUserInfoDm($_uid);
                 $_dm->setLastCreditAffectLog(serialize($_log));

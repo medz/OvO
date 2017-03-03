@@ -33,7 +33,7 @@ class ApiController extends PwBaseController
 
     protected function scriptFormat($moduleId)
     {
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {
@@ -51,7 +51,7 @@ class ApiController extends PwBaseController
     protected function jsonFormat($moduleId)
     {
         $_data = array();
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {
@@ -65,7 +65,7 @@ class ApiController extends PwBaseController
 
     protected function xmlFormat($moduleId)
     {
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['module_type'] != PwDesignModule::TYPE_SCRIPT) {

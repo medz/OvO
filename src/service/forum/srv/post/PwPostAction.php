@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 
 /**
  * 帖子操作行为基类.

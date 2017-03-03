@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 
 /**
  * 门户数据 - 友情链接.
@@ -33,7 +33,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-        Wind::import('SRV:link.vo.PwLinkSo');
+         
         $so = new PwLinkSo();
 
         $so->setIfcheck(1);

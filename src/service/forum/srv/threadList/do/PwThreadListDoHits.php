@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadList.do.PwThreadListDoBase');
+ 
 
 /**
  * 点击率实时更新显示.

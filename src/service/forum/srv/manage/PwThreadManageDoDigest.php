@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
+ 
 
 /**
  * 帖子管理操作-精华.
@@ -89,7 +89,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
         if (1 != $this->digest) {
             return Wekit::load('forum.PwThreadDigestIndex')->batchDeleteThread($this->tids);
         }
-        Wind::import('SRV:forum.dm.PwThreadDigestDm');
+         
         /* @var $srv PwForumService */
         $srv = Wekit::load('forum.srv.PwForumService');
         $digestDms = array();
@@ -121,8 +121,8 @@ class PwThreadManageDoDigest extends PwThreadManageDo
     {
         $operation = $this->digest == 1 ? 'digest_topic' : 'remove_digest';
         $digestNum = $this->digest == 1 ? 1 : -1;
-        Wind::import('SRV:credit.bo.PwCreditBo');
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
+         
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
         $credit = PwCreditBo::getInstance();

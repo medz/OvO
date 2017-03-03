@@ -41,7 +41,7 @@ class PwRestoreService
     {
         $pageInfo = $this->_getPageDs()->getPage($pageid);
         $ids = explode(',', $pageInfo['module_ids']);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($ids as $id) {
             $id = (int) $id;
             if ($id < 1) {
@@ -60,7 +60,7 @@ class PwRestoreService
 
     protected function restoreModule($pageid, $issnap = 0)
     {
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $bakDs = $this->_getBakDs();
         $conpDs = $this->_getComponentDs();
         $module = $bakDs->getBak(PwDesignBak::MODULE, $pageid, $issnap);
@@ -68,9 +68,9 @@ class PwRestoreService
             return false;
         }
         $ds = $this->_getModuleDs();
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $bo = new PwDesignPageBo($pageid);
-        Wind::import('SRV:design.srv.PwPortalCompile');
+         
         $srv = new PwPortalCompile($bo);
 
         foreach ($module['bak_info'] as $k => $v) {
@@ -101,7 +101,7 @@ class PwRestoreService
         if (!is_array($data['bak_info'])) {
             return false;
         }
-        Wind::import('SRV:design.dm.PwDesignDataDm');
+         
         $ds = $this->_getDataDs();
         foreach ($data['bak_info'] as $k => $v) {
             $this->_getDataDs()->deleteByModuleId($k);
@@ -130,7 +130,7 @@ class PwRestoreService
         if (!is_array($data['bak_info'])) {
             return false;
         }
-        Wind::import('SRV:design.dm.PwDesignStructureDm');
+         
         $ds = $this->_getStructureDs();
         foreach ($data['bak_info'] as $k => $v) {
             $style = unserialize($v['struct_style']);
@@ -149,11 +149,11 @@ class PwRestoreService
         $segments = $this->_getBakDs()->getBak(PwDesignBak::SEGMENT, $pageid, $issnap);
         $ds = $this->_getSegmentDs();
         $srv = null;
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $bo = new PwDesignPageBo($pageid);
         $pageInfo = $bo->getPage();
         if ($pageInfo['page_type'] == PwDesignPage::SYSTEM) {
-            Wind::import('SRV:design.srv.PwPortalCompile');
+             
             $srv = new PwPortalCompile($bo);
         }
         foreach ($segments['bak_info'] as $k => $v) {
@@ -171,7 +171,7 @@ class PwRestoreService
     protected function restorePage($pageid, $issnap = 0)
     {
         $page = $this->_getBakDs()->getBak(PwDesignBak::PAGE, $pageid, $issnap);
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($pageid);
         $dm->setName($page['bak_info']['page_name'])
             ->setType($page['bak_info']['page_type'])

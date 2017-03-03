@@ -1,9 +1,9 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwTopicDm');
-Wind::import('SRV:forum.dm.PwThreadSortDm');
-Wind::import('SRV:forum.PwThread');
+ 
+ 
+ 
+ 
 
 /**
  * 帖子管理操作-置顶.

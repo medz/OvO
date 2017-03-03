@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.PwThread');
+ 
 
 /**
  * 帖子扩展服务,不经常用的接口.

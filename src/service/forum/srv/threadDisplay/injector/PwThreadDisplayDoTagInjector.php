@@ -15,7 +15,7 @@ class PwThreadDisplayDoTagInjector extends PwBaseHookInjector
 {
     public function run()
     {
-        Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoTag');
+         
 
         return new PwThreadDisplayDoTag();
     }

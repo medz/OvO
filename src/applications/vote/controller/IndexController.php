@@ -112,7 +112,7 @@ class IndexController extends PwBaseController
         $pollOptionDs = Wekit::load('poll.PwPollOption'); /* @var $pollOptionDs PwPollOption */
         $option = $pollOptionDs->get($optionid);
 
-        Wind::import('SRV:poll.dm.PwPollOptionDm');
+         
         $dm = new PwPollOptionDm($optionid);
         $dm->setImage('');
         $this->_getPollOptionDS()->update($dm);
@@ -140,7 +140,7 @@ class IndexController extends PwBaseController
             $flag = true;
         }
 
-        Wind::import('SRV:poll.dm.PwPollDm');
+         
         $dm = new PwPollDm($pollid);
         $dm->setIsIncludeImg($flag ? 1 : 0);
         $this->_getPollDs()->updatePoll($dm);

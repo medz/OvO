@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 /**
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoBase');
+ 
 
 /**
  * 投票展示.
@@ -88,7 +88,7 @@ class PwThreadDisplayDoPoll extends PwThreadDisplayDoBase
      */
     private function _getThreadPollBo($tid)
     {
-        Wind::import('SRV:poll.bo.PwThreadPollBo');
+         
 
         return new PwThreadPollBo($tid);
     }

@@ -130,7 +130,7 @@ abstract class PwDesignModelBase
     private function _formatData()
     {
         $_tmp = $_data = array();
-        Wind::import('SRV:design.bo.PwDesignModelBo');
+         
         $bo = new PwDesignModelBo($this->_moduleBo->getModel());
         $signKeys = $bo->getSignKeys();
         $standard = $bo->getStandardSign();

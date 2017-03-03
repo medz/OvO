@@ -27,14 +27,14 @@ class ArticleController extends PwBaseController
      */
     public function run()
     {
-        Wind::import('SRV:forum.srv.PwThreadList');
+         
         list($page, $perpage) = $this->getInput(array('page', 'perpage'));
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         $threadList = new PwThreadList();
 
         $threadList->setPage($page)->setPerpage($perpage);
-        Wind::import('SRV:forum.srv.threadList.PwMyThread');
+         
         $dataSource = new PwMyThread($this->loginUser->uid);
 
         $threadList->execute($dataSource);
@@ -53,7 +53,7 @@ class ArticleController extends PwBaseController
 
         // seo设置
 
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
 
@@ -92,7 +92,7 @@ class ArticleController extends PwBaseController
 
         // seo设置
 
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.article.reply.title'), '', '');

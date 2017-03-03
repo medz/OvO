@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwThreadBo');
-Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('SRV:attach.srv.PwAttachDisplay');
+ 
+ 
+ 
 
 /**
  * 帖子显示流程.
@@ -360,7 +360,7 @@ class PwThreadDisplay extends PwBaseHookService
             'follows'   => 0,
             'lastvisit' => Pw::getTime(),
         );
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $info['credit'.$key] = 0;
         }

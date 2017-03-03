@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:user.PwUserBan');
+ 
 
 /**
  * 用户禁止.
@@ -54,7 +54,7 @@ class ForbiddenController extends AdminBaseController
             $end_time = Pw::str2time($end_time);
         }
 
-        Wind::import('SRV:user.dm.PwUserBanInfoDm');
+         
         $_notice = array();
         $rightTypes = array_keys($this->_getService()->getBanType());
         foreach ($types as $type) {
@@ -97,7 +97,7 @@ class ForbiddenController extends AdminBaseController
         $default = array('autoForbidden.open' => 0, 'autoForbidden.condition' => array('autoForbidden.credit' => 0, 'autoForbidden.num' => 0), 'autoForbidden.day' => 0, 'autoForbidden.type' => array(), 'autoForbidden.reason' => '');
         $this->setOutput(array_merge($default, $config), 'config');
 
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
         $this->setOutput($pwCreditBo, 'creditBo');
@@ -140,7 +140,7 @@ class ForbiddenController extends AdminBaseController
      */
     public function listAction()
     {
-        Wind::import('SRV:user.vo.PwUserBanSo');
+         
         $page = intval($this->getInput('page'));
         $perpage = 10;
         $page <= 0 && $page = 1;

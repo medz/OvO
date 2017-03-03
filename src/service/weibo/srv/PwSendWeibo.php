@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:weibo.PwWeibo');
+ 
 
 /**
  * 微博发布服务

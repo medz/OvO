@@ -25,8 +25,8 @@ class PwDeleteFreshDoTopicDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->record) {
-            Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+             
+             
             $srv = new PwDeleteTopic(new PwFetchTopicByTid($this->record), $this->srv->user);
             $srv->setIsDeleteFresh(false)
                 ->setIsDeductCredit($this->srv->isDeductCredit)

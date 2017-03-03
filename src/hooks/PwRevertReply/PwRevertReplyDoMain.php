@@ -36,8 +36,8 @@ class PwRevertReplyDoMain extends iPwGleanDoHookProcess
 
     public function run($ids)
     {
-        Wind::import('SRV:forum.dm.PwTopicDm');
-        Wind::import('SRV:forum.dm.PwReplyDm');
+         
+         
 
         $threadDs = Wekit::load('forum.PwThread');
         $forumSrv = Wekit::load('forum.srv.PwForumService');

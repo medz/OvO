@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:usertag.dm.PwUserTagDm');
+ 
 /**
  * 删除关系更新该标签的数据.
  *

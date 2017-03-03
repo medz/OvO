@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:user.PwUserStatus');
+ 
 
 /**
  * 新用户审核.

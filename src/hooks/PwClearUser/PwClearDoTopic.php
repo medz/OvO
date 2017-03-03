@@ -1,8 +1,8 @@
 <?php
 
 
-Wind::import('SRV:forum.srv.dataSource.PwGetTopicByUid');
-Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
+ 
+ 
 
 /**
  * 清空用户的主题.

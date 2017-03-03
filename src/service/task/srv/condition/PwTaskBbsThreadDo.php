@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
+ 
 
 /**
  * 发帖时候的任务扩展.

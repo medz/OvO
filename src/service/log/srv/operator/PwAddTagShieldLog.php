@@ -77,15 +77,15 @@ class PwAddTagShieldLog extends PwBaseHookService
     {
         switch ($this->typeId) {
             case PwTag::TYPE_THREAD_TOPIC:
-                Wind::import('SRV:log.srv.datasource.PwShieldTagDoTopic');
+                 
                 $this->appendDo(new PwShieldTagDoTopic($this));
                 break;
             case PwTag::TYPE_THREAD_REPLY:
-                Wind::import('SRV:log.srv.datasource.PwShieldTagDoReply');
+                 
                 $this->appendDo(new PwShieldTagDoReply($this));
                 break;
             case PwTag::TYPE_WEIBO:
-                Wind::import('SRV:log.srv.datasource.PwShieldTagDoWeibo');
+                 
                 $this->appendDo(new PwShieldTagDoWeibo($this));
                 break;
             default:

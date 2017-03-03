@@ -873,7 +873,7 @@ class PwUbbCode
      */
     public static function createSell($cost, $credit, $str, $config)
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $creditBo = PwCreditBo::getInstance();
         $credit = isset($creditBo->cType[$credit]) ? $credit : key($creditBo->cType);
         $cName = $creditBo->cType[$credit];

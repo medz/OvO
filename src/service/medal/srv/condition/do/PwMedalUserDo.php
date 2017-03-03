@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
-Wind::import('SRV:medal.srv.PwAutoAwardMedal');
+ 
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
  *

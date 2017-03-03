@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('APPCENTER:service.srv.iPwInstall');
-Wind::import('SRV:nav.dm.PwNavDm');
+ 
 /**
  * 应用 - 导航安装.
  *

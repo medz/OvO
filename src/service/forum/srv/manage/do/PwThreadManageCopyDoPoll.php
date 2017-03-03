@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.manage.do.PwThreadManageCopyDoBase');
+ 
 
 /**
  * 帖子复制 - 投票.
@@ -54,7 +54,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             return;
         }
 
-        Wind::import('SRV:poll.dm.PwPollDm');
+         
         $pollDm = new PwPollDm(); /* @var $pollDm PwPollDm */
         $pollDm->setVoterNum($poll['voter_num']);
         $pollDm->setIsViewResult($poll['isafter_view']);
@@ -71,7 +71,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             $optionVoter[$value['option_id']][] = $value['uid'];
         }
 
-        Wind::import('SRV:poll.dm.PwPollOptionDm');
+         
         foreach ($pollOption as $key => $value) {
             $pollOptionDm = new PwPollOptionDm();
             $pollOptionDm->setPollid($newPollid);
@@ -85,7 +85,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             }
         }
 
-        Wind::import('SRV:poll.dm.PwThreadPollDm');
+         
         $threadPollDm = new PwThreadPollDm();
         $threadPollDm->setTid($newTid);
         $threadPollDm->setPollid($newPollid);
@@ -101,7 +101,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
             return false;
         }
 
-        Wind::import('SRV:poll.dm.PwPollVoterDm');
+         
         foreach ($uids as $value) {
             $this->_getPollVoterDs()->add($value, $pollid, $optionid);
         }

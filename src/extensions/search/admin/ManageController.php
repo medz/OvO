@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:config.srv.PwConfigSet');
+ 
 
 class ManageController extends AdminBaseController
 {

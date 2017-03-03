@@ -39,7 +39,7 @@ class IndexController extends PwBaseController
         $this->setOutput($categoryId, 'categoryId');
 
         //seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $seoBo->init('topic', 'hot');
         Wekit::setV('seo', $seoBo);
@@ -98,7 +98,7 @@ class IndexController extends PwBaseController
         //$this->setOutput($this->perpage, 'perpage');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:tag.index.my.title'), '', '');
@@ -197,7 +197,7 @@ class IndexController extends PwBaseController
         $this->setOutput($args, 'args');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         if ($type == 'users') {
             $lang = Wind::getComponent('i18n');
@@ -228,13 +228,13 @@ class IndexController extends PwBaseController
         }
         list($id, $typeId, $paramId, $ifcheck) = $this->getInput(array('id', 'type_id', 'param_id', 'ifcheck'));
         $increseCount = $ifcheck ? 1 : -1;
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         $dm = new PwTagDm($id);
         $dm->setIfCheck($ifcheck)
             ->addContentCount($increseCount);
         $result = $this->_getTagDs()->updateRelation($typeId, $paramId, $id, $dm);
         $this->_getTagDs()->updateTag($dm);
-        Wind::import('SRV:log.srv.operator.PwAddTagShieldLog');
+         
         $log = new PwAddTagShieldLog($id, $typeId, $paramId, $this->loginUser);
         $log->setIfShield($ifcheck)
             ->execute();
@@ -275,7 +275,7 @@ class IndexController extends PwBaseController
         }
         $count = count($tagnames);
         $count > 5 && $this->showError('Tag:tagnum.exceed');
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         if ($count == 1) {
             $dm = new PwTagDm();
             $dm->setName($tagnames['0']);

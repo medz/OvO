@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadDisplay.PwReadDataSource');
+ 
 
 /**
  * 帖子内容页回复列表数据接口 / 普通列表.

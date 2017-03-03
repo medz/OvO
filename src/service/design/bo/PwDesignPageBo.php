@@ -66,7 +66,7 @@ class PwDesignPageBo
             }
         }
         if ($pageId < 1) {
-            Wind::import('SRV:design.dm.PwDesignPageDm');
+             
             $dm = new PwDesignPageDm();
             $dm->setName($pageName)
                 ->setRouter($router)
@@ -90,7 +90,7 @@ class PwDesignPageBo
                 $srv = Wekit::load('design.srv.PwDesignService');
                 $result = $srv->defaultTemplate($pageId, $tplPath);
                 if ($result) {
-                    Wind::import('SRV:design.dm.PwDesignPortalDm');
+                     
                     $dm = new PwDesignPortalDm($portal['id']);
                     $dm->setTemplate($tplPath);
                     Wekit::load('design.PwDesignPortal')->updatePortal($dm);
@@ -204,7 +204,7 @@ class PwDesignPageBo
     private function _getStructureCss()
     {
         $css = array();
-        Wind::import('SRV:design.bo.PwDesignStructureBo');
+         
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $structureNames = explode(',', $this->_pageInfo['struct_names']);
         foreach ($structureNames as $v) {
@@ -226,7 +226,7 @@ class PwDesignPageBo
     private function _getModuleCss()
     {
         $css = array();
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $moduleIds = explode(',', $this->_pageInfo['module_ids']);
         foreach ($moduleIds as $v) {

@@ -27,7 +27,7 @@ class UploadController extends PwBaseController
         }
         $fid = $this->getInput('fid', 'post');
 
-        Wind::import('SRV:upload.action.PwAttMultiUpload');
+         
 
         $bhv = new PwAttMultiUpload($user, $fid);
 
@@ -52,7 +52,7 @@ class UploadController extends PwBaseController
         }
         $aid = $this->getInput('aid');
 
-        Wind::import('SRV:upload.action.PwAttReplaceUpload');
+         
 
         $bhv = new PwAttReplaceUpload($this->loginUser, $aid);
 

@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.reward.PwTaskRewardDoBase');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
+ 
 /**
  * 奖励-积分.
  *

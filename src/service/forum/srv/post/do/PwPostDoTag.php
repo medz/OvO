@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
-Wind::import('SRV:tag.dm.PwTagDm');
+ 
+ 
 /**
  * 帖子发布 - 话题.
  *

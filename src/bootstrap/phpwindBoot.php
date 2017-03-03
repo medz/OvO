@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.bo.PwUserBo');
+ 
 
 /**
  * @author Jianmin Chen <sky_hold@163.com>
@@ -157,7 +157,7 @@ class phpwindBoot extends bootstrap
                 $loginSrv = Wekit::load('SRV:user.srv.PwLoginService');
                 $loginSrv->welcome($user, Wind::getComponent('request')->getClientIp());
             } elseif ((WEKIT_TIMESTAMP - $user->info['lastvisit'] > min(1800, $_cOnlinetime))) {
-                Wind::import('SRV:user.dm.PwUserInfoDm');
+                 
                 $dm = new PwUserInfoDm($user->uid);
                 $dm->setLastvisit(WEKIT_TIMESTAMP)->setLastActiveTime(WEKIT_TIMESTAMP);
                 if ($onlinetime > 0) {

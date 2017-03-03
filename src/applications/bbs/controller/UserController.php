@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwForumBo');
+ 
 
 /**
  * 版块会员.
@@ -55,7 +55,7 @@ class UserController extends PwBaseController
         }
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(

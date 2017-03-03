@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
+ 
 
 /**
  * 空间-帖子列表页-访问他人空间的列表.

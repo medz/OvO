@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('APPS:manage.controller.BaseManageController');
-Wind::import('SRV:report.dm.PwReportDm');
+ 
 
 /**
  * 前台管理面板 - 举报管理.
@@ -51,7 +51,7 @@ class ReportController extends BaseManageController
         $this->setOutput(array('ifcheck' => $ifcheck, 'type' => $type), 'args');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:manage.report.run.title'), '', '');

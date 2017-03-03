@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoPoll');
+ 
 
 /**
  * 帖子发布-投票帖 相关服务

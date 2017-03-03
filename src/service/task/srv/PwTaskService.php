@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:task.dm.PwTaskDmFactory');
+ 
 /**
  * 任务服务
  *
@@ -45,7 +45,7 @@ class PwTaskService
         if (!$isSend) {
             return false;
         }
-        Wind::import('SRV:task.srv.PwTaskApply');
+         
         $userTask = new PwTaskApply($behavior['uid']);
         $userTask->autoApplies($this->getAutoApplicableTaskList($behavior['uid'], 1));
 
@@ -273,7 +273,7 @@ class PwTaskService
     public function getPreTasksByTaskId($taskid)
     {
         $tasks = $this->_taskDs()->getAll();
-        Wind::import('SRV:task.srv.helper.PwTaskTreeHelper');
+         
         $taskTree = PwTaskTreeHelper::getTaskTree($tasks);
         unset($tasks[$taskid]);
         if ($taskid) {

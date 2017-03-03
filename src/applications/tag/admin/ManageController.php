@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:tag.dm.PwTagDm');
+ 
 
 /**
  * 话题后台.
@@ -539,7 +539,7 @@ class ManageController extends AdminBaseController
      */
     private function uploadLogo()
     {
-        Wind::import('SRV:upload.action.PwTagUpload');
+         
 
         $tagUpload = new PwTagUpload(156, 156);
         $upload = new PwUpload($tagUpload);

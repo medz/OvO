@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwPostsToppedDm');
+ 
+ 
 
 /**
  * 帖子管理操作-回复置顶.
@@ -44,8 +44,8 @@ class PwThreadManageDoToppedReply extends PwThreadManageDo
 
     public function run()
     {
-        Wind::import('SRV:forum.dm.PwReplyDm');
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
+         
         $replyDm = new PwReplyDm($this->pid);
         $replyDm->setTopped($this->topped);
         $this->_getThreadDs()->updatePost($replyDm);

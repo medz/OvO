@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:user.srv.bantype.PwUserBanTypeInterface');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 /**
  * 禁止签名类型.
  *

@@ -15,7 +15,7 @@ class PwThreadDisplayDoPollInjector extends PwBaseHookInjector
 {
     public function run()
     {
-        Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoPoll');
+         
 
         return new PwThreadDisplayDoPoll($this->bp->tid, $this->bp->user);
     }

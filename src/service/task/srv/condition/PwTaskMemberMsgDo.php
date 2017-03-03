@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:message.srv.do.PwMessageDoBase');
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
+ 
 
 /**
  * 用户发消息的任务扩展.

@@ -8,7 +8,7 @@
  *
  * @version $Id: PwNoticeMedal.php 17946 2012-09-10 09:54:00Z jinlong.panjl $
  */
-Wind::import('SRV:message.srv.notice.PwNoticeAction');
+ 
 
 class PwNoticeMedal extends PwNoticeAction
 {
@@ -91,7 +91,7 @@ class PwNoticeMedal extends PwNoticeAction
         if (!$notice) {
             return false;
         }
-        Wind::import('SRV:message.dm.PwMessageNoticesDm');
+         
         $dm = new PwMessageNoticesDm();
         $dm->setIgnore($ignore);
         $this->_getNoticesDs()->batchUpdateNoticeByUidAndType($notice['uid'], $notice['typeid'], $dm);

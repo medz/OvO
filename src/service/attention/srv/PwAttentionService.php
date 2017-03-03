@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
 
 /**
  * 用户关注服务

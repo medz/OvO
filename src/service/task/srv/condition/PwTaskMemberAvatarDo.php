@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
 /**
  * 上传头像的扩展.
  *

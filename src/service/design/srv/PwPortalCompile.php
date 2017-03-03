@@ -256,7 +256,7 @@ class PwPortalCompile
     protected function updateTitle($section)
     {
         if (preg_match_all('/\<pw-title\s*id=\"(\w+)\"\s*[>|\/>](.+)<\/pw-title>/isU', $section, $matches)) {
-            Wind::import('SRV:design.dm.PwDesignStructureDm');
+             
             $ds = Wekit::load('design.PwDesignStructure');
             foreach ($matches[1] as $k => $v) {
                 $dm = new PwDesignStructureDm();
@@ -272,7 +272,7 @@ class PwPortalCompile
     protected function updateList($section)
     {
         if (preg_match_all('/\<pw-list\s*id=\"(\d+)\"\s*[>|\/>](.+)<\/pw-list>/isU', $section, $matches)) {
-            Wind::import('SRV:design.dm.PwDesignModuleDm');
+             
             $ds = Wekit::load('design.PwDesignModule');
             foreach ($matches[1] as $k => $v) {
                 //$limit = $this->compileFor($matches[2][$k]);
@@ -288,7 +288,7 @@ class PwPortalCompile
 
     protected function compileList($section, $segment = '')
     {
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $ds = Wekit::load('design.PwDesignModule');
         if (preg_match_all('/\<pw-list[>|\/>](.+)<\/pw-list>/isU', $section, $matches)) {
             foreach ($matches[1] as $k => $v) {
@@ -319,7 +319,7 @@ class PwPortalCompile
 
     protected function compileTitle($section, $segment = '')
     {
-        Wind::import('SRV:design.dm.PwDesignStructureDm');
+         
         $ds = Wekit::load('design.PwDesignStructure');
         if (preg_match_all('/\<pw-title[>|\/>](.+)<\/pw-title>/isU', $section, $matches)) {
             foreach ($matches[1] as $k => $v) {

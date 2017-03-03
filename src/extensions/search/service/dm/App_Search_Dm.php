@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
 /**
  * 搜索记录DM.
  */

@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:user.srv.PwFindPassword');
+ 
 Wind::import('APPS:u.service.helper.PwUserHelper');
-Wind::import('SRV:user.validator.PwUserValidator');
+ 
 /**
  * 重置密码流程
  * 重置成功一次  才算找回密码次数完成一次，才会更新验证码状态及找回密码次数.
@@ -313,7 +313,7 @@ class FindPwdController extends PwBaseController
         if (!$this->isMobileOpen) {
             return new PwError('USER:mobile.findPwd.open.error');
         }
-        Wind::import('SRV:user.validator.PwUserValidator');
+         
         if (!PwUserValidator::isMobileValid($mobile)) {
             return new PwError('USER:error.mobile');
         }

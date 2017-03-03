@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.register.do.PwRegisterDoBase');
+ 
 
 /**
  * 注册 - 手机.

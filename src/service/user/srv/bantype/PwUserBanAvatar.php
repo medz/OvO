@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:user.srv.bantype.PwUserBanTypeInterface');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 
 /**
  * 用户禁止类型-禁止头像 扩展.

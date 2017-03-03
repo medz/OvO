@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:weibo.dm.PwWeiboCommnetDm');
+ 
 
 /**
  * 新鲜事回复.
@@ -56,7 +56,7 @@ class PwFreshReplyByWeibo
             return $result;
         }
         if ($this->isTransmit) {
-            Wind::import('SRV:weibo.srv.PwSendWeibo');
+             
             $dm2 = new PwWeiboDm();
             $dm2->setContent($this->dm->getField('content'));
             $dm2->setSrcId($this->dm->getField('weibo_id'));

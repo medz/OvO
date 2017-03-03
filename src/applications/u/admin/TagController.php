@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:usertag.so.PwUserTagSo');
+ 
 
 /**
  * 用户个人标签.

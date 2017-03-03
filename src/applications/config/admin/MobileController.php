@@ -66,7 +66,7 @@ class MobileController extends AdminBaseController
      */
     public function run()
     {
-        Wind::import('SRV:mobile.srv.PwMobileConfigService');
+         
         $service = new PwMobileConfigService('PwMobileService_getPlats');
         $plats = $service->getPlats();
 
@@ -89,7 +89,7 @@ class MobileController extends AdminBaseController
             $this->showError('USER:mobile.plat.choose.empty');
         }
         /* @var $attService PwAttacmentService */
-        Wind::import('SRV:mobile.srv.PwMobileConfigService');
+         
         $service = new PwMobileConfigService('PwMobileService_getPlats');
         $_r = $service->setPlatComponents($mobile_plat);
 

@@ -1,10 +1,10 @@
 <?php
 
-Wind::import('SRV:user.PwUser');
-Wind::import('SRV:user.dm.PwUserInfoDm');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
+ 
+ 
 
-Wind::import('SRV:user.validator.PwUserValidator');
+ 
 
 /**
  * 用户登录服务
@@ -47,7 +47,7 @@ class PwLoginService extends PwBaseHookService
     public function login($username, $password, $ip, $safeQuestion = null, $safeAnswer = '')
     {
         $checkQ = !is_null($safeQuestion) ? true : false;
-        Wind::import('SRV:user.srv.PwTryPwdBp');
+         
         $pwdBp = new PwTryPwdBp();
         $info = $pwdBp->auth($username, $password, $ip, $checkQ, $safeQuestion, $safeAnswer);
         if ($info instanceof PwError) {
@@ -105,7 +105,7 @@ class PwLoginService extends PwBaseHookService
     public function setLoginCookie(PwUserBo $userBo, $ip, $rememberme = 0)
     {
         //登录成功，将用户该次登录的尝试密码记录清空
-        Wind::import('SRV:user.srv.PwTryPwdBp');
+         
         $pwdBp = new PwTryPwdBp();
         $pwdBp->restoreTryRecord($userBo->uid, '');
 

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
+ 
 
 /**
  * 执行登录之后用户.

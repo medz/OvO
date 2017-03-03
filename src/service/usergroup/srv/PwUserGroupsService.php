@@ -108,7 +108,7 @@ class PwUserGroupsService
         $credit = $this->calculateCredit($strategy, $user);
         $memberid = $this->calculateLevel($credit);
         if ($memberid != $user['memberid']) {
-            Wind::import('SRV:user.dm.PwUserInfoDm');
+             
             $dm = new PwUserInfoDm($uid);
             $dm->setMemberid($memberid);
 

@@ -37,7 +37,7 @@ class SourceController extends PwBaseController
         }
         $source = $this->_getLikeSourceDs()->getSourceByAppAndFromid($fromApp, $fromid);
         $newId = isset($source['sid']) ? (int) $source['sid'] : 0;
-        Wind::import('SRV:like.dm.PwLikeSourceDm');
+         
         if ($newId < 1) {
             $dm = new PwLikeSourceDm();
             $dm->setSubject($subject)

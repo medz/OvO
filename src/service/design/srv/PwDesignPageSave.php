@@ -18,7 +18,7 @@ class PwDesignPageSave
      */
     public function getNewPageId($pageid, $uniqueid = 0, $isunique = false)
     {
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $ds = $this->_getPageDs();
         $pageInfo = $ds->getPage($pageid);
         if (!$pageInfo) {

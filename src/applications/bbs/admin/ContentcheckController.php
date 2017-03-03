@@ -24,7 +24,7 @@ class ContentcheckController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $so = new PwThreadSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
 
@@ -77,8 +77,8 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($tid) && $tid = array($tid);
 
-        Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
-        Wind::import('SRV:forum.srv.operation.PwPassTopic');
+         
+         
 
         $service = new PwPassTopic(new PwFetchTopicByTid($tid));
         $service->execute();
@@ -94,8 +94,8 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($tid) && $tid = array($tid);
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+         
+         
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
 
@@ -111,7 +111,7 @@ class ContentcheckController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:forum.vo.PwPostSo');
+         
         $so = new PwPostSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
         $args = array();
@@ -164,8 +164,8 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($pid) && $pid = array($pid);
 
-        Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
-        Wind::import('SRV:forum.srv.operation.PwPassReply');
+         
+         
 
         $service = new PwPassReply(new PwFetchReplyByPid($pid));
         $service->execute();
@@ -181,8 +181,8 @@ class ContentcheckController extends AdminBaseController
         }
         !is_array($pid) && $pid = array($pid);
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+         
+         
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();
 

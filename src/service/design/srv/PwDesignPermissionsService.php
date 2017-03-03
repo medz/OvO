@@ -17,7 +17,7 @@ class PwDesignPermissionsService
      */
     public function getPermissionsForUserGroup($uid)
     {
-        Wind::import('SRV:user.bo.PwUserBo');
+         
         $userBo = new PwUserBo($uid);
         $designPermission = $userBo->getPermission('design_allow_manage.push');
 
@@ -37,7 +37,7 @@ class PwDesignPermissionsService
             return -1;
         }
         $ds = Wekit::load('design.PwDesignPermissions');
-        Wind::import('SRV:design.srv.vo.PwDesignPermissionsSo');
+         
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_PAGE)
             ->setDesignId($pageid)
@@ -61,7 +61,7 @@ class PwDesignPermissionsService
     public function getPermissionsForModule($uid, $moduleid, $pageid = 0)
     {
         $ds = Wekit::load('design.PwDesignPermissions');
-        Wind::import('SRV:design.srv.vo.PwDesignPermissionsSo');
+         
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_MODULE)
             ->setDesignId($moduleid)
@@ -91,7 +91,7 @@ class PwDesignPermissionsService
         if ($userGroupPermissions > 0) {
             return $pagelist;
         }
-        /*Wind::import('SRV:design.srv.vo.PwDesignPermissionsSo');
+        /* 
         $vo = new PwDesignPermissionsSo();
         $vo->setDesignType(PwDesignPermissions::TYPE_PAGE)
             ->setUid($uid);

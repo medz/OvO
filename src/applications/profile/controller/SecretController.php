@@ -32,7 +32,7 @@ class SecretController extends BaseProfileController
         $this->setTemplate('profile_secret');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.secret.run.title'), '', '');
@@ -52,7 +52,7 @@ class SecretController extends BaseProfileController
         foreach ($array as $value) {
             $_array[$value] = (int) $this->getInput($value, 'post');
         }
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $dm = new PwUserInfoDm($this->loginUser->uid);
         $dm->setSecret($_array);
         $resource = Wekit::load('user.PwUser')->editUser($dm, PwUser::FETCH_INFO);

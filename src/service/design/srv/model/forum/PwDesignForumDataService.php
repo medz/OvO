@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
  * <note>
@@ -39,7 +39,7 @@ class PwDesignForumDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-        Wind::import('SRV:forum.vo.PwForumSo');
+         
         $so = new PwForumSo();
         //if ($field['fids']) {//if (count($field['fids']) > $limit) $field['fids'] = array_slice($field['fids'], 0, $limit);
 

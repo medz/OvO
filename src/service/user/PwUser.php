@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
 
 /**
  * 用户操作数据接口.

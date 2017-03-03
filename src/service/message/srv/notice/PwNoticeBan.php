@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:message.srv.notice.PwNoticeAction');
+ 
 /**
  * 帐号管理--禁止/解禁消息扩展.
  *

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
+ 
 
 /**
  * Enter description here ...

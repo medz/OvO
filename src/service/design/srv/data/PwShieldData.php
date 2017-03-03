@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.data.PwModuleData');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -59,7 +59,7 @@ class PwShieldData extends PwModuleData
     {
         $usedDataids = array();
         $ds = Wekit::load('design.PwDesignData');
-        Wind::import('SRV:design.dm.PwDesignDataDm');
+         
         $time = Pw::getTime();
         list($start, $end, $refresh) = $this->bo->refreshTime($time);
         $orderid = $ds->getMaxOrder($this->bo->moduleid);

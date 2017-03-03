@@ -59,7 +59,7 @@ class ManageController extends AdminBaseController
 
         $groups = $this->_getUserGroupsDs()->getAllGroups();
 
-        Wind::import('SRV:usergroup.dm.PwUserPermissionDm');
+         
 
         foreach ($groups as $value) {
             $dm = new PwUserPermissionDm($value['gid']);
@@ -114,7 +114,7 @@ class ManageController extends AdminBaseController
             }
         }
 
-        Wind::import('SRV:forum.dm.PwForumDm');
+         
         if ($openForum) {
             foreach ($openForum as $value) {
                 $_forum = $this->_getForumDs()->getForum($value, 4);

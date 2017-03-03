@@ -17,19 +17,19 @@ class PwPayService
     {
         switch ($paymethod) {
             case 2:
-                Wind::import('SRV:pay.srv.paymethod.PwTenpay');
+                 
 
                 return new PwTenpay();
             case 3:
-                Wind::import('SRV:pay.srv.paymethod.PwPaypal');
+                 
 
                 return new PwPaypal();
             case 4:
-                Wind::import('SRV:pay.srv.paymethod.PwBill');
+                 
 
                 return new PwBill();
             default:
-                Wind::import('SRV:pay.srv.paymethod.PwAlipay');
+                 
 
                 return new PwAlipay();
         }

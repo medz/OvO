@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:hook.dm.PwHookDm');
+ 
 /**
  * hook管理.
  *
@@ -131,7 +131,7 @@ class ManageController extends AdminBaseController
     public function searchAction()
     {
         list($name, $app_name) = $this->getInput(array('name', 'app_name'));
-        Wind::import('SRV:hook.dm.PwHookSo');
+         
         $so = new PwHookSo();
         $so->setAppName($app_name)->setName($name);
         $page = intval($this->getInput('page'));

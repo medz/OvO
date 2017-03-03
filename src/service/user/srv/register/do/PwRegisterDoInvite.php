@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:user.srv.register.do.PwRegisterDoBase');
-Wind::import('SRV:credit.bo.PwCreditBo');
-Wind::import('SRV:invite.dm.PwInviteCodeDm');
+ 
+ 
+ 
 /**
  * 用户注册-邀请方式注册的服务
  *

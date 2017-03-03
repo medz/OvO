@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:recycle.dm.PwReplyRecycleDm');
+ 
 
 /**
  * 帖子删除扩展服务接口--虚拟删除到回收站.
@@ -36,8 +36,8 @@ class PwDeleteReplyDoVirtualDelete extends iPwGleanDoHookProcess
 
     public function run($ids)
     {
-        Wind::import('SRV:forum.dm.PwReplyDm');
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
+         
         $service = Wekit::load('forum.PwThread');
         $dm = new PwReplyDm();
         $dm->setDisabled(2)->setTid(0);

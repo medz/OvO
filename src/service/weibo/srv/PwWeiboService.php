@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:weibo.PwWeibo');
+ 
 
 /**
  * 微博公共服务
@@ -27,7 +27,7 @@ class PwWeiboService
         if (($result = $this->_getDs()->addComment($dm)) instanceof PwError) {
             return $result;
         }
-        Wind::import('SRV:weibo.dm.PwWeiboDm');
+         
         $weibo_id = $dm->getField('weibo_id');
         $dm1 = new PwWeiboDm($weibo_id);
         $dm1->addComments(1);

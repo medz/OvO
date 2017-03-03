@@ -21,7 +21,7 @@ class PwLoginDoInviteFriendInjector extends PwBaseHookInjector
         $loginInvite = null;
         $invite = $this->getInput('invite');
         if (2 != Wekit::C('register', 'type') && $invite) {
-            Wind::import('SRV:user.srv.login.do.PwLoginDoInviteFriend');
+             
             $loginInvite = new PwLoginDoInviteFriend($this->bp, $invite);
         }
 

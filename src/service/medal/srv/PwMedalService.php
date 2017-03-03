@@ -98,7 +98,7 @@ class PwMedalService
         $medal = $this->_getMedalDs()->getMedalInfo($log['medal_id']);
         $time = Pw::getTime();
         $expired = ($medal['expired_days'] > 0) ? ($time + $medal['expired_days'] * 86400) : 0;
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $dm = new PwMedalLogDm($logId);
         $dm->setAwardStatus(4)
             ->setExpiredTime($expired);
@@ -124,7 +124,7 @@ class PwMedalService
             return false;
         }
         $userLog = $this->_getMedalLogDs()->getInfoByUidMedalId($uid, $medalId);
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $time = Pw::getTime();
         if ($userLog && $userLog['award_status'] < 4) {
             $dm = new PwMedalLogDm($userLog['log_id']);
@@ -237,13 +237,13 @@ class PwMedalService
         $expired = array_shift($expireds);
 
         /*user_data冗余*/
-        $dm = Wind::import('SRV:user.dm.PwUserInfoDm');
+        $dm =  
         $dm = new PwUserInfoDm($uid);
         $dm->setMedalIds($medalids);
         Wekit::load('user.PwUser')->editUser($dm, PwUser::FETCH_DATA);
         /*end*/
 
-        $dm = Wind::import('SRV:medal.dm.PwMedalUserDm');
+        $dm =  
         $dm = new PwMedalUserDm($uid);
         $dm->setMedals($medalids)
             ->setCounts(count($medalids))

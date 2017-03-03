@@ -19,7 +19,7 @@ class PwPostDoTagInjector extends PwBaseHookInjector
         if (!is_array($tagNames) || !count($tagNames)) {
             return;
         }
-        Wind::import('SRV:forum.srv.post.do.PwPostDoTag');
+         
 
         return new PwPostDoTag($this->bp, $tagNames);
     }
@@ -27,7 +27,7 @@ class PwPostDoTagInjector extends PwBaseHookInjector
     public function domodify()
     {
         $tagNames = (array) $this->getInput('tagnames', 'post');
-        Wind::import('SRV:forum.srv.post.do.PwPostDoTag');
+         
 
         return new PwPostDoTag($this->bp, $tagNames);
     }

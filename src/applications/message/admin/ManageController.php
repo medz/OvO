@@ -98,7 +98,7 @@ class ManageController extends AdminBaseController
         switch ($type) {
             case 1:  // 根据用户组
                 list($user_groups, $grouptype) = $this->getInput(array('user_groups', 'grouptype'));
-                Wind::import('SRV:user.vo.PwUserSo');
+                 
                 $vo = new PwUserSo();
                 $searchDs = Wekit::load('SRV:user.PwUserSearch');
                 if (!$user_groups) {

@@ -81,7 +81,7 @@ class MylikeController extends PwBaseController
         $this->setOutput($json, 'likeJson');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:like.mylike.run.title'), '', '');
@@ -91,7 +91,7 @@ class MylikeController extends PwBaseController
     public function taAction()
     {
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:like.mylike.ta.title'), '', '');
@@ -291,7 +291,7 @@ class MylikeController extends PwBaseController
         if (!$allow) {
             $this->showError('BBS:like.fail');
         }
-        Wind::import('SRV:like.dm.PwLikeTagDm');
+         
         $dm = new PwLikeTagDm($tagid);
         $dm->setTagname($tagname);
         $resource = $this->_getLikeTagService()->updateInfo($dm);

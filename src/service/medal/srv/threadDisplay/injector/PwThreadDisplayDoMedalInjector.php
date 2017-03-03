@@ -15,7 +15,7 @@ class PwThreadDisplayDoMedalInjector extends PwBaseHookInjector
 {
     public function run()
     {
-        Wind::import('SRV:medal.srv.threadDisplay.do.PwThreadDisplayDoMedal');
+         
 
         return new PwThreadDisplayDoMedal();
     }

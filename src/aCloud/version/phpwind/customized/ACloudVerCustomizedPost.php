@@ -158,7 +158,7 @@ class ACloudVerCustomizedPost extends ACloudVerCustomizedBase
      */
     public function getLatestPost($tid, $page, $offset = 20, $limit = 0)
     {
-        Wind::import('SRV:forum.bo.PwThreadBo');
+         
         $thread = new PwThreadBo($tid);
         if (!$thread) {
             $this->buildResponse(-1, 'THREAD_IS_NOT_EXISTS');
@@ -192,8 +192,8 @@ class ACloudVerCustomizedPost extends ACloudVerCustomizedBase
             $this->buildResponse(USER_NOT_LOGIN, '用户没有登录');
         }
 
-        Wind::import('SRV:forum.srv.PwPost');
-        Wind::import('SRV:forum.srv.post.PwReplyPost');
+         
+         
         $postAction = new PwReplyPost($tid);
         $pwPost = new PwPost($postAction);
         $info = $pwPost->getInfo();

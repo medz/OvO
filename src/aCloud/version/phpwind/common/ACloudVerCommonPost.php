@@ -94,8 +94,6 @@ class ACloudVerCommonPost extends ACloudVerCommonBase
         if (!$userBo->isExists()) {
             return $this->buildResponse(THREAD_USER_NOT_EXIST);
         }
-        Wind::import('SRV:forum.srv.PwPost');
-        Wind::import('SRV:forum.srv.post.PwReplyPost');
         $postAction = new PwReplyPost($tid);
         $pwPost = new PwPost($postAction);
         $info = $pwPost->getInfo();

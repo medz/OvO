@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
 /**
  * 喜欢帖子的扩展.
  *

@@ -8,7 +8,7 @@
  *
  * @version $Id$
  */
-Wind::import('SRV:cron.srv.base.AbstractCronBase');
+ 
 
 class PwCronDoMedal extends AbstractCronBase
 {

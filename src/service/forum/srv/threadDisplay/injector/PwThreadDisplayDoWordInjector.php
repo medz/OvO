@@ -15,7 +15,7 @@ class PwThreadDisplayDoWordInjector extends PwBaseHookInjector
 {
     public function run()
     {
-        Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoWord');
+         
 
         return new PwThreadDisplayDoWord();
     }

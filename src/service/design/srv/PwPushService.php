@@ -35,7 +35,7 @@ class PwPushService
     public function addPushData(PwDesignPushDm $dm)
     {
         $data = $dm->getData();
-        Wind::import('SRV:design.srv.data.PwModuleData');
+         
         $srv = new PwModuleData($data['module_id']);
         $_data = $srv->buildDataByIds($data['push_from_id']);
         $_data = array_shift($_data);
@@ -54,8 +54,8 @@ class PwPushService
      */
     public function pushToData($pushid)
     {
-        /*Wind::import('SRV:design.bo.PwDesignModuleBo');
-        Wind::import('SRV:design.dm.PwDesignDataDm');
+        /* 
+         
         $pushDs = Wekit::load('design.PwDesignPush');
         $ds = Wekit::load('design.PwDesignData');
         $push = $pushDs->getPush($pushid);
@@ -112,13 +112,13 @@ class PwPushService
         }
 
 
-        Wind::import('SRV:design.srv.data.PwModuleData');
+         
         $srv = new PwModuleData($push['module_id']);
         $srv->reviseOrder();
         */
         $pushDs = Wekit::load('design.PwDesignPush');
         $push = $pushDs->getPush($pushid);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         $srv = new PwAutoData($push['module_id']);
         $srv->addAutoData();
 

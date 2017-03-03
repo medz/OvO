@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.PwUserBan');
+ 
 
 /**
  * 用户Ban的BP.

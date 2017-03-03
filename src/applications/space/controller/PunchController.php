@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
 
 /**
  * 每日打卡
@@ -310,7 +310,7 @@ class PunchController extends PwBaseController
         );
 
         // 更新用户data表信息
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $dm = new PwUserInfoDm($userInfo['uid']);
         $dm->setPunch($punchData);
         $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA);

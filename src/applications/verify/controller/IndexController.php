@@ -34,7 +34,7 @@ class IndexController extends PwBaseController
         $rand = $this->getInput('rand', 'get');
         $config = Wekit::C('verify');
         $config['type'] = $config['type'] ? $config['type'] : 'image';
-        Wind::import('SRV:verify.srv.PwVerifyService');
+         
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         if ($rand) {
             $srv->getVerify($config['type']);

@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:user.validator.PwUserValidator');
-Wind::import('SRV:user.PwUserBan');
+ 
+ 
 Wind::import('APPS:profile.service.PwUserProfileExtends');
 
 /**

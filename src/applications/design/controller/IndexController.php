@@ -27,7 +27,7 @@ class IndexController extends PwBaseController
             if ($permissions < 1) $this->showError("page.status.404");
         }
 
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo->setCustomSeo($portal['title'],$portal['keywords'],$portal['description']);
 
         $this->setOutput($portal, 'portal');

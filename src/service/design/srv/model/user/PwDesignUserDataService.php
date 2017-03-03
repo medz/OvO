@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
-Wind::import('SRV:education.srv.helper.PwEducationHelper');
+ 
+ 
 /**
  * 用户设置
  * <note>
@@ -78,7 +78,7 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     protected function getData($field, $order, $limit, $offset)
     {
-        Wind::import('SRV:user.vo.PwUserSo');
+         
         $so = new PwUserSo();
         $field['uids'] && $so->setUid($field['uids']);
         $field['gid'] != '-1' && $so->setGid($field['gid']);
@@ -125,7 +125,7 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     protected function fetchData($ids)
     {
-        Wind::import('SRV:user.vo.PwUserSo');
+         
         $so = new PwUserSo();
         $so->setUid($ids);
         $list = Wekit::load('user.PwUserSearch')->searchUserAllData($so);

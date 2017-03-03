@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
 
 /**
  * 单个帖子的业务模型.

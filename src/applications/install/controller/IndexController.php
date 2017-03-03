@@ -379,8 +379,8 @@ class IndexController extends WindController
         Wekit::load('SRV:design.srv.PwDesignDefaultService')->reviseDefaultData();
 
         //演示数据导入
-        Wind::import('SRV:forum.srv.PwPost');
-        Wind::import('SRV:forum.srv.post.PwTopicPost');
+         
+         
         $pwPost = new PwPost(new PwTopicPost(2, new PwUserBo($uid)));
         $threads = $this->_getDemoThreads();
         foreach ($threads as $thread) {
@@ -688,7 +688,7 @@ class IndexController extends WindController
     private function _writeFounder($manager, $manager_pwd, $manager_email)
     {
         Wekit::C()->reload('windid');
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $data = array($manager => md5($manager_pwd));
         WindFile::savePhpData($this->_getFounderFile(), $data);
 
@@ -726,7 +726,7 @@ class IndexController extends WindController
 
         $userDm->setUid($uid);
 
-        Wind::import('SRV:user.PwUser');
+         
         $daoMap = array();
         $daoMap[PwUser::FETCH_MAIN] = 'user.dao.PwUserDao';
         $daoMap[PwUser::FETCH_DATA] = 'user.dao.PwUserDataDao';
@@ -766,7 +766,7 @@ class IndexController extends WindController
         //Wekit::load('user.srv.PwUserService')->restoreDefualtAvatar(0);//游客的默认头像需要设置
 
         //站点统计信息
-        Wind::import('SRV:site.dm.PwBbsinfoDm');
+         
         $dm = new PwBbsinfoDm();
         $dm->setNewmember($manager)->addTotalmember(1);
         Wekit::load('site.PwBbsinfo')->updateInfo($dm);

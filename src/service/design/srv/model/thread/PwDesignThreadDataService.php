@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>
  * <note>
@@ -93,7 +93,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $so = new PwThreadSo();
         $time = Pw::getTime();
         $so->setDisabled(0);

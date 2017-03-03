@@ -51,7 +51,7 @@ class EmotionController extends AdminBaseController
         if (!$catids) {
             $this->showError('ADMIN:fail');
         }
-        Wind::import('SRV:emotion.dm.PwEmotionCategoryDm');
+         
         foreach ($catids as $k => $v) {
             if (!$catnames[$v]) {
                 $this->showError('ADMIN:catname.empty');
@@ -70,7 +70,7 @@ class EmotionController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        Wind::import('SRV:emotion.dm.PwEmotionCategoryDm');
+         
         $dm = new PwEmotionCategoryDm();
         $dm->setCategoryMame($this->getInput('catname', 'post'))
             ->setEmotionFolder($this->getInput('folder', 'post'))
@@ -134,7 +134,7 @@ class EmotionController extends AdminBaseController
         if (!$folder = $category['emotion_folder']) {
             $this->showError('ADMIN:fail');
         }
-        Wind::import('SRV:emotion.dm.PwEmotionDm');
+         
         foreach ($emotionIds as $v => $vv) {
             if (!$icons[$v]) {
                 continue;
@@ -157,7 +157,7 @@ class EmotionController extends AdminBaseController
         $emotionNames = $this->getInput('emotionname', 'post');
         $orderIds = $this->getInput('orderid', 'post');
         $isuseds = $this->getInput('isused', 'post');
-        Wind::import('SRV:emotion.dm.PwEmotionDm');
+         
         foreach ($emotionIds as $k => $v) {
             $dm = new PwEmotionDm($emotionIds[$k]);
             $dm->setEmotionName($emotionNames[$k])
@@ -176,7 +176,7 @@ class EmotionController extends AdminBaseController
             $this->showError('ADMIN:fail');
         }
         $used = $used > 0 ? 1 : 0;
-        Wind::import('SRV:emotion.dm.PwEmotionDm');
+         
         $dm = new PwEmotionDm($emotionId);
         $dm->setIsused($used);
         $resource = $this->_getEmotionDs()->updateEmotion($dm);

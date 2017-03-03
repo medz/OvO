@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:tag.dm.PwTagDm');
+ 
 /**
  * 话题业务
  *
@@ -92,7 +92,7 @@ class PwTagService
         $dmArray && $this->addTags($dmArray);
         $types = $this->_getTypeMap();
         $tags = $this->getTagByType($types[$typeId], $paramId);
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
         $dm = new PwTopicDm($paramId);
         $dm->setTags($this->_formatTags($tags));
         Wekit::load('forum.PwThread')->updateThread($dm, PwThread::FETCH_CONTENT);
@@ -112,7 +112,7 @@ class PwTagService
         if (!is_array($tagIds) || !count($tagIds)) {
             return false;
         }
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         $dm = new PwTagDm();
         $dm->setParent(0);
 
@@ -327,7 +327,7 @@ class PwTagService
         }
         $result = (int) $this->_getTagAttentionDs()->addAttention($uid, $tagId);
         // 更新话题表内容数
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         $dm = new PwTagDm($tagId);
         $dm->addAttentionCount($result);
 
@@ -346,7 +346,7 @@ class PwTagService
     {
         $result = (int) $this->_getTagAttentionDs()->deleteAttention($uid, $tagId);
         // 更新话题表内容数
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         $dm = new PwTagDm($tagId);
         $dm->addAttentionCount(-$result);
 
@@ -403,7 +403,7 @@ class PwTagService
             $this->_getTagDs()->updateTagRelationByTagId($tagId, $tag['tag_id']);
         }
 
-        Wind::import('SRV:tag.dm.PwTagDm');
+         
         $dm = new PwTagDm();
         $dm->setParent(0);
         $this->_getTagDs()->updateTags($childTagIds, $dm);
@@ -509,7 +509,7 @@ class PwTagService
             return null;
         }
         $className = 'PwTag'.ucfirst($typeName);
-        Wind::import('SRV:tag.srv.action.'.$className);
+         
 
         return new $className();
     }

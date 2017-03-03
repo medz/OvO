@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attention.srv.reply.weibo.PwWeiboDoBase');
+ 
 /**
  * 微博 - 敏感词.
  *

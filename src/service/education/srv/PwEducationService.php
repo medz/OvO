@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:education.srv.helper.PwEducationHelper');
+ 
 /**
  * @author xiaoxia.xu <xiaoxia.xuxx@aliyun-inc.com> 2010-11-2
  *

@@ -1,8 +1,8 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
-Wind::import('SRV:usergroup.srv.PwPermissionService');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 /**
  * 用户权限相关.
  *
@@ -57,7 +57,7 @@ class RightController extends BaseProfileController
         $this->setTemplate('profile_right');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.right.run.title'), '', '');

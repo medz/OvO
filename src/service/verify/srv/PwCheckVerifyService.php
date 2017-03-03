@@ -12,7 +12,7 @@ class PwCheckVerifyService
 {
     public function checkVerify($inputCode)
     {
-        Wind::import('SRV:verify.srv.PwVerifyService');
+         
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         $config = Wekit::C('verify');
 

@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
-Wind::import('SRV:user.validator.PwUserValidator');
+ 
 /**
  * 用户密码设置.
  *
@@ -26,7 +26,7 @@ class PasswordController extends BaseProfileController
         $this->setTemplate('profile_password');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.password.run.title'), '', '');
@@ -183,7 +183,7 @@ class PasswordController extends BaseProfileController
      */
     private function checkOldPwd($uid, $pwd)
     {
-        Wind::import('SRV:user.srv.PwTryPwdBp');
+         
         $userSrv = new PwTryPwdBp();
         if (($r = $userSrv->checkPassword($uid, $pwd, $this->getRequest()->getClientIp())) instanceof PwError) {
             $refer = '';

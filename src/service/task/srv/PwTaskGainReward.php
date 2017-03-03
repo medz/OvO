@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.dm.PwTaskUserDm');
-Wind::import('SRV:task.srv.PwTaskApply');
+ 
+ 
 /**
  * 获取奖励的BP.
  *

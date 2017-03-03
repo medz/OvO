@@ -21,7 +21,7 @@ class PwMedalFansDo
      */
     public function addFollow($uid, $touid)
     {
-        Wind::import('SRV:medal.srv.PwAutoAwardMedal');
+         
         $userBo = new PwUserBo($uid);
         $bp = new PwAutoAwardMedal($userBo);
         $bp->autoAwardMedal(8, isset($userBo->info['follows']) ? (int) $userBo->info['follows'] : 0);
@@ -43,7 +43,7 @@ class PwMedalFansDo
      */
     public function delFollow($uid, $touid)
     {
-        Wind::import('SRV:medal.srv.PwAutoRecoverMedal');
+         
 
         $userBo = new PwUserBo($uid);
         $bp = new PwAutoRecoverMedal($userBo);

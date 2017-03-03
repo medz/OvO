@@ -70,7 +70,7 @@ class PageController extends AdminBaseController
     public function doclearAction()
     {
         $pageid = (int) $this->getInput('id', 'post');
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
         if (!$pageInfo) {
@@ -108,7 +108,7 @@ class PageController extends AdminBaseController
         //bak
         $bakDs->deleteByPageId($pageid);
         if ($pageInfo['page_type'] == PwDesignPage::PORTAL) {
-            Wind::import('SRV:design.dm.PwDesignPortalDm');
+             
             $dm = new PwDesignPortalDm($pageInfo['page_unique']);
             $dm->setTemplate($tplPath);
             $this->_getPortalDs()->updatePortal($dm);

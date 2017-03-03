@@ -24,27 +24,27 @@ class PwTaskDmFactory
         $type = strtolower($condition).'-'.strtolower($child);
         switch ($type) {
             case 'member-msg':
-                Wind::import('SRV:task.dm.condition.PwTaskMemberMsgDm');
+                 
 
                 return new PwTaskMemberMsgDm();
             case 'member-fans':
-                Wind::import('SRV:task.dm.condition.PwTaskMemberFansDm');
+                 
 
                 return new PwTaskMemberFansDm();
             case 'bbs-postthread':
-                Wind::import('SRV:task.dm.condition.PwTaskBbsPostDm');
+                 
 
                 return new PwTaskBbsPostDm();
             case 'bbs-reply':
-                Wind::import('SRV:task.dm.condition.PwTaskBbsReplyDm');
+                 
 
                 return new PwTaskBbsReplyDm();
             case 'bbs-like':
-                Wind::import('SRV:task.dm.condition.PwTaskBbsLikeDm');
+                 
 
                 return new PwTaskBbsLikeDm();
             default:
-                Wind::import('SRV:task.dm.PwTaskDm');
+                 
 
                 return new PwTaskDm();
         }

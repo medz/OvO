@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.PwUser');
+ 
 /**
  * 帮助类.
  *

@@ -11,7 +11,7 @@
  *
  * @version $Id: PwNoticeThreadreply.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-Wind::import('SRV:message.srv.notice.PwNoticeAction');
+ 
 
 class PwNoticePostreply extends PwNoticeAction
 {
@@ -65,7 +65,7 @@ class PwNoticePostreply extends PwNoticeAction
         if (!$notice) {
             return false;
         }
-        Wind::import('SRV:forum.dm.PwReplyDm');
+         
         $dm = new PwReplyDm($notice['param']);
         $dm->setReplyNotice($ignore ? 0 : 1);
         $this->_getThreadDs()->updatePost($dm);

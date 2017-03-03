@@ -18,7 +18,7 @@ class VerifyController extends AdminBaseController
      */
     public function run()
     {
-        Wind::import('SRV:verify.srv.PwVerifyService');
+         
         $srv = new PwVerifyService('PwVerifyService_getVerifyType');
         $verifyType = $srv->getVerifyType();
 

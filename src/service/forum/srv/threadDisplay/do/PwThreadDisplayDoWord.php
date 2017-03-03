@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoBase');
+ 
 
 class PwThreadDisplayDoWord extends PwThreadDisplayDoBase
 {

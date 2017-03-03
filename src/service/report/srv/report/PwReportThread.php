@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:report.srv.report.PwReportAction');
+ 
 
 class PwReportThread extends PwReportAction
 {

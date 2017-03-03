@@ -27,7 +27,7 @@ class PwDeleteReplyDoToppedDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         Wekit::load('forum.PwPostsTopped')->batchDeleteTopped($this->record);
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
         $dm = new PwTopicDm(true);
         $dm->addReplyTopped(-1);
         Wekit::load('forum.PwThread')->batchUpdateThread($this->tids, $dm, PwThread::FETCH_MAIN);

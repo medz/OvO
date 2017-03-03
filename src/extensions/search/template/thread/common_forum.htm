@@ -1,7 +1,7 @@
 <!--#
 	if ($forumdb) {
 		if ($args['fid']) {
-			Wind::import('SRV:forum.bo.PwForumBo');
+			 
 			$pwforum = new PwForumBo($args['fid'], true);
 			if ($pwforum instanceof PwForumBo) {
 				$__currentCateId = $pwforum->getCateId();

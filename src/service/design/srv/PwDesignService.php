@@ -129,7 +129,7 @@ class PwDesignService
 
     public function getStandardSignkey($model)
     {
-        Wind::import('SRV:design.bo.PwDesignModelBo');
+         
         $bo = new PwDesignModelBo($model);
         $signKeys = $bo->getSignKeys();
         $standard = $bo->getStandardSign();

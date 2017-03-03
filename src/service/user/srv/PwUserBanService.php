@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:user.dm.PwUserBanInfoDm');
-Wind::import('SRV:user.PwUserBan');
+ 
+ 
 /**
  * 用户禁止服务
  * 用户行为禁止：

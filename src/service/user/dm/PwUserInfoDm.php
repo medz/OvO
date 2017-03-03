@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:user.validator.PwUserValidator');
-Wind::import('SRV:user.PwUser');
+ 
+ 
 
 /**
  * 用户数据dm操作.

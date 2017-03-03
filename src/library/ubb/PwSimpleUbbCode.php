@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
 
 /**
  * ubb转换.

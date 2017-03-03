@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:draft.dm.PwDraftDm');
+ 
 
 /**
  * 草稿箱.

@@ -20,7 +20,7 @@ class DesignController extends PwBaseController
     public function moduleAction()
     {
         $moduleId = (int) $this->getInput('moduleid', 'post');
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();
         if ($module['isused']) {
@@ -83,7 +83,7 @@ class DesignController extends PwBaseController
         }
 
         //对config里的tab进行过滤
-        Wind::import('SRV:design.bo.PwDesignModelBo');
+         
         $bo = new PwDesignModelBo($module['model_flag']);
         $modelInfo = $bo->getModel();
         if (is_array($modelInfo['tab'])) {
@@ -108,7 +108,7 @@ class DesignController extends PwBaseController
         $type = $this->getInput('type', 'post');
         Wekit::load('design.PwDesignPermissions');
         $permissions = $this->_getPermissionsService()->getPermissionsForPage($this->loginUser->uid, $pageid);
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
@@ -137,7 +137,7 @@ class DesignController extends PwBaseController
                 $this->showError($resource->getError());
             }
         } else {
-            Wind::import('SRV:design.dm.PwDesignPageDm');
+             
             $ds = $this->_getPageDs();
             $dm = new PwDesignPageDm($pageid);
             $dm->setDesignLock(0, 0);
@@ -161,7 +161,7 @@ class DesignController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
@@ -186,13 +186,13 @@ class DesignController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_PUSH) {
             $this->showError('DESIGN:permissions.fail');
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
         }
         $list = $this->_getModuleDs()->getByPageid($pageid);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($list as $id => $v) {
             $id = (int) $id;
             if ($id < 1) {
@@ -214,7 +214,7 @@ class DesignController extends PwBaseController
     public function doclearAction()
     {
         $pageid = (int) $this->getInput('pageid', 'post');
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
         if (!$pageInfo) {
@@ -224,7 +224,7 @@ class DesignController extends PwBaseController
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
@@ -261,7 +261,7 @@ class DesignController extends PwBaseController
         $tplPath = $pageBo->getTplPath();
         $this->_getDesignService()->clearTemplate($pageid, $tplPath);
         if ($pageInfo['page_type'] == PwDesignPage::PORTAL) {
-            Wind::import('SRV:design.dm.PwDesignPortalDm');
+             
             $dm = new PwDesignPortalDm($pageInfo['page_unique']);
             $dm->setTemplate($tplPath);
             $this->_getPortalDs()->updatePortal($dm);
@@ -299,7 +299,7 @@ class DesignController extends PwBaseController
         if ($permissions < PwDesignPermissions::NEED_CHECK) {
             $this->showError('DESIGN:permissions.fail');
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         if ($pageBo->getLock()) {
             $this->showError('DESIGN:page.edit.other.user');
@@ -308,7 +308,7 @@ class DesignController extends PwBaseController
         $srv = $this->_getRestoreService();
         $srv->doRestoreSnap($pageid);
         //编辑模式解锁
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($pageid);
         $dm->setDesignLock(0, 0);
         $this->_getPageDs()->updatePage($dm);
@@ -337,7 +337,7 @@ class DesignController extends PwBaseController
         if ($uid != $this->loginUser->uid) {
             $this->showError('operate.fail');
         }
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($pageid);
         $dm->setDesignLock($this->loginUser->uid, Pw::getTime());
         $this->_getPageDs()->updatePage($dm);

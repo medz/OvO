@@ -1,8 +1,8 @@
 <?php
 
 
-Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByUid');
-Wind::import('SRV:forum.srv.operation.PwDeleteReply');
+ 
+ 
 
 /**
  * 删除新鲜事.

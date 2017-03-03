@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('SRV:word.PwWord');
+ 
 /**
  * 词语过滤对外接口.
  *
@@ -185,7 +185,7 @@ class PwWordFilter
     {
         $algorithms = strtolower($this->_algorithms);
         $className = sprintf('PwFilter%s', ucfirst($algorithms));
-        Wind::import('SRV:word.srv.filter.'.$className);
+         
 
         return new $className($data);
     }

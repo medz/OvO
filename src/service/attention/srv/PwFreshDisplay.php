@@ -2,10 +2,10 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attention.PwFresh');
+ 
 
-Wind::import('SRV:weibo.PwWeibo');
-Wind::import('SRV:attention.srv.freshDisplay.PwFreshAttachDisplay');
+ 
+ 
 
 /**
  * 新鲜事列表.

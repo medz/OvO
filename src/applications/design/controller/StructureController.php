@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:design.bo.PwDesignStructureBo');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -18,13 +18,13 @@ class StructureController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        Wind::import('SRV:design.PwDesignPermissions');
+         
         $permissions = $this->_getPermissionsService()->getPermissionsForUserGroup($this->loginUser->uid);
         if ($permissions < PwDesignPermissions::IS_DESIGN) {
             $this->showError('DESIGN:permissions.fail');
         }
         $name = $this->getInput('name', 'post');
-        Wind::import('SRV:design.bo.PwDesignStructureBo');
+         
         $this->bo = new PwDesignStructureBo($name);
     }
 
@@ -145,7 +145,7 @@ class StructureController extends PwBaseController
             $styleSrv->setStyle($bg);
             list($dom, $data['background']) = $styleSrv->getCss();
         }
-        Wind::import('SRV:design.dm.PwDesignStructureDm');
+         
         $dm = new PwDesignStructureDm();
         $style = $this->bo->getStyle();
         $dm->setStructTitle($array)
@@ -177,7 +177,7 @@ class StructureController extends PwBaseController
         if (!$struct) {
             $this->showMessage('operate.fail');
         }
-        Wind::import('SRV:design.dm.PwDesignStructureDm');
+         
         $dm = new PwDesignStructureDm();
         $dm->setStructTitle($title)
             ->setStructname($this->bo->name);
@@ -186,11 +186,11 @@ class StructureController extends PwBaseController
             $this->showError($resource->getError());
         }
 
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
 
-        Wind::import('SRV:design.srv.PwPortalCompile');
+         
         $compile = new PwPortalCompile($pageBo);
         if ($pageInfo['page_type'] == PwDesignPage::PORTAL) {
             $compile->replaceTitle($this->bo->name, $title);
@@ -252,7 +252,7 @@ class StructureController extends PwBaseController
             unset($padding['bottom']);
         }
 
-        Wind::import('SRV:design.dm.PwDesignStructureDm');
+         
         $dm = new PwDesignStructureDm();
         $dm->setStructStyle($font, $link, $border, $margin, $padding, $background, $styleclass)
             ->setStructName($this->bo->name)

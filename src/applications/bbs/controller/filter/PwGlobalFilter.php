@@ -159,7 +159,7 @@ class PwGlobalFilter extends PwBaseFilter
         if (!$pk) {
             return false;
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $bo = new PwDesignPageBo();
         $pageid = $bo->getPageId($request['mca'], $pageName, $pk);
         $pageid && $this->forward->getWindView()->compileDir = 'DATA:compile.design.'.$pageid;

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:word.srv.filter.PwFilterAction');
+ 
 
 /**
  * 敏感词过滤算法.

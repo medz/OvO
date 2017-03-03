@@ -93,7 +93,7 @@ class PwWindidInform
 
     public function deleteUser($uid)
     {
-        Wind::import('SRV:user.srv.PwClearUserService');
+         
         $userSer = new PwClearUserService($uid);
         $clear = $userSer->getClearTypes();
         $std = PwWindidStd::getInstance('user');

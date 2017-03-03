@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy$>.
  *

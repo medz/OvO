@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
+ 
 
 /**
  * 帖子发布-投票帖 相关服务
@@ -76,7 +76,7 @@ class PwPostDoPoll extends PwPostDoBase
         $pollData = $this->poll['poll'];
         $optionData = $this->poll['option'];
 
-        Wind::import('SRV:poll.dm.PwPollDm');
+         
 
         $pollDm = new PwPollDm(); /* @var $pwPollDm PwPollDm */
         $pollDm->setIsViewResult($pollData['isviewresult']);
@@ -91,7 +91,7 @@ class PwPostDoPoll extends PwPostDoBase
 
         $newPollid = $this->_getPollDS()->addPoll($pollDm);
 
-        Wind::import('SRV:poll.dm.PwPollOptionDm');
+         
 
         foreach ($optionData as $key => $value) {
             if (!$value) {
@@ -103,7 +103,7 @@ class PwPostDoPoll extends PwPostDoBase
             $this->_getPollOptionDS()->add($dm);
         }
 
-        Wind::import('SRV:poll.dm.PwThreadPollDm');
+         
 
         $threadPollDm = new PwThreadPollDm(); /* @var $threadPollDm PwThreadPollDm */
         $threadPollDm->setTid($tid)->setPollid($newPollid)->setCreatedUserid($this->user->uid);
@@ -127,7 +127,7 @@ class PwPostDoPoll extends PwPostDoBase
 
         $pollData = $this->poll['poll'];
 
-        Wind::import('SRV:poll.dm.PwPollDm');
+         
 
         $pollDm = new PwPollDm($this->info['poll_id']); /* @var $pwPollDm PwPollDm */
         $pollDm->setIsViewResult($pollData['isviewresult']);
@@ -150,7 +150,7 @@ class PwPostDoPoll extends PwPostDoBase
         $optionInfo = $this->info['option'];
         $optionData = $this->poll['option'];
 
-        Wind::import('SRV:poll.dm.PwPollOptionDm');
+         
 
         $deleteIds = array();
         foreach (array_keys($optionInfo) as $_id) {
@@ -210,7 +210,7 @@ class PwPostDoPoll extends PwPostDoBase
             $flag = true;
         }
 
-        Wind::import('SRV:poll.dm.PwPollDm');
+         
         $dm = new PwPollDm($pollid);
         $dm->setIsIncludeImg($flag ? 1 : 0);
         $this->_getPollDs()->updatePoll($dm);
@@ -223,7 +223,7 @@ class PwPostDoPoll extends PwPostDoBase
      */
     public function uploadOptionImage()
     {
-        Wind::import('SRV:upload.action.PwPollUpload');
+         
 
         $bhv = new PwPollUpload($this->user);
 
@@ -334,7 +334,7 @@ class PwPostDoPoll extends PwPostDoBase
         static $_instance = null;
 
         if ($_instance == null) {
-            Wind::import('SRV:poll.bo.PwThreadPollBo');
+             
             $_instance = new PwThreadPollBo($this->tid);
         }
 

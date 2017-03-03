@@ -33,7 +33,7 @@ class PwUserMiscService
         if (!$add && !$del) {
             return;
         }
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $belongs = $this->getBelongs(array_merge($add, $del));
         foreach ($add as $uid) {
             $dm = new PwUserInfoDm($uid);

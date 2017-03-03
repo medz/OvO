@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖子管理操作-删除回复.
@@ -41,8 +41,8 @@ class PwThreadManageDoDeleteReply extends PwThreadManageDo
     public function run()
     {
         if ($this->pids) {
-            Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-            Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+             
+             
             $service1 = new PwDeleteReply(new PwFetchReplyByPid($this->pids), $this->srv->user);
             $service1->setRecycle(true)
                 ->setIsDeductCredit($this->isDeductCredit)
@@ -52,8 +52,8 @@ class PwThreadManageDoDeleteReply extends PwThreadManageDo
             Wekit::load('log.srv.PwLogService')->addThreadManageLog($this->srv->user, 'delete', $service1->data, $this->_reason, '', true);
         }
         if ($this->tids) {
-            Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+             
+             
             $service2 = new PwDeleteTopic(new PwFetchTopicByTid($this->tids), $this->srv->user);
             $service2->setRecycle(true)
                 ->setIsDeductCredit($this->isDeductCredit)

@@ -1,9 +1,9 @@
 <?php
 
-Wind::import('SRV:service.user.validator.PwUserValidator');
+ 
 
-Wind::import('SRV:credit.bo.PwCreditBo');
-Wind::import('SRV:user.PwUser');
+ 
+ 
 
 /**
  * 用户注册.
@@ -473,7 +473,7 @@ class PwRegisterService extends PwBaseHookService
 
     private function _recordIpLimit()
     {
-        Wind::import('SRV:user.srv.PwTryPwdBp');
+         
         $pwdBp = new PwTryPwdBp();
         $pwdBp->allowTryAgain($uid, Wind::getComponent('request')->getClientIp(), true);
     }

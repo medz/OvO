@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.logout.PwLogoutDoBase');
+ 
 
 /**
  * 用户退出  清除在线状态

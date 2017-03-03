@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:tag.srv.action.PwTagAction');
+ 
 
 class PwTagThreads extends PwTagAction
 {

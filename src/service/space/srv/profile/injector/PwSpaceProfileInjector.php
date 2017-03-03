@@ -15,14 +15,14 @@ class PwSpaceProfileInjector extends PwBaseHookInjector
 {
     public function extendWork()
     {
-        Wind::import('SRV:work.srv.profile.do.PwSpaceProfileDoWork');
+         
 
         return new PwSpaceProfileDoWork();
     }
 
     public function extendEducation()
     {
-        Wind::import('SRV:education.srv.profile.do.PwSpaceProfileDoEducation');
+         
 
         return new PwSpaceProfileDoEducation();
     }

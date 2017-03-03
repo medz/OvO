@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:poll.PwPoll');
+ 
 
 /**
  * 用户投票基础DS服务

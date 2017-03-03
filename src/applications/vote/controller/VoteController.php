@@ -98,12 +98,12 @@ class VoteController extends PwBaseController
     {
         switch ($appType) {
             case '0':
-                Wind::import('SRV:poll.bo.PwThreadPollBo');
+                 
                 $bo = new PwThreadPollBo($typeid);
                 break;
 
             default:
-                Wind::import('SRV:poll.bo.PwThreadPollBo');
+                 
                 $bo = new PwThreadPollBo($typeid);
                 break;
         }

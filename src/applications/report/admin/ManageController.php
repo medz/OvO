@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:report.dm.PwReportDm');
+ 
 
 /**
  * 举报管理.

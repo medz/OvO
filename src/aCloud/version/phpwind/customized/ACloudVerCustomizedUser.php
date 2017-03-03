@@ -71,7 +71,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         if ($userBo->uid != $uid) {
             return $this->buildResponse(USER_NOT_LOGIN, '用户未登录');
         }
-        Wind::import('SRV:upload.action.PwAvatarUpload');
+         
 
         $bhv = new PwAvatarUpload($userBo);
 
@@ -215,7 +215,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         if (!$password || !$email || WindValidator::isEmail($email) !== true) {
             return $this->buildResponse(USER_INVALID_PARAMS, '参数错误');
         }
-        Wind::import('SRV:user.srv.PwRegisterService');
+         
         Wind::import('SRC:service.user.dm.PwUserInfoDm');
 
         $userDm = new PwUserInfoDm();
@@ -309,7 +309,7 @@ class ACloudVerCustomizedUser extends ACloudVerCustomizedBase
         } else {
             list($uid, $password) = explode("\t", Pw::decrypt($cookie));
         }
-        Wind::import('SRV:user.bo.PwUserBo');
+         
         $user = new PwUserBo($uid);
         if (!$user->isExists() || Pw::getPwdCode($user->info['password']) != $password) {
             return $this->buildResponse(-1, 'cookie非法');

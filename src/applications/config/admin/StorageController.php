@@ -66,7 +66,7 @@ class StorageController extends AdminBaseController
             $config->set($key, serialize($storage))->flush();
         }
 
-        Wind::import('SRV:service.config.srv.PwConfigSet');
+         
         $config = new PwConfigSet('site');
         $config->set('avatar.url', $avatarurl)->set('avatar.storage', $att_storage)->flush();
 

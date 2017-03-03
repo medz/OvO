@@ -67,7 +67,7 @@ class TemplateController extends DesignBaseController
         $property = $this->bo->getProperty();
         $limit = $this->compileFor($tpl);
         $property['limit'] = $limit ? $limit : $property['limit'];
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $dm = new PwDesignModuleDm($this->bo->moduleid);
         $dm->setModuleTpl($tpl)
             ->setCompid($compid)
@@ -80,10 +80,10 @@ class TemplateController extends DesignBaseController
         //更新模版
         $module = $this->bo->getModule();
         if ($module['module_type'] == PwDesignModule::TYPE_IMPORT) {
-            Wind::import('SRV:design.bo.PwDesignPageBo');
+             
             $pageBo = new PwDesignPageBo($this->pageid);
             $pageInfo = $pageBo->getPage();
-            Wind::import('SRV:design.srv.PwPortalCompile');
+             
             $compile = new PwPortalCompile($pageBo);
             if ($pageInfo['page_type'] == PwDesignPage::PORTAL) {
                 $compile->replaceList($this->bo->moduleid, $tpl);
@@ -93,7 +93,7 @@ class TemplateController extends DesignBaseController
             }
         }
         //更机数据
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         $srv = new PwAutoData($this->bo->moduleid);
         $srv->addAutoData();
         $this->showMessage('operate.success');

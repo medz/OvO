@@ -39,7 +39,7 @@ class VisitorController extends PwBaseController
             $this->setOutput($userList, 'userList');
             $this->setOutput($follows, 'follows');
         } else {
-            Wind::import('SRV:user.vo.PwUserSo');
+             
             $vo = new PwUserSo();
             $vo->orderbyLastpost(false);
             $lastPostUser = Wekit::load('SRV:user.PwUserSearch')->searchUser($vo, 2);
@@ -52,7 +52,7 @@ class VisitorController extends PwBaseController
         $this->setOutput($visitors, 'visitors');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.visitor.run.title'), '', '');
@@ -78,7 +78,7 @@ class VisitorController extends PwBaseController
             $this->setOutput($follows, 'follows');
             $this->setOutput($fans, 'fans');
         } else {
-            Wind::import('SRV:user.vo.PwUserSo');
+             
             $vo = new PwUserSo();
             $vo->orderbyLastpost(false);
             $lastPostUser = Wekit::load('SRV:user.PwUserSearch')->searchUser($vo, 2);

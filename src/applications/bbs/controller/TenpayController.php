@@ -54,13 +54,13 @@ class TenpayController extends PwBaseController
             $this->paymsg('onlinepay.order.paid');
         }
 
-        $className = Wind::import('SRV:pay.srv.action.PwPayAction'.$order['paytype']);
+        $className =  
         if (class_exists($className)) {
             $class = new $className($order);
             $class->run();
         }
 
-        Wind::import('SRV:pay.dm.PwOrderDm');
+         
         $dm = new PwOrderDm($order['id']);
         $dm->setState(2)->setPaymethod(2);
         Wekit::load('pay.PwOrder')->updateOrder($dm);

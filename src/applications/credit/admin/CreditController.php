@@ -3,8 +3,8 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:credit.srv.PwCreditOperationConfig');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
+ 
 
 /**
  * 积分设置.
@@ -113,7 +113,7 @@ class CreditController extends AdminBaseController
      */
     public function rechargeAction()
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
 
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
         $this->setOutput(Wekit::C('credit', 'recharge'), 'recharge');
@@ -150,7 +150,7 @@ class CreditController extends AdminBaseController
      */
     public function exchangeAction()
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
 
         // print_r(Wekit::C('credit', 'exchange'));
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
@@ -222,7 +222,7 @@ class CreditController extends AdminBaseController
      */
     public function transferAction()
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $transfer = Wekit::C('credit', 'transfer');
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
         $this->setOutput($transfer ? $transfer : array(), 'transfer');
@@ -238,7 +238,7 @@ class CreditController extends AdminBaseController
 
         list($ifopen, $rate, $min) = $this->getInput(array('ifopen', 'rate', 'min'));
 
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $creditBo = PwCreditBo::getInstance();
         $transfer = array();
 
@@ -270,9 +270,9 @@ class CreditController extends AdminBaseController
         $perpage = 20;
         list($offset, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:credit.bo.PwCreditBo');
-        Wind::import('SRV:credit.vo.PwCreditLogSc');
-        Wind::import('SRV:credit.srv.PwCreditOperationConfig');
+         
+         
+         
 
         $sc = new PwCreditLogSc();
         $url = array();

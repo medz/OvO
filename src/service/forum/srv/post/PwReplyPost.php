@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.PwPostAction');
-Wind::import('SRV:forum.dm.PwReplyDm');
+ 
+ 
 
 /**
  * 回复发布相关服务
@@ -135,7 +135,7 @@ class PwReplyPost extends PwPostAction
             $title = $this->postDm->getTitle() ? $this->postDm->getTitle() : 'Re:'.$this->info['subject'];
             $this->forum->addPost($this->tid, $this->user->username, $title);
 
-            Wind::import('SRV:forum.dm.PwTopicDm');
+             
             $dm = new PwTopicDm($this->tid);
             $timestamp = Pw::getTime();
             if ($this->info['lastpost_time'] > $timestamp || Pw::getstatus($this->info['tpcstatus'], PwThread::STATUS_DOWNED)) {
@@ -145,7 +145,7 @@ class PwReplyPost extends PwPostAction
             $this->_getThreadsService()->updateThread($dm, PwThread::FETCH_MAIN);
 
             if ($rpid) {
-                Wind::import('SRV:forum.dm.PwReplyDm');
+                 
                 $dm = new PwReplyDm($rpid);
                 $dm->addReplies(1);
                 $this->_getThreadsService()->updatePost($dm);

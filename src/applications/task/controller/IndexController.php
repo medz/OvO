@@ -50,7 +50,7 @@ class IndexController extends PwBaseController
         $this->setOutput($this->_getTaskMode(), 'modes');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:task.index.run.title'), '', '');
@@ -72,7 +72,7 @@ class IndexController extends PwBaseController
         $this->setTemplate('index_applicable');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:task.index.applicable.title'), '', '');
@@ -101,7 +101,7 @@ class IndexController extends PwBaseController
         $this->setTemplate('index_complete');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:task.index.complete.title'), '', '');
@@ -117,7 +117,7 @@ class IndexController extends PwBaseController
         if ($id < 0) {
             $this->showError('TASK:id.illegal');
         }
-        Wind::import('SRV:task.srv.PwTaskApply');
+         
         /*@var $taskApply PwTaskApply */
         $taskApply = new PwTaskApply($this->loginUser->uid);
         if (($result = $taskApply->apply($id)) instanceof PwError) {
@@ -158,7 +158,7 @@ class IndexController extends PwBaseController
     public function rewardAction()
     {
         $id = $this->getInput('id');
-        Wind::import('SRV:task.srv.PwTaskGainReward');
+         
         $gainReward = new PwTaskGainReward($this->loginUser->uid, $id);
         if (($result = $gainReward->gainReward()) instanceof PwError) {
             $this->showError($result->getError());

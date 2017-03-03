@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwTopicDm');
-Wind::import('SRV:forum.dm.PwForumDm');
+ 
+ 
+ 
 
 /**
  * 帖子管理操作-复制.
@@ -32,7 +32,7 @@ class PwThreadManageDoCopy extends PwThreadManageDo
             return false;
         }
         if (isset($this->fid)) {
-            Wind::import('SRV:forum.bo.PwForumBo');
+             
             $forum = new PwForumBo($this->fid);
             if (!$forum->isForum()) {
                 return new PwError('BBS:manage.error.copy.targetforum');

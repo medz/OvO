@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
+ 
 
 /**
  * 获取我的帖子-我的主题列表.

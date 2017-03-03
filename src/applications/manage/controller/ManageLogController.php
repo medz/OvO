@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('APPS:manage.controller.BaseManageController');
-Wind::import('SRV:log.so.PwLogSo');
+ 
 
 /**
  * 前台管理日志.

@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('SRV:forum.srv.PwThreadList');
+ 
+ 
 
 /**
  * 分类页面.
@@ -61,10 +61,10 @@ class CateController extends PwBaseController
 
         $isCommon = 0;
         if ($tab == 'digest') {
-            Wind::import('SRV:forum.srv.threadList.PwCateDigestThread');
+             
             $dataSource = new PwCateDigestThread($pwforum->fid, $orderby);
         } else {
-            Wind::import('SRV:forum.srv.threadList.PwCateThread');
+             
             $srv = Wekit::load('forum.srv.PwForumService');
             $forbidFids = $srv->getForbidVisitForum($this->loginUser, $srv->getForumsByLevel($fid, $srv->getForumMap()), true);
             $dataSource = new PwCateThread($pwforum, $forbidFids);
@@ -103,7 +103,7 @@ class CateController extends PwBaseController
         }
 
         //seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($threadList->page <= 1) {

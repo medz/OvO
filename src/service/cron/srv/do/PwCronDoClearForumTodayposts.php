@@ -1,8 +1,8 @@
 <?php
 
-Wind::import('SRV:cron.srv.base.AbstractCronBase');
-Wind::import('SRV:forum.dm.PwForumDm');
-Wind::import('SRV:site.dm.PwBbsinfoDm');
+ 
+ 
+ 
 
 /**
  * 计划任务，版块今日发帖清零

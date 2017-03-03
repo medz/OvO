@@ -122,7 +122,7 @@ class PwDesignModuleBo
      */
     public function getSignKey()
     {
-        Wind::import('SRV:design.bo.PwDesignModelBo');
+         
         $bo = new PwDesignModelBo($this->getModel());
 
         return $bo->getSignKeys();
@@ -134,7 +134,7 @@ class PwDesignModuleBo
      */
     public function getStandardSign()
     {
-        Wind::import('SRV:design.bo.PwDesignModelBo');
+         
         $bo = new PwDesignModelBo($this->getModel());
 
         return $bo->getStandardSign();

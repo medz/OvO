@@ -47,8 +47,8 @@ class PwPassReply extends PwGleanDoProcess
 
     protected function run()
     {
-        Wind::import('SRV:forum.dm.PwReplyDm');
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
+         
         $dm = new PwReplyDm(true);
         $dm->setDisabled(0);
         Wekit::load('forum.PwThread')->batchUpdatePost($this->pids, $dm);

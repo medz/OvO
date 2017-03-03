@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
+ 
 
 /**
  * 帖子管理操作 - 移动.
@@ -34,7 +34,7 @@ class PwThreadManageDoMove extends PwThreadManageDo
             return new PwError('permission.level.move', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
         }
         if (isset($this->fid)) {
-            Wind::import('SRV:forum.bo.PwForumBo');
+             
             $this->forum = new PwForumBo($this->fid);
             if (!$this->forum->isForum()) {
                 return new PwError('BBS:manage.error.move.targetforum');

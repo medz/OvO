@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByTidAndPids');
-Wind::import('SRV:forum.srv.PwThreadManage');
+ 
+ 
 
 /**
  * @author peihong <jhqblxt@gmail.com> Dec 2, 2011
@@ -89,7 +89,7 @@ class MasingleController extends PwBaseController
 
     protected function _getDeleteManage($manage)
     {
-        Wind::import('SRV:forum.srv.manage.PwThreadManageDoDeleteReply');
+         
         $do = new PwThreadManageDoDeleteReply($manage);
         if (!$this->doAction) {
             $this->setOutput('dodelete', 'doaction');
@@ -112,7 +112,7 @@ class MasingleController extends PwBaseController
      */
     protected function _getInspectManage($manage)
     {
-        Wind::import('SRV:forum.srv.manage.PwThreadManageDoInspect');
+         
         $do = new PwThreadManageDoInspect($manage);
         if (!$this->doAction) {
             $this->showError('data.error');
@@ -133,7 +133,7 @@ class MasingleController extends PwBaseController
      */
     protected function _getShieldManage($manage)
     {
-        Wind::import('SRV:forum.srv.manage.PwThreadManageDoShield');
+         
         $do = new PwThreadManageDoShield($manage);
         if (!$this->doAction) {
             $this->setOutput('doshield', 'doaction');
@@ -156,7 +156,7 @@ class MasingleController extends PwBaseController
      */
     protected function _getRemindManage($manage)
     {
-        Wind::import('SRV:forum.srv.manage.PwThreadManageDoRemind');
+         
         $do = new PwThreadManageDoRemind($manage);
         if (!$this->doAction) {
             $this->setOutput('doremind', 'doaction');
@@ -179,7 +179,7 @@ class MasingleController extends PwBaseController
      */
     protected function _getToppedReplyManage($manage)
     {
-        Wind::import('SRV:forum.srv.manage.PwThreadManageDoToppedReply');
+         
         $do = new PwThreadManageDoToppedReply($manage);
         if (!$this->doAction) {
             $this->showError('data.error');

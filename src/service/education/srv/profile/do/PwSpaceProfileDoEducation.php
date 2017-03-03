@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:space.srv.profile.do.PwSpaceProfileDoInterface');
-Wind::import('SRV:education.srv.helper.PwEducationHelper');
+ 
+ 
 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.

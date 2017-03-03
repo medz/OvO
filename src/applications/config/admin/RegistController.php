@@ -23,7 +23,7 @@ class RegistController extends AdminBaseController
         $groups = $userGroup->getAllGroups();
         $groupTypes = $userGroup->getTypeNames();
 
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 

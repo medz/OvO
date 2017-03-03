@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoBase');
-Wind::import('SRV:medal.bo.PwUserMedalBo');
+ 
+ 
 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.

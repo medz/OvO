@@ -75,7 +75,7 @@ class PwTopicTypeService
         $this->_getTopictypeDs()->deleteTopicTypeByFid($toFid);
         $topicTypes = $this->_getTopictypeDs()->getTypesByFid($fromFid);
         $idMap = $subTopicTypes = array();
-        Wind::import('SRV:forum.dm.PwTopicTypeDm');
+         
         foreach ($topicTypes as $k => $v) {
             if ($v['parentid']) {
                 $subTopicTypes[$k] = $v;

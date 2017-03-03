@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
+ 
 
 /**
  * 帖子列表数据接口 / 主题分类.

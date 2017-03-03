@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:poll.srv.PwPollDisplay');
-Wind::import('SRV:poll.srv.dataSource.PwFetchPollByOrder');
-Wind::import('SRV:poll.srv.dataSource.PwFetchPollByUid');
+ 
+ 
+ 
 
 /**
  * 我的投票.
@@ -45,7 +45,7 @@ class MyController extends PwBaseController
                 $pollid[] = $value['poll_id'];
             }
 
-            Wind::import('SRV:poll.srv.dataSource.PwFetchPollByPollid');
+             
             $pollDisplay = new PwPollDisplay(new PwFetchPollByPollid($pollid, count($pollid)));
             $pollInfo = $this->_buildPoll($pollDisplay->gather(), 'my');
         }
@@ -65,7 +65,7 @@ class MyController extends PwBaseController
             ), 'pollGroup');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:vote.my.run.title'), '', '');

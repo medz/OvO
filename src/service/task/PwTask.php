@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:task.dm.PwTaskDm');
+ 
 /**
  * 任务体系的data service.
  *

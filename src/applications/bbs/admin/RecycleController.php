@@ -27,7 +27,7 @@ class RecycleController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:recycle.vo.PwRecycleThreadSo');
+         
         $so = new PwRecycleThreadSo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -86,8 +86,8 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+         
+         
         $srv = new PwDeleteTopic(new PwFetchTopicByTid($tids), new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -101,7 +101,7 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwRevertTopic');
+         
         $srv = new PwRevertTopic($tids, new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -117,7 +117,7 @@ class RecycleController extends AdminBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:recycle.vo.PwRecycleReplySo');
+         
         $so = new PwRecycleReplySo();
         $so->orderbyCreatedTime(0);
         $url = array();
@@ -176,8 +176,8 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-        Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+         
+         
         $srv = new PwDeleteReply(new PwFetchReplyByPid($pids), new PwUserBo($this->loginUser->uid));
         $srv->execute();
 
@@ -191,7 +191,7 @@ class RecycleController extends AdminBaseController
             $this->showError('operate.select');
         }
 
-        Wind::import('SRV:forum.srv.operation.PwRevertReply');
+         
         $srv = new PwRevertReply($pids, new PwUserBo($this->loginUser->uid));
         $srv->execute();
         $this->showMessage('还原成功了');

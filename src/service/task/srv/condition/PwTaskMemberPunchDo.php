@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
 /**
  * 用户打卡签到任务
  *

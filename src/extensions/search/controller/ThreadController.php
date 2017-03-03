@@ -2,7 +2,7 @@
 
 defined('RUN_STARTTIME') or define('RUN_STARTTIME', microtime(true));
 Wind::import('EXT:search.service.AppSearchRecord');
-Wind::import('SRV:seo.bo.PwSeoBo');
+ 
 
 /**
  * 本地搜索.

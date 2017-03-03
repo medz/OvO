@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖子管理操作-已阅.
@@ -46,7 +46,7 @@ class PwThreadManageDoInspect extends PwThreadManageDo
         list($lou) = explode("\t", $thread['inspect']);
         if (($this->lou > intval($lou) && $this->lou <= $thread['replies']) || !$thread['inspect']) {
             $inspect = $this->lou."\t".$this->username;
-            Wind::import('SRV:forum.dm.PwTopicDm');
+             
             $topicDm = new PwTopicDm($thread['tid']);
             $topicDm->setInspect($inspect);
             $this->_getThreadDs()->updateThread($topicDm, PwThread::FETCH_MAIN);

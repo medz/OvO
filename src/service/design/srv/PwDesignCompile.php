@@ -89,7 +89,7 @@ class PwDesignCompile
             $thread = Wekit::load('forum.PwThread')->getThread($uniqueId);
             $uniqueId = $thread['fid'];
         }
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $this->pageBo = new PwDesignPageBo();
         $pageid = $this->pageBo->getPageId($router, $pageName, $uniqueId);
         $this->pageBo->setPageInfo($pageid);
@@ -171,7 +171,7 @@ class PwDesignCompile
     public function refreshPage()
     {
         $list = Wekit::load('design.PwDesignModule')->getByPageid($this->pageid);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($list as $id => $v) {
             if ($id < 1) {
                 continue;
@@ -186,7 +186,7 @@ class PwDesignCompile
     public function afterDesign()
     {
         $ds = Wekit::load('design.PwDesignPage');
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($this->pageid);
         $dm->setModuleIds(array_unique($this->moduleIds))
             ->setStrucNames($this->structNames)
@@ -223,7 +223,7 @@ class PwDesignCompile
             if (!$this->_dataModule) {
                 return '<?php $getdata=1;?>';
             }
-            Wind::import('SRV:design.bo.PwDesignModuleBo');
+             
             $bo = new PwDesignModuleBo($this->_dataModule);
             $html = $bo->getTemplate();
             $standard = $bo->getStandardSign();
@@ -245,7 +245,7 @@ class PwDesignCompile
      */
     public function compileModule($module = '')
     {
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $module && list($data, $mod, $moduleId) = explode('_', $module);
         !$moduleId && $moduleId = PwDesignModuleBo::$stdId;
         $moduleId = (int) $moduleId;
@@ -281,7 +281,7 @@ class PwDesignCompile
 
     public function compileScript()
     {
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $moduleId = PwDesignModuleBo::$stdId;
         $moduleId = (int) $moduleId;
         if (!$moduleId) {
@@ -309,7 +309,7 @@ class PwDesignCompile
         if (!$struct) {
             return '';
         }
-        Wind::import('SRV:design.bo.PwDesignStructureBo');
+         
         $bo = new PwDesignStructureBo($struct);
         if ($this->isDesign) {
             return '<div id="'.$struct.'" class="J_mod_title" role="structure_'.$struct.'">'.$bo->getTitle().'</div>';
@@ -324,7 +324,7 @@ class PwDesignCompile
         if (!$moduleId) {
             return '';
         }
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $bo = new PwDesignModuleBo($moduleId);
         $html = $bo->getTemplate();
         $caption = $bo->getTitleHtml();
@@ -371,7 +371,7 @@ class PwDesignCompile
     public function replaceModule($content = '')
     {
         if (preg_match_all('/\<design\s*id=\"*D_mod_(\d+)\"*\s*role=\"*module\"*\s*[>|\/>]<\/design>/isU', $content, $matches)) {
-            Wind::import('SRV:design.bo.PwDesignModuleBo');
+             
             foreach ($matches[1] as $k => $v) {
                 $this->appendModuleId($v);
                 $bo = new PwDesignModuleBo($v);
@@ -557,7 +557,7 @@ class PwDesignCompile
             return '';
         }
         $segment = $data['segment_tpl'];
-        //Wind::import('SRV:design.bo.PwDesignStructureBo');
+        // 
         if (preg_match_all('/\<div[^>]*role=\"*structure_(.+)\"* [^>]+>/isU', $segment, $matches)) {
             foreach ($matches[1] as $k => $v) {
                 $this->appendStructName($v);

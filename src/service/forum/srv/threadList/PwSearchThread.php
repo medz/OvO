@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
+ 
 
 /**
  * 帖子列表数据接口 / 特殊列表.
@@ -20,7 +20,7 @@ class PwSearchThread extends PwThreadDataSource
 
     public function __construct($forum)
     {
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $this->forum = $forum;
         $this->so = new PwThreadSo();
         $this->so->setFid($forum->fid)->setDisabled(0);

@@ -42,7 +42,7 @@ class IndexController extends PwBaseController
         }
         //$this->getForward()->getWindView()->compileDir = 'DATA:design.default.' . $id;
         $this->setT($portal['template'], 'THEMES:portal.local');
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $seoBo->init('area', 'custom', $id);
         $seoBo->set('{pagename}', $portal['title']);

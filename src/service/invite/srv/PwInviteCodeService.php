@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:invite.dm.PwInviteCodeDm');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
+ 
 /**
  * 邀请码的服务类.
  *

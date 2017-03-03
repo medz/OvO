@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.PwReplyPost');
-Wind::import('SRV:forum.srv.PwPost');
+ 
+ 
 
 /**
  * 新鲜事回复.

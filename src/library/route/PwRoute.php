@@ -76,7 +76,7 @@ class PwRoute extends AbstractPwRoute
      */
     public function matchUrl($url)
     {
-        Wind::import('SRV:domain.srv.helper.PwDomainHelper');
+         
         $r = PwDomainHelper::parse_url($url);
         list($host, $isSecure, $script, $path, $scriptUrl) = $r;
         if ($host && !PwDomainHelper::isMyBrother($host,

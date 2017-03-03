@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:cron.srv.base.AbstractCronBase');
+ 
 
 /**
  * 可能认识的人队列更新.

@@ -205,7 +205,7 @@ class PwAttentionRecommendFriendsService
             }
             $user = rtrim($user, '|');
         }
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $dm = new PwUserInfoDm($uid);
         $dm->setRecommendFriend($user);
 

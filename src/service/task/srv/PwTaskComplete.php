@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:task.dm.PwTaskUserDm');
+ 
 /**
  * 完成任务的BP.
  *

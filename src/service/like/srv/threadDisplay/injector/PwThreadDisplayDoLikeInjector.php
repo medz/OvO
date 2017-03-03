@@ -15,7 +15,7 @@ class PwThreadDisplayDoLikeInjector extends PwBaseHookInjector
 {
     public function run()
     {
-        Wind::import('SRV:like.srv.threadDisplay.do.PwThreadDisplayDoLike');
+         
 
         return new PwThreadDisplayDoLike();
     }

@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attention.srv.PwFreshDisplay');
-Wind::import('SRV:attention.srv.dataSource.PwFetchAttentionFresh');
+ 
+ 
 
 /**
  * Enter description here ...
@@ -43,7 +43,7 @@ class FreshController extends PwBaseController
             $user = Wekit::load('attention.PwAttentionType')->getUserByType($this->loginUser->uid, $gid, 2000);
             $uids = array_keys($user);
             $count = $this->_getService()->countAttentionFreshByUid($this->loginUser->uid, $uids);
-            Wind::import('SRV:attention.srv.dataSource.PwFetchAttentionFreshByUid');
+             
             $dataSource = new PwFetchAttentionFreshByUid($this->loginUser->uid, $uids, $limit, $start);
         } else {
             $current = 'all';
@@ -52,7 +52,7 @@ class FreshController extends PwBaseController
                 $count > 250 && Wekit::load('attention.PwFresh')->deleteAttentionFresh($this->loginUser->uid, $count - 200);
                 $count = 200;
             }
-            Wind::import('SRV:attention.srv.dataSource.PwFetchAttentionFresh');
+             
             $dataSource = new PwFetchAttentionFresh($this->loginUser->uid, $limit, $start);
         }
         $freshDisplay = new PwFreshDisplay($dataSource);
@@ -103,7 +103,7 @@ class FreshController extends PwBaseController
         $this->setOutput($url, 'url');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.fresh.run.title'), '', '');
@@ -114,7 +114,7 @@ class FreshController extends PwBaseController
     {
         $id = $this->getInput('id');
 
-        Wind::import('SRV:attention.srv.PwFreshReplyList');
+         
         $reply = new PwFreshReplyList($id);
         $fresh = $reply->getData();
         $replies = $reply->getReplies(7);
@@ -135,7 +135,7 @@ class FreshController extends PwBaseController
         $content = $this->getInput('content', 'post');
         $transmit = $this->getInput('transmit', 'post');
 
-        Wind::import('SRV:attention.srv.PwFreshReplyPost');
+         
         $reply = new PwFreshReplyPost($id, $this->loginUser);
 
         if (($result = $reply->check()) !== true) {
@@ -160,7 +160,7 @@ class FreshController extends PwBaseController
         }*/
         $fresh = array();
         if ($transmit && ($newId = $reply->getNewFreshSrcId())) {
-            Wind::import('SRV:attention.srv.dataSource.PwFetchFreshByTypeAndSrcId');
+             
             $data = $reply->getData();
             $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId($data['type'] == 3 ? 3 : 2, array($newId)));
             $fresh = $freshDisplay->gather();
@@ -176,7 +176,7 @@ class FreshController extends PwBaseController
 
     public function readAction()
     {
-        Wind::import('SRV:forum.bo.PwThreadBo');
+         
         $id = $this->getInput('id');
         $fresh = $this->_getService()->getFresh($id);
         if ($fresh['type'] == 1) {
@@ -204,8 +204,8 @@ class FreshController extends PwBaseController
         $_getHtml = $this->getInput('_getHtml', 'get');
         list($content, $topictype, $subtopictype) = $this->getInput(array('content', 'topictype', 'sub_topictype'), 'post');
 
-        Wind::import('SRV:forum.srv.post.PwTopicPost');
-        Wind::import('SRV:forum.srv.PwPost');
+         
+         
         $postAction = new PwTopicPost($fid);
         $pwpost = new PwPost($postAction);
         $this->runHook('c_fresh_post', $pwpost);
@@ -227,7 +227,7 @@ class FreshController extends PwBaseController
         if (!$postDm->getField('ischeck')) {
             $this->showMessage('BBS:post.topic.ischeck');
         } elseif ($_getHtml == 1) {
-            Wind::import('SRV:attention.srv.dataSource.PwFetchFreshByTypeAndSrcId');
+             
             $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId(1, array($pwpost->getNewId())));
             $fresh = $freshDisplay->gather();
             $fresh = current($fresh);
@@ -246,8 +246,8 @@ class FreshController extends PwBaseController
         if (!$this->loginUser->getPermission('fresh_delete')) {
             $this->showError('permission.fresh.delete.deny');
         }
-        Wind::import('SRV:attention.srv.operation.PwDeleteFresh');
-        Wind::import('SRV:attention.srv.dataSource.PwGetFreshById');
+         
+         
 
         $srv = new PwDeleteFresh(new PwGetFreshById($id), $this->loginUser);
         $srv->setIsDeductCredit(true)

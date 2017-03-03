@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.PwThreadDisplay');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
+ 
 
 /**
  * 帖子阅读页.
@@ -38,10 +38,10 @@ class ReadController extends PwBaseController
             }
         }
         if ($uid) {
-            Wind::import('SRV:forum.srv.threadDisplay.PwUserRead');
+             
             $dataSource = new PwUserRead($threadDisplay->thread, $uid);
         } else {
-            Wind::import('SRV:forum.srv.threadDisplay.PwCommonRead');
+             
             $dataSource = new PwCommonRead($threadDisplay->thread);
         }
         $dataSource->setPage($page)
@@ -111,7 +111,7 @@ class ReadController extends PwBaseController
         }
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $threadDisplay->page <= 1 && $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.read.run.title'), '', $lang->getMessage('SEO:bbs.read.run.description'));
@@ -151,7 +151,7 @@ class ReadController extends PwBaseController
             $post = Wekit::load('forum.PwThread')->getPost($pid);
             $tid = $post['tid'];
         }
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $thread = Wekit::load('forum.PwThread')->getThread($tid);
         $pwforum = new PwForumBo($thread['fid']);
         $perpage = $pwforum->forumset['readperpage'] ? $pwforum->forumset['readperpage'] : Wekit::C('bbs', 'read.perpage');
@@ -205,7 +205,7 @@ class ReadController extends PwBaseController
     public function logAction()
     {
         list($tid, $fid) = $this->getInput(array('tid', 'fid'));
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid);
         $permission = $this->loginUser->getPermission('look_thread_log', $forum->isBM($this->loginUser->username), array());
         if ($permission) {
@@ -236,7 +236,7 @@ class ReadController extends PwBaseController
 
     protected function runReadDesign($fid = 0)
     {
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $bo = new PwDesignPageBo();
         $pageid = $bo->getPageId('bbs/read/run', '帖子阅读页', $fid);
         $pageid && $this->forward->getWindView()->compileDir = 'DATA:compile.design.'.$pageid;

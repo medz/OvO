@@ -153,7 +153,7 @@ class PwDesignImportZip
 
     protected function replaceTpl($section)
     {
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $ds = Wekit::load('design.PwDesignModule');
         if (preg_match_all('/\<pw-list\s*id=\"(\d+)\"\s*>/isU', $section, $matches)) {
             foreach ($matches[1] as $k => $v) {

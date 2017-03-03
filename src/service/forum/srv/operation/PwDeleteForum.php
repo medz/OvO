@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwForumBo');
+ 
 
 /**
  * 删除帖子及其关联操作(扩展).

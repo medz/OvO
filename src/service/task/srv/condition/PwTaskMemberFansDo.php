@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.PwTaskComplete');
-Wind::import('SRV:task.srv.base.PwTaskCompleteInterface');
+ 
+ 
 
 /**
  * 求粉丝的任务完成条件添加.

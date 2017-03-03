@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:log.so.PwLogSo');
+ 
 
 /**
  * 前台管理日志.

@@ -14,8 +14,8 @@ class PwDesignDefaultService
     public function reviseDefaultData()
     {
         $ds = Wekit::load('design.PwDesignData');
-        Wind::import('SRV:design.srv.vo.PwDesignDataSo');
-        Wind::import('SRV:design.dm.PwDesignDataDm');
+         
+         
         $vo = new PwDesignDataSo();
         $list = $ds->searchData($vo);
         foreach ($list as $k => $v) {
@@ -34,7 +34,7 @@ class PwDesignDefaultService
     public function likeModule()
     {
         $ds = $this->_getPageDs();
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm();
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('热门喜欢')
@@ -45,7 +45,7 @@ class PwDesignDefaultService
             return false;
         }
 
-        Wind::import('SRV:design.srv.vo.PwDesignComponentSo');
+         
         $vo = new PwDesignComponentSo();
         $vo->setCompname('瀑布流 ');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
@@ -56,7 +56,7 @@ class PwDesignDefaultService
         $tpl = $comp['comp_tpl'];
         $property = array('ispic' => 1, 'desnum' => 144, 'order' => 5, 'limit' => 100, 'timefmt' => 'm-d');
         $cache = array('expired' => 0, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('thread')
             ->setPageId($pageid)
@@ -86,7 +86,7 @@ class PwDesignDefaultService
 </div>
 TPL;
         Wekit::load('design.PwDesignSegment')->replaceSegment('likedemo', $pageid, $tpl);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
 
@@ -96,7 +96,7 @@ TPL;
     public function tagModule()
     {
         $ds = $this->_getPageDs();
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm();
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('话题')
@@ -107,7 +107,7 @@ TPL;
             return false;
         }
 
-        Wind::import('SRV:design.srv.vo.PwDesignComponentSo');
+         
         $vo = new PwDesignComponentSo();
         $vo->setCompname('话题封面 [ 间隔 ]');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
@@ -118,7 +118,7 @@ TPL;
         $tpl = $comp['comp_tpl'];
         $property = array('islogo' => 1, 'order' => 5, 'limit' => 18, 'timefmt' => 'm-d');
         $cache = array('expired' => 15, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('tag')
             ->setPageId($pageid)
@@ -146,7 +146,7 @@ TPL;
 </div>
 TPL;
         Wekit::load('design.PwDesignSegment')->replaceSegment('huatidemo', $pageid, $tpl);
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         $srv = new PwAutoData($moduleid);
         $srv->addAutoData();
 

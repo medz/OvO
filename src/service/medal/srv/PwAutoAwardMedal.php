@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:medal.bo.PwUserMedalBo');
+ 
 /**
  * 自动勋章颁发流程
  * <1>checkAutoMedal()

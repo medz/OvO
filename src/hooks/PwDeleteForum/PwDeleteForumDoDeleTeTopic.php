@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByFid');
+ 
+ 
 /**
  * 帖子删除扩展服务接口--虚拟删除到回收站.
  *

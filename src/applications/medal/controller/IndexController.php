@@ -33,7 +33,7 @@ class IndexController extends PwBaseController
     public function run()
     {
         $myList_w = $myList_y = array();
-        Wind::import('SRV:medal.bo.PwUserMedalBo');
+         
         $medalBo = new PwUserMedalBo($this->loginUser->uid);
         $myRelationList = $medalBo->getMyAndAutoMedal();
         foreach ($myRelationList as $key => $medal) {
@@ -89,7 +89,7 @@ class IndexController extends PwBaseController
         $this->setOutput($alreadyAll, 'alreadyAll');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:medal.index.run.title'), '', '');
@@ -169,7 +169,7 @@ class IndexController extends PwBaseController
         $this->setOutput($myStatus, 'myStatus');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:medal.index.center.title'), '', '');
@@ -211,7 +211,7 @@ class IndexController extends PwBaseController
         $this->setOutput($info, 'info');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:medal.index.order.title'), '', '');
@@ -232,7 +232,7 @@ class IndexController extends PwBaseController
         }
         $_logIds = array_keys($logs);
         $logIds = array_intersect($logIds, $_logIds);
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         foreach ($logIds as $key => $logid) {
             $dm = new PwMedalLogDm($logid);
             $dm->setLogOrder($orders[$key]);
@@ -258,9 +258,9 @@ class IndexController extends PwBaseController
             $this->showError($resource->getError());
         }
         if ($isfresh) {
-            Wind::import('SRV:weibo.dm.PwWeiboDm');
-            Wind::import('SRV:weibo.srv.PwSendWeibo');
-            Wind::import('SRV:weibo.PwWeibo');
+             
+             
+             
             $dm = new PwWeiboDm();
             $dm->setContent($content)
                   ->setType(PwWeibo::TYPE_MEDAL);
@@ -285,7 +285,7 @@ class IndexController extends PwBaseController
         if ($log) {
             $this->showError('MEDAL:already.apply');
         }
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $time = Pw::getTime();
         $dm = new PwMedalLogDm();
         $dm->setMedalid($medalId)

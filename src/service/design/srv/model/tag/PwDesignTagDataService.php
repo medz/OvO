@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>
  * <note>
@@ -37,7 +37,7 @@ class PwDesignTagDataService extends PwDesignModelBase
 
     protected function getData($field, $order, $limit, $offset)
     {
-        Wind::import('SRV:tag.vo.PwTagSo');
+         
         $so = new PwTagSo();
 
         $field['tag_ids'] && $so->setTagId(explode(' ', $field['tag_ids']));

@@ -416,7 +416,7 @@ class StyleController extends AdminBaseController
      */
     private function _upload($key)
     {
-        Wind::import('SRV:upload.action.PwIconUpload');
+         
 
         $bhv = new PwIconUpload($key, 'background/');
         $upload = new PwUpload($bhv);

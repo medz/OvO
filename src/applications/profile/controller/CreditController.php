@@ -3,7 +3,7 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
-Wind::import('SRV:credit.bo.PwCreditBo');
+ 
 
 /**
  * 积分相关查询.
@@ -104,7 +104,7 @@ class CreditController extends BaseProfileController
         $this->setTemplate('profile_credit');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:profile.credit.run.title'), '', '');
@@ -272,7 +272,7 @@ class CreditController extends BaseProfileController
         $creditName = $creditBo->cType[$credit];
         $order_no = $onlinepay->createOrderNo();
 
-        Wind::import('SRV:pay.dm.PwOrderDm');
+         
         $dm = new PwOrderDm();
         $dm->setOrderNo($order_no)
             ->setPrice($pay)
@@ -284,7 +284,7 @@ class CreditController extends BaseProfileController
             ->setCreatedTime(Pw::getTime());
         Wekit::load('pay.PwOrder')->addOrder($dm);
 
-        Wind::import('SRV:pay.vo.PwPayVo');
+         
         $vo = new PwPayVo();
         $vo->setOrderNo($order_no)
             ->setFee($pay)
@@ -335,8 +335,8 @@ class CreditController extends BaseProfileController
         $perpage = 20;
         list($offset, $limit) = Pw::page2limit($page, $perpage);
 
-        Wind::import('SRV:credit.srv.PwCreditOperationConfig');
-        Wind::import('SRV:credit.vo.PwCreditLogSc');
+         
+         
 
         $sc = new PwCreditLogSc();
         $url = array();

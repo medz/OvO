@@ -8,13 +8,13 @@
  *
  * @version $Id: PwCronDoDesign.php 17721 2012-09-08 07:45:19Z gao.wanggao $
  */
-Wind::import('SRV:cron.srv.base.AbstractCronBase');
+ 
 
 class PwCronDoDesign extends AbstractCronBase
 {
     public function run($cronId)
     {
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         $ds = Wekit::load('design.PwDesignCron');
         $list = $ds->getAllCron();
         foreach ($list as $v) {

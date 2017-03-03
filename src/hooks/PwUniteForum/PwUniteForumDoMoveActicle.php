@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.vo.PwThreadSo');
-Wind::import('SRV:forum.dm.PwTopicDm');
-Wind::import('SRV:forum.dm.PwReplyDm');
+ 
+ 
+ 
 
 /**
  * 合并版块--移动帖子.

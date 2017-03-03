@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
-Wind::import('SRV:medal.srv.PwAutoAwardMedal');
+ 
+ 
 /**
  * @author Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com

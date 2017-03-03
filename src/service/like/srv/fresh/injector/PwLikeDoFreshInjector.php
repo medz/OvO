@@ -17,7 +17,7 @@ class PwLikeDoFreshInjector extends PwBaseHookInjector
     {
         $isfresh = $this->getInput('isfresh', 'post');
         $content = $this->getInput('atc_content', 'post');
-        Wind::import('SRV:like.srv.fresh.do.PwLikeDoFresh');
+         
 
         return  new PwLikeDoFresh($this->bp, $content);
     }

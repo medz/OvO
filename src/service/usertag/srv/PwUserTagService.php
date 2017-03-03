@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:usertag.dm.PwUserTagDm');
+ 
 
 /**
  * 个人标签的service.

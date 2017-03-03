@@ -29,7 +29,7 @@ class ImportController extends PwBaseController
     public function dorunAction()
     {
         $pageid = (int) $this->getInput('pageid', 'post');
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
         if (!$pageInfo) {
@@ -75,22 +75,22 @@ class ImportController extends PwBaseController
         }
 
         //导入文件
-        Wind::import('SRV:design.bo.PwDesignPageBo');
+         
         $pageBo = new PwDesignPageBo($pageInfo['page_id']);
         $this->clearPage($pageInfo);
 
-        Wind::import('SRV:design.srv.PwDesignImportZip');
+         
         $srv = new PwDesignImportZip($pageBo);
         if (!$srv->appcenterToLocal($style['alias'])) {
             $this->showError('operate.fail');
         }
-        Wind::import('SRV:design.dm.PwDesignPortalDm');
+         
         $dm = new PwDesignPortalDm($portalid);
         $dm->setTemplate($pageBo->getTplPath());
         $ds->updatePortal($dm);
         $this->_getDesignService()->clearCompile();
         //更新数据
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -104,7 +104,7 @@ class ImportController extends PwBaseController
     protected function doZip($pageBo)
     {
         //$portal = $this->_getPortalDs()->getPortal($pageInfo['page_unique']);
-        Wind::import('SRV:design.srv.PwDesignImportZip');
+         
         $srv = new PwDesignImportZip($pageBo);
         if (!$srv->checkDirectory()) {
             $this->showError('DESIGN:directory.not.writeable');
@@ -119,7 +119,7 @@ class ImportController extends PwBaseController
             $this->showError($resource->getError());
         }
         /*
-        Wind::import('SRV:design.dm.PwDesignPortalDm');
+         
         $dm = new PwDesignPortalDm($portal['id']);
         $dm->setTemplate($pageInfo['page_id'])//以pageid命名的文件夹
             ->setPageName($portal['pagename'])
@@ -128,7 +128,7 @@ class ImportController extends PwBaseController
         if ($resource instanceof PwError) $this->showError($resource->getError());
         */
         //更新数据
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -160,7 +160,7 @@ class ImportController extends PwBaseController
             $this->showError($resource->getError());
         }
         //更新数据
-        Wind::import('SRV:design.srv.data.PwAutoData');
+         
         foreach ($srv->newIds as $id) {
             if (!$id) {
                 continue;
@@ -204,7 +204,7 @@ class ImportController extends PwBaseController
         $this->_getSegmentDs()->deleteSegmentByPageid($pageid);
         $bakDs->deleteByPageId($pageid);
 
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($pageid);
         $dm->setModuleIds(array())->setStrucNames(array());
         $this->_getPageDs()->updatePage($dm);
@@ -213,7 +213,7 @@ class ImportController extends PwBaseController
 
     private function _uploadFile()
     {
-        Wind::import('SRV:upload.action.PwDesignImportUpload');
+         
 
         $bhv = new PwDesignImportUpload();
         $upload = new PwUpload($bhv);

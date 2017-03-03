@@ -69,7 +69,7 @@ class DevelopController extends AdminBaseController
      */
     public function addhookAction()
     {
-        Wind::import('SRV:hook.dm.PwHookSo');
+         
         $hooks = Wekit::load('hook.PwHooks')->fetchList(0);
         $hooks = array_reverse($hooks, true);
         $this->setOutput($this->getInput('alias'), 'alias');

@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.PwPostAction');
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
+ 
 
 /**
  * 帖子发布相关服务

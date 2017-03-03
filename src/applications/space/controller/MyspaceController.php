@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:space.bo.PwSpaceBo');
+ 
 /**
  * 我的空间
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
@@ -98,7 +98,7 @@ class MyspaceController extends PwBaseController
             }
         }
 
-        Wind::import('SRV:word.srv.PwWordFilter');
+         
         $word = PwWordFilter::getInstance();
         if ($word->filter($spaceName)) {
             $this->showError('SPACE:spacename.filter.fail');
@@ -107,7 +107,7 @@ class MyspaceController extends PwBaseController
             $this->showError('SPACE:descrip.filter.fail');
         }
 
-        Wind::import('SRV:space.dm.PwSpaceDm');
+         
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setSpaceName($spaceName)
             ->setSpaceDescrip($descrip)
@@ -130,7 +130,7 @@ class MyspaceController extends PwBaseController
         if (!$style) {
             $this->showError('SPACE:fail');
         }
-        Wind::import('SRV:space.dm.PwSpaceDm');
+         
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setSpaceStyle($style['alias']);
         $resource = $this->_getSpaceDs()->updateInfo($dm);
@@ -171,7 +171,7 @@ class MyspaceController extends PwBaseController
             $align = 'left';
         }
 
-        Wind::import('SRV:space.dm.PwSpaceDm');
+         
         $dm = new PwSpaceDm($this->loginUser->uid);
         $dm->setBackImage($image, $repeat, $fixed, $align);
         $resource = $this->_getSpaceDs()->updateInfo($dm);
@@ -191,7 +191,7 @@ class MyspaceController extends PwBaseController
         $content = $this->getInput('content', 'post');
         $transmit = $this->getInput('transmit', 'post');
 
-        Wind::import('SRV:attention.srv.PwFreshReplyPost');
+         
         $reply = new PwFreshReplyPost($id, $this->loginUser);
 
         if (($result = $reply->check()) !== true) {
@@ -214,7 +214,7 @@ class MyspaceController extends PwBaseController
 
     private function _uploadImage()
     {
-        Wind::import('SRV:upload.action.PwSpaceUpload');
+         
 
         $bhv = new PwSpaceUpload($this->loginUser->uid);
         $upload = new PwUpload($bhv);

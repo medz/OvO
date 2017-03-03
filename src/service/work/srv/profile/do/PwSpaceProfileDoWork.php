@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:space.srv.profile.do.PwSpaceProfileDoInterface');
+ 
 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: xiaoxia.xuxx $>.
  *

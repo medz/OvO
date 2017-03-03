@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:space.bo.PwSpaceModel');
+ 
 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy$>.

@@ -31,7 +31,7 @@ class IndexController extends PwBaseController
         }
         $log = $this->loginUser->info['last_credit_affect_log'];
         if ($log) {
-            Wind::import('SRV:user.dm.PwUserInfoDm');
+             
             $dm = new PwUserInfoDm($this->loginUser->uid);
             $dm->setLastCreditAffectLog('');
             /* @var $userDs PwUser */

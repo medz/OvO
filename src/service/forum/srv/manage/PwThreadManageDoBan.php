@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖子-禁止.
@@ -218,8 +218,8 @@ class PwThreadManageDoBan extends PwThreadManageDo
      */
     private function _buildBanDm()
     {
-        Wind::import('SRV:user.dm.PwUserBanInfoDm');
-        Wind::import('SRV:user.PwUserBan');
+         
+         
         $rightTypes = array(PwUserBan::BAN_AVATAR, PwUserBan::BAN_SIGN, PwUserBan::BAN_SPEAK);
 
         if ($this->banInfo->end_time > 0) {
@@ -262,24 +262,24 @@ class PwThreadManageDoBan extends PwThreadManageDo
      */
     private function _delThreads()
     {
-        Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
+         
         $right = $this->getRight();
         $banUids = array_keys($this->getBanUsers());
         //【用户禁止帖子删除】
         //删除当前主题帖子  当禁止非楼主时，不能删除当前主题
         if (1 == $this->delete['current'] && 1 === $right['delCurrentThread'] && !array_diff($banUids, $this->threadCreatedUids)) {
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+             
             //【用户禁止帖子删除】-根据帖子ID列表删除帖子到回收站
             $service = new PwDeleteTopic(new PwFetchTopicByTid($this->tids), $this->loginUser);
             $service->setRecycle(true)->setIsDeductCredit(true)->execute();
         }
         if (1 == $this->delete['site'] && 1 === $right['delSiteThread']) {
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByUid');
+             
             //【用户禁止帖子删除】-并且按照用户ID列表删除帖子到回收站
             $service = new PwDeleteTopic(new PwFetchTopicByUid($banUids), $this->loginUser);
             $service->setRecycle(true)->setIsDeductCredit(true)->execute();
         } elseif (1 == $this->delete['forum'] && 1 === $right['delForumThread']) {
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByFidAndUids');
+             
             //【用户禁止帖子删除】-并且按照用户ID列表+版块ID删除帖子到回收站
             foreach ($this->srv->getFids() as $fid) {
                 $service = new PwDeleteTopic(new PwFetchTopicByFidAndUids($fid, $banUids), $this->loginUser);

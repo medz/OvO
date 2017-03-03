@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:pay.srv.paymethod.PwPayAbstract');
+ 
 
 /**
  * 在线支付 - 贝宝支付方式.

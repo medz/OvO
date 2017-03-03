@@ -97,7 +97,7 @@ class PwDesignExportZip
 
     protected function decompileTpl($section)
     {
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         if (preg_match_all('/\<design\s*id=\"*D_mod_(\d+)\"*\s*role=\"*module\"*\s*[>|\/>]<\/design>/isU', $section, $matches)) {
             foreach ($matches[1] as $k => $v) {
                 $bo = new PwDesignModuleBo($v);
@@ -215,7 +215,7 @@ class PwDesignExportZip
     protected function doTxt($charset = 'utf-8')
     {
         $pageInfo = $this->_getPageDs()->getPage($this->pageid);
-        Wind::import('SRV:design.srv.PwDesignExportTxt');
+         
         $srv = new PwDesignExportTxt($pageInfo);
 
         return $srv->txt($charset);

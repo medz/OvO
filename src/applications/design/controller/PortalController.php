@@ -58,7 +58,7 @@ class PortalController extends PwBaseController
         if ($ds->countPortalByPagename($pagename)) {
             $this->showError('DESIGN:pagename.already.exists');
         }
-        Wind::import('SRV:design.dm.PwDesignPortalDm');
+         
         $dm = new PwDesignPortalDm();
         $dm->setPageName($pagename)
             ->setTitle($title)
@@ -101,7 +101,7 @@ class PortalController extends PwBaseController
                 if ($r instanceof PwError) {
                     $this->showError($r->getError());
                 }
-                Wind::import('SRV:domain.dm.PwDomainDm');
+                 
                 $dm = new PwDomainDm();
                 $dm->setDomain($domain)
                 ->setDomainKey("special/index/run?id=$id")
@@ -116,7 +116,7 @@ class PortalController extends PwBaseController
         //二级域名end
 
         //seo
-        Wind::import('SRV:seo.dm.PwSeoDm');
+         
         $dm = new PwSeoDm();
         $dm->setMod('area')
            ->setPage('custom')
@@ -179,7 +179,7 @@ class PortalController extends PwBaseController
                 if ($r instanceof PwError) {
                     $this->showError($r->getError());
                 }
-                Wind::import('SRV:domain.dm.PwDomainDm');
+                 
                 $dm = new PwDomainDm();
                 $dm->setDomain($domain)
                 ->setDomainKey("special/index/run?id=$id")
@@ -217,7 +217,7 @@ class PortalController extends PwBaseController
             $cover = (preg_match("/^http:\/\/(.*)$/", $cover)) ? $cover : '';
         }
 
-        Wind::import('SRV:design.dm.PwDesignPortalDm');
+         
         $dm = new PwDesignPortalDm($id);
         $dm->setPageName($pagename)
             ->setTitle($title)
@@ -235,13 +235,13 @@ class PortalController extends PwBaseController
         }
         $pageInfo = $this->_getPageDs()->getPageByTypeAndUnique(PwDesignPage::PORTAL, $id);
         //更新页面名称
-        Wind::import('SRV:design.dm.PwDesignPageDm');
+         
         $dm = new PwDesignPageDm($pageInfo['page_id']);
         $dm->setName($title);
         $this->_getPageDs()->updatePage($dm);
 
         //seo
-        Wind::import('SRV:seo.dm.PwSeoDm');
+         
         $dm = new PwSeoDm();
         $dm->setMod('area')
            ->setPage('custom')
@@ -264,7 +264,7 @@ class PortalController extends PwBaseController
 
     private function _upload($portalId = 0)
     {
-        Wind::import('SRV:upload.action.PwPortalUpload');
+         
 
         $bhv = new PwPortalUpload($portalId);
         $upload = new PwUpload($bhv);

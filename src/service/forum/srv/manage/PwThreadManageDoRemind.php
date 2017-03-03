@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖内管理操作 - 提醒.
@@ -41,13 +41,13 @@ class PwThreadManageDoRemind extends PwThreadManageDo
     {
         $remind = $this->ifRemind ? $this->_buildRemind() : '';
         if ($this->pids) {
-            Wind::import('SRV:forum.dm.PwReplyDm');
+             
             $topicDm = new PwReplyDm(true);
             $topicDm->setManageRemind($remind);
             $this->_getThreadDs()->batchUpdatePost($this->pids, $topicDm);
         }
         if ($this->tids) {
-            Wind::import('SRV:forum.dm.PwTopicDm');
+             
             $topicDm = new PwTopicDm(true);
             $topicDm->setManageRemind($remind);
             $this->_getThreadDs()->batchUpdateThread($this->tids, $topicDm, PwThread::FETCH_CONTENT);

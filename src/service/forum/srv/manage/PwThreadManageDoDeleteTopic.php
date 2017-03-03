@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖子管理操作-删除帖子.
@@ -36,8 +36,8 @@ class PwThreadManageDoDeleteTopic extends PwThreadManageDo
     public function run()
     {
         if ($this->tids) {
-            Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-            Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
+             
+             
             $service2 = new PwDeleteTopic(new PwFetchTopicByTid($this->tids), $this->srv->user);
             $service2->setRecycle(true)
                 ->setIsDeductCredit($this->isDeductCredit)

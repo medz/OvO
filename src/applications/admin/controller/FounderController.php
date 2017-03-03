@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
 /**
  * 后台创始人管理相关操作类.
  *

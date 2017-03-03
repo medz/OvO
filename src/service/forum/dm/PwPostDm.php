@@ -381,7 +381,7 @@ abstract class PwPostDm extends PwBaseDm
                 $flag = 1;
             }
         } else {
-            Wind::import('SRV:credit.bo.PwCreditBo');
+             
             $type = key(PwCreditBo::getInstance()->cType);
             $flag = 1;
         }

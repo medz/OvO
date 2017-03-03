@@ -20,7 +20,7 @@ class PwRegisterDoInviteFriendInjector extends PwBaseHookInjector
     {
         $registerInvite = null;
         if (!$this->bp->isOpenInvite && $this->getInput('invite')) {
-            Wind::import('SRV:user.srv.register.do.PwRegisterDoInviteFriend');
+             
             $registerInvite = new PwRegisterDoInviteFriend($this->bp, $this->getInput('invite'));
         }
 

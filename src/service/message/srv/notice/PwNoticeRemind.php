@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:message.srv.notice.PwNoticeAction');
+ 
 /**
  * @提醒
  *

@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
 /**
  * 用户找回密码服务
  *
@@ -39,7 +39,7 @@ class PwFindPassword
             if (!$info) {
                 return;
             }
-            Wind::import('SRV:user.srv.PwRegisterService');
+             
             $registerService = new PwRegisterService();
             $info = $registerService->sysUser($info['uid']);
             if ($info) {

@@ -43,7 +43,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     public function dorunAction()
     {
         list($medalIds, $ispoens, $orderids, $names, $descrips) = $this->getInput(array('medalid', 'isopen', 'orderid', 'name', 'descrip'), 'post');
-        Wind::import('SRV:medal.dm.PwMedalDm');
+         
         foreach ($medalIds as $medalId) {
             $dm = new PwMedalDm($medalId);
             $dm->setMedalName($names[$medalId])
@@ -99,7 +99,7 @@ Wind::import('ADMIN:library.AdminBaseController');
      */
     public function doAddAction()
     {
-        Wind::import('SRV:medal.dm.PwMedalDm');
+         
         if ($this->_getMedalDs()->countInfo() > 100) {
             $this->showError('MEDAL:medal.count.max');
         }
@@ -215,7 +215,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             $awardtype = 0;
             $condition = 0;
         }
-        Wind::import('SRV:medal.dm.PwMedalDm');
+         
         $dm = new PwMedalDm($medalid);
         $dm->setMedalName($this->getInput('medalname', 'post'))
             ->setDescrip($this->getInput('descrip', 'post'))
@@ -430,7 +430,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         $expired = ($info['receive_type'] == 2 && $info['expired_days'] > 0) ? ($time + $info['expired_days'] * 24 * 60) : 0;
         $userSrv = Wekit::load('user.srv.PwUserService');
         $medalSrv = $this->_getMedalService();
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $ds = $this->_getMedalLogDs();
         $msg = '';
         foreach ($users as $user) {
@@ -534,7 +534,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         $logId = (int) $this->getInput('id', 'get');
         $check = $this->getInput('check', 'get');
         $log = $this->_getMedalLogDs()->getMedalLog($logId);
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $dm = new PwMedalLogDm($logId);
         $ds = $this->_getMedalLogDs();
         if ($check == 'yes') {
@@ -561,7 +561,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     public function batchPassAction()
     {
         $logids = (array) $this->getInput('logids', 'post');
-        Wind::import('SRV:medal.dm.PwMedalLogDm');
+         
         $ds = $this->_getMedalLogDs();
         $srv = $this->_getMedalService();
         foreach ($logids as $logid) {
@@ -579,7 +579,7 @@ Wind::import('ADMIN:library.AdminBaseController');
      public function batchDisclaimAction()
      {
          $logids = (array) $this->getInput('logids', 'post');
-         Wind::import('SRV:medal.dm.PwMedalLogDm');
+          
          $ds = $this->_getMedalLogDs();
          $srv = $this->_getMedalService();
          foreach ($logids as $logid) {
@@ -610,7 +610,7 @@ Wind::import('ADMIN:library.AdminBaseController');
 
      private function _uploadImage($key = 'image')
      {
-         Wind::import('SRV:upload.action.PwMedalUpload');
+          
 
          if ($key == 'image') {
              $bhv = new PwMedalUpload('image', 80, 80);

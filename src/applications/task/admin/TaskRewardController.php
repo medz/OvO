@@ -30,7 +30,7 @@ class TaskRewardController extends AdminBaseController
      */
     public function run()
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 

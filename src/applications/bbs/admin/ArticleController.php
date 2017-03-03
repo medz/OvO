@@ -12,10 +12,10 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  * @package wind
  */
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:forum.srv.operation.PwDeleteTopic');
-Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-Wind::import('SRV:forum.srv.dataSource.PwFetchTopicByTid');
-Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+ 
+ 
+ 
+ 
 
 class ArticleController extends AdminBaseController
 {
@@ -49,7 +49,7 @@ class ArticleController extends AdminBaseController
             $created_userid = $user['uid'];
         }
         // dm条件
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $dm = new PwThreadSo();
         $keyword && $dm->setKeywordOfTitleOrContent($keyword);
         if ($fid) {
@@ -151,7 +151,7 @@ class ArticleController extends AdminBaseController
             $created_userid = $user['uid'];
         }
         // dm条件
-        Wind::import('SRV:forum.vo.PwPostSo');
+         
         $dm = new PwPostSo();
         $dm->setDisabled(0)->orderbyCreatedTime(false);
         $keyword && $dm->setKeywordOfTitleOrContent($keyword);

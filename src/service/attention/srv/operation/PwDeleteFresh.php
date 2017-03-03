@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attention.PwFresh');
+ 
 
 /**
  * 删除新鲜事及其关联操作(扩展).

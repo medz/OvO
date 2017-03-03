@@ -2,10 +2,10 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
+ 
 
-Wind::import('SRV:upload.action.PwAttUpload');
-Wind::import('SRV:attach.dm.PwThreadAttachDm');
+ 
+ 
 
 /**
  * 帖子发布-附件 相关服务
@@ -69,7 +69,7 @@ class PwPostDoAtt extends PwPostDoBase
                     $v['cost'] = $max;
                 }
                 if (!in_array($v['ctype'], $this->post->user->getPermission('sell_credits', false, array()))) {
-                    Wind::import('SRV:credit.bo.PwCreditBo');
+                     
                     $v['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
             } else {
@@ -163,7 +163,7 @@ class PwPostDoAtt extends PwPostDoBase
      */
     protected function _operateCredit($operate)
     {
-        Wind::import('SRV:credit.bo.PwCreditBo');
+         
         $credit = PwCreditBo::getInstance();
         $aids = $this->action->getAids();
         foreach ($aids as $v) {

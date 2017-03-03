@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.bo.PwUserBo');
+ 
 
 /**
  * pwadmin后台应用引导脚本.

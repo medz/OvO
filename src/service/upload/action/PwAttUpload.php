@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attach.dm.PwThreadAttachDm');
-Wind::import('SRV:forum.bo.PwForumBo');
+ 
+ 
 Wind::import('COM:utility.WindUtility');
 
 /**
@@ -160,7 +160,7 @@ class PwAttUpload extends PwUploadAction
                     $value['cost'] = $max;
                 }
                 if (!in_array($value['ctype'], $this->user->getPermission('sell_credits', false, array()))) {
-                    Wind::import('SRV:credit.bo.PwCreditBo');
+                     
                     $value['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
                 $dm->setSpecial(2)

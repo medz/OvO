@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('SRV:forum.srv.threadList.PwThreadDataSource');
+ 
 
 /**
  * 帖子-版块分类下-精华帖子列表.

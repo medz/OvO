@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:credit.bo.PwCreditBo');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 
 /**
  * 帖子删除扩展服务接口--更新用户发帖数，积分等信息.
@@ -38,7 +38,7 @@ class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
      */
     protected function _operateCredit($value)
     {
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($value['fid']);
         PwCreditBo::getInstance()->operate(
             'delete_reply', PwUserBo::getInstance($value['created_userid']), true, array(

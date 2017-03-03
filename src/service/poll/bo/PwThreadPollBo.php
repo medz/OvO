@@ -109,7 +109,7 @@ class PwThreadPollBo
         if (!$fid) {
             return new PwError('BBS:forum.thread.exists.not');
         }
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
         $forum = new PwForumBo($fid);
         $user = Wekit::getLoginUser();
         $forum->allowVisit($user);

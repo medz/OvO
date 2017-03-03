@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.register.do.PwRegisterDoBase');
+ 
 /**
  * 用户注册-更新站点统计信息.
  *
@@ -29,7 +29,7 @@ class PwRegisterDoUpdateBbsInfo extends PwRegisterDoBase
      */
     public function afterRegister(PwUserInfoDm $userDm)
     {
-        Wind::import('SRV:site.dm.PwBbsinfoDm');
+         
         $dm = new PwBbsinfoDm();
         $dm->setNewmember($userDm->getField('username'))->addTotalmember(1);
         Wekit::load('site.PwBbsinfo')->updateInfo($dm);

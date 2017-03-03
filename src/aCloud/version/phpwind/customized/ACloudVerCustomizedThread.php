@@ -18,7 +18,7 @@ define('POST_GP_LIMIT', 314);
 define('THREAD_ALLOW_READ', 315);
 define('USER_NOT_EXISTS', 316);
 
-Wind::import('SRV:forum.bo.PwThreadBo');
+ 
 
 class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 {
@@ -112,7 +112,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
 
     public function getLatestThread($fids, $offset, $limit)
     {
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $fids = $fids ? explode(',', $fids) : '';
         $forums = $this->_getForum()->fetchForum($fids, PwForum::FETCH_MAIN);
         $uids = $result = array();
@@ -313,7 +313,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
             return $this->buildResponse(-1, $postResult->getError());
         }
 
-        Wind::import('SRV:forum.vo.PwPostSo');
+         
         $so = new PwPostSo();
         $so->setTid($tid)
         ->setAuthorId($uid);
@@ -341,8 +341,8 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         if (!$user->isExists()) {
             return $this->buildResponse(USER_NOT_EXISTS, '用户不存在');
         }
-        Wind::import('SRV:forum.srv.PwPost');
-        Wind::import('SRV:forum.srv.post.PwTopicPost');
+         
+         
         $postAction = new PwTopicPost($fid);
         $pwPost = new PwPost($postAction);
         $postDm = $pwPost->getDm();
@@ -360,7 +360,7 @@ class ACloudVerCustomizedThread extends ACloudVerCustomizedBase
         if (!ACloudSysCoreS::isArray($fids)) {
             return $this->buildResponse(0, array());
         }
-        Wind::import('SRV:forum.vo.PwThreadSo');
+         
         $uids = $result = array();
         $threaddb = array();
         $so = new PwThreadSo();

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attach.dm.PwAttachDm');
+ 
 
 /**
  * 附件数据模型.

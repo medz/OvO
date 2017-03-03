@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('ADMIN:library.AdminBaseController');
-Wind::import('SRV:design.bo.PwDesignModelBo');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: gao.wanggao $>.
  *
@@ -25,7 +25,7 @@ class DesignBaseController extends AdminBaseController
         parent::beforeAction($handlerAdapter);
         $isapi = '';
         $moduleid = $this->getInput('moduleid');
-        Wind::import('SRV:design.bo.PwDesignModuleBo');
+         
         $this->bo = new PwDesignModuleBo($moduleid);
         $module = $this->bo->getModule();
         if (!$module) {

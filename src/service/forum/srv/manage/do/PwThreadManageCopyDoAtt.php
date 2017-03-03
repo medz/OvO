@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.manage.do.PwThreadManageCopyDoBase');
-Wind::import('SRV:attach.dm.PwThreadAttachDm');
+ 
+ 
 
 /**
  * 帖子复制 - 附件.

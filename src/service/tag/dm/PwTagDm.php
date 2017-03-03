@@ -1,7 +1,7 @@
 <?php
 
 
-Wind::import('SRV:user.validator.PwUserValidator');
+ 
 
 /**
  * 话题DM.

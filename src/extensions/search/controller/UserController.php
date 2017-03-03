@@ -2,7 +2,7 @@
 
 defined('RUN_STARTTIME') or define('RUN_STARTTIME', microtime(true));
 Wind::import('EXT:search.service.AppSearchRecord');
-Wind::import('SRV:seo.bo.PwSeoBo');
+ 
 
 /**
  * 本地搜索.
@@ -57,7 +57,7 @@ class UserController extends PwBaseController
             $page = $page ? $page : 1;
             $perpage = $perpage ? $perpage : $this->perpage;
             list($start, $limit) = Pw::page2limit($page, $perpage);
-            Wind::import('SRV:user.vo.PwUserSo');
+             
             $keywords = urldecode($keywords);
             $so = new PwUserSo();
             $so->setUsername($keywords)

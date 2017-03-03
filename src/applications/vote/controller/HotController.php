@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:poll.srv.PwPollDisplay');
-Wind::import('SRV:poll.srv.dataSource.PwFetchPollByOrder');
+ 
+ 
 
 /**
  * 应用中心热门投票模型.
@@ -34,7 +34,7 @@ class HotController extends PwBaseController
         $pollInfo = array();
 
         if ($total) {
-            Wind::import('SRV:poll.srv.dataSource.PwFetchPollByTime');
+             
             $pollDisplay = new PwPollDisplay(new PwFetchPollByTime($startTime, $endTime, $limit, $start, array('voter_num' => 0, 'created_time' => 0)));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
@@ -54,7 +54,7 @@ class HotController extends PwBaseController
             ), 'pollGroup');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($this->page > 1) {

@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.dm.PwForumDm');
-Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('SRV:forum.PwForum');
+ 
+ 
+ 
 
 /**
  * 版块公共服务

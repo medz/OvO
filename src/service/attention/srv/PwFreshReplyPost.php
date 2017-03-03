@@ -2,9 +2,9 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attention.PwFresh');
+ 
 
-Wind::import('SRV:weibo.PwWeibo');
+ 
 
 /**
  * 新鲜事回复.

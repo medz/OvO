@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:attach.dm.PwThreadAttachDm');
-Wind::import('SRV:forum.bo.PwForumBo');
+ 
+ 
 Wind::import('COM:utility.WindUtility');
 
 /**
@@ -156,7 +156,7 @@ class PwAttReplaceUpload extends PwUploadAction
             $srv->updateAttach($att);
 
             if ($this->attach['tid'] && $this->attach['pid'] == 0 && $this->attach['type'] != $value['type']) {
-                Wind::import('SRV:forum.dm.PwTopicDm');
+                 
                 $dm = new PwTopicDm($this->attach['tid']);
                 $dm->setHasAttach($value['type'], true);
                 if (!Wekit::load('attach.PwThreadAttach')->countType($this->attach['tid'], 0, $this->attach['type'])) {

@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:design.srv.model.PwDesignModelBase');
+ 
 /**
  * @author $Author: gao.wanggao $ Foxsee@aliyun.com
  * @copyright ?2003-2103 phpwind.com
@@ -58,7 +58,7 @@ class PwDesignImageDataService extends PwDesignModelBase
 
     private function _uploadFile($moduleid = 0)
     {
-        Wind::import('SRV:upload.action.PwDesignImageUpload');
+         
 
         $bhv = new PwDesignImageUpload($moduleid);
         $upload = new PwUpload($bhv);

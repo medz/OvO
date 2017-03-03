@@ -29,7 +29,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
         $userDs = $this->loadUser();
         $user = $userDs->getUserByUid($uid, PwUser::FETCH_MAIN);
         if ($user && (!Pw::getstatus($user['status'], PwUser::STATUS_ALLOW_LOGIN_ADMIN))) {
-            Wind::import('SRV:user.dm.PwUserInfoDm');
+             
             $dm = new PwUserInfoDm($uid);
             $dm->setAllowLoginAdmin($status);
             $userDs->editUser($dm, PwUser::FETCH_MAIN);
@@ -72,7 +72,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
         if (!$email) {
             return new PwError('ADMIN:founder.edit.fail.email.empty');
         }
-        Wind::import('SRV:user.dm.PwUserInfoDm');
+         
         $userDm = new PwUserInfoDm($uid);
         $userDm->setEmail($email);
         $userDm->setGroupid($groupid);

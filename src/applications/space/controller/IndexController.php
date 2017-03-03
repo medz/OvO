@@ -28,7 +28,7 @@ class IndexController extends SpaceBaseController
 
         // seo设置
 
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $des = Pw::substrs($this->space->space['space_descrip'], 100, 0, false);
@@ -67,7 +67,7 @@ class IndexController extends SpaceBaseController
     {
         $id = (int) $this->getInput('id');
 
-        Wind::import('SRV:attention.srv.PwFreshReplyList');
+         
         $reply = new PwFreshReplyList($id);
         $fresh = $reply->getData();
         $replies = $reply->getReplies(7);
@@ -87,7 +87,7 @@ class IndexController extends SpaceBaseController
      */
     public function readAction()
     {
-        Wind::import('SRV:forum.bo.PwThreadBo');
+         
         $id = (int) $this->getInput('id');
         $fresh = Wekit::load('attention.PwFresh')->getFresh($id);
         if ($fresh['type'] == 1) {
@@ -112,20 +112,20 @@ class IndexController extends SpaceBaseController
         list($id, $weiboid) = $this->getInput(array('id', 'weiboid'));
         $page = intval($this->getInput('page'));
         if ($weiboid) {
-            Wind::import('SRV:attention.srv.dataSource.PwFetchFreshByTypeAndSrcId');
+             
             $dataSource = new PwFetchFreshByTypeAndSrcId(3, array($weiboid));
         } else {
-            Wind::import('SRV:attention.srv.dataSource.PwGetFreshById');
+             
             $dataSource = new PwGetFreshById($id);
         }
 
-        Wind::import('SRV:attention.srv.PwFreshDisplay');
+         
         $freshDisplay = new PwFreshDisplay($dataSource);
         if (!$fresh = $freshDisplay->gather()) {
             $this->showError('fresh.exists.not');
         }
 
-        Wind::import('SRV:attention.srv.PwFreshReplyList');
+         
 
         $fresh = current($fresh);
         $id = $fresh['id'];

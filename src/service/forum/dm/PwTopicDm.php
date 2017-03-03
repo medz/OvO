@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.dm.PwPostDm');
-Wind::import('SRV:forum.PwThread');
+ 
+ 
 
 /**
  * @author Jianmin Chen <sky_hold@163.com>

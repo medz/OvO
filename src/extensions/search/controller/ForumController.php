@@ -2,7 +2,7 @@
 
 defined('RUN_STARTTIME') or define('RUN_STARTTIME', microtime(true));
 Wind::import('EXT:search.service.AppSearchRecord');
-Wind::import('SRV:seo.bo.PwSeoBo');
+ 
 
 /**
  * 本地搜索.
@@ -52,7 +52,7 @@ class ForumController extends PwBaseController
             $perpage = $perpage ? $perpage : $this->perpage;
             list($start, $limit) = Pw::page2limit($page, $perpage);
             !$orderby && $orderby = 'lastpost_time';
-            Wind::import('SRV:forum.vo.PwForumSo');
+             
             $keywords = urldecode($keywords);
             $so = new PwForumSo();
             $so->setName($keywords);

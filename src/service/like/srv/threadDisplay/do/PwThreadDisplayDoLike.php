@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoBase');
-Wind::import('SRV:like.srv.PwLikeService');
+ 
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
  *

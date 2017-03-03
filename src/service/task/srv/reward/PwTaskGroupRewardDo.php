@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:task.srv.reward.PwTaskRewardDoBase');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 /**
  * 用户组奖励.
  *

@@ -32,7 +32,7 @@ class FriendController extends PwBaseController
         $this->setOutput($userList, 'userList');
 
         // seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo($lang->getMessage('SEO:bbs.friend.run.title'), '', '');
@@ -67,7 +67,7 @@ class FriendController extends PwBaseController
         $args = array();
         if ($username) {
             // 按用户名搜索
-            Wind::import('SRV:user.vo.PwUserSo');
+             
             $vo = new PwUserSo();
             $vo->setUsername($username);
             $searchDs = Wekit::load('SRV:user.PwUserSearch');

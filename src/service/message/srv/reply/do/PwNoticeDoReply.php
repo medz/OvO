@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.post.do.PwPostDoBase');
+ 
 
 /**
  * Enter description here ...

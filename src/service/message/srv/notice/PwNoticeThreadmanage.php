@@ -11,7 +11,7 @@
  *
  * @version $Id: PwNoticeThreadmanage.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-Wind::import('SRV:message.srv.notice.PwNoticeAction');
+ 
 
 class PwNoticeThreadmanage extends PwNoticeAction
 {

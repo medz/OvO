@@ -25,8 +25,8 @@ class PwDeleteFreshDoWeiboDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->record) {
-            Wind::import('SRV:weibo.srv.operation.PwDeleteWeibo');
-            Wind::import('SRV:weibo.srv.dataSource.PwFetchWeiboById');
+             
+             
             $srv = new PwDeleteWeibo(new PwFetchWeiboById($this->record), $this->srv->user);
             $srv->execute();
 

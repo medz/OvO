@@ -20,7 +20,7 @@ class PwRegisterDoVerifyMobileInjector extends PwBaseHookInjector
     {
         $register = null;
         if ($this->bp->isOpenMobileCheck && $this->getInput('mobile') && $this->getInput('mobileCode')) {
-            Wind::import('SRV:user.srv.register.do.PwRegisterDoVerifyMobile');
+             
             $register = new PwRegisterDoVerifyMobile($this->bp);
         }
 

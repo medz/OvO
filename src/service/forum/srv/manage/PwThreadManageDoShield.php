@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
+ 
 
 /**
  * 帖子管理操作-屏蔽.
@@ -49,7 +49,7 @@ class PwThreadManageDoShield extends PwThreadManageDo
             $type = 'unshield';
         }
         if ($this->pids) {
-            Wind::import('SRV:forum.dm.PwReplyDm');
+             
             $topicDm = new PwReplyDm(true);
             $topicDm->setIfshield($this->ifShield);
             $this->_getThreadDs()->batchUpdatePost($this->pids, $topicDm);
@@ -61,7 +61,7 @@ class PwThreadManageDoShield extends PwThreadManageDo
         }
 
         if ($this->tids) {
-            Wind::import('SRV:forum.dm.PwTopicDm');
+             
             $topicDm = new PwTopicDm(true);
             $topicDm->setIfshield($this->ifShield);
             $this->_getThreadDs()->batchUpdateThread($this->tids, $topicDm, PwThread::FETCH_MAIN);

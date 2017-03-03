@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.bo.PwForumBo');
-Wind::import('SRV:forum.srv.PwThreadList');
+ 
+ 
 
 /**
  * 帖子列表页.
@@ -62,18 +62,18 @@ class ThreadController extends PwBaseController
         !$orderby && $orderby = $defaultOrderby;
 
         if ($tab == 'digest') {
-            Wind::import('SRV:forum.srv.threadList.PwDigestThread');
+             
             $dataSource = new PwDigestThread($pwforum->fid, $type, $orderby);
         } elseif ($type) {
-            Wind::import('SRV:forum.srv.threadList.PwSearchThread');
+             
             $dataSource = new PwSearchThread($pwforum);
             $dataSource->setOrderby($orderby);
             $dataSource->setType($type, $this->_getSubTopictype($type));
         } elseif ($orderby == 'postdate') {
-            Wind::import('SRV:forum.srv.threadList.PwNewForumThread');
+             
             $dataSource = new PwNewForumThread($pwforum);
         } else {
-            Wind::import('SRV:forum.srv.threadList.PwCommonThread');
+             
             $dataSource = new PwCommonThread($pwforum);
         }
         $orderby != $defaultOrderby && $dataSource->setUrlArg('orderby', $orderby);
@@ -108,7 +108,7 @@ class ThreadController extends PwBaseController
         }
 
         //seo设置
-        Wind::import('SRV:seo.bo.PwSeoBo');
+         
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($threadList->page <= 1) {

@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
 
 class PwOvertimeService
 {

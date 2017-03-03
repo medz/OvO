@@ -1,7 +1,7 @@
 <?php
 
-Wind::import('SRV:forum.srv.manage.PwThreadManageDo');
-Wind::import('SRV:forum.dm.PwTopicDm');
+ 
+ 
 
 /**
  * 帖子管理操作-提前.

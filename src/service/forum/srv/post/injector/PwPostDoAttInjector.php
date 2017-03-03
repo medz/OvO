@@ -19,7 +19,7 @@ class PwPostDoAttInjector extends PwBaseHookInjector
         if (empty($_FILES) && empty($flashatt)) {
             return null;
         }
-        Wind::import('SRV:forum.srv.post.do.PwPostDoAtt');
+         
 
         return new PwPostDoAtt($this->bp, $flashatt);
     }
@@ -27,7 +27,7 @@ class PwPostDoAttInjector extends PwBaseHookInjector
     public function domodify()
     {
         $flashatt = $this->getInput('flashatt', 'post');
-        Wind::import('SRV:forum.srv.post.do.PwPostDoAtt');
+         
         $postAtt = new PwPostDoAtt($this->bp, $flashatt);
         if ($postAtt->hasAttach()) {
             $oldatt_desc = $this->getInput('oldatt_desc', 'post');

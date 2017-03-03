@@ -71,7 +71,7 @@ class StyleController extends DesignBaseController
             unset($padding['bottom']);
         }
 
-        Wind::import('SRV:design.dm.PwDesignModuleDm');
+         
         $dm = new PwDesignModuleDm($this->bo->moduleid);
         $dm->setStyle($font, $link, $border, $margin, $padding, $background, $styleclass);
         $resource = $this->_getModuleDs()->updateModule($dm);

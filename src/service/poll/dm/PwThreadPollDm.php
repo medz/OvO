@@ -1,7 +1,7 @@
 <?php
 
 defined('WEKIT_VERSION') || exit('Forbidden');
-Wind::import('SRV:poll.dm.PwPollDm');
+ 
 
 /**
  * 帖子投票关系数据服务层

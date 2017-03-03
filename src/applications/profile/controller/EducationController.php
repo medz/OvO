@@ -1,8 +1,8 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
-Wind::import('SRV:education.srv.helper.PwEducationHelper');
-Wind::import('SRV:education.dm.PwEducationDm');
+ 
+ 
 /**
  * 教育经历.
  *

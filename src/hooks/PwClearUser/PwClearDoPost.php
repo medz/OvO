@@ -1,8 +1,8 @@
 <?php
 
 
-Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByUid');
-Wind::import('SRV:forum.srv.operation.PwDeleteReply');
+ 
+ 
 
 /**
  * 清除用户数据----帖子回复.

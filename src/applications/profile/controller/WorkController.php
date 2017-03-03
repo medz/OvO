@@ -1,7 +1,7 @@
 <?php
 
 Wind::import('APPS:.profile.controller.BaseProfileController');
-Wind::import('SRV:work.dm.PwWorkDm');
+ 
 
 /**
  * 用户资料-工作经历扩展.

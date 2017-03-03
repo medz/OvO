@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:space.bo.PwSpaceBo');
+ 
 /**
  * the last known user to change this file in the repository  <$LastChangedBy: jieyin $>.
  *
@@ -150,8 +150,8 @@ class PwSpaceModel extends PwSpaceBo
 
     protected function modelFreshList($limit, $page)
     {
-        Wind::import('SRV:attention.srv.PwFreshDisplay');
-        Wind::import('SRV:attention.srv.dataSource.PwFetchMyFresh');
+         
+         
         $count = Wekit::load('attention.PwFresh')->countFreshByUid($this->spaceUid);
         $totalpage = ceil($count / $limit);
         $page > $totalpage && $page = $totalpage;

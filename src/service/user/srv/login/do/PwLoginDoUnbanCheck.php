@@ -1,6 +1,6 @@
 <?php
 
-Wind::import('SRV:user.srv.login.PwUserLoginDoBase');
+ 
 
 /**
  * 登录用户自动解除禁止的检查.
@@ -18,7 +18,7 @@ class PwLoginDoUnbanCheck extends PwUserLoginDoBase
      */
     public function welcome(PwUserBo $userBo, $ip)
     {
-        Wind::import('SRV:user.srv.PwBanBp');
+         
         $banBp = new PwBanBp($userBo->uid);
         if ($banBp->checkIfBan()) {
             if (Pw::getstatus($userBo->info['status'], PwUser::STATUS_BAN_AVATAR) && false === $banBp->checkIfBanAvatar()) {

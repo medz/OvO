@@ -38,7 +38,7 @@ class PwDeleteTopicDoPollDelete extends iPwGleanDoHookProcess
 
         $threadPollDs->batchDeletePoll($this->record);
 
-        Wind::import('SRV:forum.dm.PwTopicDm');
+         
         $dm = new PwTopicDm(true);
         $dm->setSpecial(0);
         Wekit::load('forum.PwThread')->batchUpdateThread($this->record, $dm, PwThread::FETCH_MAIN);

@@ -33,7 +33,7 @@ class PwLikeDoReplyInjector extends PwBaseHookInjector
         if (!isset($info['likeid'])) {
             return true;
         }
-        Wind::import('SRV:like.srv.reply.do.PwLikeDoReply');
+         
 
         return new PwLikeDoReply($info['likeid']);
     }

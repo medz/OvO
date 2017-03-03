@@ -28,7 +28,7 @@ class PwDesignAsynImageService
         $srv = Wekit::load('design.srv.PwDesignImage');
         $srv->setInfo($image['moduleid'], $image['path'], $image['width'], $image['height']);
         $thumb = $srv->cut();
-        Wind::import('SRV:design.dm.PwDesignAsynImageDm');
+         
         $dm = new PwDesignAsynImageDm($image['id']);
         list($dir, $filename, $url) = $thumb;
         if (!$dir) {
@@ -50,7 +50,7 @@ class PwDesignAsynImageService
 
     public function updateDesignData($dataid, $sign, $thumbUrl, $thumb)
     {
-        Wind::import('SRV:design.dm.PwDesignDataDm');
+         
         $ds = $this->_getDataDs();
         $data = $ds->getData($dataid);
         $extend = unserialize($data['extend_info']);

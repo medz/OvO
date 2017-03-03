@@ -94,7 +94,7 @@ class PwStorageCdn
     public function _getCdn()
     {
         if ($this->_cdn == null) {
-            Wind::import('SRV:upload.cdn.PwAliCdn');
+             
             $this->_cdn = new PwAliCdn();
             $this->_cdn->set_version(RAW_VERSION);
             $this->_cdn->set_appkey($this->_config['dnsappkey']);

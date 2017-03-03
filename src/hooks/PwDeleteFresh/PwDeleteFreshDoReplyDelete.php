@@ -2,8 +2,8 @@
 
 defined('WEKIT_VERSION') || exit('Forbidden');
 
-Wind::import('SRV:credit.bo.PwCreditBo');
-Wind::import('SRV:user.dm.PwUserInfoDm');
+ 
+ 
 
 /**
  * 新鲜事删除扩展服务接口--删除回复源内容.
@@ -28,8 +28,8 @@ class PwDeleteFreshDoReplyDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->record) {
-            Wind::import('SRV:forum.srv.operation.PwDeleteReply');
-            Wind::import('SRV:forum.srv.dataSource.PwFetchReplyByPid');
+             
+             
             $srv = new PwDeleteReply(new PwFetchReplyByPid($this->record), $this->srv->user);
             $srv->setIsDeleteFresh(false)
                 ->setIsDeductCredit($this->srv->isDeductCredit)

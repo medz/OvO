@@ -53,8 +53,8 @@ class PwDesignThreadPushService
         $sTitle = $info[$standard['sTitle']];
         $sUrl = $info[$standard['sUrl']];
         $user = Wekit::load('SRV:user.PwUser')->getUserByUid($push['created_userid']);
-        Wind::import('SRV:credit.bo.PwCreditBo');
-        Wind::import('SRV:forum.bo.PwForumBo');
+         
+         
         $credit = PwCreditBo::getInstance();
         $operation = 'push_thread';
         $forum = new PwForumBo($thread['fid']);
