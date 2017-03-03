@@ -1,8 +1,5 @@
 <?php
 
-defined('WEKIT_VERSION') || exit('Forbidden');
-
-Wind::import('SRC:bootstrap.bootstrap');
 Wind::import('SRV:user.bo.PwUserBo');
 
 /**

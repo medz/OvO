@@ -180,7 +180,9 @@ class Wekit
         if (isset(self::$_app[$re])) {
             return;
         }
-        $class = Wind::import('SRC:bootstrap.'.$appName.'Boot');
+
+        $class = $appName.'Boot';
+
         self::$_app[$re] = new $class($re);
         self::$_app[$re]->cache = self::$_app[$re]->getCache();
         self::$_app[$re]->config = self::$_app[$re]->getConfigBo();

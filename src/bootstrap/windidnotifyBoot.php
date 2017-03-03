@@ -1,7 +1,5 @@
 <?php
 
-Wind::import('SRC:bootstrap.phpwindBoot');
-
 /**
  * @author Jianmin Chen <sky_hold@163.com>
  *

@@ -1,6 +1,5 @@
 <?php
 
-Wind::import('SRC:bootstrap.bootstrap');
 Wind::import('WSRV:base.WindidBaseDao');
 Wind::import('WSRV:base.WindidUtility');
 Wind::import('WSRV:base.WindidError');

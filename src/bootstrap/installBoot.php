@@ -1,7 +1,6 @@
 <?php
 
 Wind::import('SRV:user.bo.PwUserBo');
-Wind::import('SRC:bootstrap.bootstrap');
 
 class installBoot extends bootstrap
 {

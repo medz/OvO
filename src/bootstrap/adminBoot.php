@@ -1,6 +1,5 @@
 <?php
 
-Wind::import('SRC:bootstrap.bootstrap');
 Wind::import('ADMIN:service.srv.AdminUserService');
 
 /**

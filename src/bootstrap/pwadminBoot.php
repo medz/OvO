@@ -1,6 +1,5 @@
 <?php
 
-Wind::import('SRC:bootstrap.adminBoot');
 Wind::import('SRV:user.bo.PwUserBo');
 
 /**
