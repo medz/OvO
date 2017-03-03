@@ -69,7 +69,7 @@ class AlipayController extends PwBaseController
             $this->paymsg('onlinepay.order.paid');
         }
 
-        $className =  
+        $className = 'PwPayAction'.$order['paytype'];
         if (class_exists($className)) {
             $class = new $className($order);
             $class->run();
