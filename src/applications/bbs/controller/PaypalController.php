@@ -55,7 +55,6 @@ class PaypalController extends PwBaseController
             $class->run();
         }
 
-         
         $dm = new PwOrderDm($order['id']);
         $dm->setState(2)->setPaymethod(3);
         Wekit::load('pay.PwOrder')->updateOrder($dm);

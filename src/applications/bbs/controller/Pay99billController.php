@@ -63,7 +63,6 @@ class Pay99billController extends PwBaseController
             $class->run();
         }
 
-         
         $dm = new PwOrderDm($order['id']);
         $dm->setState(2)->setPaymethod(4);
         Wekit::load('pay.PwOrder')->updateOrder($dm);
