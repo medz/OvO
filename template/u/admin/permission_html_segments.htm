@@ -8,7 +8,7 @@
 
 <hook-action name="sell_credits" args="pKey,pData">
 	<!--# 
-		Wind::import('SRV:credit.bo.PwCreditBo');
+		 
 		$creditBo = PwCreditBo::getInstance();
 	#-->
 	<ul class="three_list cc">
@@ -25,7 +25,7 @@
 
 <hook-action name="sign_cost" args="pKey,pData">
 	<!--# 
-		Wind::import('SRV:credit.bo.PwCreditBo');
+		 
 		$creditBo = PwCreditBo::getInstance();
 	#-->
 	<input type="text" name="gpermission[{$pKey}][costs]" value="{$pData['default']['costs']}" class="input length3 mr5">
@@ -38,7 +38,7 @@
 
 <hook-action name="enhide_credits" args="pKey,pData">
 	<!--# 
-		Wind::import('SRV:credit.bo.PwCreditBo');
+		 
 		$creditBo = PwCreditBo::getInstance();
 	 #-->
 	<ul class="three_list cc">
