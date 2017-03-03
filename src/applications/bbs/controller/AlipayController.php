@@ -75,7 +75,6 @@ class AlipayController extends PwBaseController
             $class->run();
         }
 
-         
         $dm = new PwOrderDm($order['id']);
         $dm->setPayemail($this->_var['buyer_email'])->setState(2)->setPaymethod(1);
         Wekit::load('pay.PwOrder')->updateOrder($dm);
