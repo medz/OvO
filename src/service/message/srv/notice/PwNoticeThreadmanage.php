@@ -11,7 +11,6 @@
  *
  * @version $Id: PwNoticeThreadmanage.php 3440 2012-01-17 08:25:36Z peihong.zhangph $
  */
-
 class PwNoticeThreadmanage extends PwNoticeAction
 {
     public $aggregate = false;
