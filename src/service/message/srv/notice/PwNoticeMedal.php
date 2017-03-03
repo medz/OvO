@@ -8,7 +8,6 @@
  *
  * @version $Id: PwNoticeMedal.php 17946 2012-09-10 09:54:00Z jinlong.panjl $
  */
-
 class PwNoticeMedal extends PwNoticeAction
 {
     public $aggregate = false;

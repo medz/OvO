@@ -8,7 +8,6 @@
  *
  * @version $Id: PwCronDoDesign.php 17721 2012-09-08 07:45:19Z gao.wanggao $
  */
-
 class PwCronDoDesign extends AbstractCronBase
 {
     public function run($cronId)
