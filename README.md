@@ -2,14 +2,12 @@
 
 [![phpwind Fans](https://pub.idqqimg.com/wpa/images/group.png)](//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7)
 
-## 2017开发计划.md
-[2017开发计划](2017开发计划.md)
-
-# 目前最新：F 1.0.8
 phpwind Fans版本是原本暂定的phpwind10版本而来。基于官方最新的phpwind9.0.1开发，同步官方所有代码的基础上进行改良和长期维护。
 ## 关于下载
 点击[这里](https://github.com/medz/phpwind/releases)选择最新的版本
-选择phpwind-fans-x.x.zip格式的文件点击即可下载。PS：注意格式！注意格式！注意格式！重要的事情说三遍！
+
+## 2017开发计划.md
+[2017开发计划](2017开发计划.md)
 
 ## 首次安装
 1. 将下载下来的文件解压，然后将phpwind-x文件夹下的内容放网站根目录。
