@@ -43,5 +43,8 @@
             "Pw\\App\\": "src/applications/",
             "Pw\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": "1.1-dev"
     }
 }
