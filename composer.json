@@ -45,6 +45,6 @@
         }
     },
     "extra": {
-        "branch-alias": "1.1-dev"
+        "branch-alias": "1.0-dev"
     }
 }
