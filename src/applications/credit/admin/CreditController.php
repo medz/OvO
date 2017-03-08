@@ -207,6 +207,7 @@ class CreditController extends AdminBaseController
         }
 
         $exchange = Wekit::C('credit', 'exchange');
+        is_array($exchange) || $exchange = array();
         if (isset($exchange[$id])) {
             unset($exchange[$id]);
             $config = new PwConfigSet('credit');
