@@ -146,10 +146,9 @@ class CreditController extends AdminBaseController
      */
     public function exchangeAction()
     {
-
-        // print_r(Wekit::C('credit', 'exchange'));
+        $exchange = (array) Wekit::C('credit', 'exchange');
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
-        $this->setOutput(Wekit::C('credit', 'exchange'), 'exchange');
+        $this->setOutput($exchange, 'exchange');
         $this->setCurrentTab('exchange');
     }
 
