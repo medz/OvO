@@ -5,7 +5,8 @@ namespace Medz\Wind;
 use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
 
-class Application {
+class Application
+{
     /**
      * container.
      *
@@ -17,6 +18,7 @@ class Application {
      * Create new Application.
      *
      * @param array|Psr\Container\ContainerInterface $container Either a ContainerInterface or an associative array of app settings
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -34,9 +36,10 @@ class Application {
     }
 
     /**
-     * Enable access to the DI container by consumers of $app
+     * Enable access to the DI container by consumers of $app.
      *
      * @return Psr\Container\ContainerInterface
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
