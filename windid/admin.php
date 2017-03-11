@@ -18,7 +18,6 @@ error_reporting(E_ERROR | E_PARSE);
 
 $app = require dirname(__DIR__).'/bootstrap.php';
 
-
 /*
 |--------------------------------------------------------------------------
 | Run The Application

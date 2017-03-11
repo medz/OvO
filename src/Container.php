@@ -2,9 +2,9 @@
 
 namespace Medz\Wind;
 
-use RuntimeException;
 use Illuminate\Container\Container as BaseContainer;
 use Psr\Container\ContainerInterface;
+use RuntimeException;
 
 class Container extends BaseContainer implements ContainerInterface
 {
@@ -12,8 +12,11 @@ class Container extends BaseContainer implements ContainerInterface
      * Finds an entry of the container by its identifier and returns it.
      *
      * @param string $id
+     *
      * @throws \RuntimeException No entry was found for this identifier.
+     *
      * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function get($id)

@@ -15,6 +15,7 @@ class Application extends Container
      * Create a new application instance.
      *
      * @param string $basePath
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -32,6 +33,7 @@ class Application extends Container
      * Register the basic bindings into the container.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function registerBaseBindings()
@@ -45,6 +47,7 @@ class Application extends Container
      * Set the base path for the application.
      *
      * @param string $basePath
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -75,6 +78,7 @@ class Application extends Container
      * Get the base path of the Laravel installation.
      *
      * @author Seven Du <shiweidu@outlook.com>
+     *
      * @return string
      */
     public function basePath()
@@ -86,6 +90,7 @@ class Application extends Container
      * Get the path to the application "src" directory.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -98,6 +103,7 @@ class Application extends Container
      * Get the path to the application configuration files.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function configPath()
@@ -109,6 +115,7 @@ class Application extends Container
      * Get the path to the public / web directory.
      *
      * @return string
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function publicPath()
@@ -120,6 +127,7 @@ class Application extends Container
      * Register the core class aliases in the container.
      *
      * @return void
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function registerCoreContainerAliases()
@@ -128,7 +136,7 @@ class Application extends Container
             'app' => [
                 \Medz\Wind\Application::class,
                 \Psr\Container\ContainerInterface::class,
-            ]
+            ],
         ] as $key => $aliases) {
             foreach ($aliases as $alias) {
                 $this->alias($key, $alias);

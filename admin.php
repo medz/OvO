@@ -18,7 +18,6 @@ error_reporting(E_ERROR | E_PARSE);
 
 $app = require dirname(__FILE__).'/bootstrap.php';
 
-
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -38,10 +37,10 @@ $phpwind9('pwadmin', [
             'module' => ['default-value' => 'default'],
             'routes' => [
                 'admin' => [
-                    'class' => PwAdminRoute::class,
-                    'default' => true
-                ]
-            ]
-        ]
-    ]
+                    'class'   => PwAdminRoute::class,
+                    'default' => true,
+                ],
+            ],
+        ],
+    ],
 ]);

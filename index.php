@@ -18,7 +18,6 @@ define('WIND_DEBUG', 3);
 
 $app = require dirname(__FILE__).'/bootstrap.php';
 
-
 /*
 |--------------------------------------------------------------------------
 | Run The Application
