@@ -40,7 +40,8 @@
         "psr-4": {
             "Pw\\Ext\\": "src/extensions/",
             "Pw\\App\\": "src/applications/",
-            "Pw\\": "src/"
+            "Pw\\": "src/",
+            "Medz\\Wind\\Upgrade\\": "upgrade/src/"
         }
     },
     "extra": {
