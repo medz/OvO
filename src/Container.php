@@ -2,9 +2,9 @@
 
 namespace Medz\Wind;
 
-use RuntimeException;
 use Pimple\Container as PimpleContainer;
 use Psr\Container\ContainerInterface;
+use RuntimeException;
 
 class Container extends PimpleContainer implements ContainerInterface
 {
@@ -36,10 +36,12 @@ class Container extends PimpleContainer implements ContainerInterface
      * Finds an entry of the container by its identifier and returns it.
      *
      * @param string $id
-     * @return mixed
      *
      * @throws \RuntimeException         No entry was found for this identifier.
      * @throws \InvalidArgumentException Error while retrieving the entry.
+     *
+     * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -58,7 +60,8 @@ class Container extends PimpleContainer implements ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @return boolean
+     * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function has($id)
