@@ -20,6 +20,7 @@ class Repositorie
      * create the rep.
      *
      * @param string $repositorie
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct($repositorie, $tag)
