@@ -12,10 +12,8 @@ class Container extends BaseContainer implements ContainerInterface
      * Finds an entry of the container by its identifier and returns it.
      *
      * @param string $id
+     * @throws \RuntimeException No entry was found for this identifier.
      * @return mixed
-     *
-     * @throws \RuntimeException         No entry was found for this identifier.
-     * @throws \InvalidArgumentException Error while retrieving the entry.
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function get($id)
@@ -33,7 +31,8 @@ class Container extends BaseContainer implements ContainerInterface
      *
      * @param string $id Identifier of the entry to look for.
      *
-     * @return boolean
+     * @return bool
+     *
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function has($id)
