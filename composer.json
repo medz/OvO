@@ -45,8 +45,7 @@
         "files": [ "helpers.php" ],
         "psr-4": {
             "Medz\\Wind\\": "src/",
-            "Pw\\Ext\\": "src/extensions/",
-            "Pw\\App\\": "src/applications/"
+            "Pw\\Ext\\": "src/extensions/"
         }
     },
     "extra": {
