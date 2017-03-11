@@ -71,18 +71,6 @@ class pwadminBoot extends adminBoot
         'adminUserService' => array('path' => 'APPS:pwadmin.service.srv.do.AdminUserDependenceService'),
     );
 
-    public function __construct($re)
-    {
-        parent::__construct($re);
-
-        //云应用监听sql执行
-        WindFactory::_getInstance()->loadClassDefinitions(
-            array(
-                'sqlStatement' => array(
-                    'proxy'     => 'WIND:filter.proxy.WindEnhancedClassProxy',
-                    'listeners' => array('LIB:compile.acloud.PwAcloudDbListener'), ), ));
-    }
-
     /* (non-PHPdoc)
      * @see phpwindBoot::init()
      */

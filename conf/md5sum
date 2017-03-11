@@ -616,13 +616,6 @@ b3d61b320f02513edcf0f4316ac649fd	src/library/base/PwBaseDbCache.php
 50af46b7fc15e6dddb9a3ce441c6b1cb	src/library/base/PwErrorHandler.php
 332e009826da27485a4aa504af1541a4	src/library/compile/AbstractPwCompiler.php
 3bb1ef04fc8a09a17c8a96b8a7255c48	src/library/compile/PwCompile.php
-1c8524a978d2022056c17972fa82455f	src/library/compile/acloud/PwAcloudDataMapper.php
-68cf350af2738c046cae73b3e7021de2	src/library/compile/acloud/PwAcloudDbListener.php
-d58419d8c8514296aef69632c3ce0b9a	src/library/compile/acloud/PwAcloudFilter.php
-c8e93f8b5b18f6cceddba8299961b85d	src/library/compile/acloud/collect/AbstractAcloudCollect.php
-6125616a7f17f6954e84d3f6343d4122	src/library/compile/acloud/collect/PwAcloudIndexCollect.php
-faead1a474583886e2bdd97a2b482fa9	src/library/compile/acloud/collect/PwAcloudReadCollect.php
-50c847cca51a1a8d3b853b9f0c9da6c7	src/library/compile/acloud/collect/PwAcloudThreadCollect.php
 e722a665513eb5f3bda08e1ebf16575b	src/library/compile/compiler/PwCssCompress.php
 274f96816d239cc0943c7f618ced4e59	src/library/compile/compiler/PwJsCompress.php
 b57d7cd9973b8af5a854b2c751728b5d	src/library/dataSource/PwDataLazyLoader.php

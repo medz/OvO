@@ -24,13 +24,6 @@ class phpwindBoot extends bootstrap
         }
         parent::__construct($re);
 
-        //云应用监听sql执行
-        WindFactory::_getInstance()->loadClassDefinitions(
-            array(
-                'sqlStatement' => array(
-                    'proxy'     => 'WIND:filter.proxy.WindEnhancedClassProxy',
-                    'listeners' => array('LIB:compile.acloud.PwAcloudDbListener'), ), ));
-
         $this->charset = Wind::getComponent('response')->getCharset();
     }
 
@@ -94,21 +87,6 @@ class phpwindBoot extends bootstrap
     public function beforeStart($front = null)
     {
         $this->_initUser();
-        $this->runApps($front);
-    }
-
-    /**
-     * 执行acloud的相关.
-     *
-     * @param AbstractWindFrontController $front
-     */
-    public function runApps($front = null)
-    {
-        $front->registeFilter(new PwAcloudFilter());
-
-        $controller = Wind::getComponent('router')->getController();
-        require_once Wind::getRealPath('ACLOUD:aCloud');
-        ACloudAppGuiding::runApps($controller);
     }
 
     /**
