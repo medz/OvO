@@ -29,7 +29,8 @@
         "medz/windframework": "^1.0",
         "symfony/console": "^3.2",
         "guzzlehttp/guzzle": "^3.8",
-        "nikic/fast-route": "^1.2"
+        "nikic/fast-route": "^1.2",
+        "psr/container": "^1.0"
     },
     "autoload": {
         "classmap": [
