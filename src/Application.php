@@ -3,10 +3,10 @@
 namespace Medz\Wind;
 
 use Closure;
-use InvalidArgumentException;
-use ReflectionClass;
 use Exception;
+use InvalidArgumentException;
 use Psr\Container\ContainerInterface;
+use ReflectionClass;
 
 class Application
 {
@@ -55,7 +55,9 @@ class Application
      * Resolve the given type from the container.
      *
      * @param string $abstract
+     *
      * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -80,7 +82,9 @@ class Application
      * Instantiate a concrete instance of the given type.
      *
      * @param string $concrete
+     *
      * @return mixed
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
@@ -101,7 +105,7 @@ class Application
         // we can just resolve the instances of the objects right away, without
         // resolving any other types or dependencies out of these containers.
         if (is_null($constructor)) {
-            return new $concrete;
+            return new $concrete();
         }
 
         $dependencies = $constructor->getParameters();
@@ -120,7 +124,9 @@ class Application
      * Resolve all of the dependencies from the ReflectionParameters.
      *
      * @param array $dependencies
+     *
      * @return array
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
