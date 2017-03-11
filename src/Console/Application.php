@@ -1,6 +1,6 @@
 <?php
 
-namespace Pw\Console;
+namespace Medz\Wind\Console;
 
 use Symfony\Component\Console\Application as BaseApplication;
 

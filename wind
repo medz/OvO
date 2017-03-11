@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+use Medz\Wind\Console\Application;
+
 if (PHP_SAPI !== 'cli') {
     echo 'Warning: Composer should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
 }
@@ -23,5 +25,5 @@ error_reporting(-1);
 
 require __DIR__.'/bootstrap.php';
 
-$app = new \Pw\Console\Application();
+$app = new Application();
 $app->run();

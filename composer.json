@@ -40,9 +40,9 @@
             "src/hooks/"
         ],
         "psr-4": {
+            "Medz\\Wind\\": "src/",
             "Pw\\Ext\\": "src/extensions/",
-            "Pw\\App\\": "src/applications/",
-            "Pw\\": "src/"
+            "Pw\\App\\": "src/applications/"
         }
     },
     "extra": {
