@@ -50,7 +50,7 @@ class PwApplicationService
      */
     private function _loadHookInjectDs()
     {
-        return wekit::load('SRV:hook.PwHookInject');
+        return app(PwHookInject::class);
     }
 
     /**
@@ -58,7 +58,7 @@ class PwApplicationService
      */
     private function _loadHookDs()
     {
-        return wekit::load('SRV:hook.PwHooks');
+        return app(PwHooks::class);
     }
 
     /**

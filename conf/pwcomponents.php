@@ -10,11 +10,11 @@
 
 return array(
     'link' => array(
-        'class'  => 'SRV:link.srv.PwLinkService',
+        'class'  => PwLinkService::class,
         'method' => 'getLinksByType',
     ),
     'announce' => array(
-        'class'  => 'SRV:announce.srv.PwAnnounceService',
+        'class'  => PwAnnounceService::class,
         'method' => 'getAnnounceForBbsScroll',
     ),
 );

@@ -45,7 +45,7 @@ class SetforumController extends AdminBaseController
         list($vieworder, $manager) = $this->getInput(array('vieworder', 'manager'), 'post');
         //TODO 添加：先判断这些会员里是否含有身份不符合的用户，用户组1（游客）,2（禁止发言）,6（未验证用户）
         $_tmpManager = explode(',', implode(',', array_unique($manager)));
-        $result = Wekit::load('SRV:user.srv.PwUserMiscService')->filterForumManger($_tmpManager);
+        $result = app(PwUserMiscService::class)->filterForumManger($_tmpManager);
         if ($result instanceof PwError) {
             $this->showError($result->getError());
         }
@@ -345,7 +345,7 @@ class SetforumController extends AdminBaseController
             if ($flag) {
                 $this->doeditTopicType($fid);
             } elseif ($copyItems['topictype'] && !$flag) {
-                Wekit::load('SRV:forum.srv.PwTopicTypeService')->copyTopicType($mainFid, $fid);
+                app(PwTopicTypeService::class)->copyTopicType($mainFid, $fid);
             }
 
             //seo
@@ -354,8 +354,8 @@ class SetforumController extends AdminBaseController
             ($flag || $copyItems['forumdomain']) && $this->_updateForumDomain($tmpforum);
 
             if ($flag && $tmpforum->foruminfo['parentid'] != $tmpParentid) {
-                Wekit::load('forum.srv.PwForumService')->updateForumStatistics($tmpParentid);
-                Wekit::load('forum.srv.PwForumService')->updateForumStatistics($tmpforum->foruminfo['parentid']);
+                app(PwForumService::class)->updateForumStatistics($tmpParentid);
+                app(PwForumService::class)->updateForumStatistics($tmpforum->foruminfo['parentid']);
                 $misc = true;
             }
             if ($flag && $forumname != $tmpforum->foruminfo['name']) {
@@ -366,7 +366,7 @@ class SetforumController extends AdminBaseController
             }
         }
         if ($misc) {
-            Wekit::load('forum.srv.PwForumMiscService')->correctData();
+            app(PwForumMiscService::class)->correctData();
         }
     }
 
@@ -387,7 +387,7 @@ class SetforumController extends AdminBaseController
            ->setTitle($seo['title'])
            ->setKeywords($seo['keywords'])
            ->setDescription($seo['description']);
-        Wekit::load('seo.srv.PwSeoService')->batchReplaceSeoWithCache($dm);
+        app(PwSeoService::class)->batchReplaceSeoWithCache($dm);
     }
 
     private function _updateForumDomain($forum)
@@ -396,11 +396,11 @@ class SetforumController extends AdminBaseController
         $fid = $forum->fid;
         list($forumdomain, $forumroot) = $this->getInput(array('forumdomain', 'forumroot'));
         $domainKey = $forum->foruminfo['type'] == 'category' ? "bbs/cate/run?fid=$fid" : "bbs/thread/run?fid=$fid";
-        $oldDomain = Wekit::load('domain.PwDomain')->getByDomainKey($domainKey);
+        $oldDomain = app(PwDomain::class)->getByDomainKey($domainKey);
         /* @var $srv PwDomainService */
-        $srv = Wekit::load('domain.srv.PwDomainService');
+        $srv = app(PwDomainService::class);
         if (!$forumdomain) {
-            Wekit::load('domain.PwDomain')->deleteByDomainKey($domainKey);
+            app(PwDomain::class)->deleteByDomainKey($domainKey);
             if ($oldDomain) {
                 $srv->flushAll();
             }
@@ -421,7 +421,7 @@ class SetforumController extends AdminBaseController
             ->setRoot($forumroot)
             ->setFirst($forumdomain[0])
             ->setId($fid);
-            Wekit::load('domain.PwDomain')->replaceDomain($dm);
+            app(PwDomain::class)->replaceDomain($dm);
             if (!$oldDomain || $oldDomain['domain'] != $forumdomain) {
                 $srv->flushAll();
             }

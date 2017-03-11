@@ -362,21 +362,21 @@ class IndexController extends WindController
 
         //更新数据缓存
         /* @var $usergroup PwUserGroupsService */
-        $usergroup = Wekit::load('SRV:usergroup.srv.PwUserGroupsService');
+        $usergroup = app(PwUserGroupsService::class);
         $usergroup->updateLevelCache();
         $usergroup->updateGroupCache(range(1, 16));
         $usergroup->updateGroupRightCache();
         /* @var $emotion PwEmotionService */
-        $emotion = Wekit::load('SRV:emotion.srv.PwEmotionService');
+        $emotion = app(PwEmotionService::class);
         $emotion->updateCache();
 
         //创始人配置
         $uid = $this->_writeFounder($db['founder']['manager'], $db['founder']['manager_pwd'], $db['founder']['manager_email']);
 
         //门户演示数据
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->likeModule();
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->tagModule();
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->reviseDefaultData();
+        app(PwDesignDefaultService::class)->likeModule();
+        app(PwDesignDefaultService::class)->tagModule();
+        app(PwDesignDefaultService::class)->reviseDefaultData();
 
         //演示数据导入
 
@@ -389,8 +389,8 @@ class IndexController extends WindController
         }
 
         //全局缓存更新
-        Wekit::load('SRV:cache.srv.PwCacheUpdateService')->updateConfig();
-        Wekit::load('SRV:cache.srv.PwCacheUpdateService')->updateMedal();
+        app(PwCacheUpdateService::class)->updateConfig();
+        app(PwCacheUpdateService::class)->updateMedal();
 
         //清理安装过程的文件
         WindFile::write($this->_getInstallLockFile(), 'LOCKED');

@@ -46,9 +46,9 @@ return array(
     ), ),
 
     'installation-service' => array(
-        'nav_main'   => array('class' => 'SRV:nav.srv.PwNavInstall', 'message' => 'APPCENTER:install.nav.main'),
-        'nav_bottom' => array('class' => 'SRV:nav.srv.PwNavInstall', 'message' => 'APPCENTER:install.nav.bottom', 'method' => 'bottom'),
-        'nav_my'     => array('class' => 'SRV:nav.srv.PwNavInstall', 'message' => 'APPCENTER:install.nav.my', 'method' => 'my'),
+        'nav_main'   => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.main'),
+        'nav_bottom' => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.bottom', 'method' => 'bottom'),
+        'nav_my'     => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.my', 'method' => 'my'),
     ),
 
     'style-type' => array(

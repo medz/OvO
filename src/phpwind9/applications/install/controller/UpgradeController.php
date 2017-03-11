@@ -1,5 +1,7 @@
 <?php
 
+use function Medz\Wind\app;
+
 define('WIND_SETUP', 'update');
 define('NEXT_VERSION', '9.0');
 
@@ -85,22 +87,22 @@ class UpgradeController extends WindController
 
         //更新数据缓存
         /* @var $usergroup PwUserGroupsService */
-        $usergroup = Wekit::load('SRV:usergroup.srv.PwUserGroupsService');
+        $usergroup = app(PwUserGroupsService::class);
         $usergroup->updateLevelCache();
         $usergroup->updateGroupCache();
         $usergroup->updateGroupRightCache();
         /* @var $emotion PwEmotionService */
-        $emotion = Wekit::load('SRV:emotion.srv.PwEmotionService');
+        $emotion = app(PwEmotionService::class);
         $emotion->updateCache();
 
         //门户演示数据
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->likeModule();
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->tagModule();
-        Wekit::load('SRV:design.srv.PwDesignDefaultService')->reviseDefaultData();
+        app(PwDesignDefaultService::class)->likeModule();
+        app(PwDesignDefaultService::class)->tagModule();
+        app(PwDesignDefaultService::class)->reviseDefaultData();
 
         //全局缓存更新
-        Wekit::load('SRV:cache.srv.PwCacheUpdateService')->updateConfig();
-        Wekit::load('SRV:cache.srv.PwCacheUpdateService')->updateMedal();
+        app(PwCacheUpdateService::class)->updateConfig();
+        app(PwCacheUpdateService::class)->updateMedal();
         $this->_writeWindid();
         $this->_designUpgrade();
         //清理升级过程的文件

@@ -480,7 +480,7 @@ class PwInstall implements iPwInstall
      */
     private function _loadPwHookInject()
     {
-        return Wekit::load('SRV:hook.PwHookInject');
+        return app(PwHookInject::class);
     }
 
     /**
@@ -488,7 +488,7 @@ class PwInstall implements iPwInstall
      */
     private function _loadPwHooks()
     {
-        return Wekit::load('SRV:hook.PwHooks');
+        return app(PwHooks::class);
     }
 
     /**

@@ -11,7 +11,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'poll' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoPollInjector',
+                'class'       => PwPostDoPollInjector::class,
                 'method'      => 'run',
                 'expression'  => 'special.get==poll',
                 'description' => '投票帖展示',
@@ -24,24 +24,24 @@ return array(
         'interface'   => '',
         'list'        => array(
             'poll' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoPollInjector',
+                'class'       => PwPostDoPollInjector::class,
                 'method'      => 'doadd',
                 'expression'  => 'special.post==poll',
                 'description' => '发投票帖',
             ),
             'att' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoAttInjector',
+                'class'       => PwPostDoAttInjector::class,
                 'method'      => 'run',
                 'expression'  => 'flashatt.post!=0',
                 'description' => '发帖传附件',
             ),
             'tag' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoTagInjector',
+                'class'       => PwPostDoTagInjector::class,
                 'method'      => 'doadd',
                 'description' => '帖子发布 - 话题相关',
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoWordInjector',
+                'class'       => PwPostDoWordInjector::class,
                 'method'      => 'doadd',
                 'description' => '帖子发布 - 敏感词',
             ),
@@ -53,25 +53,25 @@ return array(
         'interface'   => '',
         'list'        => array(
             'att' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoAttInjector',
+                'class'       => PwPostDoAttInjector::class,
                 'method'      => 'run',
                 'expression'  => 'flashatt.post!=0',
                 'description' => '回复发布 - 附件',
             ),
             'dolike_fast_reply' => array(
-                'class'       => 'SRV:like.srv.fresh.injector.PwLikeDoFreshInjector',
+                'class'       => PwLikeDoFreshInjector::class,
                 'method'      => 'run',
                 'expression'  => 'isfresh.post==1',
                 'description' => '回复发布 - 喜欢',
             ),
             'dolike_reply_lastpid' => array(
-                'class'       => 'SRV:like.srv.reply.injector.PwLikeDoReplyInjector',
+                'class'       => PwLikeDoReplyInjector::class,
                 'method'      => 'run',
                 'expression'  => 'from_type.post==like',
                 'description' => '回复发布 - 最后喜欢的回复',
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoWordInjector',
+                'class'       => PwPostDoWordInjector::class,
                 'method'      => 'doadd',
                 'description' => '帖子发布 - 敏感词',
             ),
@@ -83,7 +83,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'poll' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoPollInjector',
+                'class'       => PwPostDoPollInjector::class,
                 'method'      => 'modify',
                 'expression'  => 'service:special==poll',
                 'description' => '帖子编辑 - 投票帖',
@@ -96,23 +96,23 @@ return array(
         'interface'   => '',
         'list'        => array(
             'poll' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoPollInjector',
+                'class'       => PwPostDoPollInjector::class,
                 'method'      => 'domodify',
                 'expression'  => 'service:special==poll',
                 'description' => '帖子编辑提交 - 投票帖',
             ),
             'att' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoAttInjector',
+                'class'       => PwPostDoAttInjector::class,
                 'method'      => 'domodify',
                 'description' => '帖子编辑 - 附件',
             ),
             'tag' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoTagInjector',
+                'class'       => PwPostDoTagInjector::class,
                 'method'      => 'domodify',
                 'description' => '帖子编辑 - 话题',
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.post.injector.PwPostDoWordInjector',
+                'class'       => PwPostDoWordInjector::class,
                 'method'      => 'doadd',
                 'description' => '帖子发布 - 敏感词',
             ),
@@ -145,25 +145,25 @@ return array(
         'interface'   => '',
         'list'        => array(
             'poll' => array(
-                'class'       => 'SRV:forum.srv.threadDisplay.injector.PwThreadDisplayDoPollInjector',
+                'class'       => PwThreadDisplayDoPollInjector::class,
                 'method'      => 'run',
                 'expression'  => 'service:thread.info.special==poll',
                 'description' => '帖子阅读页 - 投票帖',
             ),
             'like' => array(
-                'class'       => 'SRV:like.srv.threadDisplay.injector.PwThreadDisplayDoLikeInjector',
+                'class'       => PwThreadDisplayDoLikeInjector::class,
                 'method'      => 'run',
                 'expression'  => 'service:thread.info.like_count!=0',
                 'description' => '帖子阅读页 - 喜欢',
             ),
             'medal' => array(
-                'class'       => 'SRV:medal.srv.threadDisplay.injector.PwThreadDisplayDoMedalInjector',
+                'class'       => PwThreadDisplayDoMedalInjector::class,
                 'method'      => 'run',
                 'expression'  => 'config:site.medal.isopen==1',
                 'description' => '帖子阅读页 - 勋章',
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.threadDisplay.injector.PwThreadDisplayDoWordInjector',
+                'class'       => PwThreadDisplayDoWordInjector::class,
                 'expression'  => 'service:thread.info.word_version==0',
                 'description' => '帖子阅读页 - 替换敏感词',
             ),
@@ -175,16 +175,16 @@ return array(
         'interface'   => PwBaseHookInjector::class,
         'list'        => array(
             'invite' => array(
-                'class'      => 'SRV:user.srv.register.injector.PwRegisterDoInviteInjector',
+                'class'      => PwRegisterDoInviteInjector::class,
                 'method'     => 'run',
                 'expression' => 'service:isOpenInvite==1',
             ),
             'inviteFriend' => array(
-                'class'  => 'SRV:user.srv.register.injector.PwRegisterDoInviteFriendInjector',
+                'class'  => PwRegisterDoInviteFriendInjector::class,
                 'method' => 'run',
             ),
             'verifyMobile' => array(
-                'class'  => 'SRV:user.srv.register.injector.PwRegisterDoVerifyMobileInjector',
+                'class'  => PwRegisterDoVerifyMobileInjector::class,
                 'method' => 'run',
             ),
         ),
@@ -195,7 +195,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'att' => array(
-                'class'      => 'SRV:forum.srv.post.injector.PwPostDoAttInjector',
+                'class'      => PwPostDoAttInjector::class,
                 'method'     => 'run',
                 'expression' => 'flashatt.post!=0',
             ),
@@ -219,7 +219,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'inviteFriend' => array(
-                'class'  => 'SRV:user.srv.login.injector.PwLoginDoInviteFriendInjector',
+                'class'  => PwLoginDoInviteFriendInjector::class,
                 'method' => 'run',
             ),
         ),
@@ -227,10 +227,10 @@ return array(
     'm_PwRegisterService' => array(
         'description' => '注册Service钩子',
         'param'       => array(),
-        'interface'   => 'SRV:user.srv.register.do.PwRegisterDoBase',
+        'interface'   => PwRegisterDoBase::class,
         'list'        => array(
             'bbsinfo' => array(
-                'class'       => 'SRV:user.srv.register.do.PwRegisterDoUpdateBbsInfo',
+                'class'       => PwRegisterDoUpdateBbsInfo::class,
                 'description' => '注册后期：更新站点信息',
             ),
         ),
@@ -238,31 +238,31 @@ return array(
     'm_PwTopicPost' => array(
         'description' => '发表帖子',
         'param'       => array(),
-        'interface'   => 'SRV:forum.srv.post.do.PwPostDoBase',
+        'interface'   => PwPostDoBase::class,
         'list'        => array(
             'fresh' => array(
                 'class'       => PwPostDoFresh::class,
                 'description' => '新鲜事',
             ),
             'task' => array(
-                'class'       => 'SRV:task.srv.condition.PwTaskBbsThreadDo',
+                'class'       => PwTaskBbsThreadDo::class,
                 'expression'  => 'config:site.task.isOpen==1',
                 'description' => '发帖做任务',
             ),
             'behavior' => array(
-                'class'       => 'SRV:misc.behavior.do.PwMiscThreadDo',
+                'class'       => PwMiscThreadDo::class,
                 'loadway'     => 'load',
                 'description' => '记录发帖行为',
             ),
             'medal' => array(
-                'class'       => 'SRV:medal.srv.condition.do.PwMedalThreadDo',
+                'class'       => PwMedalThreadDo::class,
                 'description' => '发帖做勋章',
             ),
             'remind' => array(
-                'class' => 'SRV:forum.srv.post.do.PwPostDoRemind',
+                'class' => PwPostDoRemind::class,
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.post.do.PwReplyDoWord',
+                'class'       => PwReplyDoWord::class,
                 'description' => '回复-敏感词',
             ),
         ),
@@ -270,32 +270,32 @@ return array(
     'm_PwReplyPost' => array(
         'description' => '发表回复',
         'param'       => array(),
-        'interface'   => 'SRV:forum.srv.post.do.PwPostDoBase',
+        'interface'   => PwPostDoBase::class,
         'list'        => array(
             'task' => array(
                 'expression'  => 'config:site.task.isOpen==1',
-                'class'       => 'SRV:task.srv.condition.PwTaskBbsPostDo',
+                'class'       => PwTaskBbsPostDo::class,
                 'description' => '发回复做任务',
             ),
             'behavior' => array(
-                'class'       => 'SRV:misc.behavior.do.PwMiscPostDo',
+                'class'       => PwMiscPostDo::class,
                 'loadway'     => 'load',
                 'description' => '记录发回复行为',
             ),
             'medal' => array(
-                'class'       => 'SRV:medal.srv.condition.do.PwMedalPostDo',
+                'class'       => PwMedalPostDo::class,
                 'description' => '发回复做勋章任务',
             ),
             'remind' => array(
-                'class'       => 'SRV:forum.srv.post.do.PwReplyDoRemind',
+                'class'       => PwReplyDoRemind::class,
                 'description' => '回复-话题',
             ),
             'notice' => array(
-                'class'       => 'SRV:forum.srv.post.do.PwReplyDoNotice',
+                'class'       => PwReplyDoNotice::class,
                 'description' => '回复-通知',
             ),
             'word' => array(
-                'class'       => 'SRV:forum.srv.post.do.PwReplyDoWord',
+                'class'       => PwReplyDoWord::class,
                 'description' => '回复-敏感词',
             ),
         ),
@@ -303,10 +303,10 @@ return array(
     'm_PwThreadList' => array(
         'description' => '帖子列表页',
         'param'       => array(),
-        'interface'   => 'SRV:forum.srv.threadList.do.PwThreadListDoBase',
+        'interface'   => PwThreadListDoBase::class,
         'list'        => array(
             'hits' => array(
-                'class'       => 'SRV:forum.srv.threadList.do.PwThreadListDoHits',
+                'class'       => PwThreadListDoHits::class,
                 'description' => '点击率实时更新显示',
                 'expression'  => 'config:bbs.read.hit_update==1',
             ),
@@ -315,10 +315,10 @@ return array(
     'm_PwThreadDisplay' => array(
         'description' => '帖子内容展示',
         'param'       => array(),
-        'interface'   => 'SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoBase',
+        'interface'   => PwThreadDisplayDoBase::class,
         'list'        => array(
             'hits' => array(
-                'class'       => 'SRV:forum.srv.threadDisplay.do.PwThreadDisplayDoHits',
+                'class'       => PwThreadDisplayDoHits::class,
                 'description' => '点击率实时更新显示',
                 'expression'  => 'config:bbs.read.hit_update==1',
             ),
@@ -328,14 +328,14 @@ return array(
     'm_task_gainreward' => array(
         'description' => '领取任务',
         'param'       => array(),
-        'interface'   => 'SRV:task.srv.reward.PwTaskRewardDoBase',
+        'interface'   => PwTaskRewardDoBase::class,
         'list'        => array(
             'group' => array(
-                'class'      => 'SRV:task.srv.reward.PwTaskGroupRewardDo',
+                'class'      => PwTaskGroupRewardDo::class,
                 'expression' => 'service:type==group',
             ),
             'credit' => array(
-                'class'      => 'SRV:task.srv.reward.PwTaskCreditRewardDo',
+                'class'      => PwTaskCreditRewardDo::class,
                 'expression' => 'service:type==credit',
             ),
         ),
@@ -343,11 +343,11 @@ return array(
     'm_PwMessageService' => array(
         'description' => '消息服务',
         'param'       => array(),
-        'interface'   => 'SRV:message.srv.do.PwMessageDoBase',
+        'interface'   => PwMessageDoBase::class,
         'list'        => array(
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskMemberMsgDo',
+                'class'      => PwTaskMemberMsgDo::class,
                 'loadway'    => 'load',
             ),
         ),
@@ -355,11 +355,11 @@ return array(
     'm_PwLoginService' => array(
         'description' => '用户登录之后的操作',
         'param'       => array('@param PwUserBo $userBo 登录用户的对象', '@param string $ip 登录的IP'),
-        'interface'   => 'SRV:user.srv.login.PwUserLoginDoBase',
+        'interface'   => PwUserLoginDoBase::class,
         'list'        => array(
             'autotask' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwAutoTaskLoginDo',
+                'class'      => PwAutoTaskLoginDo::class,
                 'loadway'    => 'load',
             ),
             'userbelong' => array(
@@ -367,24 +367,24 @@ return array(
                 'loadway' => 'load',
             ),
             'behavior' => array(
-                'class'   => 'SRV:misc.behavior.do.PwMiscUserDo',
+                'class'   => PwMiscUserDo::class,
                 'loadway' => 'load',
             ),
             'medal' => array(
-                'class'   => 'SRV:medal.srv.condition.do.PwMedalUserDo',
+                'class'   => PwMedalUserDo::class,
                 'loadway' => 'load',
             ),
             'updateOnline' => array(
-                'class'   => 'SRV:online.srv.do.PwLoginDoUpdateOnline',
+                'class'   => PwLoginDoUpdateOnline::class,
                 'loadway' => 'load',
             ),
             'autounbancheck' => array(
-                'class'   => 'SRV:user.srv.login.do.PwLoginDoUnbanCheck',
+                'class'   => PwLoginDoUnbanCheck::class,
                 'loadway' => 'load',
             ),
             /*
             'recommendUser' => array(
-                'class' => 'SRV:attention.srv.recommend.PwRecommendUserDo',
+                'class' => PwRecommendUserDo::class,
                 'loadway' => 'load'
             ),*/
         ),
@@ -392,10 +392,10 @@ return array(
     'm_PwFreshReplyByWeibo' => array(
         'description' => '微博',
         'param'       => array(),
-        'interface'   => 'SRV:attention.srv.reply.weibo.PwWeiboDoBase',
+        'interface'   => PwWeiboDoBase::class,
         'list'        => array(
             'word' => array(
-                'class'       => 'SRV:attention.srv.reply.weibo.PwWeiboDoWord',
+                'class'       => PwWeiboDoWord::class,
                 'description' => '微博-敏感词',
             ),
         ),
@@ -406,17 +406,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'addThread',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'addThread',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'addThread',
                 'loadway' => 'loadDao',
             ),
@@ -428,17 +428,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'updateThread',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'updateThread',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'updateThread',
                 'loadway' => 'loadDao',
             ),
@@ -450,17 +450,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'batchUpdateThread',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'batchUpdateThread',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'batchUpdateThread',
                 'loadway' => 'loadDao',
             ),
@@ -472,17 +472,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'revertTopic',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'revertTopic',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'revertTopic',
                 'loadway' => 'loadDao',
             ),
@@ -494,17 +494,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'deleteThread',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'deleteThread',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'deleteThread',
                 'loadway' => 'loadDao',
             ),
@@ -516,17 +516,17 @@ return array(
         'interface'   => '',
         'list'        => array(
             'threadsIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsIndexDao',
+                'class'   => PwThreadsIndexDao::class,
                 'method'  => 'batchDeleteThread',
                 'loadway' => 'loadDao',
             ),
             'threadsCateIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsCateIndexDao',
+                'class'   => PwThreadsCateIndexDao::class,
                 'method'  => 'batchDeleteThread',
                 'loadway' => 'loadDao',
             ),
             'threadsDigestIndex' => array(
-                'class'   => 'SRV:forum.dao.PwThreadsDigestIndexDao',
+                'class'   => PwThreadsDigestIndexDao::class,
                 'method'  => 'batchDeleteThread',
                 'loadway' => 'loadDao',
             ),
@@ -538,18 +538,18 @@ return array(
         'interface'   => '',
         'list'        => array(
             'medal' => array(
-                'class'   => 'SRV:medal.srv.condition.do.PwMedalFansDo',
+                'class'   => PwMedalFansDo::class,
                 'method'  => 'addFollow',
                 'loadway' => 'load',
             ),
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskMemberFansDo',
+                'class'      => PwTaskMemberFansDo::class,
                 'method'     => 'addFollow',
                 'loadway'    => 'load',
             ),
             'message' => array(
-                'class'   => 'SRV:message.srv.do.PwNoticeFansDo',
+                'class'   => PwNoticeFansDo::class,
                 'method'  => 'addFollow',
                 'loadway' => 'load',
             ),
@@ -561,13 +561,13 @@ return array(
         'interface'   => '',
         'list'        => array(
             'medal' => array(
-                'class'   => 'SRV:medal.srv.condition.do.PwMedalFansDo',
+                'class'   => PwMedalFansDo::class,
                 'method'  => 'delFollow',
                 'loadway' => 'load',
             ),
             /*
             'recommend' => array(
-                'class' => 'SRV:attention.srv.recommend.PwRecommendAttentionDo',
+                'class' => PwRecommendAttentionDo::class,
                 'method' => 'delFollow',
                 'loadway' => 'load'
             ),*/
@@ -580,7 +580,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'TaskUser' => array(
-                'class'   => 'SRV:task.dao.PwTaskUserDao',
+                'class'   => PwTaskUserDao::class,
                 'method'  => 'updateIsPeriod',
                 'loadway' => 'loadDao',
             ),
@@ -593,7 +593,7 @@ return array(
         'list'        => array(
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskProfileConditionDo',
+                'class'      => PwTaskProfileConditionDo::class,
                 'loadway'    => 'load',
                 'method'     => 'editUser',
             ),
@@ -606,7 +606,7 @@ return array(
         'list'        => array(
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskMemberAvatarDo',
+                'class'      => PwTaskMemberAvatarDo::class,
                 'loadway'    => 'load',
                 'method'     => 'uploadAvatar',
             ),
@@ -618,37 +618,37 @@ return array(
         'interface'   => '',
         'list'        => array(
             'ban' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBan',
+                'class'   => PwUserDoBan::class,
                 'method'  => 'deleteBan',
                 'loadway' => 'load',
             ),
             'belong' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBelong',
+                'class'   => PwUserDoBelong::class,
                 'method'  => 'deleteUser',
                 'loadway' => 'load',
             ),
             'registerCheck' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoRegisterCheck',
+                'class'   => PwUserDoRegisterCheck::class,
                 'method'  => 'deleteUser',
                 'loadway' => 'load',
             ),
             'activeCode' => array(
-                'class'   => 'SRV:user.PwUserActiveCode',
+                'class'   => PwUserActiveCode::class,
                 'method'  => 'deleteInfoByUid',
                 'loadway' => 'load',
             ),
             'task' => array(
-                'class'   => 'SRV:task.PwTaskUser',
+                'class'   => PwTaskUser::class,
                 'method'  => 'deleteByUid',
                 'loadway' => 'load',
             ),
             'usertag' => array(
-                'class'   => 'SRV:usertag.PwUserTagRelation',
+                'class'   => PwUserTagRelation::class,
                 'method'  => 'deleteRelationByUid',
                 'loadway' => 'load',
             ),
             'mobile' => array(
-                'class'   => 'SRV:user.PwUserMobile',
+                'class'   => PwUserMobile::class,
                 'method'  => 'deleteByUid',
                 'loadway' => 'load',
             ),
@@ -660,27 +660,27 @@ return array(
         'interface'   => '',
         'list'        => array(
             'ban' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBan',
+                'class'   => PwUserDoBan::class,
                 'method'  => 'batchDeleteBan',
                 'loadway' => 'load',
             ),
             'belong' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBelong',
+                'class'   => PwUserDoBelong::class,
                 'method'  => 'batchDeleteUser',
                 'loadway' => 'load',
             ),
             'registerCheck' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoRegisterCheck',
+                'class'   => PwUserDoRegisterCheck::class,
                 'method'  => 'batchDeleteUser',
                 'loadway' => 'load',
             ),
             'task' => array(
-                'class'   => 'SRV:task.PwTaskUser',
+                'class'   => PwTaskUser::class,
                 'method'  => 'batchDeleteByUid',
                 'loadway' => 'load',
             ),
             'usertag' => array(
-                'class'   => 'SRV:usertag.PwUserTagRelation',
+                'class'   => PwUserTagRelation::class,
                 'method'  => 'batchDeleteRelationByUids',
                 'loadway' => 'load',
             ),
@@ -692,7 +692,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'belong' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBelong',
+                'class'   => PwUserDoBelong::class,
                 'method'  => 'editUser',
                 'loadway' => 'load',
             ),
@@ -704,7 +704,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'belong' => array(
-                'class'   => 'SRC:hooks.PwUser.PwUserDoBelong',
+                'class'   => PwUserDoBelong::class,
                 'method'  => 'editUser',
                 'loadway' => 'load',
             ),
@@ -716,12 +716,12 @@ return array(
         'interface'   => '',
         'list'        => array(
             'level' => array(
-                'class'   => 'SRV:usergroup.srv.PwUserGroupsService',
+                'class'   => PwUserGroupsService::class,
                 'method'  => 'updateLevel',
                 'loadway' => 'load',
             ),
             'autoBan' => array(
-                'class'      => 'SRV:user.srv.PwUserBanService',
+                'class'      => PwUserBanService::class,
                 'method'     => 'autoBan',
                 'loadway'    => 'load',
                 'expression' => 'config:site.autoForbidden.open==1',
@@ -734,7 +734,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'usergroup' => array(
-                'class'   => 'SRV:usergroup.srv.PwUserGroupsService',
+                'class'   => PwUserGroupsService::class,
                 'method'  => 'updateGroupCacheByHook',
                 'loadway' => 'load',
             ),
@@ -746,7 +746,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'usergroup' => array(
-                'class'   => 'SRV:usergroup.srv.PwUserGroupsService',
+                'class'   => PwUserGroupsService::class,
                 'method'  => 'deleteGroupCacheByHook',
                 'loadway' => 'load',
             ),
@@ -758,7 +758,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'usergroup_permission' => array(
-                'class'   => 'SRV:usergroup.srv.PwUserGroupsService',
+                'class'   => PwUserGroupsService::class,
                 'method'  => 'updatePermissionCacheByHook',
                 'loadway' => 'load',
             ),
@@ -768,12 +768,12 @@ return array(
         'description' => '删除喜欢',
         'list'        => array(
             'behavior' => array(
-                'class'   => 'SRV:misc.behavior.do.PwMiscLikeDo',
+                'class'   => PwMiscLikeDo::class,
                 'method'  => 'delLike',
                 'loadway' => 'load',
             ),
             'medal' => array(
-                'class'   => 'SRV:medal.srv.condition.do.PwMedalLikeDo',
+                'class'   => PwMedalLikeDo::class,
                 'method'  => 'delLike',
                 'loadway' => 'load',
             ),
@@ -784,17 +784,17 @@ return array(
         'list'        => array(
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskBbsLikeDo',
+                'class'      => PwTaskBbsLikeDo::class,
                 'method'     => 'addLike',
                 'loadway'    => 'load',
             ),
             'behavior' => array(
-                'class'   => 'SRV:misc.behavior.do.PwMiscLikeDo',
+                'class'   => PwMiscLikeDo::class,
                 'method'  => 'addLike',
                 'loadway' => 'load',
             ),
             'medal' => array(
-                'class'   => 'SRV:medal.srv.condition.do.PwMedalLikeDo',
+                'class'   => PwMedalLikeDo::class,
                 'method'  => 'addLike',
                 'loadway' => 'load',
             ),
@@ -806,7 +806,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwUserTag' => array(
-                'class'   => 'SRV:usertag.dao.PwUserTagDao',
+                'class'   => PwUserTagDao::class,
                 'method'  => 'updateTag',
                 'loadway' => 'loadDao',
             ),
@@ -818,7 +818,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwUserTagRelation' => array(
-                'class'   => 'SRV:usertag.dao.PwUserTagRelationDao',
+                'class'   => PwUserTagRelationDao::class,
                 'method'  => 'deleteRelationByTagid',
                 'loadway' => 'loadDao',
             ),
@@ -830,7 +830,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwUserTagRelation' => array(
-                'class'   => 'SRV:usertag.dao.PwUserTagRelationDao',
+                'class'   => PwUserTagRelationDao::class,
                 'method'  => 'batchDeleteRelationByTagids',
                 'loadway' => 'loadDao',
             ),
@@ -842,7 +842,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwDeleteRelationDoUpdateTag' => array(
-                'class'   => 'SRV:usertag.srv.do.PwDeleteRelationDoUpdateTag',
+                'class'   => PwDeleteRelationDoUpdateTag::class,
                 'method'  => 'batchDeleteRelation',
                 'loadway' => 'load',
             ),
@@ -854,7 +854,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwDeleteRelationDoUpdateTag' => array(
-                'class'   => 'SRV:usertag.srv.do.PwDeleteRelationDoUpdateTag',
+                'class'   => PwDeleteRelationDoUpdateTag::class,
                 'method'  => 'deleteRelationByUid',
                 'loadway' => 'load',
             ),
@@ -866,7 +866,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'PwDeleteRelationDoUpdateTag' => array(
-                'class'   => 'SRV:usertag.srv.do.PwDeleteRelationDoUpdateTag',
+                'class'   => PwDeleteRelationDoUpdateTag::class,
                 'method'  => 'batchDeleteRelationByUids',
                 'loadway' => 'load',
             ),
@@ -879,7 +879,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'addEmotion' => array(
-                'class'   => 'SRV:emotion.srv.PwEmotionService',
+                'class'   => PwEmotionService::class,
                 'method'  => 'updateCache',
                 'loadway' => 'load',
             ),
@@ -892,7 +892,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'addEmotion' => array(
-                'class'   => 'SRV:emotion.srv.PwEmotionService',
+                'class'   => PwEmotionService::class,
                 'method'  => 'updateCache',
                 'loadway' => 'load',
             ),
@@ -905,7 +905,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'addEmotion' => array(
-                'class'   => 'SRV:emotion.srv.PwEmotionService',
+                'class'   => PwEmotionService::class,
                 'method'  => 'updateCache',
                 'loadway' => 'load',
             ),
@@ -917,7 +917,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'addEmotion' => array(
-                'class'   => 'SRV:emotion.srv.PwEmotionService',
+                'class'   => PwEmotionService::class,
                 'method'  => 'updateCache',
                 'loadway' => 'load',
             ),
@@ -929,7 +929,7 @@ return array(
         'interface'   => '',
         'list'        => array(
             'configCache' => array(
-                'class'   => 'SRV:config.srv.PwConfigService',
+                'class'   => PwConfigService::class,
                 'method'  => 'updateConfig',
                 'loadway' => 'load',
             ),
@@ -948,7 +948,7 @@ return array(
         'list'        => array(
             'task' => array(
                 'expression' => 'config:site.task.isOpen==1',
-                'class'      => 'SRV:task.srv.condition.PwTaskMemberPunchDo',
+                'class'      => PwTaskMemberPunchDo::class,
                 'method'     => 'doPunch',
                 'loadway'    => 'load',
             ),
@@ -968,13 +968,13 @@ return array(
         'interface'   => 'PwThreadManageCopyDoBase',
         'list'        => array(
             'poll' => array(
-                'class'      => 'SRV:forum.srv.manage.do.PwThreadManageCopyDoPoll',
+                'class'      => PwThreadManageCopyDoPoll::class,
                 'method'     => 'copyThread',
                 'loadway'    => 'load',
                 'expression' => 'service:special==poll',
             ),
             'att' => array(
-                'class'      => 'SRV:forum.srv.manage.do.PwThreadManageCopyDoAtt',
+                'class'      => PwThreadManageCopyDoAtt::class,
                 'method'     => 'copyThread',
                 'loadway'    => 'load',
                 'expression' => 'service:ifupload!=0',
@@ -988,12 +988,12 @@ return array(
         'interface'   => 'PwLogoutDoBase',
         'list'        => array(
             'updatelastvist' => array(
-                'class'   => 'SRV:user.srv.logout.do.PwLogoutDoUpdateLastvisit',
+                'class'   => PwLogoutDoUpdateLastvisit::class,
                 'method'  => 'beforeLogout',
                 'loadway' => 'load',
             ),
             'updateOnline' => array(
-                'class'   => 'SRV:online.srv.do.PwLogoutDoUpdateOnline',
+                'class'   => PwLogoutDoUpdateOnline::class,
                 'method'  => 'beforeLogout',
                 'loadway' => 'load',
             ),
@@ -1022,7 +1022,7 @@ return array(
         'param'       => array('@param array $data 用户行为数据', '@return '),
         'list'        => array(
             'task' => array(
-                'class'      => 'SRV:task.srv.PwTaskService',
+                'class'      => PwTaskService::class,
                 'method'     => 'sendAutoTask',
                 'loadway'    => 'load',
                 'expression' => 'config:site.task.isOpen==1',
@@ -1095,11 +1095,11 @@ return array(
         'interface'   => '',
         'list'        => array( //这个顺序别改，pd要求的
             'education' => array(
-                'class'  => 'SRV:education.srv.profile.do.PwSpaceProfileDoEducation',
+                'class'  => PwSpaceProfileDoEducation::class,
                 'method' => 'createHtml',
             ),
             'work' => array(
-                'class'  => 'SRV:work.srv.profile.do.PwSpaceProfileDoWork',
+                'class'  => PwSpaceProfileDoWork::class,
                 'method' => 'createHtml',
             ),
         ),

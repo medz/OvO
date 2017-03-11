@@ -367,9 +367,9 @@ class UpgradeController extends AdminBaseController
     public function endAction()
     {
         list($upgrade, $back) = $this->_backSuccess();
-        Wekit::load('hook.srv.PwHookRefresh')->refresh();
-        Wekit::load('SRV:cache.srv.PwCacheUpdateService')->updateAll();
-        Wekit::load('domain.srv.PwDomainService')->refreshTplCache();
+        app(PwHookRefresh::class)->refresh();
+        app(PwCacheUpdateService::class)->updateAll();
+        app(PwDomainService::class)->refreshTplCache();
 
         PwSystemHelper::log(
             'upgrade success, current version: '.'phpwind '.NEXT_VERSION.' release '.NEXT_RELEASE,

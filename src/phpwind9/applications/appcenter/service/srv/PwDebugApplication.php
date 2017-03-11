@@ -313,7 +313,7 @@ class PwDebugApplication
      */
     private function _loadPwHookInject()
     {
-        return Wekit::load('SRV:hook.PwHookInject');
+        return app(PwHookInject::class);
     }
 
     /**
@@ -321,7 +321,7 @@ class PwDebugApplication
      */
     private function _loadPwHooks()
     {
-        return Wekit::load('SRV:hook.PwHooks');
+        return app(PwHooks::class);
     }
 
     /**

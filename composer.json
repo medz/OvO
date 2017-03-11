@@ -36,9 +36,11 @@
     },
     "autoload": {
         "classmap": [
-            "src/phpwind9/",
-            "src/service/",
-            "src/hooks/"
+            "src/phpwind9/Wekit.php",
+            "src/phpwind9/library/",
+            "src/phpwind9/service/",
+            "src/phpwind9/bootstrap/",
+            "src/phpwind9/hooks/"
         ],
         "files": [ "helpers.php" ],
         "psr-4": {

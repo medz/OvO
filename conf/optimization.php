@@ -59,9 +59,9 @@ return array(
     'medal_all'     => array('medal_all', array(), PwCache::USE_ALL, 'default', 0, array('medal.srv.PwMedalService', 'getMedalAllCacheValue')),
     'medal_auto'    => array('medal_auto', array(), PwCache::USE_ALL, 'default', 0, array('medal.srv.PwMedalService', 'getMedalAutoCacheValue')),
     'all_emotions'  => array('all_emotions', array(), PwCache::USE_ALL, 'default', 0, array('emotion.srv.PwEmotionService', 'getAllEmotionNoCache')),
-    'word'          => array('word', array(), PwCache::USE_FILE, 'default', 0, array('SRV:word.srv.PwWordFilter', 'fetchAllWordNoCache')),
-    'word_replace'  => array('word_replace', array(), PwCache::USE_FILE, 'default', 0, array('SRV:word.srv.PwWordFilter', 'getReplaceWordNoCache')),
-    'advertisement' => array('advertisement', array(), PwCache::USE_ALL, 'default', 0, array('SRV:advertisement.srv.PwAdService', 'getInstalledPosition')),
+    'word'          => array('word', array(), PwCache::USE_FILE, 'default', 0, array(PwWordFilter::class, 'fetchAllWordNoCache')),
+    'word_replace'  => array('word_replace', array(), PwCache::USE_FILE, 'default', 0, array(PwWordFilter::class, 'getReplaceWordNoCache')),
+    'advertisement' => array('advertisement', array(), PwCache::USE_ALL, 'default', 0, array(PwAdService::class, 'getInstalledPosition')),
 ),
 
 /**=====配置结束于此=====**/

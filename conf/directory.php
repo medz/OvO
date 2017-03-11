@@ -15,15 +15,15 @@ return array(
 'ROOT' => '..',
 'CONF' => '../conf',
 'DATA' => '../data',
-'SRC'  => '../src',
+'SRC'  => '../src/phpwind9',
 
-'APPS'      => '../src/applications',
+'APPS'      => '../src/phpwind9/applications',
 'EXT'       => '../src/extensions',
-'SRV'       => '../src/service',
-'REP'       => '../src/repository',
-'WINDID'    => '../src/windid',
-'ADMIN'     => '../src/applications/admin',
-'APPCENTER' => '../src/applications/appcenter',
+'SRV'       => '../src/phpwind9/service',
+'REP'       => '../src/phpwind9/repository',
+'WINDID'    => '../src/phpwind9/windid',
+'ADMIN'     => '../src/phpwind9/applications/admin',
+'APPCENTER' => '../src/phpwind9/applications/appcenter',
 /*
  * 可访问目录
  */

@@ -24,7 +24,7 @@ class MobileController extends AdminBaseController
         if (!$mobileConfig['plat.type']) {
             $this->showError('USER:mobile.plat.choose.error', 'config/mobile/run', true);
         }
-        $mobileService = Wekit::load('SRV:mobile.srv.PwMobileService');
+        $mobileService = app(PwMobileService::class);
         $restMessage = $mobileService->getRestMobileMessage();
         if ($restMessage instanceof PwError) {
             $this->showError($restMessage->getError());

@@ -123,6 +123,6 @@ class PwUninstallApplication
      */
     private function _loadPwHookInject()
     {
-        return Wekit::load('SRV:hook.PwHookInject');
+        return app(PwHookInject::class);
     }
 }

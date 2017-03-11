@@ -229,7 +229,8 @@ Wind::import('ADMIN:library.AdminBaseController');
 
      private function _getCronFileList()
      {
-         $dir = Wind::getRealPath(trim('SRV:cron.srv.do.'), false);
+         // $dir = Wind::getRealPath(trim('SRV:cron.srv.do.'), false);
+         $dir = app('path').'/phpwind9/classmap/service/cron/srv/do/';
          $fileList = WindFolder::read($dir);
          foreach ((array) $fileList as $k => $file) {
              if (Pw::substrs($file, 8, 0, false) != 'PwCronDo') {
