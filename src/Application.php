@@ -69,7 +69,11 @@ class Application
             return $abstract($this);
         }
 
-        return $this->build($abstract);
+        $this->getContainer()->offsetSet($abstract,
+            $this->build($abstract)
+        );
+
+        return $this->getContainer()->get($abstract);
     }
 
     /**
