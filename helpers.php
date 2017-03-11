@@ -14,8 +14,8 @@ namespace Medz\Wind;
 function app($abstract = null)
 {
     if (is_null($abstract)) {
-        return Container::getApplication();
+        return Container::getInstance();
     }
 
-    return Container::getApplication()->make($abstract);
+    return Container::getInstance()->make($abstract);
 }

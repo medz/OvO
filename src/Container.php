@@ -3,35 +3,11 @@
 namespace Medz\Wind;
 
 use RuntimeException;
-use Pimple\Container as PimpleContainer;
+use Illuminate\Container\Container as BaseContainer;
 use Psr\Container\ContainerInterface;
 
-class Container extends PimpleContainer implements ContainerInterface
+class Container extends BaseContainer implements ContainerInterface
 {
-    /**
-     * store the container.
-     *
-     * @var Medz\Wind\Application
-     */
-    protected static $app;
-
-    /**
-     * Get the container instance.
-     *
-     * @return Medz\Wind\Application
-     *
-     * @author Seven Du <shiweidu@outlook.com>
-     * @homepage http://medz.cn
-     */
-    public static function getApplication()
-    {
-        if (static::$app instanceof Application) {
-            static::$app = new Application();
-        }
-
-        return static::$app;
-    }
-
     /**
      * Finds an entry of the container by its identifier and returns it.
      *
@@ -41,7 +17,6 @@ class Container extends PimpleContainer implements ContainerInterface
      * @throws \RuntimeException         No entry was found for this identifier.
      * @throws \InvalidArgumentException Error while retrieving the entry.
      * @author Seven Du <shiweidu@outlook.com>
-     * @homepage http://medz.cn
      */
     public function get($id)
     {

@@ -1,35 +1,42 @@
 <?php
 
-// 版本检查控制
-if (version_compare(PHP_VERSION, '5.3.12', '<')) {
-    echo '<pre>',
-         '您的PHP版本为:', PHP_VERSION, PHP_EOL,
-         'phpwind Fans 运行版本不得低于：PHP 5.3.12', PHP_EOL,
-         '</pre>';
-    exit;
-}
+/*
+|--------------------------------------------------------------------------
+| 定义开始时间
+|--------------------------------------------------------------------------
+|
+| 定义一个开始常量，以便统计程序开始运行的时间，
+| 主要作用，记录开始运行的时间到结束时间。用于计算整个程序的运行效率。
+|
+*/
 
-// 尝试性代码，兼容部分主机没有加载路径设置导致绝对路径使用报错的情况
-if (function_exists('get_include_path') && function_exists('set_include_path')) {
-    // 获取系统目前允许的路径
-    $includePaths = (array) explode(PATH_SEPARATOR, get_include_path());
-    $rootDir = dirname(__FILE__);
+define('WIND_START', microtime(true));
 
-    // 如果没有设置在include_path中。
-    if (!in_array($rootDir, $includePaths)) {
-        // 加入root的完整路径
-        array_push($includePaths, $rootDir);
+/*
+|-------------------------------------------------------------------------
+| 开发框架信息
+|-------------------------------------------------------------------------
+|
+| 主要用于开发过程中，多一次文件判断不会影响系统性能。
+|
+*/
 
-        // 设置include_path
-        @set_include_path(implode(PATH_SEPARATOR, $includePaths));
-    }
-}
-
-// 开发框架信息
 $frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
 if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
     require $frameworkAutoloadFile;
 }
+
+/*
+|--------------------------------------------------------------------------
+| Register The Composer Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
 
 $filename = dirname(__FILE__).'/vendor/autoload.php';
 if (!file_exists($filename) || !is_file($filename)) {
@@ -41,3 +48,48 @@ if (!file_exists($filename) || !is_file($filename)) {
 }
 
 require $filename;
+
+/*
+|--------------------------------------------------------------------------
+| Create The Application
+|--------------------------------------------------------------------------
+|
+| The first thing we will do is create a new phpwind Fans application instance
+| which serves as the "glue" for all the components of phpwind Fans, and is
+| the IoC container for the system binding all of the various parts.
+|
+*/
+
+$app = new Medz\Wind\Application(
+    realpath(dirname(__FILE__))
+);
+
+/*
+|--------------------------------------------------------------------------
+| Bind Important Interfaces
+|--------------------------------------------------------------------------
+|
+| Next, we need to bind some important interfaces into the container so
+| we will be able to resolve them when needed. The kernels serve the
+| incoming requests to this application from both the web and CLI.
+|
+*/
+
+$app->singleton('phpwind9', function () {
+    return function ($name = 'phpwind', array $components = []) {
+        Wekit::run($name, $components);
+    };
+});
+
+/*
+|--------------------------------------------------------------------------
+| Return The Application
+|--------------------------------------------------------------------------
+|
+| This script returns the application instance. The instance is given to
+| the calling script so we can separate the building of the instances
+| from the actual running of the application and sending responses.
+|
+*/
+
+return $app;

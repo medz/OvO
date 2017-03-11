@@ -2,131 +2,137 @@
 
 namespace Medz\Wind;
 
-use Closure;
-use InvalidArgumentException;
-use ReflectionClass;
-use Exception;
-use Psr\Container\ContainerInterface;
-
-class Application
+class Application extends Container
 {
     /**
-     * container.
+     * The base path for the Laravel installation.
      *
-     * @var Psr\Container\ContainerInterface
+     * @var string
      */
-    protected $container;
+    protected $basePath;
 
     /**
-     * Create new Application.
+     * Create a new application instance.
      *
-     * @param array|Psr\Container\ContainerInterface $container Either a ContainerInterface or an associative array of app settings
-     *
+     * @param string $basePath
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
-    public function __construct($container = [])
+    public function __construct($basePath = null)
     {
-        if (is_array($container)) {
-            $container = new Container($container);
+        if ($basePath) {
+            $this->setBasePath($basePath);
         }
 
-        if (!$container instanceof ContainerInterface) {
-            throw new InvalidArgumentException('Expected a ' + ContainerInterface::class);
-        }
-
-        $this->container = $container;
+        $this->registerBaseBindings();
+        $this->registerCoreContainerAliases();
     }
 
     /**
-     * Enable access to the DI container by consumers of $app.
+     * Register the basic bindings into the container.
      *
-     * @return Psr\Container\ContainerInterface
-     *
+     * @return void
      * @author Seven Du <shiweidu@outlook.com>
-     * @homepage http://medz.cn
      */
-    public function getContainer()
+    protected function registerBaseBindings()
     {
-        return $this->container;
+        static::setInstance($this);
+        $this->instance('app', $this);
+        $this->instance(Container::class, $this);
     }
 
     /**
-     * Resolve the given type from the container.
+     * Set the base path for the application.
      *
-     * @param string $abstract
-     * @return mixed
+     * @param string $basePath
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
-    public function make($abstract)
+    public function setBasePath($basePath)
     {
-        if ($this->getContainer()->has($abstract)) {
-            return $this->getContainer()->get($abstract);
-        }
+        $this->basePath = rtrim($basePath, '\/');
 
-        if ($abstract instanceof Closure) {
-            return $abstract($this);
-        }
+        $this->bindPathsInContainer();
 
-        $this->getContainer()->offsetSet($abstract,
-            $this->build($abstract)
-        );
-
-        return $this->getContainer()->get($abstract);
+        return $this;
     }
 
     /**
-     * Instantiate a concrete instance of the given type.
+     * Bind all of the application paths in the container.
      *
-     * @param string $concrete
-     * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
-    public function buind($concrete)
+    protected function bindPathsInContainer()
     {
-        $reflector = new ReflectionClass($concrete);
-
-        // If the type is not instantiable, the developer is attempting to resolve
-        // an abstract type such as an Interface of Abstract Class and there is
-        // no binding registered for the abstractions so we need to bail out.
-        if (!$reflector->isInstantiable()) {
-            throw new Exception("Target [$concrete] is not instantiable.");
-        }
-
-        $constructor = $reflector->getConstructor();
-
-        // If there are no constructors, that means there are no dependencies then
-        // we can just resolve the instances of the objects right away, without
-        // resolving any other types or dependencies out of these containers.
-        if (is_null($constructor)) {
-            return new $concrete;
-        }
-
-        $dependencies = $constructor->getParameters();
-
-        // Once we have all the constructor's parameters we can create each of the
-        // dependency instances and then use the reflection instances to make a
-        // new instance of this class, injecting the created dependencies in.
-        $instances = $this->resolveDependencies(
-            $dependencies
-        );
-
-        return $reflector->newInstanceArgs($instances);
+        $this->instance('path', $this->path());
+        $this->instance('path.base', $this->basePath());
+        $this->instance('path.config', $this->configPath());
+        $this->instance('path.public', $this->publicPath());
     }
 
     /**
-     * Resolve all of the dependencies from the ReflectionParameters.
+     * Get the base path of the Laravel installation.
      *
-     * @param array $dependencies
-     * @return array
+     * @author Seven Du <shiweidu@outlook.com>
+     * @return string
+     */
+    public function basePath()
+    {
+        return $this->basePath;
+    }
+
+    /**
+     * Get the path to the application "src" directory.
+     *
+     * @return string
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
-    protected function resolveDependencies(array $dependencies)
+    public function path()
     {
-        var_dump($dependencies);
-        exit;
+        return $this->basePath().DIRECTORY_SEPARATOR.'src';
+    }
+
+    /**
+     * Get the path to the application configuration files.
+     *
+     * @return string
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function configPath()
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'config';
+    }
+
+    /**
+     * Get the path to the public / web directory.
+     *
+     * @return string
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function publicPath()
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'public';
+    }
+
+    /**
+     * Register the core class aliases in the container.
+     *
+     * @return void
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    protected function registerCoreContainerAliases()
+    {
+        foreach ([
+            'app' => [
+                \Medz\Wind\Application::class,
+                \Psr\Container\ContainerInterface::class,
+            ]
+        ] as $key => $aliases) {
+            foreach ($aliases as $alias) {
+                $this->alias($key, $alias);
+            }
+        }
     }
 }
