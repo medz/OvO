@@ -1,4 +1,7 @@
 <?php
+
+use function Medz\Wind\app;
+
 /**
  * 本地应用服务
  *

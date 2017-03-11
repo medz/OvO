@@ -1,5 +1,7 @@
 <?php
 
+use function Medz\Wind\app;
+
 define('WIND_SETUP', 'install');
 /**
  * 安装流程.

@@ -1,5 +1,7 @@
 <?php
 
+use function Medz\Wind\app;
+
 Wind::import('APPCENTER:service.srv.helper.PwSystemHelper');
 Wind::import('ADMIN:library.AdminBaseController');
 Wind::import('APPCENTER:service.srv.helper.PwFtpSave');

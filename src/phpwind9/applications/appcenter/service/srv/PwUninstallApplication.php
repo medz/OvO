@@ -1,5 +1,7 @@
 <?php
 
+use function Medz\Wind\app;
+
 Wind::import('APPCENTER:service.srv.helper.PwApplicationHelper');
 Wind::import('APPCENTER:service.srv.helper.PwManifest');
 /**
