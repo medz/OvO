@@ -1,6 +1,6 @@
 <?php
 
-use fucntion Medz\Wind\app;
+use function Medz\Wind\app;
 
 Wind::import('ADMIN:library.AdminBaseController');
 /**
