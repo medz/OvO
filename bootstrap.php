@@ -13,20 +13,6 @@
 define('WIND_START', microtime(true));
 
 /*
-|-------------------------------------------------------------------------
-| 开发框架信息
-|-------------------------------------------------------------------------
-|
-| 主要用于开发过程中，多一次文件判断不会影响系统性能。
-|
-*/
-
-$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
-if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
-    require $frameworkAutoloadFile;
-}
-
-/*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader
 |--------------------------------------------------------------------------
@@ -48,6 +34,20 @@ if (!file_exists($filename) || !is_file($filename)) {
 }
 
 require $filename;
+
+/*
+|-------------------------------------------------------------------------
+| 开发框架信息
+|-------------------------------------------------------------------------
+|
+| 主要用于开发过程中，多一次文件判断不会影响系统性能。
+|
+*/
+
+$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
+if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
+    require $frameworkAutoloadFile;
+}
 
 /*
 |--------------------------------------------------------------------------

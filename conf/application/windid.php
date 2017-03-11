@@ -21,7 +21,7 @@ return array(
                 'default' => array(
                     'controller-path'   => 'APPS:windid.controller',
                     'controller-suffix' => 'Controller',
-                    'error-handler'     => 'LIB:base.PwErrorController',
+                    'error-handler'     => PwErrorController::class,
                     'template-path'     => 'TPL:windid',
                     'compile-path'      => 'DATA:compile.template',
                 ),

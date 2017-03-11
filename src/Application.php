@@ -137,6 +137,9 @@ class Application extends Container
                 \Medz\Wind\Application::class,
                 \Psr\Container\ContainerInterface::class,
             ],
+            'config' => [
+                \Illuminate\Config\Repository::class,
+            ]
         ] as $key => $aliases) {
             foreach ($aliases as $alias) {
                 $this->alias($key, $alias);

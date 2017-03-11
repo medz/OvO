@@ -13,51 +13,51 @@ return array(
     'support-tags' => array(
         'design' => array(
             'tag'      => 'design',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerDesign',
+            'compiler' => PwTemplateCompilerDesign::class,
         ),
         'portal' => array(
             'tag'      => 'pw',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerPortal',
+            'compiler' => PwTemplateCompilerPortal::class,
             'pattern'  => '/\<pw-start\/>(.+)<pw-end\/>/isU',
         ),
         'page' => array(
             'tag'      => 'page',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerPage',
+            'compiler' => PwTemplateCompilerPage::class,
         ),
         'component' => array(
             'tag'      => 'component',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerComponent',
+            'compiler' => PwTemplateCompilerComponent::class,
         ),
         'hook' => array(
             'tag'      => 'hook',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerHook',
+            'compiler' => PwTemplateCompilerHook::class,
         ),
         'config' => array(
             'tag'      => 'config',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerConfig',
+            'compiler' => PwTemplateCompilerConfig::class,
             'pattern'  => '/{@C:[^\}]*}/i',
         ),
         'themeUrl' => array(
             'tag'      => 'themeUrl',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerThemeUrl',
+            'compiler' => PwTemplateCompilerThemeUrl::class,
             'pattern'  => '/{@theme:[^\}]*}/i',
         ),
         'url' => array(
             'tag'      => 'url',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerUrlCreater',
+            'compiler' => PwTemplateCompilerUrlCreater::class,
             'pattern'  => '/{@url:[^\}]*}/i',
         ),
         'segment' => array(
             'tag'      => 'segment',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerSegment',
+            'compiler' => PwTemplateCompilerSegment::class,
         ),
         'advertisement' => array(
             'tag'      => 'advertisement',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerAdvertisement',
+            'compiler' => PwTemplateCompilerAdvertisement::class,
         ),
         'csrftoken' => array(
             'tag'      => 'csrftoken',
-            'compiler' => 'LIB:engine.extension.viewer.PwTemplateCompilerCsrftoken',
+            'compiler' => PwTemplateCompilerCsrftoken::class,
             'pattern'  => '/<\/form>/i',
         ),
     ),

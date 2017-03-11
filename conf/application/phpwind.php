@@ -17,7 +17,7 @@ return array(
                     'class' => 'APPS:pwadmin.service.srv.filter.PwDebugFilter',
                 ),
                 'csrf' => array(
-                    'class'   => 'LIB:filter.PwCsrfTokenFilter',
+                    'class'   => PwCsrfTokenFilter::class,
                     'pattern' => '~(bbs/upload/*|windid/uploadAvatar/*|app/upload/run)',
                 ),
                 'register' => array(
@@ -29,7 +29,7 @@ return array(
                 'default' => array(
                     'controller-path'   => 'APPS:{m}.controller',
                     'controller-suffix' => 'Controller',
-                    'error-handler'     => 'LIB:base.PwErrorController',
+                    'error-handler'     => PwErrorController::class,
                     'template-path'     => 'TPL:{m}',
                     'compile-path'      => 'DATA:compile.template',
                     'theme-package'     => 'THEMES:',
@@ -37,7 +37,7 @@ return array(
                 'admin' => array(
                     'controller-path'   => 'APPS:bbs.controller',
                     'controller-suffix' => 'Controller',
-                    'error-handler'     => 'LIB:base.PwErrorController',
+                    'error-handler'     => PwErrorController::class,
                     'template-path'     => 'TPL:bbs',
                     'compile-path'      => 'DATA:compile.template.bbs',
                     'theme-package'     => 'THEMES:',

@@ -31,12 +31,13 @@
         "guzzlehttp/guzzle": "^3.8",
         "nikic/fast-route": "^1.2",
         "psr/container": "^1.0",
-        "illuminate/container": "^5.4"
+        "illuminate/container": "^5.4",
+        "illuminate/config": "^5.4"
     },
     "autoload": {
         "classmap": [
-            "src/Wekit.php",
-            "src/library/",
+            "src/phpwind9/Wekit.php",
+            "src/phpwind9/library/",
             "src/service/",
             "src/bootstrap/",
             "src/hooks/"

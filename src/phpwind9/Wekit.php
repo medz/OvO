@@ -1,6 +1,8 @@
 <?php
 
-define('WEKIT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+use function Medz\Wind\app;
+
+define('WEKIT_PATH', app('path').DIRECTORY_SEPARATOR);
 define('WEKIT_VERSION', Pw::VERSION);
 
 define('NEXT_VERSION', Pw::VERSION);

@@ -11,19 +11,19 @@ defined('WEKIT_VERSION') or exit(403);
  */
 return array(
     'error' => array(
-        'path' => 'LIB:base.PwErrorHandler',
+        'path' => PwErrorHandler::class,
     ),
     'pwWidget' => array(
-        'path'  => 'LIB:engine.component.PwWidget',
+        'path'  => PwWidget::class,
         'scope' => 'singleton',
     ),
     'pwComponent' => array(
-        'path'   => 'LIB:engine.component.PwComponent',
+        'path'   => PwComponent::class,
         'scope'  => 'singleton',
         'config' => array('resource' => 'CONF:pwcomponents.php'),
     ),
     'security' => array(
-        'path'  => 'WIND:security.WindXxtea',
+        'path'  => WindXxtea::class,
         'scope' => 'singleton',
     ),
     'windLogger' => array(
@@ -33,7 +33,7 @@ return array(
         'config' => array(
             'routes' => array(
                 'pw' => array(
-                    'class'   => 'LIB:route.PwRoute',
+                    'class'   => PwRoute::class,
                     'default' => true,
                 ),
             ),
@@ -52,27 +52,27 @@ return array(
         'config' => array('resource' => 'CONF:database.php'),
     ),
     'windToken' => array(
-        'path'  => 'LIB:engine.extension.token.PwCsrfToken',
+        'path'  => PwCsrfToken::class,
         'scope' => 'singleton',
     ),
     'windCookie' => array(
-        'path'  => 'WIND:http.cookie.WindNormalCookie',
+        'path'  => WindNormalCookie::class,
         'scope' => 'singleton',
     ),
     'httptransfer' => array(
-        'path'  => 'WIND:http.transfer.WindHttpSocket',
+        'path'  => WindHttpSocket::class,
         'scope' => 'prototype',
     ),
     'storage' => array(
-        'path'  => 'LIB:storage.PwStorageLocal',
+        'path'  => PwStorageLocal::class,
         'scope' => 'singleton',
     ),
     'localStorage' => array(
-        'path'  => 'LIB:storage.PwStorageLocal',
+        'path'  => PwStorageLocal::class,
         'scope' => 'singleton',
     ),
     'fileCache' => array(
-        'path' => 'LIB:engine.extension.cache.PwFileCache',
+        'path' => PwFileCache::class,
 // 		'path' => 'WIND:cache.strategy.WindFileCache',
         'scope'  => 'application',
         'config' => array(

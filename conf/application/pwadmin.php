@@ -18,7 +18,7 @@ return array(
                     'class' => 'APPS:pwadmin.service.srv.filter.PwDebugFilter',
                 ),
                 'csrf' => array(
-                    'class'   => 'LIB:filter.PwCsrfTokenFilter',
+                    'class'   => PwCsrfTokenFilter::class,
                     'pattern' => '~(appcenter/app/upload)', ),
                 ),
             'modules' => array(

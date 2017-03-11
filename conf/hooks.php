@@ -172,7 +172,7 @@ return array(
     'c_register' => array(
         'description' => '注册页面',
         'param'       => array(),
-        'interface'   => 'LIB:engine.hook.PwBaseHookInjector',
+        'interface'   => PwBaseHookInjector::class,
         'list'        => array(
             'invite' => array(
                 'class'      => 'SRV:user.srv.register.injector.PwRegisterDoInviteInjector',
