@@ -139,7 +139,7 @@ class Application extends Container
             ],
             'config' => [
                 \Illuminate\Config\Repository::class,
-            ]
+            ],
         ] as $key => $aliases) {
             foreach ($aliases as $alias) {
                 $this->alias($key, $alias);
