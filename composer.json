@@ -39,6 +39,7 @@
             "src/bootstrap/",
             "src/hooks/"
         ],
+        "files": [ "helpers.php" ],
         "psr-4": {
             "Medz\\Wind\\": "src/",
             "Pw\\Ext\\": "src/extensions/",
