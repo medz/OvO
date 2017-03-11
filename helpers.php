@@ -5,7 +5,8 @@ namespace Medz\Wind;
 /**
  * Get the available container instance.
  *
- * @param  string  $abstract
+ * @param string $abstract
+ *
  * @return mixed|\Medz\Wind\Application
  *
  * @author Seven Du <shiweidu@outlook.com>

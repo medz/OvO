@@ -18,6 +18,7 @@ class Container extends PimpleContainer implements ContainerInterface
      * Get the container instance.
      *
      * @return Medz\Wind\Application
+     *
      * @author Seven Du <shiweidu@outlook.com>
      * @homepage http://medz.cn
      */
