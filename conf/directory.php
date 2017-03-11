@@ -23,7 +23,6 @@ return array(
 'SRV'       => '../src/service',
 'REP'       => '../src/repository',
 'WINDID'    => '../src/windid',
-'ACLOUD'    => '../src/aCloud',
 'ADMIN'     => '../src/applications/admin',
 'APPCENTER' => '../src/applications/appcenter',
 /*
