@@ -28,7 +28,8 @@
         "ext-zip": "*",
         "medz/windframework": "^1.0",
         "symfony/console": "^3.2",
-        "guzzlehttp/guzzle": "^3.8"
+        "guzzlehttp/guzzle": "^3.8",
+        "nikic/fast-route": "^1.2"
     },
     "autoload": {
         "classmap": [
