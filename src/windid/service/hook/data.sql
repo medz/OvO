@@ -49,7 +49,7 @@ INSERT INTO `pw_hook` (`name`, `app_id`, `app_name`, `created_time`, `modified_t
 
 INSERT INTO `pw_hook_inject` (`hook_name`,`alias`,`class`,`method`,`loadway`,`expression`,`created_time`,`modified_time`,`description`) VALUES 
 ('c_post_run', 'poll', 'SRV:forum.srv.post.injector.PwPostDoPollInjector', 'run', '', 'special.get==1', '1341470637', '1341470637', ''),
-('m_PwTopicPost', 'fresh', 'HOOK:PwPost.do.PwPostDoFresh', '', '', '', '1341470637', '1341470637', ''),
+('m_PwTopicPost', 'fresh', 'PwPostDoFresh', '', '', '', '1341470637', '1341470637', ''),
 ('m_PwTopicPost', 'task', 'SRV:task.srv.condition.PwTaskBbsThreadDo', '', '', '', '1341470637', '1341470637', ''),
 ('m_PwTopicPost', 'behavior', 'SRV:misc.behavior.do.PwMiscThreadDo', 'addThread', 'load', '', '1341470637', '1341470637', ''),
 ('m_PwTopicPost', 'medal', 'SRV:medal.srv.condition.do.PwMedalThreadDo', 'addThread', 'load', '', '1341470637', '1341470637', ''),
@@ -127,7 +127,7 @@ INSERT INTO `pw_hook_inject` (`hook_name`,`alias`,`class`,`method`,`loadway`,`ex
 ('s_PwEmotionDao_add', 'addEmotion', 'SRV:emotion.srv.PwEmotionService', 'updateCache', 'load', '', '1341470637', '1341470637', ''),
 ('s_PwEmotionDao_update', 'addEmotion', 'SRV:emotion.srv.PwEmotionService', 'updateCache', 'load', '', '1341470637', '1341470637', ''),
 ('s_PwEmotionDao_delete', 'addEmotion', 'SRV:emotion.srv.PwEmotionService', 'updateCache', 'load', '', '1341470637', '1341470637', ''),
-('s_PwThreadType', 'debate', 'HOOK:PwThreadType.PwThreadTypeDoDebate', 'getTtype', 'load', '', '1341470637', '1341470637', ''),
+('s_PwThreadType', 'debate', 'PwThreadTypeDoDebate', 'getTtype', 'load', '', '1341470637', '1341470637', ''),
 ('c_fresh_post', 'att', 'SRV:forum.srv.post.injector.PwPostDoAttInjector', 'run', '', 'flashatt.post!=0', '1341470637', '1341470637', ''),
 ('c_fresh_post', 'remind', 'SRV:attention.srv.post.injector.PwFreshPostDoRemindInjector', 'dopost', '', '', '1341470637', '1341470637', ''),
 ('s_punch', 'task', 'SRV:task.srv.condition.PwTaskMemberPunchDo', 'doPunch', 'load', '', '1341470637', '1341470637', '')

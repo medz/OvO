@@ -19,7 +19,6 @@ return array(
 
 'APPS'      => '../src/applications',
 'EXT'       => '../src/extensions',
-'HOOK'      => '../src/hooks',
 'SRV'       => '../src/service',
 'REP'       => '../src/repository',
 'WINDID'    => '../src/windid',

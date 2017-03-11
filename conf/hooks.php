@@ -241,7 +241,7 @@ return array(
         'interface'   => 'SRV:forum.srv.post.do.PwPostDoBase',
         'list'        => array(
             'fresh' => array(
-                'class'       => 'HOOK:PwPost.do.PwPostDoFresh',
+                'class'       => PwPostDoFresh::class,
                 'description' => '新鲜事',
             ),
             'task' => array(
@@ -363,7 +363,7 @@ return array(
                 'loadway'    => 'load',
             ),
             'userbelong' => array(
-                'class'   => 'HOOK:PwUser.PwUserLoginDoBelong',
+                'class'   => PwUserLoginDoBelong::class,
                 'loadway' => 'load',
             ),
             'behavior' => array(
@@ -939,14 +939,7 @@ return array(
         'description' => '获取帖子扩展类型时，调用',
         'param'       => array('@param array $tType 帖子类型', '@return array'),
         'interface'   => '',
-        'list'        => array(
-            /*
-            'debate' => array(
-                'class' => 'HOOK:PwThreadType.PwThreadTypeDoDebate',
-                'method' => 'getTtype',
-                'loadway' => 'load'
-            )*/
-        ),
+        'list'        => array(),
     ),
     's_punch' => array(
         'description' => '打卡时，调用',
