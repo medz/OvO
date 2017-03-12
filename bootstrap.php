@@ -25,12 +25,6 @@ if (function_exists('get_include_path') && function_exists('set_include_path')) 
     }
 }
 
-// 开发框架信息
-$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
-if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
-    require $frameworkAutoloadFile;
-}
-
 $filename = dirname(__FILE__).'/vendor/autoload.php';
 if (!file_exists($filename) || !is_file($filename)) {
     echo '<pre>',
@@ -41,3 +35,9 @@ if (!file_exists($filename) || !is_file($filename)) {
 }
 
 require $filename;
+
+// 开发框架信息
+$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
+if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
+    require $frameworkAutoloadFile;
+}
