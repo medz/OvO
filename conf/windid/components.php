@@ -20,7 +20,7 @@ return array(
         'config' => array('resource' => 'CONF:pwcomponents.php'),
     ),
     'security' => array(
-        'path'  => 'WIND:security.WindXxtea',
+        'path'  => 'WindXxtea',
         'scope' => 'singleton',
     ),
     'windLogger' => array(
@@ -53,7 +53,7 @@ return array(
         'scope' => 'singleton',
     ),
     'windCookie' => array(
-        'path'  => 'WIND:http.cookie.WindNormalCookie',
+        'path'  => 'WindNormalCookie',
         'scope' => 'singleton',
     ),
     'windiddb' => array(
@@ -62,7 +62,7 @@ return array(
         'config' => array('resource' => 'CONF:windid.database.php'),
     ),
     'httptransfer' => array(
-        'path'  => 'WIND:http.transfer.WindHttpSocket',
+        'path'  => 'WindHttpSocket',
         'scope' => 'prototype',
     ),
     'storage' => array(

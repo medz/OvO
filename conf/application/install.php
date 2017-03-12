@@ -9,7 +9,7 @@ return array(
     'components' => array(
         'windView' => array(
             'properties' => array(
-                'viewResolver' => array('path' => 'WIND:viewer.resolver.WindNormalViewerResolver'), ), ),
+                'viewResolver' => array('path' => 'WindNormalViewerResolver'), ), ),
         'router' => array(), ),
 
     'web-apps' => array(
