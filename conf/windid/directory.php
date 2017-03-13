@@ -15,19 +15,16 @@ return [
 'ROOT' => '..',
 'CONF' => '../conf',
 'DATA' => '../data',
-'SRC'  => '../src',
+'SRC'  => '../src/phpwind9',
 
-'APPS'      => '../src/applications/windidserver',
-'EXT'       => '../src/extensions',
-'HOOK'      => '../src/hooks',
-'LIB'       => '../src/library',
-'SRV'       => '../src/service',
-'WSRV'      => '../src/windid/service',
-'REP'       => '../src/repository',
-'WINDID'    => '../src/windid',
-'ACLOUD'    => '../src/aCloud',
-'ADMIN'     => '../src/applications/admin',
-'APPCENTER' => '../src/applications/appcenter',
+'APPS'      => '../src/phpwind9/applications/windidserver',
+'EXT'       => '../src/phpwind9/extensions',
+'WSRV'      => '../src/phpwind9/windid/service',
+'REP'       => '../src/phpwind9/repository',
+'WINDID'    => '../src/phpwind9/windid',
+'ACLOUD'    => '../src/phpwind9/aCloud',
+'ADMIN'     => '../src/phpwind9/applications/admin',
+'APPCENTER' => '../src/phpwind9applications/appcenter',
 
 /*
  * 可访问目录

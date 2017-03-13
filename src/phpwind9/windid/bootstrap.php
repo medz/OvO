@@ -3,7 +3,8 @@
 if (!defined('WEKIT_VERSION')) {
     error_reporting(E_ERROR | E_PARSE);
 
-    require dirname(dirname(dirname(__FILE__))).'/bootstrap.php';
+    require dirname(__DIR__).'/../../bootstrap.php';
+    require dirname(dirname(dirname(__DIR__))).'/bootstrap.php';
 
     Wekit::init('windidclient');
     Wind::application('windidclient', Wekit::S());
