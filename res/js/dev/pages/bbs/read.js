@@ -546,49 +546,43 @@
 
 //楼层拷贝
 (function(){
-	var floor_copy = $('.J_floor_copy');
+	var floor_copy = '.J_floor_copy';
+	Wind.use(GV.JS_ROOT +'clipboard.js?v='+ GV.JS_VERSION, function () {
+		var clipboard = new Clipboard(floor_copy, {
+			text: function (trigger) {
+				var item = $(trigger);
+				var type = item.data('type'),
+					tit = (type == 'main' ? $('#J_post_title').text()+'，' : ''), //主楼带帖子标题
+					hash = (type == 'main' ? '' : '#'+item.data('hash')), //楼层带hash
+					par = item.parent();
 
-	if(!$.browser.msie && !Wind.Util.flashPluginTest(9)) {
-		floor_copy.on('click', function(){
-			if(confirm('您的浏览器尚未安装flash插件，楼层地址复制不可用！点击确定下载')) {
-				window.open('http://get.adobe.com/cn/flashplayer/');
-			};
-		});
-		return;
-	}
-
-	Wind.use('textCopy', function() {
-		//hover加载flash
-		floor_copy.on('mouseenter', function(){
-			var item = $(this);
-
-			if(item.siblings().length) {
-				return;
+				return tit.replace(/\n/, '') + location.protocol + '//' + location.host + location.pathname + location.search + hash;
 			}
-			var type = item.data('type'),
-				tit = (type == 'main' ? $('#J_post_title').text()+'，' : ''), //主楼带帖子标题
-				hash = (type == 'main' ? '' : '#'+item.data('hash')), //楼层带hash
-				par = item.parent();
-
-			item.textCopy({
-				content : tit.replace(/\n/, '') + location.protocol + '//' + location.host + location.pathname + location.search + hash,
-				mouseover :function(client){
-					client['div'].setAttribute('title', '复制此楼地址');
-					$(client['div']).addClass('J_readclip_wrap');
-				},
-				appendelem : par[0],
-				addedstyle : {
-					top : item.offset().top - par.offset().top,
-					left : item.offset().left - par.offset().left
-				}
-			});
 		});
-
-		//离开楼层消除
-		$('.J_read_floor').on('mouseleave.clip', function(){
-			$(this).find('.J_readclip_wrap').remove();
+		clipboard.on('success', function (e) {
+			if(Wind.Util.resultTip) {
+				Wind.Util.resultTip({
+					elem : $(e.trigger),
+					follow : true,
+					msg : '复制成功'
+				});
+			} else {
+				alert('复制成功');
+			}
+			e.clearSelection();
 		});
-
+		clipboard.on('error', function (e) {
+			if(Wind.Util.resultTip) {
+				Wind.Util.resultTip({
+					error : true,
+					elem : $(e.trigger),
+					follow : true,
+					msg : '复制失败'
+				});
+			} else {
+				alert('复制失败');
+			}
+		});
 	});
 
 })();

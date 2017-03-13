@@ -74,7 +74,7 @@ class CreditController extends AdminBaseController
         // 所有的模块
         /* @var $config PwCreditOperationConfig */
         $config = PwCreditOperationConfig::getInstance();
-        $creditConfig = Wekit::C()->getValues('credit');
+        $creditConfig = (array) Wekit::C()->getValues('credit');
 
         $this->setOutput($config->getMap(), 'allModules');
         $this->setOutput($config->getData(), 'moduleConfig');
@@ -89,7 +89,7 @@ class CreditController extends AdminBaseController
     {
         $info = $this->getInput('info');
 
-        $creditConfig = Wekit::C()->getValues('credit');
+        $creditConfig = (array) Wekit::C()->getValues('credit');
         $strategy = $creditConfig['strategy'] ? $creditConfig['strategy'] : array();
         if (is_array($info)) {
             foreach ($info as $key => $value) {
@@ -111,8 +111,10 @@ class CreditController extends AdminBaseController
      */
     public function rechargeAction()
     {
+        $recharge = Wekit::C('credit', 'recharge');
+        is_array($recharge) || $recharge = array();
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
-        $this->setOutput(Wekit::C('credit', 'recharge'), 'recharge');
+        $this->setOutput($recharge, 'recharge');
         $this->setCurrentTab('recharge');
     }
 
@@ -146,10 +148,13 @@ class CreditController extends AdminBaseController
      */
     public function exchangeAction()
     {
+        $exchange = Wekit::C('credit', 'exchange');
+        if (!is_array($exchange)) {
+            $exchange = array();
+        }
 
-        // print_r(Wekit::C('credit', 'exchange'));
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
-        $this->setOutput(Wekit::C('credit', 'exchange'), 'exchange');
+        $this->setOutput($exchange, 'exchange');
         $this->setCurrentTab('exchange');
     }
 
@@ -204,6 +209,7 @@ class CreditController extends AdminBaseController
         }
 
         $exchange = Wekit::C('credit', 'exchange');
+        is_array($exchange) || $exchange = array();
         if (isset($exchange[$id])) {
             unset($exchange[$id]);
             $config = new PwConfigSet('credit');

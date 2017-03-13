@@ -105,7 +105,7 @@ if(isset($matches[1]) && is_array($matches[1])){
             // 下面这货是啥？
             // customPlugins.push('insertShare');
 			// 插入代码和openApp的插件放最后
-			plugins = plugins.concat(['insertEmoticons', 'insertPhoto'],customPlugins,['insertCode', 'openApp']);
+			plugins = plugins.concat(['insertEmoticons', 'insertPhoto'],customPlugins,['openApp']);
 			//简单模式时的插件
 			mini = mini.concat( customPlugins );
 			$('#J_wind_editor').windeditor({
