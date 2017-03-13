@@ -66,7 +66,7 @@ class WindidNotifyService
         $client->request('POST', $url, [
             'form_params' => [
                 'nid' => $nid,
-            ]
+            ],
         ]);
 
         return true;
