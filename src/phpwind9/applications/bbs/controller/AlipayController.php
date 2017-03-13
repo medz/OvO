@@ -31,7 +31,7 @@ class AlipayController extends PwBaseController
             'form_params' => [
                 'notify_id' => $this->_var['notify_id'],
                 'partner'   => $this->_conf['alipaypartnerID'],
-            ]
+            ],
         ]);
         $veryfy_result2 = $response->getBody(true);
 

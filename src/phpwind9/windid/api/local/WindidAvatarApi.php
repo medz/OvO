@@ -87,7 +87,7 @@ class WindidAvatarApi
             'multipart' => [
                 'name'     => 'FileData',
                 'contents' => fopen($file, 'r'),
-            ]
+            ],
         ]);
         $result = $response->getBody();
 
