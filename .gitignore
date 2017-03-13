@@ -14,3 +14,5 @@
 /windid/attachment/
 !/src/extensions/demo
 /src/extensions/
+/node_modules
+yarn-error.log

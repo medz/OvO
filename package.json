@@ -1,0 +1,14 @@
+{
+  "name": "phpwind",
+  "version": "1.0.0",
+  "repository": "https://github.com/medz/phpwind.git",
+  "author": "Seven Du <shiweidu@outlook.com>",
+  "license": "Apache-2",
+  "devDependencies": {
+    "gitbook-cli": "^2.3.0"
+  },
+  "scripts": {
+    "book:build": "gitbook build ./ ./docs/docs",
+    "book:serve": "gitbook serve ./ ./docs/docs"
+  }
+}
