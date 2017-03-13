@@ -14,7 +14,7 @@ class PwDesignStructureDao extends PwBaseDao
 {
     protected $_pk = 'struct_name';
     protected $_table = 'design_structure';
-    protected $_dataStruct = array('struct_name', 'struct_title', 'struct_style', 'segment');
+    protected $_dataStruct = ['struct_name', 'struct_title', 'struct_style', 'segment'];
 
     public function get($name)
     {
@@ -31,7 +31,7 @@ class PwDesignStructureDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 
     public function editStruct($data)

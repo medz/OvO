@@ -14,7 +14,7 @@ class PwDesignPortalDao extends PwBaseDao
 {
     protected $_pk = 'id';
     protected $_table = 'design_portal';
-    protected $_dataStruct = array('id', 'pagename', 'title', 'keywords', 'description', 'domain', 'cover', 'isopen', 'header', 'navigate', 'footer', 'template', 'style', 'created_uid', 'created_time');
+    protected $_dataStruct = ['id', 'pagename', 'title', 'keywords', 'description', 'domain', 'cover', 'isopen', 'header', 'navigate', 'footer', 'template', 'style', 'created_uid', 'created_time'];
 
     public function get($id)
     {
@@ -25,7 +25,7 @@ class PwDesignPortalDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE domain = ? LIMIT 1');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($domain));
+        return $this->getConnection()->createStatement($sql)->getOne([$domain]);
     }
 
     public function countPortalByPagename($pagename)
@@ -33,7 +33,7 @@ class PwDesignPortalDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT  count(*) FROM %s WHERE `pagename` = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($pagename));
+        return $smt->getValue([$pagename]);
     }
 
     public function fetch($ids)
@@ -56,7 +56,7 @@ class PwDesignPortalDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT  count(*) FROM %s %s ', $this->getTable(), $where);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($array));
+        return $smt->getValue([$array]);
     }
 
     public function add($data)
@@ -74,7 +74,7 @@ class PwDesignPortalDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET `isopen`= ? WHERE `id` IN %s', $this->getTable(), $this->sqlImplode($ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($isopen));
+        return $smt->update([$isopen]);
     }
 
     public function delete($id)
@@ -90,7 +90,7 @@ class PwDesignPortalDao extends PwBaseDao
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'isopen':
@@ -104,6 +104,6 @@ class PwDesignPortalDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 }

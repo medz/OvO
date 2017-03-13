@@ -41,7 +41,7 @@ class PwFileCache extends AbstractWindCache
      *
      * @var array
      */
-    private $cacheFileList = array();
+    private $cacheFileList = [];
 
     /* (non-PHPdoc)
      * @see AbstractWindCache::setValue()
@@ -92,10 +92,10 @@ class PwFileCache extends AbstractWindCache
      */
     protected function buildData($value, $expires = 0, IWindCacheDependency $dependency = null)
     {
-        $data = array(
+        $data = [
             self::DATA   => $value,
             self::EXPIRE => $expires ? $expires + time() : 0,
-            );
+            ];
 
         return $data;
     }

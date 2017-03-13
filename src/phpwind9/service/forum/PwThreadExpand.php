@@ -27,7 +27,7 @@ class PwThreadExpand
     {
         $fid = intval($fid);
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao()->getThreadByFidOverTime($fid, $lastpostTime, $limit, $offset);
@@ -47,7 +47,7 @@ class PwThreadExpand
     {
         $fid = intval($fid);
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao()->getThreadByFidUnderTime($fid, $lastpostTime, $limit, $offset);
@@ -63,7 +63,7 @@ class PwThreadExpand
     public function fetchThreadByUid($uids)
     {
         if (empty($uids) || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao()->fetchThreadByUid($uids);
@@ -82,7 +82,7 @@ class PwThreadExpand
     {
         $fid = intval($fid);
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao()->countUserThreadByFidAndTime($fid, $time, $num);
@@ -101,7 +101,7 @@ class PwThreadExpand
     {
         $fid = intval($fid);
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->countUserPostByFidAndTime($fid, $time, $num);
@@ -147,7 +147,7 @@ class PwThreadExpand
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao()->getDisabledThreadByUid($uid, $limit, $offset);
@@ -180,7 +180,7 @@ class PwThreadExpand
     public function getDisabledPostByUid($uid, $limit = 20, $offset = 0)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->getDisabledPostByUid($uid, $limit, $offset);

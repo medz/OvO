@@ -66,13 +66,13 @@ class IndexController extends AdminBaseController
         $remainTime = 900 - (time() - $lastLoginTime);
         if ($countLoginFailed > 8 && $remainTime > 0) {
             $this->showError(
-                array(
+                [
                     'ADMIN:login.fail.forbidden',
-                    array('{mtime}' => intval($remainTime / 60), '{stime}' => intval($remainTime % 60)),
-                )
+                    ['{mtime}' => intval($remainTime / 60), '{stime}' => intval($remainTime % 60)],
+                ]
             );
         }
-        list($username, $password) = $this->getInput(array('username', 'password'), 'post');
+        list($username, $password) = $this->getInput(['username', 'password'], 'post');
         if ($username && $password) {
             $this->checkVerify();
             /* @var $adminUserService AdminUserService */
@@ -88,10 +88,10 @@ class IndexController extends AdminBaseController
             }
             $this->forwardRedirect(WindUrlHelper::createUrl('index/run'));
         }
-        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', array()))) {
-            $this->setOutput(in_array('windidlogin', Wekit::C()->verify->get('showverify', array())), 'showVerify');
+        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', []))) {
+            $this->setOutput(in_array('windidlogin', Wekit::C()->verify->get('showverify', [])), 'showVerify');
         } else {
-            $this->setOutput(in_array('adminlogin', Wekit::C()->verify->get('showverify', array())), 'showVerify');
+            $this->setOutput(in_array('adminlogin', Wekit::C()->verify->get('showverify', [])), 'showVerify');
         }
     }
 
@@ -101,7 +101,7 @@ class IndexController extends AdminBaseController
     private function checkVerify()
     {
         //windid登陆
-        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', array()))) {
+        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', []))) {
             $verifySrv = Wekit::load('WINDID:service.verify.srv.PwCheckVerifyService');
             if ($verifySrv->checkVerify($this->getInput('code'))) {
                 return true;
@@ -111,7 +111,7 @@ class IndexController extends AdminBaseController
             return false;
         }
 
-        if (!in_array('adminlogin', Wekit::C()->verify->get('showverify', array()))) {
+        if (!in_array('adminlogin', Wekit::C()->verify->get('showverify', []))) {
             return true;
         }
         /* @var $verifySrv PwCheckVerifyService */
@@ -139,7 +139,7 @@ class IndexController extends AdminBaseController
         $config['type'] = $config['type'] ? $config['type'] : 'image';
 
         //windid登陆验证码显示
-        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', array()))) {
+        if (in_array('windidlogin', Wekit::C()->verify->get('showverify', []))) {
             Wind::import('WINDID:service.verify.srv.PwVerifyService');
         } else {
         }
@@ -148,7 +148,7 @@ class IndexController extends AdminBaseController
             $srv->getVerify($config['type']);
             exit;
         }
-        $url = WindUrlHelper::createUrl('index/showVerify', array('rand' => Pw::getTime()));
+        $url = WindUrlHelper::createUrl('index/showVerify', ['rand' => Pw::getTime()]);
         $display = $srv->getOutType($config['type']);
         if ($display == 'flash') {
             $html = '<embed align="middle"
@@ -162,14 +162,14 @@ class IndexController extends AdminBaseController
 				quality="high"
 				src="'.$url.'">';
             if ($config['voice']) {
-                $url = WindUrlHelper::createUrl('index/showVerify', array(
+                $url = WindUrlHelper::createUrl('index/showVerify', [
                     'getAudio'     => 1,
                     'songVolume'   => 100,
                     'autoStart'    => 'false',
                     'repeatPlay'   => 'false',
                     'showDownload' => 'false',
                     'rand'         => Pw::getTime(),
-                ));
+                ]);
                 $html .= '<embed height="20" width="25"
 				type="application/x-shockwave-flash"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"
@@ -182,14 +182,14 @@ class IndexController extends AdminBaseController
 				width="'.$config['width'].'"
 				height="'.$config['height'].'" >';
             if ($config['voice']) {
-                $url = WindUrlHelper::createUrl('index/showVerify', array(
+                $url = WindUrlHelper::createUrl('index/showVerify', [
                     'getAudio'     => 1,
                     'songVolume'   => 100,
                     'autoStart'    => 'false',
                     'repeatPlay'   => 'false',
                     'showDownload' => 'false',
                     'rand'         => Pw::getTime(),
-                ));
+                ]);
                 $html .= '<span title="点击后键入您听到的内容"><embed wmode="transparent" height="20" width="25"
 				type="application/x-shockwave-flash"
 				pluginspage="http://www.macromedia.com/go/getflashplayer"

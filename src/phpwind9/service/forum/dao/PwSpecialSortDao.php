@@ -14,14 +14,14 @@
 class PwSpecialSortDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_sort';
-    protected $_dataStruct = array('fid', 'tid', 'extra', 'sort_type', 'created_time', 'end_time');
+    protected $_dataStruct = ['fid', 'tid', 'extra', 'sort_type', 'created_time', 'end_time'];
 
     public function getSpecialSortByFid($fid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE fid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid), 'tid');
+        return $smt->queryAll([$fid], 'tid');
     }
 
     public function getSpecialSortByTid($tid)
@@ -29,7 +29,7 @@ class PwSpecialSortDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid), 'fid');
+        return $smt->queryAll([$tid], 'fid');
     }
 
     public function getSpecialSortByTypeExtra($sortType, $extra)
@@ -37,14 +37,14 @@ class PwSpecialSortDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE sort_type=? AND extra=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($sortType, $extra), 'tid');
+        return $smt->queryAll([$sortType, $extra], 'tid');
     }
 
     public function batchAdd($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
-            $array[] = array($value['fid'], $value['tid'], intval($value['extra']), $value['sort_type'], $value['created_time'], $value['end_time']);
+            $array[] = [$value['fid'], $value['tid'], intval($value['extra']), $value['sort_type'], $value['created_time'], $value['end_time']];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (fid, tid, extra, sort_type, created_time, end_time) VALUES %s', $this->getTable(), $this->sqlMulti($array));
 
@@ -56,7 +56,7 @@ class PwSpecialSortDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE tid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tid));
+        return $smt->update([$tid]);
     }
 
     public function batchDeleteSpecialSortByTid($tids)

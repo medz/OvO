@@ -19,7 +19,7 @@ class PwDeleteArticleDoAttachDelete extends iPwGleanDoHookProcess
             return;
         }
 
-        $aids = array();
+        $aids = [];
         foreach ($attachs as $key => $value) {
             Pw::deleteAttach($value['path'], $value['ifthumb']);
             $aids[] = $key;

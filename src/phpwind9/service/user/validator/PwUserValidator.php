@@ -111,7 +111,7 @@ class PwUserValidator
             if ($result == -2) {
                 $config = WindidApi::C('reg');
 
-                return new PwError('WINDID:code.-2', array('{min}' => $config['security.username.min'], '{max}' => $config['security.username.max']));
+                return new PwError('WINDID:code.-2', ['{min}' => $config['security.username.min'], '{max}' => $config['security.username.max']]);
             }
 
             return new PwError('WINDID:code.'.$result);
@@ -159,7 +159,7 @@ class PwUserValidator
         $result = self::_getWindid()->checkUserInput($password, 2, $username);
         if ($result < 1) {
             $config = WindidApi::C('reg');
-            $var = array('{min}' => $config['security.password.min'], '{max}' => $config['security.password.max']);
+            $var = ['{min}' => $config['security.password.min'], '{max}' => $config['security.password.max']];
 
             return new PwError('WINDID:code.'.$result, $var);
         }
@@ -200,7 +200,7 @@ class PwUserValidator
             return true;
         }
         if (self::_complexCaculate($password, $config)) {
-            return new PwError('USER:pwd.error.complex', array('{type}' => self::buildPwdComplexMsg($pwdConfig)));
+            return new PwError('USER:pwd.error.complex', ['{type}' => self::buildPwdComplexMsg($pwdConfig)]);
         }
 
         return true;
@@ -219,20 +219,20 @@ class PwUserValidator
         $_complex = $config['security.password'];
         $_length = $_min || $_max;
         $type = self::buildPwdComplexMsg($_complex);
-        $var = array();
+        $var = [];
         $_key = 'USER:pwd.require';
         if ($_length && $_complex) {
             $_key = 'USER:pwd.format.require';
-            $var = array('{type}' => $type, '{min}' => $_min, '{max}' => $_max);
+            $var = ['{type}' => $type, '{min}' => $_min, '{max}' => $_max];
         } elseif (!$_complex && $_length) {
             $_key = 'USER:pwd.format.length.require';
-            $var = array('{min}' => $_min, '{max}' => $_max);
+            $var = ['{min}' => $_min, '{max}' => $_max];
         } elseif (!$_length && $_complex) {
             $_key = 'USER:pwd.error.complex';
-            $var = array('{type}' => $type);
+            $var = ['{type}' => $type];
         }
 
-        return array($_key, $var);
+        return [$_key, $var];
     }
 
     /**
@@ -247,7 +247,7 @@ class PwUserValidator
         $_min = $config['security.username.min'];
         $_max = $config['security.username.max'];
 
-        return array('USER:user.error.username', array('{min}' => $_min, '{max}' => $_max));
+        return ['USER:user.error.username', ['{min}' => $_min, '{max}' => $_max]];
     }
 
     /**
@@ -262,7 +262,7 @@ class PwUserValidator
         if (!$config) {
             return '';
         }
-        $complex = array(1 => '小写字母', 2 => '大写字母', 4 => '数字', 8 => '非空白符号', 9 => '不能和用户名相同');
+        $complex = [1 => '小写字母', 2 => '大写字母', 4 => '数字', 8 => '非空白符号', 9 => '不能和用户名相同'];
 
         return implode('、', array_intersect_key($complex, array_flip($config)));
     }

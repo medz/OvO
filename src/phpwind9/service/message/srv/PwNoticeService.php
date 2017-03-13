@@ -19,7 +19,7 @@ class PwNoticeService
      * @param array  $extendParams
      * @param $updateUnRead 是否更新未读数
      */
-    public function sendNotice($uid, $type, $param = 0, $extendParams = array(), $updateUnRead = true)
+    public function sendNotice($uid, $type, $param = 0, $extendParams = [], $updateUnRead = true)
     {
         $action = $this->_getAction($type);
         if (!$action) {
@@ -73,7 +73,7 @@ class PwNoticeService
      */
     public function sendDefaultNotice($uid, $content, $title = '')
     {
-        $extendParams = array('content' => $content, 'title' => $title);
+        $extendParams = ['content' => $content, 'title' => $title];
 
         return $this->sendNotice($uid, 'default', 0, $extendParams);
     }
@@ -86,7 +86,7 @@ class PwNoticeService
     public function countNoticesByType($uid)
     {
         $list = $this->_getNoticesDs()->countNoticesByType($uid);
-        $data = array();
+        $data = [];
         if (is_array($list)) {
             $typeNames = $this->_getTypeNames();
             $typeIds = array_flip($this->_getTypes());
@@ -96,11 +96,11 @@ class PwNoticeService
                     continue;
                 }
                 $data[0]['count'] += $v['num'];
-                $data[$v['typeid']] = array(
+                $data[$v['typeid']] = [
                     'typename' => $typeNames[$type],
                     'type'     => $type,
                     'count'    => $v['num'],
-                );
+                ];
             }
             $data[0] && $data[0]['typename'] = '全部';
         }
@@ -152,7 +152,7 @@ class PwNoticeService
     public function formatNoticeList($noticeList)
     {
         $typeIds = array_flip($this->_getTypes());
-        $messageFromUids = array();
+        $messageFromUids = [];
         $uid = 0;
         foreach ($noticeList as $k => $v) {
             $v['extend_params'] = @unserialize($v['extend_params']);
@@ -168,11 +168,11 @@ class PwNoticeService
         if ($messageInfos) {
             foreach ($messageInfos as $v) {
                 $noticeKey = array_search($v['from_uid'], $messageFromUids);
-                $extend = array(
+                $extend = [
                     'title'         => $this->_parseUrl($v['last_message']['content']),
                     'unread_count'  => $v['unread_count'],
                     'message_count' => $v['message_count'],
-                );
+                ];
                 $noticeList[$noticeKey]['message_extend_params'] = $extend;
             }
         }
@@ -252,8 +252,8 @@ class PwNoticeService
     public function setIgnoreNotice($typeId, $uid, $ignore = 1)
     {
         $config = $this->_getMessagesDs()->getMessageConfig($uid);
-        $noticeValue = $config['notice_types'] ? unserialize($config['notice_types']) : array();
-        $newArray = array($typeId => $typeId);
+        $noticeValue = $config['notice_types'] ? unserialize($config['notice_types']) : [];
+        $newArray = [$typeId => $typeId];
         if ($ignore) {
             $noticeValue = $noticeValue + $newArray;
         } else {
@@ -272,7 +272,7 @@ class PwNoticeService
     {
         $privateType = $this->_getNoticePrivateType();
         $types = $this->_getTypeNames();
-        $tmpTypes = array();
+        $tmpTypes = [];
         foreach ($privateType as $k => $v) {
             if (in_array($k, array_keys($types))) {
                 $tmpTypes[$v] = $types[$k];
@@ -358,16 +358,16 @@ class PwNoticeService
 
     private function _getNoticePrivateType()
     {
-        return array(
+        return [
             'medal'  => 4,
             'task'   => 5,
             'credit' => 14,
-        );
+        ];
     }
 
     private function _getTypes()
     {
-        return array(
+        return [
             'message'        => 1,
             'default'        => 2,
             'threadmanage'   => 3,
@@ -385,12 +385,12 @@ class PwNoticeService
             'postreply'      => 15,
             'report_photo'   => 16,
             'app'            => 99,
-        );
+        ];
     }
 
     private function _getTypeNames()
     {
-        return array(
+        return [
             'default'        => '通知',
             'message'        => '私信',
             'threadreply'    => '回复提醒',
@@ -408,7 +408,7 @@ class PwNoticeService
             'postreply'      => '楼层回复',
             'report_photo'   => '照片举报',
             'app'            => '应用通知',
-        );
+        ];
     }
 
     /**

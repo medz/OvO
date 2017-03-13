@@ -10,7 +10,7 @@
  */
 class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
 {
-    private $_variables = array();
+    private $_variables = [];
 
     /*
      * (non-PHPdoc) @see AbstractWindTemplateCompiler::compile()
@@ -20,12 +20,12 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
         $content = substr($content, 6, -1);
         list($content, $route) = explode('|', $content.'|');
 
-        $this->_variables = array();
+        $this->_variables = [];
         $content = preg_replace_callback(
             '/((\$[a-zA-Z_]+->)|([a-zA-Z_]+::)|\$)([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(\[[a-zA-Z0-9_\x7f-\xff\'\"\$\[\]]+\])*)/i',
-            array($this, '_variable'), trim($content));
+            [$this, '_variable'], trim($content));
 
-        $content = WindUrlHelper::createUrl($content, array(), '', $route, false);
+        $content = WindUrlHelper::createUrl($content, [], '', $route, false);
         $content = $this->_compile(ltrim($content, '/'));
 
         //变量过滤，添加rawurlencode 安全过滤，如果是链接好的串需要使用者控制
@@ -74,7 +74,7 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
                 } else {
                     $content = $route->dynamicDomain[0].$route->dynamicDomain[1].$route->dynamicDomain[4].$route->dynamicDomain[2].$content.$route->dynamicDomain[3];
                 }
-                $content = preg_replace_callback('/<\?php(.*?)\?>/is', array($this, '_parse'), $content);
+                $content = preg_replace_callback('/<\?php(.*?)\?>/is', [$this, '_parse'], $content);
             } elseif ($route->dynamic) {
                 if (false !== strpos($content, '{fname}')) {
                     $temp = explode('{fname}', $content, 2);
@@ -84,7 +84,7 @@ class PwTemplateCompilerUrlCreater extends AbstractWindTemplateCompiler
                     }
                     $content = $route->dynamic[0].'echo \''.$temp[0].'\','.$route->dynamic[1].',\''.$temp[1].'\';?>';
                 }
-                $content = preg_replace_callback('/<\?php(.*?)\?>/is', array($this, '_parse'), $content);
+                $content = preg_replace_callback('/<\?php(.*?)\?>/is', [$this, '_parse'], $content);
             }
             if ($route->dynamicHost) {
                 $content = ltrim(str_replace($route->dynamicHost, '', $content), '/');

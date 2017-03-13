@@ -30,9 +30,9 @@ class PwReportService
     {
         $reposts = $this->_getReportDs()->getListByType($ifcheck, $type, $limit, $start);
         if (!$reposts) {
-            return array();
+            return [];
         }
-        $uids = $pids = $tmpArray = array();
+        $uids = $pids = $tmpArray = [];
         foreach ($reposts as $v) {
             $uids[] = $v['author_userid'];
             $uids[] = $v['created_userid'];
@@ -121,9 +121,9 @@ class PwReportService
             return false;
         }
         if (!$extendParams) {
-            $uids = array($data['author_userid'], $data['created_userid']);
+            $uids = [$data['author_userid'], $data['created_userid']];
             $users = $this->_getUserDs()->fetchUserByUid($uids);
-            $extendParams = array(
+            $extendParams = [
                 'fromUser'   => $users[$data['created_userid']]['username'],
                 'fromUserId' => $users[$data['created_userid']]['uid'],
                 'username'   => $users[$data['author_userid']]['username'],
@@ -133,7 +133,7 @@ class PwReportService
                 'type_id'    => $data['type_id'],
                 'hrefUrl'    => $data['content_url'],
                 'reason'     => $data['reason'],
-            );
+            ];
         }
         $notice = Wekit::load('message.srv.PwNoticeService');
         foreach ($receivers as $uid) {
@@ -172,12 +172,12 @@ class PwReportService
      */
     public function getTypeMap()
     {
-        return array(
+        return [
             'thread'  => self::REPORT_TYPE_THREAD,
             'post'    => self::REPORT_TYPE_POST,
             'message' => self::REPORT_TYPE_MESSAGE,
             'photo'   => self::REPORT_TYPE_PHOTO,
-        );
+        ];
     }
 
     /**
@@ -187,12 +187,12 @@ class PwReportService
      */
     public function getTypeName()
     {
-        return array(
+        return [
             self::REPORT_TYPE_THREAD  => '帖子',
             self::REPORT_TYPE_POST    => '回复',
             self::REPORT_TYPE_MESSAGE => '消息',
             self::REPORT_TYPE_PHOTO   => '照片',
-        );
+        ];
     }
 
     private function _getTypeId($typeName)

@@ -20,16 +20,16 @@ class PwWordService
      *
      * @return array
      */
-    public function findWord($word = array())
+    public function findWord($word = [])
     {
         if (empty($word) || !is_array($word)) {
-            return array();
+            return [];
         }
         $wordList = $this->_getWordDS()->fetchByWord($word);
         if (!$wordList) {
-            return array();
+            return [];
         }
-        $result = array();
+        $result = [];
         foreach ($wordList as $value) {
             $result[] = $value['word'];
         }

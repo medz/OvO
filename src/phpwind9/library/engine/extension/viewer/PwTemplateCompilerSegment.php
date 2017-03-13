@@ -37,7 +37,7 @@ class PwTemplateCompilerSegment extends AbstractWindTemplateCompiler
             $this->args = 'array('.$this->args.')';
         }
         $this->args || $this->args = '""';
-        $content = array();
+        $content = [];
         $content[] = '<?php';
         $content[] = 'PwHook::segment("'.$this->tpl.'", '.$this->args.', "'.$this->name.'", "'.$this->alias.'", $__viewer);';
         $content[] = '?>';
@@ -50,6 +50,6 @@ class PwTemplateCompilerSegment extends AbstractWindTemplateCompiler
      */
     public function getProperties()
     {
-        return array('tpl', 'alias', 'args', 'name');
+        return ['tpl', 'alias', 'args', 'name'];
     }
 }

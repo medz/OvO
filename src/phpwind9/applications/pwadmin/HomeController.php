@@ -26,7 +26,7 @@ class HomeController extends AdminBaseController
             $sysMail = 'Disabled';
         }
         $db = Wind::getComponent('db');
-        $sysinfo = array(
+        $sysinfo = [
             'wind_version'    => Pw::VERSION_NAME,
             'php_version'     => PHP_VERSION,
             'server_software' => str_replace('PHP/'.PHP_VERSION, '',
@@ -34,7 +34,7 @@ class HomeController extends AdminBaseController
             'mysql_version'   => $db->getDbHandle()->getAttribute(PDO::ATTR_SERVER_VERSION),
             'max_upload'      => ini_get('file_uploads') ? ini_get('upload_max_filesize') : 'Disabled',
             'max_excute_time' => intval(ini_get('max_execution_time')).' seconds',
-            'sys_mail'        => $sysMail, );
+            'sys_mail'        => $sysMail, ];
         $this->setOutput($sysinfo, 'sysinfo');
     }
 

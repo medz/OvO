@@ -13,23 +13,23 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwForumDbCache extends PwBaseMapDbCache
 {
-    protected $keys = array(
-        'forum'           => array('forum_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumDao', 'getForum')),
-        'forumstatistics' => array('forumstatistics_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumStatisticsDao', 'getForum')),
-        'forumextra'      => array('forumextra_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwForumExtraDao', 'getForum')),
-    );
+    protected $keys = [
+        'forum'           => ['forum_%s', ['fid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwForumDao', 'getForum']],
+        'forumstatistics' => ['forumstatistics_%s', ['fid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwForumStatisticsDao', 'getForum']],
+        'forumextra'      => ['forumextra_%s', ['fid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwForumExtraDao', 'getForum']],
+    ];
 
     public function getKeysByFid($fid)
     {
-        $keys = array();
+        $keys = [];
         if ($this->index & PwForum::FETCH_MAIN) {
-            $keys[] = array('forum', array($fid));
+            $keys[] = ['forum', [$fid]];
         }
         if ($this->index & PwForum::FETCH_STATISTICS) {
-            $keys[] = array('forumstatistics', array($fid));
+            $keys[] = ['forumstatistics', [$fid]];
         }
         if ($this->index & PwForum::FETCH_EXTRA) {
-            $keys[] = array('forumextra', array($fid));
+            $keys[] = ['forumextra', [$fid]];
         }
 
         return $keys;
@@ -37,7 +37,7 @@ class PwForumDbCache extends PwBaseMapDbCache
 
     public function fetchKeysByFid($fids)
     {
-        $keys = array();
+        $keys = [];
         foreach ($fids as $fid) {
             $keys = array_merge($keys, $this->getKeysByFid($fid));
         }
@@ -48,7 +48,7 @@ class PwForumDbCache extends PwBaseMapDbCache
     public function getForum($fid)
     {
         $data = Wekit::cache()->fetch($this->getKeysByFid($fid));
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
             $result = array_merge($result, $value);
         }
@@ -58,7 +58,7 @@ class PwForumDbCache extends PwBaseMapDbCache
 
     public function fetchForum($fids)
     {
-        $result = array();
+        $result = [];
         $data = Wekit::cache()->fetch($this->fetchKeysByFid($fids));
         foreach ($data as $key => $value) {
             list(, $fid) = explode('_', $key);
@@ -72,7 +72,7 @@ class PwForumDbCache extends PwBaseMapDbCache
         return $result;
     }
 
-    public function updateForum($fid, $fields, $increaseFields = array())
+    public function updateForum($fid, $fields, $increaseFields = [])
     {
         Wekit::cache()->batchDelete($this->getKeysByFid($fid));
 
@@ -86,7 +86,7 @@ class PwForumDbCache extends PwBaseMapDbCache
         return $this->_getDao()->updateForumStatistics($fid, $subFids);
     }
 
-    public function batchUpdateForum($fids, $fields, $increaseFields = array())
+    public function batchUpdateForum($fids, $fields, $increaseFields = [])
     {
         Wekit::cache()->batchDelete($this->fetchKeysByFid($fids));
 

@@ -28,14 +28,14 @@ class HotController extends PwBaseController
 
         $total = $this->_getPollDs()->countPollByTime($startTime, $endTime);
 
-        $pollInfo = array();
+        $pollInfo = [];
 
         if ($total) {
-            $pollDisplay = new PwPollDisplay(new PwFetchPollByTime($startTime, $endTime, $limit, $start, array('voter_num' => 0, 'created_time' => 0)));
+            $pollDisplay = new PwPollDisplay(new PwFetchPollByTime($startTime, $endTime, $limit, $start, ['voter_num' => 0, 'created_time' => 0]));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
 
-        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, array('created_time' => '0')));
+        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, ['created_time' => '0']));
         $latestPoll = $latestPollDisplay->gather();
 
         $this->setOutput($total, 'total');
@@ -44,17 +44,17 @@ class HotController extends PwBaseController
         $this->setOutput($this->page, 'page');
         $this->setOutput($this->perpage, 'perpage');
         $this->setOutput(
-            array(
+            [
                 'allowview' => $this->loginUser->getPermission('allow_view_vote'),
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
-            ), 'pollGroup');
+            ], 'pollGroup');
 
         // seo设置
 
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         if ($this->page > 1) {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:vote.hot.run.page.title', array($this->page)), $lang->getMessage('vote.hot.run.description'), '');
+            $seoBo->setCustomSeo($lang->getMessage('SEO:vote.hot.run.page.title', [$this->page]), $lang->getMessage('vote.hot.run.description'), '');
         } else {
             $seoBo->setCustomSeo($lang->getMessage('SEO:vote.hot.run.title'), '', $lang->getMessage('SEO:vote.hot.run.description'));
         }
@@ -63,7 +63,7 @@ class HotController extends PwBaseController
 
     private function _buildPoll($data)
     {
-        $pollid = $myPollid = $reuslt = array();
+        $pollid = $myPollid = $reuslt = [];
 
         foreach ($data as $value) {
             $pollid[] = $value['poll_id'];

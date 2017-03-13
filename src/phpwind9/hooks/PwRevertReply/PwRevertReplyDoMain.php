@@ -13,9 +13,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwRevertReplyDoMain extends iPwGleanDoHookProcess
 {
-    public $fids = array();
-    public $tids = array();
-    public $rpids = array();
+    public $fids = [];
+    public $tids = [];
+    public $rpids = [];
 
     public function gleanData($value)
     {
@@ -23,7 +23,7 @@ class PwRevertReplyDoMain extends iPwGleanDoHookProcess
             return;
         }
         $tid = $value['src_tid'];
-        isset($this->tids[$tid]) || $this->tids[$tid] = array('replies' => 0, 'ids' => array(), 'disabled' => $value['src_tid_disabled']);
+        isset($this->tids[$tid]) || $this->tids[$tid] = ['replies' => 0, 'ids' => [], 'disabled' => $value['src_tid_disabled']];
         $this->tids[$tid]['ids'][] = $value['pid'];
         $this->tids[$tid]['replies']++;
         if ($value['src_tid_disabled'] != 2) {

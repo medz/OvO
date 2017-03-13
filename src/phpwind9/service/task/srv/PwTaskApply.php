@@ -21,7 +21,7 @@
 class PwTaskApply
 {
     private $uid = null;
-    private $gids = array();
+    private $gids = [];
 
     /**
      * 申请初始化.
@@ -83,7 +83,7 @@ class PwTaskApply
             return new PwError('TASK:id.illegal');
         }
         $cacheId = 0;
-        $periodCache = array();
+        $periodCache = [];
         /* @var $notice PwNoticeService */
         $notice = Wekit::load('message.srv.PwNoticeService');
         foreach ($taskList as $task) {
@@ -102,7 +102,7 @@ class PwTaskApply
         }
         $cache = $this->_getTaskDs()->getTaskCacheByUid($this->uid);
         if (!$cache) {
-            $cache = array(0, array());
+            $cache = [0, []];
         }
         $cacheId && $cache[0] = $cacheId;
         $cache[1] = array_diff($cache[1], $periodCache);
@@ -168,11 +168,11 @@ class PwTaskApply
             $pre_task = $this->_getTaskDs()->get($task['pre_task']);
             if (!$pre_taskApply) {
                 return new PwError('TASK:pre_task.require',
-                array('{title}' => $pre_task['title']));
+                ['{title}' => $pre_task['title']]);
             }
             if (4 != $pre_taskApply['task_status']) {
                 return new PwError('TASK:pre_task.no.complete',
-                array('{title}' => $pre_task['title']));
+                ['{title}' => $pre_task['title']]);
             }
         }
         /*该任务没有被申请过*/
@@ -192,7 +192,7 @@ class PwTaskApply
         $periodTime = $task['period'] * 3600 + $taskApplied['finish_time'];
         if ($periodTime > Pw::getTime()) {
             return new PwError('TASK:apply.period.no.complete',
-                array('{time}' => Pw::time2str($periodTime, 'Y-m-d H:i:s')));
+                ['{time}' => Pw::time2str($periodTime, 'Y-m-d H:i:s')]);
         }
 
         return true;

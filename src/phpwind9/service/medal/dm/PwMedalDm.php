@@ -63,7 +63,7 @@ class PwMedalDm extends PwBaseDm
 
     public function setMedalGids($gids)
     {
-        $gids = is_array($gids) ? $gids : array();
+        $gids = is_array($gids) ? $gids : [];
         $this->_data['medal_gids'] = implode(',', $gids);
 
         return $this;

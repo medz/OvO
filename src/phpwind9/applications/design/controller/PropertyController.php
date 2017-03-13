@@ -34,12 +34,12 @@ class PropertyController extends PwBaseController
 
         $service = new $cls();
         $decorator = $service->decorateAddProperty($model);
-        $_models = array();
+        $_models = [];
         $service = $this->_getDesignService();
         $types = $service->getDesignModelType();
         $models = $service->getModelList();
         foreach ($models as $k => $v) {
-            $_models[$v['type']][] = array('name' => $v['name'], 'model' => $k);
+            $_models[$v['type']][] = ['name' => $v['name'], 'model' => $k];
         }
         $ds = $this->_getModuleDs();
         $pageInfo = $this->_getPageDs()->getPage($pageid);
@@ -131,7 +131,7 @@ class PropertyController extends PwBaseController
 
     public function editAction()
     {
-        $other = array('html', 'searchbar', 'image');
+        $other = ['html', 'searchbar', 'image'];
         $isedit = false;
         $model = $this->getInput('model', 'post');
         $moduleid = (int) $this->getInput('moduleid', 'post');
@@ -162,13 +162,13 @@ class PropertyController extends PwBaseController
 
         $modelBo = new PwDesignModelBo($model);
         $property = $modelBo->getProperty();
-        $vProperty = $isedit ? array() : $moduleBo->getProperty();
+        $vProperty = $isedit ? [] : $moduleBo->getProperty();
         //$isedit && $vProperty['compid'] = null;
         $service = $this->_getDesignService();
         $types = $service->getDesignModelType();
         $models = $service->getModelList();
         foreach ($models as $k => $v) {
-            $_models[$v['type']][] = array('name' => $v['name'], 'model' => $k);
+            $_models[$v['type']][] = ['name' => $v['name'], 'model' => $k];
         }
         $this->setOutput($types, 'types');
         $this->setOutput($_models, 'models');
@@ -184,7 +184,7 @@ class PropertyController extends PwBaseController
 
     public function doeditAction()
     {
-        $other = array('html', 'searchbar', 'image');
+        $other = ['html', 'searchbar', 'image'];
         $model = $this->getInput('model', 'post');
         $moduleid = $this->getInput('moduleid', 'post');
         if (!$moduleid) {
@@ -325,7 +325,7 @@ class PropertyController extends PwBaseController
         }
 
         //对config里的tab进行过滤
-        $tab = array('property', 'template');
+        $tab = ['property', 'template'];
 
         $bo = new PwDesignModelBo($model);
         $modelInfo = $bo->getModel();

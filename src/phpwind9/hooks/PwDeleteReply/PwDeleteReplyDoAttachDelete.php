@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteReplyDoAttachDelete extends iPwGleanDoHookProcess
 {
-    public $tids = array();
+    public $tids = [];
 
     public function gleanData($value)
     {
@@ -27,7 +27,7 @@ class PwDeleteReplyDoAttachDelete extends iPwGleanDoHookProcess
             return;
         }
 
-        $aids = array();
+        $aids = [];
         foreach ($attachs as $key => $value) {
             Pw::deleteAttach($value['path'], $value['ifthumb']);
             $aids[] = $key;

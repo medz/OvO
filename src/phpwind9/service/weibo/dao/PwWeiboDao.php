@@ -12,7 +12,7 @@ class PwWeiboDao extends PwBaseDao
 {
     protected $_table = 'weibo';
     protected $_pk = 'weibo_id';
-    protected $_dataStruct = array('weibo_id', 'src_id', 'content', 'type', 'comments', 'extra', 'like_count', 'created_userid', 'created_username', 'created_time');
+    protected $_dataStruct = ['weibo_id', 'src_id', 'content', 'type', 'comments', 'extra', 'like_count', 'created_userid', 'created_username', 'created_time'];
 
     public function getWeibo($weiboId)
     {
@@ -29,7 +29,7 @@ class PwWeiboDao extends PwBaseDao
         return $this->_add($fields);
     }
 
-    public function updateWeibo($weiboId, $fields, $increaseFields = array())
+    public function updateWeibo($weiboId, $fields, $increaseFields = [])
     {
         return $this->_update($weiboId, $fields, $increaseFields);
     }

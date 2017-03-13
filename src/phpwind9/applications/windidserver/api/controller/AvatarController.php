@@ -47,7 +47,7 @@ class AvatarController extends OpenBaseController
         Wind::getApp()->getFactory()->loadClassDefinitions($components);
         Wekit::C()->setConfig('site', 'avatarUrl', substr(Pw::getPath('1.gpg'), 0, -6));
 
-        $this->_getNotifyService()->send('alterAvatarUrl', array(), $this->appid);
+        $this->_getNotifyService()->send('alterAvatarUrl', [], $this->appid);
         $this->output(1);
     }
 
@@ -64,7 +64,7 @@ class AvatarController extends OpenBaseController
         $uid = $this->getInput('uid', 'get');
         $size = $this->getInput('size', 'get');
         !$size && $size = 'middle';
-        $file = $uid.(in_array($size, array('middle', 'small')) ? '_'.$size : '').'.jpg';
+        $file = $uid.(in_array($size, ['middle', 'small']) ? '_'.$size : '').'.jpg';
         $result = $this->attachUrl.'/avatar/'.Pw::getUserDir($uid).'/'.$file;
         $this->output($result);
     }
@@ -118,7 +118,7 @@ class AvatarController extends OpenBaseController
         if ($result instanceof PwError) {
             $this->output($this->errorCode($result->getError()));
         } else {
-            $this->_getNotifyService()->send('uploadAvatar', array('uid' => $uid), 0); //服务端发送通知
+            $this->_getNotifyService()->send('uploadAvatar', ['uid' => $uid], 0); //服务端发送通知
             $this->output(1);
         }
     }

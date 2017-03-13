@@ -33,7 +33,7 @@ class WindidArea
     {
         $areaid = intval($areaid);
         if ($areaid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getArea($areaid);
@@ -49,7 +49,7 @@ class WindidArea
     public function fetchByAreaid($areaids)
     {
         if (!$areaids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchByAreaid($areaids);
@@ -90,7 +90,7 @@ class WindidArea
      */
     public function batchAddArea($dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $_item) {
             if (!$_item instanceof WindidAreaDm) {
                 continue;

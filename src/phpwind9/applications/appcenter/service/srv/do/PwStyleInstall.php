@@ -59,7 +59,7 @@ class PwStyleInstall extends PwInstall
         }
         if ($result) {
             return new PwError('APPCENTER:install.exist.fail',
-            array('{{error}}' => $manifest->getApplication('name')));
+            ['{{error}}' => $manifest->getApplication('name')]);
         }
         file_put_contents(DATA_PATH.'tmp/log', 'checkinstall!', FILE_APPEND);
 
@@ -79,11 +79,11 @@ class PwStyleInstall extends PwInstall
         }
         if ($packs = $upgrade->getBackLog('packs')) {
             $targetDir = $upgrade->getTmpPath().'/bak/';
-            $log = array();
+            $log = [];
             foreach ($packs as $value) {
                 $target = $upgrade->getTmpPath().'/'.basename($value).'.bak';
                 PwApplicationHelper::mvSourcePack($value, $target);
-                $log[] = array($value, $target);
+                $log[] = [$value, $target];
             }
             $upgrade->setRevertLog('packs', $log);
         }
@@ -137,7 +137,7 @@ class PwStyleInstall extends PwInstall
         $targetDir = THEMES_PATH.$pack;
         if (!PwSystemHelper::checkWriteAble($targetDir.'/')) {
             return new PwError('APPCENTER:install.mv.fail',
-                array('{{error}}' => 'THEMES:'.str_replace('/', '.', $pack)));
+                ['{{error}}' => 'THEMES:'.str_replace('/', '.', $pack)]);
         }
         $target = $targetDir.'/'.$alias;
         PwApplicationHelper::mvSourcePack($install->getTmpPackage(), $target);
@@ -211,7 +211,7 @@ class PwStyleInstall extends PwInstall
             $style_type = key($allow_style_type);
         }
 
-        return array($style_type, $allow_style_type[$style_type][1]);
+        return [$style_type, $allow_style_type[$style_type][1]];
     }
 
     /**

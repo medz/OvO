@@ -13,7 +13,7 @@ class PwUserMobileVerifyDao extends PwBaseDao
 {
     protected $_table = 'user_mobile_verify';
     protected $_pk = 'mobile';
-    protected $_dataStruct = array('mobile', 'code', 'expired_time', 'number', 'create_time');
+    protected $_dataStruct = ['mobile', 'code', 'expired_time', 'number', 'create_time'];
 
     /**
      * 取一条
@@ -89,7 +89,7 @@ class PwUserMobileVerifyDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `expired_time`<?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($expired_time));
+        return $smt->update([$expired_time]);
     }
 
     /**
@@ -130,7 +130,7 @@ class PwUserMobileVerifyDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `expired_time`<?', $this->getTable(), $this->sqlSingle($fields));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($expiredTime));
+        return $smt->update([$expiredTime]);
     }
 
     /**

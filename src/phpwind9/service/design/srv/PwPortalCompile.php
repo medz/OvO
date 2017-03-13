@@ -233,22 +233,22 @@ class PwPortalCompile
 
     protected function compilePw($section)
     {
-        $in = array(
+        $in = [
             '<pw-start>',
             '<pw-head>',
             '<pw-navigate>',
             '<pw-footer>',
             '<pw-end>',
             '<pw-drag>',
-        );
-        $out = array(
+        ];
+        $out = [
             '<pw-start/>',
             '<pw-head/>',
             '<pw-navigate/>',
             '<pw-footer/>',
             '<pw-end/>',
             '<pw-drag/>',
-        );
+        ];
 
         return str_replace($in, $out, $section);
     }
@@ -300,7 +300,7 @@ class PwPortalCompile
                     ->setModuleTpl($v)
                     ->setModuleType(PwDesignModule::TYPE_IMPORT)
                     ->setIsused(1)
-                    ->setProperty(array('limit' => $limit));
+                    ->setProperty(['limit' => $limit]);
                 $moduleId = $ds->addModule($dm);
                 if ($moduleId instanceof PwError) {
                     continue;

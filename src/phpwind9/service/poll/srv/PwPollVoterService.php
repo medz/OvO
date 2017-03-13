@@ -25,9 +25,9 @@ class PwPollVoterService
   public function fetchVoteByUid($uids, $limit, $offset)
   {
       if (!$uids || !is_array($uids)) {
-          return array();
+          return [];
       }
-      $pollids = array();
+      $pollids = [];
       $voterInfos = $this->_getPwPollVoterDs()->fetchVoteByUid($uids, $limit, $offset);
       foreach ($voterInfos as $value) {
           $pollids[] = $value['poll_id'];

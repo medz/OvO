@@ -17,7 +17,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 abstract class PwBaseHookInjector extends WindActionFilter
 {
     private $callback = 'run';
-    private $args = array();
+    private $args = [];
     /**
      * @var PwBaseHookService
      */
@@ -29,7 +29,7 @@ abstract class PwBaseHookInjector extends WindActionFilter
      * @param WindRouter       $router
      * @param array            $args
      */
-    public function __construct($forward, $errorMessage, $router, $args = array())
+    public function __construct($forward, $errorMessage, $router, $args = [])
     {
         parent::__construct($forward, $errorMessage, $router);
         !empty($args[0]) && $this->callback = $args[0];
@@ -48,7 +48,7 @@ abstract class PwBaseHookInjector extends WindActionFilter
         if (!method_exists($this, $this->callback)) {
             return;
         }
-        $injector = call_user_func_array(array($this, $this->callback), $this->args);
+        $injector = call_user_func_array([$this, $this->callback], $this->args);
         if ($injector) {
             $this->bp->appendDo($injector);
         }

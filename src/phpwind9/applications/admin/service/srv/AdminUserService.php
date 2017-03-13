@@ -49,7 +49,7 @@ class AdminUserService
     public function verifyUserByUsername($username)
     {
         if (empty($username)) {
-            return array();
+            return [];
         }
 
         return $this->loadUserService()->getUserByName($username);
@@ -77,7 +77,7 @@ class AdminUserService
         /* @var $menuService AdminMenuService */
         $menuService = Wekit::load('ADMIN:service.srv.AdminMenuService');
         $authStruts = $menuService->getMenuAuthStruts();
-        $authKeys = array();
+        $authKeys = [];
         if (isset($authStruts[$m][$c]['_all'])) {
             $authKeys += $authStruts[$m][$c]['_all'];
         }
@@ -108,7 +108,7 @@ class AdminUserService
      */
     public function getAuths($user)
     {
-        list($uid, $username) = array($user->uid, $user->username);
+        list($uid, $username) = [$user->uid, $user->username];
         if ($this->loadFounderService()->isFounder($username)) {
             return '-1';
         }
@@ -117,7 +117,7 @@ class AdminUserService
         $authService = Wekit::load('ADMIN:service.AdminAuth');
         $userAuths = $authService->findByUid($uid);
         if (empty($userAuths['roles'])) {
-            return array();
+            return [];
         }
 
         $roles = explode(',', $userAuths['roles']);
@@ -133,7 +133,7 @@ class AdminUserService
             $_tmp .= $role['auths'].',';
         }
 
-        return empty($_tmp) ? array() : explode(',', trim($_tmp, ','));
+        return empty($_tmp) ? [] : explode(',', trim($_tmp, ','));
     }
 
     /**
@@ -165,7 +165,7 @@ class AdminUserService
     public function isLogin()
     {
         if (!($userCookie = Pw::getCookie('AdminUser'))) {
-            return array();
+            return [];
         }
         list($type, $uid, $password) = explode("\t", Pw::decrypt($userCookie));
         if ($type == self::FOUNDER) {
@@ -198,7 +198,7 @@ class AdminUserService
             return $userService;
         }
         throw new PwDependanceException('admin.userservice',
-            array('{service}' => __CLASS__, '{userservice}' => 'IAdminUserDependenceService'));
+            ['{service}' => __CLASS__, '{userservice}' => 'IAdminUserDependenceService']);
     }
 
     /**

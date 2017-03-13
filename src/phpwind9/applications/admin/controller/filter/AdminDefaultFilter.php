@@ -21,7 +21,7 @@ class AdminDefaultFilter extends PwBaseFilter
      */
     public function preHandle()
     {
-        $url = array();
+        $url = [];
         $var = Wekit::url();
         $url['base'] = $var->base;
         $url['res'] = $var->res;
@@ -33,16 +33,16 @@ class AdminDefaultFilter extends PwBaseFilter
         $url['extres'] = $var->extres;
         Wekit::setGlobal($url, 'url');
 
-        $request = array(
+        $request = [
             'm' => $this->router->getModule(),
             'c' => $this->router->getController(),
             'a' => $this->router->getAction(),
-        );
+        ];
         $request['mc'] = $request['m'].'/'.$request['c'];
         $request['mca'] = $request['mc'].'/'.$request['a'];
         Wekit::setGlobal($request, 'request');
 
-        if (in_array($request['mca'], array('default/index/login', 'default/index/showVerify', 'appcenter/app/upload'))) {
+        if (in_array($request['mca'], ['default/index/login', 'default/index/showVerify', 'appcenter/app/upload'])) {
             return;
         }
 
@@ -65,7 +65,7 @@ class AdminDefaultFilter extends PwBaseFilter
             }
         }
 
-        $_unVerifyTable = array('home', 'index', 'find');
+        $_unVerifyTable = ['home', 'index', 'find'];
         if (!in_array(strtolower($request['c']), $_unVerifyTable)) {
             if ($request['c'] != 'adminlog') {
                 $logService = Wekit::load('ADMIN:service.srv.AdminLogService');

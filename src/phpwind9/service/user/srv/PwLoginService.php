@@ -12,7 +12,7 @@
  */
 class PwLoginService extends PwBaseHookService
 {
-    private $loginConfig = array();
+    private $loginConfig = [];
     private $ipLimit = 100;
 
     /**
@@ -64,12 +64,12 @@ class PwLoginService extends PwBaseHookService
      */
     public function checkInput($username)
     {
-        $r = array();
+        $r = [];
         //手机号码登录
         if (PwUserValidator::isMobileValid($username) === true && in_array(4, $this->loginConfig['ways'])) {
             $mobileInfo = Wekit::load('user.PwUserMobile')->getByMobile($username);
             if (!$mobileInfo) {
-                return array();
+                return [];
             }
             $r = $this->_getWindid()->getUser($mobileInfo['uid'], 1);
         }
@@ -153,7 +153,7 @@ class PwLoginService extends PwBaseHookService
     {
         $args = explode("\t", Pw::decrypt(rawurldecode($identify)));
         if ((Pw::getTime() - $args[2]) > 300) {
-            return array(0, '');
+            return [0, ''];
         } else {
             return $args;
         }

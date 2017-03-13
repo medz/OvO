@@ -15,7 +15,7 @@ class PwUserGroupsDao extends PwBaseDao
 {
     protected $_table = 'user_groups';
     protected $_pk = 'gid';
-    protected $_dataStruct = array('type', 'name', 'category', 'image', 'points');
+    protected $_dataStruct = ['type', 'name', 'category', 'image', 'points'];
 
     /**
      * 获取所有用户组.
@@ -93,7 +93,7 @@ class PwUserGroupsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE type=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($groupType), 'gid');
+        return $smt->queryAll([$groupType], 'gid');
     }
 
     /**
@@ -106,6 +106,6 @@ class PwUserGroupsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE type=? ORDER BY points');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($groupType), 'gid');
+        return $smt->queryAll([$groupType], 'gid');
     }
 }

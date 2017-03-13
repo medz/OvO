@@ -15,10 +15,10 @@
  */
 class PwAutoAwardMedal
 {
-    private $awardMedalIds = array(); //该颁发的勋章ID数组
+    private $awardMedalIds = []; //该颁发的勋章ID数组
     private $awardMedalId = 0; //条件最高勋章ID
     private $medalBo;
-    private $awardTypeMedals = array();
+    private $awardTypeMedals = [];
     /**
      * @var PwUserBo
      */
@@ -80,8 +80,8 @@ class PwAutoAwardMedal
     protected function checkAutoMedal($awardType, $nowCondition)
     {
         $medals = Wekit::load('medal.PwMedalInfo')->getInfoListByAwardtype($awardType, 1);
-        $awardMedal = array();
-        $userGids = array_merge($this->userBo->groups, array($this->userBo->info['memberid']));
+        $awardMedal = [];
+        $userGids = array_merge($this->userBo->groups, [$this->userBo->info['memberid']]);
 
         /* @var $srv PwMedalService */
         $srv = Wekit::load('medal.srv.PwMedalService');
@@ -117,7 +117,7 @@ class PwAutoAwardMedal
     protected function checkNeedAllAward()
     {
         $alreadId = $this->medalBo->medals;
-        $_needId = array();
+        $_needId = [];
         foreach ($this->awardMedalIds as $v) {
             if (array_key_exists($v, $alreadId)) {
                 continue;
@@ -197,7 +197,7 @@ class PwAutoAwardMedal
      */
     protected function updateBehaviorMedal($awardType)
     {
-        if (!in_array($awardType, array(1, 2, 3))) {
+        if (!in_array($awardType, [1, 2, 3])) {
             return false;
         }
         $intersect = array_intersect($this->awardTypeMedals, array_keys($this->medalBo->medals));

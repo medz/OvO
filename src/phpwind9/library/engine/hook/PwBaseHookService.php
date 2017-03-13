@@ -18,9 +18,9 @@ abstract class PwBaseHookService
      *
      * @var array
      */
-    protected $_do = array();
+    protected $_do = [];
     protected $_srv;
-    protected $_key = array();
+    protected $_key = [];
     protected $_ready = false;
 
     /**
@@ -59,7 +59,7 @@ abstract class PwBaseHookService
                 continue;
             }
             foreach ($map as $key => $value) {
-                $this->appendDo(Wekit::getInstance($value['class'], $value['loadway'], array($this->_srv)));
+                $this->appendDo(Wekit::getInstance($value['class'], $value['loadway'], [$this->_srv]));
             }
         }
         $this->_ready = true;
@@ -105,7 +105,7 @@ abstract class PwBaseHookService
         }
         $args = array_slice(func_get_args(), 1);
         foreach ($this->_do as $key => $_do) {
-            call_user_func_array(array($_do, $method), $args);
+            call_user_func_array([$_do, $method], $args);
         }
     }
 
@@ -124,7 +124,7 @@ abstract class PwBaseHookService
         }
         $args = array_slice(func_get_args(), 1);
         foreach ($this->_do as $key => $_do) {
-            if (($result = call_user_func_array(array($_do, $method), $args)) !== true) {
+            if (($result = call_user_func_array([$_do, $method], $args)) !== true) {
                 return $result;
             }
         }
@@ -149,7 +149,7 @@ abstract class PwBaseHookService
         $args = array_slice(func_get_args(), 1);
         foreach ($this->_do as $key => $_do) {
             $args[0] = $value;
-            $value = call_user_func_array(array($_do, $method), $args);
+            $value = call_user_func_array([$_do, $method], $args);
         }
 
         return $value;

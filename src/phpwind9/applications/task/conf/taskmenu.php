@@ -7,6 +7,6 @@
  * @copyright Copyright ©2003-2010 phpwind.com
  * @license
  */
-return array(
-    'appcenter_task' => array('任务中心', 'task/manage,taskConditionBbs,taskConditionCntv,taskConditionMember,taskReward/*', '', '', 'appcenter'),
-);
+return [
+    'appcenter_task' => ['任务中心', 'task/manage,taskConditionBbs,taskConditionCntv,taskConditionMember,taskReward/*', '', '', 'appcenter'],
+];

@@ -22,7 +22,7 @@ class PwMail
     public function __construct()
     {
         $config = Wekit::C('email');
-        $this->_config = array(
+        $this->_config = [
             'mailOpen'   => $config['mailOpen'],
             'mailMethod' => $config['mailMethod'],
             'host'       => $config['mail.host'],
@@ -31,7 +31,7 @@ class PwMail
             'auth'       => $config['mail.auth'],
             'user'       => $config['mail.user'],
             'password'   => $config['mail.password'],
-            'timeout'    => 20, ); //尝试链接超时时间
+            'timeout'    => 20, ]; //尝试链接超时时间
         $this->_mail = new WindMail();
         $this->_mail->setCharset(Wekit::V('charset'));
         $this->_mail->setDate(date('r', Pw::getTime()));
@@ -83,7 +83,7 @@ class PwMail
      */
     private function getMethod()
     {
-        $methodMap = array(1 => 'php', 2 => 'smtp', 3 => 'send');
+        $methodMap = [1 => 'php', 2 => 'smtp', 3 => 'send'];
 
         return isset($methodMap[$this->_config['mailMethod']]) ? $methodMap[$this->_config['mailMethod']] : 'smtp';
     }

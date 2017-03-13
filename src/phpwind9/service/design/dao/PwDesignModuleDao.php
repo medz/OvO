@@ -14,7 +14,7 @@ class PwDesignModuleDao extends PwBaseDao
 {
     protected $_pk = 'module_id';
     protected $_table = 'design_module';
-    protected $_dataStruct = array('module_id', 'page_id', 'segment', 'module_struct', 'model_flag', 'module_name', 'module_property', 'module_title', 'module_style', 'module_compid', 'module_tpl', 'module_cache', 'isused',  'module_type');
+    protected $_dataStruct = ['module_id', 'page_id', 'segment', 'module_struct', 'model_flag', 'module_name', 'module_property', 'module_title', 'module_style', 'module_compid', 'module_tpl', 'module_cache', 'isused',  'module_type'];
 
     public function getModule($id)
     {
@@ -31,7 +31,7 @@ class PwDesignModuleDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `page_id` = ? AND `isused` = 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($pageid), 'module_id');
+        return $smt->queryAll([$pageid], 'module_id');
     }
 
     public function countModule($data)
@@ -81,13 +81,13 @@ class PwDesignModuleDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `page_id` =? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pageid));
+        return $smt->update([$pageid]);
     }
 
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'model_flag':
@@ -117,12 +117,12 @@ class PwDesignModuleDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 
     private function _buildOrder($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'module_id':

@@ -36,7 +36,7 @@ class PwUserOnline
     public function isOnlines($uids)
     {
         if (!is_array($uids) || !count($uids)) {
-            return array();
+            return [];
         }
         $data = $this->_getUserOnlineDao()->fetchUserOnline($uids);
 

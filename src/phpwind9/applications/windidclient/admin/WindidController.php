@@ -23,7 +23,7 @@ class WindidController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($windid, $serverUrl, $clientId, $clientKey, $connect) = $this->getInput(array('windid', 'serverUrl', 'clientId', 'clientKey', 'connect'), 'post');
+        list($windid, $serverUrl, $clientId, $clientKey, $connect) = $this->getInput(['windid', 'serverUrl', 'clientId', 'clientKey', 'connect'], 'post');
 
         if ($windid == 'local') {
             $serverUrl = Wekit::C('site', 'info.url').'/windid';
@@ -40,7 +40,7 @@ class WindidController extends AdminBaseController
             ->set('connect', $connect);
 
         if ($windid == 'client') {
-            list($dbhost, $dbport, $dbuser, $dbpwd, $dbname, $dbprefix, $dbcharset) = $this->getInput(array('dbhost', 'dbport', 'dbuser', 'dbpwd', 'dbname', 'dbprefix', 'dbcharset'), 'post');
+            list($dbhost, $dbport, $dbuser, $dbpwd, $dbname, $dbprefix, $dbcharset) = $this->getInput(['dbhost', 'dbport', 'dbuser', 'dbpwd', 'dbname', 'dbprefix', 'dbcharset'], 'post');
             $config->set('db.host', $dbhost)
                 ->set('db.port', $dbport)
                 ->set('db.user', $dbuser)
@@ -59,7 +59,7 @@ class WindidController extends AdminBaseController
             if (!$service->getApp($clientId)) {
                 $charset = Wekit::V('charset');
                 $charset = str_replace('-', '', strtolower($charset));
-                if (!in_array($charset, array('gbk', 'utf8', 'big5'))) {
+                if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
                     $charset = 'utf8';
                 }
 

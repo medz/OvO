@@ -10,9 +10,9 @@
  */
 class PwNavBo
 {
-    protected $default = array('m' => 'default', 'c' => 'index', 'a' => 'run');
-    protected $forum = array();
-    protected $router = array();
+    protected $default = ['m' => 'default', 'c' => 'index', 'a' => 'run'];
+    protected $forum = [];
+    protected $router = [];
 
     public function setForum($cateid = 0, $fid = 0, $tid = 0)
     {
@@ -52,12 +52,12 @@ class PwNavBo
     public function getNavFromData($type, $current = false)
     {
         if (!$type) {
-            return array();
+            return [];
         }
-        $childRating = $rootRating = array();
+        $childRating = $rootRating = [];
         $list = $this->_getNavDs()->getNavByType($type);
         if (!is_array($list)) {
-            return array();
+            return [];
         }
         if (!$current) {
             return $list;
@@ -111,12 +111,12 @@ class PwNavBo
     public function getNavFromConfig($type, $current = false)
     {
         if (!$type) {
-            return array();
+            return [];
         }
-        $childRating = $rootRating = array();
+        $childRating = $rootRating = [];
         $list = Wekit::C('nav', $type);
         if (!is_array($list)) {
-            return array();
+            return [];
         }
         if (!$current) {
             return $list;
@@ -165,7 +165,7 @@ class PwNavBo
      */
     protected function routRating()
     {
-        $rating = array();
+        $rating = [];
         $rating[] = '';
         $m = $this->router['m'];
         $c = $this->router['c'];

@@ -17,7 +17,7 @@ class PwThreadDisplayDoMedal extends PwThreadDisplayDoBase
 
     public function bulidUsers($users)
     {
-        $medals = array();
+        $medals = [];
         foreach ($users as $key => $value) {
             $value['medal_ids'] && $medals[$key] = $value['medal_ids'];
         }

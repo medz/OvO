@@ -15,7 +15,7 @@ class PwLinkSearchDao extends PwBaseDao
 {
     protected $_table = 'link';
     protected $_table_relation = 'link_relations';
-    protected $_dataStruct = array();
+    protected $_dataStruct = [];
 
     public function countSearchLink($field)
     {
@@ -40,7 +40,7 @@ class PwLinkSearchDao extends PwBaseDao
     {
         $join = '';
         $where = 'WHERE 1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'lid':
@@ -66,12 +66,12 @@ class PwLinkSearchDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg, $join);
+        return [$where, $arg, $join];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'vieworder':

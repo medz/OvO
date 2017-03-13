@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwAdDm extends PwBaseDm
 {
     public $pid = 0;
-    public $_data = array();
+    public $_data = [];
 
     public function __construct($pid = 0)
     {

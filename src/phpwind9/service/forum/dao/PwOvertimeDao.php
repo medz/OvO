@@ -11,15 +11,15 @@
 class PwOvertimeDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_overtime';
-    protected $_dataStruct = array('id', 'tid', 'm_type', 'overtime');
+    protected $_dataStruct = ['id', 'tid', 'm_type', 'overtime'];
 
     public function setOvertime($tid, $type, $overtime)
     {
-        $fields = array(
+        $fields = [
             'tid'      => $tid,
             'm_type'   => $type,
             'overtime' => $overtime,
-        );
+        ];
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));
 
         return $this->getConnection()->execute($sql);
@@ -30,7 +30,7 @@ class PwOvertimeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid));
+        return $smt->queryAll([$tid]);
     }
 
     public function getOvertimeByTidAndType($tid, $type)
@@ -38,14 +38,14 @@ class PwOvertimeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tid=? AND m_type=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($tid, $type));
+        return $smt->getOne([$tid, $type]);
     }
 
     public function batchAdd($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $value) {
-            $array[] = array($value['tid'], $value['m_type'], $value['overtime']);
+            $array[] = [$value['tid'], $value['m_type'], $value['overtime']];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (tid, m_type, overtime) VALUES %s', $this->getTable(), $this->sqlMulti($array));
 
@@ -56,7 +56,7 @@ class PwOvertimeDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE tid=? AND m_type=?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($tid, $type));
+        return $this->getConnection()->createStatement($sql)->update([$tid, $type]);
     }
 
     public function batchDelete($ids)
@@ -68,6 +68,6 @@ class PwOvertimeDao extends PwBaseDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE tid IN %s AND m_type=?', $this->getTable(), $this->sqlImplode($tids));
 
-        return $this->getConnection()->createStatement($sql)->update(array($type));
+        return $this->getConnection()->createStatement($sql)->update([$type]);
     }
 }

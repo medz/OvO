@@ -70,7 +70,7 @@ class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
      */
     public function compile($key, $content)
     {
-        $content = array();
+        $content = [];
         $content[] = '<?php';
         if (Wekit::load('APPCENTER:service.srv.PwDebugApplication')->inDevMode2()) {
             $_content = $this->_devHook();
@@ -79,7 +79,7 @@ class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
         if (!$this->args) {
             $this->args = '';
         } else {
-            $this->args = preg_replace(array('/\s*array\s*\(\s*/i', '/\s*\)\s*$/i'), '', $this->args);
+            $this->args = preg_replace(['/\s*array\s*\(\s*/i', '/\s*\)\s*$/i'], '', $this->args);
         }
         $this->method = $this->method ? $this->method : 'runDo';
         if ($this->class) {
@@ -111,7 +111,7 @@ class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
      */
     public function getProperties()
     {
-        return array('class', 'method', 'args', 'name', 'alias', 'display');
+        return ['class', 'method', 'args', 'name', 'alias', 'display'];
     }
 
     private function _devHook()

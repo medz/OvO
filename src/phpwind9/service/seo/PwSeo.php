@@ -51,8 +51,8 @@ class PwSeo
         if (empty($dms)) {
             return false;
         }
-        !is_array($dms) && $dms = array($dms);
-        $data = array();
+        !is_array($dms) && $dms = [$dms];
+        $data = [];
         foreach ($dms as $dm) {
             if (!$dm instanceof PwSeoDm) {
                 continue;
@@ -120,7 +120,7 @@ class PwSeo
      *
      * @return array
      */
-    public function getByParams($mod, $page, $params = array())
+    public function getByParams($mod, $page, $params = [])
     {
         if (empty($params)) {
             return $this->_seoDao()->getByModAndPage($mod, $page);

@@ -24,11 +24,11 @@ class PwSystemHelper
     public static function sqlParser($strSQL, $charset, $dbprefix, $engine)
     {
         if (empty($strSQL)) {
-            return array();
+            return [];
         }
 
-        $dataSQL = array();
-        $strSQL = str_replace(array("\r", "\n", "\r\n"), "\n", $strSQL);
+        $dataSQL = [];
+        $strSQL = str_replace(["\r", "\n", "\r\n"], "\n", $strSQL);
         $arrSQL = explode("\n", $strSQL);
         $query = '';
         $i = $alter = 0;
@@ -45,10 +45,10 @@ class PwSystemHelper
             $query = preg_replace('/([ `]+)pw_/', '$1'.$dbprefix, $query);
             if ($sql_key == 'CREATE') {
                 $query = preg_replace(
-                    array('/CREATE\s+TABLE(\s+IF\s+NOT\s+EXISTS)?/i', '/\)([\w\s=\x7f-\xff\']*);/i'),
-                    array(
+                    ['/CREATE\s+TABLE(\s+IF\s+NOT\s+EXISTS)?/i', '/\)([\w\s=\x7f-\xff\']*);/i'],
+                    [
                         'CREATE TABLE IF NOT EXISTS',
-                        ')ENGINE='.$engine.' DEFAULT CHARSET='.$charset, ), $query);
+                        ')ENGINE='.$engine.' DEFAULT CHARSET='.$charset, ], $query);
                 $dataSQL[$i][] = trim($query, ';');
                 $alter = 0;
             } elseif ($sql_key == 'DROP') {
@@ -59,7 +59,7 @@ class PwSystemHelper
                 $dataSQL[$i][] = trim($query, ';');
                 ++$i;
                 $alter = 1;
-            } elseif (in_array($sql_key, array('INSERT', 'REPLACE', 'UPDATE', 'DELETE'))) {
+            } elseif (in_array($sql_key, ['INSERT', 'REPLACE', 'UPDATE', 'DELETE'])) {
                 $dataSQL[$i][] = trim($query, ';');
                 $alter = 0;
             }
@@ -81,7 +81,7 @@ class PwSystemHelper
             $add = $drop = "INDEX $value[1]";
             $unique = 1;
         }
-        $indexkey = array();
+        $indexkey = [];
         foreach ($pdo->query("SHOW KEYS FROM $value[0]")->fetchAll() as $rt) {
             $indexkey[$rt['Key_name']][$rt['Column_name']] = $unique;
         }
@@ -117,7 +117,7 @@ class PwSystemHelper
      */
     public static function resolveMd5($md5sum)
     {
-        $md5List = array();
+        $md5List = [];
         foreach (explode("\n", $md5sum) as $v) {
             list($_k, $_v) = explode("\t", $v);
             if ($_k && $_v) {
@@ -143,7 +143,7 @@ class PwSystemHelper
      */
     public static function resolveRelativePath($sourcePath, $targetPath)
     {
-        list($sourcePath, $targetPath) = array(realpath($sourcePath), realpath($targetPath));
+        list($sourcePath, $targetPath) = [realpath($sourcePath), realpath($targetPath)];
         $src_paths = explode(DIRECTORY_SEPARATOR, $sourcePath);
         $tgt_paths = explode(DIRECTORY_SEPARATOR, $targetPath);
         $src_count = count($src_paths);
@@ -181,7 +181,7 @@ class PwSystemHelper
         $rt = $pdo->query("SHOW COLUMNS FROM $value[0] LIKE '$value[1]'")->fetch();
         $lowersql = strtolower($value[2]);
         if ((strpos($lowersql, ' add ') !== false && $rt['Field'] != $value[1]) || (str_replace(
-            array(' drop ', ' change '), '', $lowersql) != $lowersql && $rt['Field'] == $value[1])) {
+            [' drop ', ' change '], '', $lowersql) != $lowersql && $rt['Field'] == $value[1])) {
             $pdo->execute($value[2]);
         }
     }
@@ -202,7 +202,7 @@ class PwSystemHelper
         WindFile::write($file, $data);
         $http->close();
 
-        return array(true, $file);
+        return [true, $file];
     }
 
     /**
@@ -222,19 +222,19 @@ class PwSystemHelper
         $http = new WindHttpCurl($url);
         WindFolder::mkRecur(dirname($file));
         $fp = fopen($file, 'w');
-        $opt = array(
+        $opt = [
             CURLOPT_FILE           => $fp,
             CURLOPT_HEADER         => 0,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_SSL_VERIFYHOST => false, );
+            CURLOPT_SSL_VERIFYHOST => false, ];
         $http->send('GET', $opt);
         if ($e = $http->getError()) {
-            return array(false, $e);
+            return [false, $e];
         }
         $http->close();
         fclose($fp);
 
-        return array(true, $file);
+        return [true, $file];
     }
 
     /**
@@ -244,7 +244,7 @@ class PwSystemHelper
      */
     public static function validateMd5($fileList)
     {
-        $change = $unchange = $new = array();
+        $change = $unchange = $new = [];
         foreach ($fileList as $f => $hash) {
             $file = ROOT_PATH.$f;
             if (!file_exists($file) || !$hash) {
@@ -258,7 +258,7 @@ class PwSystemHelper
             }
         }
 
-        return array($change, $unchange, $new);
+        return [$change, $unchange, $new];
     }
 
     /**
@@ -298,9 +298,9 @@ class PwSystemHelper
         foreach ($fileList as $v => $hash) {
             $file = ROOT_PATH.$v;
             if (!self::checkWriteAble(file_exists($file) ? $file : dirname($file).'/')) {
-                return array(
+                return [
                 false,
-                $v, );
+                $v, ];
             }
         }
 

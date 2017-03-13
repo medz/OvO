@@ -10,7 +10,7 @@
  */
 class PwHookSo
 {
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * 设置hook名.

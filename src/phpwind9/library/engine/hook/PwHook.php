@@ -18,10 +18,10 @@ class PwHook
      */
     private static $viewer = null;
     private static $__alias = '';
-    private static $methods = array();
-    private static $hooks = array();
-    private static $prekeys = array();
-    private static $prehooks = array();
+    private static $methods = [];
+    private static $hooks = [];
+    private static $prekeys = [];
+    private static $prehooks = [];
 
     /**
      * 预设查询键值，批量查询缓存(性能优化设置).
@@ -44,7 +44,7 @@ class PwHook
         foreach ($data as $key => $value) {
             self::$hooks[$key] = $value;
         }
-        self::$prekeys = array();
+        self::$prekeys = [];
     }
 
     /**
@@ -166,7 +166,7 @@ class PwHook
         if ($viewer instanceof WindViewerResolver) {
             self::$viewer = $viewer;
         }
-        $_prefix = str_replace(array(':', '.'), '_', $template);
+        $_prefix = str_replace([':', '.'], '_', $template);
         $alias = '__segment_'.strtolower($alias ? $alias : $_prefix);
         list($templateFile, $cacheCompileFile) = self::$viewer->getWindView()->getViewTemplate(
             $template);
@@ -190,7 +190,7 @@ class PwHook
         if (!$content = self::_resolveTemplate($templateFile, strtoupper($_prefix))) {
             return;
         }
-        $_content = array();
+        $_content = [];
         foreach ($content as $method => $_item) {
             $_tmpArgs = '';
             foreach ($_item[1] as $_k) {
@@ -228,7 +228,7 @@ class PwHook
      */
     public static function resolveActionHook($filters, $service = null)
     {
-        $_filters = array();
+        $_filters = [];
         foreach ((array) $filters as $filter) {
             if (empty($filter['class'])) {
                 continue;
@@ -242,16 +242,16 @@ class PwHook
                 list($n, $p, $o, $v2) = WindUtility::resolveExpression($filter['expression']);
                 switch (strtolower($n)) {
                     case 'service':
-                        $call = array($service, 'getAttribute');
+                        $call = [$service, 'getAttribute'];
                         break;
                     case 'config':
-                        $call = array(self, '_getConfig');
+                        $call = [self, '_getConfig'];
                         break;
                     case 'global':
-                        $call = array('Wekit', 'getGlobal');
+                        $call = ['Wekit', 'getGlobal'];
                         break;
                     default:
-                        $call = array(self, '_getRequest');
+                        $call = [self, '_getRequest'];
                         break;
                 }
                 $v1 = call_user_func_array($call, explode('.', $p));
@@ -331,23 +331,23 @@ class PwHook
         if (false === ($content = WindFile::read($template))) {
             throw new PwException(
             'template.path.fail',
-            array('{parm1}' => 'wekit.engine.hook.PwHook._resolveTemplate', '{parm2}' => $template));
+            ['{parm1}' => 'wekit.engine.hook.PwHook._resolveTemplate', '{parm2}' => $template]);
         }
 
-        self::$methods = array();
-        $content = preg_replace_callback('/<(\/)?hook-action[=,\w\s\'\"]*>(\n)*/i', array(self, '_pregContent'), $content);
+        self::$methods = [];
+        $content = preg_replace_callback('/<(\/)?hook-action[=,\w\s\'\"]*>(\n)*/i', [self, '_pregContent'], $content);
         $content = explode('</hook-action>', $content);
-        $_content = array();
+        $_content = [];
         $_i = 0;
         //如果该模板中只有一段片段没有使用hook-action，则该方法名将会设为该模板名称，接受的参数为$data
         if (count(self::$methods) == 0) {
-            $_content[$_prefix] = array($content[0], array('data'));
+            $_content[$_prefix] = [$content[0], ['data']];
         } else {
             $_i = 0;
             foreach (self::$methods as $method) {
                 $key = $method['name'] ? $_prefix.'_'.strtoupper($method['name']) : $_prefix.'_'.($_i + 1);
-                $args = $method['args'] ? explode(',', $method['args']) : array('data');
-                $_content[$key] = array($content[$_i], $args);
+                $args = $method['args'] ? explode(',', $method['args']) : ['data'];
+                $_content[$key] = [$content[$_i], $args];
                 $_i++;
             }
         }
@@ -376,7 +376,7 @@ class PwHook
         }
         preg_match('/(?<=name=([\'\"]))(.*?)(?=\1)/ie', $content[0], $match1);
         preg_match('/(?<=args=([\'\"]))(.*?)(?=\1)/ie', $content[0], $match2);
-        self::$methods[] = array('name' => $match1[0], 'args' => $match2[0]);
+        self::$methods[] = ['name' => $match1[0], 'args' => $match2[0]];
 
         return '';
     }

@@ -122,7 +122,7 @@ class PropertyController extends AdminBaseController
         $token = WindUtility::generateRandStr(10);
         $this->_getScriptDs()->addScript((int) $moduleid, $token, 0);
 
-        $tab = array('property', 'template');
+        $tab = ['property', 'template'];
 
         $bo = new PwDesignModelBo($model);
         $modelInfo = $bo->getModel();
@@ -163,13 +163,13 @@ class PropertyController extends AdminBaseController
 
         $modelBo = new PwDesignModelBo($model);
         $property = $modelBo->getProperty();
-        $vProperty = $isedit ? array() : $this->bo->getProperty();
+        $vProperty = $isedit ? [] : $this->bo->getProperty();
         $isedit && $vProperty['compid'] = null;
         $service = $this->_getDesignService();
         $types = $service->getDesignModelType();
         $models = $service->getModelList();
         foreach ($models as $k => $v) {
-            $_models[$v['type']][] = array('name' => $v['name'], 'model' => $k);
+            $_models[$v['type']][] = ['name' => $v['name'], 'model' => $k];
         }
         $this->setOutput($types, 'types');
         $this->setOutput($_models, 'models');

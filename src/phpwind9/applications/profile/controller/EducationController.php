@@ -25,7 +25,7 @@ class EducationController extends BaseProfileController
         $this->setOutput(PwEducationHelper::getDegrees(), 'degrees');
         $this->setOutput(PwEducationHelper::getEducationYear(), 'years');
         $this->setCurrentLeft();
-        $this->setOutput(array('_tab' => 'education'), 'args');
+        $this->setOutput(['_tab' => 'education'], 'args');
     }
 
     /**

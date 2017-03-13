@@ -15,8 +15,8 @@ class NotifyController extends WindidBaseController
     public function run()
     {
         $perPage = 10;
-        $uids = $appids = $nids = array();
-        list($clientid, $complete, $page) = $this->getInput(array('clientid', 'complete', 'page'));
+        $uids = $appids = $nids = [];
+        list($clientid, $complete, $page) = $this->getInput(['clientid', 'complete', 'page']);
         $page = $page > 1 ? $page : 1;
         $complete = ($complete === '') ? null : $complete;
         list($start, $limit) = Pw::page2limit($page, $perPage);
@@ -64,7 +64,7 @@ class NotifyController extends WindidBaseController
         $totalPage = ceil($count / $perPage);
         $logDs = $this->_getLogDs();
         $nDs = $this->_getNotifyDs();
-        $nids = array();
+        $nids = [];
         for ($page = 1; $page <= $totalPage; $page++) {
             list($start, $limit) = Pw::page2limit($page, $perPage);
             $list = $logDs->getList(0, 0, $limit, $start, 0);

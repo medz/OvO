@@ -16,14 +16,14 @@ class PwUserBo
     public $uid;
     public $username;
     public $gid;
-    public $groups = array();
+    public $groups = [];
     public $ip;
-    public $info = array();
+    public $info = [];
 
-    private $_groupInfo = array();
-    private $_permission = array();
+    private $_groupInfo = [];
+    private $_permission = [];
 
-    private static $_userBo = array();
+    private static $_userBo = [];
 
     /**
      * 构造函数信息.
@@ -32,7 +32,7 @@ class PwUserBo
      */
     public function __construct($uid, $fetchAll = false)
     {
-        $this->info = $uid ? $this->_getUserDs()->getUserByUid($uid, $fetchAll ? PwUser::FETCH_ALL : (PwUser::FETCH_MAIN | PwUser::FETCH_DATA)) : array();
+        $this->info = $uid ? $this->_getUserDs()->getUserByUid($uid, $fetchAll ? PwUser::FETCH_ALL : (PwUser::FETCH_MAIN | PwUser::FETCH_DATA)) : [];
         if ($this->info) {
             $this->uid = $uid;
             $this->username = $this->info['username'];
@@ -139,10 +139,10 @@ class PwUserBo
      */
     public function comparePermission($uids)
     {
-        is_array($uids) || $uids = array($uids);
+        is_array($uids) || $uids = [$uids];
         $level = $this->getPermission('manage_level');
         $users = $this->_getUserDs()->fetchUserByUid($uids);
-        if ($gids = array_diff(Pw::collectByKey($users, 'groupid'), array('0'))) {
+        if ($gids = array_diff(Pw::collectByKey($users, 'groupid'), ['0'])) {
             $array = $this->_getPermissionDs()->getPermissionByRkeyAndGids('manage_level', $gids);
             foreach ($array as $key => $value) {
                 if ($value['rvalue'] && $level < $value['rvalue']) {
@@ -210,9 +210,9 @@ class PwUserBo
         $this->uid = 0;
         $this->gid = 2;
         $this->username = '游客';
-        $this->info = array(
+        $this->info = [
             'lastpost' => Pw::getCookie('guest_lastpost'),
-        );
+        ];
     }
 
     /**
@@ -223,7 +223,7 @@ class PwUserBo
     public function resetGid($gid)
     {
         $this->gid = $gid;
-        $this->_groupInfo = array();
+        $this->_groupInfo = [];
         $this->_initGroup();
     }
 
@@ -238,7 +238,7 @@ class PwUserBo
         if (($group = Wekit::cache()->get('group', $this->gid)) === false) {
             $group = Wekit::cache()->get('group', 1);
         }
-        $this->_groupInfo = array('name' => $group['name'], 'type' => $group['type'], 'image' => $group['image'], 'points' => $group['points']);
+        $this->_groupInfo = ['name' => $group['name'], 'type' => $group['type'], 'image' => $group['image'], 'points' => $group['points']];
         $this->_permission = $group['permission'];
     }
 

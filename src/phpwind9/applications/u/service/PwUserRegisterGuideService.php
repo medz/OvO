@@ -52,12 +52,12 @@ class PwUserRegisterGuideService
     {
         $guideList = $this->_getData();
         $config = $this->getConfig();
-        $orderList = array();
+        $orderList = [];
         foreach ($guideList as $key => $item) {
             $item['order'] = $config[$key]['order'];
             $item['isopen'] = isset($config[$key]['isopen']) ? $config[$key]['isopen'] : 0;
             if ($orderList) {
-                $_tmpResult = array();
+                $_tmpResult = [];
                 foreach ($orderList as $_key => $_item) {
                     if ($config[$_key]['order'] > $config[$key]['order']) {
                         $_tmpResult[$key] = $item;
@@ -99,7 +99,7 @@ class PwUserRegisterGuideService
     {
         $config = Wekit::C('register', 'guide');
 
-        return $config ? $config : array();
+        return $config ? $config : [];
     }
 
     /**
@@ -117,13 +117,13 @@ class PwUserRegisterGuideService
      */
     private function orderList($data)
     {
-        static $list = array();
+        static $list = [];
         if ($list) {
             return $list;
         }
         $openGuids = $this->_getOpenGuide();
         if (!$openGuids) {
-            return array();
+            return [];
         }
         $_tempOpen = array_keys($openGuids);
         $min = null;
@@ -131,7 +131,7 @@ class PwUserRegisterGuideService
             if (!in_array($key, $_tempOpen)) {
                 continue;
             }
-            $_tmp = array('pre' => null, 'value' => $value, 'next' => null, 'order' => $openGuids[$key]);
+            $_tmp = ['pre' => null, 'value' => $value, 'next' => null, 'order' => $openGuids[$key]];
             if (null === $min || $min > $openGuids[$key]) {
                 $min = $openGuids[$key];
                 $this->minKey = $key;
@@ -178,9 +178,9 @@ class PwUserRegisterGuideService
     {
         $config = $this->getConfig();
         if (!$config) {
-            return array();
+            return [];
         }
-        $_open = array();
+        $_open = [];
         foreach ($config as $key => $_c) {
             if (1 == $_c['isopen']) {
                 $_open[$key] = $_c['order'];

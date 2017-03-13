@@ -11,14 +11,14 @@
 class PwForumUserDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum_user';
-    protected $_dataStruct = array('uid', 'fid', 'join_time');
+    protected $_dataStruct = ['uid', 'fid', 'join_time'];
 
     public function get($uid, $fid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND fid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $fid));
+        return $smt->getOne([$uid, $fid]);
     }
 
     public function getUserByFid($fid, $limit, $offset)
@@ -26,7 +26,7 @@ class PwForumUserDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE fid=? ORDER BY join_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid), 'uid');
+        return $smt->queryAll([$fid], 'uid');
     }
 
     public function countUserByFid($fid)
@@ -34,7 +34,7 @@ class PwForumUserDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS count FROM %s WHERE fid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($fid));
+        return $smt->getValue([$fid]);
     }
 
     public function getFroumByUid($uid)
@@ -42,7 +42,7 @@ class PwForumUserDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'fid');
+        return $smt->queryAll([$uid], 'fid');
     }
 
     public function add($data)
@@ -55,7 +55,7 @@ class PwForumUserDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND fid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $fid));
+        return $smt->update([$uid, $fid]);
     }
 
     /*

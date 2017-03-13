@@ -24,16 +24,16 @@ class PwEducationService
     {
         $educations = $this->_getDs()->getByUid($uid, $num);
         if (!$educations) {
-            return array();
+            return [];
         }
-        $schoolids = array();
+        $schoolids = [];
         foreach ($educations as $key => $education) {
             $educations[$key]['degreeid'] = $education['degree'];
             $educations[$key]['degree'] = PwEducationHelper::getDegrees($education['degree']);
             $schoolids[] = $education['schoolid'];
         }
         $schools = $this->_getSchoolDs()->fetchSchool($schoolids);
-        $areaids = array();
+        $areaids = [];
         foreach ($educations as $key => $education) {
             $educations[$key]['school'] = isset($schools[$education['schoolid']]) ? $schools[$education['schoolid']]['name'] : '';
             $buildArea && $educations[$key]['areaid'] = $schools[$education['schoolid']]['areaid'];

@@ -31,9 +31,9 @@ class PwCreditSetService
      *
      * @return bool
      */
-    public function setCredits($credits, $newCredit = array())
+    public function setCredits($credits, $newCredit = [])
     {
-        is_array($credits) || $credits = array();
+        is_array($credits) || $credits = [];
         if ($newCredit) {
             $keys = array_keys($credits);
             $maxKey = intval(max($keys));
@@ -111,9 +111,9 @@ class PwCreditSetService
 
     protected function _getWindidCredits($credits)
     {
-        $wcredits = array();
+        $wcredits = [];
         foreach ($credits as $key => $value) {
-            $wcredits[$key] = array('name' => $value['name'], 'unit' => $value['unit']);
+            $wcredits[$key] = ['name' => $value['name'], 'unit' => $value['unit']];
         }
 
         return $wcredits;

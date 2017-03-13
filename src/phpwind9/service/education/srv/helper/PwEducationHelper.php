@@ -52,7 +52,7 @@ class PwEducationHelper
      */
     public static function getDegrees($selected = '')
     {
-        $degrees = array(
+        $degrees = [
             '8' => '博士后',
             '7' => '博士',
             '6' => '硕士',
@@ -61,7 +61,7 @@ class PwEducationHelper
             '3' => '高中',
             '2' => '初中',
             '1' => '小学',
-        );
+        ];
 
         return $selected ? $degrees[$selected] : $degrees;
     }

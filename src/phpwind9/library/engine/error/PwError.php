@@ -10,7 +10,7 @@
  */
 class PwError
 {
-    protected $error = array();
+    protected $error = [];
 
     /**
      * 错误创建.
@@ -19,7 +19,7 @@ class PwError
      * @param array  $var   错误信息中的替换变量
      * @param array  $data  错误信息相关的具体业务数据
      */
-    public function __construct($error = '', $var = array(), $data = array())
+    public function __construct($error = '', $var = [], $data = [])
     {
         $this->addError($error, $var, $data);
     }
@@ -39,13 +39,13 @@ class PwError
      *
      * @return bool
      */
-    public function addError($error, $var = array(), $data = array())
+    public function addError($error, $var = [], $data = [])
     {
         if (!$error) {
             return false;
         }
         $tmp = new stdClass();
-        $tmp->msg = $var ? array($error, $var) : $error;
+        $tmp->msg = $var ? [$error, $var] : $error;
         $tmp->data = $data;
         $this->error[] = $tmp;
 

@@ -18,7 +18,7 @@ class PwDesignModule
     {
         $moduleid = (int) $moduleid;
         if ($moduleid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getModule($moduleid);
@@ -27,7 +27,7 @@ class PwDesignModule
     public function fetchModule($moduleids)
     {
         if (empty($moduleids) || !is_array($moduleids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchModule($moduleids);

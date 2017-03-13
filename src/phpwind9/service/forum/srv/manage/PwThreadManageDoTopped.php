@@ -14,10 +14,10 @@ class PwThreadManageDoTopped extends PwThreadManageDo
 {
     public $topped = 0;
     public $overtime = 0;
-    public $fids = array();
+    public $fids = [];
 
-    protected $tids = array();
-    protected $overids = array();
+    protected $tids = [];
+    protected $overids = [];
 
     /* (non-PHPdoc)
      * @see PwThreadManageDo::check()
@@ -27,10 +27,10 @@ class PwThreadManageDoTopped extends PwThreadManageDo
         if (!isset($permission['topped']) || !$permission['topped']) {
             return false;
         }
-        if (array_diff(Pw::collectByKey($this->srv->data, 'topped'), array('0'))) {
-            $log = Wekit::load('log.PwLog')->fetchLogByTid(array_keys($this->srv->data), array('19', '20', '21'));
+        if (array_diff(Pw::collectByKey($this->srv->data, 'topped'), ['0'])) {
+            $log = Wekit::load('log.PwLog')->fetchLogByTid(array_keys($this->srv->data), ['19', '20', '21']);
             if (!$this->srv->user->comparePermission(Pw::collectByKey($log, 'created_userid'))) {
-                return new PwError('permission.level.topped', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
+                return new PwError('permission.level.topped', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
             }
         }
         if ($this->topped) {
@@ -82,8 +82,8 @@ class PwThreadManageDoTopped extends PwThreadManageDo
 
     public function run()
     {
-        $_tids = array();
-        $_dms = array();
+        $_tids = [];
+        $_dms = [];
         $specialSort = $this->_getSpecialSort($this->topped);
         foreach ($this->tids as $fid => $tids) {
             $topicDm = new PwTopicDm(true);
@@ -91,13 +91,13 @@ class PwThreadManageDoTopped extends PwThreadManageDo
             $topicDm->setSpecialsort($specialSort);
 
             if ($this->topped == 1) {
-                $fids = array($fid);
+                $fids = [$fid];
             } elseif ($this->topped == 2) {
                 $fids = $this->_getCateList($fid);
             } elseif ($this->topped == 3) {
                 $fids = $this->fids ? $this->fids : array_keys(Wekit::load('forum.srv.PwForumService')->getForumList());
             } else {
-                $fids = array();
+                $fids = [];
             }
             foreach ($fids as $_fid) {
                 foreach ($tids as $tid) {
@@ -135,7 +135,7 @@ class PwThreadManageDoTopped extends PwThreadManageDo
 
     public function _getCateList($fid)
     {
-        $array = array();
+        $array = [];
         $list = Wekit::load('forum.srv.PwForumService')->getForumList();
         $pa = $list[$fid];
         if ($list[$fid]['type'] == 'category') {
@@ -175,7 +175,7 @@ class PwThreadManageDoTopped extends PwThreadManageDo
      */
     private function _addManageLog()
     {
-        $_logDms = array();
+        $_logDms = [];
         if ($this->topped == 1) {
             $type = 'topped';
         } elseif ($this->topped == 2) {

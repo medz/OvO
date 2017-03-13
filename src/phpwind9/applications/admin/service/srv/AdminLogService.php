@@ -75,14 +75,14 @@ class AdminLogService
             }
         }
 
-        return array($countLoginFailed, $lastLoginTime);
+        return [$countLoginFailed, $lastLoginTime];
     }
 
     public function readLog($offset = 1024000)
     {
         $fp = @fopen($this->logfile, 'rb');
         if (!$fp) {
-            return array(0);
+            return [0];
         }
 
         flock($fp, LOCK_SH);
@@ -114,11 +114,11 @@ class AdminLogService
         $log = (array) $log;
         $data = '';
         foreach ($log as $key => $val) {
-            $key = str_replace(array("\n", "\r", '|'), array('\n', '\r', '&#124;'), $key);
+            $key = str_replace(["\n", "\r", '|'], ['\n', '\r', '&#124;'], $key);
             if (is_array($val)) {
                 $data .= "$key=array(".$this->arr2str($val).')';
             } else {
-                $val = str_replace(array("\n", "\r", '|'), array('\n', '\r', '&#124;'), $val);
+                $val = str_replace(["\n", "\r", '|'], ['\n', '\r', '&#124;'], $val);
                 if ($key == 'password' || $key == 'repassword') {
                     $data .= "$key=***, ";
                 } else {

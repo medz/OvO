@@ -14,7 +14,7 @@
 class PwUserPermissionGroupsDao extends PwBaseDao
 {
     protected $_table = 'user_permission_groups';
-    protected $_dataStruct = array('gid', 'rkey', 'rtype', 'rvalue', 'vtype');
+    protected $_dataStruct = ['gid', 'rkey', 'rtype', 'rvalue', 'vtype'];
 
     /**
      * 设置用户组权限.
@@ -34,13 +34,13 @@ class PwUserPermissionGroupsDao extends PwBaseDao
      * @param string $gid
      * @param array  $keys
      */
-    public function getPermissions($gid, $keys = array())
+    public function getPermissions($gid, $keys = [])
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE gid=?');
         $keys && $sql .= ' AND rkey IN'.$this->sqlImplode($keys);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $this->_format($smt->queryAll(array($gid), 'rkey'));
+        return $this->_format($smt->queryAll([$gid], 'rkey'));
     }
 
     public function getPermissionByRkey($rkey)
@@ -48,7 +48,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE rkey=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $this->_format($smt->queryAll(array($rkey), 'gid'));
+        return $this->_format($smt->queryAll([$rkey], 'gid'));
     }
 
     public function getPermissionByRkeyAndGids($rkey, $gids)
@@ -56,7 +56,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE rkey=? AND gid IN %s', $this->getTable(), $this->sqlImplode($gids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $this->_format($smt->queryAll(array($rkey), 'gid'));
+        return $this->_format($smt->queryAll([$rkey], 'gid'));
     }
 
     /**
@@ -90,7 +90,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE gid=?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($gid));
+        return $this->getConnection()->createStatement($sql)->update([$gid]);
     }
 
     /**
@@ -103,7 +103,7 @@ class PwUserPermissionGroupsDao extends PwBaseDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE gid=? AND rkey IN %s', $this->getTable(), $this->sqlImplode($keys));
 
-        return $this->getConnection()->createStatement($sql)->update(array($gid));
+        return $this->getConnection()->createStatement($sql)->update([$gid]);
     }
 
     protected function _format($result)

@@ -17,7 +17,7 @@ class FriendController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/friend/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/friend/run')]);
         }
         $this->setOutput('friend', 'li');
     }
@@ -54,7 +54,7 @@ class FriendController extends PwBaseController
      */
     public function searchAction()
     {
-        list($username, $usertag) = $this->getInput(array('username', 'usertag'));
+        list($username, $usertag) = $this->getInput(['username', 'usertag']);
         $page = intval($this->getInput('page'));
         $username = trim($username);
         $usertag = trim($usertag);
@@ -64,7 +64,7 @@ class FriendController extends PwBaseController
 
         $usertags = $this->_getUserTagService()->getUserTagList($this->loginUser->uid);
         !$usertags && $hotTags = $this->_getUserTagDs()->getHotTag(10);
-        $args = array();
+        $args = [];
         if ($username) {
             // 按用户名搜索
 
@@ -84,7 +84,7 @@ class FriendController extends PwBaseController
             if ($tagInfo) {
                 $count = $this->_getUserTagRelationDs()->countRelationByTagid($tagInfo['tag_id']);
                 $tagRelations = $this->_getUserTagRelationDs()->getRelationByTagid($tagInfo['tag_id'], $limit, $start);
-                $uids = array();
+                $uids = [];
                 foreach ($tagRelations as $v) {
                     $uids[] = $v['uid'];
                 }
@@ -130,7 +130,7 @@ class FriendController extends PwBaseController
     private function _buildUserInfo($uid, $uids, $num)
     {
         $attentions = $this->_getAttentionDs()->fetchFollows($uid, $uids);
-        $uids = array_diff($uids, array($uid), array_keys($attentions));
+        $uids = array_diff($uids, [$uid], array_keys($attentions));
         $uids = array_slice($uids, 0, $num);
 
         return $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN | PwUser::FETCH_DATA | PwUser::FETCH_INFO);

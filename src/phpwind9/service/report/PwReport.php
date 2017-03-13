@@ -107,7 +107,7 @@ class PwReport
     {
         $id = intval($id);
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);
@@ -123,7 +123,7 @@ class PwReport
     public function fetchReport($ids)
     {
         if (!is_array($ids) || !count($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($ids);

@@ -13,14 +13,14 @@ class PwAttentionRecommendFriendsDao extends PwBaseDao
 {
     protected $_Attentiontable = 'attention';
     protected $_table = 'attention_recommend_friends';
-    protected $_dataStruct = array('uid', 'recommend_uid', 'recommend_username', 'cnt', 'recommend_user');
+    protected $_dataStruct = ['uid', 'recommend_uid', 'recommend_username', 'cnt', 'recommend_user'];
 
     public function get($uid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `uid` =?  ORDER BY `cnt` DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->queryAll(array($uid));
+        return $result->queryAll([$uid]);
     }
 
     public function getSameUser($uid, $recommendUid)
@@ -28,7 +28,7 @@ class PwAttentionRecommendFriendsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `uid` =? AND `recommend_uid`=?', $this->getTable());
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->getOne(array($uid, $recommendUid));
+        return $result->getOne([$uid, $recommendUid]);
     }
 
     public function getRecommend($uid)
@@ -36,17 +36,17 @@ class PwAttentionRecommendFriendsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT a.uid,b.touid as recommend_uid,count(*) as cnt,b.uid AS same_uids FROM `pw_attention` a left join `pw_attention` b ON a.touid = b.uid  where a.uid = 82 GROUP BY recommend_uid', $this->getTable(), $this->sqlLimit($limit, $offset));
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->queryAll(array($uid));
+        return $result->queryAll([$uid]);
     }
 
     public function batchReplace($data)
     {
-        $fields = array();
+        $fields = [];
         foreach ($data as $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['uid'] = $_item['uid'];
             $_temp['recommend_uid'] = $_item['recommend_uid'];
             $_temp['recommend_username'] = $_item['recommend_username'];
@@ -78,7 +78,7 @@ class PwAttentionRecommendFriendsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     public function deleteByRecommend($uid, $recommendUid)
@@ -86,6 +86,6 @@ class PwAttentionRecommendFriendsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND recommend_uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $recommendUid));
+        return $smt->update([$uid, $recommendUid]);
     }
 }

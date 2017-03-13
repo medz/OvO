@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
 {
-    protected $attachs = array();
+    protected $attachs = [];
 
     public function copyThread(PwTopicDm $topicDm, $newTid)
     {
@@ -27,22 +27,22 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
 
     public function initInfo($tid)
     {
-        $poll = $pollOption = $pollVoter = array();
+        $poll = $pollOption = $pollVoter = [];
         $threadPollInfo = $this->_getThreadPollDs()->getPoll($tid);
         if (empty($threadPollInfo) || !is_array($threadPollInfo)) {
-            return array($poll, $pollOption, $pollVoter);
+            return [$poll, $pollOption, $pollVoter];
         }
 
         $pollid = $threadPollInfo['poll_id'];
         $poll = $this->_getPollDs()->getPoll($pollid);
         if (empty($poll) || !is_array($poll)) {
-            return array($poll, $pollOption, $pollVoter);
+            return [$poll, $pollOption, $pollVoter];
         }
 
         $pollOption = $this->_getPollOptionDs()->getByPollid($pollid);
         $pollVoter = $this->_getPollVoterDs()->getByPollid($pollid);
 
-        return array($poll, $pollOption, $pollVoter);
+        return [$poll, $pollOption, $pollVoter];
     }
 
     public function copyPoll($tid, $newTid)
@@ -63,7 +63,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
         $pollDm->setExpiredTime($poll['expired_time']);
         $newPollid = $this->_getPollDS()->addPoll($pollDm);
 
-        $optionVoter = array();
+        $optionVoter = [];
         foreach ($pollVoter as $value) {
             $optionVoter[$value['option_id']][] = $value['uid'];
         }

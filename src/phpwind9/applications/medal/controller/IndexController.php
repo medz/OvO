@@ -23,7 +23,7 @@ class IndexController extends PwBaseController
             $this->showError('MEDAL:medal.is.close');
         }
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('medal/index/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('medal/index/run')]);
         }
     }
 
@@ -32,12 +32,12 @@ class IndexController extends PwBaseController
      */
     public function run()
     {
-        $myList_w = $myList_y = array();
+        $myList_w = $myList_y = [];
 
         $medalBo = new PwUserMedalBo($this->loginUser->uid);
         $myRelationList = $medalBo->getMyAndAutoMedal();
         foreach ($myRelationList as $key => $medal) {
-            $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : array();
+            $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : [];
 
             //已领取和可领取的不过滤
             if ($medal['award_status'] < 3) {
@@ -52,7 +52,7 @@ class IndexController extends PwBaseController
                 $myList_w[$key] = $medal;
             }
 
-            $medalJson[] = array(
+            $medalJson[] = [
                 'id'          => $medal['medal_id'],
                 'status'      => $medal['award_status'],
                 'name'        => $medal['name'],
@@ -63,7 +63,7 @@ class IndexController extends PwBaseController
                 'big'         => $medal['image'],
                 'condition'   => $medal['award_condition'],
                 //'behavior'=>isset($behaviors[$awardTypes[$medal['award_type']]]) ? $behaviors[$awardTypes[$medal['award_type']]] : 0,
-            );
+            ];
         }
         /*$std = new stdClass();
         $std->data = $medalJson;*/
@@ -71,7 +71,7 @@ class IndexController extends PwBaseController
         if (count($myList_w) < 1 && count($myList_y) > 0) {
             $openMedals = $this->_getMedalDs()->getAllOpenMedal();
             foreach ($openMedals as $key => $medal) {
-                $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : array();
+                $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : [];
                 if ($gids && !$this->loginUser->inGroup($gids) && !in_array($this->loginUser->info['memberid'], $gids)) {
                     unset($openMedals[$key]);
                     continue;
@@ -122,8 +122,8 @@ class IndexController extends PwBaseController
             $ext = '天';
         }
         $medal['expired'] = $medal['expired_days'] ? $medal['expired_days'].$ext : '长期有效';
-        $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : array();
-        $userGids = array_merge($this->loginUser->groups, array($this->loginUser->info['memberid']));
+        $gids = $medal['medal_gids'] ? explode(',', $medal['medal_gids']) : [];
+        $userGids = array_merge($this->loginUser->groups, [$this->loginUser->info['memberid']]);
         if (!$this->_getMedalService()->allowAwardMedal($userGids, $medal['medal_gids'])) {
             $isAward = false;
         }
@@ -133,7 +133,7 @@ class IndexController extends PwBaseController
         foreach ($groups as $group) {
             $groupName .= $groupName ? ', '.$group['name'] : $group['name'];
         }
-        $data = array('isAward' => $isAward, 'groups' => $groupName);
+        $data = ['isAward' => $isAward, 'groups' => $groupName];
         $this->setOutput($isAward, 'isAward');
         $this->setOutput($groupName, 'groupName');
         $this->setOutput($medal, 'medal');
@@ -144,7 +144,7 @@ class IndexController extends PwBaseController
 
     public function centerAction()
     {
-        $myLog = $myMedal = array();
+        $myLog = $myMedal = [];
         $count = 0;
         $medals = $this->_getMedalDs()->getAllOpenMedal();
         $myList = $this->_getMedalLogDs()->getInfoListByUid($this->loginUser->uid);
@@ -155,7 +155,7 @@ class IndexController extends PwBaseController
                 $count++;
             }
         }
-        $medalJson = array();
+        $medalJson = [];
         $sevice = $this->_getMedalService();
 
         foreach ($medals as $key => $value) {
@@ -183,8 +183,8 @@ class IndexController extends PwBaseController
         $toUids = $attentionDs->getFollows($this->loginUser->uid, 100); //100个关注的人中取
         $toUids = array_keys($toUids);
         $toUids[] = $this->loginUser->uid;
-        $attentionMedals = $toUids ? $this->_getMedalUserDs()->fetchMedalUserOrder($toUids, 0, 10) : array();
-        $attentionUids = array();
+        $attentionMedals = $toUids ? $this->_getMedalUserDs()->fetchMedalUserOrder($toUids, 0, 10) : [];
+        $attentionUids = [];
         foreach ($attentionMedals as $v) {
             $v['counts'] > 0 && $attentionUids[] = $v['uid'];
         }
@@ -203,7 +203,7 @@ class IndexController extends PwBaseController
         $totalOrder = $totalOrder === false ? false : $totalOrder + 1;
 
         $uids = array_merge($attentionUids, $totalUids);
-        $userInfos = $uids ? Wekit::load('SRV:user.PwUser')->fetchUserByUid($uids) : array();
+        $userInfos = $uids ? Wekit::load('SRV:user.PwUser')->fetchUserByUid($uids) : [];
         $this->setOutput($attentionMedals, 'attentionMedals');
         $this->setOutput($totalMedals, 'totalMedals');
         $this->setOutput($userInfos, 'userInfos');
@@ -223,7 +223,7 @@ class IndexController extends PwBaseController
      */
     public function doOrderAction()
     {
-        $medalIds = array();
+        $medalIds = [];
         $logIds = $this->getInput('id', 'post');
         $orders = $this->getInput('order', 'post');
         $logs = $this->_getMedalLogDs()->getInfoListByUidStatus($this->loginUser->uid, 4);
@@ -274,7 +274,7 @@ class IndexController extends PwBaseController
         if (!$medal || $medal['receive_type'] == 1) {
             $this->showError('MEDAL:fail');
         }
-        $userGids = array_merge($this->loginUser->groups, array($this->loginUser->info['memberid']));
+        $userGids = array_merge($this->loginUser->groups, [$this->loginUser->info['memberid']]);
         if (!$this->_getMedalService()->allowAwardMedal($userGids, $medal['medal_gids'])) {
             $this->showError('MEDAL:not.user.group');
         }

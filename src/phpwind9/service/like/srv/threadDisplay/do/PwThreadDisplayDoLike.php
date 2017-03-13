@@ -15,7 +15,7 @@ class PwThreadDisplayDoLike extends PwThreadDisplayDoBase
 {
     public function bulidRead($read)
     {
-        $info = array();
+        $info = [];
         if (!$read['pid']) {
             $info = Wekit::load('like.PwLikeContent')->getInfoByTypeidFromid(PwLikeContent::THREAD, $read['tid']);
         }

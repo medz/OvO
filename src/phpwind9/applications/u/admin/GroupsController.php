@@ -22,11 +22,11 @@ class GroupsController extends AdminBaseController
     public function run()
     {
         //TODO 后台默认首页内容扩展支持
-        list($groupType) = $this->getInput(array('type'), 'get');
+        list($groupType) = $this->getInput(['type'], 'get');
         $groupType or $groupType = 'member';
         $groups = $this->_getGroupDs()->getGroupsByTypeInUpgradeOrder($groupType);
         if ('member' == $groupType) {
-            $points = array();
+            $points = [];
             $last = '';
             foreach ($groups as $gid => $_item) {
                 $points[] = $_item['points'];
@@ -38,7 +38,7 @@ class GroupsController extends AdminBaseController
 
         //用户组类型
         $groupTypes = $this->_getGroupDs()->getGroupTypes();
-        $typeClasses = array();
+        $typeClasses = [];
         foreach ($groupTypes as $v) {
             $typeClasses[$v] = $groupType == $v ? ' class="current"' : ''; //TODO
         }
@@ -46,7 +46,7 @@ class GroupsController extends AdminBaseController
         $imageDir = Wind::getRealDir('PUBLIC:res.images.level').DIRECTORY_SEPARATOR;
         //$imageDir = sprintf('%s/www/res/images/level/',dirname(rtrim(WEKIT_PATH,DIRECTORY_SEPARATOR)));
         $imageUrl = sprintf('%s/level', Wekit::url()->images);
-        $imageFiles = array();
+        $imageFiles = [];
         if (is_dir($imageDir)) {
             if (false !== ($dh = opendir($imageDir))) {
                 while (($file = readdir($dh)) !== false) {
@@ -71,21 +71,21 @@ class GroupsController extends AdminBaseController
      */
     public function editAction()
     {
-        list($gid, $category, $isManage) = $this->getInput(array('gid', 'category', 'manage'), 'get');
+        list($gid, $category, $isManage) = $this->getInput(['gid', 'category', 'manage'], 'get');
         settype($isManage, 'boolean');
 
         //权限分类
         $topLevelCategories = $this->_getPermissionService()->getTopLevelCategories($isManage);
         $category or $category = key($topLevelCategories);
-        $permissionConfigs = $topLevelCategoryClasses = array();
+        $permissionConfigs = $topLevelCategoryClasses = [];
         foreach ($topLevelCategories as $k => $v) {
             $topLevelCategoryClasses[$k] = $category == $k ? ' class="current"' : ''; //TODO
             $permissionConfigs[$k] = $this->_getPermissionService()->getPermissionConfigByCategory($gid, $k);
         }
         //group info
         $group = $this->_getGroupDs()->getGroupByGid($gid);
-        $groupTypes = $isManage ? array('system', 'special') : array('member', 'default', 'system', 'special');
-        $groups = array();
+        $groupTypes = $isManage ? ['system', 'special'] : ['member', 'default', 'system', 'special'];
+        $groups = [];
         foreach ($groupTypes as $v) {
             $groups += $this->_getGroupDs()->getGroupsByTypeInUpgradeOrder($v);
         }
@@ -106,15 +106,15 @@ class GroupsController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($mainGid, $category, $gpermission, $groupname) = $this->getInput(array('gid', 'category', 'gpermission', 'groupname'), 'post');
+        list($mainGid, $category, $gpermission, $groupname) = $this->getInput(['gid', 'category', 'gpermission', 'groupname'], 'post');
         $permissionService = Wekit::load('usergroup.PwUserPermission');
 
         $isManage = stripos($category, 'manage_') === 0;
         $permissionKeys = $this->_getPermissionService()->getPermissionKeys($isManage);
         //$deleteKeys = array();
         //copy groups
-        list($copyGroups, $copyItems) = $this->getInput(array('copy_groups', 'copy_items'), 'post');
-        $gids = array($mainGid);
+        list($copyGroups, $copyItems) = $this->getInput(['copy_groups', 'copy_items'], 'post');
+        $gids = [$mainGid];
         $copyGroups && $gids = array_merge($gids, $copyGroups);
         foreach ($gids as $gid) {
             $flag = $mainGid == $gid;
@@ -155,19 +155,19 @@ class GroupsController extends AdminBaseController
         $permission = $configs[$rkey];
         $groupPermissions = $this->_getPermissionDs()->getPermissionByRkey($rkey);
 
-        $permissionConfigs = array();
+        $permissionConfigs = [];
         $groups = $this->_getGroupDs()->getAllGroups();
         foreach ($groups as $key => $value) {
-            if ($permission['1'] != 'basic' && in_array($value['type'], array('member', 'default'))) {
+            if ($permission['1'] != 'basic' && in_array($value['type'], ['member', 'default'])) {
                 continue;
             }
             $defaultValue = isset($groupPermissions[$key]) ? $groupPermissions[$key]['rvalue'] : null;
 
-            $permissionConfigs[$value['type']][$value['gid']] = array(
+            $permissionConfigs[$value['type']][$value['gid']] = [
                 'name'    => $value['name'],
                 'default' => $defaultValue,
                 'config'  => $permission,
-            );
+            ];
         }
 
         $this->setOutput($rkey, 'rkey');
@@ -180,7 +180,7 @@ class GroupsController extends AdminBaseController
     public function dosetrightAction()
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
-        list($rkey, $gpermission) = $this->getInput(array('rkey', 'gpermission'), 'post');
+        list($rkey, $gpermission) = $this->getInput(['rkey', 'gpermission'], 'post');
 
         $permissionService = Wekit::load('usergroup.PwUserPermission');
 
@@ -198,13 +198,13 @@ class GroupsController extends AdminBaseController
     public function dosaveAction()
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
-        list($groupType, $groupName, $groupPoints, $groupImage, $newGroupName, $newGroupPoints, $newGroupImage) = $this->getInput(array('grouptype', 'groupname', 'grouppoints', 'groupimage', 'newgroupname', 'newgrouppoints', 'newgroupimage'), 'post');
+        list($groupType, $groupName, $groupPoints, $groupImage, $newGroupName, $newGroupPoints, $newGroupImage) = $this->getInput(['grouptype', 'groupname', 'grouppoints', 'groupimage', 'newgroupname', 'newgrouppoints', 'newgroupimage'], 'post');
 
         $userGroupService = Wekit::load('usergroup.PwUserGroups'); /* @var $userGroupService PwUserGroups */
 
-        is_array($groupName) || $groupName = array();
-        is_array($groupPoints) || $groupPoints = array();
-        is_array($groupImage) || $groupImage = array();
+        is_array($groupName) || $groupName = [];
+        is_array($groupPoints) || $groupPoints = [];
+        is_array($groupImage) || $groupImage = [];
 
         if ('member' == $groupType) {
             $_allPointTmp = array_merge($groupPoints, (array) $newGroupPoints);
@@ -214,7 +214,7 @@ class GroupsController extends AdminBaseController
         }
 
         //保存已有用户组
-        $updateGroups = array(); //待更新用户组Dm
+        $updateGroups = []; //待更新用户组Dm
         foreach ($groupName as $k => $v) {
             $userGroupModel = new PwUserGroupDm($k);
             $userGroupModel->setGroupName($v);
@@ -229,7 +229,7 @@ class GroupsController extends AdminBaseController
         }
 
         //新增用户组
-        $addGroups = array(); //待添加用户组Dm
+        $addGroups = []; //待添加用户组Dm
         foreach ($newGroupName as $k => $v) {
             if (!$v) {
                 continue;
@@ -263,7 +263,7 @@ class GroupsController extends AdminBaseController
      */
     public function deleteAction()
     {
-        list($gid) = $this->getInput(array('gid'), 'post');
+        list($gid) = $this->getInput(['gid'], 'post');
         if ($gid <= 7) {
             $this->showError('USER:groups.delete.error.default');
         }

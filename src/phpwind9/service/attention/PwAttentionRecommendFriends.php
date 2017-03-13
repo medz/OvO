@@ -15,7 +15,7 @@ class PwAttentionRecommendFriends
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($uid, $limit, $offset);
@@ -26,7 +26,7 @@ class PwAttentionRecommendFriends
         $uid = intval($uid);
         $recommendUid = intval($recommendUid);
         if ($uid < 1 || $recommendUid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSameUser($uid, $recommendUid);
@@ -38,11 +38,11 @@ class PwAttentionRecommendFriends
             return false;
         }
 
-        return $this->_getDao()->replace(array(
+        return $this->_getDao()->replace([
             'uid'            => $uid,
             'recommend_uid'  => $recommendUid,
             'recommend_user' => $recommend_user,
-        ));
+        ]);
     }
 
     public function batchReplaceRecommendFriend($data)

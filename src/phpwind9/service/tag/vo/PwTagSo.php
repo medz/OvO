@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwTagSo
 {
-    protected $_data = array();
-    protected $_orderby = array();
+    protected $_data = [];
+    protected $_orderby = [];
 
     public function getData()
     {

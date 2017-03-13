@@ -13,7 +13,7 @@
 class PwTaskGroupDao extends PwBaseDao
 {
     protected $_table = 'task_group';
-    protected $_dataStruct = array('taskid', 'gid', 'is_auto', 'end_time');
+    protected $_dataStruct = ['taskid', 'gid', 'is_auto', 'end_time'];
 
     /**
      * 批量添加任务用户组信息.
@@ -27,7 +27,7 @@ class PwTaskGroupDao extends PwBaseDao
         if (empty($data) || !is_array($data)) {
             return false;
         }
-        $tmp = array();
+        $tmp = [];
         foreach ($data as $v) {
             $v = $this->_filterStruct($v);
             if ($v) {
@@ -54,7 +54,7 @@ class PwTaskGroupDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `taskid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($id));
+        return $this->getConnection()->createStatement($sql)->update([$id]);
     }
 
     /**
@@ -121,6 +121,6 @@ class PwTaskGroupDao extends PwBaseDao
             'SELECT `taskid` FROM %s WHERE `taskid` > ? AND `gid` IN %s AND `is_auto` = 1 AND `end_time` > %s ORDER BY `taskid` %s',
             $this->getTable(), $this->sqlImplode((array) $gids), $endTime, $this->sqlLimit($limit));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($last_id), 'taskid');
+        return $this->getConnection()->createStatement($sql)->queryAll([$last_id], 'taskid');
     }
 }

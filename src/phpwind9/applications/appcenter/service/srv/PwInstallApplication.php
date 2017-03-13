@@ -27,14 +27,14 @@ class PwInstallApplication
      *
      * @var array
      */
-    protected $_config = array();
+    protected $_config = [];
     /**
      * @var PwManifest
      */
     protected $_manifest = null;
     protected $_appId = '';
     private $_hash = '';
-    private $_log = array();
+    private $_log = [];
     private $_step = false;
 
     /**
@@ -107,7 +107,7 @@ class PwInstallApplication
             return $manifest;
         }
         $manifest['application']['alias'] = $id;
-        if (true !== $_r = $this->initInstall(array(), $manifest)) {
+        if (true !== $_r = $this->initInstall([], $manifest)) {
             return $_r;
         }
         if (true !== $_r = $this->doInstall('all', $this->_hash)) {
@@ -161,7 +161,7 @@ class PwInstallApplication
         $this->tmpPackage = PwApplicationHelper::extract($packageFile, $this->tmpPath);
         if ($this->tmpPackage === false || !is_dir($this->tmpPackage)) {
             return new PwError(
-            'APPCENTER:install.checkpackage.format.fail', array('{{error}}' => $this->tmpPackage));
+            'APPCENTER:install.checkpackage.format.fail', ['{{error}}' => $this->tmpPackage]);
         }
 
         return true;
@@ -177,7 +177,7 @@ class PwInstallApplication
      *
      * @return PwError true
      */
-    public function initInstall($manifest = '', $extends = array())
+    public function initInstall($manifest = '', $extends = [])
     {
         if ($manifest === '') {
             $manifest = $this->tmpPackage.'/'.$this->getConfig('manifest');
@@ -224,10 +224,10 @@ class PwInstallApplication
                 if (!isset($service[$step])) {
                     return new PwError('APPCENTER:install.step.fail');
                 }
-                isset($service[$step + 1]) && $next = array(
+                isset($service[$step + 1]) && $next = [
                     $step + 1,
-                    $service[$step + 1]['message'], );
-                $service = array($service[$step]);
+                    $service[$step + 1]['message'], ];
+                $service = [$service[$step]];
             }
             foreach ($service as $key => $var) {
                 if (!isset($var['class'])) {
@@ -245,17 +245,17 @@ class PwInstallApplication
                 }
             }
             if ($next !== true) {
-                $installation = array('installation' => base64_encode(serialize($install)));
+                $installation = ['installation' => base64_encode(serialize($install))];
                 PwApplicationHelper::writeInstallLog($this->tmpInstallLog, $installation, true);
             } else {
-                $fields = array();
+                $fields = [];
                 foreach ($install->getInstallLog() as $key => $value) {
-                    $_tmp = array(
+                    $_tmp = [
                         'app_id'        => $install->getAppId(),
                         'log_type'      => $key,
                         'data'          => $value,
                         'created_time'  => WEKIT_TIMESTAMP,
-                        'modified_time' => WEKIT_TIMESTAMP, );
+                        'modified_time' => WEKIT_TIMESTAMP, ];
                     $fields[] = $_tmp;
                 }
                 $this->_loadInstallLog()->batchAdd($fields);
@@ -264,9 +264,9 @@ class PwInstallApplication
             return $next;
         } catch (Exception $e) {
             $error = $e->getMessage();
-            is_array($error) || $error = array(
+            is_array($error) || $error = [
                 'APPCENTER:install.fail',
-                array('{{error}}' => $e->getMessage()), );
+                ['{{error}}' => $e->getMessage()], ];
 
             return new PwError($error[0], $error[1]);
         }
@@ -318,7 +318,7 @@ class PwInstallApplication
      */
     public function getInstallLog($key = '')
     {
-        return $key === '' ? $this->_log : (isset($this->_log[$key]) ? $this->_log[$key] : array());
+        return $key === '' ? $this->_log : (isset($this->_log[$key]) ? $this->_log[$key] : []);
     }
 
     /**
@@ -341,7 +341,7 @@ class PwInstallApplication
     public function addInstallLog($key, $value)
     {
         if (!isset($this->_log[$key])) {
-            $this->_log[$key] = array();
+            $this->_log[$key] = [];
         }
         $this->_log[$key][] = $value;
     }
@@ -392,16 +392,16 @@ class PwInstallApplication
     public function downloadInstallPack()
     {
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'getDownLoadUrl', 'appid' => $this->_appId));
+            ['a' => 'forward', 'do' => 'getDownLoadUrl', 'appid' => $this->_appId]);
         $info = PwApplicationHelper::requestAcloudData($url);
         if ($info['code'] !== '0') {
             return new PwError('APPCENTER:install.download.fail',
-            array('{{error}}' => $info['msg']));
+            ['{{error}}' => $info['msg']]);
         }
         list($bool, $package) = PwApplicationHelper::requestAcloudData($info['info']['download'],
             $this->tmpPath);
         if (!$bool) {
-            return new PwError('APPCENTER:install.download.fail', array('{{error}}' => $package));
+            return new PwError('APPCENTER:install.download.fail', ['{{error}}' => $package]);
         }
         if ($info['info']['hash'] !== md5_file($package)) {
             return new PwError('APPCENTER:install.checkpackage.fail');
@@ -419,14 +419,14 @@ class PwInstallApplication
     public function getOnlineInfo()
     {
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'getAppById', 'appid' => $this->_appId));
+            ['a' => 'forward', 'do' => 'getAppById', 'appid' => $this->_appId]);
         $data = PwApplicationHelper::requestAcloudData($url);
         if ($data['code'] !== '0') {
             return new PwError('APPCENTER:install.fail',
-            array('{{error}}' => $data['msg']));
+            ['{{error}}' => $data['msg']]);
         }
-        $manifest = array(
-            'application' => array(
+        $manifest = [
+            'application' => [
                 'name'        => $data['info']['app_name'],
                 'version'     => $data['info']['version'],
                 'pw-version'  => $data['info']['bbs_version'],
@@ -435,7 +435,7 @@ class PwInstallApplication
                 'author-name' => trim($data['info']['app_author'], '\'"'),
                 'website'     => $data['info']['author_url'],
                 'charset'     => ACloudSysCoreCommon::getGlobal('g_charset'),
-                ), );
+                ], ];
 
         return $manifest;
     }
@@ -477,7 +477,7 @@ class PwInstallApplication
             $install = PwApplicationHelper::readInstallLog($file, 'installation');
             $install = unserialize(base64_decode($install));
         } else {
-            $service = $rollback = array();
+            $service = $rollback = [];
             $conf = $this->getConfig('install-type',
                 $this->getManifest()->getApplication('type', 'app'));
             if (!empty($conf['step']['before'])) {
@@ -510,7 +510,7 @@ class PwInstallApplication
 
             $manifest = $this->getManifest()->getManifest();
             if (isset($manifest['install']) && $manifest['install']) {
-                $_tmp = array('class' => $manifest['install']);
+                $_tmp = ['class' => $manifest['install']];
                 $service[] = $_tmp;
                 $this->addInstallLog('service', $_tmp);
             }
@@ -518,15 +518,15 @@ class PwInstallApplication
             $this->addInstallLog('service', $conf);
             if ($this->_step) {
                 PwApplicationHelper::writeInstallLog($file,
-                    array(
+                    [
                         'services'     => $service,
                         'rollback'     => $rollback,
-                        'installation' => base64_encode(serialize($this)), ));
+                        'installation' => base64_encode(serialize($this)), ]);
             }
             $install = $this;
         }
 
-        return array($service, $rollback, $install);
+        return [$service, $rollback, $install];
     }
 
     /**

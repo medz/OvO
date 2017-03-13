@@ -92,7 +92,7 @@ class StyleController extends DesignBaseController
 
     private function differStyle($style)
     {
-        $array = array('top', 'right', 'bottom', 'left');
+        $array = ['top', 'right', 'bottom', 'left'];
         $border = $style['border'];
         $border['isdiffer'] = 1;
         if ($border['linewidth']) {

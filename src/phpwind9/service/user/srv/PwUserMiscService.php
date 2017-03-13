@@ -37,7 +37,7 @@ class PwUserMiscService
         $belongs = $this->getBelongs(array_merge($add, $del));
         foreach ($add as $uid) {
             $dm = new PwUserInfoDm($uid);
-            $belong = isset($belongs[$uid]) ? $belongs[$uid] : array();
+            $belong = isset($belongs[$uid]) ? $belongs[$uid] : [];
             if ($newManager[$uid]['groupid']) {
                 $belong[5] = 0;
                 $dm->setGroupid($newManager[$uid]['groupid']);
@@ -49,7 +49,7 @@ class PwUserMiscService
         }
         foreach ($del as $uid) {
             $dm = new PwUserInfoDm($uid);
-            $belong = isset($belongs[$uid]) ? $belongs[$uid] : array();
+            $belong = isset($belongs[$uid]) ? $belongs[$uid] : [];
             unset($belong[5]);
             if ($oldManager[$uid]['groupid'] == 5) {
                 $dm->setGroupid(0);
@@ -70,7 +70,7 @@ class PwUserMiscService
      */
     public function getBelongs($uids)
     {
-        $result = array();
+        $result = [];
         $array = Wekit::load('user.PwUserBelong')->fetchUserByUid($uids);
         foreach ($result as $key => $value) {
             $result[$value['uid']][$value['gid']] = $value['endtime'];
@@ -90,9 +90,9 @@ class PwUserMiscService
      */
     public function filterForumManger($mangers)
     {
-        $backGids = array(1 => '默认组', 2 => '游客', 6 => '禁言用户', 7 => '未验证会员');
+        $backGids = [1 => '默认组', 2 => '游客', 6 => '禁言用户', 7 => '未验证会员'];
         $managerList = Wekit::load('user.PwUser')->fetchUserByName($mangers);
-        $_tmp = array();
+        $_tmp = [];
         foreach ($managerList as $uid => $_item) {
             if (array_key_exists($_item['groupid'], $backGids)) {
                 $_tmp[$_item['groupid']][] = $_item['username'];
@@ -101,11 +101,11 @@ class PwUserMiscService
         if (!$_tmp) {
             return true;
         }
-        $back = array();
+        $back = [];
         foreach ($_tmp as $key => $_value) {
             $back[] = $backGids[$key].':'.implode(', ', $_value);
         }
 
-        return new PwError('BBS:forum.back.manager', array('{back}' => implode(';', $back)));
+        return new PwError('BBS:forum.back.manager', ['{back}' => implode(';', $back)]);
     }
 }

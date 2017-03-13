@@ -14,7 +14,7 @@ class PwThreadsHitsDao extends PwBaseDao
     protected $_table = 'bbs_threads_hits';
     protected $_thread_table = 'bbs_threads';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'hits');
+    protected $_dataStruct = ['tid', 'hits'];
 
     public function get($tid)
     {
@@ -35,9 +35,9 @@ class PwThreadsHitsDao extends PwBaseDao
     {
         $sql = $this->_bindTable('UPDATE %s SET hits=hits+? WHERE tid=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($hits, $tid), true);
+        $result = $smt->update([$hits, $tid], true);
 
-        return $result === 0 ? $this->add(array('tid' => $tid, 'hits' => $hits)) : true;
+        return $result === 0 ? $this->add(['tid' => $tid, 'hits' => $hits]) : true;
     }
 
     public function syncHits()

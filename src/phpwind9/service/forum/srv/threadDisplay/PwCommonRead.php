@@ -48,7 +48,7 @@ class PwCommonRead extends PwReadDataSource
         if ($this->info['replies'] > 0) {
             $offset = $start;
             $offset == 0 ? $limit-- : $offset--;
-            $replies = array();
+            $replies = [];
             if ($this->thread->info['reply_topped']) {
                 if ($offset < $this->thread->info['reply_topped']) {
                     $replies = $this->_getToppedReply($limit, $offset);
@@ -81,10 +81,10 @@ class PwCommonRead extends PwReadDataSource
     private function _getToppedReply($limit, $offset)
     {
         if (!$posts = Wekit::load('forum.PwPostsTopped')->getByTid($this->info['tid'], $limit, $offset)) {
-            return array();
+            return [];
         }
         $replies = Wekit::load('forum.PwThread')->fetchPost(array_keys($posts));
-        $array = array();
+        $array = [];
         foreach ($posts as $k => $v) {
             $replies[$k]['istopped'] = 1;
             $replies[$k]['topped_time'] = $v['created_time'];

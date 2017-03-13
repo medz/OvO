@@ -6,10 +6,10 @@
 
 /*如果WindID数据库与phpwind数据库采用相同设置，请注释此项*/
 
-return array(
+return [
     'dsn'         => 'mysql:host=localhost;dbname=nextwind10;port=3306',  //数据库地址|库名|端口
     'user'        => 'root',                                         //数据库用户名
     'pwd'         => '',                                             //数据库密码
     'charset'     => 'utf8',                                     //数据库编码方式
     'tableprefix' => 'pw_windid_',                                     //表前缀
-);
+];

@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadListDoHits extends PwThreadListDoBase
 {
-    protected $_data = array();
+    protected $_data = [];
 
     public function __construct()
     {

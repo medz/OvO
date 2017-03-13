@@ -48,7 +48,7 @@ class PwTopicType
     {
         $id = intval($id);
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getTopicType($id);
@@ -57,7 +57,7 @@ class PwTopicType
     public function fetchTopicType($ids)
     {
         if (!is_array($ids) || !count($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchTopicType($ids);
@@ -67,7 +67,7 @@ class PwTopicType
     {
         $fid = intval($fid);
         if ($fid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getTopicTypesByFid($fid);
@@ -81,7 +81,7 @@ class PwTopicType
      */
     public function getTopicTypesByFid($fid, $filterAdmin = false)
     {
-        $topicTypes = array('topic_types' => array(), 'sub_topic_types' => array(), 'all_types' => array());
+        $topicTypes = ['topic_types' => [], 'sub_topic_types' => [], 'all_types' => []];
         $fid = intval($fid);
         $data = $this->_getDao()->getTopicTypesByFid($fid);
         if (!$data) {

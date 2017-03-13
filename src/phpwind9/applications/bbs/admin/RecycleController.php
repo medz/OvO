@@ -21,7 +21,7 @@ class RecycleController extends AdminBaseController
     public function run()
     {
         $page = intval($this->getInput('page'));
-        list($keyword, $fid, $author, $createdTimeStart, $createdTimeEnd, $operator, $operateTimeStart, $operateTimeEnd) = $this->getInput(array('keyword', 'fid', 'author', 'created_time_start', 'created_time_end', 'operator', 'operate_time_start', 'operate_time_end'));
+        list($keyword, $fid, $author, $createdTimeStart, $createdTimeEnd, $operator, $operateTimeStart, $operateTimeEnd) = $this->getInput(['keyword', 'fid', 'author', 'created_time_start', 'created_time_end', 'operator', 'operate_time_start', 'operate_time_end']);
 
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -29,7 +29,7 @@ class RecycleController extends AdminBaseController
 
         $so = new PwRecycleThreadSo();
         $so->orderbyCreatedTime(0);
-        $url = array();
+        $url = [];
 
         if ($keyword) {
             $so->setKeywordOfTitle($keyword);
@@ -106,8 +106,8 @@ class RecycleController extends AdminBaseController
 
     public function replyAction()
     {
-        $threaddb = $params = array();
-        list($keyword, $fid, $author, $createdTimeStart, $createdTimeEnd, $operator, $operateTimeStart, $operateTimeEnd) = $this->getInput(array('keyword', 'fid', 'author', 'created_time_start', 'created_time_end', 'operator', 'operate_time_start', 'operate_time_end'));
+        $threaddb = $params = [];
+        list($keyword, $fid, $author, $createdTimeStart, $createdTimeEnd, $operator, $operateTimeStart, $operateTimeEnd) = $this->getInput(['keyword', 'fid', 'author', 'created_time_start', 'created_time_end', 'operator', 'operate_time_start', 'operate_time_end']);
         $page = intval($this->getInput('page'));
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -115,7 +115,7 @@ class RecycleController extends AdminBaseController
 
         $so = new PwRecycleReplySo();
         $so->orderbyCreatedTime(0);
-        $url = array();
+        $url = [];
 
         if ($keyword) {
             $so->setKeywordOfTitle($keyword);

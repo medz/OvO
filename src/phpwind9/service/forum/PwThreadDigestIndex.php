@@ -24,7 +24,7 @@ class PwThreadDigestIndex
     public function getThreadsByCid($cid, $limit = 20, $offset = 0, $order = 'lastpost')
     {
         if (empty($cid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getThreadsByCid($cid, $limit, $offset, $order);
@@ -123,7 +123,7 @@ class PwThreadDigestIndex
      */
     public function batchAddDigest(array $dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $_dm) {
             if (!$_dm instanceof PwThreadDigestDm) {
                 return new PwError('BBS:digest.dm.data.format.error');

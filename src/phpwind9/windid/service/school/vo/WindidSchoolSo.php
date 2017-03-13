@@ -10,7 +10,7 @@
  */
 class WindidSchoolSo
 {
-    private $_data = array();
+    private $_data = [];
 
     /**
      * 搜索学校名.

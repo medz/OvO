@@ -14,7 +14,7 @@ class PwDesignComponentDao extends PwBaseDao
 {
     protected $_pk = 'comp_id';
     protected $_table = 'design_component';
-    protected $_dataStruct = array('comp_id', 'model_flag', 'comp_name', 'comp_tpl', 'sys_id');
+    protected $_dataStruct = ['comp_id', 'model_flag', 'comp_name', 'comp_tpl', 'sys_id'];
 
     public function getComponent($id)
     {
@@ -26,7 +26,7 @@ class PwDesignComponentDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE model_flag = ? ORDER BY comp_id ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($flag));
+        return $smt->queryAll([$flag]);
     }
 
     public function getMaxSysid()
@@ -34,7 +34,7 @@ class PwDesignComponentDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT MAX(sys_id) AS max FROM %s');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array());
+        return $smt->getValue([]);
     }
 
     public function countComponent($data)
@@ -73,7 +73,7 @@ class PwDesignComponentDao extends PwBaseDao
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'model_flag':
@@ -91,6 +91,6 @@ class PwDesignComponentDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 }

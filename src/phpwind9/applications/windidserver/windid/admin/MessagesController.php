@@ -17,7 +17,7 @@ class MessagesController extends WindidBaseController
 
     public function run()
     {
-        list($page, $perpage, $username, $starttime, $endtime, $keyword) = $this->getInput(array('page', 'perpage', 'username', 'starttime', 'endtime', 'keyword'));
+        list($page, $perpage, $username, $starttime, $endtime, $keyword) = $this->getInput(['page', 'perpage', 'username', 'starttime', 'endtime', 'keyword']);
         $starttime && $pwStartTime = Pw::str2time($starttime);
         $endtime && $pwEndTime = Pw::str2time($endtime);
         $page = $page ? $page : 1;
@@ -46,7 +46,7 @@ class MessagesController extends WindidBaseController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array('keyword' => $keyword, 'username' => $username, 'starttime' => $starttime, 'endtime' => $endtime), 'args');
+        $this->setOutput(['keyword' => $keyword, 'username' => $username, 'starttime' => $starttime, 'endtime' => $endtime], 'args');
         $this->setOutput($messages, 'messages');
     }
 

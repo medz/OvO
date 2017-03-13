@@ -32,8 +32,8 @@ class AttachmentController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($pathsize, $attachnum, $extsize) = $this->getInput(array('pathsize', 'attachnum', 'extsize'), 'post');
-        $_extsize = array();
+        list($pathsize, $attachnum, $extsize) = $this->getInput(['pathsize', 'attachnum', 'extsize'], 'post');
+        $_extsize = [];
         foreach ($extsize as $key => $value) {
             if (!empty($value['ext'])) {
                 $_extsize[$value['ext']] = abs(intval($value['size']));
@@ -62,7 +62,7 @@ class AttachmentController extends AdminBaseController
         $windidStorages = WindidApi::api('avatar')->getStorages();
 
         if (!is_array($windidStorages)) {
-            $windidStorages = array();
+            $windidStorages = [];
         }
 
         $windidStorageType = Wekit::app('windid')->config->attachment->get('storage.type');
@@ -123,7 +123,7 @@ class AttachmentController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($thumb, $thumbsize_width, $thumbsize_height, $quality) = $this->getInput(
-            array('thumb', 'thumbsize_width', 'thumbsize_height', 'quality'), 'post');
+            ['thumb', 'thumbsize_width', 'thumbsize_height', 'quality'], 'post');
 
         $config = new PwConfigSet('attachment');
         $config->set('thumb', intval($thumb))
@@ -142,13 +142,13 @@ class AttachmentController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($thumb, $thumbsize_width, $thumbsize_height, $quality) = $this->getInput(
-            array('thumb', 'thumbsize_width', 'thumbsize_height', 'quality'), 'post');
+            ['thumb', 'thumbsize_width', 'thumbsize_height', 'quality'], 'post');
 
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $thumburl = Wind::getRealDir('PUBLIC:attachment', false).'/demo_thumb.jpg';
         $image->makeThumb($thumburl, $thumbsize_width, $thumbsize_height, $quality, $thumb);
 
-        $data = array('img' => Wekit::url()->attach.'/demo_thumb.jpg?'.time());
+        $data = ['img' => Wekit::url()->attach.'/demo_thumb.jpg?'.time()];
         $this->setOutput($data, 'data');
         $this->showMessage('ADMIN:success');
     }

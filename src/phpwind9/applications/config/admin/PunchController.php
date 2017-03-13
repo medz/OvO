@@ -33,7 +33,7 @@ class PunchController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $config = new PwConfigSet('site');
-        list($punchOpen, $punchReward, $punchFrendOpen, $punchFrendReward) = $this->getInput(array('punchOpen', 'punchReward', 'punchFrendOpen', 'punchFrendReward'), 'post');
+        list($punchOpen, $punchReward, $punchFrendOpen, $punchFrendReward) = $this->getInput(['punchOpen', 'punchReward', 'punchFrendOpen', 'punchFrendReward'], 'post');
         $oldmin = abs(ceil($punchReward['min']));
         $oldmax = abs(ceil($punchReward['max']));
         $min = $oldmin;
@@ -42,18 +42,18 @@ class PunchController extends AdminBaseController
             $min = $oldmax;
             $max = $oldmin;
         }
-        $punchReward = array(
+        $punchReward = [
             'type' => $punchReward['type'],
             'min'  => $min,
             'max'  => $max,
             'step' => abs(ceil($punchReward['step'])),
-        );
+        ];
         $rewardNum = abs(ceil($punchFrendReward['rewardNum']));
-        $punchFrendReward = array(
+        $punchFrendReward = [
             'friendNum'   => abs(ceil($punchFrendReward['friendNum'])),
             'rewardMeNum' => abs(ceil($punchFrendReward['rewardMeNum'])),
             'rewardNum'   => $rewardNum > $max ? $max : $rewardNum,
-        );
+        ];
         $config->set('punch.open', $punchOpen)
             ->set('punch.reward', $punchReward)
             ->set('punch.friend.open', $punchFrendOpen)

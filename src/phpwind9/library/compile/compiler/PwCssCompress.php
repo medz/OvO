@@ -75,7 +75,7 @@ class PwCssCompress extends AbstractPwCompiler
     private function _compress($data)
     {
         //去除注释，空格等
-        $data = preg_replace(array('/\s*([,;:\{\}])\s*/', '/[\t\n\r]/'), array('\\1', ''),
+        $data = preg_replace(['/\s*([,;:\{\}])\s*/', '/[\t\n\r]/'], ['\\1', ''],
             $data);
         preg_match_all('/\/\*#(.+?)#\*\//', $data, $matches);
         $data = preg_replace('/\/\*.+?\*\//', '', $data);

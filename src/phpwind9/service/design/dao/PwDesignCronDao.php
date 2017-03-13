@@ -14,7 +14,7 @@ class PwDesignCronDao extends PwBaseDao
 {
     protected $_pk = 'module_id';
     protected $_table = 'design_cron';
-    protected $_dataStruct = array('module_id', 'created_time');
+    protected $_dataStruct = ['module_id', 'created_time'];
 
     public function get($id)
     {
@@ -34,7 +34,7 @@ class PwDesignCronDao extends PwBaseDao
     public function batchAdd($data)
     {
         foreach ($data as $v) {
-            $_data[] = array($v['module_id'], $v['created_time']);
+            $_data[] = [$v['module_id'], $v['created_time']];
         }
         $sql = $this->_bindSql('INSERT INTO %s (`module_id`, `created_time`) VALUES %s ', $this->getTable(), $this->sqlMulti($_data));
 
@@ -46,7 +46,7 @@ class PwDesignCronDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 
     public function delete($id)

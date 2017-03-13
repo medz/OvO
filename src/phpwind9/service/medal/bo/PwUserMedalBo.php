@@ -10,10 +10,10 @@
  */
  class PwUserMedalBo
  {
-     public $medals = array();
+     public $medals = [];
      public $uid = 0;
-     private $_status = array();
-     private $_logs = array();
+     private $_status = [];
+     private $_logs = [];
 
      public function __construct($uid)
      {
@@ -26,7 +26,7 @@
      */
     public function getAlreadyMedals()
     {
-        $_medals = array();
+        $_medals = [];
         foreach ($this->_status as $key => $value) {
             if ($value == 4) {
                 $_medals[$key] = $this->medals[$key];
@@ -41,7 +41,7 @@
      */
     public function getMyAndAutoMedal()
     {
-        $_medals = array();
+        $_medals = [];
         //arsort($this->_status);
         foreach ($this->_status as $key => $value) {
             if (!isset($this->medals[$key])) {
@@ -70,7 +70,7 @@
      */
     protected function getMedals()
     {
-        $medalIds = array();
+        $medalIds = [];
         $logs = Wekit::load('medal.PwMedalLog')->getInfoListByUid($this->uid);
         foreach ($logs as $log) {
             $medalIds[] = $log['medal_id'];

@@ -11,10 +11,10 @@
  */
 class PwLoader
 {
-    protected static $_instances = array();
-    protected static $_daoMap = array();
-    protected static $_daoCache = array();
-    protected static $_cacheService = array();
+    protected static $_instances = [];
+    protected static $_daoMap = [];
+    protected static $_daoCache = [];
+    protected static $_cacheService = [];
 
     public static function importCache($config)
     {
@@ -107,7 +107,7 @@ class PwLoader
         $class = Wind::import($path);
         if (!class_exists($class)) {
             throw new PwException('class.path.fail',
-                array('{parm1}' => 'src.library.PwLoader.get', '{parm2}' => $class, '{parm3}' => $path));
+                ['{parm1}' => 'src.library.PwLoader.get', '{parm2}' => $class, '{parm3}' => $path]);
         }
 
         return new $class();

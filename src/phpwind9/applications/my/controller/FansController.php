@@ -14,7 +14,7 @@ class FansController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/fans/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/fans/run')]);
         }
         $this->setOutput('fans', 'li');
     }

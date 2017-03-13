@@ -9,13 +9,13 @@ class AppSearchInstall implements iPwInstall
      */
     public function install($install)
     {
-        $defaultConfig = array(
-                'isopen' => array('value' => 0),
-            );
+        $defaultConfig = [
+                'isopen' => ['value' => 0],
+            ];
         /* @var $service PwConfig */
         $service = Wekit::load('config.PwConfig');
         $service->setConfigs('search', $defaultConfig);
-        $service->setConfigs('site', array('search.isopen' => 1));
+        $service->setConfigs('site', ['search.isopen' => 1]);
         $this->NregisteResource($install);
 
         return true;

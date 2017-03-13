@@ -11,7 +11,7 @@
 class PwSeoExtends
 {
     private $config = null;
-    private $codes = array();
+    private $codes = [];
 
     /**
      * 获取seo配置.
@@ -39,9 +39,9 @@ class PwSeoExtends
         if ($this->config === null) {
             $this->getConfig();
         }
-        $tabs = array();
+        $tabs = [];
         foreach ($this->config as $k => $v) {
-            $tabs[$k] = array('title' => $v['title'], 'url' => $v['url'], 'current' => '');
+            $tabs[$k] = ['title' => $v['title'], 'url' => $v['url'], 'current' => ''];
         }
 
         return $tabs;
@@ -59,7 +59,7 @@ class PwSeoExtends
         if ($this->config === null) {
             $this->getConfig();
         }
-        $pages = array();
+        $pages = [];
         foreach ($this->config[$mode]['page'] as $k => $v) {
             $pages[$k] = $v['title'];
         }
@@ -80,7 +80,7 @@ class PwSeoExtends
         if ($this->config === null) {
             $this->getConfig();
         }
-        $codes = array();
+        $codes = [];
         foreach ($this->config[$mode]['page'] as $k => $v) {
             $codes[$k] = $v['code'];
         }
@@ -102,6 +102,6 @@ class PwSeoExtends
             $this->getConfig();
         }
 
-        return isset($this->config[$mode]['page'][$page]['default']) ? $this->config[$mode]['page'][$page]['default'] : array();
+        return isset($this->config[$mode]['page'][$page]['default']) ? $this->config[$mode]['page'][$page]['default'] : [];
     }
 }

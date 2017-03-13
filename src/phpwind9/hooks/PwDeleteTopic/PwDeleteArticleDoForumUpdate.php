@@ -13,13 +13,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteArticleDoForumUpdate extends iPwGleanDoHookProcess
 {
-    public $record = array();
+    public $record = [];
 
     public function gleanData($value)
     {
         if ($value['disabled'] != 2) {
             $fid = $value['fid'];
-            isset($this->record[$fid]) || $this->record[$fid] = array('topic' => 0, 'replies' => 0, 'tids' => array());
+            isset($this->record[$fid]) || $this->record[$fid] = ['topic' => 0, 'replies' => 0, 'tids' => []];
             $this->record[$fid]['replies'] += $value['replies'];
             $value['disabled'] == 0 && $this->record[$fid]['topic']++;
             $this->record[$fid]['tids'][] = $value['tid'];
@@ -31,7 +31,7 @@ class PwDeleteArticleDoForumUpdate extends iPwGleanDoHookProcess
         $forums = Wekit::load('forum.PwForum')->fetchForum(array_keys($this->record), PwForum::FETCH_STATISTICS);
         $srv = Wekit::load('forum.srv.PwForumService');
         foreach ($this->record as $fid => $value) {
-            $lastinfo = array();
+            $lastinfo = [];
             if ($forums[$fid]['lastpost_tid'] && in_array($forums[$fid]['lastpost_tid'], $value['tids'])) {
                 $lastinfo = $this->_getLastinfo($fid);
             }
@@ -43,15 +43,15 @@ class PwDeleteArticleDoForumUpdate extends iPwGleanDoHookProcess
     {
         $thread = Wekit::load('forum.PwThread')->getThreadByFid($fid, 1);
         if (empty($thread)) {
-            return array('tid' => 0, 'username' => '', 'subject' => '', 'time' => 0);
+            return ['tid' => 0, 'username' => '', 'subject' => '', 'time' => 0];
         }
         $thread = current($thread);
 
-        return array(
+        return [
             'tid'      => $thread['tid'],
             'username' => $thread['lastpost_username'],
             'subject'  => ($thread['replies'] ? 'Re:' : '').$thread['subject'],
             'time'     => $thread['lastpost_time'],
-        );
+        ];
     }
 }

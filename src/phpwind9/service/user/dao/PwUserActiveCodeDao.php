@@ -12,7 +12,7 @@
 class PwUserActiveCodeDao extends PwBaseDao
 {
     protected $_table = 'user_active_code';
-    protected $_dataStruct = array('uid', 'email', 'code', 'send_time', 'active_time', 'typeid');
+    protected $_dataStruct = ['uid', 'email', 'code', 'send_time', 'active_time', 'typeid'];
 
     /**
      * 添加用户激活码
@@ -45,7 +45,7 @@ class PwUserActiveCodeDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET `active_time`=? WHERE `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($activetime, $uid));
+        return $smt->execute([$activetime, $uid]);
     }
 
     /**
@@ -60,7 +60,7 @@ class PwUserActiveCodeDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($uid));
+        return $smt->execute([$uid]);
     }
 
     /**
@@ -76,6 +76,6 @@ class PwUserActiveCodeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid`=? AND `typeid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $typeid));
+        return $smt->getOne([$uid, $typeid]);
     }
 }

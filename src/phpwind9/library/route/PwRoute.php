@@ -27,14 +27,14 @@ class PwRoute extends AbstractPwRoute
      * 符合特殊情况时，url串省略mca参数.
      */
     private $omit_mca = false;
-    public $dynamicDomain = array();
-    public $dynamic = array();
+    public $dynamicDomain = [];
+    public $dynamic = [];
     public $dynamicHost = '';
     /**
      * 符合特殊二级域名时,后面皆可省略的情况.
      */
     private $onlydomain = false;
-    protected $params = array('a' => 3, 'c' => 2, 'm' => 1);
+    protected $params = ['a' => 3, 'c' => 2, 'm' => 1];
     protected $_init = false;
     protected $base = null;
     protected $origialBase = null;
@@ -54,7 +54,7 @@ class PwRoute extends AbstractPwRoute
 
         // 首页设置
         if (empty($rawPath) && empty($args) && empty($_args)) {
-            return Wekit::C()->site->get('homeRouter', array());
+            return Wekit::C()->site->get('homeRouter', []);
         }
         $_args = $this->_matchPath($path) + $_args;
         if (empty($_args)) {
@@ -93,7 +93,7 @@ class PwRoute extends AbstractPwRoute
     /*
      * (non-PHPdoc) @see WindRewriteRoute::build()
      */
-    public function build($router, $action, $args = array())
+    public function build($router, $action, $args = [])
     {
         $this->init(true);
         list($_m, $_c, $_a, $args) = $this->_resolveMca($router, $action, $args);
@@ -140,9 +140,9 @@ class PwRoute extends AbstractPwRoute
     {
         $pattern = '/^(\w+)(-\w+)(-\w+)(.*)$/i';
         if (!preg_match($pattern, $path, $matches)) {
-            return array();
+            return [];
         }
-        $params = array();
+        $params = [];
         foreach ($this->params as $k => $v) {
             $value = isset($matches[$v]) ? $matches[$v] : '';
             $params[$k] = trim($value, '-/');
@@ -163,11 +163,11 @@ class PwRoute extends AbstractPwRoute
     {
         /* 解析二级域名 */
         if (empty($host)) {
-            return array();
+            return [];
         }
         $appType = $this->_getAppType();
         if (isset($appType['default']) && $host == $appType['default']) {
-            return array();
+            return [];
         }
         $space_root = Wekit::C()->site->get('domain.space.root', '');
         if ($space_root) {
@@ -175,18 +175,18 @@ class PwRoute extends AbstractPwRoute
             if ($pos = strpos($rawHost, $space_root)) {
                 $uid = Wekit::load('domain.PwSpaceDomain')->getUidByDomain(substr($rawHost, 0, $pos - 1));
                 if ($uid) {
-                    return array('m' => 'space', 'c' => 'index', 'a' => 'run', 'uid' => $uid);
+                    return ['m' => 'space', 'c' => 'index', 'a' => 'run', 'uid' => $uid];
                 }
             }
         }
-        $domain = Wekit::C()->site->get('domain', array());
+        $domain = Wekit::C()->site->get('domain', []);
         if (isset($domain[$host])) {
             list($a, $c, $m, $args) = WindUrlHelper::resolveAction($domain[$host]);
 
-            return array_merge($args, array('m' => $m, 'c' => $c, 'a' => $a));
+            return array_merge($args, ['m' => $m, 'c' => $c, 'a' => $a]);
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -199,26 +199,26 @@ class PwRoute extends AbstractPwRoute
     private function _matchScript($script, $scriptUrl)
     {
         if (empty($script) || $script == 'index.php') {
-            return array();
+            return [];
         }
         $multi = $this->_getMulti();
         if (isset($multi[$script])) {
             $this->base = rtrim(str_replace($script, '', $scriptUrl), '\\/.');
             $route = explode('/', $multi[$script]);
 
-            return array('m' => $route[0], 'c' => $route[1], 'a' => $route[2]);
+            return ['m' => $route[0], 'c' => $route[1], 'a' => $route[2]];
         } else {
             foreach ($multi as $k => $v) {
                 if (false !== ($pos = strpos($scriptUrl, $k))) {
                     $this->base = rtrim(substr($scriptUrl, 0, $pos), '\\/.');
                     $route = explode('/', $v);
 
-                    return array('m' => $route[0], 'c' => $route[1]) + ($route[2] == '*' ? array() : array('a' => $route[2]));
+                    return ['m' => $route[0], 'c' => $route[1]] + ($route[2] == '*' ? [] : ['a' => $route[2]]);
                 }
             }
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -234,15 +234,15 @@ class PwRoute extends AbstractPwRoute
     private function _buildCommon($router, $route, $args)
     {
         $reverse = '/%s-%s-%s';
-        $_args = array();
+        $_args = [];
 
         $flag = 0;
-        $methods = array(
+        $methods = [
             'a' => 'getDefaultAction',
             'c' => 'getDefaultController',
-            'm' => 'getDefaultModule', );
-        $flags = array('a' => 0, 'c' => 1, 'm' => 3);
-        $consts = array('a' => 1, 'c' => 3, 'm' => 7);
+            'm' => 'getDefaultModule', ];
+        $flags = ['a' => 0, 'c' => 1, 'm' => 3];
+        $consts = ['a' => 1, 'c' => 3, 'm' => 7];
         foreach ($this->params as $k => $v) {
             $handle = $methods[$k];
             if ($route[$k] === $router->$handle() && $flag === $flags[$k]) {
@@ -323,7 +323,7 @@ class PwRoute extends AbstractPwRoute
                 $_args = $args;
                 foreach ($rule as $v) {
                     if ($v['route'] == "$_m/$_c/$_a") {
-                        $format = array();
+                        $format = [];
                         preg_match_all('/\{(\w+)\}/', $v['format'], $matches);
                         //if (empty($matches[1])) continue;
                         $is_fname = strpos($v['format'], '{fname}') !== false;
@@ -371,7 +371,7 @@ class PwRoute extends AbstractPwRoute
             }
         }
         if ($this->rewrite_common) {
-            return $this->_buildCommon($router, array('m' => $_m, 'c' => $_c, 'a' => $_a), $args);
+            return $this->_buildCommon($router, ['m' => $_m, 'c' => $_c, 'a' => $_a], $args);
         } else {
             /* 非rewrite时获取脚本文件 */
             $script = $this->_buildScript($_m, $_c, $_a, $args);
@@ -379,7 +379,7 @@ class PwRoute extends AbstractPwRoute
             if ($this->omit_mca) {
                 $url = $args ? $script.'?'.WindUrlHelper::argsToUrl($args) : $script;
             } else {
-                $_args = array();
+                $_args = [];
                 if ($_m !== $router->getDefaultModule()) {
                     $_args['m'] = $_m;
                 }
@@ -409,7 +409,7 @@ class PwRoute extends AbstractPwRoute
     {
         $path = trim($path, '/');
         if (empty($path)) {
-            return array();
+            return [];
         }
         if ($this->rewrite_special) {
             /* 解析特殊伪静态 */
@@ -436,16 +436,16 @@ class PwRoute extends AbstractPwRoute
                                         $domain[$matches['fname']]);
 
                                     return array_merge($matches,
-                                        array('m' => $_m, 'c' => $_c, 'a' => $_a), $_args + $args);
+                                        ['m' => $_m, 'c' => $_c, 'a' => $_a], $_args + $args);
                                 }
                             } elseif (isset($matches['fid'])) {
                                 $forum = Wekit::load('forum.PwForum')->getForum($matches['fid']);
-                                $action = array(
-                                    'category' => array('m' => 'bbs', 'c' => 'cate', 'a' => 'run'),
-                                    'forum'    => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
-                                    'sub'      => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
-                                    'sub2'     => array('m' => 'bbs', 'c' => 'thread', 'a' => 'run'),
-                                    );
+                                $action = [
+                                    'category' => ['m' => 'bbs', 'c' => 'cate', 'a' => 'run'],
+                                    'forum'    => ['m' => 'bbs', 'c' => 'thread', 'a' => 'run'],
+                                    'sub'      => ['m' => 'bbs', 'c' => 'thread', 'a' => 'run'],
+                                    'sub2'     => ['m' => 'bbs', 'c' => 'thread', 'a' => 'run'],
+                                    ];
                                 $forum_type = isset($forum['type']) ? $forum['type'] : 'forum';
 
                                 return array_merge($matches,
@@ -455,7 +455,7 @@ class PwRoute extends AbstractPwRoute
                         $route = explode('/', $v['route']);
 
                         return array_merge($matches,
-                            array('m' => $route[0], 'c' => $route[1], 'a' => $route[2]), $args);
+                            ['m' => $route[0], 'c' => $route[1], 'a' => $route[2]], $args);
                     }
                 }
             }
@@ -467,11 +467,11 @@ class PwRoute extends AbstractPwRoute
             $path);
         }
 
-        $r = (false !== strpos($path, '?')) ? WindUrlHelper::urlToArgs($path) : array();
+        $r = (false !== strpos($path, '?')) ? WindUrlHelper::urlToArgs($path) : [];
         if ($rawDecode) {
             return $r;
         }
-        $return = array();
+        $return = [];
         if (isset($r['m']) || isset($r['c']) || isset($r['a'])) {
             $return['m'] = isset($r['m']) ? $r['m'] : $this->default_m;
             $return['c'] = isset($r['c']) ? $r['c'] : 'index';
@@ -508,7 +508,7 @@ class PwRoute extends AbstractPwRoute
         }
         if ($build) {
             $this->omit_mca = $this->onlydomain = false;
-            $this->dynamicDomain = $this->dynamic = array();
+            $this->dynamicDomain = $this->dynamic = [];
             $this->dynamicHost = '';
             $this->base === null && $this->base = Wind::getApp()->getRequest()->getBaseUrl();
         }
@@ -523,7 +523,7 @@ class PwRoute extends AbstractPwRoute
     {
         static $conf = null;
         if ($conf === null) {
-            $conf = Wekit::C()->site->get('rewrite', array());
+            $conf = Wekit::C()->site->get('rewrite', []);
         }
 
         return $conf;
@@ -536,20 +536,20 @@ class PwRoute extends AbstractPwRoute
      */
     private function _getDomainKey()
     {
-        return array(
+        return [
             'bbs/cate/run'      => 'fid',
             'bbs/thread/run'    => 'fid',
             'bbs/read/run'      => 'fid',
-            'special/index/run' => 'id', );
+            'special/index/run' => 'id', ];
     }
 
     private function _getType($type)
     {
-        $all = array(
+        $all = [
             'bbs/cate/run'      => 'forum',
             'bbs/thread/run'    => 'forum',
             'bbs/read/run'      => 'forum',
-            'special/index/run' => 'special', );
+            'special/index/run' => 'special', ];
 
         return isset($all[$type]) ? $all[$type] : '';
     }
@@ -563,18 +563,18 @@ class PwRoute extends AbstractPwRoute
     {
         $domain_type = $this->_getType($type);
         if (!$domain_type) {
-            return array(array(), '');
+            return [[], ''];
         }
-        static $domain = array();
+        static $domain = [];
         if (!isset($domain[$domain_type])) {
-            $temp = array();
+            $temp = [];
             if (Wekit::C('site', "domain.{$domain_type}.isopen")) {
                 $temp = $this->_getDomain('id', 'domain', $domain_type, true);
             }
             $domain[$domain_type] = $temp;
         }
 
-        return array($domain[$domain_type], $domain_type);
+        return [$domain[$domain_type], $domain_type];
     }
 
     /**
@@ -588,7 +588,7 @@ class PwRoute extends AbstractPwRoute
      */
     private function _getDomain($key = 'domain', $value = 'domain', $type = 'forum', $absolute = false)
     {
-        static $result = array();
+        static $result = [];
         static $domain = null;
         if (!isset($result[$type][$key][$value])) {
             //不论match，build，只查一次域名表，表中存放的是所有域名，不包括空间。数量大概在几十个
@@ -616,7 +616,7 @@ class PwRoute extends AbstractPwRoute
     {
         static $conf = null;
         if ($conf === null) {
-            $conf = Wekit::C()->site->get('domain.app', array());
+            $conf = Wekit::C()->site->get('domain.app', []);
         }
 
         return $conf;
@@ -632,7 +632,7 @@ class PwRoute extends AbstractPwRoute
         static $conf = null;
         if ($conf === null) {
             $conf = @include Wind::getRealPath($this->entrance);
-            $conf = $conf ? $conf : array();
+            $conf = $conf ? $conf : [];
         }
 
         return $conf;
@@ -668,21 +668,21 @@ class PwRoute extends AbstractPwRoute
     private function _resolveMca($router, $action, $args)
     {
         list($action, $_args) = explode('?', $action.'?');
-        $args = array_merge($args, ($_args ? WindUrlHelper::urlToArgs($_args, false) : array()));
+        $args = array_merge($args, ($_args ? WindUrlHelper::urlToArgs($_args, false) : []));
         $action = trim($action, '/');
         $tmp = explode('/', $action.'/');
         end($tmp);
         if (5 === count($tmp) && !strncasecmp('app/', $action, 4)) {
-            list($_a, $_c, $_app_name, $_m) = array(prev($tmp), prev($tmp), prev($tmp), prev($tmp));
+            list($_a, $_c, $_app_name, $_m) = [prev($tmp), prev($tmp), prev($tmp), prev($tmp)];
             $args['app'] = $_app_name;
         } else {
-            list($_a, $_c, $_m) = array(prev($tmp), prev($tmp), prev($tmp));
+            list($_a, $_c, $_m) = [prev($tmp), prev($tmp), prev($tmp)];
         }
         $_m = $_m ? $_m : $router->getDefaultModule();
         $_c = $_c ? $_c : $router->getDefaultController();
         $_a = $_a ? $_a : $router->getDefaultAction();
 
-        return array($_m, $_c, $_a, $args);
+        return [$_m, $_c, $_a, $args];
     }
 
     /**
@@ -699,7 +699,7 @@ class PwRoute extends AbstractPwRoute
         $pattern = "$_m/$_c/$_a";
         foreach ($this->_getMulti() as $k => $v) {
             if (strpos($v, '*')) {
-                $v = str_replace(array('*', '/'), array('\w*', '\/'), $v);
+                $v = str_replace(['*', '/'], ['\w*', '\/'], $v);
                 if (preg_match('/^'.$v.'$/i', $pattern)) {
                     $args['a'] = $_a;
                     $this->omit_mca = true;
@@ -740,7 +740,7 @@ class PwRoute extends AbstractPwRoute
      */
     private function _filterIllegal($rawpath)
     {
-        foreach (array('#', '?') as $symbol) {
+        foreach (['#', '?'] as $symbol) {
             list($rawpath) = explode($symbol, $rawpath, 2);
         }
         if ($rawpath) {
@@ -750,6 +750,6 @@ class PwRoute extends AbstractPwRoute
 
     private function _getDefault()
     {
-        return array('m' => $this->default_m, 'c' => 'index', 'a' => 'run');
+        return ['m' => $this->default_m, 'c' => 'index', 'a' => 'run'];
     }
 }

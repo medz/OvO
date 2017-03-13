@@ -22,7 +22,7 @@ class WindidAreaService
     {
         $info = $this->_getWindidAreaDs()->getArea($areaid);
         if (!$info) {
-            return array();
+            return [];
         }
 
         return explode('|', $info['joinname']);
@@ -39,13 +39,13 @@ class WindidAreaService
     public function getAreaRout($areaid)
     {
         if (!$areaid) {
-            return array();
+            return [];
         }
         $info = $this->_getWindidAreaDs()->getArea($areaid);
         if (!$info) {
-            return array();
+            return [];
         }
-        $rout = array();
+        $rout = [];
         array_unshift($rout, $info);
         $parentid = $info['parentid'];
         while ($parentid > 0) {
@@ -67,9 +67,9 @@ class WindidAreaService
     public function fetchAreaInfo($areaids)
     {
         if (!$list = $this->_getWindidAreaDs()->fetchByAreaid($areaids)) {
-            return array();
+            return [];
         }
-        $array = array();
+        $array = [];
         foreach ($list as $key => $value) {
             $array[$key] = str_replace('|', ' ', $value['joinname']);
         }
@@ -89,14 +89,14 @@ class WindidAreaService
     {
         $list = $this->_getWindidAreaDs()->fetchByAreaid($areaids);
         if (!$list) {
-            return array();
+            return [];
         }
-        $routs = $parents = array();
+        $routs = $parents = [];
         foreach ($list as $key => $_item) {
             if (!$_item['parentid']) {
-                $routs[$key] = array($key, '', '');
+                $routs[$key] = [$key, '', ''];
             } else {
-                $routs[$key] = array('', $_item['parentid'], $key);
+                $routs[$key] = ['', $_item['parentid'], $key];
                 $parents[$_item['parentid']] = $key;
             }
         }
@@ -134,12 +134,12 @@ class WindidAreaService
         $areas = $this->_getWindidAreaDs()->fetchAll();
         //$areas = $this->getCacheArea(); //本地，从缓存获取
         if (!is_array($areas)) {
-            return array();
+            return [];
         }
-        $root = array();
+        $root = [];
         foreach ($areas as $areaid => $item) {
             if ($item['parentid'] == 0) {
-                $root[$areaid] = array('name' => $item['name']);
+                $root[$areaid] = ['name' => $item['name']];
                 unset($areas[$areaid]);
             }
         }
@@ -161,16 +161,16 @@ class WindidAreaService
      */
     private function _buildTree(&$areas, $parentid)
     {
-        $childs = $temp = array();
+        $childs = $temp = [];
         foreach ($areas as $areaid => $item) {
             if ($item['parentid'] == $parentid) {
                 if (!isset($childs[$areaid])) {
-                    $childs[$areaid] = array('name' => $item['name']);
+                    $childs[$areaid] = ['name' => $item['name']];
                 }
                 $temp[] = $areaid;
             } elseif ($areas[$item['parentid']]['parentid'] == $parentid) {
                 if (!isset($childs[$areas[$item['parentid']]['areaid']])) {
-                    $childs[$areas[$item['parentid']]['areaid']] = array('name' => $areas[$item['parentid']]['name']);
+                    $childs[$areas[$item['parentid']]['areaid']] = ['name' => $areas[$item['parentid']]['name']];
                     $temp[] = $areas[$item['parentid']]['areaid'];
                 }
                 $childs[$areas[$item['parentid']]['areaid']]['items'][$areaid] = $item['name'];
@@ -194,9 +194,9 @@ class WindidAreaService
     public function getAreaByParentid($areaid, $selected = 0)
     {
         $list = $this->_getWindidAreaDs()->getAreaByParentid($areaid);
-        $return = array();
+        $return = [];
         foreach ($list as $item) {
-            $return[] = array($item['areaid'], $item['name'], $item['areaid'] == $selected ? 1 : 0);
+            $return[] = [$item['areaid'], $item['name'], $item['areaid'] == $selected ? 1 : 0];
         }
 
         return $return;

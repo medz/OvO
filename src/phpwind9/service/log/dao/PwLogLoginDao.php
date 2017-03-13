@@ -15,7 +15,7 @@ class PwLogLoginDao extends PwBaseDao
 {
     protected $_table = 'log_login';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'uid', 'username', 'typeid', 'created_time', 'ip');
+    protected $_dataStruct = ['id', 'uid', 'username', 'typeid', 'created_time', 'ip'];
 
     /**
      * 添加日志.
@@ -38,12 +38,12 @@ class PwLogLoginDao extends PwBaseDao
      */
     public function batchAddLog($datas)
     {
-        $clear = $fields = array();
+        $clear = $fields = [];
         foreach ($datas as $key => $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['uid'] = $_item['uid'];
             $_temp['username'] = $_item['username'];
             $_temp['typeid'] = $_item['typeid'];
@@ -94,7 +94,7 @@ class PwLogLoginDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE created_time < ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($time), true);
+        return $this->getConnection()->createStatement($sql)->execute([$time], true);
     }
 
     /**
@@ -136,7 +136,7 @@ class PwLogLoginDao extends PwBaseDao
      */
     private function _buildCondition($condition)
     {
-        $where = $params = array();
+        $where = $params = [];
         foreach ($condition as $_k => $_v) {
             if (!$_v) {
                 continue;
@@ -167,6 +167,6 @@ class PwLogLoginDao extends PwBaseDao
             }
         }
 
-        return $where ? array(' WHERE '.implode(' AND ', $where), $params) : array('', array());
+        return $where ? [' WHERE '.implode(' AND ', $where), $params] : ['', []];
     }
 }

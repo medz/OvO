@@ -20,7 +20,7 @@ class MyController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('vote/my/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('vote/my/run')]);
         }
     }
 
@@ -31,12 +31,12 @@ class MyController extends PwBaseController
         list($start, $limit) = Pw::page2limit($this->page, $this->perpage);
 
         $total = $this->_getPollVoterDs()->countByUid(Wekit::getLoginUser()->uid);
-        $poll = $total ? $this->_getPollVoterDs()->getPollByUid(Wekit::getLoginUser()->uid, $limit, $start) : array();
+        $poll = $total ? $this->_getPollVoterDs()->getPollByUid(Wekit::getLoginUser()->uid, $limit, $start) : [];
 
-        $pollInfo = array();
+        $pollInfo = [];
 
         if ($poll) {
-            $pollid = array();
+            $pollid = [];
             foreach ($poll as $value) {
                 $pollid[] = $value['poll_id'];
             }
@@ -45,7 +45,7 @@ class MyController extends PwBaseController
             $pollInfo = $this->_buildPoll($pollDisplay->gather(), 'my');
         }
 
-        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, array('created_time' => '0')));
+        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, ['created_time' => '0']));
         $latestPoll = $latestPollDisplay->gather();
 
         $this->setOutput($total, 'total');
@@ -54,10 +54,10 @@ class MyController extends PwBaseController
         $this->setOutput($this->page, 'page');
         $this->setOutput($this->perpage, 'perpage');
         $this->setOutput(
-            array(
+            [
                 'allowview' => $this->loginUser->getPermission('allow_view_vote'),
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
-            ), 'pollGroup');
+            ], 'pollGroup');
 
         // seo设置
 
@@ -75,14 +75,14 @@ class MyController extends PwBaseController
 
         $total = $this->_getPollDs()->countPollByUid($this->loginUser->uid);
 
-        $pollInfo = array();
+        $pollInfo = [];
 
         if ($total) {
             $pollDisplay = new PwPollDisplay(new PwFetchPollByUid(Wekit::getLoginUser()->uid, $limit, $start));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
 
-        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, array('created_time' => '0')));
+        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, ['created_time' => '0']));
         $latestPoll = $latestPollDisplay->gather();
 
         $this->setOutput($total, 'total');
@@ -91,10 +91,10 @@ class MyController extends PwBaseController
         $this->setOutput($this->page, 'page');
         $this->setOutput($this->perpage, 'perpage');
 
-        $this->setOutput(array(
+        $this->setOutput([
             'allowview' => $this->loginUser->getPermission('allow_view_vote'),
             'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
-        ), 'pollGroup');
+        ], 'pollGroup');
 
         $this->setOutput(false, 'isPostPollGuide');
     }
@@ -107,16 +107,16 @@ class MyController extends PwBaseController
         $forums = Wekit::load('forum.PwForum')->getForumList(PwForum::FETCH_ALL);
         $service = Wekit::load('forum.srv.PwForumService');
         $map = $service->getForumMap();
-        $cate = array();
-        $forum = array();
+        $cate = [];
+        $forum = [];
         foreach ($map[0] as $key => $value) {
             if (!$value['isshow']) {
                 continue;
             }
-            $array = $service->findOptionInMap($value['fid'], $map, array());
-            $tmp = array();
+            $array = $service->findOptionInMap($value['fid'], $map, []);
+            $tmp = [];
             foreach ($array as $k => $v) {
-                $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : array();
+                $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : [];
                 $isAllowPoll = isset($forumset['allowtype']) && is_array($forumset['allowtype']) && in_array('poll', $forumset['allowtype']);
 
                 if ($forums[$k]['isshow'] && $isAllowPoll && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
@@ -130,10 +130,10 @@ class MyController extends PwBaseController
 
     private function _buildPoll($data, $action = 'create')
     {
-        $reuslt = array();
+        $reuslt = [];
         switch ($action) {
             case 'create':
-                $pollid = $myPollid = array();
+                $pollid = $myPollid = [];
                 foreach ($data as $value) {
                     $pollid[] = $value['poll_id'];
                 }

@@ -174,7 +174,7 @@ class PwInviteFriendService
         $bFollowedA = $attentionDs->isFollowed($bUser['uid'], $aUser['uid']);
 
         if ($aFollowedB && $bFollowedA) {
-            return new PwError('USER:invite.friend.exists', array('{name}' => $aUser['username']));
+            return new PwError('USER:invite.friend.exists', ['{name}' => $aUser['username']]);
         } elseif (!$aFollowedB && !$bFollowedA) {
             //邀请成功，相互关注
             /* @var $attention PwAttentionService */

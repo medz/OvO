@@ -14,7 +14,7 @@ class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
 {
     protected $_table = 'user_info';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'realname', 'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay', 'profile');
+    protected $_dataStruct = ['uid', 'realname', 'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay', 'profile'];
     protected $_defaultBaseInstance = 'WSRV:user.dao.WindidUserDefaultDao';
 
     /* (non-PHPdoc)
@@ -110,7 +110,7 @@ class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
     /* (non-PHPdoc)
      * @see WindidUserInterface::editUser()
      */
-    public function editUser($uid, $fields, $increaseFields = array())
+    public function editUser($uid, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->editUser($uid, $fields, $increaseFields);
         $this->_update($uid, $fields);

@@ -22,7 +22,7 @@ class PwOrder
     public function getOrder($id)
     {
         if (empty($id)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getOrder($id);
@@ -37,7 +37,7 @@ class PwOrder
     public function getOrderByOrderNo($orderno)
     {
         if (empty($orderno)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getOrderByOrderNo($orderno);
@@ -65,7 +65,7 @@ class PwOrder
     public function getOrderByUidAndType($uid, $type, $limit = 20, $offset = 0)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getOrderByUidAndType($uid, $type, $limit, $offset);

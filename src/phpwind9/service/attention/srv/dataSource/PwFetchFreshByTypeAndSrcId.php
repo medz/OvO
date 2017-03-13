@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwFetchFreshByTypeAndSrcId implements iPwDataSource
 {
     public $type;
-    public $ids = array();
+    public $ids = [];
 
     public function __construct($type, $ids)
     {

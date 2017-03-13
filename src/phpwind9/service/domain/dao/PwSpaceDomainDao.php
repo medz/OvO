@@ -12,7 +12,7 @@ class PwSpaceDomainDao extends PwBaseDao
 {
     protected $_table = 'space_domain';
     protected $_pk = 'domain';
-    protected $_dataStruct = array('uid', 'domain');
+    protected $_dataStruct = ['uid', 'domain'];
 
     /**
      * 添加空间域名.
@@ -28,7 +28,7 @@ class PwSpaceDomainDao extends PwBaseDao
             return false;
         }
 
-        return $this->_add(array('uid' => $uid, 'domain' => $domain), false);
+        return $this->_add(['uid' => $uid, 'domain' => $domain], false);
     }
 
     /**
@@ -46,7 +46,7 @@ class PwSpaceDomainDao extends PwBaseDao
         }
         $sql = $this->_bindTable('UPDATE %s SET `domain` = ? WHERE `uid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($domain, $uid));
+        return $this->getConnection()->createStatement($sql)->update([$domain, $uid]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PwSpaceDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT `uid` FROM %s WHERE `domain` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($domain));
+        return $this->getConnection()->createStatement($sql)->getValue([$domain]);
     }
 
     /**
@@ -86,6 +86,6 @@ class PwSpaceDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT `domain` FROM %s WHERE `uid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($uid));
+        return $this->getConnection()->createStatement($sql)->getValue([$uid]);
     }
 }

@@ -24,7 +24,7 @@ class PwForumUser
     public function get($uid, $fid)
     {
         if (!$uid || !$fid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($uid, $fid);
@@ -42,7 +42,7 @@ class PwForumUser
     public function getUserByFid($fid, $limit = 12, $offset = 0)
     {
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getUserByFid($fid, $limit, $offset);
@@ -67,7 +67,7 @@ class PwForumUser
     public function getFroumByUid($uid)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFroumByUid($uid);
@@ -88,7 +88,7 @@ class PwForumUser
             return false;
         }
 
-        return $this->_getDao()->add(array('uid' => $uid, 'fid' => $fid, 'join_time' => $time ? $time : Pw::getTime()));
+        return $this->_getDao()->add(['uid' => $uid, 'fid' => $fid, 'join_time' => $time ? $time : Pw::getTime()]);
     }
 
     /**

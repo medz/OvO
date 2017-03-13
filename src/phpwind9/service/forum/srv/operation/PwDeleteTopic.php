@@ -11,8 +11,8 @@
  */
 class PwDeleteTopic extends PwGleanDoProcess
 {
-    public $data = array();
-    public $tids = array();
+    public $data = [];
+    public $tids = [];
     public $user;
 
     public $isRecycle = false;

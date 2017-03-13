@@ -19,7 +19,7 @@ class PwLikeRelations
     {
         $tagid = (int) $tagid;
         if ($tagid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeRelationsDao()->getInfo($tagid);

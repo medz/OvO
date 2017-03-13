@@ -46,11 +46,11 @@ class App_SearchThread extends App_SearchAction
             return false;
         }
         $keywords = (is_array($keywords)) ? $keywords : explode(' ', $keywords);
-        $data = array();
+        $data = [];
         foreach ($list as $t) {
             $t['subject'] = strip_tags($t['subject']);
             $t['content'] = strip_tags($t['content']);
-            $t['content'] = Wekit::load('forum.srv.PwThreadService')->displayContent($t['content'], $t['useubb'], array(), 170);
+            $t['content'] = Wekit::load('forum.srv.PwThreadService')->displayContent($t['content'], $t['useubb'], [], 170);
             foreach ($keywords as $keyword) {
                 $keyword = stripslashes($keyword);
                 $keyword && $t['subject'] = $this->_highlighting($t['subject'], $keyword);

@@ -13,7 +13,7 @@ class WindidAreaDao extends WindidBaseDao
 {
     protected $_table = 'area';
     protected $_pk = 'areaid';
-    protected $_dataStruct = array('areaid', 'name', 'parentid', 'joinname');
+    protected $_dataStruct = ['areaid', 'name', 'parentid', 'joinname'];
 
     /**
      * 根据上一级ID获得下一级的所有地区.
@@ -27,7 +27,7 @@ class WindidAreaDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `parentid` = ? ORDER BY areaid');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($parentid), 'areaid');
+        return $smt->queryAll([$parentid], 'areaid');
     }
 
     /**
@@ -87,12 +87,12 @@ class WindidAreaDao extends WindidBaseDao
      */
     public function batchAddArea($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $clear[] = array($_item['name'], $_item['parentid'], $_item['joinname']);
+            $clear[] = [$_item['name'], $_item['parentid'], $_item['joinname']];
         }
         if (!$clear) {
             return false;

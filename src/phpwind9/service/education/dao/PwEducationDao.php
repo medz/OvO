@@ -12,7 +12,7 @@
 class PwEducationDao extends PwBaseDao
 {
     protected $_table = 'user_education';
-    protected $_dataStruct = array('id', 'uid', 'schoolid', 'degree', 'start_time');
+    protected $_dataStruct = ['id', 'uid', 'schoolid', 'degree', 'start_time'];
 
     /**
      * 添加教育经历.
@@ -49,7 +49,7 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `id` = ? AND `uid` = ?', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($id, $uid));
+        return $smt->update([$id, $uid]);
     }
 
     /**
@@ -65,7 +65,7 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `id` =? AND `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($id, $uid));
+        return $smt->update([$id, $uid]);
     }
 
     /**
@@ -81,7 +81,7 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `id` =? AND `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($id, $uid));
+        return $smt->getOne([$id, $uid]);
     }
 
     /**
@@ -96,7 +96,7 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     /**
@@ -113,7 +113,7 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` =? ORDER BY `start_time` DESC '.$this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'id');
+        return $smt->queryAll([$uid], 'id');
     }
 
     /**
@@ -128,6 +128,6 @@ class PwEducationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `uid` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 }

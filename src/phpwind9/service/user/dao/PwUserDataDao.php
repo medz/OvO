@@ -15,7 +15,7 @@ class PwUserDataDao extends PwBaseDao
 {
     protected $_table = 'user_data';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'lastvisit', 'lastlogintip', 'lastpost', 'lastactivetime', 'onlinetime', 'trypwd', 'findpwd', 'postcheck', 'message_tone', 'messages', 'notices', 'postnum', 'digest', 'todaypost', 'todayupload', 'follows', 'fans', 'likes', 'punch', 'join_forum', 'recommend_friend', 'last_credit_affect_log', 'medal_ids', 'credit1', 'credit2', 'credit3', 'credit4', 'credit5', 'credit6', 'credit7', 'credit8');
+    protected $_dataStruct = ['uid', 'lastvisit', 'lastlogintip', 'lastpost', 'lastactivetime', 'onlinetime', 'trypwd', 'findpwd', 'postcheck', 'message_tone', 'messages', 'notices', 'postnum', 'digest', 'todaypost', 'todayupload', 'follows', 'fans', 'likes', 'punch', 'join_forum', 'recommend_friend', 'last_credit_affect_log', 'medal_ids', 'credit1', 'credit2', 'credit3', 'credit4', 'credit5', 'credit6', 'credit7', 'credit8'];
     protected $_defaultBaseInstance = 'user.dao.PwUserDefaultDao';
 
     /**
@@ -42,7 +42,7 @@ class PwUserDataDao extends PwBaseDao
     public function getUserByName($username)
     {
         if (!$info = $this->getBaseInstance()->getUserByName($username)) {
-            return array();
+            return [];
         }
 
         return array_merge($info, $this->_get($info['uid']));
@@ -58,7 +58,7 @@ class PwUserDataDao extends PwBaseDao
     public function getUserByEmail($email)
     {
         if (!$info = $this->getBaseInstance()->getUserByEmail($email)) {
-            return array();
+            return [];
         }
 
         return array_merge($info, $this->_get($info['uid']));
@@ -123,7 +123,7 @@ class PwUserDataDao extends PwBaseDao
      *
      * @return bool|int
      */
-    public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
+    public function editUser($uid, $fields, $increaseFields = [], $bitFields = [])
     {
         $result = $this->getBaseInstance()->editUser($uid, $fields, $increaseFields, $bitFields);
         $this->_update($uid, $fields, $increaseFields);
@@ -168,10 +168,10 @@ class PwUserDataDao extends PwBaseDao
      */
     public function getDataStruct()
     {
-        static $struct = array();
+        static $struct = [];
         if (!$struct) {
             $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
-            $tbFields = $this->getConnection()->createStatement($sql)->queryAll(array(), 'Field');
+            $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
             $struct = array_keys($tbFields);
         }
 

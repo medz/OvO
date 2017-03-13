@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadSo
 {
-    protected $_data = array();
-    protected $_orderby = array();
+    protected $_data = [];
+    protected $_orderby = [];
 
     public function getData()
     {
@@ -102,7 +102,7 @@ class PwThreadSo
     public function setAuthor($authors)
     {
         if (!is_array($authors)) {
-            $authors = array($authors);
+            $authors = [$authors];
         }
         $users = Wekit::load('user.PwUser')->fetchUserByName($authors);
         $this->setAuthorId(array_keys($users));
@@ -116,7 +116,7 @@ class PwThreadSo
     public function setAuthorId($authorid)
     {
         if (!$authorid) {
-            $authorid = array(0);
+            $authorid = [0];
         }
         $this->_data['created_userid'] = $authorid;
 

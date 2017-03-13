@@ -18,12 +18,12 @@ class ManageController extends AdminBaseController
     public function run()
     {
         $map = (array) $this->_getFroumService()->getForumMap();
-        $forumList = array();
+        $forumList = [];
         foreach ($map[0] as $key => $value) {
             $forumList[$value['fid']] = $this->_getFroumService()->getForumsByLevel($value['fid'], $map);
         }
 
-        $forumIds = array();
+        $forumIds = [];
         foreach ($forumList as $forum) {
             foreach ($forum as $value) {
                 $forumIds[] = $value['fid'];
@@ -32,7 +32,7 @@ class ManageController extends AdminBaseController
 
         $pollOpenForum = $this->_getPollOpenForum($forumIds);
 
-        $cateIds = array();
+        $cateIds = [];
         foreach ($map[0] as $value) {
             foreach ($forumList[$value['fid']] as $val) {
                 if (!in_array($val['fid'], array_keys($pollOpenForum))) {
@@ -49,7 +49,7 @@ class ManageController extends AdminBaseController
         $this->setOutput($pollOpenForum, 'pollOpenForum');
         $this->setOutput($this->_buildGroup($this->_getUserGroupsDs()->getAllGroups()), 'groups');
         $this->setOutput($this->_getUserGroupsDs()->getTypeNames(), 'groupsTypeName');
-        $this->setOutput($this->_buildPermission($this->_getUserPermissionDs()->fetchPermissionByRkey(array('allow_add_vote', 'allow_participate_vote', 'allow_view_vote'))), 'permission');
+        $this->setOutput($this->_buildPermission($this->_getUserPermissionDs()->fetchPermissionByRkey(['allow_add_vote', 'allow_participate_vote', 'allow_view_vote'])), 'permission');
     }
 
     public function dogroupAction()
@@ -73,12 +73,12 @@ class ManageController extends AdminBaseController
     public function editforumAction()
     {
         $map = (array) $this->_getFroumService()->getForumMap();
-        $forumList = array();
+        $forumList = [];
         foreach ($map[0] as $key => $value) {
             $forumList[$value['fid']] = $this->_getFroumService()->getForumsByLevel($value['fid'], $map);
         }
 
-        $forumIds = array();
+        $forumIds = [];
         foreach ($forumList as $forum) {
             foreach ($forum as $value) {
                 $forumIds[] = $value['fid'];
@@ -96,11 +96,11 @@ class ManageController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
         $forumid = $this->getInput('fid', 'post');
-        $forumid = $forumid ? explode(',', $forumid) : array();
+        $forumid = $forumid ? explode(',', $forumid) : [];
 
         $forum = (array) $this->_getFroumService()->getForumList();
 
-        $openForum = $noOpenForum = array();
+        $openForum = $noOpenForum = [];
         foreach ($forum as $value) {
             if ($value['type'] == 'category') {
                 continue;
@@ -120,7 +120,7 @@ class ManageController extends AdminBaseController
                 }
 
                 $setting = unserialize($_forum['settings_basic']);
-                $allowType = is_array($setting['allowtype']) ? $setting['allowtype'] : array();
+                $allowType = is_array($setting['allowtype']) ? $setting['allowtype'] : [];
                 if (in_array('poll', $allowType)) {
                     continue;
                 }
@@ -142,12 +142,12 @@ class ManageController extends AdminBaseController
                 }
 
                 $setting = unserialize($_forum['settings_basic']);
-                $allowType = is_array($setting['allowtype']) ? $setting['allowtype'] : array();
+                $allowType = is_array($setting['allowtype']) ? $setting['allowtype'] : [];
                 if (!in_array('poll', $allowType)) {
                     continue;
                 }
 
-                $allowType = array_diff($allowType, array('poll'));
+                $allowType = array_diff($allowType, ['poll']);
                 unset($setting['typeorder']['poll']);
                 $setting['allowtype'] = $allowType;
 
@@ -163,10 +163,10 @@ class ManageController extends AdminBaseController
     private function _buildGroup($data)
     {
         if (empty($data) || !is_array($data)) {
-            return array();
+            return [];
         }
 
-        $result = array();
+        $result = [];
         foreach ($data as $value) {
             if ($value['type'] == 'vip') {
                 continue;
@@ -180,10 +180,10 @@ class ManageController extends AdminBaseController
     private function _buildPermission($data)
     {
         if (empty($data) || !is_array($data)) {
-            return array();
+            return [];
         }
 
-        $result = array();
+        $result = [];
         foreach ($data as $value) {
             if (!$value['rvalue']) {
                 continue;
@@ -197,12 +197,12 @@ class ManageController extends AdminBaseController
     private function _getPollOpenForum($forumIds)
     {
         if (empty($forumIds) || !is_array($forumIds)) {
-            return array();
+            return [];
         }
 
         $forumExtra = $this->_getForumDs()->fetchForum($forumIds, 4);
 
-        $result = array();
+        $result = [];
         foreach ($forumExtra as $value) {
             $setting = (array) unserialize($value['settings_basic']);
             $allowType = $setting['allowtype'];

@@ -11,14 +11,14 @@
 class PwAttentionRelationDao extends PwBaseDao
 {
     protected $_table = 'attention_type_relations';
-    protected $_dataStruct = array('uid', 'touid', 'typeid');
+    protected $_dataStruct = ['uid', 'touid', 'typeid'];
 
     public function getTypeByUidAndTouids($uid, $touids)
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid=? AND touid IN %s', $this->getTable(), $this->sqlImplode($touids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function count($uid)
@@ -26,7 +26,7 @@ class PwAttentionRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT typeid, COUNT(*) AS count FROM %s WHERE uid=? GROUP BY typeid');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'typeid');
+        return $smt->queryAll([$uid], 'typeid');
     }
 
     public function getUserByType($uid, $typeid, $limit, $offset)
@@ -34,14 +34,14 @@ class PwAttentionRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid=? AND typeid=? %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $typeid), 'touid');
+        return $smt->queryAll([$uid, $typeid], 'touid');
     }
 
     public function batchAdd($uid, $touid, $typeids)
     {
-        $data = array();
+        $data = [];
         foreach ($typeids as $key => $value) {
-            $data[] = array('uid' => $uid, 'touid' => $touid, 'typeid' => intval($value));
+            $data[] = ['uid' => $uid, 'touid' => $touid, 'typeid' => intval($value)];
         }
         $sql = $this->_bindSql('INSERT INTO %s (uid,touid,typeid) VALUES %s', $this->getTable(), $this->sqlMulti($data));
         $this->getConnection()->execute($sql);
@@ -51,7 +51,7 @@ class PwAttentionRelationDao extends PwBaseDao
 
     public function addUserType($uid, $touid, $typeid)
     {
-        $fields = array('uid' => $uid, 'touid' => $touid, 'typeid' => intval($typeid));
+        $fields = ['uid' => $uid, 'touid' => $touid, 'typeid' => intval($typeid)];
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));
         $this->getConnection()->execute($sql);
 
@@ -63,7 +63,7 @@ class PwAttentionRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND touid=? AND typeid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $touid, $typeid));
+        return $smt->update([$uid, $touid, $typeid]);
     }
 
     public function deleteByUidAndTouid($uid, $touid)
@@ -71,7 +71,7 @@ class PwAttentionRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND touid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $touid));
+        return $smt->update([$uid, $touid]);
     }
 
     public function deleteByType($typeid)
@@ -79,6 +79,6 @@ class PwAttentionRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE typeid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($typeid));
+        return $smt->update([$typeid]);
     }
 }

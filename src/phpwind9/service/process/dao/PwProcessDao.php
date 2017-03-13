@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwProcessDao extends PwBaseDao
 {
     protected $_table = 'common_process';
-    protected $_dataStruct = array('flag', 'expired_time');
+    protected $_dataStruct = ['flag', 'expired_time'];
 
     public function getProcess($flag)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `flag`= ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($flag));
+        return $smt->getOne([$flag]);
     }
 
     public function replaceProcess($data)
@@ -41,7 +41,7 @@ class PwProcessDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `flag` = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($flag));
+        return $smt->update([$flag]);
     }
 
     public function deleteProcessByTime($time)
@@ -49,6 +49,6 @@ class PwProcessDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `expired_time` < ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($time));
+        return $smt->update([$time]);
     }
 }

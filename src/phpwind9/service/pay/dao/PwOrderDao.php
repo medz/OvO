@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwOrderDao extends PwBaseDao
 {
     protected $_table = 'pay_order';
-    protected $_dataStruct = array('id', 'order_no', 'price', 'number', 'state', 'payemail', 'paymethod', 'paytype', 'buy', 'created_userid', 'created_time', 'extra_1', 'extra_2');
+    protected $_dataStruct = ['id', 'order_no', 'price', 'number', 'state', 'payemail', 'paymethod', 'paytype', 'buy', 'created_userid', 'created_time', 'extra_1', 'extra_2'];
 
     /*
     public function getForum($fid) {
@@ -62,7 +62,7 @@ class PwOrderDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE order_no=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($orderno));
+        return $smt->getOne([$orderno]);
     }
 
     public function countByUidAndType($uid, $type)
@@ -70,7 +70,7 @@ class PwOrderDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS sum FROM %s WHERE created_userid=? AND paytype=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid, $type));
+        return $smt->getValue([$uid, $type]);
     }
 
     public function getOrderByUidAndType($uid, $type, $limit, $offset)
@@ -78,7 +78,7 @@ class PwOrderDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? AND paytype=? ORDER BY id DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $type), 'id');
+        return $smt->queryAll([$uid, $type], 'id');
     }
 
     public function addOrder($fields)

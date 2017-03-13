@@ -19,7 +19,7 @@ class ServerController extends AdminBaseController
         ACloudSysCoreCommon::setGlobal('g_siteurl', ACloudSysCoreDefine::ACLOUD_APPLY_SITEURL ? ACloudSysCoreDefine::ACLOUD_APPLY_SITEURL : $_extrasService->getExtra('ac_apply_siteurl'));
         ACloudSysCoreCommon::setGlobal('g_charset', ACloudSysCoreDefine::ACLOUD_APPLY_CHARSET ? ACloudSysCoreDefine::ACLOUD_APPLY_CHARSET : $_extrasService->getExtra('ac_apply_charset'));
         $benchService = ACloudSysCoreCommon::loadSystemClass('administor', 'bench.service');
-        $url = $benchService->getLink(array('a' => 'forward', 'do' => 'appcenter'));
+        $url = $benchService->getLink(['a' => 'forward', 'do' => 'appcenter']);
         $this->setOutput($url, 'url');
     }
 
@@ -29,7 +29,7 @@ class ServerController extends AdminBaseController
         ACloudSysCoreCommon::setGlobal('g_siteurl', PUBLIC_URL);
         ACloudSysCoreCommon::setGlobal('g_sitename', Wekit::C('site', 'info.name'));
         ACloudSysCoreCommon::setGlobal('g_charset', Wind::getApp()->getResponse()->getCharset());
-        list($this->BenchService, $operate) = array(ACloudSysCoreCommon::loadSystemClass('administor', 'bench.service'), strtolower($this->getInput('operate')));
+        list($this->BenchService, $operate) = [ACloudSysCoreCommon::loadSystemClass('administor', 'bench.service'), strtolower($this->getInput('operate'))];
         if ($this->BenchService->isOpen()) {
             $ac_url = $this->BenchService->getLink();
             $this->setOutput($ac_url, 'ac_url');
@@ -46,7 +46,7 @@ class ServerController extends AdminBaseController
         ACloudSysCoreCommon::setGlobal('g_siteurl', PUBLIC_URL);
         ACloudSysCoreCommon::setGlobal('g_sitename', Wekit::C('site', 'info.name'));
         ACloudSysCoreCommon::setGlobal('g_charset', Wind::getApp()->getResponse()->getCharset());
-        list($this->BenchService, $operate) = array(ACloudSysCoreCommon::loadSystemClass('administor', 'bench.service'), strtolower($this->getInput('operate')));
+        list($this->BenchService, $operate) = [ACloudSysCoreCommon::loadSystemClass('administor', 'bench.service'), strtolower($this->getInput('operate'))];
 
         return ($operate == 'reset') ? $this->reset() : $this->checkEnvironment();
     }

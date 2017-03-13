@@ -14,7 +14,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 class App_SearchRecordDao extends PwBaseDao
 {
     protected $_table = 'app_search_record';
-    protected $_dataStruct = array('id', 'created_userid', 'created_time', 'search_type', 'keywords');
+    protected $_dataStruct = ['id', 'created_userid', 'created_time', 'search_type', 'keywords'];
 
     /**
      * 获取一条信息.
@@ -78,7 +78,7 @@ class App_SearchRecordDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `created_userid`=? AND `search_type`=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($uid, $type));
+        $result = $smt->update([$uid, $type]);
     }
 
     /**
@@ -92,7 +92,7 @@ class App_SearchRecordDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s ORDER BY `created_time` ASC LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array());
+        $result = $smt->update([]);
     }
 
     /**
@@ -115,7 +115,7 @@ class App_SearchRecordDao extends PwBaseDao
      *
      * @return bool
      */
-    public function update($id, $fields, $increaseFields = array(), $bitFields = array())
+    public function update($id, $fields, $increaseFields = [], $bitFields = [])
     {
         return $this->_update($id, $fields, $increaseFields, $bitFields);
     }
@@ -132,7 +132,7 @@ class App_SearchRecordDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `created_userid`=? AND `search_type`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid, $type));
+        return $smt->getValue([$uid, $type]);
     }
 
     /**
@@ -148,7 +148,7 @@ class App_SearchRecordDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `created_userid`=? AND `search_type`=? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $type));
+        return $smt->queryAll([$uid, $type]);
     }
 
     public function alterAddLastSearch()

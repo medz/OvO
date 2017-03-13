@@ -17,7 +17,7 @@ class PwAdminRoute extends AbstractPwRoute
     /*
      * (non-PHPdoc) @see AbstractWindRoute::build()
      */
-    public function build($router, $action, $args = array())
+    public function build($router, $action, $args = [])
     {
         $this->init || $this->init();
         list($_a, $_c, $_m, $args) = $this->_resolveMca($router, $action, $args);
@@ -67,17 +67,17 @@ class PwAdminRoute extends AbstractPwRoute
     private function _resolveMca($router, $action, $args)
     {
         list($action, $_args) = explode('?', $action.'?');
-        $args = array_merge($args, ($_args ? WindUrlHelper::urlToArgs($_args, false) : array()));
+        $args = array_merge($args, ($_args ? WindUrlHelper::urlToArgs($_args, false) : []));
         $action = trim($action, '/');
         $tmp = explode('/', $action.'/');
         end($tmp);
         if (5 === count($tmp) && !strncasecmp('app/', $action, 4)) {
-            list($_a, $_c, $_app_name, $_m) = array(prev($tmp), prev($tmp), prev($tmp), prev($tmp));
+            list($_a, $_c, $_app_name, $_m) = [prev($tmp), prev($tmp), prev($tmp), prev($tmp)];
             $args['app'] = $_app_name;
         } else {
-            list($_a, $_c, $_m) = array(prev($tmp), prev($tmp), prev($tmp));
+            list($_a, $_c, $_m) = [prev($tmp), prev($tmp), prev($tmp)];
         }
 
-        return array($_a, $_c, $_m, $args);
+        return [$_a, $_c, $_m, $args];
     }
 }

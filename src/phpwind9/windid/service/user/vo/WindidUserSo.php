@@ -11,8 +11,8 @@
  */
 class WindidUserSo
 {
-    private $_data = array();
-    protected $_orderby = array();
+    private $_data = [];
+    protected $_orderby = [];
 
     /**
      * 根据用户名搜索.

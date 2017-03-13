@@ -34,11 +34,11 @@ class PwOnlineStatistics
     public function addInfo($key, $number = 0, $time = 0)
     {
         $number = (int) $number;
-        $data = array(
+        $data = [
             'signkey'      => $key,
             'number'       => $number,
             'created_time' => $time,
-        );
+        ];
 
         return $this->_getOnlineStatisticsDao()->addInfo($data);
     }

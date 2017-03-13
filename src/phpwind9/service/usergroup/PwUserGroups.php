@@ -16,7 +16,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwUserGroups
 {
-    protected $_allowGroupTypes = array('member', 'system', 'special', 'default');
+    protected $_allowGroupTypes = ['member', 'system', 'special', 'default'];
 
     /**
      * 按会员组类型获取组列表.
@@ -33,7 +33,7 @@ class PwUserGroups
      */
     public function getTypeNames()
     {
-        return array_combine($this->_allowGroupTypes, array('会员组', '管理组', '特殊组', '默认组'));
+        return array_combine($this->_allowGroupTypes, ['会员组', '管理组', '特殊组', '默认组']);
     }
 
     /**
@@ -46,7 +46,7 @@ class PwUserGroups
     public function getGroupByGid($gid)
     {
         if (empty($gid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getGroupByGid($gid);
@@ -62,7 +62,7 @@ class PwUserGroups
     public function fetchGroup($gids)
     {
         if (empty($gids) || !is_array($gids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchGroup($gids);
@@ -78,7 +78,7 @@ class PwUserGroups
     public function getGroupsByType($groupType)
     {
         if (!$this->checkGroupType($groupType)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getGroupsByType($groupType);
@@ -98,7 +98,7 @@ class PwUserGroups
 
             return $this->getGroupsByType($groupType);
         }
-        $groups = array();
+        $groups = [];
         $allGroups = $this->getAllGroups();
         foreach ($allGroups as $k => $v) {
             if (!in_array($v['type'], $groupTypes)) {
@@ -113,7 +113,7 @@ class PwUserGroups
     public function getGroupsByTypeInUpgradeOrder($groupType)
     {
         if (!$this->checkGroupType($groupType)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getGroupsByTypeInUpgradeOrder($groupType);
@@ -124,7 +124,7 @@ class PwUserGroups
      */
     public function getSystemAndSpecialGroups()
     {
-        return $this->getGroupsByTypes(array('system', 'special'));
+        return $this->getGroupsByTypes(['system', 'special']);
     }
 
     /**
@@ -132,7 +132,7 @@ class PwUserGroups
      */
     public function getNonUpgradeGroups()
     {
-        return $this->getGroupsByTypes(array('system', 'special', 'default'));
+        return $this->getGroupsByTypes(['system', 'special', 'default']);
     }
 
     /**
@@ -165,9 +165,9 @@ class PwUserGroups
     public function getClassifiedGroups()
     {
         if (!$groups = $this->getAllGroups()) {
-            return array();
+            return [];
         }
-        $data = array();
+        $data = [];
         foreach ($groups as $key => $v) {
             $data[$v['type']][$key] = $v;
         }
@@ -188,7 +188,7 @@ class PwUserGroups
             return $result;
         }
         $gid = $this->_getDao()->addGroup($dm->getData());
-        PwSimpleHook::getInstance('PwUserGroups_update')->runDo(array($gid));
+        PwSimpleHook::getInstance('PwUserGroups_update')->runDo([$gid]);
 
         return $gid;
     }
@@ -207,7 +207,7 @@ class PwUserGroups
         }
         $gid = $dm->getGroupId();
         $result = $this->_getDao()->updateGroup($gid, $dm->getData());
-        PwSimpleHook::getInstance('PwUserGroups_update')->runDo(array($gid));
+        PwSimpleHook::getInstance('PwUserGroups_update')->runDo([$gid]);
 
         return $result;
     }
@@ -221,7 +221,7 @@ class PwUserGroups
      */
     public function updateGroups($groups)
     {
-        $gids = array();
+        $gids = [];
         $dao = $this->_getDao();
         foreach ($groups as $v) {
             if ($v instanceof PwUserGroupDm && $v->beforeUpdate()) {

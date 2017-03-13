@@ -24,11 +24,11 @@ class PwWord
      */
     public function getTypeMap()
     {
-        $map = array(
+        $map = [
                 self::NAME_BANED    => '禁用',
                 self::WORD_VERIFIED => '审核',
                 self::WORD_REPLACE  => '替换',
-        );
+        ];
 
         return $map;
     }
@@ -44,7 +44,7 @@ class PwWord
     {
         $wordId = intval($wordId);
         if ($wordId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($wordId);
@@ -60,7 +60,7 @@ class PwWord
     public function getByWord($word)
     {
         if (!$word) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByWord($word);
@@ -77,7 +77,7 @@ class PwWord
     {
         $type = intval($type);
         if ($type < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByType($type);
@@ -93,7 +93,7 @@ class PwWord
     public function fetch($wordIds)
     {
         if (empty($wordIds) || !is_array($wordIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($wordIds);
@@ -106,10 +106,10 @@ class PwWord
      *
      * @return array
      */
-    public function fetchByWord($word = array())
+    public function fetchByWord($word = [])
     {
         if (empty($word) || !is_array($word)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchByWord($word);
@@ -359,7 +359,7 @@ class PwWord
      */
     public function updateAllByTypeAndRelpace($type, $relpace)
     {
-        $fieldData = array('word_type' => $type, 'word_replace' => $relpace);
+        $fieldData = ['word_type' => $type, 'word_replace' => $relpace];
 
         return $this->_getDao()->updateAll($fieldData);
     }

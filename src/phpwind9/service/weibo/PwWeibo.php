@@ -26,7 +26,7 @@ class PwWeibo
     public function getWeibo($weiboId)
     {
         if (empty($weiboId)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getWeibo($weiboId);
@@ -42,7 +42,7 @@ class PwWeibo
     public function getWeibos($weiboIds)
     {
         if (empty($weiboIds) || !is_array($weiboIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchWeibo($weiboIds);

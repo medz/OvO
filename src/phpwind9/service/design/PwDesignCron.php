@@ -14,7 +14,7 @@ class PwDesignCron
     {
         $moduleId = (int) $moduleId;
         if ($moduleId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($moduleId);
@@ -23,7 +23,7 @@ class PwDesignCron
     public function fetchCron($moduleIds)
     {
         if (!is_array($moduleIds) || !$moduleIds) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($moduleIds);

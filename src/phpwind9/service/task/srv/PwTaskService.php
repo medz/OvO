@@ -24,7 +24,7 @@ class PwTaskService
         if (!Wekit::C('site', 'task.isOpen')) {
             return false;
         }
-        $whitBehavior = array('login_days', 'post_days', 'thread_count');
+        $whitBehavior = ['login_days', 'post_days', 'thread_count'];
         if (!in_array($behavior['behavior'], $whitBehavior)) {
             return false;
         }
@@ -126,17 +126,17 @@ class PwTaskService
         $list = $this->_taskDs()->getTaskList($num, $start);
         $nextTask = $this->_taskDs()->fetchNextTaskList(array_keys($list));
         $lang = Wind::getComponent('i18n');
-        $taskDb = array();
+        $taskDb = [];
         foreach ($list as $k => $v) {
-            $taskDb[$k] = array(
+            $taskDb[$k] = [
                 'view_order' => $v['view_order'],
                 'title'      => $v['title'],
                 'is_open'    => $v['is_open'],
                 'reward'     => unserialize($v['reward']),
                 'start_time' => $v['start_time'],
-                'end_time'   => $v['end_time'], );
+                'end_time'   => $v['end_time'], ];
             if (isset($nextTask[$k])) {
-                $taskDb[$k]['msg'] = $lang->getMessage('TASK:delete.error.has.next.task', array('{title}' => $nextTask[$k]['title']));
+                $taskDb[$k]['msg'] = $lang->getMessage('TASK:delete.error.has.next.task', ['{title}' => $nextTask[$k]['title']]);
             }
         }
 
@@ -164,7 +164,7 @@ class PwTaskService
     public function getApplicableTaskList($uid, $page = 1, $num = 10)
     {
         if (0 > ($uid = intval($uid))) {
-            return array(0, array());
+            return [0, []];
         }
         $gids = $this->_getGidsByUid($uid);
         $noPeriodTaskIds = $this->_taskUserDs()->getByIsPeriod($uid, 0);
@@ -174,7 +174,7 @@ class PwTaskService
         $count = $this->_taskDs()->countApplicableTasks(array_keys($noPeriodTaskIds), $gids, Pw::getTime());
         $taskIds = $this->_taskDs()->getApplicableTasks(array_keys($noPeriodTaskIds), $gids, $num, $start, Pw::getTime());
 
-        return array($count, $this->_buildTaskList($this->_taskDs()->gets(array_keys($taskIds))));
+        return [$count, $this->_buildTaskList($this->_taskDs()->gets(array_keys($taskIds)))];
     }
 
     /**
@@ -201,7 +201,7 @@ class PwTaskService
     public function getMyTaskListWithStatu($uid, $statu = PwTaskUser::COMPLETE, $page = 1, $num = 10)
     {
         if (0 > ($uid = intval($uid))) {
-            return array();
+            return [];
         }
         $page = abs(intval($page));
         $num = abs(intval($num));
@@ -235,7 +235,7 @@ class PwTaskService
         $cacheIds = $this->_taskDs()->getTaskCacheByUid($uid);
         $gids = $this->_getGidsByUid($uid);
         $ids = $this->_taskDs()->getAutoApplicableTask($cacheIds[0], $gids, abs(intval($limit)));
-        $periods = isset($cacheIds[1]) ? (array) $cacheIds : array();
+        $periods = isset($cacheIds[1]) ? (array) $cacheIds : [];
 
         return array_unique(array_keys($ids) + $periods);
     }
@@ -252,7 +252,7 @@ class PwTaskService
     {
         $taskList = $this->_taskDs()->getNextAutoTasks($taskid, Pw::getTime(), Pw::getTime());
         $gids = $this->_getGidsByUid($uid);
-        $taskIds = array();
+        $taskIds = [];
         foreach ($taskList as $id => $task) {
             $_tmp = explode(',', $task['user_groups']);
             if (array_intersect($_tmp, $gids)) {
@@ -280,7 +280,7 @@ class PwTaskService
             PwTaskTreeHelper::clearAllNextNode($taskTree[$taskid], $tasks, $taskid);
         }
 
-        return empty($tasks) ? array() : PwTaskTreeHelper::cookTree($taskTree['root']['items'],
+        return empty($tasks) ? [] : PwTaskTreeHelper::cookTree($taskTree['root']['items'],
             array_keys($tasks));
     }
 
@@ -319,9 +319,9 @@ class PwTaskService
                 $task['parent'] = $pre_task['title'];
             }*/
             $_tmp = unserialize($task['conditions']);
-            $task['conditions'] = is_array($_tmp) ? $_tmp : array('url' => 'run');
+            $task['conditions'] = is_array($_tmp) ? $_tmp : ['url' => 'run'];
             $_tmp = unserialize($task['reward']);
-            $task['reward'] = is_array($_tmp) ? $_tmp : array('descript' => '');
+            $task['reward'] = is_array($_tmp) ? $_tmp : ['descript' => ''];
             /*任务完成进度：step中保存percent元素*/
             $step = unserialize($myTask[$id]['step']);
             $task['percent'] = is_array($step) && isset($step['percent']) ? $step['percent'] : '';
@@ -354,9 +354,9 @@ class PwTaskService
                 $task['parent'] = $pre_task['title'];
             }*/
             $_tmp = unserialize($task['conditions']);
-            $task['conditions'] = is_array($_tmp) ? $_tmp : array('url' => 'run');
+            $task['conditions'] = is_array($_tmp) ? $_tmp : ['url' => 'run'];
             $_tmp = unserialize($task['reward']);
-            $task['reward'] = is_array($_tmp) ? $_tmp : array('descript' => '');
+            $task['reward'] = is_array($_tmp) ? $_tmp : ['descript' => ''];
         }
 
         return $taskList;

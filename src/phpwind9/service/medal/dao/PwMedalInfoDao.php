@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
  class PwMedalInfoDao extends PwBaseDao
  {
      protected $_table = 'medal_info';
-     protected $_dataStruct = array('medal_id', 'name', 'path', 'image', 'icon', 'descrip', 'receive_type', 'medal_type', 'medal_gids', 'award_type', 'award_condition', 'expired_days', 'isopen', 'vieworder');
+     protected $_dataStruct = ['medal_id', 'name', 'path', 'image', 'icon', 'descrip', 'receive_type', 'medal_type', 'medal_gids', 'award_type', 'award_condition', 'expired_days', 'isopen', 'vieworder'];
 
      public function getInfo($medalId)
      {
          $sql = $this->_bindTable('SELECT * FROM %s WHERE medal_id = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getOne(array($medalId));
+         return $smt->getOne([$medalId]);
      }
 
      public function fetchInfo($medalIds)
@@ -28,16 +28,16 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s WHERE medal_id IN  %s', $this->getTable(), $this->sqlImplode($medalIds));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'medal_id');
+         return $smt->queryAll([], 'medal_id');
      }
 
      public function countInfo($type)
      {
          $where = '';
-         $_array = array();
+         $_array = [];
          if ($type > 0) {
              $where = ' WHERE medal_type = ? ';
-             $_array = array($type);
+             $_array = [$type];
          }
          $sql = $this->_bindSql('SELECT COUNT(*) AS count FROM %s %s ', $this->getTable(), $where);
          $smt = $this->getConnection()->createStatement($sql);
@@ -48,7 +48,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function getInfoList($receiveType, $awardType, $offset, $limit, $isopen = null)
      {
          $where = ' WHERE 1 ';
-         $_array = array();
+         $_array = [];
          $order = ' ORDER BY receive_type ASC , vieworder ASC ';
          if ($receiveType > 0) {
              $where .= ' AND receive_type = ? ';
@@ -76,13 +76,13 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s WHERE receive_type = ? AND award_type = ? AND isopen = 1  ORDER BY vieworder ASC ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array($awardType, $receiveType), 'medal_id');
+         return $smt->queryAll([$awardType, $receiveType], 'medal_id');
      }
 
      public function getInfoListByAwardtype($awardType, $isopen = null)
      {
          $where = ' WHERE award_type = ? ';
-         $array = array($awardType);
+         $array = [$awardType];
          if (isset($isopen)) {
              $where .= ' AND isopen = ?';
              $array[] = $isopen;
@@ -96,7 +96,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function getInfoListByReceiveType($receiveType, $isopen = null)
      {
          $where = ' WHERE receive_type = ? ';
-         $array = array($receiveType);
+         $array = [$receiveType];
          if (isset($isopen)) {
              $where .= ' AND isopen = ?';
              $array[] = $isopen;
@@ -112,7 +112,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s WHERE isopen = 1 ORDER BY vieworder ASC');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'medal_id');
+         return $smt->queryAll([], 'medal_id');
      }
 
      public function getAllMedal()
@@ -120,7 +120,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'medal_id');
+         return $smt->queryAll([], 'medal_id');
      }
 
      public function addInfo($data)
@@ -142,7 +142,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('UPDATE %s SET %s WHERE medal_id = ? ', $this->getTable(), $this->sqlSingle($data));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($medalId));
+         return $smt->update([$medalId]);
      }
 
      public function deleteInfo($medalId)
@@ -150,6 +150,6 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE FROM %s  WHERE medal_id = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($medalId));
+         return $smt->update([$medalId]);
      }
  }

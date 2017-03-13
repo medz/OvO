@@ -14,7 +14,7 @@ Wind::import('ADMIN:library.AdminBaseController');
 class ManageController extends AdminBaseController
 {
     private $file = 'EXT:demo.conf';
-    private $default = array();
+    private $default = [];
 
     public function beforeAction($handlerAdapter)
     {

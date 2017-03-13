@@ -20,7 +20,7 @@ class IndexController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('task/index/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('task/index/run')]);
         }
         if (0 == Wekit::C('site', 'task.isOpen')) {
             $this->showError('TASK:app.no.open');
@@ -37,7 +37,7 @@ class IndexController extends PwBaseController
         /* @var $taskDs PwTaskUser */
         $taskDs = Wekit::load('task.PwTaskUser');
         $count = $taskDs->countMyTasksByStatus($this->loginUser->uid, 3);
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $this->perpage);
             $page = $page < 1 ? 1 : ($page > $totalPage ? intval($totalPage) : $page);
@@ -88,7 +88,7 @@ class IndexController extends PwBaseController
         /* @var $taskDs PwTaskUser */
         $taskDs = Wekit::load('task.PwTaskUser');
         $count = $taskDs->countMyTasksByStatus($this->loginUser->uid, 4);
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $this->perpage);
             $page = $page < 1 ? 1 : ($page > $totalPage ? intval($totalPage) : $page);
@@ -191,11 +191,11 @@ class IndexController extends PwBaseController
      */
     private function _getTaskMode()
     {
-        $mode = array(1 => array('class' => 'task_mode_end', 'button' => '去做任务'), //已经领取
-            2           => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经关闭
-            3           => array('class' => 'task_mode_expired', 'button' => '已过期'), //已经过期
-            4           => array('class' => 'task_mode_end', 'button' => '继续完成'), //正在进行中
-            5           => array('class' => 'task_mode_arrow', 'button' => '领取奖励'), ); //已完成
+        $mode = [1      => ['class' => 'task_mode_end', 'button' => '去做任务'], //已经领取
+            2           => ['class' => 'task_mode_expired', 'button' => '已过期'], //已经关闭
+            3           => ['class' => 'task_mode_expired', 'button' => '已过期'], //已经过期
+            4           => ['class' => 'task_mode_end', 'button' => '继续完成'], //正在进行中
+            5           => ['class' => 'task_mode_arrow', 'button' => '领取奖励'], ]; //已完成
         return $mode;
     }
 }

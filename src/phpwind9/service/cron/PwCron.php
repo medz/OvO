@@ -18,7 +18,7 @@ class PwCron
     {
         $cronId = (int) $cronId;
         if ($cronId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getCron($cronId);
@@ -32,7 +32,7 @@ class PwCron
     public function getCronByFile($cronFile)
     {
         if (!$cronFile) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getCronByFile($cronFile);
@@ -41,7 +41,7 @@ class PwCron
     public function fetchCron($cronIds)
     {
         if (!is_array($cronIds) && count($cronIds) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchCron($cronIds, 'cron_id');

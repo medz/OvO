@@ -62,7 +62,7 @@ class WindidMessage
     public function fetchMessage($ids)
     {
         if (!is_array($ids) || !$ids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchMessage($ids);
@@ -250,7 +250,7 @@ class WindidMessage
         $toUid = intval($toUid);
         $fromUid = intval($fromUid);
         if ($toUid < 1 || $fromUid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDialogDao()->getDialogByUid($toUid, $fromUid);
@@ -266,7 +266,7 @@ class WindidMessage
     {
         $uid = intval($uid);
         if (!$uid || !$from_uids) {
-            return array();
+            return [];
         }
         $dialogs = $this->_getDialogDao()->getDialogByUids($uid, $from_uids);
         foreach ($dialogs as $k => $v) {
@@ -289,7 +289,7 @@ class WindidMessage
     {
         $uid = intval($uid);
         if (!$uid) {
-            return array();
+            return [];
         }
 
         return $this->_getDialogDao()->getUnreadDialogsByUid($uid, $limit);
@@ -321,7 +321,7 @@ class WindidMessage
     {
         $dialogId = intval($dialogId);
         if ($dialogId < 1) {
-            return array();
+            return [];
         }
         $dialog = $this->_getDialogDao()->getDialog($dialogId);
         $dialog['last_message'] && $dialog['last_message'] = @unserialize($dialog['last_message']);
@@ -342,7 +342,7 @@ class WindidMessage
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
         $dialogs = $this->_getDialogDao()->getDialogs($uid, $start, $limit);
         foreach ($dialogs as $k => $v) {
@@ -355,7 +355,7 @@ class WindidMessage
 
     public function getDialogIds($uid)
     {
-        $data = array();
+        $data = [];
         $rs = $this->_getDialogDao()->getDialogIds($uid);
         if (!$rs) {
             return $data;
@@ -377,7 +377,7 @@ class WindidMessage
     public function fetchDialog($dialogIds)
     {
         if (!is_array($dialogIds) || !$dialogIds) {
-            return array();
+            return [];
         }
         $dialogs = $this->_getDialogDao()->fetchDialogByDialogIds($dialogIds);
         foreach ($dialogs as $k => $v) {
@@ -407,7 +407,7 @@ class WindidMessage
     public function getDialogMessages($dialogId, $limit = 10, $start = 0)
     {
         $dialogId = intval($dialogId);
-        $mesages = array();
+        $mesages = [];
         if ($dialogId < 1) {
             $mesages;
         }
@@ -451,7 +451,7 @@ class WindidMessage
     public function getRelationsByMessageIds($messageIds)
     {
         if (!is_array($messageIds) || !$messageIds) {
-            return array();
+            return [];
         }
 
         return $this->_getRelationDao()->getRelationsByMessageIds($messageIds);
@@ -466,7 +466,7 @@ class WindidMessage
     public function fetchRelationByMessageIds($messageIds, $issend = 0)
     {
         if (!is_array($messageIds) || !$messageIds) {
-            return array();
+            return [];
         }
         $issend = intval($issend);
 
@@ -484,7 +484,7 @@ class WindidMessage
     public function countUnreadByUidAndFrom($uid, $fromUids)
     {
         $uid = intval($uid);
-        $fromUids = !is_array($fromUids) ? array(intval($fromUids)) : $fromUids;
+        $fromUids = !is_array($fromUids) ? [intval($fromUids)] : $fromUids;
         if ($uid < 1 || !count($fromUids)) {
             return false;
         }

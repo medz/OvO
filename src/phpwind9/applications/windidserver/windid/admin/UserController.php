@@ -20,7 +20,7 @@ class UserController extends WindidBaseController
     public function run()
     {
         /* @var $groupDs PwUserGroups */
-        list($sName, $sUid, $sEmail, $page) = $this->getInput(array('username', 'uid', 'email',  'page'));
+        list($sName, $sUid, $sEmail, $page) = $this->getInput(['username', 'uid', 'email',  'page']);
         Wind::import('WSRV:user.vo.WindidUserSo');
         $vo = new WindidUserSo();
         $sName && $vo->setUsername($sName);
@@ -32,7 +32,7 @@ class UserController extends WindidBaseController
         $searchDs = Wekit::load('WSRV:user.WindidUser');
         $count = $searchDs->countSearchUser($vo);
 
-        $result = array();
+        $result = [];
         if (0 < $count) {
             $totalPage = ceil($count / $this->pageNumber);
             $page > $totalPage && $page = $totalPage;
@@ -68,7 +68,7 @@ class UserController extends WindidBaseController
 
             Wekit::load('WSRV:user.srv.WindidUserService')->defaultAvatar($result);
             $srv = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-            $srv->send('addUser', array('uid' => $result));
+            $srv->send('addUser', ['uid' => $result]);
 
             $this->showMessage('WINDID:success');
         }
@@ -111,7 +111,7 @@ class UserController extends WindidBaseController
 
         //用户信息
         $dm->setUsername($this->getInput('username', 'post'));
-        list($password, $repassword) = $this->getInput(array('password', 'repassword'), 'post');
+        list($password, $repassword) = $this->getInput(['password', 'repassword'], 'post');
         if ($password) {
             if ($password != $repassword) {
                 $this->showError('USER:user.error.-20');
@@ -120,7 +120,7 @@ class UserController extends WindidBaseController
         }
         $dm->setEmail($this->getInput('email', 'post'));
 
-        list($question, $answer) = $this->getInput(array('question', 'answer'), 'post');
+        list($question, $answer) = $this->getInput(['question', 'answer'], 'post');
         switch ($question) {
             case '-2':
                 $dm->setQuestion('', '');
@@ -145,10 +145,10 @@ class UserController extends WindidBaseController
         } else {
             $dm->setBday('')->setByear('')->setBmonth('');
         }
-        list($hometown, $location) = $this->getInput(array('hometown', 'location'), 'post');
+        list($hometown, $location) = $this->getInput(['hometown', 'location'], 'post');
         /* @var $srv WindidAreaService */
         $srv = Wekit::load('WSRV:area.srv.WindidAreaService');
-        $areas = $srv->fetchAreaInfo(array($hometown, $location));
+        $areas = $srv->fetchAreaInfo([$hometown, $location]);
         $dm->setLocation($location, isset($areas[$location]) ? $areas[$location] : '');
         $dm->setHometown($hometown, isset($areas[$hometown]) ? $areas[$hometown] : '');
         $dm->setHomepage($this->getInput('homepage', 'post'));
@@ -170,7 +170,7 @@ class UserController extends WindidBaseController
             $this->showError($result->getError());
         }
         $srv = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-        $srv->send('editUser', array('uid' => $uid, 'changepwd' => $dm->password ? 1 : 0));
+        $srv->send('editUser', ['uid' => $uid, 'changepwd' => $dm->password ? 1 : 0]);
 
         $this->showMessage('WINDID:success', 'windid/user/edit?uid='.$uid);
     }
@@ -204,7 +204,7 @@ class UserController extends WindidBaseController
         $ds->deleteUser($uid);
 
         $srv = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-        $srv->send('deleteUser', array('uid' => $uid));
+        $srv->send('deleteUser', ['uid' => $uid]);
 
         $this->showMessage('WINDID:success');
     }
@@ -225,10 +225,10 @@ class UserController extends WindidBaseController
         if (!$info) {
             $this->showError('WINDID:fail');
         }
-        $userCreditDb = array();
+        $userCreditDb = [];
         foreach ($config['credits'] as  $k => $value) {
             if (isset($info['credit'.$k])) {
-                $userCreditDb[$k] = array('name' => $value['name'], 'num' => $info['credit'.$k]);
+                $userCreditDb[$k] = ['name' => $value['name'], 'num' => $info['credit'.$k]];
             }
         }
         $this->setOutput($uid, 'uid');
@@ -257,7 +257,7 @@ class UserController extends WindidBaseController
             $this->showError($result->getCode());
         }
         $srv = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-        $srv->send('editCredit', array('uid' => $uid));
+        $srv->send('editCredit', ['uid' => $uid]);
 
         $this->showMessage('WINDID:success', 'windid/user/editCredit?uid='.$uid);
     }
@@ -282,7 +282,7 @@ class UserController extends WindidBaseController
      */
     private function _buildArea($areaid)
     {
-        $default = array(array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''));
+        $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
         if (!$areaid) {
             return $default;
         }

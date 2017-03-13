@@ -20,12 +20,12 @@ class PwApplicationLog
         if (!$appId || !$logType) {
             return new PwError('APPCENTER:validate.fail');
         }
-        $fields = array(
+        $fields = [
             'app_id'        => $appId,
             'log_type'      => $logType,
             'data'          => serialize($data),
             'created_time'  => Pw::getTime(),
-            'modified_time' => Pw::getTime(), );
+            'modified_time' => Pw::getTime(), ];
 
         return $this->_load()->add($fields);
     }

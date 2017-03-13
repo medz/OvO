@@ -43,7 +43,7 @@ class PwBill extends PwPayAbstract
     public function getUrl(PwPayVo $vo)
     {
         strlen($this->bill) == 11 && $this->bill .= '01';
-        $param = array(
+        $param = [
             'inputCharset'   => ($this->charset == 'gbk' ? 2 : 1),
             'pageUrl'        => $this->baseurl,
             'version'        => 'v2.0',
@@ -58,7 +58,7 @@ class PwBill extends PwPayAbstract
             'productNum'     => 1,
             'payType'        => '00',
             'redoFlag'       => 1,
-        );
+        ];
         $url = $this->bill_url;
         $arg = '';
         foreach ($param as $key => $value) {

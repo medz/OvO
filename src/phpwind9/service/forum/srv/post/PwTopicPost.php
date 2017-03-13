@@ -40,13 +40,13 @@ class PwTopicPost extends PwPostAction
     public function check()
     {
         if (!in_array($this->special, $this->forum->forumset['allowtype'])) {
-            return new PwError('BBS:post.forum.allow.ttype', array('{ttype}' => Wekit::load('forum.srv.PwThreadType')->getName($this->special)));
+            return new PwError('BBS:post.forum.allow.ttype', ['{ttype}' => Wekit::load('forum.srv.PwThreadType')->getName($this->special)]);
         }
         if (($result = $this->forum->allowPost($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.post.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.post.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (!$this->forum->foruminfo['allow_post'] && !$this->user->getPermission('allow_post')) {
-            return new PwError('permission.post.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.post.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (($result = $this->checkPostNum()) !== true) {
             return $result;
@@ -71,7 +71,7 @@ class PwTopicPost extends PwPostAction
      */
     public function getInfo()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -79,7 +79,7 @@ class PwTopicPost extends PwPostAction
      */
     public function getAttachs()
     {
-        return array();
+        return [];
     }
 
     /**

@@ -13,9 +13,9 @@ class PwDesignCompile
     public $pageid = 0;
     protected $router;
     protected $isDesign = false;
-    protected $moduleIds = array();
-    protected $structNames = array();
-    protected $segments = array();
+    protected $moduleIds = [];
+    protected $structNames = [];
+    protected $segments = [];
     protected $pageBo;
 
     private $_uri = '';
@@ -457,7 +457,7 @@ class PwDesignCompile
             $moduleName = $srv->bindDataKey($moduleid);
         }
         $content = preg_replace('/\<for:(\d+)>/isU', '<for:>', $content, 1);
-        $in = array(
+        $in = [
             '/\<if:{(\w+)}>/iU',
             '/\<if:!{(\w+)}>/iU',
             '/\{(\w+)\|(\d+)\|(\d+)}/U',
@@ -474,9 +474,9 @@ class PwDesignCompile
             '/\<if:__style>/iU',
             '/\<else:>/iU',
             '/\<elseif:(\d+)>/iU',
-        );
+        ];
         if ($isdata) {
-            $out = array(
+            $out = [
                 '<% if(\\1 != ""){ %>',
                 '<% if(\\1 == ""){ %>',
                 '<%=\\1%>',
@@ -494,9 +494,9 @@ class PwDesignCompile
                 '',
                 '<% }else{%>',
                 '<% }elseif(__k == \\1){%>',
-            );
+            ];
         } else {
-            $out = array(
+            $out = [
                 '<?php if(empty(\\$__v[\'\\1\'])){?>',
                 '<?php if(!empty(\\$__v[\'\\1\'])){?>',
                 '<?php echo WindSecurity::escapeHTML(\\$__v[\'\\1\']);?>',
@@ -521,7 +521,7 @@ class PwDesignCompile
                 '<?php if(\\$__v[\'__style\']){?>',
                 '<?php }else{?>',
                 '<?php }elseif(\\$__k == \\1){?>',
-            );
+            ];
         }
         //$content = str_replace('\\','\\\\',$content);
         //$content = str_replace('"','\"',$content);

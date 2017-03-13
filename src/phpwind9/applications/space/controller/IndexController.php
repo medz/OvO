@@ -32,9 +32,9 @@ class IndexController extends SpaceBaseController
         $lang = Wind::getComponent('i18n');
         $des = Pw::substrs($this->space->space['space_descrip'], 100, 0, false);
         if ($page == 1) {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.index.run.title', array($this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.index.run.title', [$this->space->space['space_name']]), '', $des);
         } else {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.index.run.page.title', array($page, $this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.index.run.page.title', [$page, $this->space->space['space_name']]), '', $des);
         }
         Wekit::setV('seo', $seoBo);
     }
@@ -106,10 +106,10 @@ class IndexController extends SpaceBaseController
 
     public function freshAction()
     {
-        list($id, $weiboid) = $this->getInput(array('id', 'weiboid'));
+        list($id, $weiboid) = $this->getInput(['id', 'weiboid']);
         $page = intval($this->getInput('page'));
         if ($weiboid) {
-            $dataSource = new PwFetchFreshByTypeAndSrcId(3, array($weiboid));
+            $dataSource = new PwFetchFreshByTypeAndSrcId(3, [$weiboid]);
         } else {
             $dataSource = new PwGetFreshById($id);
         }

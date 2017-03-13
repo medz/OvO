@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwForumBo
 {
     public $fid;
-    public $foruminfo = array();
-    public $forumset = array();
+    public $foruminfo = [];
+    public $forumset = [];
 
     public function __construct($fid, $fetchAll = false)
     {
@@ -23,7 +23,7 @@ class PwForumBo
         $this->foruminfo = $forumService->getForum($fid, $fetchAll ? PwForum::FETCH_ALL : (PwForum::FETCH_MAIN | PwForum::FETCH_EXTRA));
         $this->foruminfo['settings_basic'] && $this->forumset = unserialize($this->foruminfo['settings_basic']);
         if (!is_array($this->forumset['allowtype'])) {
-            $this->forumset['allowtype'] = array();
+            $this->forumset['allowtype'] = [];
         }
     }
 
@@ -198,18 +198,18 @@ class PwForumBo
      */
     public function getForumChain()
     {
-        $guide = array();
+        $guide = [];
         if ($this->foruminfo['type'] == 'category') {
-            $guide[] = array(strip_tags($this->foruminfo['name']), WindUrlHelper::createUrl('bbs/cate/run', array('fid' => $this->fid)));
+            $guide[] = [strip_tags($this->foruminfo['name']), WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $this->fid])];
 
             return $guide;
         }
-        $guide[] = array(strip_tags($this->foruminfo['name']), WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $this->fid)));
+        $guide[] = [strip_tags($this->foruminfo['name']), WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $this->fid])];
         $info = $this->getParentForums();
         $count = count($info);
         $i = 0;
         foreach ($info as $fid => $value) {
-            array_unshift($guide, array($value, WindUrlHelper::createUrl('bbs/'.(++$i < $count ? 'thread' : 'cate').'/run', array('fid' => $fid))));
+            array_unshift($guide, [$value, WindUrlHelper::createUrl('bbs/'.(++$i < $count ? 'thread' : 'cate').'/run', ['fid' => $fid])]);
         }
 
         return $guide;
@@ -267,9 +267,9 @@ class PwForumBo
             $ids = array_keys($result);
             $datas = $this->_getForumService()->fetchForum($ids, PwForum::FETCH_STATISTICS);
             foreach ($result as $key => $value) {
-                $result[$key] = array_merge($value, isset($datas[$key]) ? $datas[$key] : array());
+                $result[$key] = array_merge($value, isset($datas[$key]) ? $datas[$key] : []);
                 $_manager = array_unique(explode(',', $value['manager']));
-                $result[$key]['manager'] = array();
+                $result[$key]['manager'] = [];
                 foreach ($_manager as $_v) {
                     if ($_v) {
                         $result[$key]['manager'][] = $_v;
@@ -289,7 +289,7 @@ class PwForumBo
     public function getManager()
     {
         if (!$this->foruminfo['manager']) {
-            return array();
+            return [];
         }
 
         return explode(',', trim($this->foruminfo['manager'], ','));
@@ -302,7 +302,7 @@ class PwForumBo
      */
     public function getParentFids()
     {
-        return $this->foruminfo['fup'] ? explode(',', $this->foruminfo['fup']) : array();
+        return $this->foruminfo['fup'] ? explode(',', $this->foruminfo['fup']) : [];
     }
 
     /**
@@ -313,10 +313,10 @@ class PwForumBo
     public function getParentForums()
     {
         if (!$fids = $this->getParentFids()) {
-            return array();
+            return [];
         }
         $forums = explode("\t", $this->foruminfo['fupname']);
-        $result = array();
+        $result = [];
         foreach ($fids as $key => $fid) {
             $result[$fid] = $forums[$key];
         }
@@ -349,10 +349,10 @@ class PwForumBo
     public function getThreadType(PwUserBo $user)
     {
         if (!is_array($this->forumset['typeorder'])) {
-            return array();
+            return [];
         }
         asort($this->forumset['typeorder']);
-        $array = array();
+        $array = [];
         $tType = Wekit::load('forum.srv.PwThreadType')->getTtype();
         foreach ($this->forumset['typeorder'] as $key => $value) {
             if (isset($tType[$key]) && in_array($key, $this->forumset['allowtype']) && ($tType[$key][2] === true || $user->getPermission($tType[$key][2]))) {
@@ -368,9 +368,9 @@ class PwForumBo
      */
     public function getCreditSet($operate = '')
     {
-        $creditset = $this->foruminfo['settings_credit'] ? unserialize($this->foruminfo['settings_credit']) : array();
+        $creditset = $this->foruminfo['settings_credit'] ? unserialize($this->foruminfo['settings_credit']) : [];
         if ($operate) {
-            return isset($creditset[$operate]) ? $creditset[$operate] : array();
+            return isset($creditset[$operate]) ? $creditset[$operate] : [];
         }
 
         return $creditset;
@@ -387,9 +387,9 @@ class PwForumBo
      */
     public function addThread($tid, $username, $subject)
     {
-        return Wekit::load('forum.srv.PwForumService')->updateStatistics($this, 1, 0, 1, array(
+        return Wekit::load('forum.srv.PwForumService')->updateStatistics($this, 1, 0, 1, [
             'tid' => $tid, 'username' => $username, 'subject' => $subject,
-        ));
+        ]);
     }
 
     /**
@@ -402,9 +402,9 @@ class PwForumBo
      */
     public function addPost($tid, $username, $subject)
     {
-        return Wekit::load('forum.srv.PwForumService')->updateStatistics($this, 0, 1, 1, array(
+        return Wekit::load('forum.srv.PwForumService')->updateStatistics($this, 0, 1, 1, [
             'tid' => $tid, 'username' => $username, 'subject' => $subject,
-        ));
+        ]);
     }
 
     /**

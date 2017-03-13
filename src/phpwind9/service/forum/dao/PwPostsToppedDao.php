@@ -12,14 +12,14 @@ class PwPostsToppedDao extends PwBaseDao
 {
     protected $_pk = 'pid';
     protected $_table = 'bbs_posts_topped';
-    protected $_dataStruct = array('pid', 'tid', 'floor', 'created_userid', 'created_time');
+    protected $_dataStruct = ['pid', 'tid', 'floor', 'created_userid', 'created_time'];
 
     public function getByTid($tid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid=? ORDER BY `created_time` DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid), 'pid');
+        return $smt->queryAll([$tid], 'pid');
     }
 
     public function add($fields)

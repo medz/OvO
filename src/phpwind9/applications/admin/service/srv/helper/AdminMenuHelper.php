@@ -40,7 +40,7 @@ class AdminMenuHelper
      */
     public static function resetMenuStruts($menus)
     {
-        $_menus = array();
+        $_menus = [];
         foreach ($menus as $key => $value) {
             if ($key == '__auths') {
                 continue;
@@ -71,9 +71,9 @@ class AdminMenuHelper
      *
      * @return array
      */
-    public static function verifyMenuConfig($menus, $allMenus, &$_menus = array(), $pNode = 'root')
+    public static function verifyMenuConfig($menus, $allMenus, &$_menus = [], $pNode = 'root')
     {
-        isset($_menus['__auths']) || $_menus['__auths'] = array();
+        isset($_menus['__auths']) || $_menus['__auths'] = [];
         foreach ($menus as $key => $menu) {
             if (is_string($menu) && isset($allMenus[$menu])) {
                 $key = $menu;
@@ -87,18 +87,18 @@ class AdminMenuHelper
             }
             if (is_array($menu[1])) {
                 self::verifyMenuConfig($menu[1], $allMenus, $_menus, $key);
-                $menu[1] = array();
+                $menu[1] = [];
             }
             if ($pNode && empty($menu[4])) {
                 $menu[4] = $pNode;
             }
-            $_tmp = array(
+            $_tmp = [
                 'id'     => $key,
                 'name'   => $menu[0],
                 'icon'   => isset($menu[2]) ? $menu[2] : '',
                 'tip'    => isset($menu[3]) ? $menu[3] : '',
                 'parent' => $menu[4],
-                'top'    => isset($menu[5]) ? $menu[5] : '', );
+                'top'    => isset($menu[5]) ? $menu[5] : '', ];
             if (is_array($menu[1])) {
                 $_tmp['items'] = $menu[1];
             } else {
@@ -128,7 +128,7 @@ class AdminMenuHelper
      */
     public static function resolveMenuStruct($menus)
     {
-        isset($menus['root']) || $menus['root']['items'] = array();
+        isset($menus['root']) || $menus['root']['items'] = [];
         foreach ($menus as $key => $_node) {
             if ($key === 'root') {
                 continue;
@@ -158,7 +158,7 @@ class AdminMenuHelper
      */
     private static function _parseMenuTops($menus)
     {
-        $tmp = array();
+        $tmp = [];
         foreach ((array) $menus as $key => $value) {
             if (array_key_exists($key, $tmp)) {
                 continue;
@@ -173,7 +173,7 @@ class AdminMenuHelper
                 $tmp[$top] = $menus[$top];
                 $tmp[$key] = $value;
             } else {
-                $_tmp = array();
+                $_tmp = [];
                 foreach ($tmp as $_k => $_v) {
                     if ($_k === $top) {
                         $_tmp[$key] = $value;
@@ -216,7 +216,7 @@ class AdminMenuHelper
             $_mAuth = explode(',', $_mAuth);
             $_url = $_mAuth[0];
         } else {
-            $_mAuth = array('default');
+            $_mAuth = ['default'];
             $_url = '';
         }
 
@@ -229,22 +229,22 @@ class AdminMenuHelper
                 $_a = $a;
                 break;
             }
-            $_aAuth = array();
+            $_aAuth = [];
         }
         $_a || $_a = isset($_aAuth[0]) ? $_aAuth[0] : 'run';
         $menu['url'] = WindUrlHelper::createUrl($_url.'/'.$_cAuth[0].'/'.$_a.($_arg ? '/?'.$_arg : ''));
 
         isset($_mAuth[0]) || $_mAuth[0] = 'default';
         foreach ($_mAuth as $_m) {
-            isset($menus[$_m]) || $menus[$_m] = array();
+            isset($menus[$_m]) || $menus[$_m] = [];
             foreach ($_cAuth as $_cv) {
-                isset($menus[$_m][$_cv]) || $menus[$_m][$_cv] = array();
+                isset($menus[$_m][$_cv]) || $menus[$_m][$_cv] = [];
                 if (empty($_aAuth)) {
-                    isset($menus[$_m][$_cv]['_all']) || $menus[$_m][$_cv]['_all'] = array();
+                    isset($menus[$_m][$_cv]['_all']) || $menus[$_m][$_cv]['_all'] = [];
                     $menus[$_m][$_cv]['_all'][] = $key;
                 } else {
                     foreach ($_aAuth as $_av) {
-                        isset($menus[$_m][$_cv][$_av]) || $menus[$_m][$_cv][$_av] = array();
+                        isset($menus[$_m][$_cv][$_av]) || $menus[$_m][$_cv][$_av] = [];
                         $menus[$_m][$_cv][$_av][] = $key;
                     }
                 }

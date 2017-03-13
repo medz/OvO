@@ -29,7 +29,7 @@ class PwTagUpload extends PwUploadAction
     {
         $width && $this->width = $width;
         $height && $this->height = $height;
-        $this->ftype = array('jpg' => 2000, 'png' => '2000', 'gif' => 2000, 'bmp' => 2000, 'jpeg' => 2000);
+        $this->ftype = ['jpg' => 2000, 'png' => '2000', 'gif' => 2000, 'bmp' => 2000, 'jpeg' => 2000];
     }
 
     /**
@@ -80,9 +80,9 @@ class PwTagUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->filename, $this->dir, $this->width, $this->height, 1),
-        );
+        return [
+            [$this->filename, $this->dir, $this->width, $this->height, 1],
+        ];
     }
 
     /**

@@ -80,7 +80,7 @@ class WindidConfigApi
     public function setCredits($credits)
     {
         $this->_getConfigService()->setLocalCredits($credits);
-        $this->_getNotifyService()->send('setCredits', array(), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('setCredits', [], WINDID_CLIENT_ID);
 
         return WindidUtility::result(true);
     }

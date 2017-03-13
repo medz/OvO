@@ -34,7 +34,7 @@ class PwVerifyService
     public function getVerifyType()
     {
         $conf = Wind::getRealPath('SRV:verify.codetype.verify.php', true);
-        $tmp = array('name' => '', 'alias' => '', 'description' => '', 'components' => array());
+        $tmp = ['name' => '', 'alias' => '', 'description' => '', 'components' => []];
         $verify = @include $conf;
         $verify = $this->sHook->runWithFilters($verify);
         foreach ($verify as $key => $value) {

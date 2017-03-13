@@ -11,7 +11,7 @@
 class PwApplicationLogDao extends PwBaseDao
 {
     protected $_table = 'application_log';
-    protected $_dataStruct = array('app_id', 'log_type', 'created_time', 'modified_time', 'data');
+    protected $_dataStruct = ['app_id', 'log_type', 'created_time', 'modified_time', 'data'];
 
     /**
      * 添加应用安装日志.
@@ -40,7 +40,7 @@ class PwApplicationLogDao extends PwBaseDao
     public function batchAdd($fields)
     {
         foreach ($fields as $key => $value) {
-            $_tmp = array();
+            $_tmp = [];
             $_tmp['app_id'] = $value['app_id'];
             $_tmp['log_type'] = $value['log_type'];
             $_tmp['created_time'] = intval($value['created_time']);
@@ -65,7 +65,7 @@ class PwApplicationLogDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE app_id=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($appid));
+        return $this->getConnection()->createStatement($sql)->execute([$appid]);
     }
 
     /**
@@ -93,6 +93,6 @@ class PwApplicationLogDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE app_id=?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($appid));
+        return $this->getConnection()->createStatement($sql)->queryAll([$appid]);
     }
 }

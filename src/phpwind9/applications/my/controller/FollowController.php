@@ -18,7 +18,7 @@ class FollowController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/follow/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/follow/run')]);
         }
         $this->setOutput('follow', 'li');
     }
@@ -33,7 +33,7 @@ class FollowController extends PwBaseController
         $page < 1 && $page = 1;
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
-        $url = $classCurrent = array();
+        $url = $classCurrent = [];
 
         $typeCounts = $this->_getTypeDs()->countUserType($this->loginUser->uid);
         if ($type) {
@@ -55,7 +55,7 @@ class FollowController extends PwBaseController
         $typeArr = $service->getAllType($this->loginUser->uid);
         $userType = $service->getUserType($this->loginUser->uid, $uids);
         foreach ($userType as $key => $value) {
-            $tmp = array();
+            $tmp = [];
             foreach ($value as $k => $v) {
                 $tmp[$v] = $typeArr[$v];
             }
@@ -168,7 +168,7 @@ class FollowController extends PwBaseController
         if ($uid) {
             $this->_getTypeDs()->addUserType($this->loginUser->uid, $uid, $result);
         }
-        $this->setOutput(array('id' => $result, 'name' => $name), 'data');
+        $this->setOutput(['id' => $result, 'name' => $name], 'data');
         $this->showMessage('success');
     }
 
@@ -177,7 +177,7 @@ class FollowController extends PwBaseController
      */
     public function savetypeAction()
     {
-        list($uid, $id, $type) = $this->getInput(array('uid', 'id', 'type'), 'post');
+        list($uid, $id, $type) = $this->getInput(['uid', 'id', 'type'], 'post');
         if (!$uid) {
             $this->showError('operate.select');
         }
@@ -194,7 +194,7 @@ class FollowController extends PwBaseController
      */
     public function editTypeAction()
     {
-        list($id, $name) = $this->getInput(array('id', 'name'), 'post');
+        list($id, $name) = $this->getInput(['id', 'name'], 'post');
         if (!$id) {
             $this->showError('operate.select');
         }
@@ -216,7 +216,7 @@ class FollowController extends PwBaseController
         if ($result instanceof PwError) {
             $this->showError($result->getError());
         }
-        $this->setOutput(array('id' => $id, 'name' => $name), 'data');
+        $this->setOutput(['id' => $id, 'name' => $name], 'data');
         $this->showMessage('success');
     }
 
@@ -241,8 +241,8 @@ class FollowController extends PwBaseController
     {
         $uid = (int) $this->getInput('uid');
         $result = $this->_getRecommendFriendsDs()->getSameUser($this->loginUser->uid, $uid);
-        $sameUser = $result['recommend_user'] ? unserialize($result['recommend_user']) : array();
-        $sameUser['sameUser'] = $sameUser['sameUser'] ? array_slice($sameUser['sameUser'], 0, 3) : array();
+        $sameUser = $result['recommend_user'] ? unserialize($result['recommend_user']) : [];
+        $sameUser['sameUser'] = $sameUser['sameUser'] ? array_slice($sameUser['sameUser'], 0, 3) : [];
         $this->setOutput($sameUser, 'sameUser');
         $this->setTemplate('TPL:my.recommend_same_user');
     }
@@ -261,7 +261,7 @@ class FollowController extends PwBaseController
             return implode(',', $group);
         }
         $i = 0;
-        $t = array();
+        $t = [];
         foreach ($group as $value) {
             $value = trim($value);
             $len = Pw::strlen($value);
@@ -281,9 +281,9 @@ class FollowController extends PwBaseController
     {
         foreach ($userType as $k => $v) {
             $_tmp['id'] = $k;
-            $items = array();
+            $items = [];
             foreach ($v as $tk => $tv) {
-                $items[] = array('id' => $tk, 'value' => $tv);
+                $items[] = ['id' => $tk, 'value' => $tv];
             }
             $_tmp['items'] = $items;
             $array[] = $_tmp;

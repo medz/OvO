@@ -25,7 +25,7 @@ class PwMedalLog
     {
         $logId = (int) $logId;
         if ($logId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfo($logId);
@@ -42,7 +42,7 @@ class PwMedalLog
         $uid = (int) $uid;
         $medalId = (int) $medalId;
         if ($uid < 1 || $medalId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfoByUidMedalId($uid, $medalId);
@@ -51,7 +51,7 @@ class PwMedalLog
     public function fetchMedalLog($logids)
     {
         if (!is_array($logids) && count($logids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchMedalLog($logids);
@@ -61,7 +61,7 @@ class PwMedalLog
     {
         $uid = (int) $uid;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfoListByUid($uid);
@@ -72,7 +72,7 @@ class PwMedalLog
         $uid = (int) $uid;
         $status = (int) $status;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfoListByUidStatus($uid, $status);
@@ -107,11 +107,11 @@ class PwMedalLog
      * @param int   $start
      * @param int   $perpage
      */
-    public function getMedalLogList($uid = 0, $status = self::STATUS_NO, $medalIds = array(), $start = 0, $perpage = 10)
+    public function getMedalLogList($uid = 0, $status = self::STATUS_NO, $medalIds = [], $start = 0, $perpage = 10)
     {
         $uid = (int) $uid;
         $status = (int) $status;
-        !is_array($medalIds) && $medalIds = array();
+        !is_array($medalIds) && $medalIds = [];
         $start = (int) $start;
         $perpage = (int) $perpage;
 
@@ -125,11 +125,11 @@ class PwMedalLog
      * @param int $process
      * @param int $medalId
      */
-    public function countMedalLogList($uid = 0, $status = self::STATUS_NO, $medalIds = array())
+    public function countMedalLogList($uid = 0, $status = self::STATUS_NO, $medalIds = [])
     {
         $uid = (int) $uid;
         $status = (int) $status;
-        !is_array($medalIds) && $medalIds = array();
+        !is_array($medalIds) && $medalIds = [];
 
         return $this->_getDao()->countMedalLogList($uid, $status, $medalIds);
     }
@@ -217,7 +217,7 @@ class PwMedalLog
         return $this->_getDao()->deleteInfos($expiredTime, $awardStatus);
     }
 
-    public function deleteInfosByUidMedalIds($uid, $medalIds = array())
+    public function deleteInfosByUidMedalIds($uid, $medalIds = [])
     {
         if ($uid < 1 || count($medalIds) < 1) {
             return false;
@@ -230,7 +230,7 @@ class PwMedalLog
     {
         $medalId = (int) $medalId;
         if ($medalId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->deleteInfoByMedalId($medalId);

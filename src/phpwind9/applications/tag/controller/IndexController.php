@@ -23,14 +23,14 @@ class IndexController extends PwBaseController
         $alias = $this->getInput('alias', 'get');
         $tagServicer = $this->_getTagService();
         $hotTags = $tagServicer->getHotTags($categoryId, 20);
-        $tagIds = array();
+        $tagIds = [];
         foreach ($hotTags as $k => $v) {
             $attentions = $this->_getTagAttentionDs()->getAttentionUids($k, 0, 5);
             $hotTags[$k]['weight'] = 0.7 * $v['content_count'] + 0.3 * $v['attention_count'];
             $hotTags[$k]['attentions'] = array_keys($attentions);
             $tagIds[] = $k;
         }
-        usort($hotTags, array($this, 'cmp'));
+        usort($hotTags, [$this, 'cmp']);
 
         $myTags = $this->_getTagAttentionDs()->getAttentionByUidAndTagsIds($this->loginUser->uid, $tagIds);
 
@@ -51,7 +51,7 @@ class IndexController extends PwBaseController
     public function myAction()
     {
         if ($this->loginUser->uid < 1) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', array('backurl' => WindUrlHelper::createUrl('tag/index/my'))));
+            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['backurl' => WindUrlHelper::createUrl('tag/index/my')]));
         }
         $typeName = $this->defaultType;
 /*		list($page) = $this->getInput(array('page'));
@@ -65,15 +65,15 @@ class IndexController extends PwBaseController
             $relationTagIds = array_keys($relations);
             $myTagList = array_slice($relationTagIds, 0, 10);
             $myTagsList = $this->_getTagDs()->fetchTag($relationTagIds);
-            $tmpArray = array();
+            $tmpArray = [];
             foreach ($myTagList as $v) {
                 $tmpArray[$v] = $myTagsList[$v];
             }
             $myTags['tags'] = $tmpArray;
             $myTags['step'] = $myTagsCount > $this->attentionTagList ? 2 : '';
             $ifcheck = !$this->_checkAllowManage() ? 1 : '';
-            $tagContents = $params = $relatedTags = array();
-            $tmpTagContent = $myTags['tags'] ? array_slice($myTags['tags'], 0, 5, true) : array();
+            $tagContents = $params = $relatedTags = [];
+            $tmpTagContent = $myTags['tags'] ? array_slice($myTags['tags'], 0, 5, true) : [];
             foreach ($tmpTagContent as $k => $v) {
                 $contents = $tagServicer->getContentsByTypeName($k, $typeName, $ifcheck, 0, $this->hotContents);
                 if ($contents) {
@@ -134,7 +134,7 @@ class IndexController extends PwBaseController
      */
     public function viewAction()
     {
-        list($id, $page, $perpage, $type, $tagName) = $this->getInput(array('id', 'page', 'perpage', 'type', 'name'));
+        list($id, $page, $perpage, $type, $tagName) = $this->getInput(['id', 'page', 'perpage', 'type', 'name']);
         $page = $page ? $page : 1;
         if (!$id && $tagName) {
             $tagName = rawurldecode($tagName);
@@ -184,10 +184,10 @@ class IndexController extends PwBaseController
                 $this->setOutput($contents, 'contents');
             }
         }
-        $args = array(
+        $args = [
             'id'   => $tag['tag_id'],
             'type' => $type,
-        );
+        ];
         $this->setOutput($this->_checkAllowManage(), 'allowManage');
         $this->setOutput($myTags, 'myTags');
         $this->setOutput($count, 'count');
@@ -201,13 +201,13 @@ class IndexController extends PwBaseController
         $seoBo = PwSeoBo::getInstance();
         if ($type == 'users') {
             $lang = Wind::getComponent('i18n');
-            $seoBo->setCustomSeo($lang->getMessage('SEO:tag.index.view.users.title', array($tag['tag_name'])), '', '');
+            $seoBo->setCustomSeo($lang->getMessage('SEO:tag.index.view.users.title', [$tag['tag_name']]), '', '');
         } else {
             if ($tag['seo_title'] || $tag['seo_keywords'] || $tag['seo_description']) {
                 $seoBo->setCustomSeo($tag['seo_title'], $tag['seo_keywords'], $tag['seo_description']);
             } else {
                 $lang = Wind::getComponent('i18n');
-                $seoBo->setCustomSeo($lang->getMessage('SEO:tag.index.view.title', array($tag['tag_name'])), '', '');
+                $seoBo->setCustomSeo($lang->getMessage('SEO:tag.index.view.title', [$tag['tag_name']]), '', '');
             }
         }
         Wekit::setV('seo', $seoBo);
@@ -226,7 +226,7 @@ class IndexController extends PwBaseController
         if ($this->_checkAllowManage() !== true) {
             $this->showError('TAG:right.tag_allow_manage.error');
         }
-        list($id, $typeId, $paramId, $ifcheck) = $this->getInput(array('id', 'type_id', 'param_id', 'ifcheck'));
+        list($id, $typeId, $paramId, $ifcheck) = $this->getInput(['id', 'type_id', 'param_id', 'ifcheck']);
         $increseCount = $ifcheck ? 1 : -1;
 
         $dm = new PwTagDm($id);
@@ -267,8 +267,8 @@ class IndexController extends PwBaseController
         if ($this->loginUser->uid < 1) {
             $this->showError('USER:user.not.login');
         }
-        list($tid, $tagnames) = $this->getInput(array('tid', 'tagnames'));
-        $tagnames = $tagnames ? $tagnames : array();
+        list($tid, $tagnames) = $this->getInput(['tid', 'tagnames']);
+        $tagnames = $tagnames ? $tagnames : [];
         // 是否有权限
         if ($this->_checkAllowEdit($tid) !== true) {
             $this->showError('TAG:right.tag_allow_edit.error');
@@ -291,7 +291,7 @@ class IndexController extends PwBaseController
             $this->showError('WORD:content.error');
         }
         $typeId = $this->_getTagService()->getTypeIdByTypeName($this->defaultType);
-        $dmArray = array();
+        $dmArray = [];
         foreach ((array) $tagnames as $value) {
             $value = trim($value);
             if (Pw::strlen($value) > 15) {
@@ -341,7 +341,7 @@ class IndexController extends PwBaseController
         if (!$tags) {
             return false;
         }
-        $tagname = array();
+        $tagname = [];
         foreach ($tags as $v) {
             $tagname[] = $v['tag_name'];
         }

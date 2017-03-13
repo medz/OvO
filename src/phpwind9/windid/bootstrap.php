@@ -17,13 +17,13 @@ if (!defined('WEKIT_VERSION')) {
         $database['tableprefix'] .= 'windid_';
         $windidConfig['connect'] = 'db';
     } else {
-        $database = array(
+        $database = [
             'dsn'         => 'mysql:host='.$windidConfig['db.host'].';dbname='.$windidConfig['db.name'].';port='.$windidConfig['db.port'],
             'user'        => $windidConfig['db.user'],
             'pwd'         => $windidConfig['db.pwd'],
             'charset'     => $windidConfig['db.charset'],
             'tableprefix' => $windidConfig['db.prefix'],
-        );
+        ];
     }
     $windidConfig['charset'] = Wekit::V('charset');
 }
@@ -32,7 +32,7 @@ Wind::register(WINDID_PATH.'service', 'WSRV');
 Wind::import('WSRV:base.WindidBaseDao');
 Wind::import('WSRV:base.WindidUtility');
 Wind::import('WSRV:base.WindidError');
-Wind::registeComponent(array('path' => 'WIND:db.WindConnection', 'config' => $database), 'windiddb', 'singleton');
+Wind::registeComponent(['path' => 'WIND:db.WindConnection', 'config' => $database], 'windiddb', 'singleton');
 
 define('WINDID_CONNECT', $windidConfig['connect']);
 define('WINDID_SERVER_URL', $windidConfig['serverUrl']);

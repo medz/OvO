@@ -29,7 +29,7 @@ class WindidUser
     public function getUserByUid($uid, $type = self::FETCH_MAIN)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByUid($uid);
@@ -47,7 +47,7 @@ class WindidUser
     public function getUserByName($username, $type = self::FETCH_MAIN)
     {
         if (empty($username)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByName($username);
@@ -65,7 +65,7 @@ class WindidUser
     public function getUserByEmail($email, $type = self::FETCH_MAIN)
     {
         if (empty($email)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByEmail($email);
@@ -83,7 +83,7 @@ class WindidUser
     public function fetchUserByUid($uids, $type = self::FETCH_MAIN)
     {
         if (!($uids = $this->_filterIds($uids))) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->fetchUserByUid($uids);
@@ -101,7 +101,7 @@ class WindidUser
     public function fetchUserByName($usernames, $type = self::FETCH_MAIN)
     {
         if (empty($usernames)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->fetchUserByName($usernames);
@@ -214,7 +214,7 @@ class WindidUser
     public function getCreditStruct()
     {
         $struct = $this->_getDao(self::FETCH_DATA)->getStruct();
-        $credit = array();
+        $credit = [];
         foreach ($struct as $_key) {
             if (strpos($_key, 'credit') === 0) {
                 $credit[] = $_key;
@@ -275,8 +275,8 @@ class WindidUser
      */
     private function _filterIds($id)
     {
-        !is_array($id) && $id = array($id);
-        $clearIds = array();
+        !is_array($id) && $id = [$id];
+        $clearIds = [];
         foreach ($id as $item) {
             if (WindValidator::isPositive($item)) {
                 $clearIds[] = $item;
@@ -298,11 +298,11 @@ class WindidUser
         if (!($type & self::FETCH_ALL)) {
             return Wekit::loadDao('WSRV:user.dao.WindidUserDefaultDao');
         }
-        $maps = array(
+        $maps = [
             self::FETCH_MAIN => 'WSRV:user.dao.WindidUserDao',
             self::FETCH_DATA => 'WSRV:user.dao.WindidUserDataDao',
             self::FETCH_INFO => 'WSRV:user.dao.WindidUserInfoDao',
-        );
+        ];
 
         return Wekit::loadDaoFromMap($type, $maps, 'WindidUser');
     }

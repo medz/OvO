@@ -10,8 +10,8 @@
  */
 class Pay99billController extends PwBaseController
 {
-    protected $_var = array();
-    protected $_conf = array();
+    protected $_var = [];
+    protected $_conf = [];
 
     public function beforeAction($handlerAdapter)
     {
@@ -27,7 +27,7 @@ class Pay99billController extends PwBaseController
         }
         strlen($this->_conf['99bill']) == 11 && $this->_conf['99bill'] .= '01';
 
-        $arr = array('payType', 'bankId', 'orderId', 'orderTime', 'orderAmount', 'dealId', 'bankDealId', 'dealTime', 'payAmount', 'fee', 'payResult', 'errCode');
+        $arr = ['payType', 'bankId', 'orderId', 'orderTime', 'orderAmount', 'dealId', 'bankDealId', 'dealTime', 'payAmount', 'fee', 'payResult', 'errCode'];
 
         $txt = 'merchantAcctId='.$this->_conf['99bill'].'&version=v2.0&language=1&signType=1';
         foreach ($arr as $value) {

@@ -27,7 +27,7 @@ class ManageController extends AdminBaseController
      */
     public function run()
     {
-        $conditions = array('page', 'keyword', 'ifhot', 'categoryId', 'minAttention', 'maxAttention', 'minContent', 'maxContent');
+        $conditions = ['page', 'keyword', 'ifhot', 'categoryId', 'minAttention', 'maxAttention', 'minContent', 'maxContent'];
         list($page, $keyword, $ifhot, $categoryId, $minAttention, $maxAttention, $minContent, $maxContent) = $this->getInput($conditions);
         $categories = $this->_getTagCateGoryDs()->getAllCategorys();
         $this->setOutput($categories, 'categories');
@@ -44,7 +44,7 @@ class ManageController extends AdminBaseController
             list($count, $tags) = $this->_getTagService()->getTagByCondition($start, $limit, $keyword, $ifhot, $categoryId, $minAttention, $maxAttention, $minContent, $maxContent);
         }
         $tags = $this->_buildTagData($tags, $categories);
-        $args = array();
+        $args = [];
         foreach ($conditions as $v) {
             if ($v == 'page') {
                 continue;
@@ -123,7 +123,7 @@ class ManageController extends AdminBaseController
         //取关联话题
         $relatedTag = $this->_getTagDs()->getTagByParent($tagId);
         if ($relatedTag) {
-            $relatedTagHtml = array();
+            $relatedTagHtml = [];
             foreach ($relatedTag as $v) {
                 $relatedTagHtml[] = $v['tag_name'];
             }
@@ -366,9 +366,9 @@ class ManageController extends AdminBaseController
      */
     public function setCategoryAction()
     {
-        list($data, $newdata) = $this->getInput(array('data', 'newdata'));
+        list($data, $newdata) = $this->getInput(['data', 'newdata']);
         $allCategorys = $this->_getTagCateGoryDs()->getAllCategorys();
-        $categorys = array();
+        $categorys = [];
         foreach ($allCategorys as $v) {
             $categorys[$v['category_id']] = $v['category_name'];
         }
@@ -449,7 +449,7 @@ class ManageController extends AdminBaseController
     private function _deleteHotTagCache()
     {
         $allCategorys = $this->_getTagCateGoryDs()->getAllCategorys();
-        $keys = array('hot_tags_0');
+        $keys = ['hot_tags_0'];
         foreach ($allCategorys as $v) {
             $keys[] = sprintf('hot_tags_%s', $v['category_id']);
         }
@@ -515,13 +515,13 @@ class ManageController extends AdminBaseController
     private function _buildTagData($tags, $categories)
     {
         if (!is_array($tags)) {
-            return array();
+            return [];
         }
         foreach ($tags as $k => $v) {
             if (!$v['categories']) {
                 continue;
             }
-            $tmpCategoryNames = array();
+            $tmpCategoryNames = [];
             foreach ($v['categories'] as $v2) {
                 $tmpCategoryNames[] = $categories[$v2]['category_name'];
             }

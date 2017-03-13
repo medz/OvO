@@ -13,7 +13,7 @@ class PwUserInfoDao extends PwBaseDao
 {
     protected $_table = 'user_info';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'gender', 'byear', 'bmonth', 'bday', 'location', 'location_text', 'hometown', 'hometown_text', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay', 'bbs_sign', 'profile', 'regreason', 'telphone', 'address', 'zipcode', 'secret');
+    protected $_dataStruct = ['uid', 'gender', 'byear', 'bmonth', 'bday', 'location', 'location_text', 'hometown', 'hometown_text', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay', 'bbs_sign', 'profile', 'regreason', 'telphone', 'address', 'zipcode', 'secret'];
     protected $_defaultBaseInstance = 'user.dao.PwUserDefaultDao';
 
     /**
@@ -40,7 +40,7 @@ class PwUserInfoDao extends PwBaseDao
     public function getUserByName($username)
     {
         if (!$info = $this->getBaseInstance()->getUserByName($username)) {
-            return array();
+            return [];
         }
 
         return array_merge($info, $this->_get($info['uid']));
@@ -56,7 +56,7 @@ class PwUserInfoDao extends PwBaseDao
     public function getUserByEmail($email)
     {
         if (!$info = $this->getBaseInstance()->getUserByEmail($email)) {
-            return array();
+            return [];
         }
 
         return array_merge($info, $this->_get($info['uid']));
@@ -121,7 +121,7 @@ class PwUserInfoDao extends PwBaseDao
      *
      * @return int|bool
      */
-    public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
+    public function editUser($uid, $fields, $increaseFields = [], $bitFields = [])
     {
         $result = $this->getBaseInstance()->editUser($uid, $fields, $increaseFields, $bitFields);
         $this->_update($uid, $fields, $increaseFields);

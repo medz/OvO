@@ -88,7 +88,7 @@ class PwDesignModuleDm extends PwBaseDm
         $border['right']['color'] = $this->_verifyColor($border['right']['color']);
         $border['bottom']['color'] = $this->_verifyColor($border['bottom']['color']);
         $background['color'] = $this->_verifyColor($background['color']);
-        $array = array('top', 'right', 'bottom', 'left');
+        $array = ['top', 'right', 'bottom', 'left'];
         if ($border['linewidth']) {
             $border['top']['linewidth'] = (int) $border['linewidth'];
             $border['right']['linewidth'] = (int) $border['linewidth'];
@@ -149,7 +149,7 @@ class PwDesignModuleDm extends PwBaseDm
             }
         }
 
-        $style = array(
+        $style = [
             'font'       => $font,
             'link'       => $link,
             'border'     => $border,
@@ -157,7 +157,7 @@ class PwDesignModuleDm extends PwBaseDm
             'padding'    => $padding,
             'background' => $background,
             'styleclass' => $styleclass,
-        );
+        ];
 
         $this->_data['module_style'] = serialize($style);
 

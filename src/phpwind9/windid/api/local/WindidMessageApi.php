@@ -167,7 +167,7 @@ class WindidMessageApi
         if ($result instanceof WindidError) {
             return $result->getCode();
         }
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
 
         return WindidUtility::result($result);
     }
@@ -183,14 +183,14 @@ class WindidMessageApi
      */
     public function send($uids, $content, $fromUid = 0)
     {
-        is_array($uids) || $uids = array($uids);
+        is_array($uids) || $uids = [$uids];
         $result = $this->_getMessageService()->sendMessageByUids($uids, $content, $fromUid);
         if ($result instanceof WindidError) {
             return $result->getCode();
         }
         $srv = $this->_getNotifyService();
         foreach ($uids as $uid) {
-            $srv->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+            $srv->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
         }
 
         return WindidUtility::result($result);
@@ -205,11 +205,11 @@ class WindidMessageApi
      *
      * @return int 标记成功的条数
      */
-    public function read($uid, $dialogId, $messageIds = array())
+    public function read($uid, $dialogId, $messageIds = [])
     {
         $result = $this->_getMessageService()->read($uid, $dialogId, $messageIds);
         if ($result) {
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
         }
 
         return $result;
@@ -221,17 +221,17 @@ class WindidMessageApi
         $ds = $this->_getMessageDs();
         foreach ($dialogIds as $id) {
             $dialog = $ds->getDialog($id);
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $dialog['to_uid']), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $dialog['to_uid']], WINDID_CLIENT_ID);
         }
 
         return WindidUtility::result($result);
     }
 
-    public function delete($uid, $dialogId, $messageIds = array())
+    public function delete($uid, $dialogId, $messageIds = [])
     {
         $result = $this->_getMessageService()->delete($uid, $dialogId, $messageIds);
         if ($result) {
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
         }
 
         return WindidUtility::result($result);
@@ -240,7 +240,7 @@ class WindidMessageApi
     public function batchDeleteDialog($uid, $dialogIds)
     {
         $result = $this->_getMessageService()->batchDeleteDialog($uid, $dialogIds);
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
 
         return WindidUtility::result($result);
     }
@@ -255,7 +255,7 @@ class WindidMessageApi
     public function deleteUserMessages($uid)
     {
         $result = $this->_getMessageService()->deleteUserMessages($uid);
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], WINDID_CLIENT_ID);
 
         return WindidUtility::result($result);
     }
@@ -285,7 +285,7 @@ class WindidMessageApi
     public function readMessages($uid, $messageIds)
     {
         if (!is_array($messageIds)) {
-            $messageIds = array($messageIds);
+            $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->readMessages($uid, $messageIds);
 
@@ -295,7 +295,7 @@ class WindidMessageApi
     public function deleteMessages($uid, $messageIds)
     {
         if (!is_array($messageIds)) {
-            $messageIds = array($messageIds);
+            $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->deleteMessages($uid, $messageIds);
 

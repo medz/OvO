@@ -40,7 +40,7 @@ class IndexController extends PwBaseController
             $srv->getVerify($config['type']);
             exit;
         }
-        $url = WindUrlHelper::createUrl('verify/index/get', array('rand' => Pw::getTime()), '', 'pw');
+        $url = WindUrlHelper::createUrl('verify/index/get', ['rand' => Pw::getTime()], '', 'pw');
         $display = $srv->getOutType($config['type']);
         if ($display == 'flash') {
             $html = '<embed align="middle" 
@@ -54,13 +54,13 @@ class IndexController extends PwBaseController
 				quality="high" 
 				src="'.$url.'">';
             if ($config['voice']) {
-                $url = WindUrlHelper::createUrl('verify/index/getAudio', array(
+                $url = WindUrlHelper::createUrl('verify/index/getAudio', [
                     'songVolume'   => 100,
                     'autoStart'    => 'false',
                     'repeatPlay'   => 'false',
                     'showDownload' => 'false',
                     'rand'         => Pw::getTime(),
-                ), '', 'pw');
+                ], '', 'pw');
                 $html .= '<embed height="20" width="25" 
 				type="application/x-shockwave-flash" 
 				pluginspage="http://www.macromedia.com/go/getflashplayer" 
@@ -73,13 +73,13 @@ class IndexController extends PwBaseController
 				width="'.$config['width'].'" 
 				height="'.$config['height'].'" >';
             if ($config['voice']) {
-                $url = WindUrlHelper::createUrl('verify/index/getAudio', array(
+                $url = WindUrlHelper::createUrl('verify/index/getAudio', [
                     'songVolume'   => 100,
                     'autoStart'    => 'false',
                     'repeatPlay'   => 'false',
                     'showDownload' => 'false',
                     'rand'         => Pw::getTime(),
-                ), '', 'pw');
+                ], '', 'pw');
                 $html .= '<span title="点击后键入您听到的内容"><embed wmode="transparent" height="20" width="25" 
 				type="application/x-shockwave-flash" 
 				pluginspage="http://www.macromedia.com/go/getflashplayer" 

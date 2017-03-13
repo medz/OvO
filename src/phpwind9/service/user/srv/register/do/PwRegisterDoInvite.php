@@ -13,7 +13,7 @@
 class PwRegisterDoInvite extends PwRegisterDoBase
 {
     private $code = '';
-    private $inviteInfo = array();
+    private $inviteInfo = [];
 
     /**
      * 构造函数.
@@ -71,7 +71,7 @@ class PwRegisterDoInvite extends PwRegisterDoBase
             //[积分日志] 成功邀请好友积分奖励
             /* @var $creditBo PwCreditBo */
             $creditBo = PwCreditBo::getInstance();
-            $creditBo->addLog('invite_reward', array($creditType => $creditNum), new PwUserBo($this->inviteInfo['created_userid']), array('friend' => $userDm->getField('username')));
+            $creditBo->addLog('invite_reward', [$creditType => $creditNum], new PwUserBo($this->inviteInfo['created_userid']), ['friend' => $userDm->getField('username')]);
             $creditBo->set($this->inviteInfo['created_userid'], $creditType, $creditNum);
 
             //邀请成功相互关注 被邀请者关注邀请者

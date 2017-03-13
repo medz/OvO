@@ -27,7 +27,7 @@ class CreditController extends WindidBaseController
         $srv->setCredits($credits, $newcredits);
 
         $srv2 = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-        $srv2->send('setCredits', array());
+        $srv2->send('setCredits', []);
         $this->showMessage('WINDID:success');
     }
 
@@ -44,7 +44,7 @@ class CreditController extends WindidBaseController
             $this->showError('WINDID:fail');
         }
         $srv2 = Wekit::load('WSRV:notify.srv.WindidNotifyService');
-        $srv2->send('setCredits', array());
+        $srv2->send('setCredits', []);
         $this->showMessage('WINDID:success');
     }
 }

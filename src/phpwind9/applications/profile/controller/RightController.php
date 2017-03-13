@@ -13,7 +13,7 @@ Wind::import('APPS:.profile.controller.BaseProfileController');
  */
 class RightController extends BaseProfileController
 {
-    private $banGid = array(1, 2, 6, 7);
+    private $banGid = [1, 2, 6, 7];
 
     /* (non-PHPdoc)
      * @see BaseProfileController::beforeAction()
@@ -30,7 +30,7 @@ class RightController extends BaseProfileController
     public function run()
     {
         $permissionService = new PwPermissionService();
-        $categorys = $permissionService->getPermissionPoint($this->_getShowPoint(), array('basic', 'bbs'));
+        $categorys = $permissionService->getPermissionPoint($this->_getShowPoint(), ['basic', 'bbs']);
         $compare = $this->getInput('gid');
         if ($compare && $compare != $this->loginUser->gid) {
             $this->setOutput(true, 'compare');
@@ -40,7 +40,7 @@ class RightController extends BaseProfileController
         }
         $myGroup = $permissionService->getPermissionConfigByGid($this->loginUser->gid, $this->_getShowPoint());
         $this->listGroups();
-        $attach = array('allow_upload', 'allow_download', 'uploads_perday'/*, 'upload_file_types'*/);
+        $attach = ['allow_upload', 'allow_download', 'uploads_perday'/*, 'upload_file_types'*/];
         foreach ($categorys['bbs']['sub'] as $_k => $_v) {
             if (!in_array($_v, $attach)) {
                 continue;
@@ -48,7 +48,7 @@ class RightController extends BaseProfileController
             unset($categorys['bbs']['sub'][$_k]);
         }
         $totalCredit = Wekit::load('usergroup.srv.PwUserGroupsService')->getCredit($this->loginUser->info);
-        $categorys['attach'] = array('name' => '附件权限', 'sub' => $attach);
+        $categorys['attach'] = ['name' => '附件权限', 'sub' => $attach];
         $this->setOutput($categorys, 'categorys');
         $this->setOutput($myGroup, 'myGroupPermission');
         $this->setOutput($totalCredit, 'myCredit');
@@ -78,7 +78,7 @@ class RightController extends BaseProfileController
         /* @var $belongDs PwUserBelong */
         $belongDs = Wekit::load('user.PwUserBelong');
         $belongs = $belongDs->getUserBelongs($this->loginUser->uid);
-        $_groups = array();
+        $_groups = [];
         $time = Pw::getTime();
         foreach ($belongs as $_item) {
             if ($_item['endtime'] == 0 || $_item['endtime'] > $time) {
@@ -116,15 +116,15 @@ class RightController extends BaseProfileController
         /* @var $groupDs PwUserGroups */
         $groupDs = Wekit::load('usergroup.PwUserGroups');
         $groups = $groupDs->getTypeNames();
-        $groupsType = $switchGroups = $myGroups = array();
+        $groupsType = $switchGroups = $myGroups = [];
         $allGroups = $groupDs->getAllGroups();
         foreach ($allGroups as $gid => $_item) {
             $groupsType[$_item['type']]['name'] = $groups[$_item['type']];
             $groupsType[$_item['type']]['sub'][$gid] = $_item;
         }
         if (in_array($this->loginUser->gid, $this->banGid)) {
-            $myGroups = array($this->loginUser->gid);
-            $switchGroups = array();
+            $myGroups = [$this->loginUser->gid];
+            $switchGroups = [];
         } else {
             foreach ($this->loginUser->groups as $value) {
                 if (!$value || $value == $this->loginUser->info['memberid']) {
@@ -132,10 +132,10 @@ class RightController extends BaseProfileController
                 }
                 $switchGroups[] = $value;
             }
-            $myGroups = array_merge($this->loginUser->groups, array($this->loginUser->info['memberid']));
+            $myGroups = array_merge($this->loginUser->groups, [$this->loginUser->info['memberid']]);
             $myGroups = array_unique($myGroups);
         }
-        $this->setOutput(array('member', 'special', 'system'), 'showTypes');
+        $this->setOutput(['member', 'special', 'system'], 'showTypes');
         $this->setOutput($allGroups, 'allGroups');
         $this->setOutput($groupsType, 'groupTypes');
         $this->setOutput($myGroups, 'myGroups');
@@ -149,7 +149,7 @@ class RightController extends BaseProfileController
      */
     private function _getShowPoint()
     {
-        return array(
+        return [
             'allow_visit',
             'user_binding',
             'allow_report',
@@ -175,6 +175,6 @@ class RightController extends BaseProfileController
             'uploads_perday',
             'upload_file_types',
             'remind_open',
-            'remind_max_num', );
+            'remind_max_num', ];
     }
 }

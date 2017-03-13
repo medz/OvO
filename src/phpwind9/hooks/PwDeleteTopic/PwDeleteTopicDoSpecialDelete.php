@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteTopicDoSpecialDelete extends iPwGleanDoHookProcess
 {
-    protected $record = array();
+    protected $record = [];
 
     public function run($tids)
     {

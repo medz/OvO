@@ -114,7 +114,7 @@ class PwWindidInform
         $credits = $credit['credits'];
 
         foreach ($wcredits as $key => $value) {
-            isset($credits[$key]) || $credits[$key] = array();
+            isset($credits[$key]) || $credits[$key] = [];
             $credits[$key]['name'] = $value['name'];
             $credits[$key]['unit'] = $value['unit'];
         }

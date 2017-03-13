@@ -49,7 +49,7 @@ class AdminlogController extends AdminBaseController
                     $detail = explode('|', $logs[$i]);
                     if (false !== strpos($detail[2], '/')) {
                         list($m, $c, $a) = explode('/', $detail[2]);
-                        $authKeys = array();
+                        $authKeys = [];
                         if (isset($authStruts[$m][$c][$a])) {
                             $authKeys += $authStruts[$m][$c][$a];
                         }
@@ -67,7 +67,7 @@ class AdminlogController extends AdminBaseController
         $this->setOutput($this->isFounder($this->loginUser->username), 'isFound');
         $this->setOutput($keyword, 'keyword');
         $this->setOutput($result, 'logs');
-        $this->setOutput(array('keyword' => $keyword), 'searchData');
+        $this->setOutput(['keyword' => $keyword], 'searchData');
         $this->setOutput($page, 'page');
         $this->setOutput($num, 'count');
         $this->setOutput($perpage, 'perpage');

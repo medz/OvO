@@ -11,7 +11,7 @@ class WindidAppDao extends WindidBaseDao
 {
     protected $_table = 'app';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'name', 'siteurl', 'siteip', 'secretkey', 'apifile', 'charset', 'issyn', 'isnotify');
+    protected $_dataStruct = ['id', 'name', 'siteurl', 'siteip', 'secretkey', 'apifile', 'charset', 'issyn', 'isnotify'];
 
     public function get($id)
     {
@@ -28,7 +28,7 @@ class WindidAppDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'id');
+        return $smt->queryAll([], 'id');
     }
 
     public function add($data)

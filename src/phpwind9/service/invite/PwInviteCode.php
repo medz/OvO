@@ -21,7 +21,7 @@ class PwInviteCode
     public function getCode($code)
     {
         if (!$code) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getCode($code);
@@ -37,7 +37,7 @@ class PwInviteCode
     public function getUsedCodeByCreatedUid($createdUid, $limit = 18, $start = 0)
     {
         if (!$createdUid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getUsedCodeByCreatedUid($createdUid, $limit, $start);
@@ -126,7 +126,7 @@ class PwInviteCode
         if (empty($codeDms) || !is_array($codeDms)) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($codeDms as $dm) {
             if (!($dm instanceof PwInviteCodeDm)) {
                 return new PwError('USER:invite.data.format.error');

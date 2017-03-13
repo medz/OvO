@@ -61,7 +61,7 @@ class DevelopController extends AdminBaseController
         $this->setOutput($app, 'app');
 
         $myHooks = Wekit::load('hook.PwHookInject')->findByAppId($alias);
-        $this->setOutput(array('myHooks' => $myHooks));
+        $this->setOutput(['myHooks' => $myHooks]);
     }
 
     /**
@@ -72,7 +72,7 @@ class DevelopController extends AdminBaseController
         $hooks = Wekit::load('hook.PwHooks')->fetchList(0);
         $hooks = array_reverse($hooks, true);
         $this->setOutput($this->getInput('alias'), 'alias');
-        $this->setOutput(array('hooks' => $hooks));
+        $this->setOutput(['hooks' => $hooks]);
     }
 
     /**
@@ -80,7 +80,7 @@ class DevelopController extends AdminBaseController
      */
     public function doEditHookAction()
     {
-        list($hookname, $alias) = $this->getInput(array('hook_name', 'alias'));
+        list($hookname, $alias) = $this->getInput(['hook_name', 'alias']);
         /* @var $app PwApplication */
         $appDs = Wekit::load('APPCENTER:service.PwApplication');
         $appInfo = $appDs->findByAlias($alias);
@@ -104,7 +104,7 @@ class DevelopController extends AdminBaseController
     public function doEditAction()
     {
         list($appid, $name, $alias, $description, $version, $pwversion, $author, $email, $website) =
-        $this->getInput(array('appid', 'name', 'alias', 'description', 'version', 'pwversion', 'author', 'email', 'website'), 'post');
+        $this->getInput(['appid', 'name', 'alias', 'description', 'version', 'pwversion', 'author', 'email', 'website'], 'post');
         if (!$name || !$alias || !$version || !$pwversion) {
             $this->showError('APPCENTER:empty');
         }
@@ -130,7 +130,7 @@ class DevelopController extends AdminBaseController
 
     public function doEditXmlAction()
     {
-        list($xml, $alias) = $this->getInput(array('xml', 'alias'), 'post');
+        list($xml, $alias) = $this->getInput(['xml', 'alias'], 'post');
         $file = Wind::getRealDir('EXT:'.$alias).'/Manifest.xml';
         $parser = new WindXmlParser();
         if (!$parser->parseXmlStream($xml)) {
@@ -147,14 +147,14 @@ class DevelopController extends AdminBaseController
     private function _generate()
     {
         list($name, $alias, $description, $version, $pwversion, $service, $need_admin, $need_service, $website) =
-        $this->getInput(array('name', 'alias', 'description', 'version', 'pwversion', 'service', 'need_admin', 'need_service', 'website'), 'post');
+        $this->getInput(['name', 'alias', 'description', 'version', 'pwversion', 'service', 'need_admin', 'need_service', 'website'], 'post');
         if (!$name || !$alias || !$version || !$pwversion) {
             $this->showError('APPCENTER:empty');
         }
         if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
             $this->showError('APPCENTER:illegal.alias');
         }
-        list($author, $email) = $this->getInput(array('author', 'email'), 'post');
+        list($author, $email) = $this->getInput(['author', 'email'], 'post');
         $app = new PwGenerateApplication();
         $app->setAlias($alias);
         $app->setName($name);
@@ -172,21 +172,21 @@ class DevelopController extends AdminBaseController
             $this->showError($r->getError());
         }
         Wekit::load('APPCENTER:service.srv.PwDebugApplication')->installPack(EXT_PATH.$alias);
-        $this->showMessage(array('APPCENTER:develop.success', array($name, $alias)), 'appcenter/app/run');
+        $this->showMessage(['APPCENTER:develop.success', [$name, $alias]], 'appcenter/app/run');
     }
 
-    private function _installService($exists = array())
+    private function _installService($exists = [])
     {
         $install = Wekit::load('APPCENTER:service.srv.PwInstallApplication');
         $temp = $install->getConfig('installation-service');
-        $service = array();
+        $service = [];
         $lang = Wind::getComponent('i18n');
         foreach ($temp as $k => $v) {
             $service[$k] = $lang->getMessage($v['message']);
         }
         $this->setOutput($service, 'service');
         $keys = array_keys($service);
-        $temp = array();
+        $temp = [];
         foreach ($exists as $s) {
             if (isset($s['_key']) && in_array($s['_key'], $keys)) {
                 $temp[] = $s['_key'];

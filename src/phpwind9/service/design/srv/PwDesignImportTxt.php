@@ -10,11 +10,11 @@
  */
 class PwDesignImportTxt
 {
-    public $newIds = array();
+    public $newIds = [];
 
-    private $_pageInfo = array();
-    private $_structures = array();
-    private $_oldstruct = array();
+    private $_pageInfo = [];
+    private $_structures = [];
+    private $_oldstruct = [];
     private $_content = '';
 
     public function checkTxt($filename = '', $content = '')
@@ -29,7 +29,7 @@ class PwDesignImportTxt
         }
         $content = preg_replace("/\/\*(.+)\*\//", '', $content);
         $content = unserialize(base64_decode($content));
-        $_array = array('page', 'segment', 'structure', 'module');
+        $_array = ['page', 'segment', 'structure', 'module'];
         foreach ($_array as $v) {
             if (!isset($content[$v])) {
                 return new PwError('DESIGN:file.check.fail');
@@ -190,7 +190,7 @@ class PwDesignImportTxt
     {
         //对新添加的module进行转换
         foreach ($this->newIds as $k => $v) {
-            $_in = array(
+            $_in = [
                 'data-id="'.$k.'"',
                 'id="J_mod_'.$k.'"',
                 'id="D_mod_'.$k.'"',
@@ -198,28 +198,28 @@ class PwDesignImportTxt
                 'data-id='.$k,
                 'id=J_mod_'.$k,
                 'id=D_mod_'.$k,
-            );
-            $_out = array(
+            ];
+            $_out = [
                 'data-id="'.$v.'"',
                 'id="J_mod_'.$v.'"',
                 'id="D_mod_'.$v.'"',
                 'data-id="'.$v.'"',
                 'id="J_mod_'.$v.'"',
                 'id="D_mod_'.$v.'"',
-            );
+            ];
             $struct = str_replace($_in, $_out, $struct);
         }
         //对新添加的structures进行转换
         foreach ($this->_oldstruct as $k => $v) {
-            $_in = array(
+            $_in = [
                 'id="'.$v.'"',
                 'role="structure_'.$v.'"',
-            );
+            ];
 
-            $_out = array(
+            $_out = [
                 'id="'.$this->_structures[$k].'"',
                 'role="structure_'.$this->_structures[$k].'"',
-            );
+            ];
             $struct = str_replace($_in, $_out, $struct);
         }
 

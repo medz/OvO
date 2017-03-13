@@ -27,7 +27,7 @@ class PwVerifyService
     public function getVerifyType()
     {
         $conf = Wind::getRealPath('WINDID:service.verify.codetype.verify.php', true);
-        $tmp = array('name' => '', 'alias' => '', 'description' => '', 'components' => array());
+        $tmp = ['name' => '', 'alias' => '', 'description' => '', 'components' => []];
         $verify = @include $conf;
 
         return $verify;

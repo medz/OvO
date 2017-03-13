@@ -36,10 +36,10 @@ class PwEmotionService
     public function getAllEmotionNoCache()
     {
         $list = Wekit::load('emotion.PwEmotion')->getAllEmotion();
-        $emotions = array(
-            'emotion' => array(),
-            'name'    => array(),
-        );
+        $emotions = [
+            'emotion' => [],
+            'name'    => [],
+        ];
         foreach ($list as $v) {
             $tmp['emotion_folder'] = $v['emotion_folder'];
             $tmp['emotion_icon'] = $v['emotion_icon'];
@@ -78,7 +78,7 @@ class PwEmotionService
     public function getAppcationList($select = 0)
     {
         //$apps = array('bbs'=>'论坛', 'weibo'=>'微博', 'cms'=>'门户' , 'face'=>'普通表情');
-        $apps = array('bbs' => '论坛');
+        $apps = ['bbs' => '论坛'];
 
         return $select ? $apps[$select] : $apps;
     }

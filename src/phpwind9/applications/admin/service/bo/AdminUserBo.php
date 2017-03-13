@@ -38,8 +38,8 @@ class AdminUserBo
         $this->uid = 0;
         $this->gid = 2;
         $this->username = '游客';
-        $this->info = array(
+        $this->info = [
             'lastpost' => Pw::getCookie('guest_lastpost'),
-        );
+        ];
     }
 }

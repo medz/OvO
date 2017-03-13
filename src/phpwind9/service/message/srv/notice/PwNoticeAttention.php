@@ -27,7 +27,7 @@ class PwNoticeAttention extends PwNoticeAction
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
     {
-        $oldExtendParams = array();
+        $oldExtendParams = [];
         if ($aggregatedNotice && !$aggregatedNotice['is_read']) {
             $oldExtendParams = $aggregatedNotice ? unserialize($aggregatedNotice['extend_params']) : $extendParams;
         }
@@ -37,7 +37,7 @@ class PwNoticeAttention extends PwNoticeAction
 
     public function getDetailList($notice)
     {
-        $list = $uids = array();
+        $list = $uids = [];
         $extendParams = $notice['extend_params'];
 
         $uids = array_keys($extendParams);

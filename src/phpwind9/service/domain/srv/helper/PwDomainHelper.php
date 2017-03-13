@@ -39,7 +39,7 @@ class PwDomainHelper
             $path = str_replace($host, '', $url);
         }
 
-        return array($host, $isSecure, $script, $path, $scriptUrl);
+        return [$host, $isSecure, $script, $path, $scriptUrl];
     }
 
     /**
@@ -58,9 +58,9 @@ class PwDomainHelper
         if (WindFile::getSuffix($domain1) != WindFile::getSuffix($domain2)) {
             return false;
         }
-        $domain1 = str_replace(array('http://'), 'https://', $domain1);
-        $domain2 = str_replace(array('http://'), 'https://', $domain2);
-        $suffix = array(
+        $domain1 = str_replace(['http://'], 'https://', $domain1);
+        $domain2 = str_replace(['http://'], 'https://', $domain2);
+        $suffix = [
             'com',
             'cn',
             'name',
@@ -79,7 +79,7 @@ class PwDomainHelper
             'tw',
             'mo',
             'me',
-            'biz', );
+            'biz', ];
         $preg = implode('|', $suffix);
         $domain1 = preg_replace("/(\.($preg))*\.($preg)$/iU", '', $domain1);
         $domain2 = preg_replace("/(\.($preg))*\.($preg)$/iU", '', $domain2);

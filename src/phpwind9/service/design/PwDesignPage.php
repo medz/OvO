@@ -18,7 +18,7 @@ class PwDesignPage
     public function getPage($id)
     {
         if (!$id) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getPage($id);
@@ -27,7 +27,7 @@ class PwDesignPage
     public function fetchPage($pageids)
     {
         if (empty($pageids) || !is_array($pageids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchPage($pageids);
@@ -38,7 +38,7 @@ class PwDesignPage
         $type = (int) $type;
         $unique = (int) $unique;
         if ($unique < 0) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getPageByTypeAndUnique($type, $unique);
@@ -53,16 +53,16 @@ class PwDesignPage
     public function getPageByRouter($router)
     {
         if (!$router) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getPageByRouter($router);
     }
 
-    public function fetchPageByTypeUnique($type = self::ALL, $unique = array())
+    public function fetchPageByTypeUnique($type = self::ALL, $unique = [])
     {
         if (empty($unique) || !is_array($unique)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchPageByTypeUnique($type, $unique);
@@ -87,7 +87,7 @@ class PwDesignPage
     public function concatModule($value)
     {
         if (!$value) {
-            return array();
+            return [];
         }
         $value = ','.strval($value).',';
 

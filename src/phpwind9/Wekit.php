@@ -22,7 +22,7 @@ class Wekit
 {
     protected static $_sc;                //系统配置
     protected static $_var;                //全局配置变量
-    protected static $_app = array();    //应用对象
+    protected static $_app = [];    //应用对象
 
     /**
      * 运行当前应用.
@@ -30,7 +30,7 @@ class Wekit
      * @param string $name       应用名称默认‘phpwind’
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
      */
-    public static function run($name = 'phpwind', array $components = array())
+    public static function run($name = 'phpwind', array $components = [])
     {
         self::init($name);
         if (!empty($components)) {
@@ -71,7 +71,7 @@ class Wekit
      *
      * @return object
      */
-    public static function getInstance($path, $loadway = '', array $args = array())
+    public static function getInstance($path, $loadway = '', array $args = [])
     {
         switch ($loadway) {
             case 'loadDao':
@@ -83,7 +83,7 @@ class Wekit
             default:
                 $reflection = new ReflectionClass(Wind::import($path));
 
-                return call_user_func_array(array($reflection, 'newInstance'), $args);
+                return call_user_func_array([$reflection, 'newInstance'], $args);
         }
     }
 
@@ -158,7 +158,7 @@ class Wekit
         $_args = func_get_args();
         array_unshift($_args, 'G');
 
-        return call_user_func_array(array(Wind::getApp()->getResponse(), 'getData'), $_args);
+        return call_user_func_array([Wind::getApp()->getResponse(), 'getData'], $_args);
     }
 
     /**
@@ -278,7 +278,7 @@ class Wekit
             $resource = $var['resource'];
             unset($var['resource']);
             if (is_array($resource)) {
-                $tmp = array();
+                $tmp = [];
                 foreach ($resource as $key => $value) {
                     $tmp = array_merge($tmp, include(Wind::getRealPath($value, true)));
                 }

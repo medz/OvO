@@ -54,12 +54,12 @@ class PwCronService
         }
         $cron = @include $path;
         $sysCron = $ds->getList(2);
-        $_sysCron = array();
+        $_sysCron = [];
         foreach ($sysCron as $k => $v) {
             $_sysCron[$v['cron_file']] = $v;
         }
         foreach ($cron as $k => $v) {
-            if (!in_array($v['type'], array('month', 'week', 'day', 'hour', 'now'))) {
+            if (!in_array($v['type'], ['month', 'week', 'day', 'hour', 'now'])) {
                 continue;
             }
             if (!$v['file']) {
@@ -230,7 +230,7 @@ class PwCronService
 
     private function _getMouthDays($month, $isLeapYear)
     {
-        if (in_array($month, array('1', '3', '5', '7', '8', '10', '12'))) {
+        if (in_array($month, ['1', '3', '5', '7', '8', '10', '12'])) {
             $days = 31;
         } elseif ($month != 2) {
             $days = 30;

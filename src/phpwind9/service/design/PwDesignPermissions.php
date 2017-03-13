@@ -22,7 +22,7 @@ class PwDesignPermissions
     {
         $id = (int) $id;
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);

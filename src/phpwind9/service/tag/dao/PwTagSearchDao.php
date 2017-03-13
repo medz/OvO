@@ -15,7 +15,7 @@ class PwTagSearchDao extends PwBaseDao
 {
     protected $_table = 'tag';
     protected $_table_relation = 'tag_category_relation';
-    protected $_dataStruct = array();
+    protected $_dataStruct = [];
 
     public function countSearchTag($field)
     {
@@ -40,7 +40,7 @@ class PwTagSearchDao extends PwBaseDao
     {
         $join = '';
         $where = 'WHERE 1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'tag_id':
@@ -62,12 +62,12 @@ class PwTagSearchDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg, $join);
+        return [$where, $arg, $join];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'attention_count':

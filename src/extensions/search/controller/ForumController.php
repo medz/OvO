@@ -40,8 +40,8 @@ class ForumController extends PwBaseController
         if (($result = $this->_getSearchService()->_checkRight()) instanceof PwError) {
             $this->showError($result->getError());
         }
-        list($page, $perpage, $keywords, $limittime, $orderby) = $this->getInput(array('page', 'perpage', 'keywords', 'limittime', 'orderby'));
-        $args = array();
+        list($page, $perpage, $keywords, $limittime, $orderby) = $this->getInput(['page', 'perpage', 'keywords', 'limittime', 'orderby']);
+        $args = [];
         if ($keywords && $keywords != '请您输入你想搜索的内容') {
             //最后搜索时间
             if (($result = $this->_getSearchService()->_checkSearch()) instanceof PwError) {
@@ -70,7 +70,7 @@ class ForumController extends PwBaseController
             $this->setOutput($page, 'page');
             $this->setOutput($perpage, 'perpage');
             $this->setOutput($count, 'count');
-            $this->setOutput(array('keywords' => $keywords), 'args');
+            $this->setOutput(['keywords' => $keywords], 'args');
         }
         $this->setOutput($forums, 'forums');
         $this->setOutput(AppSearchRecord::TYPE_FORUM, 'recordType');

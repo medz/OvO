@@ -11,7 +11,7 @@
 class IndexController extends PwBaseController
 {
     private $perpage = 10;
-    private $orderBy = array('time' => 'created_time');
+    private $orderBy = ['time' => 'created_time'];
 
     public function run()
     {
@@ -24,24 +24,24 @@ class IndexController extends PwBaseController
         }
         $count = $this->_appDs()->countByStatus(9);
         $apps = $this->_appDs()->fetchListByStatus($num, $start, 9, $this->orderBy[$orderBy]);
-        $return = array();
+        $return = [];
         foreach ($apps as $k => $v) {
-            $return[] = array(
+            $return[] = [
                 'app_id' => $k,
                 'name'   => $v['name'],
                 'logo'   => $v['logo'],
                 'alias'  => $v['alias'],
                 'desc'   => $v['description'] ? $v['description'] : '这家伙很懒',
-                'url'    => $v['status'] & 8 ? WindUrlHelper::createUrl('appcenter/apps/run', array('appid' => $v['app_id'])) : WindUrlHelper::createUrl('app/index/run', array('app' => $v['alias'])), );
+                'url'    => $v['status'] & 8 ? WindUrlHelper::createUrl('appcenter/apps/run', ['appid' => $v['app_id']]) : WindUrlHelper::createUrl('app/index/run', ['app' => $v['alias']]), ];
         }
         $this->setOutput(
-            array(
+            [
                 'apps'    => $return,
                 'count'   => $count,
                 'perpage' => $this->perpage,
                 'page'    => $page,
                 'orderby' => $orderBy,
-                ));
+                ]);
         $this->setTemplate('app_index_run');
         // seo设置
 

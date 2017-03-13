@@ -72,9 +72,9 @@ abstract class adminBoot extends bootstrap
      *
      * @var array
      */
-    protected $dependenceServiceDefinitions = array(
-        'adminUserService' => array('path' => ''),
-    );
+    protected $dependenceServiceDefinitions = [
+        'adminUserService' => ['path' => ''],
+    ];
 
     public function __construct($re)
     {

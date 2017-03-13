@@ -16,7 +16,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
 
     protected $tids;
     protected $isDeductCredit = true;
-    protected $threads = array();
+    protected $threads = [];
 
     /**
      * 构造方法.
@@ -90,8 +90,8 @@ class PwThreadManageDoDigest extends PwThreadManageDo
 
         /* @var $srv PwForumService */
         $srv = Wekit::load('forum.srv.PwForumService');
-        $digestDms = array();
-        $fids = array();
+        $digestDms = [];
+        $fids = [];
         $time = Pw::getTime();
         foreach ($this->threads as $thread) {
             $_tmp = new PwThreadDigestDm($thread['tid']);
@@ -130,7 +130,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
             $userDs->editUser($userInfo, PwUser::FETCH_DATA);
             //更新用户积分
             $forum = new PwForumBo($thread['fid']);
-            $credit->operate($operation, PwUserBo::getInstance($thread['created_userid']), true, array('forumname' => $forum->foruminfo['name']), $forum->getCreditSet($operation));
+            $credit->operate($operation, PwUserBo::getInstance($thread['created_userid']), true, ['forumname' => $forum->foruminfo['name']], $forum->getCreditSet($operation));
             $credit->execute();
         }
 

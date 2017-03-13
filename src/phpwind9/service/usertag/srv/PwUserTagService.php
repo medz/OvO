@@ -22,7 +22,7 @@ class PwUserTagService
     public function getUserTagList($uid)
     {
         if ($uid < 1) {
-            return array();
+            return [];
         }
         $relations = $this->_getTagRelationDs()->getRelationByUid($uid);
 
@@ -125,7 +125,7 @@ class PwUserTagService
     {
         $num = $this->_getTagRelationDs()->countByUid($uid);
         if ($num == 10) {
-            return new PwError('USER:tag.owntag.limit.over', array('{num}' => 10));
+            return new PwError('USER:tag.owntag.limit.over', ['{num}' => 10]);
         }
 
         return 10 - $num;

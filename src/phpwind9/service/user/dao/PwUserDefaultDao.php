@@ -20,7 +20,7 @@ class PwUserDefaultDao extends PwBaseDao
      */
     public function getUserByUid($uid)
     {
-        return array('uid' => $uid);
+        return ['uid' => $uid];
     }
 
     /**
@@ -34,7 +34,7 @@ class PwUserDefaultDao extends PwBaseDao
     {
         $result = $this->_getDao()->getUserByName($username);
 
-        return $result ? array('uid' => $result['uid']) : array();
+        return $result ? ['uid' => $result['uid']] : [];
     }
 
     /**
@@ -48,7 +48,7 @@ class PwUserDefaultDao extends PwBaseDao
     {
         $result = $this->_getDao()->getUserByEmail($email);
 
-        return $result ? array('uid' => $result['uid']) : array();
+        return $result ? ['uid' => $result['uid']] : [];
     }
 
     /**
@@ -60,9 +60,9 @@ class PwUserDefaultDao extends PwBaseDao
      */
     public function fetchUserByUid($uids)
     {
-        $info = array();
+        $info = [];
         foreach ($uids as $value) {
-            $info[$value] = array();
+            $info[$value] = [];
         }
 
         return $info;
@@ -78,9 +78,9 @@ class PwUserDefaultDao extends PwBaseDao
     public function fetchUserByName($usernames)
     {
         $data = $this->_getDao()->fetchUserByName($usernames);
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
-            $result[$key] = array('uid' => $key);
+            $result[$key] = ['uid' => $key];
         }
 
         return $result;
@@ -106,7 +106,7 @@ class PwUserDefaultDao extends PwBaseDao
      *
      * @return bool
      */
-    public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
+    public function editUser($uid, $fields, $increaseFields = [], $bitFields = [])
     {
         return false;
     }

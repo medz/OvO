@@ -57,7 +57,7 @@ class PwDraft
         $uid = intval($uid);
         $num = intval($num);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDraftDao()->getByUid($uid, $num);
@@ -91,7 +91,7 @@ class PwDraft
     {
         $id = intval($id);
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDraftDao()->get($id);

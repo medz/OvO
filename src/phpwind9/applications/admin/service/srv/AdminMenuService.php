@@ -84,8 +84,8 @@ class AdminMenuService
         /* @var $adminCustom AdminCustom */
         $adminCustom = Wekit::load('ADMIN:service.AdminCustom');
         $r = $adminCustom->findByUsername($user->username);
-        $myMenus = $r ? explode(',', $r['custom']) : array();
-        $return = array();
+        $myMenus = $r ? explode(',', $r['custom']) : [];
+        $return = [];
         foreach ($menuTables as $key => $value) {
             if (isset($value['url']) && in_array($key, $myMenus)) {
                 $return[$key] = $value;
@@ -103,7 +103,7 @@ class AdminMenuService
     public function getMenuTable()
     {
         if (!$menuTables = $this->_getMenuTable()) {
-            return array();
+            return [];
         }
         unset($menuTables['__auths']);
 
@@ -125,10 +125,10 @@ class AdminMenuService
     public function getMenuAuthStruts()
     {
         if (!$menusInfo = $this->_getMenuTable()) {
-            return array();
+            return [];
         }
 
-        return isset($menusInfo['__auths']) ? $menusInfo['__auths'] : array();
+        return isset($menusInfo['__auths']) ? $menusInfo['__auths'] : [];
     }
 
     /**
@@ -166,7 +166,7 @@ class AdminMenuService
                 }
                 unset($menus['_extensions']);
             } else {
-                $_extensions = array();
+                $_extensions = [];
             }
 
             $menus = PwSimpleHook::getInstance('admin_menu')->runWithFilters($menus);

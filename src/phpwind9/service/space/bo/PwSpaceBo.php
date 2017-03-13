@@ -13,7 +13,7 @@
      public $spaceUid = 0;
      public $visitUid = 0;        //访问者UID
     public $spaceUser;            //空间User
-    public $space = array();    //空间基本信息
+    public $space = [];    //空间基本信息
     public $tome = 0;            //访问者与空间的关系
 
     const VISITOR = 0;            //游客
@@ -97,14 +97,14 @@
      {
          $this->space = $this->_getSpaceDs()->getSpace($this->spaceUid);
          empty($this->space['space_name']) && $this->space['space_name'] = $this->spaceUser['username'].'的个人空间';
-         empty($this->space['space_privacy']) && $this->space['space_privacy'] = array();
+         empty($this->space['space_privacy']) && $this->space['space_privacy'] = [];
          $this->space['domain'] = $this->_getDomain();
 
          list($image, $repeat, $fixed, $align) = unserialize($this->space['back_image']);
          empty($repeat) && $repeat = 'no-repeat';
          empty($fixed) && $fixed = 'scroll';
          empty($align) && $align = 'center';
-         $this->space['back_image'] = array($image, $repeat, $fixed, $align);
+         $this->space['back_image'] = [$image, $repeat, $fixed, $align];
          $this->space['backbround'] = '';
          if (empty($image)) {
              return;
@@ -133,7 +133,7 @@
              }
          }
 
-         return WindUrlHelper::createUrl('space/index/run', array('uid' => $this->spaceUid));
+         return WindUrlHelper::createUrl('space/index/run', ['uid' => $this->spaceUid]);
      }
 
     /**

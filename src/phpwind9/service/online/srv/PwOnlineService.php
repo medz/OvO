@@ -43,10 +43,10 @@ class PwOnlineService
             return false;
         }
         if (!$ip || !$createdTime || !$modifyTime) {
-            $this->signVisitor($ip, $this->time, $this->time, array('currentFid' => $fid));    //初始标记
+            $this->signVisitor($ip, $this->time, $this->time, ['currentFid' => $fid]);    //初始标记
             return $this->time;
         } else {                                                                            //更新标记
-            $this->signVisitor($ip, $createdTime, $this->time, array('currentFid' => $fid, 'beforeFid' => $ext['currentFid']));
+            $this->signVisitor($ip, $createdTime, $this->time, ['currentFid' => $fid, 'beforeFid' => $ext['currentFid']]);
 
             return $createdTime;
         }
@@ -70,10 +70,10 @@ class PwOnlineService
             return false;
         }
         if (!$ip || !$createdTime || !$modifyTime) {
-            $this->signVisitor($ip, $this->time, $this->time, array('currentSpace' => $spaceUid));    //初始标记
+            $this->signVisitor($ip, $this->time, $this->time, ['currentSpace' => $spaceUid]);    //初始标记
             return $this->time;
         } else {                                                                                    //更新标记
-            $this->signVisitor($ip, $createdTime, $this->time, array('currentSpace' => $spaceUid, 'beforeSpace' => $ext['currentSpace']));
+            $this->signVisitor($ip, $createdTime, $this->time, ['currentSpace' => $spaceUid, 'beforeSpace' => $ext['currentSpace']]);
 
             return $createdTime;
         }
@@ -167,7 +167,7 @@ class PwOnlineService
      * @param int    $createdTime
      * @param int    $modifyTime
      */
-    public function signVisitor($ip, $createdTime, $modifyTime, $extension = array())
+    public function signVisitor($ip, $createdTime, $modifyTime, $extension = [])
     {
         $ip = ip2long($ip);
         $sign = Pw::encrypt($ip.'_'.$createdTime.'_'.$modifyTime.'_'.serialize($extension));

@@ -36,14 +36,14 @@ class PwDesignFtp
     public function getFtp()
     {
         if ($this->_ftp == null) {
-            $this->_ftp = new WindSocketFtp(array(
+            $this->_ftp = new WindSocketFtp([
                 'server'  => $this->_config['ftp.server'],
                 'port'    => $this->_config['ftp.port'],
                 'user'    => $this->_config['ftp.user'],
                 'pwd'     => $this->_config['ftp.pwd'],
                 'dir'     => $this->_config['ftp.dir'],
                 'timeout' => $this->_config['ftp.timeout'],
-            ));
+            ]);
         }
 
         return $this->_ftp;

@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
 {
-    protected $attachs = array();
+    protected $attachs = [];
 
     public function copyThread(PwTopicDm $topicDm, $newTid)
     {
@@ -22,7 +22,7 @@ class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
             return;
         }
         $tid = $topicDm->tid;
-        $this->attachs = $this->_getService()->getAttachByTid($tid, array(0));
+        $this->attachs = $this->_getService()->getAttachByTid($tid, [0]);
         if (!$this->attachs) {
             return;
         }

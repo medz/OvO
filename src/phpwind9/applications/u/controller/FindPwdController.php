@@ -156,7 +156,7 @@ class FindPwdController extends PwBaseController
         if (!$this->isMailOpen) {
             $this->showError('USER:findpwd.way.email.close', 'u/findPwd/run');
         }
-        list($username, $email, $code) = $this->getInput(array('username', 'email', 'code'), 'post');
+        list($username, $email, $code) = $this->getInput(['username', 'email', 'code'], 'post');
         $this->checkCode($code);
         /*检查邮箱是否正确*/
         $findPasswordBp = new PwFindPassword($username);
@@ -199,7 +199,7 @@ class FindPwdController extends PwBaseController
         if (!$this->isMobileOpen) {
             $this->showError('USER:findpwd.way.mobile.close', 'u/findPwd/run');
         }
-        list($username, $mobileCode, $mobile) = $this->getInput(array('username', 'mobileCode', 'mobile'), 'post');
+        list($username, $mobileCode, $mobile) = $this->getInput(['username', 'mobileCode', 'mobile'], 'post');
         !PwUserValidator::isMobileValid($mobile) && $this->showError('USER:error.mobile', 'u/findPwd/run');
         !$mobileCode && $this->showError('USER:mobile.code.empty', 'u/findPwd/run');
 
@@ -235,7 +235,7 @@ class FindPwdController extends PwBaseController
             if ($findPasswordBp->isOverByMobile()) {
                 $this->showError('USER:findpwd.over.limit.mobile');
             }
-            list($mobile, $mobileCode) = $this->getInput(array('mobile', 'mobileCode'), 'get');
+            list($mobile, $mobileCode) = $this->getInput(['mobile', 'mobileCode'], 'get');
             if (($mobileCheck = Wekit::load('mobile.srv.PwMobileService')->checkVerify($mobile, $mobileCode)) instanceof PwError) {
                 $this->showError($mobileCheck->getError());
             }
@@ -255,7 +255,7 @@ class FindPwdController extends PwBaseController
     {
         if ($this->getInput('step', 'post') == 'end') {
             list($userInfo, $value, $type) = $this->checkState();
-            list($password, $repassword) = $this->getInput(array('password', 'repassword'), 'post');
+            list($password, $repassword) = $this->getInput(['password', 'repassword'], 'post');
             if ($password != $repassword) {
                 $this->showError('USER:user.error.-20');
             }
@@ -282,7 +282,7 @@ class FindPwdController extends PwBaseController
      */
     public function sendmobileAction()
     {
-        list($mobile, $username) = $this->getInput(array('mobile', 'username'), 'post');
+        list($mobile, $username) = $this->getInput(['mobile', 'username'], 'post');
         if (($result = $this->_checkMobileRight($mobile, $username)) instanceof PwError) {
             $this->showError($result->getError());
         }
@@ -297,7 +297,7 @@ class FindPwdController extends PwBaseController
      */
     public function checkmobileAction()
     {
-        list($mobile, $username) = $this->getInput(array('mobile', 'username'), 'post');
+        list($mobile, $username) = $this->getInput(['mobile', 'username'], 'post');
         if (($result = $this->_checkMobileRight($mobile, $username)) instanceof PwError) {
             $this->showError($result->getError());
         }
@@ -364,10 +364,10 @@ class FindPwdController extends PwBaseController
         list($username, $way, $value) = PwFindPassword::parserFindPwdIdentify($statu);
         $userInfo = $this->_getUserDs()->getUserByName($username, PwUser::FETCH_INFO | PwUser::FETCH_MAIN);
         if ($userInfo[PwFindPassword::getField($way)] != $value) {
-            $this->forwardAction('u/findPwd/run', array(), true);
+            $this->forwardAction('u/findPwd/run', [], true);
         }
 
-        return array($userInfo, $value, $way, $statu);
+        return [$userInfo, $value, $way, $statu];
     }
 
     /**

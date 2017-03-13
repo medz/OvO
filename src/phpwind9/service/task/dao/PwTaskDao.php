@@ -14,7 +14,7 @@ class PwTaskDao extends PwBaseDao
 {
     protected $_table = 'task';
     protected $_pk = 'taskid';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'taskid',
         'pre_task',
         'is_auto',
@@ -29,7 +29,7 @@ class PwTaskDao extends PwBaseDao
         'icon',
         'user_groups',
         'reward',
-        'conditions', );
+        'conditions', ];
 
     /**
      * 添加一条任务
@@ -90,7 +90,7 @@ class PwTaskDao extends PwBaseDao
      *
      * @return array
      */
-    public function fetch($ids = array())
+    public function fetch($ids = [])
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `taskid` IN %s ORDER BY `taskid` DESC', $this->getTable(), $this->sqlImplode($ids));
         $rst = $this->getConnection()->query($sql);
@@ -135,7 +135,7 @@ class PwTaskDao extends PwBaseDao
      */
     public function getNextAutoTasks($pre_id, $startTime, $endTime)
     {
-        list($startTime, $endTime) = array(intval($startTime), intval($endTime));
+        list($startTime, $endTime) = [intval($startTime), intval($endTime)];
         $where = '';
         if ($startTime) {
             $where .= $this->_bindSql(' AND `start_time` < %s', $startTime);
@@ -146,7 +146,7 @@ class PwTaskDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `pre_task` = ? AND `is_auto` = 1 %s',
             $this->getTable(), $where);
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($pre_id), 'taskid');
+        return $this->getConnection()->createStatement($sql)->queryAll([$pre_id], 'taskid');
     }
 
     /**
@@ -160,7 +160,7 @@ class PwTaskDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `pre_task` IN %s ', $this->getTable(), $this->sqlImplode($pre_id));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array(), 'pre_task');
+        return $this->getConnection()->createStatement($sql)->queryAll([], 'pre_task');
     }
 
     /**

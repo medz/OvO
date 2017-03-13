@@ -15,7 +15,7 @@ class PwThreadTypeDoDebate
 {
     public function getTtype($tType)
     {
-        $tType['4'] = array('辩论帖', '发起辩论', true);
+        $tType['4'] = ['辩论帖', '发起辩论', true];
 
         return $tType;
     }

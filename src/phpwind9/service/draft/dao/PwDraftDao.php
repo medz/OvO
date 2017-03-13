@@ -14,7 +14,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwDraftDao extends PwBaseDao
 {
     protected $_table = 'draft';
-    protected $_dataStruct = array('id', 'created_userid', 'title', 'content', 'created_time');
+    protected $_dataStruct = ['id', 'created_userid', 'title', 'content', 'created_time'];
 
     /**
      * 添加.
@@ -89,7 +89,7 @@ class PwDraftDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `created_userid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -105,6 +105,6 @@ class PwDraftDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `created_userid`=? ORDER BY `id` DESC %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 }

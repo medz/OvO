@@ -15,13 +15,13 @@ class PwPostDoTag extends PwPostDoBase
 {
     private $loginUser;
     private $defaultType = 'threads';
-    private $tagNames = array();
+    private $tagNames = [];
     private $typeId = '';
 
     public function __construct(PwPost $pwpost, $tagNames)
     {
         $this->loginUser = $pwpost->user;
-        $tagNames = $tagNames ? $tagNames : array();
+        $tagNames = $tagNames ? $tagNames : [];
         $this->tagNames = array_unique($tagNames);
         $this->typeId = $this->_getService()->getTypeIdByTypeName($this->defaultType);
     }
@@ -57,7 +57,7 @@ class PwPostDoTag extends PwPostDoBase
         if (!is_array($this->tagNames) || !$this->tagNames) {
             return false;
         }
-        $dmArray = array();
+        $dmArray = [];
         foreach ($this->tagNames as $value) {
             $value = trim($value);
             $dm = $this->getDm();

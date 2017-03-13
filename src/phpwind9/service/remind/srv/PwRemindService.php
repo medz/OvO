@@ -21,7 +21,7 @@ class PwRemindService
     public function bulidRemind($content)
     {
         if (strpos($content, '@') === false) {
-            return array();
+            return [];
         }
         $config = Wekit::C('register');
         $min = $config['security.username.min'];
@@ -30,9 +30,9 @@ class PwRemindService
         $pattern = '/@([\x7f-\xff\dA-Za-z\.\_]+)/is';
         preg_match_all($pattern, $content, $matches);
         if (!$matches[1]) {
-            return array();
+            return [];
         }
-        $reminds = array();
+        $reminds = [];
         foreach ($matches[1] as $v) {
             $v = trim($v);
             if (!$v) {
@@ -58,7 +58,7 @@ class PwRemindService
             return false;
         }
         $remind = $this->_getRemindDs()->getByUid($uid);
-        $remind = $remind['touid'] ? unserialize($remind['touid']) : array();
+        $remind = $remind['touid'] ? unserialize($remind['touid']) : [];
         $remind = array_unique(array_merge($reminds, $remind));
         $remind = array_slice($remind, 0, 10, true);
         $this->_getRemindDs()->replaceRemind($uid, serialize($remind));
@@ -75,10 +75,10 @@ class PwRemindService
     {
         $reminds = array_unique($reminds);
         if (!$reminds) {
-            return array();
+            return [];
         }
         $users = $this->_getUserDs()->fetchUserByName($reminds);
-        $_tmp = $array = array();
+        $_tmp = $array = [];
         foreach ($users as $v) {
             if ($uid == $v['uid']) {
                 continue;

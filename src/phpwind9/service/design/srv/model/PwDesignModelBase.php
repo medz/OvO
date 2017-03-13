@@ -10,9 +10,9 @@
  */
 abstract class PwDesignModelBase
 {
-    protected $_data = array();
+    protected $_data = [];
     protected $_moduleBo;
-    private $_viewSet = array();
+    private $_viewSet = [];
 
     /**
      * 根据设置获取数据.
@@ -82,7 +82,7 @@ abstract class PwDesignModelBase
      */
     protected function fetchData($ids)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -129,7 +129,7 @@ abstract class PwDesignModelBase
 
     private function _formatData()
     {
-        $_tmp = $_data = array();
+        $_tmp = $_data = [];
 
         $bo = new PwDesignModelBo($this->_moduleBo->getModel());
         $signKeys = $bo->getSignKeys();

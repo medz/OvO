@@ -92,7 +92,7 @@ class AppSearchRecord
         $uid = intval($uid);
         $type = intval($type);
         if ($uid < 1 || $type < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getRecordDao()->getByUidAndType($uid, $type);
@@ -110,7 +110,7 @@ class AppSearchRecord
         $uid = intval($uid);
         $type = intval($type);
         if ($uid < 1 || $type < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getRecordDao()->countByUidAndType($uid, $type);
@@ -127,7 +127,7 @@ class AppSearchRecord
     {
         $id = intval($id);
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getRecordDao()->get($id);
@@ -178,7 +178,7 @@ class AppSearchRecord
     public function getByTypeAndKey($keywords, $type)
     {
         if (!$keywords || !$type) {
-            return array();
+            return [];
         }
 
         return $this->_getSearchDao()->get($keywords, $type);
@@ -213,7 +213,7 @@ class AppSearchRecord
         $type = intval($type);
         $num = intval($num);
         if ($num < 1 || $type < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getSearchDao()->getByAndType($type, $num);

@@ -19,7 +19,7 @@ class PwApplication
     {
         $error = $application->beforeAdd();
         if (true !== $error) {
-            return new PwError('APPCENTER:validate.fail', array('error' => $error));
+            return new PwError('APPCENTER:validate.fail', ['error' => $error]);
         }
 
         return $this->_load()->add($application->getData());
@@ -36,7 +36,7 @@ class PwApplication
     {
         if (true !== ($error = $application->beforeUpdate())) {
             return new PwError('APPCENTER:validate.fail',
-            array('error' => $error));
+            ['error' => $error]);
         }
         $_r = $this->_load()->update($application->getField('app_id'), $application->getData());
         if (!$_r) {

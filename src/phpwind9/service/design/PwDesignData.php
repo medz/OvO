@@ -20,11 +20,11 @@ class PwDesignData
     {
         $dataid = (int) $dataid;
         if ($dataid < 1) {
-            return array();
+            return [];
         }
         $data = $this->_getDao()->getData($dataid);
         if (!$data) {
-            return array();
+            return [];
         }
         $standard = unserialize($data['standard']);
         $_tmp = unserialize($data['extend_info']);
@@ -38,7 +38,7 @@ class PwDesignData
     public function fetchData($dataids)
     {
         if (!is_array($dataids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchData($dataids);
@@ -48,7 +48,7 @@ class PwDesignData
     {
         $moduleid = (int) $moduleid;
         if ($moduleid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getDataByModuleid($moduleid);
@@ -57,10 +57,10 @@ class PwDesignData
     public function fetchDataByFrom($fromids, $fromtype = self::FROM_AUTO, $datatype = self::AUTO)
     {
         if (!is_array($fromids)) {
-            $fromids = (int) $fromids > 0 ? array($fromids) : array();
+            $fromids = (int) $fromids > 0 ? [$fromids] : [];
         }
         if (count($fromids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchDataByFrom($fromids, $fromtype, $datatype);
@@ -73,7 +73,7 @@ class PwDesignData
     public function fetchDataByModuleid($moduleids)
     {
         if (!is_array($moduleids) || !$moduleids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchDataByModuleid($moduleids);
@@ -174,7 +174,7 @@ class PwDesignData
             return false;
         }
 
-        return $this->_getDao()->updateData($dataid, array('vieworder' => $orderid));
+        return $this->_getDao()->updateData($dataid, ['vieworder' => $orderid]);
     }
 
     public function updateReservation($dataid, $reserv = 1)
@@ -185,7 +185,7 @@ class PwDesignData
             return false;
         }
 
-        return $this->_getDao()->updateData($dataid, array('is_reservation' => $reserv));
+        return $this->_getDao()->updateData($dataid, ['is_reservation' => $reserv]);
     }
 
     public function updateEndTime($dataid, $endtime = 0)
@@ -196,7 +196,7 @@ class PwDesignData
             return false;
         }
 
-        return $this->_getDao()->updateData($dataid, array('end_time' => $endtime));
+        return $this->_getDao()->updateData($dataid, ['end_time' => $endtime]);
     }
 
     public function deleteData($dataid)
@@ -209,7 +209,7 @@ class PwDesignData
     public function batchDelete($dataids)
     {
         if (!is_array($dataids)) {
-            $dataids = (int) $dataids > 0 ? array($dataids) : array();
+            $dataids = (int) $dataids > 0 ? [$dataids] : [];
         }
         if (count($dataids) < 1) {
             return false;

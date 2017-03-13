@@ -35,7 +35,7 @@ class PwNoticeMessage extends PwNoticeAction
 
     public function getDetailList($notice)
     {
-        $list = array();
+        $list = [];
         if (!$notice || !$notice['param']) {
             return $list;
         }
@@ -53,7 +53,7 @@ class PwNoticeMessage extends PwNoticeAction
             $this->_getMessagesService()->resetUserMessages($dialog['to_uid']);
         }
 
-        return array('data' => $list, 'dialog' => $dialog);
+        return ['data' => $list, 'dialog' => $dialog];
     }
 
     /**

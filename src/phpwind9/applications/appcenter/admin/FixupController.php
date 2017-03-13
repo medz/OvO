@@ -75,10 +75,10 @@ class FixupController extends AdminBaseController
     public function doFtpAction()
     {
         try {
-            $config = $this->getInput(array('server', 'port', 'user', 'pwd', 'dir', 'sftp'), 'post', true);
+            $config = $this->getInput(['server', 'port', 'user', 'pwd', 'dir', 'sftp'], 'post', true);
             $ftp = $config['sftp'] ? new PwSftpSave($config) : new PwFtpSave($config);
         } catch (WindFtpException $e) {
-            $this->showError(array('APPCENTER:upgrade.ftp.fail', array($e->getMessage())));
+            $this->showError(['APPCENTER:upgrade.ftp.fail', [$e->getMessage()]]);
         }
         $ftp->close();
         Wekit::cache()->set('system_patch_ftp', $config);

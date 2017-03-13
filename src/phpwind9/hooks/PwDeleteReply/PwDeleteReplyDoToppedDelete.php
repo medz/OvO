@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteReplyDoToppedDelete extends iPwGleanDoHookProcess
 {
-    protected $recode = array();
-    protected $tids = array();
+    protected $recode = [];
+    protected $tids = [];
 
     public function gleanData($value)
     {

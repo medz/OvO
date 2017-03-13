@@ -38,7 +38,7 @@ class UpgradeController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
         $member = $this->getInput('member', 'post');
 
-        $strategy = array();
+        $strategy = [];
 
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
@@ -47,7 +47,7 @@ class UpgradeController extends AdminBaseController
             $vkey = 'credit'.$k;
             $member[$vkey] && $strategy[$vkey] = $member[$vkey];
         }
-        foreach (array('postnum', 'onlinetime', 'digest') as $v) {
+        foreach (['postnum', 'onlinetime', 'digest'] as $v) {
             $member[$v] && $strategy[$v] = $member[$v];
         }
 

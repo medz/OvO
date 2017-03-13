@@ -11,8 +11,8 @@
 class PwDelayRun
 {
     private static $instance = null;
-    private $_callback = array();
-    private $_args = array();
+    private $_callback = [];
+    private $_args = [];
 
     private function __construct()
     {
@@ -32,7 +32,7 @@ class PwDelayRun
         return self::$instance;
     }
 
-    public function call($callback, $args = array())
+    public function call($callback, $args = [])
     {
         $key = $this->_getUniqueKey($callback, $args);
         $this->_callback[$key] = $callback;

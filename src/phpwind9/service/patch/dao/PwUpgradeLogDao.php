@@ -11,7 +11,7 @@
 class PwUpgradeLogDao extends PwBaseDao
 {
     protected $_table = 'upgrade_log';
-    protected $_dataStruct = array('id', 'type', 'data');
+    protected $_dataStruct = ['id', 'type', 'data'];
 
     /**
      * 获取一个日志.
@@ -37,7 +37,7 @@ class PwUpgradeLogDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE type = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([$type], $this->_pk);
     }
 
     /**
@@ -54,7 +54,7 @@ class PwUpgradeLogDao extends PwBaseDao
     public function add($id, $type, $data)
     {
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(),
-            $this->sqlSingle(array('id' => $id, 'type' => $type, 'data' => serialize($data))));
+            $this->sqlSingle(['id' => $id, 'type' => $type, 'data' => serialize($data)]));
 
         return $this->getConnection()->execute($sql);
     }

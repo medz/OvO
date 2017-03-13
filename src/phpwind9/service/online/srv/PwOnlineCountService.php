@@ -42,11 +42,11 @@ class PwOnlineCountService
      */
     public function getVisitorList($fid = 0, $page = 1, $limit = 10, $isExact = false)
     {
-        $data = array();
+        $data = [];
         $ds = Wekit::load('online.PwUserOnline');
         $count = $ds->getOnlineCount($fid);
         if ($count < 1) {
-            return array(0, array());
+            return [0, []];
         }
         list($start, $limit) = Pw::page2limit($page, $limit);
         $list = $ds->getInfoList($fid, $start, $limit);
@@ -63,7 +63,7 @@ class PwOnlineCountService
             }
         }
 
-        return array($count, $list);
+        return [$count, $list];
     }
 
     /**
@@ -151,9 +151,9 @@ class PwOnlineCountService
         $time = $maxUser['created_time'] > $maxGuest['created_time'] ? $maxUser['created_time'] : $maxGuest['created_time'];
         $number = $maxUser['number'] + $maxGuest['number'];
 
-        return array('signkey'     => 'maxonline',
+        return ['signkey'          => 'maxonline',
                     'created_time' => $time,
                     'number'       => $number,
-        );
+        ];
     }
 }

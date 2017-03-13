@@ -12,12 +12,12 @@ class PwDesignHtmlDataService extends PwDesignModelBase
 {
     public function decorateAddProperty($model)
     {
-        return array();
+        return [];
     }
 
     public function decorateEditProperty($moduleBo)
     {
-        return array();
+        return [];
     }
 
     public function decorateSaveProperty($property, $moduleid)

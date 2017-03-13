@@ -23,7 +23,7 @@ class ApiController extends PwBaseController
             exit('fail');
         }
         !$out && $out = 'script';
-        if (!in_array($out, array('script', 'json', 'xml'))) {
+        if (!in_array($out, ['script', 'json', 'xml'])) {
             exit('fail');
         }
         $method = $out.'Format';
@@ -49,7 +49,7 @@ class ApiController extends PwBaseController
 
     protected function jsonFormat($moduleId)
     {
-        $_data = array();
+        $_data = [];
 
         $bo = new PwDesignModuleBo($moduleId);
         $module = $bo->getModule();

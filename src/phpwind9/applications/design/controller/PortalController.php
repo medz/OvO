@@ -92,7 +92,7 @@ class PortalController extends PwBaseController
         }
 
         //二级域名start
-        list($domain, $root) = $this->getInput(array('domain', 'root'), 'post');
+        list($domain, $root) = $this->getInput(['domain', 'root'], 'post');
         if ($root) {
             if (!$domain) {
                 Wekit::load('domain.PwDomain')->deleteByDomainKey("special/index/run?id=$id");
@@ -170,7 +170,7 @@ class PortalController extends PwBaseController
             $this->showError('DESIGN:pagename.is.empty');
         }
         //二级域名start
-        list($domain, $root) = $this->getInput(array('domain', 'root'), 'post');
+        list($domain, $root) = $this->getInput(['domain', 'root'], 'post');
         if ($root) {
             if (!$domain) {
                 Wekit::load('domain.PwDomain')->deleteByDomainKey("special/index/run?id=$id");

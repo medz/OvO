@@ -13,7 +13,7 @@ class WindidMessageDao extends WindidBaseDao
 {
     protected $_pk = 'message_id';
     protected $_table = 'message';
-    protected $_dataStruct = array('message_id', 'from_uid', 'to_uid', 'content', 'created_time');
+    protected $_dataStruct = ['message_id', 'from_uid', 'to_uid', 'content', 'created_time'];
 
     /**
      * 获取单条消息.
@@ -27,7 +27,7 @@ class WindidMessageDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE message_id=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($id));
+        return $smt->getOne([$id]);
     }
 
     public function fetchMessage($ids)
@@ -65,7 +65,7 @@ class WindidMessageDao extends WindidBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE message_id=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($id));
+        return $smt->update([$id]);
     }
 
     /**
@@ -80,7 +80,7 @@ class WindidMessageDao extends WindidBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `message_id` IN %s ', $this->getTable(), $this->sqlImplode($ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 
     /**
@@ -95,7 +95,7 @@ class WindidMessageDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `message_id` IN %s ', $this->getTable(), $this->sqlImplode($ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'message_id');
+        return $smt->queryAll([], 'message_id');
     }
 
     /**
@@ -132,7 +132,7 @@ class WindidMessageDao extends WindidBaseDao
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'fromuid':
@@ -158,6 +158,6 @@ class WindidMessageDao extends WindidBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 }

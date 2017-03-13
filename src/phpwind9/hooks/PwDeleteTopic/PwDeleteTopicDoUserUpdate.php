@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
 {
-    public $recode = array();
+    public $recode = [];
     private $operatorCredit = true;
 
     /**
@@ -37,7 +37,7 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
     {
         if ($value['disabled'] != 2) {
             if (!isset($this->recode[$value['created_userid']])) {
-                $this->recode[$value['created_userid']] = array('postnum' => 0, 'digest' => 0);
+                $this->recode[$value['created_userid']] = ['postnum' => 0, 'digest' => 0];
             }
             // use ++ is can't +1
             $this->recode[$value['created_userid']]['postnum'] += 1;
@@ -61,10 +61,10 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
     {
         $forum = new PwForumBo($value['fid']);
         PwCreditBo::getInstance()->operate(
-            'delete_topic', PwUserBo::getInstance($value['created_userid']), true, array(
+            'delete_topic', PwUserBo::getInstance($value['created_userid']), true, [
                 'operator' => $this->srv->user->username,
                 'title'    => $value['subject'],
-            ),
+            ],
             $forum->getCreditSet('delete_topic'));
     }
 

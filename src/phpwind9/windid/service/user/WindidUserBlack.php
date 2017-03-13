@@ -20,7 +20,7 @@ class WindidUserBlack
      */
     public function getBlacklist($uid)
     {
-        $blacklist = array();
+        $blacklist = [];
         $uid = intval($uid);
         if ($uid < 1) {
             return $blacklist;
@@ -43,7 +43,7 @@ class WindidUserBlack
     public function fetchBlacklist($uids)
     {
         if (!is_array($uids) || !count($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getBlacklistDao()->fetchBlacklist($uids);

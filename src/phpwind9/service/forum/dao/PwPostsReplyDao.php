@@ -14,14 +14,14 @@ class PwPostsReplyDao extends PwBaseDao
     protected $_table = 'bbs_posts_reply';
     protected $_mergeTable = 'bbs_posts';
     protected $_pk = 'pid';
-    protected $_dataStruct = array('pid', 'rpid');
+    protected $_dataStruct = ['pid', 'rpid'];
 
     public function getPostByPid($pid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT b.* FROM %s a LEFT JOIN %s b ON a.pid=b.pid WHERE a.rpid=? AND b.disabled=0 ORDER BY a.pid DESC %s', $this->getTable(), $this->getTable($this->_mergeTable), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($pid), 'pid');
+        return $smt->queryAll([$pid], 'pid');
     }
 
     public function add($fields)

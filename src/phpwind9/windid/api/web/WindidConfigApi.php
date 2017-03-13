@@ -12,46 +12,46 @@ class WindidConfigApi
 {
     public function get($name)
     {
-        $params = array(
+        $params = [
             'name' => $name,
-        );
+        ];
 
         return WindidApi::open('config/get', $params);
     }
 
     public function getConfig($namespace)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
-        );
+        ];
 
         return WindidApi::open('config/getConfig', $params);
     }
 
     public function fetchConfig($namespace)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
-        );
+        ];
 
         return WindidApi::open('config/fetchConfig', $params);
     }
 
     public function getConfigByName($namespace, $name)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
             'name'      => $name,
-        );
+        ];
 
         return WindidApi::open('config/getConfigByName', $params);
     }
 
     public function getValues($namespace)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
-        );
+        ];
 
         return WindidApi::open('config/getValues', $params);
     }
@@ -64,50 +64,50 @@ class WindidConfigApi
      */
     public function setConfig($namespace, $key, $value)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
             'key'       => $key,
             'value'     => $value,
-        );
+        ];
 
-        return WindidApi::open('config/setConfig', array(), $params);
+        return WindidApi::open('config/setConfig', [], $params);
     }
 
     public function setConfigs($namespace, $data)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
             'data'      => $data,
-        );
+        ];
 
-        return WindidApi::open('config/setConfigs', array(), $params);
+        return WindidApi::open('config/setConfigs', [], $params);
     }
 
     public function deleteConfig($namespace)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
-        );
+        ];
 
-        return WindidApi::open('config/deleteConfig', array(), $params);
+        return WindidApi::open('config/deleteConfig', [], $params);
     }
 
     public function deleteConfigByName($namespace, $name)
     {
-        $params = array(
+        $params = [
             'namespace' => $namespace,
             'name'      => $name,
-        );
+        ];
 
-        return WindidApi::open('config/deleteConfigByName', array(), $params);
+        return WindidApi::open('config/deleteConfigByName', [], $params);
     }
 
     public function setCredits($credits)
     {
-        $params = array(
+        $params = [
             'credits' => $credits,
-        );
+        ];
 
-        return WindidApi::open('config/setCredits', array(), $params);
+        return WindidApi::open('config/setCredits', [], $params);
     }
 }

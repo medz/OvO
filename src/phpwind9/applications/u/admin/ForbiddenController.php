@@ -32,11 +32,11 @@ class ForbiddenController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $key = $this->getInput('key', 'post');
-        if (!in_array($key, array('1', '2'))) {
+        if (!in_array($key, ['1', '2'])) {
             $this->showError('USER:ban.error.data.format');
         }
-        $array = array();
-        list($end_time, $reason, $types) = $this->getInput(array('end_time', 'reason', 'type'), 'post');
+        $array = [];
+        list($end_time, $reason, $types) = $this->getInput(['end_time', 'reason', 'type'], 'post');
         $userInfos = $this->_getUids(explode(',', $this->getInput('value', 'post')), intval($key));
         if (!$userInfos) {
             $this->showError('USER:ban.user.illegal');
@@ -53,7 +53,7 @@ class ForbiddenController extends AdminBaseController
             $end_time = Pw::str2time($end_time);
         }
 
-        $_notice = array();
+        $_notice = [];
         $rightTypes = array_keys($this->_getService()->getBanType());
         foreach ($types as $type) {
             if (!in_array($type, $rightTypes)) {
@@ -69,7 +69,7 @@ class ForbiddenController extends AdminBaseController
                     ->setCreatedUid($_uid);
                 $array[] = $dm;
 
-                isset($_notice[$uid]) || $_notice[$uid] = array();
+                isset($_notice[$uid]) || $_notice[$uid] = [];
                 $_notice[$uid]['end_time'] = $end_time;
                 $_notice[$uid]['reason'] = $reason;
                 $_notice[$uid]['type'][] = $type;
@@ -92,7 +92,7 @@ class ForbiddenController extends AdminBaseController
     {
         $config = Wekit::C()->getValues('site');
 
-        $default = array('autoForbidden.open' => 0, 'autoForbidden.condition' => array('autoForbidden.credit' => 0, 'autoForbidden.num' => 0), 'autoForbidden.day' => 0, 'autoForbidden.type' => array(), 'autoForbidden.reason' => '');
+        $default = ['autoForbidden.open' => 0, 'autoForbidden.condition' => ['autoForbidden.credit' => 0, 'autoForbidden.num' => 0], 'autoForbidden.day' => 0, 'autoForbidden.type' => [], 'autoForbidden.reason' => ''];
         $this->setOutput(array_merge($default, $config), 'config');
 
         /* @var $pwCreditBo PwCreditBo */
@@ -111,7 +111,7 @@ class ForbiddenController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $config = new PwConfigSet('site');
-        list($open, $condition, $type, $reason) = $this->getInput(array('open', 'condition', 'type', 'reason'), 'post');
+        list($open, $condition, $type, $reason) = $this->getInput(['open', 'condition', 'type', 'reason'], 'post');
         if ($open == 1) {
             if (!$condition['num']) {
                 $this->showError('USER:ban.auto.credit.num.require');
@@ -146,7 +146,7 @@ class ForbiddenController extends AdminBaseController
             ->setCreatedUsername($this->getInput('operator'))
             ->setStartTime($this->getInput('start_time'))
             ->setEndTime($this->getInput('end_time'));
-        $result = array();
+        $result = [];
         /* @var $banDs PwUserBan */
         $banDs = Wekit::load('user.PwUserBan');
         $count = $banDs->countWithCondition($searchSo);
@@ -185,10 +185,10 @@ class ForbiddenController extends AdminBaseController
                 $_operator = 'system';
             }
 
-            $_notice = array();
+            $_notice = [];
             foreach ($r as $_item) {
                 $uid = $_item['uid'];
-                isset($_notice[$uid]) || $_notice[$uid] = array();
+                isset($_notice[$uid]) || $_notice[$uid] = [];
                 $_notice[$uid]['end_time'] = $_item['end_time'];
                 $_notice[$uid]['reason'] = $_item['reason'];
                 $_notice[$uid]['type'][] = $_item['typeid'];
@@ -206,18 +206,18 @@ class ForbiddenController extends AdminBaseController
      */
     private function _getBanDayType()
     {
-        static $days = array();
+        static $days = [];
         if (!$days) {
-            $days = array(
-                0   => array('title' => '永久'), //永久禁止
-                3   => array('title' => '三天'), //禁止三天
-                7   => array('title' => '一周'), //禁止一周
-                14  => array('title' => '二周'),  //禁止二周
-                30  => array('title' => '一个月'), //禁止一个月
-                60  => array('title' => '二个月'), //禁止二个月
-                180 => array('title' => '半年'), //禁止半年
-                360 => array('title' => '一年'), //禁止一年
-            );
+            $days = [
+                0   => ['title' => '永久'], //永久禁止
+                3   => ['title' => '三天'], //禁止三天
+                7   => ['title' => '一周'], //禁止一周
+                14  => ['title' => '二周'],  //禁止二周
+                30  => ['title' => '一个月'], //禁止一个月
+                60  => ['title' => '二个月'], //禁止二个月
+                180 => ['title' => '半年'], //禁止半年
+                360 => ['title' => '一年'], //禁止一年
+            ];
         }
 
         return $days;
@@ -235,7 +235,7 @@ class ForbiddenController extends AdminBaseController
     {
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
-        $values = !empty($values) ? array_unique($values) : array();
+        $values = !empty($values) ? array_unique($values) : [];
         if (!$values) {
             $this->showError('USER:ban.user.require');
         }
@@ -247,7 +247,7 @@ class ForbiddenController extends AdminBaseController
                 $infos = $userDs->fetchUserByName($values, PwUser::FETCH_MAIN);
                 break;
             default:
-                return array();
+                return [];
         }
 
         return $infos;

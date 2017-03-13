@@ -4,10 +4,10 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 
 class PwPollDisplay
 {
-    public $pollData = array();
+    public $pollData = [];
 
-    private $_instance = array();
-    private $_typeMap = array(0 => 'PwPollThread');
+    private $_instance = [];
+    private $_typeMap = [0 => 'PwPollThread'];
 
     public function __construct(iPwDataSource $dataSource)
     {
@@ -30,7 +30,7 @@ class PwPollDisplay
 
     private function _buildInstance()
     {
-        $_data = array();
+        $_data = [];
         foreach ($this->pollData as $key => $value) {
             $_data[$value['app_type']][] = $value['poll_id'];
         }
@@ -49,7 +49,7 @@ class PwPollDisplay
      */
     public function gather()
     {
-        $poll = $uids = $userInfos = $pollids = $votedPollids = array();
+        $poll = $uids = $userInfos = $pollids = $votedPollids = [];
 
         foreach ($this->pollData as $value) {
             $uids[] = $value['created_userid'];
@@ -59,16 +59,16 @@ class PwPollDisplay
         $userInfo = $this->_buildUser($this->_getUserDS()->fetchUserByUid(array_unique($uids)));
         list($option, $votedTotal) = $this->_buildOption($this->_getPollOptionDS()->fetchByPollid($pollids));
 
-        $result = array();
+        $result = [];
         foreach ($this->pollData as $value) {
             $_pollid = $value['poll_id'];
             $value['ismultiple'] = $value['option_limit'] > 1 ? true : false;
             $value['isexpired'] = ($value['expired_time'] && $value['expired_time'] < Pw::getTime()) ? true : false;
-            $value['option'] = isset($option[$_pollid]) ? $option[$_pollid] : array();
+            $value['option'] = isset($option[$_pollid]) ? $option[$_pollid] : [];
             $value['votedtotal'] = isset($votedTotal[$_pollid]) ? $votedTotal[$_pollid] : 0;
 
             $value += $this->_instance[$value['app_type']]->offer($_pollid);
-            $value += isset($userInfo[$value['created_userid']]) ? $userInfo[$value['created_userid']] : array();
+            $value += isset($userInfo[$value['created_userid']]) ? $userInfo[$value['created_userid']] : [];
             $value['content'] = $this->_buildContent($value['content']);
             $result[] = $value;
         }
@@ -89,7 +89,7 @@ class PwPollDisplay
     public function _buildContent($content)
     {
         $content = strip_tags($content);
-        $content = str_replace(array("\r", "\n", "\t"), '', $content);
+        $content = str_replace(["\r", "\n", "\t"], '', $content);
 
         return Pw::substrs(Pw::stripWindCode($content), 128);
     }
@@ -97,12 +97,12 @@ class PwPollDisplay
     private function _buildUser($data)
     {
         if (empty($data) || !count($data)) {
-            return array();
+            return [];
         }
 
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
-            $t = array();
+            $t = [];
             $t['created_uid'] = $value['uid'];
             $t['created_username'] = $value['username'];
             $result[$key] = $t;
@@ -114,10 +114,10 @@ class PwPollDisplay
     private function _buildOption($data)
     {
         if (empty($data) || !count($data)) {
-            return array();
+            return [];
         }
 
-        $option = $votedNum = $total = array();
+        $option = $votedNum = $total = [];
         foreach ($data as $key => $value) {
             $votedNum[$value['poll_id']][] = $value['voted_num'];
         }
@@ -128,19 +128,19 @@ class PwPollDisplay
             $option[$_pollid][] = $value;
         }
 
-        return array($option, $total);
+        return [$option, $total];
     }
 }
 
 class PwPollThread
 {
-    public $loginUser = array();
+    public $loginUser = [];
 
-    private $_threadInfo = array();
-    private $_forumInfo = array();
+    private $_threadInfo = [];
+    private $_forumInfo = [];
 
-    private $_pollids = array();
-    private $_tids = array();
+    private $_pollids = [];
+    private $_tids = [];
 
     public function __construct($pollids)
     {
@@ -178,10 +178,10 @@ class PwPollThread
     public function buildForumInfo($threadInfo)
     {
         if (!$threadInfo) {
-            return array();
+            return [];
         }
 
-        $forumids = array();
+        $forumids = [];
         foreach ($threadInfo as $value) {
             if (!$value['fid']) {
                 continue;
@@ -198,17 +198,17 @@ class PwPollThread
     public function offer($pollid)
     {
         $tid = $this->_tids[$pollid];
-        $thread = isset($this->_threadInfo[$tid]) ? $this->_threadInfo[$tid] : array();
+        $thread = isset($this->_threadInfo[$tid]) ? $this->_threadInfo[$tid] : [];
 
-        $result = array();
+        $result = [];
 
         $fid = $thread['fid'];
-        $forum = isset($this->_forumInfo[$fid]) ? $this->_forumInfo[$fid] : array();
+        $forum = isset($this->_forumInfo[$fid]) ? $this->_forumInfo[$fid] : [];
         $result['allow_visit'] = $this->allowVisit($forum, $this->loginUser);
         $result['allow_read'] = $this->allowRead($forum, $this->loginUser);
 
         $result['typeid'] = $thread['tid'];
-        $result['url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $thread['tid'], 'fid' => $thread['fid']));
+        $result['url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $thread['tid'], 'fid' => $thread['fid']]);
         $result['title'] = $thread['subject'];
         $result['content'] = $thread['content'] ? $thread['content'] : '';
 
@@ -219,7 +219,7 @@ class PwPollThread
     {
         $threadPoll = $this->_getThreadPollDs()->fetchByPollid($this->_pollids);
         if (!$threadPoll) {
-            return array();
+            return [];
         }
 
         foreach ($threadPoll as $value) {

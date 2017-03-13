@@ -19,7 +19,7 @@ class PwMedalUser
     {
         $uid = (int) $uid;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfo($uid);
@@ -33,7 +33,7 @@ class PwMedalUser
     public function fetchMedalUser($uids)
     {
         if (!is_array($uids) || count($uids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchInfo($uids);
@@ -49,7 +49,7 @@ class PwMedalUser
     public function fetchMedalUserOrder($uids, $start = 0, $limit = 10)
     {
         if (!is_array($uids) || count($uids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchMedalUserOrder($uids, $start, $limit);

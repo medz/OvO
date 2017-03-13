@@ -18,7 +18,7 @@ class AdminConfig
     public function getConfig($namespace)
     {
         if (!$namespace) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getConfigs($namespace);
@@ -34,7 +34,7 @@ class AdminConfig
     public function fetchConfig($namespace)
     {
         if (!$namespace || !is_array($namespace)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchConfigs($namespace);
@@ -51,7 +51,7 @@ class AdminConfig
     public function getConfigByName($namespace, $name)
     {
         if (!$namespace || !$name) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getConfigByName($namespace, $name);
@@ -67,7 +67,7 @@ class AdminConfig
     public function getValues($namespace)
     {
         $config = $this->_getDao()->getConfigs($namespace);
-        $clear = array();
+        $clear = [];
         foreach ($config as $key => $item) {
             $clear[$key] = $item['vtype'] != 'string' ? unserialize($item['value']) : $item['value'];
         }

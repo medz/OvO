@@ -13,7 +13,7 @@ class PwDesignStructure
     public function getStruct($name)
     {
         if (!$name) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($name);
@@ -22,7 +22,7 @@ class PwDesignStructure
     public function fetchStruct($names)
     {
         if (empty($names) || !is_array($names)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($names);
@@ -51,7 +51,7 @@ class PwDesignStructure
     public function deleteStruct($name)
     {
         if (!$name) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->delete($name);

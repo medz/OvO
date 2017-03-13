@@ -394,10 +394,10 @@ class PwTagDm extends PwBaseDm
             return $result;
         }
         if (Pw::strlen($tagName) > $maxLength) {
-            return new PwError('TAG:tagname.length.error', array('{maxlength}' => $maxLength));
+            return new PwError('TAG:tagname.length.error', ['{maxlength}' => $maxLength]);
         }
         if (Pw::strlen($this->_data['excerpt']) > 255) {
-            return new PwError('TAG:excerpt.length.error', array('{maxlength}' => 255));
+            return new PwError('TAG:excerpt.length.error', ['{maxlength}' => 255]);
         }
 
         return true;

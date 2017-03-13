@@ -80,6 +80,6 @@ class PwTemplateCompilerComponent extends AbstractWindTemplateCompiler
      */
     protected function getProperties()
     {
-        return array('name', 'tpl', 'args', 'class', 'method', 'suffix');
+        return ['name', 'tpl', 'args', 'class', 'method', 'suffix'];
     }
 }

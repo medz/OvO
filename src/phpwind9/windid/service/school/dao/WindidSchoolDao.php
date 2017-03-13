@@ -13,7 +13,7 @@ class WindidSchoolDao extends WindidBaseDao
 {
     protected $_table = 'school';
     protected $_pk = 'schoolid';
-    protected $_dataStruct = array('schoolid', 'name', 'areaid', 'first_char', 'typeid');
+    protected $_dataStruct = ['schoolid', 'name', 'areaid', 'first_char', 'typeid'];
 
     /**
      * 获取学校的详细信息.
@@ -51,7 +51,7 @@ class WindidSchoolDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `areaid` = ? AND `typeid` = ? ORDER BY `first_char`');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($areaid, $typeid), 'schoolid');
+        return $smt->queryAll([$areaid, $typeid], 'schoolid');
     }
 
     /**
@@ -75,12 +75,12 @@ class WindidSchoolDao extends WindidBaseDao
      */
     public function batchAddSchool($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $clear[] = array($_item['name'], $_item['areaid'], $_item['first_char'], $_item['typeid']);
+            $clear[] = [$_item['name'], $_item['areaid'], $_item['first_char'], $_item['typeid']];
         }
         if (!$clear) {
             return false;
@@ -136,7 +136,7 @@ class WindidSchoolDao extends WindidBaseDao
     {
         list($where, $param) = $this->_buildCondition($condition);
         if (!$where) {
-            return array();
+            return [];
         }
         $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY `first_char` %s', $this->getTable(), $where, $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
@@ -155,7 +155,7 @@ class WindidSchoolDao extends WindidBaseDao
     {
         list($where, $param) = $this->_buildCondition($condition);
         if (!$where) {
-            return array();
+            return [];
         }
         $sql = $this->_bindSql('SELECT COUNT(*) FROM %s %s', $this->getTable(), $where);
         $smt = $this->getConnection()->createStatement($sql);
@@ -172,7 +172,7 @@ class WindidSchoolDao extends WindidBaseDao
      */
     private function _buildCondition($conditions)
     {
-        $where = $params = array();
+        $where = $params = [];
         foreach ($conditions as $_key => $_var) {
             if (!$_var) {
                 continue;
@@ -198,6 +198,6 @@ class WindidSchoolDao extends WindidBaseDao
             }
         }
 
-        return $where ? array($this->_bindSql('WHERE %s', implode(' AND ', $where)), $params) : array('', array());
+        return $where ? [$this->_bindSql('WHERE %s', implode(' AND ', $where)), $params] : ['', []];
     }
 }

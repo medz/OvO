@@ -23,7 +23,7 @@ class PwTaskGroupRewardDo extends PwTaskRewardDoBase
         /* @var $userBelongDs PwUserBelong */
         $userBelongDs = Wekit::load('user.PwUserBelong');
         $info = $userBelongDs->getUserBelongs($uid);
-        $_groups = array();
+        $_groups = [];
         foreach ($info as $_item) {
             $_groups[$_item['gid']] = $_item['endtime'];
         }

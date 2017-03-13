@@ -18,7 +18,7 @@ class TagController extends AdminBaseController
      */
     public function run()
     {
-        list($name, $ifhot, $min_count, $max_count, $page) = $this->getInput(array('name', 'ifhot', 'min_count', 'max_count', 'page'));
+        list($name, $ifhot, $min_count, $max_count, $page) = $this->getInput(['name', 'ifhot', 'min_count', 'max_count', 'page']);
         $perpage = 10;
         $page = intval($page);
         $page < 1 && $page = 1;
@@ -26,7 +26,7 @@ class TagController extends AdminBaseController
         $tagSo->setName($name)->setIfhot($ifhot)->setMaxCount($max_count)->setMinCount($min_count);
         $total = $this->_getDs()->countSearchTag($tagSo);
         $totalPage = 0;
-        $list = array();
+        $list = [];
         if ($total > 0) {
             $totalPage = ceil($total / $perpage);
             $page > $totalPage && $page = $totalPage;

@@ -12,7 +12,7 @@
 class PwUserTagRelationDao extends PwBaseDao
 {
     protected $_table = 'user_tag_relation';
-    protected $_dataStruct = array('uid', 'tag_id', 'created_time');
+    protected $_dataStruct = ['uid', 'tag_id', 'created_time'];
 
     /**
      * 根据用户ID获得用户的标签关系.
@@ -27,7 +27,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` = ? AND `tag_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $tag_id));
+        return $smt->getOne([$uid, $tag_id]);
     }
 
     /**
@@ -42,7 +42,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tag_id');
+        return $smt->queryAll([$uid], 'tag_id');
     }
 
     /**
@@ -57,7 +57,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `tag_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($tag_id));
+        return $smt->getValue([$tag_id]);
     }
 
     /**
@@ -87,7 +87,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_id` = ? %s', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tag_id), 'uid');
+        return $smt->queryAll([$tag_id], 'uid');
     }
 
     /**
@@ -101,9 +101,9 @@ class PwUserTagRelationDao extends PwBaseDao
     public function deleteRelation($uid, $tag_id)
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` = ? AND `tag_id` = ?');
-        $result = $this->getConnection()->createStatement($sql)->execute(array($uid, $tag_id), true);
+        $result = $this->getConnection()->createStatement($sql)->execute([$uid, $tag_id], true);
         if ($result) {
-            PwSimpleHook::getInstance('PwUserTagRelationDao_deleteRelation')->runDo($tag_id, array(), array('used_count' => -1));
+            PwSimpleHook::getInstance('PwUserTagRelationDao_deleteRelation')->runDo($tag_id, [], ['used_count' => -1]);
         }
 
         return $result;
@@ -121,7 +121,7 @@ class PwUserTagRelationDao extends PwBaseDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE `uid` = ? AND `tag_id` IN %s', $this->getTable(), $this->sqlImplode($tag_ids));
 
-        return $this->getConnection()->createStatement($sql)->execute(array($uid), true);
+        return $this->getConnection()->createStatement($sql)->execute([$uid], true);
     }
 
     /**
@@ -148,7 +148,7 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($uid));
+        return $smt->execute([$uid]);
     }
 
     /**
@@ -179,6 +179,6 @@ class PwUserTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('REPLACE INTO %s (`uid`, `tag_id`, `created_time`) VALUES (?, ?, ?)');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($uid, $tag_id, $created_time));
+        return $smt->execute([$uid, $tag_id, $created_time]);
     }
 }

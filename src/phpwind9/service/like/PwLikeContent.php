@@ -46,7 +46,7 @@ class PwLikeContent
     {
         $likeid = (int) $likeid;
         if ($likeid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeContentDao()->getInfo($likeid);
@@ -60,7 +60,7 @@ class PwLikeContent
     public function fetchLikeContent($likeids)
     {
         if (!is_array($likeids) || count($likeids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeContentDao()->fetchInfo($likeids);
@@ -77,7 +77,7 @@ class PwLikeContent
         $typeid = (int) $typeid;
         $fromid = (int) $fromid;
         if ($typeid < 1 && $fromid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeContentDao()->getInfoByTypeidFromid($typeid, $fromid);
@@ -149,9 +149,9 @@ class PwLikeContent
         if ($uid < 1) {
             return false;
         }
-        $data = array();
+        $data = [];
         $info = $this->_getLikeContentDao()->getInfo($likeid);
-        !$info['users'] && $info['users'] == array();
+        !$info['users'] && $info['users'] == [];
         $_users = explode(',', $info['users']);
         array_unshift($_users, $uid);
         if (count($_users) > $number) {

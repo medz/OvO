@@ -25,7 +25,7 @@ class PwUserActiveCode
     public function getInfoByUid($uid, $typeid = self::REGIST)
     {
         if (($uid = intval($uid)) <= 0) {
-            return array();
+            return [];
         }
 
         return $this->getDao()->getInfoByUid($uid, $typeid);
@@ -50,7 +50,7 @@ class PwUserActiveCode
         if (!WindValidator::isEmail($email)) {
             return new PwError('USER:user.error.-7');
         }
-        $data = array('uid' => $uid, 'email' => $email, 'code' => $code, 'send_time' => $time, 'typeid' => $typeid);
+        $data = ['uid' => $uid, 'email' => $email, 'code' => $code, 'send_time' => $time, 'typeid' => $typeid];
 
         return $this->getDao()->insert($data);
     }

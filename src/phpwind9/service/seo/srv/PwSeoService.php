@@ -23,7 +23,7 @@ class PwSeoService
     {
         $key = $this->_buildKey($mod, $page, $param);
 
-        return Wekit::C()->seo->get($key, array());
+        return Wekit::C()->seo->get($key, []);
         /* if (!$result) {
             $result = $this->_seoDs()->getByModAndPageAndParam($mod, $page, $param);
             Wekit::C()->setConfig('seo', $key, $result);
@@ -43,7 +43,7 @@ class PwSeoService
         if (empty($dms)) {
             return false;
         }
-        !is_array($dms) && $dms = array($dms);
+        !is_array($dms) && $dms = [$dms];
         $r = $this->_seoDs()->batchReplaceSeo($dms);
         if ($r instanceof PwError) {
             return $r;

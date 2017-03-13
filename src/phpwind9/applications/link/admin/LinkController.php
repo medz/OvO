@@ -35,7 +35,7 @@ class LinkController extends AdminBaseController
      */
     public function dorunAction()
     {
-        list($lid, $vieworder) = $this->getInput(array('lid', 'vieworder'), 'post');
+        list($lid, $vieworder) = $this->getInput(['lid', 'vieworder'], 'post');
         if (!$lid) {
             $this->showError('operate.select');
         }
@@ -65,7 +65,7 @@ class LinkController extends AdminBaseController
      */
     public function doaddAction()
     {
-        list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids) = $this->getInput(array('vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids'), 'post');
+        list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids) = $this->getInput(['vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids'], 'post');
         if (!$typeids) {
             $this->showError('LINK:require_empty');
         }
@@ -98,7 +98,7 @@ class LinkController extends AdminBaseController
         $lid = (int) $this->getInput('lid', 'get');
         $link = $this->_getLinkDs()->getLink($lid);
         $linkRelations = $this->_getLinkDs()->getRelationsByTypeId($lid);
-        $typeIds = array();
+        $typeIds = [];
         foreach ($linkRelations as $v) {
             $typeIds[] = $v['typeid'];
         }
@@ -112,7 +112,7 @@ class LinkController extends AdminBaseController
      */
     public function doeditAction()
     {
-        list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids, $lid) = $this->getInput(array('vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids', 'lid'), 'post');
+        list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids, $lid) = $this->getInput(['vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids', 'lid'], 'post');
         if (!$typeids) {
             $this->showError('LINK:require_empty');
         }
@@ -168,9 +168,9 @@ class LinkController extends AdminBaseController
      */
     public function dotypesAction()
     {
-        list($data, $newdata) = $this->getInput(array('data', 'newdata'), 'post');
+        list($data, $newdata) = $this->getInput(['data', 'newdata'], 'post');
 
-        is_array($data) || $data = array();
+        is_array($data) || $data = [];
         foreach ($data as $k => $v) {
             if (!$v['typename']) {
                 continue;
@@ -186,7 +186,7 @@ class LinkController extends AdminBaseController
             $this->_getLinkDs()->updateLinkType($v['typeid'], $v['typename'], $v['vieworder']);
         }
 
-        is_array($newdata) || $newdata = array();
+        is_array($newdata) || $newdata = [];
         if ($newdata) {
             foreach ($newdata as $v) {
                 if (!$v['typename']) {
@@ -215,7 +215,7 @@ class LinkController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($typename, $vieworder) = $this->getInput(array('typename', 'vieworder'), 'post');
+        list($typename, $vieworder) = $this->getInput(['typename', 'vieworder'], 'post');
         if (Pw::strlen($typename) > 6) {
             $this->showError('Link:linkname.len.error');
         }
@@ -250,7 +250,7 @@ class LinkController extends AdminBaseController
      */
     public function checkAction()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -273,7 +273,7 @@ class LinkController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($data, $lid, $single) = $this->getInput(array('data', 'lid', 'signle'), 'post');
+        list($data, $lid, $single) = $this->getInput(['data', 'lid', 'signle'], 'post');
         if (!$lid) {
             $this->showError('operate.select');
         }
@@ -303,7 +303,7 @@ class LinkController extends AdminBaseController
      */
     private function setTab($action)
     {
-        $tabs = array('run' => '', 'editTypes' => '', 'check' => '');
+        $tabs = ['run' => '', 'editTypes' => '', 'check' => ''];
         $tabs[$action] = 'current';
         $this->setOutput($tabs, 'tabs');
     }

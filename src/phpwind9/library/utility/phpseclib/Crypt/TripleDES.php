@@ -213,11 +213,11 @@ class Crypt_TripleDES
 
         if ($mode == CRYPT_DES_MODE_3CBC) {
             $this->mode = CRYPT_DES_MODE_3CBC;
-            $this->des = array(
+            $this->des = [
                 new Crypt_DES(CRYPT_DES_MODE_CBC),
                 new Crypt_DES(CRYPT_DES_MODE_CBC),
                 new Crypt_DES(CRYPT_DES_MODE_CBC),
-            );
+            ];
 
             // we're going to be doing the padding, ourselves, so disable it in the Crypt_DES objects
             $this->des[0]->disablePadding();
@@ -243,11 +243,11 @@ class Crypt_TripleDES
 
                 break;
             default:
-                $this->des = array(
+                $this->des = [
                     new Crypt_DES(CRYPT_DES_MODE_ECB),
                     new Crypt_DES(CRYPT_DES_MODE_ECB),
                     new Crypt_DES(CRYPT_DES_MODE_ECB),
-                );
+                ];
 
                 // we're going to be doing the padding, ourselves, so disable it in the Crypt_DES objects
                 $this->des[0]->disablePadding();

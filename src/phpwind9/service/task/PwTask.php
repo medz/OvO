@@ -79,14 +79,14 @@ class PwTask
      *
      * @return PwError|bool
      */
-    public function updateUserTaskCache($uid, $cache = array(0, array()))
+    public function updateUserTaskCache($uid, $cache = [0, []])
     {
         if (0 >= ($uid = intval($uid))) {
             return new PwError('TASK:param.illegal');
         }
 
         return $this->_taskCacheDao()->update(
-            array('uid' => $uid, 'task_ids' => serialize($cache)));
+            ['uid' => $uid, 'task_ids' => serialize($cache)]);
     }
 
     /**
@@ -130,7 +130,7 @@ class PwTask
     public function fetchNextTaskList($taskIds)
     {
         if (!$taskIds) {
-            return array();
+            return [];
         }
 
         return $this->_taskDao()->fetchNextTaskList($taskIds);
@@ -158,7 +158,7 @@ class PwTask
     public function gets($ids)
     {
         if (empty($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_taskDao()->fetch((array) $ids);
@@ -191,7 +191,7 @@ class PwTask
     public function getTaskCacheByUid($uid)
     {
         if (0 >= ($uid = intval($uid))) {
-            return array();
+            return [];
         }
         $result = $this->_taskCacheDao()->get($uid);
 
@@ -212,7 +212,7 @@ class PwTask
     {
         $last_id = intval($last_id);
         if (!is_array($gids)) {
-            return array();
+            return [];
         }
 
         return $this->_taskGroupDao()->getAutoApplicableTask($last_id, $gids, (int) $limit,
@@ -231,7 +231,7 @@ class PwTask
     public function getNextAutoTasks($pre_id, $startTime, $endTime)
     {
         if (0 >= ($pre_id = intval($pre_id))) {
-            return array();
+            return [];
         }
 
         return $this->_taskDao()->getNextAutoTasks($pre_id, (int) $startTime, (int) $endTime);

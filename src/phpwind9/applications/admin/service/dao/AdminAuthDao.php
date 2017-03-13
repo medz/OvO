@@ -13,13 +13,13 @@ Wind::import('ADMIN:library.AdminBaseDao');
 class AdminAuthDao extends AdminBaseDao
 {
     protected $_table = 'admin_auth';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'id',
         'uid',
         'username',
         'roles',
         'created_time',
-        'modified_time', );
+        'modified_time', ];
 
     /**
      * 添加用户权限.
@@ -52,7 +52,7 @@ class AdminAuthDao extends AdminBaseDao
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET ').$this->sqlSingle($fields).' WHERE id=?';
-        $this->getConnection()->createStatement($sql)->update(array($id));
+        $this->getConnection()->createStatement($sql)->update([$id]);
 
         return true;
     }
@@ -67,7 +67,7 @@ class AdminAuthDao extends AdminBaseDao
     public function del($id)
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
-        $this->getConnection()->createStatement($sql)->update(array($id));
+        $this->getConnection()->createStatement($sql)->update([$id]);
 
         return true;
     }
@@ -83,7 +83,7 @@ class AdminAuthDao extends AdminBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($id));
+        return $this->getConnection()->createStatement($sql)->getOne([$id]);
     }
 
     /**
@@ -97,7 +97,7 @@ class AdminAuthDao extends AdminBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($uid));
+        return $this->getConnection()->createStatement($sql)->getOne([$uid]);
     }
 
     /**
@@ -111,7 +111,7 @@ class AdminAuthDao extends AdminBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE username=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($username));
+        return $this->getConnection()->createStatement($sql)->getOne([$username]);
     }
 
     /**

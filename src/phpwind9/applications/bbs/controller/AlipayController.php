@@ -10,8 +10,8 @@
  */
 class AlipayController extends PwBaseController
 {
-    protected $_var = array();
-    protected $_conf = array();
+    protected $_var = [];
+    protected $_conf = [];
 
     public function beforeAction($handlerAdapter)
     {
@@ -27,10 +27,10 @@ class AlipayController extends PwBaseController
         }
 
         $client = new \Guzzle\Http\Client();
-        $response = $client->post('http://notify.alipay.com/trade/notify_query.do', null, array(
+        $response = $client->post('http://notify.alipay.com/trade/notify_query.do', null, [
             'notify_id' => $this->_var['notify_id'],
             'partner'   => $this->_conf['alipaypartnerID'],
-        ));
+        ]);
         $veryfy_result2 = $response->getBody(true);
 
         //兼容支付宝urlencode之后伪静态+号无法rawurldecode的处理方案
@@ -40,7 +40,7 @@ class AlipayController extends PwBaseController
         reset($this->_var);
         $arg = '';
         foreach ($this->_var as $key => $value) {
-            if ($value && !in_array($key, array('p', 'm', 'c', 'a', 'sign', 'sign_type'))) {
+            if ($value && !in_array($key, ['p', 'm', 'c', 'a', 'sign', 'sign_type'])) {
                 $arg .= "$key=$value&";
             }
         }
@@ -62,7 +62,7 @@ class AlipayController extends PwBaseController
         if ($fee != $this->_var['total_fee'] || $this->_var['seller_email'] != $this->_conf['alipay']) {
             $this->paymsg('onlinepay.fail');
         }
-        if (!in_array($this->_var['trade_status'], array('TRADE_FINISHED', 'TRADE_SUCCESS', 'WAIT_SELLER_SEND_GOODS'))) {
+        if (!in_array($this->_var['trade_status'], ['TRADE_FINISHED', 'TRADE_SUCCESS', 'WAIT_SELLER_SEND_GOODS'])) {
             $this->paymsg('onlinepay.success');
         }
         if ($order['state'] == 2) {
@@ -125,13 +125,13 @@ function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port =
     } elseif (!$parse['port']) {
         $parse['port'] = '80';
     }
-    $parse['host'] = str_replace(array('http://', 'https://'), array('', 'ssl://'), "$parse[scheme]://").$parse['host'];
+    $parse['host'] = str_replace(['http://', 'https://'], ['', 'ssl://'], "$parse[scheme]://").$parse['host'];
     if (!$fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
         return false;
     }
     $method = strtoupper($method);
     $wlength = $wdata = $responseText = '';
-    $parse['path'] = str_replace(array('\\', '//'), '/', $parse['path'])."?$parse[query]";
+    $parse['path'] = str_replace(['\\', '//'], '/', $parse['path'])."?$parse[query]";
     if ($method == 'GET') {
         $separator = $parse['query'] ? '&' : '';
         substr($data, 0, 1) == '&' && $data = substr($data, 1);

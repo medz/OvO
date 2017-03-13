@@ -20,11 +20,11 @@ class PwConfigService
      */
     public function updateConfig($namespace)
     {
-        if (in_array($namespace, array('site', 'credit', 'bbs', 'attachment', 'components', 'seo', 'nav', 'windid'))) {
-            PwDelayRun::getInstance()->call(array(
+        if (in_array($namespace, ['site', 'credit', 'bbs', 'attachment', 'components', 'seo', 'nav', 'windid'])) {
+            PwDelayRun::getInstance()->call([
                 Wekit::load('cache.srv.PwCacheUpdateService'),
                 'updateConfig',
-            ));
+            ]);
         }
     }
 }

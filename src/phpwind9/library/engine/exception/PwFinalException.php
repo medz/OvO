@@ -18,7 +18,7 @@ class PwFinalException extends WindFinalException
      * @param array  $vars
      * @param int    $code    default 500
      */
-    public function __construct($message = 'default', $vars = array(), $code = 500)
+    public function __construct($message = 'default', $vars = [], $code = 500)
     {
         $this->message = $this->buildMessage($message, $vars);
         $this->code = $code;

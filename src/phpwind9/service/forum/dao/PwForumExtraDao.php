@@ -14,7 +14,7 @@ class PwForumExtraDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum_extra';
     protected $_pk = 'fid';
-    protected $_dataStruct = array('fid', 'seo_title', 'seo_description', 'seo_keywords', 'settings_basic', 'settings_credit');
+    protected $_dataStruct = ['fid', 'seo_title', 'seo_description', 'seo_keywords', 'settings_basic', 'settings_credit'];
     protected $_defaultBaseInstance = 'forum.dao.PwForumBaseDao';
 
     public function getForum($fid)
@@ -72,7 +72,7 @@ class PwForumExtraDao extends PwBaseDao
         return $fid;
     }
 
-    public function updateForum($fid, $fields, $increaseFields = array())
+    public function updateForum($fid, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->updateForum($fid, $fields, $increaseFields);
         $this->_update($fid, $fields, $increaseFields);
@@ -80,7 +80,7 @@ class PwForumExtraDao extends PwBaseDao
         return $result;
     }
 
-    public function batchUpdateForum($fids, $fields, $increaseFields = array())
+    public function batchUpdateForum($fids, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->batchUpdateForum($fids, $fields, $increaseFields);
         $this->_batchUpdate($fids, $fields, $increaseFields);

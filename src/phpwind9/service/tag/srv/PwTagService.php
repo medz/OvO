@@ -25,18 +25,18 @@ class PwTagService
             return false;
         }
         $_tagsInfo = $this->_getTagDs()->getTagsByNames(array_keys($dmArray));
-        $tagsKeys = $tagsInfo = array();
+        $tagsKeys = $tagsInfo = [];
         foreach ($_tagsInfo as $k => $tag) {
             $tagsKeys[] = strtolower($k);
             $k = strtolower($k);
             $tagsInfo[$k] = $tag;
         }
-        $dmArrays = array();
+        $dmArrays = [];
         foreach ($dmArray as $k => $dm) {
             $k = strtolower($k);
             $dmArrays[$k] = $dm;
         }
-        $tagRecords = $updateTagDms = $relationDms = $attentionTags = array();
+        $tagRecords = $updateTagDms = $relationDms = $attentionTags = [];
         foreach ($dmArrays as $k => $dm) {
             $k = strtolower(trim($k));
             if (!$k || !$dm instanceof PwTagDm) {
@@ -62,7 +62,7 @@ class PwTagService
                 $dm->setContentTagId($dm->tag_id);
             }
             if ($dm->getIfhot()) {
-                $tagRecords[] = array('tag_id' => $dm->tag_id, 'update_time' => $time);
+                $tagRecords[] = ['tag_id' => $dm->tag_id, 'update_time' => $time];
             }
             $relationDms[] = $dm;
         //	$this->addAttention($dm->getCreateUid(),$dm->tag_id);
@@ -132,13 +132,13 @@ class PwTagService
         $num = intval($num);
         $typeId = $this->getTypeIdByTypeName($typeName);
         $relations = $this->_getTagDs()->getTagRelation($tagId, $typeId, $ifcheck, $offset, $num);
-        $ids = $array = $return = array();
+        $ids = $array = $return = [];
         foreach ($relations as $v) {
             $array[$v['param_id']] = $v;
             $ids[] = $v['param_id'];
         }
         if (!$ids) {
-            return array();
+            return [];
         }
         $action = $this->_getTagAction($typeName);
         if (!$action) {
@@ -149,7 +149,7 @@ class PwTagService
             $result[$id] && $result[$id]['tagifcheck'] = $array[$id]['ifcheck'];
             $return[$id] = $result[$id];
         }
-        usort($return, array($this, 'cmp'));
+        usort($return, [$this, 'cmp']);
 
         return $return;
     }
@@ -161,7 +161,7 @@ class PwTagService
 
     public function getHotTags($categoryId = 0, $num = 100)
     {
-        return Wekit::cache()->get('hot_tags', array($categoryId, $num));
+        return Wekit::cache()->get('hot_tags', [$categoryId, $num]);
     }
 
     /**
@@ -178,7 +178,7 @@ class PwTagService
         $tags = $this->_getTagDs()->getCountHotTag($categoryId, $num);
         $tagIds = array_keys($tags);
         if (!$tagIds) {
-            return array();
+            return [];
         }
 
         return $this->_getTagDs()->fetchTag($tagIds);
@@ -191,9 +191,9 @@ class PwTagService
      * @param array  $params        内容参数ID
      * @param array  $excludeTagIds 需排除的当前话题列表 format: array(tag_id_param_id,..);
      */
-    public function getRelatedTags($typeName, $params, $excludeTagIds = array())
+    public function getRelatedTags($typeName, $params, $excludeTagIds = [])
     {
-        $relatedTags = array();
+        $relatedTags = [];
         $params = array_unique($params);
         $typeId = $this->getTypeIdByTypeName($typeName);
         $params and $tmpRelatedTags = $this->_getTagDs()->getTagsByParamIds($typeId, $params);
@@ -216,12 +216,12 @@ class PwTagService
     {
         $count = $this->_getTagAttentionDs()->countAttentionByTagId($tagId);
         if ($count < 1) {
-            return array(0, array());
+            return [0, []];
         }
         $attentions = $this->_getTagAttentionDs()->getAttentionUids($tagId, $offset, $num);
         $users = $this->_getUserDs()->fetchUserByUid(array_keys($attentions));
 
-        return array($count, $users);
+        return [$count, $users];
     }
 
     /**
@@ -238,12 +238,12 @@ class PwTagService
         $uid = intval($uid);
         $count = $this->_getTagAttentionDs()->countAttentionByUid($uid);
         if ($count < 1) {
-            return array(0, array());
+            return [0, []];
         }
         $relations = $this->_getTagDs()->getAttentionByUid($uid, $start, $limit);
         $tags = $this->_getTagDs()->fetchTag(array_keys($relations));
 
-        return array($count, $tags);
+        return [$count, $tags];
     }
 
     /**
@@ -259,15 +259,15 @@ class PwTagService
     {
         $paramId = intval($paramId);
         if (!$type || $paramId < 1) {
-            return array();
+            return [];
         }
         $typeId = $this->getTypeIdByTypeName($type);
         if (!$typeId) {
-            return array();
+            return [];
         }
         $tagRelations = $this->_getTagDs()->getTagRelationByType($typeId, $paramId);
         if (!count($tagRelations)) {
-            return array();
+            return [];
         }
         $tagIds = array_keys($tagRelations);
 
@@ -286,7 +286,7 @@ class PwTagService
     {
         $tag = $this->_getTagDs()->getTagByName($name);
         if (!$tag) {
-            return array();
+            return [];
         }
         if ($uid) {
             $attention = $this->_getTagAttentionDs()->isAttentioned($uid, $tag['tag_id']);
@@ -397,7 +397,7 @@ class PwTagService
         if (!$childTags) {
             return true;
         }
-        $childTagIds = array();
+        $childTagIds = [];
         foreach ($childTags as $tag) {
             $childTagIds[] = $tag['tag_id'];
             $this->_getTagDs()->updateTagRelationByTagId($tagId, $tag['tag_id']);
@@ -427,12 +427,12 @@ class PwTagService
     {
         $count = $this->_getTagDs()->countTagByCondition($name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd);
         if ($count < 1) {
-            return array(0, array());
+            return [0, []];
         }
         $tags = $this->_getTagDs()->getTagByCondition($start, $limit, $name, $ifHot, $categoryId, $attentionCountStart, $attentionCountEnd, $contentCountStart, $contentCountEnd);
         //取话题分类关系
         $categoryRelations = $this->_getTagCateGoryDs()->getRelationsByTagIds(array_keys($tags));
-        $tmpCategories = array();
+        $tmpCategories = [];
         foreach ($categoryRelations as $l) {
             $tmpCategories[$l['tag_id']][] = $l['category_id'];
         }
@@ -442,7 +442,7 @@ class PwTagService
             $tags[$k] = $v;
         }
 
-        return array($count, $tags);
+        return [$count, $tags];
     }
 
     /**
@@ -468,13 +468,13 @@ class PwTagService
     public function parserTags($content)
     {
         if (!$content) {
-            return array();
+            return [];
         }
         preg_match_all('/\#(.*)\#/iUs', $content, $matches);
         if (!$matches[1]) {
-            return array();
+            return [];
         }
-        $tags = array();
+        $tags = [];
         foreach ($matches[1] as $v) {
             $v = trim($v);
             if (!$v) {
@@ -517,7 +517,7 @@ class PwTagService
         if (!$tags) {
             return false;
         }
-        $tagname = array();
+        $tagname = [];
         foreach ($tags as $v) {
             $tagname[] = $v['tag_name'];
         }

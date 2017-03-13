@@ -30,7 +30,7 @@ class PayController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($ifopen, $reason, $alipay, $alipaypartnerID, $alipaykey, $alipayinterface, $tenpay, $tenpaykey, $paypal, $paypalkey, $_99bill, $_99billkey) = $this->getInput(array('ifopen', 'reason', 'alipay', 'alipaypartnerID', 'alipaykey', 'alipayinterface', 'tenpay', 'tenpaykey', 'paypal', 'paypalkey', '99bill', '99billkey'));
+        list($ifopen, $reason, $alipay, $alipaypartnerID, $alipaykey, $alipayinterface, $tenpay, $tenpaykey, $paypal, $paypalkey, $_99bill, $_99billkey) = $this->getInput(['ifopen', 'reason', 'alipay', 'alipaypartnerID', 'alipaykey', 'alipayinterface', 'tenpay', 'tenpaykey', 'paypal', 'paypalkey', '99bill', '99billkey']);
 
         $config = new PwConfigSet('pay');
         $config->set('ifopen', $ifopen)

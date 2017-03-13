@@ -21,7 +21,7 @@ class PwUserTag
     public function getTag($tag_id)
     {
         if (($tag_id = intval($tag_id)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getTag($tag_id);
@@ -37,7 +37,7 @@ class PwUserTag
     public function fetchTag($tag_ids)
     {
         if (!$tag_ids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchTag($tag_ids);
@@ -53,7 +53,7 @@ class PwUserTag
     public function getTagByName($name)
     {
         if (!$name) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getTagByName($name);
@@ -107,7 +107,7 @@ class PwUserTag
      */
     public function batchAddTag($tagDms)
     {
-        $data = array();
+        $data = [];
         foreach ($tagDms as $_item) {
             if (!$_item instanceof PwUserTagDm) {
                 return new PwError('USER:tag.illega.format');

@@ -61,14 +61,14 @@ class PwStyleInit
         }
         $install->addInstallLog('packs', $pack);
         $install->addInstallLog('service', $conf);
-        $fields = array();
+        $fields = [];
         foreach ($install->getInstallLog() as $key => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'app_id'        => $install->getAppId(),
                 'log_type'      => $key,
                 'data'          => $value,
                 'created_time'  => time(),
-                'modified_time' => time(), );
+                'modified_time' => time(), ];
             $fields[] = $_tmp;
         }
         Wekit::load('APPCENTER:service.PwApplicationLog')->batchAdd($fields);

@@ -43,7 +43,7 @@ class ConfigController extends OpenBaseController
 
     public function getConfigByNameAction($namespace, $name)
     {
-        list($namespace, $name) = $this->getInput(array('namespace', 'name'), 'get');
+        list($namespace, $name) = $this->getInput(['namespace', 'name'], 'get');
         $result = $this->_getConfigDs()->getConfigByName($namespace, $name);
         $this->output($result);
     }
@@ -57,14 +57,14 @@ class ConfigController extends OpenBaseController
 
     public function setConfigAction()
     {
-        list($namespace, $key, $value) = $this->getInput(array('namespace', 'key', 'value'), 'post');
+        list($namespace, $key, $value) = $this->getInput(['namespace', 'key', 'value'], 'post');
         $result = $this->_getConfigDs()->setConfig($namespace, $key, $value);
         $this->output(WindidUtility::result(true));
     }
 
     public function setConfigsAction()
     {
-        list($namespace, $data) = $this->getInput(array('namespace', 'data'), 'post');
+        list($namespace, $data) = $this->getInput(['namespace', 'data'], 'post');
         $result = $this->_getConfigDs()->setConfigs($namespace, $data);
         $this->output(WindidUtility::result(true));
     }
@@ -78,7 +78,7 @@ class ConfigController extends OpenBaseController
 
     public function deleteConfigByNameAction()
     {
-        list($namespace, $name) = $this->getInput(array('namespace', 'name'), 'post');
+        list($namespace, $name) = $this->getInput(['namespace', 'name'], 'post');
         $result = $this->_getConfigDs()->deleteConfigByName($namespace, $name);
         $this->output(WindidUtility::result(true));
     }
@@ -87,7 +87,7 @@ class ConfigController extends OpenBaseController
     {
         $credits = $this->getInput('credits', 'post');
         $this->_getConfigService()->setLocalCredits($credits);
-        $this->_getNotifyService()->send('setCredits', array(), $this->appid);
+        $this->_getNotifyService()->send('setCredits', [], $this->appid);
         $this->output(WindidUtility::result(true));
     }
 

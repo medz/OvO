@@ -43,10 +43,10 @@ class DomainController extends AdminBaseController
         }
         $root[0] != '.' && $root = '.'.$root;
         list($app, $domain, $domain_hold) = $this->getInput(
-            array('app', 'domain', 'domain_hold'));
+            ['app', 'domain', 'domain_hold']);
 
         // 判断域名是否重复
-        $unique = array();
+        $unique = [];
 
         $bo = new PwConfigSet('domain');
         $addons = $this->_service()->getDomainAddOns();
@@ -55,7 +55,7 @@ class DomainController extends AdminBaseController
             if ($value) {
                 //域名重复
                 in_array($value, $unique) && $this->showError(
-                array('REWRITE:domain.same', array($value)));
+                ['REWRITE:domain.same', [$value]]);
                 $unique[] = $value;
                 //添加应用域名
                 $dm = new PwDomainDm();
@@ -70,7 +70,7 @@ class DomainController extends AdminBaseController
             }
         }
 
-        $unique = array();
+        $unique = [];
         $space_root = '';
         $siteBo = new PwConfigSet('site');
         foreach ($domain as $k => $v) {

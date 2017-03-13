@@ -13,7 +13,7 @@ Wind::import('APPCENTER:service.srv.helper.PwSftpSave');
  */
 class PwPatchUpdate
 {
-    protected $bakFiles = array();
+    protected $bakFiles = [];
     protected $ftp;
     protected $tmpPath;
 
@@ -31,7 +31,7 @@ class PwPatchUpdate
     public function getOnlinePatchList()
     {
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'getSecurityPatch', 'pwversion' => NEXT_VERSION));
+            ['a' => 'forward', 'do' => 'getSecurityPatch', 'pwversion' => NEXT_VERSION]);
         $r = PwApplicationHelper::requestAcloudData($url);
         if (!is_array($r)) {
             return '无法连接云平台!';
@@ -43,7 +43,7 @@ class PwPatchUpdate
             array('id' => '9000001', 'name' => '更新', 'desc' => 'blabla', 'time' => '1323333', 'rule' => array(
                 array('filename' => 'src/Wekit.php', 'search' => base64_encode('Jianmin Chen'), 'replace' => base64_encode('Shi Long'), 'count' => '1', 'nums' => array('1'))))
         ); */
-        $temp = array();
+        $temp = [];
         foreach ($r['info'] as $v) {
             $v['id'] = $v['name'];
             $temp[$v['id']] = WindConvert::convert($v, Wekit::V('charset'), 'utf8');
@@ -70,7 +70,7 @@ class PwPatchUpdate
             if (defined('NEXT_FIXBUG')) {
                 foreach ($patches as $p) {
                     if ($p['id'] <= NEXT_FIXBUG) {
-                        $this->_ds()->addLog($p['id'], array(), 2);
+                        $this->_ds()->addLog($p['id'], [], 2);
                     }
                 }
             }
@@ -83,7 +83,7 @@ class PwPatchUpdate
 
     public function install($patch)
     {
-        $tmpfiles = $this->bakFiles = array();
+        $tmpfiles = $this->bakFiles = [];
         WindFolder::mkRecur($this->tmpPath);
         if ($this->ftp && !is_object($this->ftp)) {
             try {
@@ -103,7 +103,7 @@ class PwPatchUpdate
             $str = WindFile::read($filename);
             $realCount = substr_count($str, $search);
             if ($realCount != $count) {
-                return new PwError('APPCENTER:upgrade.patch.update.fail', array($patch['id']));
+                return new PwError('APPCENTER:upgrade.patch.update.fail', [$patch['id']]);
             }
             $bakfile = basename($rule['filename']).'.'.Pw::time2str(WEKIT_TIMESTAMP, 'Ymd').'.bak';
             $bakfile = $this->ftp ? dirname($rule['filename']).'/'.$bakfile : dirname($filename).'/'.$bakfile;
@@ -121,10 +121,10 @@ class PwPatchUpdate
                 }
             } else {
                 if (!@copy($filename, $bakfile)) {
-                    return new PwError('APPCENTER:upgrade.copy.fail', array($rule['filename']));
+                    return new PwError('APPCENTER:upgrade.copy.fail', [$rule['filename']]);
                 }
                 if (!@copy($tmpfile, $filename)) {
-                    return new PwError('APPCENTER:upgrade.copy.fail', array($rule['filename']));
+                    return new PwError('APPCENTER:upgrade.copy.fail', [$rule['filename']]);
                 }
             }
             $tmpfiles[] = $tmpfile;
@@ -179,7 +179,7 @@ class PwPatchUpdate
     private function sortFile($file)
     {
         $directory = $this->_getDefaultDirectory();
-        $sort = array(
+        $sort = [
             'HTML',
             'ATTACH',
             'TPL',
@@ -195,8 +195,8 @@ class PwPatchUpdate
             'CONF',
             'DATA',
             'SRC',
-            'PUBLIC', );
-        $strtr = array();
+            'PUBLIC', ];
+        $strtr = [];
         $localDirectory = @include Wind::getRealPath('CONF:directory.php', true);
         foreach ($sort as $v) {
             if ($directory[$v] == $localDirectory[$v]) {
@@ -218,7 +218,7 @@ class PwPatchUpdate
 
     private function _getDefaultDirectory()
     {
-        return array(
+        return [
             'ROOT'   => '..',
             'CONF'   => '../conf',
             'DATA'   => '../data',
@@ -235,7 +235,7 @@ class PwPatchUpdate
             'THEMES' => '../www/themes',
             'TPL'    => '../www/template',
             'ATTACH' => '../www/attachment',
-            'HTML'   => '../www/html', );
+            'HTML'   => '../www/html', ];
     }
 
     /**

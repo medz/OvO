@@ -23,21 +23,21 @@ class CateController extends PwBaseController
             $this->showError('BBS:forum.exists.not');
         }
         if ($pwforum->allowVisit($this->loginUser) !== true) {
-            $this->showError(array('BBS:forum.permissions.visit.allow', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
+            $this->showError(['BBS:forum.permissions.visit.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
         if ($pwforum->forumset['jumpurl']) {
             $this->forwardRedirect($pwforum->forumset['jumpurl']);
         }
         if ($pwforum->foruminfo['password']) {
             if (!$this->loginUser->isExists()) {
-                $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('bbs/cate/run', array('fid' => $fid))));
+                $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$fid)) {
-                $this->forwardAction('bbs/forum/password', array('fid' => $fid));
+                $this->forwardAction('bbs/forum/password', ['fid' => $fid]);
             }
         }
         $isBM = $pwforum->isBM($this->loginUser->username);
-        if ($operateThread = $this->loginUser->getPermission('operate_thread', $isBM, array())) {
-            $operateThread = Pw::subArray($operateThread, array('delete'));
+        if ($operateThread = $this->loginUser->getPermission('operate_thread', $isBM, [])) {
+            $operateThread = Pw::subArray($operateThread, ['delete']);
         }
         $pwforum->foruminfo['threads'] = $pwforum->foruminfo['subthreads'];
         $this->setOutput($operateThread, 'operateThread');
@@ -105,12 +105,12 @@ class CateController extends PwBaseController
             $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.thread.run.title'), '', $lang->getMessage('SEO:bbs.thread.run.description'));
         }
         $seoBo->init('bbs', 'thread', $fid);
-        $seoBo->set(array(
+        $seoBo->set([
             '{forumname}'        => $pwforum->foruminfo['name'],
             '{forumdescription}' => Pw::substrs($pwforum->foruminfo['descrip'], 100, 0, false),
             '{classification}'   => '',
             '{page}'             => $threadList->page,
-        ));
+        ]);
         Wekit::setV('seo', $seoBo);
     }
 
@@ -125,7 +125,7 @@ class CateController extends PwBaseController
         }
         $topicTypes = Wekit::load('forum.srv.PwTopicTypeService')->getTopictypes($fid);
         $topicTypes = $topicTypes ? $topicTypes : '';
-        Pw::echoJson(array('state' => 'success', 'data' => $topicTypes));
+        Pw::echoJson(['state' => 'success', 'data' => $topicTypes]);
         exit;
     }
 }

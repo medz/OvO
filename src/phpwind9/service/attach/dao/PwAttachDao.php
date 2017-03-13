@@ -12,7 +12,7 @@ class PwAttachDao extends PwBaseDao
 {
     protected $_table = 'attachs';
     protected $_pk = 'aid';
-    protected $_dataStruct = array('aid', 'name', 'type', 'size', 'path', 'ifthumb', 'created_userid', 'created_time', 'app', 'descrip');
+    protected $_dataStruct = ['aid', 'name', 'type', 'size', 'path', 'ifthumb', 'created_userid', 'created_time', 'app', 'descrip'];
 
     public function getAttach($aid)
     {

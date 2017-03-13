@@ -19,7 +19,7 @@ class PwLikeTag
     {
         $tagid = (int) $tagid;
         if ($tagid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeTagDao()->getInfo($tagid);
@@ -33,7 +33,7 @@ class PwLikeTag
     public function fetchLikeTag($tagids)
     {
         if (!is_array($tagids) || count($tagids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeTagDao()->getInfoByTags($tagids);
@@ -48,7 +48,7 @@ class PwLikeTag
     {
         $uid = (int) $uid;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeTagDao()->getInfoByUid($uid);

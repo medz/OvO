@@ -22,7 +22,7 @@ class PwRemind
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getRemindDao()->get($uid);
@@ -43,7 +43,7 @@ class PwRemind
             return false;
         }
 
-        return $this->_getRemindDao()->replace(array('uid' => $uid, 'touid' => $touid));
+        return $this->_getRemindDao()->replace(['uid' => $uid, 'touid' => $touid]);
     }
 
     /**

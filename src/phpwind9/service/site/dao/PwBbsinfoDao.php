@@ -14,14 +14,14 @@ class PwBbsinfoDao extends PwBaseDao
 {
     protected $_table = 'bbsinfo';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'newmember', 'totalmember', 'higholnum', 'higholtime', 'yposts', 'hposts');
+    protected $_dataStruct = ['id', 'newmember', 'totalmember', 'higholnum', 'higholtime', 'yposts', 'hposts'];
 
     public function get($id)
     {
         return $this->_get($id);
     }
 
-    public function update($id, $fields, $increaseFields = array())
+    public function update($id, $fields, $increaseFields = [])
     {
         return $this->_update($id, $fields, $increaseFields);
     }

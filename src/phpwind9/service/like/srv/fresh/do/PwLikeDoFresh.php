@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwLikeDoFresh extends PwPostDoBase
 {
-    private $info = array();
+    private $info = [];
     private $content = '';
     private $userBo;
 
@@ -26,7 +26,7 @@ class PwLikeDoFresh extends PwPostDoBase
 
     public function addPost($pid, $tid)
     {
-        $url = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $this->info['tid'], 'fid' => $this->info['fid']));
+        $url = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $this->info['tid'], 'fid' => $this->info['fid']]);
         $lang = Wind::getComponent('i18n');
         $content = $lang->getMessage('BBS:like.like.flesh').'[url='.$url.']'.$this->content.'[/url]';
 

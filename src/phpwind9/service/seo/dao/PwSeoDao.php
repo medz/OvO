@@ -13,7 +13,7 @@
 class PwSeoDao extends PwBaseDao
 {
     protected $_table = 'seo';
-    protected $_dataStruct = array('mod', 'page', 'param', 'title', 'keywords', 'description');
+    protected $_dataStruct = ['mod', 'page', 'param', 'title', 'keywords', 'description'];
 
     /**
      * 批量更新或添加seo数据.
@@ -27,16 +27,16 @@ class PwSeoDao extends PwBaseDao
         if (!is_array($data)) {
             return false;
         }
-        $tmp = array();
+        $tmp = [];
         foreach ($data as $v) {
             $v = $this->_filterStruct($v);
-            $v && $tmp[] = array(
+            $v && $tmp[] = [
                 $v['mod'],
                 $v['page'],
                 $v['param'] ? $v['param'] : 0,
                 $v['title'],
                 $v['keywords'],
-                $v['description'], );
+                $v['description'], ];
         }
         if (empty($tmp)) {
             return false;
@@ -61,7 +61,7 @@ class PwSeoDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `mod` = ? AND `page` = ? AND `param` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($mod, $page, $param));
+        return $this->getConnection()->createStatement($sql)->getOne([$mod, $page, $param]);
     }
 
     /**
@@ -75,7 +75,7 @@ class PwSeoDao extends PwBaseDao
     public function getByModAndPage($mod, $page)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `mod` = ? AND `page` = ?');
-        $result = $this->getConnection()->createStatement($sql)->queryAll(array($mod, $page));
+        $result = $this->getConnection()->createStatement($sql)->queryAll([$mod, $page]);
 
         return $this->_buildResult($result);
     }
@@ -90,7 +90,7 @@ class PwSeoDao extends PwBaseDao
     public function getByMod($mod)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `mod` = ?');
-        $result = $this->getConnection()->createStatement($sql)->queryAll(array($mod));
+        $result = $this->getConnection()->createStatement($sql)->queryAll([$mod]);
 
         return $this->_buildResult($result);
     }
@@ -104,11 +104,11 @@ class PwSeoDao extends PwBaseDao
      *
      * @return array
      */
-    public function getByParams($mod, $page, $params = array())
+    public function getByParams($mod, $page, $params = [])
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `mod` = ? AND `page` = ? AND `param` IN %s',
             $this->getTable(), $this->sqlImplode($params));
-        $result = $this->getConnection()->createStatement($sql)->queryAll(array($mod, $page));
+        $result = $this->getConnection()->createStatement($sql)->queryAll([$mod, $page]);
 
         return $this->_buildResult($result);
     }
@@ -122,18 +122,18 @@ class PwSeoDao extends PwBaseDao
      */
     private function _buildResult($result)
     {
-        $seo = array();
+        $seo = [];
         foreach ($result as $v) {
             if (!$v['param']) {
-                $seo[$v['page']][0] = array(
+                $seo[$v['page']][0] = [
                     'title'       => $v['title'],
                     'keywords'    => $v['keywords'],
-                    'description' => $v['description'], );
+                    'description' => $v['description'], ];
             } else {
-                $seo[$v['page']][$v['param']] = array(
+                $seo[$v['page']][$v['param']] = [
                     'title'       => $v['title'],
                     'keywords'    => $v['keywords'],
-                    'description' => $v['description'], );
+                    'description' => $v['description'], ];
             }
         }
 

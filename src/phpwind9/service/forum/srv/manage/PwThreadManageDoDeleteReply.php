@@ -22,7 +22,7 @@ class PwThreadManageDoDeleteReply extends PwThreadManageDo
             return false;
         }
         if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
-            return new PwError('permission.level.delete', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
+            return new PwError('permission.level.delete', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 
         return true;

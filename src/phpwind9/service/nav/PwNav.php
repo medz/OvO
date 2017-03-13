@@ -52,7 +52,7 @@ class PwNav
     public function getNavBySign($type = 'main', $sign = '')
     {
         if (!$sign) {
-            return array();
+            return [];
         }
 
         return $this->_getNavDao()->getNavBySign($type, $sign);
@@ -211,11 +211,11 @@ class PwNav
             $orderid = $this->_getNavDao()->getNavMaxOrder($data['type']);
         }
 
-        $this->_getNavDao()->updateNav($navId, array('rootid' => $rootid));
+        $this->_getNavDao()->updateNav($navId, ['rootid' => $rootid]);
 
         if ($data['orderid'] < 1) {
             $orderid = intval($orderid) + 1;
-            $this->_getNavDao()->updateNav($navId, array('orderid' => $orderid));
+            $this->_getNavDao()->updateNav($navId, ['orderid' => $orderid]);
         }
     }
 
@@ -237,15 +237,15 @@ class PwNav
     private function _arrayValueSort($array)
     {
         if (!is_array($array)) {
-            return array();
+            return [];
         }
-        $_array = array();
+        $_array = [];
         $_key = 0;
         foreach ($array as $key => $value) {
             if ($value['parentid'] == '0') {
                 $_key = $key;
                 $_array[$_key] = $value['orderid'];
-                $array[$_key]['child'] = array();
+                $array[$_key]['child'] = [];
             } else {
                 $array[$_key]['child'][] = $array[$key];
             }

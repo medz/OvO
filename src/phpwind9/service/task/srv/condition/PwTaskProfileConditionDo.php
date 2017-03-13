@@ -46,7 +46,7 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
             $step['percent'] == '100%' && $isComplete = true;
         }
 
-        return array('isComplete' => $isComplete, 'step' => $step);
+        return ['isComplete' => $isComplete, 'step' => $step];
     }
 
     /**
@@ -58,7 +58,7 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
      */
     private function _caculatePercent($step)
     {
-        $_temp = array('bday', 'bmonth', 'bday', 'gender', 'hometown', 'location', 'homepage', 'profile', 'bbs_sign');
+        $_temp = ['bday', 'bmonth', 'bday', 'gender', 'hometown', 'location', 'homepage', 'profile', 'bbs_sign'];
         $percent = 0;
         foreach ($_temp as $key) {
             if ($percent == 5) {

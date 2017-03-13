@@ -21,7 +21,7 @@ class PwImage
 
     protected $_source = null;
     protected $_thumb;
-    protected $_exts = array('jpg', 'jpeg', 'jpe', 'jfif');
+    protected $_exts = ['jpg', 'jpeg', 'jpe', 'jfif'];
 
     public function __construct($filename)
     {
@@ -48,12 +48,12 @@ class PwImage
             list($this->width, $this->height, $this->type) = @getimagesize($this->filename);
         }*/
         list($this->width, $this->height, $this->type) = @getimagesize($this->filename);
-        $typeMap = array(
+        $typeMap = [
             1 => 'gif',
             2 => 'jpeg',
             3 => 'png',
             6 => 'bmp',
-        );
+        ];
         $this->type = isset($typeMap[$this->type]) ? $typeMap[$this->type] : '';
     }
 

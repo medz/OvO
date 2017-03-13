@@ -23,9 +23,9 @@ class PwFetchReplyByTidAndPids implements iPwDataSource
 
     public function getData()
     {
-        $result = array();
+        $result = [];
         if (in_array(0, $this->pids)) {
-            $this->pids = array_diff($this->pids, array(0));
+            $this->pids = array_diff($this->pids, [0]);
             $topic = Wekit::load('forum.PwThread')->getThread($this->tid, PwThread::FETCH_ALL);
             $topic['pid'] = 0;
             $result[] = $topic;

@@ -10,52 +10,52 @@
  * @license
  */
 
-return array(
+return [
     //'url' => 'https://github.com/downloads/phpwind/windframework/{appUrl}',
     'url'      => 'http://open.phpwind-inc.com/attachment/{appUrl}',
     'tmp_dir'  => 'DATA:tmp',
     'log_dir'  => 'DATA:tmp',
     'manifest' => 'Manifest.xml',
 
-    'install-type' => array(
-        'app' => array(
+    'install-type' => [
+        'app' => [
             'class'   => 'APPCENTER:service.srv.do.PwInstall',
             'message' => '默认应用安装',
-            'step'    => array(
-                'after' => array(
-                    array('method' => 'registeApplication', 'message' => 'APPCENTER:install.step.registeApplication'),
-                    array('method' => 'registeHooks', 'message' => 'APPCENTER:install.step.registeHooks'),
-                    array(
+            'step'    => [
+                'after' => [
+                    ['method' => 'registeApplication', 'message' => 'APPCENTER:install.step.registeApplication'],
+                    ['method' => 'registeHooks', 'message' => 'APPCENTER:install.step.registeHooks'],
+                    [
                         'method'  => 'registeInjectServices',
-                        'message' => 'APPCENTER:install.step.registeInjectServices', ),
-                    array('method' => 'registeData', 'message' => 'APPCENTER:install.step.registeData'),
-                    array('method' => 'afterInstall', 'message' => 'APPCENTER:install.step.afterInstall'), ),
-                'before' => array(array('method' => 'install', 'message' => 'APPCENTER:install.step.install')), ), ),
+                        'message' => 'APPCENTER:install.step.registeInjectServices', ],
+                    ['method' => 'registeData', 'message' => 'APPCENTER:install.step.registeData'],
+                    ['method' => 'afterInstall', 'message' => 'APPCENTER:install.step.afterInstall'], ],
+                'before' => [['method' => 'install', 'message' => 'APPCENTER:install.step.install']], ], ],
 
-        'style' => array(
+        'style' => [
             'class'   => 'APPCENTER:service.srv.do.PwStyleInstall',
             'message' => '风格安装',
-            'step'    => array(
-                'after' => array(
-                    array('method' => 'registeApplication', 'message' => 'APPCENTER:install.step.registeStyle'),
-                    array('method' => 'afterInstall', 'message' => 'APPCENTER:install.step.movePack'),
-                ),
-                'before' => array(array('method' => 'install', 'message' => 'APPCENTER:install.step.install')),
-            ),
+            'step'    => [
+                'after' => [
+                    ['method' => 'registeApplication', 'message' => 'APPCENTER:install.step.registeStyle'],
+                    ['method' => 'afterInstall', 'message' => 'APPCENTER:install.step.movePack'],
+                ],
+                'before' => [['method' => 'install', 'message' => 'APPCENTER:install.step.install']],
+            ],
 
-    ), ),
+    ], ],
 
-    'installation-service' => array(
-        'nav_main'   => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.main'),
-        'nav_bottom' => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.bottom', 'method' => 'bottom'),
-        'nav_my'     => array('class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.my', 'method' => 'my'),
-    ),
+    'installation-service' => [
+        'nav_main'   => ['class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.main'],
+        'nav_bottom' => ['class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.bottom', 'method' => 'bottom'],
+        'nav_my'     => ['class' => PwNavInstall::class, 'message' => 'APPCENTER:install.nav.my', 'method' => 'my'],
+    ],
 
-    'style-type' => array(
+    'style-type' => [
         // 别名 => array('名称', '相对于THEMES:目录', '预览地址')
-        'site'   => array('整站模板', 'site', ''),
-        'space'  => array('个人空间', 'space', 'space/index/run'),
-        'forum'  => array('版块模板', 'forum', 'bbs/thread/run'),
-        'portal' => array('门户模板', 'portal/appcenter', ''),
-    ),
-);
+        'site'   => ['整站模板', 'site', ''],
+        'space'  => ['个人空间', 'space', 'space/index/run'],
+        'forum'  => ['版块模板', 'forum', 'bbs/thread/run'],
+        'portal' => ['门户模板', 'portal/appcenter', ''],
+    ],
+];

@@ -8,14 +8,14 @@
  * @license
  */
 
-return array(
-    'image' => array(
+return [
+    'image' => [
         'name'        => '图片验证码',
         'alias'       => 'image',
         'description' => '图片验证码：需要GD库2.01以上版本',
-        'components'  => array('path' => 'LIB:utility.PwVerifyCode', 'display' => 'image'), ),
-    'flash' => array(
+        'components'  => ['path' => 'LIB:utility.PwVerifyCode', 'display' => 'image'], ],
+    'flash' => [
         'name'        => 'flash验证码',
         'alias'       => 'flash',
         'description' => 'Flash验证码：需要主机支持Ming库',
-        'components'  => array('path' => 'LIB:utility.PwVerifyCode', 'display' => 'flash'), ), );
+        'components'  => ['path' => 'LIB:utility.PwVerifyCode', 'display' => 'flash'], ], ];

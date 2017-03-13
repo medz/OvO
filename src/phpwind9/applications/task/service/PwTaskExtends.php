@@ -20,7 +20,7 @@ class PwTaskExtends
      *
      * @return array
      */
-    public function getRewardTypeList($reward = array())
+    public function getRewardTypeList($reward = [])
     {
         $list = $this->getExtendsList('reward');
         unset($reward['type']);
@@ -36,14 +36,14 @@ class PwTaskExtends
      *
      * @return array
      */
-    public function getConditionTypeList($condition = array())
+    public function getConditionTypeList($condition = [])
     {
         $list = $this->getExtendsList('condition');
         unset($condition['type'], $condition['child']);
         $var = $condition ? urlencode(json_encode((array) $condition)) : '';
-        $return = array();
+        $return = [];
         foreach ($list as $key => $item) {
-            $return[$key] = array('title' => $item['title']);
+            $return[$key] = ['title' => $item['title']];
             $return[$key]['children'] = $this->buildList($item['children'], $var);
         }
 
@@ -60,9 +60,9 @@ class PwTaskExtends
      */
     private function buildList($data, $var = '')
     {
-        $return = array();
+        $return = [];
         foreach ($data as $key => $item) {
-            $return[$key] = array('title' => $item['title'], 'var' => $var, 'url' => $item['setting_url'] ? WindUrlHelper::createUrl($item['setting_url']) : '');
+            $return[$key] = ['title' => $item['title'], 'var' => $var, 'url' => $item['setting_url'] ? WindUrlHelper::createUrl($item['setting_url']) : ''];
         }
 
         return $return;
@@ -81,6 +81,6 @@ class PwTaskExtends
             $this->config = include Wind::getRealPath('APPS:task.conf.taskExtends.php', true);
         }
 
-        return isset($this->config[$type]) ? $this->config[$type] : array();
+        return isset($this->config[$type]) ? $this->config[$type] : [];
     }
 }

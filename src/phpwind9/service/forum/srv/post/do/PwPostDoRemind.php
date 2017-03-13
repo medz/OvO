@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwPostDoRemind extends PwPostDoBase
 {
     private $loginUser;
-    private $_reminds = array();
+    private $_reminds = [];
     private $_atc_title;
     private $_maxNum;
 
@@ -63,12 +63,12 @@ class PwPostDoRemind extends PwPostDoBase
 
         //发送通知
         $title = Pw::substrs(trim($this->_atc_title), 20);
-        $extendParams = array(
+        $extendParams = [
             'remindUid'      => $this->loginUser->uid,
             'remindUsername' => $this->loginUser->username,
             'title'          => $title,
-            'notice'         => '在帖子 <a href="'.WindUrlHelper::createUrl('bbs/read/run', array('tid' => $tid)).'" target="_blank">'.$title.'</a> @了您',
-        );
+            'notice'         => '在帖子 <a href="'.WindUrlHelper::createUrl('bbs/read/run', ['tid' => $tid]).'" target="_blank">'.$title.'</a> @了您',
+        ];
         // 是否黑名单
         $remindUids = $this->_checkBlack($remindUids);
         foreach ($remindUids as $uid) {

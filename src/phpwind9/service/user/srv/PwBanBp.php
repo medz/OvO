@@ -14,9 +14,9 @@ class PwBanBp
 {
     private $uid = 0;
 
-    private $banInfo = array();
-    private $endCallBack = array();
-    private $banType = array();
+    private $banInfo = [];
+    private $endCallBack = [];
+    private $banType = [];
 
     /**
      * 构造函数.
@@ -28,7 +28,7 @@ class PwBanBp
         $this->uid = intval($uid);
         $this->banType = Wekit::load('user.srv.PwUserBanService')->getBanType();
         foreach ($this->banType as $_k => $_value) {
-            $this->banInfo[$_k] = array(false, array());
+            $this->banInfo[$_k] = [false, []];
         }
     }
 
@@ -213,7 +213,7 @@ class PwBanBp
         // 		if ($this->_getBanInfo($type)) return false;
         $class = Wekit::load($this->banType[$type]['class']);
 
-        return call_user_func_array(array($class, 'deleteBan'), array($this->uid));
+        return call_user_func_array([$class, 'deleteBan'], [$this->uid]);
     }
 
     /**
@@ -289,14 +289,14 @@ class PwBanBp
      */
     private function _autoEndBan($type = PwUserBan::BAN_SPEAK)
     {
-        $_notice = $clear = array();
+        $_notice = $clear = [];
         $now = Pw::getTime();
         foreach ($this->banInfo[$type][1] as $_key => $item) {
             if (($item['end_time'] != 0) && $item['end_time'] < $now) {
                 $clear[] = $item['id'];
                 //操作相关类型的后续操作
                 $class = Wekit::load($this->banType[$item['typeid']]['class']);
-                $this->endCallBack[$item['typeid']] = call_user_func_array(array($class, 'deleteBan'), array($item['uid']));
+                $this->endCallBack[$item['typeid']] = call_user_func_array([$class, 'deleteBan'], [$item['uid']]);
 
                 $_notice['end_time'] = $item['end_time'];
                 $_notice['reason'] = $item['reason'];
@@ -312,7 +312,7 @@ class PwBanBp
             //【自动解禁】发送消息
             /* @var $banService PwUserBanService */
             $banService = Wekit::load('user.srv.PwUserBanService');
-            $banService->sendNotice(array($this->uid => $_notice), 3);
+            $banService->sendNotice([$this->uid => $_notice], 3);
         }
 
         return $isEnd;

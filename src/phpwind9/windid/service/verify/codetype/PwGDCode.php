@@ -69,7 +69,7 @@ class PwGDCode extends PwBaseCode
         $green = self::$isRandBackground ? mt_rand(100, 200) : 255;
         $blue = self::$isRandBackground ? mt_rand(100, 200) : 255;
         $alpha = 0; //self::$isRandBackground ? mt_rand(0, 127) : 0;
-        self::$_background = array('red' => $red, 'green' => $green, 'blue' => $blue, 'alpha' => $alpha);
+        self::$_background = ['red' => $red, 'green' => $green, 'blue' => $blue, 'alpha' => $alpha];
     }
 
     private static function _setPicBackground()

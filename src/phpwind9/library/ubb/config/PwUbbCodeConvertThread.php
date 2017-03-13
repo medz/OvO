@@ -20,10 +20,10 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
     public $attach;
     public $isFeature = false;
 
-    protected static $_ispost = array();
-    protected static $_isbuy = array();
+    protected static $_ispost = [];
+    protected static $_isbuy = [];
 
-    public function __construct(PwThreadBo $thread = null, $post = array(), PwUserBo $user = null)
+    public function __construct(PwThreadBo $thread = null, $post = [], PwUserBo $user = null)
     {
         $config = Wekit::C('bbs');
         $this->isConvertPost = true;
@@ -117,11 +117,11 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
 
     public function getSellInfo()
     {
-        return array(
-            WindUrlHelper::createUrl('bbs/buythread/record', array('tid' => $this->thread->tid, 'pid' => $this->pid)),
-            WindUrlHelper::createUrl('bbs/buythread/buy', array('tid' => $this->thread->tid, 'pid' => $this->pid)),
+        return [
+            WindUrlHelper::createUrl('bbs/buythread/record', ['tid' => $this->thread->tid, 'pid' => $this->pid]),
+            WindUrlHelper::createUrl('bbs/buythread/buy', ['tid' => $this->thread->tid, 'pid' => $this->pid]),
             $this->pid ? $this->post['sell_count'] : $this->thread->info['sell_count'],
-        );
+        ];
     }
 
     public function getUserCredit($cType)

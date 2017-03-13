@@ -16,7 +16,7 @@ class PwThreadManageDoCopy extends PwThreadManageDo
     public $topictype;
     protected $tids;
     protected $isDeductCredit = true;
-    protected $threads = array();
+    protected $threads = [];
 
     public function __construct(PwThreadManage $srv)
     {

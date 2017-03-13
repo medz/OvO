@@ -13,14 +13,14 @@
 class PwTaskUserDao extends PwBaseDao
 {
     protected $_table = 'task_user';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'taskid',
         'uid',
         'task_status',
         'is_period',
         'step',
         'created_time',
-        'finish_time', );
+        'finish_time', ];
 
     /**
      * 添加一条用户任务记录.
@@ -55,7 +55,7 @@ class PwTaskUserDao extends PwBaseDao
         $is_period = intval($data['period']) > 0 ? 1 : 0;
         $sql = $this->_bindTable('UPDATE %s SET `is_period` = ? WHERE `taskid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($is_period, $taskid));
+        return $this->getConnection()->createStatement($sql)->update([$is_period, $taskid]);
     }
 
     /**
@@ -75,7 +75,7 @@ class PwTaskUserDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `taskid` = ? AND `uid` = ?',
             $this->getTable(), $this->sqlSingle($data));
 
-        return $this->getConnection()->createStatement($sql)->update(array($taskid, $uid));
+        return $this->getConnection()->createStatement($sql)->update([$taskid, $uid]);
     }
 
     /**
@@ -90,7 +90,7 @@ class PwTaskUserDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `taskid` = ? AND `uid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($taskid, $uid));
+        return $this->getConnection()->createStatement($sql)->getOne([$taskid, $uid]);
     }
 
     /**
@@ -106,7 +106,7 @@ class PwTaskUserDao extends PwBaseDao
         $sql = $this->_bindTable(
             'SELECT * FROM %s WHERE `uid` = ? AND `taskid` IN '.$this->sqlImplode((array) $ids));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($uid), 'taskid');
+        return $this->getConnection()->createStatement($sql)->queryAll([$uid], 'taskid');
     }
 
     /**
@@ -124,7 +124,7 @@ class PwTaskUserDao extends PwBaseDao
         $order = $status == 4 ? 'finish_time' : 'created_time';
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `uid` = ? AND `task_status` & ? ORDER BY `%s` DESC %s', $this->getTable(), $order, $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($uid, $status), 'taskid');
+        return $this->getConnection()->createStatement($sql)->queryAll([$uid, $status], 'taskid');
     }
 
     /**
@@ -139,7 +139,7 @@ class PwTaskUserDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` = ? AND `is_period` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($uid, $isPeriod),
+        return $this->getConnection()->createStatement($sql)->queryAll([$uid, $isPeriod],
             'taskid');
     }
 
@@ -155,7 +155,7 @@ class PwTaskUserDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `uid` = ? AND `task_status` & ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($uid, $status));
+        return $this->getConnection()->createStatement($sql)->getValue([$uid, $status]);
     }
 
     /**
@@ -169,7 +169,7 @@ class PwTaskUserDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `taskid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($id));
+        return $this->getConnection()->createStatement($sql)->update([$id]);
     }
 
     /**
@@ -183,7 +183,7 @@ class PwTaskUserDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($uid));
+        return $this->getConnection()->createStatement($sql)->update([$uid]);
     }
 
     /**

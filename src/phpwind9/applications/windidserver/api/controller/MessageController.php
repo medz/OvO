@@ -95,9 +95,9 @@ class MessageController extends OpenBaseController
     {
         $start = (int) $this->getInput('start', 'get');
         $limit = (int) $this->getInput('limit', 'get');
-        list($fromuid, $keyword, $username, $starttime, $endtime) = $this->getInput(array('fromuid', 'keyword', 'username', 'starttime', 'endtime'), 'get');
+        list($fromuid, $keyword, $username, $starttime, $endtime) = $this->getInput(['fromuid', 'keyword', 'username', 'starttime', 'endtime'], 'get');
 
-        $search = array();
+        $search = [];
         isset($fromuid) && $search['fromuid'] = $fromuid;
         isset($keyword) && $search['keyword'] = $keyword;
         isset($username) && $search['username'] = $username;
@@ -113,7 +113,7 @@ class MessageController extends OpenBaseController
         $uid = (int) $this->getInput('uid', 'post');
         $num = (int) $this->getInput('num', 'post');
         $result = $this->_getMessageService()->editMessageNum($uid, $num);
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), $this->appid);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], $this->appid);
         $this->output(WindidUtility::result($result));
     }
 
@@ -123,14 +123,14 @@ class MessageController extends OpenBaseController
         $content = $this->getInput('content', 'post');
         $fromUid = $this->getInput('fromUid', 'post');
 
-        is_array($uids) || $uids = array($uids);
+        is_array($uids) || $uids = [$uids];
         $result = $this->_getMessageService()->sendMessageByUids($uids, $content, $fromUid);
         if ($result instanceof WindidError) {
             $this->output($result->getCode());
         }
         $srv = $this->_getNotifyService();
         foreach ($uids as $uid) {
-            $srv->send('editMessageNum', array('uid' => $uid), $this->appid);
+            $srv->send('editMessageNum', ['uid' => $uid], $this->appid);
         }
         $this->output(WindidUtility::result($result));
     }
@@ -142,7 +142,7 @@ class MessageController extends OpenBaseController
         $uid = $this->getInput('uid', 'post');
         $result = $this->_getMessageService()->read($uid, $dialogId, $messageIds);
         if ($result) {
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), $this->appid);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], $this->appid);
         }
         $this->output($result);
     }
@@ -153,7 +153,7 @@ class MessageController extends OpenBaseController
         $ds = $this->_getMessageDs();
         foreach ($dialogIds as $id) {
             $dialog = $ds->getDialog($id);
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $dialog['to_uid']), $this->appid);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $dialog['to_uid']], $this->appid);
         }
         $this->output(WindidUtility::result($result));
     }
@@ -165,7 +165,7 @@ class MessageController extends OpenBaseController
         $uid = $this->getInput('uid', 'post');
         $result = $this->_getMessageService()->delete($uid, $dialogId, $messageIds);
         if ($result) {
-            $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), $this->appid);
+            $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], $this->appid);
         }
         $this->output(WindidUtility::result($result));
     }
@@ -175,7 +175,7 @@ class MessageController extends OpenBaseController
         $dialogIds = $this->getInput('dialogIds', 'post');
         $uid = $this->getInput('uid', 'post');
         $result = $this->_getMessageService()->batchDeleteDialog($uid, $dialogIds);
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), $this->appid);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], $this->appid);
         $this->output(WindidUtility::result($result));
     }
 
@@ -189,7 +189,7 @@ class MessageController extends OpenBaseController
     {
         $uid = (int) $this->getInput('uid', 'post');
         $result = $this->_getMessageService()->deleteUserMessages($uid);
-        $this->_getNotifyService()->send('editMessageNum', array('uid' => $uid), $this->appid);
+        $this->_getNotifyService()->send('editMessageNum', ['uid' => $uid], $this->appid);
         $this->output(WindidUtility::result($result));
     }
 
@@ -222,7 +222,7 @@ class MessageController extends OpenBaseController
         $uid = (int) $this->getInput('uid', 'post');
         $messageIds = $this->getInput('messageIds', 'post');
         if (!is_array($messageIds)) {
-            $messageIds = array($messageIds);
+            $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->readMessages($uid, $messageIds);
         $this->output(WindidUtility::result($result));
@@ -233,7 +233,7 @@ class MessageController extends OpenBaseController
         $uid = (int) $this->getInput('uid', 'post');
         $messageIds = $this->getInput('messageIds', 'post');
         if (!is_array($messageIds)) {
-            $messageIds = array($messageIds);
+            $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->deleteMessages($uid, $messageIds);
         $this->output(WindidUtility::result($result));

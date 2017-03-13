@@ -17,12 +17,12 @@ class PwDesignDataUpload extends PwUploadAction
 {
     public $moduleid = 0;
     public $key = 0;
-    public $mime = array();
+    public $mime = [];
 
     public function __construct($key, $moduleid)
     {
-        $this->ftype = array('jpg' => 2000, 'jpeg' => 2000, 'png' => 2000, 'gif' => 2000);
-        $this->mime = array('image/jpg', 'image/jpeg', 'image/png', 'image/gif');
+        $this->ftype = ['jpg' => 2000, 'jpeg' => 2000, 'png' => 2000, 'gif' => 2000];
+        $this->mime = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
         $this->ifftp = 0;
         $this->moduleid = (int) $moduleid;
         $this->key = $key;
@@ -78,7 +78,7 @@ class PwDesignDataUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -100,14 +100,14 @@ class PwDesignDataUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'name'     => $value['name'],
                 'type'     => $value['type'],
                 'path'     => $this->dir,
                 'filename' => $this->filename,
                 'size'     => $value['size'],
                 'ext'      => $value['ext'],
-            );
+            ];
         }
 
         return true;

@@ -13,7 +13,7 @@ class WindidUserBlackDao extends WindidBaseDao
 {
     protected $_pk = 'uid';
     protected $_table = 'user_black';
-    protected $_dataStruct = array('uid', 'blacklist');
+    protected $_dataStruct = ['uid', 'blacklist'];
 
     /**
      * 获取单条

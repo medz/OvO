@@ -31,7 +31,7 @@ class PwPollVoter
             return false;
         }
 
-        $fieldData = array('uid' => $userid, 'poll_id' => $pollid, 'option_id' => $optionid, 'created_time' => pw::getTime());
+        $fieldData = ['uid' => $userid, 'poll_id' => $pollid, 'option_id' => $optionid, 'created_time' => pw::getTime()];
 
         return $this->_getPollVoterDao()->add($fieldData);
     }
@@ -77,7 +77,7 @@ class PwPollVoter
     {
         $pollid = intval($pollid);
         if (1 > $pollid) {
-            return array();
+            return [];
         }
 
         return $this->_getPollVoterDao()->getByPollid($pollid);
@@ -96,7 +96,7 @@ class PwPollVoter
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getPollVoterDao()->getPollByUid($uid, $limit, $offset);
@@ -130,7 +130,7 @@ class PwPollVoter
     public function fetchPollByUid($uids, $limit, $offset)
     {
         if (empty($uids) || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getPollVoterDao()->fetchPollByUid($uids, $limit, $offset);
@@ -168,7 +168,7 @@ class PwPollVoter
     {
         $optionid = intval($optionid);
         if (1 > $optionid) {
-            return array();
+            return [];
         }
 
         return $this->_getPollVoterDao()->getUserByOptionid($optionid, $limit, $offset);
@@ -183,15 +183,15 @@ class PwPollVoter
     {
         $userid = intval($userid);
         if (!$userid || empty($pollids) || !is_array($pollids)) {
-            return array();
+            return [];
         }
 
         $poll = $this->_getPollVoterDao()->getPollByUidAndPollid($userid, $pollids);
         if (!$poll) {
-            return array();
+            return [];
         }
 
-        $result = array();
+        $result = [];
         foreach ($poll as $value) {
             $result[] = $value['poll_id'];
         }
@@ -213,7 +213,7 @@ class PwPollVoter
         if (!$userid) {
             return false;
         }
-        $pollid = is_array($pollid) ? $pollid : array($pollid);
+        $pollid = is_array($pollid) ? $pollid : [$pollid];
         $poll = $this->_getPollVoterDao()->getPollByUidAndPollid($userid, $pollid);
 
         return $poll ? true : false;

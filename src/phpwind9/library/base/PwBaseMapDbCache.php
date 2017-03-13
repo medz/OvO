@@ -14,9 +14,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 abstract class PwBaseMapDbCache
 {
     protected $index;
-    protected $daoMap = array();
+    protected $daoMap = [];
     protected $vkey;
-    protected $keys = array();
+    protected $keys = [];
 
     public function __construct()
     {
@@ -46,7 +46,7 @@ abstract class PwBaseMapDbCache
 
     public function __call($methodName, $args)
     {
-        return call_user_func_array(array($this->_getDao(), $methodName), $args);
+        return call_user_func_array([$this->_getDao(), $methodName], $args);
     }
 
     protected function _getDao()

@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
 {
-    public $record = array();
+    public $record = [];
 
     /* (non-PHPdoc)
      * @see iPwGleanDoHookProcess::gleanData()
@@ -37,10 +37,10 @@ class PwDeleteReplyDoUserUpdate extends iPwGleanDoHookProcess
     {
         $forum = new PwForumBo($value['fid']);
         PwCreditBo::getInstance()->operate(
-            'delete_reply', PwUserBo::getInstance($value['created_userid']), true, array(
+            'delete_reply', PwUserBo::getInstance($value['created_userid']), true, [
                 'operator'  => $this->srv->user->username,
                 'forumname' => $forum->foruminfo['name'],
-            ),
+            ],
             $forum->getCreditSet('delete_reply'));
     }
 

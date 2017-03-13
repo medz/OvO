@@ -47,7 +47,7 @@ class PwPollService
         $voteTimeslimit = $poll['option_limit'] ? $poll['option_limit'] : 1;
 
         if (count($option) > $voteTimeslimit) {
-            return new PwError('VOTE:most.times.limit', array('{mosttimes}' => $voteTimeslimit));
+            return new PwError('VOTE:most.times.limit', ['{mosttimes}' => $voteTimeslimit]);
         }
 
         foreach ($option as $optionid) {
@@ -138,7 +138,7 @@ class PwPollService
         }
 
         $option = $this->_getPollOptionDs()->getByPollid($pollid);
-        $images = array();
+        $images = [];
         foreach ($option as $value) {
             $images[] = $value['image'];
         }

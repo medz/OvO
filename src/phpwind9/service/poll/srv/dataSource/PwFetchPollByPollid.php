@@ -12,7 +12,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwFetchPollByPollid implements iPwDataSource
 {
-    public $pollid = array();
+    public $pollid = [];
     public $limit = 0;
     public $offset = 0;
 

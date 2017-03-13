@@ -13,9 +13,9 @@
  */
 class PwAutoData extends PwModuleData
 {
-    private $_newPushIds = array();
-    private $_newAutoIds = array();
-    private $_reservData = array();
+    private $_newPushIds = [];
+    private $_newAutoIds = [];
+    private $_reservData = [];
 
     /**
      * 自动更新所有数据.
@@ -42,9 +42,9 @@ class PwAutoData extends PwModuleData
 
     private function _addData()
     {
-        $delDataIds = $newOrderIds = array();
+        $delDataIds = $newOrderIds = [];
         $delImages = '';
-        $delImgIds = array();
+        $delImgIds = [];
         $ds = Wekit::load('design.PwDesignData');
         $pushDs = Wekit::load('design.PwDesignPush');
         $imageDs = Wekit::load('design.PwDesignAsynImage');
@@ -287,7 +287,7 @@ class PwAutoData extends PwModuleData
 
             $fromids = Pw::collectByKey($data, 'standard_fromid');
             $shields = $PwDesignShield->fetchByFromidsAndApp($fromids, $model);
-            $shieldids = $shields ? Pw::collectByKey($shields, 'from_id') : array();
+            $shieldids = $shields ? Pw::collectByKey($shields, 'from_id') : [];
             foreach ($data as $k => $v) {
                 if (in_array($v['standard_fromid'], $shieldids) || $v['standard_title'] === '') {
                     $shield_num++;

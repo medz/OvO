@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 abstract class PwThreadDataSource
 {
-    protected $urlArgs = array();
+    protected $urlArgs = [];
 
     /**
      * 获取帖子统计数.

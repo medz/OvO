@@ -22,7 +22,7 @@ class PwShieldData extends PwModuleData
 
     private function _designData()
     {
-        $delDataIds = $_data = array();
+        $delDataIds = $_data = [];
         $ds = Wekit::load('design.PwDesignData');
         $data = $ds->getDataByModuleid($this->bo->moduleid);
         $limit = $this->getLimit();
@@ -37,7 +37,7 @@ class PwShieldData extends PwModuleData
         $ds->batchDelete($delDataIds);
         //格式化门户数据系列，无数据的补空；
         for ($i = 0; $i < $limit; $i++) {
-            $this->designData[] = isset($_data[$i]) ? $_data[$i] : array();
+            $this->designData[] = isset($_data[$i]) ? $_data[$i] : [];
         }
     }
 
@@ -57,7 +57,7 @@ class PwShieldData extends PwModuleData
 
     private function _addData()
     {
-        $usedDataids = array();
+        $usedDataids = [];
         $ds = Wekit::load('design.PwDesignData');
 
         $time = Pw::getTime();
@@ -148,7 +148,7 @@ class PwShieldData extends PwModuleData
         $service = Wekit::load('design.srv.model.'.$model.'.'.$cls);
         $service->setModuleBo($this->bo);
         do {
-            $shieldids = $fromids = array();
+            $shieldids = $fromids = [];
             $data = $service->buildAutoData($param, $param['order'], $limit, $param['start']);
             $count = count($data);
             if ($count < 1) {

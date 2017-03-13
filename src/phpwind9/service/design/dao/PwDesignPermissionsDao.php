@@ -14,7 +14,7 @@ class PwDesignPermissionsDao extends PwBaseDao
 {
     protected $_pk = 'id';
     protected $_table = 'design_permissions';
-    protected $_dataStruct = array('id', 'design_type', 'design_id', 'uid', 'permissions');
+    protected $_dataStruct = ['id', 'design_type', 'design_id', 'uid', 'permissions'];
 
     public function get($id)
     {
@@ -45,7 +45,7 @@ class PwDesignPermissionsDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET `permissions` = ? WHERE `id` = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($permissions, $id));
+        return $smt->update([$permissions, $id]);
     }
 
     public function delete($id)
@@ -63,17 +63,17 @@ class PwDesignPermissionsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `design_type` = ? AND `design_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($type, $id));
+        return $smt->update([$type, $id]);
     }
 
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'design_id':
-                    $value = !is_array($value) && $value ? array($value) : $value;
+                    $value = !is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND design_id IN '.$this->sqlImplode($value);
                     break;
                 case 'design_type':
@@ -87,6 +87,6 @@ class PwDesignPermissionsDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 }

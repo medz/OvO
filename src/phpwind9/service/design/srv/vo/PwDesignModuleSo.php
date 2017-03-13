@@ -10,8 +10,8 @@
  */
 class PwDesignModuleSo
 {
-    protected $_data = array();
-    protected $_order = array();
+    protected $_data = [];
+    protected $_order = [];
 
     public function getData()
     {

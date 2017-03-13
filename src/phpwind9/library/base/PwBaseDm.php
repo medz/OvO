@@ -14,10 +14,10 @@ Wind::import('COM:dao.WindDao');
  */
 abstract class PwBaseDm
 {
-    protected $_data = array();
-    protected $_increaseData = array();
-    protected $_bitData = array();
-    protected $_status = array();
+    protected $_data = [];
+    protected $_increaseData = [];
+    protected $_bitData = [];
+    protected $_status = [];
 
     /**
      * 获取数据信息.

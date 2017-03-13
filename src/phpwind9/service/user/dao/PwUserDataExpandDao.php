@@ -24,7 +24,7 @@ class PwUserDataExpandDao extends PwBaseDao
     public function getStruct()
     {
         $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
-        $tbFields = $this->getConnection()->createStatement($sql)->queryAll(array(), 'Field');
+        $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
 
         return array_keys($tbFields);
     }

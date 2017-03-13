@@ -13,7 +13,7 @@ class PwThreadsIndexDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_index';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'fid', 'disabled', 'created_time', 'lastpost_time');
+    protected $_dataStruct = ['tid', 'fid', 'disabled', 'created_time', 'lastpost_time'];
     protected $_threadTable = 'bbs_threads';
 
     public function count()
@@ -70,10 +70,10 @@ class PwThreadsIndexDao extends PwBaseDao
     protected function _getOrderFieldAndIndex($order)
     {
         if ($order == 'lastpost') {
-            return array('lastpost_time', 'idx_lastposttime');
+            return ['lastpost_time', 'idx_lastposttime'];
         }
 
-        return array('tid', 'PRIMARY');
+        return ['tid', 'PRIMARY'];
     }
 
     public function addThread($tid, $fields)
@@ -83,12 +83,12 @@ class PwThreadsIndexDao extends PwBaseDao
         return $this->_add($fields, false);
     }
 
-    public function updateThread($tid, $fields, $increaseFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [])
     {
         return $this->_update($tid, $fields, $increaseFields);
     }
 
-    public function batchUpdateThread($tids, $fields, $increaseFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($tids, $fields, $increaseFields);
     }

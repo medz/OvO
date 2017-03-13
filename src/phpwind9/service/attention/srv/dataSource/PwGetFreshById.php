@@ -21,6 +21,6 @@ class PwGetFreshById implements iPwDataSource
 
     public function getData()
     {
-        return Wekit::load('attention.PwFresh')->fetchFresh(array($this->id));
+        return Wekit::load('attention.PwFresh')->fetchFresh([$this->id]);
     }
 }

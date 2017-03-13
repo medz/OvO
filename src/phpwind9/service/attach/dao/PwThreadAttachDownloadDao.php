@@ -12,14 +12,14 @@
 class PwThreadAttachDownloadDao extends PwBaseDao
 {
     protected $_table = 'attachs_thread_download';
-    protected $_dataStruct = array('id', 'aid', 'created_userid', 'created_time', 'ctype', 'cost');
+    protected $_dataStruct = ['id', 'aid', 'created_userid', 'created_time', 'ctype', 'cost'];
 
     public function sumCost($aid)
     {
         $sql = $this->_bindTable('SELECT SUM(cost) AS sum FROM %s WHERE aid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($aid));
+        return $smt->getValue([$aid]);
     }
 
     public function get($id)
@@ -32,7 +32,7 @@ class PwThreadAttachDownloadDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE aid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($aid));
+        return $smt->getValue([$aid]);
     }
 
     public function getByAid($aid, $limit, $offset)
@@ -40,7 +40,7 @@ class PwThreadAttachDownloadDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE aid=? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($aid), 'created_userid');
+        return $smt->queryAll([$aid], 'created_userid');
     }
 
     public function getByAidAndUid($aid, $uid)
@@ -48,7 +48,7 @@ class PwThreadAttachDownloadDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE aid=? AND created_userid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($aid, $uid));
+        return $smt->getOne([$aid, $uid]);
     }
 
     public function add($fields)

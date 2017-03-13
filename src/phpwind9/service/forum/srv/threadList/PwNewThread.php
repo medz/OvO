@@ -18,7 +18,7 @@ class PwNewThread extends PwThreadDataSource
     protected $specialSortTids;
     protected $count;
 
-    public function __construct($forbidFids = array())
+    public function __construct($forbidFids = [])
     {
         $this->forbidFids = $forbidFids;
         $this->specialSortTids = array_keys($this->_getSpecialSortDs()->getSpecialSortByTypeExtra('topped', 3));
@@ -40,7 +40,7 @@ class PwNewThread extends PwThreadDataSource
 
     public function getData($limit, $offset)
     {
-        $threaddb = array();
+        $threaddb = [];
         if ($offset < $this->count) {
             $array = $this->_getThreadDs()->fetchThreadByTid($this->specialSortTids, $limit, $offset);
             foreach ($array as $key => $value) {
@@ -72,7 +72,7 @@ class PwNewThread extends PwThreadDataSource
 
     protected function _sort($data, $sort)
     {
-        $result = array();
+        $result = [];
         foreach ($sort as $tid) {
             $result[$tid] = $data[$tid];
         }

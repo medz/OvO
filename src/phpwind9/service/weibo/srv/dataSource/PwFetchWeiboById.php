@@ -12,7 +12,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwFetchWeiboById implements iPwDataSource
 {
-    public $ids = array();
+    public $ids = [];
 
     public function __construct($ids)
     {

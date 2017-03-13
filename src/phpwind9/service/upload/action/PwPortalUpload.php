@@ -16,13 +16,13 @@ Wind::import('COM:utility.WindUtility');
 class PwPortalUpload extends PwUploadAction
 {
     private $id = 0;
-    private $mime = array();
+    private $mime = [];
 
     public function __construct($id)
     {
         $this->id = $id;
-        $this->ftype = array('jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000);
-        $this->mime = array('image/jpeg', 'image/png', 'image/jpg', 'image/gif');
+        $this->ftype = ['jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000];
+        $this->mime = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
     }
 
     /**
@@ -72,9 +72,9 @@ class PwPortalUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->filename, $this->dir, $this->width, $this->height, 0),
-        );
+        return [
+            [$this->filename, $this->dir, $this->width, $this->height, 0],
+        ];
     }
 
     /**
@@ -96,7 +96,7 @@ class PwPortalUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'name'     => $value['name'],
                 'type'     => $value['type'],
                 'path'     => $this->dir,
@@ -104,7 +104,7 @@ class PwPortalUpload extends PwUploadAction
                 'size'     => $value['size'],
                 'width'    => $this->width,
                 'height'   => $this->height,
-            );
+            ];
         }
 
         return true;

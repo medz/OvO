@@ -18,7 +18,7 @@ class PwFindPassword
     private $byEmailNum = 5;
     /* @var $spaceDay int 达到次数上限的时候相隔下次可以使用的时间间隔（单位：天）*/
     private $spaceDay = 1;
-    private $info = array();
+    private $info = [];
 
     const WAY_EMAIL = 'email';
     const WAY_MOBILE = 'mobile';
@@ -84,7 +84,7 @@ class PwFindPassword
         }
         //TODO 产生激活码的方法
         $code = substr(md5(Pw::getTime()), mt_rand(1, 8), 8);
-        $url = WindUrlHelper::createUrl('u/findPwd/resetpwd', array('code' => $code, '_statu' => $state));
+        $url = WindUrlHelper::createUrl('u/findPwd/resetpwd', ['code' => $code, '_statu' => $state]);
         list($title, $content) = $this->_buildTitleAndContent($this->info['username'], $url);
         /* @var $activeCodeDs PwUserActiveCode */
         $activeCodeDs = Wekit::load('user.PwUserActiveCode');
@@ -136,8 +136,8 @@ class PwFindPassword
      */
     private function _buildTitleAndContent($username, $url = '')
     {
-        $search = array('{username}', '{sitename}');
-        $replace = array($username, Wekit::C('site', 'info.name'));
+        $search = ['{username}', '{sitename}'];
+        $replace = [$username, Wekit::C('site', 'info.name')];
         $title = str_replace($search, $replace, Wekit::C('login', 'resetpwd.mail.title'));
         $search[] = '{time}';
         $search[] = '{url}';
@@ -145,7 +145,7 @@ class PwFindPassword
         $replace[] = $url ? sprintf('<a href="%s">%s</a>', $url, $url) : '';
         $content = str_replace($search, $replace, Wekit::C('login', 'resetpwd.mail.content'));
 
-        return array($title, $content);
+        return [$title, $content];
     }
 
     /**
@@ -347,7 +347,7 @@ class PwFindPassword
     public function setRecode($type = self::WAY_EMAIL)
     {
         $findPwd = $this->info['findpwd'];
-        $recodes = array(0 => '', 1 => '');
+        $recodes = [0 => '', 1 => ''];
         $typeCode = $type == self::WAY_MOBILE ? 0 : 1;
         $tryTime = $type == self::WAY_MOBILE ? $this->byMobileNum : $this->byEmailNum;
         /*如果重来没有尝试找回过密码*/

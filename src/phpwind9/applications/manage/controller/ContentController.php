@@ -19,7 +19,7 @@ class ContentController extends BaseManageController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        $result = $this->loginUser->getPermission('panel_bbs_manage', false, array());
+        $result = $this->loginUser->getPermission('panel_bbs_manage', false, []);
         if (!$result['thread_check']) {
             $this->showError('BBS:manage.thread_check.right.error');
         }
@@ -28,7 +28,7 @@ class ContentController extends BaseManageController
     public function run()
     {
         $page = intval($this->getInput('page'));
-        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(array('author', 'fid', 'created_time_start', 'created_time_end'));
+        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(['author', 'fid', 'created_time_start', 'created_time_end']);
 
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -36,7 +36,7 @@ class ContentController extends BaseManageController
 
         $so = new PwThreadSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
-        $url = array();
+        $url = [];
 
         if ($author) {
             $so->setAuthor($author);
@@ -79,9 +79,9 @@ class ContentController extends BaseManageController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = array($tid);
+        !is_array($tid) && $tid = [$tid];
 
-        $fids = array();
+        $fids = [];
         $threaddb = Wekit::load('forum.PwThread')->fetchThread($tid);
         foreach ($threaddb as $key => $value) {
             $fids[$value['fid']]++;
@@ -104,7 +104,7 @@ class ContentController extends BaseManageController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = array($tid);
+        !is_array($tid) && $tid = [$tid];
 
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
@@ -115,7 +115,7 @@ class ContentController extends BaseManageController
     public function replyAction()
     {
         $page = intval($this->getInput('page'));
-        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(array('author', 'fid', 'created_time_start', 'created_time_end'));
+        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(['author', 'fid', 'created_time_start', 'created_time_end']);
 
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -123,7 +123,7 @@ class ContentController extends BaseManageController
 
         $so = new PwPostSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
-        $url = array();
+        $url = [];
 
         if ($author) {
             $so->setAuthor($author);
@@ -168,9 +168,9 @@ class ContentController extends BaseManageController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = array($pid);
+        !is_array($pid) && $pid = [$pid];
 
-        $fids = $tids = array();
+        $fids = $tids = [];
         $postdb = Wekit::load('forum.PwThread')->fetchPost($pid);
         foreach ($postdb as $key => $value) {
             $fids[$value['fid']]++;
@@ -201,7 +201,7 @@ class ContentController extends BaseManageController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = array($pid);
+        !is_array($pid) && $pid = [$pid];
 
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();

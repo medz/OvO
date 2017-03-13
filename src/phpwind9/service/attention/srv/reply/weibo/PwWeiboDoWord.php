@@ -23,15 +23,15 @@ class PwWeiboDoWord extends PwWeiboDoBase
         $wordFilter = Wekit::load('SRV:word.srv.PwWordFilter');
 
         list($type, $words) = $wordFilter->filterWord($content);
-        $words = $words ? $words : array();
+        $words = $words ? $words : [];
         if (!$type) {
             return true;
         }
         switch ($type) {
             case 1:
-                return new PwError('WORD:content.error.tip', array('{wordstr}' => implode(',', $words)));
+                return new PwError('WORD:content.error.tip', ['{wordstr}' => implode(',', $words)]);
             case 2:
-                return new PwError('WORD:content.error.tip', array('{wordstr}' => implode(',', $words)));
+                return new PwError('WORD:content.error.tip', ['{wordstr}' => implode(',', $words)]);
             case 3:
             default:
                 return true;

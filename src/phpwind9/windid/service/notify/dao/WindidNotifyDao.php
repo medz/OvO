@@ -12,7 +12,7 @@ class WindidNotifyDao extends WindidBaseDao
 {
     protected $_pk = 'nid';
     protected $_table = 'notify';
-    protected $_dataStruct = array('appid', 'operation', 'param', 'timestamp');
+    protected $_dataStruct = ['appid', 'operation', 'param', 'timestamp'];
 
     /**
      * 根据ID获取信息.
@@ -43,7 +43,7 @@ class WindidNotifyDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `appid`=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($appid));
+        return $smt->queryAll([$appid]);
     }
 
     public function add($data)
@@ -78,7 +78,7 @@ class WindidNotifyDao extends WindidBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `nid` NOT IN %s ', $this->getTable(), $this->sqlImplode($nids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 
     public function deleteAll()
@@ -86,6 +86,6 @@ class WindidNotifyDao extends WindidBaseDao
         $sql = $this->_bindSql('DELETE FROM %s ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 }

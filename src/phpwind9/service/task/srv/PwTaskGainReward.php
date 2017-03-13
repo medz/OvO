@@ -22,12 +22,12 @@ class PwTaskGainReward extends PwBaseHookService
 {
     private $uid = 0;
     private $taskId = 0;
-    private $myTask = array();
+    private $myTask = [];
 
     private $error = null;
 
     public $type = '';
-    public $taskInfo = array();
+    public $taskInfo = [];
 
     /**
      * 任务
@@ -126,7 +126,7 @@ class PwTaskGainReward extends PwBaseHookService
         }
         $userCache = $this->_getTaskDs()->getTaskCacheByUid($this->uid);
         if (!$userCache) {
-            $userCache = array('', array());
+            $userCache = ['', []];
         }
         array_push($userCache[1], $this->taskId);
         array_unique($userCache[1]);

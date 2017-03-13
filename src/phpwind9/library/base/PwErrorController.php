@@ -52,7 +52,7 @@ class PwErrorController extends WindErrorHandler
             $this->setLayout('TPL:common.layout_error');
             $lang = Wind::getComponent('i18n');
             Wekit::setGlobal(NEXT_VERSION, 'version');
-            Wekit::setGlobal(array('title' => strtr($lang->getMessage('SEO:'.$this->state.'.page.title'), array('{sitename}' => Wekit::C('site', 'info.name')))), 'seo');
+            Wekit::setGlobal(['title' => strtr($lang->getMessage('SEO:'.$this->state.'.page.title'), ['{sitename}' => Wekit::C('site', 'info.name')])], 'seo');
         }
     }
 
@@ -64,7 +64,7 @@ class PwErrorController extends WindErrorHandler
         parent::afterAction($handlerAdapter);
 
         $debug = Wekit::C('site', 'debug') || !Wekit::C('site', 'css.compress');
-        Wekit::setGlobal(array('debug' => $debug ? '/dev' : '/build'), 'theme');
+        Wekit::setGlobal(['debug' => $debug ? '/dev' : '/build'], 'theme');
         $this->setTheme('site', null);
 
         /* @var $resource WindLangResource */
@@ -75,13 +75,13 @@ class PwErrorController extends WindErrorHandler
                 if (is_array($value)) {
                     list($value, $var) = $value;
                 } else {
-                    $var = array();
+                    $var = [];
                 }
                 $message = $resource->getMessage($value, $var);
                 $message && $_error[$key] = $message;
             }
         }
-        $this->getForward()->setVars(array('message' => $_error, '__error' => ''));
+        $this->getForward()->setVars(['message' => $_error, '__error' => '']);
 
         $type = $this->getRequest()->getAcceptTypes();
         // 如果是含有上传的递交，不能采用ajax的方式递交，需要以html的方式递交，并且返回的结果需要是json格式，将以json=1传递过来标志

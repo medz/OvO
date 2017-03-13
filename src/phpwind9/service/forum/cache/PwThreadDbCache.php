@@ -13,21 +13,21 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadDbCache extends PwBaseMapDbCache
 {
-    protected $keys = array(
-        'thread'        => array('thread_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwThreadsDao', 'getThread')),
-        'threadcontent' => array('threadcontent_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwThreadsContentDao', 'getThread')),
-        'thread_list'   => array('thread_list_%s_%s_%s_%s', array('fver', 'fid', 'limit', 'offset'), PwCache::USE_DBCACHE, 'forum', 0),
-        'thread_fver'   => array('thread_fver_%s', array('fid'), PwCache::USE_DBCACHE, 'forum', 0, 0),
-    );
+    protected $keys = [
+        'thread'        => ['thread_%s', ['tid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwThreadsDao', 'getThread']],
+        'threadcontent' => ['threadcontent_%s', ['tid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwThreadsContentDao', 'getThread']],
+        'thread_list'   => ['thread_list_%s_%s_%s_%s', ['fver', 'fid', 'limit', 'offset'], PwCache::USE_DBCACHE, 'forum', 0],
+        'thread_fver'   => ['thread_fver_%s', ['fid'], PwCache::USE_DBCACHE, 'forum', 0, 0],
+    ];
 
     public function getKeysByTid($tid)
     {
-        $keys = array();
+        $keys = [];
         if ($this->index & PwThread::FETCH_MAIN) {
-            $keys[] = array('thread', array($tid));
+            $keys[] = ['thread', [$tid]];
         }
         if ($this->index & PwThread::FETCH_CONTENT) {
-            $keys[] = array('threadcontent', array($tid));
+            $keys[] = ['threadcontent', [$tid]];
         }
 
         return $keys;
@@ -35,7 +35,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
 
     public function fetchKeysByTid($tids)
     {
-        $keys = array();
+        $keys = [];
         foreach ($tids as $tid) {
             $keys = array_merge($keys, $this->getKeysByTid($tid));
         }
@@ -46,7 +46,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
     public function getThread($tid)
     {
         $data = Wekit::cache()->fetch($this->getKeysByTid($tid));
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
             $result = array_merge($result, $value);
         }
@@ -56,7 +56,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
 
     public function fetchThread($tids)
     {
-        $result = array();
+        $result = [];
         $data = Wekit::cache()->fetch($this->fetchKeysByTid($tids));
         foreach ($data as $key => $value) {
             list(, $tid) = explode('_', $key);
@@ -72,11 +72,11 @@ class PwThreadDbCache extends PwBaseMapDbCache
 
     public function getThreadByFid($fid, $limit, $offset)
     {
-        $fver = Wekit::cache()->get('thread_fver', array($fid));
-        $data = Wekit::cache()->get('thread_list', array($fver, $fid, $limit, $offset));
+        $fver = Wekit::cache()->get('thread_fver', [$fid]);
+        $data = Wekit::cache()->get('thread_list', [$fver, $fid, $limit, $offset]);
         if ($data === false) {
             $result = $this->_getDao()->getThreadByFid($fid, $limit, $offset);
-            Wekit::cache()->set('thread_list', array_keys($result), array($fver, $fid, $limit, $offset));
+            Wekit::cache()->set('thread_list', array_keys($result), [$fver, $fid, $limit, $offset]);
         } else {
             $result = $this->fetchThread($data);
         }
@@ -93,7 +93,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
         return $this->_getDao()->addThread($fields);
     }
 
-    public function updateThread($tid, $fields, $increaseFields = array(), $bitFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [], $bitFields = [])
     {
         if (isset($fields['disabled']) || isset($fields['lastpost_time']) || isset($fields['fid'])) {
             $this->updateThreadList($tid, isset($fields['fid']) ? $fields['fid'] : 0);
@@ -103,7 +103,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
         return $this->_getDao()->updateThread($tid, $fields, $increaseFields, $bitFields);
     }
 
-    public function batchUpdateThread($tids, $fields, $increaseFields = array(), $bitFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [], $bitFields = [])
     {
         if (isset($fields['disabled']) || isset($fields['lastpost_time']) || isset($fields['fid'])) {
             $this->batchUpdateThreadList($tids, isset($fields['fid']) ? $fields['fid'] : 0);
@@ -144,7 +144,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
      */
     public function clearThreadListCache($fid)
     {
-        Wekit::cache()->increment('thread_fver', array($fid));
+        Wekit::cache()->increment('thread_fver', [$fid]);
     }
 
     /**
@@ -171,7 +171,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
     public function batchUpdateThreadList($tids, $fid = 0)
     {
         $threads = $this->fetchThread($tids);
-        $fids = array();
+        $fids = [];
         foreach ($threads as $thread) {
             $fids[] = $thread['fid'];
         }

@@ -27,7 +27,7 @@ class PwFresh
     public function getFresh($id)
     {
         if (empty($id)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFresh($id);
@@ -43,7 +43,7 @@ class PwFresh
     public function fetchFresh($ids)
     {
         if (empty($ids) || !is_array($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchFresh($ids);
@@ -77,7 +77,7 @@ class PwFresh
     public function getFreshByUid($uid, $limit = 20, $offset = 0)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFreshByUid($uid, $limit, $offset);
@@ -95,9 +95,9 @@ class PwFresh
     public function getAttentionFresh($uid, $limit = 20, $offset = 0)
     {
         if (!$fresh = $this->_getRelationDao()->get($uid, $limit, $offset)) {
-            return array();
+            return [];
         }
-        $fresh_ids = $result = array();
+        $fresh_ids = $result = [];
         foreach ($fresh as $value) {
             $fresh_ids[] = $value['fresh_id'];
         }
@@ -154,12 +154,12 @@ class PwFresh
     public function fetchAttentionFreshByUid($uid, $uids, $limit = 20, $offset = 0)
     {
         if (empty($uid) || empty($uids) || !is_array($uids)) {
-            return array();
+            return [];
         }
         if (!$fresh = $this->_getRelationDao()->fetchAttentionFreshByUid($uid, $uids, $limit, $offset)) {
-            return array();
+            return [];
         }
-        $fresh_ids = $result = array();
+        $fresh_ids = $result = [];
         foreach ($fresh as $value) {
             $fresh_ids[] = $value['fresh_id'];
         }
@@ -185,7 +185,7 @@ class PwFresh
     public function getFreshByType($type, $srcIds)
     {
         if (empty($srcIds) || !is_array($srcIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFreshByType($type, $srcIds);
@@ -205,12 +205,12 @@ class PwFresh
         if (!$uid || !$srcId) {
             return 0;
         }
-        $data = array(
+        $data = [
             'type'           => $type,
             'src_id'         => $srcId,
             'created_userid' => $uid,
             'created_time'   => Pw::getTime(),
-        );
+        ];
         if (!$freshId = $this->_getDao()->addFresh($data)) {
             return 0;
         }
@@ -307,13 +307,13 @@ class PwFresh
 
     protected function _addRelation($uid, $freshId, $type)
     {
-        $data = array(
+        $data = [
             'uid'            => $uid,
             'fresh_id'       => $freshId,
             'type'           => $type,
             'created_userid' => $uid,
             'created_time'   => Pw::getTime(),
-        );
+        ];
         $this->_getRelationDao()->addRelation($data); //self
         $this->_getRelationDao()->addRelationByAttention($data); //attention
     }

@@ -28,7 +28,7 @@ class PwForum
     public function getForum($fid, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($fetchmode)->getForum($fid);
@@ -44,7 +44,7 @@ class PwForum
     public function fetchForum($fids, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($fids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($fetchmode)->fetchForum($fids);
@@ -196,11 +196,11 @@ class PwForum
 
     protected function _getDaoMap()
     {
-        return array(
+        return [
             self::FETCH_MAIN       => 'forum.dao.PwForumDao',
             self::FETCH_STATISTICS => 'forum.dao.PwForumStatisticsDao',
             self::FETCH_EXTRA      => 'forum.dao.PwForumExtraDao',
-        );
+        ];
     }
 
     protected function _getDao($fetchmode = self::FETCH_MAIN)

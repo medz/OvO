@@ -9,27 +9,27 @@
  *
  * @version $Id$
  */
-return array(
+return [
     'model'   => 'link',
     'name'    => '友情链接',
     'type'    => 'other',
     'refresh' => true,
-    'sign'    => array(
-        array('{lid}', '友情链接ID', 'lid'),
-        array('{name}', '友情链接名称', 'name'),
-        array('{url}', '访问地址', 'url'),
-        array('{logo}', '友情链接logo', 'logo'),
+    'sign'    => [
+        ['{lid}', '友情链接ID', 'lid'],
+        ['{name}', '友情链接名称', 'name'],
+        ['{url}', '访问地址', 'url'],
+        ['{logo}', '友情链接logo', 'logo'],
 
-    ),
-    'standardSign' => array('sTitle' => '{name}', 'sUrl' => '{url}', 'sFromId' => '{lid}', 'sIntro' => ''),
-    'special'      => array(
-        'titlenum' => array('text', '标题长度', '0为不限制', '', 'short'),
-        'limit'    => array('text', '显示条数', '默认10条', '', 'short'),
-        'isblank'  => array('radio', '链接打开方式', '', array('0' => '当前窗口', '1' => '新窗口'), ''),
-    ),
+    ],
+    'standardSign' => ['sTitle' => '{name}', 'sUrl' => '{url}', 'sFromId' => '{lid}', 'sIntro' => ''],
+    'special'      => [
+        'titlenum' => ['text', '标题长度', '0为不限制', '', 'short'],
+        'limit'    => ['text', '显示条数', '默认10条', '', 'short'],
+        'isblank'  => ['radio', '链接打开方式', '', ['0' => '当前窗口', '1' => '新窗口'], ''],
+    ],
 
-    'normal' => array(
-        'linkType' => array('select', '友情链接分类', '', 'linkType|array'),
-        'isLog'    => array('select', '是否带logo', '', array(-1 => '所有', 1 => '有logo', 0 => '无logo')),
-    ),
-);
+    'normal' => [
+        'linkType' => ['select', '友情链接分类', '', 'linkType|array'],
+        'isLog'    => ['select', '是否带logo', '', [-1 => '所有', 1 => '有logo', 0 => '无logo']],
+    ],
+];

@@ -16,11 +16,11 @@ class PwFreshReplyList
     public $fresh;
     public $id;
     public $bhv;
-    protected $_bhv_map = array(
+    protected $_bhv_map = [
         1 => 'SRV:attention.srv.reply.PwFreshReplyListFromTopic',
         2 => 'SRV:attention.srv.reply.PwFreshReplyListFromPost',
         3 => 'SRV:attention.srv.reply.PwFreshReplyListFromWeibo',
-    );
+    ];
 
     public function __construct($fresh_id)
     {
@@ -35,7 +35,7 @@ class PwFreshReplyList
     public function getReplies($limit = 10, $offset = 0)
     {
         if (!$this->bhv) {
-            return array();
+            return [];
         }
 
         return $this->bhv->getReplies($limit, $offset);

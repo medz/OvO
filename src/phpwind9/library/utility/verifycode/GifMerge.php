@@ -39,12 +39,12 @@ class GifMerge
     public $global_color_table_size = 0;
     public $out_color_table_sizecode = 0;
     public $global_color_table_sizecode = 0;
-    public $gif = array(0x47, 0x49, 0x46);
-    public $buffer = array();
-    public $local_in = array();
-    public $global_in = array();
-    public $global_out = array();
-    public $logical_screen_descriptor = array();
+    public $gif = [0x47, 0x49, 0x46];
+    public $buffer = [];
+    public $local_in = [];
+    public $global_in = [];
+    public $global_out = [];
+    public $logical_screen_descriptor = [];
 
     public function GifMerge($images, $t1, $t2, $t3, $loop, $dl, $xpos, $ypos, $model, $debug = false)
     {

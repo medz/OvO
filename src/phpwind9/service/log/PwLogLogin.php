@@ -66,7 +66,7 @@ class PwLogLogin
         if (empty($dms)) {
             return true;
         }
-        $datas = array();
+        $datas = [];
         foreach ($dms as $_dm) {
             if (!$_dm instanceof PwLogLoginDm) {
                 return false;

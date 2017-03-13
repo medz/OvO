@@ -24,7 +24,7 @@ class PwLog
     public function getLogBytid($tid, $pid, $limit = 10, $start = 0)
     {
         if (0 >= ($tid = intval($tid))) {
-            return array();
+            return [];
         }
 
         return $this->_getLogDao()->getLogByTid($tid, $pid, $limit, $start);
@@ -33,7 +33,7 @@ class PwLog
     public function fetchLogByTid($tids, $typeid)
     {
         if (empty($tids) || !is_array($tids) || empty($typeid) || !is_array($typeid)) {
-            return array();
+            return [];
         }
 
         return $this->_getLogDao()->fetchLogByTid($tids, $typeid);
@@ -91,7 +91,7 @@ class PwLog
         if (empty($dms)) {
             return true;
         }
-        $datas = array();
+        $datas = [];
         foreach ($dms as $_dm) {
             if (!$_dm instanceof PwLogDm) {
                 return false;

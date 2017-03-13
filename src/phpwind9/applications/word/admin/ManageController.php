@@ -22,12 +22,12 @@ class ManageController extends AdminBaseController
         $total = $this->_getWordDS()->count();
 
         $this->setOutput($total, 'total');
-        $this->setOutput($total ? $this->_getWordDS()->getWordList() : array(), 'wordList');
+        $this->setOutput($total ? $this->_getWordDS()->getWordList() : [], 'wordList');
         $this->setOutput($this->_getWordDS()->getTypeMap(), 'typeList');
         $this->setOutput(Wekit::C($this->_configName), 'config');
         $this->setOutput(1, 'page');
         $this->setOutput(20, 'perpage');
-        $this->setOutput(array(), 'args');
+        $this->setOutput([], 'args');
     }
 
     public function addAction()
@@ -53,7 +53,7 @@ class ManageController extends AdminBaseController
         $findWord = $wordService->findWord($wordList);
         if ($findWord) {
             $existWord = implode(',', $findWord);
-            $this->showError(array('WORD:show.exist.word', array('{showword}' => $existWord)));
+            $this->showError(['WORD:show.exist.word', ['{showword}' => $existWord]]);
         }
 
         if ($this->_getWordDS()->isReplaceWord($word['type']) && !$word['replace']) {
@@ -91,7 +91,7 @@ class ManageController extends AdminBaseController
 
     public function doeditAction()
     {
-        list($id, $word) = $this->getInput(array('id', 'word'), 'post');
+        list($id, $word) = $this->getInput(['id', 'word'], 'post');
 
         if (!$id) {
             $this->showError('WORD:id_not_exist');
@@ -143,10 +143,10 @@ class ManageController extends AdminBaseController
 
     public function batchdeleteAction()
     {
-        list($ids, $checkAll) = $this->getInput(array('ids', 'checkall'), 'post');
+        list($ids, $checkAll) = $this->getInput(['ids', 'checkall'], 'post');
 
         if ($checkAll) {
-            list($type, $keyword) = $this->getInput(array('type', 'keyword'));
+            list($type, $keyword) = $this->getInput(['type', 'keyword']);
             $this->_getWordService()->deleteByCondition($type, $keyword);
             $this->_getWordFilter()->updateCache();
             $this->showMessage('success');
@@ -163,14 +163,14 @@ class ManageController extends AdminBaseController
 
     public function batcheditAction()
     {
-        list($ids, $checkAll) = $this->getInput(array('ids', 'checkall'));
+        list($ids, $checkAll) = $this->getInput(['ids', 'checkall']);
         if (empty($ids) || !is_array($ids)) {
             $this->showError('WORD:no_operate_object');
         }
 
         $wordList = $this->_getWordDS()->fetch($ids);
 
-        $word = $wordIds = array();
+        $word = $wordIds = [];
         foreach ($wordList as $key => $value) {
             $word[] = $value['word'];
             $wordIdList[] = $value['word_id'];
@@ -186,7 +186,7 @@ class ManageController extends AdminBaseController
 
     public function dobatcheditAction()
     {
-        list($word, $checkAll) = $this->getInput(array('word', 'checkall'), 'post');
+        list($word, $checkAll) = $this->getInput(['word', 'checkall'], 'post');
 
         if ($checkAll) {
             $wordService = $this->_getWordService();
@@ -195,7 +195,7 @@ class ManageController extends AdminBaseController
             $this->showMessage('success');
         }
 
-        $ids = $word['ids'] ? explode(',', $word['ids']) : array();
+        $ids = $word['ids'] ? explode(',', $word['ids']) : [];
         $ids = array_unique($ids);
 
         if (empty($ids) || !is_array($ids)) {
@@ -221,7 +221,7 @@ class ManageController extends AdminBaseController
 
     public function searchAction()
     {
-        list($keyword, $type, $ischeckAll, $page, $perpage) = $this->getInput(array('keyword', 'type', '_check', 'page', 'perpage'));
+        list($keyword, $type, $ischeckAll, $page, $perpage) = $this->getInput(['keyword', 'type', '_check', 'page', 'perpage']);
 
         $page < 1 && $page = 1;
 
@@ -235,7 +235,7 @@ class ManageController extends AdminBaseController
         $type > 0 && $wordSo->setWordType($type);
 
         $total = $this->_getWordDS()->countSearchWord($wordSo);
-        $wordList = $total ? $this->_getWordDS()->searchWord($wordSo, $limit, $offset) : array();
+        $wordList = $total ? $this->_getWordDS()->searchWord($wordSo, $limit, $offset) : [];
 
         $this->setOutput($total, 'total');
         $this->setOutput($wordList, 'wordList');
@@ -245,12 +245,12 @@ class ManageController extends AdminBaseController
         $this->setOutput('search', 'action');
         $this->setOutput($perpage, 'perpage');
         $this->setOutput($ischeckAll, 'ischeckAll');
-        $this->setOutput(array(
+        $this->setOutput([
             'keyword' => $keyword,
             'type'    => $type,
             '_check'  => $ischeckAll,
             'perpage' => $perpage,
-        ), 'args');
+        ], 'args');
 
         $this->setTemplate('manage_run');
     }
@@ -357,7 +357,7 @@ class ManageController extends AdminBaseController
         $type = in_array($type, array_keys($typeMap)) ? $type : 1;
         $replace = trim($replace);
 
-        return array($word, $type, $replace);
+        return [$word, $type, $replace];
     }
 
     private function _syncHelper()
@@ -372,10 +372,10 @@ class ManageController extends AdminBaseController
 
         $this->_getWordSyncService()->setSyncType(($this->_getWordDS()->countByFrom(1) ? 'increase' : 'all'));
 
-        $this->setOutput(array(
+        $this->setOutput([
                         'lasttime' => $this->_getWordSyncService()->lastTimeFromPlatform,
                         'syncnum'  => $this->_getWordSyncService()->getSyncNum(),
-        ), 'sync');
+        ], 'sync');
 
         return true;
     }

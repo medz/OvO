@@ -16,9 +16,9 @@ class AdminBaseDao extends PwBaseDao
     public function __construct()
     {
         $this->setDelayAttributes(
-            array(
-                'connection' => array(
-                    'ref' => (Wekit::app()->dbComponentName ? Wekit::app()->dbComponentName : 'db'), ), ));
+            [
+                'connection' => [
+                    'ref' => (Wekit::app()->dbComponentName ? Wekit::app()->dbComponentName : 'db'), ], ]);
     }
 
     /**

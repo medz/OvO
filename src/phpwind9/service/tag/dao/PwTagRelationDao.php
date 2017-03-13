@@ -11,7 +11,7 @@
 class PwTagRelationDao extends PwBaseDao
 {
     protected $_table = 'tag_relation';
-    protected $_dataStruct = array('tag_id', 'content_tag_id', 'type_id', 'param_id', 'ifcheck', 'created_time');
+    protected $_dataStruct = ['tag_id', 'content_tag_id', 'type_id', 'param_id', 'ifcheck', 'created_time'];
 
     /**
      * 单个添加内容关系.
@@ -34,18 +34,18 @@ class PwTagRelationDao extends PwBaseDao
      */
     public function batchAddRelation($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v)) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['tag_id'],
                 $v['content_tag_id'],
                 $v['type_id'],
                 $v['param_id'],
                 $v['created_time'],
-            );
+            ];
         }
         $sql = $this->_bindSql('INSERT INTO %s (`tag_id`,`content_tag_id`,`type_id`,`param_id`,`created_time`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));
 
@@ -67,7 +67,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `type_id`=? AND `param_id`=? AND `content_tag_id`=?', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($typeId, $paramId, $id));
+        return $smt->update([$typeId, $paramId, $id]);
     }
 
     /**
@@ -79,19 +79,19 @@ class PwTagRelationDao extends PwBaseDao
      */
     public function addRelations($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v)) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['tag_id'],
                 $v['content_tag_id'],
                 $v['type_id'],
                 $v['param_id'],
                 $v['ifcheck'],
                 $v['created_time'],
-            );
+            ];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`tag_id`,`content_tag_id`,`type_id`,`param_id`,`ifcheck`,`created_time`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));
 
@@ -111,7 +111,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET tag_id=? WHERE `tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($toTagId, $fromTagId));
+        return $smt->update([$toTagId, $fromTagId]);
     }
 
     /**
@@ -126,7 +126,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagId));
+        return $smt->update([$tagId]);
     }
 
     /**
@@ -141,7 +141,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s  WHERE `tag_id` IN %s ', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 
     /**
@@ -157,7 +157,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `type_id`=? AND `param_id` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($typeId, $paramId), true);
+        return $smt->update([$typeId, $paramId], true);
     }
 
     /**
@@ -172,7 +172,7 @@ class PwTagRelationDao extends PwBaseDao
     public function delete($typeId, $paramId, $tagId)
     {
         $sqlAdd = ' WHERE `type_id`=?';
-        $param = array($typeId);
+        $param = [$typeId];
         if ($paramId) {
             $sqlAdd .= ' AND `param_id` =?';
             $param[] = $paramId;
@@ -201,7 +201,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `type_id`=? AND `param_id` =? AND `content_tag_id` IN %s', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($typeId, $paramId));
+        return $smt->update([$typeId, $paramId]);
     }
 
     /**
@@ -217,7 +217,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `type_id`=? AND `param_id` IN %s ', $this->getTable(), $this->sqlImplode($paramIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($typeId));
+        return $smt->execute([$typeId]);
     }
 
     /**
@@ -233,7 +233,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `type_id`=? AND `param_id` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($typeId, $paramId), 'content_tag_id');
+        return $smt->queryAll([$typeId, $paramId], 'content_tag_id');
     }
 
     /**
@@ -249,7 +249,7 @@ class PwTagRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `type_id`=? AND `param_id` IN %s', $this->getTable(), $this->sqlImplode($paramIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($typeId), 'content_tag_id');
+        return $smt->queryAll([$typeId], 'content_tag_id');
     }
 
     /**
@@ -263,7 +263,7 @@ class PwTagRelationDao extends PwBaseDao
      */
     public function countByTagId($tagId, $typeId, $ifcheck)
     {
-        $param = array($tagId, $typeId);
+        $param = [$tagId, $typeId];
         $where = 'WHERE `tag_id` =? AND `type_id`=?';
         if ($ifcheck) {
             $where .= ' AND `ifcheck` =? ';
@@ -286,7 +286,7 @@ class PwTagRelationDao extends PwBaseDao
      */
     public function getByTagId($tagId, $typeId, $ifcheck, $offset, $num = 4)
     {
-        $param = array($tagId, $typeId);
+        $param = [$tagId, $typeId];
         $where = 'WHERE `tag_id` =? AND `type_id`=?';
         if ($ifcheck) {
             $where .= ' AND `ifcheck` =? ';

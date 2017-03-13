@@ -29,7 +29,7 @@ class PwTaskIconUpload extends PwUploadAction
     {
         $this->width = $width;
         $this->height = $height;
-        $this->ftype = array('jpg' => 2000, 'png' => '2000', 'jpeg' => 2000);
+        $this->ftype = ['jpg' => 2000, 'png' => '2000', 'jpeg' => 2000];
     }
 
     /* (non-PHPdoc)
@@ -80,9 +80,9 @@ class PwTaskIconUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->filename, $this->dir, $this->width, $this->height, 0),
-        );
+        return [
+            [$this->filename, $this->dir, $this->width, $this->height, 0],
+        ];
     }
 
     /* (non-PHPdoc)

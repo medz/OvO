@@ -64,7 +64,7 @@ class PwTemplateCompilerAdvertisement extends AbstractWindTemplateCompiler
      */
     public function getProperties()
     {
-        return array('id', 'sys');
+        return ['id', 'sys'];
     }
 
     private function _getAdService()

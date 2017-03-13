@@ -22,7 +22,7 @@ class PwCompile extends WindHandlerInterceptor
         $chain = WindFactory::createInstance('WindHandlerInterceptorChain');
         foreach ($compilers as $key => $value) {
             $_compiler = Wind::import($value);
-            $chain->addInterceptors(array($key => new $_compiler()));
+            $chain->addInterceptors([$key => new $_compiler()]);
         }
         $chain->getHandler()->handle();
     }
@@ -39,6 +39,6 @@ class PwCompile extends WindHandlerInterceptor
      */
     protected function getCompiler()
     {
-        return array('css' => 'LIB:compile.compiler.PwCssCompiler');
+        return ['css' => 'LIB:compile.compiler.PwCssCompiler'];
     }
 }

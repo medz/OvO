@@ -67,9 +67,9 @@ class pwadminBoot extends adminBoot
      *
      * @var array
      */
-    protected $dependenceServiceDefinitions = array(
-        'adminUserService' => array('path' => 'APPS:pwadmin.service.srv.do.AdminUserDependenceService'),
-    );
+    protected $dependenceServiceDefinitions = [
+        'adminUserService' => ['path' => 'APPS:pwadmin.service.srv.do.AdminUserDependenceService'],
+    ];
 
     /* (non-PHPdoc)
      * @see phpwindBoot::init()
@@ -78,7 +78,7 @@ class pwadminBoot extends adminBoot
     {
         parent::beforeStart($front);
         if (!Wind::getComponent('router')->getRoute('pw')) {
-            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', array('bbs')));
+            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', ['bbs']));
         }
     }
 }

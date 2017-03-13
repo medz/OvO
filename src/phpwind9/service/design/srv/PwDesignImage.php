@@ -41,7 +41,7 @@ class PwDesignImage
         $cut = new PwCutImage();
         $image = $this->getRealPath($outFile);
         if (!$image) {
-            return array('', '', $this->store->get($this->image, 0));
+            return ['', '', $this->store->get($this->image, 0)];
         } //返回原图片
         $cut->image = $image;
         $cut->outImage = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH.'/'.$outDir.$outFile;
@@ -62,10 +62,10 @@ class PwDesignImage
                 $attachUrl = Wekit::url()->attach.'/';
             }
 
-            return array($outDir, $outFile, $attachUrl);
+            return [$outDir, $outFile, $attachUrl];
         }
 
-        return array('', '', $this->store->get($this->image, 0)); //返回原图片
+        return ['', '', $this->store->get($this->image, 0)]; //返回原图片
     }
 
     public function clearFolder($moduleid)
@@ -180,12 +180,12 @@ class PwDesignImage
         }
         if (function_exists('file_get_contents')) {
             if (function_exists('stream_context_create')) {
-                $opts = array(
-                    'http' => array(
+                $opts = [
+                    'http' => [
                         'method'  => 'GET',
                         'timeout' => $timeout,
-                    ),
-                );
+                    ],
+                ];
                 $contents = @file_get_contents($url, false, stream_context_create($opts));
             } else {
                 $contents = @file_get_contents($url);

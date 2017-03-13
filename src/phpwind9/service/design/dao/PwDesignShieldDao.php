@@ -15,14 +15,14 @@ class PwDesignShieldDao extends PwBaseDao
 {
     protected $_pk = 'shield_id';
     protected $_table = 'design_shield';
-    protected $_dataStruct = array('shield_id', 'from_app', 'from_id', 'module_id', 'shield_title', 'shield_url');
+    protected $_dataStruct = ['shield_id', 'from_app', 'from_id', 'module_id', 'shield_title', 'shield_url'];
 
     public function getShieldByModuleId($moduleid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `module_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($moduleid));
+        return $smt->queryAll([$moduleid]);
     }
 
     public function fetchByFromidsAndApp($fromids, $fromapp)
@@ -30,16 +30,16 @@ class PwDesignShieldDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `from_id` IN %s AND `from_app` = ?', $this->getTable(), $this->sqlImplode($fromids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fromapp));
+        return $smt->queryAll([$fromapp]);
     }
 
     public function getShieldList($moduleid, $offset, $limit)
     {
         $where = '';
-        $array = array();
+        $array = [];
         if ($moduleid) {
             $where = ' WHERE `module_id` = ?';
-            $array = array($moduleid);
+            $array = [$moduleid];
         }
         $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY shield_id DESC %s ', $this->getTable(), $where, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
@@ -50,10 +50,10 @@ class PwDesignShieldDao extends PwBaseDao
     public function countShield($moduleid)
     {
         $where = '';
-        $array = array();
+        $array = [];
         if ($moduleid) {
             $where = ' WHERE `module_id` = ?';
-            $array = array($moduleid);
+            $array = [$moduleid];
         }
         $sql = $this->_bindSql('SELECT count(*) FROM %s %s ', $this->getTable(), $where);
         $smt = $this->getConnection()->createStatement($sql);
@@ -76,7 +76,7 @@ class PwDesignShieldDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `module_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($moduleid));
+        return $smt->update([$moduleid]);
     }
 
     public function antiDelete($ids)
@@ -84,6 +84,6 @@ class PwDesignShieldDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `shield_id` NOT IN %s', $this->getTable(), $this->sqlImplode($ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 }

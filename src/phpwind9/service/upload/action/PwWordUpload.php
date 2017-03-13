@@ -6,7 +6,7 @@ class PwWordUpload extends PwUploadAction
 {
     public $isLocal = true;
 
-    public $ftype = array('txt' => 10000);
+    public $ftype = ['txt' => 10000];
     public $dir = 'pw/word/';
     public $filename;
 

@@ -8,7 +8,7 @@ class PwThreadMergeDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads';
     protected $_mergeTable = 'bbs_threads_content';
-    protected $_dataStruct = array();
+    protected $_dataStruct = [];
 
     public function countSearchThread($field)
     {
@@ -43,14 +43,14 @@ class PwThreadMergeDao extends PwBaseDao
             $merge = 1;
         }
 
-        return array($select, $merge);
+        return [$select, $merge];
     }
 
     protected function _buildCondition($field)
     {
         $merge = 0;
         $where = '1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'tid':
@@ -139,12 +139,12 @@ class PwThreadMergeDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg, $merge);
+        return [$where, $arg, $merge];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'created_time':

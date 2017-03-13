@@ -24,7 +24,7 @@ class PwCssCompile
         ob_start();
         include $template;
         $style = ob_get_clean();
-        $style = preg_replace(array('/\{[\s]+\}/', '/(\{|\})[\s]+/', '/[\t\n\r]/'), array('{}', '\\1', ''), $style);
+        $style = preg_replace(['/\{[\s]+\}/', '/(\{|\})[\s]+/', '/[\t\n\r]/'], ['{}', '\\1', ''], $style);
         $style = trim(preg_replace('/(body|\.header_wrap|\.box_wrap|\.box_wrap \.box_title)\{\}/', '', $style));
         $style && $style = '<style>'.$style.'</style>';
         $configDs = Wekit::C();

@@ -13,7 +13,7 @@ class PwPostsDao extends PwBaseDao
 {
     protected $_table = 'bbs_posts';
     protected $_pk = 'pid';
-    protected $_dataStruct = array('pid', 'fid', 'tid', 'disabled', 'ischeck', 'ifshield', 'replies', 'useubb', 'aids', 'rpid', 'subject', 'content', 'like_count', 'sell_count', 'created_time', 'created_username', 'created_userid', 'created_ip', 'reply_notice', 'modified_time', 'modified_username', 'modified_userid', 'modified_ip', 'reminds', 'word_version', 'ipfrom', 'manage_remind', 'topped', 'app_mark');
+    protected $_dataStruct = ['pid', 'fid', 'tid', 'disabled', 'ischeck', 'ifshield', 'replies', 'useubb', 'aids', 'rpid', 'subject', 'content', 'like_count', 'sell_count', 'created_time', 'created_username', 'created_userid', 'created_ip', 'reply_notice', 'modified_time', 'modified_username', 'modified_userid', 'modified_ip', 'reminds', 'word_version', 'ipfrom', 'manage_remind', 'topped', 'app_mark'];
 
     public function getPost($pid)
     {
@@ -31,7 +31,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid=? AND disabled=0 ORDER BY created_time %s %s', $this->getTable(), $orderby, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid), 'pid');
+        return $smt->queryAll([$tid], 'pid');
     }
 
     public function countPostByUid($uid)
@@ -39,7 +39,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE created_userid=? AND disabled=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function getPostByUid($uid, $limit, $offset)
@@ -47,7 +47,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? AND disabled=0 ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'pid');
+        return $smt->queryAll([$uid], 'pid');
     }
 
     public function countPostByTidAndUid($tid, $uid)
@@ -55,7 +55,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE tid=? AND created_userid=? AND disabled=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($tid, $uid));
+        return $smt->getValue([$tid, $uid]);
     }
 
     public function countPostByTidUnderPid($tid, $pid)
@@ -63,7 +63,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE tid=? AND pid<? AND disabled=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($tid, $pid));
+        return $smt->getValue([$tid, $pid]);
     }
 
     public function getPostByTidAndUid($tid, $uid, $limit, $offset, $asc)
@@ -72,7 +72,7 @@ class PwPostsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid=? AND disabled=0 AND created_userid=? ORDER BY created_time %s %s', $this->getTable(), $orderby, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid, $uid), 'pid');
+        return $smt->queryAll([$tid, $uid], 'pid');
     }
 
     public function addPost($fields)
@@ -80,17 +80,17 @@ class PwPostsDao extends PwBaseDao
         return $this->_add($fields);
     }
 
-    public function updatePost($pid, $fields, $increaseFields = array())
+    public function updatePost($pid, $fields, $increaseFields = [])
     {
         $this->_update($pid, $fields, $increaseFields);
     }
 
-    public function batchUpdatePost($pids, $fields, $increaseFields = array())
+    public function batchUpdatePost($pids, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($pids, $fields, $increaseFields);
     }
 
-    public function batchUpdatePostByTid($tids, $fields, $increaseFields = array())
+    public function batchUpdatePostByTid($tids, $fields, $increaseFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -148,7 +148,7 @@ class PwPostsDao extends PwBaseDao
     protected function _buildCondition($field)
     {
         $where = '1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'fid':
@@ -192,12 +192,12 @@ class PwPostsDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg);
+        return [$where, $arg];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'created_time':

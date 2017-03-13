@@ -33,14 +33,14 @@ class IndexController extends PwBaseController
             Wekit::load('forum.PwThreadIndex')->deleteOver($threadList->total - 10000);
         }
         $threaddb = $threadList->getList();
-        $fids = array();
+        $fids = [];
         foreach ($threaddb as $key => $value) {
             $fids[] = $value['fid'];
         }
         $forums = Wekit::load('forum.srv.PwForumService')->fetchForum($fids);
 
-        if ($operateThread = $this->loginUser->getPermission('operate_thread', false, array())) {
-            $operateThread = Pw::subArray($operateThread, array('delete'));
+        if ($operateThread = $this->loginUser->getPermission('operate_thread', false, [])) {
+            $operateThread = Pw::subArray($operateThread, ['delete']);
         }
 
         $this->setOutput($threadList, 'threadList');

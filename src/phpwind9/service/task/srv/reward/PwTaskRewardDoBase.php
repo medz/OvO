@@ -63,7 +63,7 @@ abstract class PwTaskRewardDoBase
         unset($_tmp['key'], $_tmp['value'], $_tmp['descript'], $_tmp['type']);
         $var = array_merge(array_combine($keys, $values), $_tmp);
 
-        $search = array();
+        $search = [];
         foreach ($var as $key => $val) {
             $search[] = '{'.$key.'}';
         }

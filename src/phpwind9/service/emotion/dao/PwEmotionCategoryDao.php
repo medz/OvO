@@ -14,7 +14,7 @@ Wind::import('SRC:library.base.PwBaseDao');
  {
      protected $_pk = 'category_id';
      protected $_table = 'common_emotion_category';
-     protected $_dataStruct = array('category_id', 'category_name', 'emotion_folder', 'emotion_apps', 'orderid', 'isopen');
+     protected $_dataStruct = ['category_id', 'category_name', 'emotion_folder', 'emotion_apps', 'orderid', 'isopen'];
 
      public function getCategory($categoryId)
      {
@@ -29,7 +29,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function getCategoryList($app, $isOpen = null)
      {
          $where = 'WHERE 1';
-         $_array = array();
+         $_array = [];
          if ($app) {
              $where .= ' AND emotion_apps like ?';
              $_array[] = '%'.$app.'%';

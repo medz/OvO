@@ -30,13 +30,13 @@ class PwPayAction1
 
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
-        $creditBo->addLog('olpay_credit', array($this->_order['buy'] => $num), PwUserBo::getInstance($this->_order['created_userid']), array(
+        $creditBo->addLog('olpay_credit', [$this->_order['buy'] => $num], PwUserBo::getInstance($this->_order['created_userid']), [
             'number' => $this->_order['price'],
-        ));
+        ]);
         $creditBo->set($this->_order['created_userid'], $this->_order['buy'], $num);
 
         //发送通知
-        $params = array();
+        $params = [];
         $params['change_type'] = 'pay';
         $params['credit'] = $creditBo->cType[$this->_order['buy']];
         $params['num'] = $num;

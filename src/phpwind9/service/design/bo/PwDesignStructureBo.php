@@ -11,7 +11,7 @@
 class PwDesignStructureBo
 {
     public $name;
-    private $_structure = array();
+    private $_structure = [];
 
     public function __construct($name)
     {
@@ -31,12 +31,12 @@ class PwDesignStructureBo
 
     public function getTitle()
     {
-        return empty($this->_structure['struct_title']) ? array() : unserialize($this->_structure['struct_title']);
+        return empty($this->_structure['struct_title']) ? [] : unserialize($this->_structure['struct_title']);
     }
 
     public function getStyle()
     {
-        return empty($this->_structure['struct_style']) ? array() : unserialize($this->_structure['struct_style']);
+        return empty($this->_structure['struct_style']) ? [] : unserialize($this->_structure['struct_style']);
     }
 
     private function _setStructure()

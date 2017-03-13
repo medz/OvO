@@ -10,8 +10,8 @@
  */
 class PaypalController extends PwBaseController
 {
-    protected $_var = array();
-    protected $_conf = array();
+    protected $_var = [];
+    protected $_conf = [];
 
     public function beforeAction($handlerAdapter)
     {

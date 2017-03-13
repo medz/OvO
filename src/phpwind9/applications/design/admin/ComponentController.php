@@ -19,7 +19,7 @@ class ComponentController extends AdminBaseController
         $compid = (int) $this->getInput('compid');
         $compname = $this->getInput('compname');
         $perpage = 10;
-        $args = array();
+        $args = [];
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
 

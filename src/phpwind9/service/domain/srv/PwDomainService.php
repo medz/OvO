@@ -20,7 +20,7 @@ class PwDomainService
     public function getDomainAddOns()
     {
         $r = @include Wind::getRealPath('APPS:rewrite.conf.domain.php', true);
-        $r || $r = array();
+        $r || $r = [];
         $r = PwSimpleHook::getInstance('domain_config')->runWithFilters($r);
 
         return $r;
@@ -34,7 +34,7 @@ class PwDomainService
     public function getRewriteAddOns()
     {
         $r = @include Wind::getRealPath('APPS:rewrite.conf.rewrite.php', true);
-        $r || $r = array();
+        $r || $r = [];
         $r = PwSimpleHook::getInstance('rewrite_config')->runWithFilters($r);
 
         return $r;
@@ -82,7 +82,7 @@ class PwDomainService
         foreach ($holds as $v) {
             $preg = str_replace('*', '.*?', $v);
             if (preg_match("/^$preg$/i", $domain)) {
-                return new PwError(array('REWRITE:domain.hold', array($v)));
+                return new PwError(['REWRITE:domain.hold', [$v]]);
             }
         }
 
@@ -119,7 +119,7 @@ class PwDomainService
         foreach ($holds as $v) {
             $preg = str_replace('*', '.*?', $v);
             if (preg_match("/^$preg$/i", $domain)) {
-                return new PwError(array('REWRITE:domain.hold', array($v)));
+                return new PwError(['REWRITE:domain.hold', [$v]]);
             }
         }
 
@@ -142,7 +142,7 @@ class PwDomainService
      */
     public function flushDomain()
     {
-        $domain = $app = array();
+        $domain = $app = [];
         $forum_isopen = Wekit::C('domain', 'forum.isopen');
         $result = $this->_domainDs()->getAll();
         foreach ($result as $v) {

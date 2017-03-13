@@ -46,7 +46,7 @@ class PwTenpay extends PwPayAbstract
         $strBillDate = substr($strTransactionId, 10, 8);
         $strSpBillNo = substr($strTransactionId, -10);
 
-        $param = array(
+        $param = [
             'cmdno'          => '1',
             'date'           => $strBillDate,
             'bargainor_id'   => $this->tenpay,
@@ -58,7 +58,7 @@ class PwTenpay extends PwPayAbstract
             'return_url'     => $this->baseurl,
             'attach'         => 'my_magic_string',
             'desc'           => Pw::convert($vo->getTitle(), 'gbk'),
-        );
+        ];
 
         return $this->_bulidUrl($this->tenpay_url, $this->tenpay_key, $param);
     }

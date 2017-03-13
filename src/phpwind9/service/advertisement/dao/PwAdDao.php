@@ -14,7 +14,7 @@ class PwAdDao extends PwBaseDao
 {
     protected $_table = 'advertisement';
     protected $_pk = 'pid';
-    protected $_dataStruct = array('pid', 'identifier', 'type_id', 'width', 'height', 'status', 'schedule', 'show_type', 'condition');
+    protected $_dataStruct = ['pid', 'identifier', 'type_id', 'width', 'height', 'status', 'schedule', 'show_type', 'condition'];
 
     public function getAllAd()
     {
@@ -42,7 +42,7 @@ class PwAdDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s  WHERE pid = ? ', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pid));
+        return $smt->update([$pid]);
     }
 
     public function get($pid)
@@ -55,6 +55,6 @@ class PwAdDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE identifier = ? ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($identifier));
+        return $smt->getOne([$identifier]);
     }
 }

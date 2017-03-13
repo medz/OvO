@@ -14,7 +14,7 @@ class PwDomainDao extends PwBaseDao
 {
     protected $_table = 'domain';
     protected $_pk = 'domain_key';
-    protected $_dataStruct = array('domain_key', 'domain_type', 'domain', 'root', 'first', 'id');
+    protected $_dataStruct = ['domain_key', 'domain_type', 'domain', 'root', 'first', 'id'];
 
     /**
      * 添加一个个性域名.
@@ -48,7 +48,7 @@ class PwDomainDao extends PwBaseDao
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `domain_type` = ?', $this->getTable(), $this->sqlSingle($data));
 
-        return $this->getConnection()->createStatement($sql)->update(array($type));
+        return $this->getConnection()->createStatement($sql)->update([$type]);
     }
 
     /**
@@ -66,7 +66,7 @@ class PwDomainDao extends PwBaseDao
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `domain_key` = ?', $this->getTable(), $this->sqlSingle($data));
 
-        return $this->getConnection()->createStatement($sql)->update(array($key));
+        return $this->getConnection()->createStatement($sql)->update([$key]);
     }
 
     /**
@@ -80,7 +80,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `domain_type` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($type));
+        return $this->getConnection()->createStatement($sql)->update([$type]);
     }
 
     /**
@@ -94,7 +94,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `domain_key` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($key));
+        return $this->getConnection()->createStatement($sql)->update([$key]);
     }
 
     /**
@@ -108,7 +108,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain_key` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($key));
+        return $this->getConnection()->createStatement($sql)->getOne([$key]);
     }
 
     /**
@@ -123,7 +123,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain` = ? AND `root` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($domain, $root));
+        return $this->getConnection()->createStatement($sql)->getOne([$domain, $root]);
     }
 
     /**
@@ -135,7 +135,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `first` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($first));
+        return $this->getConnection()->createStatement($sql)->queryAll([$first]);
     }
 
     /**
@@ -147,7 +147,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain_type` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type));
+        return $this->getConnection()->createStatement($sql)->queryAll([$type]);
     }
 
     /**
@@ -159,7 +159,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain_type` = ? AND `domain` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type, $domain));
+        return $this->getConnection()->createStatement($sql)->queryAll([$type, $domain]);
     }
 
     /**
@@ -171,7 +171,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($domain));
+        return $this->getConnection()->createStatement($sql)->queryAll([$domain]);
     }
 
     /**
@@ -193,7 +193,7 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `domain_type` = ? AND `id` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($type, $id));
+        return $this->getConnection()->createStatement($sql)->getOne([$type, $id]);
     }
 
     /**
@@ -205,6 +205,6 @@ class PwDomainDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `domain_type` = ? AND `id` IN %s', $this->getTable(), $this->sqlImplode($ids));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type), 'id');
+        return $this->getConnection()->createStatement($sql)->queryAll([$type], 'id');
     }
 }

@@ -13,7 +13,7 @@ Wind::import('ADMIN:library.AdminBaseController');
  */
 class ManageController extends AdminBaseController
 {
-    private $upgradeGroups = array('name' => '普通组', 'gid' => '0');
+    private $upgradeGroups = ['name' => '普通组', 'gid' => '0'];
 
     private $pageNumber = 10;
 
@@ -27,7 +27,7 @@ class ManageController extends AdminBaseController
         $groups = $groupDs->getNonUpgradeGroups();
         $groups[0] = $this->upgradeGroups;
         ksort($groups);
-        list($sName, $sUid, $sEmail, $sGroup, $page) = $this->getInput(array('username', 'uid', 'email', 'gid', 'page'));
+        list($sName, $sUid, $sEmail, $sGroup, $page) = $this->getInput(['username', 'uid', 'email', 'gid', 'page']);
         $vo = new PwUserSo();
         $sName && $vo->setUsername($sName);
         $sUid && $vo->setUid($sUid);
@@ -38,7 +38,7 @@ class ManageController extends AdminBaseController
         $searchDs = Wekit::load('SRV:user.PwUserSearch');
         $count = $searchDs->countSearchUser($vo);
 
-        $result = array();
+        $result = [];
         if (0 < $count) {
             $totalPage = ceil($count / $this->pageNumber);
             $page > $totalPage && $page = $totalPage;
@@ -54,7 +54,7 @@ class ManageController extends AdminBaseController
             }
         }
         $data = $vo->getData();
-        (!$sGroup || in_array(-1, $sGroup)) && $data['gid'] = array(-1);
+        (!$sGroup || in_array(-1, $sGroup)) && $data['gid'] = [-1];
         $this->setOutput($data, 'args');
         $this->setOutput($page, 'page');
         $this->setOutput($this->pageNumber, 'perPage');
@@ -85,7 +85,7 @@ class ManageController extends AdminBaseController
                 $groupDs = Wekit::load('usergroup.PwUserGroups');
                 $groups = $groupDs->getGroupsByType('default');
                 if (!in_array($groupid, array_keys($groups))) {
-                    $dm->setGroups(array($groupid => 0));
+                    $dm->setGroups([$groupid => 0]);
                 }
             }
             /* @var $groupService PwUserGroupsService */
@@ -154,7 +154,7 @@ class ManageController extends AdminBaseController
 
         //用户信息
         //$dm->setUsername($this->getInput('username', 'post'));
-        list($password, $repassword) = $this->getInput(array('password', 'repassword'), 'post');
+        list($password, $repassword) = $this->getInput(['password', 'repassword'], 'post');
         if ($password) {
             if ($password != $repassword) {
                 $this->showError('USER:user.error.-20');
@@ -163,7 +163,7 @@ class ManageController extends AdminBaseController
         }
         $dm->setEmail($this->getInput('email', 'post'));
 
-        list($question, $answer) = $this->getInput(array('question', 'answer'), 'post');
+        list($question, $answer) = $this->getInput(['question', 'answer'], 'post');
         switch ($question) {
             case '-2':
                 $dm->setQuestion('', '');
@@ -189,10 +189,10 @@ class ManageController extends AdminBaseController
         } else {
             $dm->setBday('')->setByear('')->setBmonth('');
         }
-        list($hometown, $location) = $this->getInput(array('hometown', 'location'), 'post');
+        list($hometown, $location) = $this->getInput(['hometown', 'location'], 'post');
 
         $srv = WindidApi::api('area');
-        $areas = $srv->fetchAreaInfo(array($hometown, $location));
+        $areas = $srv->fetchAreaInfo([$hometown, $location]);
         $dm->setLocation($location, isset($areas[$location]) ? $areas[$location] : '');
         $dm->setHometown($hometown, isset($areas[$hometown]) ? $areas[$hometown] : '');
         $dm->setHomepage($this->getInput('homepage', 'post'));
@@ -230,14 +230,14 @@ class ManageController extends AdminBaseController
         /* @var $pwUser PwUser */
         $pwUser = Wekit::load('user.PwUser');
         $userCredits = $pwUser->getUserByUid($info['uid'], PwUser::FETCH_DATA);
-        $userCreditDb = array();
+        $userCreditDb = [];
 
         /* @var $pwCreditBo PwCreditBo */
         $pwCreditBo = PwCreditBo::getInstance();
 
         foreach ($pwCreditBo->cType as $k => $value) {
             if (isset($userCredits['credit'.$k])) {
-                $userCreditDb[$k] = array('name' => $value, 'num' => $userCredits['credit'.$k]);
+                $userCreditDb[$k] = ['name' => $value, 'num' => $userCredits['credit'.$k]];
             }
         }
         $this->setOutput($userCreditDb, 'credits');
@@ -253,7 +253,7 @@ class ManageController extends AdminBaseController
         /* @var $pwUser PwUser */
         $pwUser = Wekit::load('user.PwUser');
         $userCredits = $pwUser->getUserByUid($info['uid'], PwUser::FETCH_DATA);
-        $changes = array();
+        $changes = [];
         foreach ($credits as $id => $value) {
             $org = isset($userCredits['credit'.$id]) ? $userCredits['credit'.$id] : 0;
             $changes[$id] = $value - $org;
@@ -262,7 +262,7 @@ class ManageController extends AdminBaseController
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         $creditBo->addLog('admin_set', $changes, new PwUserBo($this->loginUser->uid));
-        $creditBo->execute(array($info['uid'] => $credits), false);
+        $creditBo->execute([$info['uid'] => $credits], false);
         $this->showMessage('USER:update.success', 'u/manage/editCredit?uid='.$info['uid']);
     }
 
@@ -278,10 +278,10 @@ class ManageController extends AdminBaseController
 
         /* @var $groups 将包含有特殊组和管理组 */
         $systemGroups = $groupDs->getClassifiedGroups();
-        $groups = array();
-        foreach (array('system', 'special', 'default') as $k) {
+        $groups = [];
+        foreach (['system', 'special', 'default'] as $k) {
             foreach ($systemGroups[$k] as $gid => $_item) {
-                if (in_array($gid, array(1, 2))) {
+                if (in_array($gid, [1, 2])) {
                     continue;
                 }
                 $groups[$gid] = $_item;
@@ -304,11 +304,11 @@ class ManageController extends AdminBaseController
     public function doEditGroupAction()
     {
         $info = $this->checkUser();
-        list($groupid, $groups, $endtime) = $this->getInput(array('groupid', 'groups', 'endtime'), 'post');
+        list($groupid, $groups, $endtime) = $this->getInput(['groupid', 'groups', 'endtime'], 'post');
         /* @var $groupDs PwUserGroups */
         $groupDs = Wekit::load('usergroup.PwUserGroups');
         $banGids = array_keys($groupDs->getGroupsByType('default')); //默认用户组
-        $clearGids = array();
+        $clearGids = [];
 
         //如果用户原先的用户组是在默认组中，则该用户组不允许被修改
         if (in_array($info['groupid'], $banGids) && $info['groupid'] != $groupid) {
@@ -459,7 +459,7 @@ class ManageController extends AdminBaseController
      */
     private function _buildArea($areaid)
     {
-        $default = array(array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''));
+        $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
         if (!$areaid) {
             return $default;
         }

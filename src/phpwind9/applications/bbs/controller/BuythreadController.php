@@ -18,7 +18,7 @@ class BuythreadController extends PwBaseController
 
     public function recordAction()
     {
-        list($tid, $pid, $page) = $this->getInput(array('tid', 'pid', 'page'));
+        list($tid, $pid, $page) = $this->getInput(['tid', 'pid', 'page']);
         $perpage = 10;
         $page < 1 && $page = 1;
         list($offset, $limit) = Pw::page2limit($page, $perpage);
@@ -30,28 +30,28 @@ class BuythreadController extends PwBaseController
         $record = Wekit::load('forum.PwThreadBuy')->getByTidAndPid($tid, $pid, $limit, $offset);
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_keys($record));
 
-        $data = array();
+        $data = [];
         $cType = PwCreditBo::getInstance()->cType;
         foreach ($record as $key => $value) {
-            $data[] = array(
+            $data[] = [
                 'uid'          => $value['created_userid'],
                 'username'     => $users[$value['created_userid']]['username'],
                 'cost'         => $value['cost'],
                 'ctype'        => $cType[$value['ctype']],
                 'created_time' => Pw::time2str($value['created_time']),
-            );
+            ];
         }
         $totalpage = ceil($count / $perpage);
         $nextpage = $page + 1;
         $nextpage = $nextpage > $totalpage ? $totalpage : $nextpage;
 
-        $this->setOutput(array('data' => $data, 'totalpage' => $totalpage, 'page' => $nextpage), 'data');
+        $this->setOutput(['data' => $data, 'totalpage' => $totalpage, 'page' => $nextpage], 'data');
         $this->showMessage('success');
     }
 
     public function buyAction()
     {
-        list($tid, $pid) = $this->getInput(array('tid', 'pid'));
+        list($tid, $pid) = $this->getInput(['tid', 'pid']);
         $submit = (int) $this->getInput('submit', 'post');
         if (!$this->loginUser->isExists()) {
             $this->showError('login.not');
@@ -89,10 +89,10 @@ class BuythreadController extends PwBaseController
         }
 
         if (($myCredit = $this->loginUser->getCredit($credittype)) < $creditvalue) {
-            $this->showError(array('BBS:thread.buy.error.credit.notenough', array('{myCredit}' => $myCredit.$creditType, '{count}' => $creditvalue.$creditType)));
+            $this->showError(['BBS:thread.buy.error.credit.notenough', ['{myCredit}' => $myCredit.$creditType, '{count}' => $creditvalue.$creditType]]);
         }
 
-        !$submit && $this->showMessage(array('BBS:thread.buy.message.buy', array('{count}' => $myCredit.$creditType, '{buyCount}' => -$creditvalue.$creditType)));
+        !$submit && $this->showMessage(['BBS:thread.buy.message.buy', ['{count}' => $myCredit.$creditType, '{buyCount}' => -$creditvalue.$creditType]]);
 
         $dm = new PwThreadBuyDm();
         $dm->setTid($tid)
@@ -103,17 +103,17 @@ class BuythreadController extends PwBaseController
             ->setCost($creditvalue);
         Wekit::load('forum.PwThreadBuy')->add($dm);
 
-        $creditBo->addLog('buythread', array($credittype => -$creditvalue), $this->loginUser, array(
+        $creditBo->addLog('buythread', [$credittype => -$creditvalue], $this->loginUser, [
             'title' => $result['subject'] ? $result['subject'] : Pw::substrs($result['content'], 20),
-        ));
+        ]);
         $creditBo->set($this->loginUser->uid, $credittype, -$creditvalue, true);
 
         $user = new PwUserBo($result['created_userid']);
         if (($max = $user->getPermission('sell_credit_range.maxincome')) && Wekit::load('forum.PwThreadBuy')->sumCost($tid, $pid) > $max) {
         } else {
-            $creditBo->addLog('sellthread', array($credittype => $creditvalue), $user, array(
+            $creditBo->addLog('sellthread', [$credittype => $creditvalue], $user, [
                 'title' => $result['subject'] ? $result['subject'] : Pw::substrs($result['content'], 20),
-            ));
+            ]);
             $creditBo->set($user->uid, $credittype, $creditvalue, true);
         }
         $creditBo->execute();

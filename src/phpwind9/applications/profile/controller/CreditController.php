@@ -30,8 +30,8 @@ class CreditController extends BaseProfileController
     public function run()
     {
         //支持积分转换的积分
-        $exchange = array();
-        $exchange_config = Wekit::C()->credit->get('exchange', array());
+        $exchange = [];
+        $exchange_config = Wekit::C()->credit->get('exchange', []);
         foreach ($exchange_config as $key => $value) {
             if ($value['ifopen']) {
                 $exchange[$value['credit1']][] = $value;
@@ -66,7 +66,7 @@ class CreditController extends BaseProfileController
 
         //综合积分： 计算方案
         $upgrade = Wekit::C('site', 'upgradestrategy');
-        $_upgrade = array();
+        $_upgrade = [];
         if ($upgrade['postnum']) {
             $_upgrade[] = '发帖数X'.$upgrade['postnum'];
         }
@@ -115,7 +115,7 @@ class CreditController extends BaseProfileController
      */
     public function doexchangeAction()
     {
-        list($credit1, $credit2, $num) = $this->getInput(array('credit1', 'credit2', 'num'), 'post');
+        list($credit1, $credit2, $num) = $this->getInput(['credit1', 'credit2', 'num'], 'post');
         $exchange = Wekit::C('credit', 'exchange');
         $key = $credit1.'_'.$credit2;
         //是否可以转换
@@ -124,26 +124,26 @@ class CreditController extends BaseProfileController
         }
         //转换的数量必须是设置的数量的整数倍
         if ($num < $exchange[$key]['value1'] || ($num % $exchange[$key]['value1']) != 0) {
-            $this->showError(array('CREDIT:exchange.fail.num.error', array('{num}' => $exchange[$key]['value1'])));
+            $this->showError(['CREDIT:exchange.fail.num.error', ['{num}' => $exchange[$key]['value1']]]);
         }
         //如果用户当前该积分的数量小于设置转换的数量
         if ($this->loginUser->getCredit($credit1) < $num) {
-            $this->showError(array('CREDIT:exchange.fail.credit.less', array('{credit}' => $this->loginUser->getCredit($credit1))));
+            $this->showError(['CREDIT:exchange.fail.credit.less', ['{credit}' => $this->loginUser->getCredit($credit1)]]);
         }
         $rate = intval($num / $exchange[$key]['value1']);
         $income = $rate * $exchange[$key]['value2'];
 
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
-        $creditBo->addLog('exchange_out', array($credit1 => -$num), $this->loginUser);
-        $creditBo->addLog('exchange_in', array($credit2 => $income), $this->loginUser);
-        $creditBo->sets($this->loginUser->uid, array(
+        $creditBo->addLog('exchange_out', [$credit1 => -$num], $this->loginUser);
+        $creditBo->addLog('exchange_in', [$credit2 => $income], $this->loginUser);
+        $creditBo->sets($this->loginUser->uid, [
             $credit1 => -$num,
             $credit2 => $income,
-        ));
+        ]);
 
         //发送通知
-        $params = array();
+        $params = [];
         $params['credit1'] = $creditBo->cType[$credit1];
         $params['unit1'] = $creditBo->cUnit[$credit1];
         $params['num1'] = $num;
@@ -163,7 +163,7 @@ class CreditController extends BaseProfileController
      */
     public function dotransferAction()
     {
-        list($touser, $num, $credit, $password) = $this->getInput(array('touser', 'num', 'credit', 'pwd'), 'post');
+        list($touser, $num, $credit, $password) = $this->getInput(['touser', 'num', 'credit', 'pwd'], 'post');
         //验证密码是否正确
         /* @var $userSrv PwUserService */
         $userSrv = Wekit::load('user.srv.PwUserService');
@@ -179,7 +179,7 @@ class CreditController extends BaseProfileController
         //适合符合最低转换条件
         $num = intval($num);
         if ($num < $transfer[$credit]['min']) {
-            $this->showError(array('CREDIT:transfer.fail.num.error', array('{num}' => $transfer[$credit]['min'])));
+            $this->showError(['CREDIT:transfer.fail.num.error', ['{num}' => $transfer[$credit]['min']]]);
         }
         //目标用户是否合法--可以转给自己
         /* @var $userDs PwUser */
@@ -192,18 +192,18 @@ class CreditController extends BaseProfileController
         $outCome = floor($num * $transfer[$credit]['rate'] / 100) + $num;
         //用户积分数量不足以转账num个
         if ($this->loginUser->getCredit($credit) < $outCome) {
-            $this->showError(array('CREDIT:transfer.fail.credit.less', array('{credit}' => $this->loginUser->getCredit($credit))));
+            $this->showError(['CREDIT:transfer.fail.credit.less', ['{credit}' => $this->loginUser->getCredit($credit)]]);
         }
 
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
-        $creditBo->addLog('transfer_out', array($credit => -$outCome), $this->loginUser, array('tousername' => $toUserInfo['username']));
-        $creditBo->addLog('transfer_in', array($credit => $num), new PwUserBo($toUserInfo['uid']), array('fromusername' => $this->loginUser->username));
-        $creditBo->sets($this->loginUser->uid, array($credit => -$outCome));
-        $creditBo->sets($toUserInfo['uid'], array($credit => $num));
+        $creditBo->addLog('transfer_out', [$credit => -$outCome], $this->loginUser, ['tousername' => $toUserInfo['username']]);
+        $creditBo->addLog('transfer_in', [$credit => $num], new PwUserBo($toUserInfo['uid']), ['fromusername' => $this->loginUser->username]);
+        $creditBo->sets($this->loginUser->uid, [$credit => -$outCome]);
+        $creditBo->sets($toUserInfo['uid'], [$credit => $num]);
 
         //发送通知
-        $params = array();
+        $params = [];
         $params['fromUid'] = $this->loginUser->uid;
         $params['fromUserName'] = $this->loginUser->username;
         $params['credit'] = $creditBo->cType[$credit];
@@ -248,9 +248,9 @@ class CreditController extends BaseProfileController
             $this->showError($config['reason']);
         }
 
-        list($credit, $pay, $paymethod) = $this->getInput(array('credit', 'pay', 'paymethod'));
+        list($credit, $pay, $paymethod) = $this->getInput(['credit', 'pay', 'paymethod']);
 
-        if (!in_array($paymethod, array('1', '2', '3', '4'))) {
+        if (!in_array($paymethod, ['1', '2', '3', '4'])) {
             $this->showError('onlinepay.paymethod.select');
         }
         $onlinepay = Wekit::load('pay.srv.PwPayService')->getPayMethod($paymethod);
@@ -266,7 +266,7 @@ class CreditController extends BaseProfileController
         $pay = round($pay, 2);
         $min = max(0, $recharge[$credit]['min']);
         if ($pay < $min) {
-            $this->showError(array('CREDIT:pay.num.min', array('{min}' => $min)));
+            $this->showError(['CREDIT:pay.num.min', ['{min}' => $min]]);
         }
         $creditName = $creditBo->cType[$credit];
         $order_no = $onlinepay->createOrderNo();
@@ -288,7 +288,7 @@ class CreditController extends BaseProfileController
             ->setTitle('积分充值(订单号：'.$order_no.')')
             ->setBody('购买论坛'.$creditName.'(论坛UID：'.$this->loginUser->uid.')');
 
-        $this->setOutput(array('url' => $onlinepay->getUrl($vo)), 'data'); //todo WindUrlHelper 改进
+        $this->setOutput(['url' => $onlinepay->getUrl($vo)], 'data'); //todo WindUrlHelper 改进
         $this->showMessage('success');
         //$this->showMessage('success', $onlinepay->getUrl($vo));
         //$this->forwardRedirect($onlinepay->getUrl($vo));
@@ -326,14 +326,14 @@ class CreditController extends BaseProfileController
      */
     public function logAction()
     {
-        list($ctype, $timeStart, $timeEnd, $award) = $this->getInput(array('ctype', 'time_start', 'time_end', 'award'));
+        list($ctype, $timeStart, $timeEnd, $award) = $this->getInput(['ctype', 'time_start', 'time_end', 'award']);
         $page = $this->getInput('page');
         $page < 1 && $page = 1;
         $perpage = 20;
         list($offset, $limit) = Pw::page2limit($page, $perpage);
 
         $sc = new PwCreditLogSc();
-        $url = array();
+        $url = [];
         if ($ctype) {
             $sc->setCtype($ctype);
             $url['ctype'] = $ctype;

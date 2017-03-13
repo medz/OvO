@@ -20,7 +20,7 @@ class PwDesignShield
     public function fetchByFromidsAndApp($fromids, $fromapp)
     {
         if (!is_array($fromids) || !$fromids || !$fromapp) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchByFromidsAndApp($fromids, $fromapp);
@@ -44,7 +44,7 @@ class PwDesignShield
 
     public function addShield($app, $fromid, $moduleid = 0, $title = '', $url = '')
     {
-        $data = array();
+        $data = [];
         $data['from_app'] = $app;
         $data['from_id'] = (int) $fromid;
         $data['module_id'] = (int) $moduleid;

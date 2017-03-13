@@ -15,7 +15,7 @@ class MasingleController extends PwBaseController
 
     protected $manage;
     protected $doAction;
-    protected $_doCancel = array();
+    protected $_doCancel = [];
 
     protected $_hasThread = false;
     protected $_jumpurl = '';
@@ -62,7 +62,7 @@ class MasingleController extends PwBaseController
         if ($pids && !is_array($pids)) {
             $pids = explode(',', $pids);
         } elseif (!$pids && $pid) {
-            $pids = array($pid);
+            $pids = [$pid];
         }
         if (!$pids) {
             $this->showError('operate.select');
@@ -134,7 +134,7 @@ class MasingleController extends PwBaseController
             $this->setOutput('doshield', 'doaction');
             $this->setOutput($manage->data[0]['ifshield'], 'defaultShield');
         } else {
-            list($reason, $ifShield) = $this->getInput(array('reason', 'ifShield'), 'post');
+            list($reason, $ifShield) = $this->getInput(['reason', 'ifShield'], 'post');
             $do->setReason($reason)->setIfShield($ifShield);
             !$ifShield && $this->_doCancel[] = 'doshield';
         }
@@ -156,7 +156,7 @@ class MasingleController extends PwBaseController
             $this->setOutput('doremind', 'doaction');
             $this->setOutput($manage->data[0]['manage_remind'], 'defaultRemind');
         } else {
-            list($reason, $ifRemind) = $this->getInput(array('reason', 'ifRemind'), 'post');
+            list($reason, $ifRemind) = $this->getInput(['reason', 'ifRemind'], 'post');
             $do->setReason($reason)->setIfRemind($ifRemind);
             !$ifRemind && $this->_doCancel[] = 'doremind';
         }
@@ -177,7 +177,7 @@ class MasingleController extends PwBaseController
         if (!$this->doAction) {
             $this->showError('data.error');
         } else {
-            list($lou, $topped) = $this->getInput(array('lou', 'topped'));
+            list($lou, $topped) = $this->getInput(['lou', 'topped']);
             $do->setLou($lou)->setTopped($topped);
         }
 
@@ -203,7 +203,7 @@ class MasingleController extends PwBaseController
         $noticeService = Wekit::load('message.srv.PwNoticeService');
         $reason = $this->getInput('reason');
         foreach ($threads as $thread) {
-            $params = array();
+            $params = [];
             $params['manageUsername'] = $this->manage->user->username;
             $params['manageUserid'] = $this->manage->user->uid;
             $params['manageThreadTitle'] = $thread['subject'];

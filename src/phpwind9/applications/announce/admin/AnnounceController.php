@@ -19,7 +19,7 @@ class AnnounceController extends AdminBaseController
      */
     public function run()
     {
-        $announceInfo = array();
+        $announceInfo = [];
         $page = $this->getInput('page');
         $page < 1 && $page = 1;
         $perpage = 10;
@@ -74,7 +74,7 @@ class AnnounceController extends AdminBaseController
      */
     public function doRunAction()
     {
-        list($aid, $vieworders) = $this->getInput(array('aid', 'vieworder'), 'post');
+        list($aid, $vieworders) = $this->getInput(['aid', 'vieworder'], 'post');
         if (!$aid) {
             $this->showError('operate.select');
         }
@@ -121,7 +121,7 @@ class AnnounceController extends AdminBaseController
      */
     public function doUpdateAction()
     {
-        list($aid, $url) = $this->getInput(array('aid', 'url'), 'post');
+        list($aid, $url) = $this->getInput(['aid', 'url'], 'post');
         if ($aid < 1) {
             $this->showError('operate.fail');
         }
@@ -147,7 +147,7 @@ class AnnounceController extends AdminBaseController
      */
     public function updateAction()
     {
-        $showType = array();
+        $showType = [];
         $aid = $this->getInput('aid', 'get');
         if ($aid < 1) {
             $this->showError('ADMIN:fail');

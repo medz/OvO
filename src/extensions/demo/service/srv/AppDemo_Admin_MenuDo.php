@@ -17,9 +17,9 @@ class AppDemo_Admin_MenuDo
      */
     public function appDemoDo($config)
     {
-        $config += array(
-            'app_demo' => array('demo管理', 'app/manage/*?app=demo', '', '', 'appcenter'),
-            );
+        $config += [
+            'app_demo' => ['demo管理', 'app/manage/*?app=demo', '', '', 'appcenter'],
+            ];
 
         return $config;
     }

@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwUserGroupsService
 {
-    protected $_nkey = array('allow_sign', 'sign_max_height', 'sign_ubb', 'sign_ubb_img');
+    protected $_nkey = ['allow_sign', 'sign_max_height', 'sign_ubb', 'sign_ubb_img'];
 
     /**
      * 计算用户综合积分.
@@ -131,7 +131,7 @@ class PwUserGroupsService
      */
     public function deleteGroupCacheByHook($gid)
     {
-        Wekit::cache()->delete('group', array($gid));
+        Wekit::cache()->delete('group', [$gid]);
         $this->updateLevelCache();
     }
 
@@ -144,7 +144,7 @@ class PwUserGroupsService
         if (empty($gkey)) {
             return;
         }
-        $this->updateGroupCache(array($dm->getGid()));
+        $this->updateGroupCache([$dm->getGid()]);
         $this->updateGroupRightCache($gkey);
     }
 
@@ -163,7 +163,7 @@ class PwUserGroupsService
      */
     public function getLevelCacheValue()
     {
-        $cache = array('ltitle' => array(), 'lpic' => array(), 'lneed' => array());
+        $cache = ['ltitle' => [], 'lpic' => [], 'lneed' => []];
         $group = $this->_getUserGroupDs()->getAllGroups();
         foreach ($group as $key => $value) {
             $cache['ltitle'][$key] = $value['name'];
@@ -181,7 +181,7 @@ class PwUserGroupsService
      *
      * @param array $gkey
      */
-    public function updateGroupRightCache($gkey = array())
+    public function updateGroupRightCache($gkey = [])
     {
         if ($gkey && !array_intersect($gkey, $this->_nkey)) {
             return;
@@ -196,7 +196,7 @@ class PwUserGroupsService
      */
     public function getGroupRightCacheValue()
     {
-        $cache = array();
+        $cache = [];
         $pm = $this->_getUserPermission()->fetchPermissionByRkey($this->_nkey);
         foreach ($pm as $key => $value) {
             $cache[$value['gid']][$value['rkey']] = $value['rvalue'];
@@ -210,11 +210,11 @@ class PwUserGroupsService
      *
      * @param array $gids 更新指定gid序列的权限缓存
      */
-    public function updateGroupCache($gids = array())
+    public function updateGroupCache($gids = [])
     {
         $group = $this->getGroupCacheValue($gids);
         foreach ($group as $key => $value) {
-            Wekit::cache()->set('group', $value, array($key));
+            Wekit::cache()->set('group', $value, [$key]);
         }
     }
 
@@ -225,7 +225,7 @@ class PwUserGroupsService
      *
      * @return array
      */
-    public function getGroupCacheValue($gids = array())
+    public function getGroupCacheValue($gids = [])
     {
         if ($gids) {
             $group = $this->_getUserGroupDs()->fetchGroup($gids);
@@ -234,15 +234,15 @@ class PwUserGroupsService
         }
         $gids = array_keys($group);
         $result = $this->_getUserPermission()->fetchPermissionByGid($gids);
-        $permission = array();
+        $permission = [];
         foreach ($result as $key => $value) {
-            $permission[$value['gid']][$value['rkey']] = array(
+            $permission[$value['gid']][$value['rkey']] = [
                 'type'  => $value['rtype'],
                 'value' => $value['rvalue'],
-            );
+            ];
         }
         foreach ($group as $key => $value) {
-            $value['permission'] = $permission[$key] ? $permission[$key] : array();
+            $value['permission'] = $permission[$key] ? $permission[$key] : [];
             $group[$key] = $value;
         }
 
@@ -258,9 +258,9 @@ class PwUserGroupsService
      */
     public function getGroupCacheValueByGid($gid)
     {
-        $group = $this->getGroupCacheValue(array($gid));
+        $group = $this->getGroupCacheValue([$gid]);
 
-        return $group ? current($group) : array();
+        return $group ? current($group) : [];
     }
 
     /**

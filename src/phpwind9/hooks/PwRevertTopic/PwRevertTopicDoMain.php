@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwRevertTopicDoMain extends iPwGleanDoHookProcess
 {
-    public $fids = array();
-    public $tids = array();
+    public $fids = [];
+    public $tids = [];
 
     public function gleanData($value)
     {
@@ -22,7 +22,7 @@ class PwRevertTopicDoMain extends iPwGleanDoHookProcess
             return;
         }
         $fid = $value['fid'];
-        isset($this->fids[$fid]) || $this->fids[$fid] = array('topic' => 0, 'replies' => 0);
+        isset($this->fids[$fid]) || $this->fids[$fid] = ['topic' => 0, 'replies' => 0];
         $this->fids[$fid]['replies'] += $value['replies'];
         $value['ischeck'] && $this->fids[$fid]['topic']++;
         $this->tids[] = $value['tid'];

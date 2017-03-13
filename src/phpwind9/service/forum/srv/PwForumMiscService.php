@@ -42,8 +42,8 @@ class PwForumMiscService
      */
     public function correctData()
     {
-        $manager = $fups = $fupnames = array(0 => '');
-        $hassub = $subFids = $allManager = array();
+        $manager = $fups = $fupnames = [0 => ''];
+        $hassub = $subFids = $allManager = [];
         $forums = $this->_getForum()->getForumOrderByType();
         foreach ($forums as $key => $value) {
             if ($value['parentid']) {

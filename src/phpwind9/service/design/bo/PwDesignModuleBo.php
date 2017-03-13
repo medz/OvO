@@ -50,7 +50,7 @@ class PwDesignModuleBo
 
     public function getProperty()
     {
-        return empty($this->_module['module_property']) ? array() : unserialize($this->_module['module_property']);
+        return empty($this->_module['module_property']) ? [] : unserialize($this->_module['module_property']);
     }
 
     public function getVoParam()
@@ -63,7 +63,7 @@ class PwDesignModuleBo
 
     public function getView()
     {
-        $view = array();
+        $view = [];
         $property = $this->getProperty();
         $view['titlenum'] = (int) $property['titlenum'];
         $view['desnum'] = (int) $property['desnum'];
@@ -103,12 +103,12 @@ class PwDesignModuleBo
 
     public function getStyle()
     {
-        return empty($this->_module['module_style']) ? array() : unserialize($this->_module['module_style']);
+        return empty($this->_module['module_style']) ? [] : unserialize($this->_module['module_style']);
     }
 
     public function getTitle()
     {
-        return empty($this->_module['module_title']) ? array() : unserialize($this->_module['module_title']);
+        return empty($this->_module['module_title']) ? [] : unserialize($this->_module['module_title']);
     }
 
     public function getTemplate()
@@ -176,7 +176,7 @@ class PwDesignModuleBo
     {
         $expired = $this->getCache();
         if ($expired['expired'] < 1) {
-            return array($time, 0, 0);
+            return [$time, 0, 0];
         }
         list($y, $m, $d) = explode('-', Pw::time2str($time, 'Y-m-d'));
         $start = Pw::str2time($y.'-'.$m.'-'.$d.' '.$expired['start_hour'].':'.$expired['start_minute'].':0');
@@ -195,7 +195,7 @@ class PwDesignModuleBo
             $refreshTime = $start + 86400;
         }
 
-        return array($start, $end, $refreshTime);
+        return [$start, $end, $refreshTime];
     }
 
     public function getTitleHtml()
@@ -204,7 +204,7 @@ class PwDesignModuleBo
         $titles = $this->getTitle();
         $styleSrv = Wekit::load('design.srv.PwDesignStyle');
         foreach ((array) $titles['titles'] as $k => $v) {
-            $_tmp = array(
+            $_tmp = [
                 'title'         => WindSecurity::escapeHTML($v['title']),
                 'link'          => $v['link'],
                 'image'         => $v['image'],
@@ -215,7 +215,7 @@ class PwDesignModuleBo
                 'fontbold'      => $v['fontbold'],
                 'fontunderline' => $v['fontunderline'],
                 'fontitalic'    => $v['fontitalic'],
-            );
+            ];
             $style = $styleSrv->buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);
             list($dom, $jstyle) = $styleSrv->getCss();
@@ -231,7 +231,7 @@ class PwDesignModuleBo
             }
         }
         if ($titles['background']) {
-            $bg = array('background' => $titles['background']);
+            $bg = ['background' => $titles['background']];
             $styleSrv->setStyle($bg);
             list($dom, $background) = $styleSrv->getCss();
         }

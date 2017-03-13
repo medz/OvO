@@ -36,12 +36,12 @@ class PwReplyDoWord extends PwPostDoBase
         $words = array_unique($words);
         foreach ($words as $k => $v) {
             if ($k < $banedStrLen) {
-                return new PwError('WORD:content.error.tip', array('{wordstr}' => implode(',', $words)));
+                return new PwError('WORD:content.error.tip', ['{wordstr}' => implode(',', $words)]);
             }
         }
         switch ($type) {
             case 1:
-                return new PwError('WORD:content.error.tip', array('{wordstr}' => implode(',', $words)));
+                return new PwError('WORD:content.error.tip', ['{wordstr}' => implode(',', $words)]);
             case 2:
                 $this->_isVerified = 1;
                 if ($this->_confirm) {

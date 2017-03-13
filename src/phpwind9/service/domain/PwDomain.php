@@ -106,7 +106,7 @@ class PwDomain
     public function getByDomainKey($key)
     {
         if (!$key) {
-            return array();
+            return [];
         }
 
         return $this->_domainDao()->getByDomainKey($key);
@@ -123,7 +123,7 @@ class PwDomain
     public function getByDomainAndRoot($domain, $root)
     {
         if (!$domain || !$root) {
-            return array();
+            return [];
         }
 
         return $this->_domainDao()->getByDomainAndRoot($domain, $root);
@@ -195,9 +195,9 @@ class PwDomain
      */
     public function getByTypeAndId($type, $id)
     {
-        list($type, $id) = array(trim($type), intval($id));
+        list($type, $id) = [trim($type), intval($id)];
         if (!$type || $id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_domainDao()->getByTypeAndId($type, $id);
@@ -215,7 +215,7 @@ class PwDomain
     {
         $type = trim($type);
         if (!$type || !is_array($ids) || count($ids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_domainDao()->fetchByTypeAndId($type, $ids);

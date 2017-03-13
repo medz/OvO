@@ -25,7 +25,7 @@ class PwTaskDm extends PwBaseDm
      */
     protected $id;
 
-    protected $groups = array();
+    protected $groups = [];
 
     /**
      * 组装任务用户组数据.
@@ -35,14 +35,14 @@ class PwTaskDm extends PwBaseDm
     public function getTaskGroupData()
     {
         if ($this->id <= 0) {
-            return array();
+            return [];
         }
-        $tmp = array();
+        $tmp = [];
         $endTime = isset($this->_data['end_time']) ? $this->_data['end_time'] : 0;
         $endTime = $endTime ? $endTime : self::MAXENDTIME;
-        $groups = $this->_data['is_display_all'] ? array(-1) : $this->groups;
+        $groups = $this->_data['is_display_all'] ? [-1] : $this->groups;
         foreach ($groups as $v) {
-            $data = array();
+            $data = [];
             $data['taskid'] = $this->id;
             $data['gid'] = $v;
             $data['is_auto'] = isset($this->_data['is_auto']) ? $this->_data['is_auto'] : 0;
@@ -373,7 +373,7 @@ class PwTaskDm extends PwBaseDm
     protected function filterRewardData()
     {
         if (!isset($this->_data['reward']) || !$this->decoration) {
-            $this->_data['reward'] = serialize(array());
+            $this->_data['reward'] = serialize([]);
 
             return true;
         }
@@ -400,7 +400,7 @@ class PwTaskDm extends PwBaseDm
      */
     protected function getReplace($vars, $string)
     {
-        $search = array();
+        $search = [];
         foreach ($vars as $key => $val) {
             $search[] = '{'.$key.'}';
         }

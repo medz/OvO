@@ -23,7 +23,7 @@ class PwBbsinfo
     public function getInfo($id)
     {
         if (empty($id)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);

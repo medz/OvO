@@ -32,9 +32,9 @@ class PwJsCompress extends AbstractPwCompiler
     private function _getFiles($dir, $skipHiddenDirs = true)
     {
         if (!$handle = @opendir($dir)) {
-            return array();
+            return [];
         }
-        $files = array();
+        $files = [];
         while (false !== ($file = @readdir($handle))) {
             if ('.' === $file || '..' === $file) {
                 continue;

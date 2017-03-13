@@ -13,7 +13,7 @@
 class PwRegisterDoUpdateBbsInfo extends PwRegisterDoBase
 {
     private $code = '';
-    private $inviteInfo = array();
+    private $inviteInfo = [];
 
     /* (non-PHPdoc)
      * @param PwUserInfoDm $userDm

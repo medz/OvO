@@ -37,7 +37,7 @@ class PwThread
     public function getThread($tid, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao($fetchmode)->getThread($tid);
@@ -54,7 +54,7 @@ class PwThread
     public function fetchThread($tids, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($tids) || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao($fetchmode)->fetchThread($tids);
@@ -134,7 +134,7 @@ class PwThread
     public function getThreadByUid($uid, $limit = 0, $offset = 0, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadDao($fetchmode)->getThreadByUid($uid, $limit, $offset);
@@ -154,9 +154,9 @@ class PwThread
     public function getThreadsByFidAndUids($fid, $uids, $limit = 0, $offset = 0, $fetchmode = self::FETCH_MAIN)
     {
         if (empty($fid) || empty($uids)) {
-            return array();
+            return [];
         }
-        is_array($uids) || $uids = array($uids);
+        is_array($uids) || $uids = [$uids];
 
         return $this->_getThreadDao($fetchmode)->getThreadsByFidAndUids($fid, $uids, $limit, $offset);
     }
@@ -300,7 +300,7 @@ class PwThread
     public function getPost($pid)
     {
         if (!$pid) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->getPost($pid);
@@ -334,7 +334,7 @@ class PwThread
     public function getPostByTid($tid, $limit = 20, $offset = 0, $asc = true)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->getPostByTid($tid, $limit, $offset, $asc);
@@ -368,7 +368,7 @@ class PwThread
     public function getPostByUid($uid, $limit = 20, $offset = 0)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->getPostByUid($uid, $limit, $offset);
@@ -422,7 +422,7 @@ class PwThread
     public function getPostByTidAndUid($tid, $uid, $limit = 20, $offset = 0, $asc = true)
     {
         if (empty($tid) || empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getPostDao()->getPostByTidAndUid($tid, $uid, $limit, $offset, $asc);
@@ -581,7 +581,7 @@ class PwThread
     public function fetchHit($tids)
     {
         if (empty($tids) || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadHitsDao()->fetch($tids);
@@ -599,10 +599,10 @@ class PwThread
 
     protected function _getDaoMap()
     {
-        return array(
+        return [
             self::FETCH_MAIN    => 'forum.dao.PwThreadsDao',
             self::FETCH_CONTENT => 'forum.dao.PwThreadsContentDao',
-        );
+        ];
     }
 
     protected function _getThreadDao($fetchmode = self::FETCH_MAIN)

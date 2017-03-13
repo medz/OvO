@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwLikeStatisticsDao extends PwBaseDao
 {
     protected $_table = 'like_statistics';
-    protected $_dataStruct = array('signkey', 'likeid', 'fromid', 'typeid', 'number');
+    protected $_dataStruct = ['signkey', 'likeid', 'fromid', 'typeid', 'number'];
 
     public function getInfo($signkey)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($signkey));
+        return $smt->getOne([$signkey]);
     }
 
     public function getInfoByLikeid($signkey, $likeid)
@@ -28,7 +28,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE likeid = ? AND signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($likeid, $signkey));
+        return $smt->getOne([$likeid, $signkey]);
     }
 
     public function fetchInfo($signkeys)
@@ -36,13 +36,13 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE signkey IN %s ', $this->getTable(), $this->sqlImplode($signkeys));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 
     public function getInfoList($signkey, $offset, $limit, $typeid)
     {
         $where = ' WHERE signkey = ? ';
-        $array = array($signkey);
+        $array = [$signkey];
         if ($typeid) {
             $where .= ' AND typeid = ? ';
             $array[] = $typeid;
@@ -58,7 +58,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT *  FROM %s WHERE signkey = ? ORDER BY number DESC LIMIT 1 ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($signkey));
+        return $smt->getOne([$signkey]);
     }
 
     public function countSignkey($signkey)
@@ -66,7 +66,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS count FROM %s WHERE signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($signkey));
+        return $smt->getValue([$signkey]);
     }
 
     public function addInfo($data)
@@ -90,7 +90,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE likeid = ? AND  signkey = ? ', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($likeid, $signkey));
+        return $smt->update([$likeid, $signkey]);
     }
 
     public function deleteInfo($signkey, $likeid)
@@ -98,7 +98,7 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE signkey = ? AND likeid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($signkey, $likeid));
+        return $smt->update([$signkey, $likeid]);
     }
 
     public function deleteInfos($signkey)
@@ -106,6 +106,6 @@ class PwLikeStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($signkey));
+        return $smt->update([$signkey]);
     }
 }

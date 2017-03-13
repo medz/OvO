@@ -21,7 +21,7 @@ class PwUploadFile
     public $fileuploadurl = '';
     public $ext;
 
-    protected $_thumb = array();
+    protected $_thumb = [];
 
     public function __construct($key, $value)
     {
@@ -35,7 +35,7 @@ class PwUploadFile
 
     public function getInfo()
     {
-        return array(
+        return [
             'id'            => $this->id,
             'attname'       => $this->attname,
             'name'          => $this->name,
@@ -45,7 +45,7 @@ class PwUploadFile
             'fileuploadurl' => $this->fileuploadurl,
             'ext'           => $this->ext,
             'thumb'         => $this->_thumb,
-        );
+        ];
     }
 
     /**
@@ -55,7 +55,7 @@ class PwUploadFile
      */
     public function isImage()
     {
-        return in_array($this->ext, array('gif', 'jpg', 'jpeg', 'png', 'bmp', 'swf'));
+        return in_array($this->ext, ['gif', 'jpg', 'jpeg', 'png', 'bmp', 'swf']);
     }
 
     /**
@@ -159,7 +159,7 @@ class PwUploadFile
             if ($result === true && $image->filename != $thumburl) {
                 $ts = $image->getThumb();
                 $this->ifthumb |= (1 << $key);
-                $this->_thumb[$key] = array($thumburl, $value[1].$value[0], $ts->getThumbWidth(), $ts->getThumbHeight());
+                $this->_thumb[$key] = [$thumburl, $value[1].$value[0], $ts->getThumbWidth(), $ts->getThumbHeight()];
             }
         }
     }
@@ -175,9 +175,9 @@ class PwUploadFile
      * @param PwImage $image   图片对象
      * @param array   $options 生成方案配置
      */
-    public static function watermark(PwImage $image, $options = array())
+    public static function watermark(PwImage $image, $options = [])
     {
-        if (!in_array($image->type, array('gif', 'jpeg', 'png'))) {
+        if (!in_array($image->type, ['gif', 'jpeg', 'png'])) {
             return;
         }
         $config = Wekit::C('attachment');

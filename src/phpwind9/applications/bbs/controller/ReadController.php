@@ -17,7 +17,7 @@ class ReadController extends PwBaseController
     public function run()
     {
         $tid = intval($this->getInput('tid'));
-        list($page, $uid, $desc) = $this->getInput(array('page', 'uid', 'desc'), 'get');
+        list($page, $uid, $desc) = $this->getInput(['page', 'uid', 'desc'], 'get');
 
         $threadDisplay = new PwThreadDisplay($tid, $this->loginUser);
         $this->runHook('c_read_run', $threadDisplay);
@@ -25,14 +25,14 @@ class ReadController extends PwBaseController
         if (($result = $threadDisplay->check()) !== true) {
             $this->showError($result->getError());
         }
-        $_cache = Wekit::cache()->fetch(array('level', 'group_right'));
+        $_cache = Wekit::cache()->fetch(['level', 'group_right']);
 
         $pwforum = $threadDisplay->getForum();
         if ($pwforum->foruminfo['password']) {
             if (!$this->loginUser->isExists()) {
-                $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('bbs/cate/run', array('fid' => $$pwforum->fid))));
+                $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $$pwforum->fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$pwforum->fid)) {
-                $this->forwardAction('bbs/forum/password', array('fid' => $pwforum->fid));
+                $this->forwardAction('bbs/forum/password', ['fid' => $pwforum->fid]);
             }
         }
         if ($uid) {
@@ -47,23 +47,23 @@ class ReadController extends PwBaseController
         $threadDisplay->setImgLazy(Wekit::C('bbs', 'read.image_lazy'));
         $threadDisplay->execute($dataSource);
 
-        $operateReply = $operateThread = array();
+        $operateReply = $operateThread = [];
         $isBM = $pwforum->isBM($this->loginUser->username);
-        if ($threadPermission = $this->loginUser->getPermission('operate_thread', $isBM, array())) {
+        if ($threadPermission = $this->loginUser->getPermission('operate_thread', $isBM, [])) {
             $operateReply = Pw::subArray(
                 $threadPermission,
-                array('toppedreply', /* 'unite', 'split',  */'remind', 'shield', 'delete', 'ban', 'inspect', 'read')
+                ['toppedreply', /* 'unite', 'split',  */'remind', 'shield', 'delete', 'ban', 'inspect', 'read']
             );
             $operateThread = Pw::subArray(
                 $threadPermission,
-                array(
+                [
                     'digest', 'topped', 'up', 'highlight',
                     'copy',
                     'type', 'move', /*'unite', 'print' */ 'lock',
                     'down',
                     'delete',
                     'ban',
-                )
+                ]
             );
         }
         $threadInfo = $threadDisplay->getThreadInfo();
@@ -97,7 +97,7 @@ class ReadController extends PwBaseController
         $this->setOutput($threadDisplay->maxpage, 'totalpage');
         $this->setOutput($threadDisplay->getUrlArgs(), 'urlargs');
         $this->setOutput($threadDisplay->getUrlArgs('desc'), 'urlDescArgs');
-        $this->setOutput($this->loginUser->getPermission('look_thread_log', $isBM, array()), 'canLook');
+        $this->setOutput($this->loginUser->getPermission('look_thread_log', $isBM, []), 'canLook');
         $this->setOutput($this->_getFpage($threadDisplay->fid), 'fpage');
 
         //版块风格
@@ -113,14 +113,14 @@ class ReadController extends PwBaseController
         $threadDisplay->page <= 1 && $seoBo->setDefaultSeo($lang->getMessage('SEO:bbs.read.run.title'), '', $lang->getMessage('SEO:bbs.read.run.description'));
         $seoBo->init('bbs', 'read');
         $seoBo->set(
-            array(
+            [
                 '{forumname}'     => $threadDisplay->forum->foruminfo['name'],
                 '{title}'         => $threadDisplay->thread->info['subject'],
                 '{description}'   => Pw::substrs($threadDisplay->thread->info['content'], 100, 0, false),
                 '{classfication}' => $threadDisplay->thread->info['topic_type'],
                 '{tags}'          => $threadInfo['tags'],
                 '{page}'          => $threadDisplay->page,
-            )
+            ]
         );
         Wekit::setV('seo', $seoBo);
         //是否显示回复
@@ -154,7 +154,7 @@ class ReadController extends PwBaseController
         $count = Wekit::load('forum.PwThread')->countPostByTidUnderPid($tid, $pid) + 1;
         $page = ceil(($count + 1) / $perpage);
 
-        $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', array('tid' => $tid, 'fid' => $thread['fid'], 'page' => $page), $pid));
+        $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', ['tid' => $tid, 'fid' => $thread['fid'], 'page' => $page], $pid));
     }
 
     /**
@@ -170,9 +170,9 @@ class ReadController extends PwBaseController
         $nextThread = Wekit::load('forum.PwThreadExpand')->getThreadByFidUnderTime($thread['fid'], $thread['lastpost_time'], 1);
         if ($nextThread) {
             $nextTid = key($nextThread);
-            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', array('tid' => $nextTid, 'fid' => $thread['fid'])));
+            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', ['tid' => $nextTid, 'fid' => $thread['fid']]));
         } else {
-            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/thread/run/', array('fid' => $thread['fid'])));
+            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/thread/run/', ['fid' => $thread['fid']]));
         }
     }
 
@@ -189,9 +189,9 @@ class ReadController extends PwBaseController
         $preThread = Wekit::load('forum.PwThreadExpand')->getThreadByFidOverTime($thread['fid'], $thread['lastpost_time'], 1);
         if ($preThread) {
             $preTid = key($preThread);
-            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', array('tid' => $preTid, 'fid' => $thread['fid'])));
+            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/read/run/', ['tid' => $preTid, 'fid' => $thread['fid']]));
         } else {
-            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/thread/run/', array('fid' => $thread['fid'])));
+            $this->forwardRedirect(WindUrlHelper::createUrl('bbs/thread/run/', ['fid' => $thread['fid']]));
         }
     }
 
@@ -200,10 +200,10 @@ class ReadController extends PwBaseController
      */
     public function logAction()
     {
-        list($tid, $fid) = $this->getInput(array('tid', 'fid'));
+        list($tid, $fid) = $this->getInput(['tid', 'fid']);
 
         $forum = new PwForumBo($fid);
-        $permission = $this->loginUser->getPermission('look_thread_log', $forum->isBM($this->loginUser->username), array());
+        $permission = $this->loginUser->getPermission('look_thread_log', $forum->isBM($this->loginUser->username), []);
         if ($permission) {
             $list = Wekit::load('log.srv.PwLogService')->getThreadLog($tid, 25, 0);
             $this->setOutput($list, 'list');

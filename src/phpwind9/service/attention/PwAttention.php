@@ -41,7 +41,7 @@ class PwAttention
     public function getFans($uid, $limit = 20, $offset = 0)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFans($uid, $limit, $offset);
@@ -58,7 +58,7 @@ class PwAttention
     public function fetchFans($uid, $touids)
     {
         if (!$uid || !$touids || !is_array($touids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchFans($uid, $touids);
@@ -76,7 +76,7 @@ class PwAttention
     public function fetchFansByUids($uids, $limit = 20, $offset = 0)
     {
         if (!$uids || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchFansByUids($uids, $limit, $offset);
@@ -94,7 +94,7 @@ class PwAttention
     public function getFollows($uid, $limit = 20, $offset = 0)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFollows($uid, $limit, $offset);
@@ -111,7 +111,7 @@ class PwAttention
     public function fetchFollows($uid, $touids)
     {
         if (!$uid || !$touids || !is_array($touids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchFollows($uid, $touids);
@@ -146,7 +146,7 @@ class PwAttention
     public function getFollowToFollow($uid, $touid, $limit = 3)
     {
         if (!$uid || !$touid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getFollowToFollow($uid, $touid, $limit);
@@ -173,11 +173,11 @@ class PwAttention
             return new PwError('USER:attention.add.isFollowed');
         }
 
-        return $this->_getDao()->add(array(
+        return $this->_getDao()->add([
             'uid'          => $uid,
             'touid'        => $touid,
             'created_time' => Pw::getTime(),
-        ));
+        ]);
     }
 
     /**
@@ -214,7 +214,7 @@ class PwAttention
     public function fetchFriendsByUids($uids)
     {
         if (!$uids || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchFriendsByUids($uids);

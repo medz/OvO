@@ -30,7 +30,7 @@ class PwLogService
             ->setTypeid($this->getOperatTypeid($ifShield ? 'shieldtag' : 'unshieldtag'));
         $lang = 'LOG:shield.tag.message';
         !$ifShield && $lang = 'LOG:unshield.tag.message';
-        $_args = array();
+        $_args = [];
         $_args['{tagtitle}'] = sprintf('<a href="%s" target="_blank">%s</a>', $langArgs['tag_url'], $this->_buildSecurity($langArgs['tag']));
         $_args['{type}'] = $this->_buildSecurity($langArgs['type']);
         if (isset($langArgs['content_url']) && $langArgs['content_url']) {
@@ -58,14 +58,14 @@ class PwLogService
         if (!$thread) {
             return false;
         }
-        $langArgs = array();
-        $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username);
+        $langArgs = [];
+        $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', ['uid' => $user->uid]), $user->username);
         $msg = '';
         if ($isReply) {
-            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', array('tid' => $thread['tid']), $thread['pid']), $this->_buildSecurity($thread['subject']));
+            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', ['tid' => $thread['tid']], $thread['pid']), $this->_buildSecurity($thread['subject']));
             $msg = 'LOG:editThread.reply.message';
         } else {
-            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', array('tid' => $thread['tid'])), $this->_buildSecurity($thread['subject']));
+            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', ['tid' => $thread['tid']]), $this->_buildSecurity($thread['subject']));
             $msg = 'LOG:editThread.message';
         }
         $dm = new PwLogDm();
@@ -96,9 +96,9 @@ class PwLogService
         if (!$attach) {
             return false;
         }
-        $langArgs = array();
-        $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username);
-        $langArgs['{attach}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', array('tid' => $attach['tid']), $attach['pid'] ? $attach['pid'] : ''), $this->_buildSecurity($attach['name']));
+        $langArgs = [];
+        $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', ['uid' => $user->uid]), $user->username);
+        $langArgs['{attach}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', ['tid' => $attach['tid']], $attach['pid'] ? $attach['pid'] : ''), $this->_buildSecurity($attach['name']));
         $_createdUser = Wekit::load('user.PwUser')->getUserByUid($attach['created_userid']);
         $dm = new PwLogDm();
         $dm->setFid($attach['fid'])
@@ -133,14 +133,14 @@ class PwLogService
         }
         $typeid = $this->getOperatTypeid($type);
         $typeTitle = $this->getOperatTypeTitle($type);
-        $_logDms = $langArgs = array();
+        $_logDms = $langArgs = [];
         $langArgs['{operattype}'] = $typeTitle;
         $langArgs['{reason}'] = $reason ? $this->_buildSecurity($reason) : '无';
         $_logMsg = $useReplyMsg ? 'LOG:thread.reply.message' : 'LOG:thread.manage.message';
 
         foreach ($threads as $thread) {
-            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', array('tid' => $thread['tid'])), $this->_buildSecurity($thread['subject']));
-            $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username);
+            $langArgs['{title}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('bbs/read/run', ['tid' => $thread['tid']]), $this->_buildSecurity($thread['subject']));
+            $langArgs['{createdUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', ['uid' => $user->uid]), $user->username);
             $_dm = new PwLogDm();
             $_dm->setCreatedTime(Pw::getTime())
             ->setCreatedUser($user->uid, $user->username)
@@ -185,7 +185,7 @@ class PwLogService
         if (!$userList) {
             return false;
         }
-        $_logDms = array();
+        $_logDms = [];
         foreach ($types as $_type) {
             if ($_type == 1) {
                 $type = 'banuserspeak';
@@ -198,13 +198,13 @@ class PwLogService
             }
             $typeid = $this->getOperatTypeid($type);
             $title = $this->getOperatTypeTitle($type);
-            $langArgs = array(
+            $langArgs = [
                 '{operatedUser}' => '',
-                '{createdUser}'  => sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $user->uid)), $user->username),
+                '{createdUser}'  => sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', ['uid' => $user->uid]), $user->username),
                 '{operattype}'   => $title,
-                '{reason}'       => $reason ? $this->_buildSecurity($reason) : '无', );
+                '{reason}'       => $reason ? $this->_buildSecurity($reason) : '无', ];
             foreach ($userList as $_uid => $_user) {
-                $langArgs['{operatedUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', array('uid' => $_uid)), $_user['username']);
+                $langArgs['{operatedUser}'] = sprintf('<a href="%s" target="_blank">%s</a>', WindUrlHelper::createUrl('space/index/run', ['uid' => $_uid]), $_user['username']);
                 $_dm = new PwLogDm();
                 $_dm->setCreatedTime(Pw::getTime())
                     ->setCreatedUser($user->uid, $user->username)
@@ -236,7 +236,7 @@ class PwLogService
         }
         $typeid = $this->getOperatTypeid('delfresh');
         $typeTitle = $this->getOperatTypeTitle('delfresh');
-        $_logDms = array();
+        $_logDms = [];
         foreach ($data as $_item) {
             $title = Pw::substrs(strip_tags(Pw::stripWindCode($_item['content'])), 20, 0, true);
             $_dm = new PwLogDm();
@@ -246,7 +246,7 @@ class PwLogService
             ->setIp(Wind::getComponent('request')->getClientIp())
             ->setExtends($_item['weibo_id'])
             ->setTypeid($typeid)
-            ->setContent($this->getLogMsg('LOG:delete.fresh.message', array('{title}' => "'".$title."'")));
+            ->setContent($this->getLogMsg('LOG:delete.fresh.message', ['{title}' => "'".$title."'"]));
             $_logDms[] = $_dm;
         }
         $this->_getLogDs()->batchAddLog($_logDms);
@@ -288,7 +288,7 @@ class PwLogService
         $list = $this->_getLogDs()->getLogBytid($tid, 0, $limit, $start);
         $types = array_flip($this->getOperatTypeid());
         foreach ($list as $key => $value) {
-            if (!in_array($types[$value['typeid']], array('topped', 'catetopped', 'sitetopped', 'highlight'))) {
+            if (!in_array($types[$value['typeid']], ['topped', 'catetopped', 'sitetopped', 'highlight'])) {
                 $list[$key]['extends'] = '';
             }
             $list[$key]['type'] = $this->getOperatTypeTitle($types[$value['typeid']]);
@@ -339,7 +339,7 @@ class PwLogService
      */
     public function getOperatTypeid($t = '')
     {
-        static $typeid = array(
+        static $typeid = [
             'degist'        => 1, //加精
             'undegis'       => 2, //取消加精
             'highlight'     => 3, //加亮
@@ -369,7 +369,7 @@ class PwLogService
             'banuseravatar' => 31, //禁止用户头像
             'banusersign'   => 32, //禁止用户帖子签名
             'other'         => 40, //其他
-        );
+        ];
 
         return $t ? $typeid[$t] : $typeid;
     }
@@ -383,7 +383,7 @@ class PwLogService
      */
     public function getOperatTypeTitle($type = '')
     {
-        $types = array(
+        $types = [
             'degist'        => '设为精华',
             'undegis'       => '取消精华',
             'highlight'     => '加亮',
@@ -413,7 +413,7 @@ class PwLogService
             'banuseravatar' => '禁止头像',
             'banusersign'   => '禁止帖子签名',
             'other'         => '其他',
-        );
+        ];
 
         return $type ? $types[$type] : $types;
     }

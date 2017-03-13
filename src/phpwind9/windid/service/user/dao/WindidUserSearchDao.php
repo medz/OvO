@@ -81,7 +81,7 @@ class WindidUserSearchDao extends WindidBaseDao
      *
      * @return string
      */
-    private function _getMergeTabl($mergeWhere = array('d' => 0, 'i' => 0), $mergeOrderBy = array('d' => 0, 'i' => 0))
+    private function _getMergeTabl($mergeWhere = ['d' => 0, 'i' => 0], $mergeOrderBy = ['d' => 0, 'i' => 0])
     {
         $_mertable = '';
         if ($mergeWhere['d'] || $mergeOrderBy['d']) {
@@ -103,11 +103,11 @@ class WindidUserSearchDao extends WindidBaseDao
      */
     private function _buildCondition($condition)
     {
-        $merge = array('d' => 0, 'i' => 0);
+        $merge = ['d' => 0, 'i' => 0];
         if (!$condition) {
-            return array('', array(), $merge);
+            return ['', [], $merge];
         }
-        $where = $param = array();
+        $where = $param = [];
 
         foreach ($condition as $k => $v) {
             if ($v != 0 && !$v) {
@@ -154,7 +154,7 @@ class WindidUserSearchDao extends WindidBaseDao
             }
         }
 
-        return array($where ? $this->_bindSql('WHERE %s', implode(' AND ', $where)) : '', $param, $merge);
+        return [$where ? $this->_bindSql('WHERE %s', implode(' AND ', $where)) : '', $param, $merge];
     }
 
     /**
@@ -166,11 +166,11 @@ class WindidUserSearchDao extends WindidBaseDao
      */
     protected function _buildOrderby($orderby)
     {
-        $array = array();
-        $merge = array('d' => 0, 'i' => 0);
+        $array = [];
+        $merge = ['d' => 0, 'i' => 0];
         foreach ($orderby as $key => $value) {
         }
 
-        return $array ? array(' ORDER BY '.implode(',', $array), $merge) : array('', $merge);
+        return $array ? [' ORDER BY '.implode(',', $array), $merge] : ['', $merge];
     }
 }

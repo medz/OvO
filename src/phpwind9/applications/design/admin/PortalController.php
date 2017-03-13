@@ -16,7 +16,7 @@ class PortalController extends AdminBaseController
     {
         $page = (int) $this->getInput('page', 'get');
         $perpage = 10;
-        $args = array();
+        $args = [];
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
 

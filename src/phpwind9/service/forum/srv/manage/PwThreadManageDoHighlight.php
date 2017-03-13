@@ -16,7 +16,7 @@ class PwThreadManageDoHighlight extends PwThreadManageDo
     public $overtime = 0;
 
     protected $tids;
-    protected $overids = array();
+    protected $overids = [];
 
     public function check($permission)
     {

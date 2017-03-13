@@ -12,28 +12,28 @@ class WindidSchoolApi
 {
     public function getSchool($id)
     {
-        $params = array(
+        $params = [
             'id' => $id,
-        );
+        ];
 
         return WindidApi::open('school/get', $params);
     }
 
     public function fetchSchool($ids)
     {
-        $params = array(
+        $params = [
             'ids' => $ids,
-        );
+        ];
 
         return WindidApi::open('school/fetch', $params);
     }
 
     public function getSchoolByAreaidAndTypeid($areaid, $typeid)
     {
-        $params = array(
+        $params = [
             'areaid' => $areaid,
             'typeid' => $typeid,
-        );
+        ];
 
         return WindidApi::open('school/getSchoolByAreaidAndTypeid', $params);
     }
@@ -63,12 +63,12 @@ class WindidSchoolApi
 
     public function addSchool(WindidSchoolDm $dm)
     {
-        return WindidApi::open('school/add', array(), $dm->getData());
+        return WindidApi::open('school/add', [], $dm->getData());
     }
 
     public function batchAddSchool($dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $k => $dm) {
             $_data = $dm->getData();
             foreach ($_data as $_k => $_v) {
@@ -76,25 +76,25 @@ class WindidSchoolApi
             }
         }
 
-        return WindidApi::open('school/batchadd', array(), $data);
+        return WindidApi::open('school/batchadd', [], $data);
     }
 
     public function updateSchool(WindidSchoolDm $dm)
     {
-        $params = array(
+        $params = [
             'id' => $dm->schoolid,
-        );
+        ];
 
         return WindidApi::open('school/update', $params, $dm->getData());
     }
 
     public function deleteSchool($schoolid)
     {
-        $params = array(
+        $params = [
             'id' => $schoolid,
-        );
+        ];
 
-        return WindidApi::open('school/delete', array(), $params);
+        return WindidApi::open('school/delete', [], $params);
     }
 
     private function _getSchoolService()

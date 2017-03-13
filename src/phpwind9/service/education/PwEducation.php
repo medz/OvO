@@ -118,7 +118,7 @@ class PwEducation
     public function getByUid($uid, $number = 10, $start = 0)
     {
         if (($uid = intval($uid)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByUid($uid, $number, $start);

@@ -37,7 +37,7 @@ class PwUser
     public function getUserByUid($uid, $type = self::FETCH_MAIN)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByUid($uid);
@@ -54,7 +54,7 @@ class PwUser
     public function getUserByName($username, $type = self::FETCH_MAIN)
     {
         if (empty($username)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByName($username);
@@ -71,7 +71,7 @@ class PwUser
     public function getUserByEmail($email, $type = self::FETCH_MAIN)
     {
         if (empty($email)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->getUserByEmail($email);
@@ -87,7 +87,7 @@ class PwUser
     {
         //getUserListByUids($uids, $type = self::FETCH_MAIN) {
         if (empty($uids) || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->fetchUserByUid($uids);
@@ -105,7 +105,7 @@ class PwUser
     {
         //getUserListByNames($names, $type = PwUser::FETCH_MAIN) {
         if (empty($names) || !is_array($names)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao($type)->fetchUserByName($names);
@@ -252,7 +252,7 @@ class PwUser
      */
     protected function _getDao($type = self::FETCH_MAIN)
     {
-        $daoMap = array();
+        $daoMap = [];
         $daoMap[self::FETCH_MAIN] = 'user.dao.PwUserDao';
         $daoMap[self::FETCH_DATA] = 'user.dao.PwUserDataDao';
         $daoMap[self::FETCH_INFO] = 'user.dao.PwUserInfoDao';

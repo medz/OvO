@@ -51,7 +51,7 @@ class IndexController extends PwBaseController
             $this->showMessage('success');
         } //不指定的方法，默认返回成功状态
         $args = $this->getInput($args);
-        $result = call_user_func_array(array($srv, $method), $args);
+        $result = call_user_func_array([$srv, $method], $args);
         if ($result == true) {
             $this->showMessage('success');
         }
@@ -62,9 +62,9 @@ class IndexController extends PwBaseController
     {
         $config = include Wind::getRealPath('WINDID:service.base.WindidNotifyConf.php', true);
         $method = isset($config[$operation]['method']) ? $config[$operation]['method'] : '';
-        $args = isset($config[$operation]['args']) ? $config[$operation]['args'] : array();
+        $args = isset($config[$operation]['args']) ? $config[$operation]['args'] : [];
 
-        return array($method, $args);
+        return [$method, $args];
     }
 
     protected function showError($message = '', $referer = '', $refresh = false)

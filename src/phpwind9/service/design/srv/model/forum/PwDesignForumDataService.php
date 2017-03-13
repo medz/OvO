@@ -19,7 +19,7 @@ class PwDesignForumDataService extends PwDesignModelBase
 {
     public function decorateAddProperty($model)
     {
-        $data = array();
+        $data = [];
         $forumService = $this->_getFroumService();
         $data['forumOption'] = '<option value="">全部版块</option>'.$forumService->getForumOption();
 
@@ -30,7 +30,7 @@ class PwDesignForumDataService extends PwDesignModelBase
     {
         $model = $moduleBo->getModel();
         $property = $moduleBo->getProperty();
-        $data = array();
+        $data = [];
         $forumService = $this->_getFroumService();
         $data['forumOption'] = '<option value="">全部版块</option>'.$forumService->getForumOption($property['fids']);
 
@@ -66,8 +66,8 @@ class PwDesignForumDataService extends PwDesignModelBase
 
     private function _buildSignKey($list)
     {
-        $_username = array();
-        $_tids = array();
+        $_username = [];
+        $_tids = [];
         foreach ($list as $k => $v) {
             $_tids[] = $v['lastpost_tid'];
         }
@@ -75,9 +75,9 @@ class PwDesignForumDataService extends PwDesignModelBase
         foreach ($list as $k => $v) {
             $list[$k]['name'] = $this->_filterForumHtml($v['name']);
             if ($v['type'] == 'category') {
-                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/cate/run', array('fid' => $v['fid']), '', 'pw');
+                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $v['fid']], '', 'pw');
             } else {
-                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid']), '', 'pw');
+                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $v['fid']], '', 'pw');
             }
             $list[$k]['descrip'] = $this->_formatDes($v['descrip']);
             $list[$k]['logo'] = $v['logo'] ? Pw::getPath($v['logo']) : '';
@@ -90,8 +90,8 @@ class PwDesignForumDataService extends PwDesignModelBase
 
             $list[$k]['lastpost_userid'] = $lastthread['lastpost_userid'];
             $list[$k]['lastpost_username'] = $lastthread['lastpost_username'];
-            $list[$k]['lastpost_space'] = $lastthread['lastpost_userid'] ? WindUrlHelper::createUrl('space/index/run', array('uid' => $lastthread['lastpost_userid']), '', 'pw') : '';
-            $list[$k]['lastthread_space'] = $lastthread['created_userid'] ? WindUrlHelper::createUrl('space/index/run', array('uid' => $lastthread['created_userid']), '', 'pw') : '';
+            $list[$k]['lastpost_space'] = $lastthread['lastpost_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['lastpost_userid']], '', 'pw') : '';
+            $list[$k]['lastthread_space'] = $lastthread['created_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['created_userid']], '', 'pw') : '';
             $list[$k]['lastthread_smallavatar'] = $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'small') : '';
             $list[$k]['lastthread_middleavatar'] = $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'middle') : '';
             $list[$k]['lastthread_username'] = $lastthread['created_username'];

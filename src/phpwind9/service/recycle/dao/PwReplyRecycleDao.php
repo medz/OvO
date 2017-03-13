@@ -16,7 +16,7 @@ class PwReplyRecycleDao extends PwBaseDao
     protected $_table = 'recycle_reply';
     protected $_table_thread = 'bbs_posts';
     protected $_pk = 'pid';
-    protected $_dataStruct = array('pid', 'tid', 'fid', 'operate_time', 'operate_username', 'reason');
+    protected $_dataStruct = ['pid', 'tid', 'fid', 'operate_time', 'operate_username', 'reason'];
 
     public function fetchRecord($pids)
     {
@@ -30,12 +30,12 @@ class PwReplyRecycleDao extends PwBaseDao
 
     public function batchAdd($data)
     {
-        $fields = array();
+        $fields = [];
         foreach ($data as $key => $value) {
             if (!$this->_filterStruct($value)) {
                 continue;
             }
-            $fields[] = array($value['pid'], $value['tid'], $value['fid'], $value['operate_time'], $value['operate_username'], $value['reason']);
+            $fields[] = [$value['pid'], $value['tid'], $value['fid'], $value['operate_time'], $value['operate_username'], $value['reason']];
         }
         if (!$fields) {
             return false;
@@ -73,7 +73,7 @@ class PwReplyRecycleDao extends PwBaseDao
     protected function _buildCondition($field)
     {
         $where = '1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'fid':
@@ -109,12 +109,12 @@ class PwReplyRecycleDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg);
+        return [$where, $arg];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'pid':

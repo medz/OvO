@@ -8,13 +8,13 @@
  * @license
  */
 
-return array(
-    'link' => array(
+return [
+    'link' => [
         'class'  => PwLinkService::class,
         'method' => 'getLinksByType',
-    ),
-    'announce' => array(
+    ],
+    'announce' => [
         'class'  => PwAnnounceService::class,
         'method' => 'getAnnounceForBbsScroll',
-    ),
-);
+    ],
+];

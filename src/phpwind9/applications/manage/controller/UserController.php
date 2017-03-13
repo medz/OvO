@@ -21,7 +21,7 @@ class UserController extends BaseManageController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        $result = $this->loginUser->getPermission('panel_user_manage', false, array());
+        $result = $this->loginUser->getPermission('panel_user_manage', false, []);
         if (!$result['user_check']) {
             $this->showError('BBS:manage.thread_check.right.error');
         }
@@ -32,11 +32,11 @@ class UserController extends BaseManageController
      */
     public function run()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage > 0 ? $perpage : $this->perpage;
         $count = $this->_getDs()->countUnChecked();
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $perpage);
             $page > $totalPage && $page = $totalPage;
@@ -49,7 +49,7 @@ class UserController extends BaseManageController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array('perpage' => $perpage), 'args');
+        $this->setOutput(['perpage' => $perpage], 'args');
         $this->setOutput($list, 'list');
 
         // seo设置
@@ -65,11 +65,11 @@ class UserController extends BaseManageController
      */
     public function emailAction()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         $count = $this->_getDs()->countUnActived();
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $perpage);
             $page > $totalPage && $page = $totalPage;
@@ -82,7 +82,7 @@ class UserController extends BaseManageController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array('perpage' => $perpage), 'args');
+        $this->setOutput(['perpage' => $perpage], 'args');
         $this->setOutput($list, 'list');
 
         // seo设置
@@ -108,7 +108,7 @@ class UserController extends BaseManageController
         /* @var $groupService PwUserGroupsService */
         $groupService = Wekit::load('usergroup.srv.PwUserGroupsService');
         $strategy = Wekit::C('site', 'upgradestrategy');
-        $clearUid = array();
+        $clearUid = [];
         foreach ($infos as $_temp) {
             $clearUid[] = $_temp['uid'];
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNCHECK)) {
@@ -143,7 +143,7 @@ class UserController extends BaseManageController
         /* @var $groupService PwUserGroupsService */
         $groupService = Wekit::load('usergroup.srv.PwUserGroupsService');
         $strategy = Wekit::C('site', 'upgradestrategy');
-        $clearUid = array();
+        $clearUid = [];
         foreach ($infos as $_temp) {
             $clearUid[] = $_temp['uid'];
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNACTIVE)) {

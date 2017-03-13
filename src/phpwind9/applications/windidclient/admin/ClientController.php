@@ -17,7 +17,7 @@ class ClientController extends AdminBaseController
     public function run()
     {
         $list = $this->_getAppDs()->getList();
-        $data = $urls = array();
+        $data = $urls = [];
         $time = Pw::getTime();
         $this->setOutput($list, 'list');
     }
@@ -30,23 +30,23 @@ class ClientController extends AdminBaseController
             $this->showError('WINDID:fail');
         }
         $time = Pw::getTime();
-        $array = array(
+        $array = [
             'windidkey' => WindidUtility::appKey(
                 $client['id'],
                 $time,
                 $client['secretkey'],
-                array(
+                [
                     'operation' => 999,
-                ),
-                array(
+                ],
+                [
                     'testdata' => 1,
-                )
+                ]
             ),
             'operation' => 999,
             'clientid'  => $client['id'],
             'time'      => $time,
-        );
-        $post = array('testdata' => 1);
+        ];
+        $post = ['testdata' => 1];
         $url = WindidUtility::buildClientUrl($client['siteurl'], $client['apifile']).http_build_query($array);
 
         $client = new \Guzzle\Http\Client();

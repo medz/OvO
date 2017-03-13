@@ -38,11 +38,11 @@ class PwCacheUpdateService
      */
     public function getConfigCacheValue()
     {
-        $vkeys = array('site', 'credit', 'bbs', 'attachment', 'components', 'seo', 'nav', 'windid');
+        $vkeys = ['site', 'credit', 'bbs', 'attachment', 'components', 'seo', 'nav', 'windid'];
         $array = Wekit::C()->fetchConfig($vkeys);
-        $config = array();
+        $config = [];
         foreach ($vkeys as $key => $value) {
-            $config[$value] = array();
+            $config[$value] = [];
         }
         foreach ($array as $key => $value) {
             $config[$value['namespace']][$value['name']] = $value['vtype'] != 'string' ? unserialize($value['value']) : $value['value'];

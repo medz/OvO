@@ -11,10 +11,10 @@ class AppSearchConfigDo
      */
     public function getPermissionConfig($config)
     {
-        $config += array(
-            'app_search_open'          => array('radio', 'basic', '易搜索', ''),
-            'app_search_time_interval' => array('input', 'basic', '易搜索间隔', '请输入用户两次搜索的时间间隔', ''),
-        );
+        $config += [
+            'app_search_open'          => ['radio', 'basic', '易搜索', ''],
+            'app_search_time_interval' => ['input', 'basic', '易搜索间隔', '请输入用户两次搜索的时间间隔', ''],
+        ];
 
         return $config;
     }
@@ -28,27 +28,27 @@ class AppSearchConfigDo
      */
     public function getPermissionCategoryConfig($config)
     {
-        $searchconfig = array(
-            'other' => array(
-                'sub' => array(
-                    'search' => array(
+        $searchconfig = [
+            'other' => [
+                'sub' => [
+                    'search' => [
                         'name'  => '易搜索',
-                        'items' => array(
+                        'items' => [
                             'app_search_open', 'app_search_time_interval',
-                        ),
-                    ),
-                ),
-            ),
-        );
+                        ],
+                    ],
+                ],
+            ],
+        ];
 
         return WindUtility::mergeArray($config, $searchconfig);
     }
 
     public function getAdminMenu($config)
     {
-        $config += array(
-            'app_search' => array('易搜索', 'app/manage/*?app=search', '', '', 'appcenter'),
-            );
+        $config += [
+            'app_search' => ['易搜索', 'app/manage/*?app=search', '', '', 'appcenter'],
+            ];
 
         return $config;
     }

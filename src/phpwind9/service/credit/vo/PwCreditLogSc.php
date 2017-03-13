@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwCreditLogSc
 {
-    protected $_data = array();
+    protected $_data = [];
 
     public function getData()
     {

@@ -57,7 +57,7 @@ class SpaceBaseController extends PwBaseController
         $this->space->setTome($spaceUid, $this->loginUser->uid);
         $this->space->setVisitUid($this->loginUser->uid);
         if (!$this->space->allowView('space')) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('space/ban/run', array('uid' => $spaceUid)));
+            $this->forwardRedirect(WindUrlHelper::createUrl('space/ban/run', ['uid' => $spaceUid]));
         }
     }
 

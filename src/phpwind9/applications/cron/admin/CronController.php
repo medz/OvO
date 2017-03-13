@@ -217,14 +217,14 @@ Wind::import('ADMIN:library.AdminBaseController');
 
      private function _getLoopType($select = '')
      {
-         $array = array('month' => '每月', 'week' => '每周', 'day' => '每日', 'hour' => '每小时', 'now' => '每隔');
+         $array = ['month' => '每月', 'week' => '每周', 'day' => '每日', 'hour' => '每小时', 'now' => '每隔'];
 
          return $select ? $array[$select] : $array;
      }
 
      private function _capitalWeek($select = 0)
      {
-         $array = array('日', '一', '二', '三', '四', '五', '六');
+         $array = ['日', '一', '二', '三', '四', '五', '六'];
 
          return $array[$select];
      }

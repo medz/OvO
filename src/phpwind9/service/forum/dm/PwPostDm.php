@@ -309,7 +309,7 @@ abstract class PwPostDm extends PwBaseDm
     {
         $maxlen = Wekit::C('bbs', 'title.length.max');
         if ($maxlen > 0 && Pw::strlen($this->_data['subject']) > $maxlen) {
-            return new PwError('BBS:post.subject.length.limit', array('{len}' => $maxlen));
+            return new PwError('BBS:post.subject.length.limit', ['{len}' => $maxlen]);
         }
 
         return true;
@@ -326,10 +326,10 @@ abstract class PwPostDm extends PwBaseDm
             $config['content.length.min'] = $this->forum->forumset['minlengthofcontent'];
         }
         if ($len < $config['content.length.min']) {
-            return new PwError('BBS:post.content.length.less', array('{min}' => $config['content.length.min']));
+            return new PwError('BBS:post.content.length.less', ['{min}' => $config['content.length.min']]);
         }
         if ($len > $config['content.length.max']) {
-            return new PwError('BBS:post.content.length.more', array('{max}' => $config['content.length.max']));
+            return new PwError('BBS:post.content.length.more', ['{max}' => $config['content.length.max']]);
         }
         if ($this->forum && $this->user) {
             if ((!$this->forum->forumset['allowhide'] || !$this->user->getPermission('allow_thread_extend.hide')) && (PwUbbCode::hasTag($this->_data['content'], 'post') || PwUbbCode::hasTag($this->_data['content'], 'hide'))) {
@@ -349,7 +349,7 @@ abstract class PwPostDm extends PwBaseDm
             $this->_data['content'] = PwUbbCode::autoUrl($this->_data['content'], true);
             $useubb = 0;
             if ($this->hide) {
-                $this->_data['content'] = '[post]'.str_replace(array('[post]', '[/post]'), '', $this->_data['content']).'[/post]';
+                $this->_data['content'] = '[post]'.str_replace(['[post]', '[/post]'], '', $this->_data['content']).'[/post]';
                 $useubb = 1;
             }
             if ($this->user && preg_match('/\[sell=(\d+)(\,(\d+))?\].+?\[\/sell\]/is', $this->_data['content'], $matchs)) {
@@ -375,7 +375,7 @@ abstract class PwPostDm extends PwBaseDm
             $cost = $max;
             $flag = 1;
         }
-        if ($credits = $this->user->getPermission('sell_credits', false, array())) {
+        if ($credits = $this->user->getPermission('sell_credits', false, [])) {
             if (!in_array($type, $credits)) {
                 $type = current($credits);
                 $flag = 1;

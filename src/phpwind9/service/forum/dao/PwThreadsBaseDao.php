@@ -13,14 +13,14 @@ class PwThreadsBaseDao extends PwBaseDao
 {
     public function getThread($tid)
     {
-        return array('tid' => $tid);
+        return ['tid' => $tid];
     }
 
     public function fetchThread($tids)
     {
-        $data = array();
+        $data = [];
         foreach ($tids as $value) {
-            $data[$value] = array();
+            $data[$value] = [];
         }
 
         return $data;
@@ -52,12 +52,12 @@ class PwThreadsBaseDao extends PwBaseDao
         return false;
     }
 
-    public function updateThread($tid, $fields, $increaseFields = array(), $bitFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [], $bitFields = [])
     {
         return true;
     }
 
-    public function batchUpdateThread($tids, $fields, $increaseFields = array(), $bitFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [], $bitFields = [])
     {
         return true;
     }
@@ -74,9 +74,9 @@ class PwThreadsBaseDao extends PwBaseDao
 
     protected function _clearData($result)
     {
-        $data = array();
+        $data = [];
         foreach ($result as $key => $value) {
-            $data[$key] = array();
+            $data[$key] = [];
         }
 
         return $data;

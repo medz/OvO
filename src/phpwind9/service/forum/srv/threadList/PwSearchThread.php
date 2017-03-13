@@ -23,9 +23,9 @@ class PwSearchThread extends PwThreadDataSource
         $this->so->setFid($forum->fid)->setDisabled(0);
     }
 
-    public function setType($type, $subtype = array())
+    public function setType($type, $subtype = [])
     {
-        $this->so->setTopicType($subtype ? array_merge(array($type), $subtype) : $type);
+        $this->so->setTopicType($subtype ? array_merge([$type], $subtype) : $type);
         $this->urlArgs['type'] = $type;
     }
 

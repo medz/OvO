@@ -14,14 +14,14 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwPollVoterDao extends PwBaseDao
 {
     protected $_table = 'app_poll_voter';
-    protected $_dataStruct = array('uid', 'poll_id', 'option_id', 'created_time');
+    protected $_dataStruct = ['uid', 'poll_id', 'option_id', 'created_time'];
 
     public function getPollByUid($uid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT DISTINCT(poll_id) FROM %s WHERE uid = ? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function getUserByOptionid($optionid, $limit, $offset)
@@ -29,7 +29,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT DISTINCT(uid) FROM %s WHERE option_id = ?  ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($optionid));
+        return $smt->queryAll([$optionid]);
     }
 
     public function getPollByUidAndPollid($uid, $pollids)
@@ -37,7 +37,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT DISTINCT(poll_id) FROM %s WHERE uid = ? AND poll_id IN %s', $this->getTable(), $this->sqlImplode($pollids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function getByPollid($pollid)
@@ -45,7 +45,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE poll_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($pollid));
+        return $smt->queryAll([$pollid]);
     }
 
     public function fetchPollByUid($uids, $limit, $offset)
@@ -69,7 +69,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM (SELECT DISTINCT(uid) FROM %s where poll_id = ? ) a ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($pollid));
+        return $smt->getValue([$pollid]);
     }
 
     public function countByOptionid($optionid)
@@ -77,7 +77,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM %s where option_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($optionid));
+        return $smt->getValue([$optionid]);
     }
 
     public function countUserByOptionid($optionid)
@@ -85,7 +85,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM (SELECT DISTINCT(uid) FROM %s where option_id = ?) a ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($optionid));
+        return $smt->getValue([$optionid]);
     }
 
     public function countByUid($uid)
@@ -93,7 +93,7 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM (SELECT DISTINCT(poll_id) FROM %s where uid = ?) a ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function countByUids($uids)
@@ -114,6 +114,6 @@ class PwPollVoterDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE poll_id = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pollid));
+        return $smt->update([$pollid]);
     }
 }

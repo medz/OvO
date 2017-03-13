@@ -23,7 +23,7 @@ class AuthController extends AdminBaseController
      */
     public function run()
     {
-        list($page) = $this->getInput(array('page'), 'get');
+        list($page) = $this->getInput(['page'], 'get');
         /* @var $service AdminAuthService */
         $service = Wekit::load('ADMIN:service.srv.AdminAuthService');
         list($count, $list, $page) = $service->fetchByPage($page, $this->perpage);
@@ -71,7 +71,7 @@ class AuthController extends AdminBaseController
             $user['username'] = $_user['username'];
         }
         $roles = Wekit::load('ADMIN:service.AdminRole')->findRoles();
-        $_tmp = array();
+        $_tmp = [];
         foreach ($roles as $role) {
             if (strpos(','.$user['roles'].',', ','.$role['name'].',') === false) {
                 continue;
@@ -88,7 +88,7 @@ class AuthController extends AdminBaseController
      */
     public function doEditAction()
     {
-        list($id, $roles) = $this->getInput(array('id', 'userRoles'), 'post');
+        list($id, $roles) = $this->getInput(['id', 'userRoles'], 'post');
         /* @var $service AdminAuthService */
         $service = Wekit::load('ADMIN:service.srv.AdminAuthService');
         $result = $service->edit($id, $roles);
@@ -114,7 +114,7 @@ class AuthController extends AdminBaseController
      */
     public function doAddAction()
     {
-        list($username, $roles) = $this->getInput(array('username', 'userRoles'), 'post');
+        list($username, $roles) = $this->getInput(['username', 'userRoles'], 'post');
         /* @var $service AdminAuthService */
         $service = Wekit::load('ADMIN:service.srv.AdminAuthService');
         $result = $service->add($username, $roles);

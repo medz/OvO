@@ -36,11 +36,11 @@ class PwErrorHandler extends WindError
             $this->getResponse()->setHeader('Content-type',
                 'application/json; charset='.$this->getResponse()->getCharset());
             echo Pw::jsonEncode(
-                array(
+                [
                     'referer' => null,
                     'refresh' => null,
                     'state'   => 'fail',
-                    'message' => $message, ));
+                    'message' => $message, ]);
             exit();
         }
 

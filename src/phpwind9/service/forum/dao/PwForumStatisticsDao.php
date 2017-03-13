@@ -15,7 +15,7 @@ class PwForumStatisticsDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum_statistics';
     protected $_pk = 'fid';
-    protected $_dataStruct = array('fid', 'todayposts', 'todaythreads', 'article', 'posts', 'threads', 'subthreads', 'lastpost_info', 'lastpost_time', 'lastpost_username', 'lastpost_tid');
+    protected $_dataStruct = ['fid', 'todayposts', 'todaythreads', 'article', 'posts', 'threads', 'subthreads', 'lastpost_info', 'lastpost_time', 'lastpost_username', 'lastpost_tid'];
     protected $_defaultBaseInstance = 'forum.dao.PwForumBaseDao';
 
     public function getForum($fid)
@@ -73,7 +73,7 @@ class PwForumStatisticsDao extends PwBaseDao
         return $fid;
     }
 
-    public function updateForum($fid, $fields, $increaseFields = array())
+    public function updateForum($fid, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->updateForum($fid, $fields, $increaseFields);
         $this->_update($fid, $fields, $increaseFields);
@@ -81,7 +81,7 @@ class PwForumStatisticsDao extends PwBaseDao
         return $result;
     }
 
-    public function batchUpdateForum($fids, $fields, $increaseFields = array())
+    public function batchUpdateForum($fids, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->batchUpdateForum($fids, $fields, $increaseFields);
         $this->_batchUpdate($fids, $fields, $increaseFields);
@@ -106,7 +106,7 @@ class PwForumStatisticsDao extends PwBaseDao
             $sql = $this->_bindTable('UPDATE %s SET article=threads+posts,subthreads=0 WHERE fid=?');
         }
         $smt = $this->getConnection()->createStatement($sql);
-        $smt->update(array($fid));
+        $smt->update([$fid]);
 
         return true;
     }

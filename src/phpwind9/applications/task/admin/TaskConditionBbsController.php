@@ -21,10 +21,10 @@ class TaskConditionBbsController extends AdminBaseController
         parent::beforeAction($handlerAdapter);
         $var = json_decode(urldecode($this->getInput('var', 'post')), true);
         if (is_array($var)) {
-            $condition = array(
+            $condition = [
                 'fid' => (int) (isset($var['fid']) ? $var['fid'] : 0),
                 'num' => (int) (isset($var['num']) ? $var['num'] : 0),
-            );
+            ];
 
             $this->setOutput($condition, 'condition');
         }
@@ -42,9 +42,9 @@ class TaskConditionBbsController extends AdminBaseController
     private function _buildForumTree($parentid, $map, $level = '')
     {
         if (!isset($map[$parentid])) {
-            return array();
+            return [];
         }
-        $array = array();
+        $array = [];
         foreach ($map[$parentid] as $key => $value) {
             $value['level'] = $level;
             $value['name'] = strip_tags($value['name']);
@@ -67,7 +67,7 @@ class TaskConditionBbsController extends AdminBaseController
         foreach ($catedb as $_k => $_v) {
             $catedb[$_k]['name'] = strip_tags($_v['name']);
         }
-        $forumList = array();
+        $forumList = [];
         foreach ($catedb as $value) {
             $forumList[$value['fid']] = $this->_buildForumTree($value['fid'], $map);
         }

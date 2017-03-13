@@ -11,7 +11,7 @@
 class PwFreshDao extends PwBaseDao
 {
     protected $_table = 'attention_fresh';
-    protected $_dataStruct = array('id', 'type', 'src_id', 'created_userid', 'created_time');
+    protected $_dataStruct = ['id', 'type', 'src_id', 'created_userid', 'created_time'];
 
     public function getFresh($id)
     {
@@ -28,7 +28,7 @@ class PwFreshDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS sum FROM %s WHERE created_userid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function getFreshByUid($uid, $limit, $offset)
@@ -36,7 +36,7 @@ class PwFreshDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'id');
+        return $smt->queryAll([$uid], 'id');
     }
 
     public function getFreshByType($type, $srcId)
@@ -44,7 +44,7 @@ class PwFreshDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE type=? AND src_id IN %s', $this->getTable(), $this->sqlImplode($srcId));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type), 'id');
+        return $smt->queryAll([$type], 'id');
     }
 
     public function addFresh($fields)

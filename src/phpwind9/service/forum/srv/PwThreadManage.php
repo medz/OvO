@@ -66,9 +66,9 @@ class PwThreadManage extends PwBaseHookService
         if (!is_null($this->permission)) {
             return $this->permission;
         }
-        if (!$this->permission = $this->user->getPermission('operate_thread', false, array())) {
+        if (!$this->permission = $this->user->getPermission('operate_thread', false, [])) {
             if (($fids = $this->getFids()) && $this->isBM($fids)) {
-                $this->permission = $this->user->getPermission('operate_thread', true, array());
+                $this->permission = $this->user->getPermission('operate_thread', true, []);
             }
         }
 
@@ -83,7 +83,7 @@ class PwThreadManage extends PwBaseHookService
     public function getFids()
     {
         if (is_null($this->_fids)) {
-            $fids = array();
+            $fids = [];
             foreach ($this->data as $key => $value) {
                 $fids[$value['fid']] = 1;
             }

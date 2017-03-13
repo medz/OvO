@@ -72,9 +72,9 @@ class windidadminBoot extends adminBoot
      *
      * @var array
      */
-    protected $dependenceServiceDefinitions = array(
-        'adminUserService' => array('path' => 'APPS:windidadmin.service.srv.do.AdminUserDependenceService'),
-    );
+    protected $dependenceServiceDefinitions = [
+        'adminUserService' => ['path' => 'APPS:windidadmin.service.srv.do.AdminUserDependenceService'],
+    ];
 
     public function getCache()
     {
@@ -113,17 +113,17 @@ class windidadminBoot extends adminBoot
     {
         parent::beforeStart($front);
         if (!Wind::getComponent('router')->getRoute('pw')) {
-            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', array('bbs')));
+            Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', ['bbs']));
         }
-        Wind::getComponent('router')->addRoute('admin', WindFactory::createInstance('PwAdminRoute', array('default')), true);
+        Wind::getComponent('router')->addRoute('admin', WindFactory::createInstance('PwAdminRoute', ['default']), true);
         Wekit::setapp('windid', Wekit::app());
     }
 
     protected function getConfigCacheValue()
     {
-        $vkeys = array('site', 'components', 'verify');
+        $vkeys = ['site', 'components', 'verify'];
         $array = Wekit::load('WSRV:config.WindidConfig')->fetchConfig($vkeys);
-        $config = array();
+        $config = [];
 
         //强制windid使用验证码;如果没有导入sql,这里就验证码默认设置
         $config['verify']['showverify'] = unserialize('a:1:{i:0;s:11:"windidlogin";}');
@@ -134,7 +134,7 @@ class windidadminBoot extends adminBoot
         $config['verify']['content.length'] = 6;
 
         foreach ($vkeys as $key => $value) {
-            $config[$value] = array();
+            $config[$value] = [];
         }
         foreach ($array as $key => $value) {
             $config[$value['namespace']][$value['name']] = $value['vtype'] != 'string' ? unserialize($value['value']) : $value['value'];

@@ -69,11 +69,11 @@ class windidclientBoot extends bootstrap
 
     protected function getConfigCacheValue()
     {
-        $vkeys = array('site', 'components', 'verify', 'attachment', 'reg');
+        $vkeys = ['site', 'components', 'verify', 'attachment', 'reg'];
         $array = WindidApi::api('config')->fetchConfig($vkeys);
-        $config = array();
+        $config = [];
         foreach ($vkeys as $key => $value) {
-            $config[$value] = array();
+            $config[$value] = [];
         }
         foreach ($array as $key => $value) {
             $config[$value['namespace']][$value['name']] = $value['vtype'] != 'string' ? unserialize($value['value']) : $value['value'];

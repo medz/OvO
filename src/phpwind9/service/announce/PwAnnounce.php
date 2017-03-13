@@ -139,7 +139,7 @@ class PwAnnounce
     public function getAnnounce($aid)
     {
         if ($aid < 1) {
-            return array();
+            return [];
         }
         $aid = (int) $aid;
 

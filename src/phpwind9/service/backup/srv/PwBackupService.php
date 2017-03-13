@@ -24,9 +24,9 @@ class PwBackupService
     public function getSpecialTables()
     {
         // 特殊数据表
-        $specialTables = array(
+        $specialTables = [
             'common_config',
-        );
+        ];
         $tablePrefix = $this->_getBackupDs()->getTablePrefix();
         foreach ($specialTables as $v) {
             $result[] = $tablePrefix.$v;
@@ -50,7 +50,7 @@ class PwBackupService
     public function backupSpecialTable($tabledb, $dirname, $isCompress, $insertmethod = 'common')
     {
         $tabledb = array_intersect($this->getSpecialTables(), $tabledb);
-        list($dirname, $isCompress) = array($dirname, intval($isCompress));
+        list($dirname, $isCompress) = [$dirname, intval($isCompress)];
         if (!$dirname || !is_array($tabledb) || !$tabledb) {
             return false;
         }
@@ -84,15 +84,15 @@ class PwBackupService
     public function backupData($tabledb, $tableid, $start, $sizelimit, $insertmethod = 'common', $filename = '')
     {
         if (!is_array($tabledb) || !count($tabledb)) {
-            return array();
+            return [];
         }
         $tableid = intval($tableid) ? intval($tableid) : 0;
-        list($backupData, $totalRows, $tableSaveInfo) = array('', 0, array());
+        list($backupData, $totalRows, $tableSaveInfo) = ['', 0, []];
         $method = (strtolower($insertmethod) == 'common') ? '_backupDataCommonMethod' : '_backupDataExtendMethod';
         list($backupData, $tableid, $start, $tableSaveInfo) = $this->$method($tabledb, $tableid, $start, $sizelimit);
         $this->_recordTableSaveInfo($tableSaveInfo, $filename);
 
-        return array($backupData, $tableid, $start);
+        return [$backupData, $tableid, $start];
     }
 
     /**
@@ -107,7 +107,7 @@ class PwBackupService
      */
     protected function _backupDataCommonMethod($tabledb, $tableid = 0, $start = 0, $sizelimit = 0)
     {
-        list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = array(0, '', array(), count($tabledb));
+        list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = [0, '', [], count($tabledb)];
         // 循环每个表
         while ($tableid < $totalTableNum) {
             if (!isset($tabledb[$tableid])) {
@@ -123,7 +123,7 @@ class PwBackupService
                 $tmpData = 'INSERT INTO '.$tabledb[$tableid].' VALUES('.$v[0];
                 $tmpData .= $this->_buildFieldsData($fieldNum, $v).");\n";
                 if ($sizelimit && (($this->_backupTipLength + strlen($backupData) + strlen($tmpData) + 2) > $sizelimit * 1000)) {
-                    $tableSaveInfo[$tabledb[$tableid]] = array('start' => $tmpWritedRows, 'end' => -1);
+                    $tableSaveInfo[$tabledb[$tableid]] = ['start' => $tmpWritedRows, 'end' => -1];
                     break 2;
                 }
                 $backupData .= $tmpData;
@@ -136,10 +136,10 @@ class PwBackupService
                 $tableid++;
             }
             $backupData .= "\n";
-            $tableSaveInfo[$tabledb[$tableid]] = array('start' => $tmpWritedRows, 'end' => $writedRows++);
+            $tableSaveInfo[$tabledb[$tableid]] = ['start' => $tmpWritedRows, 'end' => $writedRows++];
         }
 
-        return array($backupData, $tableid, $start, $tableSaveInfo);
+        return [$backupData, $tableid, $start, $tableSaveInfo];
     }
 
     /**
@@ -154,7 +154,7 @@ class PwBackupService
      */
     protected function _backupDataExtendMethod($tabledb, $tableid = 0, $start = 0, $sizelimit = 0)
     {
-        list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = array(0, '', array(), count($tabledb));
+        list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = [0, '', [], count($tabledb)];
         while ($tableid < $totalTableNum) {
             if (!isset($tabledb[$tableid])) {
                 continue;
@@ -172,7 +172,7 @@ class PwBackupService
                 $tmpData .= $this->_buildFieldsData($fieldNum, $v)."),\n";
                 if ($sizelimit && (($this->_backupTipLength + strlen($backupData) + strlen($tmpData) + strlen($outTmpData) + strlen($outFrontData) + 2) > $sizelimit * 1000)) {
                     $outTmpData && $backupData .= $outFrontData.rtrim($outTmpData, ",\n").";\n";
-                    $tableSaveInfo[$tabledb[$tableid]] = array('start' => $tmpWritedRows, 'end' => -1);
+                    $tableSaveInfo[$tabledb[$tableid]] = ['start' => $tmpWritedRows, 'end' => -1];
                     break 2;
                 }
                 $outTmpData .= $tmpData;
@@ -188,10 +188,10 @@ class PwBackupService
                 $tableid++;
             }
             $backupData .= "\n";
-            $tableSaveInfo[$tabledb[$tableid]] = array('start' => $tmpWritedRows, 'end' => $writedRows++);
+            $tableSaveInfo[$tabledb[$tableid]] = ['start' => $tmpWritedRows, 'end' => $writedRows++];
         }
 
-        return array($backupData, $tableid, $start, $tableSaveInfo);
+        return [$backupData, $tableid, $start, $tableSaveInfo];
     }
 
     /**
@@ -203,7 +203,7 @@ class PwBackupService
      */
     public function _selectData($table, $start, $num)
     {
-        list($start, $num) = array(intval($start), intval($num));
+        list($start, $num) = [intval($start), intval($num)];
 
         return $this->_getBackupDs()->getData($table, $start, $num);
     }
@@ -216,7 +216,7 @@ class PwBackupService
      */
     public function _buildFieldsData($total, $result)
     {
-        list($total, $data) = array(intval($total), '');
+        list($total, $data) = [intval($total), ''];
         if ($total < 2) {
             return $data;
         }
@@ -238,7 +238,7 @@ class PwBackupService
      */
     public function backupTable($tabledb, $dirname, $isCompress)
     {
-        list($dirname, $isCompress) = array($dirname, intval($isCompress));
+        list($dirname, $isCompress) = [$dirname, intval($isCompress)];
         if (!$dirname || !is_array($tabledb) || !count($tabledb)) {
             return false;
         }
@@ -479,7 +479,7 @@ class PwBackupService
                 }
 
                 if ($tablepre && $tablepre != $tablePrefix) {
-                    $query = str_replace(array(" $tablepre", "`$tablepre", " '$tablepre"), array(" $tablePrefix", "`$tablePrefix", " '$tablePrefix"), $query);
+                    $query = str_replace([" $tablepre", "`$tablepre", " '$tablepre"], [" $tablePrefix", "`$tablePrefix", " '$tablePrefix"], $query);
                 }
 
                 $this->_getBackupDs()->executeQuery($query);

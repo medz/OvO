@@ -13,7 +13,7 @@ class PwMessageConfigDao extends PwBaseDao
 {
     protected $_pk = 'uid';
     protected $_table = 'message_config';
-    protected $_dataStruct = array('uid', 'privacy', 'notice_types');
+    protected $_dataStruct = ['uid', 'privacy', 'notice_types'];
 
     /**
      * 获取用户消息配置.
@@ -27,7 +27,7 @@ class PwMessageConfigDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid));
+        return $smt->getOne([$uid]);
     }
 
     /**
@@ -54,11 +54,11 @@ class PwMessageConfigDao extends PwBaseDao
         if (!($data = $this->_filterStruct($data))) {
             return false;
         }
-        $data = array(
+        $data = [
             'uid'          => $data['uid'],
             'privacy'      => $data['privacy'],
             'notice_types' => $data['notice_types'],
-        );
+        ];
         $sql = $this->_bindSql('REPLACE INTO %s SET %s ', $this->getTable(), $this->sqlSingle($data));
 
         return $this->getConnection()->execute($sql);

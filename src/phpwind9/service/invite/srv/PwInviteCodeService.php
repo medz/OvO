@@ -50,12 +50,12 @@ class PwInviteCodeService
     {
         $data = $this->_getDs()->searchCode($search, $limit, $start);
         if (!$data) {
-            return array();
+            return [];
         }
-        $result = array();
+        $result = [];
         $time = Wekit::C('register', 'invite.expired');
         $expire = Pw::getTime() - ($time * 86400);
-        $_invitedUid = array();
+        $_invitedUid = [];
         foreach ($data as $_item) {
             $_item['status'] = $_item['created_time'] < $expire ? '-1' : $_item['ifused'];
             $_item['expired_time'] = $_item['created_time'] + $time * 86400;
@@ -89,8 +89,8 @@ class PwInviteCodeService
             return $r;
         }
         $num = intval(ceil($num));
-        $codes = $this->createCodes(array(), $user->uid, $num);
-        $data = array();
+        $codes = $this->createCodes([], $user->uid, $num);
+        $data = [];
         $time = Pw::getTime();
         foreach ($codes as $_code) {
             $dm = new PwInviteCodeDm();
@@ -108,7 +108,7 @@ class PwInviteCodeService
         //TODO【积分日志】购买邀请码
         /* @var $credit PwCreditBo */
         $credit = PwCreditBo::getInstance();
-        $credit->sets($user->uid, array($creditType => -($gidCreditNum * $num)));
+        $credit->sets($user->uid, [$creditType => -($gidCreditNum * $num)]);
     }
 
     /**
@@ -132,12 +132,12 @@ class PwInviteCodeService
         $readyBuy = $this->_getDs()->countByUidAndTime($user->uid, $startTime);
         $gidLimit = abs(ceil($user->getPermission('invite_limit_24h')));
         if (($readyBuy + $num) > $gidLimit) {
-            return new PwError('USER:invite.buy.num.24h.limit', array('{num}' => $gidLimit, '{readynum}' => $readyBuy));
+            return new PwError('USER:invite.buy.num.24h.limit', ['{num}' => $gidLimit, '{readynum}' => $readyBuy]);
         }
 
         $price = abs(ceil($user->getPermission('invite_buy_credit_num')));
         if (($price * $num) > $user->getCredit($creditType)) {
-            return new PwError('USER:invite.buy.credit.no.enough', array('{num}' => $user->getCredit($creditType), '{buynum}' => $num));
+            return new PwError('USER:invite.buy.credit.no.enough', ['{num}' => $user->getCredit($creditType), '{buynum}' => $num]);
         }
 
         return true;
@@ -169,7 +169,7 @@ class PwInviteCodeService
      */
     private function createCodes($data, $uid, $num)
     {
-        $codes = array();
+        $codes = [];
         for ($i = 0; $i < $num; $i++) {
             $codes[] = $this->createInviteCode($uid);
         }

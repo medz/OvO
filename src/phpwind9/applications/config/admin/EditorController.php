@@ -27,7 +27,7 @@ class EditorController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($style, $contentDuplicate, $cvtimes, $imgOpen, $imgWidth, $imgHeight, $sizeMax, $flashOpen, $mediaOpen, $iframeOpen) = $this->getInput(array('style', 'content_duplicate', 'cvtimes', 'img_open', 'img_width', 'img_height', 'size_max', 'flash_open', 'media_open', 'iframe_open'), 'post');
+        list($style, $contentDuplicate, $cvtimes, $imgOpen, $imgWidth, $imgHeight, $sizeMax, $flashOpen, $mediaOpen, $iframeOpen) = $this->getInput(['style', 'content_duplicate', 'cvtimes', 'img_open', 'img_width', 'img_height', 'size_max', 'flash_open', 'media_open', 'iframe_open'], 'post');
 
         $config = new PwConfigSet('bbs');
         $config->set('editor.style', $style ? 1 : 0)

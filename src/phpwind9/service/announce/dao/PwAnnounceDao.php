@@ -15,7 +15,7 @@ class PwAnnounceDao extends PwBaseDao
 {
     protected $_table = 'announce';
     protected $_pk = 'aid';
-    protected $_dataStruct = array('aid', 'vieworder', 'created_userid', 'typeid', 'url', 'subject', 'content', 'start_date', 'end_date');
+    protected $_dataStruct = ['aid', 'vieworder', 'created_userid', 'typeid', 'url', 'subject', 'content', 'start_date', 'end_date'];
 
     /**
      * 添加一条公告信息.
@@ -97,7 +97,7 @@ class PwAnnounceDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE start_date <= ? AND end_date >= ? ORDER BY vieworder ASC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($time, $time), 'aid');
+        return $smt->queryAll([$time, $time], 'aid');
     }
 
     /**
@@ -126,7 +126,7 @@ class PwAnnounceDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) as count FROM %s WHERE start_date <= ? AND end_date >= ? ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($time, $time));
+        return $smt->getValue([$time, $time]);
     }
 
     /**

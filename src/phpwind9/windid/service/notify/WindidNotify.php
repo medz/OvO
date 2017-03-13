@@ -20,7 +20,7 @@ class WindidNotify
     public function fetchNotify($nids)
     {
         if (!is_array($nids) || !$nids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($nids);

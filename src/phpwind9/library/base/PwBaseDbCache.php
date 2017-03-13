@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 abstract class PwBaseDbCache
 {
     protected $path;
-    protected $keys = array();
+    protected $keys = [];
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ abstract class PwBaseDbCache
 
     public function __call($methodName, $args)
     {
-        return call_user_func_array(array($this->_getDao(), $methodName), $args);
+        return call_user_func_array([$this->_getDao(), $methodName], $args);
     }
 
     protected function _getDao()

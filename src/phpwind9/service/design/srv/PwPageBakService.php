@@ -11,7 +11,7 @@
  */
 class PwPageBakService
 {
-    protected $pageInfo = array();
+    protected $pageInfo = [];
     protected $pageid = 0;
 
     /**
@@ -23,7 +23,7 @@ class PwPageBakService
     public function doBak($pageid)
     {
         $ds = $this->_getBakDs();
-        $type = array(PwDesignBak::SEGMENT, PwDesignBak::MODULE, PwDesignBak::PAGE, PwDesignBak::STRUCTURE);
+        $type = [PwDesignBak::SEGMENT, PwDesignBak::MODULE, PwDesignBak::PAGE, PwDesignBak::STRUCTURE];
         foreach ($type as $v) {
             $ds->deleteBak($v, $pageid, 0);
             $ds->updateSnap($v, $pageid, 1, 0);
@@ -66,7 +66,7 @@ class PwPageBakService
         $info = $this->_getStructureDs()->fetchStruct($names);
         if (!$info) {
             foreach ($names as $name) {
-                $info[$name] = array();
+                $info[$name] = [];
             }
         }
         $this->_getBakDs()->replaceBak(PwDesignBak::STRUCTURE, $this->pageid, 1, $info);
@@ -80,7 +80,7 @@ class PwPageBakService
 
     protected function bakData()
     {
-        $moduleids = $this->pageInfo['module_ids'] ? explode(',', $this->pageInfo['module_ids']) : array();
+        $moduleids = $this->pageInfo['module_ids'] ? explode(',', $this->pageInfo['module_ids']) : [];
         $data = $this->_getDataDs()->fetchDataByModuleid($moduleids);
         $this->_getBakDs()->replaceBak(PwDesignBak::DATA, $this->pageid, 1, $data);
     }

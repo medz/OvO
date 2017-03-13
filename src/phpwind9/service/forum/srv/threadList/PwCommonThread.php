@@ -31,7 +31,7 @@ class PwCommonThread extends PwThreadDataSource
 
     public function getData($limit, $offset)
     {
-        $threaddb = array();
+        $threaddb = [];
         if ($offset < $this->count) {
             $array = $this->_getThreadDs()->fetchThreadByTid($this->specialSortTids, $limit, $offset);
             foreach ($array as $key => $value) {

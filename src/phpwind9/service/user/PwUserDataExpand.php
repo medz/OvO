@@ -19,7 +19,7 @@ class PwUserDataExpand
     public function getCreditStruct()
     {
         $struct = $this->_getDao()->getStruct();
-        $credit = array();
+        $credit = [];
         foreach ($struct as $_key) {
             if (strpos($_key, 'credit') === 0) {
                 $credit[] = $_key;

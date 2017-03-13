@@ -12,12 +12,12 @@
  */
 class PwApplicationUpload
 {
-    public $ftype = array('zip' => 10000);
+    public $ftype = ['zip' => 10000];
     public $dir = ATTACH_PATH;
 
     public function execute()
     {
-        $uploaddb = array();
+        $uploaddb = [];
         foreach ($_FILES as $key => $value) {
             if (!$this->isUploadedFile($value['tmp_name'])) {
                 continue;
@@ -81,13 +81,13 @@ class PwApplicationUpload
     public function checkFile($file)
     {
         if (!$file->ext || !isset($this->ftype[$file->ext])) {
-            return new PwError(array('upload.ext.error', array('{ext}' => '.'.$file->ext)));
+            return new PwError(['upload.ext.error', ['{ext}' => '.'.$file->ext]]);
         }
         if ($file->size < 1) {
             return new PwError('upload.size.less');
         }
         if ($file->size > $this->ftype[$file->ext] * 1024) {
-            return new PwError(array('upload.size.over', array('{size}' => $this->ftype[$file->ext])));
+            return new PwError(['upload.size.over', ['{size}' => $this->ftype[$file->ext]]]);
         }
 
         return true;
@@ -124,7 +124,7 @@ class PwUploadFile
     public $ext;
     public $source;
 
-    protected $_thumb = array();
+    protected $_thumb = [];
 
     public function __construct($key, $value)
     {
@@ -138,7 +138,7 @@ class PwUploadFile
 
     public function getInfo()
     {
-        return array(
+        return [
             'id'            => $this->id,
             'attname'       => $this->attname,
             'name'          => $this->name,
@@ -147,7 +147,7 @@ class PwUploadFile
             'ifthumb'       => $this->ifthumb,
             'fileuploadurl' => $this->fileuploadurl,
             'ext'           => $this->ext,
-        );
+        ];
     }
 
     public function operate($bhv, $store)

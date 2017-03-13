@@ -58,7 +58,7 @@ class PwVerifyCode
 
     public function getVerify()
     {
-        $_tmps = array();
+        $_tmps = [];
 
         $_tmps = $this->_config['content.type'];
         $_key = array_rand($_tmps, 1);
@@ -123,18 +123,18 @@ class PwVerifyCode
             $a = rand(1, 70);
             $b = rand(1, 30);
 
-            return array('ask' => strval($a).' + '.strval($b).'= ?', 'answer' => $a + $b);
+            return ['ask' => strval($a).' + '.strval($b).'= ?', 'answer' => $a + $b];
         } else {
             $a = rand(50, 100);
             $b = rand(1, 50);
 
-            return array('ask' => strval($a).' - '.strval($b).'= ?', 'answer' => $a - $b);
+            return ['ask' => strval($a).' - '.strval($b).'= ?', 'answer' => $a - $b];
         }
     }
 
     private function _getGDRandType()
     {
-        $isRands = array('isRandBackground', 'isRandGraph', 'isRandFont', 'isRandSize', 'isRandAngle', 'isRandColor', 'isRandGif', 'isRandDistortion');
+        $isRands = ['isRandBackground', 'isRandGraph', 'isRandFont', 'isRandSize', 'isRandAngle', 'isRandColor', 'isRandGif', 'isRandDistortion'];
         foreach ((array) $this->_config['randtype'] as $rand) {
             $rand = 'isRand'.ucfirst($rand);
             if (in_array($rand, $isRands)) {

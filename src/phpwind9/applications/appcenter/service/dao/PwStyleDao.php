@@ -14,7 +14,7 @@ class PwStyleDao extends PwBaseDao
 {
     protected $_pk = 'app_id';
     protected $_table = 'style';
-    protected $_dataStruct = array('app_id', 'iscurrent', 'style_type', 'name', 'alias', 'logo', 'author_name', 'author_icon', 'author_email', 'website', 'version', 'pwversion', 'created_time', 'modified_time', 'description');
+    protected $_dataStruct = ['app_id', 'iscurrent', 'style_type', 'name', 'alias', 'logo', 'author_name', 'author_icon', 'author_email', 'website', 'version', 'pwversion', 'created_time', 'modified_time', 'description'];
 
     /**
      * 添加.
@@ -62,7 +62,7 @@ class PwStyleDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `style_type` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($type));
+        return $this->getConnection()->createStatement($sql)->getValue([$type]);
     }
 
     /**
@@ -74,7 +74,7 @@ class PwStyleDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `iscurrent` = 1 AND `style_type` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($type));
+        return $this->getConnection()->createStatement($sql)->getOne([$type]);
     }
 
     /**
@@ -92,7 +92,7 @@ class PwStyleDao extends PwBaseDao
             'SELECT * FROM %s WHERE `style_type` = ? ORDER BY `iscurrent` DESC %s',
             $this->getTable(), $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([$type], $this->_pk);
     }
 
     /**
@@ -106,7 +106,7 @@ class PwStyleDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `style_type` = ?');
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([$type], $this->_pk);
     }
 
     /**
@@ -128,11 +128,11 @@ class PwStyleDao extends PwBaseDao
      */
     public function fetchStyleByAliasAndType($packages, $type = 'site', $index = 'app_id')
     {
-        is_array($packages) || $packages = array($packages);
+        is_array($packages) || $packages = [$packages];
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `alias` IN %s AND style_type = ?', $this->getTable(),
             $this->sqlImplode($packages));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($type), $index);
+        return $this->getConnection()->createStatement($sql)->queryAll([$type], $index);
     }
 
     /**
@@ -149,6 +149,6 @@ class PwStyleDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($appId));
+        return $this->getConnection()->createStatement($sql)->getOne([$appId]);
     }
 }

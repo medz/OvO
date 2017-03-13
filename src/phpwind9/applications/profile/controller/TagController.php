@@ -43,7 +43,7 @@ class TagController extends BaseProfileController
         if ($result instanceof PwError) {
             $this->showError($result->getError());
         }
-        $this->setOutput(array('id' => $result, 'name' => $tag), 'data');
+        $this->setOutput(['id' => $result, 'name' => $tag], 'data');
         $this->showMessage('USER:tag.add.success');
     }
 
@@ -88,11 +88,11 @@ class TagController extends BaseProfileController
         $page > $totalPage && $page = 1;
         list($start, $limit) = Pw::page2limit($page, $this->perpage);
         $hotTags = $this->_getDs()->getHotTag($this->perpage, $start);
-        $list = array();
+        $list = [];
         foreach ($hotTags as $_item) {
-            $list[] = array('tag_id' => $_item['tag_id'], 'name' => $_item['name']);
+            $list[] = ['tag_id' => $_item['tag_id'], 'name' => $_item['name']];
         }
-        $data = array('list' => $list, 'page' => $page + 1);
+        $data = ['list' => $list, 'page' => $page + 1];
         $this->setOutput($data, 'data');
         $this->showMessage('');
     }

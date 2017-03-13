@@ -19,7 +19,7 @@ class PwSpace
     {
         $uid = (int) $uid;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSpace($uid);
@@ -33,7 +33,7 @@ class PwSpace
     public function fetchSpace($uids)
     {
         if (!is_array($uids) || count($uids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchSpace($uids);

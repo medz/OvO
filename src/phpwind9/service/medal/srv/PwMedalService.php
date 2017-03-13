@@ -19,12 +19,12 @@ class PwMedalService
      */
     public function getUserMedal($uid)
     {
-        $_medals = array();
+        $_medals = [];
         $userMedal = $this->_getMedalUserDs()->getMedalUser($uid);
         if (!$userMedal) {
-            return array();
+            return [];
         }
-        $medalIds = empty($userMedal['medals']) ? array() : explode(',', $userMedal['medals']);
+        $medalIds = empty($userMedal['medals']) ? [] : explode(',', $userMedal['medals']);
         $medalIds = array_unique($medalIds);
         $medals = $this->_getMedalDs()->fetchMedalInfo($medalIds);
         foreach ($medalIds as $medalId) {
@@ -49,16 +49,16 @@ class PwMedalService
     public function fetchUserMedal($uids)
     {
         if (!is_array($uids)) {
-            return array();
+            return [];
         }
-        $_userMedalIds = $_allMedalId = $_medals = array();
+        $_userMedalIds = $_allMedalId = $_medals = [];
         $userMedal = $this->_getMedalUserDs()->fetchMedalUser($uids);
         if (!$userMedal) {
-            return array();
+            return [];
         }
 
         foreach ($uids as $uid) {
-            $_userMedalIds[$uid] = !$userMedal[$uid]['medals'] ? array() : explode(',', $userMedal[$uid]['medals']);
+            $_userMedalIds[$uid] = !$userMedal[$uid]['medals'] ? [] : explode(',', $userMedal[$uid]['medals']);
             $_allMedalId = array_merge($_allMedalId, $_userMedalIds[$uid]);
         }
         $_allMedalId = array_unique($_allMedalId);
@@ -66,7 +66,7 @@ class PwMedalService
         $attachUrl = Pw::getPath('').'medal/';
         $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($_userMedalIds as $uid => $medalIds) {
-            $_medalInfo = array();
+            $_medalInfo = [];
             foreach ($medalIds as $medalId) {
                 if (!$medals[$medalId]) {
                     continue;
@@ -162,7 +162,7 @@ class PwMedalService
             case 4:
             case 6:
             case 7:
-                $extendParams = array('logid' => $logId, 'name' => $info['name'], 'medelId' => $medelId, 'type' => $type, 'reason' => $reason);
+                $extendParams = ['logid' => $logId, 'name' => $info['name'], 'medelId' => $medelId, 'type' => $type, 'reason' => $reason];
 
                 return Wekit::load('SRV:message.srv.PwNoticeService')->sendNotice($uid, 'medal', $param, $extendParams);
             case 5:
@@ -171,7 +171,7 @@ class PwMedalService
                 if (!$reason) {
                     $reason = $info['receive_type'] == 1 ? '您的'.$lang->getMessage('MEDAL:awardtype.'.$awardType).'低于勋章设定值'.$info['award_condition'] : '';
                 }
-                $extendParams = array('logid' => $logId, 'name' => $info['name'], 'medelId' => $medelId, 'type' => $type, 'reason' => $reason);
+                $extendParams = ['logid' => $logId, 'name' => $info['name'], 'medelId' => $medelId, 'type' => $type, 'reason' => $reason];
 
                 return Wekit::load('SRV:message.srv.PwNoticeService')->sendNotice($uid, 'medal', $param, $extendParams);
         }
@@ -219,7 +219,7 @@ class PwMedalService
      */
     public function updateMedalUser($uid)
     {
-        $expireds = $medalids = array();
+        $expireds = $medalids = [];
         $time = Pw::getTime();
         $logs = $this->_getMedalLogDs()->getInfoListByUidStatus($uid, 4);
         foreach ($logs as $log) {
@@ -269,15 +269,15 @@ class PwMedalService
      */
     public function getMedalAllCacheValue()
     {
-        $medalAll = array();
+        $medalAll = [];
         $all = $this->_getMedalDs()->getAllMedal();
         foreach ($all as $medal) {
-            $medalAll[$medal['medal_id']] = array(
+            $medalAll[$medal['medal_id']] = [
                 'name'  => $medal['name'],
                 'path'  => $medal['path'],
                 'image' => $medal['image'],
                 'icon'  => $medal['icon'],
-            );
+            ];
         }
 
         return $medalAll;
@@ -290,7 +290,7 @@ class PwMedalService
      */
     public function getMedalAutoCacheValue()
     {
-        $medalAuto = array();
+        $medalAuto = [];
         $auto = $this->_getMedalDs()->getInfoListByReceiveType(1, 1);
         foreach ($auto as $medal) {
             $medalAuto[] = $medal['medal_id'];
@@ -318,7 +318,7 @@ class PwMedalService
 
     public function getUserBehavior($uid)
     {
-        $_array = array();
+        $_array = [];
         $behaviors = Wekit::load('user.PwUserBehavior')->getBehaviorList($uid);
         $awardTypes = $this->awardTypes();
         foreach ($behaviors as $behavior) {
@@ -334,7 +334,7 @@ class PwMedalService
 
     public function awardTypes($type = '')
     {
-        $_array = array(
+        $_array = [
             1  => 'login_days',
             2  => 'post_days',
             3  => 'thread_days',
@@ -345,7 +345,7 @@ class PwMedalService
             8  => 'follow_number',
             9  => 'like_count',
             10 => 'login_count',
-        );
+        ];
         if (!empty($type)) {
             return $_array[$type];
         }

@@ -13,7 +13,7 @@ class PwRemindDao extends PwBaseDao
 {
     protected $_pk = 'uid';
     protected $_table = 'remind';
-    protected $_dataStruct = array('uid', 'touid');
+    protected $_dataStruct = ['uid', 'touid'];
 
     /**
      * 查询一条

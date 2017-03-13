@@ -42,7 +42,7 @@ class App_SearchForum extends App_SearchAction
      */
     public function build($list, $keywords)
     {
-        $user = array();
+        $user = [];
         foreach ($list as $_key => $_item) {
             $_item['username'] = $this->_highlighting(strip_tags($_item['username']), $keywords);
             $user[$_key] = $_item;

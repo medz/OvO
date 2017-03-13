@@ -12,6 +12,6 @@ abstract class WindidBaseDao extends PwBaseDao
 {
     public function __construct()
     {
-        $this->setDelayAttributes(array('connection' => array('ref' => 'windiddb')));
+        $this->setDelayAttributes(['connection' => ['ref' => 'windiddb']]);
     }
 }

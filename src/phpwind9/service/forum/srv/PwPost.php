@@ -81,7 +81,7 @@ class PwPost extends PwBaseHookService
         }
         if (($result = $this->forum->allowVisit($this->user)) !== true) {
             return new PwError('BBS:forum.permissions.visit.allow',
-                array('{grouptitle}' => $this->user->getGroupInfo('name')));
+                ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
 
         return true;
@@ -125,7 +125,7 @@ class PwPost extends PwBaseHookService
                 $this->user->info['groups'] = '';
                 $this->user->info['groupid'] = 0;
                 $this->user->info['memberid'] = $memberid;
-                $this->user->groups = array($memberid);
+                $this->user->groups = [$memberid];
                 $this->user->resetGid($memberid);
 
                 return false;
@@ -204,7 +204,7 @@ class PwPost extends PwBaseHookService
         $credit = PwCreditBo::getInstance();
         if ($operation = $this->action->getCreditOperate()) {
             $credit->operate($operation, $this->user, true,
-                array('forumname' => $this->forum->foruminfo['name']),
+                ['forumname' => $this->forum->foruminfo['name']],
                 $this->forum->getCreditSet($operation));
         }
         $credit->execute();
@@ -222,7 +222,7 @@ class PwPost extends PwBaseHookService
     public function runDo($method)
     {
         $args = func_get_args();
-        call_user_func_array(array($this->action, 'runDo'), $args);
+        call_user_func_array([$this->action, 'runDo'], $args);
     }
 
     public function getHookKey()

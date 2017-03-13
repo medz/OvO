@@ -19,7 +19,7 @@ class PwProcess
     public function getProcess($flag)
     {
         if (!$flag) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getProcess($flag);
@@ -37,7 +37,7 @@ class PwProcess
         if (empty($flag) || empty($time)) {
             return false;
         }
-        $data = array();
+        $data = [];
         $data['flag'] = $flag;
         $data['expired_time'] = $time;
 

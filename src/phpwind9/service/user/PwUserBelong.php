@@ -21,7 +21,7 @@ class PwUserBelong
     public function getUserBelongs($uid)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByUid($uid);
@@ -30,7 +30,7 @@ class PwUserBelong
     public function getUserByGid($gid)
     {
         if (!$gid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByGid($gid);
@@ -46,7 +46,7 @@ class PwUserBelong
     public function fetchUserByUid($uids)
     {
         if (!$uids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchUserByUid($uids);

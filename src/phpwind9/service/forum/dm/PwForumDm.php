@@ -49,7 +49,7 @@ class PwForumDm extends PwBaseDm
 
     public function setManager($manager)
     {
-        $array = array();
+        $array = [];
         is_array($manager) || $manager = explode(',', $manager);
         foreach ($manager as $key => $value) {
             if ($value) {
@@ -63,7 +63,7 @@ class PwForumDm extends PwBaseDm
 
     public function setUpperManager($manager)
     {
-        $array = array();
+        $array = [];
         is_array($manager) || $manager = explode(',', $manager);
         foreach ($manager as $key => $value) {
             if ($value) {
@@ -388,7 +388,7 @@ class PwForumDm extends PwBaseDm
         } else {
             $this->_data['type'] = 'category';
         }
-        $this->_data['issub'] = in_array($this->_data['type'], array('category', 'forum')) ? 0 : 1;
+        $this->_data['issub'] = in_array($this->_data['type'], ['category', 'forum']) ? 0 : 1;
 
         return true;
     }
@@ -400,12 +400,12 @@ class PwForumDm extends PwBaseDm
         }
         $users = Wekit::load('user.PwUser')->fetchUserByName($this->_data['manager']);
         if (count($this->_data['manager']) != count($users)) {
-            $array = array();
+            $array = [];
             foreach ($users as $key => $value) {
                 $array[] = $value['username'];
             }
             if ($diff = array_diff($this->_data['manager'], $array)) {
-                return new PwError('USER:exists.not', array('{username}' => implode('、', $diff)));
+                return new PwError('USER:exists.not', ['{username}' => implode('、', $diff)]);
             }
         }
 
@@ -414,20 +414,20 @@ class PwForumDm extends PwBaseDm
 
     protected function _formatData()
     {
-        foreach (array('settings_basic', 'settings_credit') as $key => $value) {
+        foreach (['settings_basic', 'settings_credit'] as $key => $value) {
             isset($this->_data[$value]) && $this->_data[$value] = serialize($this->_data[$value]);
         }
-        foreach (array('manager', 'uppermanager') as $key => $value) {
+        foreach (['manager', 'uppermanager'] as $key => $value) {
             isset($this->_data[$value]) && $this->_data[$value] = $this->_data[$value] ? ','.implode(',', $this->_data[$value]).',' : '';
         }
-        foreach (array('allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download') as $key => $value) {
+        foreach (['allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download'] as $key => $value) {
             isset($this->_data[$value]) && $this->_data[$value] = $this->_data[$value] ? implode(',', $this->_data[$value]) : '';
         }
     }
 
     protected function _lowerType($type)
     {
-        $array = array('category', 'forum', 'sub', 'sub2');
+        $array = ['category', 'forum', 'sub', 'sub2'];
         $index = array_search($type, $array);
 
         return $array[++$index];

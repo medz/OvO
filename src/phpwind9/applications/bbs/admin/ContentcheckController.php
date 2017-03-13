@@ -18,7 +18,7 @@ class ContentcheckController extends AdminBaseController
     public function run()
     {
         $page = intval($this->getInput('page'));
-        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(array('author', 'fid', 'created_time_start', 'created_time_end'));
+        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(['author', 'fid', 'created_time_start', 'created_time_end']);
 
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -36,7 +36,7 @@ class ContentcheckController extends AdminBaseController
                 $so->setFid($fid);
             } else {
                 $srv = Wekit::load('forum.srv.PwForumService');
-                $fids = array(0);
+                $fids = [0];
                 $forums = $srv->getForumsByLevel($fid, $srv->getForumMap());
                 foreach ($forums as $value) {
                     $fids[] = $value['fid'];
@@ -57,12 +57,12 @@ class ContentcheckController extends AdminBaseController
         $this->setOutput($threaddb, 'threadb');
         $this->setOutput(Wekit::load('forum.srv.PwForumService')->getForumList($fid), 'forumlist');
         $this->setOutput(Wekit::load('forum.srv.PwForumService')->getForumOption($fid), 'option_html');
-        $this->setOutput(array(
+        $this->setOutput([
             'author'             => $author,
             'created_time_start' => $createdTimeStart,
             'created_time_end'   => $createdTimeEnd,
             'fid'                => $fid,
-        ), 'args');
+        ], 'args');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
         $this->setOutput($count, 'count');
@@ -74,7 +74,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = array($tid);
+        !is_array($tid) && $tid = [$tid];
 
         $service = new PwPassTopic(new PwFetchTopicByTid($tid));
         $service->execute();
@@ -88,7 +88,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = array($tid);
+        !is_array($tid) && $tid = [$tid];
 
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
@@ -99,7 +99,7 @@ class ContentcheckController extends AdminBaseController
     public function replyAction()
     {
         $page = intval($this->getInput('page'));
-        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(array('author', 'fid', 'created_time_start', 'created_time_end'));
+        list($author, $fid, $createdTimeStart, $createdTimeEnd) = $this->getInput(['author', 'fid', 'created_time_start', 'created_time_end']);
 
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -107,7 +107,7 @@ class ContentcheckController extends AdminBaseController
 
         $so = new PwPostSo();
         $so->setDisabled(1)->orderbyCreatedTime(0);
-        $args = array();
+        $args = [];
 
         if ($author) {
             $so->setAuthor($author);
@@ -119,7 +119,7 @@ class ContentcheckController extends AdminBaseController
                 $so->setFid($fid);
             } else {
                 $srv = Wekit::load('forum.srv.PwForumService');
-                $fids = array(0);
+                $fids = [0];
                 $forums = $srv->getForumsByLevel($fid, $srv->getForumMap());
                 foreach ($forums as $value) {
                     $fids[] = $value['fid'];
@@ -155,7 +155,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = array($pid);
+        !is_array($pid) && $pid = [$pid];
 
         $service = new PwPassReply(new PwFetchReplyByPid($pid));
         $service->execute();
@@ -169,7 +169,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = array($pid);
+        !is_array($pid) && $pid = [$pid];
 
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();

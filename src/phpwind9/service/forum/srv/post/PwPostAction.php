@@ -136,7 +136,7 @@ abstract class PwPostAction extends PwBaseHookService
     {
         $pertime = $this->user->getPermission('post_pertime'); //防灌水
         if ($pertime && Pw::getTime() - $this->user->info['lastpost'] < $pertime) {
-            return new PwError('BBS:post.pertime', array('{pertime}' => $pertime));
+            return new PwError('BBS:post.pertime', ['{pertime}' => $pertime]);
         }
 
         return true;
@@ -146,7 +146,7 @@ abstract class PwPostAction extends PwBaseHookService
     {
         $allow = $this->user->getPermission('threads_perday');
         if ($allow > 0 && $this->user->info['todaypost'] >= $allow && $this->user->info['lastpost'] > Pw::getTdtime()) {
-            return new PwError(array('BBS:post.perday.max', array('{max}' => $allow)));
+            return new PwError(['BBS:post.perday.max', ['{max}' => $allow]]);
         }
 
         return true;

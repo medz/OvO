@@ -13,14 +13,14 @@ class PwMessageNoticesDao extends PwBaseDao
 {
     protected $_table = 'message_notices';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'uid', 'title', 'typeid', 'param', 'extend_params', 'is_read', 'is_ignore', 'modified_time', 'created_time');
+    protected $_dataStruct = ['id', 'uid', 'title', 'typeid', 'param', 'extend_params', 'is_read', 'is_ignore', 'modified_time', 'created_time'];
 
     public function getNotice($id)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($id));
+        return $smt->getOne([$id]);
     }
 
     public function getPrevNotice($uid, $id)
@@ -28,7 +28,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND id<? ORDER BY `id` DESC LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $id));
+        return $smt->getOne([$uid, $id]);
     }
 
     public function getNextNotice($uid, $id)
@@ -36,7 +36,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND id>? ORDER BY `id` ASC LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $id));
+        return $smt->getOne([$uid, $id]);
     }
 
     public function getNoticesOrderByRead($uid, $num)
@@ -45,7 +45,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? ORDER BY is_read ASC,modified_time DESC LIMIT ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $num));
+        return $smt->queryAll([$uid, $num]);
     }
 
     public function getNotices($uid, $typeid, $offset = 0, $num = 20)
@@ -53,7 +53,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $offset = intval($offset);
         $num = intval($num);
         $typeid = intval($typeid);
-        $params = array($uid);
+        $params = [$uid];
         $sql = 'SELECT * FROM %s WHERE uid=?';
         if ($typeid > 1) {
             $params[] = $typeid;
@@ -80,7 +80,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE uid=? AND `is_read`=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function addNotice($fields)
@@ -106,7 +106,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND `typeid`=? AND `param`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $type, $param));
+        return $smt->getOne([$uid, $type, $param]);
     }
 
     /**
@@ -119,15 +119,15 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS num,typeid FROM %s WHERE uid=? AND typeid>1 GROUP BY typeid');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
-    public function updateNotice($id, $fields, $increaseFields = array())
+    public function updateNotice($id, $fields, $increaseFields = [])
     {
         return $this->_update($id, $fields, $increaseFields);
     }
 
-    public function batchUpdateNotice($ids, $fields, $increaseFields = array())
+    public function batchUpdateNotice($ids, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($ids, $fields, $increaseFields);
     }
@@ -137,7 +137,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE uid=? AND typeid=? ', $this->getTable(), $this->sqlSingle($fields));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $type));
+        return $smt->update([$uid, $type]);
     }
 
     /**
@@ -150,7 +150,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($id));
+        return $smt->update([$id]);
     }
 
     /**
@@ -171,7 +171,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `id` IN '.$this->sqlImplode($ids).' AND uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid), true);
+        return $smt->update([$uid], true);
     }
 
     /**
@@ -187,7 +187,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid`=? AND `typeid`=? AND `param`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $type, $param));
+        return $smt->update([$uid, $type, $param]);
     }
 
     /**
@@ -201,7 +201,7 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     /**
@@ -217,6 +217,6 @@ class PwMessageNoticesDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid`=? AND `typeid`=? AND `param` IN '.$this->sqlImplode($params));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $type));
+        return $smt->update([$uid, $type]);
     }
 }

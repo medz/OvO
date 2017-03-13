@@ -4,7 +4,7 @@ defined('WEKIT_VERSION') or exit(403);
 /*
  * 全局配置
  */
-return array(
+return [
 
 /**=====配置开始于此=====**/
 
@@ -15,9 +15,9 @@ return array(
 
 'mem.isopen'  => 0,                //开启memcache缓存，请确保服务器上已安装 memcache 服务，并已作好相应配置
 'mem.server'  => 'MemCache',        //memcache服务名，有MemCache和MemCached两种，看当前php扩展安装的是哪个
-'mem.servers' => array(
-    'default' => array(
-        array(
+'mem.servers' => [
+    'default' => [
+        [
             'host'      => 'localhost',
             'port'      => 11211,
             'pconn'     => false,
@@ -26,26 +26,26 @@ return array(
             'retry'     => 15,
             'status'    => true,
             'fcallback' => null,
-        ),
-    ),
-),
+        ],
+    ],
+],
 'mem.key.prefix' => 'pw',
 
 'redis.isopen'  => 0,            //开启redis缓存，请确保服务器上已安装 redis 服务，并已作好相应配置
-'redis.servers' => array(
-    'default' => array(
-        array(
+'redis.servers' => [
+    'default' => [
+        [
             'host'    => '10.12.83.10',
             'port'    => 6379,
             'pconn'   => false,
             'timeout' => 0,
-        ),
-    ),
-),
+        ],
+    ],
+],
 'redis.key.prefix' => 'pw',
 
 'apc.isopen'    => 0,                //开启apc缓存，请确保服务器上已安装 apc 服务
 'db.table.name' => 'cache',        //开启db缓存，指定表明
 
 /**=====配置结束于此=====**/
-);
+];

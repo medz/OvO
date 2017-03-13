@@ -14,7 +14,7 @@ class PwForumDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum';
     protected $_pk = 'fid';
-    protected $_dataStruct = array('fid', 'parentid', 'type', 'issub', 'hassub', 'name', 'descrip', 'vieworder', 'manager', 'uppermanager', 'icon', 'logo', 'fup', 'fupname', 'isshow', 'across', 'isshowsub', 'newtime', 'password', 'allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download', 'created_time', 'created_userid', 'created_username', 'created_ip', 'style');
+    protected $_dataStruct = ['fid', 'parentid', 'type', 'issub', 'hassub', 'name', 'descrip', 'vieworder', 'manager', 'uppermanager', 'icon', 'logo', 'fup', 'fupname', 'isshow', 'across', 'isshowsub', 'newtime', 'password', 'allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download', 'created_time', 'created_userid', 'created_username', 'created_ip', 'style'];
 
     public function getForum($fid)
     {
@@ -31,7 +31,7 @@ class PwForumDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT fid,name FROM %s WHERE name LIKE ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array("$keyword%"));
+        return $smt->queryAll(["$keyword%"]);
     }
 
     public function getForumList()
@@ -55,7 +55,7 @@ class PwForumDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE parentid=? ORDER BY vieworder ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid), 'fid');
+        return $smt->queryAll([$fid], 'fid');
     }
 
     public function getForumOrderByType($asc)
@@ -71,12 +71,12 @@ class PwForumDao extends PwBaseDao
         return $this->_add($fields);
     }
 
-    public function updateForum($fid, $fields, $increaseFields = array())
+    public function updateForum($fid, $fields, $increaseFields = [])
     {
         return $this->_update($fid, $fields);
     }
 
-    public function batchUpdateForum($fids, $fields, $increaseFields = array())
+    public function batchUpdateForum($fids, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($fids, $fields);
     }

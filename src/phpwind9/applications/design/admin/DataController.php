@@ -34,7 +34,7 @@ class DataController extends DesignBaseController
                 unset($oneSign[$k]);
             }
             if ($sign == $standard['sIntro'] && $standard['sIntro']) {
-                $intro = array('name' => $allSign[$sign], 'key' => $standard['sIntro'], 'data' => $data[$sign]);
+                $intro = ['name' => $allSign[$sign], 'key' => $standard['sIntro'], 'data' => $data[$sign]];
                 unset($oneSign[$k]);
             }
         }
@@ -144,7 +144,7 @@ class DataController extends DesignBaseController
     {
         $page = (int) $this->getInput('page', 'get');
         $perpage = 10;
-        $uids = array();
+        $uids = [];
         $page = $page > 1 ? $page : 1;
         $pushDs = $this->_getPushDs();
         list($start, $perpage) = Pw::page2limit($page, $perpage);
@@ -329,7 +329,7 @@ class DataController extends DesignBaseController
     private function _buildAllSign()
     {
         $signKey = $this->bo->getSignKey();
-        $_key = array();
+        $_key = [];
         foreach ($signKey as $v) {
             list($_sign, $_name, $_k) = $v;
             $_name = str_replace('｜', '|', $_name);
@@ -355,12 +355,12 @@ class DataController extends DesignBaseController
     private function _buildModuleSign()
     {
         $tpl = $this->bo->getTemplate();
-        $three = array();
-        $two = array();
-        $one = array();
+        $three = [];
+        $two = [];
+        $one = [];
         if (preg_match_all('/\{(\w+)\|(\d+)\|(\d+)}/U', $tpl, $matche)) {
             foreach ($matche[1] as $k => $v) {
-                $three[] = array('sign' => $v, 'width' => $matche[2][$k], 'height' => $matche[3][$k]);
+                $three[] = ['sign' => $v, 'width' => $matche[2][$k], 'height' => $matche[3][$k]];
             }
         }
         if (preg_match_all('/\{(\w+)\|img}/U', $tpl, $matche)) {
@@ -381,7 +381,7 @@ class DataController extends DesignBaseController
             }
         }
 
-        return array(array_unique($three), array_unique($two), array_unique($one));
+        return [array_unique($three), array_unique($two), array_unique($one)];
     }
 
     private function _getPushService()

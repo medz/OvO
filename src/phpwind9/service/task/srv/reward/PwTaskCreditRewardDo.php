@@ -21,9 +21,9 @@ class PwTaskCreditRewardDo extends PwTaskRewardDoBase
         list($id) = explode('-', $reward['value'], 2);
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
-        $creditBo->addLog('task_reward', array($id => $reward['num']), Wekit::getLoginUser(), array('taskname' => $taskname));
+        $creditBo->addLog('task_reward', [$id => $reward['num']], Wekit::getLoginUser(), ['taskname' => $taskname]);
 
-        return $creditBo->sets($uid, array($id => $reward['num']));
+        return $creditBo->sets($uid, [$id => $reward['num']]);
     }
 
     /* (non-PHPdoc)

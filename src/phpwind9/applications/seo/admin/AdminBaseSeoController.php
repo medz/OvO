@@ -43,9 +43,9 @@ class AdminBaseSeoController extends AdminBaseController
     protected function getAllPagesAndCodes($mode)
     {
         $this->setOutput(
-            array(
+            [
                 'codes' => $this->_extendServices()->getCodes($mode),
-                'pages' => $this->_extendServices()->getPages($mode), ));
+                'pages' => $this->_extendServices()->getPages($mode), ]);
     }
 
     /**

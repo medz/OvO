@@ -42,7 +42,7 @@ class PwThreadBuy
     public function get($tid, $pid, $uid)
     {
         if (empty($tid) || empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($tid, $pid, $uid);
@@ -59,7 +59,7 @@ class PwThreadBuy
     public function countByTidAndPid($tid, $pid)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->countByTidAndPid($tid, $pid);
@@ -76,7 +76,7 @@ class PwThreadBuy
     public function getByTidAndPid($tid, $pid, $limit = 20, $offset = 0)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByTidAndPid($tid, $pid, $limit, $offset);
@@ -93,7 +93,7 @@ class PwThreadBuy
     public function getByTidAndUid($tid, $uid)
     {
         if (empty($tid) || empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByTidAndUid($tid, $uid);

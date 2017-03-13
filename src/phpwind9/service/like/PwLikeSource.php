@@ -14,7 +14,7 @@ class PwLikeSource
     {
         $sid = (int) $sid;
         if ($sid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSource($sid);
@@ -23,7 +23,7 @@ class PwLikeSource
     public function getSourceByAppAndFromid($fromapp, $fromid)
     {
         if (empty($fromapp) && $fromid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSourceByAppAndFromid($fromapp, $fromid);
@@ -32,7 +32,7 @@ class PwLikeSource
     public function fetchSource($ids)
     {
         if (!is_array($ids) || count($ids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchSource($ids);
@@ -52,7 +52,7 @@ class PwLikeSource
     {
         $sid = (int) $sid;
         if ($sid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->deleteSource($sid);

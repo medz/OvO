@@ -168,13 +168,13 @@ class PwCutImage
 
     private function _getImageInfo()
     {
-        $this->_imageInfo = array();
+        $this->_imageInfo = [];
         if (!file_exists($this->image)) {
             return false;
         }
         $this->_imageInfo = @getimagesize($this->image);
-        if (!in_array($this->_imageInfo['mime'], array('image/jpeg', 'image/gif', 'image/png'))) {
-            $this->_imageInfo = array();
+        if (!in_array($this->_imageInfo['mime'], ['image/jpeg', 'image/gif', 'image/png'])) {
+            $this->_imageInfo = [];
         }
     }
 

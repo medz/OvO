@@ -10,7 +10,7 @@ class PwHookDao extends PwBaseDao
 {
     protected $_table = 'hook';
     protected $_pk = 'name';
-    protected $_dataStruct = array('name', 'app_name', 'app_id', 'created_time', 'modified_time', 'document');
+    protected $_dataStruct = ['name', 'app_name', 'app_id', 'created_time', 'modified_time', 'document'];
 
     /**
      * 添加钩子定义.
@@ -52,7 +52,7 @@ class PwHookDao extends PwBaseDao
     public function batchAdd($fields)
     {
         foreach ($fields as $key => $value) {
-            $_tmp = array();
+            $_tmp = [];
             $_tmp['name'] = $value['name'];
             $_tmp['app_name'] = $value['app_name'];
             $_tmp['app_id'] = $value['app_id'];
@@ -79,7 +79,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE app_id=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($app_id));
+        return $this->getConnection()->createStatement($sql)->execute([$app_id]);
     }
 
     /**
@@ -93,7 +93,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE app_name = ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($appName));
+        return $this->getConnection()->createStatement($sql)->execute([$appName]);
     }
 
     /**
@@ -107,7 +107,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE name=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($name));
+        return $this->getConnection()->createStatement($sql)->execute([$name]);
     }
 
     /**
@@ -138,7 +138,7 @@ class PwHookDao extends PwBaseDao
         }
         $sql = $this->_bindTable('UPDATE %s set ').$this->sqlSingle($fields).' WHERE name=?';
 
-        return $this->getConnection()->createStatement($sql)->execute(array($name));
+        return $this->getConnection()->createStatement($sql)->execute([$name]);
     }
 
     /**
@@ -155,7 +155,7 @@ class PwHookDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE name=?';
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($name));
+        return $this->getConnection()->createStatement($sql)->getOne([$name]);
     }
 
     /**
@@ -169,7 +169,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($appId));
+        return $this->getConnection()->createStatement($sql)->queryAll([$appId]);
     }
 
     /**
@@ -183,7 +183,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE name=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($name));
+        return $this->getConnection()->createStatement($sql)->getOne([$name]);
     }
 
     /**
@@ -197,7 +197,7 @@ class PwHookDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE name IN %s', $this->getTable(), $this->sqlImplode($names));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array(), 'name');
+        return $this->getConnection()->createStatement($sql)->queryAll([], 'name');
     }
 
     /**
@@ -218,7 +218,7 @@ class PwHookDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s ORDER BY `'.$order.'` %s', $this->getTable(),
             $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array(), $index);
+        return $this->getConnection()->createStatement($sql)->queryAll([], $index);
     }
 
     /**
@@ -254,8 +254,8 @@ class PwHookDao extends PwBaseDao
 
     private function _buildCondition($fields)
     {
-        $conditions = array();
-        $values = array();
+        $conditions = [];
+        $values = [];
         foreach ($fields as $k => $v) {
             switch ($k) {
                 case 'name':
@@ -269,6 +269,6 @@ class PwHookDao extends PwBaseDao
             }
         }
 
-        return array(implode(' AND ', $conditions), $values);
+        return [implode(' AND ', $conditions), $values];
     }
 }

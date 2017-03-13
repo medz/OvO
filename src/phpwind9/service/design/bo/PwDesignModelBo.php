@@ -41,17 +41,17 @@ class PwDesignModelBo
     public function getSignKeys()
     {
         $modelSign = $this->_modelInfo['sign'];
-        $sysSign = array(
-                    array('<title>', '模块标题'),
-                    array('<for:>...</for>', 'foreach循环'),
-                    array('<for:正整数>...</for>', '指定条数循环'),
-                    array('<if:odd>...</if>', '奇数行'),
-                    array('<if:even>...</if>', '偶数行'),
-                    array('<if:正整数>...</if>', '指定数字行'),
-                    array('<if:标签>...</if>', '判断某标签为空'),
-                    array('<if:!标签>...</if>', '判断某标签不为空'),
-                    array('<else:>', '条件判断:否则'),
-                );
+        $sysSign = [
+                    ['<title>', '模块标题'],
+                    ['<for:>...</for>', 'foreach循环'],
+                    ['<for:正整数>...</for>', '指定条数循环'],
+                    ['<if:odd>...</if>', '奇数行'],
+                    ['<if:even>...</if>', '偶数行'],
+                    ['<if:正整数>...</if>', '指定数字行'],
+                    ['<if:标签>...</if>', '判断某标签为空'],
+                    ['<if:!标签>...</if>', '判断某标签不为空'],
+                    ['<else:>', '条件判断:否则'],
+                ];
 
         return array_merge($modelSign, $sysSign);
     }
@@ -79,7 +79,7 @@ class PwDesignModelBo
         $_configParser = Wind::getComponent('configParser');
         $configPath = Wind::getRealPath('SRV:design.srv.model.'.$this->modle.'.html_'.$vKey);
         if (!is_file($configPath)) {
-            return array();
+            return [];
         }
 
         return $_configParser->parse($configPath);
@@ -90,7 +90,7 @@ class PwDesignModelBo
         $_configParser = Wind::getComponent('configParser');
         $configPath = Wind::getRealPath('SRV:design.srv.model.'.$this->modle.'.config');
         if (!is_file($configPath)) {
-            $this->_modelInfo = array();
+            $this->_modelInfo = [];
 
             return;
         }

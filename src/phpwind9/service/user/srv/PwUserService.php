@@ -77,14 +77,14 @@ class PwUserService
      */
     public function caculateUserGroupid($groupid, $userGroups)
     {
-        $banGids = array(1, 2, 6, 7);
+        $banGids = [1, 2, 6, 7];
         // 如果是游客/禁止发言/未验证用户组则不变动该用户组
         if (in_array($groupid, $banGids)) {
-            return array($groupid, array());
+            return [$groupid, []];
         }
         //【当前用户组】 当前用户组设置顺序:系统组/特殊组/普通组
-        $groupQue = array('system', 'special');
-        $temp = array();
+        $groupQue = ['system', 'special'];
+        $temp = [];
         $time = Pw::getTime();
         foreach ($userGroups as $_gid => $_time) {
             if ($_time == 0 || $_time > $time) {
@@ -112,7 +112,7 @@ class PwUserService
             $groupid = $gid;
         }
 
-        return array($groupid, $temp);
+        return [$groupid, $temp];
     }
 
     /**
@@ -187,11 +187,11 @@ class PwUserService
     public function getGidsByUid($uid)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
         $info = Wekit::load('user.PwUser')->getUserByUid($uid, PwUser::FETCH_MAIN);
 
-        return array_merge(explode(',', $info['groups']), array($info['groupid'], $info['memberid']));
+        return array_merge(explode(',', $info['groups']), [$info['groupid'], $info['memberid']]);
     }
 
     /**
@@ -221,7 +221,7 @@ class PwUserService
      */
     public function getSafeQuestion($id = null)
     {
-        $qList = array(
+        $qList = [
             1 => '我爸爸的出生地',
             2 => '我妈妈的出生地',
             3 => '我的小学校名',
@@ -230,7 +230,7 @@ class PwUserService
             6 => '我最喜欢的歌曲',
             7 => '我最喜欢的电影',
             8 => '我最喜欢的颜色',
-        );
+        ];
 
         return is_null($id) ? $qList : (isset($qList[$id]) ? $qList[$id] : $id);
     }

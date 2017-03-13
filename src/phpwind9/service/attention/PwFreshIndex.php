@@ -23,7 +23,7 @@ class PwFreshIndex
     public function getByTid($tid)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByTid($tid);
@@ -39,7 +39,7 @@ class PwFreshIndex
     public function fetchByTid($tids)
     {
         if (empty($tids) || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchByTid($tids);
@@ -58,10 +58,10 @@ class PwFreshIndex
         if (empty($freshId) || empty($tid)) {
             return false;
         }
-        $fields = array(
+        $fields = [
             'fresh_id' => $freshId,
             'tid'      => $tid,
-        );
+        ];
 
         return $this->_getDao()->add($fields);
     }

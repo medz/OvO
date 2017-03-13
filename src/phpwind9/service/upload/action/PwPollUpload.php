@@ -22,7 +22,7 @@ class PwPollUpload extends PwUploadAction
     public function __construct($user)
     {
         $this->user = ($user instanceof PwUserBo) ? $user : new PwUserBo($user);
-        $this->ftype = array('jpg' => 2000, 'jpeg' => 2000, 'png' => '2000', 'gif' => 2000);
+        $this->ftype = ['jpg' => 2000, 'jpeg' => 2000, 'png' => '2000', 'gif' => 2000];
     }
 
     /**
@@ -76,9 +76,9 @@ class PwPollUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($filename, 'thumb/'.$dir, 120, 120, 0, 1),
-        );
+        return [
+            [$filename, 'thumb/'.$dir, 120, 120, 0, 1],
+        ];
     }
 
     /**
@@ -114,13 +114,13 @@ class PwPollUpload extends PwUploadAction
             $dm->setApp('poll');
             $aid = $ds->addAttach($dm);
             */
-            $this->attachs[$value['attname']][$value['id']] = array(
+            $this->attachs[$value['attname']][$value['id']] = [
                 'id'   => $value['id'],
                 'name' => $value['name'],
                 'type' => $value['type'],
                 'path' => $value['fileuploadurl'],
                 'size' => $value['size'],
-            );
+            ];
         }
 
         return true;

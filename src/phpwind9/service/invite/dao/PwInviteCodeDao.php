@@ -13,7 +13,7 @@ class PwInviteCodeDao extends PwBaseDao
 {
     protected $_table = 'invite_code';
     protected $_pk = 'code';
-    protected $_dataStruct = array('code', 'created_userid', 'invited_userid', 'ifused', 'created_time', 'modified_time');
+    protected $_dataStruct = ['code', 'created_userid', 'invited_userid', 'ifused', 'created_time', 'modified_time'];
 
     /**
      * 根据邀请码获取该条邀请码信息.
@@ -41,7 +41,7 @@ class PwInviteCodeDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? AND ifused=1 ORDER BY modified_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'invited_userid');
+        return $smt->queryAll([$uid], 'invited_userid');
     }
 
     /**
@@ -56,7 +56,7 @@ class PwInviteCodeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE created_userid=? AND ifused=1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -106,7 +106,7 @@ class PwInviteCodeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `created_userid` = ? AND `created_time` > ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid, $time));
+        return $smt->getValue([$uid, $time]);
     }
 
     /**
@@ -144,12 +144,12 @@ class PwInviteCodeDao extends PwBaseDao
      */
     public function batchAddCode($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['code'] = $_item['code'];
             $_temp['created_userid'] = $_item['created_userid'];
             $_temp['created_time'] = $_item['created_time'];
@@ -207,11 +207,11 @@ class PwInviteCodeDao extends PwBaseDao
      */
     private function _buildCondition($condition)
     {
-        $where = $param = array();
+        $where = $param = [];
         foreach ($condition as $k => $v) {
             switch ($k) {
                 case 'ifused':
-                    if (in_array($v, array(0, 1))) {
+                    if (in_array($v, [0, 1])) {
                         $where[] = '`ifused` = ?';
                         $param[] = $v;
                     }
@@ -233,6 +233,6 @@ class PwInviteCodeDao extends PwBaseDao
             }
         }
 
-        return $where ? array($this->_bindSql('WHERE %s', implode(' AND ', $where)), $param) : array('', array());
+        return $where ? [$this->_bindSql('WHERE %s', implode(' AND ', $where)), $param] : ['', []];
     }
 }

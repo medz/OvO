@@ -79,7 +79,7 @@ class PwCateDigestThread extends PwThreadDataSource
       */
      protected function _sort($data, $sort)
      {
-         $result = array();
+         $result = [];
          foreach ($sort as $tid) {
              $result[$tid] = $data[$tid];
          }

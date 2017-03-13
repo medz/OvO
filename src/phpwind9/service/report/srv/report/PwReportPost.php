@@ -13,7 +13,7 @@ class PwReportPost extends PwReportAction
             return false;
         }
         $content = Pw::substrs($result['content'], 20);
-        $hrefUrl = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $result['tid'], 'fid' => $result['fid']), $result['pid']);
+        $hrefUrl = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $result['tid'], 'fid' => $result['fid']], $result['pid']);
         $this->fid = $result['fid'];
         $dm = new PwReportDm();
         $dm->setContent($content)

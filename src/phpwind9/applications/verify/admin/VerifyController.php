@@ -33,8 +33,8 @@ class VerifyController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
         $questions = $this->getInput('contentQuestions', 'post');
-        $_questions = array();
-        !$questions && $questions = array();
+        $_questions = [];
+        !$questions && $questions = [];
         foreach ($questions as $key => $value) {
             if (empty($value['ask']) && empty($value['answer'])) {
                 continue;
@@ -73,7 +73,7 @@ class VerifyController extends AdminBaseController
         $this->setOutput($config, 'config');
 
         //扩展：key => title
-        $verifyExt = array();
+        $verifyExt = [];
         $verifyExt = PwSimpleHook::getInstance('verify_showverify')->runWithFilters($verifyExt);
         $this->setOutput($verifyExt, 'verifyExt');
     }
@@ -85,7 +85,7 @@ class VerifyController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
         $ext = $this->getInput('ext', 'post');
-        $extConfig = array();
+        $extConfig = [];
         foreach ($ext as $key => $value) {
             if ($value == 1) {
                 $extConfig[] = $key;

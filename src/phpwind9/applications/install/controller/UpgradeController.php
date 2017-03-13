@@ -16,7 +16,7 @@ define('NEXT_VERSION', '9.0');
  */
 class UpgradeController extends WindController
 {
-    private $_tmpconfig = array();
+    private $_tmpconfig = [];
 
     /* (non-PHPdoc)
      * @see WindSimpleController::beforeAction()
@@ -34,7 +34,7 @@ class UpgradeController extends WindController
             }
             define($const, $value);
         }
-        $url = array();
+        $url = [];
         $url['base'] = PUBLIC_URL;
         $url['res'] = WindUrlHelper::checkUrl(PUBLIC_RES, PUBLIC_URL);
         $url['css'] = WindUrlHelper::checkUrl(PUBLIC_RES.'/css/', PUBLIC_URL);
@@ -171,14 +171,14 @@ class UpgradeController extends WindController
         $db_ftp = $this->_getConfig('db_ftp');
         $ftp = $attachDir = null;
         if ($db_ftp['db_ifftp']) {
-            $ftp = new WindSocketFtp(array(
+            $ftp = new WindSocketFtp([
                 'server'  => $db_ftp['ftp_server'],
                 'port'    => $db_ftp['ftp_port'],
                 'user'    => $db_ftp['ftp_user'],
                 'pwd'     => $db_ftp['ftp_pass'],
                 'dir'     => $db_ftp['ftp_dir'],
                 'timeout' => $db_ftp['ftp_timeout'],
-            ));
+            ]);
             $attachDir = $db_ftp['db_ftpweb'];
         } else {
             //头像放到www/windid/attachment下
@@ -187,7 +187,7 @@ class UpgradeController extends WindController
         }
         $attachDir = rtrim($attachDir, '/');
 
-        return array($ftp, $attachDir);
+        return [$ftp, $attachDir];
     }
 
     /**
@@ -218,7 +218,7 @@ class UpgradeController extends WindController
         }
         $end = ($start_uid + $limit) > $end_uid ? $end_uid : ($start_uid + $limit);
 
-        return array($start_uid, $end);
+        return [$start_uid, $end];
     }
 
     /**
@@ -273,7 +273,7 @@ class UpgradeController extends WindController
     {
         $udir = str_pad(substr($tempuid, -2), 2, '0', STR_PAD_LEFT);
         $user_a = $udir.'/'.$tempuid.'.jpg';
-        $faceurl = array();
+        $faceurl = [];
         $faceurl['middle'] = $attachDir."/upload/middle/$user_a";
         $faceurl['big'] = $attachDir."/upload/middle/$user_a";
         $faceurl['small'] = $attachDir."/upload/small/$user_a";
@@ -322,7 +322,7 @@ class UpgradeController extends WindController
         $key = md5(WindUtility::generateRandStr(10));
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, array('gbk', 'utf8', 'big5'))) {
+        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 
@@ -363,7 +363,7 @@ class UpgradeController extends WindController
         $vo = new PwDesignPortalSo();
         $vo->setIsopen(1);
         $list = $this->_getPortalDs()->searchPortal($vo, 0, 100);
-        $dirList = array();
+        $dirList = [];
         foreach ($list as $k => $v) {
             if (empty($v['template'])) {
                 $dirList[$k] = $v['id'];
@@ -371,12 +371,12 @@ class UpgradeController extends WindController
         }
 
         $dir = Wind::getRealDir('THEMES:portal.local.');
-        $_dir = array();
+        $_dir = [];
         if (!is_dir($dir)) {
-            return array();
+            return [];
         }
         if (!$handle = @opendir($dir)) {
-            return array();
+            return [];
         }
         while (false !== ($file = @readdir($handle))) {
             if ('.' === $file || '..' === $file) {

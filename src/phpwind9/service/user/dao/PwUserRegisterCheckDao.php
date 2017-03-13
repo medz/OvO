@@ -13,7 +13,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
 {
     protected $_table = 'user_register_check';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'ifchecked', 'ifactived');
+    protected $_dataStruct = ['uid', 'ifchecked', 'ifactived'];
 
     /**
      * 根据用户ID获得用户的状态信息.
@@ -27,7 +27,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid));
+        return $smt->getOne([$uid]);
     }
 
     /**
@@ -44,7 +44,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `ifchecked` =? %s', $this->getTable(), $this->sqlLimit($limit, $start));
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->queryAll(array($ifchecked), 'uid');
+        return $result->queryAll([$ifchecked], 'uid');
     }
 
     /**
@@ -59,7 +59,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `ifchecked` = ?');
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->getValue(array($ifchecked));
+        return $result->getValue([$ifchecked]);
     }
 
     /**
@@ -76,7 +76,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `ifactived` = ? %s', $this->getTable(), $this->sqlLimit($limit, $start));
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->queryAll(array($ifactived), 'uid');
+        return $result->queryAll([$ifactived], 'uid');
     }
 
     /**
@@ -91,7 +91,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `ifactived` = ?');
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->getValue(array($ifactived));
+        return $result->getValue([$ifactived]);
     }
 
     /**
@@ -108,7 +108,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindTable('REPLACE INTO %s SET `ifchecked` = ?, `ifactived` = ?, `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($ifchecked, $ifactived, $uid));
+        return $smt->update([$ifchecked, $ifactived, $uid]);
     }
 
     /**
@@ -127,7 +127,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `uid` = ?', $this->getTable(), $this->sqlSingle($clear));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     /**
@@ -160,7 +160,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     /**

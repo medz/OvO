@@ -38,7 +38,7 @@ class PwDesignDefaultService
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('热门喜欢')
             ->setRouter('like/like/run')
-            ->setSegments(array('likedemo'));
+            ->setSegments(['likedemo']);
         $pageid = $ds->addPage($dm);
         if ($pageid instanceof PwError) {
             return false;
@@ -52,8 +52,8 @@ class PwDesignDefaultService
         }
         $comp = array_shift($comp);
         $tpl = $comp['comp_tpl'];
-        $property = array('ispic' => 1, 'desnum' => 144, 'order' => 5, 'limit' => 100, 'timefmt' => 'm-d');
-        $cache = array('expired' => 0, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
+        $property = ['ispic' => 1, 'desnum' => 144, 'order' => 5, 'limit' => 100, 'timefmt' => 'm-d'];
+        $cache = ['expired' => 0, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0];
 
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('thread')
@@ -70,7 +70,7 @@ class PwDesignDefaultService
         }
 
         $dm = new PwDesignPageDm($pageid);
-        $dm->setModuleIds(array($moduleid));
+        $dm->setModuleIds([$moduleid]);
         $ds->updatePage($dm);
 
         $rand = WindUtility::generateRandStr(8);
@@ -99,7 +99,7 @@ TPL;
         $dm->setType(PwDesignPage::SYSTEM)
             ->setName('话题')
             ->setRouter('tag/index/run')
-            ->setSegments(array('huatidemo'));
+            ->setSegments(['huatidemo']);
         $pageid = $ds->addPage($dm);
         if ($pageid instanceof PwError) {
             return false;
@@ -113,8 +113,8 @@ TPL;
         }
         $comp = array_shift($comp);
         $tpl = $comp['comp_tpl'];
-        $property = array('islogo' => 1, 'order' => 5, 'limit' => 18, 'timefmt' => 'm-d');
-        $cache = array('expired' => 15, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0);
+        $property = ['islogo' => 1, 'order' => 5, 'limit' => 18, 'timefmt' => 'm-d'];
+        $cache = ['expired' => 15, 'start_hour' => 0, 'start_minute' => 0, 'end_hour' => 0, 'end_minute' => 0];
 
         $moduleDm = new PwDesignModuleDm();
         $moduleDm->setFlag('tag')
@@ -130,7 +130,7 @@ TPL;
             return false;
         }
         $dm = new PwDesignPageDm($pageid);
-        $dm->setModuleIds(array($moduleid));
+        $dm->setModuleIds([$moduleid]);
         $ds->updatePage($dm);
         $rand = WindUtility::generateRandStr(8);
         $tpl = <<<TPL

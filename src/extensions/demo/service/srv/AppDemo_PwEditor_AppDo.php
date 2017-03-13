@@ -17,10 +17,10 @@ class AppDemo_PwEditor_AppDo
      */
     public function appDemoDo($var)
     {
-        $var[] = array(
+        $var[] = [
             'name'   => 'demo',
-            'params' => array('len' => 8, 'age' => 2),
-        );
+            'params' => ['len' => 8, 'age' => 2],
+        ];
 
         return $var;
     }

@@ -25,7 +25,7 @@ class WebDataController extends PwBaseController
      */
     public function schoolAction()
     {
-        list($type, $areaid, $name, $first) = $this->getInput(array('typeid', 'areaid', 'name', 'first'));
+        list($type, $areaid, $name, $first) = $this->getInput(['typeid', 'areaid', 'name', 'first']);
         !$type && $type = 3;
         Wind::import('WINDID:service.school.vo.WindidSchoolSo');
         $schoolSo = new WindidSchoolSo();

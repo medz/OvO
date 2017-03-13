@@ -52,7 +52,7 @@ class PwNavDm extends PwBaseDm
     {
         $sign = '';
         if (is_array($router)) {
-            $allow = array('m', 'c', 'a', 'tid', 'fid', 'id', 'uid', 'username', 'tab');
+            $allow = ['m', 'c', 'a', 'tid', 'fid', 'id', 'uid', 'username', 'tab'];
             foreach ($router as $k => $v) {
                 if (!in_array($k, $allow)) {
                     continue;

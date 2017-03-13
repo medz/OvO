@@ -20,7 +20,7 @@ class PwUserRegisterCheck
     public function getInfo($uid)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfo($uid);
@@ -100,7 +100,7 @@ class PwUserRegisterCheck
             return false;
         }
 
-        return $this->_getDao()->updateInfo($uid, array('ifchecked' => 1));
+        return $this->_getDao()->updateInfo($uid, ['ifchecked' => 1]);
     }
 
     /**
@@ -116,7 +116,7 @@ class PwUserRegisterCheck
             return false;
         }
 
-        return $this->_getDao()->batchUpdateInfo($uids, array('ifchecked' => 1));
+        return $this->_getDao()->batchUpdateInfo($uids, ['ifchecked' => 1]);
     }
 
     /**
@@ -132,7 +132,7 @@ class PwUserRegisterCheck
             return false;
         }
 
-        return $this->_getDao()->updateInfo($uid, array('ifactived' => 1));
+        return $this->_getDao()->updateInfo($uid, ['ifactived' => 1]);
     }
 
     /**
@@ -148,7 +148,7 @@ class PwUserRegisterCheck
             return false;
         }
 
-        return $this->_getDao()->batchUpdateInfo($uids, array('ifactived' => 1));
+        return $this->_getDao()->batchUpdateInfo($uids, ['ifactived' => 1]);
     }
 
     /**

@@ -67,7 +67,7 @@ class PwBaseController extends WindController
     {
         if ($referer && !WindValidator::isUrl($referer)) {
             $_referer = explode('#', $referer, 2);
-            $referer = WindUrlHelper::createUrl($_referer[0], array(),
+            $referer = WindUrlHelper::createUrl($_referer[0], [],
                 isset($_referer[1]) ? $_referer[1] : '');
         }
         $this->addMessage($referer, 'referer');
@@ -106,10 +106,10 @@ class PwBaseController extends WindController
         }
         if (!$bp instanceof PwBaseHookService) {
             throw new PwException('class.type.fail',
-                array(
+                [
                     '{parm1}' => 'src.library.base.PwBaseController.runHook',
                     '{parm2}' => 'PwBaseHookService',
-                    '{parm3}' => get_class($bp), ));
+                    '{parm3}' => get_class($bp), ]);
         }
         if (!$filters = PwHook::getRegistry($registerKey)) {
             return;
@@ -118,10 +118,10 @@ class PwBaseController extends WindController
             return;
         }
         $args = func_get_args();
-        $_filters = array();
+        $_filters = [];
         foreach ($filters as $key => $value) {
             $args[0] = isset($value['method']) ? $value['method'] : '';
-            $_filters[] = array('class' => $value['class'], 'args' => $args);
+            $_filters[] = ['class' => $value['class'], 'args' => $args];
         }
         $this->resolveActionFilter($_filters);
     }

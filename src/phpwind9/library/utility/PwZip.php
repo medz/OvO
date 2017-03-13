@@ -8,8 +8,8 @@ define('CENTRAL_DIRECTORY', 0x02014b50); //'Central directory'区块标记
 
 class PwZip
 {
-    public $fileHeaderAndData = array();
-    public $centralDirectory = array();
+    public $fileHeaderAndData = [];
+    public $centralDirectory = [];
     public $localFileHeaderOffset = 0;
     public $fileHandle = '';
 
@@ -87,7 +87,7 @@ class PwZip
      */
     public function extract($file)
     {
-        $extractedData = array();
+        $extractedData = [];
         if (!$file || !is_file($file)) {
             return false;
         }
@@ -113,11 +113,11 @@ class PwZip
             if (!$data) {
                 continue;
             }
-            $extractedData[$i] = array(
+            $extractedData[$i] = [
                 'filename'  => $centralDirectoryData['filename'],
                 'timestamp' => $centralDirectoryData['time'],
                 'data'      => $data,
-            );
+            ];
         }
         fclose($this->fileHandle);
 
@@ -129,7 +129,7 @@ class PwZip
      */
     public function init()
     {
-        $this->fileHeaderAndData = $this->centralDirectory = array();
+        $this->fileHeaderAndData = $this->centralDirectory = [];
         $this->localFileHeaderOffset = 0;
 
         return true;
@@ -342,7 +342,7 @@ class PwZip
         $modTime = ($time['hours'] << 11) + ($time['minutes'] << 5) + $time['seconds'] / 2;
         $modDate = (($time['year'] - 1980) << 9) + ($time['mon'] << 5) + $time['mday'];
 
-        return array($modTime, $modDate);
+        return [$modTime, $modDate];
     }
 
     /**

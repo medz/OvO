@@ -31,7 +31,7 @@ class LoginlogController extends AdminBaseController
         /* @var $logDs PwLogLogin */
         $logDs = Wekit::load('log.PwLogLogin');
         $count = $logDs->coutSearch($logSo);
-        $list = array();
+        $list = [];
         if ($count > 0) {
             ($page > $count) && $page = $count;
             $totalPage = ceil($count / $this->perpage);
@@ -78,6 +78,6 @@ class LoginlogController extends AdminBaseController
      */
     private function _getLoginType()
     {
-        return array(PwLogLogin::ERROR_PWD => '密码错误', PwLogLogin::ERROR_SAFEQ => '安全问题错误');
+        return [PwLogLogin::ERROR_PWD => '密码错误', PwLogLogin::ERROR_SAFEQ => '安全问题错误'];
     }
 }

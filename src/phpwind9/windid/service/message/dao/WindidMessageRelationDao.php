@@ -13,7 +13,7 @@ class WindidMessageRelationDao extends WindidBaseDao
 {
     protected $_pk = 'id';
     protected $_table = 'message_relation';
-    protected $_dataStruct = array('id', 'dialog_id', 'message_id', 'is_read', 'is_send');
+    protected $_dataStruct = ['id', 'dialog_id', 'message_id', 'is_read', 'is_send'];
 
     /**
      * 添加消息关系.
@@ -38,7 +38,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('UPDATE %s SET is_read=1 WHERE  id IN %s', $this->getTable(), $this->sqlImplode($relationIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array(), true);
+        return $smt->update([], true);
     }
 
     /**
@@ -54,7 +54,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('UPDATE %s SET is_read=1 WHERE dialog_id=? AND message_id IN %s', $this->getTable(), $this->sqlImplode($messageIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($dialogId), true);
+        return $smt->update([$dialogId], true);
     }
 
     /**
@@ -69,7 +69,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('UPDATE %s SET is_read=1 WHERE dialog_id=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($dialogId), true);
+        return $smt->update([$dialogId], true);
     }
 
     public function countRelation($dialogId)
@@ -77,7 +77,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `dialog_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($dialogId));
+        return $smt->getValue([$dialogId]);
     }
 
     /**
@@ -92,7 +92,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS `count`,SUM(`is_read`) AS `reads` FROM %s WHERE `dialog_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($dialogId), PDO::FETCH_NUM);
+        return $smt->getOne([$dialogId], PDO::FETCH_NUM);
     }
 
     public function countUnreadMessageByDialogIds($dialogIds)
@@ -117,7 +117,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `dialog_id`=? ORDER BY `message_id` DESC %s ', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($dialogId), 'message_id');
+        return $smt->queryAll([$dialogId], 'message_id');
     }
 
     /**
@@ -135,7 +135,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT message_id FROM %s WHERE `dialog_id`=? AND `message_id` <? ORDER BY `created_time` DESC %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($dialogId, $messageId), 'message_id');
+        return $smt->queryAll([$dialogId, $messageId], 'message_id');
     }
 
     /**
@@ -152,7 +152,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT message_id FROM %s WHERE `dialog_id`=? AND `message_id` >? ORDER BY `created_time` ASC %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($dialogId, $messageId), 'message_id');
+        return $smt->queryAll([$dialogId, $messageId], 'message_id');
     }
 
     /**
@@ -175,7 +175,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `message_id` IN %s ', $this->getTable(), $this->sqlImplode($messageIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'id');
+        return $smt->queryAll([], 'id');
     }
 
     public function fetchRelationByMessageIds($messageIds, $issend = 0)
@@ -183,7 +183,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `message_id` IN %s AND `is_send` = ?', $this->getTable(), $this->sqlImplode($messageIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($issend), 'message_id');
+        return $smt->queryAll([$issend], 'message_id');
     }
 
     /**
@@ -199,7 +199,7 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `dialog_id`=? AND `message_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($dialogId, $messageId));
+        return $smt->update([$dialogId, $messageId]);
     }
 
     public function batchDeleteRelationByDialogIds($dialogIds)
@@ -215,6 +215,6 @@ class WindidMessageRelationDao extends WindidBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE dialog_id = ? AND message_id IN %s ', $this->getTable(), $this->sqlImplode($messgeIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($dialogId));
+        return $smt->update([$dialogId]);
     }
 }

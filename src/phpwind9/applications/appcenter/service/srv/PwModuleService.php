@@ -10,7 +10,7 @@
  */
 class PwModuleService
 {
-    private $modules = array();
+    private $modules = [];
 
     public function __construct()
     {
@@ -70,7 +70,7 @@ class PwModuleService
      */
     private function _toConfig()
     {
-        $modules = array();
+        $modules = [];
         foreach ($this->modules as $alias => $value) {
             foreach ($value as $k => $v) {
                 $modules[$k][$alias] = $v;
