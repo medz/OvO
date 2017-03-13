@@ -59,13 +59,13 @@ class WindidUtility
 
     public static function buildMultiRequest($urls, $params = [])
     {
-        $client = new \Guzzle\Http\Client();
-
+        $client = new \GuzzleHttp\Client();
         $result = [];
         foreach ($urls as $k => $url) {
-            $request = $client->post($url, null, $params[$k]);
-            $response = $client->send($request);
-            $result[$k] = $response->getBody(true);
+            $response = $client->request('POST', $url, [
+                'form_params' => $params[$k],
+            ]);
+            $result[$k] = $response->getBody();
         }
 
         return $result;

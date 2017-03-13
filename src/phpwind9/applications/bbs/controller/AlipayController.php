@@ -26,10 +26,12 @@ class AlipayController extends PwBaseController
             $this->paymsg('onlinepay.settings.alipay.error');
         }
 
-        $client = new \Guzzle\Http\Client();
-        $response = $client->post('http://notify.alipay.com/trade/notify_query.do', null, [
-            'notify_id' => $this->_var['notify_id'],
-            'partner'   => $this->_conf['alipaypartnerID'],
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', 'http://notify.alipay.com/trade/notify_query.do', [
+            'form_params' => [
+                'notify_id' => $this->_var['notify_id'],
+                'partner'   => $this->_conf['alipaypartnerID'],
+            ]
         ]);
         $veryfy_result2 = $response->getBody(true);
 

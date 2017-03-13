@@ -48,10 +48,11 @@ class WindidApi
             return false;
         }
 
-        $client = new \Guzzle\Http\Client();
-        $request = $client->post($url, null, $postData);
-        $response = $client->send($request);
-        $result = $response->getBody(true);
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $url, [
+            'form_params' => $postData,
+        ]);
+        $result = $response->getBody();
 
         if ($result === false) {
             return WindidError::SERVER_ERROR;

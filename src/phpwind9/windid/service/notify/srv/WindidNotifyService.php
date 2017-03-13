@@ -62,11 +62,12 @@ class WindidNotifyService
     {
         $url = Wekit::app('windid')->url->base.'/index.php?m=queue';
 
-        $client = new \Guzzle\Http\Client();
-        $request = $client->post($url, null, [
-            'nid' => $nid,
+        $client = new \GuzzleHttp\Client();
+        $client->request('POST', $url, [
+            'form_params' => [
+                'nid' => $nid,
+            ]
         ]);
-        $client->send($request);
 
         return true;
     }

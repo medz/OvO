@@ -82,12 +82,14 @@ class WindidAvatarApi
         ];
         $url = WINDID_SERVER_URL.'/index.php?'.http_build_query($query);
 
-        $client = new \Guzzle\Http\Client();
-        $request = $client->post($url, null, [
-            'FileData' => '@'.$file,
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $url, [
+            'multipart' => [
+                'name'     => 'FileData',
+                'contents' => fopen($file, 'r'),
+            ]
         ]);
-        $response = $request->send();
-        $result = $response->getBody(true);
+        $result = $response->getBody();
 
         if ($result === false) {
             return WindidError::SERVER_ERROR;
