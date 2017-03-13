@@ -14,7 +14,7 @@ class PwEmotionDao extends PwBaseDao
 {
     protected $_pk = 'emotion_id';
     protected $_table = 'common_emotion';
-    protected $_dataStruct = array('emotion_id', 'category_id', 'emotion_name', 'emotion_folder', 'emotion_icon', 'vieworder', 'isused');
+    protected $_dataStruct = ['emotion_id', 'category_id', 'emotion_name', 'emotion_folder', 'emotion_icon', 'vieworder', 'isused'];
 
     public function getEmotion($emotionId)
     {
@@ -31,13 +31,13 @@ class PwEmotionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE isused = 1 AND category_id IN %s ORDER BY vieworder ASC ', $this->getTable(), $this->sqlImplode($categoryIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 
     public function getListByCatid($categoryId, $isUsed = null)
     {
         $where = 'WHERE category_id =?';
-        $_array = array($categoryId);
+        $_array = [$categoryId];
         if (isset($isUsed)) {
             $where .= ' AND isused = ? ';
             $_array[] = $isUsed;
@@ -53,7 +53,7 @@ class PwEmotionDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'emotion_id');
+        return $smt->queryAll([], 'emotion_id');
     }
 
     public function addEmotion($data)
@@ -75,7 +75,7 @@ class PwEmotionDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE category_id=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $smt->update(array($cateId));
+        $smt->update([$cateId]);
         PwSimpleHook::getInstance('PwEmotionDao_deleteEmotionByCatid')->runDo($cateId);
 
         return true;

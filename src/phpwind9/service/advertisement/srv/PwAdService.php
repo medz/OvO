@@ -15,7 +15,7 @@ class PwAdService
 {
     public function addAdPosition($id, $identifier, $type, $width, $height, $status, $schedule)
     {
-        list($id, $width, $heigth, $status) = array(intval($id), intval($width), intval($heigth), intval($status));
+        list($id, $width, $heigth, $status) = [intval($id), intval($width), intval($heigth), intval($status)];
         if ($status > 1) {
             return new PwError('ADVERTISEMENT:position.status.error');
         }
@@ -52,7 +52,7 @@ class PwAdService
 
     public function editAdPosition($id, $identifier, $type, $width, $height, $status, $schedule, $showType, $condition)
     {
-        list($id, $width, $heigth, $status, $showType, $condition) = array(intval($id), intval($width), intval($heigth), intval($status), intval($showType), $condition);
+        list($id, $width, $heigth, $status, $showType, $condition) = [intval($id), intval($width), intval($heigth), intval($status), intval($showType), $condition];
         if ($status > 1) {
             return new PwError('ADVERTISEMENT:position.status.error');
         }
@@ -87,7 +87,7 @@ class PwAdService
 
     public function changeAdPositionStatus($id, $status)
     {
-        list($id, $status) = array(intval($id), intval($status));
+        list($id, $status) = [intval($id), intval($status)];
         if ($status > 1) {
             return new PwError('ADVERTISEMENT:position.status.error');
         }
@@ -114,19 +114,19 @@ class PwAdService
     {
         switch ($typeId) {
             case 1:
-                $params = array('mid', 'fid');
+                $params = ['mid', 'fid'];
                 break;
             case 2:
-                $params = array('pid', 'fid');
+                $params = ['pid', 'fid'];
                 break;
             case 3:
-                $params = array('fid', 'floorid');
+                $params = ['fid', 'floorid'];
                 break;
             case 4:
-                $params = array('proid');
+                $params = ['proid'];
                 break;
             default:
-                $params = array();
+                $params = [];
         }
 
         return $params;
@@ -134,7 +134,7 @@ class PwAdService
 
     public function getPortals()
     {
-        return array('1' => '门户1', '2' => '门户2', '3' => '门户3', '4' => '门户4');
+        return ['1' => '门户1', '2' => '门户2', '3' => '门户3', '4' => '门户4'];
     }
 
     public function getAdShowState($currentAd, $mid, $fid, $pid, $floorid, $proid)

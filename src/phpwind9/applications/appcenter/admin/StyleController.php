@@ -28,7 +28,7 @@ class StyleController extends AdminBaseController
         $type || $type = key($addons);
 
         $count = $this->_styleDs()->countByType($type);
-        $results = array();
+        $results = [];
         if ($count > 0) {
             $page = (int) $this->getInput('page');
             $page < 1 && $page = 1;
@@ -36,13 +36,13 @@ class StyleController extends AdminBaseController
             $results = $this->_styleDs()->getStyleListByType($type, $num, $start);
         }
         $this->setOutput(
-            array(
+            [
                 'type'    => $type,
                 'addons'  => $addons,
                 'perpage' => $this->perpage,
                 'page'    => $page,
                 'count'   => $count,
-                'styles'  => $results, ));
+                'styles'  => $results, ]);
     }
 
     /**
@@ -56,7 +56,7 @@ class StyleController extends AdminBaseController
 
         $conf = Wekit::C('css');
         $this->setOutput(
-            array(
+            [
                 'logo'            => $conf['logo'],
                 'bg'              => $conf['bg'],
                 'bgcolor'         => $conf['bgcolor'],
@@ -88,7 +88,7 @@ class StyleController extends AdminBaseController
                 'boxhdbgalign'    => $conf['boxhdbgalign'],
                 'boxhdborder'     => $conf['boxhdborder'],
                 'boxhdlink'       => $conf['boxhdlink'],
-                'boxhdtext'       => $conf['boxhdtext'], ));
+                'boxhdtext'       => $conf['boxhdtext'], ]);
     }
 
     /**
@@ -128,7 +128,7 @@ class StyleController extends AdminBaseController
             $old && Pw::deleteAttach($old);
         }
         list($color, $headbgcolor, $headlink, $headactivelink, $headactivecolor, $corelink, $coretext, $boxbgcolor, $boxborder, $boxlink, $boxtext, $boxhdbgcolor, $boxhdborder, $boxhdlink, $boxhdtext) = $this->getInput(
-            array(
+            [
                 'bgcolor',
                 'headbgcolor',
                 'headlink',
@@ -143,8 +143,8 @@ class StyleController extends AdminBaseController
                 'boxhdbgcolor',
                 'boxhdborder',
                 'boxhdlink',
-                'boxhdtext', ), 'post');
-        $config = array(
+                'boxhdtext', ], 'post');
+        $config = [
             'bgcolor'         => $color == '#ffffff' ? '' : $color,
             'headbgcolor'     => $headbgcolor == '#ffffff' ? '' : $headbgcolor,
             'headlink'        => $headlink == '#ffffff' ? '' : $headlink,
@@ -171,7 +171,7 @@ class StyleController extends AdminBaseController
             'boxbgtile'       => $this->getInput('boxbgtile', 'post'),
             'boxbgalign'      => $this->getInput('boxbgalign', 'post'),
             'boxhdbgtile'     => $this->getInput('boxhdbgtile', 'post'),
-            'boxhdbgalign'    => $this->getInput('boxhdbgalign', 'post'), ) + $config;
+            'boxhdbgalign'    => $this->getInput('boxhdbgalign', 'post'), ] + $config;
         $bo = new PwConfigSet('css');
         foreach ($config as $k => $v) {
             $bo->set($k, $v);
@@ -186,7 +186,7 @@ class StyleController extends AdminBaseController
      */
     public function deleteAction()
     {
-        list($type, $path) = $this->getInput(array('type', 'path'));
+        list($type, $path) = $this->getInput(['type', 'path']);
         Pw::deleteAttach($path);
         Wekit::C()->setConfig('css', $type, '');
         $this->_compilerService()->doCompile();
@@ -234,7 +234,7 @@ class StyleController extends AdminBaseController
      */
     public function exportAction()
     {
-        list($type, $alias) = $this->getInput(array('type', 'alias'), 'get');
+        list($type, $alias) = $this->getInput(['type', 'alias'], 'get');
         $conf = Wekit::load('APPCENTER:service.srv.PwInstallApplication')->getConfig(
             'style-type', $type);
         if (!$conf) {
@@ -275,7 +275,7 @@ class StyleController extends AdminBaseController
             $url .= '?fid=' . key($forums);
         } */
         $this->forwardRedirect(
-            WindUrlHelper::createUrl($url, array(), '', 'pw'));
+            WindUrlHelper::createUrl($url, [], '', 'pw'));
     }
 
     /**
@@ -306,7 +306,7 @@ class StyleController extends AdminBaseController
         /* @var $uninstall PwUninstallApplication */
         if ($styleid[0] !== 'L') {
             $url = PwApplicationHelper::acloudUrl(
-                array('a' => 'forward', 'do' => 'uninstallApp', 'appid' => $styleid));
+                ['a' => 'forward', 'do' => 'uninstallApp', 'appid' => $styleid]);
             $info = PwApplicationHelper::requestAcloudData($url);
             if ($info['code'] !== '0') {
                 $this->showError($info['msg']);
@@ -335,14 +335,14 @@ class StyleController extends AdminBaseController
     public function doGenerateAction()
     {
         list($style_type, $name, $alias, $description, $version, $pwversion, $website) =
-        $this->getInput(array('style_type', 'name', 'alias', 'description', 'version', 'pwversion', 'website'), 'post');
+        $this->getInput(['style_type', 'name', 'alias', 'description', 'version', 'pwversion', 'website'], 'post');
         if (!$style_type || !$name || !$alias || !$version || !$pwversion) {
             $this->showError('APPCENTER:empty');
         }
         if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
             $this->showError('APPCENTER:illegal.alias');
         }
-        list($author, $email) = $this->getInput(array('author', 'email'), 'post');
+        list($author, $email) = $this->getInput(['author', 'email'], 'post');
         /* @var $srv PwGenerateStyle */
         $srv = Wekit::load('APPCENTER:service.srv.PwGenerateStyle');
         $srv = new PwGenerateStyle();
@@ -359,7 +359,7 @@ class StyleController extends AdminBaseController
         if ($r instanceof PwError) {
             $this->showError($r->getError());
         }
-        $this->forwardAction('appcenter/style/doInstall', array('themes' => array($r)));
+        $this->forwardAction('appcenter/style/doInstall', ['themes' => [$r]]);
     }
 
     /**
@@ -394,14 +394,14 @@ class StyleController extends AdminBaseController
         }
         $install->addInstallLog('packs', $pack);
         $install->addInstallLog('service', $conf);
-        $fields = array();
+        $fields = [];
         foreach ($install->getInstallLog() as $key => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'app_id'        => $install->getAppId(),
                 'log_type'      => $key,
                 'data'          => $value,
                 'created_time'  => Pw::getTime(),
-                'modified_time' => Pw::getTime(), );
+                'modified_time' => Pw::getTime(), ];
             $fields[] = $_tmp;
         }
         Wekit::load('APPCENTER:service.PwApplicationLog')->batchAdd($fields);

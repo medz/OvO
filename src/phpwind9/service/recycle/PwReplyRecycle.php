@@ -23,7 +23,7 @@ class PwReplyRecycle
     public function fetchRecord($pids)
     {
         if (!$pids || !is_array($pids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchRecord($pids);
@@ -56,7 +56,7 @@ class PwReplyRecycle
         if (empty($dms) || !is_array($dms)) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($dms as $key => $dm) {
             if ($dm instanceof PwReplyRecycleDm && $dm->beforeAdd() === true) {
                 $data[] = $dm->getData();

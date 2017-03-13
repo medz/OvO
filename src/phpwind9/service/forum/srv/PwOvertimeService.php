@@ -12,7 +12,7 @@ class PwOvertimeService
         if ($overtimes) {
             $timestamp = Pw::getTime();
             $newOvertime = 0;
-            $ids = array();
+            $ids = [];
             foreach ($overtimes as $v) {
                 if ($v['overtime'] > $timestamp) {
                     (!$newOvertime || $newOvertime > $v['overtime']) && $newOvertime = $v['overtime'];

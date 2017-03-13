@@ -24,7 +24,7 @@ class PwDesignDisplay
         }
         $time = Pw::getTime();
         $isCron = false;
-        $delDataid = $extend = array();
+        $delDataid = $extend = [];
         $ds = Wekit::load('design.PwDesignData');
         $data = $ds->getDataByModuleid($moduleId);
         foreach ($data as $k => $v) {
@@ -65,7 +65,7 @@ class PwDesignDisplay
         if (!$moduleId) {
             return false;
         }
-        $diff = $_data = array();
+        $diff = $_data = [];
         $ds = Wekit::load('design.PwDesignCron');
         $cron = $ds->getCron($moduleId);
         if ($cron) {

@@ -4,7 +4,7 @@ defined('WEKIT_VERSION') or exit(403);
 /*
  * 外部可访问资源部署目录配置
  */
-return array(
+return [
 
 /**=====配置开始于此=====**/
 
@@ -19,4 +19,4 @@ return array(
 'PUBLIC_THEMES' => '/themes',
 
 /**=====配置结束于此=====**/
-);
+];

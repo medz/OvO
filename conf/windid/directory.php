@@ -2,7 +2,7 @@
 
 defined('WEKIT_VERSION') or exit(403);
 
-return array(
+return [
 /*
  * 全局应用部署目录配置
  */
@@ -42,4 +42,4 @@ return array(
 
 /**=====配置结束于此=====**/
 
-);
+];

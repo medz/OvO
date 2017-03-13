@@ -57,7 +57,7 @@ class PwDesignThreadPushService
         $credit = PwCreditBo::getInstance();
         $operation = 'push_thread';
         $forum = new PwForumBo($thread['fid']);
-        $credit->operate($operation, PwUserBo::getInstance($thread['created_userid']), true, array('forumname' => $forum->foruminfo['name']), $forum->getCreditSet($operation));
+        $credit->operate($operation, PwUserBo::getInstance($thread['created_userid']), true, ['forumname' => $forum->foruminfo['name']], $forum->getCreditSet($operation));
         $credit->execute();
 
         $strategy = $credit->getStrategy($operation);
@@ -67,7 +67,7 @@ class PwDesignThreadPushService
         //$bo->sets($push['author_uid'], $credit['credit']);
 
         if ($push['neednotice']) {
-            $content = '恭喜，您的帖子<a href="'.$sUrl.'">'.Pw::substrs($sTitle, 20).'</a>被<a href="'.WindUrlHelper::createUrl('space/index/run', array('uid' => $push['created_userid']), '', 'pw').'">'.$user['username'].'</a>执行 推送 操作。';
+            $content = '恭喜，您的帖子<a href="'.$sUrl.'">'.Pw::substrs($sTitle, 20).'</a>被<a href="'.WindUrlHelper::createUrl('space/index/run', ['uid' => $push['created_userid']], '', 'pw').'">'.$user['username'].'</a>执行 推送 操作。';
             $extend && $content .= '获得'.$extend;
             $title = '帖子《<a href="'.$sUrl.'">'.Pw::substrs($sTitle, 20).'</a>》被推送';
             Wekit::load('SRV:message.srv.PwNoticeService')->sendDefaultNotice($push['author_uid'], $content, $title);

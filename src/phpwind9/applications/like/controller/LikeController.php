@@ -24,7 +24,7 @@ class LikeController extends PwBaseController
     public function dataAction()
     {
         $cron = false;
-        $_data = array();
+        $_data = [];
         $page = (int) $this->getInput('page', 'get');
         $pageid = (int) $this->getInput('pageid', 'get');
         $moduleid = (int) $this->getInput('moduleid', 'get');
@@ -58,7 +58,7 @@ class LikeController extends PwBaseController
             }
         }
         if ($cron || count($data) < 1) {
-            $pageBo->updateDesignCron(array($moduleid));
+            $pageBo->updateDesignCron([$moduleid]);
         }
         $this->setOutput($_data, 'html');
         $this->showMessage('operate.success');
@@ -68,10 +68,10 @@ class LikeController extends PwBaseController
     {
         $fromid = (int) $this->getInput('fromid', 'get');
         $typeid = (int) $this->getInput('typeid', 'get');
-        $_users = array();
+        $_users = [];
         $like = $this->_getLikeContentService()->getInfoByTypeidFromid($typeid, $fromid);
         !$like && $this->showError('BBS:like.fail');
-        $uids = $like['users'] ? explode(',', $like['users']) : array();
+        $uids = $like['users'] ? explode(',', $like['users']) : [];
         $userInfos = Wekit::load('user.PwUser')->fetchUserByUid($uids);
         foreach ($userInfos as $user) {
             if (!$user['uid']) {

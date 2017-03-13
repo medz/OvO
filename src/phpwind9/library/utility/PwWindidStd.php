@@ -41,6 +41,6 @@ class PwWindidStd
         }
         $cls = WindidApi::api($this->api);
 
-        return call_user_func_array(array($cls, $method), $args);
+        return call_user_func_array([$cls, $method], $args);
     }
 }

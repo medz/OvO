@@ -39,7 +39,7 @@ class PwDesignRouter
             return false;
         }
         $router = Wekit::C('site', 'design.router');
-        $router[$m.'/'.$c.'/'.$a] = array($name, $unique);
+        $router[$m.'/'.$c.'/'.$a] = [$name, $unique];
         $config = new PwConfigSet('site');
         $config->set('design.router', $router)->flush();
 

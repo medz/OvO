@@ -68,9 +68,9 @@ class PwNoticeMedal extends PwNoticeAction
     public function getDetailList($notice)
     {
         if (!is_array($notice)) {
-            return array();
+            return [];
         }
-        $logIds = $logInfo = $medalIds = array();
+        $logIds = $logInfo = $medalIds = [];
         $notice['medalInfo'] = Wekit::load('medal.PwMedalInfo')->getMedalInfo($notice['extend_params']['medelId']);
         $notice['medalInfo']['image'] = Wekit::load('medal.srv.PwMedalService')->getMedalImage($notice['medalInfo']['path'], $notice['medalInfo']['image']);
         $notice['medalInfo']['log_id'] = $notice['extend_params']['logid'];

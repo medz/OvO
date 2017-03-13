@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwDesignBakDao extends PwBaseDao
 {
     protected $_table = 'design_bak';
-    protected $_dataStruct = array('bak_type', 'page_id', 'is_snapshot', 'bak_info');
+    protected $_dataStruct = ['bak_type', 'page_id', 'is_snapshot', 'bak_info'];
 
     public function getBak($type, $pageId, $issnap)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `bak_type` = ? AND `page_id` = ? AND `is_snapshot` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($type, $pageId, $issnap));
+        return $smt->getOne([$type, $pageId, $issnap]);
     }
 
     public function replaceBak($data)
@@ -45,7 +45,7 @@ class PwDesignBakDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET `is_snapshot`= ? WHERE `bak_type` = ? AND `page_id` =? AND `is_snapshot` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($issnap, $type, $pageid, $snap));
+        return $smt->update([$issnap, $type, $pageid, $snap]);
     }
 
     public function deleteBak($type, $pageId, $issnap)
@@ -53,7 +53,7 @@ class PwDesignBakDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `bak_type` = ? AND `page_id` = ? AND `is_snapshot` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($type, $pageId, $issnap));
+        return $smt->update([$type, $pageId, $issnap]);
     }
 
     public function deleteByPageId($pageId)
@@ -61,6 +61,6 @@ class PwDesignBakDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE  `page_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pageId));
+        return $smt->update([$pageId]);
     }
 }

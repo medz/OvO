@@ -18,12 +18,12 @@ class PwSpaceUpload extends PwUploadAction
     public $dir;
     public $filename;
     protected $uid = 0;
-    private $mime = array();
+    private $mime = [];
 
     public function __construct($uid)
     {
-        $this->ftype = array('jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000);
-        $this->mime = array('image/jpeg', 'image/png', 'image/jpg', 'image/gif');
+        $this->ftype = ['jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000];
+        $this->mime = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
         $this->uid = $uid;
     }
 
@@ -78,9 +78,9 @@ class PwSpaceUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array(),
-        );
+        return [
+            [],
+        ];
     }
 
     /**
@@ -102,14 +102,14 @@ class PwSpaceUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'name'   => $value['name'],
                 'type'   => $value['type'],
                 'path'   => $this->dir.$this->filename,
                 'size'   => $value['size'],
                 'width'  => $this->width,
                 'height' => $this->height,
-            );
+            ];
         }
 
         return true;

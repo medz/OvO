@@ -13,11 +13,11 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwPassReply extends PwGleanDoProcess
 {
-    public $data = array();
-    public $pids = array();
-    public $tids = array();
-    public $fids = array();
-    public $rpids = array();
+    public $data = [];
+    public $pids = [];
+    public $tids = [];
+    public $fids = [];
+    public $rpids = [];
 
     public function __construct(iPwDataSource $ds)
     {

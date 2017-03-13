@@ -10,9 +10,9 @@
  */
 class PwSiteStatusService
 {
-    private $_user = array();
+    private $_user = [];
 
-    private $_config = array();
+    private $_config = [];
 
     /**
      * 站点访问状态

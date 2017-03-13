@@ -82,10 +82,10 @@ class PwWordFilter
         $this->word = $this->fetchAllWord();
         list($type, $words) = $this->_getAlgorithms($this->word)->match($str);
         if (!$words) {
-            return array(0, array());
+            return [0, []];
         }
 
-        return array($type, $words, $this->isTip);
+        return [$type, $words, $this->isTip];
     }
 
     /**
@@ -98,11 +98,11 @@ class PwWordFilter
     private function _buildWord($data)
     {
         if (!is_array($data) || !$data) {
-            return array();
+            return [];
         }
-        $result = array();
+        $result = [];
         foreach ($data as $value) {
-            $result[] = implode('|', array($value['word'], $value['word_type'], $value['word_replace']));
+            $result[] = implode('|', [$value['word'], $value['word_type'], $value['word_replace']]);
         }
 
         return $result;
@@ -181,7 +181,7 @@ class PwWordFilter
         return true;
     }
 
-    private function _getAlgorithms($data = array())
+    private function _getAlgorithms($data = [])
     {
         $algorithms = strtolower($this->_algorithms);
         $className = sprintf('PwFilter%s', ucfirst($algorithms));

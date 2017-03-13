@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteTopicDoDirectDelete extends iPwGleanDoHookProcess
 {
-    protected $recode = array();
+    protected $recode = [];
 
     public function gleanData($value)
     {

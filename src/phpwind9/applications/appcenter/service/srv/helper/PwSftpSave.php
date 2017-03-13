@@ -21,7 +21,7 @@ class PwSftpSave extends AbstractWindFtp
      */
     protected $conn;
 
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $this->initConfig($config);
         $this->conn = new Net_SFTP($this->server, $this->port, $this->timeout);
@@ -33,7 +33,7 @@ class PwSftpSave extends AbstractWindFtp
 
     public function upload($localfile, $remotefile, $mode = null)
     {
-        if (!in_array(($savedir = dirname($remotefile)), array('.', '/'))) {
+        if (!in_array(($savedir = dirname($remotefile)), ['.', '/'])) {
             $this->mkdirs($savedir);
         }
         $remotefile = $this->rootPath.WindSecurity::escapePath($remotefile);

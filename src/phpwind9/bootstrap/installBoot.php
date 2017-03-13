@@ -10,7 +10,7 @@ class installBoot extends bootstrap
 
     public function getConfig()
     {
-        return array('components' => array(), 'site' => array('debug' => 0));
+        return ['components' => [], 'site' => ['debug' => 0]];
     }
 
     public function getTime()

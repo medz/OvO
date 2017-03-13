@@ -60,7 +60,7 @@ class IndexController extends PwBaseController
         if (($result = $this->_getSearchService()->_checkRight()) instanceof PwError) {
             $this->showError($result->getError());
         }
-        list($page, $perpage, $keywords, $fid, $limittime, $orderby) = $this->getInput(array('page', 'perpage', 'keywords', 'fid', 'limittime', 'orderby'));
+        list($page, $perpage, $keywords, $fid, $limittime, $orderby) = $this->getInput(['page', 'perpage', 'keywords', 'fid', 'limittime', 'orderby']);
         if ($keywords && $keywords != '请您输入你想搜索的内容') {
 
             //最后搜索时间
@@ -93,10 +93,10 @@ class IndexController extends PwBaseController
             $this->setOutput($perpage, 'perpage');
             $this->setOutput($count, 'count');
             $this->setOutput($threads, 'threads');
-            $this->setOutput(array(1 => 'img', 3 => 'img', 4 => 'file', 5 => 'img', 7 => 'img'), 'uploadIcon');
-            $this->setOutput(array('img' => '图片帖', 'file' => '附件'), 'icon');
+            $this->setOutput([1 => 'img', 3 => 'img', 4 => 'file', 5 => 'img', 7 => 'img'], 'uploadIcon');
+            $this->setOutput(['img' => '图片帖', 'file' => '附件'], 'icon');
         }
-        $args = array('keywords' => $keywords, 'fid' => $fid, 'limittime' => $limittime, 'orderby' => $orderby);
+        $args = ['keywords' => $keywords, 'fid' => $fid, 'limittime' => $limittime, 'orderby' => $orderby];
         $this->setOutput($args, 'args');
         $forumList = Wekit::load('forum.srv.PwForumService')->getForumList();
         $this->setOutput(AppSearchRecord::TYPE_THREAD, 'recordType');
@@ -152,7 +152,7 @@ class IndexController extends PwBaseController
 
     public function getCommonForumList($forumList)
     {
-        $forumdb = array(0 => array());
+        $forumdb = [0 => []];
         if (!$forumList) {
             return $forumdb;
         }

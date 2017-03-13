@@ -42,13 +42,13 @@ class PwSeoBo
      *
      * @var array
      */
-    protected $defaultSeo = array(
+    protected $defaultSeo = [
         'title'       => '{sitename}',
         'description' => '{sitename}',
-        'keywords'    => '{sitename}', );
-    protected $seo = array();
-    protected $codeData = array();
-    protected $default = array();
+        'keywords'    => '{sitename}', ];
+    protected $seo = [];
+    protected $codeData = [];
+    protected $default = [];
     private static $_instance = null;
 
     public function __construct()
@@ -88,9 +88,9 @@ class PwSeoBo
          * 1、参数为0，显示自定义的，否则显示默认值 2、参数不为0，显示自定义的，没有则显示参数为0的自定义的，也没有就显示参数为0的默认值
          */
         if ($param != '0') {
-            list($seo, $seo_0) = array(
+            list($seo, $seo_0) = [
                 $this->_seoService()->getByModAndPageAndParamWithCache($mod, $page, $param),
-                $this->_seoService()->getByModAndPageAndParamWithCache($mod, $page, 0), );
+                $this->_seoService()->getByModAndPageAndParamWithCache($mod, $page, 0), ];
             $this->seo = self::_choose($seo, $seo_0, $this->default);
         } else {
             $result = $this->_seoService()->getByModAndPageAndParamWithCache($mod, $page, '0');
@@ -138,19 +138,19 @@ class PwSeoBo
     public function setCustomSeo($title, $keywords, $description)
     {
         if ($title || $keywords || $description) {
-            $this->seo = array(
+            $this->seo = [
                 'title'       => $title,
                 'keywords'    => $keywords,
-                'description' => $description, );
+                'description' => $description, ];
         }
     }
 
     public function setDefaultSeo($title, $keywords, $description)
     {
-        $this->default = array(
+        $this->default = [
             'title'       => $title,
             'keywords'    => $keywords,
-            'description' => $description, );
+            'description' => $description, ];
     }
 
     /**
@@ -163,7 +163,7 @@ class PwSeoBo
 
     private function _choose($option1, $option2, $default)
     {
-        $tmp = array();
+        $tmp = [];
         if ($option2 !== false) {
             $tmp['title'] = $option1['title'] ? $option1['title'] : ($option2['title'] ? $option2['title'] : $default['title']);
             $tmp['description'] = $option1['description'] ? $option1['description'] : ($option2['description'] ? $option2['description'] : $default['description']);

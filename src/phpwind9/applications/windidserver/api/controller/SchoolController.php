@@ -73,7 +73,7 @@ class SchoolController extends OpenBaseController
 
     public function addAction()
     {
-        list($name, $firstchar, $typeid, $areaid) = $this->getInput(array('name', 'first_char', 'typeid', 'areaid'), 'post');
+        list($name, $firstchar, $typeid, $areaid) = $this->getInput(['name', 'first_char', 'typeid', 'areaid'], 'post');
         Wind::import('WSRV:school.dm.WindidSchoolDm');
         $dm = new WindidSchoolDm();
         isset($name) && $dm->setName($name);
@@ -86,7 +86,7 @@ class SchoolController extends OpenBaseController
 
     public function batchAddAction()
     {
-        list($name, $firstchar, $typeid, $areaid) = $this->getInput(array('name', 'first_char', 'typeid', 'areaid'), 'post');
+        list($name, $firstchar, $typeid, $areaid) = $this->getInput(['name', 'first_char', 'typeid', 'areaid'], 'post');
         Wind::import('WSRV:school.dm.WindidSchoolDm');
         foreach ($name as $k => $v) {
             $dm = new WindidSchoolDm();
@@ -103,7 +103,7 @@ class SchoolController extends OpenBaseController
     public function updateAction()
     {
         $ids = $this->getInput('id', 'get');
-        list($name, $firstchar, $typeid, $areaid) = $this->getInput(array('name', 'first_char', 'typeid', 'areaid'), 'post');
+        list($name, $firstchar, $typeid, $areaid) = $this->getInput(['name', 'first_char', 'typeid', 'areaid'], 'post');
         Wind::import('WSRV:school.dm.WindidSchoolDm');
         foreach ($name as $k => $id) {
             $dm = new WindidSchoolDm();

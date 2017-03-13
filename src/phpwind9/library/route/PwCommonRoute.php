@@ -15,7 +15,7 @@ class PwCommonRoute extends AbstractPwRoute
     /* (non-PHPdoc)
      * @see AbstractWindRoute::build()
      */
-    public function build($router, $action, $args = array())
+    public function build($router, $action, $args = [])
     {
         list($_a, $_c, $_m, $args) = WindUrlHelper::resolveAction($action, $args);
         if ($_m && $_m !== $router->getDefaultModule()) {

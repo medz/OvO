@@ -13,11 +13,11 @@ Wind::import('WSRV:notify.dm.WindidNotifyLogDm');
  */
 class WindidNotifyServer
 {
-    protected $logId = array();
+    protected $logId = [];
 
     public function send()
     {
-        $this->logId = array();
+        $this->logId = [];
         $i = 0;
         do {
             $result = $this->_queueSend($i);
@@ -46,7 +46,7 @@ class WindidNotifyServer
         if (!$log = $logDs->getLog($logid)) {
             return false;
         }
-        $result = $this->_request(array($logid => $log));
+        $result = $this->_request([$logid => $log]);
         $this->_updateLog($result);
 
         return trim(current($result)) == 'success' ? true : false;
@@ -76,7 +76,7 @@ class WindidNotifyServer
     protected function _request($queue)
     {
         $time = Pw::getTime();
-        $appids = $nids = array();
+        $appids = $nids = [];
         foreach ($queue as $v) {
             $appids[] = $v['appid'];
             $nids[] = $v['nid'];
@@ -84,18 +84,18 @@ class WindidNotifyServer
         $apps = $this->_getAppDs()->fetchApp(array_unique($appids));
         $notifys = $this->_getNotifyDs()->fetchNotify(array_unique($nids));
 
-        $post = $urls = array();
+        $post = $urls = [];
 
         foreach ($queue as $k => $v) {
             $appid = $v['appid'];
             $nid = $v['nid'];
             $post[$k] = unserialize($notifys[$nid]['param']);
-            $array = array(
-                'windidkey' => WindidUtility::appKey($v['appid'], $time, $apps[$appid]['secretkey'], array('operation' => $notifys[$nid]['operation']), $post[$k]),
+            $array = [
+                'windidkey' => WindidUtility::appKey($v['appid'], $time, $apps[$appid]['secretkey'], ['operation' => $notifys[$nid]['operation']], $post[$k]),
                 'operation' => $notifys[$nid]['operation'],
                 'clientid'  => $v['appid'],
                 'time'      => $time,
-            );
+            ];
 
             $urls[$k] = WindidUtility::buildClientUrl($apps[$appid]['siteurl'], $apps[$appid]['apifile']).http_build_query($array);
         }

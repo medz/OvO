@@ -13,7 +13,7 @@ class PwAttentionRecommendCronDao extends PwBaseDao
 {
     protected $_pk = 'uid';
     protected $_table = 'attention_recommend_cron';
-    protected $_dataStruct = array('uid', 'created_time');
+    protected $_dataStruct = ['uid', 'created_time'];
 
     public function get($uid)
     {
@@ -49,7 +49,7 @@ class PwAttentionRecommendCronDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE `created_time`<?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($created_time));
+        return $smt->update([$created_time]);
     }
 
     public function update($uid, $fields)

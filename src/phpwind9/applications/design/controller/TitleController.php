@@ -26,7 +26,7 @@ class TitleController extends DesignBaseController
     {
         $titles = $this->bo->getTitle();
         if (!$titles['titles']) {
-            $titles['titles'] = array(array('title' => ''));
+            $titles['titles'] = [['title' => '']];
         }
         $this->setOutput($this->_getDesignService()->getSysFontSize(), 'sysfontsize');
         $this->setOutput($titles, 'titles');
@@ -35,7 +35,7 @@ class TitleController extends DesignBaseController
 
     public function doeditAction()
     {
-        $array = array();
+        $array = [];
         $html = '';
         $title = $this->getInput('title', 'post');
         $link = $this->getInput('link', 'post');
@@ -56,7 +56,7 @@ class TitleController extends DesignBaseController
 
         $styleSrv = $this->_getStyleService();
 
-        $background = array();
+        $background = [];
         $bgimage && $background['image'] = $bgimage;
         $bgcolor && $background['color'] = $bgcolor;
         $bgposition && $background['position'] = $bgposition;
@@ -66,7 +66,7 @@ class TitleController extends DesignBaseController
             $v = (int) $v ? (int) $v : '';
         }
         foreach ($title as $k => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'title'         => $title[$k],
                 'link'          => $link[$k],
                 'image'         => $image[$k],
@@ -77,7 +77,7 @@ class TitleController extends DesignBaseController
                 'fontbold'      => $fontbold[$k],
                 'fontunderline' => $fontunderline[$k],
                 'fontitalic'    => $fontitalic[$k],
-            );
+            ];
             $style = $this->_buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);
             list($dom, $jstyle) = $styleSrv->getCss($style);
@@ -95,7 +95,7 @@ class TitleController extends DesignBaseController
         }
         if ($background) {
             $array['background'] = $background;
-            $bg = array('background' => $background);
+            $bg = ['background' => $background];
             $styleSrv->setStyle($bg);
             list($dom, $data['background']) = $styleSrv->getCss();
         }
@@ -116,11 +116,11 @@ class TitleController extends DesignBaseController
 
     private function _buildTitleStyle($style)
     {
-        return array(
-                'float'      => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font'       => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
-                'background' => array('color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']),
-        );
+        return [
+                'float'      => ['type' => $style['float'], 'margin' => $style['margin']],
+                'font'       => ['size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']],
+                'background' => ['color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']],
+        ];
     }
 
     private function _getModuleDs()

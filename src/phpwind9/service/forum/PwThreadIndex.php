@@ -84,7 +84,7 @@ class PwThreadIndex
     public function fetchInFid($fids, $limit, $offset, $order = 'lastpost')
     {
         if (empty($fids) || !is_array($fids)) {
-            return array();
+            return [];
         }
         $result = $this->_getDao()->fetchInFid($fids, $limit, $offset, $order);
 

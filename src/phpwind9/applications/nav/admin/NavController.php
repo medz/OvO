@@ -36,8 +36,8 @@ class NavController extends AdminBaseController
 
         $homeUrl = '';
         Wekit::load('SRV:nav.dm.PwNavDm');
-        $dms = $newDms = $datas = $newdatas = array();
-        list($posts, $newposts, $navtype) = $this->getInput(array('data', 'newdata', 'navtype'), 'post');
+        $dms = $newDms = $datas = $newdatas = [];
+        list($posts, $newposts, $navtype) = $this->getInput(['data', 'newdata', 'navtype'], 'post');
         $homeid = $this->getInput('home', 'post');
         foreach ($posts as $post) {
             if (!$post['name'] || !$navtype) {
@@ -149,7 +149,7 @@ class NavController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        $keys = array('navid', 'type', 'parentid', 'name', 'link', 'image', 'fontColor', 'fontBold', 'fontItalic', 'fontUnderline', 'alt', 'target', 'orderid', 'isshow');
+        $keys = ['navid', 'type', 'parentid', 'name', 'link', 'image', 'fontColor', 'fontBold', 'fontItalic', 'fontUnderline', 'alt', 'target', 'orderid', 'isshow'];
         list($navid, $type, $parentid, $name, $link, $image, $fontColor, $fontBold, $fontItalic, $fontUnderline, $alt, $target, $orderid, $isshow) = $this->getInput($keys, 'post');
         $router = Wind::getComponent('router')->getRoute('pw')->matchUrl($link);
         if (!$name || !$type) {

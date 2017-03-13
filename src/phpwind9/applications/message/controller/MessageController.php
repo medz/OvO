@@ -34,12 +34,12 @@ class MessageController extends PwBaseController
      */
     public function run()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
         list($count, $result) = $this->_getMessageService()->getDialogs($this->loginUser->uid, $start, $limit);
-        $dialogs = array();
+        $dialogs = [];
         foreach ($result as $v) {
             $v['last_message']['content'] = strip_tags($v['last_message']['content']);
             $v['last_message']['content'] = $this->_parseEmotion($v['last_message']['content']);
@@ -70,7 +70,7 @@ class MessageController extends PwBaseController
         }
         $username = $this->getInput('username');
         if ($username) {
-            !is_array($username) && $username = array($username);
+            !is_array($username) && $username = [$username];
             $this->setOutput($username, 'username');
         }
         $this->setOutput(in_array('sendmsg', (array) Wekit::C('verify', 'showverify')), 'verify');
@@ -85,7 +85,7 @@ class MessageController extends PwBaseController
         if ($right instanceof PwError) {
             $this->showError($right->getError());
         }
-        list($usernames, $content, $code) = $this->getInput(array('usernames', 'content', 'code'), 'post');
+        list($usernames, $content, $code) = $this->getInput(['usernames', 'content', 'code'], 'post');
         if (!$content) {
             $this->showError('MESSAGE:content.empty');
         }
@@ -131,7 +131,7 @@ class MessageController extends PwBaseController
             $username = $this->getInput('username');
         }
         if ($username) {
-            !is_array($username) && $username = array($username);
+            !is_array($username) && $username = [$username];
             $this->setOutput($username, 'username');
         }
         $this->setOutput(in_array('sendmsg', (array) Wekit::C('verify', 'showverify')), 'verify');
@@ -147,7 +147,7 @@ class MessageController extends PwBaseController
         if ($right instanceof PwError) {
             $this->showError($right->getError());
         }
-        list($username, $content, $code) = $this->getInput(array('username', 'content', 'code'), 'post');
+        list($username, $content, $code) = $this->getInput(['username', 'content', 'code'], 'post');
         !$content && $this->showError('MESSAGE:content.empty');
         if (Pw::strlen($content) > 500) {
             $this->showError('MESSAGE:content.length.error');
@@ -165,7 +165,7 @@ class MessageController extends PwBaseController
      */
     public function dialogAction()
     {
-        list($page, $perpage, $dialogid) = $this->getInput(array('page', 'perpage', 'dialogid'));
+        list($page, $perpage, $dialogid) = $this->getInput(['page', 'perpage', 'dialogid']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -188,7 +188,7 @@ class MessageController extends PwBaseController
         $this->setOutput($perpage, 'perpage');
         $this->setOutput($dialog, 'dialog');
         $this->setOutput($messages, 'messages');
-        $this->setOutput(array('dialogid' => $dialogid), 'args');
+        $this->setOutput(['dialogid' => $dialogid], 'args');
         $this->setOutput(in_array('sendmsg', (array) Wekit::C('verify', 'showverify')), 'verify');
     }
 
@@ -209,7 +209,7 @@ class MessageController extends PwBaseController
             }
             $count = $this->_getWindid()->countMessage($dialogId);
             if (!$count) {
-                $this->_getNoticesService()->detchDeleteNoticeByType($this->loginUser->uid, 'message', array($dialog['from_uid']));
+                $this->_getNoticesService()->detchDeleteNoticeByType($this->loginUser->uid, 'message', [$dialog['from_uid']]);
                 $this->showMessage('success', 'message/message/run');
             }
         }
@@ -223,9 +223,9 @@ class MessageController extends PwBaseController
     {
         $ids = $this->getInput('ids');
         !$ids && $this->showError('MESSAGE:message.id.empty');
-        is_numeric($ids) && $ids = array(intval($ids));
+        is_numeric($ids) && $ids = [intval($ids)];
         $dialogs = $this->_getWindid()->fetchDialog($ids);
-        $dialog_ids = $from_uids = array();
+        $dialog_ids = $from_uids = [];
         foreach ($dialogs as $k => $v) {
             if ($v['to_uid'] != $this->loginUser->uid) {
                 continue;
@@ -247,7 +247,7 @@ class MessageController extends PwBaseController
      */
     public function searchAction()
     {
-        list($keyword) = $this->getInput(array('keyword'));
+        list($keyword) = $this->getInput(['keyword']);
         empty($keyword) && $this->showError('MESSAGE:keyword.empty');
         $userinfo = $this->_getUserDs()->getUserByName($keyword);
         if (!$userinfo) {
@@ -255,9 +255,9 @@ class MessageController extends PwBaseController
         }
         $dialog = $this->_getWindid()->getDialogByUser($this->loginUser->uid, $userinfo['uid']);
         if (!$dialog) {
-            $this->showError(array('MESSAGE:dialog.notfound', array('{fromUser}' => $keyword)));
+            $this->showError(['MESSAGE:dialog.notfound', ['{fromUser}' => $keyword]]);
         }
-        $this->showMessage('success', WindUrlHelper::createUrl('message/message/dialog', array('dialogid' => $dialog['dialog_id'])));
+        $this->showMessage('success', WindUrlHelper::createUrl('message/message/dialog', ['dialogid' => $dialog['dialog_id']]));
     }
 
     /**
@@ -273,15 +273,15 @@ class MessageController extends PwBaseController
                 $config['blacklist'][] = $v['username'];
             }
         }
-        $noticeValue = $config['notice_types'] ? unserialize($config['notice_types']) : array();
+        $noticeValue = $config['notice_types'] ? unserialize($config['notice_types']) : [];
         // notice_types to du
-        $config = array(
+        $config = [
             'message_tone_Y' => $this->loginUser->info['message_tone'] ? 'checked' : '',
             'message_tone_N' => $this->loginUser->info['message_tone'] ? '' : 'checked',
             'privacy_N'      => $config['privacy'] > 0 ? '' : 'checked',
             'privacy_Y'      => $config['privacy'] > 0 ? 'checked' : '',
             'blacklist'      => $config['blacklist'] ? $config['blacklist'] : '',
-        );
+        ];
         foreach ($config as $k => $v) {
             $this->setOutput($v, $k);
         }
@@ -303,16 +303,16 @@ class MessageController extends PwBaseController
      */
     public function doSetAction()
     {
-        list($privacy, $message_tone, $notice_types, $blacklist) = $this->getInput(array('privacy', 'message_tone', 'notice_types', 'blacklist'));
+        list($privacy, $message_tone, $notice_types, $blacklist) = $this->getInput(['privacy', 'message_tone', 'notice_types', 'blacklist']);
         $noticeTypeSet = $this->_getNoticesService()->getNoticeTypeSet();
         $notice_types = array_diff_key($noticeTypeSet, (array) $notice_types);
-        $tmpTypes = array();
+        $tmpTypes = [];
         foreach ($notice_types as $k => $v) {
             $tmpTypes[$k] = $k;
         }
         $notice_types = serialize($tmpTypes);
 
-        $userids = array();
+        $userids = [];
         if ($blacklist) {
             $users = $this->_getUserDs()->fetchUserByName($blacklist);
             $userids = array_keys($users);
@@ -367,7 +367,7 @@ class MessageController extends PwBaseController
      */
     public function followsAction()
     {
-        list($page, $perpage, $type) = $this->getInput(array('page', 'perpage', 'type'));
+        list($page, $perpage, $type) = $this->getInput(['page', 'perpage', 'type']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -381,10 +381,10 @@ class MessageController extends PwBaseController
             $count && $attentions = $attentionDs->getFans($this->loginUser->uid, $limit, $start);
         }
         if (!$attentions) {
-            Pw::echoJson(array('state' => 'fail'));
+            Pw::echoJson(['state' => 'fail']);
             exit;
         }
-        Pw::echoJson(array('state' => 'success', 'data' => $this->_buildUsers($attentions)));
+        Pw::echoJson(['state' => 'success', 'data' => $this->_buildUsers($attentions)]);
         exit;
     }
 
@@ -395,7 +395,7 @@ class MessageController extends PwBaseController
     {
         $uids = array_keys($attentions);
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN);
-        $users = array();
+        $users = [];
         foreach ($uids as $v) {
             if (!isset($userList[$v]['username'])) {
                 continue;

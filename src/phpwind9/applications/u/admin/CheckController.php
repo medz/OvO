@@ -20,11 +20,11 @@ class CheckController extends AdminBaseController
      */
     public function run()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage > 0 ? $perpage : $this->perpage;
         $count = $this->_getDs()->countUnChecked();
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $perpage);
             $page > $totalPage && $page = $totalPage;
@@ -45,11 +45,11 @@ class CheckController extends AdminBaseController
      */
     public function emailAction()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         $count = $this->_getDs()->countUnActived();
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $perpage);
             $page > $totalPage && $page = $totalPage;
@@ -80,7 +80,7 @@ class CheckController extends AdminBaseController
         /* @var $groupService PwUserGroupsService */
         $groupService = Wekit::load('usergroup.srv.PwUserGroupsService');
         $strategy = Wekit::C('site', 'upgradestrategy');
-        $clearUid = array();
+        $clearUid = [];
         foreach ($infos as $_temp) {
             $clearUid[] = $_temp['uid'];
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNCHECK)) {
@@ -115,7 +115,7 @@ class CheckController extends AdminBaseController
         /* @var $groupService PwUserGroupsService */
         $groupService = Wekit::load('usergroup.srv.PwUserGroupsService');
         $strategy = Wekit::C('site', 'upgradestrategy');
-        $clearUid = array();
+        $clearUid = [];
         foreach ($infos as $_temp) {
             $clearUid[] = $_temp['uid'];
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNACTIVE)) {

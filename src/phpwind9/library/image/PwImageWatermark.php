@@ -158,7 +158,7 @@ class PwImageWatermark
             $offsetY = rand(5, $this->image->height - $water->height - 5);
         }
 
-        return array($offsetX, $offsetY);
+        return [$offsetX, $offsetY];
     }
 
     public function initWaterWay()

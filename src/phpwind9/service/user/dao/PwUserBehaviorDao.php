@@ -9,14 +9,14 @@
 class PwUserBehaviorDao extends PwBaseDao
 {
     protected $_table = 'user_behavior';
-    protected $_dataStruct = array('uid', 'behavior', 'number', 'expired_time', 'extend_info');
+    protected $_dataStruct = ['uid', 'behavior', 'number', 'expired_time', 'extend_info'];
 
     public function getInfo($uid, $behavior)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? AND behavior = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $behavior));
+        return $smt->getOne([$uid, $behavior]);
     }
 
     public function fetchInfo($uids)
@@ -24,7 +24,7 @@ class PwUserBehaviorDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid IN  %s ', $this->getTable(), $this->sqlImplode($uids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 
     public function getBehaviorList($uid)
@@ -32,7 +32,7 @@ class PwUserBehaviorDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'behavior');
+        return $smt->queryAll([$uid], 'behavior');
     }
 
     public function replaceInfo($data)
@@ -55,7 +55,7 @@ class PwUserBehaviorDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE uid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     public function deleteInfoByUidBehavior($uid, $behavior)
@@ -63,6 +63,6 @@ class PwUserBehaviorDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE uid = ? AND behavior = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $behavior));
+        return $smt->update([$uid, $behavior]);
     }
 }

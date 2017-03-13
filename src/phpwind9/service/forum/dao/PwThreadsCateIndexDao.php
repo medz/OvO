@@ -13,7 +13,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_cate_index';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'cid', 'fid', 'disabled', 'created_time', 'lastpost_time');
+    protected $_dataStruct = ['tid', 'cid', 'fid', 'disabled', 'created_time', 'lastpost_time'];
     protected $_threadTable = 'bbs_threads';
 
     public function count($cid)
@@ -21,7 +21,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT count(*) as count FROM %s WHERE cid=? AND disabled=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($cid));
+        return $smt->getValue([$cid]);
     }
 
     public function countNotInFids($cid, $fids)
@@ -29,7 +29,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) as count FROM %s WHERE cid=? AND disabled=0 AND fid NOT IN %s', $this->getTable(), $this->sqlImplode($fids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($cid));
+        return $smt->getValue([$cid]);
     }
 
     public function fetch($cid, $limit, $offset, $order)
@@ -38,7 +38,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s FORCE INDEX(%s) WHERE cid=? AND disabled=0 ORDER BY %s DESC %s', $this->getTable(), $idx, $field, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($cid), 'tid');
+        return $smt->queryAll([$cid], 'tid');
     }
 
     public function fetchNotInFid($cid, $fids, $limit, $offset, $order)
@@ -47,7 +47,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s FORCE INDEX(%s) WHERE cid=? AND disabled=0 AND fid NOT IN %s ORDER BY %s DESC %s', $this->getTable(), $idx, $this->sqlImplode($fids), $field, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($cid), 'tid');
+        return $smt->queryAll([$cid], 'tid');
     }
 
     /*
@@ -67,10 +67,10 @@ class PwThreadsCateIndexDao extends PwBaseDao
     protected function _getOrderFieldAndIndex($order)
     {
         if ($order == 'postdate') {
-            return array('tid', 'PRIMARY');
+            return ['tid', 'PRIMARY'];
         }
 
-        return array('lastpost_time', 'idx_cid_lastposttime');
+        return ['lastpost_time', 'idx_cid_lastposttime'];
     }
 
     public function addThread($tid, $fields)
@@ -81,14 +81,14 @@ class PwThreadsCateIndexDao extends PwBaseDao
         return $this->_add($fields, false);
     }
 
-    public function updateThread($tid, $fields, $increaseFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [])
     {
         $fields = $this->_processField($fields);
 
         return $this->_update($tid, $fields, $increaseFields);
     }
 
-    public function batchUpdateThread($tids, $fields, $increaseFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [])
     {
         $fields = $this->_processField($fields);
 
@@ -117,7 +117,7 @@ class PwThreadsCateIndexDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE cid=? ORDER BY lastpost_time ASC LIMIT %s', $this->getTable(), intval($limit));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($cid));
+        return $smt->update([$cid]);
     }
 
     private function _processField($fields)

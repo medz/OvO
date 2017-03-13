@@ -29,7 +29,7 @@ class PwNoticeThreadreply extends PwNoticeAction
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
     {
         if (!$aggregatedNotice || $aggregatedNotice['is_read']) {
-            $extendParams['replyUser'] = array($extendParams['replyUserid'] => $extendParams['replyUsername']);
+            $extendParams['replyUser'] = [$extendParams['replyUserid'] => $extendParams['replyUsername']];
 
             return $extendParams;
         }
@@ -76,7 +76,7 @@ class PwNoticeThreadreply extends PwNoticeAction
      */
     public function getDetailList($notice)
     {
-        $list = array();
+        $list = [];
         if (!$notice || !$notice['param']) {
             return $list;
         }

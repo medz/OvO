@@ -21,7 +21,7 @@ class PwCateThread extends PwThreadDataSource
     protected $specialSortTids;
     protected $count;
 
-    public function __construct($forum, $forbidFids = array())
+    public function __construct($forum, $forbidFids = [])
     {
         $this->forum = $forum;
         $this->fid = $forum->fid;
@@ -45,7 +45,7 @@ class PwCateThread extends PwThreadDataSource
 
     public function getData($limit, $offset)
     {
-        $threaddb = array();
+        $threaddb = [];
         if ($offset < $this->count) {
             $array = $this->_getThreadDs()->fetchThreadByTid($this->specialSortTids, $limit, $offset);
             foreach ($array as $key => $value) {
@@ -84,7 +84,7 @@ class PwCateThread extends PwThreadDataSource
 
     protected function _sort($data, $sort)
     {
-        $result = array();
+        $result = [];
         foreach ($sort as $tid) {
             $result[$tid] = $data[$tid];
         }

@@ -13,7 +13,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_digest_index';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'cid', 'fid', 'disabled', 'topic_type', 'created_time', 'lastpost_time', 'operator', 'operator_userid', 'operator_time');
+    protected $_dataStruct = ['tid', 'cid', 'fid', 'disabled', 'topic_type', 'created_time', 'lastpost_time', 'operator', 'operator_userid', 'operator_time'];
     protected $_threadTable = 'bbs_threads';
 
     /**
@@ -32,7 +32,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s FORCE INDEX(%s) WHERE cid=? AND disabled=0 ORDER BY %s DESC %s', $this->getTable(), $idx, $field, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($cid), 'tid');
+        return $smt->queryAll([$cid], 'tid');
     }
 
     /**
@@ -47,7 +47,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) as count FROM %s WHERE cid=? AND disabled=0');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($cid));
+        return $smt->getValue([$cid]);
     }
 
     /**
@@ -67,7 +67,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s FORCE INDEX(%s) WHERE fid=? AND disabled=0 %s ORDER BY %s DESC %s', $this->getTable(), $idx, $typeid ? ' AND topic_type = '.intval($typeid) : '', $field, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid), 'tid');
+        return $smt->queryAll([$fid], 'tid');
     }
 
     /**
@@ -83,7 +83,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) as count FROM %s WHERE fid=? AND disabled=0 %s', $this->getTable(), $typeid ? ' AND topic_type = '.intval($typeid) : '');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($fid));
+        return $smt->getValue([$fid]);
     }
 
     /**
@@ -114,9 +114,9 @@ class PwThreadsDigestIndexDao extends PwBaseDao
      */
     public function batchAddDigest($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $_tmp) {
-            $clear[] = array(
+            $clear[] = [
                 intval($_tmp['tid']),
                 intval($_tmp['cid']),
                 intval($_tmp['fid']),
@@ -127,7 +127,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
                 $_tmp['operator'],
                 intval($_tmp['operator_userid']),
                 intval($_tmp['operator_time']),
-            );
+            ];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`tid`, `cid`, `fid`, `disabled`, `topic_type`, `created_time`, `lastpost_time`, `operator`, `operator_userid`, `operator_time`) VALUES	%s', $this->getTable(), $this->sqlMulti($clear));
 
@@ -143,7 +143,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
      *
      * @return int
      */
-    public function updateThread($tid, $fields, $increaseFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [])
     {
         $fields = $this->_processField($fields);
 
@@ -159,7 +159,7 @@ class PwThreadsDigestIndexDao extends PwBaseDao
      *
      * @return bool
      */
-    public function batchUpdateThread($tids, $fields, $increaseFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [])
     {
         $fields = $this->_processField($fields);
 
@@ -230,9 +230,9 @@ class PwThreadsDigestIndexDao extends PwBaseDao
     private function _getOrderFieldAndIndex($order, $fid = false)
     {
         if ($order == 'lastpost') {
-            return array('lastpost_time', false === $fid ? 'idx_cid_lastposttime' : 'idx_fid_lastposttime_topictype');
+            return ['lastpost_time', false === $fid ? 'idx_cid_lastposttime' : 'idx_fid_lastposttime_topictype'];
         }
 
-        return array('tid', 'PRIMARY');
+        return ['tid', 'PRIMARY'];
     }
 }

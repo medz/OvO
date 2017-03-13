@@ -13,9 +13,9 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwPassTopic extends PwGleanDoProcess
 {
-    public $data = array();
-    public $tids = array();
-    public $fids = array();
+    public $data = [];
+    public $tids = [];
+    public $fids = [];
 
     public function __construct(iPwDataSource $ds)
     {

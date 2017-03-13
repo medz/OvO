@@ -83,16 +83,16 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     protected function compileSign($content)
     {
         $this->_getFooter();
-        $in = array(
+        $in = [
             '<pw-head/>',
             '<pw-navigate/>',
             '<pw-footer/>',
-        );
-        $out = array(
+        ];
+        $out = [
             '<!--# if($portal[\'header\']){ #--><template source=\'TPL:common.header\' load=\'true\' /><!--# } #-->',
             '<!--# if($portal[\'navigate\']){ #--><div class="bread_crumb">{@$headguide|html}</div><!--# } #-->',
             '<!--# if($portal[\'footer\']){ #--><template source=\'TPL:common.footer\' load=\'true\' /><!--# } #-->',
-        );
+        ];
 
         return str_replace($in, $out, $content);
     }
@@ -232,6 +232,6 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
             return $sysPage[$this->_router];
         }
 
-        return array();
+        return [];
     }
 }

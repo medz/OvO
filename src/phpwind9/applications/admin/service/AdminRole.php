@@ -68,7 +68,7 @@ class AdminRole
         $fields['name'] = $name;
         $fields['auths'] = implode(',', (array) $auths);
         $fields['modified_time'] = time();
-        $_roles = $this->findRolesByNames(array($name));
+        $_roles = $this->findRolesByNames([$name]);
         foreach ($_roles as $key => $value) {
             if ($value['id'] !== $id) {
                 return new PwError('ADMIN:role.add.fail.name.exist');

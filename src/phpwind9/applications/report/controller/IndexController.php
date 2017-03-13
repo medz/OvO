@@ -15,10 +15,10 @@ class IndexController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/article/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/article/run')]);
         }
         if (!$this->loginUser->getPermission('allow_report')) {
-            $this->showError(array('report.allow', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
+            $this->showError(['report.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
     }
 
@@ -27,7 +27,7 @@ class IndexController extends PwBaseController
      */
     public function reportAction()
     {
-        list($type, $type_id) = $this->getInput(array('type', 'type_id'));
+        list($type, $type_id) = $this->getInput(['type', 'type_id']);
         $this->setOutput($type, 'type');
         $this->setOutput($type_id, 'type_id');
     }
@@ -37,7 +37,7 @@ class IndexController extends PwBaseController
      */
     public function doReportAction()
     {
-        list($type, $type_id, $reason) = $this->getInput(array('type', 'type_id', 'reason'), 'post');
+        list($type, $type_id, $reason) = $this->getInput(['type', 'type_id', 'reason'], 'post');
         if (!$type_id) {
             $this->showError('operate.fail');
         }

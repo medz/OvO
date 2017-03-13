@@ -16,13 +16,13 @@ class PwBaseDao extends WindDao
     protected $_table;
     protected $_pk = 'id';
     protected $_className = '';
-    protected $_dataStruct = array();
+    protected $_dataStruct = [];
     protected $_baseInstance = null;
     protected $_defaultBaseInstance = '';
 
     public function __construct()
     {
-        $this->setDelayAttributes(array('connection' => array('ref' => 'db')));
+        $this->setDelayAttributes(['connection' => ['ref' => 'db']]);
     }
 
     /**
@@ -102,7 +102,7 @@ class PwBaseDao extends WindDao
         if (!is_array($array)) {
             return '';
         }
-        $str = array();
+        $str = [];
         foreach ($array as $key => $val) {
             $key = $this->getConnection()->sqlMetadata($key);
             $str[] = $key.'='.$key.'+'.$this->getConnection()->quote($val);
@@ -123,7 +123,7 @@ class PwBaseDao extends WindDao
         if (!is_array($array)) {
             return '';
         }
-        $str = array();
+        $str = [];
         foreach ($array as $key => $val) {
             if (!$val || !is_array($val)) {
                 continue;
@@ -187,7 +187,7 @@ class PwBaseDao extends WindDao
      *
      * @return string
      */
-    public function sqlMerge($updateFields, $increaseFields, $bitFields = array())
+    public function sqlMerge($updateFields, $increaseFields, $bitFields = [])
     {
         $sql = $etr = '';
         if ($updateFields) {
@@ -242,16 +242,16 @@ class PwBaseDao extends WindDao
      *
      * @return multitype:|unknown|multitype:unknown
      */
-    protected function _filterStruct($array, $allow = array())
+    protected function _filterStruct($array, $allow = [])
     {
         if (empty($array) || !is_array($array)) {
-            return array();
+            return [];
         }
         empty($allow) && $allow = $this->getDataStruct();
         if (empty($allow) || !is_array($allow)) {
             return $array;
         }
-        $data = array();
+        $data = [];
         foreach ($array as $key => $value) {
             in_array($key, $allow) && $data[$key] = $value;
         }
@@ -269,7 +269,7 @@ class PwBaseDao extends WindDao
      */
     protected function _margeArray($array1, $array2)
     {
-        $result = array();
+        $result = [];
         foreach ($array1 as $key => $value) {
             $result[$key] = isset($array2[$key]) ? array_merge($value, $array2[$key]) : $value;
         }
@@ -282,7 +282,7 @@ class PwBaseDao extends WindDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE %s=?', $this->getTable(), $this->_pk);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($id));
+        return $smt->getOne([$id]);
     }
 
     protected function _fetch($ids, $index = '', $fetchMode = 0)
@@ -307,7 +307,7 @@ class PwBaseDao extends WindDao
         return $result;
     }
 
-    protected function _update($id, $fields, $increaseFields = array(), $bitFields = array())
+    protected function _update($id, $fields, $increaseFields = [], $bitFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -317,13 +317,13 @@ class PwBaseDao extends WindDao
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE %s=?', $this->getTable(), $this->sqlMerge($fields, $increaseFields, $bitFields), $this->_pk);
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($id));
+        $result = $smt->update([$id]);
         PwSimpleHook::getInstance($this->_class().'_update')->runDo($id, $fields, $increaseFields);
 
         return $result;
     }
 
-    protected function _batchUpdate($ids, $fields, $increaseFields = array(), $bitFields = array())
+    protected function _batchUpdate($ids, $fields, $increaseFields = [], $bitFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -342,7 +342,7 @@ class PwBaseDao extends WindDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE %s=?', $this->getTable(), $this->_pk);
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($id));
+        $result = $smt->update([$id]);
         PwSimpleHook::getInstance($this->_class().'_delete')->runDo($id);
 
         return $result;

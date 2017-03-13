@@ -14,15 +14,15 @@
  * setting: 后台设置地址
  * class: 前台引导页地址
  */
-return array(
-    'profile' => array(
+return [
+    'profile' => [
         'title'   => '完善资料',
         'setting' => '',
         'guide'   => 'guide/interest/run',
-    ),
-    'attention' => array(
+    ],
+    'attention' => [
         'title'   => '推荐关注',
         'setting' => 'admin/u/attentionGuide',
         'guide'   => 'guide/attention/run',
-    ),
-);
+    ],
+];

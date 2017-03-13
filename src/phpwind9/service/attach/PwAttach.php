@@ -23,7 +23,7 @@ class PwAttach
     public function getAttach($aid)
     {
         if (empty($aid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getAttach($aid);
@@ -39,7 +39,7 @@ class PwAttach
     public function fetchAttach($aids)
     {
         if (empty($aids) || is_array($aids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchAttach($aids);

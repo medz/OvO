@@ -49,7 +49,7 @@ class PwRegisterService extends PwBaseHookService
             return true;
         }
 
-        return new PwError('USER:register.error.security.ip', array('{ipSpace}' => $ipSpace));
+        return new PwError('USER:register.error.security.ip', ['{ipSpace}' => $ipSpace]);
     }
 
     /**
@@ -162,7 +162,7 @@ class PwRegisterService extends PwBaseHookService
         }
 
         $code = substr(md5(Pw::getTime()), mt_rand(1, 8), 8);
-        $url = WindUrlHelper::createUrl('u/register/activeEmail', array('code' => $code, '_statu' => $statu), '', 'pw');
+        $url = WindUrlHelper::createUrl('u/register/activeEmail', ['code' => $code, '_statu' => $statu], '', 'pw');
         list($title, $content) = $this->_buildTitleAndContent('active.mail.title', 'active.mail.content', $username, $url);
         /* @var $activeCodeDs PwUserActiveCode */
         $activeCodeDs = Wekit::load('user.PwUserActiveCode');
@@ -332,7 +332,7 @@ class PwRegisterService extends PwBaseHookService
      *
      * @return PwUserInfoDm
      */
-    protected function filterUserDm(PwUserInfoDm $userDm, $hasCredit = array())
+    protected function filterUserDm(PwUserInfoDm $userDm, $hasCredit = [])
     {
         //如果开启邮箱激活，则设置该状态为0，否则设置该状态为1
         $_uncheckGid = false;
@@ -348,7 +348,7 @@ class PwRegisterService extends PwBaseHookService
         //【用户注册】未验证用户组
         if ($_uncheckGid) {
             $userDm->setGroupid(7);
-            $userDm->setGroups(array());
+            $userDm->setGroups([]);
         }
         $_credit = $this->_getRegisterAddCredit($hasCredit);
         //【用户注册】计算memberid
@@ -368,13 +368,13 @@ class PwRegisterService extends PwBaseHookService
      *
      * @return array
      */
-    private function _getRegisterAddCredit($_credit = array())
+    private function _getRegisterAddCredit($_credit = [])
     {
         //【用户注册】注册成功初始积分---积分策略中获取
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         $creditStrategy = $creditBo->getStrategy('register');
-        !$creditStrategy['credit'] && $creditStrategy['credit'] = array();
+        !$creditStrategy['credit'] && $creditStrategy['credit'] = [];
         foreach ($creditStrategy['credit'] as $id => $_v) {
             $_id = 'credit'.$id;
             if (isset($_credit[$_id])) {
@@ -399,8 +399,8 @@ class PwRegisterService extends PwBaseHookService
      */
     private function _buildTitleAndContent($titleKey, $contentKey, $username, $url = '')
     {
-        $search = array('{username}', '{sitename}');
-        $replace = array($username, Wekit::C('site', 'info.name'));
+        $search = ['{username}', '{sitename}'];
+        $replace = [$username, Wekit::C('site', 'info.name')];
         $title = str_replace($search, $replace, $this->config[$titleKey]);
         $search[] = '{time}';
         $search[] = '{url}';
@@ -408,7 +408,7 @@ class PwRegisterService extends PwBaseHookService
         $replace[] = $url ? sprintf('<a href="%s">%s</a>', $url, $url) : '';
         $content = str_replace($search, $replace, $this->config[$contentKey]);
 
-        return array($title, $content);
+        return [$title, $content];
     }
 
     /**

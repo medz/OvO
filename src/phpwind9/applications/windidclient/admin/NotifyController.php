@@ -16,8 +16,8 @@ class NotifyController extends AdminBaseController
     public function run()
     {
         $perPage = 10;
-        $uids = $appids = $nids = array();
-        list($clientid, $complete, $page) = $this->getInput(array('clientid', 'complete', 'page'));
+        $uids = $appids = $nids = [];
+        list($clientid, $complete, $page) = $this->getInput(['clientid', 'complete', 'page']);
         $page = $page > 1 ? $page : 1;
         $complete = ($complete === '') ? null : $complete;
         list($start, $limit) = Pw::page2limit($page, $perPage);
@@ -64,7 +64,7 @@ class NotifyController extends AdminBaseController
         $perPage = 100;
         $count = $nDs->countLogList(0, 0, 0);
         $totalPage = ceil($count / $perPage);
-        $nids = array();
+        $nids = [];
         for ($page = 1; $page <= $totalPage; $page++) {
             list($start, $limit) = Pw::page2limit($page, $perPage);
             $list = $nDs->getLogList(0, 0, $limit, $start, 0);

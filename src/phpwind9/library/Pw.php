@@ -138,7 +138,7 @@ class Pw
      */
     public static function stripWindCode($text, $stripTags = false)
     {
-        $pattern = array();
+        $pattern = [];
         if (strpos($text, '[post]') !== false && strpos($text, '[/post]') !== false) {
             $pattern[] = '/\[post\].+?\[\/post\]/is';
         }
@@ -217,9 +217,9 @@ class Pw
     public static function subArray($var, $vkeys)
     {
         if (!is_array($var) || !is_array($vkeys)) {
-            return array();
+            return [];
         }
-        $result = array();
+        $result = [];
         foreach ($vkeys as $key) {
             if (isset($var[$key])) {
                 $result[$key] = $var[$key];
@@ -242,7 +242,7 @@ class Pw
         $limit = intval($perpage);
         $start = max(($page - 1) * $limit, 0);
 
-        return array($start, $limit);
+        return [$start, $limit];
     }
 
     /**
@@ -364,7 +364,7 @@ class Pw
      */
     public static function getAvatar($uid, $size = 'middle')
     {
-        $file = $uid.(in_array($size, array('middle', 'small')) ? '_'.$size : '').'.jpg';
+        $file = $uid.(in_array($size, ['middle', 'small']) ? '_'.$size : '').'.jpg';
         $prefix = Wekit::C('site', 'avatarUrl');
 
         // 是否本地存储
@@ -532,9 +532,9 @@ class Pw
     public static function collectByKey($data, $key)
     {
         if (!is_array($data) || !$key || empty($data)) {
-            return array();
+            return [];
         }
-        $_collect = array();
+        $_collect = [];
         foreach ($data as $_item) {
             if (is_array($_item) && isset($_item[$key])) {
                 $_collect[] = $_item[$key];
@@ -577,9 +577,9 @@ class Pw
     public static function orderByKeys($data, $key, $orders)
     {
         if (!is_array($data) || !$key || !is_array($orders) || empty($data) || empty($orders)) {
-            return array();
+            return [];
         }
-        $_newData = $_tmp = array();
+        $_newData = $_tmp = [];
         foreach ($data as $_k => $_v) {
             if (!isset($_v[$key])) {
                 continue;
@@ -589,7 +589,7 @@ class Pw
                 continue;
             }
             if (!isset($_tmp[$_v[$key]])) {
-                $_tmp[$_v[$key]] = array();
+                $_tmp[$_v[$key]] = [];
             }
             $_tmp[$_v[$key]][$_k] = $_v;
         }

@@ -74,7 +74,7 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
         empty($this->count) && $this->count = '0';
         empty($this->per) && $this->per = '0';
 
-        $_return = array();
+        $_return = [];
         $_return[] = '<?php $__tplPageCount=(int)'.$this->count.';';
         $_return[] = '$__tplPagePer=(int)'.$this->per.';';
         $_return[] = '$__tplPageTotal=(int)'.$this->total.';';
@@ -108,11 +108,11 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
         $content = WindFile::read($pageFile);
         strpos($this->url, '?') !== false || $this->url .= '?';
         $url = '{@url:'.$this->url.'&page=$_page_i}{@'.$this->args.' ? \'&\' . http_build_query('.$this->args.') : \'\'';
-        $content = str_ireplace(array('{@$url', '{$url'), $url, $content);
+        $content = str_ireplace(['{@$url', '{$url'], $url, $content);
         $_windTemplate = Wind::getComponent('template');
         $content = $_windTemplate->compileStream($content, $this->windViewerResolver);
-        $arrPageTags = array('$total', '$page', '$count');
-        $arrPageVars = array('$__tplPageTotal', '$__tplPageCurrent', '$__tplPageCount');
+        $arrPageTags = ['$total', '$page', '$count'];
+        $arrPageVars = ['$__tplPageTotal', '$__tplPageCurrent', '$__tplPageCount'];
 
         return str_ireplace($arrPageTags, $arrPageVars, $content);
     }
@@ -122,6 +122,6 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
      */
     public function getProperties()
     {
-        return array('tpl', 'total', 'page', 'per', 'count', 'url', 'args');
+        return ['tpl', 'total', 'page', 'per', 'count', 'url', 'args'];
     }
 }

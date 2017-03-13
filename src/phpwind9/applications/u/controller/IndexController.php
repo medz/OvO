@@ -37,7 +37,7 @@ class IndexController extends PwBaseController
             $userDs = Wekit::load('user.PwUser');
             $userDs->editUser($dm, PwUser::FETCH_DATA);
             $_log = unserialize($log);
-            $log = array('name' => $_log[0], 'credit' => $_log[1]);
+            $log = ['name' => $_log[0], 'credit' => $_log[1]];
         }
         $this->setOutput($log, 'data');
         $this->showMessage();

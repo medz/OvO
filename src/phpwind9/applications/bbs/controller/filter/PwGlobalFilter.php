@@ -18,7 +18,7 @@ class PwGlobalFilter extends PwBaseFilter
     {
         /* 模板变量设置 */
 
-        $url = array();
+        $url = [];
         $var = Wekit::url();
         $url['base'] = $var->base;
         $url['res'] = $var->res;
@@ -30,11 +30,11 @@ class PwGlobalFilter extends PwBaseFilter
         $url['extres'] = $var->extres;
         Wekit::setGlobal($url, 'url');
 
-        $request = array(
+        $request = [
             'm' => $this->router->getModule(),
             'c' => $this->router->getController(),
             'a' => $this->router->getAction(),
-        );
+        ];
         $request['mc'] = $request['m'].'/'.$request['c'];
         $request['mca'] = $request['mc'].'/'.$request['a'];
         Wekit::setGlobal($request, 'request');
@@ -53,9 +53,9 @@ class PwGlobalFilter extends PwBaseFilter
                 }
             }
         }
-        if (!in_array($request['mc'], array('u/login', 'u/register', 'u/findPwd')) && !$loginUser->getPermission('allow_visit')) {
+        if (!in_array($request['mc'], ['u/login', 'u/register', 'u/findPwd']) && !$loginUser->getPermission('allow_visit')) {
             if ($loginUser->isExists()) {
-                $this->showError(array('permission.visit.allow', array('{grouptitle}' => $loginUser->getGroupInfo('name'))));
+                $this->showError(['permission.visit.allow', ['{grouptitle}' => $loginUser->getGroupInfo('name')]]);
             } else {
                 $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run'));
             }
@@ -68,7 +68,7 @@ class PwGlobalFilter extends PwBaseFilter
         $this->_setPreHook($request['m'], $request['mc'], $request['mca']);
 
         $debug = $config['debug'] || !$config['css.compress'];
-        Wekit::setGlobal(array('debug' => $debug ? '/dev' : '/build'), 'theme');
+        Wekit::setGlobal(['debug' => $debug ? '/dev' : '/build'], 'theme');
     }
 
     /* (non-PHPdoc)
@@ -96,16 +96,16 @@ class PwGlobalFilter extends PwBaseFilter
         // SEO settings
         Wekit::setGlobal(NEXT_VERSION.' '.NEXT_RELEASE, 'version');
         $seo = Wekit::V('seo');
-        Wekit::setGlobal($seo ? $seo->getData() : array('title' => Wekit::C('site', 'info.name')), 'seo');
+        Wekit::setGlobal($seo ? $seo->getData() : ['title' => Wekit::C('site', 'info.name')], 'seo');
 
         $this->setOutput($this->getRequest()->getIsAjaxRequest() ? '1' : '0', '_ajax_');
 
         /*[设置给PwGlobalFilters需要的变量]*/
-        $_var = array(
+        $_var = [
             'current' => $this->forward->getWindView()->templateName,
             'a'       => $this->router->getAction(),
             'c'       => $this->router->getController(),
-            'm'       => $this->router->getModule(), );
+            'm'       => $this->router->getModule(), ];
         $this->getResponse()->setData($_var, '_aCloud_');
     }
 

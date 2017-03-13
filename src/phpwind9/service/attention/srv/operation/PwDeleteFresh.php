@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteFresh extends PwGleanDoProcess
 {
-    public $data = array();
-    public $ids = array();
+    public $data = [];
+    public $ids = [];
     public $user;
 
     public $isDeductCredit = false;

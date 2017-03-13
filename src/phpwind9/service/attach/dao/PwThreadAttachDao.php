@@ -13,7 +13,7 @@ class PwThreadAttachDao extends PwBaseDao
 {
     protected $_table = 'attachs_thread';
     protected $_pk = 'aid';
-    protected $_dataStruct = array('aid', 'fid', 'tid', 'pid', 'name', 'type', 'size', 'hits', 'width', 'height', 'path', 'ifthumb', 'special', 'cost', 'ctype', 'created_userid', 'created_time', 'descrip');
+    protected $_dataStruct = ['aid', 'fid', 'tid', 'pid', 'name', 'type', 'size', 'hits', 'width', 'height', 'path', 'ifthumb', 'special', 'cost', 'ctype', 'created_userid', 'created_time', 'descrip'];
 
     public function getAttach($aid)
     {
@@ -30,7 +30,7 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid=? AND pid IN %s', $this->getTable(), $this->sqlImplode($pids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid), 'aid');
+        return $smt->queryAll([$tid], 'aid');
     }
 
     public function getTmpAttachByUserid($userid)
@@ -38,7 +38,7 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindTable("SELECT * FROM %s WHERE tid='0' AND pid='0' AND created_userid=?");
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($userid), 'aid');
+        return $smt->queryAll([$userid], 'aid');
     }
 
     public function countType($tid, $pid, $type)
@@ -46,7 +46,7 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS count FROM %s WHERE tid=? AND pid=? AND type=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($tid, $pid, $type));
+        return $smt->getValue([$tid, $pid, $type]);
     }
 
     public function fetchAttachByTid($tids)
@@ -70,7 +70,7 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid IN %s AND pid=?', $this->getTable(), $this->sqlImplode($tids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($pid), 'aid');
+        return $smt->queryAll([$pid], 'aid');
     }
 
     public function addAttach($fields)
@@ -84,7 +84,7 @@ class PwThreadAttachDao extends PwBaseDao
         return true;
     }
 
-    public function updateAttach($aid, $fields, $increaseFields = array())
+    public function updateAttach($aid, $fields, $increaseFields = [])
     {
         return $this->_update($aid, $fields, $increaseFields);
     }
@@ -94,10 +94,10 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET fid=? WHERE fid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tofid, $fid));
+        return $smt->update([$tofid, $fid]);
     }
 
-    public function batchUpdateAttach($aids, $fields, $increaseFields = array())
+    public function batchUpdateAttach($aids, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($aids, $fields, $increaseFields);
     }
@@ -107,7 +107,7 @@ class PwThreadAttachDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET fid=? WHERE tid IN %s', $this->getTable(), $this->sqlImplode($tids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($fid));
+        return $smt->update([$fid]);
     }
 
     public function deleteAttach($aid)

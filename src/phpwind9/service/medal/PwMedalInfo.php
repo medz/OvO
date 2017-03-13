@@ -25,7 +25,7 @@ class PwMedalInfo
     {
         $medalId = (int) $medalId;
         if ($medalId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getInfo($medalId);
@@ -39,7 +39,7 @@ class PwMedalInfo
     public function fetchMedalInfo($medalIds)
     {
         if (!is_array($medalIds) || count($medalIds) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchInfo($medalIds);
@@ -112,7 +112,7 @@ class PwMedalInfo
         $awardType = (int) $awardType;
         $receiveType = (int) $receiveType;
         if ($awardType < 1 || $receiveType < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getOpenMedalList($awardType, $receiveType);

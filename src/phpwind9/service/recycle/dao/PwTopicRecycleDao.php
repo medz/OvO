@@ -16,7 +16,7 @@ class PwTopicRecycleDao extends PwBaseDao
     protected $_table = 'recycle_topic';
     protected $_table_thread = 'bbs_threads';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'fid', 'operate_time', 'operate_username', 'reason');
+    protected $_dataStruct = ['tid', 'fid', 'operate_time', 'operate_username', 'reason'];
 
     public function fetchRecord($tids)
     {
@@ -30,12 +30,12 @@ class PwTopicRecycleDao extends PwBaseDao
 
     public function batchAdd($data)
     {
-        $fields = array();
+        $fields = [];
         foreach ($data as $key => $value) {
             if (!$this->_filterStruct($value)) {
                 continue;
             }
-            $fields[] = array($value['tid'], $value['fid'], $value['operate_time'], $value['operate_username'], $value['reason']);
+            $fields[] = [$value['tid'], $value['fid'], $value['operate_time'], $value['operate_username'], $value['reason']];
         }
         if (!$fields) {
             return false;
@@ -73,7 +73,7 @@ class PwTopicRecycleDao extends PwBaseDao
     protected function _buildCondition($field)
     {
         $where = '1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'fid':
@@ -109,12 +109,12 @@ class PwTopicRecycleDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg);
+        return [$where, $arg];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'tid':

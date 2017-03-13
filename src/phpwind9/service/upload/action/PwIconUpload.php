@@ -10,7 +10,7 @@ class PwIconUpload extends PwUploadAction
     {
         $this->key = $key;
         $this->dir = $dir;
-        $this->ftype = array('jpg' => 2000, 'png' => '2000', 'gif' => 2000);
+        $this->ftype = ['jpg' => 2000, 'png' => '2000', 'gif' => 2000];
     }
 
     /* (non-PHPdoc)
@@ -47,14 +47,14 @@ class PwIconUpload extends PwUploadAction
      public function update($uploaddb)
      {
          foreach ($uploaddb as $key => $value) {
-             $this->attachs = array(
+             $this->attachs = [
                 'attname' => $value['attname'],
                 'type'    => $value['type'],
                 'path'    => $value['fileuploadurl'],
                 'size'    => $value['size'],
                 'width'   => $this->width,
                 'height'  => $this->height,
-            );
+            ];
          }
 
          return true;

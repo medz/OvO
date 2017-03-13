@@ -22,7 +22,7 @@ class SecretController extends BaseProfileController
         $model = $this->getProfileMenu();
         unset($model['profile'], $model['contact'], $model['tag']);
         $userInfo = Wekit::load('user.PwUser')->getUserByUid($this->loginUser->uid, PwUser::FETCH_INFO);
-        $secret = $userInfo['secret'] ? unserialize($userInfo['secret']) : array();
+        $secret = $userInfo['secret'] ? unserialize($userInfo['secret']) : [];
         //手机号码默认仅自己可见
         !isset($secret['mobile']) && $secret['mobile'] = 1;
         $this->setOutput($model, 'model');
@@ -41,13 +41,13 @@ class SecretController extends BaseProfileController
 
     public function dorunAction()
     {
-        $_array = array();
+        $_array = [];
         $model = $this->getProfileMenu();
         unset($model['profile'], $model['contact'], $model['tag']);
         if (count($model) > 1) {
             $post = array_keys($model);
         }
-        $array = array('space', 'constellation', 'local', 'nation', 'aliwangwang', 'qq', 'msn', 'mobile');
+        $array = ['space', 'constellation', 'local', 'nation', 'aliwangwang', 'qq', 'msn', 'mobile'];
         $array = array_merge($array, $post);
         foreach ($array as $value) {
             $_array[$value] = (int) $this->getInput($value, 'post');
@@ -69,7 +69,7 @@ class SecretController extends BaseProfileController
     {
         $this->setCurrentLeft();
         $blacklist = Wekit::load('user.PwUserBlack')->getBlacklist($this->loginUser->uid);
-        $blacks = array();
+        $blacks = [];
         if ($blacklist) {
             $users = Wekit::load('user.PwUser')->fetchUserByUid($blacklist);
             foreach ($users as $v) {
@@ -87,7 +87,7 @@ class SecretController extends BaseProfileController
     public function doblackAction()
     {
         $blacklist = $this->getInput('blacklist');
-        $userids = array();
+        $userids = [];
         if ($blacklist) {
             $users = Wekit::load('user.PwUser')->fetchUserByName($blacklist);
             $userids = array_keys($users);
@@ -111,11 +111,11 @@ class SecretController extends BaseProfileController
     {
         $lang = Wind::getComponent('i18n');
 
-        return array(
+        return [
             0 => $lang->getMessage('USER:secret.option.open'),
             1 => $lang->getMessage('USER:secret.option.myself'),
             2 => $lang->getMessage('USER:secret.option.attention'),
-        );
+        ];
     }
 
     /**

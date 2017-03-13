@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwSimpleUbbCode
 {
-    protected static $_code = array();
+    protected static $_code = [];
     protected static $_isSubstr = false;
     protected static $_hide = false;
     protected static $_emotion = null;
@@ -44,9 +44,9 @@ class PwSimpleUbbCode
      */
     public static function convertTag($message, $tag)
     {
-        is_array($tag) || $tag = array($tag);
+        is_array($tag) || $tag = [$tag];
         foreach ($tag as $v) {
-            $message = str_replace(array("[$v]", "[/$v]"), '', $message);
+            $message = str_replace(["[$v]", "[/$v]"], '', $message);
         }
 
         return $message;
@@ -76,7 +76,7 @@ class PwSimpleUbbCode
         $message = preg_replace('/\[list=([aA1]?)\](.+?)\[\/list\]/is', '', $message);
 
         return str_replace(
-            array('[list]', '[li]', '[/li]', '[/list]'),
+            ['[list]', '[li]', '[/li]', '[/list]'],
             '',
             $message
         );
@@ -154,8 +154,8 @@ class PwSimpleUbbCode
         $message = preg_replace_callback("/\[email=([^\[]*)\][^\[]*\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
         $message = preg_replace_callback("/\[email\]([^\[]*)\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
         return preg_replace(
-            array("/\[email=([^\[]*)\]([^\[]*)\[\/email\]/is", "/\[email\]([^\[]*)\[\/email\]/is"),
-            array('<a href="mailto:\\1 ">\\2</a>', '<a href="mailto:\\1 ">\\1</a>'),
+            ["/\[email=([^\[]*)\]([^\[]*)\[\/email\]/is", "/\[email\]([^\[]*)\[\/email\]/is"],
+            ['<a href="mailto:\\1 ">\\2</a>', '<a href="mailto:\\1 ">\\1</a>'],
             $message
         );
     }
@@ -291,11 +291,11 @@ class PwSimpleUbbCode
      */
     public static function parseUrl($message, $checkurl = 0)
     {
-        $searcharray = array(
+        $searcharray = [
             "/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is",
             "/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)\[\/url\]/is",
-        );
-        $replacearray = array(
+        ];
+        $replacearray = [
             function ($matches) use ($checkurl) {
                 return PwSimpleUbbCode::_pushCode('createUrl', $matches[1], $matches[5], $matches[2], $matches[4], $checkurl);
             },
@@ -304,7 +304,7 @@ class PwSimpleUbbCode
             },
             // "self::_pushCode('createUrl', '\\1', '\\5', '\\2', '\\4', '$checkurl')",
             // "self::_pushCode('createUrl', '\\1', '\\1', '\\2', '0', '$checkurl')",
-        );
+        ];
 
         return preg_replace_callback($searcharray, $replacearray, $message);
 
@@ -482,10 +482,10 @@ class PwSimpleUbbCode
         }
 
         return preg_replace_callback(
-            array(
+            [
                 '/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
                 '/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"\']+?)\[\/\\1\]/is',
-            ),
+            ],
             function ($m) {
                 return PwSimpleUbbCode::_pushCode('createMediaLink', $m[2]);
             },
@@ -527,7 +527,7 @@ class PwSimpleUbbCode
 
     protected static function _init()
     {
-        self::$_code = array();
+        self::$_code = [];
         self::$_isSubstr = false;
         self::$_hide = false;
     }
@@ -564,7 +564,7 @@ class PwSimpleUbbCode
          */
         public static function filterUbb($matches)
         {
-            $fillter_arr = array('javascript', 'onafterprint', 'onbeforeprint', 'onbeforeunload', 'onerror', 'onhaschange', 'onload', 'onmessage', 'onoffline', 'ononline', 'onpagehide', 'onpageshow', 'onpopstate', 'onredo', 'onresize', 'onstorage', 'onundo', 'onunload', 'onblur', 'onchange', 'oncontextmenu', 'onfocus', 'onformchange', 'onforminput', 'oninput', 'oninvalid', 'onreset', 'onselect', 'onsubmit', 'onkeydown', 'onkeypress', 'onkeyup', 'onclick', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onscroll', 'onabort', 'oncanplay', 'oncanplaythrough', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreadystatechange', 'onseeked', 'onseeking', 'onstalled', 'onsuspend', 'ontimeupdate', 'onvolumechange', 'onwaiting', 'expression');
+            $fillter_arr = ['javascript', 'onafterprint', 'onbeforeprint', 'onbeforeunload', 'onerror', 'onhaschange', 'onload', 'onmessage', 'onoffline', 'ononline', 'onpagehide', 'onpageshow', 'onpopstate', 'onredo', 'onresize', 'onstorage', 'onundo', 'onunload', 'onblur', 'onchange', 'oncontextmenu', 'onfocus', 'onformchange', 'onforminput', 'oninput', 'oninvalid', 'onreset', 'onselect', 'onsubmit', 'onkeydown', 'onkeypress', 'onkeyup', 'onclick', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onscroll', 'onabort', 'oncanplay', 'oncanplaythrough', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreadystatechange', 'onseeked', 'onseeking', 'onstalled', 'onsuspend', 'ontimeupdate', 'onvolumechange', 'onwaiting', 'expression'];
             foreach ($matches as $k => $v) {
                 if ($k > 0) {
                     $newstr = str_replace($fillter_arr, '_', strtolower($v));
@@ -588,7 +588,7 @@ class PwSimpleUbbCode
         is_null($config) && $config = new PwUbbCodeConvertConfig();
         self::_init();
         self::hasTag($message, 'code') && $message = self::parseCode($message);
-        $message = self::convertTag($message, array('u', 'b', 'i', 'sub', 'sup', 'strike', 'blockquote'));
+        $message = self::convertTag($message, ['u', 'b', 'i', 'sub', 'sup', 'strike', 'blockquote']);
         $message = self::convertHr($message);
         $message = self::convertList($message);
         $message = self::convertFont($message);
@@ -635,7 +635,7 @@ class PwSimpleUbbCode
                 $args = self::$_code[$value];
                 $method = array_shift($args);
                 array_unshift($args, $maxlen);
-                list($value, $strlen) = call_user_func_array(array(self, $method), $args);
+                list($value, $strlen) = call_user_func_array([self, $method], $args);
             }
             $str .= $value;
             $maxlen -= $strlen;
@@ -645,7 +645,7 @@ class PwSimpleUbbCode
             }
         }
 
-        return array($str, $length);
+        return [$str, $length];
     }
 
     protected static function _substrs($message, $length)
@@ -657,7 +657,7 @@ class PwSimpleUbbCode
             self::$_isSubstr = true;
         }
 
-        return array($message, $strlen);
+        return [$message, $strlen];
     }
 
     /**
@@ -674,7 +674,7 @@ class PwSimpleUbbCode
         $emotion = isset(self::$_emotion['emotion'][$key]) ? self::$_emotion['emotion'][$key] : current(self::$_emotion['emotion']);
         $html = '<img src="'.Wekit::url()->images.'/emotion/'.$emotion['emotion_folder'].'/'.$emotion['emotion_icon'].'" />';
 
-        return array($html, 1);
+        return [$html, 1];
     }
 
     /**
@@ -686,7 +686,7 @@ class PwSimpleUbbCode
      */
     public static function createAttachment($length, $aid, $config)
     {
-        return array($config->getAttachHtml($aid), 4);
+        return [$config->getAttachHtml($aid), 4];
     }
 
     /**
@@ -723,7 +723,7 @@ class PwSimpleUbbCode
         $isdownload && $attributes .= ' class="down"';
         $html = "<a href=\"$url\" target=\"_blank\"{$attributes}>$name</a>";
 
-        return array($html, $strlen);
+        return [$html, $strlen];
     }
 
     /**
@@ -737,7 +737,7 @@ class PwSimpleUbbCode
      */
     public static function createCode($length, $str, $brush, $toolbar)
     {
-        $str = str_replace(array('&amp;lt;', '&amp;gt;'), array('&lt;', '&gt;'), $str);
+        $str = str_replace(['&amp;lt;', '&amp;gt;'], ['&lt;', '&gt;'], $str);
 
         return self::_substrs($str, $length);
     }
@@ -754,7 +754,7 @@ class PwSimpleUbbCode
     {
         self::$_hide = true;
 
-        return array('<span>[此处内容回复后可见]</span>', 9);
+        return ['<span>[此处内容回复后可见]</span>', 9];
     }
 
     /**
@@ -770,7 +770,7 @@ class PwSimpleUbbCode
     {
         self::$_hide = true;
 
-        return array('<span>[此处内容加密]</span>', 6);
+        return ['<span>[此处内容加密]</span>', 6];
     }
 
     /**
@@ -789,7 +789,7 @@ class PwSimpleUbbCode
         $creditBo = PwCreditBo::getInstance();
         $cname = isset($creditBo->cType[$credit]) ? $creditBo->cType[$credit] : current($creditBo->cType);
 
-        return array('<span>[以下帖子售价 '.$cost.' '.$cname.'，购买后显示内容]</span>', 16);
+        return ['<span>[以下帖子售价 '.$cost.' '.$cname.'，购买后显示内容]</span>', 16];
     }
 
     /**
@@ -851,9 +851,9 @@ class PwSimpleUbbCode
     public static function createRemind($length, $username, $uArray)
     {
         list($html, $strlen) = self::_substrs('@'.$username, $length);
-        isset($uArray[$username]) && $html = '<a href="'.WindUrlHelper::createUrl('space/index/run', array('uid' => $uArray[$username])).'">@'.$username.'</a>';
+        isset($uArray[$username]) && $html = '<a href="'.WindUrlHelper::createUrl('space/index/run', ['uid' => $uArray[$username]]).'">@'.$username.'</a>';
 
-        return array($html, $strlen);
+        return [$html, $strlen];
     }
 
     /**
@@ -868,7 +868,7 @@ class PwSimpleUbbCode
     {
         list($name, $strlen) = self::_substrs($url, $length);
 
-        return array("<a target=\"_blank\" href=\"$url \">$name</a>", $strlen);
+        return ["<a target=\"_blank\" href=\"$url \">$name</a>", $strlen];
     }
 
     /**
@@ -886,17 +886,17 @@ class PwSimpleUbbCode
     {
         return self::_substrs('[表格]', $length);
         //不显示表格内容
-        $text = trim(str_replace(array('\\"', '<br />'), array('"', "\n"), $text));
+        $text = trim(str_replace(['\\"', '<br />'], ['"', "\n"], $text));
         $text = preg_replace(
-            array(
+            [
                 '/(\[\/td\]\s*)?\[\/tr\]\s*/is',
                 // '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/eis'
-            ),
-            array(
+            ],
+            [
                 '<br />',
                 // "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')",
                 "<tr><td{$tdStyle}>",
-            ),
+            ],
             $text
         );
 

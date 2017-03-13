@@ -43,12 +43,12 @@ class AppSearchService
     {
         $action = $this->_getReportAction($type);
         if (!$action) {
-            return array();
+            return [];
         }
         $typeid = $this->_getTypeId($type);
         $list = $this->_getSearchRecord()->getByType($typeid, $num);
         foreach ($list as $k => $v) {
-            $list[$k]['url'] = WindUrlHelper::createUrl('app/search/'.$type.'/run', array('keywords' => $v['keywords']));
+            $list[$k]['url'] = WindUrlHelper::createUrl('app/search/'.$type.'/run', ['keywords' => $v['keywords']]);
         }
 
         return $list;
@@ -58,8 +58,8 @@ class AppSearchService
     {
         $types = $this->getTypeMap();
         $names = $this->getTypeName();
-        $type = array();
-        $keyword = $keywords ? array('keywords' => $keywords) : '';
+        $type = [];
+        $keyword = $keywords ? ['keywords' => $keywords] : '';
         if ($is) {
             foreach ($types as $k => $id) {
                 $type[$k]['name'] = $names[$id];
@@ -101,11 +101,11 @@ class AppSearchService
      */
     public function getTypeMap()
     {
-        return array(
+        return [
             'thread' => self::SEARCH_TYPE_THREAD,
             'user'   => self::SEARCH_TYPE_USER,
             'forum'  => self::SEARCH_TYPE_FORUM,
-        );
+        ];
     }
 
     /**
@@ -115,11 +115,11 @@ class AppSearchService
      */
     public function getTypeName()
     {
-        return array(
+        return [
             self::SEARCH_TYPE_THREAD => '帖子',
             self::SEARCH_TYPE_USER   => '用户',
             self::SEARCH_TYPE_FORUM  => '版块',
-        );
+        ];
     }
 
     private function _getTypeId($type)
@@ -155,12 +155,12 @@ class AppSearchService
             return false;
         }
         $timestamp = Pw::getTime();
-        $times = array(
+        $times = [
             'today' => $timestamp - 86400,
             'week'  => $timestamp - 7 * 86400,
             'month' => $timestamp - 30 * 86400,
             'year'  => $timestamp - 365 * 86400,
-        );
+        ];
 
         return $times[$daytime];
     }
@@ -168,12 +168,12 @@ class AppSearchService
     // **
     public function _limitTimeMap()
     {
-        return array(
+        return [
             'today' => '最近一天',
             'week'  => '最近一周',
             'month' => '最近一月',
             'year'  => '最近一年',
-        );
+        ];
     }
 
     // **
@@ -184,7 +184,7 @@ class AppSearchService
             $this->showError('啊哦，你所在的用户组不允许搜索', 'bbs/index/run');
         }
         if ($loginUser->getPermission('app_search_open') < 1) {
-            return new PwError('permission.search.allow.not', array('{grouptitle}' => $loginUser->getGroupInfo('name')));
+            return new PwError('permission.search.allow.not', ['{grouptitle}' => $loginUser->getGroupInfo('name')]);
         }
 
         return true;
@@ -197,7 +197,7 @@ class AppSearchService
         $search_time_interval = $loginUser->getPermission('app_search_time_interval');
         $stampTime = Pw::getTime();
         if ($stampTime - $loginUser->info['last_search_time'] < $search_time_interval) {
-            return new PwError('permission.search.limittime.allow', array('{limittime}' => $search_time_interval));
+            return new PwError('permission.search.limittime.allow', ['{limittime}' => $search_time_interval]);
         }
         Wind::import('EXT:search.service.dm.App_Search_Dm');
         $dm = new App_Search_Dm($loginUser->uid);

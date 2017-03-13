@@ -15,9 +15,9 @@ class PwPostDoWord extends PwPostDoBase
     protected $_isVerified = 0;
     protected $_confirm = 0;
     protected $_word = 0;
-    protected $_tagnames = array();
+    protected $_tagnames = [];
 
-    public function __construct(PwPost $pwpost, $verifiedWord = 0, $tagnames = array())
+    public function __construct(PwPost $pwpost, $verifiedWord = 0, $tagnames = [])
     {
         $this->_confirm = $verifiedWord;
         $this->_tagnames = $tagnames;
@@ -41,20 +41,20 @@ class PwPostDoWord extends PwPostDoBase
         $words = array_unique($words);
         foreach ($words as $k => $v) {
             if ($k < $banedStrLen) {
-                return new PwError('WORD:title.tag.error', array('{wordstr}' => implode(',', $words)));
+                return new PwError('WORD:title.tag.error', ['{wordstr}' => implode(',', $words)]);
             }
         }
         $errorTip = $isTip ? 'WORD:content.error.tip' : 'WORD:content.error';
         switch ($type) {
             case 1:
-                return new PwError($errorTip, array('{wordstr}' => implode(',', $words)));
+                return new PwError($errorTip, ['{wordstr}' => implode(',', $words)]);
             case 2:
                 $this->_isVerified = 1;
                 if ($this->_confirm) {
                     return true;
                 }
 
-                return new PwError($errorTip, array('{wordstr}' => implode(',', $words)), array('isVerified' => $this->_isVerified));
+                return new PwError($errorTip, ['{wordstr}' => implode(',', $words)], ['isVerified' => $this->_isVerified]);
             case 3:
                 $this->_word = 1;
             default:

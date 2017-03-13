@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
  class PwMedalLogDao extends PwBaseDao
  {
      protected $_table = 'medal_log';
-     protected $_dataStruct = array('log_id', 'uid', 'medal_id', 'award_status', 'created_time', 'expired_time', 'log_order');
+     protected $_dataStruct = ['log_id', 'uid', 'medal_id', 'award_status', 'created_time', 'expired_time', 'log_order'];
 
      public function getInfo($logId)
      {
          $sql = $this->_bindTable('SELECT * FROM %s WHERE log_id = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getOne(array($logId));
+         return $smt->getOne([$logId]);
      }
 
      public function getInfoByUidMedalId($uid, $medalId)
@@ -28,7 +28,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ?  AND medal_id = ?');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getOne(array($uid, $medalId));
+         return $smt->getOne([$uid, $medalId]);
      }
 
      public function fetchMedalLog($logIds)
@@ -36,7 +36,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s WHERE log_id IN %s ', $this->getTable(), $this->sqlImplode($logIds));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'log_id');
+         return $smt->queryAll([], 'log_id');
      }
 
      public function getInfoListByUid($uid)
@@ -44,7 +44,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? ORDER BY award_status DESC, log_order ASC ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array($uid), 'log_id');
+         return $smt->queryAll([$uid], 'log_id');
      }
 
      public function getInfoListByUidStatus($uid, $status)
@@ -52,13 +52,13 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? AND award_status = ?  ORDER BY award_status DESC, log_order ASC ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array($uid, $status), 'log_id');
+         return $smt->queryAll([$uid, $status], 'log_id');
      }
 
      public function getInfoList($uid, $status, $medalId, $offset, $limit)
      {
          $where = ' WHERE 1 ';
-         $_array = array();
+         $_array = [];
 
          if ($uid > 0) {
              $where .= ' AND uid = ? ';
@@ -83,7 +83,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function countInfo($uid, $status, $medalId)
      {
          $where = ' WHERE 1 ';
-         $_array = array();
+         $_array = [];
 
          if ($uid > 0) {
              $where .= ' AND uid = ? ';
@@ -109,7 +109,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function getMedalLogList($uid, $status, $medalIds, $offset, $limit)
      {
          $where = ' WHERE 1 ';
-         $_array = array();
+         $_array = [];
 
          if ($uid > 0) {
              $where .= ' AND uid = ? ';
@@ -133,7 +133,7 @@ Wind::import('SRC:library.base.PwBaseDao');
      public function countMedalLogList($uid, $status, $medalIds)
      {
          $where = ' WHERE 1 ';
-         $_array = array();
+         $_array = [];
 
          if ($uid > 0) {
              $where .= ' AND uid = ? ';
@@ -186,7 +186,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('UPDATE %s SET %s WHERE log_id = ? ', $this->getTable(), $this->sqlSingle($data));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($logId));
+         return $smt->update([$logId]);
      }
 
      public function updateExpiredByUidMedalId($uid, $medalId, $time)
@@ -194,7 +194,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('UPDATE %s SET `expired_time`  = ? WHERE `medal_id` = ?  AND `uid` = ?');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($time, $medalId, $uid));
+         return $smt->update([$time, $medalId, $uid]);
      }
 
      public function deleteInfo($logId)
@@ -202,7 +202,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE FROM %s  WHERE log_id = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($logId));
+         return $smt->update([$logId]);
      }
 
      public function deleteInfos($expiredTime, $awardStatus)
@@ -210,7 +210,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE FROM %s  WHERE expired_time <= ? AND expired_time > 0 AND award_status = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($expiredTime, $awardStatus));
+         return $smt->update([$expiredTime, $awardStatus]);
      }
 
      public function deleteInfosByUidMedalIds($uid, $medalIds)
@@ -218,7 +218,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('DELETE  FROM %s WHERE uid = ? AND medal_id IN %s ', $this->getTable(), $this->sqlImplode($medalIds));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($uid));
+         return $smt->update([$uid]);
      }
 
      public function deleteInfoByMedalId($medalId)
@@ -226,6 +226,6 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE  FROM %s WHERE medal_id =? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($medalId));
+         return $smt->update([$medalId]);
      }
  }

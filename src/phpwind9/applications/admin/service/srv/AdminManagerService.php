@@ -33,21 +33,21 @@ class AdminManagerService
         }
         $u = $this->loadUserService()->getUserByUid($user['uid']);
 
-        return array(AdminUserService::USER, $user['uid'], Pw::getPwdCode($u['password']));
+        return [AdminUserService::USER, $user['uid'], Pw::getPwdCode($u['password'])];
     }
 
     public function isLogin($uid, $password)
     {
         $user = $this->loadUserService()->getUserByUid($uid);
         if (!$user) {
-            return array();
+            return [];
         }
         if (Pw::getPwdCode($user['password']) != $password) {
-            return array();
+            return [];
         }
         $auth = Wekit::load('ADMIN:service.AdminAuth');
         if (!$auth->findByUid($user['uid'])) {
-            return array();
+            return [];
         }
 
         return $user;
@@ -71,6 +71,6 @@ class AdminManagerService
             return $userService;
         }
         throw new PwDependanceException('admin.userservice',
-            array('{service}' => __CLASS__, '{userservice}' => 'IAdminUserDependenceService'));
+            ['{service}' => __CLASS__, '{userservice}' => 'IAdminUserDependenceService']);
     }
 }

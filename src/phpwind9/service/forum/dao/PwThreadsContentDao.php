@@ -15,7 +15,7 @@ class PwThreadsContentDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads_content';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'useubb', 'aids', 'content', 'sell_count', 'reminds', 'word_version', 'tags', 'ipfrom', 'manage_remind');
+    protected $_dataStruct = ['tid', 'useubb', 'aids', 'content', 'sell_count', 'reminds', 'word_version', 'tags', 'ipfrom', 'manage_remind'];
     protected $_defaultBaseInstance = 'forum.dao.PwThreadsBaseDao';
 
     public function getThread($tid)
@@ -74,7 +74,7 @@ class PwThreadsContentDao extends PwBaseDao
         return $tid;
     }
 
-    public function updateThread($tid, $fields, $increaseFields = array(), $bitFields = array())
+    public function updateThread($tid, $fields, $increaseFields = [], $bitFields = [])
     {
         $result = $this->getBaseInstance()->updateThread($tid, $fields, $increaseFields, $bitFields);
         $this->_update($tid, $fields, $increaseFields);
@@ -82,7 +82,7 @@ class PwThreadsContentDao extends PwBaseDao
         return $result;
     }
 
-    public function batchUpdateThread($tids, $fields, $increaseFields = array(), $bitFields = array())
+    public function batchUpdateThread($tids, $fields, $increaseFields = [], $bitFields = [])
     {
         $result = $this->getBaseInstance()->batchUpdateThread($tids, $fields, $increaseFields, $bitFields);
         $this->_batchUpdate($tids, $fields, $increaseFields);

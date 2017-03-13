@@ -19,7 +19,7 @@ class PwAttUpload extends PwUploadAction
     public $user;
     public $flashatt;
 
-    public function __construct(PwUserBo $user, PwForumBo $forum, $flashatt = array())
+    public function __construct(PwUserBo $user, PwForumBo $forum, $flashatt = [])
     {
         $this->user = $user;
         $this->forum = $forum;
@@ -39,16 +39,16 @@ class PwAttUpload extends PwUploadAction
             return new PwError('FORUM_IS_NOT_EXISTS');
         }
         if (($result = $this->forum->allowUpload($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.upload.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (!$this->forum->foruminfo['allow_upload'] && !$this->user->getPermission('allow_upload')) {
-            return new PwError('permission.upload.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($uploadPerday = $this->user->getPermission('uploads_perday')) {
             $count = PwUpload::countUploadedFile() + count($this->flashatt);
             $todayupload = $this->user->info['lastpost'] < Pw::getTdtime() ? 0 : $this->user->info['todayupload'];
             if ($count > 0 && ($count + $todayupload) > $uploadPerday) {
-                return new PwError('permission.upload.nums.perday', array('{nums}' => $uploadPerday));
+                return new PwError('permission.upload.nums.perday', ['{nums}' => $uploadPerday]);
             }
         }
 
@@ -105,10 +105,10 @@ class PwAttUpload extends PwUploadAction
             $config['thumb.size.height'] = $this->forum->forumset['thumbheight'];
         }
 
-        return array(
-            array($filename, 'thumb/'.$dir, $config['thumb.size.width'], $config['thumb.size.height'], $config['thumb']),
-            array($filename, 'thumb/mini/'.$dir, 200, 200, 1),
-        );
+        return [
+            [$filename, 'thumb/'.$dir, $config['thumb.size.width'], $config['thumb.size.height'], $config['thumb']],
+            [$filename, 'thumb/mini/'.$dir, 200, 200, 1],
+        ];
     }
 
     /**
@@ -130,10 +130,10 @@ class PwAttUpload extends PwUploadAction
     public function getWaterMarkInfo()
     {
         if ($this->forum->forumset['water'] == 1 && $this->forum->forumset['waterimg']) {
-            return array('type' => 1, 'file' => $this->forum->forumset['waterimg']);
+            return ['type' => 1, 'file' => $this->forum->forumset['waterimg']];
         }
 
-        return array();
+        return [];
     }
 
     public function transfer()
@@ -141,7 +141,7 @@ class PwAttUpload extends PwUploadAction
         if (empty($this->flashatt)) {
             return false;
         }
-        $deltmp = array();
+        $deltmp = [];
         $attach = $this->_getService()->getTmpAttachByUserid($this->user->uid);
         foreach ($attach as $rt) {
             $aid = $rt['aid'];
@@ -157,7 +157,7 @@ class PwAttUpload extends PwUploadAction
                 if (($max = $this->user->getPermission('sell_credit_range.maxprice')) > 0 && $value['cost'] > $max) {
                     $value['cost'] = $max;
                 }
-                if (!in_array($value['ctype'], $this->user->getPermission('sell_credits', false, array()))) {
+                if (!in_array($value['ctype'], $this->user->getPermission('sell_credits', false, []))) {
                     $value['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
                 $dm->setSpecial(2)
@@ -166,7 +166,7 @@ class PwAttUpload extends PwUploadAction
             }
             $this->_getService()->updateAttach($dm);
 
-            $this->attachs[$aid] = array(
+            $this->attachs[$aid] = [
                 'aid'     => $aid,
                 'name'    => $rt['name'],
                 'type'    => $rt['type'],
@@ -174,7 +174,7 @@ class PwAttUpload extends PwUploadAction
                 'size'    => $rt['size'],
                 'descrip' => $value['desc'],
                 'ifthumb' => $rt['ifthumb'],
-            );
+            ];
         }
         if ($deltmp) {
             $this->_getService()->batchDeleteAttach($deltmp);
@@ -202,7 +202,7 @@ class PwAttUpload extends PwUploadAction
             $att->setApp('thread');
             $aid = $srv->addAttach($att);
 
-            $this->attachs[$aid] = array(
+            $this->attachs[$aid] = [
                 'aid'     => $aid,
                 'name'    => $value['name'],
                 'type'    => $value['type'],
@@ -210,7 +210,7 @@ class PwAttUpload extends PwUploadAction
                 'size'    => $value['size'],
                 'descrip' => $value['descrip'],
                 'ifthumb' => $value['ifthumb'],
-            );
+            ];
         }
 
         return true;
@@ -249,7 +249,7 @@ class PwAttUpload extends PwUploadAction
         $array = current($this->attachs);
         $path = Wekit::getGlobal('url', 'attach').'/'.$array['path'];
         //list($path) = geturl($array['attachurl'], 'lf', $array['ifthumb']&1);
-        return array('aid' => $array['aid'], 'path' => $path);
+        return ['aid' => $array['aid'], 'path' => $path];
     }
 
     protected function _getService()

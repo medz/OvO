@@ -14,7 +14,7 @@ class PwAttentionType
     public function getType($id)
     {
         if (empty($id)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getType($id);
@@ -49,9 +49,9 @@ class PwAttentionType
             return new PwError('USER:attention.type.name.length.over');
         }
 
-        return $this->_getDao()->addType(array(
+        return $this->_getDao()->addType([
             'uid' => $uid, 'name' => $name,
-        ));
+        ]);
     }
 
     /**
@@ -71,7 +71,7 @@ class PwAttentionType
             return new PwError('USER:attention.type.name.length.over');
         }
 
-        return $this->_getDao()->editType($id, array('name' => $name));
+        return $this->_getDao()->editType($id, ['name' => $name]);
     }
 
     /**
@@ -107,7 +107,7 @@ class PwAttentionType
     public function getUserType($uid, $touids)
     {
         if (empty($uid) || empty($touids) || !is_array($touids)) {
-            return array();
+            return [];
         }
 
         return $this->_getRelationDao()->getTypeByUidAndTouids($uid, $touids);
@@ -131,7 +131,7 @@ class PwAttentionType
     public function getUserByType($uid, $typeid, $limit = 20, $offset = 0)
     {
         if (empty($uid) || empty($typeid)) {
-            return array();
+            return [];
         }
 
         return $this->_getRelationDao()->getUserByType($uid, $typeid, $limit, $offset);

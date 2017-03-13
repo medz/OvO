@@ -19,7 +19,7 @@ class PwDesignBak
     public function getBak($type, $pageid, $issnap = 0)
     {
         if (!$type || !$pageid) {
-            return array();
+            return [];
         }
         $info = $this->_getDao()->getBak($type, $pageid, $issnap);
         if (isset($info['bak_info'])) {
@@ -38,7 +38,7 @@ class PwDesignBak
      */
     public function replaceBak($type, $pageid, $issnap, $info)
     {
-        $data = array();
+        $data = [];
         if (!$type || !$pageid) {
             return false;
         }

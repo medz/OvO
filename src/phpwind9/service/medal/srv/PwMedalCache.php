@@ -20,9 +20,9 @@ class PwMedalCache
     public function fetchMedal($medalIds)
     {
         if (!is_array($medalIds)) {
-            return array();
+            return [];
         }
-        $_medals = array();
+        $_medals = [];
         $cacheDs = Wekit::cache();
         $medals = $cacheDs->get('medal_all');
         $attachUrl = Pw::getPath('').'medal/';
@@ -49,11 +49,11 @@ class PwMedalCache
     public function fetchUserMedal($userMedals)
     {
         if (!is_array($userMedals)) {
-            return array();
+            return [];
         }
-        $_userMedalIds = $_allMedalId = $_medals = array();
+        $_userMedalIds = $_allMedalId = $_medals = [];
         foreach ($userMedals as $uid => $medalids) {
-            $_userMedalIds[$uid] = !$userMedals[$uid] ? array() : explode(',', $userMedals[$uid]);
+            $_userMedalIds[$uid] = !$userMedals[$uid] ? [] : explode(',', $userMedals[$uid]);
             $_allMedalId = array_merge($_allMedalId, $_userMedalIds[$uid]);
         }
         $_allMedalId = array_unique($_allMedalId);
@@ -62,7 +62,7 @@ class PwMedalCache
         $attachUrl = Pw::getPath('').'medal/';
         $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($_userMedalIds as $uid => $medalIds) {
-            $_medalInfo = array();
+            $_medalInfo = [];
             foreach ($medalIds as $id) {
                 if (!$medals[$id]) {
                     continue;
@@ -91,9 +91,9 @@ class PwMedalCache
     public function getMyAndAutoMedal($uid)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
-        $_medals = $myMedalIds = $status = array();
+        $_medals = $myMedalIds = $status = [];
         $logs = Wekit::load('medal.PwMedalLog')->getInfoListByUid($uid);
         foreach ($logs as $log) {
             $myMedalIds[] = $log['medal_id'];

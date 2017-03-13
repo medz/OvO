@@ -21,11 +21,11 @@ class PwUserBehavior
     public function getBehavior($uid, $behavior)
     {
         if (!$uid) {
-            return array();
+            return [];
         }
         $info = $this->_getdao()->getInfo($uid, $behavior);
         if (!$info) {
-            return array();
+            return [];
         }
         $time = Pw::getTime();
         if ($info['expired_time'] > 0 && $info['expired_time'] < $time) {
@@ -43,7 +43,7 @@ class PwUserBehavior
     public function fetchBehavior($uids)
     {
         if (!is_array($uids) || count($uids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getdao()->fetchInfo($uids);
@@ -58,7 +58,7 @@ class PwUserBehavior
     {
         $uid = (int) $uid;
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getdao()->getBehaviorList($uid);
@@ -187,7 +187,7 @@ class PwUserBehavior
         if ($uid < 1 || !$behavior) {
             return false;
         }
-        $data = array();
+        $data = [];
         $data['uid'] = $uid;
         $data['behavior'] = $behavior;
         $data['number'] = $number;

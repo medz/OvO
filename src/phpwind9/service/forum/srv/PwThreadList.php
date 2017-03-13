@@ -35,7 +35,7 @@ class PwThreadList extends PwBaseHookService
     public function __construct()
     {
         parent::__construct();
-        $this->icon = array(
+        $this->icon = [
             'headtopic_3' => '置顶3',
             'headtopic_2' => '置顶2',
             'headtopic_1' => '置顶1',
@@ -56,13 +56,13 @@ class PwThreadList extends PwBaseHookService
             'file'  => '附件',
             'music' => '音乐',
             'like'  => '喜欢帖',
-        );
-        $this->uploadIcon = array(
+        ];
+        $this->uploadIcon = [
             1 => 'img', 2 => 'txt', 3 => 'img', 4 => 'file', 5 => 'img', 6 => 'txt', 7 => 'img',
-        );
-        $this->specialIcon = array(
+        ];
+        $this->specialIcon = [
             'poll' => 'vote',
-        );
+        ];
         $this->_iconNew = Wekit::C('bbs', 'thread.new_thread_minutes') * 60;
         $this->_iconHot = Wekit::C('bbs', 'thread.hotthread_replies');
         $this->_maxPage = Wekit::C('bbs', 'thread.max_pages');

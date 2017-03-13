@@ -37,7 +37,7 @@ class PwBackup
     public function getCreateTable($table)
     {
         if (!$table) {
-            return array();
+            return [];
         }
 
         return $this->_getBackupDao()->getCreateTable($table);
@@ -55,7 +55,7 @@ class PwBackup
     public function getData($table, $limit, $start)
     {
         if (!$table) {
-            return array();
+            return [];
         }
 
         return $this->_getBackupDao()->getData($table, $limit, $start);
@@ -97,7 +97,7 @@ class PwBackup
         $tables = $this->_getBackupDao()->getTables();
         $prefix = $this->getTablePrefix();
         $prefixLen = strlen($prefix);
-        $tableArray = array();
+        $tableArray = [];
         foreach ($tables as $v) {
             $name = array_values($v);
             if (!$name[0]) {
@@ -173,7 +173,7 @@ class PwBackup
         if (!$tables) {
             return false;
         }
-        !is_array($tables) && $tables = array($tables);
+        !is_array($tables) && $tables = [$tables];
         $tables = array_unique($tables);
         $table = '';
         foreach ($tables as $v) {

@@ -35,9 +35,9 @@ class RoleController extends AdminBaseController
 
         $roles = $this->_loadRoleService()->findRoles();
 
-        $_tmp = array();
+        $_tmp = [];
         foreach ($roles as $value) {
-            $_tmp[$value['name']] = empty($value['auths']) ? array() : explode(',', $value['auths']);
+            $_tmp[$value['name']] = empty($value['auths']) ? [] : explode(',', $value['auths']);
         }
         $this->setOutput($_tmp, 'roleTable');
         $this->setOutput($roles, 'roles');
@@ -49,7 +49,7 @@ class RoleController extends AdminBaseController
      */
     public function doAddAction()
     {
-        list($rolename, $auths) = $this->getInput(array('rolename', 'auths'), 'post');
+        list($rolename, $auths) = $this->getInput(['rolename', 'auths'], 'post');
         $result = $this->_loadRoleService()->addRole($rolename, $auths);
         if ($result instanceof PwError) {
             $this->showError($result->getError());
@@ -76,9 +76,9 @@ class RoleController extends AdminBaseController
         unset($auths['admin']);
 
         $roles = $this->_loadRoleService()->findRoles();
-        $_tmp = array();
+        $_tmp = [];
         foreach ($roles as $value) {
-            $_tmp[$value['name']] = empty($value['auths']) ? array() : explode(',', $value['auths']);
+            $_tmp[$value['name']] = empty($value['auths']) ? [] : explode(',', $value['auths']);
         }
         $_cAuths = $_tmp[$role['name']];
 
@@ -94,7 +94,7 @@ class RoleController extends AdminBaseController
      */
     public function doEditAction()
     {
-        list($rid, $rolename, $auths) = $this->getInput(array('rid', 'rolename', 'auths'), 'post');
+        list($rid, $rolename, $auths) = $this->getInput(['rid', 'rolename', 'auths'], 'post');
         $result = $this->_loadRoleService()->editRole($rid, $rolename, $auths);
         if ($result instanceof PwError) {
             $this->showError($result->getError());

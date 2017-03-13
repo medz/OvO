@@ -29,7 +29,7 @@ class PwUserBan
     public function getBanInfo($uid)
     {
         if (0 >= ($uid = intval($uid))) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getBanInfo($uid);
@@ -46,7 +46,7 @@ class PwUserBan
     public function getBanInfoByTypeid($uid, $typeid = self::BAN_SIGN)
     {
         if (0 >= ($uid = intval($uid))) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getBanInfoByTypeid($uid, $typeid);
@@ -64,7 +64,7 @@ class PwUserBan
     public function getBanInfoByTypeidAndFid($uid, $typeid = self::BAN_SPEAK, $fid = 0)
     {
         if (0 >= ($uid = intval($uid))) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getBanInfoByTypeidAndFid($uid, $typeid, $fid);
@@ -81,7 +81,7 @@ class PwUserBan
     public function fetchBanInfoByUid($uids, $typeid = self::BAN_SPEAK)
     {
         if (!$uids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchBanInfoByUid($uids, $typeid);
@@ -97,7 +97,7 @@ class PwUserBan
     public function fetchBanInfo($ids)
     {
         if (!$ids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchBanInfo($ids);

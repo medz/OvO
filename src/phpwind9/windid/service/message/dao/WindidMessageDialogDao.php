@@ -13,7 +13,7 @@ class WindidMessageDialogDao extends WindidBaseDao
 {
     protected $_pk = 'dialog_id';
     protected $_table = 'message_dialog';
-    protected $_dataStruct = array('dialog_id', 'to_uid', 'from_uid',  'unread_count', 'message_count', 'last_message', 'modified_time');
+    protected $_dataStruct = ['dialog_id', 'to_uid', 'from_uid',  'unread_count', 'message_count', 'last_message', 'modified_time'];
 
     /**
      * 获取一条
@@ -40,7 +40,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `to_uid`=? AND `from_uid`=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($toUid, $fromUid));
+        return $smt->getOne([$toUid, $fromUid]);
     }
 
     /**
@@ -56,7 +56,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `to_uid`=? AND `from_uid` IN %s ', $this->getTable(), $this->sqlImplode($fromUids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     /**
@@ -72,7 +72,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `to_uid`=? AND `unread_count` > 0 ORDER BY `modified_time` DESC %s ', $this->getTable(), $this->sqlLimit($limit));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     /**
@@ -102,7 +102,7 @@ class WindidMessageDialogDao extends WindidBaseDao
      *
      * @return bool
      */
-    public function updateDialog($dialogId, $fields = array(), $increaseFields = array())
+    public function updateDialog($dialogId, $fields = [], $increaseFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -112,7 +112,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `dialog_id` =? ', $this->getTable(), $this->sqlMerge($fields, $increaseFields));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($dialogId));
+        return $smt->update([$dialogId]);
     }
 
     /**
@@ -124,7 +124,7 @@ class WindidMessageDialogDao extends WindidBaseDao
      *
      * @return bool
      */
-    public function batchUpdateDialog($dialogIds, $fields = array(), $increaseFields = array())
+    public function batchUpdateDialog($dialogIds, $fields = [], $increaseFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -149,7 +149,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT SUM(message_count) AS `count`,SUM(`unread_count`) AS `unreads` FROM %s WHERE `to_uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid), PDO::FETCH_NUM);
+        return $smt->getOne([$uid], PDO::FETCH_NUM);
     }
 
     /**
@@ -165,7 +165,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE to_uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -182,7 +182,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE to_uid=? ORDER BY modified_time DESC %s ', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function getDialogIds($uid)
@@ -190,7 +190,7 @@ class WindidMessageDialogDao extends WindidBaseDao
         $sql = $this->_bindSql('SELECT dialog_id FROM %s WHERE to_uid=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function fetchDialogByDialogIds($dialogIds)

@@ -11,8 +11,8 @@
  */
 class PwUserBanSo
 {
-    private $data = array();
-    private $argsUrl = array();
+    private $data = [];
+    private $argsUrl = [];
     private $type = '';
     private $keywords = '';
 

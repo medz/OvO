@@ -12,7 +12,7 @@ class PwWeiboCommentDao extends PwBaseDao
 {
     protected $_table = 'weibo_comment';
     protected $_pk = 'comment_id';
-    protected $_dataStruct = array('comment_id', 'weibo_id', 'content', 'extra', 'created_userid', 'created_username', 'created_time');
+    protected $_dataStruct = ['comment_id', 'weibo_id', 'content', 'extra', 'created_userid', 'created_username', 'created_time'];
 
     /*
     public function getFresh($id) {
@@ -45,7 +45,7 @@ class PwWeiboCommentDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE weibo_id=? ORDER BY created_time %s %s', $this->getTable(), $orderby, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($weibo_id), 'comment_id');
+        return $smt->queryAll([$weibo_id], 'comment_id');
     }
 
     public function addComment($fields)

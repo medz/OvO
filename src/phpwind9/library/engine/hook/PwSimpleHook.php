@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwSimpleHook
 {
-    private static $_instance = array();
-    protected $_do = array();
+    private static $_instance = [];
+    protected $_do = [];
 
     /**
      * 构造函数，默认启动埋在此钩子下的扩展服务
@@ -55,7 +55,7 @@ class PwSimpleHook
     public function appendDo($do, $method)
     {
         if ($method && method_exists($do, $method)) {
-            $this->_do[] = array($do, $method);
+            $this->_do[] = [$do, $method];
         }
     }
 

@@ -35,7 +35,7 @@ class PwThreadService
         return $replies;
     }
 
-    public function displayContent($content, $useubb, $remindUser = array(), $contentLength = 140)
+    public function displayContent($content, $useubb, $remindUser = [], $contentLength = 140)
     {
         $content = WindSecurity::escapeHTML($content);
         if ($useubb) {

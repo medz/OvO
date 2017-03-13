@@ -12,7 +12,7 @@ class PwLinkTypeDao extends PwBaseDao
 {
     protected $_pk = 'typeid';
     protected $_table = 'link_type';
-    protected $_dataStruct = array('typeid', 'typename', 'vieworder');
+    protected $_dataStruct = ['typeid', 'typename', 'vieworder'];
 
     /**
      * 添加一条分类.
@@ -56,7 +56,7 @@ class PwLinkTypeDao extends PwBaseDao
             if (!$this->_filterStruct($v) || !$v['typeid']) {
                 continue;
             }
-            $array[] = array($v['typeid'], $v['vieworder'], $v['typename']);
+            $array[] = [$v['typeid'], $v['vieworder'], $v['typename']];
         }
         if (!$array) {
             return false;
@@ -79,7 +79,7 @@ class PwLinkTypeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `typename`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($typename));
+        return $smt->getOne([$typename]);
     }
 
     /**
@@ -92,6 +92,6 @@ class PwLinkTypeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s ORDER BY `vieworder` ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'typeid');
+        return $smt->queryAll([], 'typeid');
     }
 }

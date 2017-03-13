@@ -9,13 +9,13 @@
  *
  * @version $Id$
  */
-return array(
-    'aliyun' => array(
+return [
+    'aliyun' => [
         'name'        => '阿里云短信平台',
         'alias'       => 'aliyun',
         'managelink'  => '',
         'description' => '欢迎使用阿里云短信平台',
-        'components'  => array('path' => 'SRV:mobile.srv.plat.PwPlatAliyun'),
-    ),
+        'components'  => ['path' => 'SRV:mobile.srv.plat.PwPlatAliyun'],
+    ],
 
-);
+];

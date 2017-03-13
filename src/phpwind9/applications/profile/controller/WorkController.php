@@ -23,7 +23,7 @@ class WorkController extends BaseProfileController
         $page = abs(intval($this->getInput('page')));
         ($page < 1) && $page = 1;
         $count = $this->_getDs()->countByUid($this->loginUser->uid);
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $this->number);
             $page > $totalPage && $page = $totalPage;
@@ -31,7 +31,7 @@ class WorkController extends BaseProfileController
             $list = $this->_getDs()->getByUid($this->loginUser->uid, $this->number, $start);
         }
         $this->setCurrentLeft('profile', 'work');
-        $this->setOutput(array('_tab' => 'work'), 'args');
+        $this->setOutput(['_tab' => 'work'], 'args');
         $this->setOutput($count, 'count');
         $this->setOutput($list, 'list');
         $this->setOutput($page, 'page');

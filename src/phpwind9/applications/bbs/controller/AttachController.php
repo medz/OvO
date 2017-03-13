@@ -34,13 +34,13 @@ class AttachController extends PwBaseController
             if (!$this->loginUser->isExists()) {
                 $this->showError('download.fail.login.not', 'bbs/attach/download');
             }
-            $this->showError(array('BBS:forum.permissions.download.allow', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
+            $this->showError(['BBS:forum.permissions.download.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
         if (!$forum->foruminfo['allow_download'] && !$this->loginUser->getPermission('allow_download')) {
             if (!$this->loginUser->isExists()) {
                 $this->showError('download.fail.login.not', 'bbs/attach/download');
             }
-            $this->showError(array('permission.download.allow', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
+            $this->showError(['permission.download.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
 
         $creditBo = PwCreditBo::getInstance();
@@ -56,11 +56,11 @@ class AttachController extends PwBaseController
         //下载积分提示
         $lang = Wind::getComponent('i18n');
         if (1 == $this->loginUser->getPermission('allow_download') && $reduceDownload && $attach['cost']) {
-            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.all', array('{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']], '{downCount}' => rtrim($reduceDownload, ',')));
+            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.all', ['{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']], '{downCount}' => rtrim($reduceDownload, ',')]);
         } elseif (1 == $this->loginUser->getPermission('allow_download') && $reduceDownload && !$attach['cost']) {
-            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.download', array('{downCount}' => rtrim($reduceDownload, ',')));
+            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.download', ['{downCount}' => rtrim($reduceDownload, ',')]);
         } elseif ($attach['cost']) {
-            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.buy', array('{count}' => $this->loginUser->getCredit($attach['ctype']).$creditBo->cType[$attach['ctype']], '{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']]));
+            $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.buy', ['{count}' => $this->loginUser->getCredit($attach['ctype']).$creditBo->cType[$attach['ctype']], '{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']]]);
         } else {
             $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.success');
         }
@@ -196,7 +196,7 @@ class AttachController extends PwBaseController
                 $this->showError('permission.attach.delete.deny');
             }
             if (!$this->loginUser->comparePermission($attach['created_userid'])) {
-                $this->showError(array('permission.level.deleteatt', array('{grouptitle}' => $this->loginUser->getGroupInfo('name'))));
+                $this->showError(['permission.level.deleteatt', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
             }
         }
 
@@ -241,7 +241,7 @@ class AttachController extends PwBaseController
 
     public function recordAction()
     {
-        list($aid, $page) = $this->getInput(array('aid', 'page'));
+        list($aid, $page) = $this->getInput(['aid', 'page']);
         $perpage = 10;
         $page < 1 && $page = 1;
 
@@ -255,27 +255,27 @@ class AttachController extends PwBaseController
         !$record && $this->showError('BBS:thread.buy.error.norecord');
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_keys($record));
 
-        $data = array();
+        $data = [];
         $cType = PwCreditBo::getInstance()->cType;
         foreach ($record as $key => $value) {
-            $data[] = array(
+            $data[] = [
                 'uid'          => $value['created_userid'],
                 'username'     => $users[$value['created_userid']]['username'],
                 'cost'         => $value['cost'],
                 'ctype'        => $cType[$value['ctype']],
                 'created_time' => Pw::time2str($value['created_time']),
-            );
+            ];
         }
 
         $totalpage = ceil($count / $perpage);
         $nextpage = $page + 1;
         $nextpage = $nextpage > $totalpage ? $totalpage : $nextpage;
 
-        $this->setOutput(array('data' => $data, 'totalpage' => $totalpage, 'page' => $nextpage), 'data');
+        $this->setOutput(['data' => $data, 'totalpage' => $totalpage, 'page' => $nextpage], 'data');
         $this->showMessage('success');
     }
 
-    private function _getDownloadCredit($operation, PwUserBo $user, PwCreditBo $creditBo, $creditset = array())
+    private function _getDownloadCredit($operation, PwUserBo $user, PwCreditBo $creditBo, $creditset = [])
     {
         $strategy = $creditBo->getStrategy($operation);
         if ($this->_checkCreditSetEmpty($strategy['credit']) && $this->_checkCreditSetEmpty($creditset['credit'])) {
@@ -329,7 +329,7 @@ class AttachController extends PwBaseController
                 $creditBo = PwCreditBo::getInstance();
                 $creditType = $creditBo->cType[$attach['ctype']];
 
-                return new PwError('BBS:thread.buy.error.credit.notenough', array('{myCredit}' => $myCredit.$creditType, '{count}' => -$attach['cost'].$creditType));
+                return new PwError('BBS:thread.buy.error.credit.notenough', ['{myCredit}' => $myCredit.$creditType, '{count}' => -$attach['cost'].$creditType]);
             }
         } else {
             $attach['cost'] = 0;
@@ -368,7 +368,7 @@ class AttachController extends PwBaseController
             ($attach['ctype'] == $k) && $tv = $v - $attach['cost'];
             $vt = $tv > 0 ? '+'.$tv : $tv;
             if (-$tv > $user->getCredit($k)) {
-                return new PwError('BBS:thread.download.error.credit.notenough', array('{myCredit}' => $this->loginUser->getCredit($k).$creditBo->cType[$k], '{count}' => $vt.$creditBo->cType[$k]));
+                return new PwError('BBS:thread.download.error.credit.notenough', ['{myCredit}' => $this->loginUser->getCredit($k).$creditBo->cType[$k], '{count}' => $vt.$creditBo->cType[$k]]);
             }
             $v && $reduceDownload .= ($v > 0 ? '+'.abs($v) : $v).$creditBo->cType[$k].',';
         }
@@ -383,7 +383,7 @@ class AttachController extends PwBaseController
     {
         $credit = PwCreditBo::getInstance();
         $user = Wekit::getLoginUser();
-        $credit->operate($operate, $user, true, array('forumname' => $forum->foruminfo['name']), $forum->getCreditSet($operate));
+        $credit->operate($operate, $user, true, ['forumname' => $forum->foruminfo['name']], $forum->getCreditSet($operate));
         $credit->execute();
     }
 
@@ -404,17 +404,17 @@ class AttachController extends PwBaseController
             ->setCost($attach['cost']);
         Wekit::load('attach.PwThreadAttachBuy')->add($dm);
 
-        $creditBo->addLog('attach_buy', array($attach['ctype'] => -$attach['cost']), $user, array(
+        $creditBo->addLog('attach_buy', [$attach['ctype'] => -$attach['cost']], $user, [
             'name' => $attach['name'],
-        ));
+        ]);
         $creditBo->set($user->uid, $attach['ctype'], -$attach['cost'], true);
 
         $user = new PwUserBo($attach['created_userid']);
         if (($max = $user->getPermission('sell_credit_range.maxincome')) && Wekit::load('attach.PwThreadAttachBuy')->sumCost($attach['aid']) > $max) {
         } else {
-            $creditBo->addLog('attach_sell', array($attach['ctype'] => $attach['cost']), $user, array(
+            $creditBo->addLog('attach_sell', [$attach['ctype'] => $attach['cost']], $user, [
                 'name' => $attach['name'],
-            ));
+            ]);
             $creditBo->set($user->uid, $attach['ctype'], $attach['cost'], true);
         }
         $creditBo->execute();

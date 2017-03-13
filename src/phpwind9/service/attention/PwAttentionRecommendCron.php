@@ -22,7 +22,7 @@ class PwAttentionRecommendCron
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($uid);
@@ -54,7 +54,7 @@ class PwAttentionRecommendCron
             return false;
         }
 
-        return $this->_getDao()->replace(array('uid' => $uid, 'created_time' => Pw::getTime()));
+        return $this->_getDao()->replace(['uid' => $uid, 'created_time' => Pw::getTime()]);
     }
 
     /**

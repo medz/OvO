@@ -79,7 +79,7 @@ class PwFreshReplyByWeibo
 
     public function getRemindUser()
     {
-        return array();
+        return [];
     }
 
     public function getNewFreshSrcId()

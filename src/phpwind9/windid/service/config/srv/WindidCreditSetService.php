@@ -21,9 +21,9 @@ class WindidCreditSetService
      *
      * @return bool
      */
-    public function setCredits($credits, $newCredit = array())
+    public function setCredits($credits, $newCredit = [])
     {
-        is_array($credits) || $credits = array();
+        is_array($credits) || $credits = [];
         if ($newCredit) {
             $keys = array_keys($credits);
             $maxKey = intval(max($keys));

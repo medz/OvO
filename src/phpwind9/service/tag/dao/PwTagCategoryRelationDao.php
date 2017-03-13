@@ -11,7 +11,7 @@
 class PwTagCategoryRelationDao extends PwBaseDao
 {
     protected $_table = 'tag_category_relation';
-    protected $_dataStruct = array('tag_id', 'category_id');
+    protected $_dataStruct = ['tag_id', 'category_id'];
 
     /**
      * 添加.
@@ -22,15 +22,15 @@ class PwTagCategoryRelationDao extends PwBaseDao
      */
     public function addRelations($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v)) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['tag_id'],
                 $v['category_id'],
-            );
+            ];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`tag_id`,`category_id`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));
 
@@ -49,7 +49,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `category_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($categoryId));
+        return $smt->update([$categoryId]);
     }
 
     /**
@@ -64,7 +64,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagId));
+        return $smt->update([$tagId]);
     }
 
     /**
@@ -94,7 +94,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `category_id` =? %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($categoryId));
+        return $smt->queryAll([$categoryId]);
     }
 
     /**
@@ -107,7 +107,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) as count,category_id FROM %s GROUP BY `category_id`');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'category_id');
+        return $smt->queryAll([], 'category_id');
     }
 
     /**
@@ -122,7 +122,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `tag_id` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tagId));
+        return $smt->queryAll([$tagId]);
     }
 
     /**
@@ -138,7 +138,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `category_id` =? AND `tag_id` IN %s ', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($categoryId), 'tag_id');
+        return $smt->queryAll([$categoryId], 'tag_id');
     }
 
     /**
@@ -151,6 +151,6 @@ class PwTagCategoryRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_id` IN %s ', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array());
+        return $smt->queryAll([]);
     }
 }

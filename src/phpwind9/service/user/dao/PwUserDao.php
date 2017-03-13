@@ -12,7 +12,7 @@ class PwUserDao extends PwBaseDao
 {
     protected $_table = 'user';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'username', 'email', 'password', 'regdate', 'realname', 'status', 'groupid', 'memberid', 'groups');
+    protected $_dataStruct = ['uid', 'username', 'email', 'password', 'regdate', 'realname', 'status', 'groupid', 'memberid', 'groups'];
 
     /**
      * 根据用户ID获得用户的扩展数据.
@@ -38,7 +38,7 @@ class PwUserDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE username=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($username));
+        return $smt->getOne([$username]);
     }
 
     /**
@@ -53,7 +53,7 @@ class PwUserDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE email=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($email));
+        return $smt->getOne([$email]);
     }
 
     /**
@@ -105,7 +105,7 @@ class PwUserDao extends PwBaseDao
      *
      * @return bool|int
      */
-    public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
+    public function editUser($uid, $fields, $increaseFields = [], $bitFields = [])
     {
         return $this->_update($uid, $fields, $increaseFields, $bitFields);
     }

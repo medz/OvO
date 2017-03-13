@@ -75,7 +75,7 @@
         $forumBo = new PwForumBo($fid);
 
         $credit = PwCreditBo::getInstance();
-        $credit->operate('belike', new PwUserBo($beLikeUid), true, array('forumname' => $userBo->username), $forumBo->getCreditSet('belike'));
+        $credit->operate('belike', new PwUserBo($beLikeUid), true, ['forumname' => $userBo->username], $forumBo->getCreditSet('belike'));
         $credit->execute();
 
         //喜欢挂勾
@@ -86,7 +86,7 @@
         //喜欢后续操作 如果不需要排行，return true
         $this->setLikeBrand($likeid, $count, $typeid, $fromid);
 
-        return array('likeCount' => $likeNumber, 'extend' => $extend);
+        return ['likeCount' => $likeNumber, 'extend' => $extend];
     }
 
      public function delLike($uid, $logid)
@@ -152,7 +152,7 @@
                 unset($tagnames[$k]);
             }
         }
-        $_tagids = empty($tagids) ? array() : explode(',', $tagids);
+        $_tagids = empty($tagids) ? [] : explode(',', $tagids);
         if (count($tagnames) > 5) {
             $tagnames = array_slice($tagnames, 0, 5);
         }
@@ -184,7 +184,7 @@
             $this->_getLikeRelationsDs()->addInfo($logid, $tagid);
         }
         //对原tag计数减1
-        $_logTagids = empty($logInfo['tagids']) ? array() : explode(',', $logInfo['tagids']);
+        $_logTagids = empty($logInfo['tagids']) ? [] : explode(',', $logInfo['tagids']);
         foreach ($_logTagids as $tagid) {
             $this->_getLikeTagDs()->updateNumber($tagid, false);
         }
@@ -268,9 +268,9 @@
     public function getLikeBrand($key, $start = 0, $limit = 10, $isthread = false)
     {
         $statis = $this->_getLikeStatisticsDs()->getInfoList($key, $start, $limit, $isthread);
-        $likeids = $tids = array();
+        $likeids = $tids = [];
         if (empty($statis)) {
-            return array();
+            return [];
         }
         $likeds = $this->_getLikeContentDs();
         foreach ($statis as $val) {
@@ -302,7 +302,7 @@
      */
     public function diffTagNames($tagnames, $uid)
     {
-        $_tagnames = array();
+        $_tagnames = [];
 
         if (!is_array($tagnames) || count($tagnames) < 1) {
             return false;
@@ -327,8 +327,8 @@
      */
     public function setLikeBrand($likeid, $count, $typeid, $fromid)
     {
-        $signKeys = array('day7' => 604800, 'day2' => 172800, 'day1' => 86400);
-        $countKeys = array('day7_count', 'day2_count', 'day1_count');
+        $signKeys = ['day7' => 604800, 'day2' => 172800, 'day1' => 86400];
+        $countKeys = ['day7_count', 'day2_count', 'day1_count'];
         $minInfo = $this->_getLikeStatisticsDs()->getMinInfo('day7');
         $minCount = $minInfo ? $minInfo['number'] : 0;
         $maxStatis = 100;
@@ -400,7 +400,7 @@
 
      private function _getSourceInfo($typeid, $fromid)
      {
-         $extend = array();
+         $extend = [];
          switch ($typeid) {
             case PwLikeContent::THREAD:
                 $msg = Wekit::load('forum.PwThread')->getThread($fromid);
@@ -410,22 +410,22 @@
                 $postAction = new PwReplyPost($fromid);
                 $post = new PwPost($postAction);
                 if ($post->getDisabled()) {
-                    $extend = array('needcheck' => true);
+                    $extend = ['needcheck' => true];
                 }
 
-                return array($msg['created_userid'], $msg['special'], $msg['like_count'], $msg['fid'], $extend);
+                return [$msg['created_userid'], $msg['special'], $msg['like_count'], $msg['fid'], $extend];
             case PwLikeContent::POST:
                 $msg = Wekit::load('forum.PwThread')->getPost($fromid);
 
-                return array($msg['created_userid'], 0, $msg['like_count'], $msg['fid']);
+                return [$msg['created_userid'], 0, $msg['like_count'], $msg['fid']];
             case PwLikeContent::WEIBO:
                 $msg = Wekit::load('weibo.PwWeibo')->getWeibo($fromid);
 
-                return array($msg['created_userid'], 0, $msg['like_count'], 0);
+                return [$msg['created_userid'], 0, $msg['like_count'], 0];
             case PwLikeContent::APP:
                 $msg = Wekit::load('like.PwLikeSource')->getSource($fromid);
 
-                return array(0, 0, $msg['like_count'], 0);
+                return [0, 0, $msg['like_count'], 0];
         }
      }
 

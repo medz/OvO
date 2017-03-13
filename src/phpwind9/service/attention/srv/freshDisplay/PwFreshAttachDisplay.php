@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwFreshAttachDisplay
 {
     public $pics;
-    public $tmp = array();
+    public $tmp = [];
 
     public function __construct(&$pic)
     {

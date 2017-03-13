@@ -61,7 +61,7 @@ class ManageController extends AdminBaseSeoController
         /* @var $forumService PwForumService */
         $forumService = Wekit::load('forum.srv.PwForumService');
         $map = $forumService->getForumMap();
-        $forumList = array();
+        $forumList = [];
         foreach ($map[0] as $key => $value) {
             $forumList[$value['fid']] = $forumService->getForumsByLevel($value['fid'], $map);
         }
@@ -106,7 +106,7 @@ class ManageController extends AdminBaseSeoController
 
         $seo = $this->getInput('seo', 'post');
         $mod = $this->getInput('mod');
-        $data = array();
+        $data = [];
         foreach ($seo as $page => $list) {
             foreach ($list as $k => $v) {
                 $dm = new PwSeoDm();

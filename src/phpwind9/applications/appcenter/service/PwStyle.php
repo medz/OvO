@@ -119,7 +119,7 @@ class PwStyle
     public function fetchStyleByAliasAndType($alias, $type = 'site', $index = 'app_id')
     {
         if (!$alias) {
-            return array();
+            return [];
         }
 
         return $this->_styleDao()->fetchStyleByAliasAndType($alias, $type, $index);
@@ -135,7 +135,7 @@ class PwStyle
     public function findByAppId($appId)
     {
         if (!$appId) {
-            return new PwError('APPCENTER:validate.fail', array('error' => '应用查找时，应用ID非法'));
+            return new PwError('APPCENTER:validate.fail', ['error' => '应用查找时，应用ID非法']);
         }
 
         return $this->_styleDao()->findByAppId($appId);

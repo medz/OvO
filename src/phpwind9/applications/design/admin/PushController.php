@@ -18,11 +18,11 @@ class PushController extends AdminBaseController
         $moduleid = (int) $this->getInput('moduleid');
         $pageid = (int) $this->getInput('pageid');
         $perpage = 10;
-        $pushids = $pageids = $moduleids = $uids = $args = array();
+        $pushids = $pageids = $moduleids = $uids = $args = [];
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
         if ($pageid) {
-            $args = array('pageid' => $pageid);
+            $args = ['pageid' => $pageid];
         }
         if ($moduleid) {
             $args['moduleid'] = $moduleid;
@@ -80,7 +80,7 @@ class PushController extends AdminBaseController
         $moduleid = (int) $this->getInput('moduleid');
         $pageid = (int) $this->getInput('pageid');
         $perpage = 10;
-        $pageids = $moduleids = $uids = array();
+        $pageids = $moduleids = $uids = [];
         $page = $page > 1 ? $page : 1;
         $args['status'] = $status;
         if ($moduleid) {
@@ -275,7 +275,7 @@ class PushController extends AdminBaseController
 
     public function batchcheckAction()
     {
-        $moduleids = array();
+        $moduleids = [];
         $pushids = $this->getInput('pushids', 'post');
         $pushDs = $this->_getPushDs();
         $srv = $this->_getPushService();

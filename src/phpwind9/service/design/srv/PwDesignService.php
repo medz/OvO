@@ -12,7 +12,7 @@ class PwDesignService
 {
     public function getModelList()
     {
-        $modelList = array();
+        $modelList = [];
         $list = WindFolder::read(Wind::getRealDir('SRV:design.srv.model'), WindFolder::READ_DIR);
         $_configParser = Wind::getComponent('configParser');
         foreach ($list as $model) {
@@ -24,7 +24,7 @@ class PwDesignService
             if (!isset($config['model'])) {
                 continue;
             }
-            $modelList[$config['model']] = array('name' => $config['name'], 'type' => $config['type']);
+            $modelList[$config['model']] = ['name' => $config['name'], 'type' => $config['type']];
         }
 
         return $modelList;
@@ -32,13 +32,13 @@ class PwDesignService
 
     public function getDesignModelType($select = '')
     {
-        $array = array(
+        $array = [
             'bbs'   => '论坛模型',
             'user'  => '用户模型',
             'space' => '空间模型',
             'other' => '其它模型',
             'api'   => '扩展模型',
-        );
+        ];
 
         return $select ? $array[$select] : $array;
     }
@@ -56,7 +56,7 @@ class PwDesignService
         $list = $ds->getStyleListByType($type, $limit, $start);
         foreach ($list as &$v) {
             if ($v['logo'] && (strpos($v['logo'], 'http://') === false)) {
-                $args = array(Wekit::url()->themes, $addons[$type][1], $v['alias'], $v['logo']);
+                $args = [Wekit::url()->themes, $addons[$type][1], $v['alias'], $v['logo']];
                 $v['logo'] = implode('/', $args);
             }
         }
@@ -66,7 +66,7 @@ class PwDesignService
 
     public function getSysListClass($select = '')
     {
-        $array = array(
+        $array = [
             '默认' => 'mod_no',
             '灰色' => 'mod_boxA',
             '浅蓝' => 'mod_boxB',
@@ -77,14 +77,14 @@ class PwDesignService
             '青色' => 'mod_boxG',
             '蓝色' => 'mod_boxH',
             '紫色' => 'mod_boxI',
-        );
+        ];
 
         return $select ? $array[$select] : $array;
     }
 
     public function getSysStyleClass($select = '')
     {
-        $array = array(
+        $array = [
             '默认'  => 'box_wrap',
             '无样式' => 'box_no',
             '灰色'  => 'layout_boxA',
@@ -96,33 +96,33 @@ class PwDesignService
             '青色'  => 'layout_boxG',
             '蓝色'  => 'layout_boxH',
             '紫色'  => 'layout_boxI',
-        );
+        ];
 
         return $select ? $array[$select] : $array;
     }
 
     public function getSysFontSize($select = '')
     {
-        $array = array(10, 12, 14, 16, 18, 20);
+        $array = [10, 12, 14, 16, 18, 20];
 
         return $select ? $select : $array;
     }
 
     public function getSysLineWidth($select = '')
     {
-        $array = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        $array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
         return $select ? $select : $array;
     }
 
     public function getSysBorderStyle($select = '')
     {
-        $array = array(
+        $array = [
             'solid'  => '实线',
             'dotted' => '点线',
             'dashed' => '虚线',
             'double' => '双实线',
-        );
+        ];
 
         return $select ? $array[$select] : $array;
     }
@@ -148,9 +148,9 @@ class PwDesignService
     public function getModelSignkey($string)
     {
         $array = explode(',', $string);
-        $signKey = array();
+        $signKey = [];
         if (!is_array($array) || count($array) < 1) {
-            return array();
+            return [];
         }
         foreach ($array as $v) {
             list($key, $sign) = explode('=', $v);
@@ -204,7 +204,7 @@ class PwDesignService
     public function filterTemplate($string)
     {
         $string = str_replace('<?', '&lt;?', $string);
-        $in = array(
+        $in = [
             '/<!--#(.*)#-->/isU',
             '/<!--\{(.*)\}-->/isU',
             /*'/<\?php(.*)\?>/isU',
@@ -220,8 +220,8 @@ class PwDesignService
             '/<\/fram(.*)>/isU',
             '/<iframe(.*)>/isU',
             '/<\/ifram(.*)>/isU',
-        );
-        $out = array(
+        ];
+        $out = [
             '&lt;!--# \\1 #--&gt',
             '&lt;!--{ \\1 }--&gt',
             /*'&lt;?php\\1?&gt;',
@@ -237,7 +237,7 @@ class PwDesignService
             '&lt;/fram\\1&gt;',
             '&lt;iframe\\1&gt;',
             '&lt;/ifram\\1&gt;',
-        );
+        ];
 
         return preg_replace($in, $out, $string);
     }

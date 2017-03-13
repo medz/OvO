@@ -15,7 +15,7 @@ class UploadController extends PwBaseController
         header('Content-type: text/html; charset='.Wekit::V('charset'));
         //$pwServer['HTTP_USER_AGENT'] = 'Shockwave Flash';
         $swfhash = 1/*GetVerify($winduid)*/;
-        Pw::echoJson(array('uid' => $this->loginUser->uid, 'a' => 'dorun', 'verify' => $swfhash));
+        Pw::echoJson(['uid' => $this->loginUser->uid, 'a' => 'dorun', 'verify' => $swfhash]);
 
         $this->setTemplate('');
     }

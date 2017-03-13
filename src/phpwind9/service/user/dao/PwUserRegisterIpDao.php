@@ -12,7 +12,7 @@ class PwUserRegisterIpDao extends PwBaseDao
 {
     protected $_table = 'user_register_ip';
     protected $_pk = 'ip';
-    protected $_dataStruct = array('ip', 'last_regdate', 'num');
+    protected $_dataStruct = ['ip', 'last_regdate', 'num'];
 
     /**
      * 根据IP查询数据.
@@ -36,7 +36,7 @@ class PwUserRegisterIpDao extends PwBaseDao
      */
     public function update($ip, $date)
     {
-        $data = array('ip' => $ip, 'last_regdate' => $date);
+        $data = ['ip' => $ip, 'last_regdate' => $date];
         $sql = $this->_bindSql('REPLACE INTO %s SET `num`=`num`+1,%s', $this->getTable(), $this->sqlSingle($data));
 
         return $this->getConnection()->execute($sql);

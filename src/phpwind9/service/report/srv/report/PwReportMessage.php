@@ -18,7 +18,7 @@ class PwReportMessage extends PwReportAction
 
     public function getExtendReceiver()
     {
-        return array();
+        return [];
     }
 
     private function _getWindid()

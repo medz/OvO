@@ -19,11 +19,11 @@ class PwPushService
     {
         $cls = sprintf('PwDesign%sPushService', ucwords($model));
         if (!Wind::import('SRV:design.srv.model.'.$model.'.'.$cls)) {
-            return array();
+            return [];
         }
         $srv = new $cls();
         if (!method_exists($srv, 'getFromData')) {
-            return array();
+            return [];
         }
 
         return $srv->getFromData($formid);

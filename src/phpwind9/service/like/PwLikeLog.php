@@ -19,7 +19,7 @@ class PwLikeLog
     {
         $logid = (int) $logid;
         if ($logid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeLogDao()->getInfo($logid);
@@ -36,7 +36,7 @@ class PwLikeLog
         $uid = (int) $uid;
         $likeid = (int) $likeid;
         if ($uid < 1 || $likeid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeLogDao()->getInfoByUidLikeid($uid, $likeid);
@@ -50,7 +50,7 @@ class PwLikeLog
     public function fetchLikeLog($logids)
     {
         if (!is_array($logids) || count($logids) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLikeLogDao()->fetchInfo($logids);
@@ -66,10 +66,10 @@ class PwLikeLog
     public function getInfoList($uids, $start = 0, $limit = 10)
     {
         if (!is_array($uids)) {
-            $uids = array((int) $uids);
+            $uids = [(int) $uids];
         }
         if (count($uids) < 1) {
-            return array();
+            return [];
         }
         $limit = (int) $limit;
         $start = (int) $start;

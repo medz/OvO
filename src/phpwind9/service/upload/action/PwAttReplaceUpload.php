@@ -44,10 +44,10 @@ class PwAttReplaceUpload extends PwUploadAction
             return new PwError('BBS:forum.fid.select');
         }
         if (($result = $this->forum->allowUpload($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.upload.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (!$this->forum->foruminfo['allow_upload'] && !$this->user->getPermission('allow_upload')) {
-            return new PwError('permission.upload.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
 
         return true;
@@ -103,10 +103,10 @@ class PwAttReplaceUpload extends PwUploadAction
             $config['thumb.size.height'] = $this->forum->forumset['thumbheight'];
         }
 
-        return array(
-            array($filename, 'thumb/'.$dir, $config['thumb.size.width'], $config['thumb.size.height'], $config['thumb']),
-            array($filename, 'thumb/mini/'.$dir, 200, 200, 2),
-        );
+        return [
+            [$filename, 'thumb/'.$dir, $config['thumb.size.width'], $config['thumb.size.height'], $config['thumb']],
+            [$filename, 'thumb/mini/'.$dir, 200, 200, 2],
+        ];
     }
 
     /**
@@ -128,10 +128,10 @@ class PwAttReplaceUpload extends PwUploadAction
     public function getWaterMarkInfo()
     {
         if ($this->forum->forumset['water'] == 1 && $this->forum->forumset['waterimg']) {
-            return array('type' => 1, 'file' => $this->forum->forumset['waterimg']);
+            return ['type' => 1, 'file' => $this->forum->forumset['waterimg']];
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -162,7 +162,7 @@ class PwAttReplaceUpload extends PwUploadAction
                 Wekit::load('forum.PwThread')->updateThread($dm);
             }
 
-            $this->attachs[$this->aid] = array(
+            $this->attachs[$this->aid] = [
                 'aid'     => $this->aid,
                 'name'    => $value['name'],
                 'type'    => $value['type'],
@@ -170,7 +170,7 @@ class PwAttReplaceUpload extends PwUploadAction
                 'size'    => $value['size'],
                 'descrip' => $value['descrip'],
                 'ifthumb' => $value['ifthumb'],
-            );
+            ];
             break;
         }
 
@@ -181,6 +181,6 @@ class PwAttReplaceUpload extends PwUploadAction
     {
         $array = current($this->attachs);
 
-        return array('aid' => $array['aid'], 'path' => Pw::getPath($array['path']), 'name' => $array['name']);
+        return ['aid' => $array['aid'], 'path' => Pw::getPath($array['path']), 'name' => $array['name']];
     }
 }

@@ -14,7 +14,7 @@ class PwCronDao extends PwBaseDao
 {
     protected $_pk = 'cron_id';
     protected $_table = 'common_cron';
-    protected $_dataStruct = array('cron_id', 'subject', 'loop_type', 'loop_daytime', 'cron_file', 'isopen', 'created_time', 'modified_time', 'next_time');
+    protected $_dataStruct = ['cron_id', 'subject', 'loop_type', 'loop_daytime', 'cron_file', 'isopen', 'created_time', 'modified_time', 'next_time'];
 
     public function getCron($cronId)
     {
@@ -26,7 +26,7 @@ class PwCronDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `cron_file` = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($file));
+        return $smt->getOne([$file]);
     }
 
     public function fetchCron($cronIds)
@@ -39,12 +39,12 @@ class PwCronDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `isopen` >= 1  ORDER BY `next_time` ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array());
+        return $smt->getOne([]);
     }
 
     public function getList($isopen = null)
     {
-        $array = array();
+        $array = [];
         $where = '';
         if (isset($isopen)) {
             $array[] = $isopen;

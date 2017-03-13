@@ -10,7 +10,7 @@ class PwHookInjectDao extends PwBaseDao
 {
     protected $_table = 'hook_inject';
     protected $_pk = 'id';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'id',
         'app_id',
         'app_name',
@@ -22,7 +22,7 @@ class PwHookInjectDao extends PwBaseDao
         'expression',
         'created_time',
         'modified_time',
-        'description', );
+        'description', ];
 
     /**
      * 添加钩子定义.
@@ -53,7 +53,7 @@ class PwHookInjectDao extends PwBaseDao
     public function batchAdd($fields)
     {
         foreach ($fields as $key => $value) {
-            $_tmp = array();
+            $_tmp = [];
             $_tmp['app_id'] = $value['app_id'];
             $_tmp['app_name'] = $value['app_name'];
             $_tmp['hook_name'] = $value['hook_name'];
@@ -85,7 +85,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($id));
+        return $this->getConnection()->createStatement($sql)->execute([$id]);
     }
 
     /**
@@ -99,7 +99,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE alias=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($alias));
+        return $this->getConnection()->createStatement($sql)->execute([$alias]);
     }
 
     /**
@@ -141,7 +141,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE hook_name=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($hookName));
+        return $this->getConnection()->createStatement($sql)->execute([$hookName]);
     }
 
     /**
@@ -170,7 +170,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE hook_name=? AND alias=?', $this->getTable());
 
-        return $this->getConnection()->createStatement($sql)->execute(array($hookname, $alias));
+        return $this->getConnection()->createStatement($sql)->execute([$hookname, $alias]);
     }
 
     /**
@@ -188,7 +188,7 @@ class PwHookInjectDao extends PwBaseDao
         }
         $sql = $this->_bindTable('UPDATE %s set ').$this->sqlSingle($fields).' WHERE id=?';
 
-        return $this->getConnection()->createStatement($sql)->execute(array($id));
+        return $this->getConnection()->createStatement($sql)->execute([$id]);
     }
 
     /**
@@ -205,7 +205,7 @@ class PwHookInjectDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE id=?';
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($id));
+        return $this->getConnection()->createStatement($sql)->getOne([$id]);
     }
 
     /**
@@ -231,7 +231,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE hook_name=? ORDER BY `id`';
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($hookName), 'alias');
+        return $this->getConnection()->createStatement($sql)->queryAll([$hookName], 'alias');
     }
 
     /**
@@ -259,7 +259,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE alias=?';
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($alias));
+        return $this->getConnection()->createStatement($sql)->queryAll([$alias]);
     }
 
     /**
@@ -273,7 +273,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE alias IN %s', $this->getTable(), $this->sqlImplode($alias));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array(), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([], $this->_pk);
     }
 
     /**
@@ -294,7 +294,7 @@ class PwHookInjectDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s ORDER BY `'.$order.'` %s', $this->getTable(),
             $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array('style'), $index);
+        return $this->getConnection()->createStatement($sql)->queryAll(['style'], $index);
     }
 
     /**
@@ -320,7 +320,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `app_name` = ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($appName));
+        return $this->getConnection()->createStatement($sql)->execute([$appName]);
     }
 
     /**
@@ -334,7 +334,7 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `app_id` = ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($appid));
+        return $this->getConnection()->createStatement($sql)->execute([$appid]);
     }
 
     /**
@@ -348,6 +348,6 @@ class PwHookInjectDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($appid), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([$appid], $this->_pk);
     }
 }

@@ -12,8 +12,8 @@ class PwCreditDm
 {
     public $dm = null;
     public $uid;
-    protected $_data = array();
-    protected $_increaseData = array();
+    protected $_data = [];
+    protected $_increaseData = [];
 
     public function __construct($uid)
     {

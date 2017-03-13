@@ -14,7 +14,7 @@
 class PwUserPermissionDm extends PwBaseDm
 {
     private $gid = 0;
-    private $permission = array();
+    private $permission = [];
 
     public function __construct($gid)
     {
@@ -37,7 +37,7 @@ class PwUserPermissionDm extends PwBaseDm
      */
     public function getData()
     {
-        $data = array();
+        $data = [];
         if (!$this->gid || !$this->permission) {
             return $data;
         }
@@ -49,7 +49,7 @@ class PwUserPermissionDm extends PwBaseDm
                 $vtype = 'array';
                 $v = serialize($v);
             }
-            $data[] = array($this->gid, $k, $config[$k][1], $v, $vtype);
+            $data[] = [$this->gid, $k, $config[$k][1], $v, $vtype];
         }
 
         return $data;

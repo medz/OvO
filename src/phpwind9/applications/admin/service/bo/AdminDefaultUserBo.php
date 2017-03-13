@@ -15,7 +15,7 @@ class AdminDefaultUserBo implements IAdminUserBo
     public $gid;
     public $password;
 
-    public function __construct($userinfo = array())
+    public function __construct($userinfo = [])
     {
         if ($userinfo) {
             $this->uid = $userinfo['uid'];

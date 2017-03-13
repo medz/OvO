@@ -37,7 +37,7 @@ class PwApplicationService
         $this->_loadAppDs()->delByAppId($app_id);
         $hooks = $this->_loadHookDs()->fetchByAppId($app_id);
         if ($hooks) {
-            $_hookNames = array();
+            $_hookNames = [];
             foreach ($hooks as $hook) {
                 $_hookNames[] = $hook['name'];
             }

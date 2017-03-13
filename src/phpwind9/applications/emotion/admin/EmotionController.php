@@ -44,7 +44,7 @@ class EmotionController extends AdminBaseController
 
         $isopens = $this->getInput('isopen', 'post');
         $catids = $this->getInput('catid', 'post');
-        is_int($catids) && $catids = array($catids);
+        is_int($catids) && $catids = [$catids];
         $orderIds = $this->getInput('category_orderid', 'post');
         $catnames = $this->getInput('category_name', 'post');
         //$apps = $this->getInput('apps','post');
@@ -58,7 +58,7 @@ class EmotionController extends AdminBaseController
             }
             $dm = new PwEmotionCategoryDm($v);
             $dm->setCategoryMame($catnames[$v])
-                ->setEmotionApps(array('bbs'))
+                ->setEmotionApps(['bbs'])
                 ->setOrderId($orderIds[$v])
                 ->setIsopen($isopens[$v]);
             $this->_getEmotionCategoryDs()->updateCategory($dm);
@@ -73,7 +73,7 @@ class EmotionController extends AdminBaseController
         $dm = new PwEmotionCategoryDm();
         $dm->setCategoryMame($this->getInput('catname', 'post'))
             ->setEmotionFolder($this->getInput('folder', 'post'))
-            ->setEmotionApps(array('bbs'))
+            ->setEmotionApps(['bbs'])
             ->setOrderId((int) $this->getInput('orderid', 'post'))
             ->setIsopen(1);
         $resource = $this->_getEmotionCategoryDs()->addCategory($dm);
@@ -124,7 +124,7 @@ class EmotionController extends AdminBaseController
     public function dobatchaddAction()
     {
         $emotionIds = $this->getInput('emotionid', 'post');
-        is_int($emotionIds) && $emotionIds = array($emotionIds);
+        is_int($emotionIds) && $emotionIds = [$emotionIds];
         $emotionNames = $this->getInput('emotionname', 'post');
         $icons = $this->getInput('icon', 'post');
         $orderIds = $this->getInput('orderid', 'post');
@@ -152,7 +152,7 @@ class EmotionController extends AdminBaseController
     public function dobatcheditAction()
     {
         $emotionIds = $this->getInput('emotionid', 'post');
-        is_int($emotionIds) && $emotionIds = array($emotionIds);
+        is_int($emotionIds) && $emotionIds = [$emotionIds];
         $emotionNames = $this->getInput('emotionname', 'post');
         $orderIds = $this->getInput('orderid', 'post');
         $isuseds = $this->getInput('isused', 'post');

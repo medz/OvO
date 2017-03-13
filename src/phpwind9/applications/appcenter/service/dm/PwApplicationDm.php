@@ -8,7 +8,7 @@
  */
 class PwApplicationDm extends PwBaseDm
 {
-    protected $_data_log = array();
+    protected $_data_log = [];
 
     public function setLogo($value)
     {
@@ -88,12 +88,12 @@ class PwApplicationDm extends PwBaseDm
     public function setAppLog($log, $type = self::LOG_TYPE_DB)
     {
         $type = $type === self::LOG_TYPE_FILE ? $type : self::LOG_TYPE_DB;
-        $this->_data_log[] = array(
+        $this->_data_log[] = [
             'app_id'        => $this->_data['app_id'],
             'created_time'  => Pw::getTime(),
             'modified_time' => Pw::getTime(),
             'data'          => $log,
-            'log_type'      => $type, );
+            'log_type'      => $type, ];
     }
 
     /**

@@ -14,109 +14,109 @@
  * )
  * )
  */
-return array(
-    'bbs' => array(
+return [
+    'bbs' => [
         'title' => '论坛',
         'url'   => 'seo/manage/bbs',
-        'page'  => array(
-            'forumlist' => array(
+        'page'  => [
+            'forumlist' => [
                 'title'   => '版块导航页',
-                'default' => array(
+                'default' => [
                     'title'       => '{sitename}',
                     'description' => '',
                     'keywords'    => '',
-                ),
-                'code' => array('{sitename}'),
-            ),
-            'new' => array(
+                ],
+                'code' => ['{sitename}'],
+            ],
+            'new' => [
                 'title'   => '本站新帖',
-                'default' => array(
+                'default' => [
                     'title'       => '本站新帖 - 第{page}页 - {sitename}',
                     'description' => '【{sitename}】中的最新帖子列表',
                     'keywords'    => '',
-                ),
-                'code' => array('{sitename}', '{page}'),
-            ),
-            'thread' => array(
+                ],
+                'code' => ['{sitename}', '{page}'],
+            ],
+            'thread' => [
                 'title'   => '帖子列表页',
-                'default' => array(
+                'default' => [
                     'title'       => '{classification} - {forumname} - 第{page}页 - {sitename}',
                     'description' => '{forumdescription}',
                     'keywords'    => '',
-                ),
-                'code' => array(
+                ],
+                'code' => [
                     '{sitename}', '{forumname}', '{forumdescription}', '{classification}',
-                ),
-            ),
-            'read' => array(
+                ],
+            ],
+            'read' => [
                 'title'   => '帖子阅读页',
-                'default' => array(
+                'default' => [
                     'title'       => '{title} - {forumname} - 第{page}页 - {sitename}',
                     'description' => '{description}',
                     'keywords'    => '',
-                ),
-                'code' => array(
+                ],
+                'code' => [
                     '{sitename}', '{forumname}', '{title}', '{description}', '{tags}', '{page}',
-                ),
-            ),
-        ),
-    ),
-    'area' => array(
+                ],
+            ],
+        ],
+    ],
+    'area' => [
         'title' => '门户',
         'url'   => 'seo/manage/area',
-        'page'  => array(
-            'index' => array(
+        'page'  => [
+            'index' => [
                 'title'   => '首页',
-                'default' => array(
+                'default' => [
                     'title'       => '{sitename}',
                     'description' => '',
                     'keywords'    => '',
-                ),
-                'code' => array('{sitename}'),
-            ),
-            'custom' => array(
+                ],
+                'code' => ['{sitename}'],
+            ],
+            'custom' => [
                 'title'   => '自定义页面',
-                'default' => array(
+                'default' => [
                     'title'       => '{sitename}',
                     'description' => '',
                     'keywords'    => '',
-                ),
-                'code' => array('{sitename}', '{pagename}'),
-            ),
-        ),
-    ),
-    'like' => array(
+                ],
+                'code' => ['{sitename}', '{pagename}'],
+            ],
+        ],
+    ],
+    'like' => [
         'title' => '喜欢',
         'url'   => 'seo/manage/like',
-        'page'  => array(
-            'hot' => array(
+        'page'  => [
+            'hot' => [
                 'title'   => '热门喜欢',
-                'default' => array(
+                'default' => [
                     'title'       => '热门喜欢-{sitename}',
                     'description' => '【{sitename}】中大家最喜欢的帖子',
                     'keywords'    => '',
-                ),
-                'code' => array(
+                ],
+                'code' => [
                     '{sitename}',
-                ),
-            ),
-        ),
-    ),
-    'topic' => array(
+                ],
+            ],
+        ],
+    ],
+    'topic' => [
         'title' => '话题',
         'url'   => 'seo/manage/topic',
-        'page'  => array(
-            'hot' => array(
+        'page'  => [
+            'hot' => [
                 'title'   => '热门话题',
-                'default' => array(
+                'default' => [
                     'title'       => '热门话题-{sitename}',
                     'description' => '【{sitename}】中大家讨论最多的话题',
                     'keywords'    => '',
-                ),
-                'code' => array(
+                ],
+                'code' => [
                     '{sitename}',
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];

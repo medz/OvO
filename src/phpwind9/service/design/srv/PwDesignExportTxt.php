@@ -10,7 +10,7 @@
  */
 class PwDesignExportTxt
 {
-    public $pageInfo = array();
+    public $pageInfo = [];
 
     public function __construct($pageInfo)
     {
@@ -20,7 +20,7 @@ class PwDesignExportTxt
     public function txt($charset = 'utf-8')
     {
         $pageInfo = $this->pageInfo;
-        $_modules = array();
+        $_modules = [];
         //$ids = explode(',', $pageInfo['module_ids']);
         $modules = $this->_getModuleDs()->getByPageid($pageInfo['page_id']);
         $fromCharset = Wekit::app()->charset;
@@ -50,7 +50,7 @@ class PwDesignExportTxt
             $v['struct_title'] = serialize($v['struct_title']);
             $v['struct_style'] = serialize($v['struct_style']);
         }
-        $txtSegment = array();
+        $txtSegment = [];
         $segments = $this->_getSegmentDs()->getSegmentByPageid($pageInfo['page_id']);
         foreach ($segments as $k => $v) {
             if (!$v['segment_tpl']) {
@@ -72,11 +72,11 @@ class PwDesignExportTxt
         $filename = $pageInfo['page_name'] ? $pageInfo['page_name'] : $_time;
         $_text = $_title.$_text.$_end;
 
-        return array(
+        return [
             'content'  => $_text,
             'filename' => $filename,
             'ext'      => 'txt',
-        );
+        ];
     }
 
     private function _conv($array, $fromCharset, $toCharset)

@@ -37,12 +37,12 @@ class StructureController extends PwBaseController
             if ($tab) {
                 $i = 1;
                 foreach ($tab as $v) {
-                    $titles['titles'][] = array('title' => '栏目'.$i, 'tab' => $v);
+                    $titles['titles'][] = ['title' => '栏目'.$i, 'tab' => $v];
                     $i++;
                 }
                 $this->setOutput('tab', 'structure');
             } else {
-                $titles['titles'] = array(array('title' => $title));
+                $titles['titles'] = [['title' => $title]];
             }
         }
         $this->setOutput($this->_getDesignService()->getSysFontSize(), 'sysfontsize');
@@ -58,7 +58,7 @@ class StructureController extends PwBaseController
     public function doedittitleAction()
     {
         $html = '';
-        $array = array();
+        $array = [];
         $pageid = (int) $this->getInput('pageid', 'post');
         $title = $this->getInput('title', 'post');
         if ($pageid < 1) {
@@ -92,7 +92,7 @@ class StructureController extends PwBaseController
         $background['color'] = $bgcolor;
         $background['position'] = $bgposition;
         foreach ($title as $k => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'title'         => WindSecurity::escapeHTML($title[$k]),
                 'link'          => $link[$k],
                 'image'         => $image[$k],
@@ -103,7 +103,7 @@ class StructureController extends PwBaseController
                 'fontbold'      => $fontbold[$k],
                 'fontunderline' => $fontunderline[$k],
                 'fontitalic'    => $fontitalic[$k],
-            );
+            ];
             $style = $this->_buildTitleStyle($_tmp);
             $styleSrv->setStyle($style);
             list($dom, $jstyle) = $styleSrv->getCss();
@@ -140,7 +140,7 @@ class StructureController extends PwBaseController
         $data['tabName'] = $tab;
         if ($background) {
             $array['background'] = $background;
-            $bg = array('background' => $background);
+            $bg = ['background' => $background];
             $styleSrv->setStyle($bg);
             list($dom, $data['background']) = $styleSrv->getCss();
         }
@@ -279,16 +279,16 @@ class StructureController extends PwBaseController
 
     private function _buildTitleStyle($style)
     {
-        return array(
-                'float' => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font'  => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
+        return [
+                'float' => ['type' => $style['float'], 'margin' => $style['margin']],
+                'font'  => ['size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']],
                 //'background'=>array('color'=>$style['bgcolor'],'image'=>$style['bgimage'],'position'=>$style['bgposition']),
-        );
+        ];
     }
 
     private function differStyle($style)
     {
-        $array = array('top', 'right', 'bottom', 'left');
+        $array = ['top', 'right', 'bottom', 'left'];
         $border = $style['border'];
         $border['isdiffer'] = 1;
         if ($border['linewidth']) {

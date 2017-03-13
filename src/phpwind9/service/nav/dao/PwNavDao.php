@@ -14,7 +14,7 @@ class PwNavDao extends PwBaseDao
 {
     protected $_pk = 'navid';
     protected $_table = 'common_nav';
-    protected $_dataStruct = array('navid', 'parentid', 'rootid', 'type', 'sign', 'name', 'style', 'link', 'alt', 'image', 'target', 'isshow', 'orderid');
+    protected $_dataStruct = ['navid', 'parentid', 'rootid', 'type', 'sign', 'name', 'style', 'link', 'alt', 'image', 'target', 'isshow', 'orderid'];
 
     /**
      * 根据ID获取一条导航信息.
@@ -51,7 +51,7 @@ class PwNavDao extends PwBaseDao
     public function getNavByType($type, $isShow)
     {
         $where = 'WHERE type = ? ';
-        $_array = array($type);
+        $_array = [$type];
         if ($isShow < 2) {
             $where .= ' AND isshow = ? ';
             $_array[] = $isShow;
@@ -67,7 +67,7 @@ class PwNavDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT *  FROM %s WHERE type = ? AND sign = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($type, $sign));
+        return $smt->getOne([$type, $sign]);
     }
 
     /**
@@ -80,7 +80,7 @@ class PwNavDao extends PwBaseDao
     public function getRootNav($type, $isShow)
     {
         $where = 'WHERE type = ? AND parentid = 0 ';
-        $_array = array($type);
+        $_array = [$type];
         if ($isShow < 2) {
             $where .= ' AND isshow = ? ';
             $_array[] = $isShow;
@@ -101,7 +101,7 @@ class PwNavDao extends PwBaseDao
     public function getChildNav($navId, $isShow)
     {
         $where = ' WHERE parentid = ? ';
-        $_array = array($navId);
+        $_array = [$navId];
         if ($isShow < 2) {
             $where .= ' AND isshow = ? ';
             $_array[] = $isShow;
@@ -125,7 +125,7 @@ class PwNavDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT MAX(orderid) AS max FROM %s WHERE type = ? AND parentid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($type, $parentid));
+        return $smt->getValue([$type, $parentid]);
     }
 
     /**

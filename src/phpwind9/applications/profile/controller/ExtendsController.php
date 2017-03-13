@@ -21,7 +21,7 @@ class ExtendsController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', array('_type' => $this->getInput('_type'))));
+            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['_type' => $this->getInput('_type')]));
         }
     }
 

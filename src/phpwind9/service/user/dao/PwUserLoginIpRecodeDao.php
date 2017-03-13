@@ -15,7 +15,7 @@ class PwUserLoginIpRecodeDao extends PwBaseDao
 {
     protected $_table = 'user_login_ip_recode';
     protected $_pk = 'ip';
-    protected $_dataStruct = array('ip', 'last_time', 'error_count');
+    protected $_dataStruct = ['ip', 'last_time', 'error_count'];
 
     /**
      * 添加一次记录.

@@ -155,7 +155,7 @@ class PwUserInfoDm extends PwBaseDm
     public function setGroupid($gid)
     {
         $this->_data['groupid'] = $gid;
-        $this->_belong = array();
+        $this->_belong = [];
         $gid > 0 && $this->_belong[$gid] = 0;
 
         return $this;
@@ -188,7 +188,7 @@ class PwUserInfoDm extends PwBaseDm
         if (!$this->_data['groupid'] && $this->_belong) {
             $this->_data['groupid'] = key($this->_belong);
         }
-        $this->_data['groups'] = array_diff(array_keys($this->_belong), array($this->_data['groupid']));
+        $this->_data['groups'] = array_diff(array_keys($this->_belong), [$this->_data['groupid']]);
 
         return $this;
     }
@@ -1041,7 +1041,7 @@ class PwUserInfoDm extends PwBaseDm
         }
         //【用户资料验证】自我简介长度限制
         if (($_tmp = $this->getField('profile')) && (true === WindValidator::isLegalLength($_tmp, 250))) {
-            return new PwError('USER:error.profile.length', array('{length}' => 250));
+            return new PwError('USER:error.profile.length', ['{length}' => 250]);
         }
 
         //TODO【用户资料验证】BBS签名验证长度判断----后台权限设置
@@ -1056,14 +1056,14 @@ class PwUserInfoDm extends PwBaseDm
     protected function _getWindidMsg($result)
     {
         $errorCode = $result->getCode();
-        $var = array();
+        $var = [];
         if ($errorCode == -2) {
             $config = WindidApi::C('reg');
-            $var = array('{min}' => $config['security.username.min'], '{max}' => $config['security.username.max']);
+            $var = ['{min}' => $config['security.username.min'], '{max}' => $config['security.username.max']];
         }
         if ($errorCode == -11) {
             $config = WindidApi::C('reg');
-            $var = array('{min}' => $config['security.password.min'], '{max}' => $config['security.password.max']);
+            $var = ['{min}' => $config['security.password.min'], '{max}' => $config['security.password.max']];
         }
 
         return new PwError('WINDID:code.'.$errorCode, $var);

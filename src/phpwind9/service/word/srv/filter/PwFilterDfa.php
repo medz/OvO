@@ -28,7 +28,7 @@ class PwFilterDfa extends PwFilterAction
      */
     public function createData($words)
     {
-        $this->nodes = array(array(false, array())); //初始化，添加根节点
+        $this->nodes = [[false, []]]; //初始化，添加根节点
         $p = 1; //下一个要插入的节点号
         foreach ($words as $word) {
             $cur = 0; //当前节点号
@@ -40,7 +40,7 @@ class PwFilterDfa extends PwFilterAction
                     $cur = $this->nodes[$cur][1][$c];
                     continue;
                 }
-                $this->nodes[$p] = array(false, array()); //创建新节点
+                $this->nodes[$p] = [false, []]; //创建新节点
                 $this->nodes[$cur][1][$c] = $p; //在父节点记录子节点号
                 $cur = $p; //把当前节点设为新插入的
                 $p++; //
@@ -56,7 +56,7 @@ class PwFilterDfa extends PwFilterAction
     public function split($str)
     {
         if (($pos = strrpos($str, '|')) === false) {
-            return array($str, 0);
+            return [$str, 0];
         }
 
         return explode('|', $str);
@@ -85,7 +85,7 @@ class PwFilterDfa extends PwFilterAction
         $charset = Wekit::V('charset');
        $charset = str_replace('-', '', strtolower($charset));
        $isUTF8 = ($charset == 'utf8') ? true : false;
-       $ret = array();
+       $ret = [];
        $cur = 0; //当前节点，初始为根节点
         $i = 0; //字符串当前偏移
         $p = 0; //字符串回溯位置
@@ -124,12 +124,12 @@ class PwFilterDfa extends PwFilterAction
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
         $isUTF8 = ($charset == 'utf8') ? true : false;
-        $ret = array();
+        $ret = [];
         $cur = 0; //当前节点，初始为根节点
         $i = 0; //字符串当前偏移
         $p = 0; //字符串回溯位置
         $len = strlen($s);
-        $type = array();
+        $type = [];
         while ($i < $len) {
             $c = ord($s[$i]);
             if (isset($this->nodes[$cur][1][$c])) { //如果存在
@@ -153,7 +153,7 @@ class PwFilterDfa extends PwFilterAction
         }
         $type && $minType = min($type);
 
-        return array($minType, $ret);
+        return [$minType, $ret];
     }
 
     /**
@@ -168,7 +168,7 @@ class PwFilterDfa extends PwFilterAction
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
         $isUTF8 = ($charset == 'utf8') ? true : false;
-        $ret = array();
+        $ret = [];
         $cur = 0; //当前节点，初始为根节点
         $i = 0; //字符串当前偏移
         $p = 0; //字符串回溯位置

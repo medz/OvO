@@ -13,14 +13,14 @@ class PwThreadExpandDao extends PwBaseDao
 {
     protected $_table = 'bbs_threads';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'fid', 'topic_type', 'subject', 'topped', 'locked', 'digest', 'overtime', 'highlight', 'ischeck', 'replies', 'hits', 'special', 'created_time', 'created_username', 'created_userid', 'created_ip', 'modified_time', 'modified_username', 'modified_userid', 'modified_ip', 'lastpost_time', 'lastpost_userid', 'lastpost_username', 'reply_notice', 'special_sort');
+    protected $_dataStruct = ['tid', 'fid', 'topic_type', 'subject', 'topped', 'locked', 'digest', 'overtime', 'highlight', 'ischeck', 'replies', 'hits', 'special', 'created_time', 'created_username', 'created_userid', 'created_ip', 'modified_time', 'modified_username', 'modified_userid', 'modified_ip', 'lastpost_time', 'lastpost_userid', 'lastpost_username', 'reply_notice', 'special_sort'];
 
     public function getThreadByFidOverTime($fid, $lastpostTime, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE fid=? AND disabled=0 AND lastpost_time>? ORDER BY lastpost_time ASC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid, $lastpostTime), 'tid');
+        return $smt->queryAll([$fid, $lastpostTime], 'tid');
     }
 
     public function getThreadByFidUnderTime($fid, $lastpostTime, $limit, $offset)
@@ -28,7 +28,7 @@ class PwThreadExpandDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE fid=? AND disabled=0 AND lastpost_time<? ORDER BY lastpost_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid, $lastpostTime), 'tid');
+        return $smt->queryAll([$fid, $lastpostTime], 'tid');
     }
 
     public function fetchThreadByUid($uids)
@@ -44,7 +44,7 @@ class PwThreadExpandDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT created_userid,COUNT(*) AS count FROM %s WHERE disabled=0 AND created_time>? AND fid=? GROUP BY created_userid ORDER BY count DESC %s', $this->getTable(), $this->sqlLimit($limit));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($time, $fid), 'created_userid');
+        return $smt->queryAll([$time, $fid], 'created_userid');
     }
 
     public function countThreadsByFid()
@@ -67,7 +67,7 @@ class PwThreadExpandDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS sum FROM %s WHERE created_userid=? AND disabled < 2');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -84,6 +84,6 @@ class PwThreadExpandDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? AND disabled < 2 ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tid');
+        return $smt->queryAll([$uid], 'tid');
     }
 }

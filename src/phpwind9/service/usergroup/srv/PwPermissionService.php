@@ -29,7 +29,7 @@ class PwPermissionService
     public function getTopLevelCategories($manage = false)
     {
         $permissionCategory = $this->getPermissionCategoryConfig();
-        $topCategories = array();
+        $topCategories = [];
         foreach ($permissionCategory as $k => $v) {
             $isMangage = isset($v['manage']) && $v['manage'] == true;
             if ($manage != $isMangage) {
@@ -58,9 +58,9 @@ class PwPermissionService
         $permissionCategory = $this->getPermissionCategoryConfig();
         $config = $permissionCategory[$category];
         if (!$config['sub']) {
-            return array();
+            return [];
         }
-        $permissionKeys = array();
+        $permissionKeys = [];
         foreach ($config['sub'] as $v) {
             $permissionKeys = array_merge($permissionKeys, $v['items']);
         }
@@ -71,7 +71,7 @@ class PwPermissionService
     public function getPermissionKeys($isManage = false)
     {
         $permissionCategory = $this->getPermissionCategoryConfig();
-        $permissionKeys = array();
+        $permissionKeys = [];
         foreach ($permissionCategory as $k => $config) {
             if ($isManage) {
                 if (strpos($k, 'manage_') !== 0) {
@@ -104,7 +104,7 @@ class PwPermissionService
         //按分类获取权限点
         $permissions = $this->getPermissionsByCategory($category);
         if (!$permissions['sub']) {
-            return array();
+            return [];
         }
         $permissionsKeys = $this->getPermissionKeysByCategory($category);
         $groupPermissions = $this->_getPermissionDs()->getPermissions($gid, $permissionsKeys);
@@ -112,15 +112,15 @@ class PwPermissionService
         //获取权限配置
         $permissionConfigs = $this->getPermissionConfig();
 
-        $configs = array();
+        $configs = [];
         foreach ($permissions['sub'] as $k => $v) {
             if (!$v['items']) {
                 continue;
             }
-            $configs[$k] = array('name' => $v['name'], 'items' => array());
+            $configs[$k] = ['name' => $v['name'], 'items' => []];
             foreach ($v['items'] as $v2) {
                 $defaultValue = isset($groupPermissions[$v2]) ? $groupPermissions[$v2]['rvalue'] : null;
-                $configs[$k]['items'][$v2] = array('config' => $permissionConfigs[$v2], 'default' => $defaultValue);
+                $configs[$k]['items'][$v2] = ['config' => $permissionConfigs[$v2], 'default' => $defaultValue];
             }
         }
 
@@ -135,19 +135,19 @@ class PwPermissionService
      *
      * @return array
      */
-    public function getPermissionPoint($needKeys, $category = array())
+    public function getPermissionPoint($needKeys, $category = [])
     {
         if (!$category) {
             $categoryInfo = $this->getTopLevelCategories();
             $category = array_keys($categoryInfo);
         }
-        $return = array();
+        $return = [];
         $permissionCategory = $this->getPermissionCategoryConfig();
         foreach ($category as $key) {
             if (!$permissionCategory[$key]['sub']) {
                 continue;
             }
-            $item = array();
+            $item = [];
             foreach ($permissionCategory[$key]['sub'] as $_sub => $_item) {
                 if (!$_item['items']) {
                     continue;
@@ -179,18 +179,18 @@ class PwPermissionService
     public function getPermissionConfigByGid($gid, $returnItems)
     {
         $groupPermissions = $this->_getPermissionDs()->getPermissions($gid, $returnItems);
-        $configs = array();
+        $configs = [];
         //获取权限配置
         $permissionConfigs = $this->getPermissionConfig();
         foreach ($returnItems as $_i) {
             $description = null;
-            $configs[$_i] = array('name' => $permissionConfigs[$_i][2]);
+            $configs[$_i] = ['name' => $permissionConfigs[$_i][2]];
             $groupValue = isset($groupPermissions[$_i]) ? $groupPermissions[$_i]['rvalue'] : null;
             $type = $permissionConfigs[$_i][0];
             switch ($type) {
                 case 'checkbox':
-                    $data = !empty($groupValue) ? $groupValue : array();
-                    if (in_array($_i, array('allow_thread_extend'))) {
+                    $data = !empty($groupValue) ? $groupValue : [];
+                    if (in_array($_i, ['allow_thread_extend'])) {
                         $data = array_keys($data);
                     }
                     foreach ($data as $_k => $_v) {
@@ -199,7 +199,7 @@ class PwPermissionService
                     $data = implode('; ', $data);
                     break;
                 default:
-                    if (in_array($_i, array('allow_upload', 'allow_download'))) {
+                    if (in_array($_i, ['allow_upload', 'allow_download'])) {
                         $data = isset($permissionConfigs[$_i][4][$groupValue]) ? $permissionConfigs[$_i][4][$groupValue] : $groupValue;
                         $type = 'html';
                     } else {

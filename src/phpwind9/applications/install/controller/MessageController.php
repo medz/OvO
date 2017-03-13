@@ -32,7 +32,7 @@ class MessageController extends PwErrorController
     public function afterAction($handlerAdapter)
     {
         $_error = $this->getForward()->getVars('message');
-        $this->getForward()->setVars(array('message' => $_error, '__error' => ''));
+        $this->getForward()->setVars(['message' => $_error, '__error' => '']);
         $type = $this->getRequest()->getAcceptTypes();
         if ($this->getRequest()->getIsAjaxRequest() && strpos(strtolower($type), 'application/json') !== false) {
             $this->getResponse()->setHeader('Content-type', 'application/json; charset='.Wekit::V('charset'));

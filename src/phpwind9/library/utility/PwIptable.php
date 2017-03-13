@@ -421,7 +421,7 @@ class IpTableIndex
      */
     private function _getIPIndex($ip_1, $ip_2)
     {
-        $index = array();
+        $index = [];
         if ($handle = @fopen($this->_indexFile, 'rb')) {
             $offset = ($ip_1 * $this->_bsize) + ($ip_2 * 4);
             fseek($handle, $offset, SEEK_SET);
@@ -434,11 +434,11 @@ class IpTableIndex
                     $c2 = $c2['key'];
                 }
                 if ($c1 != 0 && $c2 != 0) {
-                    $index = array($c1, $c2);
+                    $index = [$c1, $c2];
                 }
             }
         } else {
-            $index = array(-1, -1);
+            $index = [-1, -1];
         }
 
         return $index;
@@ -475,7 +475,7 @@ class IpTableIndex
             $l_d = fgets($db, 100);
         }
 
-        return array($l_d, $f);
+        return [$l_d, $f];
     }
 
     /**

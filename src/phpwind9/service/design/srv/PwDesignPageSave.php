@@ -73,22 +73,22 @@ class PwDesignPageSave
             case 'bbs/read/run':
                 $thread = Wekit::load('forum.PwThread')->getThread($uniqueid);
                 $thread && $forum = Wekit::load('forum.PwForum')->getForum($thread['fid']);
-                $array = array('帖子阅读页-'.$this->_filterForumHtml($forum['name']), $thread['fid']);
+                $array = ['帖子阅读页-'.$this->_filterForumHtml($forum['name']), $thread['fid']];
                 break;
             case 'bbs/thread/run':
                 $forum = Wekit::load('forum.PwForum')->getForum($uniqueid);
-                $array = array('版块列表页-'.$this->_filterForumHtml($forum['name']), $uniqueid);
+                $array = ['版块列表页-'.$this->_filterForumHtml($forum['name']), $uniqueid];
                 break;
             case 'bbs/cate/run':
                 $forum = Wekit::load('forum.PwForum')->getForum($uniqueid);
-                $array = array('论坛分类页-'.$this->_filterForumHtml($forum['name']), $uniqueid);
+                $array = ['论坛分类页-'.$this->_filterForumHtml($forum['name']), $uniqueid];
                 break;
             case 'bbs/cate/digest':
                 $forum = Wekit::load('forum.PwForum')->getForum($uniqueid);
-                $array = array('版块精华-'.$this->_filterForumHtml($forum['name']), $uniqueid);
+                $array = ['版块精华-'.$this->_filterForumHtml($forum['name']), $uniqueid];
                 break;
             default:
-                $array = array($router, $uniqueid);
+                $array = [$router, $uniqueid];
         }
 
         return $array;

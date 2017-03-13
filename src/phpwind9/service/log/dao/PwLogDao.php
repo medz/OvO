@@ -15,7 +15,7 @@ class PwLogDao extends PwBaseDao
 {
     protected $_table = 'log';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'typeid', 'created_userid', 'created_time', 'operated_uid', 'created_username', 'operated_username', 'ip', 'fid', 'tid', 'pid', 'extends', 'content');
+    protected $_dataStruct = ['id', 'typeid', 'created_userid', 'created_time', 'operated_uid', 'created_username', 'operated_username', 'ip', 'fid', 'tid', 'pid', 'extends', 'content'];
 
     /**
      * 根据tid获得该帖子的相关管理日志.
@@ -31,7 +31,7 @@ class PwLogDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tid = ? AND pid = ? ORDER BY id DESC %s', $this->getTable(), $this->sqlLimit($limit, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($tid, $pid), 'id');
+        return $this->getConnection()->createStatement($sql)->queryAll([$tid, $pid], 'id');
     }
 
     public function fetchLogByTid($tids, $typeid)
@@ -63,12 +63,12 @@ class PwLogDao extends PwBaseDao
      */
     public function batchAddLog($datas)
     {
-        $clear = $fields = array();
+        $clear = $fields = [];
         foreach ($datas as $key => $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['created_userid'] = $_item['created_userid'];
             $_temp['created_username'] = $_item['created_username'];
             $_temp['operated_uid'] = $_item['operated_uid'];
@@ -127,7 +127,7 @@ class PwLogDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE created_time < ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($time), true);
+        return $this->getConnection()->createStatement($sql)->execute([$time], true);
     }
 
     /**
@@ -169,7 +169,7 @@ class PwLogDao extends PwBaseDao
      */
     private function _buildCondition($condition)
     {
-        $where = $params = array();
+        $where = $params = [];
         foreach ($condition as $_k => $_v) {
             if (!$_v) {
                 continue;
@@ -184,7 +184,7 @@ class PwLogDao extends PwBaseDao
                 case 'operated_uid':
                 case 'created_userid':
                     if (!is_array($_v)) {
-                        $_v = array($_v);
+                        $_v = [$_v];
                     }
                     $where[] = $this->_bindSql('%s IN (%s)', $_k, $this->sqlImplode($_v));
                     break;
@@ -214,6 +214,6 @@ class PwLogDao extends PwBaseDao
             }
         }
 
-        return $where ? array(' WHERE '.implode(' AND ', $where), $params) : array('', array());
+        return $where ? [' WHERE '.implode(' AND ', $where), $params] : ['', []];
     }
 }

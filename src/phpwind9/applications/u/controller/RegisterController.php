@@ -72,7 +72,7 @@ class RegisterController extends PwBaseController
             $this->showError($info->getError());
         }
         $info = $this->_getUserDs()->getUserByUid($info['created_userid']);
-        $this->showMessage(array('USER:invite.code.check.success', array('username' => $info['username'])));
+        $this->showMessage(['USER:invite.code.check.success', ['username' => $info['username']]]);
     }
 
     /**
@@ -91,9 +91,9 @@ class RegisterController extends PwBaseController
         } else {
             $identity = PwRegisterService::createRegistIdentify($info['uid'], $info['password']);
             if (1 == Wekit::C('register', 'active.mail')) {
-                $this->forwardAction('u/register/sendActiveEmail', array('_statu' => $identity), true);
+                $this->forwardAction('u/register/sendActiveEmail', ['_statu' => $identity], true);
             } else {
-                $this->forwardAction('u/register/welcome', array('_statu' => $identity), true);
+                $this->forwardAction('u/register/welcome', ['_statu' => $identity], true);
             }
         }
     }
@@ -116,7 +116,7 @@ class RegisterController extends PwBaseController
             $registerService->sendEmailActive($info['username'], $info['email'], $statu, $info['uid']);
         }
 
-        $mailList = array('gmail.com' => 'google.com');
+        $mailList = ['gmail.com' => 'google.com'];
         list(, $mail) = explode('@', $info['email'], 2);
         $gotoEmail = 'http://mail.'.(isset($mailList[$mail]) ? $mailList[$mail] : $mail);
 
@@ -207,7 +207,7 @@ class RegisterController extends PwBaseController
         }
         $statu = $this->checkRegisterUser();
         if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
-            $this->forwardAction('u/register/sendActiveEmail', array('_statu' => $statu), true);
+            $this->forwardAction('u/register/sendActiveEmail', ['_statu' => $statu], true);
         }
 
         $login = new PwLoginService();
@@ -250,7 +250,7 @@ class RegisterController extends PwBaseController
      */
     public function checkemailAction()
     {
-        list($email, $username) = $this->getInput(array('email', 'username'), 'post');
+        list($email, $username) = $this->getInput(['email', 'username'], 'post');
         $result = PwUserValidator::isEmailValid($email, $username);
         if ($result instanceof PwError) {
             $this->showError($result->getError());
@@ -276,7 +276,7 @@ class RegisterController extends PwBaseController
      */
     public function checkpwdAction()
     {
-        list($pwd, $username) = $this->getInput(array('pwd', 'username'), 'post');
+        list($pwd, $username) = $this->getInput(['pwd', 'username'], 'post');
         $result = PwUserValidator::isPwdValid($pwd, $username);
         if ($result instanceof PwError) {
             $this->showError($result->getError());
@@ -384,7 +384,7 @@ class RegisterController extends PwBaseController
         $this->setOutput($this->_showVerify(), 'verify');
         $this->setOutput($this->_getRegistConfig(), 'config');
         $this->setOutput(PwUserHelper::getRegFieldsMap(), 'needFields');
-        $this->setOutput(array('location', 'hometown'), 'areaFields');
+        $this->setOutput(['location', 'hometown'], 'areaFields');
     }
 
     /**
@@ -395,7 +395,7 @@ class RegisterController extends PwBaseController
     private function _showVerify()
     {
         $config = Wekit::C('verify', 'showverify');
-        !$config && $config = array();
+        !$config && $config = [];
         if (in_array('register', $config) == true) {
             return true;
         } else {
@@ -443,7 +443,7 @@ class RegisterController extends PwBaseController
     private function _getUserDm()
     {
         list($username, $password, $repassword, $email, $aliww, $qq, $msn, $mobile, $mobileCode, $hometown, $location, $question, $answer, $regreason, $code) =
-        $this->getInput(array('username', 'password', 'repassword', 'email', 'aliww', 'qq', 'msn', 'mobile', 'mobileCode', 'hometown', 'location', 'question', 'answer', 'regreason', 'code'),
+        $this->getInput(['username', 'password', 'repassword', 'email', 'aliww', 'qq', 'msn', 'mobile', 'mobileCode', 'hometown', 'location', 'question', 'answer', 'regreason', 'code'],
             'post');
 
         //	验证输入
@@ -503,7 +503,7 @@ class RegisterController extends PwBaseController
         $userDm->setQuestion($question, $answer);
         $userDm->setRegreason($regreason);
 
-        $areaids = array($hometown, $location);
+        $areaids = [$hometown, $location];
         if ($areaids) {
             $srv = WindidApi::api('area');
             $areas = $srv->fetchAreaInfo($areaids);
@@ -522,7 +522,7 @@ class RegisterController extends PwBaseController
     private function _getRegistConfig()
     {
         $config = Wekit::C('register');
-        !$config['active.field'] && $config['active.field'] = array();
+        !$config['active.field'] && $config['active.field'] = [];
 
         return $config;
     }

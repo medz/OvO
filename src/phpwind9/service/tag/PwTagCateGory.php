@@ -23,7 +23,7 @@ class PwTagCateGory
         if ($tagId < 1 || !is_array($cateGoryIds) || !count($cateGoryIds)) {
             return false;
         }
-        $relationsdata = array();
+        $relationsdata = [];
         foreach ($cateGoryIds as $id) {
             $id = intval($id);
             if (!$id) {
@@ -84,13 +84,13 @@ class PwTagCateGory
     {
         $tagId = intval($tagId);
         if ($tagId < 1) {
-            return array();
+            return [];
         }
         $relations = $this->_getTagCategoryRelationDao()->getByTagId($tagId);
         if (!$relations) {
-            return array();
+            return [];
         }
-        $categoryIds = array();
+        $categoryIds = [];
         foreach ($relations as $v) {
             $categoryIds[] = $v['category_id'];
         }
@@ -138,7 +138,7 @@ class PwTagCateGory
     {
         $id = intval($id);
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagCategoryDao()->get($id);
@@ -163,7 +163,7 @@ class PwTagCateGory
     {
         $categorys = $this->getAllCategorys();
         $countTags = $this->_getTagCategoryRelationDao()->countByCategoryId();
-        $array = array();
+        $array = [];
         foreach ($categorys as $k => $v) {
             $v['tag_count'] = intval($countTags[$k]['count']);
             $array[$k] = $v;

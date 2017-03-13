@@ -86,7 +86,7 @@ class PwLogLoginDm extends PwBaseDm
         if (!isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
-        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], array(PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ))) {
+        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
             $this->_data['typeid'] = PwLogLogin::ERROR_PWD;
         }
 
@@ -101,7 +101,7 @@ class PwLogLoginDm extends PwBaseDm
         if (!isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
-        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], array(PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ))) {
+        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
             $this->_data['typeid'] = PwLogLogin::ERROR_PWD;
         }
 

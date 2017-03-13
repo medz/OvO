@@ -12,8 +12,8 @@ Wind::import('APPCENTER:service.srv.PwInstallApplication');
  */
 class PwUpgradeApplication extends PwInstallApplication
 {
-    protected $_backLog = array();
-    protected $_revertLog = array();
+    protected $_backLog = [];
+    protected $_revertLog = [];
 
     /**
      * 纯在线应用升级.
@@ -115,9 +115,9 @@ class PwUpgradeApplication extends PwInstallApplication
             $this->log();
         } catch (Exception $e) {
             $error = $e->getMessage();
-            is_array($error) || $error = array(
+            is_array($error) || $error = [
                 'APPCENTER:install.fail',
-                array('{{error}}' => $e->getMessage()), );
+                ['{{error}}' => $e->getMessage()], ];
 
             return new PwError($error[0], $error[1]);
         }
@@ -132,7 +132,7 @@ class PwUpgradeApplication extends PwInstallApplication
      */
     public function resolvedInstallation()
     {
-        $service = $rollback = array();
+        $service = $rollback = [];
         $conf = $this->getConfig('install-type',
                 $this->getManifest()->getApplication('type', 'app'));
         if (!empty($conf['step']['before'])) {
@@ -164,14 +164,14 @@ class PwUpgradeApplication extends PwInstallApplication
 
         $manifest = $this->getManifest()->getManifest();
         if (isset($manifest['install']) && $manifest['install']) {
-            $_tmp = array('class' => $manifest['install']);
+            $_tmp = ['class' => $manifest['install']];
             //$service[] = $_tmp;
             $this->addInstallLog('service', $_tmp);
         }
 
         $this->addInstallLog('service', $conf);
 
-        return array($service, $rollback);
+        return [$service, $rollback];
     }
 
     /**
@@ -273,14 +273,14 @@ class PwUpgradeApplication extends PwInstallApplication
     public function log()
     {
         $this->_loadInstallLog()->delByAppId($this->_appId);
-        $fields = array();
+        $fields = [];
         foreach ($this->getInstallLog() as $key => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'app_id'        => $this->_appId,
                 'log_type'      => $key,
                 'data'          => $value,
                 'created_time'  => WEKIT_TIMESTAMP,
-                'modified_time' => WEKIT_TIMESTAMP, );
+                'modified_time' => WEKIT_TIMESTAMP, ];
             $fields[] = $_tmp;
         }
         $this->_loadInstallLog()->batchAdd($fields);
@@ -291,7 +291,7 @@ class PwUpgradeApplication extends PwInstallApplication
      */
     public function getBackLog($key)
     {
-        return isset($this->_backLog[$key]) ? $this->_backLog[$key] : array();
+        return isset($this->_backLog[$key]) ? $this->_backLog[$key] : [];
     }
 
     /**
@@ -308,7 +308,7 @@ class PwUpgradeApplication extends PwInstallApplication
      */
     public function getRevertLog($key)
     {
-        return isset($this->_revertLog[$key]) ? $this->_revertLog[$key] : array();
+        return isset($this->_revertLog[$key]) ? $this->_revertLog[$key] : [];
     }
 
     /**

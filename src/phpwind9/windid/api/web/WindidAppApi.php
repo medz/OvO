@@ -12,17 +12,17 @@ class WindidAppApi
 {
     public function getList()
     {
-        $params = array(
-        );
+        $params = [
+        ];
 
         return WindidApi::open('app/list', $params);
     }
 
     public function getApp($id)
     {
-        $params = array(
+        $params = [
             'id' => $id,
-        );
+        ];
 
         return WindidApi::open('app/get', $params);
     }
@@ -31,25 +31,25 @@ class WindidAppApi
     {
         $params = $dm->getData();
 
-        return WindidApi::open('app/add', array(), $params);
+        return WindidApi::open('app/add', [], $params);
     }
 
     public function delApp($id)
     {
-        $params = array(
+        $params = [
             'id' => $id,
-        );
+        ];
 
-        return WindidApi::open('app/delete', array(), $params);
+        return WindidApi::open('app/delete', [], $params);
     }
 
     public function editApp(WindidAppDm $dm)
     {
-        $params = array(
+        $params = [
             'id' => $dm->id,
-        );
+        ];
         $params += $dm->getData();
 
-        return WindidApi::open('app/edit', array(), $params);
+        return WindidApi::open('app/edit', [], $params);
     }
 }

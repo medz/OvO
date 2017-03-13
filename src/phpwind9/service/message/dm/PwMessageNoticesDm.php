@@ -109,7 +109,7 @@ class PwMessageNoticesDm extends PwBaseDm
 
     protected function _checkDataSerialize()
     {
-        foreach (array('extend_params') as $key => $value) {
+        foreach (['extend_params'] as $key => $value) {
             isset($this->_data[$value]) && $this->_data[$value] = serialize($this->_data[$value]);
         }
     }

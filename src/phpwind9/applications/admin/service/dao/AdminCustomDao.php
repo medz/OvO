@@ -13,7 +13,7 @@ Wind::import('ADMIN:library.AdminBaseDao');
 class AdminCustomDao extends AdminBaseDao
 {
     protected $_table = 'admin_custom';
-    protected $_dataStruct = array('username', 'custom');
+    protected $_dataStruct = ['username', 'custom'];
 
     /**
      * 添加或修改常用菜单.
@@ -27,7 +27,7 @@ class AdminCustomDao extends AdminBaseDao
     {
         $sql = $this->_bindTable('REPLACE INTO %s SET `username` = ?, `custom` = ?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($username, $custom));
+        return $this->getConnection()->createStatement($sql)->update([$username, $custom]);
     }
 
     /**
@@ -41,6 +41,6 @@ class AdminCustomDao extends AdminBaseDao
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE username=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($username));
+        return $this->getConnection()->createStatement($sql)->getOne([$username]);
     }
 }

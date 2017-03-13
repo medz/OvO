@@ -32,7 +32,7 @@ class PwMessageService
             return new PwError('Message:user.notfound');
         }
         // 检测是否隐私设置
-        $userInfos = array($userInfo['uid'] => $userInfo);
+        $userInfos = [$userInfo['uid'] => $userInfo];
         $result = $this->_checkPrivate($userInfos);
         if ($result instanceof PwError) {
             return $result;
@@ -41,7 +41,7 @@ class PwMessageService
         // 检测今天发了多少
         list($result, $sendnum, $maxnum) = $this->_checkTodayNum($loginUser, $result);
         if (!$result) {
-            return new PwError('MESSAGE:message_max_send.error', array('{sendnum}' => $sendnum, '{maxnum}' => $maxnum));
+            return new PwError('MESSAGE:message_max_send.error', ['{sendnum}' => $sendnum, '{maxnum}' => $maxnum]);
         }
 
         return $this->sendMessageByUid($result[0], $content, $fromUid);
@@ -105,7 +105,7 @@ class PwMessageService
         // 检测今天发了多少
         list($result, $sendnum, $maxnum) = $this->_checkTodayNum($loginUser, $result);
         if (!$result) {
-            return new PwError('MESSAGE:message_max_send.error', array('{sendnum}' => $sendnum, '{maxnum}' => $maxnum));
+            return new PwError('MESSAGE:message_max_send.error', ['{sendnum}' => $sendnum, '{maxnum}' => $maxnum]);
         }
         foreach ($result as $uid) {
             $this->sendMessageByUid($uid, $content, $fromUid);
@@ -166,11 +166,11 @@ class PwMessageService
 
         if ($result) {
             //发件人通知
-            $params = array('from_uid' => $uid, 'to_uid' => $fromUid, 'content' => $content, 'is_send' => 1);
+            $params = ['from_uid' => $uid, 'to_uid' => $fromUid, 'content' => $content, 'is_send' => 1];
             $this->_getNoticeService()->sendNotice($fromUid, 'message', $uid, $params, false);
 
             //收件人通知
-            $params = array('from_uid' => $fromUid, 'to_uid' => $uid, 'content' => $content);
+            $params = ['from_uid' => $fromUid, 'to_uid' => $uid, 'content' => $content];
             $this->_getNoticeService()->sendNotice($uid, 'message', $fromUid, $params, false);
             //更新用户表未读数
             $this->updateUserMessage($uid);
@@ -215,11 +215,11 @@ class PwMessageService
     {
         $count = $this->_getWindid()->countDialog($uid);
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $dialogs = $this->_getWindid()->getDialogList($uid, $start, $limit);
 
-        return array($count, $dialogs);
+        return [$count, $dialogs];
     }
 
     /**
@@ -258,17 +258,17 @@ class PwMessageService
         // 对话消息分页
         $count = $this->_getWindid()->countMessage($dialogId);
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $_messages = $this->_getWindid()->getMessageList($dialogId, $start, $limit);
-        $messages = array();
+        $messages = [];
         foreach ($_messages as $k => $v) {
             $v['content'] = WindSecurity::escapeHTML($v['content']);
             $messages[$k] = $v;
         }
         krsort($messages);
 
-        return array($count, $messages);
+        return [$count, $messages];
     }
 
     /**
@@ -325,7 +325,7 @@ class PwMessageService
      */
     public function getMessagesByUid($start, $limit, $fromuid = '', $starttime = 0, $endtime = 0, $keyword = '')
     {
-        $search = array();
+        $search = [];
         if ($fromuid !== null) {
             $search['fromuid'] = $fromuid;
         }
@@ -416,13 +416,13 @@ class PwMessageService
             return false;
         }
         $message = current($this->_getWindid()->getUnreadDialogsByUid($uid, 1));
-        $last_message = $message['last_message'] ? unserialize($message['last_message']) : array();
+        $last_message = $message['last_message'] ? unserialize($message['last_message']) : [];
         //发件人通知
-        $params = array('from_uid' => $last_message['to_uid'], 'to_uid' => $last_message['from_uid'], 'content' => $last_message['content'], 'is_send' => 1);
+        $params = ['from_uid' => $last_message['to_uid'], 'to_uid' => $last_message['from_uid'], 'content' => $last_message['content'], 'is_send' => 1];
         $this->_getNoticeService()->sendNotice($message['from_uid'], 'message', $message['to_uid'], $params, false);
 
         //收件人通知
-        $params = array('from_uid' => $last_message['to_uid'], 'to_uid' => $last_message['from_uid'], 'content' => $last_message['content']);
+        $params = ['from_uid' => $last_message['to_uid'], 'to_uid' => $last_message['from_uid'], 'content' => $last_message['content']];
         $this->_getNoticeService()->sendNotice($message['to_uid'], 'message', $message['from_uid'], $params, false);
 
         return true;
@@ -455,10 +455,10 @@ class PwMessageService
      */
     private function _checkMessageFan($uids)
     {
-        !is_array($uids) && $uids = array($uids);
+        !is_array($uids) && $uids = [$uids];
         $loginUid = $this->_getLoginUserId();
         $configs = $this->_getMessagesDs()->fetchMessageConfig($uids);
-        $privateFans = array();
+        $privateFans = [];
         foreach ($configs as $v) {
             $v['privacy'] && $privateFans[] = $v['uid'];
         }
@@ -484,7 +484,7 @@ class PwMessageService
      */
     private function _checkTodayNum(PwUserBo $user, $touids)
     {
-        !is_array($touids) && $touids = array($touids);
+        !is_array($touids) && $touids = [$touids];
         $behavior = $this->_getUserBehaviorDs()->getBehavior($user->uid, 'message_today');
         $dayMax = $user->getPermission('message_max_send');
         $countUser = count($touids);
@@ -492,7 +492,7 @@ class PwMessageService
             $touids = array_slice($touids, 0, $dayMax - $behavior['number']);
         }
 
-        return array($touids, $behavior['number'], $dayMax);
+        return [$touids, $behavior['number'], $dayMax];
     }
 
     /**

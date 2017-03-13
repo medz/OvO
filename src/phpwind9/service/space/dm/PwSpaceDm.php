@@ -53,7 +53,7 @@ class PwSpaceDm extends PwBaseDm
         $image = htmlentities($image);
         $repeat = htmlentities($repeat);
         $align = htmlentities($align);
-        $array = array($image, $repeat, $fixed, $align);
+        $array = [$image, $repeat, $fixed, $align];
         $this->_data['back_image'] = serialize($array);
 
         return $this;
@@ -68,7 +68,7 @@ class PwSpaceDm extends PwBaseDm
 
     public function setVisitors($visitors)
     {
-        $visitors = is_array($visitors) ? $visitors : array();
+        $visitors = is_array($visitors) ? $visitors : [];
         $this->_data['visitors'] = serialize($visitors);
 
         return $this;
@@ -76,7 +76,7 @@ class PwSpaceDm extends PwBaseDm
 
     public function setTovisitors($visitors)
     {
-        $visitors = is_array($visitors) ? $visitors : array();
+        $visitors = is_array($visitors) ? $visitors : [];
         $this->_data['tovisitors'] = serialize($visitors);
 
         return $this;

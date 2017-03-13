@@ -21,13 +21,13 @@ class PwCache
     const USE_ALL = 31;
     const USE_DBCACHE = 3;
 
-    public $keys = array();
+    public $keys = [];
 
-    protected $_prekeys = array();
-    protected $_readykeys = array();
+    protected $_prekeys = [];
+    protected $_readykeys = [];
     protected $_cacheOpen = 0;
-    protected $_cacheServer = array();
-    protected $_cacheData = array();
+    protected $_cacheServer = [];
+    protected $_cacheData = [];
 
     public function __construct()
     {
@@ -100,7 +100,7 @@ class PwCache
      *
      * @return string
      */
-    public function bulidKey($key, $param = array())
+    public function bulidKey($key, $param = [])
     {
         if (!isset($this->keys[$key])) {
             return $key;
@@ -123,7 +123,7 @@ class PwCache
      */
     public function bulidKeys($keys)
     {
-        $vkeys = array();
+        $vkeys = [];
         foreach ($keys as $key => $value) {
             $vkeys[$key] = is_array($value) ? $this->bulidKey($value[0], $value[1]) : $this->bulidKey($value);
         }
@@ -139,14 +139,14 @@ class PwCache
      *
      * @return mixed
      */
-    public function get($key, $param = array())
+    public function get($key, $param = [])
     {
-        is_array($param) || $param = array($param);
+        is_array($param) || $param = [$param];
         $vkey = $this->bulidKey($key, $param);
         if (!isset($this->_cacheData[$vkey])) {
             $sid = $this->_initServer($key);
-            $this->_readykeys[$sid][$vkey] = array($key, $param);
-            $this->_query(array($sid));
+            $this->_readykeys[$sid][$vkey] = [$key, $param];
+            $this->_query([$sid]);
         }
 
         return $this->_cacheData[$vkey];
@@ -162,10 +162,10 @@ class PwCache
     public function fetch($keys)
     {
         $vkeys = $this->bulidKeys($keys);
-        $sids = array();
+        $sids = [];
         foreach ($vkeys as $i => $vkey) {
             if (!isset($this->_cacheData[$vkey])) {
-                $value = is_array($keys[$i]) ? $keys[$i] : array($keys[$i], array());
+                $value = is_array($keys[$i]) ? $keys[$i] : [$keys[$i], []];
                 list($key, $param) = $value;
                 $sid = $this->_initServer($key);
                 $this->_readykeys[$sid][$vkey] = $value;
@@ -187,7 +187,7 @@ class PwCache
      *
      * @return bool
      */
-    public function set($key, $value, $param = array(), $expires = 0)
+    public function set($key, $value, $param = [], $expires = 0)
     {
         $vkey = $this->bulidKey($key, $param);
         $server = $this->_getServer($key);
@@ -204,7 +204,7 @@ class PwCache
      *
      * @return bool
      */
-    public function delete($key, $param = array())
+    public function delete($key, $param = [])
     {
         $vkey = $this->bulidKey($key, $param);
         $server = $this->_getServer($key);
@@ -222,7 +222,7 @@ class PwCache
     public function batchDelete($keys)
     {
         $vkeys = $this->bulidKeys($keys);
-        $sids = array();
+        $sids = [];
         foreach ($vkeys as $i => $vkey) {
             $key = is_array($keys[$i]) ? $keys[$i][0] : $keys[$i];
             $sid = $this->_initServer($key);
@@ -235,7 +235,7 @@ class PwCache
         return true;
     }
 
-    public function increment($key, $param = array(), $step = 1)
+    public function increment($key, $param = [], $step = 1)
     {
         $vkey = $this->bulidKey($key, $param);
         $server = $this->_getServer($key);
@@ -247,14 +247,14 @@ class PwCache
     {
         foreach ($this->_prekeys as $value) {
             if (!is_array($value)) {
-                $value = array($value, array());
+                $value = [$value, []];
             }
             list($key, $param) = $value;
             $vkey = $this->bulidKey($key, $param);
             $sid = $this->_initServer($key);
             $this->_readykeys[$sid][$vkey] = $value;
         }
-        $this->_prekeys = array();
+        $this->_prekeys = [];
     }
 
     protected function _query($sids)
@@ -273,14 +273,14 @@ class PwCache
                 }
                 if (is_array($this->keys[$key][5])) {
                     list($srv, $method) = $this->keys[$key][5];
-                    $result[$vkey] = call_user_func_array(array(Wekit::load($srv), $method), $param);
+                    $result[$vkey] = call_user_func_array([Wekit::load($srv), $method], $param);
                 } else {
                     $result[$vkey] = $this->keys[$key][5];
                 }
                 $this->set($key, $result[$vkey], $param);
             }
             $this->_cacheData = array_merge($this->_cacheData, $result);
-            $this->_readykeys[$sid] = array();
+            $this->_readykeys[$sid] = [];
         }
     }
 
@@ -324,37 +324,37 @@ class PwCache
     {
         switch ($use) {
             case self::USE_FILE:
-                $config = array('dir' => 'DATA:cache', 'suffix' => 'php', 'dir-level' => '0');
+                $config = ['dir' => 'DATA:cache', 'suffix' => 'php', 'dir-level' => '0'];
                 $mod = 'default';
                 break;
             case self::USE_DB:
-                $config = array(
+                $config = [
                     'table-name'   => Wekit::V('db.table.name'),
                     'field-key'    => 'cache_key',
                     'field-value'  => 'cache_value',
                     'field-expire' => 'cache_expire',
-                );
+                ];
                 $mod = 'default';
                 break;
             case self::USE_MEN:
                 $servers = Wekit::V('mem.servers');
                 !isset($servers[$mod]) && $mod = 'default';
-                $config = array(
+                $config = [
                     'key-prefix' => Wekit::V('mem.key.prefix'),
                     'servers'    => $servers[$mod],
-                );
+                ];
                 break;
             case self::USE_REDIS:
                 $servers = Wekit::V('redis.servers');
                 !isset($servers[$mod]) && $mod = 'default';
-                $config = array(
+                $config = [
                     'key-prefix' => Wekit::V('redis.key.prefix'),
                     'servers'    => $servers[$mod],
-                );
+                ];
                 break;
         }
 
-        return array($mod, $config);
+        return [$mod, $config];
     }
 
     protected function _getCacheServer($use, $config)

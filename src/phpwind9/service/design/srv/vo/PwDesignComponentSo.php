@@ -10,7 +10,7 @@
  */
 class PwDesignComponentSo
 {
-    protected $_data = array();
+    protected $_data = [];
 
     public function getData()
     {

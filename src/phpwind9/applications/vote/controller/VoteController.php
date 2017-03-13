@@ -27,7 +27,7 @@ class VoteController extends PwBaseController
             $this->showError('VOTE:group.not.allow.participate');
         }
 
-        list($appType, $typeid, $optionid) = $this->getInput(array('apptype', 'typeid', 'optionid'));
+        list($appType, $typeid, $optionid) = $this->getInput(['apptype', 'typeid', 'optionid']);
         if (empty($optionid) || !is_array($optionid)) {
             $this->showError('VOTE:not.select.option');
         }
@@ -46,7 +46,7 @@ class VoteController extends PwBaseController
         }
         $regtimeLimit = $poll->getRegtimeLimit();
         if ($regtimeLimit && $this->loginUser->info['regdate'] > $regtimeLimit) {
-            $this->showError(array('VOTE:vote.regtime.limit', array('{regtimelimit}' => pw::time2str($regtimeLimit, 'Y-m-d'))));
+            $this->showError(['VOTE:vote.regtime.limit', ['{regtimelimit}' => pw::time2str($regtimeLimit, 'Y-m-d')]]);
         }
 
         if (($result = $this->_getPollService()->doVote($this->loginUser->uid, $poll->info['poll_id'], $optionid)) !== true) {
@@ -61,17 +61,17 @@ class VoteController extends PwBaseController
         $forums = Wekit::load('forum.PwForum')->getForumList(PwForum::FETCH_ALL);
         $service = Wekit::load('forum.srv.PwForumService');
         $map = $service->getForumMap();
-        $cate = array();
-        $forum = array();
+        $cate = [];
+        $forum = [];
         foreach ($map[0] as $key => $value) {
             if (!$value['isshow']) {
                 continue;
             }
-            $array = $service->findOptionInMap($value['fid'], $map, array('sub' => '--', 'sub2' => '----'));
-            $tmp = array();
+            $array = $service->findOptionInMap($value['fid'], $map, ['sub' => '--', 'sub2' => '----']);
+            $tmp = [];
 
             foreach ($array as $k => $v) {
-                $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : array();
+                $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : [];
                 $isAllowPoll = isset($forumset['allowtype']) && is_array($forumset['allowtype']) && in_array('poll', $forumset['allowtype']);
 
                 if ($forums[$k]['isshow'] && $isAllowPoll && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
@@ -85,10 +85,10 @@ class VoteController extends PwBaseController
             }
         }
 
-        $response = array(
+        $response = [
             'cate'  => $cate,
             'forum' => $forum,
-        );
+        ];
 
         $this->setOutput(Pw::jsonEncode($response), 'data');
         $this->showMessage('success');

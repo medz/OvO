@@ -28,7 +28,7 @@ class CreditController extends AdminBaseController
 
         $creditConfig = Wekit::C()->getValues('credit');
         $this->setOutput($credits, 'credits');
-        $this->setOutput($creditConfig['credits'] ? $creditConfig['credits'] : array(), 'localCredits');
+        $this->setOutput($creditConfig['credits'] ? $creditConfig['credits'] : [], 'localCredits');
     }
 
     /**
@@ -79,7 +79,7 @@ class CreditController extends AdminBaseController
         $this->setOutput($config->getMap(), 'allModules');
         $this->setOutput($config->getData(), 'moduleConfig');
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
-        $this->setOutput($creditConfig['strategy'] ? $creditConfig['strategy'] : array(), 'strategy');
+        $this->setOutput($creditConfig['strategy'] ? $creditConfig['strategy'] : [], 'strategy');
     }
 
     /**
@@ -90,7 +90,7 @@ class CreditController extends AdminBaseController
         $info = $this->getInput('info');
 
         $creditConfig = (array) Wekit::C()->getValues('credit');
-        $strategy = $creditConfig['strategy'] ? $creditConfig['strategy'] : array();
+        $strategy = $creditConfig['strategy'] ? $creditConfig['strategy'] : [];
         if (is_array($info)) {
             foreach ($info as $key => $value) {
                 !is_numeric($value['limit']) && $info[$key]['limit'] = '';
@@ -112,7 +112,7 @@ class CreditController extends AdminBaseController
     public function rechargeAction()
     {
         $recharge = Wekit::C('credit', 'recharge');
-        is_array($recharge) || $recharge = array();
+        is_array($recharge) || $recharge = [];
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
         $this->setOutput($recharge, 'recharge');
         $this->setCurrentTab('recharge');
@@ -126,15 +126,15 @@ class CreditController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($recharge, $ctype, $rate, $min) = $this->getInput(
-            array('recharge', 'ctype', 'rate', 'min'));
+            ['recharge', 'ctype', 'rate', 'min']);
 
-        is_array($recharge) || $recharge = array();
-        is_array($ctype) || $ctype = array();
+        is_array($recharge) || $recharge = [];
+        is_array($ctype) || $ctype = [];
         foreach ($ctype as $key => $value) {
             if ($rate[$key] && !isset($recharge[$value])) {
-                $recharge[$value] = array(
+                $recharge[$value] = [
                     'rate' => intval($rate[$key]),
-                    'min'  => $min[$key] ? $min[$key] : '', );
+                    'min'  => $min[$key] ? $min[$key] : '', ];
             }
         }
         $config = new PwConfigSet('credit');
@@ -150,7 +150,7 @@ class CreditController extends AdminBaseController
     {
         $exchange = Wekit::C('credit', 'exchange');
         if (!is_array($exchange)) {
-            $exchange = array();
+            $exchange = [];
         }
 
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
@@ -166,11 +166,11 @@ class CreditController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($exchange_old, $ifopen_old, $credit1, $credit2, $value1, $value2, $ifopen) = $this->getInput(
-            array('exchange_old', 'ifopen_old', 'credit1', 'credit2', 'value1', 'value2', 'ifopen'));
-        $old = array();
+            ['exchange_old', 'ifopen_old', 'credit1', 'credit2', 'value1', 'value2', 'ifopen']);
+        $old = [];
         $exchange = Wekit::C('credit', 'exchange');
 
-        is_array($exchange) || $exchange = array();
+        is_array($exchange) || $exchange = [];
         foreach ($exchange as $key => $value) {
             if (isset($exchange_old[$key])) {
                 $exchange[$key]['ifopen'] = $ifopen_old[$key] ? 1 : 0;
@@ -179,7 +179,7 @@ class CreditController extends AdminBaseController
             }
         }
 
-        is_array($credit1) || $credit1 = array();
+        is_array($credit1) || $credit1 = [];
         foreach ($credit1 as $key => $value) {
             if (!$value || !$credit2[$key] || !$value1[$key] || !$value2[$key]) {
                 continue;
@@ -188,12 +188,12 @@ class CreditController extends AdminBaseController
                 $this->showError('CREDIT:exchange.fail.credit.same');
             }
             $vkey = $value.'_'.$credit2[$key];
-            $exchange[$vkey] = array(
+            $exchange[$vkey] = [
                 'credit1' => $value,
                 'credit2' => $credit2[$key],
                 'value1'  => $value1[$key],
                 'value2'  => $value2[$key],
-                'ifopen'  => $ifopen[$key] ? 1 : 0, );
+                'ifopen'  => $ifopen[$key] ? 1 : 0, ];
         }
         $config = new PwConfigSet('credit');
         $config->set('exchange', $exchange)->flush();
@@ -209,7 +209,7 @@ class CreditController extends AdminBaseController
         }
 
         $exchange = Wekit::C('credit', 'exchange');
-        is_array($exchange) || $exchange = array();
+        is_array($exchange) || $exchange = [];
         if (isset($exchange[$id])) {
             unset($exchange[$id]);
             $config = new PwConfigSet('credit');
@@ -225,7 +225,7 @@ class CreditController extends AdminBaseController
     {
         $transfer = Wekit::C('credit', 'transfer');
         $this->setOutput(PwCreditBo::getInstance(), 'creditBo');
-        $this->setOutput($transfer ? $transfer : array(), 'transfer');
+        $this->setOutput($transfer ? $transfer : [], 'transfer');
         $this->setCurrentTab('transfer');
     }
 
@@ -236,19 +236,19 @@ class CreditController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($ifopen, $rate, $min) = $this->getInput(array('ifopen', 'rate', 'min'));
+        list($ifopen, $rate, $min) = $this->getInput(['ifopen', 'rate', 'min']);
 
         $creditBo = PwCreditBo::getInstance();
-        $transfer = array();
+        $transfer = [];
 
         foreach ($creditBo->cType as $key => $value) {
             if (!$ifopen[$key] && !$rate[$key] && !$min[$key]) {
                 continue;
             }
-            $transfer[$key] = array(
+            $transfer[$key] = [
                 'ifopen' => $ifopen[$key] ? 1 : 0,
                 'rate'   => $rate[$key] ? intval($rate[$key]) : '',
-                'min'    => $min[$key] ? intval($min[$key]) : '', );
+                'min'    => $min[$key] ? intval($min[$key]) : '', ];
         }
         $config = new PwConfigSet('credit');
         $config->set('transfer', $transfer)->flush();
@@ -262,7 +262,7 @@ class CreditController extends AdminBaseController
     public function logAction()
     {
         list($ctype, $time_start, $time_end, $award, $username, $uid) = $this->getInput(
-            array('ctype', 'time_start', 'time_end', 'award', 'username', 'uid'));
+            ['ctype', 'time_start', 'time_end', 'award', 'username', 'uid']);
 
         $page = $this->getInput('page');
         $page < 1 && $page = 1;
@@ -270,7 +270,7 @@ class CreditController extends AdminBaseController
         list($offset, $limit) = Pw::page2limit($page, $perpage);
 
         $sc = new PwCreditLogSc();
-        $url = array();
+        $url = [];
         if ($ctype) {
             $sc->setCtype($ctype);
             $url['ctype'] = $ctype;
@@ -319,13 +319,13 @@ class CreditController extends AdminBaseController
      */
     private function setCurrentTab($action)
     {
-        $headerTab = array(
+        $headerTab = [
             'run'      => '',
             'strategy' => '',
             'recharge' => '',
             'exchange' => '',
             'transfer' => '',
-            'log'      => '', );
+            'log'      => '', ];
         $headerTab[$action] = 'current';
         $this->setOutput($headerTab, 'currentTabs');
     }

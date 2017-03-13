@@ -14,7 +14,7 @@ class PwDesignPushDao extends PwBaseDao
 {
     protected $_pk = 'push_id';
     protected $_table = 'design_push';
-    protected $_dataStruct = array('push_id', 'push_from_id', 'push_from_model', 'module_id', 'push_standard', 'push_style', 'push_orderid', 'push_extend', 'created_userid', 'author_uid', 'status', 'neednotice', 'check_uid', 'created_time', 'start_time', 'end_time', 'checked_time');
+    protected $_dataStruct = ['push_id', 'push_from_id', 'push_from_model', 'module_id', 'push_standard', 'push_style', 'push_orderid', 'push_extend', 'created_userid', 'author_uid', 'status', 'neednotice', 'check_uid', 'created_time', 'start_time', 'end_time', 'checked_time'];
 
     public function getPush($id)
     {
@@ -64,7 +64,7 @@ class PwDesignPushDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET `push_orderid`= 0 WHERE `module_id` = ? AND `push_orderid` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($moduleid, $order));
+        return $smt->update([$moduleid, $order]);
     }
 
     public function deletePush($id)
@@ -77,7 +77,7 @@ class PwDesignPushDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `module_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($moduleid));
+        return $smt->update([$moduleid]);
     }
 
     public function batchDelete($ids)
@@ -88,11 +88,11 @@ class PwDesignPushDao extends PwBaseDao
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'module_id':
-                    $value = !is_array($value) && $value ? array($value) : $value;
+                    $value = !is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND module_id IN '.$this->sqlImplode($value);
                     break;
                 case 'created_userid':
@@ -114,12 +114,12 @@ class PwDesignPushDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 
     private function _buildOrder($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'push_id':

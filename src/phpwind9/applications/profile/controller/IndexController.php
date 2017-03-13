@@ -90,10 +90,10 @@ class IndexController extends BaseProfileController
         $userDm->setHomepage($this->getInput('homepage', 'post'));
         $userDm->setProfile($this->getInput('profile', 'post'));
 
-        list($hometown, $location) = $this->getInput(array('hometown', 'location'), 'post');
+        list($hometown, $location) = $this->getInput(['hometown', 'location'], 'post');
 
         $srv = WindidApi::api('area');
-        $areas = $srv->fetchAreaInfo(array($hometown, $location));
+        $areas = $srv->fetchAreaInfo([$hometown, $location]);
         $userDm->setHometown($hometown, isset($areas[$hometown]) ? $areas[$hometown] : '');
         $userDm->setLocation($location, isset($areas[$location]) ? $areas[$location] : '');
 
@@ -101,7 +101,7 @@ class IndexController extends BaseProfileController
         if ($this->loginUser->getPermission('allow_sign')) {
             $bbsSign = $this->getInput('bbs_sign', 'post');
             if (($len = $this->loginUser->getPermission('sign_max_length')) && Pw::strlen($bbsSign) > $len) { //仅在此限制签名字数
-                $this->showError(array('USER:user.edit.sign.length.over', array('{max}' => $len)));
+                $this->showError(['USER:user.edit.sign.length.over', ['{max}' => $len]]);
             }
 
             $ubb = new PwUbbCodeConvertConfig();
@@ -147,7 +147,7 @@ class IndexController extends BaseProfileController
         $userDm->setAliww($this->getInput('aliww', 'post'));
         $userDm->setQq($this->getInput('qq', 'post'));
         $userDm->setMsn($this->getInput('msn', 'post'));
-        list($alipay, $mobile) = $this->getInput(array('alipay', 'mobile'), 'post');
+        list($alipay, $mobile) = $this->getInput(['alipay', 'mobile'], 'post');
         if ($alipay) {
             $r = PwUserValidator::isAlipayValid($alipay, $this->loginUser->username);
             if ($r instanceof PwError) {
@@ -193,7 +193,7 @@ class IndexController extends BaseProfileController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($passwd, $email) = $this->getInput(array('passwd', 'email'), 'post');
+        list($passwd, $email) = $this->getInput(['passwd', 'email'], 'post');
         if (!$passwd || !$email) {
             $this->showError('USER:empty.error');
         }
@@ -207,7 +207,7 @@ class IndexController extends BaseProfileController
                 Wind::import('SRC:service.user.srv.PwUserService');
                 $srv = new PwUserService();
                 $srv->logout();
-                $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('profile/index/run')));
+                $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('profile/index/run')]);
             }
         }
         $userDm = new PwUserInfoDm($this->loginUser->uid);
@@ -262,7 +262,7 @@ class IndexController extends BaseProfileController
      */
     private function _buildArea($areaid)
     {
-        $default = array(array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''), array('areaid' => '', 'name' => ''));
+        $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
         if (!$areaid) {
             return $default;
         }

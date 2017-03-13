@@ -20,13 +20,13 @@
  */
 class PwBuildLikeService
 {
-    private $_likeids = array();
-    private $_infoids = array();
-    private $_likeInfo = array();
-    private $_fids = array();
-    private $_lastpids = array();
-    private $_replyInfo = array();
-    private $_myTagids = array();
+    private $_likeids = [];
+    private $_infoids = [];
+    private $_likeInfo = [];
+    private $_fids = [];
+    private $_lastpids = [];
+    private $_replyInfo = [];
+    private $_myTagids = [];
 
     public function getTagsByUid($uid)
     {
@@ -48,15 +48,15 @@ class PwBuildLikeService
         $ds = $this->_getLikeLogDs();
         $logLists = $ds->getInfoList($uid, $start, $limit);
         if (!is_array($logLists) || count($logLists) < 1) {
-            return array();
+            return [];
         }
         foreach ($logLists as &$logList) {
-            $logList['tags'] = array();
+            $logList['tags'] = [];
             if ($logList['likeid'] < 1) {
                 continue;
             }
             $this->_likeids[] = $logList['likeid'];
-            $logList['tags'] = empty($logList['tagids']) ? array() : explode(',', $logList['tagids']);
+            $logList['tags'] = empty($logList['tagids']) ? [] : explode(',', $logList['tagids']);
             foreach ($logList['tags'] as $k => $tag) {
                 if (!in_array($tag, $this->_myTagids)) {
                     unset($logList['tags'][$k]);
@@ -79,16 +79,16 @@ class PwBuildLikeService
         $follows = Wekit::load('attention.PwAttention')->getFollows($uid, 100, 0);
         $uids = array_keys($follows);
         if (count($uids) < 1) {
-            return array();
+            return [];
         }
         $ds = $this->_getLikeLogDs();
         $logLists = $ds->getInfoList($uids, $start, $limit);
         if (!is_array($logLists) || count($logLists) < 1) {
-            return array();
+            return [];
         }
-        $_tmpIds = array();
+        $_tmpIds = [];
         foreach ($logLists as $key => $logList) {
-            $logList['tags'] = array();
+            $logList['tags'] = [];
             if ($logList['likeid'] < 1) {
                 continue;
             }
@@ -99,8 +99,8 @@ class PwBuildLikeService
             }
             $this->_likeids[] = $logList['likeid'];
             $_tmpIds[$logList['likeid']] = $logList['logid'];
-            $logLists[$key]['uids'] = array($logList['uid']);
-            $logLists[$key]['tags'] = empty($logList['tagids']) ? array() : explode(',', $logList['tagids']);
+            $logLists[$key]['uids'] = [$logList['uid']];
+            $logLists[$key]['tags'] = empty($logList['tagids']) ? [] : explode(',', $logList['tagids']);
         }
         for ($i = 1; $i < 10 && count($_tmpIds) < $limit; $i++) {
             $appendLog = $ds->getInfoList($uids, $limit + $i, 1);
@@ -118,8 +118,8 @@ class PwBuildLikeService
             $this->_likeids[] = $append['likeid'];
             $_tmpIds[$append['likeid']] = $append['logid'];
             $logLists[$append['logid']] = $append;
-            $logLists[$append['logid']]['uids'] = array($append['uid']);
-            $logLists[$append['logid']]['tags'] = empty($append['tagids']) ? array() : explode(',', $append['tagids']);
+            $logLists[$append['logid']]['uids'] = [$append['uid']];
+            $logLists[$append['logid']]['tags'] = empty($append['tagids']) ? [] : explode(',', $append['tagids']);
         }
 
         return $logLists;
@@ -127,12 +127,12 @@ class PwBuildLikeService
 
     public function getLogidsByTagid($tagid, $page, $limit)
     {
-        $logids = array();
+        $logids = [];
         $ds = $this->_getLikeRelationsDs();
         list($start, $limit) = Pw::page2limit($page, $limit);
         $logLists = $ds->getInfoList($tagid, $start, $limit);
         if (!is_array($logLists) || count($logLists) < 1) {
-            return array();
+            return [];
         }
         foreach ($logLists as $logList) {
             $logids[] = $logList['logid'];
@@ -145,7 +145,7 @@ class PwBuildLikeService
     {
         $logLists = $this->_getLikeLogDs()->fetchLikeLog($logids);
         foreach ($logLists as &$logList) {
-            $logList['tags'] = empty($logList['tagids']) ? array() : explode(',', $logList['tagids']);
+            $logList['tags'] = empty($logList['tagids']) ? [] : explode(',', $logList['tagids']);
             if ($logList['likeid'] < 1) {
                 continue;
             }
@@ -165,7 +165,7 @@ class PwBuildLikeService
         $ds = $this->_getLikeContentDs();
         $likeLists = $ds->fetchLikeContent($this->_likeids);
         if (!is_array($likeLists) || count($likeLists) < 1) {
-            return array();
+            return [];
         }
         foreach ($likeLists as $likeList) {
             $from = $ds->transformTypeid($likeList['typeid']);
@@ -185,9 +185,9 @@ class PwBuildLikeService
     public function getLikeInfo()
     {
         if (!is_array($this->_infoids) || count($this->_infoids) < 1) {
-            return array();
+            return [];
         }
-        $_tmpInfo = array();
+        $_tmpInfo = [];
         foreach ($this->_infoids as $key => $infoids) {
             $func = '_getDataFrom'.ucfirst($key);
             $infos = $this->$func($infoids);
@@ -200,9 +200,9 @@ class PwBuildLikeService
     public function getLastReplyInfo()
     {
         if (!is_array($this->_lastpids) || count($this->_lastpids) < 1) {
-            return array();
+            return [];
         }
-        $_tmpInfo = array();
+        $_tmpInfo = [];
         foreach ($this->_lastpids as $key => $infoids) {
             $func = '_getReplyFrom'.ucfirst($key);
             $this->$func($infoids);
@@ -232,15 +232,15 @@ class PwBuildLikeService
     {
         //$content = Pw::stripWindCode($content);
         //return Pw::substrs($content,140);
-        $errcode = array();
+        $errcode = [];
 
         return $this->_bulidContent($content, 1, $errcode);
     }
 
     protected function _bulidContent($content, $ubb, &$errcode)
     {
-        $errcode = array();
-        $content = str_replace(array("\r", "\n", "\t"), '', $content);
+        $errcode = [];
+        $content = str_replace(["\r", "\n", "\t"], '', $content);
         $content = WindSecurity::escapeHTML($content);
         if ($ubb) {
             $content = PwSimpleUbbCode::convert($content, 140, new PwUbbCodeConvertThread());
@@ -269,8 +269,8 @@ class PwBuildLikeService
      */
     private function _getDataFromPost($infoids)
     {
-        $_aPid = array(); //有附件的回复
-        $datas = $data = array();
+        $_aPid = []; //有附件的回复
+        $datas = $data = [];
         $infos = Wekit::load('forum.PwThread')->fetchPost($infoids);
         foreach ($infos as $info) {
             $data['subject'] = $info['subject'];
@@ -281,15 +281,15 @@ class PwBuildLikeService
             $data['username'] = $info['created_username'];
             $data['fid'] = $info['fid'];
             $data['like_count'] = $info['like_count'];
-            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', array(
+            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', [
                 'tid' => $info['tid'],
                 'fid' => $info['fid'],
                 'pid' => $info['pid'],
-            ), 'read_'.$info['pid']);
+            ], 'read_'.$info['pid']);
             $data['content'] .= '   <a href="'.$data['url'].'">'.'查看'.'</a>';
             $this->_appendFid($info['fid']);
             if ($info['aids']) {
-                $_aPid[] = array($info['tid'], $info['pid']);
+                $_aPid[] = [$info['tid'], $info['pid']];
             }
             $datas[$info['pid']] = $data;
         }
@@ -303,8 +303,8 @@ class PwBuildLikeService
 
     private function _getDataFromThread($infoids)
     {
-        $_aTid = array(); //有附件的帖子
-        $datas = $data = array();
+        $_aTid = []; //有附件的帖子
+        $datas = $data = [];
         $infos = Wekit::load('forum.PwThread')->fetchThread($infoids, PwThread::FETCH_ALL);
         foreach ($infos as $info) {
             $data['subject'] = $info['subject'];
@@ -315,7 +315,7 @@ class PwBuildLikeService
             $data['username'] = $info['created_username'];
             $data['fid'] = $info['fid'];
             $data['like_count'] = $info['like_count'];
-            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $info['fid']));
+            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $info['tid'], 'fid' => $info['fid']]);
             $this->_appendFid($info['fid']);
             if ($info['aids']) {
                 $_aTid[] = $info['tid'];
@@ -332,7 +332,7 @@ class PwBuildLikeService
 
     private function _getDataFromWeiBo($infoids)
     {
-        $datas = $data = array();
+        $datas = $data = [];
         $infos = Wekit::load('weibo.PwWeibo')->getWeibos($infoids);
         foreach ($infos as $info) {
             $data['subject'] = $info['title'];
@@ -342,7 +342,7 @@ class PwBuildLikeService
             $data['uid'] = $info['created_userid'];
             $data['username'] = $info['created_username'];
             $data['like_count'] = $info['like_count'];
-            $data['url'] = WindUrlHelper::createUrl('space/index/fresh', array('typeid' => 3, 'id' => $info['weibo_id'], 'uid' => $info['created_userid']));
+            $data['url'] = WindUrlHelper::createUrl('space/index/fresh', ['typeid' => 3, 'id' => $info['weibo_id'], 'uid' => $info['created_userid']]);
             if (!$data['subject'] && $info['type'] != PwWeibo::TYPE_MEDAL) {
                 $data['content'] .= '   <a href="'.$data['url'].'">'.'查看'.'</a>';
             }
@@ -354,7 +354,7 @@ class PwBuildLikeService
 
     private function _getDataFromApp($infoids)
     {
-        $datas = $data = array();
+        $datas = $data = [];
         $infos = Wekit::load('like.PwLikeSource')->fetchSource($infoids);
         foreach ($infos as $info) {
             $data['subject'] = $info['subject'];
@@ -374,38 +374,38 @@ class PwBuildLikeService
      */
     private function _getReplyFromPost($infoids)
     {
-        $datas = $data = array();
+        $datas = $data = [];
         $infos = Wekit::load('forum.PwThread')->fetchPost($infoids);
         foreach ($infos as $info) {
             $data['lasttime'] = $info['created_time'];
             $data['content'] = $this->_buildLikeContent($info['content']);
             $data['uid'] = $info['created_userid'];
             $data['username'] = $info['created_username'];
-            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $info['fid'], 'pid' => $info['pid']), $info['pid']);
+            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $info['tid'], 'fid' => $info['fid'], 'pid' => $info['pid']], $info['pid']);
             $this->_replyInfo[$info['pid']] = $data;
         }
     }
 
     private function _getReplyFromThread($infoids)
     {
-        $datas = $data = array();
+        $datas = $data = [];
         $infos = Wekit::load('forum.PwThread')->fetchPost($infoids);
         foreach ($infos as $info) {
             $data['lasttime'] = $info['created_time'];
             $data['content'] = $this->_buildLikeContent($info['content']);
             $data['uid'] = $info['created_userid'];
             $data['username'] = $info['created_username'];
-            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $info['fid'], 'pid' => $info['pid']), $info['pid']);
+            $data['url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $info['tid'], 'fid' => $info['fid'], 'pid' => $info['pid']], $info['pid']);
             $this->_replyInfo[$info['pid']] = $data;
         }
     }
 
     //TODO
-    private function _getThreadAttachs($tids = array())
+    private function _getThreadAttachs($tids = [])
     {
-        $attachs = array();
+        $attachs = [];
         foreach ($tids as $tid) {
-            $_attachs = Wekit::load('attach.PwThreadAttach')->getAttachByTid($tid, array(0));
+            $_attachs = Wekit::load('attach.PwThreadAttach')->getAttachByTid($tid, [0]);
             foreach ($_attachs as $v) {
                 if ($v['type'] == 'img') {
                     $attachs[$tid] = $v;
@@ -418,9 +418,9 @@ class PwBuildLikeService
     }
 
     //TODO
-    private function _getPostAttachs($pids = array())
+    private function _getPostAttachs($pids = [])
     {
-        $attachs = array();
+        $attachs = [];
         foreach ($pids as $v) {
             list($tid, $pid) = $v;
             $_attachs = Wekit::load('attach.PwThreadAttach')->getAttachByTid($tid, $pid);

@@ -16,7 +16,7 @@ class PageController extends AdminBaseController
     {
         $page = (int) $this->getInput('page', 'get');
         $perpage = 10;
-        $args = array();
+        $args = [];
         $page = $page > 1 ? $page : 1;
         list($start, $perpage) = Pw::page2limit($page, $perpage);
         $list = $this->_getPageDs()->getPageList(PwDesignPage::SYSTEM, $start, $perpage);
@@ -28,9 +28,9 @@ class PageController extends AdminBaseController
             }
             list($m, $c, $a, $id) = explode('|', $v['page_router']);
             if ($unique) {
-                $v['url'] = WindUrlHelper::createUrl($m.'/'.$c.'/'.$a, array($unique => $v['page_unique']), '', 'pw');
+                $v['url'] = WindUrlHelper::createUrl($m.'/'.$c.'/'.$a, [$unique => $v['page_unique']], '', 'pw');
             } else {
-                $v['url'] = WindUrlHelper::createUrl($m.'/'.$c.'/'.$a, array(), '', 'pw');
+                $v['url'] = WindUrlHelper::createUrl($m.'/'.$c.'/'.$a, [], '', 'pw');
             }
             $sep = strpos($v['url'], '?') === false ? '?' : '&';
             $v['designurl'] = $v['url'].$sep.'design=1';

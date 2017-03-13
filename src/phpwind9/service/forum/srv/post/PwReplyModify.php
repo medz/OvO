@@ -46,11 +46,11 @@ class PwReplyModify extends PwPostAction
                 return new PwError('BBS:post.modify.error.self');
             }
             if (!$this->user->comparePermission($this->info['created_userid'])) {
-                return new PwError('permission.level.edit', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+                return new PwError('permission.level.edit', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
             }
         }
         if ($this->forum->forumset['edittime'] && (Pw::getTime() - $this->info['created_time'] > $this->forum->forumset['edittime'] * 60) && !$this->user->getPermission('operate_thread.edit', $this->isBM)) {
-            return new PwError('BBS:post.modify.timelimit', array('{minute}' => $this->forum->forumset['edittime']));
+            return new PwError('BBS:post.modify.timelimit', ['{minute}' => $this->forum->forumset['edittime']]);
         }
         $thread_edit_time = $this->user->getPermission('thread_edit_time');
         if ($thread_edit_time > 0 && (Pw::getTime() - $this->info['created_time']) > $thread_edit_time * 60) {
@@ -81,9 +81,9 @@ class PwReplyModify extends PwPostAction
      */
     public function getAttachs()
     {
-        $attach = array();
+        $attach = [];
         if ($this->info['aids']) {
-            $attach = $this->_getAttachService()->getAttachByTid($this->tid, array($this->pid));
+            $attach = $this->_getAttachService()->getAttachByTid($this->tid, [$this->pid]);
         }
 
         return $attach;

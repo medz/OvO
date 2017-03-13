@@ -13,7 +13,7 @@
 class PwAppUpload extends PwUploadAction
 {
     //public $ftype = array('zip' => 10000, 'rar' => 10000, 'tar' => 10000, 'tar.gz' => 10000, '7z' => 10000);
-    public $ftype = array('zip' => 10000);
+    public $ftype = ['zip' => 10000];
 
     /* (non-PHPdoc)
      * @see PwUploadAction::getSaveName()

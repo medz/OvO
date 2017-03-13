@@ -132,7 +132,7 @@ class PwGenerateApplication
         if (!$writable) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
-        PwApplicationHelper::copyRecursive($this->defaultDir, $this->baseDir, array('service'));
+        PwApplicationHelper::copyRecursive($this->defaultDir, $this->baseDir, ['service']);
         $manifest = WindFile::read($this->baseDir.'/Manifest.xml');
         $this->manifest = $this->_strtr($manifest);
         $this->_generateAdmin();
@@ -157,7 +157,7 @@ class PwGenerateApplication
         $manifest['application']['author-email'] = $this->email;
         $manifest['application']['website'] = $this->website;
         $parser = new WindXmlParser();
-        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
+        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($file, $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
@@ -196,20 +196,20 @@ class PwGenerateApplication
         $reflection = new ReflectionClass($interfacename);
         $extends = ($reflection->isInterface() ? 'implements ' : 'extends ').$interfacename;
         $manifest = Wind::getComponent('configParser')->parse($this->baseDir.'/Manifest.xml');
-        $hook = array(
-            'app_'.$this->alias => array(
+        $hook = [
+            'app_'.$this->alias => [
                 'class'       => 'EXT:'.$this->alias.'.service.srv.'.$classname,
-                'description' => 'this is another '.$hookname, ), );
+                'description' => 'this is another '.$hookname, ], ];
         $manifest['inject-services'][$hookname] = $hook;
         $parser = new WindXmlParser();
-        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
+        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
 
         $class = WindFile::read(dirname($this->defaultDir).'/servicehook');
         $class = strtr($class,
-            array(
+            [
                 '{{interface}}'     => $interface,
                 '{{classname}}'     => $classname,
                 '{{extends}}'       => $extends,
@@ -218,7 +218,7 @@ class PwGenerateApplication
                 '{{author}}'        => $this->author,
                 '{{email}}'         => $this->email,
                 '{{website}}'       => $this->website,
-                '{{description}}'   => $description, ));
+                '{{description}}'   => $description, ]);
         WindFolder::mkRecur($this->baseDir.'/service/srv/');
         if (!WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
             return new PwError('APPCENTER:generate.copy.fail');
@@ -245,23 +245,23 @@ class PwGenerateApplication
         $thing = substr($hookname, 2);
         $classname = $this->_ucwords($this->alias.'_'.$thing).'Do';
         $method = WindUtility::lcfirst($this->_ucwords($this->alias)).'Do';
-        $hook = array(
-            'app_'.$this->alias => array(
+        $hook = [
+            'app_'.$this->alias => [
                 'class'       => 'EXT:'.$this->alias.'.service.srv.'.$classname,
                 'loadway'     => 'load',
                 'method'      => $method,
-                'description' => 'this is another '.$hookname, ), );
+                'description' => 'this is another '.$hookname, ], ];
         $manifest['inject-services'][$hookname] = $hook;
 
         $parser = new WindXmlParser();
-        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
+        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
         if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
 
         $class = WindFile::read(dirname($this->defaultDir).'/simplehook');
         $class = strtr($class,
-            array(
+            [
                 '{{method}}'      => $method,
                 '{{classname}}'   => $classname,
                 '{{document}}'    => $doc,
@@ -270,7 +270,7 @@ class PwGenerateApplication
                 '{{author}}'      => $this->author,
                 '{{email}}'       => $this->email,
                 '{{website}}'     => $this->website,
-                '{{description}}' => $description, ));
+                '{{description}}' => $description, ]);
         WindFolder::mkRecur($this->baseDir.'/service/srv/');
         if (!WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
             return new PwError('APPCENTER:generate.copy.fail');
@@ -281,14 +281,14 @@ class PwGenerateApplication
     {
         $index = $this->baseDir.'/template/index_run.htm';
         $admin = $this->baseDir.'/template/admin/manage_run.htm';
-        WindFile::write($index, strtr(WindFile::read($index), array('{{alias}}' => $this->alias)));
-        WindFile::write($admin, strtr(WindFile::read($admin), array('{{alias}}' => $this->alias)));
+        WindFile::write($index, strtr(WindFile::read($index), ['{{alias}}' => $this->alias]));
+        WindFile::write($admin, strtr(WindFile::read($admin), ['{{alias}}' => $this->alias]));
     }
 
     private function _strtr($string)
     {
         return strtr($string,
-            array(
+            [
                 '{{charset}}'              => Wind::getApp()->getResponse()->getCharset(),
                 '{{name}}'                 => $this->name,
                 '{{alias}}'                => $this->alias,
@@ -298,38 +298,38 @@ class PwGenerateApplication
                 '{{email}}'                => $this->email,
                 '{{website}}'              => $this->website,
                 '{{description}}'          => $this->description,
-                '{{installation_service}}' => $this->installation_service, ));
+                '{{installation_service}}' => $this->installation_service, ]);
     }
 
     private function _generateAdmin()
     {
         if ($this->need_admin) {
             $classname = $this->_ucwords($this->alias).'_ConfigDo';
-            $hook = array(
-                's_admin_menu' => array(
-                    'app_'.$this->alias => array(
+            $hook = [
+                's_admin_menu' => [
+                    'app_'.$this->alias => [
                         'class'       => 'EXT:'.$this->alias.'.service.srv.'.$classname,
                         'loadway'     => 'load',
                         'method'      => 'getAdminMenu',
-                        'description' => $this->name.'admin menu', ), ), );
+                        'description' => $this->name.'admin menu', ], ], ];
 
             $parser = new WindXmlParser();
             $hook = preg_replace('/<\?xml[^\?]+\?>/i', '', $parser->parseToXml($hook, Wind::getApp()->getResponse()->getCharset()));
             $hook = str_replace('><', ">\n\t<", $hook);
-            $this->manifest = strtr($this->manifest, array('{{inject_services}}' => $hook));
+            $this->manifest = strtr($this->manifest, ['{{inject_services}}' => $hook]);
             $class = WindFile::read(dirname($this->defaultDir).'/hook.admin');
             $class = strtr($class,
-                array(
+                [
                     '{{alias}}'     => $this->alias,
                     '{{name}}'      => $this->name,
                     '{{classname}}' => $classname,
                     '{{author}}'    => $this->author,
                     '{{email}}'     => $this->email,
-                    '{{website}}'   => $this->website, ));
+                    '{{website}}'   => $this->website, ]);
             WindFolder::mkRecur($this->baseDir.'/service/srv/');
             WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class);
         } else {
-            $this->manifest = strtr($this->manifest, array('{{inject_services}}' => ''));
+            $this->manifest = strtr($this->manifest, ['{{inject_services}}' => '']);
             WindFolder::clearRecur($this->baseDir.'/admin', true);
             WindFolder::clearRecur($this->baseDir.'/template/admin', true);
         }
@@ -348,36 +348,36 @@ class PwGenerateApplication
         $dao_file = $this->defaultDir.'/service/dao/defaultdao';
         $class_dao = $classFrefix.'Dao';
         $dao = strtr(WindFile::read($dao_file),
-            array(
+            [
                 '{{classname}}' => $class_dao,
                 '{{prefix}}'    => $prefix,
                 '{{author}}'    => $this->author,
                 '{{email}}'     => $this->email,
-                '{{website}}'   => $this->website, ));
+                '{{website}}'   => $this->website, ]);
 
         WindFile::write($this->baseDir.'/service/dao/'.$class_dao.'.php', $dao);
 
         $dm_file = $this->defaultDir.'/service/dm/defaultdm';
         $class_dm = $classFrefix.'Dm';
         $dm = strtr(WindFile::read($dm_file),
-            array(
+            [
                 '{{classname}}' => $class_dm,
                 '{{author}}'    => $this->author,
                 '{{email}}'     => $this->email,
-                '{{website}}'   => $this->website, ));
+                '{{website}}'   => $this->website, ]);
         WindFile::write($this->baseDir.'/service/dm/'.$class_dm.'.php', $dm);
 
         $ds_file = $this->defaultDir.'/service/defaultds';
         $class_ds = $classFrefix;
         $ds = strtr(WindFile::read($ds_file),
-            array(
+            [
                 '{{classname}}' => $class_ds,
                 '{{alias}}'     => $this->alias,
                 '{{class_dm}}'  => $class_dm,
                 '{{class_dao}}' => $class_dao,
                 '{{author}}'    => $this->author,
                 '{{email}}'     => $this->email,
-                '{{website}}'   => $this->website, ));
+                '{{website}}'   => $this->website, ]);
         WindFile::write($this->baseDir.'/service/'.$class_ds.'.php', $ds);
     }
 

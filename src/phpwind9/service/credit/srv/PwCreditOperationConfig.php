@@ -11,8 +11,8 @@
  */
 class PwCreditOperationConfig
 {
-    private $_data = array();
-    private $_map = array();
+    private $_data = [];
+    private $_map = [];
     private $_config = 'SRV:credit.srv.operationConfig.baseconfig.php';
     private static $_instance = null;
 
@@ -43,13 +43,13 @@ class PwCreditOperationConfig
      *
      * @return string
      */
-    public function getDescrip($operate, $var = array())
+    public function getDescrip($operate, $var = [])
     {
         if (!isset($this->_data[$operate]) || empty($this->_data[$operate][2])) {
             return $operate;
         }
         $descrip = $this->_data[$operate][2];
-        $_search = array();
+        $_search = [];
         foreach ($var as $k => $v) {
             $_search[] = '{$'.$k.'}';
         }

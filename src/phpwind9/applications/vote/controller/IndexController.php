@@ -25,7 +25,7 @@ class IndexController extends PwBaseController
             $this->showError('VOTE:group.not.allow.view');
         }
 
-        list($pollid, $optionid) = $this->getInput(array('pollid', 'optionid'), 'get');
+        list($pollid, $optionid) = $this->getInput(['pollid', 'optionid'], 'get');
 
         $poll = $this->_getPollService()->getPoll($pollid);
         if (!$poll) {
@@ -41,27 +41,27 @@ class IndexController extends PwBaseController
         list($start, $limit) = Pw::page2limit($this->page, $this->perpage);
 
         $total = $this->_getPollVoterDs()->countUserByOptionid($optionid);
-        $vote = $total ? $this->_getPollVoterDs()->getUserByOptionid($optionid, $limit, $start) : array();
+        $vote = $total ? $this->_getPollVoterDs()->getUserByOptionid($optionid, $limit, $start) : [];
 
-        $uids = $userName = array();
+        $uids = $userName = [];
         foreach ($vote as $value) {
             $uids[] = $value['uid'];
         }
 
-        $userList = $uids ? $this->_getUserDs()->fetchUserByUid($uids) : array();
+        $userList = $uids ? $this->_getUserDs()->fetchUserByUid($uids) : [];
         foreach ($userList as $value) {
             $userName[$value['uid']] = $value['username'];
         }
 
         $this->_getPollService()->resetOptionVotedNum($optionid);
 
-        $this->setOutput(array('data' => $userName));
+        $this->setOutput(['data' => $userName]);
         $this->showMessage('success');
     }
 
     public function deloptionAction()
     {
-        list($pollid, $optionid) = $this->getInput(array('pollid', 'optionid'));
+        list($pollid, $optionid) = $this->getInput(['pollid', 'optionid']);
         $pollid = intval($pollid);
         $optionid = intval($optionid);
         if (!$pollid || !$optionid) {
@@ -93,7 +93,7 @@ class IndexController extends PwBaseController
 
     public function deloptionimgAction()
     {
-        list($pollid, $optionid) = $this->getInput(array('pollid', 'optionid'));
+        list($pollid, $optionid) = $this->getInput(['pollid', 'optionid']);
         $pollid = intval($pollid);
         $optionid = intval($optionid);
         if (!$pollid || !$optionid) {

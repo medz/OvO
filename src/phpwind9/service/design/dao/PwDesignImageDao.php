@@ -14,7 +14,7 @@ class PwDesignImageDao extends PwBaseDao
 {
     protected $_pk = 'id';
     protected $_table = 'design_image';
-    protected $_dataStruct = array('path', 'thumb', 'width', 'height', 'moduleid', 'data_id', 'sign', 'status');
+    protected $_dataStruct = ['path', 'thumb', 'width', 'height', 'moduleid', 'data_id', 'sign', 'status'];
 
     public function get($id)
     {

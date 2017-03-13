@@ -12,14 +12,14 @@
 class PwCreditLogDao extends PwBaseDao
 {
     protected $_table = 'credit_log';
-    protected $_dataStruct = array('id', 'ctype', 'affect', 'logtype', 'descrip', 'created_userid', 'created_username', 'created_time');
+    protected $_dataStruct = ['id', 'ctype', 'affect', 'logtype', 'descrip', 'created_userid', 'created_username', 'created_time'];
 
     public function countLogByUid($uid)
     {
         $sql = $this->_bindTable('SELECT COUNT(*) AS sum FROM %s WHERE created_userid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function getLogByUid($uid, $limit, $offset)
@@ -27,7 +27,7 @@ class PwCreditLogDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid=? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'id');
+        return $smt->queryAll([$uid], 'id');
     }
 
     public function countBySearch($field)
@@ -50,9 +50,9 @@ class PwCreditLogDao extends PwBaseDao
 
     public function batchAdd($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
-            $array[] = array(
+            $array[] = [
                 $value['ctype'],
                 $value['affect'],
                 $value['logtype'],
@@ -60,7 +60,7 @@ class PwCreditLogDao extends PwBaseDao
                 $value['created_userid'],
                 $value['created_username'],
                 $value['created_time'],
-            );
+            ];
         }
         $sql = $this->_bindSql('INSERT INTO %s (ctype, affect, logtype, descrip, created_userid, created_username, created_time) VALUES %s', $this->getTable(), $this->sqlMulti($array));
 
@@ -70,7 +70,7 @@ class PwCreditLogDao extends PwBaseDao
     private function _getWhere($field)
     {
         $where = '1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'ctype':
@@ -95,6 +95,6 @@ class PwCreditLogDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg);
+        return [$where, $arg];
     }
 }

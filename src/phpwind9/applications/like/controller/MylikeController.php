@@ -43,32 +43,32 @@ class MylikeController extends PwBaseController
         }
 
         // start
-        $json = array();
+        $json = [];
         foreach ($logLists as $_log) {
             $_log['tags'] = array_unique((array) $_log['tags']);
             if (!$_log['tags']) {
                 continue;
             }
-            $tagJson = array();
+            $tagJson = [];
             foreach ((array) $_log['tags'] as $_tagid) {
                 if (!isset($tagLists[$_tagid]['tagname'])) {
                     continue;
                 }
-                $tagJson[] = array(
+                $tagJson[] = [
                     'id'    => $_tagid,
                     'value' => $tagLists[$_tagid]['tagname'],
-                );
+                ];
             }
-            $json[] = array(
+            $json[] = [
                 'id'    => $_log['logid'],
                 'items' => $tagJson,
-            );
+            ];
         }
         //end
         $likeLists = $service->getLikeList();
         $likeInfos = $service->getLikeInfo();
         $hotBrand = $this->_getLikeService()->getLikeBrand('day1', 0, 10, true);
-        $args = $tagid > 0 ? array('tag' => $tagid) : array();
+        $args = $tagid > 0 ? ['tag' => $tagid] : [];
         $this->setOutput($args, 'args');
         $this->setOutput($logLists, 'logLists');
         $this->setOutput($likeLists, 'likeLists');
@@ -104,7 +104,7 @@ class MylikeController extends PwBaseController
         $start = (int) $this->getInput('start', 'get');
         $start >= 100 && $start = 100;
         $perpage = 20;
-        $_data = array();
+        $_data = [];
         $logLists = $this->_getBuildLikeService()->getFollowLogList($this->loginUser->uid, $start, $perpage);
         $likeLists = $this->_getBuildLikeService()->getLikeList();
         $likeInfos = $this->_getBuildLikeService()->getLikeInfo();
@@ -143,7 +143,7 @@ class MylikeController extends PwBaseController
 
     public function getTagListAction()
     {
-        $array = array();
+        $array = [];
         $lists = $this->_getLikeTagService()->getInfoByUid($this->loginUser->uid);
         $this->setOutput($lists, 'data');
         $this->showMessage('BBS:like.success');
@@ -224,7 +224,7 @@ class MylikeController extends PwBaseController
         }
         $tagid = (int) $resource;
         $this->_getLikeService()->editLogTag($logid, $tagid, 1);
-        $this->setOutput(array('id' => $tagid, 'name' => $tagname), 'data');
+        $this->setOutput(['id' => $tagid, 'name' => $tagname], 'data');
         $this->showMessage('BBS:like.success');
     }
 
@@ -241,7 +241,7 @@ class MylikeController extends PwBaseController
         if ($resource instanceof PwError) {
             $this->showError($resource->getError());
         }
-        $this->setOutput(array('id' => (int) $resource, 'name' => $tagname), 'data');
+        $this->setOutput(['id' => (int) $resource, 'name' => $tagname], 'data');
         $this->showMessage('BBS:like.success');
     }
 
@@ -298,7 +298,7 @@ class MylikeController extends PwBaseController
         if ($resource instanceof PwError) {
             $this->showError($resource->getError());
         }
-        $this->setOutput(array('id' => $tagid, 'name' => $tagname), 'data');
+        $this->setOutput(['id' => $tagid, 'name' => $tagname], 'data');
         $this->showMessage('BBS:like.success');
     }
 

@@ -16,8 +16,8 @@
  */
 class PwRevertReply extends PwGleanDoProcess
 {
-    public $data = array();
-    public $pids = array();
+    public $data = [];
+    public $pids = [];
     public $user;
 
     public function __construct($pids, PwUserBo $user)
@@ -31,7 +31,7 @@ class PwRevertReply extends PwGleanDoProcess
     {
         $data = Wekit::load('forum.PwThread')->fetchPost($pids);
         $recycle = Wekit::load('recycle.PwReplyRecycle')->fetchRecord($pids);
-        $tids = array();
+        $tids = [];
         foreach ($recycle as $key => $value) {
             if (!isset($data[$value['pid']])) {
                 continue;

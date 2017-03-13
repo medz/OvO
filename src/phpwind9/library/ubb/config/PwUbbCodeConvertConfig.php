@@ -21,7 +21,7 @@ class PwUbbCodeConvertConfig
     public $isConvertFlash = 0;    //flash标签解析方式 <0.解析，不生成播放器 1.解析，生成播放器>
     public $isConvertTable = 0;    //table解析 值为table嵌套解析次数最大值
     public $isConvertIframe = 0;    //iframe标签解析方式 <0.不解析 1.解析，只生成链接 2.解析，生成iframe>
-    public $remindUser = array(); //提到的人(@admin)
+    public $remindUser = []; //提到的人(@admin)
 
     public $cvtimes = 20;
     public $imgWidth = 400;
@@ -67,7 +67,7 @@ class PwUbbCodeConvertConfig
 
     public function getSellInfo()
     {
-        return array();
+        return [];
     }
 
     public function getUserCredit($cType)
@@ -85,7 +85,7 @@ class PwUbbCodeConvertConfig
         $a = explode(',', $array);
         $l = count($a);
         $l % 2 == 1 && $l--;
-        $r = array();
+        $r = [];
         for ($i = 0; $i < $l; $i += 2) {
             $r[$a[$i + 1]] = $a[$i];
         }

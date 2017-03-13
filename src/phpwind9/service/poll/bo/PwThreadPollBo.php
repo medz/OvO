@@ -16,7 +16,7 @@ class PwThreadPollBo
     public $tid;
     public $pollid;
 
-    public $info = array();
+    public $info = [];
 
     public function __construct($tid)
     {
@@ -63,7 +63,7 @@ class PwThreadPollBo
     public function getPollInfo($pollid)
     {
         if (!$pollid) {
-            return array();
+            return [];
         }
 
         $poll = $this->_getPollDs()->getPoll($pollid);
@@ -81,7 +81,7 @@ class PwThreadPollBo
         $poll['optionnum'] = count($options);
         $poll['votedtotal'] = $votedTotal;
 
-        return array('poll' => $poll, 'option' => $options);
+        return ['poll' => $poll, 'option' => $options];
     }
 
     public function getRegtimeLimit()
@@ -114,11 +114,11 @@ class PwThreadPollBo
         $user = Wekit::getLoginUser();
         $forum->allowVisit($user);
         if (($result = $forum->allowVisit($user)) !== true) {
-            return new PwError('BBS:forum.permissions.visit.allow', array('{grouptitle}' => $user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.visit.allow', ['{grouptitle}' => $user->getGroupInfo('name')]);
         }
 
         if (($result = $forum->allowRead($user)) !== true) {
-            return new PwError('BBS:forum.permissions.read.allow', array('{grouptitle}' => $user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.read.allow', ['{grouptitle}' => $user->getGroupInfo('name')]);
         }
 
         return true;

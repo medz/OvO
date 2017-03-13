@@ -5,26 +5,26 @@ defined('WEKIT_VERSION') or exit(403);
  * 应用安装配置
  */
 
-return array(
-    'components' => array(
-        'windView' => array(
-            'properties' => array(
-                'viewResolver' => array('path' => 'WindNormalViewerResolver'), ), ),
-        'router' => array(), ),
+return [
+    'components' => [
+        'windView' => [
+            'properties' => [
+                'viewResolver' => ['path' => 'WindNormalViewerResolver'], ], ],
+        'router' => [], ],
 
-    'web-apps' => array(
-        'install' => array(
+    'web-apps' => [
+        'install' => [
             'root-path' => 'APPS:install',
-            'modules'   => array(
-                'default' => array(
+            'modules'   => [
+                'default' => [
                     'controller-path'   => 'INSTALL:controller',
                     'controller-suffix' => 'Controller',
                     'template-path'     => 'TPL:install',
                     'compile-path'      => 'DATA:compile.template.install',
                     'error-handler'     => 'INSTALL:controller.MessageController',
                     'theme-package'     => 'THEMES:',
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];

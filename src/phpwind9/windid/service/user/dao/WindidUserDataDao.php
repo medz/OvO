@@ -14,7 +14,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
 {
     protected $_table = 'user_data';
     protected $_pk = 'uid';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'uid',
         'messages',
         'credit1',
@@ -24,7 +24,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
         'credit5',
         'credit6',
         'credit7',
-        'credit8', );
+        'credit8', ];
     protected $_defaultBaseInstance = 'WSRV:user.dao.WindidUserDefaultDao';
 
     /* (non-PHPdoc)
@@ -122,7 +122,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     /* (non-PHPdoc)
      * @see WindidUserInterface::editUser()
      */
-    public function editUser($uid, $fields, $increaseFields = array())
+    public function editUser($uid, $fields, $increaseFields = [])
     {
         $result = $this->getBaseInstance()->editUser($uid, $fields, $increaseFields);
         $this->_update($uid, $fields, $increaseFields);
@@ -142,7 +142,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid));
+        return $smt->getOne([$uid]);
     }
 
     /**
@@ -154,7 +154,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
      *
      * @return int
      */
-    public function updateCredit($uid, $fields, $increaseFields = array())
+    public function updateCredit($uid, $fields, $increaseFields = [])
     {
         return $this->_update($uid, $fields, $increaseFields);
     }
@@ -167,7 +167,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     public function getStruct()
     {
         $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
-        $tbFields = $this->getConnection()->createStatement($sql)->queryAll(array(), 'Field');
+        $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
 
         return array_keys($tbFields);
     }
@@ -250,10 +250,10 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
      */
     public function getDataStruct()
     {
-        static $struct = array();
+        static $struct = [];
         if (!$struct) {
             $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
-            $tbFields = $this->getConnection()->createStatement($sql)->queryAll(array(), 'Field');
+            $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
             $struct = array_keys($tbFields);
         }
 

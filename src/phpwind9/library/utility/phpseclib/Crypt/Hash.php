@@ -257,27 +257,27 @@ class Crypt_Hash
         switch ($hash) {
             case 'md2':
                  $this->b = 16;
-                 $this->hash = array($this, '_md2');
+                 $this->hash = [$this, '_md2'];
                  break;
             case 'md5':
             case 'md5-96':
                  $this->b = 64;
-                 $this->hash = array($this, '_md5');
+                 $this->hash = [$this, '_md5'];
                  break;
             case 'sha256':
                  $this->b = 64;
-                 $this->hash = array($this, '_sha256');
+                 $this->hash = [$this, '_sha256'];
                  break;
             case 'sha384':
             case 'sha512':
                  $this->b = 128;
-                 $this->hash = array($this, '_sha512');
+                 $this->hash = [$this, '_sha512'];
                  break;
             case 'sha1':
             case 'sha1-96':
             default:
                  $this->b = 64;
-                 $this->hash = array($this, '_sha1');
+                 $this->hash = [$this, '_sha1'];
         }
 
         $this->ipad = str_repeat(chr(0x36), $this->b);
@@ -373,7 +373,7 @@ class Crypt_Hash
      */
     public function _md2($m)
     {
-        static $s = array(
+        static $s = [
              41,  46,  67, 201, 162, 216, 124,   1,  61,  54,  84, 161, 236, 240, 6,
              19,  98, 167,   5, 243, 192, 199, 115, 140, 152, 147,  43, 217, 188,
              76, 130, 202,  30, 155,  87,  60, 253, 212, 224,  22, 103,  66, 111, 24,
@@ -392,7 +392,7 @@ class Crypt_Hash
             203, 213, 254,  59,   0,  29,  57, 242, 239, 183,  14, 102,  88, 208, 228,
             166, 119, 114, 248, 235, 117,  75,  10,  49,  68,  80, 180, 143, 237,
              31,  26, 219, 153, 141,  51, 159,  17, 131, 20,
-        );
+        ];
 
         // Step 1. Append Padding Bytes
         $pad = 16 - (strlen($m) & 0xF);
@@ -450,12 +450,12 @@ class Crypt_Hash
         }
 
         // Initialize variables
-        $hash = array(
+        $hash = [
             0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
-        );
+        ];
         // Initialize table of round constants
         // (first 32 bits of the fractional parts of the cube roots of the first 64 primes 2..311)
-        static $k = array(
+        static $k = [
             0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
             0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
             0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
@@ -464,7 +464,7 @@ class Crypt_Hash
             0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
             0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
             0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
-        );
+        ];
 
         // Pre-processing
         $length = strlen($m);
@@ -477,7 +477,7 @@ class Crypt_Hash
         // Process the message in successive 512-bit chunks
         $chunks = str_split($m, 64);
         foreach ($chunks as $chunk) {
-            $w = array();
+            $w = [];
             for ($i = 0; $i < 16; $i++) {
                 extract(unpack('Ntemp', $this->_string_shift($chunk, 4)));
                 $w[] = $temp;
@@ -525,7 +525,7 @@ class Crypt_Hash
             }
 
             // Add this chunk's hash to result so far
-            $hash = array(
+            $hash = [
                 $this->_add($hash[0], $a),
                 $this->_add($hash[1], $b),
                 $this->_add($hash[2], $c),
@@ -534,7 +534,7 @@ class Crypt_Hash
                 $this->_add($hash[5], $f),
                 $this->_add($hash[6], $g),
                 $this->_add($hash[7], $h),
-            );
+            ];
         }
 
         // Produce the final hash value (big-endian)
@@ -556,14 +556,14 @@ class Crypt_Hash
 
         if (!isset($k)) {
             // Initialize variables
-            $init384 = array( // initial values for SHA384
+            $init384 = [ // initial values for SHA384
                 'cbbb9d5dc1059ed8', '629a292a367cd507', '9159015a3070dd17', '152fecd8f70e5939',
                 '67332667ffc00b31', '8eb44a8768581511', 'db0c2e0d64f98fa7', '47b5481dbefa4fa4',
-            );
-            $init512 = array( // initial values for SHA512
+            ];
+            $init512 = [ // initial values for SHA512
                 '6a09e667f3bcc908', 'bb67ae8584caa73b', '3c6ef372fe94f82b', 'a54ff53a5f1d36f1',
                 '510e527fade682d1', '9b05688c2b3e6c1f', '1f83d9abfb41bd6b', '5be0cd19137e2179',
-            );
+            ];
 
             for ($i = 0; $i < 8; $i++) {
                 $init384[$i] = new Math_BigInteger($init384[$i], 16);
@@ -574,7 +574,7 @@ class Crypt_Hash
 
             // Initialize table of round constants
             // (first 64 bits of the fractional parts of the cube roots of the first 80 primes 2..409)
-            $k = array(
+            $k = [
                 '428a2f98d728ae22', '7137449123ef65cd', 'b5c0fbcfec4d3b2f', 'e9b5dba58189dbbc',
                 '3956c25bf348b538', '59f111f1b605d019', '923f82a4af194f9b', 'ab1c5ed5da6d8118',
                 'd807aa98a3030242', '12835b0145706fbe', '243185be4ee4b28c', '550c7dc3d5ffb4e2',
@@ -595,7 +595,7 @@ class Crypt_Hash
                 '06f067aa72176fba', '0a637dc5a2c898a6', '113f9804bef90dae', '1b710b35131c471b',
                 '28db77f523047d84', '32caab7b40c72493', '3c9ebe0a15c9bebc', '431d67c49c100d4c',
                 '4cc5d4becb3e42b6', '597f299cfc657e2a', '5fcb6fab3ad6faec', '6c44198c4a475817',
-            );
+            ];
 
             for ($i = 0; $i < 80; $i++) {
                 $k[$i] = new Math_BigInteger($k[$i], 16);
@@ -615,7 +615,7 @@ class Crypt_Hash
         // Process the message in successive 1024-bit chunks
         $chunks = str_split($m, 128);
         foreach ($chunks as $chunk) {
-            $w = array();
+            $w = [];
             for ($i = 0; $i < 16; $i++) {
                 $temp = new Math_BigInteger($this->_string_shift($chunk, 8), 256);
                 $temp->setPrecision(64);
@@ -624,18 +624,18 @@ class Crypt_Hash
 
             // Extend the sixteen 32-bit words into eighty 32-bit words
             for ($i = 16; $i < 80; $i++) {
-                $temp = array(
+                $temp = [
                           $w[$i - 15]->bitwise_rightRotate(1),
                           $w[$i - 15]->bitwise_rightRotate(8),
                           $w[$i - 15]->bitwise_rightShift(7),
-                );
+                ];
                 $s0 = $temp[0]->bitwise_xor($temp[1]);
                 $s0 = $s0->bitwise_xor($temp[2]);
-                $temp = array(
+                $temp = [
                           $w[$i - 2]->bitwise_rightRotate(19),
                           $w[$i - 2]->bitwise_rightRotate(61),
                           $w[$i - 2]->bitwise_rightShift(6),
-                );
+                ];
                 $s1 = $temp[0]->bitwise_xor($temp[1]);
                 $s1 = $s1->bitwise_xor($temp[2]);
                 $w[$i] = $w[$i - 16]->copy();
@@ -656,33 +656,33 @@ class Crypt_Hash
 
             // Main loop
             for ($i = 0; $i < 80; $i++) {
-                $temp = array(
+                $temp = [
                     $a->bitwise_rightRotate(28),
                     $a->bitwise_rightRotate(34),
                     $a->bitwise_rightRotate(39),
-                );
+                ];
                 $s0 = $temp[0]->bitwise_xor($temp[1]);
                 $s0 = $s0->bitwise_xor($temp[2]);
-                $temp = array(
+                $temp = [
                     $a->bitwise_and($b),
                     $a->bitwise_and($c),
                     $b->bitwise_and($c),
-                );
+                ];
                 $maj = $temp[0]->bitwise_xor($temp[1]);
                 $maj = $maj->bitwise_xor($temp[2]);
                 $t2 = $s0->add($maj);
 
-                $temp = array(
+                $temp = [
                     $e->bitwise_rightRotate(14),
                     $e->bitwise_rightRotate(18),
                     $e->bitwise_rightRotate(41),
-                );
+                ];
                 $s1 = $temp[0]->bitwise_xor($temp[1]);
                 $s1 = $s1->bitwise_xor($temp[2]);
-                $temp = array(
+                $temp = [
                     $e->bitwise_and($f),
                     $g->bitwise_and($e->bitwise_not()),
-                );
+                ];
                 $ch = $temp[0]->bitwise_xor($temp[1]);
                 $t1 = $h->add($s1);
                 $t1 = $t1->add($ch);
@@ -700,7 +700,7 @@ class Crypt_Hash
             }
 
             // Add this chunk's hash to result so far
-            $hash = array(
+            $hash = [
                 $hash[0]->add($a),
                 $hash[1]->add($b),
                 $hash[2]->add($c),
@@ -709,7 +709,7 @@ class Crypt_Hash
                 $hash[5]->add($f),
                 $hash[6]->add($g),
                 $hash[7]->add($h),
-            );
+            ];
         }
 
         // Produce the final hash value (big-endian)

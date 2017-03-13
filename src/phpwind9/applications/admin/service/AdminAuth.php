@@ -56,14 +56,14 @@ class AdminAuth
     {
         $count = $this->getAdminAuthDao()->count();
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $page = (int) $page;
         $countPage = ceil($count / $perPgae);
         $page = $page < 1 ? 1 : ($page > $countPage ? $countPage : $page);
         $list = $this->getAdminAuthDao()->find(($page - 1) * $perPgae, $perPgae);
 
-        return array($count, $list, $page);
+        return [$count, $list, $page];
     }
 
     /**

@@ -13,7 +13,7 @@
 class PwTaskCacheDao extends PwBaseDao
 {
     protected $_table = 'task_cache';
-    protected $_dataStruct = array('uid', 'task_ids');
+    protected $_dataStruct = ['uid', 'task_ids'];
 
     /**
      * 添加一条缓存记录.
@@ -43,6 +43,6 @@ class PwTaskCacheDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT `task_ids` FROM %s WHERE `uid` = ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($uid));
+        return $this->getConnection()->createStatement($sql)->getValue([$uid]);
     }
 }

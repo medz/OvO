@@ -17,59 +17,59 @@
  * 同时每个项可以设置一个setting_url：后台请求的扩展的设置
  * 比如credit：settting_url请求我的一个设置页面，我需要设置积分的类型及该积分的数量
  */
-return array(
-    'reward' => array(
-        'credit' => array(
+return [
+    'reward' => [
+        'credit' => [
             'title'       => '积分',
             'setting_url' => 'task/taskReward/run',
-        ),
-        'group' => array(
+        ],
+        'group' => [
             'title'       => '用户组',
             'setting_url' => 'task/taskReward/group',
-        ),
-    ),
-    'condition' => array(
-        'member' => array(
+        ],
+    ],
+    'condition' => [
+        'member' => [
             'title'    => '会员信息类',
-            'children' => array(
-                'profile' => array(
+            'children' => [
+                'profile' => [
                     'title'       => '完善资料',
                     'setting_url' => 'task/taskConditionMember/profile',
-                ),
-                'avatar' => array(
+                ],
+                'avatar' => [
                     'title'       => '上传头像',
                     'setting_url' => 'task/taskConditionMember/avatar',
-                ),
-                'msg' => array(
+                ],
+                'msg' => [
                     'title'       => '发送消息',
                     'setting_url' => 'task/taskConditionMember/sendMsg',
-                ),
-                'fans' => array(
+                ],
+                'fans' => [
                     'title'       => '求粉丝',
                     'setting_url' => 'task/taskConditionMember/fans',
-                ),
-                'punch' => array(
+                ],
+                'punch' => [
                     'title'       => '打卡签到',
                     'setting_url' => 'task/taskConditionMember/punch',
-                ),
-            ),
-        ),
-        'bbs' => array(
+                ],
+            ],
+        ],
+        'bbs' => [
             'title'    => '论坛操作类',
-            'children' => array(
-                'postThread' => array(
+            'children' => [
+                'postThread' => [
                     'title'       => '发帖子',
                     'setting_url' => 'task/taskConditionBbs/run',
-                ),
-                'reply' => array(
+                ],
+                'reply' => [
                     'title'       => '回复帖子',
                     'setting_url' => 'task/taskConditionBbs/reply',
-                ),
-                'like' => array(
+                ],
+                'like' => [
                     'title'       => '喜欢帖子',
                     'setting_url' => 'task/taskConditionBbs/like',
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];

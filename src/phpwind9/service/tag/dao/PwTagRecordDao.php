@@ -12,7 +12,7 @@ class PwTagRecordDao extends PwBaseDao
 {
     protected $_table = 'tag_record';
     protected $_table_category_relation = 'tag_category_relation';
-    protected $_dataStruct = array('tag_id', 'is_reply', 'update_time');
+    protected $_dataStruct = ['tag_id', 'is_reply', 'update_time'];
 
     /**
      * 添加.
@@ -38,7 +38,7 @@ class PwTagRecordDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET tag_id=? WHERE `tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($toTagId, $fromTagId));
+        return $smt->update([$toTagId, $fromTagId]);
     }
 
     /**
@@ -50,16 +50,16 @@ class PwTagRecordDao extends PwBaseDao
      */
     public function batchAddTagRecord($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v)) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['tag_id'],
                 intval($v['is_reply']),
                 $v['update_time'],
-            );
+            ];
         }
         $sql = $this->_bindSql('INSERT INTO %s (`tag_id`,`is_reply`,`update_time`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));
 
@@ -78,7 +78,7 @@ class PwTagRecordDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagId));
+        return $smt->update([$tagId]);
     }
 
     /**
@@ -107,7 +107,7 @@ class PwTagRecordDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `update_time` <?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($updateTime));
+        return $smt->update([$updateTime]);
     }
 
     /**
@@ -122,7 +122,7 @@ class PwTagRecordDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT `tag_id`,COUNT(*) AS cnt FROM %s GROUP BY `tag_id` ORDER BY cnt DESC %s ', $this->getTable(), $this->sqlLimit($num));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'tag_id');
+        return $smt->queryAll([], 'tag_id');
     }
 
     /**
@@ -139,6 +139,6 @@ class PwTagRecordDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM (%s) AS t1 LEFT JOIN %s AS t2 USING (tag_id) WHERE t2.`category_id` =? ORDER BY t1.`cnt` DESC '.$this->sqlLimit($num), $sql, $this->getTable($this->_table_category_relation));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($categoryId), 'tag_id');
+        return $smt->queryAll([$categoryId], 'tag_id');
     }
 }

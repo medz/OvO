@@ -6,8 +6,8 @@ class SController extends PwBaseController
     {
         $keywords = $this->getInput('keyword');
         if (!Wekit::C('site', 'search.isopen')) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('search/search/run', array('keyword' => $keywords)));
+            $this->forwardRedirect(WindUrlHelper::createUrl('search/search/run', ['keyword' => $keywords]));
         }
-        $this->forwardAction('app/index/run?app=search', array('keywords' => $keywords));
+        $this->forwardAction('app/index/run?app=search', ['keywords' => $keywords]);
     }
 }

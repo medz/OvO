@@ -49,7 +49,7 @@ class PwReplyDoNotice extends PwPostDoBase
     {
         $info = Wekit::load('thread.PwThread')->getThread($tid, PwThread::FETCH_MAIN);
         $param = $info['tid'];
-        $params = array();
+        $params = [];
         $params['replyUserid'] = $this->user->uid;
         $params['replyUsername'] = $this->user->username;
         $params['threadTitle'] = Pw::substrs(Pw::stripWindCode($info['subject']), 30);
@@ -72,7 +72,7 @@ class PwReplyDoNotice extends PwPostDoBase
     {
         $info = Wekit::load('thread.PwThread')->getPost($this->_rpid);
         $param = $info['pid'];
-        $params = array();
+        $params = [];
         $params['replyUserid'] = $this->user->uid;
         $params['replyUsername'] = $this->user->username;
         $info['content'] = preg_replace('/\[quote(=.+?\,\d+)?\].*?\[\/quote\]/is', '', $info['content']);

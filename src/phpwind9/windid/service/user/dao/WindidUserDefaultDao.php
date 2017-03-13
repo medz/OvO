@@ -17,7 +17,7 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
      */
     public function getUserByUid($uid)
     {
-        return array('uid' => $uid);
+        return ['uid' => $uid];
     }
 
     /* (non-PHPdoc)
@@ -27,7 +27,7 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
     {
         $result = $this->_getDao()->getUserByName($username);
 
-        return $result ? array('uid' => $result['uid']) : array();
+        return $result ? ['uid' => $result['uid']] : [];
     }
 
     /* (non-PHPdoc)
@@ -37,7 +37,7 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
     {
         $result = $this->_getDao()->getUserByEmail($email);
 
-        return $result ? array('uid' => $result['uid']) : array();
+        return $result ? ['uid' => $result['uid']] : [];
     }
 
     /* (non-PHPdoc)
@@ -45,9 +45,9 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
      */
     public function fetchUserByUid($uids)
     {
-        $info = array();
+        $info = [];
         foreach ($uids as $value) {
-            $info[$value] = array();
+            $info[$value] = [];
         }
 
         return $info;
@@ -59,9 +59,9 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
     public function fetchUserByName($usernames)
     {
         $data = $this->_getDao()->fetchUserByName($usernames);
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
-            $result[$key] = array('uid' => $key);
+            $result[$key] = ['uid' => $key];
         }
 
         return $result;
@@ -78,7 +78,7 @@ class WindidUserDefaultDao extends WindidBaseDao implements WindidUserInterface
     /* (non-PHPdoc)
      * @see WindidUserInterface::editUser()
      */
-    public function editUser($uid, $fields, $increaseFields = array())
+    public function editUser($uid, $fields, $increaseFields = [])
     {
         return false;
     }

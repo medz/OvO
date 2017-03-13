@@ -47,7 +47,7 @@ class PwAlipay extends PwPayAbstract
 
     public function getUrl(PwPayVo $vo)
     {
-        $param = array(
+        $param = [
             'payment_type' => '1',
 
             '_input_charset' => $this->charset,
@@ -61,7 +61,7 @@ class PwAlipay extends PwPayAbstract
 
             'extend_param' => 'isv^pw11',
             //'extra_common_param' => ''//$this->formatExtra($extra),
-        );
+        ];
 
         if (!$this->alipay_interface) {
             $param['service'] = 'trade_create_by_buyer';

@@ -26,7 +26,7 @@ class PwThreadDisplay extends PwBaseHookService
     public $tid;
     public $fid;
     public $isBM;
-    public $readdb = array();
+    public $readdb = [];
 
     public $user;    //PwUserBo
     public $thread;    //PwThreadBo
@@ -34,8 +34,8 @@ class PwThreadDisplay extends PwBaseHookService
     public $attach;    //PwAttachDisplay
 
     protected $_ds;
-    protected $users = array();
-    protected $area = array();
+    protected $users = [];
+    protected $area = [];
     protected $_floorName;
     protected $_definedFloorName;
 
@@ -69,19 +69,19 @@ class PwThreadDisplay extends PwBaseHookService
             return new PwError('BBS:forum.exists.not');
         }
         if (($result = $this->forum->allowVisit($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.visit.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.visit.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (($result = $this->forum->allowRead($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.read.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.read.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (!$this->forum->foruminfo['allow_read'] && !$this->user->getPermission('allow_read') && $_COOKIE) {
-            return new PwError('permission.read.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.read.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($this->thread->isDeleted()) {
             return new PwError('BBS:forum.thread.deleted');
         }
         if (!$this->thread->isChecked() && $this->thread->authorid != $this->user->uid && !$this->isBM) {
-            $permission = $this->user->getPermission('panel_bbs_manage', false, array());
+            $permission = $this->user->getPermission('panel_bbs_manage', false, []);
             if (!$permission['thread_check']) {
                 return new PwError('BBS:forum.thread.ischeck');
             }
@@ -98,11 +98,11 @@ class PwThreadDisplay extends PwBaseHookService
      */
     public function execute(PwReadDataSource $ds)
     {
-        PwHook::registerHook('s_PwUbbCode_convert', array(
+        PwHook::registerHook('s_PwUbbCode_convert', [
             'class'   => 'SRV:forum.srv.PwThreadDisplay',
             'method'  => 'escapeSpace',
             'loadway' => 'static',
-        ));
+        ]);
         $this->_ds = $ds;
         $ds->execute();
         $this->total = $ds->total;
@@ -223,7 +223,7 @@ class PwThreadDisplay extends PwBaseHookService
     public function getHeadguide()
     {
         return $this->forum->headguide()
-            .$this->forum->bulidGuide(array(Pw::substrs($this->thread->info['subject'], 30), WindUrlHelper::createUrl('bbs/read/run', array('tid' => $this->tid, 'fid' => $this->fid))));
+            .$this->forum->bulidGuide([Pw::substrs($this->thread->info['subject'], 30), WindUrlHelper::createUrl('bbs/read/run', ['tid' => $this->tid, 'fid' => $this->fid])]);
     }
 
     public function setUrlArg($key, $value)
@@ -271,7 +271,7 @@ class PwThreadDisplay extends PwBaseHookService
 
     public static function escapeSpace($str)
     {
-        $str = str_replace(array('  ', "\n ", "\n"), array(' &nbsp;', '<br />&nbsp;', '<br />'), $str);
+        $str = str_replace(['  ', "\n ", "\n"], [' &nbsp;', '<br />&nbsp;', '<br />'], $str);
         $str[0] === ' ' && $str = '&nbsp;'.ltrim($str);
 
         return $str;
@@ -294,20 +294,20 @@ class PwThreadDisplay extends PwBaseHookService
     {
         $tip = '<div class="shield">此帖已被屏蔽</div>';
         if (!$this->user->getPermission('operate_thread.shield', $this->isBM)) {
-            return array($tip, 0);
+            return [$tip, 0];
         }
 
-        return array($tip, 1);
+        return [$tip, 1];
     }
 
     protected function _bulidBanContent()
     {
         $tip = '<div class="shield">用户被禁言,该主题自动屏蔽!</div>';
         if (!$this->user->getPermission('operate_thread.ban', $this->isBM)) {
-            return array($tip, 0);
+            return [$tip, 0];
         }
 
-        return array($tip, 1);
+        return [$tip, 1];
     }
 
     protected function _bulidBbsSign($sign, $groupRight, $userstatus)
@@ -327,7 +327,7 @@ class PwThreadDisplay extends PwBaseHookService
 
     protected function _parseDefindFloorName($string)
     {
-        $array = array(0 => '楼主');
+        $array = [0 => '楼主'];
         $_tmp = explode("\n", $string);
         foreach ($_tmp as $value) {
             list($key, $name) = explode(':', trim($value));
@@ -349,13 +349,13 @@ class PwThreadDisplay extends PwBaseHookService
 
     protected function _getGuestInfo()
     {
-        $info = array(
+        $info = [
             'groupid'   => 2,
             'postnum'   => 0,
             'fans'      => 0,
             'follows'   => 0,
             'lastvisit' => Pw::getTime(),
-        );
+        ];
 
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $info['credit'.$key] = 0;

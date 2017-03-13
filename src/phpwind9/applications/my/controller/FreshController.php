@@ -19,7 +19,7 @@ class FreshController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/fresh/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/fresh/run')]);
         }
     }
 
@@ -33,7 +33,7 @@ class FreshController extends PwBaseController
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
         $gid = $this->getInput('gid');
-        $url = array();
+        $url = [];
         if ($gid) {
             $url['gid'] = $gid;
             $current = $gid;
@@ -69,7 +69,7 @@ class FreshController extends PwBaseController
         $type = Wekit::load('attention.srv.PwAttentionService')->getAllType($this->loginUser->uid);
 
         $allowUpload = $this->loginUser->getPermission('allow_upload');
-        if ($imgextsize = Pw::subArray(Wekit::C('attachment', 'extsize'), array('jpg', 'jpeg', 'png', 'gif', 'bmp'))) {
+        if ($imgextsize = Pw::subArray(Wekit::C('attachment', 'extsize'), ['jpg', 'jpeg', 'png', 'gif', 'bmp'])) {
             $maxSize = max($imgextsize).' KB';
             $filetypes = '*.'.implode(';*.', array_keys($imgextsize));
             $attachnum = intval(Wekit::C('attachment', 'attachnum'));
@@ -153,10 +153,10 @@ class FreshController extends PwBaseController
 
             $content = PwSimpleUbbCode::convert($content, 140, new PwUbbCodeConvertThread());
         }*/
-        $fresh = array();
+        $fresh = [];
         if ($transmit && ($newId = $reply->getNewFreshSrcId())) {
             $data = $reply->getData();
-            $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId($data['type'] == 3 ? 3 : 2, array($newId)));
+            $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId($data['type'] == 3 ? 3 : 2, [$newId]));
             $fresh = $freshDisplay->gather();
             $fresh = current($fresh);
         }
@@ -195,7 +195,7 @@ class FreshController extends PwBaseController
     {
         $fid = $this->getInput('fid');
         $_getHtml = $this->getInput('_getHtml', 'get');
-        list($content, $topictype, $subtopictype) = $this->getInput(array('content', 'topictype', 'sub_topictype'), 'post');
+        list($content, $topictype, $subtopictype) = $this->getInput(['content', 'topictype', 'sub_topictype'], 'post');
 
         $postAction = new PwTopicPost($fid);
         $pwpost = new PwPost($postAction);
@@ -218,7 +218,7 @@ class FreshController extends PwBaseController
         if (!$postDm->getField('ischeck')) {
             $this->showMessage('BBS:post.topic.ischeck');
         } elseif ($_getHtml == 1) {
-            $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId(1, array($pwpost->getNewId())));
+            $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId(1, [$pwpost->getNewId()]));
             $fresh = $freshDisplay->gather();
             $fresh = current($fresh);
             $this->setOutput($fresh, 'fresh');

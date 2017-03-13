@@ -11,9 +11,9 @@ class PwTagThreads extends PwTagAction
     public function getContents($ids)
     {
         $threads = $this->_getThreadDs()->fetchThread($ids, PwThread::FETCH_ALL);
-        $array = array();
+        $array = [];
         if ($threads) {
-            $fids = array();
+            $fids = [];
             foreach ($threads as $v) {
                 $fids[] = $v['fid'];
             }
@@ -50,7 +50,7 @@ class PwTagThreads extends PwTagAction
      */
     protected function getForbidVisitForum(PwUserBo $user, $forums)
     {
-        $fids = array();
+        $fids = [];
         foreach ($forums as $key => $value) {
             if (($value['allow_visit'] && !$user->inGroup(explode(',', $value['allow_visit']))) || ($value['allow_read'] && !$user->inGroup(explode(',', $value['allow_read'])))) {
                 $fids[] = $value['fid'];

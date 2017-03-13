@@ -16,7 +16,7 @@ Wind::import('APPCENTER:service.srv.helper.PwManifest');
 class PwUninstallApplication
 {
     protected $_appId = '';
-    private $_log = array();
+    private $_log = [];
 
     /**
      * @param string $appId
@@ -85,7 +85,7 @@ class PwUninstallApplication
      */
     public function getInstallLog($key)
     {
-        return isset($this->_log[$key]) ? $this->_log[$key] : array();
+        return isset($this->_log[$key]) ? $this->_log[$key] : [];
     }
 
     /**

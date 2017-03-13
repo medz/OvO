@@ -12,7 +12,7 @@ class PwTagCategoryDao extends PwBaseDao
 {
     protected $_table = 'tag_category';
     protected $_pk = 'category_id';
-    protected $_dataStruct = array('category_id', 'category_name', 'alias', 'vieworder', 'tag_count', 'seo_title', 'seo_description', 'seo_keywords');
+    protected $_dataStruct = ['category_id', 'category_name', 'alias', 'vieworder', 'tag_count', 'seo_title', 'seo_description', 'seo_keywords'];
 
     /**
      * 添加一条分类.
@@ -60,16 +60,16 @@ class PwTagCategoryDao extends PwBaseDao
      */
     public function addCategorys($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v) || !$v['category_name']) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['category_name'],
                 $v['alias'],
                 $v['vieworder'],
-            );
+            ];
         }
         if (!is_array($array) || !count($array)) {
             return false;
@@ -88,17 +88,17 @@ class PwTagCategoryDao extends PwBaseDao
      */
     public function updateCategorys($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $v) {
             if (!$this->_filterStruct($v) || !$v['category_id']) {
                 continue;
             }
-            $array[] = array(
+            $array[] = [
                 $v['category_id'],
                 $v['category_name'],
                 $v['alias'],
                 $v['vieworder'],
-            );
+            ];
         }
         if (!is_array($array) || !count($array)) {
             return false;
@@ -130,7 +130,7 @@ class PwTagCategoryDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s ORDER BY `vieworder` ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'category_id');
+        return $smt->queryAll([], 'category_id');
     }
 
     /**
@@ -143,6 +143,6 @@ class PwTagCategoryDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE category_id IN %s ORDER BY `vieworder` ASC', $this->getTable(), $this->sqlImplode($ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'category_id');
+        return $smt->queryAll([], 'category_id');
     }
 }

@@ -23,18 +23,18 @@ abstract class App_SearchAction
     protected function _checkKeywordCondition($keyword)
     {
         if (strlen($keyword) < 3) {
-            return array();
+            return [];
         }
         $keyword = trim(($keyword));
-        $keyword = str_replace(array('&#160;', '&#61;', '&nbsp;', '&#60;', '<', '>', '&gt;', '(', ')', '&#41;'), ' ', $keyword);
+        $keyword = str_replace(['&#160;', '&#61;', '&nbsp;', '&#60;', '<', '>', '&gt;', '(', ')', '&#41;'], ' ', $keyword);
         $ks = explode(' ', $keyword);
-        $keywords = array();
+        $keywords = [];
         foreach ($ks as $v) {
             $v = trim($v);
             ($v) && $keywords[] = $v;
         }
         if (!$keywords) {
-            return array();
+            return [];
         }
         $keywords = implode(' ', $keywords);
 

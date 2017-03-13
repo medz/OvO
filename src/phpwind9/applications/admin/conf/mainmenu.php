@@ -15,23 +15,23 @@ defined('WEKIT_VERSION') or exit(403);
  *
  * 节点定义: 'Key' => array('节点名称', 子菜单, 'icon', 'tip' ,'父节点key'),
  */
-return array(
+return [
     /*========为了演示，将后台导航菜单添加完善=========*/
 //	'offen' => array('常用', array()),
 //	'offen' => array('常用', '', '', '', ''),
 
     /**=====配置开始于此=====**/
-    'custom' => array('常用', array()),
-    'admin'  => array('创始人', array()),
+    'custom' => ['常用', []],
+    'admin'  => ['创始人', []],
 
-    'custom_set'    => array('常用菜单', 'custom/*', '', '', 'custom'),
-    'admin_founder' => array('创始人管理', 'founder/*', '', '', 'admin'),
-    'admin_auth'    => array('后台权限', 'auth,role/*', '', '', 'admin'),
-    'admin_safe'    => array('后台安全', 'safe/*', '', '', 'admin'),
+    'custom_set'    => ['常用菜单', 'custom/*', '', '', 'custom'],
+    'admin_founder' => ['创始人管理', 'founder/*', '', '', 'admin'],
+    'admin_auth'    => ['后台权限', 'auth,role/*', '', '', 'admin'],
+    'admin_safe'    => ['后台安全', 'safe/*', '', '', 'admin'],
 
     //混乱的配置，先统一，后续再系统规划整理
-    '_extensions' => array(
+    '_extensions' => [
         //'config' => array('resource' => 'APPS:config.conf.configmenu.php'),//全局
-    ),
-);
+    ],
+];
 /**=====配置结束于此=====**/

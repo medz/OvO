@@ -178,7 +178,7 @@ class Net_SSH2
      *
      * @var string
      */
-    public $errors = array();
+    public $errors = [];
 
     /**
      * Server Identifier.
@@ -386,7 +386,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $message_numbers = array();
+    public $message_numbers = [];
 
     /**
      * Disconnection Message 'reason codes' defined in RFC4253.
@@ -395,7 +395,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $disconnect_reasons = array();
+    public $disconnect_reasons = [];
 
     /**
      * SSH_MSG_CHANNEL_OPEN_FAILURE 'reason codes', defined in RFC4254.
@@ -404,7 +404,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $channel_open_failure_reasons = array();
+    public $channel_open_failure_reasons = [];
 
     /**
      * Terminal Modes.
@@ -414,7 +414,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $terminal_modes = array();
+    public $terminal_modes = [];
 
     /**
      * SSH_MSG_CHANNEL_EXTENDED_DATA's data_type_codes.
@@ -424,7 +424,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $channel_extended_data_type_codes = array();
+    public $channel_extended_data_type_codes = [];
 
     /**
      * Send Sequence Number.
@@ -458,7 +458,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $server_channels = array();
+    public $server_channels = [];
 
     /**
      * Channel Buffers.
@@ -471,7 +471,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $channel_buffers = array();
+    public $channel_buffers = [];
 
     /**
      * Channel Status.
@@ -482,7 +482,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $channel_status = array();
+    public $channel_status = [];
 
     /**
      * Packet Size.
@@ -493,7 +493,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $packet_size_client_to_server = array();
+    public $packet_size_client_to_server = [];
 
     /**
      * Message Number Log.
@@ -502,7 +502,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $message_number_log = array();
+    public $message_number_log = [];
 
     /**
      * Message Log.
@@ -511,7 +511,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $message_log = array();
+    public $message_log = [];
 
     /**
      * The Window Size.
@@ -534,7 +534,7 @@ class Net_SSH2
      *
      * @var array
      */
-    public $window_size_client_to_server = array();
+    public $window_size_client_to_server = [];
 
     /**
      * Server signature.
@@ -571,7 +571,7 @@ class Net_SSH2
      */
     public function Net_SSH2($host, $port = 22, $timeout = 10)
     {
-        $this->message_numbers = array(
+        $this->message_numbers = [
             1  => 'NET_SSH2_MSG_DISCONNECT',
             2  => 'NET_SSH2_MSG_IGNORE',
             3  => 'NET_SSH2_MSG_UNIMPLEMENTED',
@@ -601,8 +601,8 @@ class Net_SSH2
             98  => 'NET_SSH2_MSG_CHANNEL_REQUEST',
             99  => 'NET_SSH2_MSG_CHANNEL_SUCCESS',
             100 => 'NET_SSH2_MSG_CHANNEL_FAILURE',
-        );
-        $this->disconnect_reasons = array(
+        ];
+        $this->disconnect_reasons = [
             1  => 'NET_SSH2_DISCONNECT_HOST_NOT_ALLOWED_TO_CONNECT',
             2  => 'NET_SSH2_DISCONNECT_PROTOCOL_ERROR',
             3  => 'NET_SSH2_DISCONNECT_KEY_EXCHANGE_FAILED',
@@ -618,16 +618,16 @@ class Net_SSH2
             13 => 'NET_SSH2_DISCONNECT_AUTH_CANCELLED_BY_USER',
             14 => 'NET_SSH2_DISCONNECT_NO_MORE_AUTH_METHODS_AVAILABLE',
             15 => 'NET_SSH2_DISCONNECT_ILLEGAL_USER_NAME',
-        );
-        $this->channel_open_failure_reasons = array(
+        ];
+        $this->channel_open_failure_reasons = [
             1 => 'NET_SSH2_OPEN_ADMINISTRATIVELY_PROHIBITED',
-        );
-        $this->terminal_modes = array(
+        ];
+        $this->terminal_modes = [
             0 => 'NET_SSH2_TTY_OP_END',
-        );
-        $this->channel_extended_data_type_codes = array(
+        ];
+        $this->channel_extended_data_type_codes = [
             1 => 'NET_SSH2_EXTENDED_DATA_STDERR',
-        );
+        ];
 
         $this->_define_array(
             $this->message_numbers,
@@ -635,8 +635,8 @@ class Net_SSH2
             $this->channel_open_failure_reasons,
             $this->terminal_modes,
             $this->channel_extended_data_type_codes,
-            array(60 => 'NET_SSH2_MSG_USERAUTH_PASSWD_CHANGEREQ'),
-            array(60 => 'NET_SSH2_MSG_USERAUTH_PK_OK')
+            [60 => 'NET_SSH2_MSG_USERAUTH_PASSWD_CHANGEREQ'],
+            [60 => 'NET_SSH2_MSG_USERAUTH_PK_OK']
         );
 
         $this->fsock = @fsockopen($host, $port, $errno, $errstr, $timeout);
@@ -663,7 +663,7 @@ class Net_SSH2
             $temp .= fgets($this->fsock, 255);
         }
 
-        $ext = array();
+        $ext = [];
         if (extension_loaded('mcrypt')) {
             $ext[] = 'mcrypt';
         }
@@ -727,17 +727,17 @@ class Net_SSH2
      */
     public function _key_exchange($kexinit_payload_server)
     {
-        static $kex_algorithms = array(
+        static $kex_algorithms = [
             'diffie-hellman-group1-sha1', // REQUIRED
             'diffie-hellman-group14-sha1', // REQUIRED
-        );
+        ];
 
-        static $server_host_key_algorithms = array(
+        static $server_host_key_algorithms = [
             'ssh-rsa', // RECOMMENDED  sign   Raw RSA Key
             'ssh-dss',  // REQUIRED     sign   Raw DSS Key
-        );
+        ];
 
-        static $encryption_algorithms = array(
+        static $encryption_algorithms = [
             // from <http://tools.ietf.org/html/rfc4345#section-4>:
             'arcfour256',
             'arcfour128',
@@ -756,20 +756,20 @@ class Net_SSH2
 
             '3des-cbc',   // REQUIRED          three-key 3DES in CBC mode
             'none',        // OPTIONAL          no encryption; NOT RECOMMENDED
-        );
+        ];
 
-        static $mac_algorithms = array(
+        static $mac_algorithms = [
             'hmac-sha1-96', // RECOMMENDED     first 96 bits of HMAC-SHA1 (digest length = 12, key length = 20)
             'hmac-sha1',    // REQUIRED        HMAC-SHA1 (digest length = key length = 20)
             'hmac-md5-96',  // OPTIONAL        first 96 bits of HMAC-MD5 (digest length = 12, key length = 16)
             'hmac-md5',     // OPTIONAL        HMAC-MD5 (digest length = key length = 16)
             'none',          // OPTIONAL        no MAC; NOT RECOMMENDED
-        );
+        ];
 
-        static $compression_algorithms = array(
+        static $compression_algorithms = [
             'none',   // REQUIRED        no compression
             //'zlib' // OPTIONAL        ZLIB (LZ77) compression
-        );
+        ];
 
         static $str_kex_algorithms, $str_server_host_key_algorithms,
                $encryption_algorithms_server_to_client, $mac_algorithms_server_to_client, $compression_algorithms_server_to_client,
@@ -1372,10 +1372,10 @@ class Net_SSH2
             return false;
         }
 
-        $publickey = array(
+        $publickey = [
             'e' => $publickey['e']->toBytes(true),
             'n' => $publickey['n']->toBytes(true),
-        );
+        ];
         $publickey = pack('Na*Na*Na*',
             strlen('ssh-rsa'), 'ssh-rsa', strlen($publickey['e']), $publickey['e'], strlen($publickey['n']), $publickey['n']
         );
@@ -1768,7 +1768,7 @@ class Net_SSH2
                         return $data;
                     }
                     if (!isset($this->channel_buffers[$client_channel])) {
-                        $this->channel_buffers[$client_channel] = array();
+                        $this->channel_buffers[$client_channel] = [];
                     }
                     $this->channel_buffers[$client_channel][] = $data;
                     break;
@@ -1783,7 +1783,7 @@ class Net_SSH2
                         return $data;
                     }
                     if (!isset($this->channel_buffers[$client_channel])) {
-                        $this->channel_buffers[$client_channel] = array();
+                        $this->channel_buffers[$client_channel] = [];
                     }
                     $this->channel_buffers[$client_channel][] = $data;
                     break;

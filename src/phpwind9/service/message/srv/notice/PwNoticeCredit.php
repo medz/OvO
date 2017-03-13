@@ -20,12 +20,12 @@ class PwNoticeCredit extends PwNoticeAction
      */
     public function buildTitle($param = 0, $extendParams = null, $aggregatedNotice = null)
     {
-        $params = array();
+        $params = [];
         $msg = '';
         switch ($extendParams['change_type']) {
             //转账
             case 'transfer':
-                $params['{username}'] = '<a href="'.WindUrlHelper::createUrl('space/index/run', array('uid' => $extendParams['fromUid'])).'">'.$extendParams['fromUserName'].'</a>';
+                $params['{username}'] = '<a href="'.WindUrlHelper::createUrl('space/index/run', ['uid' => $extendParams['fromUid']]).'">'.$extendParams['fromUserName'].'</a>';
                 $params['{num}'] = $extendParams['num'];
                 $params['{unit}'] = $extendParams['unit'];
                 $params['{credit}'] = $extendParams['credit'];

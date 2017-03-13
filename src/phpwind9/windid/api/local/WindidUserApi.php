@@ -166,7 +166,7 @@ class WindidUserApi
         }
         $uid = (int) $result;
         WindidApi::api('avatar')->defaultAvatar($uid);
-        $this->_getNotifyService()->send('addUser', array('uid' => $uid), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('addUser', ['uid' => $uid], WINDID_CLIENT_ID);
 
         return $uid;
     }
@@ -204,7 +204,7 @@ class WindidUserApi
         if ($result instanceof WindidError) {
             return $result->getCode();
         }
-        $this->_getNotifyService()->send('editUser', array('uid' => $dm->uid, 'changepwd' => $dm->password ? 1 : 0), WINDID_CLIENT_ID);
+        $this->_getNotifyService()->send('editUser', ['uid' => $dm->uid, 'changepwd' => $dm->password ? 1 : 0], WINDID_CLIENT_ID);
 
         return WindidUtility::result(true);
     }
@@ -218,7 +218,7 @@ class WindidUserApi
     {
         $result = false;
         if ($this->_getUserDs()->deleteUser($uid)) {
-            $this->_getNotifyService()->send('deleteUser', array('uid' => $uid), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('deleteUser', ['uid' => $uid], WINDID_CLIENT_ID);
             $result = true;
         }
 
@@ -235,7 +235,7 @@ class WindidUserApi
         $result = false;
         if ($this->_getUserDs()->batchDeleteUser($uids)) {
             foreach ($uids as $uid) {
-                $this->_getNotifyService()->send('deleteUser', array('uid' => $uid), WINDID_CLIENT_ID);
+                $this->_getNotifyService()->send('deleteUser', ['uid' => $uid], WINDID_CLIENT_ID);
             }
             $result = true;
         }
@@ -279,7 +279,7 @@ class WindidUserApi
             return $result->getCode();
         }
         if ($result) {
-            $this->_getNotifyService()->send('editCredit', array('uid' => $uid), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('editCredit', ['uid' => $uid], WINDID_CLIENT_ID);
         }
 
         return WindidUtility::result($result);
@@ -292,7 +292,7 @@ class WindidUserApi
             return $result->getCode();
         }
         if ($result) {
-            $this->_getNotifyService()->send('editCredit', array('uid' => $dm->uid), WINDID_CLIENT_ID);
+            $this->_getNotifyService()->send('editCredit', ['uid' => $dm->uid], WINDID_CLIENT_ID);
         }
 
         return WindidUtility::result($result);

@@ -341,7 +341,7 @@ class Net_SSH1
      *
      * @var array
      */
-    public $supported_ciphers = array(
+    public $supported_ciphers = [
         NET_SSH1_CIPHER_NONE       => 'No encryption',
         NET_SSH1_CIPHER_IDEA       => 'IDEA in CFB mode',
         NET_SSH1_CIPHER_DES        => 'DES in CBC mode',
@@ -349,7 +349,7 @@ class Net_SSH1
         NET_SSH1_CIPHER_BROKEN_TSS => 'TRI\'s Simple Stream encryption CBC',
         NET_SSH1_CIPHER_RC4        => 'RC4',
         NET_SSH1_CIPHER_BLOWFISH   => 'Blowfish',
-    );
+    ];
 
     /**
      * Supported Authentications.
@@ -360,12 +360,12 @@ class Net_SSH1
      *
      * @var array
      */
-    public $supported_authentications = array(
+    public $supported_authentications = [
         NET_SSH1_AUTH_RHOSTS     => '.rhosts or /etc/hosts.equiv',
         NET_SSH1_AUTH_RSA        => 'pure RSA authentication',
         NET_SSH1_AUTH_PASSWORD   => 'password authentication',
         NET_SSH1_AUTH_RHOSTS_RSA => '.rhosts with RSA host authentication',
-    );
+    ];
 
     /**
      * Server Identification.
@@ -469,32 +469,32 @@ class Net_SSH1
         if ($server_key_public_modulus->compare($host_key_public_modulus) < 0) {
             $double_encrypted_session_key = $this->_rsa_crypt(
                 $double_encrypted_session_key,
-                array(
+                [
                     $server_key_public_exponent,
                     $server_key_public_modulus,
-                )
+                ]
             );
             $double_encrypted_session_key = $this->_rsa_crypt(
                 $double_encrypted_session_key,
-                array(
+                [
                     $host_key_public_exponent,
                     $host_key_public_modulus,
-                )
+                ]
             );
         } else {
             $double_encrypted_session_key = $this->_rsa_crypt(
                 $double_encrypted_session_key,
-                array(
+                [
                     $host_key_public_exponent,
                     $host_key_public_modulus,
-                )
+                ]
             );
             $double_encrypted_session_key = $this->_rsa_crypt(
                 $double_encrypted_session_key,
-                array(
+                [
                     $server_key_public_exponent,
                     $server_key_public_modulus,
-                )
+                ]
             );
         }
 
@@ -777,7 +777,7 @@ class Net_SSH1
             return false;
         }
 
-        $read = array($this->fsock);
+        $read = [$this->fsock];
         $write = $except = null;
         if (stream_select($read, $write, $except, 0)) {
             $response = $this->_get_binary_packet();
@@ -863,10 +863,10 @@ class Net_SSH1
         //    return false;
         //}
 
-        return array(
+        return [
             NET_SSH1_RESPONSE_TYPE => ord($type),
             NET_SSH1_RESPONSE_DATA => $data,
-        );
+        ];
     }
 
     /**
@@ -923,7 +923,7 @@ class Net_SSH1
      */
     public function _crc($data)
     {
-        static $crc_lookup_table = array(
+        static $crc_lookup_table = [
             0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA,
             0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
             0x0EDB8832, 0x79DCB8A4, 0xE0D5E91E, 0x97D2D988,
@@ -988,7 +988,7 @@ class Net_SSH1
             0xBAD03605, 0xCDD70693, 0x54DE5729, 0x23D967BF,
             0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94,
             0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D,
-        );
+        ];
 
         // For this function to yield the same output as PHP's crc32 function, $crc would have to be
         // set to 0xFFFFFFFF, initially - not 0x00000000 as it currently is.

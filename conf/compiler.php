@@ -9,56 +9,56 @@ defined('WEKIT_VERSION') or exit(403);
  * @copyright Copyright &copy; 2003-2010 phpwind.com
  * @license
  */
-return array(
-    'support-tags' => array(
-        'design' => array(
+return [
+    'support-tags' => [
+        'design' => [
             'tag'      => 'design',
             'compiler' => PwTemplateCompilerDesign::class,
-        ),
-        'portal' => array(
+        ],
+        'portal' => [
             'tag'      => 'pw',
             'compiler' => PwTemplateCompilerPortal::class,
             'pattern'  => '/\<pw-start\/>(.+)<pw-end\/>/isU',
-        ),
-        'page' => array(
+        ],
+        'page' => [
             'tag'      => 'page',
             'compiler' => PwTemplateCompilerPage::class,
-        ),
-        'component' => array(
+        ],
+        'component' => [
             'tag'      => 'component',
             'compiler' => PwTemplateCompilerComponent::class,
-        ),
-        'hook' => array(
+        ],
+        'hook' => [
             'tag'      => 'hook',
             'compiler' => PwTemplateCompilerHook::class,
-        ),
-        'config' => array(
+        ],
+        'config' => [
             'tag'      => 'config',
             'compiler' => PwTemplateCompilerConfig::class,
             'pattern'  => '/{@C:[^\}]*}/i',
-        ),
-        'themeUrl' => array(
+        ],
+        'themeUrl' => [
             'tag'      => 'themeUrl',
             'compiler' => PwTemplateCompilerThemeUrl::class,
             'pattern'  => '/{@theme:[^\}]*}/i',
-        ),
-        'url' => array(
+        ],
+        'url' => [
             'tag'      => 'url',
             'compiler' => PwTemplateCompilerUrlCreater::class,
             'pattern'  => '/{@url:[^\}]*}/i',
-        ),
-        'segment' => array(
+        ],
+        'segment' => [
             'tag'      => 'segment',
             'compiler' => PwTemplateCompilerSegment::class,
-        ),
-        'advertisement' => array(
+        ],
+        'advertisement' => [
             'tag'      => 'advertisement',
             'compiler' => PwTemplateCompilerAdvertisement::class,
-        ),
-        'csrftoken' => array(
+        ],
+        'csrftoken' => [
             'tag'      => 'csrftoken',
             'compiler' => PwTemplateCompilerCsrftoken::class,
             'pattern'  => '/<\/form>/i',
-        ),
-    ),
-);
+        ],
+    ],
+];

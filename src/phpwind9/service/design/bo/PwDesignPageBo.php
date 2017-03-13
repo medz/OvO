@@ -12,8 +12,8 @@ class PwDesignPageBo
 {
     public $pageid;
     private $_module_pre = 'J_mod_';
-    private $_pageInfo = array();
-    private $_cronMeduleId = array();
+    private $_pageInfo = [];
+    private $_cronMeduleId = [];
 
     public function __construct($pageid = null)
     {
@@ -47,7 +47,7 @@ class PwDesignPageBo
 
     public function getPageModules()
     {
-        return $this->_pageInfo['module_ids'] ? explode(',', $this->_pageInfo['module_ids']) : array();
+        return $this->_pageInfo['module_ids'] ? explode(',', $this->_pageInfo['module_ids']) : [];
     }
 
     public function getPageId($router, $pageName = '', $uniqueId = 0)
@@ -126,14 +126,14 @@ class PwDesignPageBo
         return '<style type="text/css">'.$css."\r\n</style>";
     }
 
-    public function getDataByModules($moduleids = array())
+    public function getDataByModules($moduleids = [])
     {
         foreach ($moduleids as &$_moduleid) {
             $_moduleid = (int) $_moduleid;
         }
         $ds = $this->_getDataDs();
         $time = Pw::getTime();
-        $orderData = $delDataid = $cronMeduleId = $_data = array();
+        $orderData = $delDataid = $cronMeduleId = $_data = [];
         $data = $ds->fetchDataByModuleid($moduleids);
         foreach ($data as $v) {
             $key = $this->_module_pre.$v['module_id'];
@@ -174,7 +174,7 @@ class PwDesignPageBo
         if (!$moduleids) {
             return false;
         }
-        $diff = $_data = array();
+        $diff = $_data = [];
         $time = Pw::getTime();
         $ds = Wekit::load('design.PwDesignCron');
         $crons = $ds->fetchCron($moduleids);
@@ -188,7 +188,7 @@ class PwDesignPageBo
             return false;
         }
         foreach ($diff as $v) {
-            $_data[] = array('module_id' => $v, 'created_time' => $time);
+            $_data[] = ['module_id' => $v, 'created_time' => $time];
         }
         if ($diff) {
             $ds->batchAdd($_data);
@@ -201,7 +201,7 @@ class PwDesignPageBo
 
     private function _getStructureCss()
     {
-        $css = array();
+        $css = [];
 
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $structureNames = explode(',', $this->_pageInfo['struct_names']);
@@ -223,7 +223,7 @@ class PwDesignPageBo
 
     private function _getModuleCss()
     {
-        $css = array();
+        $css = [];
 
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $moduleIds = explode(',', $this->_pageInfo['module_ids']);

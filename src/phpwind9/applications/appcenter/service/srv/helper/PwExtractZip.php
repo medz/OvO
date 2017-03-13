@@ -29,7 +29,7 @@ class PwExtractZip
         if (!$zipPack || !is_file($zipPack)) {
             return false;
         }
-        $extractedData = array();
+        $extractedData = [];
         $this->fileHandle = fopen($zipPack, 'rb');
         $filesize = sprintf('%u', filesize($zipPack));
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize);
@@ -55,11 +55,11 @@ class PwExtractZip
                 if ($data === false) {
                     continue;
                 }
-                $extractedData[$i] = array(
+                $extractedData[$i] = [
                     'filename'  => $centralDirectoryData['filename'],
                     'timestamp' => $centralDirectoryData['time'],
                     'data'      => $data,
-                );
+                ];
             } elseif ($aFile === $centralDirectoryData['filename']) {
                 $data = $this->_readLocalFileHeaderAndData($centralDirectoryData);
                 if ($data === false) {
@@ -79,7 +79,7 @@ class PwExtractZip
         if (!$zipPack || !is_file($zipPack)) {
             return false;
         }
-        $extractedData = array();
+        $extractedData = [];
         $this->fileHandle = fopen($zipPack, 'rb');
         $filesize = sprintf('%u', filesize($zipPack));
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize);
@@ -112,7 +112,7 @@ class PwExtractZip
         if (!$zipPack || !is_file($zipPack)) {
             return false;
         }
-        $extractedData = array();
+        $extractedData = [];
         $target = rtrim($target, '/');
         WindFolder::mkRecur($target, 0777);
         $this->fileHandle = fopen($zipPack, 'rb');

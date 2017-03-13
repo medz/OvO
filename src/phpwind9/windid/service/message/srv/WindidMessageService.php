@@ -12,7 +12,7 @@ Wind::import('WSRV:message.dm.WindidMessageDm');
  */
 class WindidMessageService
 {
-    private $_blackList = array();
+    private $_blackList = [];
 
     /**
      * èŽ·å–æœªè¯»æ¶ˆæ¯æ•°.
@@ -37,7 +37,7 @@ class WindidMessageService
      *
      * @return æ ‡è®°æˆåŠŸçš„æ¡æ•°
      */
-    public function read($uid, $dialogId, $messageIds = array())
+    public function read($uid, $dialogId, $messageIds = [])
     {
         $dialog = $this->_getMessageDs()->getDialog($dialogId);
         if (!$dialog || $dialog['to_uid'] != $uid) {
@@ -57,7 +57,7 @@ class WindidMessageService
     public function readDialog($dialogIds)
     {
         if (!is_array($dialogIds)) {
-            $dialogIds = array($dialogIds);
+            $dialogIds = [$dialogIds];
         }
         Wind::import('WSRV:message.dm.WindidMessageDm');
         $ds = $this->_getMessageDs();
@@ -231,10 +231,10 @@ class WindidMessageService
         return true;
     }
 
-    public function delete($uid, $dialogId, $messageIds = array())
+    public function delete($uid, $dialogId, $messageIds = [])
     {
         if (!is_array($messageIds)) {
-            $messageIds = array($messageIds);
+            $messageIds = [$messageIds];
         }
         $dialog = $this->_getMessageDs()->getDialog($dialogId);
         if (!$dialog || $dialog['to_uid'] != $uid) {
@@ -260,7 +260,7 @@ class WindidMessageService
         if (!$relations) {
             return true;
         }
-        $dialogIds = $relationIds = array();
+        $dialogIds = $relationIds = [];
         foreach ($relations as $v) {
             $dialogIds[] = $v['dialog_id'];
             $relationIds[$v['dialog_id']][] = $v['id'];
@@ -279,7 +279,7 @@ class WindidMessageService
             $this->resetUserMessages($dialog['to_uid']);
             $dialog_relation = $this->_getMessageDs()->getDialogMessages($dialogId, 1);
             if (!$dialog_relation) {
-                $this->_getMessageDs()->batchDeleteDialog(array($dialogId));
+                $this->_getMessageDs()->batchDeleteDialog([$dialogId]);
             }
         }
         $this->_getMessageDs()->batchDeleteMessage($messageIds);
@@ -379,9 +379,9 @@ class WindidMessageService
     public function searchMessage($search, $start = 0, $limit = 10)
     {
         if (!is_array($search)) {
-            return array(0, array());
+            return [0, []];
         }
-        $array = array('fromuid', 'keyword', 'username', 'starttime', 'endtime');
+        $array = ['fromuid', 'keyword', 'username', 'starttime', 'endtime'];
         Wind::import('WSRV:message.srv.vo.WindidMessageSo');
         $vo = new WindidMessageSo();
         foreach ($search as $k => $v) {
@@ -400,24 +400,24 @@ class WindidMessageService
         }
         $count = $this->_getMessageDs()->countMessage($vo);
         if ($count < 1) {
-            return array(0, array());
+            return [0, []];
         }
         $messages = $this->_getMessageDs()->searchMessage($vo, $start, $limit);
-        $uids = $array = array();
+        $uids = $array = [];
         foreach ($messages as $v) {
             $uids[] = $v['from_uid'];
         }
         // ç»„è£…ç”¨æˆ·æ•°æ®
         $userInfos = $this->_getUserDs()->fetchUserByUid($uids);
         if (!$userInfos) {
-            return array(0, array());
+            return [0, []];
         }
         foreach ($messages as $v) {
             $v['username'] = $userInfos[$v['from_uid']]['username'];
             $array[] = $v;
         }
 
-        return array($count, $array);
+        return [$count, $array];
     }
 
     protected function _updateUser($uid, $unreads)
@@ -442,8 +442,8 @@ class WindidMessageService
      */
     private function _getLastMessage($fromUid, $toUid, $messageContent)
     {
-        $lastMessage = array();
-        $userInfos = $this->_getUserDs()->fetchUserByUid(array($fromUid, $toUid));
+        $lastMessage = [];
+        $userInfos = $this->_getUserDs()->fetchUserByUid([$fromUid, $toUid]);
         if (!$userInfos) {
             return $lastMessage;
         }

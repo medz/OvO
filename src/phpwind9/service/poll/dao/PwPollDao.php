@@ -15,7 +15,7 @@ class PwPollDao extends PwBaseDao
 {
     protected $_table = 'app_poll';
     protected $_pk = 'poll_id';
-    protected $_dataStruct = array('poll_id', 'voter_num', 'isafter_view', 'isinclude_img', 'option_limit', 'regtime_limit', 'created_userid', 'app_type', 'expired_time', 'created_time');
+    protected $_dataStruct = ['poll_id', 'voter_num', 'isafter_view', 'isinclude_img', 'option_limit', 'regtime_limit', 'created_userid', 'app_type', 'expired_time', 'created_time'];
 
     public function getPoll($pollId)
     {
@@ -37,7 +37,7 @@ class PwPollDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_time > ? AND created_time < ? %s %s ', $this->getTable(), $orderby, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($startTime, $endTime));
+        return $smt->queryAll([$startTime, $endTime]);
     }
 
     public function getPollByUid($uid, $limit, $offset)
@@ -45,7 +45,7 @@ class PwPollDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE created_userid = ? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function fetchPoll($pollids)
@@ -74,7 +74,7 @@ class PwPollDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) FROM %s WHERE created_time > ? AND created_time < ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($startTime, $endTime));
+        return $smt->getValue([$startTime, $endTime]);
     }
 
     public function countPollByUid($uid)
@@ -82,7 +82,7 @@ class PwPollDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) as count FROM %s WHERE created_userid = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function countPollByUids($uids)
@@ -110,7 +110,7 @@ class PwPollDao extends PwBaseDao
 
     private function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'voter_num':

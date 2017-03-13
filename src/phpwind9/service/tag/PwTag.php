@@ -14,11 +14,11 @@ class PwTag
     const TYPE_THREAD_REPLY = 2; //话题类型-回复
     const TYPE_WEIBO = 3; //话题类型-微薄
 
-    public $typeMap = array(
+    public $typeMap = [
         self::TYPE_THREAD_TOPIC => 'threads',
         self::TYPE_THREAD_REPLY => 'posts',
         self::TYPE_WEIBO        => 'weibo',
-    );
+    ];
 
     /**
      * 添加一条话题.
@@ -63,7 +63,7 @@ class PwTag
      */
     public function batchUpdate($tagDms)
     {
-        $data = array();
+        $data = [];
         foreach ($tagDms as $dm) {
             if (!$dm instanceof PwTagDm) {
                 return new PwError('TAG:data_error');
@@ -101,10 +101,10 @@ class PwTag
         if ($tagId < 1) {
             return false;
         }
-        $data = array(
+        $data = [
             'tag_id'      => $tagId,
             'update_time' => $updateTime,
-        );
+        ];
 
         return $this->_getTagRecordDao()->addTagRecord($data);
     }
@@ -120,13 +120,13 @@ class PwTag
         if (!is_array($fields) || !$fields) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($fields as $v) {
-            $data[] = array(
+            $data[] = [
                 'tag_id'      => $v['tag_id'],
                 'is_reply'    => $v['is_reply'],
                 'update_time' => $v['update_time'],
-            );
+            ];
         }
 
         return $this->_getTagRecordDao()->batchAddTagRecord($data);
@@ -188,8 +188,8 @@ class PwTag
         if (!$data['param_id']) {
             return false;
         }
-        $result = (int) $this->_getTagRelationDao()->addRelation(array_merge(array('tag_id' => $dm->tag_id), $data));
-        $this->_getTagDao()->update($dm->tag_id, '', array('content_count' => $result));
+        $result = (int) $this->_getTagRelationDao()->addRelation(array_merge(['tag_id' => $dm->tag_id], $data));
+        $this->_getTagDao()->update($dm->tag_id, '', ['content_count' => $result]);
     }
 
     /**
@@ -203,12 +203,12 @@ class PwTag
         if (!is_array($dms) || !$dms) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($dms as $dm) {
             if (!$dm instanceof PwTagDm) {
                 return new PwError('TAG:data_error');
             }
-            $data[] = array_merge(array('tag_id' => $dm->tag_id), $dm->getData());
+            $data[] = array_merge(['tag_id' => $dm->tag_id], $dm->getData());
         }
         if (!$data) {
             return false;
@@ -251,7 +251,7 @@ class PwTag
             return false;
         }
         $result = $this->_getTagRelationDao()->batchDeleteRelationsByType($typeId, $paramId, $tagIds);
-        $this->_getTagDao()->batchUpdate($tagIds, array(), array('content_count' => -1));
+        $this->_getTagDao()->batchUpdate($tagIds, [], ['content_count' => -1]);
 
         return true;
     }
@@ -273,7 +273,7 @@ class PwTag
             return false;
         }
         $result = $this->_getTagRelationDao()->delete($typeId, $paramId, $tagId);
-        $result && $this->_getTagDao()->update($tagId, array(), array('content_count' => -$result));
+        $result && $this->_getTagDao()->update($tagId, [], ['content_count' => -$result]);
 
         return true;
     }
@@ -413,7 +413,7 @@ class PwTag
     public function getTagsByNames($tagNames)
     {
         if (!is_array($tagNames) || !count($tagNames)) {
-            return array();
+            return [];
         }
 
         return $this->_getTagDao()->getTagsByNames($tagNames);
@@ -464,7 +464,7 @@ class PwTag
     {
         $typeId = intval($typeId);
         if ($typeId < 1 || !is_array($paramIds) || !count($paramIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getTagDao()->getTagsByParamIds($typeId, $paramIds);
@@ -499,7 +499,7 @@ class PwTag
         $categoryId = intval($categoryId);
         $num = intval($num);
         if ($num < 1) {
-            return array();
+            return [];
         }
         if (!$categoryId) {
             return $this->_getTagRecordDao()->getHotTags($num);
@@ -522,7 +522,7 @@ class PwTag
         $typeId = intval($typeId);
         $ifcheck = intval($ifcheck);
         if ($tagId < 1 || $typeId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagRelationDao()->getByTagId($tagId, $typeId, $ifcheck, $offset, $num);
@@ -541,7 +541,7 @@ class PwTag
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagDao()->getAttentionTag($uid, $start, $limit);
@@ -557,7 +557,7 @@ class PwTag
     public function fetchTag($tagIds)
     {
         if (!is_array($tagIds) || !count($tagIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getTagDao()->fetchTag($tagIds);
@@ -576,7 +576,7 @@ class PwTag
         $typeId = intval($typeId);
         $paramId = intval($paramId);
         if ($typeId < 1 || $paramId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagRelationDao()->getByTypeId($typeId, $paramId);
@@ -608,7 +608,7 @@ class PwTag
     public function fetchByTypeIdAndParamIds($typeId, $paramIds)
     {
         if ($typeId < 1 || !is_array($paramIds) || !$paramIds) {
-            return array();
+            return [];
         }
 
         return $this->_getTagRelationDao()->fetchByTypeIdAndParamIds($typeId, $paramIds);

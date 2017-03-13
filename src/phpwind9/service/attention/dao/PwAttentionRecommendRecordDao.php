@@ -12,24 +12,24 @@
 class PwAttentionRecommendRecordDao extends PwBaseDao
 {
     protected $_table = 'attention_recommend_record';
-    protected $_dataStruct = array('uid', 'recommend_uid', 'same_uid');
+    protected $_dataStruct = ['uid', 'recommend_uid', 'same_uid'];
 
     public function getRecommendFriend($uid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT uid,recommend_uid,group_concat(same_uid) as same_uids,count(same_uid) as cnt FROM %s WHERE `uid` =? GROUP BY recommend_uid ORDER BY cnt DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $result = $this->getConnection()->createStatement($sql);
 
-        return $result->queryAll(array($uid));
+        return $result->queryAll([$uid]);
     }
 
     public function batchReplace($data)
     {
-        $fields = array();
+        $fields = [];
         foreach ($data as $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['uid'] = $_item['uid'];
             $_temp['recommend_uid'] = $_item['recommend_uid'];
             $_temp['same_uid'] = $_item['same_uid'];
@@ -59,7 +59,7 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     public function deleteByUidAndSameUid($uid, $same)
@@ -67,7 +67,7 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND same_uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $same));
+        return $smt->update([$uid, $same]);
     }
 
     public function deleteRecommendFriend($uid, $recommendUid)
@@ -75,6 +75,6 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND recommend_uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $recommendUid));
+        return $smt->update([$uid, $recommendUid]);
     }
 }

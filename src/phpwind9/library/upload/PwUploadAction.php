@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 abstract class PwUploadAction
 {
-    public $ftype = array();
-    public $attachs = array();
+    public $ftype = [];
+    public $attachs = [];
     public $isLocal = false;
 
     /**
@@ -83,7 +83,7 @@ abstract class PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -117,7 +117,7 @@ abstract class PwUploadAction
      */
     public function getWaterMarkInfo()
     {
-        return array();
+        return [];
     }
 
     /**

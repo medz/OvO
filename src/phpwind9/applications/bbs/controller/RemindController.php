@@ -43,7 +43,7 @@ class RemindController extends PwBaseController
             }
         }
         $uids = array_unique(array_merge((array) $reminds, (array) $follows));
-        Pw::echoJson(array('state' => 'success', 'data' => $this->_buildRemindUsers($uids)));
+        Pw::echoJson(['state' => 'success', 'data' => $this->_buildRemindUsers($uids)]);
         exit;
     }
 
@@ -68,7 +68,7 @@ class RemindController extends PwBaseController
      */
     public function getfollowAction()
     {
-        list($type, $page, $perpage) = $this->getInput(array('type', 'page', 'perpage'));
+        list($type, $page, $perpage) = $this->getInput(['type', 'page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -83,7 +83,7 @@ class RemindController extends PwBaseController
             $count = $this->loginUser->info['follows'];
         }
         $uids = array_keys($follows);
-        Pw::echoJson(array('state' => 'success', 'data' => $this->_buildRemindUsers($uids), 'page' => $page));
+        Pw::echoJson(['state' => 'success', 'data' => $this->_buildRemindUsers($uids), 'page' => $page]);
         exit;
     }
 
@@ -93,7 +93,7 @@ class RemindController extends PwBaseController
     private function _buildRemindUsers($uids)
     {
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN);
-        $users = array();
+        $users = [];
         foreach ($uids as $v) {
             if (!isset($userList[$v]['username'])) {
                 continue;

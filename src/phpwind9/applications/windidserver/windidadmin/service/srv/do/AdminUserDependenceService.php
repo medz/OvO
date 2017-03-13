@@ -70,7 +70,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
     {
         $user = $this->loadUser()->getUserByName($username);
 
-        return $user ? $user : array();
+        return $user ? $user : [];
     }
 
     /* (non-PHPdoc)

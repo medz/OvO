@@ -47,6 +47,6 @@ class PwTaskBbsPostDo extends PwPostDoBase implements PwTaskCompleteInterface
             $step['percent'] == '100%' && $isComplete = true;
         }
 
-        return array('isComplete' => $isComplete, 'step' => $step);
+        return ['isComplete' => $isComplete, 'step' => $step];
     }
 }

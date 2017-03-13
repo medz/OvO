@@ -13,7 +13,7 @@ Wind::import('WSRV:user.validator.WindidUserValidator');
 class WindidCreditDm extends PwBaseDm
 {
     public $uid;
-    private $_tmpData = array();
+    private $_tmpData = [];
 
     public function __construct($uid)
     {

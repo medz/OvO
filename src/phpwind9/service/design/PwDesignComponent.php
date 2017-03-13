@@ -14,7 +14,7 @@ class PwDesignComponent
     {
         $id = (int) $id;
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getComponent($id);
@@ -23,7 +23,7 @@ class PwDesignComponent
     public function getComponentByFlag($flag)
     {
         if (!$flag) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getComponentByFlag($flag);

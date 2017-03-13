@@ -15,14 +15,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwLikeLogDao extends PwBaseDao
 {
     protected $_table = 'like_log';
-    protected $_dataStruct = array('uid', 'likeid', 'tagids', 'created_time');
+    protected $_dataStruct = ['uid', 'likeid', 'tagids', 'created_time'];
 
     public function getInfo($logid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE logid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($logid));
+        return $smt->getOne([$logid]);
     }
 
     public function fetchInfo($logids)
@@ -30,7 +30,7 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE logid IN %s ', $this->getTable(), $this->sqlImplode($logids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'logid');
+        return $smt->queryAll([], 'logid');
     }
 
     public function getInfoByUidLikeid($uid, $likeid)
@@ -38,7 +38,7 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? AND likeid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $likeid));
+        return $smt->getOne([$uid, $likeid]);
     }
 
     public function getInfoList($uids, $offset, $limit)
@@ -46,7 +46,7 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s  WHERE uid IN %s  ORDER BY logid DESC %s ', $this->getTable(), $this->sqlImplode($uids), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'logid');
+        return $smt->queryAll([], 'logid');
     }
 
     public function getLikeCount($uid)
@@ -54,7 +54,7 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) AS count FROM %s WHERE uid = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function getLikeidCount($likeid, $time)
@@ -62,7 +62,7 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) AS count FROM (SELECT * FROM %s WHERE likeid = %s) AS tmpTable WHERE created_time > %s ', $this->getTable(), $likeid, $time);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array());
+        return $smt->getValue([]);
     }
 
     public function addInfo($data)
@@ -84,15 +84,15 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE logid = ? ', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($logid));
+        return $smt->update([$logid]);
     }
 
     public function updateReplyCount($logid)
     {
-        $sql = $this->_bindSql('UPDATE %s SET %s %s ', $this->getTable(), $this->sqlSingleIncrease(array('reply_count' => 1)), ' WHERE logid = ? ');
+        $sql = $this->_bindSql('UPDATE %s SET %s %s ', $this->getTable(), $this->sqlSingleIncrease(['reply_count' => 1]), ' WHERE logid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($logid));
+        return $smt->update([$logid]);
     }
 
     public function deleteInfo($logid)
@@ -100,6 +100,6 @@ class PwLikeLogDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE logid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($logid));
+        return $smt->update([$logid]);
     }
 }

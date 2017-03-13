@@ -22,11 +22,11 @@ class PwApplicationHelper
     public static function sqlParser($strSQL, $charset, $dbprefix, $engine)
     {
         if (empty($strSQL)) {
-            return array();
+            return [];
         }
 
-        $dataSQL = array();
-        $strSQL = str_replace(array("\r", "\n", "\r\n"), "\n", $strSQL);
+        $dataSQL = [];
+        $strSQL = str_replace(["\r", "\n", "\r\n"], "\n", $strSQL);
         $arrSQL = explode("\n", $strSQL);
         $query = '';
         foreach ($arrSQL as $value) {
@@ -46,10 +46,10 @@ class PwApplicationHelper
             $_tablename = preg_replace('/(pw_)(.*?)/i', $dbprefix.'\2', $tablename);
             if ($sql_key == 'CREATE') {
                 $query = preg_replace(
-                    array('/CREATE\s+TABLE(\s+IF\s+NOT\s+EXISTS)?/i', '/\)([\w\s=\x7f-\xff\']*);/i'),
-                    array(
+                    ['/CREATE\s+TABLE(\s+IF\s+NOT\s+EXISTS)?/i', '/\)([\w\s=\x7f-\xff\']*);/i'],
+                    [
                         'CREATE TABLE IF NOT EXISTS',
-                        ')ENGINE='.$engine.' DEFAULT CHARSET='.$charset, ), $query);
+                        ')ENGINE='.$engine.' DEFAULT CHARSET='.$charset, ], $query);
             }
             $query = str_replace($tablename, $_tablename, $query);
             $dataSQL[$sql_key][$_tablename] = trim($query, ';');
@@ -66,9 +66,9 @@ class PwApplicationHelper
      */
     public static function readInstallLog($logfile, $key = '')
     {
-        static $log = array();
+        static $log = [];
         if (!isset($log[$logfile])) {
-            $log[$logfile] = is_file($logfile) ? @include $logfile : array();
+            $log[$logfile] = is_file($logfile) ? @include $logfile : [];
         }
 
         return $key ? (isset($log[$logfile][$key]) ? $log[$logfile][$key] : '') : $log[$logfile];
@@ -142,7 +142,7 @@ class PwApplicationHelper
             } else {
                 rename($_tmp, $tmpdir.DIRECTORY_SEPARATOR.$realname);
             }
-            $result = array(true, $tmpdir.'/'.$realname);
+            $result = [true, $tmpdir.'/'.$realname];
         } else {
             $http->setRedirects(true);
             $result = $http->send();
@@ -172,14 +172,14 @@ class PwApplicationHelper
             WindFolder::mkRecur($tmpdir);
             $_tmp = $tmpdir.'/tmp.'.Pw::getTime();
             $fp = fopen($_tmp, 'w');
-            $opt = array(
+            $opt = [
                 CURLOPT_FILE           => $fp,
                 CURLOPT_HEADER         => 0,
                 CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => false, );
+                CURLOPT_SSL_VERIFYHOST => false, ];
             $http->send('GET', $opt);
             if ($error = $http->getError()) {
-                return array(false, $error);
+                return [false, $error];
             }
             $info = $http->getInfo();
             $realname = basename($info['url']);
@@ -191,9 +191,9 @@ class PwApplicationHelper
             } else {
                 rename($_tmp, $tmpdir.DIRECTORY_SEPARATOR.$realname);
             }
-            $result = array(true, $tmpdir.'/'.$realname);
+            $result = [true, $tmpdir.'/'.$realname];
         } else {
-            $result = $http->send('GET', array(CURLOPT_FOLLOWLOCATION => true));
+            $result = $http->send('GET', [CURLOPT_FOLLOWLOCATION => true]);
             if (function_exists('json_decode')) {
                 $result = json_decode($result, true);
             } else {
@@ -228,7 +228,7 @@ class PwApplicationHelper
      *
      * @return bool
      */
-    public static function copyRecursive($source, $target, $ignore = array())
+    public static function copyRecursive($source, $target, $ignore = [])
     {
         if (is_dir($source)) {
             WindFolder::mkRecur($target);
@@ -271,7 +271,7 @@ class PwApplicationHelper
         $_tmp = $tmpdir.'/tmp.'.Pw::getTime();
         $fp = fopen($_tmp, 'w');
         $curl = new WindHttpCurl($url);
-        $curl->send('GET', array(CURLOPT_FOLLOWLOCATION => true, CURLOPT_FILE => $fp));
+        $curl->send('GET', [CURLOPT_FOLLOWLOCATION => true, CURLOPT_FILE => $fp]);
         $info = $curl->getInfo();
         $realname = basename($info['url']);
         $curl->close();
@@ -326,7 +326,7 @@ class PwApplicationHelper
 
     public static function readRecursive($dir)
     {
-        static $files = array();
+        static $files = [];
         $objects = WindFolder::read($dir);
         foreach ($objects as $v) {
             if ($v[0] == '.') {

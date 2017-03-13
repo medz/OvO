@@ -17,7 +17,7 @@ class PwWordDao extends PwBaseDao
 {
     protected $_table = 'word';
     protected $_pk = 'word_id';
-    protected $_dataStruct = array('word_id', 'word_type', 'word', 'word_replace', 'word_from', 'created_time');
+    protected $_dataStruct = ['word_id', 'word_type', 'word', 'word_replace', 'word_from', 'created_time'];
 
     public function get($wordId)
     {
@@ -29,7 +29,7 @@ class PwWordDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s where word = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($word));
+        return $smt->getOne([$word]);
     }
 
     public function getByType($type)
@@ -37,7 +37,7 @@ class PwWordDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s where word_type = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type));
+        return $smt->queryAll([$type]);
     }
 
     public function fetch($wordIds)
@@ -74,7 +74,7 @@ class PwWordDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM %s where word_from = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($from));
+        return $smt->getValue([$from]);
     }
 
     public function add($fieldData)
@@ -91,21 +91,21 @@ class PwWordDao extends PwBaseDao
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE word_type = ?', $this->getTable());
 
-        return $this->getConnection()->createStatement($sql)->execute(array($type));
+        return $this->getConnection()->createStatement($sql)->execute([$type]);
     }
 
     public function deleteByKeyword($keyword)
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE word LIKE ?', $this->getTable());
 
-        return $this->getConnection()->createStatement($sql)->execute(array("%$keyword%"));
+        return $this->getConnection()->createStatement($sql)->execute(["%$keyword%"]);
     }
 
     public function deleteByTypeAndKeyword($type, $keyword)
     {
         $sql = $this->_bindSql('DELETE FROM %s WHERE word_type= ? AND word LIKE ?', $this->getTable());
 
-        return $this->getConnection()->createStatement($sql)->execute(array($type, "%$keyword%"));
+        return $this->getConnection()->createStatement($sql)->execute([$type, "%$keyword%"]);
     }
 
     public function update($wordId, $fieldData)
@@ -144,10 +144,10 @@ class PwWordDao extends PwBaseDao
     private function _buildCondition($condition)
     {
         if (!$condition) {
-            return array('', array());
+            return ['', []];
         }
 
-        $where = $params = array();
+        $where = $params = [];
         foreach ($condition as $key => $value) {
             switch ($key) {
                 case 'word_type':
@@ -163,7 +163,7 @@ class PwWordDao extends PwBaseDao
 
         $_whereSql = $where ? $this->_bindSql('WHERE %s', implode(' AND ', $where)) : '';
 
-        return array($_whereSql, $params);
+        return [$_whereSql, $params];
     }
 
     /**

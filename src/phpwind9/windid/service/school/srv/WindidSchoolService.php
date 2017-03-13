@@ -22,9 +22,9 @@ class WindidSchoolService
     public function searchSchool(WindidSchoolSo $searchSo, $limit = 10, $start = 0)
     {
         $list = $this->_getSchoolDs()->searchSchool($searchSo, $limit, $start);
-        $result = array();
+        $result = [];
         foreach ($list as $_item) {
-            $result[$_item['areaid']][$_item['schoolid']] = array('name' => $_item['name'], 'letter' => $_item['first_char']);
+            $result[$_item['areaid']][$_item['schoolid']] = ['name' => $_item['name'], 'letter' => $_item['first_char']];
         }
 
         return $result;

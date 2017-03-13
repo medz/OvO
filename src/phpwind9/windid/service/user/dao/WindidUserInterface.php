@@ -89,5 +89,5 @@ interface WindidUserInterface
      *
      * @return bool
      */
-    public function editUser($uid, $fields, $increaseFields = array());
+    public function editUser($uid, $fields, $increaseFields = []);
 }

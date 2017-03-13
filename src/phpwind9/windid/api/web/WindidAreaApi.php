@@ -12,38 +12,38 @@ class WindidAreaApi
 {
     public function getArea($id)
     {
-        $params = array(
+        $params = [
             'id' => $id,
-        );
+        ];
 
         return WindidApi::open('area/get', $params);
     }
 
     public function fetchArea($ids)
     {
-        $params = array(
+        $params = [
             'ids' => $ids,
-        );
+        ];
 
         return WindidApi::open('area/fetch', $params);
     }
 
     public function getByParentid($parentid)
     {
-        $params = array(
+        $params = [
             'parentid' => $parentid,
-        );
+        ];
 
         return WindidApi::open('area/getByParentid', $params);
     }
 
     public function getAll()
     {
-        $params = array();
+        $params = [];
 
         return WindidApi::open('area/getAll', $params);
         if (!is_array($result)) {
-            return array();
+            return [];
         }
 
         return $result;
@@ -51,57 +51,57 @@ class WindidAreaApi
 
     public function getAreaInfo($areaid)
     {
-        $params = array(
+        $params = [
             'areaid' => $areaid,
-        );
+        ];
 
         return WindidApi::open('area/getAreaInfo', $params);
     }
 
     public function fetchAreaInfo($areaids)
     {
-        $params = array(
+        $params = [
             'areaids' => $areaids,
-        );
+        ];
 
         return WindidApi::open('area/fetchAreaInfo', $params);
     }
 
     public function getAreaRout($areaid)
     {
-        $params = array(
+        $params = [
             'areaid' => $areaid,
-        );
+        ];
 
         return WindidApi::open('area/getAreaRout', $params);
     }
 
     public function fetchAreaRout($areaids)
     {
-        $params = array(
+        $params = [
             'areaids' => $areaids,
-        );
+        ];
 
         return WindidApi::open('area/fetchAreaRout', $params);
     }
 
     public function getAreaTree()
     {
-        return WindidApi::open('area/getAreaTree', array());
+        return WindidApi::open('area/getAreaTree', []);
     }
 
     public function updateArea(WindidAreaDm $dm)
     {
-        $params = array(
+        $params = [
             'id' => $dm->areaid,
-        );
+        ];
 
         return WindidApi::open('area/update', $params, $dm->getData());
     }
 
     public function batchAddArea($dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $k => $dm) {
             $data['id'][] = $dm->areaid;
             $_data = $dm->getData();
@@ -110,15 +110,15 @@ class WindidAreaApi
             }
         }
 
-        return WindidApi::open('area/batchadd', array(), $data);
+        return WindidApi::open('area/batchadd', [], $data);
     }
 
     public function deleteArea($areaid)
     {
-        $params = array(
+        $params = [
             'id' => $areaid,
-        );
+        ];
 
-        return WindidApi::open('area/delete', array(), $params);
+        return WindidApi::open('area/delete', [], $params);
     }
 }

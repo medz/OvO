@@ -44,7 +44,7 @@ class SetforumController extends AdminBaseController
         /*
          * 修改版块资料
          */
-        list($vieworder, $manager) = $this->getInput(array('vieworder', 'manager'), 'post');
+        list($vieworder, $manager) = $this->getInput(['vieworder', 'manager'], 'post');
         //TODO 添加：先判断这些会员里是否含有身份不符合的用户，用户组1（游客）,2（禁止发言）,6（未验证用户）
         $_tmpManager = explode(',', implode(',', array_unique($manager)));
         $result = app(PwUserMiscService::class)->filterForumManger($_tmpManager);
@@ -52,7 +52,7 @@ class SetforumController extends AdminBaseController
             $this->showError($result->getError());
         }
 
-        $editArray = array();
+        $editArray = [];
 
         foreach ($vieworder as $key => $value) {
             $dm = new PwForumDm($key);
@@ -67,17 +67,17 @@ class SetforumController extends AdminBaseController
             $pwForum->updateForum($dm, PwForum::FETCH_MAIN);
         }
 
-        $forumset = array(
-            'allowtype' => array('default'),
-            'typeorder' => array('default' => 0),
-        );
+        $forumset = [
+            'allowtype' => ['default'],
+            'typeorder' => ['default' => 0],
+        ];
 
         /*
          * 在真实版块下，添加子版
          */
-        list($new_vieworder, $new_forumname, $new_manager, $tempid) = $this->getInput(array('new_vieworder', 'new_forumname', 'new_manager', 'tempid'), 'post');
-        $newArray = array();
-        is_array($new_vieworder) || $new_vieworder = array();
+        list($new_vieworder, $new_forumname, $new_manager, $tempid) = $this->getInput(['new_vieworder', 'new_forumname', 'new_manager', 'tempid'], 'post');
+        $newArray = [];
+        is_array($new_vieworder) || $new_vieworder = [];
         foreach ($new_vieworder as $parentid => $value) {
             foreach ($value as $key => $v) {
                 if ($tempid[$parentid][$key] && $new_forumname[$parentid][$key]) {
@@ -98,8 +98,8 @@ class SetforumController extends AdminBaseController
         /*
          * 在虚拟版块下，添加子版
          */
-        list($temp_vieworder, $temp_forumname, $temp_manager) = $this->getInput(array('temp_vieworder', 'temp_forumname', 'temp_manager'), 'post');
-        is_array($temp_vieworder) || $temp_vieworder = array();
+        list($temp_vieworder, $temp_forumname, $temp_manager) = $this->getInput(['temp_vieworder', 'temp_forumname', 'temp_manager'], 'post');
+        is_array($temp_vieworder) || $temp_vieworder = [];
         ksort($temp_vieworder);
         foreach ($temp_vieworder as $key => $value) {
             if (!isset($newArray[$key])) {
@@ -166,12 +166,12 @@ class SetforumController extends AdminBaseController
         $styles = Wekit::load('APPCENTER:service.PwStyle')->getStyleListByType('forum', 0);
         $this->setOutput($styles, 'styles');
 
-        $p = array();
-        foreach (array('allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download') as $value) {
-            $p[$value] = $forum->foruminfo[$value] ? explode(',', $forum->foruminfo[$value]) : array();
+        $p = [];
+        foreach (['allow_visit', 'allow_read', 'allow_post', 'allow_reply', 'allow_upload', 'allow_download'] as $value) {
+            $p[$value] = $forum->foruminfo[$value] ? explode(',', $forum->foruminfo[$value]) : [];
         }
 
-        $creditset = $forum->foruminfo['settings_credit'] ? unserialize($forum->foruminfo['settings_credit']) : array();
+        $creditset = $forum->foruminfo['settings_credit'] ? unserialize($forum->foruminfo['settings_credit']) : [];
         $password = $forum->foruminfo['password'] ? '******' : '';
 
         $_path = Wind::getRealDir('REP:mark.');
@@ -200,8 +200,8 @@ class SetforumController extends AdminBaseController
             $this->showError('operate.fail');
         }
 
-        list($copyFids, $copyItems) = $this->getInput(array('copy_fids', 'copyitems'));
-        !$copyItems && $copyItems = array();
+        list($copyFids, $copyItems) = $this->getInput(['copy_fids', 'copyitems']);
+        !$copyItems && $copyItems = [];
 
         $forum = new PwForumBo($fid, true);
         if (!$forum->isForum(true)) {
@@ -231,18 +231,18 @@ class SetforumController extends AdminBaseController
         $this->showMessage('success', 'bbs/setforum/unite/', true);
     }
 
-    private function _updateForums($forum, $copyFids = array(), $copyItems = array())
+    private function _updateForums($forum, $copyFids = [], $copyItems = [])
     {
         $mainFid = $forum->fid;
-        $fids = array($mainFid);
+        $fids = [$mainFid];
         $copyFids && $fids = array_merge($fids, $copyFids);
 
-        list($forumname, $vieworder, $parentid, $descrip, $isshow, $isshowsub, $jumpurl, $seotitle, $seokeywords, $seodescription, $numofthreadtitle, $threadperpage, $readperpage, $newtime, $threadorderby, $minlengthofcontent, $locktime, $edittime, $allowtype, $typeorder, $contentcheck, $ifthumb, $thumbwidth, $thumbheight, $anticopy, $copycontent, $water, $waterimg, $allowhide, $allowsell, $anonymous, $manager, $creditset, $password, $allowvisit, $allowread, $allowpost, $allowreply, $allowupload, $allowdownload, $style) = $this->getInput(array('forumname', 'vieworder', 'parentid', 'descrip', 'isshow', 'isshowsub', 'jumpurl', 'seotitle', 'seokeywords', 'seodescription', 'numofthreadtitle', 'threadperpage', 'readperpage', 'newtime', 'threadorderby', 'minlengthofcontent', 'locktime', 'edittime', 'allowtype', 'typeorder', 'contentcheck', 'ifthumb', 'thumbwidth', 'thumbheight', 'anticopy', 'copycontent', 'water', 'waterimg', 'allowhide', 'allowsell', 'anonymous', 'manager', 'creditset', 'password', 'allowvisit', 'allowread', 'allowpost', 'allowreply', 'allowupload', 'allowdownload', 'style'));
+        list($forumname, $vieworder, $parentid, $descrip, $isshow, $isshowsub, $jumpurl, $seotitle, $seokeywords, $seodescription, $numofthreadtitle, $threadperpage, $readperpage, $newtime, $threadorderby, $minlengthofcontent, $locktime, $edittime, $allowtype, $typeorder, $contentcheck, $ifthumb, $thumbwidth, $thumbheight, $anticopy, $copycontent, $water, $waterimg, $allowhide, $allowsell, $anonymous, $manager, $creditset, $password, $allowvisit, $allowread, $allowpost, $allowreply, $allowupload, $allowdownload, $style) = $this->getInput(['forumname', 'vieworder', 'parentid', 'descrip', 'isshow', 'isshowsub', 'jumpurl', 'seotitle', 'seokeywords', 'seodescription', 'numofthreadtitle', 'threadperpage', 'readperpage', 'newtime', 'threadorderby', 'minlengthofcontent', 'locktime', 'edittime', 'allowtype', 'typeorder', 'contentcheck', 'ifthumb', 'thumbwidth', 'thumbheight', 'anticopy', 'copycontent', 'water', 'waterimg', 'allowhide', 'allowsell', 'anonymous', 'manager', 'creditset', 'password', 'allowvisit', 'allowread', 'allowpost', 'allowreply', 'allowupload', 'allowdownload', 'style']);
 
         $pwforum = Wekit::load('forum.PwForum');
-        $copyItems = $copyItems ? array_flip($copyItems) : array();
-        array_walk($copyItems, array($this, '_setCopyItems'));
-        !$creditset && $creditset = array();
+        $copyItems = $copyItems ? array_flip($copyItems) : [];
+        array_walk($copyItems, [$this, '_setCopyItems']);
+        !$creditset && $creditset = [];
         foreach ($creditset as $key => $value) {
             !is_numeric($value['limit']) && $creditset[$key]['limit'] = '';
             foreach ($value['credit'] as $k => $v) {
@@ -269,14 +269,14 @@ class SetforumController extends AdminBaseController
             ($flag || $copyItems['threadorderby']) && $forumset['threadorderby'] = $threadorderby;
             if ($isCate) {
                 $tmpParentid = 0;
-                $creditset = array();
+                $creditset = [];
             } else {
                 $tmpParentid = $parentid;
                 ($flag || $copyItems['minlengthofcontent']) && $forumset['minlengthofcontent'] = $minlengthofcontent ? intval($minlengthofcontent) : '';
                 ($flag || $copyItems['locktime']) && $forumset['locktime'] = $locktime ? intval($locktime) : '';
                 ($flag || $copyItems['edittime']) && $forumset['edittime'] = $edittime ? intval($edittime) : '';
                 if ($flag || $copyItems['allowtype']) {
-                    $forumset['allowtype'] = is_array($allowtype) ? $allowtype : array();
+                    $forumset['allowtype'] = is_array($allowtype) ? $allowtype : [];
                     $forumset['typeorder'] = array_map('intval', $typeorder);
                 }
                 if ($flag || $copyItems['allowhide']) {
@@ -296,7 +296,7 @@ class SetforumController extends AdminBaseController
                 ($flag || $copyItems['copycontent']) && $forumset['copycontent'] = $copycontent;
 
                 //主题分类设置
-                list($topic_type, $force_topic_type, $topic_type_display) = $this->getInput(array('topic_type', 'force_topic_type', 'topic_type_display'));
+                list($topic_type, $force_topic_type, $topic_type_display) = $this->getInput(['topic_type', 'force_topic_type', 'topic_type_display']);
                 ($flag || $copyItems['topic_type']) && $forumset['topic_type'] = intval($topic_type);
                 ($flag || $copyItems['force_topic_type']) && $forumset['force_topic_type'] = intval($force_topic_type);
                 ($flag || $copyItems['topic_type_display']) && $forumset['topic_type_display'] = intval($topic_type_display);
@@ -396,7 +396,7 @@ class SetforumController extends AdminBaseController
     {
         //版块域名
         $fid = $forum->fid;
-        list($forumdomain, $forumroot) = $this->getInput(array('forumdomain', 'forumroot'));
+        list($forumdomain, $forumroot) = $this->getInput(['forumdomain', 'forumroot']);
         $domainKey = $forum->foruminfo['type'] == 'category' ? "bbs/cate/run?fid=$fid" : "bbs/thread/run?fid=$fid";
         $oldDomain = app(PwDomain::class)->getByDomainKey($domainKey);
         /* @var $srv PwDomainService */
@@ -432,7 +432,7 @@ class SetforumController extends AdminBaseController
 
     public function editnameAction()
     {
-        list($fid, $name) = $this->getInput(array('fid', 'name'));
+        list($fid, $name) = $this->getInput(['fid', 'name']);
 
         $pwforum = Wekit::load('forum.PwForum');
         $dm = new PwForumDm($fid);
@@ -447,7 +447,7 @@ class SetforumController extends AdminBaseController
      */
     public function searchforumAction()
     {
-        list($keyword) = $this->getInput(array('keyword'));
+        list($keyword) = $this->getInput(['keyword']);
         $pwforum = Wekit::load('forum.PwForum');
         $data = $pwforum->searchForum($keyword);
         if (!$data || !is_array($data)) {
@@ -460,7 +460,7 @@ class SetforumController extends AdminBaseController
 
     public function deletetopictypeAction()
     {
-        list($id) = $this->getInput(array('id'), 'get');
+        list($id) = $this->getInput(['id'], 'get');
         $topicTypeService = Wekit::load('forum.PwTopicType'); /* @var $topicTypeService PwTopicType */
         $topicTypeService->deleteTopicType($id);
         $this->showMessage('FORUM:topictype.delete.success');
@@ -535,20 +535,20 @@ class SetforumController extends AdminBaseController
     protected function doeditTopicType($fid)
     {
         //主题分类
-        list($t_vieworder, $t_name, $t_logo, $t_issys) = $this->getInput(array('t_vieworder', 't_name', 't_logo', 't_issys'), 'post');
-        list($t_new_vieworder, $t_new_name, $t_new_logo, $t_new_issys) = $this->getInput(array('t_new_vieworder', 't_new_name', 't_new_logo', 't_new_issys'), 'post');
-        list($t_new_sub_vieworder, $t_new_sub_name, $t_new_sub_logo, $t_new_sub_issys) = $this->getInput(array('t_new_sub_vieworder', 't_new_sub_name', 't_new_sub_logo', 't_new_sub_issys'), 'post');
+        list($t_vieworder, $t_name, $t_logo, $t_issys) = $this->getInput(['t_vieworder', 't_name', 't_logo', 't_issys'], 'post');
+        list($t_new_vieworder, $t_new_name, $t_new_logo, $t_new_issys) = $this->getInput(['t_new_vieworder', 't_new_name', 't_new_logo', 't_new_issys'], 'post');
+        list($t_new_sub_vieworder, $t_new_sub_name, $t_new_sub_logo, $t_new_sub_issys) = $this->getInput(['t_new_sub_vieworder', 't_new_sub_name', 't_new_sub_logo', 't_new_sub_issys'], 'post');
 
-        is_array($t_name) || $t_name = array();
-        is_array($t_new_name) || $t_new_name = array();
-        is_array($t_new_sub_name) || $t_new_sub_name = array();
+        is_array($t_name) || $t_name = [];
+        is_array($t_new_name) || $t_new_name = [];
+        is_array($t_new_sub_name) || $t_new_sub_name = [];
 
         $topicTypeService = Wekit::load('forum.PwTopicType'); /* @var $topicTypeService PwTopicType */
 
         //$logos = $this->_uploadTopicTypeIcon();
-        $logos = array(); //TODO图标功能暂取消
+        $logos = []; //TODO图标功能暂取消
         /* 更新原有 */
-        $updateTopicTypes = array(); //待更新topicType Dm
+        $updateTopicTypes = []; //待更新topicType Dm
         foreach ($t_name as $k => $v) {
             $dm = new PwTopicTypeDm($k);
             $dm->setFid($fid)
@@ -564,9 +564,9 @@ class SetforumController extends AdminBaseController
         }
 
         /* 新增主题分类 */
-        $newTopicTypes = array();
+        $newTopicTypes = [];
         if (!$t_new_name) {
-            $t_new_name = array();
+            $t_new_name = [];
         }
         foreach ($t_new_name as $k => $v) {
             if (!$v) {
@@ -586,9 +586,9 @@ class SetforumController extends AdminBaseController
         }
 
         /* 新增二级主题分类 */
-        $newSubTopicTypes = array();
+        $newSubTopicTypes = [];
         if (!$t_new_sub_name) {
-            $t_new_sub_name = array();
+            $t_new_sub_name = [];
         }
         foreach ($t_new_sub_name as $parentId => $newSubs) {
             if (!is_array($newSubs)) {
@@ -616,7 +616,7 @@ class SetforumController extends AdminBaseController
         }
 
         /* 执行新增 */
-        $newTopicIds = array();
+        $newTopicIds = [];
         foreach ($newTopicTypes as $k => $v) {
             $topicId = $topicTypeService->addTopicType($v);
             is_numeric($topicId) && $newTopicIds[$k] = $topicId;

@@ -28,7 +28,7 @@ class RewriteController extends AdminBaseController
      */
     public function doModifyAction()
     {
-        list($format, $isopen) = $this->getInput(array('format', 'isopen'));
+        list($format, $isopen) = $this->getInput(['format', 'isopen']);
         $bo = new PwConfigSet('rewrite');
         foreach ($format as $k => $v) {
             if (empty($v) && isset($isopen[$k])) {
@@ -37,27 +37,27 @@ class RewriteController extends AdminBaseController
             $bo->set("format.$k", $v);
         }
         $addons = Wekit::load('domain.srv.PwDomainService')->getRewriteAddOns();
-        $rewriteData = array();
-        $unique = array();
+        $rewriteData = [];
+        $unique = [];
         foreach ($addons as $k1 => $v1) {
             $open = isset($isopen[$k1]) ? 1 : 0;
             $bo->set("isopen.$k1", $open);
             if ($open) {
                 $format_i = preg_replace('/\{\w+\}/', '', $format[$k1]);
                 if (in_array($format_i, $unique)) {
-                    $this->showError(array('REWRITE:format.conflict', array($format[$k1])));
+                    $this->showError(['REWRITE:format.conflict', [$format[$k1]]]);
                 }
                 $unique[] = $format_i;
                 if ($k1 == 'thread') {
-                    $rewriteData['cate'] = array(
+                    $rewriteData['cate'] = [
                         'format'  => $format[$k1],
                         'pattern' => $this->_compileFormat($format[$k1]),
-                        'route'   => 'bbs/cate/run', );
+                        'route'   => 'bbs/cate/run', ];
                 }
-                $rewriteData[$k1] = array(
+                $rewriteData[$k1] = [
                     'format'  => $format[$k1],
                     'pattern' => $this->_compileFormat($format[$k1]),
-                    'route'   => $v1[2], );
+                    'route'   => $v1[2], ];
             }
         }
         $bo->flush();

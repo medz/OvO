@@ -105,7 +105,7 @@ class ModuleController extends AdminBaseController
         if (!$script) {
             $this->showError('operate.fail');
         }
-        $apiUrl = WindUrlHelper::createUrl('design/api/run', array('token' => $script['token'], 'id' => $moduleid), '', 'pw');
+        $apiUrl = WindUrlHelper::createUrl('design/api/run', ['token' => $script['token'], 'id' => $moduleid], '', 'pw');
         $this->setOutput('<design id="D_mod_'.$moduleid.'" role="module"></design>', 'value');
         $this->setOutput($apiUrl, 'apiUrl');
         $this->setOutput($module, 'module');

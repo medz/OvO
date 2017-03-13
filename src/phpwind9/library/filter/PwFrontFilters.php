@@ -24,7 +24,7 @@ class PwFrontFilters extends AbstractWindBootstrap
             Wind::$isDebug = $_debug;
         }
         error_reporting($_debug ? E_ALL ^ E_NOTICE ^ E_DEPRECATED : E_ERROR | E_PARSE);
-        set_error_handler(array($this->front, '_errorHandle'), error_reporting());
+        set_error_handler([$this->front, '_errorHandle'], error_reporting());
 
         $this->_convertCharsetForAjax();
 
@@ -59,7 +59,7 @@ class PwFrontFilters extends AbstractWindBootstrap
         }
         $toCharset = Wind::getApp()->getResponse()->getCharset();
         if (strtoupper(substr($toCharset, 0, 2)) != 'UT') {
-            $_tmp = array();
+            $_tmp = [];
             foreach ($_POST as $key => $value) {
                 $key = WindConvert::convert($key, $toCharset, 'UTF-8');
                 $_tmp[$key] = WindConvert::convert($value, $toCharset, 'UTF-8');

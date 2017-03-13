@@ -20,7 +20,7 @@ class PwUserBanSpeak implements PwUserBanTypeInterface
         //【禁止用户】禁止发言用户组
         $userDm = new PwUserInfoDm($dm->getField('uid'));
         $userDm->setGroupid(6)
-            ->setGroups(array()); //用户禁止，设置用户的组为禁止发言组，删除用户拥有的其他附加组
+            ->setGroups([]); //用户禁止，设置用户的组为禁止发言组，删除用户拥有的其他附加组
         $result = $this->_getUserDs()->editUser($userDm, PwUser::FETCH_MAIN);
         if (!$result instanceof PwError) {
             $userinfo = $this->_getUserDs()->getUserByUid($dm->getField('uid'), PwUser::FETCH_MAIN);
@@ -40,7 +40,7 @@ class PwUserBanSpeak implements PwUserBanTypeInterface
         }
         $userDm = new PwUserInfoDm($uid);
         $userDm->setGroupid(0)
-            ->setGroups(array());
+            ->setGroups([]);
         /* @var $groupService PwUserGroupsService */
         $groupService = Wekit::load('usergroup.srv.PwUserGroupsService');
         $strategy = Wekit::C('site', 'upgradestrategy');

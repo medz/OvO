@@ -40,7 +40,7 @@ class PwUserBanService
 
             //操作相关类型的后续操作
             $class = Wekit::load($banTypes[$_dm->getField('typeid')]['class']);
-            $r = call_user_func_array(array($class, 'afterBan'), array($_dm));
+            $r = call_user_func_array([$class, 'afterBan'], [$_dm]);
             if ($r instanceof PwError) {
                 return $r;
             }
@@ -60,7 +60,7 @@ class PwUserBanService
      */
     public function searchBanInfo(PwUserBanSo $searchDo, $limit = 10, $start = 0)
     {
-        $result = array();
+        $result = [];
         $list = $this->_getDs()->searchBanInfo($searchDo, $limit, $start);
         foreach ($list as $id => $item) {
             $result[$item['id']] = $this->_buildList($item);
@@ -80,12 +80,12 @@ class PwUserBanService
     {
         $list = $this->_getDs()->fetchBanInfo($ids);
         $banTypes = $this->getBanType();
-        $clearIds = array();
+        $clearIds = [];
         foreach ($list as $_item) {
             $clearIds[] = $_item['id'];
             //操作相关类型的后续操作
             $class = Wekit::load($banTypes[$_item['typeid']]['class']);
-            call_user_func_array(array($class, 'deleteBan'), array($_item['uid']));
+            call_user_func_array([$class, 'deleteBan'], [$_item['uid']]);
         }
         $r = $this->_getDs()->batchDelete($clearIds);
 
@@ -100,11 +100,11 @@ class PwUserBanService
      */
     public function getBanType()
     {
-        $types = array(
-            1 => array('title' => '禁止发布', 'class' => 'SRV:user.srv.bantype.PwUserBanSpeak'),
-            2 => array('title' => '禁止头像', 'class' => 'SRV:user.srv.bantype.PwUserBanAvatar'),
-            4 => array('title' => '禁止签名', 'class' => 'SRV:user.srv.bantype.PwUserBanSign'),
-        );
+        $types = [
+            1 => ['title' => '禁止发布', 'class' => 'SRV:user.srv.bantype.PwUserBanSpeak'],
+            2 => ['title' => '禁止头像', 'class' => 'SRV:user.srv.bantype.PwUserBanAvatar'],
+            4 => ['title' => '禁止签名', 'class' => 'SRV:user.srv.bantype.PwUserBanSign'],
+        ];
 
         return $types;
     }
@@ -140,7 +140,7 @@ class PwUserBanService
             return false;
         }
         //执行禁止操作
-        $dmList = array();
+        $dmList = [];
         $endTime = $config['autoForbidden.day'] > 0 ? $config['autoForbidden.day'] * 24 * 3600 + Pw::getTime() : 0;
         foreach ($config['autoForbidden.type'] as $type) {
             $banDm = new PwUserBanInfoDm();
@@ -153,7 +153,7 @@ class PwUserBanService
         }
         $this->banUser($dmList);
         //发送消息
-        $_notice = array($uid => array('end_time' => $endTime, 'reason' => $config['autoForbidden.reason'], 'type' => $config['autoForbidden.type'], 'operator' => 'system'));
+        $_notice = [$uid => ['end_time' => $endTime, 'reason' => $config['autoForbidden.reason'], 'type' => $config['autoForbidden.type'], 'operator' => 'system']];
         $this->sendNotice($_notice, 1);
 
         return true;
@@ -173,7 +173,7 @@ class PwUserBanService
         $notice = Wekit::load('SRV:message.srv.PwNoticeService');
         $banTypes = $this->getBanType();
         foreach ($bans as $uid => $_item) {
-            $extends = array();
+            $extends = [];
             $extends['operator'] = $_item['operator'];
             foreach ($_item['type'] as $_i) {
                 isset($banTypes[$_i]) && $extends['type'][] = $banTypes[$_i]['title'];
@@ -213,7 +213,7 @@ class PwUserBanService
         }
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
-        $list = $userDs->fetchUserByUid(array($item['created_userid'], $item['uid']), PwUser::FETCH_MAIN);
+        $list = $userDs->fetchUserByUid([$item['created_userid'], $item['uid']], PwUser::FETCH_MAIN);
         $item['created_username'] = $item['created_userid'] == 0 ? 'system' : $list[$item['created_userid']]['username'];
         $item['username'] = $list[$item['uid']]['username'];
 

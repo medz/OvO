@@ -10,8 +10,8 @@
  */
 class TenpayController extends PwBaseController
 {
-    protected $_var = array();
-    protected $_conf = array();
+    protected $_var = [];
+    protected $_conf = [];
 
     public function beforeAction($handlerAdapter)
     {
@@ -25,7 +25,7 @@ class TenpayController extends PwBaseController
         if (!$this->_conf['tenpay'] || !$this->_conf['tenpaykey']) {
             $this->paymsg('onlinepay.settings.tenpay.error');
         }
-        $arr = array('cmdno', 'pay_result', 'date', 'transaction_id', 'sp_billno', 'total_fee', 'fee_type', 'attach');
+        $arr = ['cmdno', 'pay_result', 'date', 'transaction_id', 'sp_billno', 'total_fee', 'fee_type', 'attach'];
         $txt = '';
         foreach ($arr as $value) {
             $txt .= $value.'='.$this->_var[$value].'&';

@@ -10,7 +10,7 @@
  */
 class PwInviteCodeSo
 {
-    private $_data = array();
+    private $_data = [];
 
     /**
      * 获取所有查询数据.

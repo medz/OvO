@@ -59,7 +59,7 @@ class PwThreadCateIndex
     public function fetch($cid, $limit = 20, $offset = 0, $order = 'lastpost')
     {
         if (empty($cid)) {
-            return array();
+            return [];
         }
         $result = $this->_getDao()->fetch($cid, $limit, $offset, $order);
 

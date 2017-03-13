@@ -19,7 +19,7 @@ class PwEmotionCategory
     {
         $categoryId = (int) $categoryId;
         if ($categoryId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getCategory($categoryId);
@@ -33,7 +33,7 @@ class PwEmotionCategory
     public function fetchCategory($categoryIds)
     {
         if (!is_array($categoryIds) || !$categoryIds) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchCategory($categoryIds);

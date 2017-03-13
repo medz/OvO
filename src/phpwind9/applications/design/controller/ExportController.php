@@ -30,7 +30,7 @@ class ExportController extends PwBaseController
     {
         $charset = $this->getInput('charset', 'get');
         $pageid = (int) $this->getInput('pageid', 'get');
-        if (!in_array($charset, array('gbk', 'utf-8'))) {
+        if (!in_array($charset, ['gbk', 'utf-8'])) {
             $charset = Wekit::app()->charset;
         }
 

@@ -25,7 +25,7 @@ class IndexController extends PwBaseController
         $this->page = $page < 1 ? 1 : intval($page);
         list($start, $limit) = Pw::page2limit($this->page, $this->perpage);
         $total = $this->_getPwAnnounceDs()->countAnnounceByTime(Pw::str2time(Pw::time2str(Pw::getTime(), 'Y-m-d')));
-        $list = $total ? $this->_getPwAnnounceService()->formatAnnouncesUsername($this->_getPwAnnounceDs()->getAnnounceByTimeOrderByVieworder(Pw::str2time(Pw::time2str(Pw::getTime(), 'Y-m-d')), $limit, $start)) : array();
+        $list = $total ? $this->_getPwAnnounceService()->formatAnnouncesUsername($this->_getPwAnnounceDs()->getAnnounceByTimeOrderByVieworder(Pw::str2time(Pw::time2str(Pw::getTime(), 'Y-m-d')), $limit, $start)) : [];
         $this->setOutput($total, 'total');
         $this->setOutput($list, 'list');
         $this->setOutput($aid, 'aid');

@@ -12,7 +12,7 @@
 class PwReportDao extends PwBaseDao
 {
     protected $_table = 'report';
-    protected $_dataStruct = array('id', 'type', 'type_id', 'content', 'content_url', 'author_userid', 'created_userid', 'created_time', 'reason', 'ifcheck', 'operate_userid', 'operate_time');
+    protected $_dataStruct = ['id', 'type', 'type_id', 'content', 'content_url', 'author_userid', 'created_userid', 'created_time', 'reason', 'ifcheck', 'operate_userid', 'operate_time'];
     protected $_pk = 'id';
 
     /**
@@ -112,7 +112,7 @@ class PwReportDao extends PwBaseDao
     public function countByType($ifcheck, $type)
     {
         $where = 'WHERE `ifcheck`=?';
-        $parms = array($ifcheck);
+        $parms = [$ifcheck];
         if ($type) {
             $where .= ' AND `type`=?';
             $parms[] = $type;
@@ -134,7 +134,7 @@ class PwReportDao extends PwBaseDao
     public function getListByType($ifcheck, $type, $limit, $start)
     {
         $where = 'WHERE `ifcheck`=?';
-        $parms = array($ifcheck);
+        $parms = [$ifcheck];
         if ($type) {
             $where .= ' AND `type`=?';
             $parms[] = $type;

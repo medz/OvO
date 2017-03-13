@@ -11,7 +11,7 @@
  */
 class OpenBaseController extends PwBaseController
 {
-    public $app = array();
+    public $app = [];
     public $appid = 0;
 
     public function beforeAction($handlerAdapter)

@@ -43,7 +43,7 @@ class PasswordController extends BaseProfileController
             $this->showError('USER:founder.edit');
         }
         */
-        list($newPwd, $oldPwd, $rePwd) = $this->getInput(array('newPwd', 'oldPwd', 'rePwd'), 'post');
+        list($newPwd, $oldPwd, $rePwd) = $this->getInput(['newPwd', 'oldPwd', 'rePwd'], 'post');
         if (!$oldPwd) {
             $this->showError('USER:pwd.change.oldpwd.require');
         }
@@ -87,7 +87,7 @@ class PasswordController extends BaseProfileController
      */
     public function dosetQAction()
     {
-        list($oldPwd, $question, $answer) = $this->getInput(array('oldPwd', 'question', 'answer'), 'post');
+        list($oldPwd, $question, $answer) = $this->getInput(['oldPwd', 'question', 'answer'], 'post');
         if (!$oldPwd) {
             $this->showError('USER:pwd.error');
         }

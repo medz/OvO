@@ -9,7 +9,7 @@ class AdminSearchLangParserService extends WindLangResource
      */
     public function parseSearchLang()
     {
-        $rs = array();
+        $rs = [];
         $path = $this->_getPath();
         if (!$path || !file_exists($path)) {
             return $rs;
@@ -33,9 +33,9 @@ class AdminSearchLangParserService extends WindLangResource
                 if (preg_match('/^\[{2}(.+)\]{2}$/i', $line, $m)) {
                     list($tmpName, $tmpUrl) = explode(':', $m[1]);
                     $currentSubMenu = $tmpName;
-                    $rs[$currentMenu][$currentSubMenu] = array(
+                    $rs[$currentMenu][$currentSubMenu] = [
                         'url' => WindUrlHelper::createUrl($tmpUrl),
-                    );
+                    ];
                 } else {
                     if ($currentSubMenu) {
                         $rs[$currentMenu][$currentSubMenu]['items'][] = $line;

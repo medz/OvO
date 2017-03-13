@@ -21,7 +21,7 @@ class PwUserMobileVerify
     public function getMobileVerify($mobile)
     {
         if ($mobile < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($mobile);
@@ -37,7 +37,7 @@ class PwUserMobileVerify
     public function fetchMobileVerify($mobiles)
     {
         if (!is_array($mobiles) || !$mobiles) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($mobiles);

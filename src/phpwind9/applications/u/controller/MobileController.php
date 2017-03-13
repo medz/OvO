@@ -24,7 +24,7 @@ class MobileController extends PwBaseController
      */
     public function checkmobilecodeAction()
     {
-        list($mobile, $mobileCode) = $this->getInput(array('mobile', 'mobileCode'), 'post');
+        list($mobile, $mobileCode) = $this->getInput(['mobile', 'mobileCode'], 'post');
         if (($result = $this->_getService()->checkVerify($mobile, $mobileCode)) instanceof PwError) {
             $this->showError($result->getError());
         }

@@ -18,7 +18,7 @@ class PwTagDao extends PwBaseDao
     protected $_table_relation = 'tag_category_relation';
     protected $_table_attention = 'tag_attention';
     protected $_table_content_relation = 'tag_relation';
-    protected $_dataStruct = array('tag_id', 'parent_tag_id', 'ifhot', 'tag_name', 'tag_logo', 'iflogo', 'excerpt', 'content_count', 'attention_count', 'created_userid', 'seo_title', 'seo_description', 'seo_keywords');
+    protected $_dataStruct = ['tag_id', 'parent_tag_id', 'ifhot', 'tag_name', 'tag_logo', 'iflogo', 'excerpt', 'content_count', 'attention_count', 'created_userid', 'seo_title', 'seo_description', 'seo_keywords'];
 
     /**
      * 添加一条话题.
@@ -65,7 +65,7 @@ class PwTagDao extends PwBaseDao
      *
      * @return bool
      */
-    public function update($tagId, $data = array(), $increaseData = array())
+    public function update($tagId, $data = [], $increaseData = [])
     {
         return $this->_update($tagId, $data, $increaseData);
     }
@@ -79,7 +79,7 @@ class PwTagDao extends PwBaseDao
      *
      * @return bool
      */
-    public function batchUpdate($tagIds, $fields, $increaseFields = array())
+    public function batchUpdate($tagIds, $fields, $increaseFields = [])
     {
         return $this->_batchUpdate($tagIds, $fields, $increaseFields);
     }
@@ -108,7 +108,7 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_id` IN %s ', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'tag_id');
+        return $smt->queryAll([], 'tag_id');
     }
 
     /**
@@ -123,7 +123,7 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `parent_tag_id`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($parentTagId));
+        return $smt->queryAll([$parentTagId]);
     }
 
     /**
@@ -138,7 +138,7 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `tag_name`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($tagName));
+        return $smt->getOne([$tagName]);
     }
 
     /**
@@ -153,7 +153,7 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_name` IN %s ', $this->getTable(), $this->sqlImplode($tagNames));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'tag_name');
+        return $smt->queryAll([], 'tag_name');
     }
 
     /**
@@ -173,7 +173,7 @@ class PwTagDao extends PwBaseDao
     {
         $where = 'WHERE 1';
         $join = '';
-        $param = array();
+        $param = [];
         if ($name) {
             $where .= ' AND t1.`tag_name` LIKE ?';
             $param[] = '%'.$name.'%';
@@ -228,7 +228,7 @@ class PwTagDao extends PwBaseDao
     {
         $where = 'WHERE 1';
         $join = '';
-        $param = array();
+        $param = [];
         if ($name) {
             $where .= ' AND t1.`tag_name` LIKE ?';
             $param[] = '%'.$name.'%';
@@ -278,7 +278,7 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT t.* FROM %s AS t LEFT JOIN %s AS a USING(`tag_id`) WHERE a.`uid`=? ORDER BY t.`content_count` DESC %s ', $this->getTable(), $this->getTable($this->_table_attention), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tag_id');
+        return $smt->queryAll([$uid], 'tag_id');
     }
 
     /**
@@ -294,6 +294,6 @@ class PwTagDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT t.*,a.param_id FROM %s AS t RIGHT JOIN %s AS a USING(`tag_id`) WHERE a.`type_id`=? AND a.`param_id` IN %s ORDER BY t.`content_count` DESC', $this->getTable(), $this->getTable($this->_table_content_relation), $this->sqlImplode($paramIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($typeId));
+        return $smt->queryAll([$typeId]);
     }
 }

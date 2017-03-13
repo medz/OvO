@@ -28,7 +28,7 @@ class AppController extends OpenBaseController
 
     public function addAction()
     {
-        list($name, $siteip, $siteurl, $secretkey, $charset, $apifile, $issyn, $isnotify) = $this->getInput(array('name', 'siteip', 'siteurl', 'secretkey', 'charset', 'apifile', 'issyn', 'isnotify'));
+        list($name, $siteip, $siteurl, $secretkey, $charset, $apifile, $issyn, $isnotify) = $this->getInput(['name', 'siteip', 'siteurl', 'secretkey', 'charset', 'apifile', 'issyn', 'isnotify']);
         Wind::import('WSRV:app.dm.WindidAppDm');
         $dm = new WindidAppDm();
         $dm->setAppName($name)
@@ -53,7 +53,7 @@ class AppController extends OpenBaseController
 
     public function editApp()
     {
-        list($id, $name, $siteip, $siteurl, $secretkey, $charset, $apifile, $issyn, $isnotify) = $this->getInput(array('id', 'name', 'siteip', 'siteurl', 'secretkey', 'charset', 'apifile', 'issyn', 'isnotify'));
+        list($id, $name, $siteip, $siteurl, $secretkey, $charset, $apifile, $issyn, $isnotify) = $this->getInput(['id', 'name', 'siteip', 'siteurl', 'secretkey', 'charset', 'apifile', 'issyn', 'isnotify']);
         $dm = new WindidAppDm($id);
         isset($name) && $dm->setAppName($name);
         isset($siteip) && $dm->setAppIp($siteip);

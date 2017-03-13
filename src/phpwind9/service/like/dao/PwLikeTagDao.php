@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwLikeTagDao extends PwBaseDao
 {
     protected $_table = 'like_tag';
-    protected $_dataStruct = array('tagid', 'uid', 'tagname', 'number');
+    protected $_dataStruct = ['tagid', 'uid', 'tagname', 'number'];
 
     public function getInfo($tagid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tagid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($tagid));
+        return $smt->getOne([$tagid]);
     }
 
     public function getInfoByTags($tagids)
@@ -28,7 +28,7 @@ class PwLikeTagDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE tagid IN  %s ', $this->getTable(), $this->sqlImplode($tagids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'tagid');
+        return $smt->queryAll([], 'tagid');
     }
 
     public function getInfoByUid($uid)
@@ -36,7 +36,7 @@ class PwLikeTagDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tagid');
+        return $smt->queryAll([$uid], 'tagid');
     }
 
     public function addInfo($data)
@@ -58,16 +58,16 @@ class PwLikeTagDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE tagid = ?', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagid));
+        return $smt->update([$tagid]);
     }
 
     public function updateNumber($tagid, $type = true)
     {
-        $_array = $type ? array('number' => 1) : array('number' => -1);
+        $_array = $type ? ['number' => 1] : ['number' => -1];
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE tagid = ?', $this->getTable(), $this->sqlSingleIncrease($_array));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagid));
+        return $smt->update([$tagid]);
     }
 
     public function deleteInfo($tagid)
@@ -75,6 +75,6 @@ class PwLikeTagDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE tagid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagid));
+        return $smt->update([$tagid]);
     }
 }

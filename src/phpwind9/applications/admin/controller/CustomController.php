@@ -37,7 +37,7 @@ class CustomController extends AdminBaseController
         }
         $this->setOutput($menus, 'menus');
         $myMenu = $this->_loadCustomDs()->findByUsername($this->loginUser->username);
-        $this->setOutput($myMenu ? explode(',', $myMenu['custom']) : array(), 'myMenu');
+        $this->setOutput($myMenu ? explode(',', $myMenu['custom']) : [], 'myMenu');
     }
 
     /**
@@ -46,7 +46,7 @@ class CustomController extends AdminBaseController
     public function doRunAction()
     {
         $customs = $this->getInput('customs', 'post');
-        $customs || $customs = array();
+        $customs || $customs = [];
         if (count($customs) > 15) {
             $this->showError('ADMIN:custom.size');
         }

@@ -15,14 +15,14 @@ class PwForumBaseDao extends PwBaseDao
 {
     public function getForum($fid)
     {
-        return array('fid' => $fid);
+        return ['fid' => $fid];
     }
 
     public function fetchForum($fids)
     {
-        $data = array();
+        $data = [];
         foreach ($fids as $value) {
-            $data[$value] = array();
+            $data[$value] = [];
         }
 
         return $data;
@@ -30,12 +30,12 @@ class PwForumBaseDao extends PwBaseDao
 
     public function getForumList()
     {
-        return array();
+        return [];
     }
 
     public function getCommonForumList()
     {
-        return array();
+        return [];
     }
 
     public function addForum($fields)
@@ -43,12 +43,12 @@ class PwForumBaseDao extends PwBaseDao
         return false;
     }
 
-    public function updateForum($fid, $fields, $increaseFields = array())
+    public function updateForum($fid, $fields, $increaseFields = [])
     {
         return true;
     }
 
-    public function batchUpdateForum($fids, $fields, $increaseFields = array())
+    public function batchUpdateForum($fids, $fields, $increaseFields = [])
     {
         return true;
     }

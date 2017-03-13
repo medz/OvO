@@ -17,6 +17,6 @@ class PwDesignDoPropertyService
         if (!$tpl || !$hookname) {
             return '';
         }
-        PwHook::template($hookname, 'TPL:design.property.'.$tpl, true, array('property' => $vProperty, 'decorator' => $decorator));
+        PwHook::template($hookname, 'TPL:design.property.'.$tpl, true, ['property' => $vProperty, 'decorator' => $decorator]);
     }
 }

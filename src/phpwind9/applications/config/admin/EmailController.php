@@ -64,7 +64,7 @@ class EmailController extends AdminBaseController
      */
     public function dosendAction()
     {
-        list($fromEmail, $toEmail) = $this->getInput(array('fromEmail', 'toEmail'), 'post');
+        list($fromEmail, $toEmail) = $this->getInput(['fromEmail', 'toEmail'], 'post');
         if (!$toEmail) {
             $this->showError('ADMIN:email.test.toemail.require');
         }
@@ -76,7 +76,7 @@ class EmailController extends AdminBaseController
             $this->showMessage('ADMIN:email.test.success');
         }
         $i18n = Wind::getComponent('i18n');
-        $this->showError(array('ADMIN:email.test.error', array('{error}' => $i18n->getMessage($result->getError()))));
+        $this->showError(['ADMIN:email.test.error', ['{error}' => $i18n->getMessage($result->getError())]]);
     }
 
     /**

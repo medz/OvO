@@ -15,46 +15,46 @@ defined('WEKIT_VERSION') or exit(403);
  *
  * 节点定义: 'Key' => array('节点名称', 子菜单, 'icon', 'tip' ,'父节点key'),
  */
-return array(
+return [
     /*========为了演示，将后台导航菜单添加完善=========*/
 //	'offen' => array('常用', array()),
 //	'offen' => array('常用', '', '', '', ''),
 
     /**=====配置开始于此=====**/
-    'custom'   => array('常用', array()),
-    'admin'    => array('创始人', array()),
-    'config'   => array('全局', array()),
-    'u'        => array('用户', array()),
-    'contents' => array('内容', array()),
+    'custom'   => ['常用', []],
+    'admin'    => ['创始人', []],
+    'config'   => ['全局', []],
+    'u'        => ['用户', []],
+    'contents' => ['内容', []],
     //'bbs' => array('论坛', array()),
     //'design' => array('门户', array()),
     //'mobile' => array('手机', array()),
-    'appcenter' => array('应用', array()),
+    'appcenter' => ['应用', []],
     //'platform' => array('云平台', array()),
 
-    'custom_set'    => array('常用菜单', 'custom/*', '', '', 'custom'),
-    'admin_founder' => array('创始人管理', 'founder/*', '', '', 'admin'),
-    'admin_auth'    => array('后台权限', 'auth,role/*', '', '', 'admin'),
-    'admin_safe'    => array('后台安全', 'safe/*', '', '', 'admin'),
+    'custom_set'    => ['常用菜单', 'custom/*', '', '', 'custom'],
+    'admin_founder' => ['创始人管理', 'founder/*', '', '', 'admin'],
+    'admin_auth'    => ['后台权限', 'auth,role/*', '', '', 'admin'],
+    'admin_safe'    => ['后台安全', 'safe/*', '', '', 'admin'],
 
     //'windid_windid' => array('WindID设置', 'windid/windid/*', '', '', 'admin'),
-    'windid_client' => array('客户端管理', 'windid/client/*', '', '', 'admin'),
-    'windid_notify' => array('通知队列', 'windid/notify/*', '', '', 'admin'),
+    'windid_client' => ['客户端管理', 'windid/client/*', '', '', 'admin'],
+    'windid_notify' => ['通知队列', 'windid/notify/*', '', '', 'admin'],
 
-    'windid_site'    => array('站点设置', 'windid/site/*', '', '', 'config'),
-    'windid_regist'  => array('注册设置', 'windid/regist/*', '', '', 'config'),
-    'windid_storage' => array('头像存储设置', 'windid/storage/*', '', '', 'config'),
-    'windid_credit'  => array('积分设置', 'windid/credit/*', '', '', 'config'),
-    'windid_area'    => array('地区库', 'windid/areadata/*', '', '', 'config'),
-    'windid_school'  => array('学校库', 'windid/schooldata/*', '', '', 'config'),
+    'windid_site'    => ['站点设置', 'windid/site/*', '', '', 'config'],
+    'windid_regist'  => ['注册设置', 'windid/regist/*', '', '', 'config'],
+    'windid_storage' => ['头像存储设置', 'windid/storage/*', '', '', 'config'],
+    'windid_credit'  => ['积分设置', 'windid/credit/*', '', '', 'config'],
+    'windid_area'    => ['地区库', 'windid/areadata/*', '', '', 'config'],
+    'windid_school'  => ['学校库', 'windid/schooldata/*', '', '', 'config'],
 
-    'windid_user'     => array('用户管理', 'windid/user/*', '', '', 'u'),
-    'windid_messages' => array('私信管理', 'windid/messages/*', '', '', 'contents'),
+    'windid_user'     => ['用户管理', 'windid/user/*', '', '', 'u'],
+    'windid_messages' => ['私信管理', 'windid/messages/*', '', '', 'contents'],
 
-    'platform_index' => array('应用管理', 'appcenter,app/app,develop,manage/*', '', '', 'appcenter'),
+    'platform_index' => ['应用管理', 'appcenter,app/app,develop,manage/*', '', '', 'appcenter'],
 
     //混乱的配置，先统一，后续再系统规划整理
-    '_extensions' => array(
+    '_extensions' => [
         //'config' => array('resource' => 'APPS:config.conf.configmenu.php'),//全局
         //'nav' => array('resource' => 'APPS:nav.conf.navmenu.php'),
         //'credit' => array('resource' => 'APPS:credit.conf.creditmenu.php'),
@@ -80,6 +80,6 @@ return array(
         //'announce'	=> array('resource' => 'APPS:announce.conf.announcemenu.php'),
         //'emotion' => array('resource' => 'APPS:emotion.conf.emotionmenu.php'),
         //'cron' => array('resource' => 'APPS:cron.conf.cronmenu.php'),
-    ),
-);
+    ],
+];
 /**=====配置结束于此=====**/

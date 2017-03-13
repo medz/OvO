@@ -32,14 +32,14 @@ class ForumController extends PwBaseController
             Wekit::load('forum.PwThreadIndex')->deleteOver($threadList->total - 10000);
         }
         $threaddb = $threadList->getList();
-        $fids = array();
+        $fids = [];
         foreach ($threaddb as $key => $value) {
             $fids[] = $value['fid'];
         }
         $forums = Wekit::load('forum.srv.PwForumService')->fetchForum($fids);
 
-        if ($operateThread = $this->loginUser->getPermission('operate_thread', false, array())) {
-            $operateThread = Pw::subArray($operateThread, array('delete'));
+        if ($operateThread = $this->loginUser->getPermission('operate_thread', false, [])) {
+            $operateThread = Pw::subArray($operateThread, ['delete']);
         }
 
         $this->setOutput($threaddb, 'threadList');
@@ -72,7 +72,7 @@ class ForumController extends PwBaseController
     public function myAction()
     {
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('bbs/forum/my')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/forum/my')]);
         }
         $order = $this->getInput('order', 'get');
         $page = intval($this->getInput('page', 'get'));
@@ -89,7 +89,7 @@ class ForumController extends PwBaseController
         }
         $threadList->execute($dataSource);
         $threaddb = $threadList->getList();
-        $fids = array();
+        $fids = [];
         foreach ($threaddb as $key => $value) {
             $fids[] = $value['fid'];
         }
@@ -124,39 +124,39 @@ class ForumController extends PwBaseController
         $service = Wekit::load('forum.srv.PwForumService');
         $forums = $service->getForumList();
         $map = $service->getForumMap();
-        $cate = array();
-        $forum = array();
+        $cate = [];
+        $forum = [];
         foreach ($map[0] as $key => $value) {
             if (!$value['isshow']) {
                 continue;
             }
             $array = $service->findOptionInMap($value['fid'], $map,
-                array('sub' => '--', 'sub2' => '----'));
-            $tmp = array();
+                ['sub' => '--', 'sub2' => '----']);
+            $tmp = [];
             foreach ($array as $k => $v) {
                 if ($forums[$k]['isshow'] && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(
                     explode(',', $forums[$k]['allow_post'])))) {
-                    $tmp[] = array($k, strip_tags($v));
+                    $tmp[] = [$k, strip_tags($v)];
                 }
             }
             if ($tmp) {
-                $cate[] = array($value['fid'], strip_tags($value['name']));
+                $cate[] = [$value['fid'], strip_tags($value['name'])];
                 $forum[$value['fid']] = $tmp;
             }
         }
         if ($withMyforum && $this->loginUser->isExists()
             && ($joinForum = Wekit::load('forum.PwForumUser')->getFroumByUid($this->loginUser->uid))) {
-            $tmp = array();
+            $tmp = [];
             foreach ($joinForum as $key => $value) {
                 if (!$key) {
                     continue;
                 }
-                $tmp[] = array($key, strip_tags($forums[$key]['name']));
+                $tmp[] = [$key, strip_tags($forums[$key]['name'])];
             }
-            array_unshift($cate, array('my', '我的版块'));
+            array_unshift($cate, ['my', '我的版块']);
             $forum['my'] = $tmp;
         }
-        $response = array('cate' => $cate, 'forum' => $forum);
+        $response = ['cate' => $cate, 'forum' => $forum];
         $this->setOutput($response, 'data');
         $this->showMessage('success');
     }
@@ -215,13 +215,13 @@ class ForumController extends PwBaseController
     {
         $fid = $this->getInput('fid');
         $topictypes = Wekit::load('forum.PwTopicType')->getTopicTypesByFid($fid, !$this->loginUser->getPermission('operate_thread.type'));
-        $data = array();
+        $data = [];
         foreach ($topictypes['topic_types'] as $key => $value) {
-            $tmp = array('title' => strip_tags($value['name']), 'val' => $value['id']);
+            $tmp = ['title' => strip_tags($value['name']), 'val' => $value['id']];
             if (isset($topictypes['sub_topic_types'][$value['id']])) {
-                $sub = array();
+                $sub = [];
                 foreach ($topictypes['sub_topic_types'][$value['id']] as $k => $v) {
-                    $sub[] = array('title' => strip_tags($v['name']), 'val' => $v['id']);
+                    $sub[] = ['title' => strip_tags($v['name']), 'val' => $v['id']];
                 }
                 $tmp['items'] = $sub;
             }
@@ -272,7 +272,7 @@ class ForumController extends PwBaseController
         $a = explode(',', $string);
         $l = count($a);
         $l % 2 == 1 && $l--;
-        $r = array();
+        $r = [];
         for ($i = 0; $i < $l; $i += 2) {
             $r[$a[$i]] = $a[$i + 1];
         }
@@ -291,9 +291,9 @@ class ForumController extends PwBaseController
     private function _addJoionForum($userInfo, $foruminfo)
     {
         // 更新用户data表信息
-        $array = array();
+        $array = [];
         $userInfo['join_forum'] && $array = self::splitStringToArray($userInfo['join_forum']);
-        $array = array($foruminfo['fid'] => $foruminfo['name']) + $array;
+        $array = [$foruminfo['fid'] => $foruminfo['name']] + $array;
         count($array) > 20 && $array = array_slice($array, 0, 20, true);
 
         $this->_updateMyForumCache($userInfo['uid'], $array);
@@ -323,7 +323,7 @@ class ForumController extends PwBaseController
     private function _updateMyForumCache($uid, $array)
     {
         $joinForums = Wekit::load('forum.srv.PwForumService')->getJoinForum($uid);
-        $_tmpArray = array();
+        $_tmpArray = [];
         foreach ($array as $k => $v) {
             if (!isset($joinForums[$k])) {
                 continue;

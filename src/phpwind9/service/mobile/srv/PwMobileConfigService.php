@@ -21,7 +21,7 @@ class PwMobileConfigService
     public function getPlats()
     {
         $conf = Wind::getRealPath('SRV:mobile.config.plat.php', true);
-        $tmp = array('name' => '', 'alias' => '', 'managelink' => '', 'description' => '', 'components' => array());
+        $tmp = ['name' => '', 'alias' => '', 'managelink' => '', 'description' => '', 'components' => []];
         $plats = @include $conf;
         $plats = $this->sHook->runWithFilters($plats);
         foreach ($plats as $key => $value) {

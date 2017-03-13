@@ -43,8 +43,8 @@ class DesignController extends PwBaseController
 
     public function getmodulepermissionsAction()
     {
-        $other = array('html', 'searchbar', 'image');
-        $tab = array();
+        $other = ['html', 'searchbar', 'image'];
+        $tab = [];
         $moduleId = (int) $this->getInput('moduleid', 'post');
         $pageid = (int) $this->getInput('pageid', 'post');
         $module = $this->_getModuleDs()->getModule($moduleId);
@@ -59,23 +59,23 @@ class DesignController extends PwBaseController
         switch ($permissions) {
             case '4':
                 if ($module['module_type'] == PwDesignModule::TYPE_DRAG) {
-                    $tab = array('data', 'push', 'add', 'title', 'style', 'property', 'template', 'delete');
+                    $tab = ['data', 'push', 'add', 'title', 'style', 'property', 'template', 'delete'];
                 } else {
-                    $tab = array('data', 'push', 'add', 'title', 'property', 'template', 'delete');
+                    $tab = ['data', 'push', 'add', 'title', 'property', 'template', 'delete'];
                 }
                 break;
             case '3':
                 if ($module['module_type'] == PwDesignModule::TYPE_DRAG) {
-                    $tab = array('data', 'push', 'add', 'title', 'style', 'property', 'template');
+                    $tab = ['data', 'push', 'add', 'title', 'style', 'property', 'template'];
                 } else {
-                    $tab = array('data', 'push', 'add', 'title', 'property', 'template');
+                    $tab = ['data', 'push', 'add', 'title', 'property', 'template'];
                 }
                 break;
             case '2':
                 if (in_array($module['model_flag'], $other)) {
-                    $tab = array('property');
+                    $tab = ['property'];
                 } else {
-                    $tab = array('data', 'push', 'add');
+                    $tab = ['data', 'push', 'add'];
                 }
                 break;
             default:

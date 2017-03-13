@@ -61,9 +61,9 @@ class PwTaskTreeHelper
      *
      * @return array
      */
-    public static function cookTree($tree, $accepts = array(), $split = '|- ')
+    public static function cookTree($tree, $accepts = [], $split = '|- ')
     {
-        static $result = array();
+        static $result = [];
         foreach ($tree as $k => $v) {
             if (!empty($accepts) && !in_array($k, $accepts)) {
                 continue;

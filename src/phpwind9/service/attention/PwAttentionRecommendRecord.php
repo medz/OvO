@@ -15,7 +15,7 @@ class PwAttentionRecommendRecord
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getRecommendFriend($uid, $limit, $offset);
@@ -27,11 +27,11 @@ class PwAttentionRecommendRecord
             return false;
         }
 
-        return $this->_getDao()->replace(array(
+        return $this->_getDao()->replace([
             'uid'           => $uid,
             'recommend_uid' => $recommendUid,
             'same_uid'      => $sameUid,
-        ));
+        ]);
     }
 
     public function batchReplaceRecommendFriend($data)

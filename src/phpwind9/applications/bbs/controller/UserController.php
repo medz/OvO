@@ -57,8 +57,8 @@ class UserController extends PwBaseController
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(
-            $lang->getMessage('SEO:bbs.user.run.title', array($pwforum->foruminfo['name'])), '',
-            $lang->getMessage('SEO:bbs.user.run.description', array($pwforum->foruminfo['name'])));
+            $lang->getMessage('SEO:bbs.user.run.title', [$pwforum->foruminfo['name']]), '',
+            $lang->getMessage('SEO:bbs.user.run.description', [$pwforum->foruminfo['name']]));
         Wekit::setV('seo', $seoBo);
     }
 }

@@ -11,8 +11,8 @@
  */
 class PwDeleteReply extends PwGleanDoProcess
 {
-    public $data = array();
-    public $pids = array();
+    public $data = [];
+    public $pids = [];
     public $user;
 
     public $isRecycle = false;

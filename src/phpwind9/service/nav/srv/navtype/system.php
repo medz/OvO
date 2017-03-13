@@ -11,9 +11,9 @@
  *
  * @version $Id: system.php 19250 2012-10-12 05:49:04Z gao.wanggao $
  */
-return array(
-    array('type' => 'main', 'name' => '主导航'),
+return [
+    ['type' => 'main', 'name' => '主导航'],
     //array('type'=>'top','name'=>'顶部导航'),
-    array('type' => 'bottom', 'name' => '底部导航'),
-    array('type' => 'my', 'name' => '我的下拉菜单'),
-);
+    ['type' => 'bottom', 'name' => '底部导航'],
+    ['type' => 'my', 'name' => '我的下拉菜单'],
+];

@@ -30,7 +30,7 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
         if (!$this->role) {
             return '';
         }
-        if (!$this->_beforeDesign() && !in_array($this->role, array('module', 'script'))) {
+        if (!$this->_beforeDesign() && !in_array($this->role, ['module', 'script'])) {
             return '';
         }
         $this->service->setCompileMode($this->role);
@@ -65,7 +65,7 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
 
     public function getProperties()
     {
-        return array('id', 'role', 'pagename');
+        return ['id', 'role', 'pagename'];
     }
 
     private function _beforeDesign()
@@ -105,6 +105,6 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
             return $sysPage[$this->_router];
         }
 
-        return array();
+        return [];
     }
 }

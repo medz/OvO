@@ -15,7 +15,7 @@ class PwPollOptionDao extends PwBaseDao
 {
     protected $_table = 'app_poll_option';
     protected $_pk = 'option_id';
-    protected $_dataStruct = array('option_id', 'poll_id', 'voted_num', 'content', 'image');
+    protected $_dataStruct = ['option_id', 'poll_id', 'voted_num', 'content', 'image'];
 
     public function get($id)
     {
@@ -32,7 +32,7 @@ class PwPollOptionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s where poll_id = ? ORDER BY option_id ASC ', $this->getTable());
         $smt = $this->connection->createStatement($sql);
 
-        return $smt->queryAll(array($pollid), $this->_pk);
+        return $smt->queryAll([$pollid], $this->_pk);
     }
 
     public function fetchByPollid($pollids)
@@ -48,7 +48,7 @@ class PwPollOptionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT COUNT(*) FROM %s where poll_id= ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($pollid));
+        return $smt->getValue([$pollid]);
     }
 
     public function add($fieldData)
@@ -66,7 +66,7 @@ class PwPollOptionDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE poll_id=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pollid));
+        return $smt->update([$pollid]);
     }
 
     public function update($id, $fieldData, $increaseFields)

@@ -12,7 +12,7 @@ class PwApplicationDao extends PwBaseDao
 {
     protected $_table = 'application';
     protected $_pk = 'app_id';
-    protected $_dataStruct = array(
+    protected $_dataStruct = [
         'app_id',
         'name',
         'alias',
@@ -26,7 +26,7 @@ class PwApplicationDao extends PwBaseDao
         'pwversion',
         'created_time',
         'modified_time',
-        'description', );
+        'description', ];
 
     /**
      * 添加应用.
@@ -58,7 +58,7 @@ class PwApplicationDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE app_id=?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($id));
+        return $this->getConnection()->createStatement($sql)->execute([$id]);
     }
 
     /**
@@ -76,7 +76,7 @@ class PwApplicationDao extends PwBaseDao
         }
         $sql = $this->_bindTable('UPDATE %s set ').$this->sqlSingle($fields).' WHERE app_id=?';
 
-        return $this->getConnection()->createStatement($sql)->execute(array($app_id));
+        return $this->getConnection()->createStatement($sql)->execute([$app_id]);
     }
 
     /**
@@ -93,7 +93,7 @@ class PwApplicationDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($appId));
+        return $this->getConnection()->createStatement($sql)->getOne([$appId]);
     }
 
     /**
@@ -110,7 +110,7 @@ class PwApplicationDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE alias=?';
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($alias));
+        return $this->getConnection()->createStatement($sql)->getOne([$alias]);
     }
 
     /**
@@ -123,7 +123,7 @@ class PwApplicationDao extends PwBaseDao
     public function fetchByAlias($alias, $index = 'app_id')
     {
         if (!$alias) {
-            return array();
+            return [];
         }
         $sql = $this->_bindSql('SELECT * FROM %s WHERE alias IN %s', $this->getTable(), $this->sqlImplode($alias));
 
@@ -158,7 +158,7 @@ class PwApplicationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s ORDER BY `created_time` DESC %s',
             $this->getTable(), $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array(), $index);
+        return $this->getConnection()->createStatement($sql)->queryAll([], $index);
     }
 
     /**
@@ -176,7 +176,7 @@ class PwApplicationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE status & ? ORDER BY ? DESC %s',
             $this->getTable(), $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array($status, $orderby), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll([$status, $orderby], $this->_pk);
     }
 
     /**
@@ -190,7 +190,7 @@ class PwApplicationDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE status & ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array($status));
+        return $this->getConnection()->createStatement($sql)->getValue([$status]);
     }
 
     /**
@@ -207,7 +207,7 @@ class PwApplicationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `name` LIKE ? ORDER BY `created_time` %s',
             $this->getTable(), $this->sqlLimit($num, $start));
 
-        return $this->getConnection()->createStatement($sql)->queryAll(array("%$name%"), $this->_pk);
+        return $this->getConnection()->createStatement($sql)->queryAll(["%$name%"], $this->_pk);
     }
 
     /**
@@ -221,7 +221,7 @@ class PwApplicationDao extends PwBaseDao
     {
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `name` LIKE ?');
 
-        return $this->getConnection()->createStatement($sql)->getValue(array("%$name%"));
+        return $this->getConnection()->createStatement($sql)->getValue(["%$name%"]);
     }
 
     /**

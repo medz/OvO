@@ -21,7 +21,7 @@ class PwThreadManageDoUp extends PwThreadManageDo
             return false;
         }
         if ($permission['up_time'] > 0 && ($this->uptime - Pw::getTime()) > $permission['up_time'] * 3600) {
-            return new PwError('BBS:manage.operate.up.uptime.exceed', array('{uptime}' => $permission['up_time']));
+            return new PwError('BBS:manage.operate.up.uptime.exceed', ['{uptime}' => $permission['up_time']]);
         }
 
         return true;

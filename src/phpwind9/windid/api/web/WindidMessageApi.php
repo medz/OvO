@@ -17,9 +17,9 @@ class WindidMessageApi
      */
     public function getMessageById($messageId)
     {
-        $params = array(
+        $params = [
             'messageId' => $messageId,
-        );
+        ];
 
         return WindidApi::open('message/getMessageById', $params);
     }
@@ -33,9 +33,9 @@ class WindidMessageApi
      */
     public function getUnRead($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
         return WindidApi::open('message/getNum', $params);
     }
@@ -49,9 +49,9 @@ class WindidMessageApi
      */
     public function countMessage($dialogId)
     {
-        $params = array(
+        $params = [
             'dialogId' => $dialogId,
-        );
+        ];
 
         return WindidApi::open('message/countMessage', $params);
     }
@@ -67,11 +67,11 @@ class WindidMessageApi
      */
     public function getMessageList($dialogId, $start = 0, $limit = 10)
     {
-        $params = array(
+        $params = [
             'dialogId' => $dialogId,
             'start'    => $start,
             'limit'    => $limit,
-        );
+        ];
 
         return WindidApi::open('message/getMessageList', $params);
     }
@@ -83,9 +83,9 @@ class WindidMessageApi
      */
     public function getDialog($dialogId)
     {
-        $params = array(
+        $params = [
             'dialogId' => $dialogId,
-        );
+        ];
 
         return WindidApi::open('message/getDialog', $params);
     }
@@ -99,9 +99,9 @@ class WindidMessageApi
      */
     public function fetchDialog($dialogIds)
     {
-        $params = array(
+        $params = [
             'dialogIds' => $dialogIds,
-        );
+        ];
 
         return WindidApi::open('message/fetchDialog', $params);
     }
@@ -114,10 +114,10 @@ class WindidMessageApi
      */
     public function getDialogByUser($uid, $dialogUid)
     {
-        $params = array(
+        $params = [
             'uid'       => $uid,
             'dialogUid' => $dialogUid,
-        );
+        ];
 
         return WindidApi::open('message/getDialogByUser', $params);
     }
@@ -130,10 +130,10 @@ class WindidMessageApi
      */
     public function getDialogByUsers($uid, $dialogUids)
     {
-        $params = array(
+        $params = [
             'uid'        => $uid,
             'dialogUids' => $dialogUids,
-        );
+        ];
 
         return WindidApi::open('message/getDialogByUsers', $params);
     }
@@ -149,11 +149,11 @@ class WindidMessageApi
      */
     public function getDialogList($uid, $start = 0, $limit = 10)
     {
-        $params = array(
+        $params = [
             'uid'   => $uid,
             'start' => $start,
             'limit' => $limit,
-        );
+        ];
 
         return WindidApi::open('message/getDialogList', $params);
     }
@@ -167,9 +167,9 @@ class WindidMessageApi
      */
     public function countDialog($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
         return WindidApi::open('message/countDialog', $params);
     }
@@ -184,10 +184,10 @@ class WindidMessageApi
      */
     public function getUnreadDialogsByUid($uid, $limit = 10)
     {
-        $params = array(
+        $params = [
             'uid'   => $uid,
             'limit' => $limit,
-        );
+        ];
 
         return WindidApi::open('message/getUnreadDialogsByUid', $params);
     }
@@ -204,13 +204,13 @@ class WindidMessageApi
     public function searchMessage($search, $start = 0, $limit = 10)
     {
         if (!is_array($search)) {
-            return array(0, array());
+            return [0, []];
         }
-        $params = array(
+        $params = [
             'start' => $start,
             'limit' => $limit,
-        );
-        $array = array('fromuid', 'keyword', 'username', 'starttime', 'endtime');
+        ];
+        $array = ['fromuid', 'keyword', 'username', 'starttime', 'endtime'];
         foreach ($search as $k => $v) {
             if (!in_array($k, $array)) {
                 continue;
@@ -229,12 +229,12 @@ class WindidMessageApi
      */
     public function editMessageNum($uid, $num)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
             'num' => $num,
-        );
+        ];
 
-        return WindidApi::open('message/editNum', array(), $params);
+        return WindidApi::open('message/editNum', [], $params);
     }
 
     /**
@@ -248,13 +248,13 @@ class WindidMessageApi
      */
     public function send($uids, $content, $fromUid = 0)
     {
-        $params = array(
+        $params = [
             'uids'    => $uids,
             'content' => $content,
             'fromUid' => $fromUid,
-        );
+        ];
 
-        return WindidApi::open('message/send', array(), $params);
+        return WindidApi::open('message/send', [], $params);
     }
 
     /**
@@ -266,63 +266,63 @@ class WindidMessageApi
      *
      * @return int 标记成功的条数
      */
-    public function read($uid, $dialogId, $messageIds = array())
+    public function read($uid, $dialogId, $messageIds = [])
     {
-        $params = array(
+        $params = [
             'uid'        => $uid,
             'dialogId'   => $dialogId,
             'messageIds' => $messageIds,
-        );
+        ];
 
-        return WindidApi::open('message/read', array(), $params);
+        return WindidApi::open('message/read', [], $params);
     }
 
     public function readDialog($dialogIds)
     {
-        $params = array(
+        $params = [
             'dialogIds' => $dialogIds,
-        );
+        ];
 
-        return WindidApi::open('message/readDialog', array(), $params);
+        return WindidApi::open('message/readDialog', [], $params);
     }
 
-    public function delete($uid, $dialogId, $messageIds = array())
+    public function delete($uid, $dialogId, $messageIds = [])
     {
-        $params = array(
+        $params = [
             'uid'        => $uid,
             'dialogId'   => $dialogId,
             'messageIds' => $messageIds,
-        );
+        ];
 
-        return WindidApi::open('message/delete', array(), $params);
+        return WindidApi::open('message/delete', [], $params);
     }
 
     public function batchDeleteDialog($uid, $dialogIds)
     {
-        $params = array(
+        $params = [
             'uid'       => $uid,
             'dialogIds' => $dialogIds,
-        );
+        ];
 
-        return WindidApi::open('message/batchDeleteDialog', array(), $params);
+        return WindidApi::open('message/batchDeleteDialog', [], $params);
     }
 
     public function deleteByMessageIds($messageIds)
     {
-        $params = array(
+        $params = [
             'messageIds' => $messageIds,
-        );
+        ];
 
-        return WindidApi::open('message/deleteByMessageIds', array(), $params);
+        return WindidApi::open('message/deleteByMessageIds', [], $params);
     }
 
     public function deleteUserMessages($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
-        return WindidApi::open('message/deleteUserMessages', array(), $params);
+        return WindidApi::open('message/deleteUserMessages', [], $params);
     }
 
     /********************** 传统收件箱，发件箱接口start *********************/
@@ -334,11 +334,11 @@ class WindidMessageApi
      */
     public function fromBox($fromUid, $start = 0, $limit = 10)
     {
-        $params = array(
+        $params = [
             'uid'   => $fromUid,
             'start' => $start,
             'limit' => $limit,
-        );
+        ];
 
         return WindidApi::open('message/fromBox', $params);
     }
@@ -350,33 +350,33 @@ class WindidMessageApi
      */
     public function toBox($toUid, $start = 0, $limit = 10)
     {
-        $params = array(
+        $params = [
             'uid'   => $uid,
             'start' => $start,
             'limit' => $limit,
-        );
+        ];
 
         return WindidApi::open('message/toBox', $params);
     }
 
     public function readMessages($uid, $messageIds)
     {
-        $params = array(
+        $params = [
             'uid'        => $uid,
             'messageIds' => $messageIds,
-        );
+        ];
 
-        return WindidApi::open('message/readMessages', array(), $params);
+        return WindidApi::open('message/readMessages', [], $params);
     }
 
     public function deleteMessages($uid, $messageIds)
     {
-        $params = array(
+        $params = [
             'uid'        => $uid,
             'messageIds' => $messageIds,
-        );
+        ];
 
-        return WindidApi::open('message/deleteMessages', array(), $params);
+        return WindidApi::open('message/deleteMessages', [], $params);
     }
 
     /**********************传统收件箱，发件箱接口end *********************/

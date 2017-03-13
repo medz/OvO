@@ -14,7 +14,7 @@ class PwDesignScript
     {
         $moduleId = (int) $moduleId;
         if ($moduleId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($moduleId);

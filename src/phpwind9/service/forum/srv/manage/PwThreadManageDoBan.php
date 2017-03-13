@@ -13,11 +13,11 @@
 class PwThreadManageDoBan extends PwThreadManageDo
 {
     protected $tids;
-    protected $delete = array();
-    protected $banInfo = array();
+    protected $delete = [];
+    protected $banInfo = [];
 
-    private $selectBanUsers = array();
-    private $threadCreatedUids = array();
+    private $selectBanUsers = [];
+    private $threadCreatedUids = [];
 
     /**
      * 获得用户权限
@@ -58,7 +58,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
         }
         //管理组的用户不能被禁言
         $users = $this->getBanUsers();
-        $_tmp = array();
+        $_tmp = [];
         foreach ($users as $item) {
             $item['groupid'] > 0 && $_tmp[] = $item['groupid'];
         }
@@ -109,7 +109,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
         if ($this->selectBanUsers) {
             return $this->selectBanUsers;
         }
-        $users = array();
+        $users = [];
         foreach ($this->srv->getData() as $key => $value) {
             $users[] = $value['created_userid'];
         }
@@ -129,14 +129,14 @@ class PwThreadManageDoBan extends PwThreadManageDo
         if ($this->right) {
             return $this->right;
         }
-        $this->right = array('delCurrentThread' => 0, 'delForumThread' => 0, 'delSiteThread' => 0);
-        $permission = $this->loginUser->getPermission('operate_thread', false, array());
+        $this->right = ['delCurrentThread' => 0, 'delForumThread' => 0, 'delSiteThread' => 0];
+        $permission = $this->loginUser->getPermission('operate_thread', false, []);
         //如果是论坛斑竹,并且是操作的是自己的版块的帖子，则有删除选择，否则没有删除本版权限
         if (isset($permission['delete']) && 1 == $permission['delete']) {
             $this->right['delCurrentThread'] = 1;
             $this->right['delSiteThread'] = 1;
         } elseif (5 == $this->loginUser->gid && $this->srv->isBM($this->srv->getFids())) {
-            $permission = $this->loginUser->getPermission('operate_thread', true, array());
+            $permission = $this->loginUser->getPermission('operate_thread', true, []);
             if (isset($permission['delete']) && $permission['delete'] == 1) {
                 $this->right['delCurrentThread'] = 1;
                 $this->right['delForumThread'] = 1;
@@ -144,7 +144,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
         }
         //如果所选用户不是全都是帖子发帖者，则删除当前帖子不可选
         if (1 == $this->right['delCurrentThread']) {
-            $threadUids = array();
+            $threadUids = [];
             foreach ($this->srv->getData() as $_item) {
                 $threadUids[] = $_item['created_userid'];
             }
@@ -179,7 +179,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
      */
     public function setBanUids($uids)
     {
-        $this->selectBanUsers = Wekit::load('user.PwUser')->fetchUserByUid(is_array($uids) ? $uids : array($uids));
+        $this->selectBanUsers = Wekit::load('user.PwUser')->fetchUserByUid(is_array($uids) ? $uids : [$uids]);
 
         return $this;
     }
@@ -217,12 +217,12 @@ class PwThreadManageDoBan extends PwThreadManageDo
      */
     private function _buildBanDm()
     {
-        $rightTypes = array(PwUserBan::BAN_AVATAR, PwUserBan::BAN_SIGN, PwUserBan::BAN_SPEAK);
+        $rightTypes = [PwUserBan::BAN_AVATAR, PwUserBan::BAN_SIGN, PwUserBan::BAN_SPEAK];
 
         if ($this->banInfo->end_time > 0) {
             $this->banInfo->end_time = Pw::str2time($this->banInfo->end_time);
         }
-        $data = $_notice = array();
+        $data = $_notice = [];
         foreach ($this->banInfo->types as $type) {
             if (!in_array($type, $rightTypes)) {
                 continue;
@@ -239,7 +239,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
                     ->setFid(0);
                 $data[] = $dm;
 
-                isset($_notice[$uid]) || $_notice[$uid] = array();
+                isset($_notice[$uid]) || $_notice[$uid] = [];
                 $_notice[$uid]['end_time'] = $this->banInfo->end_time;
                 $_notice[$uid]['reason'] = $this->banInfo->reason;
                 $_notice[$uid]['type'][] = $type;
@@ -247,7 +247,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
             }
         }
 
-        return array($data, $_notice);
+        return [$data, $_notice];
     }
 
     /**

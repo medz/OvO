@@ -42,6 +42,6 @@ class PwTaskMemberPunchDo implements PwTaskCompleteInterface
     {
         $step['percent'] = '100%';
 
-        return array('isComplete' => true, 'step' => $step);
+        return ['isComplete' => true, 'step' => $step];
     }
 }

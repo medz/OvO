@@ -6,7 +6,7 @@ class PwToppedService
 {
     public function getForumListForHeadTopic($groupid, $currentFid = 0, $currentCategory = false)
     {
-        $sub1 = $sub2 = $forumdb = array();
+        $sub1 = $sub2 = $forumdb = [];
         $forums = $this->_getForumDs()->getForumList();
         if ($currentCategory) {
             $category = $this->_getCategoryByFid($currentFid, $forums);
@@ -20,20 +20,20 @@ class PwToppedService
                     }
                     $catedb[] = $v;
                 } elseif ($v['type'] == 'forum') {
-                    $forumdb[$v['parentid']] || $forumdb[$v['parentid']] = array();
+                    $forumdb[$v['parentid']] || $forumdb[$v['parentid']] = [];
                     $forumdb[$v['parentid']][] = $v;
                 } elseif ($v['type'] == 'sub') {
-                    $sub1[$v['parentid']] || $sub1[$v['parentid']] = array();
+                    $sub1[$v['parentid']] || $sub1[$v['parentid']] = [];
                     $sub1[$v['parentid']][] = $v;
                 } else {
-                    $sub2[$v['parentid']] || $sub2[$v['parentid']] = array();
+                    $sub2[$v['parentid']] || $sub2[$v['parentid']] = [];
                     $sub2[$v['parentid']][] = $v;
                 }
             }
         }
-        $top_3 = $top_2 = $top_1 = $catedbs = array();
+        $top_3 = $top_2 = $top_1 = $catedbs = [];
         foreach ((array) $catedb as $k1 => $v1) {
-            $catedbs[$v1['fid']] = array();
+            $catedbs[$v1['fid']] = [];
             foreach ((array) $forumdb[$v1['fid']] as $k2 => $v2) {
                 $catedbs[$v1['fid']][] = $v2['fid'];
                 foreach ((array) $sub1[$v2['fid']] as $k3 => $v3) {
@@ -63,7 +63,7 @@ class PwToppedService
                     continue;
                 }
                 foreach ((array) $sub1[$v2['fid']] as $k3 => $v3) {
-                    $_subs = array();
+                    $_subs = [];
                     $v3['name'] = WindSecurity::escapeHTML(strip_tags($v3['name']));
                     if ($v3['fid'] == $currentForum['fid']) {
                         $top_1[$v3['fid']] = '&nbsp;|-'.$v3['name'];
@@ -97,7 +97,7 @@ class PwToppedService
             }
         }
 
-        return array($catedbs, $top_1, $top_2, $top_3);
+        return [$catedbs, $top_1, $top_2, $top_3];
     }
 
     private function _getCategoryByFid($fid, $forums)

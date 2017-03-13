@@ -109,7 +109,7 @@ class AdminAuthService
             $list[$key] = $value;
         }
 
-        return array($count, $list, $page);
+        return [$count, $list, $page];
     }
 
     /**

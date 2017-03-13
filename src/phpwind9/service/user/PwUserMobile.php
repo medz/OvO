@@ -22,7 +22,7 @@ class PwUserMobile
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getUserVerify()->get($uid);
@@ -38,7 +38,7 @@ class PwUserMobile
     public function fetchByUid($uids)
     {
         if (!is_array($uids) || !$uids) {
-            return array();
+            return [];
         }
 
         return $this->_getUserVerify()->fetch($uids);
@@ -54,7 +54,7 @@ class PwUserMobile
     public function getByMobile($mobile)
     {
         if ($mobile < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getUserVerify()->getByMobile($mobile);
@@ -76,7 +76,7 @@ class PwUserMobile
             return false;
         }
 
-        return $this->_getUserVerify()->add(array('uid' => $uid, 'mobile' => $mobile));
+        return $this->_getUserVerify()->add(['uid' => $uid, 'mobile' => $mobile]);
     }
 
     /**
@@ -94,7 +94,7 @@ class PwUserMobile
             return false;
         }
 
-        return $this->_getUserVerify()->replace(array('uid' => $uid, 'mobile' => $mobile));
+        return $this->_getUserVerify()->replace(['uid' => $uid, 'mobile' => $mobile]);
     }
 
     /**
@@ -145,7 +145,7 @@ class PwUserMobile
             return false;
         }
 
-        return $this->_getUserVerify()->update($uid, array('mobile' => intval($mobile)));
+        return $this->_getUserVerify()->update($uid, ['mobile' => intval($mobile)]);
     }
 
     /**

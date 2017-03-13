@@ -11,7 +11,7 @@ class PwNavService
 {
     public function getNavType()
     {
-        $navType = array();
+        $navType = [];
         $dir = Wind::getRealDir('SRV:nav.srv.navtype.');
         $list = WindFolder::read($dir, WindFolder::READ_FILE);
         foreach ($list as $v) {
@@ -38,7 +38,7 @@ class PwNavService
         $navTypes = $this->getNavType();
         $ds = $this->_getNavDs();
         foreach ($navTypes as $type => $name) {
-            $_list = array();
+            $_list = [];
             $list = $ds->getNavByType($type);
             foreach ($list as $key => $value) {
                 if (!$value['name']) {

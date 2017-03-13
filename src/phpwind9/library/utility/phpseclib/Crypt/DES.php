@@ -651,78 +651,78 @@ class Crypt_DES
         // one accesses by using the first and last bits to determine the row and the
         // middle four bits to determine the column.  in this implementation, they've
         // been converted to vectors
-        static $sbox = array(
-            array(
+        static $sbox = [
+            [
                 14,  0,  4, 15, 13,  7,  1,  4,  2, 14, 15,  2, 11, 13,  8,  1,
                  3, 10, 10,  6,  6, 12, 12, 11,  5,  9,  9,  5,  0,  3,  7,  8,
                  4, 15,  1, 12, 14,  8,  8,  2, 13,  4,  6,  9,  2,  1, 11,  7,
                 15,  5, 12, 11,  9,  3,  7, 14,  3, 10, 10,  0,  5,  6,  0, 13,
-            ),
-            array(
+            ],
+            [
                 15,  3,  1, 13,  8,  4, 14,  7,  6, 15, 11,  2,  3,  8,  4, 14,
                  9, 12,  7,  0,  2,  1, 13, 10, 12,  6,  0,  9,  5, 11, 10,  5,
                  0, 13, 14,  8,  7, 10, 11,  1, 10,  3,  4, 15, 13,  4,  1,  2,
                  5, 11,  8,  6, 12,  7,  6, 12,  9,  0,  3,  5,  2, 14, 15,  9,
-            ),
-            array(
+            ],
+            [
                 10, 13,  0,  7,  9,  0, 14,  9,  6,  3,  3,  4, 15,  6,  5, 10,
                  1,  2, 13,  8, 12,  5,  7, 14, 11, 12,  4, 11,  2, 15,  8,  1,
                 13,  1,  6, 10,  4, 13,  9,  0,  8,  6, 15,  9,  3,  8,  0,  7,
                 11,  4,  1, 15,  2, 14, 12,  3,  5, 11, 10,  5, 14,  2,  7, 12,
-            ),
-            array(
+            ],
+            [
                  7, 13, 13,  8, 14, 11,  3,  5,  0,  6,  6, 15,  9,  0, 10,  3,
                  1,  4,  2,  7,  8,  2,  5, 12, 11,  1, 12, 10,  4, 14, 15,  9,
                 10,  3,  6, 15,  9,  0,  0,  6, 12, 10, 11,  1,  7, 13, 13,  8,
                 15,  9,  1,  4,  3,  5, 14, 11,  5, 12,  2,  7,  8,  2,  4, 14,
-            ),
-            array(
+            ],
+            [
                  2, 14, 12, 11,  4,  2,  1, 12,  7,  4, 10,  7, 11, 13,  6,  1,
                  8,  5,  5,  0,  3, 15, 15, 10, 13,  3,  0,  9, 14,  8,  9,  6,
                  4, 11,  2,  8,  1, 12, 11,  7, 10,  1, 13, 14,  7,  2,  8, 13,
                 15,  6,  9, 15, 12,  0,  5,  9,  6, 10,  3,  4,  0,  5, 14,  3,
-            ),
-            array(
+            ],
+            [
                 12, 10,  1, 15, 10,  4, 15,  2,  9,  7,  2, 12,  6,  9,  8,  5,
                  0,  6, 13,  1,  3, 13,  4, 14, 14,  0,  7, 11,  5,  3, 11,  8,
                  9,  4, 14,  3, 15,  2,  5, 12,  2,  9,  8,  5, 12, 15,  3, 10,
                  7, 11,  0, 14,  4,  1, 10,  7,  1,  6, 13,  0, 11,  8,  6, 13,
-            ),
-            array(
+            ],
+            [
                  4, 13, 11,  0,  2, 11, 14,  7, 15,  4,  0,  9,  8,  1, 13, 10,
                  3, 14, 12,  3,  9,  5,  7, 12,  5,  2, 10, 15,  6,  8,  1,  6,
                  1,  6,  4, 11, 11, 13, 13,  8, 12,  1,  3,  4,  7, 10, 14,  7,
                 10,  9, 15,  5,  6,  0,  8, 15,  0, 14,  5,  2,  9,  3,  2, 12,
-            ),
-            array(
+            ],
+            [
                 13,  1,  2, 15,  8, 13,  4,  8,  6, 10, 15,  3, 11,  7,  1,  4,
                 10, 12,  9,  5,  3,  6, 14, 11,  5,  0,  0, 14, 12,  9,  7,  2,
                  7,  2, 11,  1,  4, 14,  1,  7,  9,  4, 12, 10, 14,  8,  2, 13,
                  0, 15,  6, 12, 10,  9, 13,  0, 15,  3,  3,  5,  5,  6,  8, 11,
-            ),
-        );
+            ],
+        ];
 
         $keys = $this->keys;
 
         $temp = unpack('Na/Nb', $block);
-        $block = array($temp['a'], $temp['b']);
+        $block = [$temp['a'], $temp['b']];
 
         // because php does arithmetic right shifts, if the most significant bits are set, right
         // shifting those into the correct position will add 1's - not 0's.  this will intefere
         // with the | operation unless a second & is done.  so we isolate these bits and left shift
         // them into place.  we then & each block with 0x7FFFFFFF to prevennt 1's from being added
         // for any other shifts.
-        $msb = array(
+        $msb = [
             ($block[0] >> 31) & 1,
             ($block[1] >> 31) & 1,
-        );
+        ];
         $block[0] &= 0x7FFFFFFF;
         $block[1] &= 0x7FFFFFFF;
 
         // we isolate the appropriate bit in the appropriate integer and shift as appropriate.  in
         // some cases, there are going to be multiple bits in the same integer that need to be shifted
         // in the same way.  we combine those into one shift operation.
-        $block = array(
+        $block = [
             (($block[1] & 0x00000040) << 25) | (($block[1] & 0x00004000) << 16) |
             (($block[1] & 0x00400001) << 7) | (($block[1] & 0x40000100) >> 2) |
             (($block[0] & 0x00000040) << 21) | (($block[0] & 0x00004000) << 12) |
@@ -752,7 +752,7 @@ class Crypt_DES
             (($block[1] & 0x00020000) >> 12) | (($block[1] & 0x02000000) >> 21) |
             (($block[0] & 0x00020000) >> 16) | (($block[0] & 0x02000000) >> 25) |
             ($msb[1] << 28) | ($msb[0] << 24),
-        );
+        ];
 
         for ($i = 0; $i < 16; $i++) {
             // start of "the Feistel (F) function" - see the following URL:
@@ -787,14 +787,14 @@ class Crypt_DES
             $block[0] = $temp;
         }
 
-        $msb = array(
+        $msb = [
             ($block[0] >> 31) & 1,
             ($block[1] >> 31) & 1,
-        );
+        ];
         $block[0] &= 0x7FFFFFFF;
         $block[1] &= 0x7FFFFFFF;
 
-        $block = array(
+        $block = [
             (($block[0] & 0x01000004) << 7) | (($block[1] & 0x01000004) << 6) |
             (($block[0] & 0x00010000) << 13) | (($block[1] & 0x00010000) << 12) |
             (($block[0] & 0x00000100) << 19) | (($block[1] & 0x00000100) << 18) |
@@ -823,7 +823,7 @@ class Crypt_DES
             (($block[0] & 0x00800000) >> 18) | (($block[1] & 0x00800000) >> 19) |
             (($block[0] & 0x00008000) >> 12) | (($block[1] & 0x00008000) >> 13) |
             ($msb[0] << 7) | ($msb[1] << 6),
-        );
+        ];
 
         return pack('NN', $block[0], $block[1]);
     }
@@ -837,23 +837,23 @@ class Crypt_DES
      */
     public function _prepareKey($key)
     {
-        static $shifts = array( // number of key bits shifted per round
+        static $shifts = [ // number of key bits shifted per round
             1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1,
-        );
+        ];
 
         // pad the key and remove extra characters as appropriate.
         $key = str_pad(substr($key, 0, 8), 8, chr(0));
 
         $temp = unpack('Na/Nb', $key);
-        $key = array($temp['a'], $temp['b']);
-        $msb = array(
+        $key = [$temp['a'], $temp['b']];
+        $msb = [
             ($key[0] >> 31) & 1,
             ($key[1] >> 31) & 1,
-        );
+        ];
         $key[0] &= 0x7FFFFFFF;
         $key[1] &= 0x7FFFFFFF;
 
-        $key = array(
+        $key = [
             (($key[1] & 0x00000002) << 26) | (($key[1] & 0x00000204) << 17) |
             (($key[1] & 0x00020408) << 8) | (($key[1] & 0x02040800) >> 1) |
             (($key[0] & 0x00000002) << 22) | (($key[0] & 0x00000204) << 13) |
@@ -876,9 +876,9 @@ class Crypt_DES
             (($key[1] & 0x00000010) >> 1) | (($key[1] & 0x00001000) >> 10) |
             (($key[1] & 0x00100000) >> 19) | (($key[1] & 0x10000000) >> 28) |
             ($msb[1] << 24) | ($msb[0] << 20),
-        );
+        ];
 
-        $keys = array();
+        $keys = [];
         for ($i = 0; $i < 16; $i++) {
             $key[0] <<= $shifts[$i];
             $temp = ($key[0] & 0xF0000000) >> 28;
@@ -888,7 +888,7 @@ class Crypt_DES
             $temp = ($key[1] & 0xF0000000) >> 28;
             $key[1] = ($key[1] | $temp) & 0x0FFFFFFF;
 
-            $temp = array(
+            $temp = [
                 (($key[1] & 0x00004000) >> 9) | (($key[1] & 0x00000800) >> 7) |
                 (($key[1] & 0x00020000) >> 14) | (($key[1] & 0x00000010) >> 2) |
                 (($key[1] & 0x08000000) >> 26) | (($key[1] & 0x00800000) >> 23),
@@ -913,15 +913,15 @@ class Crypt_DES
                 (($key[0] & 0x00000400) >> 5) | (($key[0] & 0x00004000) >> 10) |
                 (($key[0] & 0x00000040) >> 3) | (($key[0] & 0x00100000) >> 18) |
                 (($key[0] & 0x08000000) >> 26) | (($key[0] & 0x01000000) >> 24),
-            );
+            ];
 
             $keys[] = $temp;
         }
 
-        $temp = array(
+        $temp = [
             CRYPT_DES_ENCRYPT => $keys,
             CRYPT_DES_DECRYPT => array_reverse($keys),
-        );
+        ];
 
         return $temp;
     }

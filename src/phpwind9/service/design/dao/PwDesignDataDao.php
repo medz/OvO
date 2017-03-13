@@ -14,7 +14,7 @@ class PwDesignDataDao extends PwBaseDao
 {
     protected $_pk = 'data_id';
     protected $_table = 'design_data';
-    protected $_dataStruct = array('data_id', 'from_type', 'from_app', 'from_id', 'standard', 'module_id', 'style', 'extend_info', 'data_type', 'is_edited', 'is_reservation', 'vieworder', 'start_time', 'end_time');
+    protected $_dataStruct = ['data_id', 'from_type', 'from_app', 'from_id', 'standard', 'module_id', 'style', 'extend_info', 'data_type', 'is_edited', 'is_reservation', 'vieworder', 'start_time', 'end_time'];
 
     public function getData($id)
     {
@@ -31,7 +31,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `module_id` = ?  ORDER BY `vieworder` ASC , `data_id` DESC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($moduleid), 'data_id');
+        return $smt->queryAll([$moduleid], 'data_id');
     }
 
     public function fetchDataByFrom($fromids, $fromtype, $datatype)
@@ -39,7 +39,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s  WHERE `from_id` IN %s AND `from_type` = ?  AND `data_type` = ? ', $this->getTable(), $this->sqlImplode($fromids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fromtype, $datatype), 'data_id');
+        return $smt->queryAll([$fromtype, $datatype], 'data_id');
     }
 
     public function fetchDataByModuleid($moduleids)
@@ -47,7 +47,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s  WHERE `module_id` IN %s ORDER BY `vieworder` ASC , `data_id` DESC', $this->getTable(), $this->sqlImplode($moduleids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'data_id');
+        return $smt->queryAll([], 'data_id');
     }
 
     public function searchData($data, $orderdata, $limit, $offset)
@@ -78,7 +78,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT `data_id` FROM %s  WHERE `module_id` = ? AND `is_reservation` = 0  AND `vieworder` = ? ORDER BY `data_id` ASC LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($moduleid, $orderid));
+        return $smt->getValue([$moduleid, $orderid]);
     }
 
     public function getMaxOrderDataId($moduleid, $dataType)
@@ -86,7 +86,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT `data_id` FROM %s  WHERE `module_id` = ? AND `data_type` = ? ORDER BY `vieworder` DESC , `data_id` ASC LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($moduleid, $dataType));
+        return $smt->getValue([$moduleid, $dataType]);
     }
 
     public function getMaxOrder($moduleid)
@@ -94,7 +94,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT MAX(vieworder) AS max FROM %s WHERE module_id = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($moduleid));
+        return $smt->getValue([$moduleid]);
     }
 
     public function addData($data)
@@ -112,7 +112,7 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET `data_type`= 1 WHERE `module_id` = ? AND `vieworder` =? AND `data_type`= 2');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($moduleid, $order));
+        return $smt->update([$moduleid, $order]);
     }
 
     public function deleteData($id)
@@ -130,13 +130,13 @@ class PwDesignDataDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `module_id` =? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($moduleid));
+        return $smt->update([$moduleid]);
     }
 
     private function _buildCondition($data)
     {
         $where = ' WHERE 1';
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'from_type':
@@ -148,7 +148,7 @@ class PwDesignDataDao extends PwBaseDao
                     $array[] = $value;
                     break;
                 case 'module_id':
-                    $value = !is_array($value) && $value ? array($value) : $value;
+                    $value = !is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND module_id IN '.$this->sqlImplode($value);
                     break;
                 case 'data_type':
@@ -170,12 +170,12 @@ class PwDesignDataDao extends PwBaseDao
             }
         }
 
-        return array($where, $array);
+        return [$where, $array];
     }
 
     private function _buildOrder($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'vieworder':

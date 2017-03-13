@@ -28,7 +28,7 @@ class RegistController extends AdminBaseController
 
         $config = Wekit::C()->getValues('register');
         if (!$config['active.field']) {
-            $config['active.field'] = array();
+            $config['active.field'] = [];
         }
 
         $wconfig = WindidApi::C('reg');
@@ -54,14 +54,14 @@ class RegistController extends AdminBaseController
 
         $username_max = abs($this->getInput('securityUsernameMax', 'post'));
         $username_min = abs($this->getInput('securityUsernameMin', 'post'));
-        $username_max = max(array($username_max, $username_min));
+        $username_max = max([$username_max, $username_min]);
         $username_max > 15 && $username_max = 15;
-        $username_min = min(array($username_max, $username_min));
+        $username_min = min([$username_max, $username_min]);
         $username_min < 1 && $username_min = 1;
         $password_max = abs($this->getInput('securityPasswordMax', 'post'));
         $password_min = abs($this->getInput('securityPasswordMin', 'post'));
-        $password_max = max(array($password_max, $password_min));
-        $password_min = min(array($password_max, $password_min));
+        $password_max = max([$password_max, $password_min]);
+        $password_min = min([$password_max, $password_min]);
         $password_min < 1 && $password_min = 1;
         $password_security = $this->getInput('securityPassword', 'post');
 
@@ -120,7 +120,7 @@ class RegistController extends AdminBaseController
 
         $config = Wekit::C()->getValues('login');
         if (!$config['question.groups']) {
-            $config['question.groups'] = array();
+            $config['question.groups'] = [];
         }
         $this->setOutput($config, 'config');
         $this->setOutput($groups, 'groups');

@@ -37,14 +37,14 @@ class PwHookInjectService
     public function getInjectByHookName($hookName)
     {
         $_r = $this->_loadHookInjectDs()->findByHookName($hookName);
-        $_result = array();
+        $_result = [];
         foreach ($_r as $key => $value) {
-            $_result[$value['alias']] = array(
+            $_result[$value['alias']] = [
                 'class'      => $value['class'],
                 'method'     => $value['method'],
                 'loadway'    => $value['loadway'],
                 'expression' => $value['expression'],
-            );
+            ];
         }
 
         return $_result;
@@ -53,17 +53,17 @@ class PwHookInjectService
     public function fetchInjectByHookName($hookNames)
     {
         $_r = $this->_loadHookInjectDs()->fetchByHookName($hookNames);
-        $_result = array();
+        $_result = [];
         foreach ($hookNames as $key) {
-            $_result[$key] = array();
+            $_result[$key] = [];
         }
         foreach ($_r as $key => $value) {
-            $_result[$value['hook_name']][$value['alias']] = array(
+            $_result[$value['hook_name']][$value['alias']] = [
                 'class'      => $value['class'],
                 'method'     => $value['method'],
                 'loadway'    => $value['loadway'],
                 'expression' => $value['expression'],
-            );
+            ];
         }
 
         return $_result;

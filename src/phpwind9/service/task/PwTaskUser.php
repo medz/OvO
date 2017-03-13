@@ -110,8 +110,8 @@ class PwTaskUser
      */
     public function getByIsPeriod($uid, $isPeriod)
     {
-        if (0 >= ($uid = intval($uid)) || !in_array((int) $isPeriod, array(0, 1))) {
-            return array();
+        if (0 >= ($uid = intval($uid)) || !in_array((int) $isPeriod, [0, 1])) {
+            return [];
         }
 
         return $this->_taskUserDao()->getTasksByIsPeriod($uid, $isPeriod);
@@ -128,7 +128,7 @@ class PwTaskUser
     public function get($uid, $taskid)
     {
         if (0 >= ($uid = intval($uid)) || 0 >= ($taskid = intval($taskid))) {
-            return array();
+            return [];
         }
 
         return $this->_taskUserDao()->get($taskid, $uid);
@@ -145,7 +145,7 @@ class PwTaskUser
     public function gets($uid, $taskids)
     {
         if (empty($taskids)) {
-            return array();
+            return [];
         }
 
         return $this->_taskUserDao()->gets((array) $taskids, $uid);

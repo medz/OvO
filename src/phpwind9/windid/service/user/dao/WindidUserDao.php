@@ -14,7 +14,7 @@ class WindidUserDao extends WindidBaseDao implements WindidUserInterface
 {
     protected $_table = 'user';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'username', 'email', 'password', 'salt', 'safecv', 'regdate', 'regip');
+    protected $_dataStruct = ['uid', 'username', 'email', 'password', 'salt', 'safecv', 'regdate', 'regip'];
 
     /* (non-PHPdoc)
      * @see WindidUserInterface::getUserByUid()
@@ -32,7 +32,7 @@ class WindidUserDao extends WindidBaseDao implements WindidUserInterface
         $sql = $this->_bindTable('SELECT * FROM %s WHERE username=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($username));
+        return $smt->getOne([$username]);
     }
 
     /* (non-PHPdoc)
@@ -43,7 +43,7 @@ class WindidUserDao extends WindidBaseDao implements WindidUserInterface
         $sql = $this->_bindTable('SELECT * FROM %s WHERE email=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($email));
+        return $smt->getOne([$email]);
     }
 
     /* (non-PHPdoc)
@@ -92,7 +92,7 @@ class WindidUserDao extends WindidBaseDao implements WindidUserInterface
     /* (non-PHPdoc)
      * @see WindidUserInterface::editUser()
      */
-    public function editUser($uid, $fields, $increaseFields = array())
+    public function editUser($uid, $fields, $increaseFields = [])
     {
         return $this->_update($uid, $fields);
     }

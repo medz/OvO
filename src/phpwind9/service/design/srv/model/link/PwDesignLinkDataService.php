@@ -14,7 +14,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
 {
     public function decorateAddProperty($model)
     {
-        $data = array();
+        $data = [];
         $data['linkType'] = $this->_getCateGorys();
 
         return $data;
@@ -24,7 +24,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
     {
         $model = $moduleBo->getModel();
         $property = $moduleBo->getProperty();
-        $data = array();
+        $data = [];
         $data['linkType'] = $this->_getCateGorys();
 
         return $data;
@@ -40,7 +40,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
         $field['isLog'] != -1 && $so->setLogo($field['isLog']);
         $list = $this->_getLinkDs()->searchLink($so, $limit, $offset);
         if (!$list) {
-            return array();
+            return [];
         }
         foreach ($list as $k => $v) {
             $list[$k]['lid'] = $v['lid'];
@@ -56,7 +56,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
     private function _getCateGorys()
     {
         $cateGorys = $this->_getLinkDs()->getAllTypes();
-        $data = array(0 => '全部');
+        $data = [0 => '全部'];
         foreach ($cateGorys as $v) {
             $data[$v['typeid']] = $v['typename'];
         }

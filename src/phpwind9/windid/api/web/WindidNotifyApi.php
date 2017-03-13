@@ -12,68 +12,68 @@ class WindidNotifyApi
 {
     public function fetchNotify($nids)
     {
-        $params = array(
+        $params = [
             'nids' => $nids,
-        );
+        ];
 
         return WindidApi::open('notify/fetch', $params);
     }
 
     public function batchNotDelete($nids)
     {
-        $params = array(
+        $params = [
             'nids' => $nids,
-        );
+        ];
 
-        return WindidApi::open('notify/batchNotDelete', array(), $params);
+        return WindidApi::open('notify/batchNotDelete', [], $params);
     }
 
     public function getlogList($appid = 0, $nid = 0, $limit = 10, $start = 0, $complete = null)
     {
-        $params = array(
+        $params = [
             'appid'     => $appid,
             'nid'       => $nid,
             'limit'     => $limit,
             'start'     => $start,
             'completet' => $complete,
-        );
+        ];
 
         return WindidApi::open('notify/getlogList', $params);
     }
 
     public function countLogList($appid = 0, $nid = 0, $complete = null)
     {
-        $params = array(
+        $params = [
             'appid'     => $appid,
             'nid'       => $nid,
             'completet' => $complete,
-        );
+        ];
 
         return WindidApi::open('notify/countLogList', $params);
     }
 
     public function deleteLogComplete()
     {
-        $params = array();
+        $params = [];
 
-        return WindidApi::open('notify/deleteLogComplete', array(), $params);
+        return WindidApi::open('notify/deleteLogComplete', [], $params);
     }
 
     public function deleteLog($logid)
     {
-        $params = array(
+        $params = [
             'logid' => $logid,
-        );
+        ];
 
-        return WindidApi::open('notify/deleteLog', array(), $params);
+        return WindidApi::open('notify/deleteLog', [], $params);
     }
 
     public function logSend($logid)
     {
-        $params = array(
+        $params = [
             'logid' => $logid,
-        );
+        ];
 
-        return WindidApi::open('notify/logSend', array(), $params);
+        return WindidApi::open('notify/logSend', [], $params);
     }
 }

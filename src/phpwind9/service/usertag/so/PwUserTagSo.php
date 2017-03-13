@@ -11,7 +11,7 @@
  */
 class PwUserTagSo
 {
-    private $_data = array();
+    private $_data = [];
 
     public function getData()
     {
@@ -41,7 +41,7 @@ class PwUserTagSo
      */
     public function setIfhot($hot)
     {
-        $this->_data['ifhot'] = in_array($hot, array('0', '1')) ? intval($hot) : '';
+        $this->_data['ifhot'] = in_array($hot, ['0', '1']) ? intval($hot) : '';
 
         return $this;
     }

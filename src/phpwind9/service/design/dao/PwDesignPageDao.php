@@ -14,7 +14,7 @@ class PwDesignPageDao extends PwBaseDao
 {
     protected $_pk = 'page_id';
     protected $_table = 'design_page';
-    protected $_dataStruct = array('page_id', 'page_type', 'page_name', 'page_router', 'page_unique', 'is_unique', 'module_ids', 'struct_names', 'segments', 'design_lock');
+    protected $_dataStruct = ['page_id', 'page_type', 'page_name', 'page_router', 'page_unique', 'is_unique', 'module_ids', 'struct_names', 'segments', 'design_lock'];
 
     public function getPage($id)
     {
@@ -31,7 +31,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `page_type` = ? AND  `page_unique` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($type, $unique));
+        return $smt->getOne([$type, $unique]);
     }
 
     public function getPageList($type, $offset, $limit)
@@ -40,7 +40,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `page_type` & ?  %s', $this->getTable(), $sqlLimit);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type), 'page_id');
+        return $smt->queryAll([$type], 'page_id');
     }
 
     public function countPage($type)
@@ -48,7 +48,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT count(*) FROM %s WHERE `page_type` & ? ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($type));
+        return $smt->getValue([$type]);
     }
 
     public function getPageByRouter($router)
@@ -56,7 +56,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `page_router` = ? ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($router));
+        return $smt->queryAll([$router]);
     }
 
     public function fetchPageByTypeUnique($type, $unique)
@@ -64,7 +64,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `page_type` & ? AND  `page_unique` IN %s', $this->getTable(), $this->sqlImplode($unique));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type), 'page_id');
+        return $smt->queryAll([$type], 'page_id');
     }
 
     public function concatModule($value)
@@ -73,7 +73,7 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `module_ids` like ? ', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($value));
+        return $smt->queryAll([$value]);
     }
 
     public function addPage($fields)
@@ -96,6 +96,6 @@ class PwDesignPageDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE  `page_router` = ? AND `is_unique` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($router, $unique));
+        return $smt->update([$router, $unique]);
     }
 }

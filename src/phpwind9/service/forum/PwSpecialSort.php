@@ -24,7 +24,7 @@ class PwSpecialSort
     public function getSpecialSortByFid($fid)
     {
         if (empty($fid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSpecialSortByFid($fid);
@@ -55,7 +55,7 @@ class PwSpecialSort
     public function getSpecialSortByTid($tid)
     {
         if (empty($tid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSpecialSortByTid($tid);
@@ -85,7 +85,7 @@ class PwSpecialSort
      */
     public function batchAdd($dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $key => $dm) {
             if (($dm instanceof PwThreadSortDm) && ($result = $dm->beforeAdd()) === true) {
                 $data[] = $dm->getData();

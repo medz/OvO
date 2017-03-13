@@ -27,14 +27,14 @@ class PwSpaceModel extends PwSpaceBo
         if ($page > 0) {
             $method = sprintf('model%sList', ucwords($mod));
             if (!method_exists($this, $method)) {
-                return array();
+                return [];
             }
 
             return $this->$method($limit, $page);
         } else {
             $method = sprintf('model%s', ucwords($mod));
             if (!method_exists($this, $method)) {
-                return array();
+                return [];
             }
 
             return $this->$method($limit);
@@ -43,13 +43,13 @@ class PwSpaceModel extends PwSpaceBo
 
     protected function modelVisit($limit)
     {
-        $_users = array();
+        $_users = [];
         $visitors = unserialize($this->space['visitors']);
         if (!$visitors) {
-            return array(0, array());
+            return [0, []];
         }
         $count = count($visitors);
-        $visitors = is_array($visitors) ? array_slice($visitors, 0, $limit, true) : array();
+        $visitors = is_array($visitors) ? array_slice($visitors, 0, $limit, true) : [];
         $uids = array_keys($visitors);
         $users = Wekit::load('user.PwUser')->fetchUserByUid($uids);
         foreach ($visitors as $k => $v) {
@@ -57,18 +57,18 @@ class PwSpaceModel extends PwSpaceBo
             $_users[$k] = $users[$k];
         }
 
-        return array($count, $_users);
+        return [$count, $_users];
     }
 
     protected function modelTovisit($limit)
     {
-        $_users = array();
+        $_users = [];
         $tovisitors = unserialize($this->space['tovisitors']);
         if (!$tovisitors) {
-            return array(0, array());
+            return [0, []];
         }
         $count = count($tovisitors);
-        $tovisitors = is_array($tovisitors) ? array_slice($tovisitors, 0, $limit, true) : array();
+        $tovisitors = is_array($tovisitors) ? array_slice($tovisitors, 0, $limit, true) : [];
         $uids = array_keys($tovisitors);
         $users = Wekit::load('user.PwUser')->fetchUserByUid($uids);
         foreach ($tovisitors as $k => $v) {
@@ -76,23 +76,23 @@ class PwSpaceModel extends PwSpaceBo
             $_users[$k] = $users[$k];
         }
 
-        return array($count, $_users);
+        return [$count, $_users];
     }
 
     protected function modelTag($limit)
     {
         $count = Wekit::load('tag.PwTagAttention')->countAttentionByUid($this->spaceUid);
 
-        return array($count, Wekit::load('tag.PwTag')->getAttentionByUid($this->spaceUid, 0, $limit));
+        return [$count, Wekit::load('tag.PwTag')->getAttentionByUid($this->spaceUid, 0, $limit)];
     }
 
     protected function modelUserTag($limit)
     {
         $tags = Wekit::load('usertag.srv.PwUserTagService')->getUserTagList($this->spaceUid);
         $count = count($tags);
-        $tags = is_array($tags) ? array_slice($tags, 0, $limit, true) : array();
+        $tags = is_array($tags) ? array_slice($tags, 0, $limit, true) : [];
 
-        return array($count, $tags);
+        return [$count, $tags];
     }
 
     protected function modelFollow($limit)
@@ -101,7 +101,7 @@ class PwSpaceModel extends PwSpaceBo
         $follows = Wekit::load('attention.PwAttention')->getFollows($this->spaceUid, $limit, 0);
         $uids = array_keys($follows);
 
-        return array($count, Wekit::load('user.PwUser')->fetchUserByUid($uids));
+        return [$count, Wekit::load('user.PwUser')->fetchUserByUid($uids)];
     }
 
     protected function modelFans($limit)
@@ -110,7 +110,7 @@ class PwSpaceModel extends PwSpaceBo
         $fans = Wekit::load('attention.PwAttention')->getFans($this->spaceUid, $limit, 0);
         $uids = array_keys($fans);
 
-        return array($count, Wekit::load('user.PwUser')->fetchUserByUid($uids));
+        return [$count, Wekit::load('user.PwUser')->fetchUserByUid($uids)];
     }
 
     protected function modelThreadList($limit, $page)
@@ -122,7 +122,7 @@ class PwSpaceModel extends PwSpaceBo
             $threads = $ds->getThreadByUid($this->spaceUid, $limit, $offset, 2);
         }
 
-        return array($count, $threads);
+        return [$count, $threads];
     }
 
     protected function modelPostList($limit, $page)
@@ -132,7 +132,7 @@ class PwSpaceModel extends PwSpaceBo
         $count = $ds->countPostByUid($this->spaceUid);
         if ($count) {
             $tmpPosts = $ds->getPostByUid($this->spaceUid, $limit, $offset);
-            $posts = $tids = array();
+            $posts = $tids = [];
             foreach ($tmpPosts as $v) {
                 $tids[] = $v['tid'];
             }
@@ -145,7 +145,7 @@ class PwSpaceModel extends PwSpaceBo
             }
         }
 
-        return array($count, $posts);
+        return [$count, $posts];
     }
 
     protected function modelFreshList($limit, $page)
@@ -156,6 +156,6 @@ class PwSpaceModel extends PwSpaceBo
         list($offset, $limit) = Pw::page2limit($page, $limit);
         $freshDisplay = new PwFreshDisplay(new PwFetchMyFresh($this->spaceUid, $limit, $offset));
 
-        return array($count, $freshDisplay->gather());
+        return [$count, $freshDisplay->gather()];
     }
 }

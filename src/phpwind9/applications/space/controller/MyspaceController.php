@@ -58,7 +58,7 @@ class MyspaceController extends PwBaseController
      */
     public function allowdomainAction()
     {
-        list($domain, $root) = $this->getInput(array('domain', 'root'));
+        list($domain, $root) = $this->getInput(['domain', 'root']);
         if (!$domain) {
             return $this->showError('SPACE:domain.fail');
         }
@@ -79,7 +79,7 @@ class MyspaceController extends PwBaseController
         $descrip = $this->getInput('descrip', 'post');
 
         //个性域名
-        list($domain, $spaceroot) = $this->getInput(array('domain', 'spaceroot'));
+        list($domain, $spaceroot) = $this->getInput(['domain', 'spaceroot']);
         if ($spaceroot) {
             if (!$domain) {
                 $this->_spaceDomainDs()->delDomain($this->loginUser->uid);
@@ -158,13 +158,13 @@ class MyspaceController extends PwBaseController
                 $image = $background;
             }
         }
-        if (!in_array($repeat, array('no-repeat', 'repeat'))) {
+        if (!in_array($repeat, ['no-repeat', 'repeat'])) {
             $repeat = 'no-repeat';
         }
-        if (!in_array($fixed, array('fixed', 'scroll'))) {
+        if (!in_array($fixed, ['fixed', 'scroll'])) {
             $fixed = 'scroll';
         }
-        if (!in_array($align, array('left', 'right', 'center'))) {
+        if (!in_array($align, ['left', 'right', 'center'])) {
             $align = 'left';
         }
 

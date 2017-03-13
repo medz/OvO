@@ -13,7 +13,7 @@ class PwUserTagDao extends PwBaseDao
 {
     protected $_table = 'user_tag';
     protected $_pk = 'tag_id';
-    protected $_dataStruct = array('tag_id', 'name', 'ifhot', 'used_count');
+    protected $_dataStruct = ['tag_id', 'name', 'ifhot', 'used_count'];
 
     /**
      * 根据标签ID获得该标签信息.
@@ -51,7 +51,7 @@ class PwUserTagDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `name` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($name));
+        return $smt->getOne([$name]);
     }
 
     /**
@@ -102,12 +102,12 @@ class PwUserTagDao extends PwBaseDao
      */
     public function batchAddTag($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $_item) {
             if (!($_tmp = $this->_filterStruct($_item))) {
                 continue;
             }
-            $clear[] = array($_item['name'], $_item['ifhot']);
+            $clear[] = [$_item['name'], $_item['ifhot']];
         }
         if (!$clear) {
             return false;
@@ -143,7 +143,7 @@ class PwUserTagDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET `ifhot` = ? WHERE `tag_id` IN %s', $this->getTable(), $this->sqlImplode($tag_ids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($ifhot));
+        return $smt->execute([$ifhot]);
     }
 
     /**
@@ -218,7 +218,7 @@ class PwUserTagDao extends PwBaseDao
      */
     private function _buildConditions($condition)
     {
-        $_where = $_params = array();
+        $_where = $_params = [];
         foreach ($condition as $key => $val) {
             if ($val !== 0 && !$val) {
                 continue;
@@ -245,6 +245,6 @@ class PwUserTagDao extends PwBaseDao
             }
         }
 
-        return $_where ? array('WHERE '.implode(' AND ', $_where), $_params) : array('', array());
+        return $_where ? ['WHERE '.implode(' AND ', $_where), $_params] : ['', []];
     }
 }

@@ -12,7 +12,7 @@
  */
 class PwTryPwdBp
 {
-    private $loginConfig = array();
+    private $loginConfig = [];
     /**
      * 每日同一个IP地址允许尝试错误密码的总次数.
      *
@@ -38,7 +38,7 @@ class PwTryPwdBp
     /**
      * 构造信息.
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $_siteConfig = Wekit::C('login');
         $this->initConfig($config ? array_merge($_siteConfig, $config) : $_siteConfig);
@@ -58,12 +58,12 @@ class PwTryPwdBp
      */
     public function auth($username, $password, $ip = '', $checkQ = false, $safeQuestion = '', $safeAnswer = '')
     {
-        $r = array(-14, array());
+        $r = [-14, []];
         //手机号码登录
         if (PwUserValidator::isMobileValid($username) === true && in_array(4, $this->loginConfig['ways'])) {
             $mobileInfo = Wekit::load('user.PwUserMobile')->getByMobile($username);
             if (!$mobileInfo) {
-                return $this->checkVerifyResult(-1, array());
+                return $this->checkVerifyResult(-1, []);
             }
             $r = $this->_getWindid()->login($mobileInfo['uid'], $password, 1, $checkQ, $safeQuestion, $safeAnswer);
         }
@@ -150,7 +150,7 @@ class PwTryPwdBp
         }
         //尝试次数达到上限同时帐号还在被冻结状态
         if ($num >= $this->configTotal && (Pw::getTime() - $lastTry) <= $this->nextTrySpace) {
-            return new PwError('USER:login.error.tryover.'.$type, array('{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60));
+            return new PwError('USER:login.error.tryover.'.$type, ['{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60]);
         }
 
         return true;
@@ -182,18 +182,18 @@ class PwTryPwdBp
             $num = ($lastTry == 0 || ($now - $lastTry) >= $this->nextTrySpace) ? 1 : $num + 1;
             $this->restoreTryRecord($info['uid'], $now.'|'.$num);
             if ($num == $this->configTotal) {
-                return new PwError('USER:login.error.tryover.'.$type, array('{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60));
+                return new PwError('USER:login.error.tryover.'.$type, ['{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60]);
             } else {
-                return new PwError('USER:login.error.'.$type, array('{num}' => $this->configTotal - $num));
+                return new PwError('USER:login.error.'.$type, ['{num}' => $this->configTotal - $num]);
             }
         //尝试的次数已经达到上限，同时上次错误的时间距离现在已经大于30分钟
         } elseif (($now - $lastTry) > $this->nextTrySpace) {
             $this->restoreTryRecord($info['uid'], $now.'|1');
 
-            return new PwError('USER:login.error.'.$type, array('{num}' => $this->configTotal - 1));
+            return new PwError('USER:login.error.'.$type, ['{num}' => $this->configTotal - 1]);
         }
         //如果尝试的次数已经达到上限，并且上次错误的时间距离现在没有超过30分钟
-        return new PwError('USER:login.error.tryover.'.$type, array('{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60));
+        return new PwError('USER:login.error.tryover.'.$type, ['{totalTry}' => $this->configTotal, '{min}' => $this->nextTrySpace / 60]);
     }
 
     /**
@@ -284,7 +284,7 @@ class PwTryPwdBp
         //不是今天的则先清空
         ($info['last_time'] != $tody) && $info['error_count'] = 0;
         if ($info['error_count'] >= $this->errIplimit) {
-            return new PwError('USER:login.error.ip.tryover', array('{num}' => $this->errIplimit));
+            return new PwError('USER:login.error.ip.tryover', ['{num}' => $this->errIplimit]);
         }
         if (true === $isUpdate) {
             $error_count = $info['error_count'] + 1;

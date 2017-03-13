@@ -56,7 +56,7 @@ class PwHookDm extends PwBaseDm
     protected function _beforeAdd()
     {
         if (empty($this->_data['name'])) {
-            return array('HOOK:verify.required', array('{{error}}' => 'hook name'));
+            return ['HOOK:verify.required', ['{{error}}' => 'hook name']];
         }
 
         return true;
@@ -68,7 +68,7 @@ class PwHookDm extends PwBaseDm
     protected function _beforeUpdate()
     {
         if (empty($this->_data['name'])) {
-            return array('HOOK:verify.required', array('{{error}}' => 'hook name'));
+            return ['HOOK:verify.required', ['{{error}}' => 'hook name']];
         }
 
         return true;

@@ -166,7 +166,7 @@ class PwHookInject
      */
     public function batchFetchByAlias($alias)
     {
-        is_array($alias) || $alias = array($alias);
+        is_array($alias) || $alias = [$alias];
 
         return $this->_load()->batchFindByAlias($alias);
     }
@@ -193,7 +193,7 @@ class PwHookInject
     public function fetchByHookName($hookNames)
     {
         if (empty($hookNames)) {
-            return array();
+            return [];
         }
 
         return $this->_load()->fetchByHookName($hookNames);
@@ -208,7 +208,7 @@ class PwHookInject
      */
     public function find($id)
     {
-        return (0 >= ($id = intval($id))) ? array() : $this->_load()->find($id);
+        return (0 >= ($id = intval($id))) ? [] : $this->_load()->find($id);
     }
 
     /**
@@ -221,7 +221,7 @@ class PwHookInject
     public function fetch($ids)
     {
         if (!$ids) {
-            return array();
+            return [];
         }
 
         return $this->_load()->_fetch((array) $ids);

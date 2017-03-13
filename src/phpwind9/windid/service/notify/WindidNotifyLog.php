@@ -43,7 +43,7 @@ class WindidNotifyLog
 
     public function multiAddLog($dms)
     {
-        $data = array();
+        $data = [];
         foreach ($dms as $dm) {
             if (($result = $dm->beforeAdd()) !== true) {
                 return $result;
@@ -76,7 +76,7 @@ class WindidNotifyLog
     public function batchDelete($ids)
     {
         if (!is_array($ids)) {
-            $ids = array($ids);
+            $ids = [$ids];
         }
 
         return $this->_getDao()->batchDelete($ids);

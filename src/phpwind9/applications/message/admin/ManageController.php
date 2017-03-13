@@ -17,7 +17,7 @@ class ManageController extends AdminBaseController
 
     public function run()
     {
-        list($page, $perpage, $username, $starttime, $endtime, $keyword) = $this->getInput(array('page', 'perpage', 'username', 'starttime', 'endtime', 'keyword'));
+        list($page, $perpage, $username, $starttime, $endtime, $keyword) = $this->getInput(['page', 'perpage', 'username', 'starttime', 'endtime', 'keyword']);
         $starttime && $pwStartTime = Pw::str2time($starttime);
         $endtime && $pwEndTime = Pw::str2time($endtime);
         $page = $page ? $page : 1;
@@ -31,7 +31,7 @@ class ManageController extends AdminBaseController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array('keyword' => $keyword, 'username' => $username, 'starttime' => $starttime, 'endtime' => $endtime), 'args');
+        $this->setOutput(['keyword' => $keyword, 'username' => $username, 'starttime' => $starttime, 'endtime' => $endtime], 'args');
         $this->setOutput($messages, 'messages');
     }
 
@@ -66,7 +66,7 @@ class ManageController extends AdminBaseController
         $userGroup = Wekit::load('usergroup.PwUserGroups');
         $groups = $userGroup->getAllGroups();
         $groupTypes = $userGroup->getTypeNames();
-        $memberGroupTypes = $groupGroupTypes = array();
+        $memberGroupTypes = $groupGroupTypes = [];
         foreach ($groups as $key => $group) {
             if ($group['type'] == 'member') {
                 $group['grouptype'] = 'memberid';
@@ -89,7 +89,7 @@ class ManageController extends AdminBaseController
      */
     public function doSendAction()
     {
-        list($type, $content, $title, $step, $countStep) = $this->getInput(array('type', 'content', 'title', 'step', 'countStep'));
+        list($type, $content, $title, $step, $countStep) = $this->getInput(['type', 'content', 'title', 'step', 'countStep']);
         !$content && $this->showError('Message:content.empty');
         if ($step > $countStep) {
             $this->showMessage('ADMIN:success');
@@ -97,7 +97,7 @@ class ManageController extends AdminBaseController
         $step = $step ? $step : 1;
         switch ($type) {
             case 1:  // 根据用户组
-                list($user_groups, $grouptype) = $this->getInput(array('user_groups', 'grouptype'));
+                list($user_groups, $grouptype) = $this->getInput(['user_groups', 'grouptype']);
 
                 $vo = new PwUserSo();
                 $searchDs = Wekit::load('SRV:user.PwUserSearch');
@@ -142,12 +142,12 @@ class ManageController extends AdminBaseController
         $haveBuild = ($haveBuild > $count) ? $count : $haveBuild;
         $step++;
         usleep(500);
-        $data = array('step'    => $step,
+        $data = ['step'         => $step,
                     'countStep' => $countStep,
                     'count'     => $count,
                     'haveBuild' => $haveBuild,
-                );
-        Pw::echoJson(array('data' => $data));
+                ];
+        Pw::echoJson(['data' => $data]);
         exit;
     }
 
@@ -158,11 +158,11 @@ class ManageController extends AdminBaseController
         }
         $notice = Wekit::load('message.srv.PwNoticeService');
         foreach ($userInfos as $userInfo) {
-            $extendParams = array(
+            $extendParams = [
                 'username' => $userInfo['username'],
                 'title'    => $title,
                 'content'  => $content,
-            );
+            ];
             $notice->sendNotice($userInfo['uid'], 'massmessage', '', $extendParams);
         }
 

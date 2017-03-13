@@ -24,7 +24,7 @@ class PwMessageMessages
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getMessageConfigDao()->getMessageConfig($uid);
@@ -40,7 +40,7 @@ class PwMessageMessages
     public function fetchMessageConfig($uids)
     {
         if (!is_array($uids) || !count($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getMessageConfigDao()->fetchMessageConfig($uids);
@@ -57,13 +57,13 @@ class PwMessageMessages
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
-        $data = array(
+        $data = [
             'uid'          => $uid,
             'privacy'      => $privacy,
             'notice_types' => $notice_types,
-        );
+        ];
 
         return $this->_getMessageConfigDao()->setMessageConfig($data);
     }

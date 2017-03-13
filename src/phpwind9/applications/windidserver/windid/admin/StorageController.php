@@ -52,7 +52,7 @@ class StorageController extends WindidBaseController
         Wind::getApp()->getFactory()->loadClassDefinitions($components);
         Wekit::C()->setConfig('site', 'avatarUrl', substr(Pw::getPath('1.gpg'), 0, -6));
 
-        Wekit::load('WSRV:notify.srv.WindidNotifyService')->send('alterAvatarUrl', array());
+        Wekit::load('WSRV:notify.srv.WindidNotifyService')->send('alterAvatarUrl', []);
 
         $this->showMessage('WINDID:success');
     }

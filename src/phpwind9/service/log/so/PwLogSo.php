@@ -11,8 +11,8 @@
  */
 class PwLogSo
 {
-    private $_data = array();
-    private $_orderData = array();
+    private $_data = [];
+    private $_orderData = [];
 
     /**
      * 设置搜索条件-操作对象

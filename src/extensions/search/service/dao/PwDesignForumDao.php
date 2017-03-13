@@ -12,7 +12,7 @@ class PwDesignForumDao extends PwBaseDao
 {
     protected $_table = 'bbs_forum';
     protected $_mergeTable = 'bbs_forum_statistics';
-    protected $_dataStruct = array();
+    protected $_dataStruct = [];
 
     public function countSearchForum($data)
     {
@@ -38,7 +38,7 @@ class PwDesignForumDao extends PwBaseDao
     protected function _buildCondition($field)
     {
         $where = ' WHERE 1';
-        $arg = array();
+        $arg = [];
         foreach ($field as $key => $value) {
             switch ($key) {
                 case 'fid':
@@ -51,12 +51,12 @@ class PwDesignForumDao extends PwBaseDao
             }
         }
 
-        return array($where, $arg);
+        return [$where, $arg];
     }
 
     protected function _buildOrderby($orderby)
     {
-        $array = array();
+        $array = [];
         foreach ($orderby as $key => $value) {
             switch ($key) {
                 case 'article':

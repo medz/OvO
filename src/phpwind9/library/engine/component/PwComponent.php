@@ -19,24 +19,24 @@ class PwComponent extends WindModule
      * @param string $tpl
      * @param array  $args
      */
-    public function component($name, $tpl = '', $args = array())
+    public function component($name, $tpl = '', $args = [])
     {
         if (!$_config = $this->getConfig($name)) {
             return;
         }
         if (!empty($_config['service'])) {
             $service = Wekit::load($_config['service']);
-            !is_array($args) && $args = array($args);
+            !is_array($args) && $args = [$args];
             $method = empty($_config['method']) ? 'run' : $_config['method'];
             if (!method_exists($service, $method)) {
                 throw new PwException('method.not.exit',
-                array(
+                [
                     '{parm1}' => 'wekit.engine.component.PwComponent.component',
                     '{parm2}' => $service,
-                    '{parm3}' => $method, ));
+                    '{parm3}' => $method, ]);
             }
 
-            $result = call_user_func_array(array($service, $method), $args);
+            $result = call_user_func_array([$service, $method], $args);
             $tpl || $tpl = $_config['template'];
             /* @var $forward WindForward */
             $forward = Wind::getComponent('forward');

@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwSpaceDao extends PwBaseDao
 {
     protected $_table = 'space';
-    protected $_dataStruct = array('uid', 'space_name', 'space_descrip', 'space_domain', 'space_style', 'back_image', 'visit_count', 'space_privacy', 'visitors', 'tovisitors');
+    protected $_dataStruct = ['uid', 'space_name', 'space_descrip', 'space_domain', 'space_style', 'back_image', 'visit_count', 'space_privacy', 'visitors', 'tovisitors'];
 
     public function getSpace($uid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid));
+        return $smt->getOne([$uid]);
     }
 
     public function fetchSpace($uids)
@@ -28,7 +28,7 @@ class PwSpaceDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid IN %s', $this->getTable(), $this->sqlImplode($uids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'uid');
+        return $smt->queryAll([], 'uid');
     }
 
     public function getSpaceByDomain($domain)
@@ -36,7 +36,7 @@ class PwSpaceDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE space_domain = ? LIMIT 1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($domain));
+        return $smt->getOne([$domain]);
     }
 
     public function addInfo($data)
@@ -57,15 +57,15 @@ class PwSpaceDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE uid = ?', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     public function updateNumber($uid)
     {
-        $sql = $this->_bindSql('UPDATE %s SET %s WHERE uid = ?', $this->getTable(), $this->sqlSingleIncrease(array('visit_count' => 1)));
+        $sql = $this->_bindSql('UPDATE %s SET %s WHERE uid = ?', $this->getTable(), $this->sqlSingleIncrease(['visit_count' => 1]));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 
     public function deleteInfo($uid)
@@ -73,6 +73,6 @@ class PwSpaceDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE uid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 }

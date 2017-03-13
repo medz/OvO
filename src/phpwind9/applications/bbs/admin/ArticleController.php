@@ -33,11 +33,11 @@ class ArticleController extends AdminBaseController
 
     public function searchthreadAction()
     {
-        list($page, $perpage, $keyword, $created_username, $time_start, $time_end, $fid, $digest, $created_userid, $created_ip, $hits_start, $hits_end, $replies_start, $replies_end) = $this->getInput(array('page', 'perpage', 'keyword', 'created_username', 'time_start', 'time_end', 'fid', 'digest', 'created_userid', 'created_ip', 'hits_start', 'hits_end', 'replies_start', 'replies_end'));
+        list($page, $perpage, $keyword, $created_username, $time_start, $time_end, $fid, $digest, $created_userid, $created_ip, $hits_start, $hits_end, $replies_start, $replies_end) = $this->getInput(['page', 'perpage', 'keyword', 'created_username', 'time_start', 'time_end', 'fid', 'digest', 'created_userid', 'created_ip', 'hits_start', 'hits_end', 'replies_start', 'replies_end']);
         if ($created_username) {
             $user = $this->_getUserDs()->getUserByName($created_username);
             if (!$user) {
-                $this->showError(array('USER:exists.not', array('{username}' => $created_username)));
+                $this->showError(['USER:exists.not', ['{username}' => $created_username]]);
             }
             if ($created_userid) {
                 ($created_userid != $user['uid']) && $this->showError('USER:username.notequal.uid');
@@ -54,7 +54,7 @@ class ArticleController extends AdminBaseController
                 $dm->setFid($fid);
             } else {
                 $srv = Wekit::load('forum.srv.PwForumService');
-                $fids = array(0);
+                $fids = [0];
                 $forums = $srv->getForumsByLevel($fid, $srv->getForumMap());
                 foreach ($forums as $value) {
                     $fids[] = $value['fid'];
@@ -82,7 +82,7 @@ class ArticleController extends AdminBaseController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array(
+        $this->setOutput([
             'keyword'          => $keyword,
             'created_username' => $created_username,
             'time_start'       => $time_start,
@@ -95,7 +95,7 @@ class ArticleController extends AdminBaseController
             'hits_end'         => $hits_end,
             'replies_start'    => $replies_start,
             'replies_end'      => $replies_end,
-        ), 'args');
+        ], 'args');
 
         $this->setOutput($this->_getFroumService()->getForumList($fid), 'forumList');
         $this->setOutput($this->_getFroumService()->getForumOption($fid), 'option_html');
@@ -135,7 +135,7 @@ class ArticleController extends AdminBaseController
 
     public function searchreplyAction()
     {
-        list($page, $perpage, $keyword, $fid, $created_username, $created_time_start, $created_time_end, $created_userid, $created_ip, $tid) = $this->getInput(array('page', 'perpage', 'keyword', 'fid', 'created_username', 'created_time_start', 'created_time_end', 'created_userid', 'created_ip', 'tid'));
+        list($page, $perpage, $keyword, $fid, $created_username, $created_time_start, $created_time_end, $created_userid, $created_ip, $tid) = $this->getInput(['page', 'perpage', 'keyword', 'fid', 'created_username', 'created_time_start', 'created_time_end', 'created_userid', 'created_ip', 'tid']);
         if ($created_username) {
             $user = $this->_getUserDs()->getUserByName($created_username);
             if (!$user) {
@@ -157,7 +157,7 @@ class ArticleController extends AdminBaseController
                 $dm->setFid($fid);
             } else {
                 $srv = Wekit::load('forum.srv.PwForumService');
-                $fids = array(0);
+                $fids = [0];
                 $forums = $srv->getForumsByLevel($fid, $srv->getForumMap());
                 foreach ($forums as $value) {
                     $fids[] = $value['fid'];
@@ -181,7 +181,7 @@ class ArticleController extends AdminBaseController
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
         $this->setOutput($perpage, 'perpage');
-        $this->setOutput(array(
+        $this->setOutput([
             'keyword'            => $keyword,
             'created_username'   => $created_username,
             'created_time_start' => $created_time_start,
@@ -190,7 +190,7 @@ class ArticleController extends AdminBaseController
             'created_userid'     => $created_userid,
             'created_ip'         => $created_ip,
             'tid'                => $tid,
-        ), 'args');
+        ], 'args');
 
         $this->setOutput($this->_getFroumService()->getForumList($fid), 'forumList');
         $this->setOutput($this->_getFroumService()->getForumOption($fid), 'option_html');

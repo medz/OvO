@@ -30,7 +30,7 @@
         $time = Pw::getTime();
         $space = $this->_getSpaceDs()->getSpace($spaceUid);
         $visitors = unserialize($space['visitors']);
-        $visitors = is_array($visitors) ? $visitors : array();
+        $visitors = is_array($visitors) ? $visitors : [];
         if (array_key_exists($visitUid, $visitors)) {
             $keys = array_keys($visitors);
             if (array_shift($keys) == $visitUid) {
@@ -39,7 +39,7 @@
             unset($visitors[$visitUid]);
         }
 
-        $visitors = array($visitUid => $time) + $visitors;
+        $visitors = [$visitUid => $time] + $visitors;
         if (count($visitors) > 20) {
             $visitors = array_slice($visitors, 0, 20, true);
         }
@@ -69,7 +69,7 @@
         $time = Pw::getTime();
         $space = $this->_getSpaceDs()->getSpace($visitUid);
         $tovisitors = unserialize($space['tovisitors']);
-        $tovisitors = is_array($tovisitors) ? $tovisitors : array();
+        $tovisitors = is_array($tovisitors) ? $tovisitors : [];
         if (array_key_exists($spaceUid, $tovisitors)) {
             $keys = array_keys($tovisitors);
             if (array_shift($keys) == $spaceUid) {
@@ -78,7 +78,7 @@
             unset($tovisitors[$spaceUid]);
         }
 
-        $tovisitors = array($spaceUid => $time) + $tovisitors;
+        $tovisitors = [$spaceUid => $time] + $tovisitors;
         if (count($tovisitors) > 20) {
             $tovisitors = array_slice($tovisitors, 0, 20, true);
         }
@@ -102,7 +102,7 @@
         if (empty($y) || empty($m) || empty($d)) {
             return 'no';
         }
-        $constellations = array('aquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn');
+        $constellations = ['aquarius', 'pisces', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn'];
         if ($d <= 22) {
             if (1 != $m) {
                 $constellation = $constellations[$m - 2];

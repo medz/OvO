@@ -30,7 +30,7 @@ class PwNoticeTask extends PwNoticeAction
     {
         $extendParams['condition'] = is_array($extendParams['conditions']) ? $extendParams['conditions'] : unserialize($extendParams['conditions']);
         $url = $extendParams['condition']['url'] ? $extendParams['condition']['url'] : 'task/index/run';
-        $array = array('id' => $extendParams['taskid'], 'title' => $extendParams['title'], 'icon' => $extendParams['icon'], 'url' => $url, 'created_time' => Pw::getTime());
+        $array = ['id' => $extendParams['taskid'], 'title' => $extendParams['title'], 'icon' => $extendParams['icon'], 'url' => $url, 'created_time' => Pw::getTime()];
         $array['complete'] = isset($extendParams['complete']) && $extendParams['complete'] == 1 ? 1 : 0;
 
         return $array;

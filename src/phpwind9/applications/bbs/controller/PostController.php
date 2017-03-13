@@ -19,7 +19,7 @@ class PostController extends PwBaseController
         parent::beforeAction($handlerAdapter);
         $action = $handlerAdapter->getAction();
 
-        if (in_array($action, array('fastreply', 'replylist'))) {
+        if (in_array($action, ['fastreply', 'replylist'])) {
             return;
         }
         $this->post = $this->_getPost($action);
@@ -37,9 +37,9 @@ class PostController extends PwBaseController
         $pwforum = $this->post->forum;
         if ($pwforum->foruminfo['password']) {
             if (!$this->loginUser->isExists()) {
-                $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('bbs/post/'.$action, array('fid' => $$pwforum->fid))));
+                $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/post/'.$action, ['fid' => $$pwforum->fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$pwforum->fid)) {
-                $this->forwardAction('bbs/forum/password', array('fid' => $pwforum->fid));
+                $this->forwardAction('bbs/forum/password', ['fid' => $pwforum->fid]);
             }
         }
         if ($pwforum->foruminfo['style']) {
@@ -76,7 +76,7 @@ class PostController extends PwBaseController
      */
     public function doaddAction()
     {
-        list($title, $content, $topictype, $subtopictype, $reply_notice, $hide) = $this->getInput(array('atc_title', 'atc_content', 'topictype', 'sub_topictype', 'reply_notice', 'hide'), 'post');
+        list($title, $content, $topictype, $subtopictype, $reply_notice, $hide) = $this->getInput(['atc_title', 'atc_content', 'topictype', 'sub_topictype', 'reply_notice', 'hide'], 'post');
         $pwPost = $this->post;
         $this->runHook('c_post_doadd', $pwPost);
 
@@ -115,7 +115,7 @@ class PostController extends PwBaseController
         $this->setOutput($info['tid'], 'tid');
         $this->setOutput($pid, 'pid');
         $this->setOutput('checked', 'reply_notice');
-        $this->setOutput($this->post->forum->headguide().$this->post->forum->bulidGuide(array($info['subject'], WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $this->post->forum->fid)))), 'headguide');
+        $this->setOutput($this->post->forum->headguide().$this->post->forum->bulidGuide([$info['subject'], WindUrlHelper::createUrl('bbs/read/run', ['tid' => $info['tid'], 'fid' => $this->post->forum->fid])]), 'headguide');
         $this->_initVar();
         $this->setTemplate('post_run');
         // seo设置
@@ -148,7 +148,7 @@ class PostController extends PwBaseController
     public function doreplyAction()
     {
         $tid = $this->getInput('tid');
-        list($title, $content, $hide, $rpid) = $this->getInput(array('atc_title', 'atc_content', 'hide', 'pid'), 'post');
+        list($title, $content, $hide, $rpid) = $this->getInput(['atc_title', 'atc_content', 'hide', 'pid'], 'post');
         $_getHtml = $this->getInput('_getHtml', 'get');
         $pwPost = $this->post;
         $this->runHook('c_post_doreply', $pwPost);
@@ -183,7 +183,7 @@ class PostController extends PwBaseController
             $this->runHook('c_post_replyread', $threadDisplay);
             $dataSource = new PwReplyRead($tid, $pid);
             $threadDisplay->execute($dataSource);
-            $_cache = Wekit::cache()->fetch(array('level', 'group_right'));
+            $_cache = Wekit::cache()->fetch(['level', 'group_right']);
 
             $this->setOutput($threadDisplay, 'threadDisplay');
             $this->setOutput($tid, 'tid');
@@ -242,7 +242,7 @@ class PostController extends PwBaseController
             $thread = Wekit::load('forum.PwThread')->getThread($info['tid']);
             $headtitle = $thread['subject'];
         }
-        $this->setOutput($this->post->forum->headguide().$this->post->forum->bulidGuide(array($headtitle, WindUrlHelper::createUrl('bbs/read/run', array('tid' => $info['tid'], 'fid' => $this->post->forum->fid)))), 'headguide');
+        $this->setOutput($this->post->forum->headguide().$this->post->forum->bulidGuide([$headtitle, WindUrlHelper::createUrl('bbs/read/run', ['tid' => $info['tid'], 'fid' => $this->post->forum->fid])]), 'headguide');
         $this->_initVar();
         // seo设置
 
@@ -259,7 +259,7 @@ class PostController extends PwBaseController
     {
         $tid = $this->getInput('tid');
         $pid = $this->getInput('pid');
-        list($title, $content, $topictype, $subtopictype, $reply_notice, $hide) = $this->getInput(array('atc_title', 'atc_content', 'topictype', 'sub_topictype', 'reply_notice', 'hide'), 'post');
+        list($title, $content, $topictype, $subtopictype, $reply_notice, $hide) = $this->getInput(['atc_title', 'atc_content', 'topictype', 'sub_topictype', 'reply_notice', 'hide'], 'post');
         $pwPost = $this->post;
         $this->runHook('c_post_domodify', $pwPost);
 
@@ -313,14 +313,14 @@ class PostController extends PwBaseController
 
     private function _replylist()
     {
-        list($tid, $pid, $page) = $this->getInput(array('tid', 'pid', 'page'), 'get');
+        list($tid, $pid, $page) = $this->getInput(['tid', 'pid', 'page'], 'get');
 
         $page = intval($page);
         $page < 1 && $page = 1;
         $perpage = 10;
 
         $info = Wekit::load('forum.PwThread')->getThread($tid);
-        $replydb = array();
+        $replydb = [];
         if ($pid) {
             $reply = Wekit::load('forum.PwThread')->getPost($pid);
             $total = $reply['replies'];
@@ -343,20 +343,20 @@ class PostController extends PwBaseController
     private function _initVar()
     {
         $creditBo = PwCreditBo::getInstance();
-        $sellCreditRange = $this->loginUser->getPermission('sell_credit_range', false, array());
-        $allowThreadExtend = $this->loginUser->getPermission('allow_thread_extend', false, array());
-        $sellConfig = array(
+        $sellCreditRange = $this->loginUser->getPermission('sell_credit_range', false, []);
+        $allowThreadExtend = $this->loginUser->getPermission('allow_thread_extend', false, []);
+        $sellConfig = [
             'ifopen' => ($this->post->forum->forumset['allowsell'] && $allowThreadExtend['sell']) ? 1 : 0,
             'price'  => $sellCreditRange['maxprice'],
             'income' => $sellCreditRange['maxincome'],
             'credit' => Pw::subArray($creditBo->cType, $this->loginUser->getPermission('sell_credits')),
-        );
+        ];
         !$sellConfig['credit'] && $sellConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
 
-        $enhideConfig = array(
+        $enhideConfig = [
             'ifopen' => ($this->post->forum->forumset['allowhide'] && $allowThreadExtend['hide']) ? 1 : 0,
             'credit' => Pw::subArray($creditBo->cType, $this->loginUser->getPermission('enhide_credits')),
-        );
+        ];
         !$enhideConfig['credit'] && $enhideConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
 
         $allowUpload = ($this->post->user->isExists() && $this->post->forum->allowUpload($this->post->user) && ($this->post->user->getPermission('allow_upload') || $this->post->forum->foruminfo['allow_upload'])) ? 1 : 0;
@@ -366,7 +366,7 @@ class PostController extends PwBaseController
             $attachnum = max(min($attachnum, $perday - $count), 0);
         }
 
-        $this->setOutput(PwSimpleHook::getInstance('PwEditor_app')->runWithFilters(array()), 'editor_app_config');
+        $this->setOutput(PwSimpleHook::getInstance('PwEditor_app')->runWithFilters([]), 'editor_app_config');
         $this->setOutput($this->post, 'pwpost');
         $this->setOutput($this->post->getDisabled(), 'needcheck');
         $this->setOutput($this->post->forum->fid, 'fid');
@@ -383,11 +383,11 @@ class PostController extends PwBaseController
         if (!$attach) {
             return '';
         }
-        $array = array();
+        $array = [];
         ksort($attach);
         reset($attach);
         foreach ($attach as $key => $value) {
-            $array[$key] = array(
+            $array[$key] = [
                 'name'      => $value['name'],
                 'size'      => $value['size'],
                 'path'      => Pw::getPath($value['path'], $value['ifthumb'] & 1),
@@ -396,7 +396,7 @@ class PostController extends PwBaseController
                 'special'   => $value['special'],
                 'cost'      => $value['cost'],
                 'ctype'     => $value['ctype'],
-            );
+            ];
         }
 
         return $array;
@@ -404,10 +404,10 @@ class PostController extends PwBaseController
 
     private function _initTopictypes($defaultTopicType = 0)
     {
-        $topictypes = $jsonArray = array();
+        $topictypes = $jsonArray = [];
         $forceTopicType = $this->post->forum->forumset['force_topic_type'];
         if ($this->post->forum->forumset['topic_type']) {
-            $permission = $this->loginUser->getPermission('operate_thread', false, array());
+            $permission = $this->loginUser->getPermission('operate_thread', false, []);
             $topictypes = $this->_getTopictypeDs()->getTopicTypesByFid($this->post->forum->fid, !$permission['type']);
             foreach ($topictypes['sub_topic_types'] as $key => $value) {
                 if (!is_array($value)) {

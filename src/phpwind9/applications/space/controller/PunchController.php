@@ -12,7 +12,7 @@
  */
 class PunchController extends PwBaseController
 {
-    protected $config = array();
+    protected $config = [];
     protected $perpage = 20;
     protected $_creditBo;
 
@@ -65,17 +65,17 @@ class PunchController extends PwBaseController
         }
         // 奖励积分
         if ($awardNum) {
-            $this->_creditBo->addLog('punch', array($reward['type'] => $awardNum), $this->loginUser, array(
+            $this->_creditBo->addLog('punch', [$reward['type'] => $awardNum], $this->loginUser, [
                 'cname'  => $this->_creditBo->cUnit[$reward['type']],
-                'affect' => $awardNum, )
+                'affect' => $awardNum, ]
             );
             $this->_creditBo->set($userInfo['uid'], $reward['type'], $awardNum);
         }
-        $result = array(
+        $result = [
             'behaviornum' => $havePunch ? $behavior['number'] : $behavior['number'] + 1,
             'reward'      => $awardNum.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
-        );
-        Pw::echoJson(array('state' => 'success', 'data' => $result));
+        ];
+        Pw::echoJson(['state' => 'success', 'data' => $result]);
         exit;
     }
 
@@ -90,7 +90,7 @@ class PunchController extends PwBaseController
             $this->showError($result->getError());
         }
 
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -104,11 +104,11 @@ class PunchController extends PwBaseController
 
         $reward = $this->config['punch.reward'];
         $punchFriend = $this->config['punch.friend.reward'];
-        $friendReward = array(
+        $friendReward = [
             'cUnit' => $this->_creditBo->cUnit[$reward['type']],
             'cType' => $this->_creditBo->cType[$reward['type']],
             'cNum'  => $punchFriend['rewardNum'],
-        );
+        ];
 
         $this->setOutput($result, 'friendNum');
         $this->setOutput($friendReward, 'reward');
@@ -121,7 +121,7 @@ class PunchController extends PwBaseController
      */
     public function getfollowAction()
     {
-        list($type, $page, $perpage) = $this->getInput(array('type', 'page', 'perpage'));
+        list($type, $page, $perpage) = $this->getInput(['type', 'page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -136,7 +136,7 @@ class PunchController extends PwBaseController
             $count = $this->loginUser->info['follows'];
         }
         $uids = array_keys($follows);
-        Pw::echoJson(array('state' => 'success', 'data' => $this->_fetchFollowUsers($uids), 'page' => $page));
+        Pw::echoJson(['state' => 'success', 'data' => $this->_fetchFollowUsers($uids), 'page' => $page]);
         exit;
     }
 
@@ -146,7 +146,7 @@ class PunchController extends PwBaseController
             return '';
         }
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN | PwUser::FETCH_DATA);
-        $userFollors = array();
+        $userFollors = [];
         foreach ($userList as $k => $v) {
             $tmpUser['disable'] = '';
             if ($v['punch']) {
@@ -167,7 +167,7 @@ class PunchController extends PwBaseController
     public function dofriendAction()
     {
         $friends = $this->getInput('friend');
-        !is_array($friends) && $friends = array($friends);
+        !is_array($friends) && $friends = [$friends];
         if (count($friends) < 0) {
             $this->showError('SPACE:punch.data.error');
         }
@@ -197,19 +197,19 @@ class PunchController extends PwBaseController
             }
             $behaviorNum = (int) $behaviors[$uid] + 1;
             $this->_punchBehavior($v, $this->config['punch.friend.reward']['rewardMeNum'], $behaviorNum);
-            $creditUids = array(
-                $this->loginUser->uid => array($this->config['punch.reward']['type'] => $awardNum),
-                $v['uid']             => array($this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']),
-            );
+            $creditUids = [
+                $this->loginUser->uid => [$this->config['punch.reward']['type'] => $awardNum],
+                $v['uid']             => [$this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']],
+            ];
             // 奖励积分
-            $this->_creditBo->addLog('punch', array($this->config['punch.reward']['type'] => $awardNum), $this->loginUser, array(
+            $this->_creditBo->addLog('punch', [$this->config['punch.reward']['type'] => $awardNum], $this->loginUser, [
                 'cname'  => $this->_creditBo->cType[$this->config['punch.reward']['type']],
-                'affect' => $awardNum, )
+                'affect' => $awardNum, ]
             );
 
-            $this->_creditBo->addLog('punch', array($this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']), $userBo, array(
+            $this->_creditBo->addLog('punch', [$this->config['punch.reward']['type'] => $this->config['punch.friend.reward']['rewardMeNum']], $userBo, [
                 'cname'  => $this->_creditBo->cType[$this->config['punch.reward']['type']],
-                'affect' => $this->config['punch.friend.reward']['rewardMeNum'], )
+                'affect' => $this->config['punch.friend.reward']['rewardMeNum'], ]
             );
             $this->_creditBo->execute($creditUids);
             $this->_getUserBehaviorDs()->replaceDayBehavior($this->loginUser->uid, 'punch_num', Pw::getTime());
@@ -217,18 +217,18 @@ class PunchController extends PwBaseController
         }
         if ($punchUsers) {
             $awardNums = $awardNum * count($punchUsers);
-            $result = array(
+            $result = [
                 'usernames' => implode(',', $punchUsers),
                 'reward'    => $awardNums.$this->_creditBo->cUnit[$this->config['punch.reward']['type']].$this->_creditBo->cType[$this->config['punch.reward']['type']],
-            );
+            ];
         }
-        Pw::echoJson(array('state' => 'success', 'data' => $result));
+        Pw::echoJson(['state' => 'success', 'data' => $result]);
         exit;
     }
 
     protected function fetchBehaviors($uids, $behavior = 'punch_day')
     {
-        $array = array();
+        $array = [];
         $behaviors = $this->_getUserBehaviorDs()->fetchBehavior($uids);
         if (!$behaviors) {
             return $array;
@@ -253,38 +253,38 @@ class PunchController extends PwBaseController
     public function punchtipAction()
     {
         $punchData = $this->loginUser->info['punch'];
-        $punchData = $punchData ? unserialize($punchData) : array();
+        $punchData = $punchData ? unserialize($punchData) : [];
         $reward = $this->config['punch.reward'];
         if (!$punchData) {
-            $data = array(
+            $data = [
                 'cUnit'        => $this->_creditBo->cUnit[$reward['type']],
                 'cType'        => $this->_creditBo->cType[$reward['type']],
                 'todaycNum'    => $reward['min'],
                 'tomorrowcNum' => $reward['min'] + $reward['step'],
                 'step'         => $reward['step'],
                 'max'          => $reward['max'],
-            );
-            Pw::echoJson(array('state' => 'success', 'data' => $data));
+            ];
+            Pw::echoJson(['state' => 'success', 'data' => $data]);
             exit;
         }
         $havePunch = $this->_getPunchService()->isPunch($punchData);
         if ($punchData['username'] == $this->loginUser->username && $havePunch) {
-            Pw::echoJson(array('state' => 'fail'));
+            Pw::echoJson(['state' => 'fail']);
             exit;
         }
         $behavior = $this->_getUserBehaviorDs()->getBehavior($this->loginUser->uid, 'punch_day');
         $steps = $behavior['number'] > 0 ? $behavior['number'] : 0;
         $awardNum = ($reward['min'] + $steps * $reward['step'] > $reward['max']) ? $reward['max'] : $reward['min'] + $steps * $reward['step'];
         $tomorrowcNum = $awardNum + $reward['step'];
-        $data = array(
+        $data = [
             'cUnit'        => $this->_creditBo->cUnit[$reward['type']],
             'cType'        => $this->_creditBo->cType[$reward['type']],
             'todaycNum'    => $awardNum,
             'tomorrowcNum' => $tomorrowcNum > $reward['max'] ? $reward['max'] : $tomorrowcNum,
             'step'         => $reward['step'],
             'max'          => $reward['max'],
-        );
-        Pw::echoJson(array('state' => 'success', 'data' => $data));
+        ];
+        Pw::echoJson(['state' => 'success', 'data' => $data]);
         exit;
     }
 
@@ -298,14 +298,14 @@ class PunchController extends PwBaseController
     private function _punchBehavior($userInfo, $awardNum, $behaviorNum = '')
     {
         $reward = $this->config['punch.reward'];
-        $punchData = array(
+        $punchData = [
             'username' => $this->loginUser->username,
             'time'     => Pw::getTime(),
             'cNum'     => $awardNum,
             'cUnit'    => $this->_creditBo->cUnit[$reward['type']],
             'cType'    => $this->_creditBo->cType[$reward['type']],
             'days'     => $behaviorNum,
-        );
+        ];
 
         // 更新用户data表信息
 
@@ -331,7 +331,7 @@ class PunchController extends PwBaseController
 
         $allowNum = $this->config['punch.friend.reward']['friendNum'] - $behavior['number'];
         if ($allowNum < 1) {
-            return new PwError('SPACE:punch.friend.num.error', array('{num}' => $this->config['punch.friend.reward']['friendNum']));
+            return new PwError('SPACE:punch.friend.num.error', ['{num}' => $this->config['punch.friend.reward']['friendNum']]);
         }
 
         return $allowNum;

@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwUbbCode
 {
     protected static $_cvtimes = -1;
-    protected static $_code = array();
+    protected static $_code = [];
     protected static $_level = 0;
     protected static $_num = 0;
     protected static $_playerId = 0;
@@ -48,9 +48,9 @@ class PwUbbCode
      */
     public static function convertTag($message, $tag)
     {
-        is_array($tag) || $tag = array($tag);
+        is_array($tag) || $tag = [$tag];
         foreach ($tag as $v) {
-            $message = str_replace(array("[$v]", "[/$v]"), array("<$v>", "</$v>"), $message);
+            $message = str_replace(["[$v]", "[/$v]"], ["<$v>", "</$v>"], $message);
         }
 
         return $message;
@@ -80,8 +80,8 @@ class PwUbbCode
         $message = preg_replace('/\[list=([aA1]?)\](.+?)\[\/list\]/is', '<ol type="\\1">\\2</ol>', $message);
 
         return str_replace(
-            array('[list]', '[li]', '[/li]', '[/list]'),
-            array('<ul>', '<li>', '</li>', '</ul>'),
+            ['[list]', '[li]', '[/li]', '[/list]'],
+            ['<ul>', '<li>', '</li>', '</ul>'],
             $message
         );
     }
@@ -167,8 +167,8 @@ class PwUbbCode
         $message = preg_replace_callback("/\[email=([^\[]*)\][^\[]*\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
         $messxage = preg_replace_callback("/\[email\]([^\[]*)\[\/email\]/is", 'self::filterUbb', $message); //过滤ubb属性中的注入敏感词
         return preg_replace(
-            array("/\[email=([^\[]*)\]([^\[]*)\[\/email\]/is", "/\[email\]([^\[]*)\[\/email\]/is"),
-            array('<a href="mailto:\\1 ">\\2</a>', '<a href="mailto:\\1 ">\\1</a>'),
+            ["/\[email=([^\[]*)\]([^\[]*)\[\/email\]/is", "/\[email\]([^\[]*)\[\/email\]/is"],
+            ['<a href="mailto:\\1 ">\\2</a>', '<a href="mailto:\\1 ">\\1</a>'],
             $message
         );
     }
@@ -456,10 +456,10 @@ class PwUbbCode
         }
 
         return preg_replace_callback(
-            array(
+            [
                 "/\[(mp3|wmv)(?:=[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/is",
                 "/\[(wmv|rm)(?:=[0-9]{1,3}\,[0-9]{1,3}\,[01]{1})?\]([^\<\r\n\"']+?)\[\/\\1\]/is",
-            ),
+            ],
             function ($m) {
                 return PwUbbCode::createMediaLink($m[2]);
             },
@@ -519,13 +519,13 @@ class PwUbbCode
 
     protected static function _init()
     {
-        self::$_code = array();
+        self::$_code = [];
         self::$_num = 0;
     }
 
     protected static function _startParse()
     {
-        self::$_code[++self::$_level] = array();
+        self::$_code[++self::$_level] = [];
     }
 
     protected static function _pushCode($code)
@@ -575,7 +575,7 @@ class PwUbbCode
          */
         public static function filterUbb($matches)
         {
-            $fillter_arr = array('javascript', 'onafterprint', 'onbeforeprint', 'onbeforeunload', 'onerror', 'onhaschange', 'onload', 'onmessage', 'onoffline', 'ononline', 'onpagehide', 'onpageshow', 'onpopstate', 'onredo', 'onresize', 'onstorage', 'onundo', 'onunload', 'onblur', 'onchange', 'oncontextmenu', 'onfocus', 'onformchange', 'onforminput', 'oninput', 'oninvalid', 'onreset', 'onselect', 'onsubmit', 'onkeydown', 'onkeypress', 'onkeyup', 'onclick', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onscroll', 'onabort', 'oncanplay', 'oncanplaythrough', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreadystatechange', 'onseeked', 'onseeking', 'onstalled', 'onsuspend', 'ontimeupdate', 'onvolumechange', 'onwaiting', 'expression');
+            $fillter_arr = ['javascript', 'onafterprint', 'onbeforeprint', 'onbeforeunload', 'onerror', 'onhaschange', 'onload', 'onmessage', 'onoffline', 'ononline', 'onpagehide', 'onpageshow', 'onpopstate', 'onredo', 'onresize', 'onstorage', 'onundo', 'onunload', 'onblur', 'onchange', 'oncontextmenu', 'onfocus', 'onformchange', 'onforminput', 'oninput', 'oninvalid', 'onreset', 'onselect', 'onsubmit', 'onkeydown', 'onkeypress', 'onkeyup', 'onclick', 'ondblclick', 'ondrag', 'ondragend', 'ondragenter', 'ondragleave', 'ondragover', 'ondragstart', 'ondrop', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onmousewheel', 'onscroll', 'onabort', 'oncanplay', 'oncanplaythrough', 'ondurationchange', 'onemptied', 'onended', 'onerror', 'onloadeddata', 'onloadedmetadata', 'onloadstart', 'onpause', 'onplay', 'onplaying', 'onprogress', 'onratechange', 'onreadystatechange', 'onseeked', 'onseeking', 'onstalled', 'onsuspend', 'ontimeupdate', 'onvolumechange', 'onwaiting', 'expression'];
             foreach ($matches as $k => $v) {
                 if ($k > 0) {
                     $newstr = str_replace($fillter_arr, '_', strtolower($v));
@@ -604,7 +604,7 @@ class PwUbbCode
         self::hasTag($message, 'code') && $message = self::parseCode($message);
 
         $message = PwSimpleHook::getInstance('PwUbbCode_convert')->runWithFilters($message);
-        $message = self::convertTag($message, array('u', 'b', 'i', 'sub', 'sup', 'strike', 'blockquote'));
+        $message = self::convertTag($message, ['u', 'b', 'i', 'sub', 'sup', 'strike', 'blockquote']);
         $message = self::convertHr($message);
         $message = self::convertList($message);
         $message = self::convertFont($message);
@@ -798,7 +798,7 @@ class PwUbbCode
     {
         !$brush && $brush = 'text';
         !$toolbar && $toolbar = 'false';
-        $str = str_replace(array('[attachment=', '\\"'), array('&#91;attachment=', '"'), trim($str));
+        $str = str_replace(['[attachment=', '\\"'], ['&#91;attachment=', '"'], trim($str));
         $str = preg_replace('/^(<br \/>)?(.+?)(<br \/>)$/', '\\2', $str);
         $str = str_replace('<br />', "\n", $str);
         $html = "<pre data-role=\"code\" class=\"brush: $brush;toolbar:$toolbar;\">$str</pre>";
@@ -912,8 +912,8 @@ class PwUbbCode
     public static function createQoute($str, $username = '', $rpid = 0)
     {
         $str = str_replace('\\"', '"', $str);
-        $username && $str = '<span class="fl"><a href='.WindUrlHelper::createUrl('space/index/run', array('username' => $username)).'>'.$username.'</a>：'.$str.'</span>';
-        $rpid && $str .= '<a href="'.WindUrlHelper::createUrl('bbs/read/jump', array('pid' => $rpid)).'" class="return">回到原帖</a>';
+        $username && $str = '<span class="fl"><a href='.WindUrlHelper::createUrl('space/index/run', ['username' => $username]).'>'.$username.'</a>：'.$str.'</span>';
+        $rpid && $str .= '<a href="'.WindUrlHelper::createUrl('bbs/read/jump', ['pid' => $rpid]).'" class="return">回到原帖</a>';
         $html = '<blockquote class="blockquote cc">'.$str.'</blockquote>';
 
         return self::_pushCode($html);
@@ -1021,7 +1021,7 @@ class PwUbbCode
 
     public static function createRemind($username, $uArray)
     {
-        return isset($uArray[$username]) ? '<a href="'.WindUrlHelper::createUrl('space/index/run', array('uid' => $uArray[$username])).'">@'.$username.'</a>' : '@'.$username;
+        return isset($uArray[$username]) ? '<a href="'.WindUrlHelper::createUrl('space/index/run', ['uid' => $uArray[$username]]).'">@'.$username.'</a>' : '@'.$username;
     }
 
     /**
@@ -1072,10 +1072,10 @@ class PwUbbCode
         $cellpadding || $cellpadding = 0;
         $align || $align = 'left';
 
-        $text = trim(str_replace(array('\\"', '<br />'), array('"', "\n"), $text));
+        $text = trim(str_replace(['\\"', '<br />'], ['"', "\n"], $text));
         $text = preg_replace(
-            array('/(\[\/td\]\s*)?\[\/tr\]\s*/is', '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/eis'),
-            array('</td></tr>', "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')", "<tr><td{$tdStyle}>"),
+            ['/(\[\/td\]\s*)?\[\/tr\]\s*/is', '/\[(tr|\/td)\]\s*\[td(=(\d{1,2}),(\d{1,2})(,(\d{1,3}(\.\d{1,2})?(%|px)?))?)?\]/eis'],
+            ['</td></tr>', "self::createTd('\\1','\\3','\\4','\\6','$tdStyle')", "<tr><td{$tdStyle}>"],
             $text
         );
         $text = str_replace('[tr]', "<tr><td{$tdStyle}>", $text);
@@ -1110,7 +1110,7 @@ class PwUbbCode
         if (!(strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0)) {
             return '';
         }
-        $path = str_replace(array('<', '>', "'", '"', ';'), array('%3c', '%3e', '%27', '%22', '%3b'), $path);
+        $path = str_replace(['<', '>', "'", '"', ';'], ['%3c', '%3e', '%27', '%22', '%3b'], $path);
 
         return $path;
     }

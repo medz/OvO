@@ -45,7 +45,7 @@ class PwStyleService
     public function getUnInstalledThemes()
     {
         $config = Wekit::load('APPCENTER:service.srv.PwInstallApplication')->getConfig('style-type');
-        $themes = array();
+        $themes = [];
         foreach ($config as $k => $v) {
             $dir = Wind::getRealDir('THEMES:'.$v[1]);
             $files = WindFolder::read($dir, WindFolder::READ_DIR);
@@ -56,9 +56,9 @@ class PwStyleService
             }
         }
         if (empty($themes)) {
-            return array();
+            return [];
         }
-        $styles = array();
+        $styles = [];
         foreach ($themes as $k => $v) {
             $r = $this->_styleDs()->fetchStyleByAliasAndType($v, $k, 'alias');
             $r = array_diff($v, array_keys($r));

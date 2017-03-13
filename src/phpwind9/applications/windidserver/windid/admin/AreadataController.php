@@ -22,14 +22,14 @@ class AreadataController extends WindidBaseController
         $parentid = intval($this->getInput('parentid'));
         $parentid || $parentid = 0;
         $list = $this->_loadAreaDs()->getAreaByParentid($parentid);
-        $rout = array();
+        $rout = [];
         if (0 < $parentid) {
             $rout = $this->_loadAreaService()->getAreaRout($parentid);
         }
         $this->setOutput($parentid, 'areaid');
         $this->setOutput($list, 'list');
-        $_rout = array('all' => array('disable' => 'li_disabled'), 'province' => array('areaid' => '', 'name' => '', 'disable' => 'li_disabled', 'display' => 'display:none;'),
-            'city'           => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
+        $_rout = ['all'      => ['disable' => 'li_disabled'], 'province' => ['areaid' => '', 'name' => '', 'disable' => 'li_disabled', 'display' => 'display:none;'],
+            'city'           => ['areaid' => '', 'name' => '', 'display' => 'display:none;'], ];
         switch (count($rout)) {
             case 1:
                 $_rout['all']['disable'] = '';
@@ -59,10 +59,10 @@ class AreadataController extends WindidBaseController
      */
     public function updateAction()
     {
-        list($update, $add, $parentid) = $this->getInput(array('update', 'add', 'parentid'), 'post');
+        list($update, $add, $parentid) = $this->getInput(['update', 'add', 'parentid'], 'post');
 
-        is_array($update) || $update = array();
-        is_array($add) || $add = array();
+        is_array($update) || $update = [];
+        is_array($add) || $add = [];
 
         $joinname = '';
         if ($parentid) {
@@ -75,7 +75,7 @@ class AreadataController extends WindidBaseController
                     $this->showError('ADMIN:area.level.limit');
                     break;
             }
-            $joinnames = array();
+            $joinnames = [];
             foreach ($rout as $i) {
                 $joinnames[] = $i['name'];
             }
@@ -86,17 +86,17 @@ class AreadataController extends WindidBaseController
             $dm->setAreaid($id)->setName($name)
                 ->setJoinname($joinname ? $joinname.'|'.$name : $name);
             if (true !== ($r = $this->_loadAreaDs()->updateArea($dm))) {
-                $this->showError(array('ADMIN:area.error.'.$r->getCode(), array('{flag}' => "“& \" ' < > \ / ”")));
+                $this->showError(['ADMIN:area.error.'.$r->getCode(), ['{flag}' => "“& \" ' < > \ / ”"]]);
             }
         }
-        $addDms = array();
+        $addDms = [];
         foreach ($add as $name) {
             $dm = new WindidAreaDm();
             $dm->setName($name)
                 ->setParentid($parentid)
                 ->setJoinname($joinname ? $joinname.'|'.$name : $name);
             if (true !== ($r = $dm->beforeAdd())) {
-                $this->showError(array('ADMIN:area.error.'.$r->getCode(), array('{flag}' => "“& \" ' < > \ / ”")));
+                $this->showError(['ADMIN:area.error.'.$r->getCode(), ['{flag}' => "“& \" ' < > \ / ”"]]);
             }
             $addDms[] = $dm;
         }

@@ -15,7 +15,7 @@ class PwAutoRecoverMedal
 {
     private $uid;
     private $medalBo;
-    private $recoverIds = array();
+    private $recoverIds = [];
 
     public function __construct($uid)
     {

@@ -29,7 +29,7 @@ class PwThreadManageDoMove extends PwThreadManageDo
             return false;
         }
         if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
-            return new PwError('permission.level.move', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
+            return new PwError('permission.level.move', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
         if (isset($this->fid)) {
             $this->forum = new PwForumBo($this->fid);
@@ -99,7 +99,7 @@ class PwThreadManageDoMove extends PwThreadManageDo
         $this->_getThreadDs()->batchUpdateThread(array_keys($threads), $topicDm, PwThread::FETCH_MAIN);
         $this->_getAttachDs()->batchUpdateFidByTid($this->tids, $this->fid);
 
-        $fids = array();
+        $fids = [];
         foreach ($threads as $t) {
             if ($t['fid'] == $this->fid) {
                 continue;

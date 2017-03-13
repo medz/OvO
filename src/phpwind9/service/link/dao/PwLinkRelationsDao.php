@@ -11,7 +11,7 @@
 class PwLinkRelationsDao extends PwBaseDao
 {
     protected $_table = 'link_relations';
-    protected $_dataStruct = array('lid', 'typeid');
+    protected $_dataStruct = ['lid', 'typeid'];
 
     /**
      * 添加.
@@ -37,7 +37,7 @@ class PwLinkRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `lid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($lid));
+        return $smt->update([$lid]);
     }
 
     /**
@@ -66,7 +66,7 @@ class PwLinkRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE `typeid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($typeid));
+        return $smt->update([$typeid]);
     }
 
     /**
@@ -79,7 +79,7 @@ class PwLinkRelationsDao extends PwBaseDao
     public function getByTypeId($typeid)
     {
         $where = '';
-        $param = array();
+        $param = [];
         if ($typeid != '') {
             $where .= ' WHERE `typeid`=?';
             $param[] = $typeid;
@@ -102,7 +102,7 @@ class PwLinkRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `lid`=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($lid));
+        return $smt->queryAll([$lid]);
     }
 
     /**
@@ -130,6 +130,6 @@ class PwLinkRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT typeid,COUNT(*) as linknum FROM %s GROUP BY typeid');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'typeid');
+        return $smt->queryAll([], 'typeid');
     }
 }

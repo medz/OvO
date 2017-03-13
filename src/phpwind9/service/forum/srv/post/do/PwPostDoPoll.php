@@ -14,15 +14,15 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwPostDoPoll extends PwPostDoBase
 {
     public $tid = null;
-    public $poll = array();
+    public $poll = [];
 
     public $action;
     public $post_max_size;
 
     public $user = null;
-    public $info = array();
+    public $info = [];
 
-    public function __construct(PwPost $pwpost, $tid = null, $poll = array())
+    public function __construct(PwPost $pwpost, $tid = null, $poll = [])
     {
         $this->user = $pwpost->user;
 
@@ -56,7 +56,7 @@ class PwPostDoPoll extends PwPostDoBase
     public function check($postDm)
     {
         if ($this->action == 'add' && !$this->user->getPermission('allow_add_vote')) {
-            return new PwError('VOTE:group.permission.add', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('VOTE:group.permission.add', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (($result = $this->_checkPoll()) !== true) {
             return $result;
@@ -140,7 +140,7 @@ class PwPostDoPoll extends PwPostDoBase
         $optionInfo = $this->info['option'];
         $optionData = $this->poll['option'];
 
-        $deleteIds = array();
+        $deleteIds = [];
         foreach (array_keys($optionInfo) as $_id) {
             $attach = isset($attachInfo['optionpic'][$_id]) ? $attachInfo['optionpic'][$_id] : '';
             $optionContent = trim($optionData[$_id]);
@@ -253,7 +253,7 @@ class PwPostDoPoll extends PwPostDoBase
         }
 
         $option = array_merge($this->poll['option'], $this->poll['newoption']);
-        $reulst = array();
+        $reulst = [];
         foreach ($option as $value) {
             $value = trim($value);
             if (!$value) {
@@ -277,7 +277,7 @@ class PwPostDoPoll extends PwPostDoBase
     private function _checkInAdd()
     {
         $option = $this->poll['option'];
-        $reulst = array();
+        $reulst = [];
         foreach ($option as $value) {
             $value = trim($value);
             if (!$value) {

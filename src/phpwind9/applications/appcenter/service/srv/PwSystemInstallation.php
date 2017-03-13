@@ -33,7 +33,7 @@ class PwSystemInstallation extends PwInstallApplication
     public function checkUpgrade()
     {
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'getUpdateInfo', 'pwversion' => $this->local));
+            ['a' => 'forward', 'do' => 'getUpdateInfo', 'pwversion' => $this->local]);
 
         $r = PwApplicationHelper::requestAcloudData($url);
         $r = WindConvert::convert($r, Wekit::V('charset'), 'utf8');
@@ -44,7 +44,7 @@ class PwSystemInstallation extends PwInstallApplication
     public function getNotice($loginUser)
     {
         $notice = 0;
-        $upgradeInfo = $patchInfo = array();
+        $upgradeInfo = $patchInfo = [];
         if (Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder($loginUser->username)) {
             $upgradeInfo = $this->checkUpgrade();
             $upgradeInfo && is_array($upgradeInfo) && $notice |= 1;
@@ -70,7 +70,7 @@ class PwSystemInstallation extends PwInstallApplication
                 $notice = '';
         }
 
-        return array('notice' => $notice.($url ? sprintf($f, 'platform', 'platform_upgrade', $url) : ''), 'info' => array($patchInfo, $upgradeInfo));
+        return ['notice' => $notice.($url ? sprintf($f, 'platform', 'platform_upgrade', $url) : ''), 'info' => [$patchInfo, $upgradeInfo]];
     }
 
     /**
@@ -115,7 +115,7 @@ class PwSystemInstallation extends PwInstallApplication
                 $this->_log('extract Package fail. ');
 
                 return new PwError('APPCENTER:install.checkpackage.format.fail',
-                    array('{{error}}' => $r));
+                    ['{{error}}' => $r]);
             }
             if ($r != realpath($this->tmpPackage)) {
                 PwApplicationHelper::copyRecursive($r, $this->tmpPackage);
@@ -150,7 +150,7 @@ class PwSystemInstallation extends PwInstallApplication
      */
     public function getMoveWay()
     {
-        $directory = array(
+        $directory = [
             'ROOT'   => '..',
             'CONF'   => '../conf',
             'DATA'   => '../data',
@@ -167,8 +167,8 @@ class PwSystemInstallation extends PwInstallApplication
             'THEMES' => '../www/themes',
             'TPL'    => '../www/template',
             'ATTACH' => '../www/attachment',
-            'HTML'   => '../www/html', );
-        $sort = array(
+            'HTML'   => '../www/html', ];
+        $sort = [
             'TPL',
             'THEMES',
             'ACLOUD',
@@ -182,8 +182,8 @@ class PwSystemInstallation extends PwInstallApplication
             'CONF',
             'DATA',
             'SRC',
-            'PUBLIC', );
-        $strtr = array();
+            'PUBLIC', ];
+        $strtr = [];
         $localDirectory = @include Wind::getRealPath('CONF:directory.php', true);
         foreach ($sort as $v) {
             if ($directory[$v] == $localDirectory[$v]) {
@@ -214,7 +214,7 @@ class PwSystemInstallation extends PwInstallApplication
         $this->_log('the remote directory is:'.var_export($directory, true));
         $root = Wind::getRealDir('ROOT:');
 
-        $sort = array(
+        $sort = [
             'TPL',
             'THEMES',
             'ACLOUD',
@@ -228,8 +228,8 @@ class PwSystemInstallation extends PwInstallApplication
             'CONF',
             'DATA',
             'SRC',
-            'PUBLIC', );
-        $strtr = array();
+            'PUBLIC', ];
+        $strtr = [];
         $localDirectory = @include Wind::getRealPath('CONF:directory.php', true);
         foreach ($sort as $v) {
             if ($directory[$v] == $localDirectory[$v]) {
@@ -263,7 +263,7 @@ class PwSystemInstallation extends PwInstallApplication
         }
         WindFile::write($sourceDir.DIRECTORY_SEPARATOR.'conf/md5sum', $data);
 
-        $moveList = $newFileList = array();
+        $moveList = $newFileList = [];
 
         if (!$tmp = WindFile::read(CONF_PATH.'md5sum')) {
             return new PwError('APPCENTER:upgrade.hash.fail');
@@ -336,8 +336,8 @@ class PwSystemInstallation extends PwInstallApplication
         $relativePath_2 = PwSystemHelper::resolveRelativePath(PUBLIC_PATH.'aCloud',
             Wind::getRealPath('SRC:wekit'));
         $strtr = $this->getMoveWay();
-        $move = array();
-        $entrance = array('index.php', 'read.php', 'install.php', 'windid.php', 'admin.php', 'alipay.php', 'pay99bill.php', 'paypal.php', 'tenpay.php');
+        $move = [];
+        $entrance = ['index.php', 'read.php', 'install.php', 'windid.php', 'admin.php', 'alipay.php', 'pay99bill.php', 'paypal.php', 'tenpay.php'];
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             foreach ($oldList as $v) {
@@ -410,7 +410,7 @@ class PwSystemInstallation extends PwInstallApplication
             try {
                 $ftp = $useFtp['sftp'] ? new PwSftpSave($useFtp) : new PwFtpSave($useFtp);
             } catch (WindFtpException $e) {
-                return new PwError(array('APPCENTER:upgrade.ftp.fail', array($e->getMessage())));
+                return new PwError(['APPCENTER:upgrade.ftp.fail', [$e->getMessage()]]);
             }
         }
         foreach ($move as $k => $v) {
@@ -419,10 +419,10 @@ class PwSystemInstallation extends PwInstallApplication
                     $r = $ftp->upload($v, $k);
                     if ($useFtp['sftp'] && !$r && $e = $ftp->getError()) {
                         return new PwError('APPCENTER:upgrade.upload.fail',
-                            array($v.var_export($e, true)));
+                            [$v.var_export($e, true)]);
                     }
                 } catch (WindFtpException $e) {
-                    return new PwError(array('APPCENTER:upgrade.ftp.fail', array($e->getMessage())));
+                    return new PwError(['APPCENTER:upgrade.ftp.fail', [$e->getMessage()]]);
                 }
             } else {
                 WindFolder::mkRecur(dirname(ROOT_PATH.$k));
@@ -453,7 +453,7 @@ class PwSystemInstallation extends PwInstallApplication
             }
         }
 
-        return array($change, $unchange, $new);
+        return [$change, $unchange, $new];
     }
 
     /**
@@ -466,7 +466,7 @@ class PwSystemInstallation extends PwInstallApplication
             try {
                 $ftp = $useFtp['sftp'] ? new PwSftpSave($useFtp) : new PwFtpSave($useFtp);
             } catch (WindFtpException $e) {
-                return new PwError(array('APPCENTER:upgrade.ftp.fail', array($e->getMessage())));
+                return new PwError(['APPCENTER:upgrade.ftp.fail', [$e->getMessage()]]);
             }
         }
 
@@ -479,16 +479,16 @@ class PwSystemInstallation extends PwInstallApplication
                     $r = $ftp->upload($source.DIRECTORY_SEPARATOR.$v, $v);
                     if ($useFtp['sftp'] && !$r && $e = $ftp->getError()) {
                         return new PwError('APPCENTER:upgrade.upload.fail',
-                            array($v.var_export($e, true)));
+                            [$v.var_export($e, true)]);
                     }
                 } catch (WindFtpException $e) {
-                    return new PwError('APPCENTER:upgrade.upload.fail', array($v));
+                    return new PwError('APPCENTER:upgrade.upload.fail', [$v]);
                 }
             } else {
                 WindFolder::mkRecur(dirname(ROOT_PATH.$v));
                 $r = @copy($source.DIRECTORY_SEPARATOR.$v, ROOT_PATH.$v);
                 if (!$r) {
-                    return new PwError('APPCENTER:upgrade.copy.fail', array($v));
+                    return new PwError('APPCENTER:upgrade.copy.fail', [$v]);
                 }
             }
             $this->_log('copy file '.$v);

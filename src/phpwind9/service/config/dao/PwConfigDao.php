@@ -26,7 +26,7 @@ class PwConfigDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE namespace=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($namespace), 'name');
+        return $smt->queryAll([$namespace], 'name');
     }
 
     /**
@@ -57,7 +57,7 @@ class PwConfigDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE namespace=? AND name=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($namespace, $name));
+        return $smt->getOne([$namespace, $name]);
     }
 
     /**
@@ -88,13 +88,13 @@ class PwConfigDao extends PwBaseDao
      */
     public function storeConfig($namespace, $name, $value, $descrip = null)
     {
-        $array = array();
+        $array = [];
         list($array['vtype'], $array['value']) = $this->_toString($value);
         isset($descrip) && $array['description'] = $descrip;
         if ($this->getConfigByName($namespace, $name)) {
             $sql = $this->_bindSql('UPDATE %s SET %s WHERE namespace=? AND name=?', $this->getTable(), $this->sqlSingle($array));
             $smt = $this->getConnection()->createStatement($sql);
-            $result = $smt->update(array($namespace, $name));
+            $result = $smt->update([$namespace, $name]);
         } else {
             $array['name'] = $name;
             $array['namespace'] = $namespace;
@@ -117,7 +117,7 @@ class PwConfigDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE namespace=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($namespace));
+        $result = $smt->update([$namespace]);
         PwSimpleHook::getInstance('PwConfigDao_update')->runDo($namespace);
 
         return $result;
@@ -135,7 +135,7 @@ class PwConfigDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE namespace=? AND name=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($namespace, $name));
+        $result = $smt->update([$namespace, $name]);
         PwSimpleHook::getInstance('PwConfigDao_update')->runDo($namespace);
 
         return $result;
@@ -159,6 +159,6 @@ class PwConfigDao extends PwBaseDao
             $vtype = 'object';
         }
 
-        return array($vtype, $value);
+        return [$vtype, $value];
     }
 }

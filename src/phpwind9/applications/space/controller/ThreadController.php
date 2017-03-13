@@ -17,7 +17,7 @@ class ThreadController extends SpaceBaseController
      */
     public function run()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         !$perpage && $perpage = 20;
         $threadList = new PwThreadList();
         $threadList->setPage($page)->setPerpage($perpage);
@@ -29,13 +29,13 @@ class ThreadController extends SpaceBaseController
         }
         $threadList->execute($dataSource);
         $threads = $threadList->getList();
-        $topic_type = array();
+        $topic_type = [];
         foreach ($threads as &$v) {
             $topic_type[] = $v['topic_type'];
         }
-        $topictypes = $topic_type ? Wekit::load('forum.PwTopicType')->fetchTopicType($topic_type) : array();
+        $topictypes = $topic_type ? Wekit::load('forum.PwTopicType')->fetchTopicType($topic_type) : [];
 
-        $this->setOutput(array('uid' => $this->space->spaceUid), 'args');
+        $this->setOutput(['uid' => $this->space->spaceUid], 'args');
         $this->setOutput($threadList->total, 'count');
         $this->setOutput($threadList->page, 'page');
         $this->setOutput($threadList->perpage, 'perpage');
@@ -48,12 +48,12 @@ class ThreadController extends SpaceBaseController
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
 
-        $des = $lang->getMessage('SEO:space.thread.run.description', array($this->space->spaceUser['username']));
+        $des = $lang->getMessage('SEO:space.thread.run.description', [$this->space->spaceUser['username']]);
 
         if ($page <= 1) {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.run.title', array($this->space->spaceUser['username'], $this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.run.title', [$this->space->spaceUser['username'], $this->space->space['space_name']]), '', $des);
         } else {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.run.page.title', array($this->space->spaceUser['username'], $page, $this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.run.page.title', [$this->space->spaceUser['username'], $page, $this->space->space['space_name']]), '', $des);
         }
         Wekit::setV('seo', $seoBo);
     }
@@ -63,14 +63,14 @@ class ThreadController extends SpaceBaseController
      */
     public function postAction()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
         $count = $this->_getCountPost($this->space->spaceUid, $this->loginUser->uid);
         if ($count) {
             $tmpPosts = $this->_getPost($this->space->spaceUid, $this->loginUser->uid, $limit, $start);
-            $posts = $tids = array();
+            $posts = $tids = [];
             foreach ($tmpPosts as $v) {
                 $tids[] = $v['tid'];
             }
@@ -82,7 +82,7 @@ class ThreadController extends SpaceBaseController
                 $posts[] = $v;
             }
         }
-        $args = array('uid' => $this->space->spaceUid);
+        $args = ['uid' => $this->space->spaceUid];
         $this->setOutput($args, 'args');
         $this->setOutput($count, 'count');
         $this->setOutput($page, 'page');
@@ -94,12 +94,12 @@ class ThreadController extends SpaceBaseController
 
         $seoBo = PwSeoBo::getInstance();
         $lang = Wind::getComponent('i18n');
-        $des = $lang->getMessage('SEO:space.thread.post.description', array($this->space->spaceUser['username']));
+        $des = $lang->getMessage('SEO:space.thread.post.description', [$this->space->spaceUser['username']]);
 
         if ($page <= 1) {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.post.title', array($this->space->spaceUser['username'], $this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.post.title', [$this->space->spaceUser['username'], $this->space->space['space_name']]), '', $des);
         } else {
-            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.post.page.title', array($this->space->spaceUser['username'], $page, $this->space->space['space_name'])), '', $des);
+            $seoBo->setCustomSeo($lang->getMessage('SEO:space.thread.post.page.title', [$this->space->spaceUser['username'], $page, $this->space->space['space_name']]), '', $des);
         }
         Wekit::setV('seo', $seoBo);
     }

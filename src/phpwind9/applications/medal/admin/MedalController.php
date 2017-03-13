@@ -42,7 +42,7 @@ Wind::import('ADMIN:library.AdminBaseController');
      */
     public function dorunAction()
     {
-        list($medalIds, $ispoens, $orderids, $names, $descrips) = $this->getInput(array('medalid', 'isopen', 'orderid', 'name', 'descrip'), 'post');
+        list($medalIds, $ispoens, $orderids, $names, $descrips) = $this->getInput(['medalid', 'isopen', 'orderid', 'name', 'descrip'], 'post');
 
         foreach ($medalIds as $medalId) {
             $dm = new PwMedalDm($medalId);
@@ -71,14 +71,14 @@ Wind::import('ADMIN:library.AdminBaseController');
 
         //组装json数据
         $medals = $this->_getMedalDs()->getAllOpenMedal();
-        $medalJson = array();
+        $medalJson = [];
         $i = 1;
         foreach ($medals as $medal) {
-            $_medal = array(
+            $_medal = [
                 'order'  => $i,
                 'amount' => $medal['award_condition'],
                 'name'   => $medal['name'],
-                );
+                ];
             $medalJson[$medal['award_type']][] = $_medal;
             $i++;
         }
@@ -112,7 +112,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         if ($receivetype == 1) {
             $expired = 0;
         }
-        if ($receivetype == 1 && in_array($awardtype, array(1, 2, 3))) {
+        if ($receivetype == 1 && in_array($awardtype, [1, 2, 3])) {
             $expired = 3;
         } //连续行为勋章有效期3天,更新行为，延长有效期
         if ($receivetype == 2) {
@@ -163,14 +163,14 @@ Wind::import('ADMIN:library.AdminBaseController');
 
         //组装json数据
         $medals = $this->_getMedalDs()->getAllOpenMedal();
-        $medalJson = array();
+        $medalJson = [];
         $i = 1;
         foreach ($medals as $medal) {
-            $_medal = array(
+            $_medal = [
                 'order'  => $i,
                 'amount' => $medal['award_condition'],
                 'name'   => $medal['name'],
-                );
+                ];
             $medalJson[$medal['award_type']][] = $_medal;
             $i++;
         }
@@ -207,7 +207,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         if ($receivetype == 1) {
             $expired = 0;
         }
-        if ($receivetype == 1 && in_array($awardtype, array(1, 2, 3))) {
+        if ($receivetype == 1 && in_array($awardtype, [1, 2, 3])) {
             $expired = 3;
         }
         if ($receivetype == 2) {
@@ -304,7 +304,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     public function awardAction()
     {
         $_empty = false;
-        $uids = $medalids = $jsonMedals = array();
+        $uids = $medalids = $jsonMedals = [];
         $userDs = Wekit::load('SRV:user.PwUser');
         $page = (int) $this->getInput('page', 'get');
         $perpage = 20;
@@ -315,7 +315,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             $medalId = (int) $this->getInput('medalid');
             //$receivetype = (int)$this->getInput('receivetype');
             $username = $this->getInput('username');
-            $user = $username ? $userDs->getUserByName($username) : array();
+            $user = $username ? $userDs->getUserByName($username) : [];
             $uid = isset($user['uid']) ? $user['uid'] : 0;
             if ($username && $uid < 1) {
                 $_empty = true;
@@ -325,13 +325,13 @@ Wind::import('ADMIN:library.AdminBaseController');
         if ($medalId < 1 && $receivetype > 0) {
             $_medalIds = array_keys($medalList);
         } elseif ($medalId > 0) {
-            $_medalIds = array($medalId);
+            $_medalIds = [$medalId];
         } else {
-            $_medalIds = array();
+            $_medalIds = [];
         }
 
         list($start, $perpage) = Pw::page2limit($page, $perpage);
-        $list = $medals = $users = array();
+        $list = $medals = $users = [];
         $count = 0;
         if (false == $_empty) {
             $list = $this->_getMedalLogDs()->getMedalLogList($uid, PwMedalLog::STATUS_AWARDED, $_medalIds, $start, $perpage);
@@ -348,7 +348,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             $count = $this->_getMedalLogDs()->countMedalLogList($uid, PwMedalLog::STATUS_AWARDED, $_medalIds);
         }
 
-        $args = array('medalid' => $medalId, 'receivetype' => $receivetype, 'username' => $username);
+        $args = ['medalid' => $medalId, 'receivetype' => $receivetype, 'username' => $username];
         $this->setOutput($args, 'args');
         $this->setOutput($list, 'list');
         $this->setOutput($users, 'users');
@@ -478,7 +478,7 @@ Wind::import('ADMIN:library.AdminBaseController');
     public function approvalAction()
     {
         $_empty = false;
-        $uids = $medalids = array();
+        $uids = $medalids = [];
         $userDs = Wekit::load('SRV:user.PwUser');
         $page = (int) $this->getInput('page', 'get');
         $perpage = 10;
@@ -487,7 +487,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         $medalId = (int) $this->getInput('medalid');
         if ($uid < 1) {
             $username = $this->getInput('username');
-            $user = $username ? $userDs->getUserByName($username) : array();
+            $user = $username ? $userDs->getUserByName($username) : [];
             $uid = isset($user['uid']) ? $user['uid'] : 0;
             if ($username && $uid < 1) {
                 $_empty = true;
@@ -509,10 +509,10 @@ Wind::import('ADMIN:library.AdminBaseController');
 
         $medalList = $this->_getMedalDs()->getInfoListByReceiveType(2, 1);
         if ($_empty) {
-            $list = array();
+            $list = [];
         }
         $this->setOutput($medalList, 'medalList');
-        $args = array('medalid' => $medalId, 'username' => $username);
+        $args = ['medalid' => $medalId, 'username' => $username];
         $this->setOutput($args, 'args');
         $this->setOutput($list, 'list');
         $this->setOutput($users, 'users');

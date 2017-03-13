@@ -16,12 +16,12 @@ class WindidAvatarUpload extends PwUploadAction
     public $isLocal = false;
     public $uid;
     public $udir;
-    public $mime = array();
+    public $mime = [];
 
     public function __construct($uid)
     {
-        $this->ftype = array('jpg' => 2000, 'png' => 2000, 'jpeg' => 2000);
-        $this->mime = array('image/jpeg', 'image/png', 'image/jpg');
+        $this->ftype = ['jpg' => 2000, 'png' => 2000, 'jpeg' => 2000];
+        $this->mime = ['image/jpeg', 'image/png', 'image/jpg'];
         $this->uid = $uid;
         $this->udir = Pw::getUserDir($this->uid);
     }
@@ -71,11 +71,11 @@ class WindidAvatarUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->uid.'.jpg', $dir, 200, 200, 2, 1),
-            array($this->uid.'_middle.jpg', $dir, 120, 120, 2, 1),
-            array($this->uid.'_small.jpg', $dir, 50, 50, 2, 1),
-        );
+        return [
+            [$this->uid.'.jpg', $dir, 200, 200, 2, 1],
+            [$this->uid.'_middle.jpg', $dir, 120, 120, 2, 1],
+            [$this->uid.'_small.jpg', $dir, 50, 50, 2, 1],
+        ];
     }
 
     /**
@@ -115,6 +115,6 @@ class WindidAvatarUpload extends PwUploadAction
         $array = current($this->attachs);
         $path = Wekit::app('windid')->url->attach.'/'.$array['path'];
         //list($path) = geturl($array['attachurl'], 'lf', $array['ifthumb']&1);
-        return array('aid' => $array['aid'], 'path' => $path);
+        return ['aid' => $array['aid'], 'path' => $path];
     }
 }

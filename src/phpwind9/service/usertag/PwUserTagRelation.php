@@ -19,10 +19,10 @@ class PwUserTagRelation
     public function getRelationByUidAndTagid($uid, $tag_id)
     {
         if (($uid = intval($uid)) < 1) {
-            return array();
+            return [];
         }
         if (($tag_id = intval($tag_id)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getRelationByUidAndTagid($uid, $tag_id);
@@ -38,7 +38,7 @@ class PwUserTagRelation
     public function getRelationByUid($uid)
     {
         if (($uid = intval($uid)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getRelationByUid($uid);
@@ -86,7 +86,7 @@ class PwUserTagRelation
     public function getRelationByTagid($tag_id, $limit = 20, $start = 0)
     {
         if (($tag_id = intval($tag_id)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getRelationByTagid($tag_id, $limit, $start);
@@ -124,7 +124,7 @@ class PwUserTagRelation
             return new PwError('USER:tag.uid.require');
         }
         if (($tag_id = intval($tag_id)) < 1) {
-            return array('USER:tag.id.require');
+            return ['USER:tag.id.require'];
         }
 
         return $this->_getDao()->deleteRelation($uid, $tag_id);

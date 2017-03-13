@@ -13,8 +13,8 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDeleteReplyDoVirtualDelete extends iPwGleanDoHookProcess
 {
-    protected $record = array();
-    protected $tids = array();
+    protected $record = [];
+    protected $tids = [];
 
     public function gleanData($value)
     {

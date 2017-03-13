@@ -11,7 +11,7 @@
 class PwTopicTypeDao extends PwBaseDao
 {
     protected $_table = 'bbs_topic_type';
-    protected $_dataStruct = array('fid', 'name', 'parentid', 'logo', 'vieworder', 'issys');
+    protected $_dataStruct = ['fid', 'name', 'parentid', 'logo', 'vieworder', 'issys'];
 
     public function addTopicType($fields)
     {
@@ -32,7 +32,7 @@ class PwTopicTypeDao extends PwBaseDao
         $sql = $this->_bindTable('UPDATE %s SET ').$this->sqlSingle($fields).' WHERE id=?';
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($id));
+        return $smt->update([$id]);
     }
 
     public function getTopicTypesByFid($fid)
@@ -40,7 +40,7 @@ class PwTopicTypeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE fid=? ORDER BY vieworder ASC');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($fid), 'id');
+        return $smt->queryAll([$fid], 'id');
     }
 
     public function getTopicType($id)
@@ -48,7 +48,7 @@ class PwTopicTypeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($id));
+        return $smt->getOne([$id]);
     }
 
     public function fetchTopicType($ids)
@@ -60,20 +60,20 @@ class PwTopicTypeDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($id));
+        return $this->getConnection()->createStatement($sql)->update([$id]);
     }
 
     public function deleteTopictypeByFid($fid)
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE fid=?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($fid));
+        return $this->getConnection()->createStatement($sql)->update([$fid]);
     }
 
     public function deleteTopicTypesByParentid($parentid)
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE parentid=?');
 
-        return $this->getConnection()->createStatement($sql)->update(array($parentid));
+        return $this->getConnection()->createStatement($sql)->update([$parentid]);
     }
 }

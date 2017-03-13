@@ -24,7 +24,7 @@ class BaseManageController extends PwBaseController
                 $this->showError('login.not');
             } else {
                 $backUrl = WindUrlHelper::createUrl('manage/'.$handlerAdapter->getController().'/'.$handlerAdapter->getAction());
-                $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', array('backurl' => $backUrl)));
+                $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['backurl' => $backUrl]));
             }
         }
         if (!$this->_checkRight()) {
@@ -57,7 +57,7 @@ class BaseManageController extends PwBaseController
         /* @var $srv PwPermissionService */
         $srv = Wekit::load('usergroup.srv.PwPermissionService');
         $permission = $srv->getPermissionKeysByCategory('manage_panel');
-        $_result = array();
+        $_result = [];
         foreach ($permission as $value) {
             if ($this->loginUser->getPermission($value)) {
                 $_result[$value] = true;

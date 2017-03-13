@@ -20,7 +20,7 @@ class PwLinkService
      */
     public function batchDelete($lids)
     {
-        $lids = (!is_array($lids) && $lids) ? array($lids) : $lids;
+        $lids = (!is_array($lids) && $lids) ? [$lids] : $lids;
         $this->_getDs()->batchDelRelationsByLid($lids);
 
         return $this->_getDs()->batchDelete($lids);
@@ -40,7 +40,7 @@ class PwLinkService
             $types[$value['lid']][] = $value['typeid'];
         }
 
-        return array($lids, $types);
+        return [$lids, $types];
     }
 
     /**
@@ -52,7 +52,7 @@ class PwLinkService
      */
     public function getLinksList($typeId = 0)
     {
-        $links = $typeIds = $linksList = array();
+        $links = $typeIds = $linksList = [];
         if (!$typeId) {
             $links = $this->_getDs()->getLinks(0, 500);
             $_typeIds = $this->_getDs()->fetchRelationsByLinkid(array_keys($links));
@@ -65,7 +65,7 @@ class PwLinkService
         }
 
         if (!$links) {
-            return array();
+            return [];
         }
         foreach ($links as $key => $value) {
             $value['typeid'] = (array) $typeIds[$value['lid']];
@@ -88,20 +88,20 @@ class PwLinkService
     {
         $count = $this->_getDs()->countLinks($ifcheck);
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $links = $this->_getDs()->getLinks($start, $limit, $ifcheck);
         if ($links) {
             $relations = $this->_getDs()->fetchRelationsByLinkid(array_keys($links));
             foreach ($relations as $_item) {
                 if (!isset($links[$_item['lid']]['typeids'])) {
-                    $links[$_item['lid']]['typeids'] = array();
+                    $links[$_item['lid']]['typeids'] = [];
                 }
                 $links[$_item['lid']]['typeids'][] = $_item['typeid'];
             }
         }
 
-        return array($count, $links);
+        return [$count, $links];
     }
 
     /**
@@ -115,10 +115,10 @@ class PwLinkService
     {
         $type = $this->_getDs()->getTypeByName($typename);
         if (!$type) {
-            return array();
+            return [];
         }
         list($lids) = $this->getTypesByTypeId($type['typeid']);
-        $linkList = array();
+        $linkList = [];
         foreach ($this->_getDs()->getLinksByLids($lids) as $link) {
             if ($link['logo']) {
                 $linkList['logo'][] = $link;
@@ -138,7 +138,7 @@ class PwLinkService
     public function getAllLinkTypes()
     {
         $linkCount = $this->_getDs()->countLinkTypes();
-        $linkTypes = array();
+        $linkTypes = [];
         foreach ($this->_getDs()->getAllTypes() as $k => $v) {
             $v['linknum'] = isset($linkCount[$k]['linknum']) ? $linkCount[$k]['linknum'] : 0;
             $linkTypes[$v['typeid']] = $v;

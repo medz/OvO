@@ -18,7 +18,7 @@ class PwPostDoAtt extends PwPostDoBase
     public $attach;
     public $fid;
 
-    protected $_alterattach = array();
+    protected $_alterattach = [];
 
     public function __construct(PwPost $pwpost, $flashatt)
     {
@@ -47,23 +47,23 @@ class PwPostDoAtt extends PwPostDoBase
 
     public function editAttachs($oldatt_desc, $oldatt_cost, $oldatt_ctype)
     {
-        is_array($oldatt_desc) || $oldatt_desc = array();
-        is_array($oldatt_cost) || $oldatt_cost = array();
-        is_array($oldatt_ctype) || $oldatt_ctype = array();
+        is_array($oldatt_desc) || $oldatt_desc = [];
+        is_array($oldatt_cost) || $oldatt_cost = [];
+        is_array($oldatt_ctype) || $oldatt_ctype = [];
         foreach ($this->attach as $key => $value) {
             $isImg = ($value['type'] == 'img');
-            $v = array(
+            $v = [
                 /*'special' => isset($oldatt_special[$key]) ? $oldatt_special[$key] : $value['special'],*/
                 'ctype'   => isset($oldatt_ctype[$key]) ? $oldatt_ctype[$key] : $value['ctype'],
                 'cost'    => isset($oldatt_cost[$key]) ? $oldatt_cost[$key] : $value['cost'],
                 'descrip' => isset($oldatt_desc[$key]) ? $oldatt_desc[$key] : $value['descrip'],
-            );
+            ];
             if ($v['cost'] > 0 && $this->post->forum->forumset['allowsell'] && $this->post->user->getPermission('allow_thread_extend.sell')) {
                 $v['special'] = 2;
                 if (($max = $this->post->user->getPermission('sell_credit_range.maxprice')) > 0 && $v['cost'] > $max) {
                     $v['cost'] = $max;
                 }
-                if (!in_array($v['ctype'], $this->post->user->getPermission('sell_credits', false, array()))) {
+                if (!in_array($v['ctype'], $this->post->user->getPermission('sell_credits', false, []))) {
                     $v['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
             } else {
@@ -160,7 +160,7 @@ class PwPostDoAtt extends PwPostDoBase
         $credit = PwCreditBo::getInstance();
         $aids = $this->action->getAids();
         foreach ($aids as $v) {
-            $credit->operate($operate, $this->post->user, true, array('forumname' => $this->post->forum->foruminfo['name']), $this->post->forum->getCreditSet($operate));
+            $credit->operate($operate, $this->post->user, true, ['forumname' => $this->post->forum->foruminfo['name']], $this->post->forum->getCreditSet($operate));
         }
         $credit->execute();
     }

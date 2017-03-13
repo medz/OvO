@@ -16,7 +16,7 @@ class UserController extends OpenBaseController
 {
     public function loginAction()
     {
-        list($userid, $password, $type, $ifcheck, $question, $answer) = $this->getInput(array('userid', 'password', 'type', 'ifcheck', 'question', 'answer'), 'post');
+        list($userid, $password, $type, $ifcheck, $question, $answer) = $this->getInput(['userid', 'password', 'type', 'ifcheck', 'question', 'answer'], 'post');
         !$type && $type = 2;
         $ifcheck = (bool) $ifcheck;
         $result = $this->_getUserService()->login($userid, $password, $type, $ifcheck, $question, $answer);
@@ -47,21 +47,21 @@ class UserController extends OpenBaseController
 
     public function checkInputAction()
     {
-        list($input, $type, $username, $uid) = $this->getInput(array('input', 'type', 'username', 'uid'), 'post');
+        list($input, $type, $username, $uid) = $this->getInput(['input', 'type', 'username', 'uid'], 'post');
         $result = $this->_getUserService()->checkUserInput($input, $type, $username, $uid);
         $this->output(WindidUtility::result($result));
     }
 
     public function checkQuestionAction()
     {
-        list($question, $answer, $uid) = $this->getInput(array('question', 'answer', 'uid'), 'post');
+        list($question, $answer, $uid) = $this->getInput(['question', 'answer', 'uid'], 'post');
         $result = $this->_getUserService()->checkQuestion($uid, $question, $answer);
         $this->output(WindidUtility::result($result));
     }
 
     public function getAction()
     {
-        list($userid, $type, $fetch) = $this->getInput(array('userid', 'type', 'fetch'), 'get');
+        list($userid, $type, $fetch) = $this->getInput(['userid', 'type', 'fetch'], 'get');
         !$type && $type = 1;
         !$fetch && $fetch = 1;
         $result = $this->_getUserService()->getUser($userid, $type, $fetch);
@@ -73,7 +73,7 @@ class UserController extends OpenBaseController
      */
     public function fecthAction()
     {
-        list($userids, $type, $fetch) = $this->getInput(array('userids', 'type', 'fetch'), 'get');
+        list($userids, $type, $fetch) = $this->getInput(['userids', 'type', 'fetch'], 'get');
         !$type && $type = 1;
         !$fetch && $fetch = 1;
         $result = $this->_getUserService()->fecthUser($userids, $type, $fetch);
@@ -88,10 +88,10 @@ class UserController extends OpenBaseController
         list(
             $username, $password, $email, $question, $answer, $regip, $realname, $profile, $regdate, $gender,
             $byear, $bmonth, $bday, $hometown, $location, $homepage, $qq, $msn, $aliww, $mobile, $alipay, $messages
-        ) = $this->getInput(array(
+        ) = $this->getInput([
             'username', 'password', 'email', 'question', 'answer', 'regip', 'realname', 'profile', 'regdate', 'gender',
             'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay', 'messages',
-        ), 'post');
+        ], 'post');
 
         Wind::import('WSRV:user.dm.WindidUserDm');
         $dm = new WindidUserDm();
@@ -127,7 +127,7 @@ class UserController extends OpenBaseController
 
         $uid = (int) $result;
         $this->_getUserService()->defaultAvatar($uid, 'face');
-        $this->_getNotifyService()->send('addUser', array('uid' => $uid), $this->appid);
+        $this->_getNotifyService()->send('addUser', ['uid' => $uid], $this->appid);
         $this->output($uid);
     }
 
@@ -140,11 +140,11 @@ class UserController extends OpenBaseController
             $uid, $username, $password, $old_password, $email, $question, $answer, $regip, $realname, $profile, $regdate,
             $gender, $byear, $bmonth, $bday, $hometown, $location, $homepage, $qq, $msn, $aliww, $mobile, $alipay,
             $addmessages, $messages
-        ) = $this->getInput(array(
+        ) = $this->getInput([
             'uid', 'username', 'password', 'old_password', 'email', 'question', 'answer', 'regip', 'realname', 'profile', 'regdate',
             'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'msn', 'aliww', 'mobile', 'alipay',
             'addmessages', 'messages',
-        ), 'post');
+        ], 'post');
 
         Wind::import('WSRV:user.dm.WindidUserDm');
         $dm = new WindidUserDm($uid);
@@ -179,7 +179,7 @@ class UserController extends OpenBaseController
         if ($result instanceof WindidError) {
             $this->output($result->getCode());
         }
-        $this->_getNotifyService()->send('editUser', array('uid' => $uid, 'changepwd' => $dm->password ? 1 : 0), $this->appid);
+        $this->_getNotifyService()->send('editUser', ['uid' => $uid, 'changepwd' => $dm->password ? 1 : 0], $this->appid);
         $this->output(WindidUtility::result(true));
     }
 
@@ -191,7 +191,7 @@ class UserController extends OpenBaseController
         $uid = $this->getInput('uid', 'post');
         $result = false;
         if ($this->_getUserDs()->deleteUser($uid)) {
-            $this->_getNotifyService()->send('deleteUser', array('uid' => $uid), $this->appid);
+            $this->_getNotifyService()->send('deleteUser', ['uid' => $uid], $this->appid);
             $result = true;
         }
         $this->output(WindidUtility::result($result));
@@ -206,7 +206,7 @@ class UserController extends OpenBaseController
         $result = false;
         if ($this->_getUserDs()->batchDeleteUser($uids)) {
             foreach ($uids as $uid) {
-                $this->_getNotifyService()->send('deleteUser', array('uid' => $uid), $this->appid);
+                $this->_getNotifyService()->send('deleteUser', ['uid' => $uid], $this->appid);
             }
             $result = true;
         }
@@ -257,7 +257,7 @@ class UserController extends OpenBaseController
             $this->output($result->getCode());
         }
         if ($result) {
-            $this->_getNotifyService()->send('editCredit', array('uid' => $uid), $this->appid);
+            $this->_getNotifyService()->send('editCredit', ['uid' => $uid], $this->appid);
         }
         $this->output(WindidUtility::result($result));
     }
@@ -265,7 +265,7 @@ class UserController extends OpenBaseController
     public function editDmCreditAction()
     {
         $uid = (int) $this->getInput('uid', 'post');
-        list($set, $add) = $this->getInput(array('set', 'add'), 'post');
+        list($set, $add) = $this->getInput(['set', 'add'], 'post');
 
         Wind::import('WSRV:user.dm.WindidCreditDm');
         $dm = new WindidCreditDm($uid);
@@ -284,7 +284,7 @@ class UserController extends OpenBaseController
             $this->output($result->getCode());
         }
         if ($result) {
-            $this->_getNotifyService()->send('editCredit', array('uid' => $uid), $this->appid);
+            $this->_getNotifyService()->send('editCredit', ['uid' => $uid], $this->appid);
         }
         $this->output(WindidUtility::result($result));
     }

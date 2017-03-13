@@ -11,7 +11,7 @@
 class PwAttentionTypeDao extends PwBaseDao
 {
     protected $_table = 'attention_type';
-    protected $_dataStruct = array('id', 'uid', 'name');
+    protected $_dataStruct = ['id', 'uid', 'name'];
 
     public function getType($id)
     {
@@ -23,7 +23,7 @@ class PwAttentionTypeDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'id');
+        return $smt->queryAll([$uid], 'id');
     }
 
     /**

@@ -18,7 +18,7 @@ class ArticleController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/article/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/article/run')]);
         }
     }
 
@@ -27,7 +27,7 @@ class ArticleController extends PwBaseController
      */
     public function run()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         $threadList = new PwThreadList();
@@ -38,11 +38,11 @@ class ArticleController extends PwBaseController
 
         $threadList->execute($dataSource);
         $threads = $threadList->getList();
-        $topic_type = array();
+        $topic_type = [];
         foreach ($threads as &$v) {
             $topic_type[] = $v['topic_type'];
         }
-        $topictypes = $topic_type ? Wekit::load('forum.PwTopicType')->fetchTopicType($topic_type) : array();
+        $topictypes = $topic_type ? Wekit::load('forum.PwTopicType')->fetchTopicType($topic_type) : [];
 
         $this->setOutput($threadList->total, 'count');
         $this->setOutput($threadList->page, 'page');
@@ -64,14 +64,14 @@ class ArticleController extends PwBaseController
      */
     public function replyAction()
     {
-        list($page, $perpage) = $this->getInput(array('page', 'perpage'));
+        list($page, $perpage) = $this->getInput(['page', 'perpage']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
         $count = $this->_getThreadExpandDs()->countDisabledPostByUid($this->loginUser->uid);
         if ($count) {
             $tmpPosts = $this->_getThreadExpandDs()->getDisabledPostByUid($this->loginUser->uid, $limit, $start);
-            $posts = $tids = array();
+            $posts = $tids = [];
             foreach ($tmpPosts as $v) {
                 $tids[] = $v['tid'];
             }

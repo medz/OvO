@@ -23,7 +23,7 @@ class PwThreadAttach
     public function getAttach($aid)
     {
         if (empty($aid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getAttach($aid);
@@ -39,7 +39,7 @@ class PwThreadAttach
     public function fetchAttach($aids)
     {
         if (empty($aids) || !is_array($aids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchAttach($aids);
@@ -56,7 +56,7 @@ class PwThreadAttach
     public function getAttachByTid($tid, $pids)
     {
         if (!$tid || !$pids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getAttachByTid($tid, (array) $pids);
@@ -98,7 +98,7 @@ class PwThreadAttach
     public function fetchAttachByTid($tids)
     {
         if (!$tids || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchAttachByTid($tids);
@@ -115,7 +115,7 @@ class PwThreadAttach
     public function fetchAttachByTidAndPid($tids, $pids)
     {
         if (!$tids || !$pids || !is_array($tids) || !is_array($pids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchAttachByTidAndPid($tids, $pids);
@@ -132,7 +132,7 @@ class PwThreadAttach
     public function fetchAttachByTidsAndPid($tids, $pid = 0)
     {
         if (empty($tids) || !is_array($tids)) {
-            return array();
+            return [];
         }
         $pid = intval($pid);
 

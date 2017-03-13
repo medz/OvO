@@ -23,7 +23,7 @@ class PwBackupDao extends PwBaseDao
         $sql = $this->_bindTable("SHOW TABLE STATUS LIKE '%s'", $table);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array());
+        return $smt->getOne([]);
     }
 
     /**
@@ -39,8 +39,8 @@ class PwBackupDao extends PwBaseDao
     {
         $sql = $this->_bindSql('SELECT * FROM `%s` %s ', $table, $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->queryAll(array(), '', PDO::FETCH_NUM);
-        $temp = $array = array();
+        $result = $smt->queryAll([], '', PDO::FETCH_NUM);
+        $temp = $array = [];
         foreach ($result as $k => $v) {
             foreach ($v as $kt => $vt) {
                 $temp[$kt] = $this->getConnection()->quote($vt);
@@ -78,7 +78,7 @@ class PwBackupDao extends PwBaseDao
         $sql = $this->_bindSql('SHOW CREATE TABLE `%s`', $table);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array());
+        return $smt->getOne([]);
     }
 
     /**
@@ -106,7 +106,7 @@ class PwBackupDao extends PwBaseDao
         $sql = $this->_bindSql('OPTIMIZE TABLE %s', $table);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array());
+        return $smt->execute([]);
     }
 
     /**
@@ -121,7 +121,7 @@ class PwBackupDao extends PwBaseDao
         $sql = $this->_bindSql('REPAIR TABLE %s EXTENDED', $table);
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array());
+        return $smt->execute([]);
     }
 
     /**

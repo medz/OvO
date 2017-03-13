@@ -23,7 +23,7 @@ class TaController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('vote/ta/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('vote/ta/run')]);
         }
     }
 
@@ -39,12 +39,12 @@ class TaController extends PwBaseController
         $followUids = $this->getFollowUids($this->loginUser->uid);
 
         $total = $this->_getPollVoterDs()->countByUids($followUids);
-        $poll = $total ? $this->_getPollVoterDs()->fetchPollByUid($followUids, $limit, $start) : array();
+        $poll = $total ? $this->_getPollVoterDs()->fetchPollByUid($followUids, $limit, $start) : [];
 
-        $pollInfo = $pollid = array();
+        $pollInfo = $pollid = [];
 
         if ($total) {
-            $pollid = array();
+            $pollid = [];
             foreach ($poll as $value) {
                 $pollid[] = $value['poll_id'];
             }
@@ -53,7 +53,7 @@ class TaController extends PwBaseController
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
 
-        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, array('created_time' => '0')));
+        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, ['created_time' => '0']));
         $latestPoll = $latestPollDisplay->gather();
 
         $this->setOutput($total, 'total');
@@ -62,10 +62,10 @@ class TaController extends PwBaseController
         $this->setOutput($page, 'page');
         $this->setOutput($this->perpage, 'perpage');
         $this->setOutput(
-            array(
+            [
                 'allowview' => $this->loginUser->getPermission('allow_view_vote'),
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
-            ), 'pollGroup');
+            ], 'pollGroup');
 
         if (!$total) {
             $num = 20;
@@ -95,14 +95,14 @@ class TaController extends PwBaseController
 
         $total = $this->_getPwPollDs()->countPollByUids($followUids);
 
-        $pollInfo = array();
+        $pollInfo = [];
 
         if ($total) {
             $pollDisplay = new PwPollDisplay(new PwFetchPollByUids($followUids, $limit, $start));
             $pollInfo = $this->_buildPoll($pollDisplay->gather());
         }
 
-        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, array('created_time' => '0')));
+        $latestPollDisplay = new PwPollDisplay(new PwFetchPollByOrder(10, 0, ['created_time' => '0']));
         $latestPoll = $latestPollDisplay->gather();
 
         $this->setOutput($total, 'total');
@@ -111,10 +111,10 @@ class TaController extends PwBaseController
         $this->setOutput($page, 'page');
         $this->setOutput($this->perpage, 'perpage');
         $this->setOutput(
-            array(
+            [
                 'allowview' => $this->loginUser->getPermission('allow_view_vote'),
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
-            ), 'pollGroup');
+            ], 'pollGroup');
 
         if (!$total) {
             $num = 20;
@@ -131,7 +131,7 @@ class TaController extends PwBaseController
      */
     public function getFollowUids($uid, $limit = 500)
     {
-        $reuslt = array();
+        $reuslt = [];
         $follow = Wekit::load('attention.PwAttention')->getFollows($uid, $limit);
         foreach ($follow as $key => $value) {
             $reuslt[] = $value['touid'];
@@ -142,7 +142,7 @@ class TaController extends PwBaseController
 
     private function _buildPoll($data)
     {
-        $pollid = $myPollid = $reuslt = array();
+        $pollid = $myPollid = $reuslt = [];
         foreach ($data as $value) {
             $pollid[] = $value['poll_id'];
         }

@@ -12,13 +12,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwThreadType
 {
-    public $tType = array(
-        'default' => array('普通帖', '发布主题', true),
-        'poll'    => array('投票帖', '发起投票', 'allow_add_vote'),
+    public $tType = [
+        'default' => ['普通帖', '发布主题', true],
+        'poll'    => ['投票帖', '发起投票', 'allow_add_vote'],
         //'2' => array('悬赏帖', '发起悬赏', true),
         //'3' => array('商品帖', '发布商品', true),
         //'4' => array('辩论帖', '发起辩论')
-    );
+    ];
 
     public function __construct()
     {

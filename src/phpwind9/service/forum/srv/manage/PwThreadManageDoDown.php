@@ -23,7 +23,7 @@ class PwThreadManageDoDown extends PwThreadManageDo
             return false;
         }
         if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
-            return new PwError('permission.level.down', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
+            return new PwError('permission.level.down', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 
         return true;

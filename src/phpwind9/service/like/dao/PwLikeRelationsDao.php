@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwLikeRelationsDao extends PwBaseDao
 {
     protected $_table = 'like_tag_relations';
-    protected $_dataStruct = array('logid', 'tagid');
+    protected $_dataStruct = ['logid', 'tagid'];
 
     public function getInfo($tagid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tagid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tagid));
+        return $smt->queryAll([$tagid]);
     }
 
     public function getInfoList($tagid, $offset, $limit)
@@ -29,7 +29,7 @@ class PwLikeRelationsDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s %s  %s ', $this->getTable(), $where, $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tagid));
+        return $smt->queryAll([$tagid]);
     }
 
     public function addInfo($data)
@@ -47,7 +47,7 @@ class PwLikeRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE logid = ? AND tagid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($logid, $tagid));
+        return $smt->update([$logid, $tagid]);
     }
 
     public function deleteInfos($tagid)
@@ -55,7 +55,7 @@ class PwLikeRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE tagid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagid));
+        return $smt->update([$tagid]);
     }
 
     public function deleteInfosBylogid($logid)
@@ -63,6 +63,6 @@ class PwLikeRelationsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE logid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($logid));
+        return $smt->update([$logid]);
     }
 }

@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwAnnounceDm extends PwBaseDm
 {
     public $aid = 0;
-    public $_data = array();
+    public $_data = [];
 
     public function __construct($aid = 0)
     {

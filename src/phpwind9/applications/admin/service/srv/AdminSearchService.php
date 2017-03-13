@@ -3,7 +3,7 @@
 class AdminSearchService
 {
     private $_keyword;
-    private $_menus = array();
+    private $_menus = [];
 
     /**
      * 构造函数.
@@ -27,12 +27,12 @@ class AdminSearchService
     {
         foreach ($menus as $v) {
             if ($v['url'] && $v['name'] && $v['id']) {
-                $this->_menus[$v['id']] = array(
+                $this->_menus[$v['id']] = [
                     'url'    => $v['url'],
                     'name'   => $v['name'],
                     'parent' => $v['parent'],
                     'level'  => $level,
-                );
+                ];
             }
             if ($v['items']) {
                 $this->_initMenus($v['items'], $level + 1);
@@ -47,7 +47,7 @@ class AdminSearchService
      */
     public function search()
     {
-        $result = array();
+        $result = [];
         //$resource = Wind::getComponent('i18n');
         $parser = Wekit::load('ADMIN:service.srv.AdminSearchLangParserService');
         $texts = $parser->parseSearchLang();
@@ -60,7 +60,7 @@ class AdminSearchService
             //$desc = $resource->getMessage("ADMIN:search.{$k}");
             $desc = $texts[$k1];
             if ($desc) {
-                $subItems = array();
+                $subItems = [];
                 $matchMain = false;
                 if (is_array($desc['items'])) {
                     foreach ($desc['items'] as $v) {
@@ -77,7 +77,7 @@ class AdminSearchService
                         if ($k2 == 'items') {
                             continue;
                         }
-                        $tmp = array();
+                        $tmp = [];
                         if ($v2['items']) {
                             foreach ($v2['items'] as $v3) {
                                 list($s, $t) = $this->_check($v3);
@@ -123,6 +123,6 @@ class AdminSearchService
             $t = str_replace($this->_keyword, '<font color="red">'.$this->_keyword.'</font>', $string);
         }
 
-        return array($s, $t);
+        return [$s, $t];
     }
 }

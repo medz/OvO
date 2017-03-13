@@ -5,52 +5,52 @@ defined('WEKIT_VERSION') or exit(403);
  * pw后台应用配置
  */
 
-return array(
+return [
     'directory'  => '../conf/windid/directory.php',
-    'components' => array('resource' => 'CONF:windid.components.php'),
+    'components' => ['resource' => 'CONF:windid.components.php'],
 
-    'web-apps' => array(
-        'windidadmin' => array(
+    'web-apps' => [
+        'windidadmin' => [
             'root-path' => 'APPS:admin',
-            'filters'   => array(
-                'default' => array(
+            'filters'   => [
+                'default' => [
                     'class' => 'ADMIN:controller.filter.AdminDefaultFilter',
-                ),
-                'csrf' => array(
+                ],
+                'csrf' => [
                     'class'   => 'LIB:filter.PwCsrfTokenFilter',
                     'pattern' => '~(appcenter/app/upload)',
-                ),
-            ),
-            'modules' => array(
-                'pattern' => array(
+                ],
+            ],
+            'modules' => [
+                'pattern' => [
                     'controller-path' => 'APPS:{m}.admin',
                     'template-path'   => 'TPL:{m}.admin',
                     'compile-path'    => 'DATA:compile.template.windidserver',
-                ),
-                'default' => array(
+                ],
+                'default' => [
                     'controller-path'   => 'ADMIN:controller',
                     'controller-suffix' => 'Controller',
                     'error-handler'     => 'ADMIN:controller.MessageController',
                     'template-path'     => 'TPL:admin',
                     'compile-path'      => 'DATA:compile.template.windidserver',
                     'theme-package'     => 'THEMES:',
-                ),
-                'windidadmin' => array(
+                ],
+                'windidadmin' => [
                     'controller-path' => 'APPS:windidadmin',
                     'template-path'   => 'TPL:windidadmin',
                     'compile-path'    => 'DATA:compile.template.windidserver',
-                ),
-                'appcenter' => array(
+                ],
+                'appcenter' => [
                     'controller-path' => 'SRC:applications.appcenter.admin',
                     'template-path'   => 'TPL:appcenter.admin',
                     'compile-path'    => 'DATA:compile.template',
-                ),
-                'app' => array(
+                ],
+                'app' => [
                     'controller-path' => 'SRC:extensions.{app}.admin',
                     'template-path'   => 'SRC:extensions.{app}.template.admin',
                     'compile-path'    => 'DATA:compile.template.{app}',
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];

@@ -29,7 +29,7 @@ class PermissionsController extends AdminBaseController
             $vo->setUid($uid);
         }
         $_tmp = $ds->searchPermissions($vo);
-        $_gids = $_uids = array();
+        $_gids = $_uids = [];
         foreach ($_tmp as $v) {
             $_uids[] = $v['uid'];
         }
@@ -55,7 +55,7 @@ class PermissionsController extends AdminBaseController
         $vo = new PwDesignPermissionsSo();
         $vo->setUid($uid);
         $list = $this->_getPermissionsDs()->searchPermissions($vo);
-        $_ids = array();
+        $_ids = [];
         foreach ($list as $v) {
             $_ids[$v['design_type']][$v['id']] = $v['design_id'];
         }
@@ -65,7 +65,7 @@ class PermissionsController extends AdminBaseController
                 foreach ($ids as $_k => $id) {
                     $list[$_k]['type'] = '页面';
                     $list[$_k]['name'] = $info[$id]['page_name'];
-                    $list[$_k]['url'] = WindUrlHelper::createUrl('design/permissions/page', array('id' => $info[$id]['page_id']));
+                    $list[$_k]['url'] = WindUrlHelper::createUrl('design/permissions/page', ['id' => $info[$id]['page_id']]);
                 }
             }
             if ($k == PwDesignPermissions::TYPE_MODULE) {
@@ -73,7 +73,7 @@ class PermissionsController extends AdminBaseController
                 foreach ($ids as $_k => $id) {
                     $list[$_k]['type'] = '模块';
                     $list[$_k]['name'] = $info[$id]['module_name'];
-                    $list[$_k]['url'] = WindUrlHelper::createUrl('design/permissions/module', array('moduleid' => $info[$id]['module_id']));
+                    $list[$_k]['url'] = WindUrlHelper::createUrl('design/permissions/module', ['moduleid' => $info[$id]['module_id']]);
                 }
             }
             /*
@@ -96,7 +96,7 @@ class PermissionsController extends AdminBaseController
 
     public function pageAction()
     {
-        $uids = array();
+        $uids = [];
         $designId = (int) $this->getInput('id', 'get');
         $pageInfo = $this->_getPageDs()->getPage($designId);
         if (!$pageInfo) {
@@ -124,7 +124,7 @@ class PermissionsController extends AdminBaseController
 
     public function moduleAction()
     {
-        $uids = array();
+        $uids = [];
         $designId = (int) $this->getInput('moduleid', 'get');
         if ($designId < 1) {
             $this->showError('operate.fail');

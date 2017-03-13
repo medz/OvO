@@ -27,7 +27,7 @@ class WindidSchool
     public function getSchool($schoolid)
     {
         if (($schoolid = intval($schoolid)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSchool($schoolid);
@@ -43,7 +43,7 @@ class WindidSchool
     public function fetchSchool($schoolids)
     {
         if (!$schoolids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchSchool($schoolids);
@@ -60,7 +60,7 @@ class WindidSchool
     public function getSchoolByAreaidAndTypeid($areaid, $typeid = self::PRIMARY)
     {
         if (($areaid = intval($areaid)) < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSchoolByAreaidAndTypeid($areaid, $typeid);
@@ -91,7 +91,7 @@ class WindidSchool
      */
     public function batchAddSchool($schoolDms)
     {
-        $data = array();
+        $data = [];
         foreach ($schoolDms as $_dm) {
             if (!$_dm instanceof WindidSchoolDm) {
                 continue;

@@ -22,7 +22,7 @@ class UErrorController extends PwErrorController
         $config = Wekit::C('register');
         $this->setOutput($config, 'config');
         $this->setOutput(PwUserHelper::getRegFieldsMap(), 'needFields');
-        $this->setOutput(array('location', 'hometown'), 'selectFields');
+        $this->setOutput(['location', 'hometown'], 'selectFields');
         $this->setOutput($this->error, 'message');
         $userForm = $this->getInput('pwUserRegisterForm');
         $this->setOutput($userForm->getData(), 'data');

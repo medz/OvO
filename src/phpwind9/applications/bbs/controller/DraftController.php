@@ -27,7 +27,7 @@ class DraftController extends PwBaseController
      */
     public function doAddAction()
     {
-        list($title, $content) = $this->getInput(array('atc_title', 'atc_content'), 'post');
+        list($title, $content) = $this->getInput(['atc_title', 'atc_content'], 'post');
         if (!$title || !$content) {
             $this->showError('BBS:draft.content.empty');
         }
@@ -67,7 +67,7 @@ class DraftController extends PwBaseController
     public function myDraftsAction()
     {
         $drafts = $this->_getDraftDs()->getByUid($this->loginUser->uid, $this->maxNum);
-        $data = array();
+        $data = [];
         foreach ($drafts as $v) {
             $_tmp['id'] = $v['id'];
             $_tmp['title'] = $v['title'];
@@ -75,7 +75,7 @@ class DraftController extends PwBaseController
             $_tmp['created_time'] = Pw::time2str($v['created_time'], 'auto');
             $data[] = $_tmp;
         }
-        Pw::echoJson(array('state' => 'success', 'data' => $data));
+        Pw::echoJson(['state' => 'success', 'data' => $data]);
         exit;
     }
 

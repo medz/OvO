@@ -32,7 +32,7 @@ class AppController extends AdminBaseController
         list($start, $num) = Pw::page2limit($page, $this->perpage);
         $apps = $this->_appDs()->fetchByPage($num, $start);
         $this->setOutput(
-            array('perpage' => $this->perpage, 'page' => $page, 'count' => $count, 'apps' => $apps));
+            ['perpage' => $this->perpage, 'page' => $page, 'count' => $count, 'apps' => $apps]);
     }
 
     /**
@@ -41,17 +41,17 @@ class AppController extends AdminBaseController
     public function refreshAction()
     {
         $app_ids = $this->getInput('app_ids');
-        $apps = $data = array();
+        $apps = $data = [];
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'fetchApp', 'appids' => $app_ids));
+            ['a' => 'forward', 'do' => 'fetchApp', 'appids' => $app_ids]);
         $result = PwApplicationHelper::requestAcloudData($url);
         $result['code'] === '0' && $apps = $result['info'];
         foreach (explode(',', $app_ids) as $v) {
-            $data[$v] = array(
+            $data[$v] = [
                 'update_url' => '',
                 'admin_url'  => trim($apps[$v]['admin_url'], '\'"'),
                 'update_url' => $apps[$v]['update'] ? 1 : 0,
-                'open_new'   => $apps[$v]['open_new'] ? 1 : 0, );
+                'open_new'   => $apps[$v]['open_new'] ? 1 : 0, ];
         }
         $this->setOutput($data, 'data');
         $this->showMessage('success');
@@ -100,7 +100,7 @@ class AppController extends AdminBaseController
             $this->showError('upload.fail');
         }
         $this->setOutput(
-            array('filename' => $uploaddb[0]['name'], 'file' => $uploaddb[0]['fileuploadurl']),
+            ['filename' => $uploaddb[0]['name'], 'file' => $uploaddb[0]['fileuploadurl']],
             'data');
         $this->showMessage('success');
     }
@@ -112,10 +112,10 @@ class AppController extends AdminBaseController
     {
         $ext = Wind::getRealDir('EXT:', true);
         $dirs = WindFolder::read($ext, WindFolder::READ_DIR);
-        $manifests = array();
+        $manifests = [];
         $result = array_keys($this->_appDs()->fetchByAlias($dirs, 'alias'));
         $temp = array_diff($dirs, $result);
-        $to_install = array();
+        $to_install = [];
         foreach ($temp as $v) {
             if (file_exists($ext.$v.'/Manifest.xml')) {
                 $to_install[] = $v;
@@ -146,7 +146,7 @@ class AppController extends AdminBaseController
      */
     public function doInstallAction()
     {
-        list($file, $step, $hash) = $this->getInput(array('file', 'step', 'hash'));
+        list($file, $step, $hash) = $this->getInput(['file', 'step', 'hash']);
         $install = $this->_installService();
         if ($file) {
             $file = Wind::getRealDir($install->getConfig('tmp_dir'), true).'/'.$file;
@@ -176,11 +176,11 @@ class AppController extends AdminBaseController
             $install->clear();
             $this->showMessage('APPCENTER:install.success');
         } elseif (is_array($_r)) {
-            $this->setOutput(array('step' => $_r[0], 'hash' => $hash), 'data');
+            $this->setOutput(['step' => $_r[0], 'hash' => $hash], 'data');
             $this->showMessage($_r[1]);
         } else {
             $install->rollback();
-            $this->addMessage(array('step' => $step, 'hash' => $hash), 'data');
+            $this->addMessage(['step' => $step, 'hash' => $hash], 'data');
             $this->showError($_r->getError());
         }
     }
@@ -190,7 +190,7 @@ class AppController extends AdminBaseController
      */
     public function testUpgradeAction()
     {
-        list($file) = $this->getInput(array('file'));
+        list($file) = $this->getInput(['file']);
         /* @var $install PwUpgradeApplication */
         $install = Wekit::load('APPCENTER:service.srv.PwUpgradeApplication');
         $install->_appId = 'L0001344318635mEhO';
@@ -239,7 +239,7 @@ class AppController extends AdminBaseController
     public function searchAction()
     {
         $keyword = $this->getInput('keyword', 'post');
-        $apps = array();
+        $apps = [];
         $count = $this->_appDs()->countSearchByName($keyword);
         if ($count > 0) {
             $page = intval($this->getInput('page'));
@@ -250,13 +250,13 @@ class AppController extends AdminBaseController
             $apps = $this->_appDs()->searchByName($keyword, $num, $start);
         }
         $this->setOutput(
-            array(
+            [
                 'perpage' => $this->perpage,
                 'page'    => $page,
                 'count'   => $count,
                 'apps'    => $apps,
                 'keyword' => $keyword,
-                'search'  => 1, ));
+                'search'  => 1, ]);
         $this->setTemplate('app_run');
     }
 
@@ -267,13 +267,13 @@ class AppController extends AdminBaseController
     {
         $alias = $this->getInput('alias');
         $manifest = Wind::getRealPath('EXT:'.$alias.'.Manifest.xml', true);
-        $hooks = $injectors = array();
+        $hooks = $injectors = [];
         if (is_file($manifest)) {
             $man = new PwManifest($manifest);
             $hooks = $man->getHooks();
             $injectors = $man->getInjectServices();
         }
-        $this->setOutput(array('hooks' => $hooks, 'injectors' => $injectors));
+        $this->setOutput(['hooks' => $hooks, 'injectors' => $injectors]);
     }
 
     /**
@@ -285,7 +285,7 @@ class AppController extends AdminBaseController
         /* @var $uninstall PwUninstallApplication */
         if ($id[0] !== 'L') {
             $url = PwApplicationHelper::acloudUrl(
-                array('a' => 'forward', 'do' => 'uninstallApp', 'appid' => $id));
+                ['a' => 'forward', 'do' => 'uninstallApp', 'appid' => $id]);
             $info = PwApplicationHelper::requestAcloudData($url);
             if ($info['code'] !== '0') {
                 $this->showError($info['msg']);
@@ -306,7 +306,7 @@ class AppController extends AdminBaseController
     {
         $ext = Wind::getRealDir('EXT:', true);
         $dirs = WindFolder::read($ext, WindFolder::READ_DIR);
-        $alias = array();
+        $alias = [];
         foreach ($dirs as $file) {
             if (WindFile::isFile($ext.'/'.$file.'/Manifest.xml')) {
                 $alias[] = $file;
@@ -326,10 +326,10 @@ class AppController extends AdminBaseController
     {
         $id = $this->getInput('app_id');
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'upgradeApplication', 'appid' => $id));
+            ['a' => 'forward', 'do' => 'upgradeApplication', 'appid' => $id]);
         $info = PwApplicationHelper::requestAcloudData($url);
         if ($info['code'] !== '0') {
-            $this->showError(array('APPCENTER:update.fail', array($info['msg'])));
+            $this->showError(['APPCENTER:update.fail', [$info['msg']]]);
         } else {
             $this->showMessage('success');
         }

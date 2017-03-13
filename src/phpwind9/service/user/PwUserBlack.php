@@ -79,9 +79,9 @@ class PwUserBlack
      */
     public function checkUserBlack($uid, $uids)
     {
-        !is_array($uids) && $uids = array($uids);
+        !is_array($uids) && $uids = [$uids];
         $blacks = $this->fetchBlacklist($uids);
-        $privateBlacks = array();
+        $privateBlacks = [];
         foreach ($blacks as $v) {
             if ($v['blacklist']) {
                 $blacklist = @unserialize($v['blacklist']);

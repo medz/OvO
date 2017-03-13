@@ -37,7 +37,7 @@ class WindidUtility
 
     public static function appKey($apiId, $time, $secretkey, $get, $post)
     {
-        $array = array('windidkey', 'clientid', 'time', '_json', 'jcallback', 'csrf_token', 'Filename', 'Upload', 'token', '__data');
+        $array = ['windidkey', 'clientid', 'time', '_json', 'jcallback', 'csrf_token', 'Filename', 'Upload', 'token', '__data'];
         $str = '';
         ksort($get);
         ksort($post);
@@ -57,11 +57,11 @@ class WindidUtility
         return md5($time.$str.md5($apiId.'||'.$secretkey));
     }
 
-    public static function buildMultiRequest($urls, $params = array())
+    public static function buildMultiRequest($urls, $params = [])
     {
         $client = new \Guzzle\Http\Client();
 
-        $result = array();
+        $result = [];
         foreach ($urls as $k => $url) {
             $request = $client->post($url, null, $params[$k]);
             $response = $client->send($request);

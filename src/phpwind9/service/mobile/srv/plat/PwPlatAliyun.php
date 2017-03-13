@@ -30,7 +30,7 @@ class PwPlatAliyun
     public function getRestMobileMessage()
     {
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'getSiteLastNum'));
+            ['a' => 'forward', 'do' => 'getSiteLastNum']);
         $info = PwApplicationHelper::requestAcloudData($url);
         if (!is_array($info)) {
             return new PwError('APPCENTER:center.connect.fail');
@@ -51,7 +51,7 @@ class PwPlatAliyun
     {
         $content = Pw::convert($content, 'UTF-8');
         $url = PwApplicationHelper::acloudUrl(
-            array('a' => 'forward', 'do' => 'sendSms', 'mobile' => $mobile, 'content' => $content));
+            ['a' => 'forward', 'do' => 'sendSms', 'mobile' => $mobile, 'content' => $content]);
         $info = PwApplicationHelper::requestAcloudData($url);
         if (!is_array($info)) {
             return new PwError('APPCENTER:center.connect.fail');

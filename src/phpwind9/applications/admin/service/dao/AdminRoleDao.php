@@ -13,7 +13,7 @@ Wind::import('ADMIN:library.AdminBaseDao');
 class AdminRoleDao extends PwBaseDao
 {
     protected $_table = 'admin_role';
-    protected $_dataStruct = array('id', 'name', 'auths', 'created_time', 'modified_time');
+    protected $_dataStruct = ['id', 'name', 'auths', 'created_time', 'modified_time'];
 
     /**
      * 添加后台角色.
@@ -45,7 +45,7 @@ class AdminRoleDao extends PwBaseDao
             return false;
         }
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
-        $this->getConnection()->createStatement($sql)->execute(array($id));
+        $this->getConnection()->createStatement($sql)->execute([$id]);
 
         return true;
     }
@@ -63,7 +63,7 @@ class AdminRoleDao extends PwBaseDao
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET ').$this->sqlSingle($fields).' WHERE id=?';
-        $this->getConnection()->createStatement($sql)->update(array($id));
+        $this->getConnection()->createStatement($sql)->update([$id]);
 
         return true;
     }
@@ -114,7 +114,7 @@ class AdminRoleDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE name=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($name));
+        return $this->getConnection()->createStatement($sql)->getOne([$name]);
     }
 
     /**
@@ -148,6 +148,6 @@ class AdminRoleDao extends PwBaseDao
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id=?');
 
-        return $this->getConnection()->createStatement($sql)->getOne(array($id));
+        return $this->getConnection()->createStatement($sql)->getOne([$id]);
     }
 }

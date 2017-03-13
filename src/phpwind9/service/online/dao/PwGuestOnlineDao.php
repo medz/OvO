@@ -11,14 +11,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwGuestOnlineDao extends PwBaseDao
 {
     protected $_table = 'online_guest';
-    protected $_dataStruct = array('ip', 'created_time', 'modify_time', 'tid', 'fid', 'request');
+    protected $_dataStruct = ['ip', 'created_time', 'modify_time', 'tid', 'fid', 'request'];
 
     public function getInfo($ip, $createdTime)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE ip = ? AND created_time = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($uid, $createdTime));
+        return $smt->getOne([$uid, $createdTime]);
     }
 
     public function fetchInfo($ip)
@@ -26,7 +26,7 @@ class PwGuestOnlineDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE ip = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($ip));
+        return $smt->queryAll([$ip]);
     }
 
     public function replaceInfo($data)
@@ -47,7 +47,7 @@ class PwGuestOnlineDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE ip = ? AND created_time = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $createdTime));
+        return $smt->update([$uid, $createdTime]);
     }
 
     public function deleteInfos($ip)
@@ -55,7 +55,7 @@ class PwGuestOnlineDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE ip = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($ip));
+        return $smt->update([$ip]);
     }
 
     public function deleteByLastTime($lasttime)
@@ -63,13 +63,13 @@ class PwGuestOnlineDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE modify_time < ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($lasttime));
+        return $smt->update([$lasttime]);
     }
 
     public function getOnlineCount($fid, $tid)
     {
         $where = 'WHERE 1';
-        $_array = array($type);
+        $_array = [$type];
         if ($fid > 0) {
             $where .= ' AND fid = ? ';
             $_array[] = $fid;

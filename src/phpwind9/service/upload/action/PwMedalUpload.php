@@ -20,15 +20,15 @@ class PwMedalUpload extends PwUploadAction
     public $height;
     public $dir;
     public $filename;
-    private $mime = array();
+    private $mime = [];
 
     public function __construct($key, $width, $height)
     {
         $this->key = $key;
         $this->width = $width;
         $this->height = $height;
-        $this->ftype = array('jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000);
-        $this->mime = array('image/jpeg', 'image/png', 'image/jpg', 'image/gif');
+        $this->ftype = ['jpeg' => 2000, 'jpg' => 2000, 'png' => '2000', 'gif' => 2000];
+        $this->mime = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
     }
 
     /**
@@ -85,9 +85,9 @@ class PwMedalUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->filename, $this->dir, $this->width, $this->height, 0),
-        );
+        return [
+            [$this->filename, $this->dir, $this->width, $this->height, 0],
+        ];
     }
 
     /**
@@ -109,7 +109,7 @@ class PwMedalUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'name'     => $value['name'],
                 'type'     => $value['type'],
                 'path'     => $this->dir,
@@ -117,7 +117,7 @@ class PwMedalUpload extends PwUploadAction
                 'size'     => $value['size'],
                 'width'    => $this->width,
                 'height'   => $this->height,
-            );
+            ];
         }
 
         return true;

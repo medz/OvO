@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwDesignSegmentDao extends PwBaseDao
 {
     protected $_table = 'design_segment';
-    protected $_dataStruct = array('segment', 'page_id', 'segment_tpl', 'segment_struct');
+    protected $_dataStruct = ['segment', 'page_id', 'segment_tpl', 'segment_struct'];
 
     public function getSegment($segment, $pageid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `segment` = ? AND `page_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($segment, $pageid));
+        return $smt->getOne([$segment, $pageid]);
     }
 
     public function getSegmentByPageid($pageid)
@@ -28,7 +28,7 @@ class PwDesignSegmentDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s  WHERE `page_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($pageid), 'segment');
+        return $smt->queryAll([$pageid], 'segment');
     }
 
     public function replaceSegment($data)
@@ -49,7 +49,7 @@ class PwDesignSegmentDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `segment` = ? AND `page_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($segment, $pageid));
+        return $smt->update([$segment, $pageid]);
     }
 
     public function deleteSegmentByPageid($pageid)
@@ -57,6 +57,6 @@ class PwDesignSegmentDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE  `page_id` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pageid));
+        return $smt->update([$pageid]);
     }
 }

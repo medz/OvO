@@ -12,7 +12,7 @@ Wind::import('APPCENTER:service.srv.iPwInstall');
  */
 class PwPatchInstall implements iPwInstall
 {
-    protected $fileList = array();
+    protected $fileList = [];
 
     /*
      * (non-PHPdoc) @see iPwInstall::install()

@@ -40,7 +40,7 @@ class ImportController extends PwBaseController
         }
 
         $ext = strtolower(substr(strrchr($_FILES['file']['name'], '.'), 1));
-        if (!$ext || !in_array($ext, array('txt', 'zip'))) {
+        if (!$ext || !in_array($ext, ['txt', 'zip'])) {
             $this->showMessage('DESIGN::upload.fail');
         }
 
@@ -204,7 +204,7 @@ class ImportController extends PwBaseController
         $bakDs->deleteByPageId($pageid);
 
         $dm = new PwDesignPageDm($pageid);
-        $dm->setModuleIds(array())->setStrucNames(array());
+        $dm->setModuleIds([])->setStrucNames([]);
         $this->_getPageDs()->updatePage($dm);
         //doclear end
     }

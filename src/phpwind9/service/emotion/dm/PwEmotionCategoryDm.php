@@ -33,7 +33,7 @@ class PwEmotionCategoryDm extends PwBaseDm
 
     public function setEmotionApps($apps)
     {
-        !is_array($apps) && $apps = array();
+        !is_array($apps) && $apps = [];
         $_apps = implode('|', $apps);
         $this->_data['emotion_apps'] = $_apps;
 

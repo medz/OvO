@@ -89,7 +89,7 @@ class PwThreadPoll
     {
         $tid = intval($tid);
         if ($tid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadPollDao()->getPoll($tid);
@@ -105,7 +105,7 @@ class PwThreadPoll
     public function fetchPoll($tids)
     {
         if (empty($tids) || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadPollDao()->fetchPoll($tids);
@@ -121,7 +121,7 @@ class PwThreadPoll
     {
         $pollid = intval($pollid);
         if ($pollid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadPollDao()->getPollByPollid($pollid);
@@ -137,7 +137,7 @@ class PwThreadPoll
     public function fetchByPollid($pollids)
     {
         if (empty($pollids) || !is_array($pollids)) {
-            return array();
+            return [];
         }
 
         return $this->_getThreadPollDao()->fetchByPollid($pollids);

@@ -13,18 +13,18 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwFreshDisplay
 {
-    protected $fresh = array();
-    protected $fresh_src = array();
-    protected $fresh_map = array(
+    protected $fresh = [];
+    protected $fresh_src = [];
+    protected $fresh_map = [
         PwFresh::TYPE_THREAD_REPLY => 'PwReplyFresh',
         PwFresh::TYPE_THREAD_TOPIC => 'PwTopicFresh',
         PwFresh::TYPE_WEIBO        => 'PwWeiboFresh',
-    );
+    ];
 
     public function __construct(iPwDataSource $ds)
     {
         $this->fresh = $ds->getData();
-        $src_id = array();
+        $src_id = [];
         foreach ($this->fresh as $key => $value) {
             $src_id[$value['type']][] = $value['src_id'];
         }
@@ -43,7 +43,7 @@ class PwFreshDisplay
      */
     public function gather()
     {
-        $fresh = array();
+        $fresh = [];
         foreach ($this->fresh as $key => $value) {
             $offer = $this->fresh_src[$value['type']]->offer($value['src_id']);
             $fresh[$key] = $value + $offer;
@@ -70,8 +70,8 @@ abstract class PwBaseFresh
 
     protected function _bulidContent($array, &$errcode)
     {
-        $errcode = array();
-        $array['content'] = str_replace(array("\r", "\n", "\t"), '', $array['content']);
+        $errcode = [];
+        $array['content'] = str_replace(["\r", "\n", "\t"], '', $array['content']);
         $array['content'] = WindSecurity::escapeHTML($array['content']);
         if ($array['ifshield']) {
             $array['subject'] = '';
@@ -100,7 +100,7 @@ abstract class PwBaseFresh
      */
     protected function _bulidFrom($fid, $fname)
     {
-        return '版块&nbsp;-&nbsp;<a href="'.WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $fid)).'">'.$fname.'</a>';
+        return '版块&nbsp;-&nbsp;<a href="'.WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $fid]).'">'.$fname.'</a>';
     }
 }
 
@@ -123,7 +123,7 @@ class PwTopicFresh extends PwBaseFresh
     public function init()
     {
         $content = $this->_topic->fetch();
-        $poll_ids = $att_ids = $forum_ids = array();
+        $poll_ids = $att_ids = $forum_ids = [];
         foreach ($content as $key => $value) {
             if ($value['special'] == 1) {
                 $poll_ids[] = $value['tid'];
@@ -146,12 +146,12 @@ class PwTopicFresh extends PwBaseFresh
     {
         $topic = $this->_topic->fetchOne($id);
         $forum = $this->_forum->fetchOne($topic['fid']);
-        $topic['pic'] = $topic['aids'] ? $this->_att->fetchOne($id.'_0') : array();
-        $errcode = array();
+        $topic['pic'] = $topic['aids'] ? $this->_att->fetchOne($id.'_0') : [];
+        $errcode = [];
         $topic = $this->_bulidContent($topic, $errcode);
         !$topic['word_version'] && $topic['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($topic['content'], $topic['word_version']);
 
-        $result = array(
+        $result = [
             'replies'          => $topic['replies'],
             'like_count'       => $topic['like_count'],
             'created_username' => $topic['created_username'],
@@ -159,7 +159,7 @@ class PwTopicFresh extends PwBaseFresh
             'content'          => $topic['content'],
             'from'             => $this->_bulidFrom($forum['fid'], $forum['name']),
             'pic'              => $topic['pic'],
-        );
+        ];
         if ($errcode) {
             $result += $errcode;
         }
@@ -175,7 +175,7 @@ class PwReplyFresh extends PwBaseFresh
     protected $_forum;
     protected $_att;
 
-    protected $_relation = array();
+    protected $_relation = [];
 
     public function __construct($ids)
     {
@@ -189,7 +189,7 @@ class PwReplyFresh extends PwBaseFresh
     public function init()
     {
         $content = $this->_reply->fetch();
-        $forum_ids = array();
+        $forum_ids = [];
         foreach ($content as $key => $value) {
             $this->_relation[$key] = $value['tid'];
             $forum_ids[] = $value['fid'];
@@ -210,19 +210,19 @@ class PwReplyFresh extends PwBaseFresh
         $forum = $this->_forum->fetchOne($reply['fid']);
         $quote = $this->_topic->fetchOne($this->_relation[$id]);
         $from = $this->_bulidFrom($forum['fid'], $forum['name']);
-        $reply['pic'] = $reply['aids'] ? $this->_att->fetchOne($reply['tid'].'_'.$id) : array();
+        $reply['pic'] = $reply['aids'] ? $this->_att->fetchOne($reply['tid'].'_'.$id) : [];
         $reply = $this->_bulidContent($reply, $errcode);
         $quote = $this->_bulidContent($quote, $_tmp);
         !$reply['word_version'] && $reply['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($reply['content'], $reply['word_version']);
 
-        $result = array(
+        $result = [
             'replies'          => $reply['replies'],
             'like_count'       => $reply['like_count'],
             'created_username' => $reply['created_username'],
             'content'          => $reply['content'],
             'from'             => $from,
             'pic'              => $pic,
-            'quote'            => array(
+            'quote'            => [
                 //'id' => $id,
                 'tid'              => $quote['tid'],
                 'type'             => PwFresh::TYPE_THREAD_TOPIC,
@@ -234,10 +234,10 @@ class PwReplyFresh extends PwBaseFresh
                 'created_time'     => $quote['created_time'],
                 'subject'          => $quote['subject'],
                 'content'          => $quote['content'],
-                'url'              => WindUrlHelper::createUrl('bbs/read/run', array('tid' => $quote['tid'])),
+                'url'              => WindUrlHelper::createUrl('bbs/read/run', ['tid' => $quote['tid']]),
                 'from'             => $from,
-            ),
-        );
+            ],
+        ];
         if ($errcode) {
             $result += $errcode;
         }
@@ -249,12 +249,12 @@ class PwReplyFresh extends PwBaseFresh
 class PwWeiboFresh extends PwBaseFresh
 {
     protected $_weibo;
-    protected $_relation = array();
-    protected $_from = array(
-        0                   => array('新鲜事'),
-        PwWeibo::TYPE_MEDAL => array('勋章', 'medal/index/run'),
-        PwWeibo::TYPE_LIKE  => array('喜欢', 'like/like/run'),
-    );
+    protected $_relation = [];
+    protected $_from = [
+        0                   => ['新鲜事'],
+        PwWeibo::TYPE_MEDAL => ['勋章', 'medal/index/run'],
+        PwWeibo::TYPE_LIKE  => ['喜欢', 'like/like/run'],
+    ];
 
     public function __construct($ids)
     {
@@ -264,7 +264,7 @@ class PwWeiboFresh extends PwBaseFresh
 
     public function init()
     {
-        $ids = array();
+        $ids = [];
         $arr = $this->_weibo->fetch();
         foreach ($arr as $key => $value) {
             if ($value['src_id'] && !isset($arr[$value['src_id']])) {
@@ -281,18 +281,18 @@ class PwWeiboFresh extends PwBaseFresh
         $weibo = $this->_weibo->fetchOne($id);
         $weibo['useubb'] = 1;
         $weibo = $this->_bulidContent($weibo, $errcode);
-        $result = array(
+        $result = [
             'replies'          => $weibo['comments'],
             'like_count'       => $weibo['like_count'],
             'created_username' => $weibo['created_username'],
             'content'          => $weibo['content'],
             'from'             => $this->_bulidFrom($weibo['type'], ''),
-        );
+        ];
         if ($weibo['src_id']) {
             $quote = $this->_weibo->fetchOne($weibo['src_id']);
             $quote['useubb'] = 1;
             $quote = $this->_bulidContent($quote, $_tmp);
-            $result['quote'] = array(
+            $result['quote'] = [
                 //'id' => $id,
                 'type'             => PwFresh::TYPE_WEIBO,
                 'src_id'           => $quote['weibo_id'],
@@ -302,9 +302,9 @@ class PwWeiboFresh extends PwBaseFresh
                 'created_username' => $quote['created_username'],
                 'created_time'     => $quote['created_time'],
                 'content'          => $quote['content'],
-                'url'              => WindUrlHelper::createUrl('space/index/fresh', array('uid' => $quote['created_userid'], 'weiboid' => $quote['weibo_id'])),
+                'url'              => WindUrlHelper::createUrl('space/index/fresh', ['uid' => $quote['created_userid'], 'weiboid' => $quote['weibo_id']]),
                 'from'             => $this->_bulidFrom($quote['type'], ''),
-            );
+            ];
         }
         //if ($errcode) $result += $errcode;
         return $result;
@@ -352,7 +352,7 @@ class PwFreshContentFromPoll implements iPwDataSource2
 {
     public function getData($ids)
     {
-        return array();
+        return [];
     }
 }
 
@@ -368,13 +368,13 @@ class PwFreshContentFromAtt implements iPwDataSource2
 {
     public function getData($ids)
     {
-        $tids = $pids = array();
+        $tids = $pids = [];
         foreach ($ids as $key => $value) {
             list($tid, $pid) = explode('_', $value);
             $tids[] = $tid;
             $pids[] = $pid;
         }
-        $result = array();
+        $result = [];
         $array = Wekit::load('attach.PwThreadAttach')->fetchAttachByTidAndPid($tids, $pids);
         foreach ($array as $key => $value) {
             if ($value['type'] != 'img' || ($value['special'] > 0 && $value['cost'] > 0)) {

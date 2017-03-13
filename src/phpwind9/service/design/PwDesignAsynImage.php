@@ -13,7 +13,7 @@ class PwDesignAsynImage
     public function getImage($id)
     {
         if (!$id) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);
@@ -22,7 +22,7 @@ class PwDesignAsynImage
     public function fetchImage($ids)
     {
         if (empty($ids) || !is_array($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($ids);

@@ -17,18 +17,18 @@ class AppsController extends PwBaseController
         $this->appid = $this->getInput('appid');
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('appcenter/app/run', array('appid' => $this->appid))));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('appcenter/app/run', ['appid' => $this->appid])]);
         }
     }
 
     public function run()
     {
-        $params = array();
+        $params = [];
         $params['uid'] = $this->loginUser->uid;
 
         list($status, $result) = $this->apiRequest('platform.request.geturl', $params);
         if (!$status) {
-            $this->showError(array('APPCENTER:get.app.url.fail', array('{{error}}' => $result)));
+            $this->showError(['APPCENTER:get.app.url.fail', ['{{error}}' => $result]]);
         }
 
         $appUrl = $result;
@@ -38,7 +38,7 @@ class AppsController extends PwBaseController
     /**
      * 从云平台上获取.
      */
-    public function apiRequest($method, $params = array())
+    public function apiRequest($method, $params = [])
     {
         $params['method'] = $method;
         $params['url'] = 'http://'.$_SERVER['HTTP_HOST'];
@@ -52,13 +52,13 @@ class AppsController extends PwBaseController
         $result = WindJson::decode($result);
 
         if (!is_array($result) || !isset($result['code'])) {
-            return array(false, '');
+            return [false, ''];
         }
         if ($result['code'] != 0) {
-            return array(false, $result['msg'].' '.$result['code']);
+            return [false, $result['msg'].' '.$result['code']];
         }
 
-        return array(true, $result['result']);
+        return [true, $result['result']];
     }
 
     private function _getCloudApi()

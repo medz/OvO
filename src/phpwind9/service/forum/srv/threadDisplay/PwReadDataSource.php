@@ -20,10 +20,10 @@ abstract class PwReadDataSource
     public $firstFloor;
     public $asc = true;
 
-    protected $data = array();
-    protected $urlArgs = array();
-    protected $_uids = array();
-    protected $_aids = array();
+    protected $data = [];
+    protected $urlArgs = [];
+    protected $_uids = [];
+    protected $_aids = [];
 
     public function setPage($page)
     {

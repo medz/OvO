@@ -13,7 +13,7 @@ class PwDesignSegment
     public function getSegment($segment, $pageid)
     {
         if (!$segment || $pageid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSegment($segment, $pageid);
@@ -22,7 +22,7 @@ class PwDesignSegment
     public function getSegmentByPageid($pageid)
     {
         if ($pageid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getSegmentByPageid($pageid);

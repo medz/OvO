@@ -15,7 +15,7 @@ class VisitorController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardAction('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/visitor/run')));
+            $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/visitor/run')]);
         }
         $this->setOutput('visitor', 'li');
     }
@@ -26,7 +26,7 @@ class VisitorController extends PwBaseController
     public function run()
     {
         $space = $this->_getSpaceDs()->getSpace($this->loginUser->uid);
-        $visitors = $space['visitors'] ? unserialize($space['visitors']) : array();
+        $visitors = $space['visitors'] ? unserialize($space['visitors']) : [];
         $uids = array_keys($visitors);
         if ($uids) {
             $userList = Wekit::load('user.PwUser')->fetchUserByUid($uids, PwUser::FETCH_MAIN | PwUser::FETCH_DATA | PwUser::FETCH_INFO);
@@ -64,7 +64,7 @@ class VisitorController extends PwBaseController
     public function tovisitAction()
     {
         $space = $this->_getSpaceDs()->getSpace($this->loginUser->uid);
-        $visitors = $space['tovisitors'] ? unserialize($space['tovisitors']) : array();
+        $visitors = $space['tovisitors'] ? unserialize($space['tovisitors']) : [];
         $uids = array_keys($visitors);
         if ($uids) {
             $userList = Wekit::load('user.PwUser')->fetchUserByUid($uids, PwUser::FETCH_MAIN | PwUser::FETCH_DATA | PwUser::FETCH_INFO);
@@ -91,7 +91,7 @@ class VisitorController extends PwBaseController
 
     private function _buildData($data, $keys)
     {
-        $temp = array();
+        $temp = [];
         foreach ($keys as $v) {
             $temp[$v] = $data[$v];
         }

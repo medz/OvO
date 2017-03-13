@@ -16,11 +16,11 @@ class PwFreshReplyPost
     public $bhv;
     public $fresh;
 
-    protected $_bhv_map = array(
+    protected $_bhv_map = [
         1 => 'SRV:attention.srv.reply.PwFreshReplyByPost',
         2 => 'SRV:attention.srv.reply.PwFreshReplyByPost',
         3 => 'SRV:attention.srv.reply.PwFreshReplyByWeibo',
-    );
+    ];
 
     public function __construct($fresh_id, PwUserBo $user)
     {

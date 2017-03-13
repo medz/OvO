@@ -19,7 +19,7 @@ class PwEmotion
     {
         $emotionId = (int) $emotionId;
         if ($emotionId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getEmotion($emotionId);
@@ -33,7 +33,7 @@ class PwEmotion
     public function fetchEmotion($emotionIds)
     {
         if (!is_array($emotionIds) || !$emotionIds) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchEmotion($emotionIds);
@@ -47,7 +47,7 @@ class PwEmotion
     public function fetchEmotionByCatid($categoryIds)
     {
         if (!is_array($categoryIds) || !$categoryIds) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchEmotionByCatid($categoryIds);
@@ -63,7 +63,7 @@ class PwEmotion
     {
         $categoryId = (int) $categoryId;
         if ($categoryId < 1) {
-            return array();
+            return [];
         }
         isset($isUsed) && $isUsed = (int) $isUsed;
 

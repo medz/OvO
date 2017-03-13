@@ -19,7 +19,7 @@ class PwDesignTagDataService extends PwDesignModelBase
 {
     public function decorateAddProperty($model)
     {
-        $data = array();
+        $data = [];
         $data['categorys'] = $this->_getTagCateGorys();
 
         return $data;
@@ -29,7 +29,7 @@ class PwDesignTagDataService extends PwDesignModelBase
     {
         $model = $moduleBo->getModel();
         $property = $moduleBo->getProperty();
-        $data = array();
+        $data = [];
         $data['categorys'] = $this->_getTagCateGorys();
 
         return $data;
@@ -56,12 +56,12 @@ class PwDesignTagDataService extends PwDesignModelBase
         }
         $list = Wekit::load('tag.PwTagSearch')->searchTag($so, $limit, $offset);
         if (!$list) {
-            return array();
+            return [];
         }
         foreach ($list as $k => $v) {
             $list[$k]['tagid'] = $v['tag_id'];
             $list[$k]['tag_name'] = $this->_formatTitle($v['tag_name']);
-            $list[$k]['url'] = WindUrlHelper::createUrl('tag/index/view', array('name' => $v['tag_name']), '', 'pw');
+            $list[$k]['url'] = WindUrlHelper::createUrl('tag/index/view', ['name' => $v['tag_name']], '', 'pw');
             $list[$k]['logo'] = Pw::getPath($v['tag_logo']);
             $list[$k]['attention_count'] = $v['attention_count'];
             $list[$k]['content_count'] = $v['content_count'];

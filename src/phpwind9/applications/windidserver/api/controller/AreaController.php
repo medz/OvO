@@ -74,7 +74,7 @@ class AreaController extends OpenBaseController
     public function updateAction()
     {
         $id = $this->getInput('id', 'get');
-        list($name, $parentid, $joinname) = $this->getInput(array('name', 'parentid', 'joinname'), 'post');
+        list($name, $parentid, $joinname) = $this->getInput(['name', 'parentid', 'joinname'], 'post');
 
         Wind::import('WSRV:area.dm.WindidAreaDm');
         $dm = new WindidAreaDm();
@@ -89,8 +89,8 @@ class AreaController extends OpenBaseController
 
     public function batchaddAction()
     {
-        $dms = array();
-        list($ids, $name, $parentid, $joinname) = $this->getInput(array('id', 'name', 'parentid', 'joinname'), 'post');
+        $dms = [];
+        list($ids, $name, $parentid, $joinname) = $this->getInput(['id', 'name', 'parentid', 'joinname'], 'post');
         Wind::import('WSRV:area.dm.WindidAreaDm');
         foreach ($ids as $k => $id) {
             $dm = new WindidAreaDm();

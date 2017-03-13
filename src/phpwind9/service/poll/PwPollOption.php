@@ -24,7 +24,7 @@ class PwPollOption
     {
         $optionid = intval($optionid);
         if (1 > $optionid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($optionid);
@@ -40,7 +40,7 @@ class PwPollOption
     public function fetch($optionids)
     {
         if (empty($optionids) && !is_array($optionids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($optionids);
@@ -55,7 +55,7 @@ class PwPollOption
     {
         $pollid = intval($pollid);
         if (1 > $pollid) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByPollid($pollid);
@@ -69,7 +69,7 @@ class PwPollOption
     public function fetchByPollid($pollids)
     {
         if (empty($pollids) || !is_array($pollids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchByPollid($pollids);

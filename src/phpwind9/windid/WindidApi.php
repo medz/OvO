@@ -10,8 +10,8 @@ class WindidApi
 {
     public static function api($api)
     {
-        static $cls = array();
-        $array = array('user', 'config', 'message', 'avatar', 'area', 'school', 'app', 'notify');
+        static $cls = [];
+        $array = ['user', 'config', 'message', 'avatar', 'area', 'school', 'app', 'notify'];
         if (!in_array($api, $array)) {
             return WindidError::FAIL;
         }
@@ -31,7 +31,7 @@ class WindidApi
         return $cls[$class];
     }
 
-    public static function open($script, $getData = array(), $postData = array(), $method = 'post', $protocol = 'http')
+    public static function open($script, $getData = [], $postData = [], $method = 'post', $protocol = 'http')
     {
         $time = Pw::getTime();
         list($c, $a) = explode('/', $script);
@@ -62,7 +62,7 @@ class WindidApi
 
     public static function getDm($api)
     {
-        $array = array('user', 'message', 'credit', 'app');
+        $array = ['user', 'message', 'credit', 'app'];
         if (!in_array($api, $array)) {
             return WindidError::FAIL;
         }

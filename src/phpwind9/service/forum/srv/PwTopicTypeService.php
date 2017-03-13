@@ -18,7 +18,7 @@ class PwTopicTypeService
         $current = $topictypes['all_types'][$type];
         if ($parentid) {
             //选择子分类 插入排序
-            $tmp_topic_types = $tmp_sub_topic_types = array();
+            $tmp_topic_types = $tmp_sub_topic_types = [];
             //被选中的子分类列表重排序
             $tmp_sub_topic_types[$parentid] = $topictypes['all_types'][$parentid];
             foreach ($topictypes['sub_topic_types'][$parentid] as $k => $v) {
@@ -49,9 +49,9 @@ class PwTopicTypeService
     {
         $data = $this->_getTopictypeDs()->getTypesByFid($fid);
         if (!$data) {
-            return array();
+            return [];
         }
-        $topicTypes = array();
+        $topicTypes = [];
         foreach ($data as $k => $v) {
             if ($v['parentid'] > 0) {
                 $topicTypes[$v['parentid']]['sub_type'][$k]['name'] = $v['name'];
@@ -74,7 +74,7 @@ class PwTopicTypeService
     {
         $this->_getTopictypeDs()->deleteTopicTypeByFid($toFid);
         $topicTypes = $this->_getTopictypeDs()->getTypesByFid($fromFid);
-        $idMap = $subTopicTypes = array();
+        $idMap = $subTopicTypes = [];
 
         foreach ($topicTypes as $k => $v) {
             if ($v['parentid']) {

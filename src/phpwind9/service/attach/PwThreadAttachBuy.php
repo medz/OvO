@@ -39,7 +39,7 @@ class PwThreadAttachBuy
     public function get($id)
     {
         if (empty($id)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);
@@ -55,7 +55,7 @@ class PwThreadAttachBuy
     public function countByAid($aid)
     {
         if (empty($aid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->countByAid($aid);
@@ -73,7 +73,7 @@ class PwThreadAttachBuy
     public function getByAid($aid, $limit = 20, $offset = 0)
     {
         if (empty($aid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByAid($aid, $limit, $offset);
@@ -90,7 +90,7 @@ class PwThreadAttachBuy
     public function getByAidAndUid($aid, $uid)
     {
         if (empty($aid) || empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByAidAndUid($aid, $uid);

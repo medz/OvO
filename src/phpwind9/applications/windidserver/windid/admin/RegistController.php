@@ -15,7 +15,7 @@ class RegistController extends WindidBaseController
     public function run()
     {
         $config = Wekit::C()->getValues('reg');
-        is_array($config['security.password']) || $config['security.password'] = array();
+        is_array($config['security.password']) || $config['security.password'] = [];
         //$config['security.ban.username'] = implode(',', $config['security.ban.username']);
         $this->setOutput($config, 'config');
     }
@@ -24,14 +24,14 @@ class RegistController extends WindidBaseController
     {
         $username_max = abs($this->getInput('securityUsernameMax', 'post'));
         $username_min = abs($this->getInput('securityUsernameMin', 'post'));
-        $username_max = max(array($username_max, $username_min));
+        $username_max = max([$username_max, $username_min]);
         $username_max > 15 && $username_max = 15;
-        $username_min = min(array($username_max, $username_min));
+        $username_min = min([$username_max, $username_min]);
         $username_min < 1 && $username_min = 1;
         $password_max = abs($this->getInput('securityPasswordMax', 'post'));
         $password_min = abs($this->getInput('securityPasswordMin', 'post'));
-        $password_max = max(array($password_max, $password_min));
-        $password_min = min(array($password_max, $password_min));
+        $password_max = max([$password_max, $password_min]);
+        $password_min = min([$password_max, $password_min]);
         $password_min < 1 && $password_min = 1;
         $password_security = $this->getInput('securityPassword', 'post');
 

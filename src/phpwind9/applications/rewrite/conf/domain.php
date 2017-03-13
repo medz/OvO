@@ -10,10 +10,10 @@
 /*
  * 别名 => array(名称, 'm/c/a', array(m/c/a))
  * */
-return array(
-    'default' => array('默认', ''),
-    'forum'   => array('论坛', 'bbs/index/run'),
-    'space'   => array('空间', 'space/index/run'),
-    'special' => array('门户', 'special/index/run'),
-    'tag'     => array('话题', ''),
-);
+return [
+    'default' => ['默认', ''],
+    'forum'   => ['论坛', 'bbs/index/run'],
+    'space'   => ['空间', 'space/index/run'],
+    'special' => ['门户', 'special/index/run'],
+    'tag'     => ['话题', ''],
+];

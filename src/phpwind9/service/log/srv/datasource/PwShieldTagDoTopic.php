@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwShieldTagDoTopic extends iPwGleanDoHookProcess
 {
-    public $tag = array();
+    public $tag = [];
 
     /* (non-PHPdoc)
      * @see iPwGleanDoHookProcess::gleanData()
@@ -38,10 +38,10 @@ class PwShieldTagDoTopic extends iPwGleanDoHookProcess
             /* @var $logSrv PwLogService */
             $logSrv = Wekit::load('log.srv.PwLogService');
 
-            $langArgs = array();
-            $langArgs['tag_url'] = WindUrlHelper::createUrl('tag/index/view', array('name' => $tag['tag_name']));
+            $langArgs = [];
+            $langArgs['tag_url'] = WindUrlHelper::createUrl('tag/index/view', ['name' => $tag['tag_name']]);
             $langArgs['tag'] = $tag['tag_name'];
-            $langArgs['content_url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $data['tid']));
+            $langArgs['content_url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $data['tid']]);
             $langArgs['content'] = $data['subject'];
             $langArgs['type'] = '帖子';
 

@@ -13,7 +13,7 @@ class PwLikeSourceDao extends PwBaseDao
 {
     protected $_pk = 'sid';
     protected $_table = 'like_source';
-    protected $_dataStruct = array('sid', 'subject', 'source_url', 'from_app', 'fromid', 'like_count');
+    protected $_dataStruct = ['sid', 'subject', 'source_url', 'from_app', 'fromid', 'like_count'];
 
     public function getSource($sid)
     {
@@ -25,7 +25,7 @@ class PwLikeSourceDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE from_app = ? AND fromid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($fromapp, $fromid));
+        return $smt->getOne([$fromapp, $fromid]);
     }
 
     public function fetchSource($sids)

@@ -38,7 +38,7 @@ class ConfigbbsController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($bbsname, $title_length_max, $content_length_min, $content_length_max/*, $ifopen*/, $check) = $this->getInput(array('bbsname', 'title_length_max', 'content_length_min', 'content_length_max'/*, 'ifopen'*/, 'check'));
+        list($bbsname, $title_length_max, $content_length_min, $content_length_max/*, $ifopen*/, $check) = $this->getInput(['bbsname', 'title_length_max', 'content_length_min', 'content_length_max'/*, 'ifopen'*/, 'check']);
         $config = new PwConfigSet('bbs');
         $config->set('bbsname', $bbsname)
             ->set('title.length.max', abs(intval($title_length_max)))
@@ -60,7 +60,7 @@ class ConfigbbsController extends AdminBaseController
             ->set('post.timing.groups', $this->getInput('timing_groups', 'post'));
         */
 
-        list($check_start_hour, $check_start_min, $check_end_hour, $check_end_min) = $this->getInput(array('check_start_hour', 'check_start_min', 'check_end_hour', 'check_end_min'), 'post');
+        list($check_start_hour, $check_start_min, $check_end_hour, $check_end_min) = $this->getInput(['check_start_hour', 'check_start_min', 'check_end_hour', 'check_end_min'], 'post');
         $check_start_hour = intval($check_start_hour);
         $check_start_min = intval($check_start_min);
         $check_end_hour = intval($check_end_hour);

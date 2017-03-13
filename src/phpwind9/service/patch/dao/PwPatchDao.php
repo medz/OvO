@@ -11,7 +11,7 @@
 class PwPatchDao extends PwBaseDao
 {
     protected $_table = 'patch';
-    protected $_dataStruct = array('id', 'rule', 'name', 'status', 'time', 'description');
+    protected $_dataStruct = ['id', 'rule', 'name', 'status', 'time', 'description'];
 
     /**
      * 获取一个补丁
@@ -39,13 +39,13 @@ class PwPatchDao extends PwBaseDao
     public function add($id, $rule, $name, $status, $time, $desc)
     {
         return $this->_add(
-            array(
+            [
                 'id'          => $id,
                 'rule'        => $rule,
                 'name'        => $name,
                 'status'      => $status,
                 'time'        => $time,
-                'description' => $desc, ), false);
+                'description' => $desc, ], false);
     }
 
     /**
@@ -58,7 +58,7 @@ class PwPatchDao extends PwBaseDao
      */
     public function update($id, $status)
     {
-        return $this->_update($id, array('status' => $status));
+        return $this->_update($id, ['status' => $status]);
     }
 
     /**
@@ -72,7 +72,7 @@ class PwPatchDao extends PwBaseDao
     {
         $sql = $this->_bindSql('UPDATE %s SET status = 1 WHERE id <= ?');
 
-        return $this->getConnection()->createStatement($sql)->execute(array($newest));
+        return $this->getConnection()->createStatement($sql)->execute([$newest]);
     }
 
     /**

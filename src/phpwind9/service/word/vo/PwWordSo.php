@@ -13,7 +13,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwWordSo
 {
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * 设置类型查询条件.

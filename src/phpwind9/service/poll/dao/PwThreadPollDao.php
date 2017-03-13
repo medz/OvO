@@ -15,7 +15,7 @@ class PwThreadPollDao extends PwBaseDao
 {
     protected $_table = 'app_poll_thread';
     protected $_pk = 'tid';
-    protected $_dataStruct = array('tid', 'poll_id', 'created_userid');
+    protected $_dataStruct = ['tid', 'poll_id', 'created_userid'];
 
     public function getPoll($tid)
     {
@@ -32,7 +32,7 @@ class PwThreadPollDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE poll_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($pollid));
+        return $smt->getOne([$pollid]);
     }
 
     public function fetchByPollid($pollids)
@@ -63,6 +63,6 @@ class PwThreadPollDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE poll_id = ?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($pollid));
+        return $smt->update([$pollid]);
     }
 }

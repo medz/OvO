@@ -13,10 +13,10 @@ Wind::import('APPS:u.service.helper.PwUserHelper');
  */
 class BaseProfileController extends PwBaseController
 {
-    protected $defaultGroups = array(
-            0 => array('name' => '普通组', 'gid' => '0'),
-        );
-    protected $bread = array();
+    protected $defaultGroups = [
+            0 => ['name' => '普通组', 'gid' => '0'],
+        ];
+    protected $bread = [];
 
     /* (non-PHPdoc)
      * @see PwBaseController::beforeAction()
@@ -25,7 +25,7 @@ class BaseProfileController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', array('_type' => $this->getInput('_type'))));
+            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['_type' => $this->getInput('_type')]));
         }
         if (!$this->getRequest()->getIsAjaxRequest()) {
             $this->setLayout('TPL:profile.profile_layout');
@@ -56,16 +56,16 @@ class BaseProfileController extends PwBaseController
         $currentMenu = $menus[$left];
         $tab && $currentMenu = $currentMenu['tabs'][$tab];
         if (!isset($currentMenu['url'])) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('profile/extends/run', array('_left' => $left, '_tab' => $tab)));
+            $this->forwardRedirect(WindUrlHelper::createUrl('profile/extends/run', ['_left' => $left, '_tab' => $tab]));
         }
 
         $menus[$left]['current'] = 'current';
-        $this->bread['left'] = array('url' => WindUrlHelper::createUrl($menus[$left]['url'], array('_left' => $left)), 'title' => $menus[$left]['title']);
+        $this->bread['left'] = ['url' => WindUrlHelper::createUrl($menus[$left]['url'], ['_left' => $left]), 'title' => $menus[$left]['title']];
         Wekit::setGlobal($menus, 'profileLeft');
 
         if ($menus[$left]['tabs']) {
             $menus[$left]['tabs'][$tab]['current'] = 'current';
-            $this->appendBread($menus[$left]['tabs'][$tab]['title'], WindUrlHelper::createUrl($menus[$left]['tabs'][$tab]['url'], array('_tab' => $tab, '_left' => $left)));
+            $this->appendBread($menus[$left]['tabs'][$tab]['title'], WindUrlHelper::createUrl($menus[$left]['tabs'][$tab]['url'], ['_tab' => $tab, '_left' => $left]));
             $this->setOutput($menus[$left]['tabs'], '_tabs');
         }
     }
@@ -78,7 +78,7 @@ class BaseProfileController extends PwBaseController
      */
     protected function appendBread($title, $url)
     {
-        $this->bread[] = array('url' => $url, 'title' => $title);
+        $this->bread[] = ['url' => $url, 'title' => $title];
 
         return $this;
     }
@@ -89,7 +89,7 @@ class BaseProfileController extends PwBaseController
     public function afterAction($handlerAdapter)
     {
         parent::afterAction($handlerAdapter);
-        $bread = array($this->bread['left']);
+        $bread = [$this->bread['left']];
         unset($this->bread['left']);
         $this->bread && $bread = array_merge($bread, $this->bread);
         Wekit::setGlobal($bread, 'profileBread');

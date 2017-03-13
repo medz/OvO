@@ -17,7 +17,7 @@ class PwDesignPush
     {
         $pushid = (int) $pushid;
         if ($pushid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getPush($pushid);
@@ -26,7 +26,7 @@ class PwDesignPush
     public function fetchPush($pushids)
     {
         if (!is_array($pushids) || !$pushids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchPush($pushids);
@@ -67,7 +67,7 @@ class PwDesignPush
         if (!$pushid) {
             return false;
         }
-        $data = array();
+        $data = [];
         $data['status'] = (int) $status;
 
         return $this->_getDao()->updatePush($pushid, $data);
@@ -91,7 +91,7 @@ class PwDesignPush
 
     public function updateNeedNotice($pushid, $neednotice = 0)
     {
-        $data = array();
+        $data = [];
         $data['neednotice'] = (int) $neednotice;
 
         return $this->_getDao()->updatePush($pushid, $data);

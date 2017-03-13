@@ -22,7 +22,7 @@ class PwForumUpload extends PwUploadAction
     {
         $this->key = $key;
         $this->fid = $fid;
-        $this->ftype = array('jpg' => 2000, 'png' => '2000', 'gif' => 2000);
+        $this->ftype = ['jpg' => 2000, 'png' => '2000', 'gif' => 2000];
     }
 
     public function check()
@@ -56,9 +56,9 @@ class PwForumUpload extends PwUploadAction
 
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($filename, $dir, 400, 400, 1),
-        );
+        return [
+            [$filename, $dir, 400, 400, 1],
+        ];
     }
 
     public function allowWaterMark()
@@ -77,14 +77,14 @@ class PwForumUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'attname' => $value['attname'],
                 'type'    => $value['type'],
                 'path'    => $value['fileuploadurl'],
                 'size'    => $value['size'],
                 'width'   => $this->width,
                 'height'  => $this->height,
-            );
+            ];
         }
 
         return true;

@@ -21,7 +21,7 @@ class ReportController extends BaseManageController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        $result = $this->loginUser->getPermission('panel_report_manage', false, array());
+        $result = $this->loginUser->getPermission('panel_report_manage', false, []);
         if (!$result['report_manage']) {
             $this->showError('REPORT:right.error');
         }
@@ -32,7 +32,7 @@ class ReportController extends BaseManageController
      */
     public function run()
     {
-        list($page, $perpage, $ifcheck, $type) = $this->getInput(array('page', 'perpage', 'ifcheck', 'type'));
+        list($page, $perpage, $ifcheck, $type) = $this->getInput(['page', 'perpage', 'ifcheck', 'type']);
         $page = $page ? $page : 1;
         $perpage = $perpage ? $perpage : $this->perpage;
         list($start, $limit) = Pw::page2limit($page, $perpage);
@@ -47,7 +47,7 @@ class ReportController extends BaseManageController
         $this->setOutput($perpage, 'perpage');
         $this->setOutput($count, 'count');
         $this->setOutput($reports, 'reports');
-        $this->setOutput(array('ifcheck' => $ifcheck, 'type' => $type), 'args');
+        $this->setOutput(['ifcheck' => $ifcheck, 'type' => $type], 'args');
 
         // seo设置
 
@@ -66,7 +66,7 @@ class ReportController extends BaseManageController
         if (!$id) {
             $this->showError('operate.fail');
         }
-        !is_array($id) && $id = array($id);
+        !is_array($id) && $id = [$id];
         $this->_sendDealNotice($id, '忽略');
         $this->_getReportDs()->batchDeleteReport($id);
         $this->showMessage('success');
@@ -74,7 +74,7 @@ class ReportController extends BaseManageController
 
     private function _buildNoticeTitle($username, $action)
     {
-        return '您举报的内容已被 <a href="'.WindUrlHelper::createUrl('space/index/run', array('username' => $username)).'">'.$username.'</a> '.$action.'，感谢您能一起协助我们管理站点。';
+        return '您举报的内容已被 <a href="'.WindUrlHelper::createUrl('space/index/run', ['username' => $username]).'">'.$username.'</a> '.$action.'，感谢您能一起协助我们管理站点。';
     }
 
     /**
@@ -86,7 +86,7 @@ class ReportController extends BaseManageController
         if (!$id) {
             $this->showError('operate.fail');
         }
-        !is_array($id) && $id = array($id);
+        !is_array($id) && $id = [$id];
 
         $dm = new PwReportDm();
         $dm->setOperateUserid($this->loginUser->uid)
@@ -101,12 +101,12 @@ class ReportController extends BaseManageController
     {
         $reports = $this->_getReportDs()->fetchReport($ids);
         $notice = Wekit::load('message.srv.PwNoticeService');
-        $extendParams = array(
+        $extendParams = [
             'operateUserId'   => $this->loginUser->uid,
             'operateUsername' => $this->loginUser->username,
             'operateTime'     => Pw::getTime(),
             'operateType'     => $action,
-        );
+        ];
         foreach ($reports as $v) {
             $this->_getReportService()->sendNotice($v, $extendParams);
             $content = $this->_buildNoticeTitle($this->loginUser->username, $action);

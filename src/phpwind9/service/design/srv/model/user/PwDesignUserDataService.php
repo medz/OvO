@@ -24,7 +24,7 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     public function decorateAddProperty($model)
     {
-        $data = array();
+        $data = [];
         $data['gidOptions'] = $this->_buildGids(-1);
 
         return $data;
@@ -38,7 +38,7 @@ class PwDesignUserDataService extends PwDesignModelBase
     public function decorateEditProperty($moduleBo)
     {
         $property = $moduleBo->getProperty();
-        $data = array();
+        $data = [];
         !isset($property['gid']) && $property['gid'] = -1;
         $data['gidOptions'] = $this->_buildGids($property['gid']);
 
@@ -56,7 +56,7 @@ class PwDesignUserDataService extends PwDesignModelBase
         if (trim($property['usernames'])) {
             $usernames = array_unique(explode(' ', trim($property['usernames'])));
             $userList = $this->_getDs()->fetchUserByName($usernames);
-            $clear = $uids = array();
+            $clear = $uids = [];
             foreach ($userList as $_k => $_i) {
                 $clear[] = $_i['username'];
                 $uids[] = $_i['uid'];
@@ -139,19 +139,19 @@ class PwDesignUserDataService extends PwDesignModelBase
      */
     private function _buildSignKey($list)
     {
-        $clear = array();
+        $clear = [];
         /* @var $userGroupSrv PwUserGroupsService */
         $userGroupSrv = Wekit::load('usergroup.srv.PwUserGroupsService');
         /* @var $workDs PwWork */
         $workDs = Wekit::load('work.PwWork');
         /* @var $educateDs PwEducation */
         $educateDs = Wekit::load('education.PwEducation');
-        $location = $hometown = $schoolids = $_areaid = array();
+        $location = $hometown = $schoolids = $_areaid = [];
         foreach ($list as $_uid => $_item) {
-            $_one = array();
+            $_one = [];
             $_one['uid'] = $_item['uid'];
             $_one['username'] = $_item['username'];
-            $_one['url'] = WindUrlHelper::createUrl('space/index/run', array('uid' => $_item['uid']), '', 'pw');
+            $_one['url'] = WindUrlHelper::createUrl('space/index/run', ['uid' => $_item['uid']], '', 'pw');
             $_one['smallavatar'] = Pw::getAvatar($_uid, 'small');
             $_one['middleavatar'] = Pw::getAvatar($_uid, 'middle');
             $_one['bigavatar'] = Pw::getAvatar($_uid, 'big');
@@ -162,7 +162,7 @@ class PwDesignUserDataService extends PwDesignModelBase
             $_one['digests'] = $_item['digest'];
             $_one['compositePoint'] = $userGroupSrv->getCredit($_item);
             $_one['realname'] = $_item['realname'];
-            $_one['sex'] = !in_array($_item['gender'], array(0, 1)) ? '未知' : ($_item['gender'] == 0 ? '男' : '女');
+            $_one['sex'] = !in_array($_item['gender'], [0, 1]) ? '未知' : ($_item['gender'] == 0 ? '男' : '女');
             $_one['birthYear'] = $_item['byear'];
             $_one['birthMonth'] = $_item['bmonth'];
             $_one['birthDay'] = $_item['bday'];
@@ -212,7 +212,7 @@ class PwDesignUserDataService extends PwDesignModelBase
                 isset($_temp[2]) && $clear[$_uid]['locate_area'] = $_temp[2];
             }
             if ($_item['educationlist']) {
-                $_temp = array();
+                $_temp = [];
                 foreach ($_item['educationlist'] as $_i) {
                     if (isset($schoolList[$_i['schoolid']])) {
                         $_i['school'] = $schoolList[$_i['schoolid']]['name'];
@@ -238,9 +238,9 @@ class PwDesignUserDataService extends PwDesignModelBase
     private function _buildWork(PwWork $ds, $uid)
     {
         $list = $ds->getByUid($uid, 10, 0);
-        $workList = array();
+        $workList = [];
         foreach ($list as $id => $_item) {
-            $_one = array();
+            $_one = [];
             $_one['company'] = $_item['company'];
             $_one['start'] = $_item['starty'].'-'.$_item['startm'];
             $_one['end'] = $_item['endy'].'-'.$_item['endm'];
@@ -261,10 +261,10 @@ class PwDesignUserDataService extends PwDesignModelBase
     private function _buildEducation(PwEducation $ds, $uid)
     {
         $list = $ds->getByUid($uid, 10, 0);
-        $educateList = $schoolids = array();
+        $educateList = $schoolids = [];
         $degree = PwEducationHelper::getDegrees();
         foreach ($list as $id => $_item) {
-            $_one = array();
+            $_one = [];
             $schoolids[] = $_item['schoolid'];
             $_one['school'] = '';
             $_one['schoolid'] = $_item['schoolid'];
@@ -273,7 +273,7 @@ class PwDesignUserDataService extends PwDesignModelBase
             $educateList[] = $_one;
         }
 
-        return array($schoolids, $educateList);
+        return [$schoolids, $educateList];
     }
 
     /**
@@ -320,12 +320,12 @@ class PwDesignUserDataService extends PwDesignModelBase
     {
         $areaSrv = WindidApi::api('area');
         $_rout = $areaSrv->getAreaRout($areaid);
-        $_return = array('id' => '', 'rout' => array(array('', ''), array('', ''), array('', '')));
+        $_return = ['id' => '', 'rout' => [['', ''], ['', ''], ['', '']]];
         if (!$_rout) {
             return $_return;
         }
         foreach ($_rout as $_k => $_r) {
-            $_return['rout'][$_k] = array($_r['areaid'], $_r['name']);
+            $_return['rout'][$_k] = [$_r['areaid'], $_r['name']];
         }
         $_return['id'] = $areaid;
 

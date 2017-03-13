@@ -43,7 +43,7 @@ class WindidNotifyService
             return false;
         }
         $apps = $this->_getAppDs()->getList();
-        $dms = array();
+        $dms = [];
         foreach ($apps as $val) {
             if (!$val['isnotify'] || $val['id'] == $appid) {
                 continue;
@@ -53,7 +53,7 @@ class WindidNotifyService
             $dms[] = $dm;
         }
         $this->_getNotifyLogDs()->multiAddLog($dms);
-        register_shutdown_function(array(&$this, 'shutdownSend'), $nid);
+        register_shutdown_function([&$this, 'shutdownSend'], $nid);
 
         return true;
     }
@@ -63,9 +63,9 @@ class WindidNotifyService
         $url = Wekit::app('windid')->url->base.'/index.php?m=queue';
 
         $client = new \Guzzle\Http\Client();
-        $request = $client->post($url, null, array(
+        $request = $client->post($url, null, [
             'nid' => $nid,
-        ));
+        ]);
         $client->send($request);
 
         return true;
@@ -81,7 +81,7 @@ class WindidNotifyService
     {
         $operation = $this->getOperation($method);
         $time = Pw::getTime();
-        $data = array();
+        $data = [];
         $apps = $this->_getAppDs()->getList();
 
         $syn = false;
@@ -93,17 +93,17 @@ class WindidNotifyService
             if (!$val['issyn'] || $val['id'] == $appid) {
                 continue;
             }
-            $array = array(
-                'windidkey' => WindidUtility::appKey($val['id'], $time, $val['secretkey'], array('uid' => $uid), array()),
+            $array = [
+                'windidkey' => WindidUtility::appKey($val['id'], $time, $val['secretkey'], ['uid' => $uid], []),
                 'operation' => $operation,
                 'uid'       => $uid,
                 'clientid'  => $val['id'],
                 'time'      => $time,
-            );
+            ];
             $data[] = WindidUtility::buildClientUrl($val['siteurl'], $val['apifile']).http_build_query($array);
         }
 
-        return $syn ? array() : $data;
+        return $syn ? [] : $data;
     }
 
     private function _getAppDs()

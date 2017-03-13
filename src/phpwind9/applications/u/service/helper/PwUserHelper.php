@@ -19,7 +19,7 @@ class PwUserHelper
      */
     public static function getLoginType()
     {
-        return array(1 => 'UID', 2 => '电子邮箱', 3 => '用户名', 4 => '手机号码');
+        return [1 => 'UID', 2 => '电子邮箱', 3 => '用户名', 4 => '手机号码'];
     }
 
     /**
@@ -30,7 +30,7 @@ class PwUserHelper
     public static function getLoginMessage()
     {
         $config = Wekit::C('login', 'ways');
-        $message = array();
+        $message = [];
         $ways = self::getLoginType();
         foreach ($config as $id) {
             $message[] = $ways[$id];
@@ -51,7 +51,7 @@ class PwUserHelper
         $month = range(1, 12, 1);
         $day = range(1, 31);
 
-        return array($year, $month, $day);
+        return [$year, $month, $day];
     }
 
     /**
@@ -61,14 +61,14 @@ class PwUserHelper
      */
     public static function getRegFieldsMap()
     {
-        $fields = array(
-            'location' => array('title' => '现居住地', 'segment' => 'area'),
-            'hometown' => array('title' => '家乡', 'segment' => 'area'),
-            'mobile'   => array('title' => '手机', 'segment' => 'input'),
-            'qq'       => array('title' => 'QQ', 'segment' => 'input'),
-            'msn'      => array('title' => 'MSN', 'segment' => 'input'),
-            'aliww'    => array('title' => '阿里旺旺', 'segment' => 'input'),
-        );
+        $fields = [
+            'location' => ['title' => '现居住地', 'segment' => 'area'],
+            'hometown' => ['title' => '家乡', 'segment' => 'area'],
+            'mobile'   => ['title' => '手机', 'segment' => 'input'],
+            'qq'       => ['title' => 'QQ', 'segment' => 'input'],
+            'msn'      => ['title' => 'MSN', 'segment' => 'input'],
+            'aliww'    => ['title' => '阿里旺旺', 'segment' => 'input'],
+        ];
 
         return $fields;
     }
@@ -82,10 +82,10 @@ class PwUserHelper
      */
     public static function checkPwdStrong($pwd)
     {
-        $array = array();
+        $array = [];
         $len = strlen($pwd);
         $i = 0;
-        $mode = array('a' => 0, 'A' => 0, 'd' => 0, 'f' => 0);
+        $mode = ['a' => 0, 'A' => 0, 'd' => 0, 'f' => 0];
         while ($i < $len) {
             $ascii = ord($pwd[$i]);
             if ($ascii >= 48 && $ascii <= 57) { //数字

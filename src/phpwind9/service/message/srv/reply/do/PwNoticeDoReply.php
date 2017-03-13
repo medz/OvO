@@ -27,7 +27,7 @@ class PwNoticeDoReply extends PwPostDoBase
 
     public function addPost($pid, $tid)
     {
-        $params = array();
+        $params = [];
         $params['replyContent'] = $this->content;
         $params['replyUserid'] = $this->user->uid;
         $params['replyUsername'] = $this->user->username;

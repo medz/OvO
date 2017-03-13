@@ -24,10 +24,10 @@ class PwPostsReply
 
     public function add($pid, $rpid)
     {
-        return $this->_getDao()->add(array(
+        return $this->_getDao()->add([
             'pid'  => $pid,
             'rpid' => $rpid,
-        ));
+        ]);
     }
 
     protected function _getDao()

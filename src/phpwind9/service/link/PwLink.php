@@ -38,7 +38,7 @@ class PwLink
     public function batchDelete($lids)
     {
         if (empty($lids) || !is_array($lids)) {
-            return array();
+            return [];
         }
 
         return $this->_getLinkDao()->batchDelete($lids);
@@ -99,7 +99,7 @@ class PwLink
     public function getLinksByLids($lids)
     {
         if (empty($lids) || !is_array($lids)) {
-            return array();
+            return [];
         }
 
         return $this->_getLinkDao()->getLinksByLids($lids);
@@ -118,7 +118,7 @@ class PwLink
             return false;
         }
 
-        return $this->_getLinkTypeDao()->addLinkType(array('typename' => $typename, 'vieworder' => (int) $vieworder));
+        return $this->_getLinkTypeDao()->addLinkType(['typename' => $typename, 'vieworder' => (int) $vieworder]);
     }
 
     /**
@@ -152,10 +152,10 @@ class PwLink
         if ($typeId < 1) {
             return false;
         }
-        $data = array(
+        $data = [
             'typename'  => $name,
             'vieworder' => $vieworder,
-        );
+        ];
 
         return $this->_getLinkTypeDao()->update($typeId, $data);
     }
@@ -170,7 +170,7 @@ class PwLink
     public function getTypeByName($typeName)
     {
         if (!$typeName) {
-            return array();
+            return [];
         }
 
         return $this->_getLinkTypeDao()->getByName($typeName);
@@ -209,7 +209,7 @@ class PwLink
     {
         $linkId = intval($linkId);
         if ($linkId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getLinkRelationsDao()->getByLinkId($linkId);
@@ -225,7 +225,7 @@ class PwLink
     public function fetchRelationsByLinkid($ids)
     {
         if (empty($ids)) {
-            return array();
+            return [];
         }
 
         return $this->_getLinkRelationsDao()->fetchByLinkId($ids);
@@ -296,7 +296,7 @@ class PwLink
         if ($lid < 1 || $typeId < 1) {
             return false;
         }
-        $this->_getLinkRelationsDao()->addLinkRelations(array('lid' => $lid, 'typeid' => $typeId));
+        $this->_getLinkRelationsDao()->addLinkRelations(['lid' => $lid, 'typeid' => $typeId]);
     }
 
     /**

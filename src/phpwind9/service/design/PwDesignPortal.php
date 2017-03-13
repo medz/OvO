@@ -14,7 +14,7 @@ class PwDesignPortal
     {
         $id = (int) $id;
         if ($id < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($id);
@@ -23,7 +23,7 @@ class PwDesignPortal
     public function getPortalByDomain($domain)
     {
         if (!$domain) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getByDomain($domain);
@@ -41,7 +41,7 @@ class PwDesignPortal
     public function fetchPortal($ids)
     {
         if (!is_array($ids) || !$ids) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetch($ids);

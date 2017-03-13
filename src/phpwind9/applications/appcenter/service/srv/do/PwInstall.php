@@ -70,7 +70,7 @@ class PwInstall implements iPwInstall
             return $result;
         }
         if ($result) {
-            return new PwError('APPCENTER:install.exist.fail', array('{{error}}' => $appId));
+            return new PwError('APPCENTER:install.exist.fail', ['{{error}}' => $appId]);
         }
         $alias = $manifest->getApplication('alias');
         if (!$alias) {
@@ -85,7 +85,7 @@ class PwInstall implements iPwInstall
             return $result;
         }
         if ($result) {
-            return new PwError('APPCENTER:install.exist.fail', array('{{error}}' => $alias));
+            return new PwError('APPCENTER:install.exist.fail', ['{{error}}' => $alias]);
         }
 
         $hooks = $manifest->getHooks();
@@ -93,13 +93,13 @@ class PwInstall implements iPwInstall
             $result = $this->_loadPwHooks()->batchFetchByName(array_keys($hooks));
             if ($result) {
                 return new PwError('HOOK:hook.exit',
-                    array('{{error}}' => implode(',', array_keys($result))));
+                    ['{{error}}' => implode(',', array_keys($result))]);
             }
         }
 
         $inject = $manifest->getInjectServices();
         if ($inject) {
-            $hookNames = array();
+            $hookNames = [];
             foreach ($inject as $value) {
                 if (array_key_exists($value['hook_name'], $hooks)) {
                     continue;
@@ -110,14 +110,14 @@ class PwInstall implements iPwInstall
                 $hook = $this->_loadPwHooks()->batchFetchByName(array_unique($hookNames));
                 $result = $this->_loadPwHookInject()->fetchByHookName(array_unique($hookNames));
                 if ($result) {
-                    $injects = array();
+                    $injects = [];
                     foreach ($result as $v) {
                         $injects[$v['hook_name']][] = $v['alias'];
                     }
                     foreach ($inject as $key => $value) {
                         $_hookName = $value['hook_name'];
                         if (isset($injects[$_hookName]) && in_array($value['alias'], $injects[$_hookName])) {
-                            return new PwError('HOOK:inject.exit', array('{{error}}' => $value['alias']));
+                            return new PwError('HOOK:inject.exit', ['{{error}}' => $value['alias']]);
                         }
                     }
                 }
@@ -157,11 +157,11 @@ class PwInstall implements iPwInstall
         }
         if ($packs = $upgrade->getBackLog('packs')) {
             $targetDir = $upgrade->getTmpPath().'/bak/';
-            $log = array();
+            $log = [];
             foreach ($packs as $k => $value) {
                 $target = $upgrade->getTmpPath().'/'.basename($value).'_'.$k.'.bak';
                 PwApplicationHelper::mvSourcePack($value, $target);
-                $log[] = array($value, $target);
+                $log[] = [$value, $target];
             }
             $upgrade->setRevertLog('packs', $log);
         }
@@ -229,7 +229,7 @@ class PwInstall implements iPwInstall
             $writable = PwSystemHelper::checkWriteAble(EXT_PATH.$name.'/');
             if (!$writable) {
                 return new PwError('APPCENTER:install.mv.fail',
-                array('{{error}}' => 'EXT:'.$name));
+                ['{{error}}' => 'EXT:'.$name]);
             }
 
             $targetPath = EXT_PATH.$name;
@@ -298,7 +298,7 @@ class PwInstall implements iPwInstall
             }
             $install->setInstallLog('table', $sql['CREATE']);
             foreach ($sql as $option => $statements) {
-                if (!in_array($option, array('INSERT', 'UPDATE', 'REPLACE', 'ALTER'))) {
+                if (!in_array($option, ['INSERT', 'UPDATE', 'REPLACE', 'ALTER'])) {
                     continue;
                 }
                 foreach ($statements as $table => $statement) {
@@ -311,16 +311,16 @@ class PwInstall implements iPwInstall
                             list($matches[3]) = explode(' ', $matches[3]);
                             $matches[3] = trim(strtoupper($matches[3]));
                             PwSystemHelper::alterIndex(
-                                array(
+                                [
                                     $matches[1],
                                     $key,
                                     $fields ? $fields : '',
                                     $matches[3],
-                                    $matches[2], ), $db);
+                                    $matches[2], ], $db);
                         } elseif (preg_match(
                             '/^ALTER\s+TABLE\s+`?(\w+)`?\s+(CHANGE|DROP|ADD)\s+`?(\w+)`?/i',
                             $statement, $matches)) {
-                            PwSystemHelper::alterField(array($matches[1], $matches[3], $statement),
+                            PwSystemHelper::alterField([$matches[1], $matches[3], $statement],
                                 $db);
                         } else {
                             $db->execute($statement);
@@ -336,7 +336,7 @@ class PwInstall implements iPwInstall
 
             return true;
         } catch (Exception $e) {
-            return new PwError('APPCENTER:install.fail', array('{{error}}' => $e->getMessage()));
+            return new PwError('APPCENTER:install.fail', ['{{error}}' => $e->getMessage()]);
         }
         file_put_contents(DATA_PATH.'tmp/log', 'registedata!', FILE_APPEND);
     }
@@ -379,7 +379,7 @@ class PwInstall implements iPwInstall
         if (!$inject) {
             return true;
         }
-        $alias = $hookName = array();
+        $alias = $hookName = [];
         foreach ($inject as $key => &$value) {
             $value['app_id'] = $install->getManifest()->getApplication('alias');
             $value['app_name'] = $install->getManifest()->getApplication('name');
@@ -470,7 +470,7 @@ class PwInstall implements iPwInstall
         $writable = PwSystemHelper::checkWriteAble($targetPath.'/');
         if (!$writable) {
             return new PwError('APPCENTER:install.mv.fail',
-            array('{{error}}' => 'THEMES:extres.'.$name));
+            ['{{error}}' => 'THEMES:extres.'.$name]);
         }
         PwApplicationHelper::copyRecursive($source, $targetPath.'/'.$name);
         $install->addInstallLog('packs', $targetPath.'/'.$name);

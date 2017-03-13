@@ -35,6 +35,6 @@ class PwTemplateCompilerScript extends AbstractWindTemplateCompiler
      */
     protected function getProperties()
     {
-        return array('compile');
+        return ['compile'];
     }
 }

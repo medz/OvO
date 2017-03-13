@@ -13,7 +13,7 @@
 class PwRegisterDoInviteFriend extends PwRegisterDoBase
 {
     private $code = '';
-    private $inviteInfo = array();
+    private $inviteInfo = [];
 
     /**
      * 构造函数.

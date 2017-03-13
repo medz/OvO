@@ -38,9 +38,9 @@ class FansController extends SpaceBaseController
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(
             $lang->getMessage('SEO:space.fans.run.title',
-                array($this->space->spaceUser['username'], $this->space->space['space_name'])), '',
+                [$this->space->spaceUser['username'], $this->space->space['space_name']]), '',
             $lang->getMessage('SEO:space.fans.run.description',
-                array($this->space->spaceUser['username'])));
+                [$this->space->spaceUser['username']]));
         Wekit::setV('seo', $seoBo);
     }
 

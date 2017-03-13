@@ -25,7 +25,7 @@ class ManageController extends AdminBaseController
         /* @var $taskDs PwTask */
         $taskDs = Wekit::load('task.PwTask');
         $count = $taskDs->countAll();
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $this->perpage);
             $page = $page < 1 ? 1 : ($page > $totalPage ? intval($totalPage) : $page);
@@ -205,7 +205,7 @@ class ManageController extends AdminBaseController
         $userGroup = Wekit::load('usergroup.PwUserGroups');
         $groups = $userGroup->getAllGroups();
         if (!$user_groups || !array_diff(array_keys($groups), $user_groups)) {
-            $user_groups = array(-1);
+            $user_groups = [-1];
         }
         $startTime = $this->getInput('start_time');
         $endTime = $this->getInput('end_time');

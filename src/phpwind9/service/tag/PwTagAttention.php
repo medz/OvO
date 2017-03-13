@@ -38,7 +38,7 @@ class PwTagAttention
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagAttentionDao()->getByUid($uid);
@@ -73,7 +73,7 @@ class PwTagAttention
     {
         $uid = intval($uid);
         if ($uid < 1 || !is_array($tagIds) || !count($tagIds)) {
-            return array();
+            return [];
         }
 
         return $this->_getTagAttentionDao()->getAttentionByUidAndTagsIds($uid, $tagIds);
@@ -109,7 +109,7 @@ class PwTagAttention
     {
         $tagId = intval($tagId);
         if ($tagId < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagAttentionDao()->getByTagId($tagId, $start, $limit);
@@ -131,7 +131,7 @@ class PwTagAttention
             return false;
         }
 
-        return $this->_getTagAttentionDao()->add(array('uid' => $uid, 'tag_id' => $tagId));
+        return $this->_getTagAttentionDao()->add(['uid' => $uid, 'tag_id' => $tagId]);
     }
 
     /**
@@ -147,7 +147,7 @@ class PwTagAttention
         $tagId = intval($tagId);
         $uid = intval($uid);
         if ($tagId < 1 || $uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getTagAttentionDao()->delete($uid, $tagId);

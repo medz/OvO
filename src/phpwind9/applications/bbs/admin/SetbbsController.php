@@ -24,7 +24,7 @@ class SetbbsController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($showBirthdayMembers, $showLinks, $showOnlineUsers, $listOnlineUsers) = $this->getInput(
-            array('show_birthday_members', 'show_links', 'show_online_users', 'list_online_users'));
+            ['show_birthday_members', 'show_links', 'show_online_users', 'list_online_users']);
         $config = new PwConfigSet('bbs');
         $config->set('index.show_birthday_members', $showBirthdayMembers)
                 ->set('index.show_links', $showLinks)
@@ -45,7 +45,7 @@ class SetbbsController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($newThreadMinutes, $perpage, $maxPages, $leftsideWidth, $hotthreadReplies) = $this->getInput(
-            array('new_thread_minutes', 'perpage', 'max_pages', 'leftside_width', 'hotthread_replies'));
+            ['new_thread_minutes', 'perpage', 'max_pages', 'leftside_width', 'hotthread_replies']);
         $config = new PwConfigSet('bbs');
         $config->set('thread.new_thread_minutes', $newThreadMinutes)
                 ->set('thread.perpage', $perpage)
@@ -60,9 +60,9 @@ class SetbbsController extends AdminBaseController
     {
         $config = Wekit::C()->getValues('bbs');
         $order = $config['read.display_info_vieworder'];
-        is_array($order) || $order = array();
+        is_array($order) || $order = [];
 
-        $allInfo = array(
+        $allInfo = [
             'uid'       => 'UID',
             'regdate'   => '注册日期',
             'lastvisit' => '最后登录',
@@ -74,7 +74,7 @@ class SetbbsController extends AdminBaseController
             'qq'        => 'QQ',
             'aliww'     => '阿里旺旺',
             'birthday'  => '生日',
-            'hometown'  => '家乡', );
+            'hometown'  => '家乡', ];
 
         foreach (PwCreditBo::getInstance()->cType as $key => $value) {
             $allInfo[$key] = $value;
@@ -96,7 +96,7 @@ class SetbbsController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $arrInput = $this->getInput(
-            array(
+            [
                 'perpage',
                 'anoymous_displayname',
                 'shield_banthreads',
@@ -106,7 +106,7 @@ class SetbbsController extends AdminBaseController
                 'image_lazy',
                 'display_member_info',
                 'display_info_vieworder',
-                'display_info', ), 'POST', true);
+                'display_info', ], 'POST', true);
 
         $i = 10000;
         foreach ($arrInput['display_info_vieworder'] as $key => $value) {
@@ -115,7 +115,7 @@ class SetbbsController extends AdminBaseController
         asort($arrInput['display_info_vieworder']);
         reset($arrInput['display_info_vieworder']);
         $i = 0;
-        $display_info = array();
+        $display_info = [];
         foreach ($arrInput['display_info_vieworder'] as $key => $value) {
             $arrInput['display_info_vieworder'][$key] = $i++;
             isset($arrInput['display_info'][$key]) && $display_info[$key] = 1;

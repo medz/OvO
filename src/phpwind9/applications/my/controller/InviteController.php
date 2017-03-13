@@ -12,7 +12,7 @@
  */
 class InviteController extends PwBaseController
 {
-    private $regist = array();
+    private $regist = [];
 
     /* (non-PHPdoc)
      * @see PwBaseController::beforeAction()
@@ -21,7 +21,7 @@ class InviteController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         if (!$this->loginUser->isExists()) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', array('backurl' => WindUrlHelper::createUrl('my/invite/run'))));
+            $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/invite/run')]));
         }
         $this->regist = Wekit::C('register');
         $this->setOutput('invite', 'li');
@@ -46,11 +46,11 @@ class InviteController extends PwBaseController
         $price = abs(ceil($this->loginUser->getPermission('invite_buy_credit_num')));
 
         $_tmpId = $this->regist['invite.credit.type'];
-        $_credit = array('id' => $_tmpId, 'name' => $pwCreditBo->cType[$_tmpId], 'unit' => $pwCreditBo->cUnit[$_tmpId]);
+        $_credit = ['id' => $_tmpId, 'name' => $pwCreditBo->cType[$_tmpId], 'unit' => $pwCreditBo->cUnit[$_tmpId]];
         $this->setOutput($_credit, 'creditWithBuy'); //用于购买的积分信息
 
         $_tmpId = $this->regist['invite.reward.credit.type'];
-        $_credit = array('id' => $_tmpId, 'name' => $pwCreditBo->cType[$_tmpId], 'unit' => $pwCreditBo->cUnit[$_tmpId]);
+        $_credit = ['id' => $_tmpId, 'name' => $pwCreditBo->cType[$_tmpId], 'unit' => $pwCreditBo->cUnit[$_tmpId]];
         $this->setOutput($_credit, 'rewardCredit'); //奖励的积分信息
 
         $this->setOutput($readyBuy > $gidLimit ? 0 : ($gidLimit - $readyBuy), 'canBuyNum'); //还能购买的邀请数
@@ -124,7 +124,7 @@ class InviteController extends PwBaseController
         $perpage = 18;
         $page || $page = 1;
         $count = $this->_getDs()->countUsedCodeByCreatedUid($this->loginUser->uid);
-        $list = array();
+        $list = [];
         if ($count > 0) {
             $totalPage = ceil($count / $perpage);
             $page > $totalPage && $page = $totalPage;
@@ -140,7 +140,7 @@ class InviteController extends PwBaseController
         $pwCreditBo = PwCreditBo::getInstance();
 
         $_tmpid = $this->regist['invite.reward.credit.type'];
-        $_credit = array('id' => $_tmpid, 'name' => $pwCreditBo->cType[$_tmpid], 'unit' => $pwCreditBo->cUnit[$_tmpid]);
+        $_credit = ['id' => $_tmpid, 'name' => $pwCreditBo->cType[$_tmpid], 'unit' => $pwCreditBo->cUnit[$_tmpid]];
         $this->setOutput($_credit, 'rewardCredit'); //奖励的积分信息
 
         $this->setOutput($this->regist['invite.reward.credit.num'], 'rewardNum'); //奖励积分数
@@ -162,7 +162,7 @@ class InviteController extends PwBaseController
         /* @var $pwInviteUrlLogSrv PwInviteFriendService */
         $pwInviteUrlLogSrv = Wekit::load('invite.srv.PwInviteFriendService');
         $invite = $pwInviteUrlLogSrv->createInviteCode($this->loginUser->uid);
-        $this->setOutput(WindUrlHelper::createUrl('u/register/run', array('invite' => $invite)), 'url');
+        $this->setOutput(WindUrlHelper::createUrl('u/register/run', ['invite' => $invite]), 'url');
         $this->setTemplate('invite_friend');
 
         // seo设置
@@ -179,13 +179,13 @@ class InviteController extends PwBaseController
     private function listCode()
     {
         $perpage = 20;
-        list($type, $page) = $this->getInput(array('type', 'page'), 'get');
+        list($type, $page) = $this->getInput(['type', 'page'], 'get');
         $vo = new PwInviteCodeSo();
         $vo->setCreatedUid($this->loginUser->uid)
             ->setIfused(0)//未使用
             ->setExpireTime(Pw::getTime() - ($this->regist['invite.expired'] * 86400)); //未过期
         $count = $this->_getDs()->countSearchCode($vo);
-        $list = array();
+        $list = [];
         if ($count) {
             $totalPage = ceil($count / $perpage);
             $page = intval($page);

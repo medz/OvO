@@ -19,13 +19,13 @@ class PwComponentDm extends PwBaseDm
     public function setConstructorArgs($name, $ref = '', $path = '', $value = '')
     {
         if ($ref !== '') {
-            $value = array('ref' => $ref);
+            $value = ['ref' => $ref];
         } elseif ($path !== '') {
-            $value = array('path' => $path);
+            $value = ['path' => $path];
         } elseif ($path !== '') {
-            $value = array('value' => $value);
+            $value = ['value' => $value];
         }
-        $this->_data['constructor-args'][$name] = array();
+        $this->_data['constructor-args'][$name] = [];
     }
 
     public function proxy($proxy)

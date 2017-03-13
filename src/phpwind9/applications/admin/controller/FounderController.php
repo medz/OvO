@@ -40,7 +40,7 @@ class FounderController extends AdminBaseController
             $this->showError(
             'ADMIN:founder.add.fail.username.duplicate');
         }
-        $args = array('username' => $username);
+        $args = ['username' => $username];
         $this->showMessage('success', 'founder/show?'.WindUrlHelper::argsToUrl($args));
     }
 
@@ -63,7 +63,7 @@ class FounderController extends AdminBaseController
      */
     public function doAddAction()
     {
-        list($username, $password, $email) = $this->getInput(array('username', 'password', 'email'),
+        list($username, $password, $email) = $this->getInput(['username', 'password', 'email'],
             'post');
         $r = $this->loadFounderService()->add($username, $password, $email);
         if ($r instanceof PwError) {
@@ -93,7 +93,7 @@ class FounderController extends AdminBaseController
      */
     public function doEditAction()
     {
-        list($username, $password, $email) = $this->getInput(array('username', 'password', 'email'),
+        list($username, $password, $email) = $this->getInput(['username', 'password', 'email'],
             'post');
         $r = $this->loadFounderService()->edit($username, $password, $email);
         if ($r instanceof PwError) {

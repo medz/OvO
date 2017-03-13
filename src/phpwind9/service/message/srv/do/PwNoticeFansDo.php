@@ -16,7 +16,7 @@ class PwNoticeFansDo
         $userDs = Wekit::load('user.PwUser');
         $userInfo = $userDs->getUserByUid($uid, PwUser::FETCH_MAIN);
         // 加完关注发通知
-        Wekit::load('message.srv.PwNoticeService')->sendNotice($touid, 'attention', $touid, array($uid => array('uid' => $uid, 'username' => $userInfo['username'])));
+        Wekit::load('message.srv.PwNoticeService')->sendNotice($touid, 'attention', $touid, [$uid => ['uid' => $uid, 'username' => $userInfo['username']]]);
 
         return true;
     }

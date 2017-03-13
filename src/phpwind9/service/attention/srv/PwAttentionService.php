@@ -21,7 +21,7 @@ class PwAttentionService
      */
     public function getAllType($uid)
     {
-        $type = array();
+        $type = [];
         if (!$result = $this->_getTypeDs()->getTypeByUid($uid)) {
             return $type;
         }
@@ -42,7 +42,7 @@ class PwAttentionService
      */
     public function getUserType($uid, $touids)
     {
-        $data = array();
+        $data = [];
         $result = $this->_getTypeDs()->getUserType($uid, $touids);
         foreach ($result as $key => $value) {
             $data[$value['touid']][] = $value['typeid'];
@@ -73,15 +73,15 @@ class PwAttentionService
         $user->editUser($dm, PwUser::FETCH_DATA);
 
         if ($fresh = $this->_getFresh()->getFreshByUid($touid)) {
-            $array = array();
+            $array = [];
             foreach ($fresh as $key => $value) {
-                $array[] = array(
+                $array[] = [
                     'uid'            => $uid,
                     'fresh_id'       => $value['id'],
                     'type'           => $value['type'],
                     'created_userid' => $value['created_userid'],
                     'created_time'   => $value['created_time'],
-                );
+                ];
             }
             $this->_getFresh()->batchAddRelation($array);
         }

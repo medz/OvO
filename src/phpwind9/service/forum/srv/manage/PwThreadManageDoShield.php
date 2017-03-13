@@ -15,7 +15,7 @@ class PwThreadManageDoShield extends PwThreadManageDo
     protected $tids;
     protected $pids;
     protected $ifShield;
-    protected $threads = array('t' => array(), 'p' => array());
+    protected $threads = ['t' => [], 'p' => []];
 
     public function check($permission)
     {
@@ -23,7 +23,7 @@ class PwThreadManageDoShield extends PwThreadManageDo
             return false;
         }
         if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
-            return new PwError('permission.level.shield', array('{grouptitle}' => $this->srv->user->getGroupInfo('name')));
+            return new PwError('permission.level.shield', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 
         return true;

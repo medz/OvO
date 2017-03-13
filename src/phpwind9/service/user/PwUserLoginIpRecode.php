@@ -27,7 +27,7 @@ class PwUserLoginIpRecode
             return false;
         }
 
-        return $this->_getDao()->update(array('ip' => $ip, 'last_time' => $lastTime, 'error_count' => intval($error_count)));
+        return $this->_getDao()->update(['ip' => $ip, 'last_time' => $lastTime, 'error_count' => intval($error_count)]);
     }
 
     /**
@@ -40,7 +40,7 @@ class PwUserLoginIpRecode
     public function getRecode($ip)
     {
         if (!($ip = trim($ip))) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($ip);

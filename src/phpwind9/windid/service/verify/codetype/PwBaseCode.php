@@ -52,7 +52,7 @@
 
      public static function getCode()
      {
-         if (in_array(self::$verifyType, array(4, 6))) {
+         if (in_array(self::$verifyType, [4, 6])) {
              return self::$answerCode;
          }
 
@@ -112,7 +112,7 @@
      */
     protected static function getVerifyBackground()
     {
-        $_files = array();
+        $_files = [];
         $_path = Wind::getRealDir(self::$path.'.bg.');
         $files = WindFolder::read($_path);
         foreach ($files as $file) {
@@ -143,7 +143,7 @@
      */
     protected static function getEnFontList()
     {
-        $_fontList = array();
+        $_fontList = [];
         $fontList = self::getFontList();
         foreach ($fontList as $key => $font) {
             if (strpos($font, 'en_') === 0) {
@@ -151,7 +151,7 @@
             }
         }
 
-        return $_fontList ? $_fontList : array('en_arial.ttf');
+        return $_fontList ? $_fontList : ['en_arial.ttf'];
     }
 
     /**
@@ -161,7 +161,7 @@
      */
     protected static function getCnFontList()
     {
-        $_fontList = array();
+        $_fontList = [];
         $fontList = self::getFontList();
         foreach ($fontList as $key => $font) {
             if (strpos($font, 'cn_') === 0) {

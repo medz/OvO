@@ -10,13 +10,13 @@
  */
 class PwDesignImportZip
 {
-    public $newIds = array();
+    public $newIds = [];
 
     protected $themesPath = '';
     protected $pageid = 0;
     protected $tplPath = '';
 
-    private $_files = array();
+    private $_files = [];
     private $_tplExt = '.htm';
 
     public function __construct($pageBo)
@@ -47,9 +47,9 @@ class PwDesignImportZip
      */
     public function checkZip($filename)
     {
-        $config = array();
+        $config = [];
         $_isTpl = false;
-        $extension = array('htm', 'js', 'gif', 'jpg', 'jpeg', 'txt', 'png', 'css', 'xml');
+        $extension = ['htm', 'js', 'gif', 'jpg', 'jpeg', 'txt', 'png', 'css', 'xml'];
         $zip = new PwZip();
         $xml = new WindXmlParser('1.0', Wekit::app()->charset);
         if (!$fileData = $zip->extract($filename)) {
@@ -173,22 +173,22 @@ class PwDesignImportZip
     protected function filterTemplate($string)
     {
         $string = str_replace('<?', '&lt;?', $string);
-        $in = array(
+        $in = [
             '/<!--#(.*)#-->/isU',
             '/<!--\{(.*)\}-->/isU',
             '/<frame(.*)>/isU',
             '/<\/fram(.*)>/isU',
             '/<iframe(.*)>/isU',
             '/<\/ifram(.*)>/isU',
-        );
-        $out = array(
+        ];
+        $out = [
             '&lt;!--# \\1 #--&gt',
             '&lt;!--{ \\1  }--&gt',
             '&lt;frame\\1&gt;',
             '&lt;/fram\\1&gt;',
             '&lt;iframe\\1&gt;',
             '&lt;/ifram\\1&gt;',
-        );
+        ];
 
         return preg_replace($in, $out, $string);
     }
@@ -223,7 +223,7 @@ class PwDesignImportZip
 
     protected function writeFile($fileData)
     {
-        $failArray = array();
+        $failArray = [];
         $dir = $this->tplPath;
         WindFolder::rm($dir, true);
         WindFolder::mk($dir);
@@ -240,10 +240,10 @@ class PwDesignImportZip
     protected function read($dir)
     {
         if (!is_dir($dir)) {
-            return array();
+            return [];
         }
         if (!$handle = @opendir($dir)) {
-            return array();
+            return [];
         }
         while (false !== ($file = @readdir($handle))) {
             if ('.' === $file || '..' === $file) {
@@ -259,7 +259,7 @@ class PwDesignImportZip
                     $data .= fgets($_handle, 4096);
                 }
                 fclose($_handle);
-                $this->_files[] = array('filename' => $fileName, 'data' => $data);
+                $this->_files[] = ['filename' => $fileName, 'data' => $data];
             } elseif (is_dir($fileName)) {
                 $this->read($fileName.'/');
             }

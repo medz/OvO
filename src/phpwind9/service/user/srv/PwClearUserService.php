@@ -71,12 +71,12 @@ class PwClearUserService extends PwBaseHookService
     public function getClearTypes()
     {
         //【用户清理】扩展-添加到hooks.PwClearUser下
-        return array(
-            'topic'   => array('title' => '主题', 'class' => 'SRC:hooks.PwClearUser.PwClearDoTopic'),  //主题
-            'post'    => array('title' => '回复', 'class' => 'SRC:hooks.PwClearUser.PwClearDoPost'),  //回复
-            'message' => array('title' => '消息', 'class' => 'SRC:hooks.PwClearUser.PwClearDoMessage'),  //消息
+        return [
+            'topic'   => ['title' => '主题', 'class' => 'SRC:hooks.PwClearUser.PwClearDoTopic'],  //主题
+            'post'    => ['title' => '回复', 'class' => 'SRC:hooks.PwClearUser.PwClearDoPost'],  //回复
+            'message' => ['title' => '消息', 'class' => 'SRC:hooks.PwClearUser.PwClearDoMessage'],  //消息
             //'fresh' => array('title' => '新鲜事', 'class' => 'SRC:hooks.PwClearUser.PwClearDoFresh')//新鲜事
-        );
+        ];
     }
 
     /* (non-PHPdoc)
@@ -95,12 +95,12 @@ class PwClearUserService extends PwBaseHookService
         $types = $this->getClearTypes();
         $num = 0;
         foreach ($clearType as $item) {
-            $_type = isset($types[$item]) ? $types[$item] : array();
+            $_type = isset($types[$item]) ? $types[$item] : [];
             if (!$_type || !$_type['class']) {
                 continue;
             }
             /* @var $instance iPwDoHookProcess */
-            $this->appendDo(Wekit::getInstance($_type['class'], '', array($this)));
+            $this->appendDo(Wekit::getInstance($_type['class'], '', [$this]));
             $num++;
         }
         $this->totalClearTypes = count($types);

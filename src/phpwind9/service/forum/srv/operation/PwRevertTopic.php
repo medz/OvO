@@ -16,8 +16,8 @@
  */
 class PwRevertTopic extends PwGleanDoProcess
 {
-    public $data = array();
-    public $tids = array();
+    public $data = [];
+    public $tids = [];
     public $user;
 
     public function __construct($tids, PwUserBo $user)

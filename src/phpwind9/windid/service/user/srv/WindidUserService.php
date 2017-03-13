@@ -23,7 +23,7 @@ class WindidUserService
      */
     public function login($userid, $password, $type = 2, $ifcheck = false, $question = '', $answer = '')
     {
-        $user = array();
+        $user = [];
         $ds = $this->_getUserDs();
         switch ($type) {
             case 1:
@@ -37,19 +37,19 @@ class WindidUserService
                 break;
         }
         if (!$user) {
-            return array(WindidError::USER_NOT_EXISTS);
+            return [WindidError::USER_NOT_EXISTS];
         }
         if ($ifcheck) {
             $safecv = WindidUtility::buildQuestion($question, $answer);
             if ($safecv != $user['safecv']) {
-                return array(WindidError::SAFECV_ERROR, $user);
+                return [WindidError::SAFECV_ERROR, $user];
             }
         }
         if (WindidUtility::buildPassword($password, $user['salt']) !== $user['password']) {
-            return array(WindidError::PASSWORD_ERROR, $user);
+            return [WindidError::PASSWORD_ERROR, $user];
         }
 
-        return array(1, $user);
+        return [1, $user];
     }
 
     /**
@@ -111,7 +111,7 @@ class WindidUserService
      */
     public function getUser($userid, $type = 1, $fetchMode = 1)
     {
-        $user = array();
+        $user = [];
         $ds = $this->_getUserDs();
         switch ($type) {
             case 1:
@@ -140,7 +140,7 @@ class WindidUserService
      */
     public function fecthUser($userids, $type = 1, $fetchMode = 1)
     {
-        $users = array();
+        $users = [];
         $ds = $this->_getUserDs();
         switch ($type) {
             case 1:
@@ -160,7 +160,7 @@ class WindidUserService
 
     public function defaultAvatar($uid, $type = 'face')
     {
-        $_avatar = array('.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg');
+        $_avatar = ['.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg'];
         $defaultBanDir = Wind::getRealDir('RES:').'images/face/';
         $store = Wind::getComponent('storage');
         $fileDir = 'avatar/'.Pw::getUserDir($uid).'/';
@@ -177,7 +177,7 @@ class WindidUserService
 
     public function getAvatar($uid, $size = 'middle')
     {
-        $file = $uid.(in_array($size, array('middle', 'small')) ? '_'.$size : '').'.jpg';
+        $file = $uid.(in_array($size, ['middle', 'small']) ? '_'.$size : '').'.jpg';
         //return Wekit::app('windid')->config->site->avatarUrl . '/avatar/' . Pw::getUserDir($uid) . '/' . $file;
         return Wekit::app('windid')->url->attach.'/avatar/'.Pw::getUserDir($uid).'/'.$file; //妖巫
     }
@@ -185,8 +185,8 @@ class WindidUserService
     public function showFlash($uid, $appId, $appKey, $getHtml = 1)
     {
         $time = Pw::getTime();
-        $key = WindidUtility::appKey($appId, $time, $appKey, array('uid' => $uid, 'type' => 'flash', 'm' => 'api', 'a' => 'doAvatar', 'c' => 'avatar'), array('uid' => 'undefined'));
-        $key2 = WindidUtility::appKey($appId, $time, $appKey, array('uid' => $uid, 'type' => 'normal', 'm' => 'api', 'a' => 'doAvatar', 'c' => 'avatar'), array());
+        $key = WindidUtility::appKey($appId, $time, $appKey, ['uid' => $uid, 'type' => 'flash', 'm' => 'api', 'a' => 'doAvatar', 'c' => 'avatar'], ['uid' => 'undefined']);
+        $key2 = WindidUtility::appKey($appId, $time, $appKey, ['uid' => $uid, 'type' => 'normal', 'm' => 'api', 'a' => 'doAvatar', 'c' => 'avatar'], []);
 
         $postUrl = 'postAction=ra_postAction&redirectURL=/&requestURL='.urlencode(Wekit::app('windid')->url->base.'/index.php?m=api&c=avatar&a=doAvatar&uid='.$uid.'&windidkey='.$key.'&time='.$time.'&clientid='.$appId.'&type=flash').'&avatar='.urlencode($this->getAvatar($uid, 'big').'?r='.rand(1, 99999));
 
@@ -205,7 +205,7 @@ class WindidUserService
 							<param name="FlashVars" value="'.$postUrl.'"/>
 							<embed src="'.Wekit::app('windid')->url->res.'swf/avatar/avatar.swf?'.rand(0, 9999).'" quality="high" bgcolor="#ffffff" width="700" height="430" name="mycamera" align="middle" allowScriptAccess="never" allowFullScreen="false" scale="exactfit"  wmode="transparent" FlashVars="'.$postUrl.'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
 						</object>'
-                       : array(
+                       : [
                             'width'    => '500',
                             'height'   => '405',
                             'id'       => 'uploadAvatar',
@@ -214,13 +214,13 @@ class WindidUserService
                             'wmode'    => 'transparent',
                             'postUrl'  => Wekit::app('windid')->url->base.'/index.php?m=api&c=avatar&a=doAvatar&uid='.$uid.'&windidkey='.$key2.'&time='.$time.'&clientid='.$appId.'&type=normal&jcallback=avatarNormal',
                                'token' => $key2,
-                        );
+                        ];
     }
 
     public function getBaseUserDm($uid, $password, $editInfo)
     {
         Wind::import('WSRV:user.dm.WindidUserDm');
-        $allow = array('username', 'password', 'email', 'question', 'answer');
+        $allow = ['username', 'password', 'email', 'question', 'answer'];
         $dm = new WindidUserDm($uid);
         foreach ($editInfo as $key => $info) {
             if (!in_array($key, $allow)) {
@@ -237,7 +237,7 @@ class WindidUserService
     public function getInfoUserDm($uid, $editInfo)
     {
         Wind::import('WSRV:user.dm.WindidUserDm');
-        $allow = array('realname', 'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'aliww', 'mobile',    'alipay', 'msn', 'profile');
+        $allow = ['realname', 'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'aliww', 'mobile',    'alipay', 'msn', 'profile'];
         $dm = new WindidUserDm($uid);
         foreach ($editInfo as $key => $info) {
             if (!in_array($key, $allow)) {
@@ -272,7 +272,7 @@ class WindidUserService
      */
     public function fecthUserCredit($uids)
     {
-        $users = array();
+        $users = [];
         $_data = $this->_getUserDs()->fetchUserByUid($unique, WindidUser::FETCH_DATA);
         foreach ($_data as $key => &$user) {
             unset($user['messages']);

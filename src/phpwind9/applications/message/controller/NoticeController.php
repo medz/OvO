@@ -16,7 +16,7 @@ class NoticeController extends PwBaseController
 
     public function run()
     {
-        list($type, $page) = $this->getInput(array('type', 'page'));
+        list($type, $page) = $this->getInput(['type', 'page']);
         $page = intval($page);
         $page < 1 && $page = 1;
         $perpage = 20;
@@ -37,7 +37,7 @@ class NoticeController extends PwBaseController
         $this->setOutput($perpage, 'perpage');
         $this->setOutput($count, 'count');
         $this->setOutput(ceil($count / $perpage), 'totalpage');
-        $this->setOutput(array('type' => $typeid), 'args');
+        $this->setOutput(['type' => $typeid], 'args');
         $this->setOutput($typeid, 'typeid');
         $this->setOutput($typeCounts, 'typeCounts');
         $this->setOutput($noticeList, 'noticeList');
@@ -55,7 +55,7 @@ class NoticeController extends PwBaseController
      */
     public function ignoreAction()
     {
-        list($id, $ignore) = $this->getInput(array('id', 'ignore'));
+        list($id, $ignore) = $this->getInput(['id', 'ignore']);
         if ($this->_getNoticeService()->ignoreNotice($id, $ignore)) {
             $this->showMessage('操作成功');
         } else {
@@ -68,9 +68,9 @@ class NoticeController extends PwBaseController
      */
     public function deleteAction()
     {
-        list($id, $ids) = $this->getInput(array('id', 'ids'), 'post');
+        list($id, $ids) = $this->getInput(['id', 'ids'], 'post');
         if (!$ids && $id) {
-            $ids = array(intval($id));
+            $ids = [intval($id)];
         }
         if (!is_array($ids)) {
             $this->showError('操作失败');
@@ -187,7 +187,7 @@ class NoticeController extends PwBaseController
 
             $dm = new PwMessageNoticesDm();
             $dm->setRead(1);
-            $ids = array();
+            $ids = [];
             foreach ($noticeList as $v) {
                 if ($v['is_read']) {
                     continue;

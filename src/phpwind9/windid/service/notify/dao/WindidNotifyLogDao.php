@@ -12,7 +12,7 @@ class WindidNotifyLogDao extends WindidBaseDao
 {
     protected $_table = 'notify_log';
     protected $_pk = 'logid';
-    protected $_dataStruct = array('logid', 'nid', 'appid', 'complete', 'send_num', 'reason');
+    protected $_dataStruct = ['logid', 'nid', 'appid', 'complete', 'send_num', 'reason'];
 
     public function get($id)
     {
@@ -30,7 +30,7 @@ class WindidNotifyLogDao extends WindidBaseDao
     public function getList($appid, $nid, $limit, $start, $complete = null)
     {
         $where = ' WHERE 1 ';
-        $array = array();
+        $array = [];
         if ($appid) {
             $where .= ' AND `appid` = ?';
             $array[] = $appid;
@@ -52,7 +52,7 @@ class WindidNotifyLogDao extends WindidBaseDao
     public function countList($appid, $nid, $complete = null)
     {
         $where = ' WHERE 1 ';
-        $array = array();
+        $array = [];
         if ($appid) {
             $where .= ' AND `appid` = ?';
             $array[] = $appid;
@@ -78,7 +78,7 @@ class WindidNotifyLogDao extends WindidBaseDao
 
     public function multiAdd($data)
     {
-        $_data = array();
+        $_data = [];
         if (!$data) {
             return false;
         }
@@ -106,7 +106,7 @@ class WindidNotifyLogDao extends WindidBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE appid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($appid));
+        return $smt->update([$appid]);
     }
 
     public function deleteComplete()
@@ -114,7 +114,7 @@ class WindidNotifyLogDao extends WindidBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE complete=1');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array());
+        return $smt->update([]);
     }
 
     public function batchDelete($ids)

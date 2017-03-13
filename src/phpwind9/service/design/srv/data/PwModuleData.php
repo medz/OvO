@@ -15,14 +15,14 @@ class PwModuleData
     protected $bo;
     protected $time;
 
-    protected $sourData = array();
-    protected $multiSign = array();
-    protected $designData = array();
+    protected $sourData = [];
+    protected $multiSign = [];
+    protected $designData = [];
 
-    protected $pushids = array();
-    protected $autoids = array();
+    protected $pushids = [];
+    protected $autoids = [];
 
-    private $_substrSign = array(); //需要截取的标签
+    private $_substrSign = []; //需要截取的标签
 
     public function __construct($moduleid)
     {
@@ -36,7 +36,7 @@ class PwModuleData
      */
     public function reviseOrder()
     {
-        $fixed = array();
+        $fixed = [];
         $data = Wekit::load('design.PwDesignData')->getDataByModuleid($this->bo->moduleid);
         foreach ($data as $k=>$v) {
             if ($v['data_type'] == 2) {
@@ -73,14 +73,14 @@ class PwModuleData
         Wekit::load('design.PwDesignData');
         $model = $this->bo->getModel();
         if (!is_array($fromid)) {
-            $fromid = array($fromid);
+            $fromid = [$fromid];
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
         $service = Wekit::load('design.srv.model.'.$model.'.'.$cls);
         $service->setModuleBo($this->bo);
         $data = $service->buildDataByIds($fromid);
         if (!$data) {
-            return array();
+            return [];
         }
         foreach ($data as  $k=>$v) {
             $v['from_type'] = 'auto'; //新推送的数据，指写为自运获取类型，用于数据处理
@@ -93,9 +93,9 @@ class PwModuleData
 
     protected function setDesignData()
     {
-        $usedDataid = $delDataIds = $_data = array();
+        $usedDataid = $delDataIds = $_data = [];
         $delImages = '';
-        $delImgIds = array();
+        $delImgIds = [];
         $ds = Wekit::load('design.PwDesignData');
         $data = $ds->getDataByModuleid($this->bo->moduleid);
         $limit = $this->getLimit();
@@ -106,7 +106,7 @@ class PwModuleData
             }
             if ($v['data_type'] == PwDesignData::AUTO && !$v['is_edited']) {
                 $delDataIds[] = $v['data_id'];
-                $_data[] = array();
+                $_data[] = [];
                 if ($v['from_type'] != PwDesignData::FROM_PUSH) {
                     $extend = unserialize($v['extend_info']);
                     $delImages .= $extend['standard_image'];
@@ -116,7 +116,7 @@ class PwModuleData
             }
             if ($v['end_time'] > 0 && $v['end_time'] < $this->time) {
                 $delDataIds[] = $v['data_id'];
-                $_data[] = array();
+                $_data[] = [];
                 if ($v['from_type'] != PwDesignData::FROM_PUSH) {
                     $extend = unserialize($v['extend_info']);
                     $delImages .= $extend['standard_image'];
@@ -135,7 +135,7 @@ class PwModuleData
 
         //格式化门户数据系列，无数据的补空；
         for ($i = 0; $i < $limit; $i++) {
-            $this->designData[] = isset($_data[$i]) ? $_data[$i] : array();
+            $this->designData[] = isset($_data[$i]) ? $_data[$i] : [];
             $_data[$i]['data_id'] && $usedDataid[] = $_data[$i]['data_id'];
         }
 
@@ -167,7 +167,7 @@ class PwModuleData
      */
     protected function getExtend($data, $order = null)
     {
-        $_data = array();
+        $_data = [];
         $params = $this->getComponentValue($this->bo->getTemplate(), implode('', $this->bo->getStandardSign()), $order);
         if ($data['from_type'] == 'auto' && $data['data_type'] == PwDesignData::AUTO && !$data['is_edited']) {
             //if ($this->bo->getLimit() > 10) {
@@ -254,7 +254,7 @@ class PwModuleData
                 if ($result instanceof PwError) {
                     $data[$k] = Pw::getPath($data[$k]);
                 } else {
-                    $data[$k] = WindUrlHelper::createUrl('design/image/run', array('id' => (int) $result), '', 'pw');
+                    $data[$k] = WindUrlHelper::createUrl('design/image/run', ['id' => (int) $result], '', 'pw');
                     $data['__asyn'] = (int) $result;
                 }
                 $data['standard_image'] = '';
@@ -291,7 +291,7 @@ class PwModuleData
         if (preg_match_all('/\{(\w+)\|(\d+)\|(\d+)}/U', $string, $matche)) {
             foreach ($matche[1] as $k=>$v) {
                 //if ($matche[2][$k] || $matche[3][$k]) {
-                $this->multiSign['img'][$v] = array($matche[2][$k], $matche[3][$k]);
+                $this->multiSign['img'][$v] = [$matche[2][$k], $matche[3][$k]];
                 //}
                 $string = str_replace($matche[0][$k], '{'.$v.'}', $string);
             }
@@ -315,7 +315,7 @@ class PwModuleData
         }
 
         if (!preg_match_all('/\{(\w+)}/isU', $string, $matches)) {
-            return array();
+            return [];
         }
 
         return array_unique($matches[1]);
@@ -327,7 +327,7 @@ class PwModuleData
      */
     protected function formatPushData($data)
     {
-        $_data = array();
+        $_data = [];
         $_data['standard_title'] = $data['push_id'];
         $_data['standard_fromid'] = $data['push_id'];
         $_data['standard_fromapp'] = $data['push_from_model'];
@@ -351,7 +351,7 @@ class PwModuleData
      */
     protected function formatDesginData($data)
     {
-        $_data = array();
+        $_data = [];
         $_data['standard_title'] = $data['from_id'];
         $_data['standard_fromid'] = $data['from_id'];
         $_data['standard_fromapp'] = $data['from_app'];

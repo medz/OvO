@@ -12,13 +12,13 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwDataLazyLoader
 {
-    public static $instance = array();
+    public static $instance = [];
 
-    public $ids = array();
+    public $ids = [];
     protected $_ds;
-    protected $_data = array();
+    protected $_data = [];
 
-    public function __construct(iPwDataSource2 $ds, $ids = array())
+    public function __construct(iPwDataSource2 $ds, $ids = [])
     {
         $this->_ds = $ds;
         $this->ids = $ids;
@@ -61,6 +61,6 @@ class PwDataLazyLoader
         foreach ($data as $key => $value) {
             $this->_data[$key] = $value;
         }
-        $this->ids = array();
+        $this->ids = [];
     }
 }

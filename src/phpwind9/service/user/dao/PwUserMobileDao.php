@@ -13,7 +13,7 @@ class PwUserMobileDao extends PwBaseDao
 {
     protected $_table = 'user_mobile';
     protected $_pk = 'uid';
-    protected $_dataStruct = array('uid', 'mobile');
+    protected $_dataStruct = ['uid', 'mobile'];
 
     /**
      * 取一条
@@ -51,7 +51,7 @@ class PwUserMobileDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `mobile`=?', $this->getTable());
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($mobile));
+        return $smt->getOne([$mobile]);
     }
 
     /**

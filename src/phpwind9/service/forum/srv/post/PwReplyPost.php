@@ -38,13 +38,13 @@ class PwReplyPost extends PwPostAction
     public function check()
     {
         if (($result = $this->forum->allowReply($this->user)) !== true) {
-            return new PwError('BBS:forum.permissions.reply.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('BBS:forum.permissions.reply.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (!$this->forum->foruminfo['allow_reply'] && !$this->user->getPermission('allow_reply')) {
-            return new PwError('permission.reply.allow', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.reply.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (Pw::getstatus($this->info['tpcstatus'], PwThread::STATUS_LOCKED) && !$this->user->getPermission('reply_locked_threads')) {
-            return new PwError('permission.reply.fail.locked', array('{grouptitle}' => $this->user->getGroupInfo('name')));
+            return new PwError('permission.reply.fail.locked', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($this->forum->forumset['locktime'] && ($this->info['created_time'] + $this->forum->forumset['locktime'] * 86400) < Pw::getTime()) {
             return new PwError('BBS:forum.thread.locked.not');
@@ -80,7 +80,7 @@ class PwReplyPost extends PwPostAction
      */
     public function getAttachs()
     {
-        return array();
+        return [];
     }
 
     /**

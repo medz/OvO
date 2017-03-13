@@ -46,7 +46,7 @@ class PwManifest
      *
      * @param string $manifest
      */
-    public function __construct($manifest, $extends = array())
+    public function __construct($manifest, $extends = [])
     {
         is_string($manifest) && $manifest = Wind::getComponent('configParser')->parse($manifest);
         if ($extends) {
@@ -100,12 +100,12 @@ class PwManifest
     public function getHooks()
     {
         if ($this->hooks === null) {
-            $this->hooks = array();
+            $this->hooks = [];
             $hooks = (array) $this->_resolvedConfig('hooks');
             foreach ($hooks as $key => $value) {
                 $_d = empty($value['documents']) ? '' : $value['documents'];
                 is_array($_d) && $_d = implode("\r\n", $_d);
-                $this->hooks[$key] = array('name' => $key, 'document' => $_d);
+                $this->hooks[$key] = ['name' => $key, 'document' => $_d];
             }
         }
 
@@ -118,7 +118,7 @@ class PwManifest
     public function getInjectServices()
     {
         if ($this->injectServices === null) {
-            $this->injectServices = array();
+            $this->injectServices = [];
             $injectServices = (array) $this->_resolvedConfig('inject-services');
             foreach ($injectServices as $key => $value) {
                 if (!is_array($value)) {
@@ -131,7 +131,7 @@ class PwManifest
                     if (empty($_v['class'])) {
                         continue;
                     }
-                    $this->injectServices[] = array(
+                    $this->injectServices[] = [
                         'hook_name'   => $key,
                         'alias'       => 'ext_'.$_k,
                         'class'       => $_v['class'],
@@ -139,11 +139,11 @@ class PwManifest
                         'loadway'     => (empty($_v['loadway']) ? '' : $_v['loadway']),
                         'expression'  => (empty($_v['expression']) ? '' : $_v['expression']),
                         'description' => (empty($_v['description']) ? '' : $_v['description']),
-                        );
+                        ];
                 }
             }
 
-            $_tmp = array('class' => '', 'method' => '', 'loadway' => '', 'expression' => '');
+            $_tmp = ['class' => '', 'method' => '', 'loadway' => '', 'expression' => ''];
         }
 
         return $this->injectServices;
@@ -158,6 +158,6 @@ class PwManifest
      */
     private function _resolvedConfig($key)
     {
-        return empty($this->manifest[$key]) ? array() : $this->manifest[$key];
+        return empty($this->manifest[$key]) ? [] : $this->manifest[$key];
     }
 }

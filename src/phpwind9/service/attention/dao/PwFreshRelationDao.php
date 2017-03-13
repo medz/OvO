@@ -12,14 +12,14 @@ class PwFreshRelationDao extends PwBaseDao
 {
     protected $_table = 'attention_fresh_relations';
     protected $_attentionTable = 'attention';
-    protected $_dataStruct = array('uid', 'fresh_id', 'type', 'created_userid', 'created_time');
+    protected $_dataStruct = ['uid', 'fresh_id', 'type', 'created_userid', 'created_time'];
 
     public function get($uid, $limit, $offset)
     {
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid=? ORDER BY created_time DESC %s', $this->getTable(), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function fetchAttentionFreshByUid($uid, $uids, $limit, $offset)
@@ -27,7 +27,7 @@ class PwFreshRelationDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid=? AND created_userid IN %s ORDER BY created_time DESC %s', $this->getTable(), $this->sqlImplode($uids), $this->sqlLimit($limit, $offset));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid));
+        return $smt->queryAll([$uid]);
     }
 
     public function count($uid)
@@ -35,7 +35,7 @@ class PwFreshRelationDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) AS count FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     public function addRelation($fields)
@@ -57,14 +57,14 @@ class PwFreshRelationDao extends PwBaseDao
         $sql = $this->_bindSql('INSERT INTO %s (uid, fresh_id, type, created_userid, created_time) SELECT uid,?,?,?,? FROM %s WHERE touid=? ORDER BY created_time DESC LIMIT 1000', $this->getTable(), $this->getTable($this->_attentionTable));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($fields['fresh_id'], $fields['type'], $fields['created_userid'], $fields['created_time'], $fields['uid']));
+        return $smt->update([$fields['fresh_id'], $fields['type'], $fields['created_userid'], $fields['created_time'], $fields['uid']]);
     }
 
     public function batchAdd($fields)
     {
-        $array = array();
+        $array = [];
         foreach ($fields as $key => $value) {
-            $array[] = array($value['uid'], $value['fresh_id'], $value['type'], $value['created_userid'], $value['created_time']);
+            $array[] = [$value['uid'], $value['fresh_id'], $value['type'], $value['created_userid'], $value['created_time']];
         }
         $sql = $this->_bindSql('INSERT INTO %s (uid, fresh_id, type, created_userid, created_time) VALUES %s', $this->getTable(), $this->sqlMulti($array));
 
@@ -84,7 +84,7 @@ class PwFreshRelationDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE uid=? AND created_userid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid, $fromuid));
+        return $smt->update([$uid, $fromuid]);
     }
 
     public function deleteOver($uid, $limit)
@@ -92,6 +92,6 @@ class PwFreshRelationDao extends PwBaseDao
         $sql = $this->_bindSql('DELETE FROM %s WHERE uid=? ORDER BY created_time ASC LIMIT %s', $this->getTable(), intval($limit));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($uid));
+        return $smt->update([$uid]);
     }
 }

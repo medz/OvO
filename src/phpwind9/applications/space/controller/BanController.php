@@ -43,7 +43,7 @@ class BanController extends PwBaseController
         $this->space->setVisitUid($this->loginUser->uid);
         $this->setTheme('space', null);
         if ($this->space->allowView('space')) {
-            $this->forwardRedirect(WindUrlHelper::createUrl('space/index/run', array('uid' => $spaceUid)));
+            $this->forwardRedirect(WindUrlHelper::createUrl('space/index/run', ['uid' => $spaceUid]));
         }
     }
 

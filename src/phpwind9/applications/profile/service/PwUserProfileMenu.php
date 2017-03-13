@@ -17,7 +17,7 @@ class PwUserProfileMenu
     private $menuConfig = null;
     private $cacheKey = 'u_profile_menus';
     private $menuFile = 'APPS:profile.conf.profilemenu.php';
-    private $extend = array();
+    private $extend = [];
     private $first = null;
 
     /**
@@ -65,14 +65,14 @@ class PwUserProfileMenu
         }
         $currentLeft = $menus[$left];
         if (empty($currentLeft['tabs'])) {
-            return array($left, '');
+            return [$left, ''];
         }
         if (!$tab && !isset($currentLeft[$tab])) {
             $_temp = array_keys($currentLeft['tabs']);
             $tab = $_temp[0];
         }
 
-        return array($left, $tab);
+        return [$left, $tab];
     }
 
     /**
@@ -87,13 +87,13 @@ class PwUserProfileMenu
         }
         $menus = $this->_getFromFile();
         $menus = PwSimpleHook::getInstance('profile_menus')->runWithFilters($menus);
-        $_menus = array();
+        $_menus = [];
         foreach ($menus['profile_left'] as $key => $value) {
             (null == $this->first) && $this->first = $key;
             if (isset($value['tabs']) && $value['tabs'] && isset($menus[$key.'_tabs'])) {
                 $value['tabs'] = $menus[$key.'_tabs'];
             } else {
-                $value['tabs'] = array();
+                $value['tabs'] = [];
             }
             $_menus[$key] = $value;
         }

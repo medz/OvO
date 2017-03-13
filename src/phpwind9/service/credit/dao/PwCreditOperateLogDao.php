@@ -14,26 +14,26 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwCreditOperateLogDao extends PwBaseDao
 {
     protected $_table = 'credit_log_operate';
-    protected $_dataStruct = array('uid', 'operate', 'num', 'update_time');
+    protected $_dataStruct = ['uid', 'operate', 'num', 'update_time'];
 
     public function get($uid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'operate');
+        return $smt->queryAll([$uid], 'operate');
     }
 
     public function batchAdd($data)
     {
-        $array = array();
+        $array = [];
         foreach ($data as $key => $value) {
-            $array[] = array(
+            $array[] = [
                 $value[0],
                 $value[1],
                 $value[2],
                 $value[3],
-            );
+            ];
         }
         $sql = $this->_bindSql('REPLACE INTO %s (uid, operate, num, update_time) VALUES %s', $this->getTable(), $this->sqlMulti($array));
 

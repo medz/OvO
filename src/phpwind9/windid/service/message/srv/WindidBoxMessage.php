@@ -24,12 +24,12 @@ class WindidBoxMessage
         $vo->setFromUid($fromUid);
         $count = $this->_getMessageDs()->countMessage($vo);
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $list = $this->_getMessageDs()->searchMessage($vo, $start, $limit);
 
-        $messageIds = array();
-        $uids = array();
+        $messageIds = [];
+        $uids = [];
         foreach ($list as $k => $v) {
             $messageIds[] = $v['message_id'];
             $uids[] = $v['to_uid'];
@@ -41,7 +41,7 @@ class WindidBoxMessage
             $list[$k]['to_username'] = isset($users[$v['to_uid']]) ? $users[$v['to_uid']]['username'] : '';
         }
 
-        return array($count, $list);
+        return [$count, $list];
     }
 
     /**
@@ -58,11 +58,11 @@ class WindidBoxMessage
         $vo->setToUid($toUid);
         $count = $this->_getMessageDs()->countMessage($vo);
         if (!$count) {
-            return array(0, array());
+            return [0, []];
         }
         $list = $this->_getMessageDs()->searchMessage($vo, $start, $limit);
-        $messageIds = array();
-        $uids = array();
+        $messageIds = [];
+        $uids = [];
         foreach ($list as $k => $v) {
             $messageIds[] = $v['message_id'];
             $uids[] = $v['from_uid'];
@@ -74,12 +74,12 @@ class WindidBoxMessage
             $list[$k]['from_username'] = isset($users[$v['from_uid']]) ? $users[$v['from_uid']]['username'] : '';
         }
 
-        return array($count, $list);
+        return [$count, $list];
     }
 
     public function readMessages($uid, $messageIds)
     {
-        $relationIds = array();
+        $relationIds = [];
         //查询私信的属主
         $list = $this->_getMessageDs()->fetchMessage($messageIds);
 

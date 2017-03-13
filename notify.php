@@ -4,7 +4,7 @@ require_once 'windid/src/windid/WindidApi.php';
 require_once 'windid/src/windid/service/client/bo/WindidClientBo.php';
 require_once 'windid/src/windid/library/WindidUtility.php';
 
-$notify = array(
+$notify = [
     '999' => 'test',        //通讯测试接口
     '101' => 'addUser',        //注册用户
     '111' => 'synLogin',        //同步登录
@@ -15,7 +15,7 @@ $notify = array(
     '211' => 'editCredit',    //编辑用户积分
     '222' => 'editMessageNum', //同步用户未读私信
     '301' => 'deleteUser',    //删除用户
-);
+];
 
 //check
 $_windidkey = getInput('windidkey', 'get');

@@ -22,7 +22,7 @@ class FollowsController extends SpaceBaseController
         $page < 1 && $page = 1;
         $perpage = 20;
         list($start, $limit) = Pw::page2limit($page, $perpage);
-        $args = $classCurrent = array();
+        $args = $classCurrent = [];
 /*		$typeCounts = $this->_getTypeDs()->countUserType($this->space->spaceUid);
         if ($type) {
             $tmp = $this->_getTypeDs()->getUserByType($this->space->spaceUid, $type, $limit, $start);
@@ -65,9 +65,9 @@ class FollowsController extends SpaceBaseController
         $lang = Wind::getComponent('i18n');
         $seoBo->setCustomSeo(
             $lang->getMessage('SEO:space.follows.run.title',
-                array($this->space->spaceUser['username'], $this->space->space['space_name'])), '',
+                [$this->space->spaceUser['username'], $this->space->space['space_name']]), '',
             $lang->getMessage('SEO:space.follows.run.description',
-                array($this->space->spaceUser['username'])));
+                [$this->space->spaceUser['username']]));
         Wekit::setV('seo', $seoBo);
     }
 

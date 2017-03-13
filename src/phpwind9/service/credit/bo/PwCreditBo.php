@@ -13,16 +13,16 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwCreditBo
 {
-    public $cType = array();
-    public $cUnit = array();
-    public $isLog = array();
+    public $cType = [];
+    public $cUnit = [];
+    public $isLog = [];
 
-    private $_set = array();
-    private $_get = array();
-    private $_log = array();
-    private $_num = array();
-    private $_userLog = array();
-    private $_ops = array();
+    private $_set = [];
+    private $_get = [];
+    private $_log = [];
+    private $_num = [];
+    private $_userLog = [];
+    private $_ops = [];
     private static $_instance = null;
 
     private function __construct()
@@ -57,7 +57,7 @@ class PwCreditBo
     {
         $strategy = Wekit::C('credit', 'strategy');
 
-        return isset($strategy[$key]) ? $strategy[$key] : array();
+        return isset($strategy[$key]) ? $strategy[$key] : [];
     }
 
     /**
@@ -75,9 +75,9 @@ class PwCreditBo
         if (!isset($this->cType[$cType]) || empty($point)) {
             return false;
         }
-        $arr = array(
-            $uid => array($cType => $point),
-        );
+        $arr = [
+            $uid => [$cType => $point],
+        ];
         if ($delay) {
             $this->_append($arr);
         } else {
@@ -102,9 +102,9 @@ class PwCreditBo
             return false;
         }
         if ($delay) {
-            $this->_append(array($uid => $setv));
+            $this->_append([$uid => $setv]);
         } else {
-            $this->execute(array($uid => $setv));
+            $this->execute([$uid => $setv]);
         }
 
         return true;
@@ -124,7 +124,7 @@ class PwCreditBo
         if (empty($uids) || !is_array($uids) || empty($setv) || !is_array($setv)) {
             return false;
         }
-        $arr = array();
+        $arr = [];
         foreach ($uids as $uid) {
             $arr[$uid] = $setv;
         }
@@ -148,7 +148,7 @@ class PwCreditBo
      *
      * @return bool
      */
-    public function operate($operation, PwUserBo $user, $delay = false, $log = array(), $creditset = array())
+    public function operate($operation, PwUserBo $user, $delay = false, $log = [], $creditset = [])
     {
         $strategy = $this->getStrategy($operation);
         if (!$strategy && !$creditset) {
@@ -177,11 +177,11 @@ class PwCreditBo
      * @param array $arr   操作数据 array(1 => array('1' => ??, '2' => ??), 2 => array(), 3 => array(), ...)
      * @param bool  $isAdd true,增加操作|false,设置操作
      */
-    public function execute($arr = array(), $isAdd = true)
+    public function execute($arr = [], $isAdd = true)
     {
         if (empty($arr)) {
             $arr = $this->_set;
-            $this->_set = array();
+            $this->_set = [];
         }
         $method = $isAdd ? 'addCredit' : 'setCredit';
         $service = Wekit::load('user.PwUser');
@@ -205,7 +205,7 @@ class PwCreditBo
      * @param object $user      被操作用户
      * @param array  $log       日志信息描述
      */
-    public function addLog($operation, $setv, PwUserBo $user, $log = array())
+    public function addLog($operation, $setv, PwUserBo $user, $log = [])
     {
         if (!is_array($setv) || !$setv) {
             return false;
@@ -213,7 +213,7 @@ class PwCreditBo
         $log['uid'] = $user->uid;
         $log['username'] = $user->username;
         $coc = PwCreditOperationConfig::getInstance();
-        $_creditAffect = array();
+        $_creditAffect = [];
         foreach ($setv as $key => $affect) {
             if (isset($this->cType[$key]) && $this->isLog[$key] && $affect != 0) {
                 $log['cname'] = $this->cType[$key];
@@ -227,14 +227,14 @@ class PwCreditBo
                     ->setCreatedUser($user->uid, $user->username)
                     ->setCreatedTime(Pw::getTime());
                 $this->_log[] = $dm;
-                $_creditAffect[] = array($log['cname'], $log['affect']);
+                $_creditAffect[] = [$log['cname'], $log['affect']];
             }
         }
         //TODO 记录用户的积分变动情况---
         //change: judge if the operate is in the "global->credit->strategy"
         //exists: add user credit log
         if ($coc->isCreditPop($operation) && $_creditAffect) {
-            $this->_userLog[$user->uid] = array($coc->getName($operation), $_creditAffect);
+            $this->_userLog[$user->uid] = [$coc->getName($operation), $_creditAffect];
         }
     }
 
@@ -244,11 +244,11 @@ class PwCreditBo
             Wekit::load('credit.PwCreditLog')->batchAdd($this->_log);
         }
         if (!empty($this->_num)) {
-            $tmp = array();
+            $tmp = [];
             $t = Pw::getTime();
             foreach ($this->_num as $uid => $ops) {
                 foreach ($ops as $op => $n) {
-                    $tmp[] = array($uid, $op, $n, $t);
+                    $tmp[] = [$uid, $op, $n, $t];
                 }
             }
             Wekit::load('credit.PwCreditLog')->batchAddOperate($tmp);
@@ -265,9 +265,9 @@ class PwCreditBo
                 $userDs->editUser($_dm, PwUser::FETCH_DATA);
             }
         }
-        $this->_userLog = array();
-        $this->_log = array();
-        $this->_num = array();
+        $this->_userLog = [];
+        $this->_log = [];
+        $this->_num = [];
     }
 
     public function getOperateCount($uid, $operate)

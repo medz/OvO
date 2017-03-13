@@ -11,7 +11,7 @@
 class PwTagAttentionDao extends PwBaseDao
 {
     protected $_table = 'tag_attention';
-    protected $_dataStruct = array('uid', 'tag_id', 'last_read_time');
+    protected $_dataStruct = ['uid', 'tag_id', 'last_read_time'];
 
     /**
      * 根据uid和tagId获取话题.
@@ -26,7 +26,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `tag_id`=? AND `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($tagId, $uid));
+        return $smt->getOne([$tagId, $uid]);
     }
 
     /**
@@ -41,7 +41,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($uid));
+        return $smt->getValue([$uid]);
     }
 
     /**
@@ -57,7 +57,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_id` IN %s AND `uid`=?', $this->getTable(), $this->sqlImplode($tagIds));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tag_id');
+        return $smt->queryAll([$uid], 'tag_id');
     }
 
     /**
@@ -74,7 +74,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `uid`=? ORDER BY `last_read_time` DESC %s ', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'tag_id');
+        return $smt->queryAll([$uid], 'tag_id');
     }
 
     /**
@@ -89,7 +89,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE `tag_id`=? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getValue(array($tagId));
+        return $smt->getValue([$tagId]);
     }
 
     /**
@@ -106,7 +106,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE `tag_id`=? %s', $this->getTable(), $this->sqlLimit($limit, $start));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tagId), 'uid');
+        return $smt->queryAll([$tagId], 'uid');
     }
 
     /**
@@ -139,7 +139,7 @@ class PwTagAttentionDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `tag_id`=? AND `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($tagId, $uid));
+        return $smt->update([$tagId, $uid]);
     }
 
     /**

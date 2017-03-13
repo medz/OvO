@@ -32,7 +32,7 @@ class InjectController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($alias, $hook_name, $class, $method, $loadway, $expression, $description) = $this->getInput(
-            array('alias', 'hook_name', 'class', 'method', 'loadway', 'expression', 'description'));
+            ['alias', 'hook_name', 'class', 'method', 'loadway', 'expression', 'description']);
         $dm = new PwHookInjectDm();
         $dm->setAlias($alias)->setHookName($hook_name)->setClass($class)->setMethod($method)->setLoadWay(
             $loadway)->setExpression($expression)->setDescription($description);
@@ -63,7 +63,7 @@ class InjectController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($id, $alias, $hook_name, $class, $method, $loadway, $expression, $description) = $this->getInput(
-            array(
+            [
                 'id',
                 'alias',
                 'hook_name',
@@ -71,7 +71,7 @@ class InjectController extends AdminBaseController
                 'method',
                 'loadway',
                 'expression',
-                'description', ));
+                'description', ]);
         $dm = new PwHookInjectDm();
         $dm->setId($id)->setAlias($alias)->setHookName($hook_name)->setClass($class)->setMethod(
             $method)->setLoadWay($loadway)->setExpression($expression)->setDescription($description);

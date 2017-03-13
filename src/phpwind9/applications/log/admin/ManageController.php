@@ -36,7 +36,7 @@ class ManageController extends AdminBaseController
         $count = $logDs->coutSearch($logSo);
         /* @var $logSrv PwLogService */
         $logSrv = Wekit::load('log.srv.PwLogService');
-        $list = array();
+        $list = [];
         if ($count > 0) {
             ($page > $count) && $page = $count;
             $totalPage = ceil($count / $this->perpage);
@@ -89,7 +89,7 @@ class ManageController extends AdminBaseController
         foreach ($catedb as $_k => $_v) {
             $catedb[$_k]['name'] = strip_tags($_v['name']);
         }
-        $forumList = array();
+        $forumList = [];
         foreach ($catedb as $value) {
             $forumList[$value['fid']] = $this->_buildForumTree($value['fid'], $map);
         }
@@ -110,9 +110,9 @@ class ManageController extends AdminBaseController
     private function _buildForumTree($parentid, $map, $level = '')
     {
         if (!isset($map[$parentid])) {
-            return array();
+            return [];
         }
-        $array = array();
+        $array = [];
         foreach ($map[$parentid] as $key => $value) {
             $value['level'] = $level;
             $value['name'] = strip_tags($value['name']);

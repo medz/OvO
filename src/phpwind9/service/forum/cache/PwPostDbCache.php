@@ -13,17 +13,17 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwPostDbCache extends PwBaseDbCache
 {
-    protected $keys = array(
-        'post'      => array('post_%s', array('pid'), PwCache::USE_DBCACHE, 'forum', 0, array('forum.dao.PwPostsDao', 'getPost')),
-        'post_list' => array('post_list_%s_%s_%s_%s_%s', array('tver', 'tid', 'limit', 'offset', 'asc'), PwCache::USE_DBCACHE, 'forum', 0),
-        'post_tver' => array('post_tver_%s', array('tid'), PwCache::USE_DBCACHE, 'forum', 0, 0),
-    );
+    protected $keys = [
+        'post'      => ['post_%s', ['pid'], PwCache::USE_DBCACHE, 'forum', 0, ['forum.dao.PwPostsDao', 'getPost']],
+        'post_list' => ['post_list_%s_%s_%s_%s_%s', ['tver', 'tid', 'limit', 'offset', 'asc'], PwCache::USE_DBCACHE, 'forum', 0],
+        'post_tver' => ['post_tver_%s', ['tid'], PwCache::USE_DBCACHE, 'forum', 0, 0],
+    ];
 
     public function fetchKeysByPid($pids)
     {
-        $keys = array();
+        $keys = [];
         foreach ($pids as $pid) {
-            $keys[] = array('post', array($pid));
+            $keys[] = ['post', [$pid]];
         }
 
         return $keys;
@@ -31,12 +31,12 @@ class PwPostDbCache extends PwBaseDbCache
 
     public function getPost($pid)
     {
-        return Wekit::cache()->get('post', array($pid));
+        return Wekit::cache()->get('post', [$pid]);
     }
 
     public function fetchPost($pids)
     {
-        $result = array();
+        $result = [];
         $data = Wekit::cache()->fetch($this->fetchKeysByPid($pids));
         foreach ($data as $key => $value) {
             list(, $pid) = explode('_', $key);
@@ -53,11 +53,11 @@ class PwPostDbCache extends PwBaseDbCache
     public function getPostByTid($tid, $limit, $offset, $asc)
     {
         $orderby = $asc ? 'ASC' : 'DESC';
-        $tver = Wekit::cache()->get('post_tver', array($tid));
-        $data = Wekit::cache()->get('post_list', array($tver, $tid, $limit, $offset, $orderby));
+        $tver = Wekit::cache()->get('post_tver', [$tid]);
+        $data = Wekit::cache()->get('post_list', [$tver, $tid, $limit, $offset, $orderby]);
         if ($data === false) {
             $result = $this->_getDao()->getPostByTid($tid, $limit, $offset, $asc);
-            Wekit::cache()->set('post_list', array_keys($result), array($tver, $tid, $limit, $offset, $orderby));
+            Wekit::cache()->set('post_list', array_keys($result), [$tver, $tid, $limit, $offset, $orderby]);
         } else {
             $result = $this->fetchPost($data);
         }
@@ -74,17 +74,17 @@ class PwPostDbCache extends PwBaseDbCache
         return $this->_getDao()->addPost($fields);
     }
 
-    public function updatePost($pid, $fields, $increaseFields = array())
+    public function updatePost($pid, $fields, $increaseFields = [])
     {
         if (isset($fields['disabled']) || isset($fields['created_time']) || isset($fields['tid'])) {
             $this->updatePostList($pid, isset($fields['tid']) ? $fields['tid'] : 0);
         }
-        Wekit::cache()->delete('post', array($pid));
+        Wekit::cache()->delete('post', [$pid]);
 
         return $this->_getDao()->updatePost($pid, $fields, $increaseFields);
     }
 
-    public function batchUpdatePost($pids, $fields, $increaseFields = array())
+    public function batchUpdatePost($pids, $fields, $increaseFields = [])
     {
         if (isset($fields['disabled']) || isset($fields['created_time']) || isset($fields['tid'])) {
             $this->batchUpdatePostList($pids, isset($fields['tid']) ? $fields['tid'] : 0);
@@ -97,7 +97,7 @@ class PwPostDbCache extends PwBaseDbCache
     public function deletePost($pid)
     {
         $this->updatePostList($pid);
-        Wekit::cache()->delete('post', array($pid));
+        Wekit::cache()->delete('post', [$pid]);
 
         return $this->_getDao()->deletePost($pid);
     }
@@ -126,7 +126,7 @@ class PwPostDbCache extends PwBaseDbCache
      */
     public function clearPostListCache($tid)
     {
-        Wekit::cache()->increment('post_tver', array($tid));
+        Wekit::cache()->increment('post_tver', [$tid]);
     }
 
     /**
@@ -153,7 +153,7 @@ class PwPostDbCache extends PwBaseDbCache
     public function batchUpdatePostList($pids, $tid = 0)
     {
         $posts = $this->fetchPost($pids);
-        $tids = array();
+        $tids = [];
         foreach ($posts as $post) {
             $tids[] = $post['tid'];
         }

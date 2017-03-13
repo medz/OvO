@@ -24,10 +24,10 @@ class PwDesignThreadDataService extends PwDesignModelBase
      */
     public function decorateAddProperty($model)
     {
-        $data = array();
+        $data = [];
         $forumService = $this->_getFroumService();
         $data['forumOption'] = '<option value="">全部版块</option>'.$forumService->getForumOption();
-        $data['specileType'] = array();
+        $data['specileType'] = [];
         $tType = Wekit::load('forum.srv.PwThreadType')->getTtype();
         foreach ($tType as $k => $v) {
             $data['specileType'][$k] = $v[0];
@@ -45,10 +45,10 @@ class PwDesignThreadDataService extends PwDesignModelBase
     {
         $model = $moduleBo->getModel();
         $property = $moduleBo->getProperty();
-        $data = array();
+        $data = [];
         $forumService = $this->_getFroumService();
         $data['forumOption'] = '<option value="">全部版块</option>'.$forumService->getForumOption($property['fids']);
-        $data['specileType'] = array();
+        $data['specileType'] = [];
         $tType = Wekit::load('forum.srv.PwThreadType')->getTtype();
         foreach ($tType as $k => $v) {
             $data['specileType'][$k] = $v[0];
@@ -66,7 +66,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
     {
         //直接调用版本
         if (isset($property['fids'][0]) && !$property['fids'][0]) {
-            $property['fids'] = array();
+            $property['fids'] = [];
         }
         $property['mapFid'] = $property['fids'];
         /*
@@ -107,7 +107,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
             if ($uids) {
                 $so->setAuthorId($uids);
             } else {
-                return array();
+                return [];
             }
         }
         $field['keywords'] && $so->setKeywordOfTitle(trim($field['keywords']));
@@ -161,7 +161,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
 
     private function _buildSignKey($list, $ishighlight = null)
     {
-        $content = $_tType = $_fid = $_aTid = array();
+        $content = $_tType = $_fid = $_aTid = [];
         $_tid = array_keys($list);
         $content = $this->_getContent($_tid);
         foreach ($list as $v) {
@@ -179,29 +179,29 @@ class PwDesignThreadDataService extends PwDesignModelBase
         }
         foreach ($list as $k => $v) {
             if (!$forums[$v['fid']]['isshow']) {
-                $v = array();
+                $v = [];
             }
             $list[$k]['subject'] = $this->_formatTitle($v['subject']);
             if ($ishighlight) {
                 $styleArr = $highlight->parseHighlight($v['highlight']);
-                $list[$k]['__style'] = array($styleArr['bold'], $styleArr['underline'], $styleArr['italic'], $styleArr['color']);
+                $list[$k]['__style'] = [$styleArr['bold'], $styleArr['underline'], $styleArr['italic'], $styleArr['color']];
             }
-            $list[$k]['url'] = WindUrlHelper::createUrl('bbs/read/run', array('tid' => $v['tid'], 'fid' => $v['fid']), '', 'pw');
+            $list[$k]['url'] = WindUrlHelper::createUrl('bbs/read/run', ['tid' => $v['tid'], 'fid' => $v['fid']], '', 'pw');
             $list[$k]['content'] = $this->_formatDes($content[$k]['content']);
             $list[$k]['created_time'] = $this->_formatTime($v['created_time']);
             $list[$k]['lastpost_time'] = $this->_formatTime($v['lastpost_time']);
-            $list[$k]['created_space'] = WindUrlHelper::createUrl('space/index/run', array('uid' => $v['created_userid']), '', 'pw');
+            $list[$k]['created_space'] = WindUrlHelper::createUrl('space/index/run', ['uid' => $v['created_userid']], '', 'pw');
             $list[$k]['created_smallavatar'] = Pw::getAvatar($v['created_userid'], 'small');
             $list[$k]['created_middleavatar'] = Pw::getAvatar($v['created_userid'], 'middle');
             $list[$k]['created_bigavatar'] = Pw::getAvatar($v['created_userid'], 'big');
             $list[$k]['lastpost_smallavatar'] = Pw::getAvatar($v['lastpost_userid'], 'small');
             $list[$k]['lastpost_middleavatar'] = Pw::getAvatar($v['lastpost_userid'], 'middle');
-            $list[$k]['lastpost_space'] = WindUrlHelper::createUrl('space/index/run', array('uid' => $v['lastpost_userid']), '', 'pw');
+            $list[$k]['lastpost_space'] = WindUrlHelper::createUrl('space/index/run', ['uid' => $v['lastpost_userid']], '', 'pw');
 
             $list[$k]['forum_name'] = $this->_filterForumHtml($forums[$v['fid']]['name']);
-            $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid']), '', 'pw');
+            $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $v['fid']], '', 'pw');
             $list[$k]['tType'] = isset($tTypes[$v['topic_type']]['name']) ? $tTypes[$v['topic_type']]['name'] : '';
-            $list[$k]['tType_url'] = isset($tTypes[$v['topic_type']]['id']) ? WindUrlHelper::createUrl('bbs/thread/run', array('fid' => $v['fid'], 'type' => $tTypes[$v['topic_type']]['id']), '', 'pw') : '';
+            $list[$k]['tType_url'] = isset($tTypes[$v['topic_type']]['id']) ? WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $v['fid'], 'type' => $tTypes[$v['topic_type']]['id']], '', 'pw') : '';
             $list[$k]['thumb_attach'] = $attachs[$v['tid']]['path'] ? $attachs[$v['tid']]['path'] : '';
         }
 
@@ -238,10 +238,10 @@ class PwDesignThreadDataService extends PwDesignModelBase
     //TODO
     private function _getAttachs($tids)
     {
-        $attachs = array();
+        $attachs = [];
         $ds = Wekit::load('attach.PwThreadAttach');
         foreach ($tids as $tid) {
-            $_attachs = $ds->getAttachByTid($tid, array(0));
+            $_attachs = $ds->getAttachByTid($tid, [0]);
             foreach ($_attachs as $v) {
                 if ($v['type'] == 'img') {
                     $attachs[$tid] = $v;

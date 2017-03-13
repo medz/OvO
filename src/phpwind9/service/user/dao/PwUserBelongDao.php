@@ -13,7 +13,7 @@
 class PwUserBelongDao extends PwBaseDao
 {
     protected $_table = 'user_belong';
-    protected $_dataStruct = array('uid', 'gid', 'endtime');
+    protected $_dataStruct = ['uid', 'gid', 'endtime'];
 
     /**
      * 获得某个用户的所有拥有的组.
@@ -27,7 +27,7 @@ class PwUserBelongDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `uid` =?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'gid');
+        return $smt->queryAll([$uid], 'gid');
     }
 
     public function getByGid($gid)
@@ -35,7 +35,7 @@ class PwUserBelongDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE gid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($gid), 'uid');
+        return $smt->queryAll([$gid], 'uid');
     }
 
     /**
@@ -65,7 +65,7 @@ class PwUserBelongDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid`=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($uid));
+        return $smt->execute([$uid]);
     }
 
     /**
@@ -96,12 +96,12 @@ class PwUserBelongDao extends PwBaseDao
         if (!$data) {
             return false;
         }
-        $clearData = array();
+        $clearData = [];
         foreach ($data as $gid => $endTime) {
             if (0 == ($gid = intval($gid))) {
                 continue;
             }
-            $clearData[] = array($uid, $gid, $endTime);
+            $clearData[] = [$uid, $gid, $endTime];
         }
 
         return $clearData;

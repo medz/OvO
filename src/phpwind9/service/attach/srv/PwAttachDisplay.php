@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwAttachDisplay
 {
     public $attachs;
-    public $showlist = array();
+    public $showlist = [];
     public $user;
     public $imgWidth;
     public $imgHeight;
@@ -101,7 +101,7 @@ class PwAttachDisplay
 
     public function parseAttachHtml($att)
     {
-        $lang = array(0 => '', 1 => '');
+        $lang = [0 => '', 1 => ''];
         $att['descrip'] = WindSecurity::escapeHTML($att['descrip']);
         $att['name'] = WindSecurity::escapeHTML($att['name']);
         $attachBuyClass = 'J_attach_post_buy';
@@ -141,25 +141,25 @@ class PwAttachDisplay
             $attach['descrip'] && $attr .= ' alt="'.WindSecurity::escapeHTML($attach['descrip']).'"';
             $attr && $img = substr($img, 0, -3).$attr.' />';
 
-            $attach += array(
+            $attach += [
                 'url'     => $url,
                 'img'     => $img,
                 'miniUrl' => Pw::getPath($attach['path'], $attach['ifthumb']),
-            );
+            ];
         } else {
             $atype = 'downattach';
-            $attach += array(
+            $attach += [
                 'cname' => '',
                 'ext'   => strtolower(substr(strrchr($attach['name'], '.'), 1)),
-            );
+            ];
         }
 
-        return array($atype, $attach);
+        return [$atype, $attach];
     }
 
     protected function _getData($tid, $pids)
     {
-        $tmp = array();
+        $tmp = [];
         $attachs = $this->_getAttachService()->getAttachByTid($tid, $pids);
         foreach ($attachs as $key => $value) {
             $tmp[$value['pid']][$key] = $value;
@@ -186,7 +186,7 @@ class PwAttachDisplay
     protected function _compare($width, $height, $maxW, $maxH)
     {
         if (!$width || !$height) {
-            return array();
+            return [];
         }
         if ($maxW > 0 && $width > $maxW) {
             $height = round($height * $maxW / $width);
@@ -197,7 +197,7 @@ class PwAttachDisplay
             $height = $maxH;
         }
 
-        return array($width, $height);
+        return [$width, $height];
     }
 
     protected function _getAttachService()

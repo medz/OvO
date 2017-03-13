@@ -29,11 +29,11 @@ class ManageController extends AdminBaseController
         list($start, $num) = Pw::page2limit($page, $this->perpage);
         $hooks = $this->_hookDs()->fetchList($num, $start, 'name');
         $this->setOutput(
-            array(
+            [
                 'page'    => $page,
                 'perpage' => $this->perpage,
                 'count'   => $count,
-                'hooks'   => $hooks, ));
+                'hooks'   => $hooks, ]);
     }
 
     /**
@@ -54,16 +54,16 @@ class ManageController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($name, $app, $dec, $param, $interface) = $this->getInput(array('name', 'app', 'dec', 'param', 'interface'), 'post');
+        list($name, $app, $dec, $param, $interface) = $this->getInput(['name', 'app', 'dec', 'param', 'interface'], 'post');
         list($appId, $appName) = explode('|', $app);
         $r = $this->_hookDs()->fetchByName($name);
         if ($r) {
-            $this->showError(array('HOOK:hook.exit', array('{{error}}' => $name)));
+            $this->showError(['HOOK:hook.exit', ['{{error}}' => $name]]);
         }
         $dm = new PwHookDm();
         $dm->setAppId($appId);
         $dm->setAppName($appName);
-        $dm->setDocument(implode($this->sep, array($dec, $param, $interface)));
+        $dm->setDocument(implode($this->sep, [$dec, $param, $interface]));
         $dm->setName($name);
         $dm->setCreatedTime(Pw::getTime());
         $r = $this->_hookDs()->add($dm);
@@ -87,7 +87,7 @@ class ManageController extends AdminBaseController
         $this->setOutput($hook, 'hook');
 
         list($dec, $param, $interface) = explode($this->sep, $hook['document']);
-        $this->setOutput(array('dec' => $dec, 'param' => $param, 'interface' => $interface));
+        $this->setOutput(['dec' => $dec, 'param' => $param, 'interface' => $interface]);
     }
 
     /**
@@ -97,12 +97,12 @@ class ManageController extends AdminBaseController
     {
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
-        list($name, $app, $dec, $param, $interface) = $this->getInput(array('name', 'app', 'dec', 'param', 'interface'), 'post');
+        list($name, $app, $dec, $param, $interface) = $this->getInput(['name', 'app', 'dec', 'param', 'interface'], 'post');
         list($appId, $appName) = explode('|', $app);
         $dm = new PwHookDm();
         $dm->setAppId($appId);
         $dm->setAppName($appName);
-        $dm->setDocument(implode($this->sep, array($dec, $param, $interface)));
+        $dm->setDocument(implode($this->sep, [$dec, $param, $interface]));
         $dm->setName($name);
         $dm->setModifiedTime(Pw::getTime());
         $r = $this->_hookDs()->update($dm);
@@ -130,7 +130,7 @@ class ManageController extends AdminBaseController
      */
     public function searchAction()
     {
-        list($name, $app_name) = $this->getInput(array('name', 'app_name'));
+        list($name, $app_name) = $this->getInput(['name', 'app_name']);
 
         $so = new PwHookSo();
         $so->setAppName($app_name)->setName($name);
@@ -139,13 +139,13 @@ class ManageController extends AdminBaseController
         list($start, $num) = Pw::page2limit($page, $this->perpage);
         $hooks = $this->_hookDs()->searchHook($so, $num, $start);
         $this->setOutput(
-            array(
+            [
                 'page'     => $page,
                 'perpage'  => $this->perpage,
                 'name'     => $name,
                 'app_name' => $app_name,
                 'hooks'    => $hooks,
-                'search'   => 1, ));
+                'search'   => 1, ]);
         $this->setTemplate('manage_run');
     }
 
@@ -157,10 +157,10 @@ class ManageController extends AdminBaseController
         $name = $this->getInput('name');
         $hook = $this->_hookDs()->fetchByName($name);
         $injectors = $this->_injectDs()->findByHookName($name);
-        $this->setOutput(array('hook' => $hook, 'injectors' => $injectors));
+        $this->setOutput(['hook' => $hook, 'injectors' => $injectors]);
 
         list($dec, $param, $interface) = explode($this->sep, $hook['document']);
-        $this->setOutput(array('dec' => $dec, 'param' => $param, 'interface' => $interface));
+        $this->setOutput(['dec' => $dec, 'param' => $param, 'interface' => $interface]);
     }
 
     /**

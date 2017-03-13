@@ -15,7 +15,7 @@ class PwLinkDao extends PwBaseDao
 {
     protected $_pk = 'lid';
     protected $_table = 'link';
-    protected $_dataStruct = array('lid', 'vieworder', 'name', 'url', 'descrip', 'logo', 'iflogo', 'ifcheck', 'contact');
+    protected $_dataStruct = ['lid', 'vieworder', 'name', 'url', 'descrip', 'logo', 'iflogo', 'ifcheck', 'contact'];
 
     /**
      * 添加一条链接.
@@ -88,7 +88,7 @@ class PwLinkDao extends PwBaseDao
     public function countLinks($ifcheck)
     {
         $where = '';
-        $param = array();
+        $param = [];
         if ($ifcheck !== '') {
             $where .= ' WHERE `ifcheck`=?';
             $param[] = $ifcheck;
@@ -111,7 +111,7 @@ class PwLinkDao extends PwBaseDao
     public function getLinks($start, $limit, $ifcheck)
     {
         $where = '';
-        $param = array();
+        $param = [];
         if ($ifcheck !== '') {
             $where .= ' WHERE `ifcheck`=?';
             $param[] = $ifcheck;
@@ -135,6 +135,6 @@ class PwLinkDao extends PwBaseDao
         $sql = $this->_bindTable("SELECT * FROM %s WHERE $where ifcheck = 1 ORDER BY `vieworder` ASC ");
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'lid');
+        return $smt->queryAll([], 'lid');
     }
 }

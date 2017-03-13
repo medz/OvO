@@ -13,7 +13,7 @@ class PwException extends WindActionException
      * @param array  $vars
      * @param int    $code
      */
-    public function __construct($message, $vars = array(), $code = 0)
+    public function __construct($message, $vars = [], $code = 0)
     {
         $message = $this->buildMessage($message, $vars);
         $this->setError(new WindErrorMessage($message));
@@ -34,6 +34,6 @@ class PwException extends WindActionException
             $message = 'EXCEPTION:'.$message;
         }
 
-        return array($message, $vars);
+        return [$message, $vars];
     }
 }

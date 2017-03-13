@@ -9,7 +9,7 @@ class App_SearchDao extends PwBaseDao
 {
     protected $_table = 'app_search';
     protected $_pk = 'keywords';
-    protected $_dataStruct = array('keywords', 'search_type', 'num');
+    protected $_dataStruct = ['keywords', 'search_type', 'num'];
 
     /**
      * 获取信息.
@@ -23,7 +23,7 @@ class App_SearchDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `search_type`=? AND `keywords`=? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type, $keywords));
+        return $smt->queryAll([$type, $keywords]);
     }
 
     /**
@@ -49,7 +49,7 @@ class App_SearchDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `keywords`=? AND `search_type`=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($keywords, $type));
+        $result = $smt->update([$keywords, $type]);
     }
 
     /**
@@ -64,7 +64,7 @@ class App_SearchDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE `search_type`=? order by num desc limit 0,?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($type, $num));
+        return $smt->queryAll([$type, $num]);
     }
 
     /**
@@ -79,7 +79,7 @@ class App_SearchDao extends PwBaseDao
     {
         $sql = $this->_bindTable('DELETE FROM %s WHERE `search_type`=?');
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($type));
+        $result = $smt->update([$type]);
     }
 
     /**
@@ -90,7 +90,7 @@ class App_SearchDao extends PwBaseDao
      *
      * @return bool
      */
-    public function update($keywords, $type, $fields, $increaseFields = array(), $bitFields = array())
+    public function update($keywords, $type, $fields, $increaseFields = [], $bitFields = [])
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
@@ -100,7 +100,7 @@ class App_SearchDao extends PwBaseDao
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE %s=? and search_type=?', $this->getTable(), $this->sqlMerge($fields, $increaseFields, $bitFields), $this->_pk);
         $smt = $this->getConnection()->createStatement($sql);
-        $result = $smt->update(array($keywords, $type));
+        $result = $smt->update([$keywords, $type]);
         PwSimpleHook::getInstance($this->_class().'_update')->runDo($id, $fields, $increaseFields);
 
         return $result;

@@ -143,7 +143,7 @@ class PwGenerateStyle
         $manifest['application']['author-name'] = $this->author;
         $manifest['application']['author-email'] = $this->email;
         $parser = new WindXmlParser();
-        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(array('manifest' => $manifest), Wind::getApp()->getResponse()->getCharset()));
+        $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
         WindFile::write($this->baseDir.'/Manifest.xml', $manifest);
 
         return 'THEMES:'.$base.'.'.$this->alias;

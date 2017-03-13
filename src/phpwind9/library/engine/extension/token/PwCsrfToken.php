@@ -17,7 +17,7 @@ class PwCsrfToken extends WindModule implements IWindSecurityToken
      *
      * @var array
      */
-    private $token = array();
+    private $token = [];
 
     /* (non-PHPdoc)
      * @see IWindSecurityToken::saveToken($tokenName)

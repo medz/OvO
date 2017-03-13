@@ -23,7 +23,7 @@ class PwTopicRecycle
     public function fetchRecord($tids)
     {
         if (!$tids || !is_array($tids)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->fetchRecord($tids);
@@ -57,7 +57,7 @@ class PwTopicRecycle
         if (empty($dms) || !is_array($dms)) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($dms as $key => $dm) {
             if ($dm instanceof PwTopicRecycleDm && $dm->beforeAdd() === true) {
                 $data[] = $dm->getData();

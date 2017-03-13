@@ -21,7 +21,7 @@ class PwUserRegisterIp
     public function getRecodeByIp($ip)
     {
         if (!$ip) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->get($ip);

@@ -11,14 +11,14 @@
 class PwFreshIndexDao extends PwBaseDao
 {
     protected $_table = 'attention_fresh_index';
-    protected $_dataStruct = array('fresh_id', 'tid');
+    protected $_dataStruct = ['fresh_id', 'tid'];
 
     public function getByTid($tid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE tid=?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($tid), 'fresh_id');
+        return $smt->queryAll([$tid], 'fresh_id');
     }
 
     public function fetchByTid($tids)

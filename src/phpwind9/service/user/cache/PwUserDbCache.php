@@ -13,23 +13,23 @@ defined('WEKIT_VERSION') || exit('Forbidden');
  */
 class PwUserDbCache extends PwBaseMapDbCache
 {
-    protected $keys = array(
-        'user'     => array('user_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserDao', 'getUserByUid')),
-        'userdata' => array('userdata_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserDataDao', 'getUserByUid')),
-        'userinfo' => array('userinfo_%s', array('uid'), PwCache::USE_DBCACHE, 'user', 0, array('user.dao.PwUserInfoDao', 'getUserByUid')),
-    );
+    protected $keys = [
+        'user'     => ['user_%s', ['uid'], PwCache::USE_DBCACHE, 'user', 0, ['user.dao.PwUserDao', 'getUserByUid']],
+        'userdata' => ['userdata_%s', ['uid'], PwCache::USE_DBCACHE, 'user', 0, ['user.dao.PwUserDataDao', 'getUserByUid']],
+        'userinfo' => ['userinfo_%s', ['uid'], PwCache::USE_DBCACHE, 'user', 0, ['user.dao.PwUserInfoDao', 'getUserByUid']],
+    ];
 
     public function getKeysByUid($uid)
     {
-        $keys = array();
+        $keys = [];
         if ($this->index & PwUser::FETCH_MAIN) {
-            $keys[] = array('user', array($uid));
+            $keys[] = ['user', [$uid]];
         }
         if ($this->index & PwUser::FETCH_DATA) {
-            $keys[] = array('userdata', array($uid));
+            $keys[] = ['userdata', [$uid]];
         }
         if ($this->index & PwUser::FETCH_INFO) {
-            $keys[] = array('userinfo', array($uid));
+            $keys[] = ['userinfo', [$uid]];
         }
 
         return $keys;
@@ -37,7 +37,7 @@ class PwUserDbCache extends PwBaseMapDbCache
 
     public function fetchKeysByUid($uids)
     {
-        $keys = array();
+        $keys = [];
         foreach ($uids as $uid) {
             $keys = array_merge($keys, $this->getKeysByUid($uid));
         }
@@ -48,7 +48,7 @@ class PwUserDbCache extends PwBaseMapDbCache
     public function getUserByUid($uid)
     {
         $data = Wekit::cache()->fetch($this->getKeysByUid($uid));
-        $result = array();
+        $result = [];
         foreach ($data as $key => $value) {
             $result = array_merge($result, $value);
         }
@@ -58,7 +58,7 @@ class PwUserDbCache extends PwBaseMapDbCache
 
     public function fetchUserByUid($uids)
     {
-        $result = array();
+        $result = [];
         $data = Wekit::cache()->fetch($this->fetchKeysByUid($uids));
         foreach ($data as $key => $value) {
             list(, $uid) = explode('_', $key);
@@ -72,7 +72,7 @@ class PwUserDbCache extends PwBaseMapDbCache
         return $result;
     }
 
-    public function editUser($uid, $fields, $increaseFields = array(), $bitFields = array())
+    public function editUser($uid, $fields, $increaseFields = [], $bitFields = [])
     {
         Wekit::cache()->batchDelete($this->getKeysByUid($uid));
 

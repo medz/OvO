@@ -42,7 +42,7 @@ class PwTaskBbsThreadDo extends PwPostDoBase implements PwTaskCompleteInterface
     public function doTask($conditions, $step)
     {
         if (!is_array($step)) {
-            $step = array();
+            $step = [];
         }
         if ($conditions['fid'] != $this->fid) {
             return false;
@@ -56,6 +56,6 @@ class PwTaskBbsThreadDo extends PwPostDoBase implements PwTaskCompleteInterface
             $step['percent'] == '100%' && $isComplete = true;
         }
 
-        return array('isComplete' => $isComplete, 'step' => $step);
+        return ['isComplete' => $isComplete, 'step' => $step];
     }
 }

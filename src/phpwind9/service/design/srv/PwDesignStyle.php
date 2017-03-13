@@ -11,7 +11,7 @@
 class PwDesignStyle
 {
     private $_domId = '';
-    private $_style = array();
+    private $_style = [];
 
     /**
      * 设置HTML DOM ID.
@@ -30,7 +30,7 @@ class PwDesignStyle
      */
     public function setStyle($style)
     {
-        $this->_style = array();
+        $this->_style = [];
         foreach ((array) $style as $k => $v) {
             switch ($k) {
                 case 'font':
@@ -41,7 +41,7 @@ class PwDesignStyle
                         $this->_setBorder($v['linewidth'], $v['style'], $v['color']);
                     } else {
                         foreach ($v as $_k => $_v) {
-                            if (!in_array($_k, array('top', 'left', 'right', 'bottom'))) {
+                            if (!in_array($_k, ['top', 'left', 'right', 'bottom'])) {
                                 continue;
                             }
                             $this->_setBorder($_v['linewidth'], $_v['style'], $_v['color'], $_k);
@@ -79,7 +79,7 @@ class PwDesignStyle
      */
     public function getCss()
     {
-        return array($this->_domId, implode('', $this->_style));
+        return [$this->_domId, implode('', $this->_style)];
     }
 
     /**
@@ -87,14 +87,14 @@ class PwDesignStyle
      *
      * @param array $style
      */
-    public function getLink($style = array())
+    public function getLink($style = [])
     {
-        $this->_style = array();
+        $this->_style = [];
         if ($style['link']) {
             $this->_setFont($style['link']['size'], $style['link']['color']);
         }
 
-        return array($this->_domId.' A', implode('', $this->_style));
+        return [$this->_domId.' A', implode('', $this->_style)];
     }
 
     /**
@@ -106,11 +106,11 @@ class PwDesignStyle
      */
     public function buildTitleStyle($style)
     {
-        return array(
-                'float'      => array('type' => $style['float'], 'margin' => $style['margin']),
-                'font'       => array('size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']),
-                'background' => array('color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']),
-        );
+        return [
+                'float'      => ['type' => $style['float'], 'margin' => $style['margin']],
+                'font'       => ['size' => $style['fontsize'], 'color' => $style['fontcolor'], 'bold' => $style['fontbold'], 'underline' => $style['fontunderline'], 'italic' => $style['fontitalic']],
+                'background' => ['color' => $style['bgcolor'], 'image' => $style['bgimage'], 'position' => $style['bgposition']],
+        ];
     }
 
     private function _setFont($size = 0, $color = '', $bold = 0, $underline = 0, $italic = 0)
@@ -182,7 +182,7 @@ class PwDesignStyle
         if ($color) {
             $style .= 'background-color: '.$color.';';
         }
-        if (in_array($position, array('left', 'right', 'center'))) {
+        if (in_array($position, ['left', 'right', 'center'])) {
             $style .= 'background-position: '.$position.' top;background-repeat:no-repeat;';
         }
         if ($position == 'repeat') {

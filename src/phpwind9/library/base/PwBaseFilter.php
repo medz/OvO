@@ -39,7 +39,7 @@ abstract class PwBaseFilter extends WindActionFilter
     {
         if ($referer && !WindValidator::isUrl($referer)) {
             $_referer = explode('#', $referer, 2);
-            $referer = WindUrlHelper::createUrl($_referer[0], array(),
+            $referer = WindUrlHelper::createUrl($_referer[0], [],
                 isset($_referer[1]) ? $_referer[1] : '');
         }
         $this->errorMessage->addError($referer, 'referer');
@@ -49,7 +49,7 @@ abstract class PwBaseFilter extends WindActionFilter
         $this->errorMessage->sendError();
     }
 
-    protected function forwardAction($action, $args = array(), $isRedirect = false, $immediately = true)
+    protected function forwardAction($action, $args = [], $isRedirect = false, $immediately = true)
     {
         $this->forward->forwardAction($action, $args, $isRedirect, $immediately);
     }

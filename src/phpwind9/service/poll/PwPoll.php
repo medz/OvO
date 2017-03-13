@@ -24,7 +24,7 @@ class PwPoll
     {
         $pollid = (int) $pollid;
         if ($pollid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getPollDao()->getPoll($pollid);
@@ -40,7 +40,7 @@ class PwPoll
     public function fetchPoll($pollids)
     {
         if (empty($pollids) || !is_array($pollids)) {
-            return array();
+            return [];
         }
 
         return $this->_getPollDao()->fetchPoll($pollids);
@@ -53,7 +53,7 @@ class PwPoll
      * @param int   $offset
      * @param array $orderby
      */
-    public function getPollList($limit, $offset, $orderby = array())
+    public function getPollList($limit, $offset, $orderby = [])
     {
         return $this->_getPollDao()->getPollList($limit, $offset, $orderby);
     }
@@ -81,7 +81,7 @@ class PwPoll
      *
      * @return array
      */
-    public function getPollByTime($startTime, $endTime, $limit, $offset, $orderby = array())
+    public function getPollByTime($startTime, $endTime, $limit, $offset, $orderby = [])
     {
         return $this->_getPollDao()->getPollByTime($startTime, $endTime, $limit, $offset, $orderby);
     }
@@ -116,7 +116,7 @@ class PwPoll
     {
         $uid = intval($uid);
         if ($uid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getPollDao()->getPollByUid($uid, $limit, $offset);
@@ -150,7 +150,7 @@ class PwPoll
     public function fetchPollByUid($uids, $limit, $offset)
     {
         if (empty($uids) || !is_array($uids)) {
-            return array();
+            return [];
         }
 
         return $this->_getPollDao()->fetchPollByUid($uids, $limit, $offset);
@@ -168,7 +168,7 @@ class PwPoll
     public function fetchPollByPollid($pollids, $limit, $offset)
     {
         if (empty($pollids) || !is_array($pollids)) {
-            return array();
+            return [];
         }
 
         return $this->_getPollDao()->fetchPollByPollid($pollids, $limit, $offset);

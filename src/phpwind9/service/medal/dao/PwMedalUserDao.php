@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
  class PwMedalUserDao extends PwBaseDao
  {
      protected $_table = 'medal_user';
-     protected $_dataStruct = array('uid', 'medals', 'counts', 'expired_time');
+     protected $_dataStruct = ['uid', 'medals', 'counts', 'expired_time'];
 
      public function getInfo($uid)
      {
          $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getOne(array($uid));
+         return $smt->getOne([$uid]);
      }
 
      public function fetchInfo($uids)
@@ -28,7 +28,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s WHERE uid IN %s', $this->getTable(), $this->sqlImplode($uids));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'uid');
+         return $smt->queryAll([], 'uid');
      }
 
      public function fetchMedalUserOrder($uids, $start, $limit)
@@ -36,7 +36,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s WHERE uid IN %s ORDER BY counts DESC %s', $this->getTable(), $this->sqlImplode($uids), $this->sqlLimit($limit, $start));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'uid');
+         return $smt->queryAll([], 'uid');
      }
 
      public function getTotalOrder($limit)
@@ -44,7 +44,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s  ORDER BY counts DESC %s', $this->getTable(), $this->sqlLimit($limit, 0));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array(), 'uid');
+         return $smt->queryAll([], 'uid');
      }
 
      public function getExpiredMedalUser($expiredTime, $start, $limit)
@@ -52,7 +52,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s WHERE expired_time <= ?  %s', $this->getTable(), $this->sqlLimit($limit, $start));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array($expiredTime));
+         return $smt->queryAll([$expiredTime]);
      }
 
      public function countExpiredMedalUser($expiredTime)
@@ -60,7 +60,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT COUNT(*) FROM %s WHERE expired_time <= ?');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getValue(array($expiredTime));
+         return $smt->getValue([$expiredTime]);
      }
 
      public function countMedalUser()
@@ -68,7 +68,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('SELECT COUNT(*) FROM %s ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->getValue(array());
+         return $smt->getValue([]);
      }
 
      public function getMedalUserList($start, $perpage)
@@ -76,7 +76,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindSql('SELECT * FROM %s %s', $this->getTable(), $this->sqlLimit($limit, $start));
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->queryAll(array());
+         return $smt->queryAll([]);
      }
 
      public function replaceInfo($data)
@@ -98,7 +98,7 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE FROM %s  WHERE uid = ? ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array($uid));
+         return $smt->update([$uid]);
      }
 
      public function deleteMedalUsersByCount()
@@ -106,6 +106,6 @@ Wind::import('SRC:library.base.PwBaseDao');
          $sql = $this->_bindTable('DELETE FROM %s  WHERE counts = 0 ');
          $smt = $this->getConnection()->createStatement($sql);
 
-         return $smt->update(array());
+         return $smt->update([]);
      }
  }

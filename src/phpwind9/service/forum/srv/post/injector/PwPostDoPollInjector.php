@@ -40,10 +40,10 @@ class PwPostDoPollInjector extends PwBaseHookInjector
      */
     public function doadd()
     {
-        $poll = array(
+        $poll = [
             'option' => $this->getInput('option', 'post'),
             'poll'   => $this->getInput('poll', 'post'),
-        );
+        ];
 
         return new PwPostDoPoll($this->bp, 0, $poll);
     }
@@ -55,11 +55,11 @@ class PwPostDoPollInjector extends PwBaseHookInjector
      */
     public function domodify()
     {
-        $poll = array(
+        $poll = [
             'option'    => (array) $this->getInput('option', 'post'),
             'newoption' => (array) $this->getInput('newoption', 'post'),
             'poll'      => $this->getInput('poll', 'post'),
-        );
+        ];
 
         return new PwPostDoPoll($this->bp, $this->bp->action->tid, $poll);
     }

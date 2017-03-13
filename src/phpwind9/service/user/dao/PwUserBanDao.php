@@ -16,7 +16,7 @@ class PwUserBanDao extends PwBaseDao
 {
     protected $_table = 'user_ban';
     protected $_pk = 'id';
-    protected $_dataStruct = array('id', 'uid', 'typeid', 'fid', 'end_time', 'created_time', 'created_userid', 'reason');
+    protected $_dataStruct = ['id', 'uid', 'typeid', 'fid', 'end_time', 'created_time', 'created_userid', 'reason'];
 
     /**
      * 获取用户ID禁止信息.
@@ -30,7 +30,7 @@ class PwUserBanDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid), 'typeid');
+        return $smt->queryAll([$uid], 'typeid');
     }
 
     /**
@@ -46,7 +46,7 @@ class PwUserBanDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND `typeid` & ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $typeid), 'typeid');
+        return $smt->queryAll([$uid, $typeid], 'typeid');
     }
 
     /**
@@ -63,7 +63,7 @@ class PwUserBanDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE uid=? AND `typeid` & ? AND `fid` IN (0, ?)');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($uid, $typeid, $fid), 'typeid');
+        return $smt->queryAll([$uid, $typeid, $fid], 'typeid');
     }
 
     /**
@@ -79,7 +79,7 @@ class PwUserBanDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE uid IN %s AND `typeid` & ?', $this->getTable(), $this->sqlImplode($uids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array($typeid), 'id');
+        return $smt->queryAll([$typeid], 'id');
     }
 
     /**
@@ -120,12 +120,12 @@ class PwUserBanDao extends PwBaseDao
      */
     public function batchAddBanInfo($data)
     {
-        $clear = array();
+        $clear = [];
         foreach ($data as $key => $_item) {
             if (!($_item = $this->_filterStruct($_item))) {
                 continue;
             }
-            $_temp = array();
+            $_temp = [];
             $_temp['uid'] = $_item['uid'];
             $_temp['typeid'] = $_item['typeid'];
             $_temp['fid'] = $_item['fid'];
@@ -167,7 +167,7 @@ class PwUserBanDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s WHERE `uid` = ?');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->execute(array($uid));
+        return $smt->execute([$uid]);
     }
 
     /**
@@ -232,9 +232,9 @@ class PwUserBanDao extends PwBaseDao
     private function _buildCondition($condition)
     {
         if (!$condition) {
-            return array('', array());
+            return ['', []];
         }
-        $where = $params = array();
+        $where = $params = [];
         foreach ($condition as $key => $value) {
             if (!$value && $value !== 0) {
                 continue;
@@ -259,6 +259,6 @@ class PwUserBanDao extends PwBaseDao
             }
         }
 
-        return $where ? array(' WHERE '.implode(' AND ', $where), $params) : array('', array());
+        return $where ? [' WHERE '.implode(' AND ', $where), $params] : ['', []];
     }
 }

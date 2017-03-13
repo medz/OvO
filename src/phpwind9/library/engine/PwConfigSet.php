@@ -14,7 +14,7 @@ defined('WEKIT_VERSION') || exit('Forbidden');
 class PwConfigSet
 {
     protected $namespace = 'site';
-    protected $config = array();
+    protected $config = [];
 
     /**
      * @param string $namespace
@@ -35,7 +35,7 @@ class PwConfigSet
      */
     public function set($name, $value, $descrip = null)
     {
-        $this->config[$name] = array('name' => $name, 'value' => $value, 'descript' => $descrip);
+        $this->config[$name] = ['name' => $name, 'value' => $value, 'descript' => $descrip];
 
         return $this;
     }

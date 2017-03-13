@@ -24,16 +24,16 @@ class WindidUserApi
      */
     public function login($userid, $password, $type = 2, $ifcheck = false, $question = '', $answer = '')
     {
-        $params = array(
+        $params = [
             'userid'   => $userid,
             'password' => $password,
             'type'     => $type,
             'ifcheck'  => $ifcheck,
             'question' => $question,
             'answer'   => $answer,
-        );
+        ];
 
-        return WindidApi::open('user/login', array(), $params);
+        return WindidApi::open('user/login', [], $params);
     }
 
     /**
@@ -45,11 +45,11 @@ class WindidUserApi
      */
     public function synLogin($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
-        return WindidApi::open('user/synLogin', array(), $params);
+        return WindidApi::open('user/synLogin', [], $params);
     }
 
     /**
@@ -62,11 +62,11 @@ class WindidUserApi
      */
     public function synLogout($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
-        return WindidApi::open('user/synLogout', array(), $params);
+        return WindidApi::open('user/synLogout', [], $params);
     }
 
     /**
@@ -80,14 +80,14 @@ class WindidUserApi
      */
     public function checkUserInput($input, $type, $username = '', $uid = 0)
     {
-        $params = array(
+        $params = [
             'input'    => $input,
             'type'     => $type,
             'username' => $username,
             'uid'      => $uid,
-        );
+        ];
 
-        return WindidApi::open('user/checkInput', array(), $params);
+        return WindidApi::open('user/checkInput', [], $params);
     }
 
     /**
@@ -101,13 +101,13 @@ class WindidUserApi
      */
     public function checkQuestion($uid, $question, $answer)
     {
-        $params = array(
+        $params = [
             'uid'      => $uid,
             'question' => $question,
             'answer'   => $answer,
-        );
+        ];
 
-        return WindidApi::open('user/checkQuestion', array(), $params);
+        return WindidApi::open('user/checkQuestion', [], $params);
     }
 
     /**
@@ -121,11 +121,11 @@ class WindidUserApi
      */
     public function getUser($userid, $type = 1, $fetchMode = 1)
     {
-        $params = array(
+        $params = [
             'userid' => $userid,
             'type'   => $type,
             'fetch'  => $fetchMode,
-        );
+        ];
 
         return WindidApi::open('user/get', $params);
     }
@@ -141,11 +141,11 @@ class WindidUserApi
      */
     public function fecthUser($userids, $type = 1, $fetchMode = 1)
     {
-        $params = array(
+        $params = [
             'userids' => $userids,
             'type'    => $type,
             'fetch'   => $fetchMode,
-        );
+        ];
 
         return WindidApi::open('user/fecth', $params);
     }
@@ -164,16 +164,16 @@ class WindidUserApi
      */
     public function register($username, $email, $password, $question = '', $answer = '', $regip = '')
     {
-        $params = array(
+        $params = [
             'username' => $username,
             'email'    => $email,
             'password' => $password,
             'question' => $question,
             'answer'   => $answer,
             'regip'    => $regip,
-        );
+        ];
 
-        return WindidApi::open('user/addUser', array(), $params);
+        return WindidApi::open('user/addUser', [], $params);
     }
 
     /**
@@ -194,7 +194,7 @@ class WindidUserApi
         $params['password'] = $dm->password;
         unset($params['salt'], $params['safecv']);
 
-        return WindidApi::open('user/addUser', array(), $params);
+        return WindidApi::open('user/addUser', [], $params);
     }
 
     /**
@@ -238,7 +238,7 @@ class WindidUserApi
         }
         unset($params['salt'], $params['safecv']);
 
-        return WindidApi::open('user/editUser', array(), $params);
+        return WindidApi::open('user/editUser', [], $params);
     }
 
     /**
@@ -248,11 +248,11 @@ class WindidUserApi
      */
     public function deleteUser($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
-        return WindidApi::open('user/delete', array(), $params);
+        return WindidApi::open('user/delete', [], $params);
     }
 
     /**
@@ -262,11 +262,11 @@ class WindidUserApi
      */
     public function batchDeleteUser($uids)
     {
-        $params = array(
+        $params = [
             'uids' => $uids,
-        );
+        ];
 
-        return WindidApi::open('user/batchDelete', array(), $params);
+        return WindidApi::open('user/batchDelete', [], $params);
     }
 
     /**
@@ -276,9 +276,9 @@ class WindidUserApi
      */
     public function getUserCredit($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
         return WindidApi::open('user/getCredit', $params);
     }
@@ -292,9 +292,9 @@ class WindidUserApi
      */
     public function fecthUserCredit($uids)
     {
-        $params = array(
+        $params = [
             'uids' => $uids,
-        );
+        ];
 
         return WindidApi::open('user/fecthCredit', $params);
     }
@@ -308,23 +308,23 @@ class WindidUserApi
      */
     public function editCredit($uid, $cType, $value, $isset = false)
     {
-        $params = array(
+        $params = [
             'uid'   => $uid,
             'cType' => $cType,
             'value' => $value,
             'isset' => $isset,
-        );
+        ];
 
-        return WindidApi::open('user/editCredit', array(), $params);
+        return WindidApi::open('user/editCredit', [], $params);
     }
 
     public function editDmCredit(WindidCreditDm $dm)
     {
-        $params = array(
+        $params = [
             'uid' => $dm->uid,
-            'set' => array(),
-            'add' => array(),
-        );
+            'set' => [],
+            'add' => [],
+        ];
         $data = $dm->getData();
         $increase = $dm->getIncreaseData();
         if ($data) {
@@ -338,7 +338,7 @@ class WindidUserApi
             }
         }
 
-        return WindidApi::open('user/editDmCredit', array(), $params);
+        return WindidApi::open('user/editDmCredit', [], $params);
     }
 
     /**
@@ -348,11 +348,11 @@ class WindidUserApi
      */
     public function clearCredit($num)
     {
-        $params = array(
+        $params = [
             'num' => $num,
-        );
+        ];
 
-        return WindidApi::open('user/clearCredit', array(), $params);
+        return WindidApi::open('user/clearCredit', [], $params);
     }
 
     /**
@@ -364,18 +364,18 @@ class WindidUserApi
      */
     public function getBlack($uid)
     {
-        $params = array(
+        $params = [
             'uid' => $uid,
-        );
+        ];
 
         return WindidApi::open('user/getBlack', $params);
     }
 
     public function fetchBlack($uids)
     {
-        $params = array(
+        $params = [
             'uids' => $uids,
-        );
+        ];
 
         return WindidApi::open('user/fetchBlack', $params);
     }
@@ -388,22 +388,22 @@ class WindidUserApi
      */
     public function addBlack($uid, $blackUid)
     {
-        $params = array(
+        $params = [
             'uid'      => $uid,
             'blackUid' => $blackUid,
-        );
+        ];
 
-        return WindidApi::open('user/addBlack', array(), $params);
+        return WindidApi::open('user/addBlack', [], $params);
     }
 
     public function replaceBlack($uid, $blackList)
     {
-        $params = array(
+        $params = [
             'uid'       => $uid,
             'blackList' => $blackList,
-        );
+        ];
 
-        return WindidApi::open('user/replaceBlack', array(), $params);
+        return WindidApi::open('user/replaceBlack', [], $params);
     }
 
     /**
@@ -414,11 +414,11 @@ class WindidUserApi
      */
     public function delBlack($uid, $blackUid = '')
     {
-        $params = array(
+        $params = [
             'uid'      => $uid,
             'blackUid' => $blackUid,
-        );
+        ];
 
-        return WindidApi::open('user/delBlack', array(), $params);
+        return WindidApi::open('user/delBlack', [], $params);
     }
 }

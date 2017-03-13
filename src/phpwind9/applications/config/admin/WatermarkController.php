@@ -52,7 +52,7 @@ class WatermarkController extends AdminBaseController
      */
     public function viewAction()
     {
-        $config = array('mark.limitwidth' => abs(intval($this->getInput('markLimitwidth', 'post'))),
+        $config = ['mark.limitwidth'      => abs(intval($this->getInput('markLimitwidth', 'post'))),
             'mark.limitheight'            => abs(intval($this->getInput('markLimitheight', 'post'))),
             'mark.position'               => $this->getInput('markPosition', 'post'),
             'mark.gif'                    => $this->getInput('markGif', 'post'),
@@ -65,7 +65,7 @@ class WatermarkController extends AdminBaseController
             'mark.file'                   => $this->getInput('markFile', 'post'),
             'mark.transparency'           => abs(intval($this->getInput('markTransparency', 'post'))),
             'mark.quality'                => abs(intval($this->getInput('markQuality', 'post'))),
-        );
+        ];
 
         $image = new PwImage(Wind::getRealDir('REP:demo', false).'/demo.jpg');
         $watermark = new PwImageWatermark($image);
@@ -97,7 +97,7 @@ class WatermarkController extends AdminBaseController
         $config = Wekit::C()->getValues('attachment');
         $this->setOutput($config, 'config');
         //扩展：key => title
-        $watermarkExt = array('bbs' => '论坛图片上传');
+        $watermarkExt = ['bbs' => '论坛图片上传'];
         $watermarkExt = PwSimpleHook::getInstance('attachment_watermark')->runWithFilters($watermarkExt);
         $this->setOutput($watermarkExt, 'watermarkExt');
     }
@@ -110,7 +110,7 @@ class WatermarkController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $ext = $this->getInput('ext', 'post');
-        $extConfig = array();
+        $extConfig = [];
         foreach ($ext as $key => $value) {
             if ($value == 1) {
                 $extConfig[] = $key;

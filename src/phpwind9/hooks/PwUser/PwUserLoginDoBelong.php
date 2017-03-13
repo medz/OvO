@@ -21,7 +21,7 @@ class PwUserLoginDoBelong extends PwUserLoginDoBase
             /* @var $_userBelong PwUserBelong */
             $_userBelong = Wekit::load('user.PwUserBelong');
             $belongs = $_userBelong->getUserBelongs($userBo->uid);
-            $_groups = array();
+            $_groups = [];
             $gid = 0;
             foreach ($belongs as $_gid => $_item) {
                 $_groups[$_gid] = $_item['endtime'];

@@ -15,7 +15,7 @@ class PwFetchPollByOrder implements iPwDataSource
 {
     public $limit = 0;
     public $offset = 0;
-    public $orderby = array();
+    public $orderby = [];
 
     public function __construct($limit, $offset, $orderby)
     {

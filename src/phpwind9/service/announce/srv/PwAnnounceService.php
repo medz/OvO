@@ -22,9 +22,9 @@ class PwAnnounceService
     public function formatAnnouncesUsername($announceInfos)
     {
         if (!$announceInfos || !is_array($announceInfos)) {
-            return array();
+            return [];
         }
-        $uids = $result = array();
+        $uids = $result = [];
         foreach ($announceInfos as $value) {
             $uids[] = $value['created_userid'];
         }
@@ -45,7 +45,7 @@ class PwAnnounceService
      */
     public function getAnnounceForBbsScroll()
     {
-        $announces = array();
+        $announces = [];
         $announceInfos = $this->_getPwAnnounceDs()->getAnnounceByTimeOrderByVieworder(Pw::str2time(Pw::time2str(Pw::getTime(), 'Y-m-d')), 9, 0);
         foreach ($announceInfos as $value) {
             $announces[$value['aid']] = $value;

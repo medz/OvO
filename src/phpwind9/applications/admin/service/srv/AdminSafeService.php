@@ -17,7 +17,7 @@ class AdminSafeService
      */
     public function setAllowIps($ips)
     {
-        $ips = str_replace(array("\r\n", "\r", "\n", ';'), ',', $ips);
+        $ips = str_replace(["\r\n", "\r", "\n", ';'], ',', $ips);
         $ips = trim($ips, ' ,');
         $result = $this->_loadAdminConfig()->setConfig('admin', 'ip.allow', $ips);
         if (!$result) {
@@ -37,7 +37,7 @@ class AdminSafeService
         $ips = $this->_loadAdminConfig()->getConfigByName('admin', 'ip.allow');
         $ips = isset($ips['value']) ? $ips['value'] : '';
 
-        return empty($ips) ? array() : explode(',', $ips);
+        return empty($ips) ? [] : explode(',', $ips);
     }
 
     /**

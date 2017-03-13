@@ -16,7 +16,7 @@ class CardController extends PwBaseController
      */
     public function run()
     {
-        list($uid, $username) = $this->getInput(array('uid', 'username'));
+        list($uid, $username) = $this->getInput(['uid', 'username']);
         if ($uid) {
         } elseif ($username) {
             $info = Wekit::load('user.PwUser')->getUserByName($username);
@@ -26,7 +26,7 @@ class CardController extends PwBaseController
         }
         $user = new PwUserBo($uid, true);
 
-        $medals = array();
+        $medals = [];
         if ($uid) {
             /* @var $service PwAttention */
             $service = Wekit::load('attention.PwAttention');

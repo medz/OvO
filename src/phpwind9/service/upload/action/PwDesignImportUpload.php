@@ -17,7 +17,7 @@ class PwDesignImportUpload extends PwUploadAction
 {
     public function __construct()
     {
-        $this->ftype = array('zip' => 2000, 'txt' => 2000);
+        $this->ftype = ['zip' => 2000, 'txt' => 2000];
         $this->isLocal = true;
     }
 
@@ -73,7 +73,7 @@ class PwDesignImportUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -95,14 +95,14 @@ class PwDesignImportUpload extends PwUploadAction
     public function update($uploaddb)
     {
         foreach ($uploaddb as $key => $value) {
-            $this->attachs = array(
+            $this->attachs = [
                 'name'     => $value['name'],
                 'type'     => $value['type'],
                 'path'     => $this->dir,
                 'filename' => $this->filename,
                 'size'     => $value['size'],
                 'ext'      => $value['ext'],
-            );
+            ];
         }
 
         return true;

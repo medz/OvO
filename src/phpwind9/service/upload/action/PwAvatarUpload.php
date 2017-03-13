@@ -19,14 +19,14 @@ class PwAvatarUpload extends PwUploadAction
 
     public $user;
     public $udir;
-    private $mime = array();
+    private $mime = [];
 
     public function __construct(PwUserBo $user)
     {
-        $this->ftype = array('jpg' => 2000, 'png' => 2000, 'jpeg' => 2000);
+        $this->ftype = ['jpg' => 2000, 'png' => 2000, 'jpeg' => 2000];
         $this->user = $user;
         $this->udir = Pw::getUserDir($this->user->uid);
-        $this->mime = array('image/jpg', 'image/jpeg', 'image/png', 'image/gif');
+        $this->mime = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
     }
 
     /**
@@ -78,11 +78,11 @@ class PwAvatarUpload extends PwUploadAction
      */
     public function getThumbInfo($filename, $dir)
     {
-        return array(
-            array($this->user->uid.'.jpg', $dir, 200, 200, 2),
-            array($this->user->uid.'_middle.jpg', $dir, 120, 120, 0),
-            array($this->user->uid.'_small.jpg', $dir, 50, 50, 0),
-        );
+        return [
+            [$this->user->uid.'.jpg', $dir, 200, 200, 2],
+            [$this->user->uid.'_middle.jpg', $dir, 120, 120, 0],
+            [$this->user->uid.'_small.jpg', $dir, 50, 50, 0],
+        ];
     }
 
     /**
@@ -112,7 +112,7 @@ class PwAvatarUpload extends PwUploadAction
         $array = current($this->attachs);
         $path = Wekit::getGlobal('url', 'attach').'/'.$array['path'];
         //list($path) = geturl($array['attachurl'], 'lf', $array['ifthumb']&1);
-        return array('aid' => $array['aid'], 'path' => $path);
+        return ['aid' => $array['aid'], 'path' => $path];
     }
 
     protected function _getService()

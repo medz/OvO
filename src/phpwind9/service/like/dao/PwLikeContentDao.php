@@ -13,14 +13,14 @@ Wind::import('SRC:library.base.PwBaseDao');
 class PwLikeContentDao extends PwBaseDao
 {
     protected $_table = 'like_content';
-    protected $_dataStruct = array('likeid', 'typeid', 'fromid', 'isspecial', 'users', 'reply_pid');
+    protected $_dataStruct = ['likeid', 'typeid', 'fromid', 'isspecial', 'users', 'reply_pid'];
 
     public function getInfo($likeid)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE likeid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($likeid));
+        return $smt->getOne([$likeid]);
     }
 
     public function fetchInfo($likeids)
@@ -28,7 +28,7 @@ class PwLikeContentDao extends PwBaseDao
         $sql = $this->_bindSql('SELECT * FROM %s WHERE likeid IN %s', $this->getTable(), $this->sqlImplode($likeids));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->queryAll(array(), 'likeid');
+        return $smt->queryAll([], 'likeid');
     }
 
     public function getInfoByTypeidFromid($typeid, $fromid)
@@ -36,7 +36,7 @@ class PwLikeContentDao extends PwBaseDao
         $sql = $this->_bindTable('SELECT * FROM %s WHERE typeid = ? AND fromid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($typeid, $fromid));
+        return $smt->getOne([$typeid, $fromid]);
     }
 
     public function addInfo($data)
@@ -58,7 +58,7 @@ class PwLikeContentDao extends PwBaseDao
         $sql = $this->_bindSql('UPDATE %s SET %s  WHERE likeid = ? ', $this->getTable(), $this->sqlSingle($data));
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($likeid));
+        return $smt->update([$likeid]);
     }
 
     public function deleteInfo($likeid)
@@ -66,6 +66,6 @@ class PwLikeContentDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE likeid = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($likeid));
+        return $smt->update([$likeid]);
     }
 }

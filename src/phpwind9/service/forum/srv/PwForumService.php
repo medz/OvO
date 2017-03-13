@@ -37,7 +37,7 @@ class PwForumService
     public function getAllowVisitForum(PwUserBo $user, $forums = null)
     {
         $forums === null && $forums = $this->getForumList();
-        $fids = array();
+        $fids = [];
         foreach ($forums as $key => $value) {
             if (!$value['allow_visit'] || $user->inGroup(explode(',', $value['allow_visit']))) {
                 $fids[] = $value['fid'];
@@ -59,7 +59,7 @@ class PwForumService
     public function getForbidVisitForum(PwUserBo $user, $forums = null, $includeHide = false)
     {
         $forums === null && $forums = $this->getForumList();
-        $fids = array();
+        $fids = [];
         foreach ($forums as $key => $value) {
             if ($value['allow_visit'] && !$user->inGroup(explode(',', $value['allow_visit']))) {
                 $fids[] = $value['fid'];
@@ -107,7 +107,7 @@ class PwForumService
      */
     public function getCommonForumList($fetchmode = PwForum::FETCH_MAIN)
     {
-        $forumdb = array(0 => array());
+        $forumdb = [0 => []];
         $forumList = $this->_getForum()->getCommonForumList($fetchmode);
         foreach ($forumList as $forums) {
             if (!$forums['isshow']) {
@@ -134,10 +134,10 @@ class PwForumService
     public function getForumsByLevel($parentid, $map)
     {
         if (!isset($map[$parentid])) {
-            return array();
+            return [];
         }
         $length = count($map[$parentid]);
-        $array = array();
+        $array = [];
         foreach ($map[$parentid] as $key => $value) {
             if ($key == $length - 1) {
                 $value['isEnd'] = 1;
@@ -157,12 +157,12 @@ class PwForumService
      *
      * @return array
      */
-    public function findOptionInMap($parentid, $map, $lang = array())
+    public function findOptionInMap($parentid, $map, $lang = [])
     {
         if (!isset($map[$parentid])) {
-            return array();
+            return [];
         }
-        $result = array();
+        $result = [];
         foreach ($map[$parentid] as $key => $value) {
             $result[$value['fid']] = $lang[$value['type']].$value['name'];
             $result += $this->findOptionInMap($value['fid'], $map, $lang);
@@ -178,17 +178,17 @@ class PwForumService
      *
      * @return string option的html
      */
-    public function getForumOption($selected = array())
+    public function getForumOption($selected = [])
     {
-        is_array($selected) || $selected = array($selected);
+        is_array($selected) || $selected = [$selected];
         $map = $this->getForumMap();
         $option_html = '';
-        $option_arr = $this->findOptionInMap(0, $map, array(
+        $option_arr = $this->findOptionInMap(0, $map, [
             'category' => '&gt;&gt; ',
             'forum'    => ' &nbsp;|- ',
             'sub'      => ' &nbsp; &nbsp;|-  ',
             'sub2'     => '&nbsp;&nbsp; &nbsp; &nbsp;|-  ',
-        ));
+        ]);
         foreach ($option_arr as $key => $value) {
             $option_html .= '<option value="'.$key.'"'.(in_array($key, $selected) ? ' selected' : '').'>'.strip_tags($value).'</option>';
         }
@@ -206,9 +206,9 @@ class PwForumService
     public function getParentFids($fid)
     {
         $forums = $this->getForumList();
-        $upfids = array();
+        $upfids = [];
         $fid = $forums[$fid]['parentid'];
-        while (in_array($forums[$fid]['type'], array('sub2', 'sub', 'forum'))) {
+        while (in_array($forums[$fid]['type'], ['sub2', 'sub', 'forum'])) {
             $upfids[] = $fid;
             $fid = $forums[$fid]['parentid'];
         }
@@ -244,7 +244,7 @@ class PwForumService
     public function getJoinForum($uid)
     {
         if ($result = Wekit::load('forum.PwForumUser')->getFroumByUid($uid)) {
-            $array = array();
+            $array = [];
             $tmp = Wekit::load('forum.PwForum')->fetchForum(array_keys($result));
             foreach ($tmp as $key => $value) {
                 $array[$value['fid']] = $value['name'];
@@ -253,7 +253,7 @@ class PwForumService
             return $array;
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -287,7 +287,7 @@ class PwForumService
      * @param int   $tpost    今日发帖更新数
      * @param int   $lastinfo
      */
-    public function updateStatistics($forum, $topic, $replies, $tpost = 0, $lastinfo = array())
+    public function updateStatistics($forum, $topic, $replies, $tpost = 0, $lastinfo = [])
     {
         if (!$forum instanceof PwForumBo) {
             $forum = new PwForumBo($forum);

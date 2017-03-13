@@ -15,8 +15,8 @@ class PwDesignExportZip
     protected $folder = '';
 
     private $_tplExt = '.htm';
-    private $_files = array();
-    private $_moduleConf = array();
+    private $_files = [];
+    private $_moduleConf = [];
 
     public function __construct($pageBo)
     {
@@ -54,7 +54,7 @@ class PwDesignExportZip
                 $file['data'] = $this->xmlFormat($config, $charset);
             } else {
                 $ext = strtolower(substr(strrchr($file['filename'], '.'), 1));
-                if (in_array($ext, array('css', 'js', 'htm'))) {
+                if (in_array($ext, ['css', 'js', 'htm'])) {
                     $file['data'] = WindConvert::convert($file['data'], $charset, $fromCharset);
                 }
             }
@@ -106,7 +106,7 @@ class PwDesignExportZip
                 $_html .= $bo->getTemplate();
                 $_html .= '</pw-list>';
                 $section = str_replace($matches[0][$k], $_html, $section);
-                $this->_moduleConf[$k] = array(
+                $this->_moduleConf[$k] = [
                     'itemid'   => $k,
                     'name'     => $module['module_name'],
                     'model'    => $bo->getModel(),
@@ -114,7 +114,7 @@ class PwDesignExportZip
                     'titlenum' => strval($property['titlenum']),
                     'desnum'   => strval($property['desnum']),
                     'timefmt'  => $property['timefmt'],
-                    'limit'    => strval($property['limit']), );
+                    'limit'    => strval($property['limit']), ];
             }
         }
 
@@ -181,10 +181,10 @@ class PwDesignExportZip
     protected function read($dir)
     {
         if (!is_dir($dir)) {
-            return array();
+            return [];
         }
         if (!$handle = @opendir($dir)) {
-            return array();
+            return [];
         }
         while (false !== ($file = @readdir($handle))) {
             if ('.' === $file || '..' === $file) {
@@ -200,7 +200,7 @@ class PwDesignExportZip
                     $data .= fgets($_handle, 4096);
                 }
                 fclose($_handle);
-                $this->_files[] = array('filename' => $fileName, 'data' => $data);
+                $this->_files[] = ['filename' => $fileName, 'data' => $data];
             } elseif (is_dir($fileName.'/')) {
                 $this->read($fileName.'/');
             }

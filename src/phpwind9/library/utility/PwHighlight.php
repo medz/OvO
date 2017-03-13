@@ -68,14 +68,14 @@ class PwHighlight
      */
     public function parseHighlight($highlight)
     {
-        $value = array();
+        $value = [];
         if (preg_match('/^(#[0-9a-f]{3}([0-9a-f]{3})?)?~(1?)~(1?)~(1?)$/i', $highlight, $m)) {
-            $value = array(
+            $value = [
                 'color'     => $m[1],
                 'bold'      => $m[3],
                 'italic'    => $m[4],
                 'underline' => $m[5],
-            );
+            ];
         }
 
         return $value;

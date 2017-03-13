@@ -11,17 +11,17 @@ class WindidAvatarApi
 {
     public function getAvatarUrl()
     {
-        return WindidApi::open('avatar/getAvatarUrl', array());
+        return WindidApi::open('avatar/getAvatarUrl', []);
     }
 
     public function getStorages()
     {
-        return WindidApi::open('avatar/getStorages', array());
+        return WindidApi::open('avatar/getStorages', []);
     }
 
     public function setStorages($storage)
     {
-        return WindidApi::open('avatar/setStorages', array(), array('storage' => $storage));
+        return WindidApi::open('avatar/setStorages', [], ['storage' => $storage]);
     }
 
     /**
@@ -47,12 +47,12 @@ class WindidAvatarApi
      */
     public function defaultAvatar($uid, $type = 'face')
     {
-        $params = array(
+        $params = [
             'uid'  => $uid,
             'type' => $type,
-        );
+        ];
 
-        return WindidApi::open('avatar/default', array(), $params);
+        return WindidApi::open('avatar/default', [], $params);
     }
 
     /**
@@ -71,21 +71,21 @@ class WindidAvatarApi
     public function doAvatar($uid, $file = '')
     {
         $time = Pw::getTime();
-        $query = array(
+        $query = [
             'm'         => 'api',
             'c'         => 'avatar',
             'a'         => 'doavatar',
-            'windidkey' => WindidUtility::appKey(WINDID_CLIENT_ID, $time, WINDID_CLIENT_KEY, array('uid' => $uid, 'm' => 'api', 'c' => 'avatar', 'a' => 'doavatar'), array()),
+            'windidkey' => WindidUtility::appKey(WINDID_CLIENT_ID, $time, WINDID_CLIENT_KEY, ['uid' => $uid, 'm' => 'api', 'c' => 'avatar', 'a' => 'doavatar'], []),
             'clientid'  => WINDID_CLIENT_ID,
             'time'      => $time,
             'uid'       => $uid,
-        );
+        ];
         $url = WINDID_SERVER_URL.'/index.php?'.http_build_query($query);
 
         $client = new \Guzzle\Http\Client();
-        $request = $client->post($url, null, array(
+        $request = $client->post($url, null, [
             'FileData' => '@'.$file,
-        ));
+        ]);
         $response = $request->send();
         $result = $response->getBody(true);
 

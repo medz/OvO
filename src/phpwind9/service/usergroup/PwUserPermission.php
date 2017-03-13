@@ -42,11 +42,11 @@ class PwUserPermission
      *
      * @return array
      */
-    public function getPermissions($gid, $keys = array())
+    public function getPermissions($gid, $keys = [])
     {
         $gid = intval($gid);
         if (!is_array($keys) || !$keys || $gid < 1) {
-            return array();
+            return [];
         }
 
         return $this->_getGroupPermissionDao()->getPermissions($gid, $keys);
@@ -75,7 +75,7 @@ class PwUserPermission
     public function getPermissionByRkeyAndGids($rkey, $gids)
     {
         if (empty($gids) || !is_array($gids)) {
-            return array();
+            return [];
         }
 
         return $this->_getGroupPermissionDao()->getPermissionByRkeyAndGids($rkey, $gids);
@@ -88,10 +88,10 @@ class PwUserPermission
      *
      * @return array
      */
-    public function fetchPermissionByRkey($rkeys = array())
+    public function fetchPermissionByRkey($rkeys = [])
     {
         if (!is_array($rkeys) || !$rkeys) {
-            return array();
+            return [];
         }
 
         return $this->_getGroupPermissionDao()->fetchPermissionByRkey($rkeys);
@@ -107,7 +107,7 @@ class PwUserPermission
     public function fetchPermissionByGid($gids)
     {
         if (!is_array($gids) || !$gids) {
-            return array();
+            return [];
         }
 
         return $this->_getGroupPermissionDao()->fetchPermissionByGid($gids);

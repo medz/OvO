@@ -11,14 +11,14 @@
 class PwOnlineStatisticsDao extends PwBaseDao
 {
     protected $_table = 'online_statistics';
-    protected $_dataStruct = array('signkey', 'number', 'created_time');
+    protected $_dataStruct = ['signkey', 'number', 'created_time'];
 
     public function getInfo($key)
     {
         $sql = $this->_bindTable('SELECT * FROM %s WHERE signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->getOne(array($key));
+        return $smt->getOne([$key]);
     }
 
     public function addInfo($data)
@@ -36,6 +36,6 @@ class PwOnlineStatisticsDao extends PwBaseDao
         $sql = $this->_bindTable('DELETE FROM %s  WHERE signkey = ? ');
         $smt = $this->getConnection()->createStatement($sql);
 
-        return $smt->update(array($key));
+        return $smt->update([$key]);
     }
 }

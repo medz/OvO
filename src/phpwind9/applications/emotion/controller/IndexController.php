@@ -14,14 +14,14 @@ class IndexController extends PwBaseController
 {
     public function run()
     {
-        $array = array();
+        $array = [];
         $url = Wekit::getGlobal('url', 'res').'/images/emotion/';
         $type = $this->getInput('type', 'get');
         if (empty($type)) {
             $type = 'bbs';
         }
         $catList = $this->_getCategoryDs()->getCategoryList($type, 1);
-        !is_array($catList) && $catList = array();
+        !is_array($catList) && $catList = [];
         $categoryIds = array_keys($catList);
         $list = $this->_getEmotionDs()->fetchEmotionByCatid($categoryIds);
         foreach ($list as $emotion) {

@@ -27,7 +27,7 @@ class PwDebugApplication
     {
         $dev = Wekit::C('site', 'debug');
 
-        return in_array($dev, array('520', '1314'));
+        return in_array($dev, ['520', '1314']);
     }
 
     public function inDevMode2()
@@ -50,7 +50,7 @@ class PwDebugApplication
             return;
         }
         $logs = Wekit::cache()->get('app_debug');
-        $logs || $logs = array();
+        $logs || $logs = [];
         foreach ($manifests as $alias => $manifest) {
             $this->_copyRes($alias, $manifest);
             if (!isset($logs[$alias]) || md5_file($manifest) != $logs[$alias] || $force) {
@@ -89,7 +89,7 @@ class PwDebugApplication
         $this->_loadPwHooks()->delByAppId($this->app_id);
         $this->_loadPwHookInject()->deleteByAppId($alias);
         $hooks = $this->manifest->getHooks();
-        $log = array();
+        $log = [];
         if ($hooks) {
             foreach ($hooks as $key => $hook) {
                 $hook['app_id'] = $this->app_id;
@@ -97,28 +97,28 @@ class PwDebugApplication
                 $hooks[$key] = $hook;
             }
             $this->_loadPwHooks()->batchAdd($hooks);
-            $log[] = array(
+            $log[] = [
                 'app_id'        => $this->app_id,
                 'log_type'      => 'hook',
                 'data'          => array_keys($hooks),
                 'created_time'  => WEKIT_TIMESTAMP,
-                'modified_time' => WEKIT_TIMESTAMP, );
+                'modified_time' => WEKIT_TIMESTAMP, ];
         }
         $inject = $this->manifest->getInjectServices();
         if ($inject) {
-            $inject_ids = array();
+            $inject_ids = [];
             foreach ($inject as $key => &$value) {
                 $value['app_id'] = $alias;
                 $value['app_name'] = $this->app['app_name'];
             }
             $this->_loadPwHookInject()->batchAdd($inject);
             $injects = $this->_loadPwHookInject()->findByAppId($alias);
-            $log[] = array(
+            $log[] = [
                 'app_id'        => $this->app_id,
                 'log_type'      => 'inject',
                 'data'          => array_keys($injects),
                 'created_time'  => WEKIT_TIMESTAMP,
-                'modified_time' => WEKIT_TIMESTAMP, );
+                'modified_time' => WEKIT_TIMESTAMP, ];
         }
 
         $log && $this->_loadInstallLog()->batchAdd($log);
@@ -138,7 +138,7 @@ class PwDebugApplication
         $this->app_id = $this->app['app_id'];
         $this->manifest = new PwManifest($manifest);
         $man_array = $this->manifest->getManifest();
-        $log = array();
+        $log = [];
         if ($man_array['res']) {
             $source = dirname($manifest).DIRECTORY_SEPARATOR.str_replace('.',
                 DIRECTORY_SEPARATOR, $man_array['res']);
@@ -148,7 +148,7 @@ class PwDebugApplication
             }
             PwApplicationHelper::copyRecursive($source, $targetPath);
             $app_log = $this->_loadInstallLog()->findByAppId($this->app_id);
-            $packs_log = array();
+            $packs_log = [];
             foreach ($app_log as $v) {
                 if ($v['log_type'] == 'packs') {
                     $packs_log = $v['data'];
@@ -157,12 +157,12 @@ class PwDebugApplication
             if (!in_array($targetPath, $packs_log)) {
                 $packs_log[] = $targetPath;
             }
-            $log[] = array(
+            $log[] = [
                 'app_id'        => $this->app_id,
                 'log_type'      => 'packs',
                 'data'          => $packs_log,
                 'created_time'  => WEKIT_TIMESTAMP,
-                'modified_time' => WEKIT_TIMESTAMP, );
+                'modified_time' => WEKIT_TIMESTAMP, ];
         }
         $log && $this->_loadInstallLog()->batchAdd($log);
     }
@@ -176,7 +176,7 @@ class PwDebugApplication
     {
         $ext = Wind::getRealDir('EXT:', true);
         $dirs = WindFolder::read($ext, WindFolder::READ_DIR);
-        $manifests = array();
+        $manifests = [];
         $result = array_keys($this->_appDs()->fetchByAlias($dirs, 'alias'));
         /*
          * $to_install = array_diff($dirs, $result); foreach ($to_install as
@@ -253,7 +253,7 @@ class PwDebugApplication
             }
             $manifest = $install->getManifest()->getManifest();
             if (isset($manifest['install']) && $manifest['install']) {
-                $_tmp = array('class' => $manifest['install']);
+                $_tmp = ['class' => $manifest['install']];
                 $toinstall = Wekit::load($manifest['install']);
                 if ($toinstall instanceof iPwInstall) {
                     $r = $toinstall->install($install);
@@ -273,23 +273,23 @@ class PwDebugApplication
             }
         } catch (Exception $e) {
             $error = $e->getMessage();
-            is_array($error) || $error = array(
+            is_array($error) || $error = [
                 'APPCENTER:install.fail',
-                array('{{error}}' => $e->getMessage()), );
+                ['{{error}}' => $e->getMessage()], ];
 
             return $this->_e($install, new PwError($error[0], $error[1]));
         }
         $install->addInstallLog('packs', $pack);
         $install->addInstallLog('service', $conf);
-        $fields = array();
+        $fields = [];
         foreach ($install->getInstallLog() as $key => $value) {
-            $_tmp = array(
+            $_tmp = [
                 'app_id'        => $install->getAppId(),
                 'log_type'      => $key,
                 'data'          => $value,
                 'created_time'  => time(),
                 'modified_time' => time(),
-            );
+            ];
             $fields[] = $_tmp;
         }
         Wekit::load('APPCENTER:service.PwApplicationLog')->batchAdd($fields);
@@ -302,7 +302,7 @@ class PwDebugApplication
         return $r;
         $lang = Wind::getComponent('i18n');
         $error = $r->getError();
-        $var = array();
+        $var = [];
         if (is_array($error)) {
             list($error, $var) = $error;
         }

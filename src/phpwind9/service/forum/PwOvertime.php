@@ -65,13 +65,13 @@ class PwOvertime
         if (empty($tids) || !is_array($tids)) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($tids as $tid) {
-            $data[] = array(
+            $data[] = [
                 'tid'      => $tid,
                 'm_type'   => $type,
                 'overtime' => $overtime,
-            );
+            ];
         }
 
         return $this->_getDao()->batchAdd($data);

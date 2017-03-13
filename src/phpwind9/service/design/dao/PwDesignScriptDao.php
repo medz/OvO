@@ -14,7 +14,7 @@ class PwDesignScriptDao extends PwBaseDao
 {
     protected $_pk = 'module_id';
     protected $_table = 'design_script';
-    protected $_dataStruct = array('module_id', 'token', 'view_times');
+    protected $_dataStruct = ['module_id', 'token', 'view_times'];
 
     public function get($id)
     {

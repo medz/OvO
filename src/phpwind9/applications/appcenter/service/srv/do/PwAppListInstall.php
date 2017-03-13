@@ -17,13 +17,13 @@ class PwAppListInstall implements iPwInstall
      */
     public function install($install)
     {
-        $list = Wekit::C()->site->get('appList', array());
+        $list = Wekit::C()->site->get('appList', []);
         $appId = $install->getAppId();
         $manifest = $install->getManifest()->getManifest();
         $url = isset($manifest['front-url']) ? $manifest['front-url'] : $manifest['application']['alias'].'/index/run';
-        $list = array($appId => $url) + $list;
+        $list = [$appId => $url] + $list;
         Wekit::C()->setConfig('site', 'appList', $list);
-        $install->setInstallLog('appList', array($appId => $url));
+        $install->setInstallLog('appList', [$appId => $url]);
 
         return true;
     }
@@ -35,7 +35,7 @@ class PwAppListInstall implements iPwInstall
     {
         if ($list = $upgrade->getBackLog('appList')) {
             $upgrade->setRevertLog('appList', $list);
-            $appList = Wekit::C()->site->get('appList', array());
+            $appList = Wekit::C()->site->get('appList', []);
             unset($appList[key($list)]);
             Wekit::C()->setConfig('site', 'appList', $appList);
         }
@@ -49,7 +49,7 @@ class PwAppListInstall implements iPwInstall
     public function revert($upgrade)
     {
         if ($list = $upgrade->getRevertLog('appList')) {
-            $appList = Wekit::C()->site->get('appList', array());
+            $appList = Wekit::C()->site->get('appList', []);
             $appList = $list + $appList;
             Wekit::C()->setConfig('site', 'appList', $appList);
         }
@@ -63,7 +63,7 @@ class PwAppListInstall implements iPwInstall
     public function unInstall($uninstall)
     {
         if ($list = $uninstall->getInstallLog('appList')) {
-            $appList = Wekit::C()->site->get('appList', array());
+            $appList = Wekit::C()->site->get('appList', []);
             unset($appList[key($list)]);
             Wekit::C()->setConfig('site', 'appList', $appList);
         }
@@ -77,7 +77,7 @@ class PwAppListInstall implements iPwInstall
     public function rollback($install)
     {
         if ($list = $install->getInstallLog('appList')) {
-            $appList = Wekit::C()->site->get('appList', array());
+            $appList = Wekit::C()->site->get('appList', []);
             unset($appList[key($list)]);
             Wekit::C()->setConfig('site', 'appList', $appList);
         }

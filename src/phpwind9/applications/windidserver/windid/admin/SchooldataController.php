@@ -15,14 +15,14 @@ Wind::import('WSRV:school.vo.WindidSchoolSo');
  */
 class SchooldataController extends WindidBaseController
 {
-    private $type = array(1 => '小学', 2 => '中学', 3 => '大学');
+    private $type = [1 => '小学', 2 => '中学', 3 => '大学'];
 
     /* (non-PHPdoc)
      * @see WindController::run()
      */
     public function run()
     {
-        list($type, $areaid, $name, $first) = $this->getInput(array('type', 'areaid', 'name', 'first'));
+        list($type, $areaid, $name, $first) = $this->getInput(['type', 'areaid', 'name', 'first']);
         !$type && $type = 3;
         $schoolSo = new WindidSchoolSo();
         $schoolSo->setName($name)
@@ -30,10 +30,10 @@ class SchooldataController extends WindidBaseController
             ->setFirstChar($first)
             ->setAreaid($areaid);
 
-        $list = array();
+        $list = [];
         $areaRoute = Wekit::load('WSRV:area.srv.WindidAreaService')->getAreaRout($areaid);
-        $_rout = array('all' => array('disable' => 'li_disabled'), 'province' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'),
-            'city'           => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), 'area' => array('areaid' => '', 'name' => '', 'display' => 'display:none;'), );
+        $_rout = ['all'      => ['disable' => 'li_disabled'], 'province' => ['areaid' => '', 'name' => '', 'display' => 'display:none;'],
+            'city'           => ['areaid' => '', 'name' => '', 'display' => 'display:none;'], 'area' => ['areaid' => '', 'name' => '', 'display' => 'display:none;'], ];
         switch (count($areaRoute)) {
             case 1:
                 $_rout['all']['disable'] = '';
@@ -79,10 +79,10 @@ class SchooldataController extends WindidBaseController
      */
     public function updateAction()
     {
-        list($update, $add, $areaid, $typeid) = $this->getInput(array('update', 'add', 'areaid', 'typeid'), 'post');
+        list($update, $add, $areaid, $typeid) = $this->getInput(['update', 'add', 'areaid', 'typeid'], 'post');
 
-        is_array($update) || $update = array();
-        is_array($add) || $add = array();
+        is_array($update) || $update = [];
+        is_array($add) || $add = [];
 
         foreach ($update as $id => $name) {
             $dm = new WindidSchoolDm();
@@ -94,7 +94,7 @@ class SchooldataController extends WindidBaseController
                 $this->showError('WINDID:code.'.$r->getCode());
             }
         }
-        $addDms = array();
+        $addDms = [];
         foreach ($add as $name) {
             $dm = new WindidSchoolDm();
             $dm->setName($name)

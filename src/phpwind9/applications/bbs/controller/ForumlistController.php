@@ -50,7 +50,7 @@ class ForumlistController extends PwBaseController
      */
     private function _filterMap($list)
     {
-        $cate = $forum = array();
+        $cate = $forum = [];
         foreach ($list as $_key => $_item) {
             if (1 != $_item['isshow']) {
                 continue;
@@ -58,7 +58,7 @@ class ForumlistController extends PwBaseController
             $_item['manager'] = $this->_setManages(array_unique(explode(',', $_item['manager'])));
             if ($_item['parentid'] == 0) {
                 $cate[$_key] = $_item;
-                isset($forum[$_key]) || $forum[$_key] = array();
+                isset($forum[$_key]) || $forum[$_key] = [];
                 $this->todayposts += $_item['todayposts'];
                 $this->article += $_item['article'];
             } else {
@@ -66,7 +66,7 @@ class ForumlistController extends PwBaseController
             }
         }
 
-        return array($cate, $forum);
+        return [$cate, $forum];
     }
 
     /**
@@ -79,7 +79,7 @@ class ForumlistController extends PwBaseController
      */
     private function _setManages($manage)
     {
-        $_manage = array();
+        $_manage = [];
         foreach ($manage as $_v) {
             if ($_v) {
                 $_manage[] = $_v;

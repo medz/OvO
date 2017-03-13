@@ -19,7 +19,7 @@ class IndexController extends WindController
      *
      * @var array
      */
-    private $wind_data = array(
+    private $wind_data = [
         'wind_structure.sql',
         'pw_windid_area.sql',
         'pw_windid_school.sql',
@@ -29,7 +29,7 @@ class IndexController extends WindController
         'pw_design.sql',
         'pw_acloud.sql',
         'wind_data.sql',
-        'demo_data.sql', );
+        'demo_data.sql', ];
 
     /* (non-PHPdoc)
      * @see WindSimpleController::beforeAction()
@@ -44,7 +44,7 @@ class IndexController extends WindController
         if ($this->getRequest()->getIsAjaxRequest()) {
             $toCharset = $this->getResponse()->getCharset();
             if (strtoupper(substr($toCharset, 0, 2)) != 'UT') {
-                $_tmp = array();
+                $_tmp = [];
                 foreach ($_POST as $key => $value) {
                     $key = WindConvert::convert($key, $toCharset, 'UTF-8');
                     $_tmp[$key] = WindConvert::convert($value, $toCharset, 'UTF-8');
@@ -63,7 +63,7 @@ class IndexController extends WindController
             define($const, $value);
         }
 
-        $url = array();
+        $url = [];
         $url['base'] = PUBLIC_URL;
         $url['res'] = WindUrlHelper::checkUrl(PUBLIC_RES, PUBLIC_URL);
         $url['css'] = WindUrlHelper::checkUrl(PUBLIC_RES.'/css/', PUBLIC_URL);
@@ -134,7 +134,7 @@ class IndexController extends WindController
      */
     public function databaseAction()
     {
-        $keys = array(
+        $keys = [
             'dbhost',
             'dbuser',
             'dbname',
@@ -144,12 +144,12 @@ class IndexController extends WindController
             'manager_ckpwd',
             'manager_email',
             'dbpw',
-            'engine', );
+            'engine', ];
         $input = $this->getInput($keys, 'post');
         $force = $this->getInput('force');
         $input = array_combine($keys, $input);
         foreach ($input as $k => $v) {
-            if (!in_array($k, array('dbpw', 'engine')) && empty($v)) {
+            if (!in_array($k, ['dbpw', 'engine']) && empty($v)) {
                 $this->showError("INSTALL:input_empty_$k");
             }
         }
@@ -172,13 +172,13 @@ class IndexController extends WindController
         $input['dbport'] = !empty($input['dbport']) ? intval($input['dbport']) : 3306;
         if (!empty($input['engine'])) {
             $input['engine'] = strtoupper($input['engine']);
-            !in_array($input['engine'], array('MyISAM', 'InnoDB')) && $input['engine'] = 'MyISAM';
+            !in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
         } else {
             $input['engine'] = 'MyISAM';
         }
         $charset = Wind::getApp()->getResponse()->getCharset();
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, array('gbk', 'utf8', 'big5'))) {
+        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 
@@ -222,20 +222,20 @@ class IndexController extends WindController
             $this->showError('INSTALL:error_777_founder');
         }
 
-        $database = array(
+        $database = [
             'dsn'         => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
             'user'        => $input['dbuser'],
             'pwd'         => $input['dbpw'],
             'charset'     => $charset,
             'tableprefix' => $input['dbprefix'],
             'engine'      => $input['engine'],
-            'founder'     => array(
+            'founder'     => [
                 'manager'       => $input['manager'],
                 'manager_pwd'   => $input['manager_pwd'],
-                'manager_email' => $input['manager_email'], ), );
+                'manager_email' => $input['manager_email'], ], ];
         WindFile::savePhpData($this->_getTempFile(), $database);
 
-        $arrSQL = array();
+        $arrSQL = [];
         foreach ($this->wind_data as $file) {
             $file = Wind::getRealPath("APPS:install.lang.$file", true);
             if (!WindFile::isFile($file)) {
@@ -313,13 +313,13 @@ class IndexController extends WindController
         $pdo->close();
 
         //数据库配置
-        $database = array(
+        $database = [
             'dsn'         => $db['dsn'],
             'user'        => $db['user'],
             'pwd'         => $db['pwd'],
             'charset'     => $db['charset'],
             'tableprefix' => $db['tableprefix'],
-            'engine'      => $db['engine'], );
+            'engine'      => $db['engine'], ];
         WindFile::savePhpData($this->_getDatabaseFile(), $database);
 
         //写入windid配置信息
@@ -455,11 +455,11 @@ class IndexController extends WindController
     private function _sqlParser($strSQL, $charset, $dbprefix, $engine)
     {
         if (empty($strSQL)) {
-            return array();
+            return [];
         }
         $query = '';
-        $logData = $tableSQL = $dataSQL = $fieldSQL = array();
-        $strSQL = str_replace(array("\r", "\n\n", ";\n"), array('', "\n", ";<wind>\n"), trim($strSQL, " \n\t")."\n");
+        $logData = $tableSQL = $dataSQL = $fieldSQL = [];
+        $strSQL = str_replace(["\r", "\n\n", ";\n"], ['', "\n", ";<wind>\n"], trim($strSQL, " \n\t")."\n");
         $arrSQL = explode("\n", $strSQL);
         foreach ($arrSQL as $value) {
             $value = trim($value, " \t");
@@ -474,8 +474,8 @@ class IndexController extends WindController
             $sql_key = strtoupper(substr($query, 0, strpos($query, ' ')));
             if ($sql_key == 'CREATE') {
                 $tablename = trim(strrchr(trim(substr($query, 0, strpos($query, '('))), ' '), '` ');
-                $query = str_replace(array('ENGINE=MyISAM', 'DEFAULT CHARSET=utf8', ';<wind>'),
-                    array("ENGINE=$engine", "DEFAULT CHARSET=$charset", ';'), $query);
+                $query = str_replace(['ENGINE=MyISAM', 'DEFAULT CHARSET=utf8', ';<wind>'],
+                    ["ENGINE=$engine", "DEFAULT CHARSET=$charset", ';'], $query);
                 $dataSQL['CREATE'][] = $query;
                 $logData['CREATE'][] = $tablename;
             } elseif ($sql_key == 'DROP') {
@@ -487,7 +487,7 @@ class IndexController extends WindController
                 $query = str_replace(';<wind>', '', $query);
                 $dataSQL['ALTER'][] = $query;
                 //$logData['ALTER'][] = $query;
-            } elseif (in_array($sql_key, array('INSERT', 'REPLACE', 'UPDATE'))) {
+            } elseif (in_array($sql_key, ['INSERT', 'REPLACE', 'UPDATE'])) {
                 $query = str_replace(';<wind>', '', $query);
                 $sql_key == 'INSERT' && $query = 'REPLACE'.substr($query, 6);
                 $dataSQL['UPDATE'][] = $query;
@@ -496,7 +496,7 @@ class IndexController extends WindController
             $query = '';
         }
 
-        return array('SQL' => $dataSQL, 'LOG' => $logData);
+        return ['SQL' => $dataSQL, 'LOG' => $logData];
     }
 
     /**
@@ -537,7 +537,7 @@ class IndexController extends WindController
             $gd = 'unknow';
         }
 
-        return array(
+        return [
             'os_ischeck'        => true,
             'version_ischeck'   => $version_ischeck,
             'mysql_ischeck'     => $mysql_ischeck,
@@ -551,7 +551,7 @@ class IndexController extends WindController
             'mysql'             => $mysql,
             'pdo_mysql'         => $pdo_mysql_ischeck,
             'upload'            => $currentUpload,
-            'space'             => $space, );
+            'space'             => $space, ];
     }
 
     /**
@@ -561,7 +561,7 @@ class IndexController extends WindController
      */
     private function _getRecommendEnvironment()
     {
-        return array(
+        return [
             'os'        => 'Linux',
             'version'   => '>7.x.x',
             'mysql'     => '>5.4.x',
@@ -569,7 +569,7 @@ class IndexController extends WindController
             'upload'    => '>2M',
             'space'     => '>50M',
             'gd'        => '>2.0.28',
-        );
+        ];
     }
 
     /**
@@ -579,7 +579,7 @@ class IndexController extends WindController
      */
     private function _getLowestEnvironment()
     {
-        return array(
+        return [
             'os'        => '不限制',
             'version'   => '5.3.12',
             'mysql'     => '5.0',
@@ -587,7 +587,7 @@ class IndexController extends WindController
             'upload'    => '不限制',
             'space'     => '50M',
             'gd'        => '2.0',
-        );
+        ];
     }
 
     /**
@@ -623,7 +623,7 @@ class IndexController extends WindController
 
         $files_writeble = array_unique($files_writeble);
         sort($files_writeble);
-        $writable = array();
+        $writable = [];
         foreach ($files_writeble as $file) {
             $key = str_replace($rootdir, '', $file);
             $isWritable = $this->_checkWriteAble($file) ? true : false;
@@ -655,7 +655,7 @@ class IndexController extends WindController
         if (!$pathfile) {
             return false;
         }
-        $isDir = in_array(substr($pathfile, -1), array('/', '\\')) ? true : false;
+        $isDir = in_array(substr($pathfile, -1), ['/', '\\']) ? true : false;
         if ($isDir) {
             if (is_dir($pathfile)) {
                 mt_srand((float) microtime() * 1000000);
@@ -690,7 +690,7 @@ class IndexController extends WindController
     {
         Wekit::C()->reload('windid');
 
-        $data = array($manager => md5($manager_pwd));
+        $data = [$manager => md5($manager_pwd)];
         WindFile::savePhpData($this->_getFounderFile(), $data);
 
         //TODO 创始人添加：用户的配置信息先更新。添加完之后再更新回 开始
@@ -715,7 +715,7 @@ class IndexController extends WindController
         //TODO结束
         $userDm = new PwUserInfoDm();
         $userDm->setUsername($manager)->setPassword($manager_pwd)->setEmail($manager_email)->setGroupid(3)->setRegdate(
-            Pw::getTime())->setLastvisit(Pw::getTime())->setRegip(Wind::getApp()->getRequest()->getClientIp())->setGroups(array('3' => '0'));
+            Pw::getTime())->setLastvisit(Pw::getTime())->setRegip(Wind::getApp()->getRequest()->getClientIp())->setGroups(['3' => '0']);
 
         //特殊操作  gao.wanggao
         if (true !== ($result = $userDm->beforeAdd())) {
@@ -727,7 +727,7 @@ class IndexController extends WindController
 
         $userDm->setUid($uid);
 
-        $daoMap = array();
+        $daoMap = [];
         $daoMap[PwUser::FETCH_MAIN] = 'user.dao.PwUserDao';
         $daoMap[PwUser::FETCH_DATA] = 'user.dao.PwUserDataDao';
         $daoMap[PwUser::FETCH_INFO] = 'user.dao.PwUserInfoDao';
@@ -756,7 +756,7 @@ class IndexController extends WindController
         if ($uid instanceof PwError) {
             $this->showError($uid->getError());
         }
-        Wekit::load('user.PwUserBelong')->update($uid, array(3 => 0));
+        Wekit::load('user.PwUserBelong')->update($uid, [3 => 0]);
 
         //特殊操作  gao.wanggao
         $this->_defaultAvatar($uid);
@@ -776,7 +776,7 @@ class IndexController extends WindController
 
     private function _defaultAvatar($uid, $type = 'face')
     {
-        $_avatar = array('.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg');
+        $_avatar = ['.jpg' => '_big.jpg', '_middle.jpg' => '_middle.jpg', '_small.jpg' => '_small.jpg'];
         $defaultBanDir = Wind::getRealDir('ROOT:').'res/images/face/';
         $fileDir = 'avatar/'.Pw::getUserDir($uid).'/';
         $attachPath = Wind::getRealDir('ROOT:').'windid/attachment/';
@@ -796,7 +796,7 @@ class IndexController extends WindController
         $key = md5(WindUtility::generateRandStr(10));
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, array('gbk', 'utf8', 'big5'))) {
+        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 

@@ -23,10 +23,10 @@ class PwAttentionRecommendFriendsService
             return false;
         }
         $friends = $this->_getAttentionDs()->getFriendsByUid($uid);
-        $fields = array();
+        $fields = [];
         if ($friends) {
             $cnt = 1;
-            $recommend_user = $sameUsers = $uids = array();
+            $recommend_user = $sameUsers = $uids = [];
             foreach ($friends as $value) {
                 $uids[] = $value['same_uid'];
                 $uids[] = $value['recommend_uid'];
@@ -40,7 +40,7 @@ class PwAttentionRecommendFriendsService
             $attentions = $this->_getAttentionDs()->fetchFollows($uid, array_keys($sameUsers));
             $sameUsers = array_diff_key($sameUsers, $attentions);
             $userInfos = $this->_getUser()->fetchUserByUid(array_unique($uids));
-            usort($sameUsers, array($this, 'orderByCnt'));
+            usort($sameUsers, [$this, 'orderByCnt']);
             // 更新用户data表信息
             $userData = array_slice($sameUsers, 0, 3);
             $this->updateUserData($uid, $userData, $userInfos);
@@ -71,20 +71,20 @@ class PwAttentionRecommendFriendsService
     {
         $recommends = $loginUser->info['recommend_friend'];
         if (!$recommends) {
-            return array();
+            return [];
         }
         $recommends = explode('|', $recommends);
-        $array = array();
+        $array = [];
         foreach ($recommends as $v) {
             if (!$v) {
                 continue;
             }
             list($uid, $username, $cnt, $sameUser) = explode(',', $v);
-            $array[$uid] = array(
+            $array[$uid] = [
                 'uid'      => $uid,
                 'username' => $username,
                 'cnt'      => $cnt,
-            );
+            ];
             $sameUser && $array[$uid]['sameUser'] = unserialize($sameUser);
         }
 
@@ -138,7 +138,7 @@ class PwAttentionRecommendFriendsService
     public function buildUserInfo($uid, $recommendUids, $num)
     {
         $attentions = $this->_getAttentionDs()->fetchFollows($uid, $recommendUids);
-        $uids = array_diff($recommendUids, array($uid), array_keys($attentions));
+        $uids = array_diff($recommendUids, [$uid], array_keys($attentions));
         $uids = array_slice($uids, 0, $num);
 
         return $this->_getUser()->fetchUserByUid($uids);
@@ -167,7 +167,7 @@ class PwAttentionRecommendFriendsService
             $onlineUids = array_keys($onlineUser);
         }
 
-        return $onlineUids ? $onlineUids : array();
+        return $onlineUids ? $onlineUids : [];
     }
 
     public function attentionUserRecommend($touid)
@@ -177,7 +177,7 @@ class PwAttentionRecommendFriendsService
         $this->_getRecommendFriendsDs()->deleteRecommendFriend($loginUser->uid, $touid);
         $recommend_user = $loginUser->info['recommend_friend'];
         $result = $this->_getRecommendFriendsDs()->getRecommendFriend($loginUser->uid, 3);
-        $users = array();
+        $users = [];
         foreach ($result as $v) {
             $v['recommend_user'] && $users[] = unserialize($v['recommend_user']);
         }

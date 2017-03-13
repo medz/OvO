@@ -1,136 +1,136 @@
 <?php
 
-return array(
-    'basic' => array(
+return [
+    'basic' => [
         'name' => '基本权限',
-        'sub'  => array(
-            'basic' => array(
+        'sub'  => [
+            'basic' => [
                 'name'  => '基本权限',
-                'items' => array(
+                'items' => [
                     'allow_visit', 'allow_report', 'view_ip_address', //'user_binding','login_types'
-                ),
-            ),
-            'publish' => array(
+                ],
+            ],
+            'publish' => [
                 'name'  => '内容发布设置',
-                'items' => array(
+                'items' => [
                     /*'max_title_length','content_length_range',*/'allow_publish_vedio',
                     'allow_publish_music', //'multimedia_auto_open'
-                ),
-            ),
-            'message' => array(
+                ],
+            ],
+            'message' => [
                 'name'  => '消息',
-                'items' => array(
+                'items' => [
                     'message_allow_send', 'message_max_send',
-                ),
-            ),
-            'tag' => array(
+                ],
+            ],
+            'tag' => [
                 'name'  => '话题',
-                'items' => array(
+                'items' => [
                     'tag_allow_add',
-                ),
-            ),
-            'remind' => array(
+                ],
+            ],
+            'remind' => [
                 'name'  => '@提醒设置',
-                'items' => array(
+                'items' => [
                     'remind_open', 'remind_max_num',
-                ),
-            ),
-            'invite' => array(
+                ],
+            ],
+            'invite' => [
                 'name'  => '邀请注册',
-                'items' => array('invite_allow_buy', 'invite_buy_credit_num', 'invite_limit_24h'),
-            ),
-        ),
-    ),
-    'bbs' => array(
+                'items' => ['invite_allow_buy', 'invite_buy_credit_num', 'invite_limit_24h'],
+            ],
+        ],
+    ],
+    'bbs' => [
         'name' => '论坛权限',
-        'sub'  => array(
-            'thread' => array(
+        'sub'  => [
+            'thread' => [
                 'name'  => '帖子权限',
-                'items' => array(
+                'items' => [
                     'allow_read', 'allow_post', 'allow_reply', 'reply_locked_threads', 'allow_thread_extend',
                     'post_check',
                     'threads_perday', 'thread_edit_time', 'post_pertime',
                     'post_modify_time', 'look_thread_log', /*,'post_url_num',*/'allow_upload',
                     'allow_download', 'uploads_perday', /*,'upload_file_types','thread_award','remote_download',*/
-                ),
-            ),
+                ],
+            ],
 
-            'sellhide' => array(
+            'sellhide' => [
                 'name'  => '出售隐藏设置',
-                'items' => array(
+                'items' => [
                     'sell_credits', 'sell_credit_range', 'enhide_credits',
-                ),
-            ),
-            'sign' => array(
+                ],
+            ],
+            'sign' => [
                 'name'  => ' 帖子签名设置',
-                'items' => array(
+                'items' => [
                     'allow_sign', 'sign_max_height', 'sign_max_length', 'sign_ubb', 'sign_ubb_img',
-                ),
-            ),
-            'vote' => array(
+                ],
+            ],
+            'vote' => [
                 'name'  => '投票设置',
-                'items' => array(
+                'items' => [
                     'allow_add_vote', 'allow_participate_vote', 'allow_view_vote',
-                ),
-            ),
-        ),
-    ),
-    'manage_bbs' => array(
+                ],
+            ],
+        ],
+    ],
+    'manage_bbs' => [
         'name'   => '论坛权限',
         'manage' => true,
-        'sub'    => array(
-            'bbs' => array(
+        'sub'    => [
+            'bbs' => [
                 'name'  => '论坛管理权限',
-                'items' => array(
+                'items' => [
                     'manage_level', 'operate_thread', 'force_operate_reason',
-                ),
-            ),
-            'fresh' => array(
+                ],
+            ],
+            'fresh' => [
                 'name'  => '新鲜事管理权限',
-                'items' => array('fresh_delete'),
-            ),
-            'tag' => array(
+                'items' => ['fresh_delete'],
+            ],
+            'tag' => [
                 'name'  => '话题管理权限',
-                'items' => array(
+                'items' => [
                     'tag_allow_edit', 'tag_allow_manage',
-                ),
-            ),
-        ),
-    ),
-    'manage_design' => array(
+                ],
+            ],
+        ],
+    ],
+    'manage_design' => [
         'name'   => '门户权限',
         'manage' => true,
-        'sub'    => array(
-            'panel' => array(
+        'sub'    => [
+            'panel' => [
                 'name'  => '门户管理权限',
-                'items' => array(
+                'items' => [
                     'design_allow_manage',
-                ),
-            ),
-        ),
-    ),
-    'manage_user' => array(
+                ],
+            ],
+        ],
+    ],
+    'manage_user' => [
         'name'   => '用户权限',
         'manage' => true,
-        'sub'    => array(
-        ),
-    ),
-    'manage_panel' => array(
+        'sub'    => [
+        ],
+    ],
+    'manage_panel' => [
         'name'   => '前台管理',
         'manage' => true,
-        'sub'    => array(
-            'panel' => array(
+        'sub'    => [
+            'panel' => [
                 'name'  => '前台管理权限',
-                'items' => array(
+                'items' => [
                     'panel_bbs_manage', 'panel_user_manage', 'panel_report_manage', 'panel_recycle_manage', 'panel_log_manage',
-                ),
-            ),
-        ),
-    ),
+                ],
+            ],
+        ],
+    ],
 
-    'other' => array(
+    'other' => [
         'name' => '其他权限',
-        'sub'  => array(
-        ),
-    ),
-);
+        'sub'  => [
+        ],
+    ],
+];

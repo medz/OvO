@@ -43,7 +43,7 @@ class PwPaypal extends PwPayAbstract
     public function getUrl(PwPayVo $vo)
     {
         $url = $this->paypal_url;
-        $param = array(
+        $param = [
             'cmd'           => '_xclick',
             'invoice'       => $vo->getOrderNo(),
             'business'      => $this->paypal,
@@ -55,7 +55,7 @@ class PwPaypal extends PwPayAbstract
             'currency_code' => 'CNY',
             'bn'            => 'phpwind',
             'charset'       => $this->charset,
-        );
+        ];
         foreach ($param as $key => $value) {
             $url .= $key.'='.urlencode($value).'&';
         }

@@ -23,16 +23,16 @@ class PwHookRefresh
         if (!$conf || !is_array($conf)) {
             return new PwError('fail');
         }
-        $hooks = $inject = array();
+        $hooks = $inject = [];
         foreach ($conf as $k => $v) {
-            $hooks[] = array(
+            $hooks[] = [
                 'name'         => $k,
                 'app_name'     => '系统',
                 'created_time' => time(),
                 'document'     => implode("\r\n",
-                    array($v['description'], implode("\n", (array) $v['param']), $v['interface'])), );
+                    [$v['description'], implode("\n", (array) $v['param']), $v['interface']]), ];
             foreach ($v['list'] as $k1 => $v1) {
-                $inject[] = array(
+                $inject[] = [
                     'hook_name'    => $k,
                     'app_id'       => 'system',
                     'app_name'     => '系统',
@@ -42,7 +42,7 @@ class PwHookRefresh
                     'loadway'      => $v1['loadway'],
                     'expression'   => $v1['expression'],
                     'description'  => $v1['description'],
-                    'created_time' => time(), );
+                    'created_time' => time(), ];
             }
         }
         $this->_loadHooks()->delByAppId('');

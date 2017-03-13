@@ -163,8 +163,8 @@ class PwMobileService
 
     protected function _buildContent($code)
     {
-        $search = array('{mobilecode}', '{sitename}');
-        $replace = array($code, Wekit::C('site', 'info.name'));
+        $search = ['{mobilecode}', '{sitename}'];
+        $replace = [$code, Wekit::C('site', 'info.name')];
         $content = str_replace($search, $replace, Wekit::C('register', 'mobile.message.content'));
 
         return $content;

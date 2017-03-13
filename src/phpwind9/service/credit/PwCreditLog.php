@@ -41,7 +41,7 @@ class PwCreditLog
     public function getLogByUid($uid, $limit = 20, $offset = 0)
     {
         if (empty($uid)) {
-            return array();
+            return [];
         }
 
         return $this->_getDao()->getLogByUid($uid, $limit, $offset);
@@ -59,7 +59,7 @@ class PwCreditLog
         if (empty($dmArr) || !is_array($dmArr)) {
             return false;
         }
-        $data = array();
+        $data = [];
         foreach ($dmArr as $key => $dm) {
             if (!($dm instanceof PwCreditLogDm)) {
                 continue;

@@ -5,27 +5,27 @@ defined('WEKIT_VERSION') or exit(403);
  * windid
  */
 
-return array(
+return [
     'directory'  => '../conf/windid/directory.php',
-    'components' => array('resource' => 'CONF:windid.components.php'),
+    'components' => ['resource' => 'CONF:windid.components.php'],
 
-    'web-apps' => array(
-        'windid' => array(
+    'web-apps' => [
+        'windid' => [
             'root-path' => 'APPS:windid',
-            'modules'   => array(
-                'pattern' => array(
+            'modules'   => [
+                'pattern' => [
                     'controller-path' => 'APPS:{m}.controller',
                     'template-path'   => 'TPL:{m}',
                     'compile-path'    => 'DATA:compile.template',
-                ),
-                'default' => array(
+                ],
+                'default' => [
                     'controller-path'   => 'APPS:windid.controller',
                     'controller-suffix' => 'Controller',
                     'error-handler'     => PwErrorController::class,
                     'template-path'     => 'TPL:windid',
                     'compile-path'      => 'DATA:compile.template',
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];
