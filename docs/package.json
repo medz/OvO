@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "author": "Seven Du <shiweidu@outlook.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^2.2.1"
+  }
 }
