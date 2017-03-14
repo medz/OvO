@@ -2,12 +2,10 @@ import React, { Component, cloneElement } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import GitHub from '../icons/GitHub';
-
 import Index from './Index';
+import Nav from './Nav';
 
 class MainComponent extends Component {
 
@@ -26,6 +24,9 @@ class MainComponent extends Component {
   }
 
   render() {
+
+    const handleToggle = () => this.handleToggle();
+
     return (
       <MuiThemeProvider>
         <div>
@@ -40,25 +41,10 @@ class MainComponent extends Component {
                 <GitHub color="#fff" />
               </IconButton>
             }
-            onLeftIconButtonTouchTap={() => this.handleToggle()}
+            onLeftIconButtonTouchTap={handleToggle}
             zDepth={0}
           />
-          <Drawer
-            open={this.state.open}
-            docked={true}
-            width={256}
-          >
-            <AppBar
-              title="phpwind Fans"
-              iconElementLeft={
-                <IconButton>
-                  <NavigationClose />
-                </IconButton>
-              }
-              onLeftIconButtonTouchTap={() => this.handleToggle()}
-              zDepth={0}
-            />
-          </Drawer>
+          <Nav open={this.state.open} handleClose={handleToggle} />
           <Route exact path="/" component={Index} />
           <div
             style={{
