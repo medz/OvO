@@ -42,6 +42,7 @@ class MainComponent extends Component {
               </IconButton>
             }
             onLeftIconButtonTouchTap={() => this.handleToggle()}
+            zDepth={0}
           />
           <Drawer
             open={this.state.open}
@@ -56,6 +57,7 @@ class MainComponent extends Component {
                 </IconButton>
               }
               onLeftIconButtonTouchTap={() => this.handleToggle()}
+              zDepth={0}
             />
           </Drawer>
           <Route exact path="/" component={Index} />

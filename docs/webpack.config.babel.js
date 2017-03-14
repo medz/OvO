@@ -93,7 +93,7 @@ module: {
     {
       test: /\.js$/,
       include: [path.resolve(__dirname, 'src')],
-      loader: 'babel-loader'
+      use: ['babel-loader']
     },
     {
       test: /\.css$/,
@@ -101,7 +101,11 @@ module: {
         fallback: "style-loader",
         use: 'css-loader'
       })
-    }
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      use: ['url-loader']
+    },
   ]
 },
 
