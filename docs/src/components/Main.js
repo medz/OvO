@@ -1,12 +1,11 @@
 import React, { Component, cloneElement } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, Link } from 'react-router-dom';
-
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
-import ActionCode from 'material-ui/svg-icons/action/code';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import GitHub from '../icons/GitHub';
 
 import Index from './Index';
 
@@ -38,7 +37,7 @@ class MainComponent extends Component {
                 tooltip="点击浏览 phpwind Fans 代码仓库"
                 tooltipPosition="bottom-left"
               >
-                <ActionCode />
+                <GitHub color="#fff" />
               </IconButton>
             }
             onLeftIconButtonTouchTap={() => this.handleToggle()}

@@ -13076,13 +13076,13 @@ var _IconButton = __webpack_require__(140);
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _code = __webpack_require__(300);
-
-var _code2 = _interopRequireDefault(_code);
-
 var _close = __webpack_require__(301);
 
 var _close2 = _interopRequireDefault(_close);
+
+var _GitHub = __webpack_require__(440);
+
+var _GitHub2 = _interopRequireDefault(_GitHub);
 
 var _Index = __webpack_require__(178);
 
@@ -13137,7 +13137,7 @@ var MainComponent = function (_Component) {
                 tooltip: '\u70B9\u51FB\u6D4F\u89C8 phpwind Fans \u4EE3\u7801\u4ED3\u5E93',
                 tooltipPosition: 'bottom-left'
               },
-              _react2.default.createElement(_code2.default, null)
+              _react2.default.createElement(_GitHub2.default, { color: '#fff' })
             ),
             onLeftIconButtonTouchTap: function onLeftIconButtonTouchTap() {
               return _this2.handleToggle();
@@ -24196,44 +24196,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 300 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(114);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(90);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ActionCode = function ActionCode(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z' })
-  );
-};
-ActionCode = (0, _pure2.default)(ActionCode);
-ActionCode.displayName = 'ActionCode';
-ActionCode.muiName = 'SvgIcon';
-
-exports.default = ActionCode;
-
-/***/ }),
+/* 300 */,
 /* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38458,6 +38421,46 @@ document.addEventListener('DOMContentLoaded', function () {
     | 这里定义文档应用入口页面
     |
     */
+
+/***/ }),
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SvgIcon = __webpack_require__(90);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var GitHub = function GitHub(props) {
+  var _props$color = props.color,
+      color = _props$color === undefined ? "#191717" : _props$color;
+
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    { viewBox: '0 0 36 36' },
+    _react2.default.createElement('path', { fill: color, d: 'M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5 c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1 c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4 c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7 c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5 c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z' })
+  );
+};
+
+exports.default = GitHub;
 
 /***/ })
 /******/ ]);
