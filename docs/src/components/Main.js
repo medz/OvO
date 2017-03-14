@@ -1,11 +1,25 @@
 import React, { Component, cloneElement } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import GitHub from '../icons/GitHub';
 import Index from './Index';
 import Nav from './Nav';
+import Reader from './Reader';
+
+/*
+
+<div dangerouslySetInnerHTML={{
+  __html: md.render(`
+    # markdown-it rulezz!
+  `)
+}} />
+ */
+
+// import MarkdownIt from 'markdown-it';
+
+// const md = MarkdownIt();
 
 class MainComponent extends Component {
 
@@ -54,7 +68,7 @@ class MainComponent extends Component {
               } : {})
             }}
           >
-            aaa
+            <Route path="/:path" component={Reader} />
           </div>
         </div>
       </MuiThemeProvider>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
 
 import Main from './components/Main';
 
 const App = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Main />
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default App;

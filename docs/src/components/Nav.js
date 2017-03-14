@@ -8,6 +8,7 @@ import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import GitHub from '../icons/GitHub';
 import Divider from 'material-ui/Divider';
+import { NavLink } from 'react-router-dom';
 
 class NavComponent extends Component {
   render() {
@@ -37,6 +38,18 @@ class NavComponent extends Component {
             />
             <ListItem
               primaryText="开始"
+              initiallyOpen={true}
+              primaryTogglesNestedList={true}
+              nestedItems={[
+                <ListItem
+                  key="introduction"
+                  primaryText="介绍"
+                  containerElement={<NavLink
+                    exact
+                    to="/introduction"
+                  />}
+                />
+              ]}
             />
           </List>
           <Divider />
