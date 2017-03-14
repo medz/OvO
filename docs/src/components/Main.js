@@ -26,13 +26,6 @@ class MainComponent extends Component {
     });
   }
 
-  handleTipsToggle(is) {
-    this.setState({
-      ...this.state,
-      tips: !!is
-    });
-  }
-
   render() {
     return (
       <MuiThemeProvider>

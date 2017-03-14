@@ -13765,13 +13765,6 @@ var MainComponent = function (_Component) {
       }));
     }
   }, {
-    key: 'handleTipsToggle',
-    value: function handleTipsToggle(is) {
-      this.setState(_extends({}, this.state, {
-        tips: !!is
-      }));
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
