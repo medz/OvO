@@ -37,6 +37,7 @@ class AppNavDrawerComponent extends Component {
     onChangeList: PropTypes.func.isRequired,
     handleRequestHome: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
+    docked: PropTypes.bool.isRequired
   };
 
   getAppNavItems(navs) {
@@ -53,14 +54,15 @@ class AppNavDrawerComponent extends Component {
   }
 
   render() {
-    const { open, handleClose, value, onChangeList, handleRequestHome } = this.props;
+    const { open, handleClose, value, onChangeList, handleRequestHome, docked } = this.props;
     const AppNavItems = this.getAppNavItems(navs);
 
     return (
       <Drawer
         open={open}
-        docked={true}
+        docked={docked}
         width={256}
+        onRequestChange={handleClose}
       >
         <AppBar
           title="phpwind Fans"

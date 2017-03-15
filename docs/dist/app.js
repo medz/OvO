@@ -13720,6 +13720,18 @@ var _MuiThemeProvider = __webpack_require__(367);
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
+var _lightBaseTheme = __webpack_require__(368);
+
+var _lightBaseTheme2 = _interopRequireDefault(_lightBaseTheme);
+
+var _getMuiTheme = __webpack_require__(369);
+
+var _getMuiTheme2 = _interopRequireDefault(_getMuiTheme);
+
+var _withWidth = __webpack_require__(523);
+
+var _withWidth2 = _interopRequireDefault(_withWidth);
+
 var _reactRouterDom = __webpack_require__(180);
 
 var _AppBar = __webpack_require__(151);
@@ -13788,6 +13800,9 @@ var MainComponent = function (_Component) {
         open: !_this.state.open
       }));
     }, _this.handleChangeList = function (event, value) {
+      if (_this.props.width === _withWidth.SMALL) {
+        _this.handleToggle();
+      }
       var push = _this.context.router.history.push;
 
       push(value);
@@ -13811,7 +13826,7 @@ var MainComponent = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      if (this.getPathname() !== '/') {
+      if (this.getPathname() !== '/' && this.props.width !== _withWidth.SMALL) {
         this.setState(_extends({}, this.state, {
           open: true
         }));
@@ -13824,7 +13839,7 @@ var MainComponent = function (_Component) {
 
       return _react2.default.createElement(
         _MuiThemeProvider2.default,
-        null,
+        { muiTheme: (0, _getMuiTheme2.default)(_lightBaseTheme2.default) },
         _react2.default.createElement(
           'div',
           null,
@@ -13844,8 +13859,9 @@ var MainComponent = function (_Component) {
           }),
           _react2.default.createElement(_AppNavDrawer2.default, {
             open: this.state.open,
-            handleClose: this.handleToggle,
             value: pathname,
+            docked: this.props.width !== _withWidth.SMALL,
+            handleClose: this.handleToggle,
             onChangeList: this.handleChangeList,
             handleRequestHome: this.handleRequestHome
           }),
@@ -13855,7 +13871,7 @@ var MainComponent = function (_Component) {
             {
               style: _extends({
                 transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'
-              }, this.state.open ? {
+              }, this.state.open && this.props.width !== _withWidth.SMALL ? {
                 paddingLeft: 256
               } : {})
             },
@@ -13869,10 +13885,13 @@ var MainComponent = function (_Component) {
   return MainComponent;
 }(_react.Component);
 
+MainComponent.propTypes = {
+  width: _react.PropTypes.number.isRequired
+};
 MainComponent.contextTypes = {
   router: _react.PropTypes.object.isRequired
 };
-exports.default = MainComponent;
+exports.default = (0, _withWidth2.default)()(MainComponent);
 
 /***/ }),
 /* 199 */,
@@ -40137,7 +40156,8 @@ var AppNavDrawerComponent = function (_Component) {
           handleClose = _props.handleClose,
           value = _props.value,
           onChangeList = _props.onChangeList,
-          handleRequestHome = _props.handleRequestHome;
+          handleRequestHome = _props.handleRequestHome,
+          docked = _props.docked;
 
       var AppNavItems = this.getAppNavItems(navs);
 
@@ -40145,8 +40165,9 @@ var AppNavDrawerComponent = function (_Component) {
         _Drawer2.default,
         {
           open: open,
-          docked: true,
-          width: 256
+          docked: docked,
+          width: 256,
+          onRequestChange: handleClose
         },
         _react2.default.createElement(_AppBar2.default, {
           title: 'phpwind Fans',
@@ -40205,9 +40226,162 @@ AppNavDrawerComponent.propTypes = {
   handleClose: _react.PropTypes.func.isRequired,
   onChangeList: _react.PropTypes.func.isRequired,
   handleRequestHome: _react.PropTypes.func.isRequired,
-  value: _react.PropTypes.string.isRequired
+  value: _react.PropTypes.string.isRequired,
+  docked: _react.PropTypes.bool.isRequired
 };
 exports.default = AppNavDrawerComponent;
+
+/***/ }),
+/* 522 */,
+/* 523 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LARGE = exports.MEDIUM = exports.SMALL = undefined;
+
+var _extends2 = __webpack_require__(14);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = __webpack_require__(7);
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(6);
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(8);
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(10);
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(9);
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+exports.default = withWidth;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactEventListener = __webpack_require__(464);
+
+var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SMALL = exports.SMALL = 1;
+var MEDIUM = exports.MEDIUM = 2;
+var LARGE = exports.LARGE = 3;
+
+function withWidth() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var _options$largeWidth = options.largeWidth,
+      largeWidth = _options$largeWidth === undefined ? 992 : _options$largeWidth,
+      _options$mediumWidth = options.mediumWidth,
+      mediumWidth = _options$mediumWidth === undefined ? 768 : _options$mediumWidth,
+      _options$resizeInterv = options.resizeInterval,
+      resizeInterval = _options$resizeInterv === undefined ? 166 : _options$resizeInterv;
+
+
+  return function (MyComponent) {
+    return function (_Component) {
+      (0, _inherits3.default)(WithWidth, _Component);
+
+      function WithWidth() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        (0, _classCallCheck3.default)(this, WithWidth);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = WithWidth.__proto__ || (0, _getPrototypeOf2.default)(WithWidth)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+          width: null
+        }, _this.handleResize = function () {
+          clearTimeout(_this.deferTimer);
+          _this.deferTimer = setTimeout(function () {
+            _this.updateWidth();
+          }, resizeInterval);
+        }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+      }
+
+      (0, _createClass3.default)(WithWidth, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+          this.updateWidth();
+        }
+      }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+          clearTimeout(this.deferTimer);
+        }
+      }, {
+        key: 'updateWidth',
+        value: function updateWidth() {
+          var innerWidth = window.innerWidth;
+          var width = void 0;
+
+          if (innerWidth >= largeWidth) {
+            width = LARGE;
+          } else if (innerWidth >= mediumWidth) {
+            width = MEDIUM;
+          } else {
+            // innerWidth < 768
+            width = SMALL;
+          }
+
+          if (width !== this.state.width) {
+            this.setState({
+              width: width
+            });
+          }
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          var width = this.state.width;
+
+          /**
+           * When rendering the component on the server,
+           * we have no idea about the screen width.
+           * In order to prevent blinks and help the reconciliation
+           * we are not rendering the component.
+           *
+           * A better alternative would be to send client hints.
+           * But the browser support of this API is low:
+           * http://caniuse.com/#search=client%20hint
+           */
+          if (width === null) {
+            return null;
+          }
+
+          return _react2.default.createElement(
+            _reactEventListener2.default,
+            { target: 'window', onResize: this.handleResize },
+            _react2.default.createElement(MyComponent, (0, _extends3.default)({
+              width: width
+            }, this.props))
+          );
+        }
+      }]);
+      return WithWidth;
+    }(_react.Component);
+  };
+}
 
 /***/ })
 /******/ ]);

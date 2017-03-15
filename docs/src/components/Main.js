@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import withWidth, { SMALL } from 'material-ui/utils/withWidth';
 import { Route } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -23,6 +26,10 @@ import Reader from './Reader';
 
 class MainComponent extends Component {
 
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+  };
+
   static contextTypes = {
     router: PropTypes.object.isRequired,
   };
@@ -39,6 +46,9 @@ class MainComponent extends Component {
   };
 
   handleChangeList = (event, value) => {
+    if (this.props.width === SMALL) {
+      this.handleToggle();
+    }
     const { router: { history: { push } } } = this.context;
     push(value);
   };
@@ -57,7 +67,7 @@ class MainComponent extends Component {
   }
 
   componentDidMount() {
-    if (this.getPathname() !== '/') {
+    if (this.getPathname() !== '/' && this.props.width !== SMALL) {
       this.setState({
         ...this.state,
         open: true
@@ -69,7 +79,7 @@ class MainComponent extends Component {
     const pathname = this.getPathname();
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <div>
           <AppBar
             title="phpwind Fans"
@@ -87,8 +97,9 @@ class MainComponent extends Component {
           />
           <AppNavDrawer
             open={this.state.open}
-            handleClose={this.handleToggle}
             value={pathname}
+            docked={this.props.width !== SMALL}
+            handleClose={this.handleToggle}
             onChangeList={this.handleChangeList}
             handleRequestHome={this.handleRequestHome}
           />
@@ -96,7 +107,7 @@ class MainComponent extends Component {
           <div
             style={{
               transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
-              ...(this.state.open ? {
+              ...(this.state.open && this.props.width !== SMALL ? {
                 paddingLeft: 256
               } : {})
             }}
@@ -109,4 +120,4 @@ class MainComponent extends Component {
   }
 }
 
-export default MainComponent;
+export default withWidth()(MainComponent);

@@ -21,6 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   render(
     <App />,
     document.getElementById('app')
-  )
+  );
 
 });
