@@ -43,9 +43,26 @@ class MainComponent extends Component {
     push(value);
   };
 
+  handleRequestHome = () => {
+    if (this.getPathname() !== '/') {
+      const { router: { history: { push } } } = this.context;
+      push('/');
+    }
+    this.handleToggle();
+  };
+
   getPathname() {
     const { router: { route: { location: { pathname } } } } = this.context;
     return pathname;
+  }
+
+  componentDidMount() {
+    if (this.getPathname() !== '/') {
+      this.setState({
+        ...this.state,
+        open: true
+      });
+    }
   }
 
   render() {
@@ -68,7 +85,13 @@ class MainComponent extends Component {
             onLeftIconButtonTouchTap={this.handleToggle}
             zDepth={0}
           />
-          <AppNavDrawer open={this.state.open} handleClose={this.handleToggle} value={pathname} onChangeList={this.handleChangeList} />
+          <AppNavDrawer
+            open={this.state.open}
+            handleClose={this.handleToggle}
+            value={pathname}
+            onChangeList={this.handleChangeList}
+            handleRequestHome={this.handleRequestHome}
+          />
           <Route exact path="/" component={Index} />
           <div
             style={{

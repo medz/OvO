@@ -35,6 +35,7 @@ class AppNavDrawerComponent extends Component {
     open: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
     onChangeList: PropTypes.func.isRequired,
+    handleRequestHome: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
   };
 
@@ -52,7 +53,7 @@ class AppNavDrawerComponent extends Component {
   }
 
   render() {
-    const { open, handleClose, value, onChangeList } = this.props;
+    const { open, handleClose, value, onChangeList, handleRequestHome } = this.props;
     const AppNavItems = this.getAppNavItems(navs);
 
     return (
@@ -69,7 +70,11 @@ class AppNavDrawerComponent extends Component {
             </IconButton>
           }
           onLeftIconButtonTouchTap={handleClose}
+          onTitleTouchTap={handleRequestHome}
           zDepth={0}
+          titleStyle={{
+            cursor: 'pointer'
+          }}
         />
         <div>
           <SelectableList value={value} onChange={onChangeList} >

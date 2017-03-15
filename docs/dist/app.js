@@ -13791,6 +13791,13 @@ var MainComponent = function (_Component) {
       var push = _this.context.router.history.push;
 
       push(value);
+    }, _this.handleRequestHome = function () {
+      if (_this.getPathname() !== '/') {
+        var push = _this.context.router.history.push;
+
+        push('/');
+      }
+      _this.handleToggle();
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -13800,6 +13807,15 @@ var MainComponent = function (_Component) {
       var pathname = this.context.router.route.location.pathname;
 
       return pathname;
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.getPathname() !== '/') {
+        this.setState(_extends({}, this.state, {
+          open: true
+        }));
+      }
     }
   }, {
     key: 'render',
@@ -13826,7 +13842,13 @@ var MainComponent = function (_Component) {
             onLeftIconButtonTouchTap: this.handleToggle,
             zDepth: 0
           }),
-          _react2.default.createElement(_AppNavDrawer2.default, { open: this.state.open, handleClose: this.handleToggle, value: pathname, onChangeList: this.handleChangeList }),
+          _react2.default.createElement(_AppNavDrawer2.default, {
+            open: this.state.open,
+            handleClose: this.handleToggle,
+            value: pathname,
+            onChangeList: this.handleChangeList,
+            handleRequestHome: this.handleRequestHome
+          }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Index2.default }),
           _react2.default.createElement(
             'div',
@@ -40114,7 +40136,8 @@ var AppNavDrawerComponent = function (_Component) {
           open = _props.open,
           handleClose = _props.handleClose,
           value = _props.value,
-          onChangeList = _props.onChangeList;
+          onChangeList = _props.onChangeList,
+          handleRequestHome = _props.handleRequestHome;
 
       var AppNavItems = this.getAppNavItems(navs);
 
@@ -40133,7 +40156,11 @@ var AppNavDrawerComponent = function (_Component) {
             _react2.default.createElement(_close2.default, null)
           ),
           onLeftIconButtonTouchTap: handleClose,
-          zDepth: 0
+          onTitleTouchTap: handleRequestHome,
+          zDepth: 0,
+          titleStyle: {
+            cursor: 'pointer'
+          }
         }),
         _react2.default.createElement(
           'div',
@@ -40177,6 +40204,7 @@ AppNavDrawerComponent.propTypes = {
   open: _react.PropTypes.bool.isRequired,
   handleClose: _react.PropTypes.func.isRequired,
   onChangeList: _react.PropTypes.func.isRequired,
+  handleRequestHome: _react.PropTypes.func.isRequired,
   value: _react.PropTypes.string.isRequired
 };
 exports.default = AppNavDrawerComponent;
