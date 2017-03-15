@@ -16216,13 +16216,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _axios = __webpack_require__(193);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _Paper = __webpack_require__(153);
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -16234,26 +16246,89 @@ var ReaderComponent = function (_Component) {
   _inherits(ReaderComponent, _Component);
 
   function ReaderComponent() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, ReaderComponent);
 
-    return _possibleConstructorReturn(this, (ReaderComponent.__proto__ || Object.getPrototypeOf(ReaderComponent)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ReaderComponent.__proto__ || Object.getPrototypeOf(ReaderComponent)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      markdowns: {}
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(ReaderComponent, [{
+    key: 'getPathname',
+    value: function getPathname() {
+      var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      var _ref2 = props || this.props,
+          _ref2$location$pathna = _ref2.location.pathname,
+          pathname = _ref2$location$pathna === undefined ? '/introduction' : _ref2$location$pathna;
+
+      return pathname;
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(props) {
+      var load = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      var oldPathname = this.getPathname();
+      var pathname = this.getPathname(props);
+      if (oldPathname !== pathname && !this.state.markdowns.hasOwnProperty(pathname) || load === true) {
+        this.handleRequestMarkdown(props);
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.componentWillReceiveProps(this.props, true);
+    }
+  }, {
+    key: 'handleRequestMarkdown',
+    value: function handleRequestMarkdown() {
+      var _this2 = this;
+
+      var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      var pathname = this.getPathname(props);
+      _axios2.default.get('./assets' + pathname + '.md').then(function (_ref3) {
+        var data = _ref3.data;
+
+        _this2.setState(_extends({}, _this2.state, {
+          markdowns: _extends({}, _this2.state.markdowns, _defineProperty({}, pathname, data))
+        }));
+      }).catch(function () {});
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _props$location$pathn = this.props.location.pathname,
-          pathname = _props$location$pathn === undefined ? '/introduction' : _props$location$pathn;
+      var pathname = this.getPathname();
+      var markdown = this.state.markdowns[pathname] || '';
 
-      console.log(pathname);
-
-      return null;
+      return _react2.default.createElement(
+        _Paper2.default,
+        {
+          zDepth: 0,
+          style: {
+            padding: 15
+          }
+        },
+        markdown
+      );
     }
   }]);
 
   return ReaderComponent;
 }(_react.Component);
 
+ReaderComponent.propTypes = {
+  location: _react.PropTypes.object.isRequired
+};
 exports.default = ReaderComponent;
 
 /***/ }),
