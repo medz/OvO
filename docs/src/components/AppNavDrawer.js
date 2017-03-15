@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Drawer from 'material-ui/Drawer';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import CommunicationForum from 'material-ui/svg-icons/communication/forum';
-import { List, ListItem } from 'material-ui/List';
+import { List, ListItem, makeSelectable } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import GitHub from '../icons/GitHub';
 import Divider from 'material-ui/Divider';
 import { NavLink } from 'react-router-dom';
+
+const SelectableList = makeSelectable(List);
 
 const navs = [
   {
@@ -27,10 +29,31 @@ const navs = [
   }
 ];
 
-class NavComponent extends Component {
-  render() {
+class AppNavDrawerComponent extends Component {
 
-    const { open, handleClose } = this.props;
+  static propTypes = {
+    open: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    onChangeList: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+  };
+
+  getAppNavItems(navs) {
+    return navs.map(({ name, md, item = [] }) => {
+      let isNested = !!item.length;
+      let params = {key: md, value: md, primaryText: name};
+
+      if (isNested) {
+        params = {...params, key: name, primaryTogglesNestedList: true, nestedItems: this.getAppNavItems(item)};
+      }
+
+      return (<ListItem {...params} />);
+    });
+  }
+
+  render() {
+    const { open, handleClose, value, onChangeList } = this.props;
+    const AppNavItems = this.getAppNavItems(navs);
 
     return (
       <Drawer
@@ -49,41 +72,9 @@ class NavComponent extends Component {
           zDepth={0}
         />
         <div>
-          <List>
-            {navs.map(nav => {
-              let { name, md, item = [], opne = false } = nav;
-              let isNested = !!item.length;
-              if (isNested) {
-                return (
-                  <ListItem
-                    key={name}
-                    primaryText={name}
-                    initiallyOpen={!!open}
-                    primaryTogglesNestedList={true}
-                    nestedItems={item.map(({ name, md }) => (
-                      <ListItem
-                        key={md}
-                        primaryText={name}
-                        containerElement={
-                          <NavLink exact to={md} />
-                        }
-                      />
-                    ))}
-                  />
-                );
-              }
-
-              return (
-                <ListItem
-                  key={md}
-                  primaryText={name}
-                  containerElement={
-                    <NavLink exact to={md} />
-                  }
-                />
-              );
-            })}
-          </List>
+          <SelectableList value={value} onChange={onChangeList} >
+            {AppNavItems}
+          </SelectableList>
           <Divider />
           <List>
             <Subheader>更多</Subheader>
@@ -106,4 +97,4 @@ class NavComponent extends Component {
   }
 }
 
-export default NavComponent;
+export default AppNavDrawerComponent;

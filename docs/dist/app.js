@@ -13738,9 +13738,9 @@ var _Index = __webpack_require__(197);
 
 var _Index2 = _interopRequireDefault(_Index);
 
-var _Nav = __webpack_require__(199);
+var _AppNavDrawer = __webpack_require__(521);
 
-var _Nav2 = _interopRequireDefault(_Nav);
+var _AppNavDrawer2 = _interopRequireDefault(_AppNavDrawer);
 
 var _Reader = __webpack_require__(520);
 
@@ -13770,32 +13770,41 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var MainComponent = function (_Component) {
   _inherits(MainComponent, _Component);
 
-  function MainComponent(props) {
+  function MainComponent() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, MainComponent);
 
-    var _this = _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       open: false
-    };
-    return _this;
+    }, _this.handleToggle = function () {
+      _this.setState(_extends({}, _this.state, {
+        open: !_this.state.open
+      }));
+    }, _this.handleChangeList = function (event, value) {
+      var push = _this.context.router.history.push;
+
+      push(value);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(MainComponent, [{
-    key: 'handleToggle',
-    value: function handleToggle() {
-      this.setState(_extends({}, this.state, {
-        open: !this.state.open
-      }));
+    key: 'getPathname',
+    value: function getPathname() {
+      var pathname = this.context.router.route.location.pathname;
+
+      return pathname;
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
-      var handleToggle = function handleToggle() {
-        return _this2.handleToggle();
-      };
+      var pathname = this.getPathname();
 
       return _react2.default.createElement(
         _MuiThemeProvider2.default,
@@ -13814,10 +13823,10 @@ var MainComponent = function (_Component) {
               },
               _react2.default.createElement(_GitHub2.default, { color: '#fff' })
             ),
-            onLeftIconButtonTouchTap: handleToggle,
+            onLeftIconButtonTouchTap: this.handleToggle,
             zDepth: 0
           }),
-          _react2.default.createElement(_Nav2.default, { open: this.state.open, handleClose: handleToggle }),
+          _react2.default.createElement(_AppNavDrawer2.default, { open: this.state.open, handleClose: this.handleToggle, value: pathname, onChangeList: this.handleChangeList }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Index2.default }),
           _react2.default.createElement(
             'div',
@@ -13838,188 +13847,13 @@ var MainComponent = function (_Component) {
   return MainComponent;
 }(_react.Component);
 
+MainComponent.contextTypes = {
+  router: _react.PropTypes.object.isRequired
+};
 exports.default = MainComponent;
 
 /***/ }),
-/* 199 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _AppBar = __webpack_require__(151);
-
-var _AppBar2 = _interopRequireDefault(_AppBar);
-
-var _IconButton = __webpack_require__(65);
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
-
-var _Drawer = __webpack_require__(348);
-
-var _Drawer2 = _interopRequireDefault(_Drawer);
-
-var _close = __webpack_require__(374);
-
-var _close2 = _interopRequireDefault(_close);
-
-var _forum = __webpack_require__(373);
-
-var _forum2 = _interopRequireDefault(_forum);
-
-var _List = __webpack_require__(354);
-
-var _Subheader = __webpack_require__(154);
-
-var _Subheader2 = _interopRequireDefault(_Subheader);
-
-var _GitHub = __webpack_require__(122);
-
-var _GitHub2 = _interopRequireDefault(_GitHub);
-
-var _Divider = __webpack_require__(346);
-
-var _Divider2 = _interopRequireDefault(_Divider);
-
-var _reactRouterDom = __webpack_require__(180);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var navs = [{
-  name: '2017 开发计划',
-  md: '/2017-dev'
-}, {
-  name: '开始',
-  open: true,
-  item: [{
-    name: '介绍',
-    md: '/introduction'
-  }]
-}];
-
-var NavComponent = function (_Component) {
-  _inherits(NavComponent, _Component);
-
-  function NavComponent() {
-    _classCallCheck(this, NavComponent);
-
-    return _possibleConstructorReturn(this, (NavComponent.__proto__ || Object.getPrototypeOf(NavComponent)).apply(this, arguments));
-  }
-
-  _createClass(NavComponent, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          open = _props.open,
-          handleClose = _props.handleClose;
-
-
-      return _react2.default.createElement(
-        _Drawer2.default,
-        {
-          open: open,
-          docked: true,
-          width: 256
-        },
-        _react2.default.createElement(_AppBar2.default, {
-          title: 'phpwind Fans',
-          iconElementLeft: _react2.default.createElement(
-            _IconButton2.default,
-            null,
-            _react2.default.createElement(_close2.default, null)
-          ),
-          onLeftIconButtonTouchTap: handleClose,
-          zDepth: 0
-        }),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            _List.List,
-            null,
-            navs.map(function (nav) {
-              var name = nav.name,
-                  md = nav.md,
-                  _nav$item = nav.item,
-                  item = _nav$item === undefined ? [] : _nav$item,
-                  _nav$opne = nav.opne,
-                  opne = _nav$opne === undefined ? false : _nav$opne;
-
-              var isNested = !!item.length;
-              if (isNested) {
-                return _react2.default.createElement(_List.ListItem, {
-                  key: name,
-                  primaryText: name,
-                  initiallyOpen: !!open,
-                  primaryTogglesNestedList: true,
-                  nestedItems: item.map(function (_ref) {
-                    var name = _ref.name,
-                        md = _ref.md;
-                    return _react2.default.createElement(_List.ListItem, {
-                      key: md,
-                      primaryText: name,
-                      containerElement: _react2.default.createElement(_reactRouterDom.NavLink, { exact: true, to: md })
-                    });
-                  })
-                });
-              }
-
-              return _react2.default.createElement(_List.ListItem, {
-                key: md,
-                primaryText: name,
-                containerElement: _react2.default.createElement(_reactRouterDom.NavLink, { exact: true, to: md })
-              });
-            })
-          ),
-          _react2.default.createElement(_Divider2.default, null),
-          _react2.default.createElement(
-            _List.List,
-            null,
-            _react2.default.createElement(
-              _Subheader2.default,
-              null,
-              '\u66F4\u591A'
-            ),
-            _react2.default.createElement(_List.ListItem, {
-              containerElement: 'a',
-              primaryText: 'GitHub',
-              href: 'https://github.com/medz/phpwind/fork',
-              leftIcon: _react2.default.createElement(_GitHub2.default, null)
-            }),
-            _react2.default.createElement(_List.ListItem, {
-              containerElement: 'a',
-              primaryText: 'New issue',
-              href: 'https://github.com/medz/phpwind/issues/new',
-              leftIcon: _react2.default.createElement(_forum2.default, null)
-            })
-          )
-        )
-      );
-    }
-  }]);
-
-  return NavComponent;
-}(_react.Component);
-
-exports.default = NavComponent;
-
-/***/ }),
+/* 199 */,
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40165,6 +39999,187 @@ var ReaderComponent = function (_Component) {
 }(_react.Component);
 
 exports.default = ReaderComponent;
+
+/***/ }),
+/* 521 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _AppBar = __webpack_require__(151);
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _IconButton = __webpack_require__(65);
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _Drawer = __webpack_require__(348);
+
+var _Drawer2 = _interopRequireDefault(_Drawer);
+
+var _close = __webpack_require__(374);
+
+var _close2 = _interopRequireDefault(_close);
+
+var _forum = __webpack_require__(373);
+
+var _forum2 = _interopRequireDefault(_forum);
+
+var _List = __webpack_require__(354);
+
+var _Subheader = __webpack_require__(154);
+
+var _Subheader2 = _interopRequireDefault(_Subheader);
+
+var _GitHub = __webpack_require__(122);
+
+var _GitHub2 = _interopRequireDefault(_GitHub);
+
+var _Divider = __webpack_require__(346);
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _reactRouterDom = __webpack_require__(180);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SelectableList = (0, _List.makeSelectable)(_List.List);
+
+var navs = [{
+  name: '2017 开发计划',
+  md: '/2017-dev'
+}, {
+  name: '开始',
+  open: true,
+  item: [{
+    name: '介绍',
+    md: '/introduction'
+  }]
+}];
+
+var AppNavDrawerComponent = function (_Component) {
+  _inherits(AppNavDrawerComponent, _Component);
+
+  function AppNavDrawerComponent() {
+    _classCallCheck(this, AppNavDrawerComponent);
+
+    return _possibleConstructorReturn(this, (AppNavDrawerComponent.__proto__ || Object.getPrototypeOf(AppNavDrawerComponent)).apply(this, arguments));
+  }
+
+  _createClass(AppNavDrawerComponent, [{
+    key: 'getAppNavItems',
+    value: function getAppNavItems(navs) {
+      var _this2 = this;
+
+      return navs.map(function (_ref) {
+        var name = _ref.name,
+            md = _ref.md,
+            _ref$item = _ref.item,
+            item = _ref$item === undefined ? [] : _ref$item;
+
+        var isNested = !!item.length;
+        var params = { key: md, value: md, primaryText: name };
+
+        if (isNested) {
+          params = _extends({}, params, { key: name, primaryTogglesNestedList: true, nestedItems: _this2.getAppNavItems(item) });
+        }
+
+        return _react2.default.createElement(_List.ListItem, params);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          open = _props.open,
+          handleClose = _props.handleClose,
+          value = _props.value,
+          onChangeList = _props.onChangeList;
+
+      var AppNavItems = this.getAppNavItems(navs);
+
+      return _react2.default.createElement(
+        _Drawer2.default,
+        {
+          open: open,
+          docked: true,
+          width: 256
+        },
+        _react2.default.createElement(_AppBar2.default, {
+          title: 'phpwind Fans',
+          iconElementLeft: _react2.default.createElement(
+            _IconButton2.default,
+            null,
+            _react2.default.createElement(_close2.default, null)
+          ),
+          onLeftIconButtonTouchTap: handleClose,
+          zDepth: 0
+        }),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            SelectableList,
+            { value: value, onChange: onChangeList },
+            AppNavItems
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            _List.List,
+            null,
+            _react2.default.createElement(
+              _Subheader2.default,
+              null,
+              '\u66F4\u591A'
+            ),
+            _react2.default.createElement(_List.ListItem, {
+              containerElement: 'a',
+              primaryText: 'GitHub',
+              href: 'https://github.com/medz/phpwind/fork',
+              leftIcon: _react2.default.createElement(_GitHub2.default, null)
+            }),
+            _react2.default.createElement(_List.ListItem, {
+              containerElement: 'a',
+              primaryText: 'New issue',
+              href: 'https://github.com/medz/phpwind/issues/new',
+              leftIcon: _react2.default.createElement(_forum2.default, null)
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return AppNavDrawerComponent;
+}(_react.Component);
+
+AppNavDrawerComponent.propTypes = {
+  open: _react.PropTypes.bool.isRequired,
+  handleClose: _react.PropTypes.func.isRequired,
+  onChangeList: _react.PropTypes.func.isRequired,
+  value: _react.PropTypes.string.isRequired
+};
+exports.default = AppNavDrawerComponent;
 
 /***/ })
 /******/ ]);

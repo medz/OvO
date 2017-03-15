@@ -1,11 +1,11 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component, PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import GitHub from '../icons/GitHub';
 import Index from './Index';
-import Nav from './Nav';
+import AppNavDrawer from './AppNavDrawer';
 import Reader from './Reader';
 
 /*
@@ -23,23 +23,33 @@ import Reader from './Reader';
 
 class MainComponent extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    };
-  }
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  };
 
-  handleToggle() {
+  state = {
+    open: false
+  };
+
+  handleToggle = () => {
     this.setState({
       ...this.state,
       open: !this.state.open
     });
+  };
+
+  handleChangeList = (event, value) => {
+    const { router: { history: { push } } } = this.context;
+    push(value);
+  };
+
+  getPathname() {
+    const { router: { route: { location: { pathname } } } } = this.context;
+    return pathname;
   }
 
   render() {
-
-    const handleToggle = () => this.handleToggle();
+    const pathname = this.getPathname();
 
     return (
       <MuiThemeProvider>
@@ -55,10 +65,10 @@ class MainComponent extends Component {
                 <GitHub color="#fff" />
               </IconButton>
             }
-            onLeftIconButtonTouchTap={handleToggle}
+            onLeftIconButtonTouchTap={this.handleToggle}
             zDepth={0}
           />
-          <Nav open={this.state.open} handleClose={handleToggle} />
+          <AppNavDrawer open={this.state.open} handleClose={this.handleToggle} value={pathname} onChangeList={this.handleChangeList} />
           <Route exact path="/" component={Index} />
           <div
             style={{
