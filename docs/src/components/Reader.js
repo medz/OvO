@@ -1,6 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
+import marked from 'marked';
+import { highlight } from 'highlight.js';
+
+import '../styles/mui-github-markdown.css';
+import 'highlight.js/styles/default.css';
+
+const langAlias = lang => {
+  const alias = {
+    json5: 'json',
+  };
+
+  return alias[lang] || lang;
+}
+
+marked.setOptions({
+  highlight: (code, lang) => highlight(langAlias(lang), code).value
+});
 
 class ReaderComponent extends Component {
 
@@ -10,6 +27,7 @@ class ReaderComponent extends Component {
 
   state = {
     markdowns: {},
+    loadding: false
   };
 
   getPathname(props = false) {
@@ -49,16 +67,25 @@ class ReaderComponent extends Component {
     const pathname = this.getPathname();
     const markdown = this.state.markdowns[pathname] || '';
 
-    return (
-      <Paper
-        zDepth={0}
-        style={{
-          padding: 15
-        }}
-      >
-        {markdown}
-      </Paper>
-    );
+    if (this.state.loadding === false) {
+      return (
+        <Paper
+          zDepth={0}
+        >
+          <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{__html: marked(markdown)}}
+            style={{
+              marginTop: 20,
+              marginBottom: 20,
+              padding: '0 10px'
+            }}
+          />
+        </Paper>
+      );
+    }
+
+    return null;
   }
 }
 

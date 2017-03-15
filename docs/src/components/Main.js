@@ -11,19 +11,6 @@ import Index from './Index';
 import AppNavDrawer from './AppNavDrawer';
 import Reader from './Reader';
 
-/*
-
-<div dangerouslySetInnerHTML={{
-  __html: md.render(`
-    # markdown-it rulezz!
-  `)
-}} />
- */
-
-// import MarkdownIt from 'markdown-it';
-
-// const md = MarkdownIt();
-
 class MainComponent extends Component {
 
   static propTypes = {
