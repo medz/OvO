@@ -133,14 +133,14 @@
 var FID = '{$pwforum->fid}';
 Wind.use('jquery', 'global', function(){
 <!--# if(!$is_design) { #-->
-<!--# if (!$threaddb) { #-->
-	//无内容 发帖引导
-	Wind.js(GV.JS_ROOT + 'pages/bbs/postGuide.js?v=' + GV.JS_VERSION);
-<!--# } else { #-->
-	if(GV.U_ID) {
-		Wind.js(GV.JS_ROOT +'pages/bbs/threadManage.js?v=' + GV.JS_VERSION);
-	}
-<!--# } #-->
+	<!--# if (!$threaddb) { #-->
+		//无内容 发帖引导
+		Wind.js(GV.JS_ROOT + 'pages/bbs/postGuide.js?v=' + GV.JS_VERSION);
+	<!--# } else { #-->
+		if(GV.U_ID) {
+			Wind.js(GV.JS_ROOT +'pages/bbs/threadManage.js?v=' + GV.JS_VERSION);
+		}
+	<!--# } #-->
 <!--# } #-->
 });
 </script>

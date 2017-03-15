@@ -9,25 +9,9 @@ import Subheader from 'material-ui/Subheader';
 import GitHub from '../icons/GitHub';
 import Divider from 'material-ui/Divider';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 const SelectableList = makeSelectable(List);
-
-const navs = [
-  {
-    name: '2017 开发计划',
-    md: '/2017-dev'
-  },
-  {
-    name: '开始',
-    open: true,
-    item: [
-      {
-        name: '介绍',
-        md: '/introduction'
-      }
-    ]
-  }
-];
 
 class AppNavDrawerComponent extends Component {
 
@@ -38,6 +22,10 @@ class AppNavDrawerComponent extends Component {
     handleRequestHome: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     docked: PropTypes.bool.isRequired
+  };
+
+  state = {
+    navConfig: []
   };
 
   getAppNavItems(navs) {
@@ -53,9 +41,21 @@ class AppNavDrawerComponent extends Component {
     });
   }
 
+  componentDidMount() {
+    axios.get('./assets/summary.json')
+    .then(( { data = [] } ) => {
+      this.setState({
+        navConfig: data
+      });
+    })
+    .catch(() => {
+      setTimeout(this.componentDidMount, 3000);
+    });
+  }
+
   render() {
     const { open, handleClose, value, onChangeList, handleRequestHome, docked } = this.props;
-    const AppNavItems = this.getAppNavItems(navs);
+    const AppNavItems = this.getAppNavItems(this.state.navConfig);
 
     return (
       <Drawer
