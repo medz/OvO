@@ -13572,7 +13572,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var App = function App() {
   return _react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
+    _reactRouterDom.HashRouter,
     null,
     _react2.default.createElement(_Main2.default, null)
   );
