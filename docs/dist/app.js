@@ -13901,6 +13901,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var navs = [{
+  name: '2017 开发计划',
+  md: '/2017-dev'
+}, {
+  name: '开始',
+  open: true,
+  item: [{
+    name: '介绍',
+    md: '/introduction'
+  }]
+}];
+
 var NavComponent = function (_Component) {
   _inherits(NavComponent, _Component);
 
@@ -13941,21 +13953,38 @@ var NavComponent = function (_Component) {
           _react2.default.createElement(
             _List.List,
             null,
-            _react2.default.createElement(_List.ListItem, {
-              primaryText: '2017 \u5F00\u53D1\u8BA1\u5212'
-            }),
-            _react2.default.createElement(_List.ListItem, {
-              primaryText: '\u5F00\u59CB',
-              initiallyOpen: true,
-              primaryTogglesNestedList: true,
-              nestedItems: [_react2.default.createElement(_List.ListItem, {
-                key: 'introduction',
-                primaryText: '\u4ECB\u7ECD',
-                containerElement: _react2.default.createElement(_reactRouterDom.NavLink, {
-                  exact: true,
-                  to: '/introduction'
-                })
-              })]
+            navs.map(function (nav) {
+              var name = nav.name,
+                  md = nav.md,
+                  _nav$item = nav.item,
+                  item = _nav$item === undefined ? [] : _nav$item,
+                  _nav$opne = nav.opne,
+                  opne = _nav$opne === undefined ? false : _nav$opne;
+
+              var isNested = !!item.length;
+              if (isNested) {
+                return _react2.default.createElement(_List.ListItem, {
+                  key: name,
+                  primaryText: name,
+                  initiallyOpen: !!open,
+                  primaryTogglesNestedList: true,
+                  nestedItems: item.map(function (_ref) {
+                    var name = _ref.name,
+                        md = _ref.md;
+                    return _react2.default.createElement(_List.ListItem, {
+                      key: md,
+                      primaryText: name,
+                      containerElement: _react2.default.createElement(_reactRouterDom.NavLink, { exact: true, to: md })
+                    });
+                  })
+                });
+              }
+
+              return _react2.default.createElement(_List.ListItem, {
+                key: md,
+                primaryText: name,
+                containerElement: _react2.default.createElement(_reactRouterDom.NavLink, { exact: true, to: md })
+              });
             })
           ),
           _react2.default.createElement(_Divider2.default, null),

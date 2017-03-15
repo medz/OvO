@@ -10,6 +10,23 @@ import GitHub from '../icons/GitHub';
 import Divider from 'material-ui/Divider';
 import { NavLink } from 'react-router-dom';
 
+const navs = [
+  {
+    name: '2017 开发计划',
+    md: '/2017-dev'
+  },
+  {
+    name: '开始',
+    open: true,
+    item: [
+      {
+        name: '介绍',
+        md: '/introduction'
+      }
+    ]
+  }
+];
+
 class NavComponent extends Component {
   render() {
 
@@ -33,24 +50,39 @@ class NavComponent extends Component {
         />
         <div>
           <List>
-            <ListItem
-              primaryText="2017 开发计划"
-            />
-            <ListItem
-              primaryText="开始"
-              initiallyOpen={true}
-              primaryTogglesNestedList={true}
-              nestedItems={[
+            {navs.map(nav => {
+              let { name, md, item = [], opne = false } = nav;
+              let isNested = !!item.length;
+              if (isNested) {
+                return (
+                  <ListItem
+                    key={name}
+                    primaryText={name}
+                    initiallyOpen={!!open}
+                    primaryTogglesNestedList={true}
+                    nestedItems={item.map(({ name, md }) => (
+                      <ListItem
+                        key={md}
+                        primaryText={name}
+                        containerElement={
+                          <NavLink exact to={md} />
+                        }
+                      />
+                    ))}
+                  />
+                );
+              }
+
+              return (
                 <ListItem
-                  key="introduction"
-                  primaryText="介绍"
-                  containerElement={<NavLink
-                    exact
-                    to="/introduction"
-                  />}
+                  key={md}
+                  primaryText={name}
+                  containerElement={
+                    <NavLink exact to={md} />
+                  }
                 />
-              ]}
-            />
+              );
+            })}
           </List>
           <Divider />
           <List>
