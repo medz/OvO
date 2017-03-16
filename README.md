@@ -3,8 +3,21 @@
 <a href="//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7"><img src="https://pub.idqqimg.com/wpa/images/group.png" title="加入 phpwind Fans 群"></a>
 </p>
 
+# 关于 Fans
+
 使用 PHP 和 MySQL 开发的高性能社区系统。
+
 > phpwind Fans 版本是原本暂定的 phpwind 10 版本而来，基于官方最新的 phpwind 9.0.1 开发，同步官方所有代码的基础上进行改良和长期维护。
+
+# 文档中心
+
+[https://medz.github.io/phpwind/](https://medz.github.io/phpwind/)
+
+> 文档中心提供了非常多关于 Fans 版本的说明，并且使用 SPA 开发；有良好的用户阅读体验和跨设备体验，相比 GitHub 文档，能更好更清晰的胃用户提供帮助。
+
+>> 文档中心仓库: [medz/phpwind-docs](https://github.com/medz/phpwind-docs)
+
+>>> 再文档仓库，你可以为 Fans 版提供更多的文档帮助以及页面设计或者是建议。
 
 
 |------------- Old readme ---------------|
