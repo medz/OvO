@@ -1,6 +1,9 @@
 # phpwind Fans
 
-[![phpwind Fans](https://pub.idqqimg.com/wpa/images/group.png)](//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7)
+<p align="center"><h1>phpwind Fans</h1></p>
+<p align="center">
+<a href="//shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7"><img src="https://pub.idqqimg.com/wpa/images/group.png" title="加入 phpwind Fans 群"></a>
+</p>
 
 使用 PHP 和 MySQL 开发的高性能社区系统
 > phpwind Fans版本是原本暂定的phpwind10版本而来。基于官方最新的phpwind9.0.1开发，同步官方所有代码的基础上进行改良和长期维护。
