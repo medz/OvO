@@ -27,7 +27,8 @@
 
 > 无论何种方式，提交 [Issue](https://github.com/medz/phpwind/issues)、[PR (Pull requests)](https://github.com/medz/phpwind/pulls)亦或是参与到代码 Commit 讨论，Issue 回复，PR 评论科学性都是一种贡献。使用 Fans 版也是一种贡献，我们希望尽了把好的给各位站长、开发者以及使用者。
 
-非常感谢您考虑为 Fans 版作出贡献，有关程序代码贡献相关文档都在这里：[https://medz.github.io/phpwind/#/contributing](https://medz.github.io/phpwind/#/contributing)
+非常感谢您考虑为 Fans 版做出贡献，
+贡献指南可以在 Fans 文档中心（[https://medz.github.io/phpwind/#/contributing](https://medz.github.io/phpwind/#/contributing)）中找到。
 
 
 
