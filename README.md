@@ -24,6 +24,7 @@
 # 参与 Fans
 
 > 首先，先明确下 Fans 版本的态度，Fans 版本非常欢迎大家能踊跃的参与到 Fans 的开发和改进当中。无论你是什么职业，目的如何，我们都欢迎大家参与其中，让 Fans 版被更多人所喜爱。
+
 > 无论何种方式，提交 [Issue](https://github.com/medz/phpwind/issues)、[PR (Pull requests)](https://github.com/medz/phpwind/pulls)亦或是参与到代码 Commit 讨论，Issue 回复，PR 评论科学性都是一种贡献。使用 Fans 版也是一种贡献，我们希望尽了把好的给各位站长、开发者以及使用者。
 
 
