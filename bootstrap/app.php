@@ -75,11 +75,15 @@ $app = new Medz\Wind\Application(
 |
 */
 
-$app->singleton('phpwind9', function () {
-    return function ($name = 'phpwind', array $components = []) {
-        Wekit::run($name, $components);
-    };
-});
+$app->singleton(
+    Illuminate\Contracts\Http\Kernel::class,
+    Medz\Wind\Http\Kernel::class
+);
+
+$app->singleton(
+    Illuminate\Contracts\Debug\ExceptionHandler::class,
+    Medz\Wind\Exceptions\Handler::class
+);
 
 /*
 |--------------------------------------------------------------------------

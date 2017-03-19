@@ -45,6 +45,7 @@ class PwRoute extends AbstractPwRoute
      */
     public function match($request)
     {
+        // var_dump($request);exit;
         $this->init(false, $request);
         $host = $request->getHostInfo();
         $args = $this->_matchDomain($host);

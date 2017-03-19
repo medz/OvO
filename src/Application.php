@@ -6,5 +6,13 @@ use Illuminate\Foundation\Application as LaravelApplication;
 
 class Application extends LaravelApplication
 {
-    // todo.
+    /**
+     * Get the path to the application "src" directory.
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'src';
+    }
 }
