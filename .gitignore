@@ -8,5 +8,5 @@
 /phpwind9/themes/portal/
 /phpwind9/attachment/
 /phpwind9/windid/attachment/
-/phpwind9/src/extensions/
-!/phpwind8/src/extensions/demo/
+/phpwind9/src/extensions/*
+!/phpwind9/src/extensions/demo

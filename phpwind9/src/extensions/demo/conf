@@ -1,0 +1,10 @@
+<?php
+  return array(
+	'isopen' => '1',
+	'maxalbum' => '3',
+	'testcheck' => array(
+		'0' => '1',
+		'1' => '2',
+	),
+);
+?>
