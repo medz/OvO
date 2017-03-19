@@ -36,7 +36,7 @@ Route::any('/old/{filename}.{ext}', function (Illuminate\Filesystem\Filesystem $
 
     $alias = [
         'css' => 'text/css',
-        'js' => 'text/javascript'
+        'js'  => 'text/javascript',
     ];
 
     $headers = [
