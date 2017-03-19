@@ -1,7 +1,5 @@
 <?php
 
-use function Medz\Wind\app;
-
 Wind::import('ADMIN:library.AdminBaseController');
 /**
  * 后台菜单管理操作类.

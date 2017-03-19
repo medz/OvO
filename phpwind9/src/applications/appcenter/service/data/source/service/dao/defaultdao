@@ -1,0 +1,42 @@
+<?php
+defined('WEKIT_VERSION') or exit(403);
+/**
+ * {{classname}} - dao
+ *
+ * @author {{author}} <{{email}}>
+ * @copyright {{website}}
+ * @license {{website}}
+ */
+class {{classname}} extends PwBaseDao {
+	
+	/**
+	 * table name
+	 */
+	protected $_table = '{{prefix}}';
+	/**
+	 * primary key
+	 */
+	protected $_pk = 'id';
+	/**
+	 * table fields
+	 */
+	protected $_dataStruct = array('id' /*, 'field' */);
+	
+	public function add($fields) {
+		return $this->_add($fields, true);
+	}
+	
+	public function update($id, $fields) {
+		return $this->_update($id, $fields);
+	}
+	
+	public function delete($id) {
+		return $this->_delete($id);
+	}
+	
+	public function get($id) {
+		return $this->_get($id);
+	}
+}
+
+?>
