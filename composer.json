@@ -27,22 +27,17 @@
         "ext-zlib": "*",
         "ext-zip": "*",
         "medz/windframework": "^1.0",
-        "symfony/console": "^3.2",
         "guzzlehttp/guzzle": "^6.2",
-        "nikic/fast-route": "^1.2",
-        "psr/container": "^1.0",
-        "illuminate/container": "^5.4",
-        "illuminate/config": "^5.4"
+        "laravel/framework": "^5.4"
     },
     "autoload": {
         "classmap": [
-            "src/phpwind9/Wekit.php",
-            "src/phpwind9/library/",
-            "src/phpwind9/service/",
-            "src/phpwind9/bootstrap/",
-            "src/phpwind9/hooks/"
+            "phpwind9/src/Wekit.php",
+            "phpwind9/src/library/",
+            "phpwind9/src/service/",
+            "phpwind9/src/bootstrap/",
+            "phpwind9/src/hooks/"
         ],
-        "files": [ "helpers.php" ],
         "psr-4": {
             "Medz\\Wind\\": "src/",
             "Pw\\Ext\\": "src/extensions/"

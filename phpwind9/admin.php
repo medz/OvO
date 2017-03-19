@@ -1,9 +1,9 @@
 <?php
 
-error_reporting(E_ERROR | E_PARSE);
-// ini_set('display_errors', true);
-// error_reporting(E_ALL);
-// define('WIND_DEBUG', 3);
+// error_reporting(E_ERROR | E_PARSE);
+// // ini_set('display_errors', true);
+// // error_reporting(E_ALL);
+// // define('WIND_DEBUG', 3);
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ error_reporting(E_ERROR | E_PARSE);
 |
 */
 
-$app = require dirname(__FILE__).'/bootstrap.php';
+$app = require dirname(__DIR__).'/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

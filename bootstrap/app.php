@@ -10,7 +10,7 @@
 |
 */
 
-define('WIND_START', microtime(true));
+define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ define('WIND_START', microtime(true));
 |
 */
 
-$filename = dirname(__FILE__).'/vendor/autoload.php';
+$filename = dirname(__DIR__).'/vendor/autoload.php';
 if (!file_exists($filename) || !is_file($filename)) {
     echo '<pre>',
          '您必须使用Composer包管理设置项目依赖关系，在程序根目录运行以下命令:', PHP_EOL,
@@ -44,7 +44,7 @@ require $filename;
 |
 */
 
-$frameworkAutoloadFile = dirname(__FILE__).'/windframework/vendor/autoload.php';
+$frameworkAutoloadFile = dirname(__DIR__).'/windframework/vendor/autoload.php';
 if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
     require $frameworkAutoloadFile;
 }
@@ -61,7 +61,7 @@ if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
 */
 
 $app = new Medz\Wind\Application(
-    realpath(dirname(__FILE__))
+    realpath(dirname(__DIR__))
 );
 
 /*
