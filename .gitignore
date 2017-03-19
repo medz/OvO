@@ -16,6 +16,8 @@
 !/phpwind9/themes/space/*
 !/phpwind9/themes/site/default
 /phpwind9/attachment/
+!/phpwind9/attachment/index.html
 /phpwind9/windid/attachment/
+!/phpwind9/windid/attachment/index.html
 /phpwind9/src/extensions/*
 !/phpwind9/src/extensions/demo
