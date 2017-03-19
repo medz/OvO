@@ -1,22 +1,13 @@
 <?php
 
-$兼容pw9 = function ($file) {
-    $_SERVER['DOCUMENT_URI'] = '/old/'.$file;
-    $_SERVER['SCRIPT_NAME'] = $_SERVER['DOCUMENT_URI'];
-    $_SERVER['PHP_SELF'] = $_SERVER['DOCUMENT_URI'];
-    $_SERVER['SCRIPT_FILENAME'] = public_path('old/'.$file);
-};
-
 // index.php and read.php
-Route::any('/old/{file?}', function ($file = 'index.php') use ($兼容pw9) {
-    $兼容pw9($file);
-    Wekit::run('phpwind');
+Route::any('/old/{file?}', function ($file = 'index.php') {
+    Wekit::run($file, 'phpwind');
 })->where('file', 'index.php|read.php');
 
 // admin.php
-Route::any('/old/admin.php', function () use ($兼容pw9) {
-    $兼容pw9('admin.php');
-    Wekit::run('pwadmin', [
+Route::any('/old/admin.php', function () {
+    Wekit::run('admin.php', 'pwadmin', [
         'router' => [
             'config' => [
                 'module' => ['default-value' => 'default'],
@@ -29,6 +20,11 @@ Route::any('/old/admin.php', function () use ($兼容pw9) {
             ],
         ],
     ]);
+});
+
+// windid.php
+Route::any('/old/windid.php', function () {
+    Wekit::run('windid.php', 'windidnotify', ['router' => []]);
 });
 
 Route::any('/old/{filename}.{ext}', function (Illuminate\Filesystem\Filesystem $filesystem, $filename, $ext) {

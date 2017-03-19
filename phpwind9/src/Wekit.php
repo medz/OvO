@@ -28,8 +28,13 @@ class Wekit
      * @param string $name       应用名称默认‘phpwind’
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
      */
-    public static function run($name = 'phpwind', array $components = [])
+    public static function run($file, $name = 'phpwind', array $components = [])
     {
+        $_SERVER['DOCUMENT_URI'] = '/old/'.$file;
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['DOCUMENT_URI'];
+        $_SERVER['PHP_SELF'] = $_SERVER['DOCUMENT_URI'];
+        $_SERVER['SCRIPT_FILENAME'] = public_path('old/'.$file);
+        
         self::init($name);
         if (!empty($components)) {
             self::$_sc['components'] = (array) $components + self::$_sc['components'];
