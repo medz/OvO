@@ -1,8 +1,6 @@
 <?php
 
-use function Medz\Wind\app;
-
-define('WEKIT_PATH', app('path').DIRECTORY_SEPARATOR);
+define('WEKIT_PATH', base_path('phpwind9/src/'));
 define('WEKIT_VERSION', Pw::VERSION);
 
 define('NEXT_VERSION', Pw::VERSION);
@@ -50,12 +48,11 @@ class Wekit
     {
         function_exists('set_magic_quotes_runtime') && @set_magic_quotes_runtime(0);
         self::_loadSystemConfig($name);
-
+        // var_dump(WEKIT_PATH);
         $_conf = include WEKIT_PATH.self::S('directory');
         foreach ($_conf as $namespace => $path) {
-            $realpath = realpath(WEKIT_PATH.$path);
-            Wind::register($realpath, $namespace);
-            define($namespace.'_PATH', $realpath.DIRECTORY_SEPARATOR);
+            Wind::register($path, $namespace);
+            define($namespace.'_PATH', $path.DIRECTORY_SEPARATOR);
         }
         Wind::register(WEKIT_PATH, 'WEKIT');
         self::_loadBase();

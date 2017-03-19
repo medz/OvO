@@ -2,4 +2,4 @@
 
 require dirname(__FILE__).'/bootstrap.php';
 
-var_dump(app());
+// var_dump(app());
