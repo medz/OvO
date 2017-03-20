@@ -34,7 +34,7 @@ class Wekit
         $_SERVER['SCRIPT_NAME'] = $_SERVER['DOCUMENT_URI'];
         $_SERVER['PHP_SELF'] = $_SERVER['DOCUMENT_URI'];
         $_SERVER['SCRIPT_FILENAME'] = public_path('old/'.$file);
-        
+
         self::init($name);
         if (!empty($components)) {
             self::$_sc['components'] = (array) $components + self::$_sc['components'];
