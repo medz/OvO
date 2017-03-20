@@ -26,7 +26,7 @@ return [
  * 可访问目录
  */
 
-'PUBLIC' => public_path(),
+'PUBLIC' => base_path('phpwind9'),
 'THEMES' => base_path('phpwind9/themes'),
 'TPL'    => base_path('phpwind9/template'),
 'ATTACH' => base_path('phpwind9/attachment'),

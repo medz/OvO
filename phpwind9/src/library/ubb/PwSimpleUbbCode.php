@@ -291,24 +291,22 @@ class PwSimpleUbbCode
      */
     public static function parseUrl($message, $checkurl = 0)
     {
-        $searcharray = [
-            "/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is",
-            "/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)\[\/url\]/is",
-        ];
-        $replacearray = [
+
+        $message = preg_replace_callback(
+            '/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is',
             function ($matches) use ($checkurl) {
                 return PwSimpleUbbCode::_pushCode('createUrl', $matches[1], $matches[5], $matches[2], $matches[4], $checkurl);
             },
+            $message
+        );
+
+        return preg_replace_callback(
+            '/\[url\]((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)\[\/url\]/is',
             function ($matches) use ($checkurl) {
                 return PwSimpleUbbCode::_pushCode('createUrl', $matches[1], $matches[1], $matches[2], '0', $checkurl);
             },
-            // "self::_pushCode('createUrl', '\\1', '\\5', '\\2', '\\4', '$checkurl')",
-            // "self::_pushCode('createUrl', '\\1', '\\1', '\\2', '0', '$checkurl')",
-        ];
-
-        return preg_replace_callback($searcharray, $replacearray, $message);
-
-        // return preg_replace($searcharray, $replacearray, $message);
+            $message
+        );
     }
 
     /**

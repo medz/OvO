@@ -18,7 +18,8 @@ class PwStorage
      */
     public function getStorages()
     {
-        $conf = Wind::getRealPath('LIB:storage.storages.php', true);
+        // $conf = Wind::getRealPath('LIB:storage.storages.php', true);
+        $conf = realpath(dirname(__FILE__).'/storages.php');
         $tmp = array('name' => '', 'alias' => '', 'managelink' => '', 'description' => '', 'components' => array());
         $storages = @include $conf;
         $storages = PwSimpleHook::getInstance('PwStorage_getStorages')->runWithFilters($storages);

@@ -7,7 +7,16 @@ define('NEXT_VERSION', Pw::VERSION);
 define('NEXT_RELEASE', '20161114');
 define('NEXT_FIXBUG', '9000002');
 
-defined('WIND_DEBUG') || define('WIND_DEBUG', 0);
+if (config('app.env') !== 'production') {
+    ini_set('display_errors', true);
+    error_reporting(E_ALL);
+}
+
+if (config('app.debug') && !defined('WIND_DEBUG')) {
+    define('WIND_DEBUG', 3);
+} else if (!defined('WIND_DEBUG')) {
+    define('WIND_DEBUG', 0);
+}
 
 /**
  * @author Jianmin Chen <sky_hold@163.com>
@@ -29,7 +38,7 @@ class Wekit
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
      */
     public static function run($file, $name = 'phpwind', array $components = [])
-    {
+    {    
         $_SERVER['DOCUMENT_URI'] = '/old/'.$file;
         $_SERVER['SCRIPT_NAME'] = $_SERVER['DOCUMENT_URI'];
         $_SERVER['PHP_SELF'] = $_SERVER['DOCUMENT_URI'];
