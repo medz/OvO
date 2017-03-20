@@ -34,7 +34,7 @@ Route::any('/old/install.php', function () {
 
 // windid/index.php
 Route::any('/old/windid/{filename?}', function () {
-    Wekit::run('windid/index.php' ,'windid', $components);
+    Wekit::run('windid/index.php', 'windid', $components);
 })->where('filename', 'index.php', ['router' => []]);
 
 // windid/admin.php
