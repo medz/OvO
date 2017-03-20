@@ -14,7 +14,7 @@ if (config('app.env') !== 'production') {
 
 if (config('app.debug') && !defined('WIND_DEBUG')) {
     define('WIND_DEBUG', 3);
-} else if (!defined('WIND_DEBUG')) {
+} elseif (!defined('WIND_DEBUG')) {
     define('WIND_DEBUG', 0);
 }
 
@@ -38,7 +38,7 @@ class Wekit
      * @param array  $components 组建配置信息 该组建配置将会覆盖原组建配置，默认为空
      */
     public static function run($file, $name = 'phpwind', array $components = [])
-    {    
+    {
         $_SERVER['DOCUMENT_URI'] = '/old/'.$file;
         $_SERVER['SCRIPT_NAME'] = $_SERVER['DOCUMENT_URI'];
         $_SERVER['PHP_SELF'] = $_SERVER['DOCUMENT_URI'];

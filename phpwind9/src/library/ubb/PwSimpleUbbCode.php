@@ -291,7 +291,6 @@ class PwSimpleUbbCode
      */
     public static function parseUrl($message, $checkurl = 0)
     {
-
         $message = preg_replace_callback(
             '/\[url=((https?|ftp|gopher|news|telnet|mms|rtsp|thunder)?[^\[\s]+?)(\,(1)\/?)?\](.+?)\[\/url\]/is',
             function ($matches) use ($checkurl) {
