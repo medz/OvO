@@ -1,8 +1,6 @@
 <?php
 
-$phpwind9Config = include base_path('phpwind/conf/directory.php');
-
-return array_merge(include base_path('phpwind/conf/directory.php'), [
+return array_merge(include base_path('phpwind9/conf/directory.php'), [
 
 /*
  * 全局应用部署目录配置
@@ -13,6 +11,7 @@ return array_merge(include base_path('phpwind/conf/directory.php'), [
 /*
  * 源代码库目录,路径相对于wekit.php文件所在目录
  */
+'APPS' => base_path('phpwind9/src/applications/windidserver'),
 'WSRV' => base_path('phpwind9/src/windid/service'),
 
 /*
