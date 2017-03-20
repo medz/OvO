@@ -1,6 +1,7 @@
 /vendor
 /composer.lock
 /windframework
+/.env
 
 /phpwind9/conf/database.php
 /phpwind9/conf/founder.php

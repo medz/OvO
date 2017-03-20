@@ -42,8 +42,8 @@ Route::any('/old/windid/admin.php', function () {
     Wekit::run('windid/admin.php', 'windidadmin', ['router' => []]);
 });
 
-Route::any('/old/{filename}.{ext}', function (Illuminate\Filesystem\Filesystem $filesystem, $filename, $ext) {
-    $filename = base_path(sprintf('phpwind9/%s.%s', $filename, $ext));
+Route::any('/old/{type}/{filename}.{ext}', function (Illuminate\Filesystem\Filesystem $filesystem, $type, $filename, $ext) {
+    $filename = base_path(sprintf('phpwind9/%s/%s.%s', $type, $filename, $ext));
 
     $alias = [
         'css' => 'text/css',
@@ -57,5 +57,18 @@ Route::any('/old/{filename}.{ext}', function (Illuminate\Filesystem\Filesystem $
 
     return response()->file($filename, $headers);
 })->where([
+    'type' => 'attachment|res|themes|windid|',
     'filename' => '.*',
 ]);
+
+Route::any('/old/crossdomain.xml', function () {
+    return response()->file(base_path('phpwind9/crossdomain.xml', [
+        'Content-Type' => 'application/xml'
+    ]));
+});
+
+Route::any('/old/windid/crossdomain.xml', function () {
+    return response()->file(base_path('phpwind9/crossdomain.xml', [
+        'Content-Type' => 'application/xml'
+    ]));
+});
