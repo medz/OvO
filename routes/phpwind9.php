@@ -57,18 +57,18 @@ Route::any('/old/{type}/{filename}.{ext}', function (Illuminate\Filesystem\Files
 
     return response()->file($filename, $headers);
 })->where([
-    'type' => 'attachment|res|themes|windid|',
+    'type'     => 'attachment|res|themes|windid|',
     'filename' => '.*',
 ]);
 
 Route::any('/old/crossdomain.xml', function () {
     return response()->file(base_path('phpwind9/crossdomain.xml', [
-        'Content-Type' => 'application/xml'
+        'Content-Type' => 'application/xml',
     ]));
 });
 
 Route::any('/old/windid/crossdomain.xml', function () {
     return response()->file(base_path('phpwind9/crossdomain.xml', [
-        'Content-Type' => 'application/xml'
+        'Content-Type' => 'application/xml',
     ]));
 });
