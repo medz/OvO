@@ -69,6 +69,6 @@ Route::any('/old/{type}/{filename}.{ext}', function (Illuminate\Filesystem\Files
 
     return response()->file($filename, $headers);
 })->where([
-    'type' => 'attachment|res|themes|windid|',
+    'type'     => 'attachment|res|themes|windid|',
     'filename' => '.*',
 ]);
