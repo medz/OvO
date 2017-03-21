@@ -194,7 +194,7 @@ class IndexController extends BaseProfileController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($passwd, $email) = $this->getInput(['passwd', 'email'], 'post');
-        if (!$passwd || !$email) {
+        if (! $passwd || ! $email) {
             $this->showError('USER:empty.error');
         }
 
@@ -263,7 +263,7 @@ class IndexController extends BaseProfileController
     private function _buildArea($areaid)
     {
         $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
-        if (!$areaid) {
+        if (! $areaid) {
             return $default;
         }
         $rout = WindidApi::api('area')->getAreaRout($areaid);

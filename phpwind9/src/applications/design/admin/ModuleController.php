@@ -62,7 +62,7 @@ class ModuleController extends AdminBaseController
             $bo = new PwDesignModelBo($v['model_flag']);
             $model = $bo->getModel();
             $list[$k]['isdata'] = true;
-            if ($model['tab'] && !in_array('data', $model['tab'])) {
+            if ($model['tab'] && ! in_array('data', $model['tab'])) {
                 $list[$k]['isdata'] = false;
             }
         }
@@ -102,7 +102,7 @@ class ModuleController extends AdminBaseController
             $this->showError('operate.fail');
         }
         $script = $this->_getScriptDs()->getScript($moduleid);
-        if (!$script) {
+        if (! $script) {
             $this->showError('operate.fail');
         }
         $apiUrl = WindUrlHelper::createUrl('design/api/run', ['token' => $script['token'], 'id' => $moduleid], '', 'pw');

@@ -26,7 +26,7 @@ class PwDesignModule
 
     public function fetchModule($moduleids)
     {
-        if (empty($moduleids) || !is_array($moduleids)) {
+        if (empty($moduleids) || ! is_array($moduleids)) {
             return [];
         }
 
@@ -72,7 +72,7 @@ class PwDesignModule
 
     public function batchUpdateIsUsed($moduleids)
     {
-        if (empty($moduleids) || !is_array($moduleids)) {
+        if (empty($moduleids) || ! is_array($moduleids)) {
             return false;
         }
 

@@ -144,7 +144,7 @@ class PwStyleDao extends PwBaseDao
      */
     public function findByAppId($appId)
     {
-        if (!$appId) {
+        if (! $appId) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';

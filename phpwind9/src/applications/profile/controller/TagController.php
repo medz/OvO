@@ -66,7 +66,7 @@ class TagController extends BaseProfileController
     public function doDeleteAction()
     {
         $tagid = $this->getInput('tagid', 'post');
-        if (!$tagid) {
+        if (! $tagid) {
             $this->showError('operate.fail');
         }
         $result = $this->_getRelationDs()->deleteRelation($this->loginUser->uid, $tagid);

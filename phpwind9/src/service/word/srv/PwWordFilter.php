@@ -81,7 +81,7 @@ class PwWordFilter
     {
         $this->word = $this->fetchAllWord();
         list($type, $words) = $this->_getAlgorithms($this->word)->match($str);
-        if (!$words) {
+        if (! $words) {
             return [0, []];
         }
 
@@ -97,7 +97,7 @@ class PwWordFilter
      */
     private function _buildWord($data)
     {
-        if (!is_array($data) || !$data) {
+        if (! is_array($data) || ! $data) {
             return [];
         }
         $result = [];

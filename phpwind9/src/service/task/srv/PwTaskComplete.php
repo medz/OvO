@@ -45,15 +45,15 @@ class PwTaskComplete
      */
     public function doTask($type, $child)
     {
-        if (!$this->doTask) {
+        if (! $this->doTask) {
             return false;
         }
         $myTasks = $this->_getTaskUserDs()->getMyTaskByStatus($this->uid, 1, $this->num, 0);
-        if (!$myTasks) {
+        if (! $myTasks) {
             return true;
         }
         $taskList = $this->_getTaskDs()->gets(array_keys($myTasks));
-        if (!$taskList) {
+        if (! $taskList) {
             return true;
         }
         $time = Pw::getTime();
@@ -67,7 +67,7 @@ class PwTaskComplete
             }
             $myStatus = $myTasks[$id];
             $step = unserialize($myStatus['step']);
-            if (!is_array($step)) {
+            if (! is_array($step)) {
                 $step = $myStatus['step'];
             }
             $this->_doTask($task, $conditions, $step);
@@ -88,7 +88,7 @@ class PwTaskComplete
     private function _doTask($taskInfo, $conditions, $step)
     {
         $result = $this->doTask->doTask($conditions, $step);
-        if (!is_array($result) || !isset($result['isComplete']) || !isset($result['step'])) {
+        if (! is_array($result) || ! isset($result['isComplete']) || ! isset($result['step'])) {
             return false;
         }
         $dm = new PwTaskUserDm();

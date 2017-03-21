@@ -41,7 +41,7 @@ class PwUserDataDao extends PwBaseDao
      */
     public function getUserByName($username)
     {
-        if (!$info = $this->getBaseInstance()->getUserByName($username)) {
+        if (! $info = $this->getBaseInstance()->getUserByName($username)) {
             return [];
         }
 
@@ -57,7 +57,7 @@ class PwUserDataDao extends PwBaseDao
      */
     public function getUserByEmail($email)
     {
-        if (!$info = $this->getBaseInstance()->getUserByEmail($email)) {
+        if (! $info = $this->getBaseInstance()->getUserByEmail($email)) {
             return [];
         }
 
@@ -107,7 +107,7 @@ class PwUserDataDao extends PwBaseDao
      */
     public function addUser($fields)
     {
-        if (!$this->getBaseInstance()->addUser($fields)) {
+        if (! $this->getBaseInstance()->addUser($fields)) {
             return false;
         }
         $this->_add($fields, false);
@@ -169,7 +169,7 @@ class PwUserDataDao extends PwBaseDao
     public function getDataStruct()
     {
         static $struct = [];
-        if (!$struct) {
+        if (! $struct) {
             $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
             $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
             $struct = array_keys($tbFields);

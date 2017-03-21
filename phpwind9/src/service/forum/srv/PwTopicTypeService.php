@@ -48,7 +48,7 @@ class PwTopicTypeService
     public function getTopictypes($fid)
     {
         $data = $this->_getTopictypeDs()->getTypesByFid($fid);
-        if (!$data) {
+        if (! $data) {
             return [];
         }
         $topicTypes = [];

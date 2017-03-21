@@ -93,7 +93,7 @@ class AdminSearchService
                 }
                 if ($matchMain || $subItems) {
                     $tmp = null;
-                    if (!$s1) {
+                    if (! $s1) {
                         $result[$k1]['items'] && $tmp = $result[$k1]['items'];
                         $v1['name'] = $t1;
                         $result[$k1] = $v1;

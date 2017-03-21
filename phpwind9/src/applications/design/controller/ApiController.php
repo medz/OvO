@@ -19,11 +19,11 @@ class ApiController extends PwBaseController
         $token = $this->getInput('token', 'get');
         $out = $this->getInput('format', 'get');
         $script = $this->_getScriptDs()->getScript($moduleId);
-        if (!$token || !$script || $script['token'] != $token) {
+        if (! $token || ! $script || $script['token'] != $token) {
             exit('fail');
         }
-        !$out && $out = 'script';
-        if (!in_array($out, ['script', 'json', 'xml'])) {
+        ! $out && $out = 'script';
+        if (! in_array($out, ['script', 'json', 'xml'])) {
             exit('fail');
         }
         $method = $out.'Format';

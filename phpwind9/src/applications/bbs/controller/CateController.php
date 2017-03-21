@@ -19,7 +19,7 @@ class CateController extends PwBaseController
     {
         $fid = intval($this->getInput('fid'));
         $pwforum = new PwForumBo($fid, true);
-        if (!$pwforum->isForum(true)) {
+        if (! $pwforum->isForum(true)) {
             $this->showError('BBS:forum.exists.not');
         }
         if ($pwforum->allowVisit($this->loginUser) !== true) {
@@ -29,7 +29,7 @@ class CateController extends PwBaseController
             $this->forwardRedirect($pwforum->forumset['jumpurl']);
         }
         if ($pwforum->foruminfo['password']) {
-            if (!$this->loginUser->isExists()) {
+            if (! $this->loginUser->isExists()) {
                 $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$fid)) {
                 $this->forwardAction('bbs/forum/password', ['fid' => $fid]);
@@ -54,7 +54,7 @@ class CateController extends PwBaseController
             ->setIconNew($pwforum->foruminfo['newtime']);
 
         $defaultOrderby = $pwforum->forumset['threadorderby'] ? 'postdate' : 'lastpost';
-        !$orderby && $orderby = $defaultOrderby;
+        ! $orderby && $orderby = $defaultOrderby;
 
         $isCommon = 0;
         if ($tab == 'digest') {

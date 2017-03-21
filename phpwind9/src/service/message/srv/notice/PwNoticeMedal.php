@@ -67,7 +67,7 @@ class PwNoticeMedal extends PwNoticeAction
 
     public function getDetailList($notice)
     {
-        if (!is_array($notice)) {
+        if (! is_array($notice)) {
             return [];
         }
         $logIds = $logInfo = $medalIds = [];
@@ -86,7 +86,7 @@ class PwNoticeMedal extends PwNoticeAction
      */
     public function ignoreNotice($notice, $ignore = 1)
     {
-        if (!$notice) {
+        if (! $notice) {
             return false;
         }
 

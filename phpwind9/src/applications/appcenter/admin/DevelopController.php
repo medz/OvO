@@ -105,10 +105,10 @@ class DevelopController extends AdminBaseController
     {
         list($appid, $name, $alias, $description, $version, $pwversion, $author, $email, $website) =
         $this->getInput(['appid', 'name', 'alias', 'description', 'version', 'pwversion', 'author', 'email', 'website'], 'post');
-        if (!$name || !$alias || !$version || !$pwversion) {
+        if (! $name || ! $alias || ! $version || ! $pwversion) {
             $this->showError('APPCENTER:empty');
         }
-        if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
+        if (! preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
             $this->showError('APPCENTER:illegal.alias');
         }
         $app = new PwGenerateApplication();
@@ -133,11 +133,11 @@ class DevelopController extends AdminBaseController
         list($xml, $alias) = $this->getInput(['xml', 'alias'], 'post');
         $file = Wind::getRealDir('EXT:'.$alias).'/Manifest.xml';
         $parser = new WindXmlParser();
-        if (!$parser->parseXmlStream($xml)) {
+        if (! $parser->parseXmlStream($xml)) {
             $this->showError('APPCENTER:xml.fail');
         }
         $r = WindFile::write($file, $xml);
-        if (!$r) {
+        if (! $r) {
             $this->showError('APPCENTER:generate.copy.fail');
         }
         Wekit::load('APPCENTER:service.srv.PwDebugApplication')->compile(true);
@@ -148,10 +148,10 @@ class DevelopController extends AdminBaseController
     {
         list($name, $alias, $description, $version, $pwversion, $service, $need_admin, $need_service, $website) =
         $this->getInput(['name', 'alias', 'description', 'version', 'pwversion', 'service', 'need_admin', 'need_service', 'website'], 'post');
-        if (!$name || !$alias || !$version || !$pwversion) {
+        if (! $name || ! $alias || ! $version || ! $pwversion) {
             $this->showError('APPCENTER:empty');
         }
-        if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
+        if (! preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
             $this->showError('APPCENTER:illegal.alias');
         }
         list($author, $email) = $this->getInput(['author', 'email'], 'post');

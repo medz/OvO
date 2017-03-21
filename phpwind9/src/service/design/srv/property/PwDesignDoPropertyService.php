@@ -14,7 +14,7 @@ class PwDesignDoPropertyService
     public function displayHtml($hook, $vProperty, $decorator)
     {
         list($tpl, $hookname) = explode('|', $hook);
-        if (!$tpl || !$hookname) {
+        if (! $tpl || ! $hookname) {
             return '';
         }
         PwHook::template($hookname, 'TPL:design.property.'.$tpl, true, ['property' => $vProperty, 'decorator' => $decorator]);

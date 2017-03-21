@@ -20,7 +20,7 @@ class PwProcessService
     {
         $time = Pw::getTime();
         $process = Wekit::load('process.PwProcess')->getProcess($flag);
-        if (!$process) {
+        if (! $process) {
             return false;
         }
         if ($process['expired_time'] < $time) {

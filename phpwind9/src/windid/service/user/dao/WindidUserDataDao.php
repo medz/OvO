@@ -88,7 +88,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
      */
     public function addUser($fields)
     {
-        if (!($uid = $this->getBaseInstance()->addUser($fields))) {
+        if (! ($uid = $this->getBaseInstance()->addUser($fields))) {
             return false;
         }
         $fields['uid'] = $uid;
@@ -251,7 +251,7 @@ class WindidUserDataDao extends WindidBaseDao implements WindidUserInterface
     public function getDataStruct()
     {
         static $struct = [];
-        if (!$struct) {
+        if (! $struct) {
             $sql = $this->_bindTable('SHOW COLUMNS FROM %s');
             $tbFields = $this->getConnection()->createStatement($sql)->queryAll([], 'Field');
             $struct = array_keys($tbFields);

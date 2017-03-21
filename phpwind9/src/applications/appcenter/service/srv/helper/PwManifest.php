@@ -121,11 +121,11 @@ class PwManifest
             $this->injectServices = [];
             $injectServices = (array) $this->_resolvedConfig('inject-services');
             foreach ($injectServices as $key => $value) {
-                if (!is_array($value)) {
+                if (! is_array($value)) {
                     continue;
                 }
                 foreach ($value as $_k => $_v) {
-                    if (!is_array($_v)) {
+                    if (! is_array($_v)) {
                         continue;
                     }
                     if (empty($_v['class'])) {

@@ -104,13 +104,13 @@ class PwUserSearchDao extends PwBaseDao
     private function _buildCondition($condition)
     {
         $merge = ['d' => 0, 'i' => 0];
-        if (!$condition) {
+        if (! $condition) {
             return ['', [], $merge];
         }
         $where = $param = [];
 
         foreach ($condition as $k => $v) {
-            if ($v != 0 && !$v) {
+            if ($v != 0 && ! $v) {
                 continue;
             }
             switch ($k) {

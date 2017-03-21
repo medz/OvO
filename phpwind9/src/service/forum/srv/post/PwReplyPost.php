@@ -29,7 +29,7 @@ class PwReplyPost extends PwPostAction
      */
     public function isInit()
     {
-        return !empty($this->info);
+        return ! empty($this->info);
     }
 
     /**
@@ -40,10 +40,10 @@ class PwReplyPost extends PwPostAction
         if (($result = $this->forum->allowReply($this->user)) !== true) {
             return new PwError('BBS:forum.permissions.reply.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
-        if (!$this->forum->foruminfo['allow_reply'] && !$this->user->getPermission('allow_reply')) {
+        if (! $this->forum->foruminfo['allow_reply'] && ! $this->user->getPermission('allow_reply')) {
             return new PwError('permission.reply.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
-        if (Pw::getstatus($this->info['tpcstatus'], PwThread::STATUS_LOCKED) && !$this->user->getPermission('reply_locked_threads')) {
+        if (Pw::getstatus($this->info['tpcstatus'], PwThread::STATUS_LOCKED) && ! $this->user->getPermission('reply_locked_threads')) {
             return new PwError('permission.reply.fail.locked', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($this->forum->forumset['locktime'] && ($this->info['created_time'] + $this->forum->forumset['locktime'] * 86400) < Pw::getTime()) {

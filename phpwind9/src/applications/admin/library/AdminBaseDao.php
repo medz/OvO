@@ -28,7 +28,7 @@ class AdminBaseDao extends PwBaseDao
      */
     public function getTable($table = '')
     {
-        !$table && $table = $this->_table;
+        ! $table && $table = $this->_table;
         Wekit::app()->dbTableMark && $table = Wekit::app()->dbTableMark.$table;
 
         return $this->getConnection()->getTablePrefix().$table;

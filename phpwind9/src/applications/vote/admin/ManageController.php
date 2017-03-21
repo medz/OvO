@@ -35,7 +35,7 @@ class ManageController extends AdminBaseController
         $cateIds = [];
         foreach ($map[0] as $value) {
             foreach ($forumList[$value['fid']] as $val) {
-                if (!in_array($val['fid'], array_keys($pollOpenForum))) {
+                if (! in_array($val['fid'], array_keys($pollOpenForum))) {
                     continue;
                 }
                 $cateIds[] = $value['fid'];
@@ -115,7 +115,7 @@ class ManageController extends AdminBaseController
         if ($openForum) {
             foreach ($openForum as $value) {
                 $_forum = $this->_getForumDs()->getForum($value, 4);
-                if (!$_forum) {
+                if (! $_forum) {
                     continue;
                 }
 
@@ -125,7 +125,7 @@ class ManageController extends AdminBaseController
                     continue;
                 }
                 $allowType[] = 'poll';
-                !isset($setting['typeorder']['poll']) && $setting['typeorder']['poll'] = 0;
+                ! isset($setting['typeorder']['poll']) && $setting['typeorder']['poll'] = 0;
                 $setting['allowtype'] = $allowType;
 
                 $dm = new PwForumDm($value);
@@ -137,13 +137,13 @@ class ManageController extends AdminBaseController
         if ($noOpenForum) {
             foreach ($noOpenForum as $value) {
                 $_forum = $this->_getForumDs()->getForum($value, 4);
-                if (!$_forum) {
+                if (! $_forum) {
                     continue;
                 }
 
                 $setting = unserialize($_forum['settings_basic']);
                 $allowType = is_array($setting['allowtype']) ? $setting['allowtype'] : [];
-                if (!in_array('poll', $allowType)) {
+                if (! in_array('poll', $allowType)) {
                     continue;
                 }
 
@@ -162,7 +162,7 @@ class ManageController extends AdminBaseController
 
     private function _buildGroup($data)
     {
-        if (empty($data) || !is_array($data)) {
+        if (empty($data) || ! is_array($data)) {
             return [];
         }
 
@@ -179,13 +179,13 @@ class ManageController extends AdminBaseController
 
     private function _buildPermission($data)
     {
-        if (empty($data) || !is_array($data)) {
+        if (empty($data) || ! is_array($data)) {
             return [];
         }
 
         $result = [];
         foreach ($data as $value) {
-            if (!$value['rvalue']) {
+            if (! $value['rvalue']) {
                 continue;
             }
             $result[$value['rkey']][] = $value['gid'];
@@ -196,7 +196,7 @@ class ManageController extends AdminBaseController
 
     private function _getPollOpenForum($forumIds)
     {
-        if (empty($forumIds) || !is_array($forumIds)) {
+        if (empty($forumIds) || ! is_array($forumIds)) {
             return [];
         }
 

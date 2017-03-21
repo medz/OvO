@@ -15,10 +15,10 @@ class ImageController extends PwBaseController
     public function run()
     {
         $id = (int) $this->getInput('id', 'get');
-        if (!$id) {
+        if (! $id) {
             exit();
         }
-        if (!ini_get('safe_mode')) {
+        if (! ini_get('safe_mode')) {
             ignore_user_abort(true);
             set_time_limit(0);
         }

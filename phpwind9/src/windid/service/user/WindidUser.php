@@ -82,7 +82,7 @@ class WindidUser
      */
     public function fetchUserByUid($uids, $type = self::FETCH_MAIN)
     {
-        if (!($uids = $this->_filterIds($uids))) {
+        if (! ($uids = $this->_filterIds($uids))) {
             return [];
         }
 
@@ -204,7 +204,7 @@ class WindidUser
      */
     public function batchDeleteUser($uids)
     {
-        if (!($uids = $this->_filterIds($uids))) {
+        if (! ($uids = $this->_filterIds($uids))) {
             return false;
         }
 
@@ -275,7 +275,7 @@ class WindidUser
      */
     private function _filterIds($id)
     {
-        !is_array($id) && $id = [$id];
+        ! is_array($id) && $id = [$id];
         $clearIds = [];
         foreach ($id as $item) {
             if (WindValidator::isPositive($item)) {
@@ -295,7 +295,7 @@ class WindidUser
      */
     private function _getDao($type = self::FETCH_MAIN)
     {
-        if (!($type & self::FETCH_ALL)) {
+        if (! ($type & self::FETCH_ALL)) {
             return Wekit::loadDao('WSRV:user.dao.WindidUserDefaultDao');
         }
         $maps = [

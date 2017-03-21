@@ -32,7 +32,7 @@ class PwDesignPermissionsDao extends PwBaseDao
 
     public function add($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -73,7 +73,7 @@ class PwDesignPermissionsDao extends PwBaseDao
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'design_id':
-                    $value = !is_array($value) && $value ? [$value] : $value;
+                    $value = ! is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND design_id IN '.$this->sqlImplode($value);
                     break;
                 case 'design_type':

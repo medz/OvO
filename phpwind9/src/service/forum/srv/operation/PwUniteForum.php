@@ -36,7 +36,7 @@ class PwUniteForum extends PwDoProcess
     protected function run()
     {
         $forum = new PwForumBo($this->fid, true);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             return new PwError('BBS:forum.unite.error.fid.exists.not');
         }
         if ($forum->foruminfo['type'] == 'category') {
@@ -47,7 +47,7 @@ class PwUniteForum extends PwDoProcess
         }
 
         $toforum = new PwForumBo($this->tofid);
-        if (!$toforum->isForum(true)) {
+        if (! $toforum->isForum(true)) {
             return new PwError('BBS:forum.unite.error.tofid.exists.not');
         }
         if ($toforum->foruminfo['type'] == 'category') {

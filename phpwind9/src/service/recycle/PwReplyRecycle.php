@@ -22,7 +22,7 @@ class PwReplyRecycle
      */
     public function fetchRecord($pids)
     {
-        if (!$pids || !is_array($pids)) {
+        if (! $pids || ! is_array($pids)) {
             return [];
         }
 
@@ -53,7 +53,7 @@ class PwReplyRecycle
      */
     public function batchAdd($dms)
     {
-        if (empty($dms) || !is_array($dms)) {
+        if (empty($dms) || ! is_array($dms)) {
             return false;
         }
         $data = [];
@@ -62,7 +62,7 @@ class PwReplyRecycle
                 $data[] = $dm->getData();
             }
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 

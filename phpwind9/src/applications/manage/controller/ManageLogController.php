@@ -22,7 +22,7 @@ class ManageLogController extends BaseManageController
     {
         parent::beforeAction($handlerAdapter);
         $result = $this->loginUser->getPermission('panel_log_manage', false, []);
-        if (!$result['log_manage']) {
+        if (! $result['log_manage']) {
             $this->showError('BBS:manage.thread_check.right.error');
         }
     }
@@ -98,7 +98,7 @@ class ManageLogController extends BaseManageController
      */
     private function _buildForumTree($parentid, $map, $level = '')
     {
-        if (!isset($map[$parentid])) {
+        if (! isset($map[$parentid])) {
             return [];
         }
         $array = [];

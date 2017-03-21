@@ -110,7 +110,7 @@ class PwTaskUser
      */
     public function getByIsPeriod($uid, $isPeriod)
     {
-        if (0 >= ($uid = intval($uid)) || !in_array((int) $isPeriod, [0, 1])) {
+        if (0 >= ($uid = intval($uid)) || ! in_array((int) $isPeriod, [0, 1])) {
             return [];
         }
 

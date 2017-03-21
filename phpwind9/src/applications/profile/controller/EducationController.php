@@ -51,7 +51,7 @@ class EducationController extends BaseProfileController
     public function deleteAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
 

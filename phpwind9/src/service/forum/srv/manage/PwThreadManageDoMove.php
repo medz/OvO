@@ -25,21 +25,21 @@ class PwThreadManageDoMove extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['move']) || !$permission['move']) {
+        if (! isset($permission['move']) || ! $permission['move']) {
             return false;
         }
-        if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
+        if (! $this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
             return new PwError('permission.level.move', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
         if (isset($this->fid)) {
             $this->forum = new PwForumBo($this->fid);
-            if (!$this->forum->isForum()) {
+            if (! $this->forum->isForum()) {
                 return new PwError('BBS:manage.error.move.targetforum');
             }
-            if ($this->topictype && !$this->forum->forumset['topic_type']) {
+            if ($this->topictype && ! $this->forum->forumset['topic_type']) {
                 return new PwError('BBS:post.topictype.closed');
             }
-            if ($this->forum->forumset['topic_type'] && $this->forum->forumset['force_topic_type'] && !$this->topictype) {
+            if ($this->forum->forumset['topic_type'] && $this->forum->forumset['force_topic_type'] && ! $this->topictype) {
                 $topicTypes = Wekit::load('SRV:forum.PwTopicType')->getTypesByFid($this->forum->fid);
                 if ($topicTypes) {
                     return new PwError('BBS:post.topictype.empty');
@@ -114,7 +114,7 @@ class PwThreadManageDoMove extends PwThreadManageDo
                 Wekit::load('forum.srv.PwForumService')->updateStatistics($fid, $value['thread'], $value['replies']);
             }
         }
-        if (!$this->forum->isOpen()) {
+        if (! $this->forum->isOpen()) {
             Wekit::load('attention.PwFresh')->batchDeleteByType(PwFresh::TYPE_THREAD_TOPIC, $this->tids);
 
             //回复与新鲜事的关联

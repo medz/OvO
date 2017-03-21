@@ -32,7 +32,7 @@ class PwEmotionCategory
      */
     public function fetchCategory($categoryIds)
     {
-        if (!is_array($categoryIds) || !$categoryIds) {
+        if (! is_array($categoryIds) || ! $categoryIds) {
             return [];
         }
 

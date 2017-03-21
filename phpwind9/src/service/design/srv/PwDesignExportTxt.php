@@ -25,7 +25,7 @@ class PwDesignExportTxt
         $modules = $this->_getModuleDs()->getByPageid($pageInfo['page_id']);
         $fromCharset = Wekit::app()->charset;
         foreach ($modules  as $k => $v) {
-            if (!$v['isused']) {
+            if (! $v['isused']) {
                 continue;
             }
             unset($v['isused'], $v['module_id']);
@@ -53,7 +53,7 @@ class PwDesignExportTxt
         $txtSegment = [];
         $segments = $this->_getSegmentDs()->getSegmentByPageid($pageInfo['page_id']);
         foreach ($segments as $k => $v) {
-            if (!$v['segment_tpl']) {
+            if (! $v['segment_tpl']) {
                 continue;
             }
             $txtSegment[$k] = $this->_conv($v['segment_struct'], $fromCharset, $charset);
@@ -81,7 +81,7 @@ class PwDesignExportTxt
 
     private function _conv($array, $fromCharset, $toCharset)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return WindConvert::convert($array, $toCharset, $fromCharset);
         }
         foreach ($array as $k => $v) {

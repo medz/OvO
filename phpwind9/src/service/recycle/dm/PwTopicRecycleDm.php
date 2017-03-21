@@ -56,7 +56,7 @@ class PwTopicRecycleDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['tid'] || !$this->_data['fid']) {
+        if (! $this->_data['tid'] || ! $this->_data['fid']) {
             return false;
         }
 

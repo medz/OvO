@@ -40,7 +40,7 @@ class CreditController extends WindidBaseController
         Wind::import('WSRV:config.srv.WindidCreditSetService');
 
         $srv = new WindidCreditSetService();
-        if ((!$srv->deleteCredit($creditId))) {
+        if ((! $srv->deleteCredit($creditId))) {
             $this->showError('WINDID:fail');
         }
         $srv2 = Wekit::load('WSRV:notify.srv.WindidNotifyService');

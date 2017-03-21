@@ -26,7 +26,7 @@ class IndexController extends PwBaseController
      */
     public function showcreditAction()
     {
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
         $log = $this->loginUser->info['last_credit_affect_log'];

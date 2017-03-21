@@ -63,7 +63,7 @@ class AvatarController extends OpenBaseController
     {
         $uid = $this->getInput('uid', 'get');
         $size = $this->getInput('size', 'get');
-        !$size && $size = 'middle';
+        ! $size && $size = 'middle';
         $file = $uid.(in_array($size, ['middle', 'small']) ? '_'.$size : '').'.jpg';
         $result = $this->attachUrl.'/avatar/'.Pw::getUserDir($uid).'/'.$file;
         $this->output($result);
@@ -81,7 +81,7 @@ class AvatarController extends OpenBaseController
     {
         $uid = $this->getInput('uid', 'post');
         $type = $this->getInput('type', 'post');
-        !$type && $type = 'face';
+        ! $type && $type = 'face';
         $srv = Wekit::load('WSRV:user.srv.WindidUserService');
         $result = $srv->defaultAvatar($uid, $type);
         $this->output($result);

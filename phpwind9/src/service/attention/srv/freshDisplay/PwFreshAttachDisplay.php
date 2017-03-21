@@ -35,7 +35,7 @@ class PwFreshAttachDisplay
     public function removeAttach($aids)
     {
         foreach ($aids as $aid) {
-            if (!isset($this->pics[$aid])) {
+            if (! isset($this->pics[$aid])) {
                 continue;
             }
             $this->tmp[$aid] = $this->pics[$aid];

@@ -25,7 +25,7 @@ class PwDesignPush
 
     public function fetchPush($pushids)
     {
-        if (!is_array($pushids) || !$pushids) {
+        if (! is_array($pushids) || ! $pushids) {
             return [];
         }
 
@@ -64,7 +64,7 @@ class PwDesignPush
 
     public function updateStatus($pushid, $status = true)
     {
-        if (!$pushid) {
+        if (! $pushid) {
             return false;
         }
         $data = [];
@@ -82,7 +82,7 @@ class PwDesignPush
      */
     public function updateAutoByModuleAndOrder($moduleid, $order)
     {
-        if (!$moduleid || !$order) {
+        if (! $moduleid || ! $order) {
             return false;
         }
 
@@ -119,7 +119,7 @@ class PwDesignPush
 
     public function batchDelete($pushids)
     {
-        if (empty($pushids) || !is_array($pushids)) {
+        if (empty($pushids) || ! is_array($pushids)) {
             return false;
         }
 

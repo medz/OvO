@@ -52,7 +52,7 @@ class PwAttachDisplay
 
     public function getHtml($pid, $aid)
     {
-        if (!isset($this->attachs[$pid]) || !isset($this->attachs[$pid][$aid])) {
+        if (! isset($this->attachs[$pid]) || ! isset($this->attachs[$pid][$aid])) {
             return '';
         }
         $att = $this->attachs[$pid][$aid];
@@ -185,7 +185,7 @@ class PwAttachDisplay
 
     protected function _compare($width, $height, $maxW, $maxH)
     {
-        if (!$width || !$height) {
+        if (! $width || ! $height) {
             return [];
         }
         if ($maxW > 0 && $width > $maxW) {

@@ -29,7 +29,7 @@ class PwShieldTagDoWeibo extends iPwGleanDoHookProcess
     {
         if ($this->tag) {
             $data = Wekit::load('weibo.PwWeibo')->getWeibo($id);
-            if (!$data) {
+            if (! $data) {
                 return false;
             }
             $tag = $this->tag;

@@ -19,7 +19,7 @@ class PwRegisterDoInviteFriendInjector extends PwBaseHookInjector
     public function run()
     {
         $registerInvite = null;
-        if (!$this->bp->isOpenInvite && $this->getInput('invite')) {
+        if (! $this->bp->isOpenInvite && $this->getInput('invite')) {
             $registerInvite = new PwRegisterDoInviteFriend($this->bp, $this->getInput('invite'));
         }
 

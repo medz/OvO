@@ -21,7 +21,7 @@ class PwTask
      */
     public function addTask($dm)
     {
-        if (!$dm instanceof PwTaskDm) {
+        if (! $dm instanceof PwTaskDm) {
             return new PwError('TASK:datamodel.illegal');
         }
         if (($r = $dm->beforeAdd()) instanceof PwError) {
@@ -29,7 +29,7 @@ class PwTask
         }
         //添加pw_task表记录
         $id = $this->_taskDao()->add($dm->getData());
-        if (!$id) {
+        if (! $id) {
             return new PwError('TASK:addtask.fail');
         }
         /*如果开启状态，则将该数据添加到group表*/
@@ -54,7 +54,7 @@ class PwTask
      */
     public function updateTask($dm)
     {
-        if (!$dm instanceof PwTaskDm) {
+        if (! $dm instanceof PwTaskDm) {
             return new PwError('TASK:datamodel.illegal');
         }
         if (($r = $dm->beforeUpdate()) instanceof PwError) {
@@ -129,7 +129,7 @@ class PwTask
      */
     public function fetchNextTaskList($taskIds)
     {
-        if (!$taskIds) {
+        if (! $taskIds) {
             return [];
         }
 
@@ -211,7 +211,7 @@ class PwTask
     public function getAutoApplicableTask($last_id, $gids, $limit = 1, $endTime = 0)
     {
         $last_id = intval($last_id);
-        if (!is_array($gids)) {
+        if (! is_array($gids)) {
             return [];
         }
 

@@ -63,7 +63,7 @@ class PwPostDoAtt extends PwPostDoBase
                 if (($max = $this->post->user->getPermission('sell_credit_range.maxprice')) > 0 && $v['cost'] > $max) {
                     $v['cost'] = $max;
                 }
-                if (!in_array($v['ctype'], $this->post->user->getPermission('sell_credits', false, []))) {
+                if (! in_array($v['ctype'], $this->post->user->getPermission('sell_credits', false, []))) {
                     $v['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
             } else {
@@ -139,7 +139,7 @@ class PwPostDoAtt extends PwPostDoBase
 
     public function updateAttach()
     {
-        if (!$this->_alterattach) {
+        if (! $this->_alterattach) {
             return;
         }
         foreach ($this->_alterattach as $key => $v) {

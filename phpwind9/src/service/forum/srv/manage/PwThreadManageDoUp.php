@@ -17,7 +17,7 @@ class PwThreadManageDoUp extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['up']) || !$permission['up']) {
+        if (! isset($permission['up']) || ! $permission['up']) {
             return false;
         }
         if ($permission['up_time'] > 0 && ($this->uptime - Pw::getTime()) > $permission['up_time'] * 3600) {

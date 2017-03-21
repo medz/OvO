@@ -43,7 +43,7 @@ class PwPostDoTag extends PwPostDoBase
 
     public function dataProcessing($postDm)
     {
-        if (!is_array($this->tagNames) || !$this->tagNames) {
+        if (! is_array($this->tagNames) || ! $this->tagNames) {
             return $postDm;
         }
 
@@ -54,7 +54,7 @@ class PwPostDoTag extends PwPostDoBase
 
     private function _buildTagDm($tid)
     {
-        if (!is_array($this->tagNames) || !$this->tagNames) {
+        if (! is_array($this->tagNames) || ! $this->tagNames) {
             return false;
         }
         $dmArray = [];
@@ -74,7 +74,7 @@ class PwPostDoTag extends PwPostDoBase
 
     public function check($postDm)
     {
-        if (!is_array($this->tagNames) || !$this->tagNames) {
+        if (! is_array($this->tagNames) || ! $this->tagNames) {
             return true;
         }
         $count = count($this->tagNames);

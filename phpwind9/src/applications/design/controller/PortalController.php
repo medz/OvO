@@ -42,16 +42,16 @@ class PortalController extends PwBaseController
         $coverfrom = (int) $this->getInput('coverfrom', 'post');
         $pagename = $this->getInput('pagename', 'post');
         $domain = $this->getInput('domain', 'post'); //TODO
-        if (!$title) {
+        if (! $title) {
             $this->showError('DESIGN:title.is.empty');
         }
-        if (!$pagename) {
+        if (! $pagename) {
             $this->showError('DESIGN:pagename.is.empty');
         }
-        if (!$this->_validator($pagename)) {
+        if (! $this->_validator($pagename)) {
             $this->showError('DESIGN:pagename.validator.fail');
         }
-        if ($domain && !$this->_validator($domain)) {
+        if ($domain && ! $this->_validator($domain)) {
             $this->showError('DESIGN:domain.validator.fail');
         }
 
@@ -94,7 +94,7 @@ class PortalController extends PwBaseController
         //二级域名start
         list($domain, $root) = $this->getInput(['domain', 'root'], 'post');
         if ($root) {
-            if (!$domain) {
+            if (! $domain) {
                 Wekit::load('domain.PwDomain')->deleteByDomainKey("special/index/run?id=$id");
             } else {
                 $r = Wekit::load('domain.srv.PwDomainService')->isDomainValid($domain, $root, "special/index/run?id=$id");
@@ -133,7 +133,7 @@ class PortalController extends PwBaseController
     {
         $id = (int) $this->getInput('id', 'get');
         $portal = $this->_getPortalDs()->getPortal($id);
-        if (!$portal) {
+        if (! $portal) {
             $this->showError('page.status.404');
         }
 
@@ -163,16 +163,16 @@ class PortalController extends PwBaseController
         $pagename = $this->getInput('pagename', 'post');
         $keywords = $this->getInput('keywords', 'post');
         $description = $this->getInput('description', 'post');
-        if (!$title) {
+        if (! $title) {
             $this->showError('DESIGN:title.is.empty');
         }
-        if (!$pagename) {
+        if (! $pagename) {
             $this->showError('DESIGN:pagename.is.empty');
         }
         //二级域名start
         list($domain, $root) = $this->getInput(['domain', 'root'], 'post');
         if ($root) {
-            if (!$domain) {
+            if (! $domain) {
                 Wekit::load('domain.PwDomain')->deleteByDomainKey("special/index/run?id=$id");
             } else {
                 $r = Wekit::load('domain.srv.PwDomainService')->isDomainValid($domain, $root, "special/index/run?id=$id");
@@ -193,12 +193,12 @@ class PortalController extends PwBaseController
         }
         //二级域名end
 
-        if (!$this->_validator($pagename)) {
+        if (! $this->_validator($pagename)) {
             $this->showError('DESIGN:pagename.validator.fail');
         }
         $ds = $this->_getPortalDs();
         $portal = $ds->getPortal($id);
-        if (!$portal) {
+        if (! $portal) {
             $this->showError('operate.fail');
         }
         $count = $ds->countPortalByPagename($pagename);

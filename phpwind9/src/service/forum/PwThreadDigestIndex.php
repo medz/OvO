@@ -125,7 +125,7 @@ class PwThreadDigestIndex
     {
         $data = [];
         foreach ($dms as $_dm) {
-            if (!$_dm instanceof PwThreadDigestDm) {
+            if (! $_dm instanceof PwThreadDigestDm) {
                 return new PwError('BBS:digest.dm.data.format.error');
             }
             if (($r = $_dm->beforeAdd()) instanceof PwError) {

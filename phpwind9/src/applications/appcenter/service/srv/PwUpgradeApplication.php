@@ -99,11 +99,11 @@ class PwUpgradeApplication extends PwInstallApplication
         try {
             list($service) = $this->resolvedInstallation();
             foreach ($service as $key => $var) {
-                if (!isset($var['class'])) {
+                if (! isset($var['class'])) {
                     continue;
                 }
                 $_install = Wekit::load($var['class']);
-                if (!$_install instanceof iPwInstall) {
+                if (! $_install instanceof iPwInstall) {
                     return new PwError('APPCENTER:install.classtype');
                 }
                 $_m = empty($var['method']) ? 'install' : $var['method'];
@@ -135,7 +135,7 @@ class PwUpgradeApplication extends PwInstallApplication
         $service = $rollback = [];
         $conf = $this->getConfig('install-type',
                 $this->getManifest()->getApplication('type', 'app'));
-        if (!empty($conf['step']['before'])) {
+        if (! empty($conf['step']['before'])) {
             foreach ($conf['step']['before'] as $var) {
                 $var['class'] = $conf['class'];
                 $service[] = $var;
@@ -148,14 +148,14 @@ class PwUpgradeApplication extends PwInstallApplication
         foreach ($this->getManifest()->getInstallationService() as $var) {
             // TODO 从钩子中获取
             $_tmp = $this->getConfig('installation-service', $var);
-            if (!$_tmp) {
+            if (! $_tmp) {
                 continue;
             }
             $rollback[] = $service[] = $_tmp;
             $this->addInstallLog('service', $_tmp);
         }
 
-        if (!empty($conf['step']['after'])) {
+        if (! empty($conf['step']['after'])) {
             foreach ($conf['step']['after'] as $var) {
                 $var['class'] = $conf['class'];
                 $service[] = $var;
@@ -185,11 +185,11 @@ class PwUpgradeApplication extends PwInstallApplication
     {
         $rollback = $this->getInstallLog('service');
         foreach ($rollback as $var) {
-            if (!isset($var['class'])) {
+            if (! isset($var['class'])) {
                 continue;
             }
             $_install = Wekit::load($var['class']);
-            if (!$_install instanceof iPwInstall) {
+            if (! $_install instanceof iPwInstall) {
                 return new PwError('APPCENTER:install.classtype');
             }
             $_install->rollback($this);
@@ -211,11 +211,11 @@ class PwUpgradeApplication extends PwInstallApplication
             $this->_backLog[$value['log_type']] = $value['data'];
         }
         foreach ($this->_backLog['service'] as $key => $var) {
-            if (!isset($var['class'])) {
+            if (! isset($var['class'])) {
                 continue;
             }
             $_install = Wekit::load($var['class']);
-            if (!$_install instanceof iPwInstall) {
+            if (! $_install instanceof iPwInstall) {
                 return new PwError('APPCENTER:install.classtype');
             }
             $r = $_install->backUp($this);
@@ -233,11 +233,11 @@ class PwUpgradeApplication extends PwInstallApplication
     public function revert()
     {
         foreach ($this->_backLog['service'] as $key => $var) {
-            if (!isset($var['class'])) {
+            if (! isset($var['class'])) {
                 continue;
             }
             $_install = Wekit::load($var['class']);
-            if (!$_install instanceof iPwInstall) {
+            if (! $_install instanceof iPwInstall) {
                 return new PwError('APPCENTER:install.classtype');
             }
             $r = $_install->revert($this);

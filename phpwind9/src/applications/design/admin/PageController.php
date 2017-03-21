@@ -49,7 +49,7 @@ class PageController extends AdminBaseController
         $option = '';
         $pageid = (int) $this->getInput('pageid', 'post');
         $pageInfo = $this->_getPageDs()->getPage($pageid);
-        if (!$pageInfo['module_ids']) {
+        if (! $pageInfo['module_ids']) {
             $this->showMessage('operate.fail');
         }
         $modules = $this->_getModuleDs()->fetchModule(explode(',', $pageInfo['module_ids']));
@@ -73,7 +73,7 @@ class PageController extends AdminBaseController
 
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
 

@@ -35,7 +35,7 @@ class PwThreadManageDoType extends PwThreadManageDo
      */
     public function check($permission)
     {
-        if (!isset($permission['type']) || !$permission['type']) {
+        if (! isset($permission['type']) || ! $permission['type']) {
             return false;
         }
 
@@ -106,7 +106,7 @@ class PwThreadManageDoType extends PwThreadManageDo
             }
             $fid = $v['fid'];
         }
-        if (!$fid) {
+        if (! $fid) {
             return true;
         }
         $forum = $this->_getForumDS()->getForum($fid, PwForum::FETCH_EXTRA);
@@ -123,20 +123,20 @@ class PwThreadManageDoType extends PwThreadManageDo
      */
     private function checkTopicType()
     {
-        if (!$this->submit) {
+        if (! $this->submit) {
             return true;
         }
         $forumset = $this->_getForum();
         $topicTypes = $this->getTopicTypes();
-        if ($this->topictype && !$forumset['topic_type']) {
+        if ($this->topictype && ! $forumset['topic_type']) {
             return new PwError('BBS:post.topictype.closed');
         }
-        if ($forumset['topic_type'] && $forumset['force_topic_type'] && !$this->topictype && $topicTypes) {
+        if ($forumset['topic_type'] && $forumset['force_topic_type'] && ! $this->topictype && $topicTypes) {
             return new PwError('BBS:post.topictype.empty');
         }
         //如果设置了一级分类，一级分类不存在，则报错
         //如果设置的一级分类存在的情况下，如果也设置了二级分类，并且二级分类和一级分类树形关系存在，则将用户主题分类设置为该二级分类ID
-        if (!array_key_exists($this->topictype, $topicTypes)) {
+        if (! array_key_exists($this->topictype, $topicTypes)) {
             return new PwError('BBS:post.topictype.error');
         } elseif ($this->subTopicType && array_key_exists($this->subTopicType, $topicTypes[$this->topictype]['sub_type'])) {
             $this->topictype = $this->subTopicType;

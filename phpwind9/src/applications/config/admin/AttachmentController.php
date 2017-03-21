@@ -17,8 +17,8 @@ class AttachmentController extends AdminBaseController
     public function run()
     {
         $config = Wekit::C()->getValues('attachment');
-        !($post_max_size = ini_get('post_max_size')) && $post_max_size = '2M';
-        !($upload_max_filesize = ini_get('upload_max_filesize')) && $upload_max_filesize = '2M';
+        ! ($post_max_size = ini_get('post_max_size')) && $post_max_size = '2M';
+        ! ($upload_max_filesize = ini_get('upload_max_filesize')) && $upload_max_filesize = '2M';
         $maxSize = min($post_max_size, $upload_max_filesize);
 
         $this->setOutput($maxSize, 'maxSize');
@@ -35,7 +35,7 @@ class AttachmentController extends AdminBaseController
         list($pathsize, $attachnum, $extsize) = $this->getInput(['pathsize', 'attachnum', 'extsize'], 'post');
         $_extsize = [];
         foreach ($extsize as $key => $value) {
-            if (!empty($value['ext'])) {
+            if (! empty($value['ext'])) {
                 $_extsize[$value['ext']] = abs(intval($value['size']));
             }
         }
@@ -61,7 +61,7 @@ class AttachmentController extends AdminBaseController
 
         $windidStorages = WindidApi::api('avatar')->getStorages();
 
-        if (!is_array($windidStorages)) {
+        if (! is_array($windidStorages)) {
             $windidStorages = [];
         }
 

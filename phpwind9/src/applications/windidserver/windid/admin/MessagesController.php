@@ -56,7 +56,7 @@ class MessagesController extends WindidBaseController
     public function deleteMessagesAction()
     {
         $ids = $this->getInput('ids', 'post');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('WINDID:fail');
         }
         $this->_getMessageService()->deleteByMessageIds($ids);

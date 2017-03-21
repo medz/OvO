@@ -20,7 +20,7 @@ class InviteController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/invite/run')]));
         }
         $this->regist = Wekit::C('register');
@@ -77,7 +77,7 @@ class InviteController extends PwBaseController
      */
     public function buyAction()
     {
-        if (!$this->loginUser->getPermission('invite_allow_buy')) {
+        if (! $this->loginUser->getPermission('invite_allow_buy')) {
             $this->showError('USER:invite.buy.forbidden');
         }
         $num = $this->getInput('num', 'post');
@@ -102,7 +102,7 @@ class InviteController extends PwBaseController
      */
     public function allowBuyAction()
     {
-        if (!$this->loginUser->getPermission('invite_allow_buy')) {
+        if (! $this->loginUser->getPermission('invite_allow_buy')) {
             $this->showError('USER:invite.buy.forbidden');
         }
         $num = $this->getInput('num', 'post');

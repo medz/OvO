@@ -41,7 +41,7 @@ class PwLoginService extends PwBaseHookService
      */
     public function login($username, $password, $ip, $safeQuestion = null, $safeAnswer = '')
     {
-        $checkQ = !is_null($safeQuestion) ? true : false;
+        $checkQ = ! is_null($safeQuestion) ? true : false;
 
         $pwdBp = new PwTryPwdBp();
         $info = $pwdBp->auth($username, $password, $ip, $checkQ, $safeQuestion, $safeAnswer);
@@ -68,22 +68,22 @@ class PwLoginService extends PwBaseHookService
         //手机号码登录
         if (PwUserValidator::isMobileValid($username) === true && in_array(4, $this->loginConfig['ways'])) {
             $mobileInfo = Wekit::load('user.PwUserMobile')->getByMobile($username);
-            if (!$mobileInfo) {
+            if (! $mobileInfo) {
                 return [];
             }
             $r = $this->_getWindid()->getUser($mobileInfo['uid'], 1);
         }
         //UID登录
-        if (!$r && is_numeric($username) && in_array(1, $this->loginConfig['ways'])) {
+        if (! $r && is_numeric($username) && in_array(1, $this->loginConfig['ways'])) {
             $r = $this->_getWindid()->getUser($username, 1);
         }
 
         //email登录
-        if (!$r && WindValidator::isEmail($username) && in_array(2, $this->loginConfig['ways'])) {
+        if (! $r && WindValidator::isEmail($username) && in_array(2, $this->loginConfig['ways'])) {
             $r = $this->_getWindid()->getUser($username, 3);
         }
         //用户名登录
-        if (!$r && in_array(3, $this->loginConfig['ways'])) {
+        if (! $r && in_array(3, $this->loginConfig['ways'])) {
             $r = $this->_getWindid()->getUser($username, 2);
         }
 

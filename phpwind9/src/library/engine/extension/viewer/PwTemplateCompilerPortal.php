@@ -21,7 +21,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
         $viewTemplate = Wind::getComponent('template');
         $this->_router();
         list($pageName, $unique) = $this->_pageName();
-        if (!$pageName && !$unique) {
+        if (! $pageName && ! $unique) {
             $content = str_replace('<pw-start/>', '', $content);
             $content = str_replace('<pw-end/>', '', $content);
 
@@ -103,7 +103,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
         $url = WindUrlHelper::checkUrl(PUBLIC_THEMES.'/portal/local/'.$dir, PUBLIC_URL);
         if (preg_match_all('/\{@G:design.url.(\w+)}/isU', $content, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $replace = $url.'/'.$v;
@@ -118,7 +118,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     {
         if (preg_match_all('/\<pw-title\s*id=\"(\w+)\"\s*[>|\/>](.+)<\/pw-title>/isU', $content, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $title = $this->srv->compileTitle($v);
@@ -133,7 +133,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     {
         if (preg_match_all('/\<pw-list\s*id=\"(\d+)\"\s*[>|\/>](.+)<\/pw-list>/isU', $content, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $list = $this->srv->compileList($v);
@@ -148,7 +148,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     {
         if (preg_match_all('/\<pw-drag\s*id=\"(\w+)\"\s*\/>/isU', $content, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $segment = $this->srv->compileSegment($v);
@@ -208,7 +208,7 @@ class PwTemplateCompilerPortal extends AbstractWindTemplateCompiler
     private function _getTemplate($path)
     {
         list($tpl, $compile) = $this->windViewerResolver->getWindView()->getViewTemplate($path);
-        if (!$tpl) {
+        if (! $tpl) {
             return '';
         }
 

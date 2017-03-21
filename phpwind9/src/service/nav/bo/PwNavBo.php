@@ -51,20 +51,20 @@ class PwNavBo
      */
     public function getNavFromData($type, $current = false)
     {
-        if (!$type) {
+        if (! $type) {
             return [];
         }
         $childRating = $rootRating = [];
         $list = $this->_getNavDs()->getNavByType($type);
-        if (!is_array($list)) {
+        if (! is_array($list)) {
             return [];
         }
-        if (!$current) {
+        if (! $current) {
             return $list;
         }
         $rating = $this->routRating();
         foreach ($list as $key => $value) {
-            if (!$value['name']) {
+            if (! $value['name']) {
                 continue;
             }
             $list[$key]['name'] = $this->bindHtml($value);
@@ -74,7 +74,7 @@ class PwNavBo
             }
 
             foreach ((array) $value['child'] as $ckey => $cvalue) {
-                if (!$cvalue['name']) {
+                if (! $cvalue['name']) {
                     continue;
                 }
                 $list[$key]['child'][$ckey]['name'] = $this->bindHtml($cvalue);
@@ -110,20 +110,20 @@ class PwNavBo
      */
     public function getNavFromConfig($type, $current = false)
     {
-        if (!$type) {
+        if (! $type) {
             return [];
         }
         $childRating = $rootRating = [];
         $list = Wekit::C('nav', $type);
-        if (!is_array($list)) {
+        if (! is_array($list)) {
             return [];
         }
-        if (!$current) {
+        if (! $current) {
             return $list;
         }
         $rating = $this->routRating();
         foreach ((array) $list as $key => $value) {
-            if (!$value['name']) {
+            if (! $value['name']) {
                 continue;
             }
             if ($_k = array_search($value['sign'], $rating)) {
@@ -131,7 +131,7 @@ class PwNavBo
                 $rootRating[$key] = $_k;
             }
             foreach ((array) $value['child'] as $ckey => $cvalue) {
-                if (!$cvalue['name']) {
+                if (! $cvalue['name']) {
                     continue;
                 }
                 if ($_k = array_search($cvalue['sign'], $rating)) {
@@ -219,15 +219,15 @@ class PwNavBo
         }
         if ($color || $bold || $italic || $underline) {
             $html .= ' style="';
-            !empty($color) && $html .= 'color:'.$color.';';
-            !empty($bold) && $html .= 'font-weight:bold;';
-            !empty($italic) && $html .= 'font-style:italic;';
-            !empty($underline) && $html .= 'text-decoration:underline;';
+            ! empty($color) && $html .= 'color:'.$color.';';
+            ! empty($bold) && $html .= 'font-weight:bold;';
+            ! empty($italic) && $html .= 'font-style:italic;';
+            ! empty($underline) && $html .= 'text-decoration:underline;';
             $html .= '"';
         }
         $html .= '>';
         if ($data['type'] == 'my') {
-            if (!$data['image']) {
+            if (! $data['image']) {
                 $icon = $data['sign'] ? 'icon_'.$data['sign'] : 'icon_default';
                 $html .= '<em class="'.$icon.'"></em>';
             } else {

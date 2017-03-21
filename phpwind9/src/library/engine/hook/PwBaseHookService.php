@@ -31,7 +31,7 @@ abstract class PwBaseHookService
      */
     public function __construct($hookKey = '')
     {
-        !$hookKey && $hookKey = get_class($this);
+        ! $hookKey && $hookKey = get_class($this);
         $this->setHook($hookKey);
     }
 
@@ -48,14 +48,14 @@ abstract class PwBaseHookService
     protected function _prepare()
     {
         if ($this->_ready) {
-            return !empty($this->_do);
+            return ! empty($this->_do);
         }
-        !$this->_srv && $this->_srv = $this;
+        ! $this->_srv && $this->_srv = $this;
         foreach ($this->_key as $key => $hookKey) {
-            if (!$hooks = PwHook::getRegistry($hookKey)) {
+            if (! $hooks = PwHook::getRegistry($hookKey)) {
                 continue;
             }
-            if (!$map = PwHook::resolveActionHook($hooks, $this->_srv)) {
+            if (! $map = PwHook::resolveActionHook($hooks, $this->_srv)) {
                 continue;
             }
             foreach ($map as $key => $value) {
@@ -64,7 +64,7 @@ abstract class PwBaseHookService
         }
         $this->_ready = true;
 
-        return !empty($this->_do);
+        return ! empty($this->_do);
     }
 
     /**
@@ -100,7 +100,7 @@ abstract class PwBaseHookService
      */
     public function runDo($method)
     {
-        if (!$this->_prepare()) {
+        if (! $this->_prepare()) {
             return;
         }
         $args = array_slice(func_get_args(), 1);
@@ -119,7 +119,7 @@ abstract class PwBaseHookService
      */
     public function runWithVerified($method)
     {
-        if (!$this->_prepare()) {
+        if (! $this->_prepare()) {
             return true;
         }
         $args = array_slice(func_get_args(), 1);
@@ -143,7 +143,7 @@ abstract class PwBaseHookService
      */
     public function runWithFilters($method, $value)
     {
-        if (!$this->_prepare()) {
+        if (! $this->_prepare()) {
             return $value;
         }
         $args = array_slice(func_get_args(), 1);
@@ -164,7 +164,7 @@ abstract class PwBaseHookService
      */
     public function getAttribute($var)
     {
-        if (!property_exists($this, $var)) {
+        if (! property_exists($this, $var)) {
             return false;
         }
         $result = $this->$var;

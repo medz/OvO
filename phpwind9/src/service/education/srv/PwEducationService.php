@@ -23,7 +23,7 @@ class PwEducationService
     public function getEducationByUid($uid, $num = 10, $buildArea = false)
     {
         $educations = $this->_getDs()->getByUid($uid, $num);
-        if (!$educations) {
+        if (! $educations) {
             return [];
         }
         $schoolids = [];

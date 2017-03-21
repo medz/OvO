@@ -76,7 +76,7 @@ class PwPost extends PwBaseHookService
      */
     public function checkForum()
     {
-        if (!$this->forum->isForum()) {
+        if (! $this->forum->isForum()) {
             return new PwError('BBS:post.forum.not.exists');
         }
         if (($result = $this->forum->allowVisit($this->user)) !== true) {

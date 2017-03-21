@@ -31,7 +31,7 @@ class PwConfigBo
 
     public function sets($config)
     {
-        if (!$config) {
+        if (! $config) {
             return null;
         }
         foreach ($config as $key => $value) {

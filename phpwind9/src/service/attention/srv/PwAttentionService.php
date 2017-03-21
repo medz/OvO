@@ -22,7 +22,7 @@ class PwAttentionService
     public function getAllType($uid)
     {
         $type = [];
-        if (!$result = $this->_getTypeDs()->getTypeByUid($uid)) {
+        if (! $result = $this->_getTypeDs()->getTypeByUid($uid)) {
             return $type;
         }
         foreach ($result as $key => $value) {

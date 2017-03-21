@@ -17,7 +17,7 @@ class PwApplicationLog
      */
     public function add($appId, $logType, $data)
     {
-        if (!$appId || !$logType) {
+        if (! $appId || ! $logType) {
             return new PwError('APPCENTER:validate.fail');
         }
         $fields = [
@@ -39,11 +39,11 @@ class PwApplicationLog
      */
     public function batchAdd($fields)
     {
-        if (!$fields) {
+        if (! $fields) {
             return new PwError('APPCENTER:validate.fail');
         }
         foreach ($fields as $key => $value) {
-            if (!isset($value['data'])) {
+            if (! isset($value['data'])) {
                 continue;
             }
             $fields[$key]['data'] = serialize($value['data']);
@@ -61,7 +61,7 @@ class PwApplicationLog
      */
     public function delByAppId($app_id)
     {
-        if (!$app_id) {
+        if (! $app_id) {
             return new PwError('APPCENTER:validate.fail.appid.not.exit');
         }
         $this->_load()->delByAppId($app_id);
@@ -78,7 +78,7 @@ class PwApplicationLog
      */
     public function findByAppId($app_id)
     {
-        if (!$app_id) {
+        if (! $app_id) {
             return new PwError('APPCENTER:validate.fail.appid.not.exit');
         }
         $_r = $this->_load()->fetchByAppId($app_id);

@@ -22,7 +22,7 @@ class PwCreditLogSc
 
     public function hasData()
     {
-        return !empty($this->_data);
+        return ! empty($this->_data);
     }
 
     /**

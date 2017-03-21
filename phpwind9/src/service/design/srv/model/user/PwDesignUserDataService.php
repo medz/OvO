@@ -39,7 +39,7 @@ class PwDesignUserDataService extends PwDesignModelBase
     {
         $property = $moduleBo->getProperty();
         $data = [];
-        !isset($property['gid']) && $property['gid'] = -1;
+        ! isset($property['gid']) && $property['gid'] = -1;
         $data['gidOptions'] = $this->_buildGids($property['gid']);
 
         return $data;
@@ -81,9 +81,9 @@ class PwDesignUserDataService extends PwDesignModelBase
         $field['uids'] && $so->setUid($field['uids']);
         $field['gid'] != '-1' && $so->setGid($field['gid']);
         if ($field['gender']) {
-            if (in_array(0, $field['gender']) && !in_array(1, $field['gender'])) {
+            if (in_array(0, $field['gender']) && ! in_array(1, $field['gender'])) {
                 $so->setGender(0);
-            } elseif (!in_array(0, $field['gender']) && in_array(1, $field['gender'])) {
+            } elseif (! in_array(0, $field['gender']) && in_array(1, $field['gender'])) {
                 $so->setGender(1);
             }
         }
@@ -162,7 +162,7 @@ class PwDesignUserDataService extends PwDesignModelBase
             $_one['digests'] = $_item['digest'];
             $_one['compositePoint'] = $userGroupSrv->getCredit($_item);
             $_one['realname'] = $_item['realname'];
-            $_one['sex'] = !in_array($_item['gender'], [0, 1]) ? '未知' : ($_item['gender'] == 0 ? '男' : '女');
+            $_one['sex'] = ! in_array($_item['gender'], [0, 1]) ? '未知' : ($_item['gender'] == 0 ? '男' : '女');
             $_one['birthYear'] = $_item['byear'];
             $_one['birthMonth'] = $_item['bmonth'];
             $_one['birthDay'] = $_item['bday'];
@@ -290,13 +290,13 @@ class PwDesignUserDataService extends PwDesignModelBase
         /* @var $groupDs PwUserGroups */
         $groupDs = Wekit::load('usergroup.PwUserGroups');
         $groups = $groupDs->getClassifiedGroups();
-        if (!$groups) {
+        if (! $groups) {
             return $gidOptions;
         }
         $types = $groupDs->getTypeNames();
         unset($types['member']);
         foreach ($types as $_k => $_v) {
-            if (!isset($groups[$_k])) {
+            if (! isset($groups[$_k])) {
                 continue;
             }
             $option = '<optgroup label="'.$_v.'">';
@@ -321,7 +321,7 @@ class PwDesignUserDataService extends PwDesignModelBase
         $areaSrv = WindidApi::api('area');
         $_rout = $areaSrv->getAreaRout($areaid);
         $_return = ['id' => '', 'rout' => [['', ''], ['', ''], ['', '']]];
-        if (!$_rout) {
+        if (! $_rout) {
             return $_return;
         }
         foreach ($_rout as $_k => $_r) {

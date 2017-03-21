@@ -102,11 +102,11 @@ class PwUploadFile
     public function operateImage($bhv, $store)
     {
         $image = new PwImage($this->source);
-        if (!$image->isImage()) {
+        if (! $image->isImage()) {
             return new PwError('upload.content.error');
         }
         if ($image->ext != 'swf') {
-            if (!$image->getSource() && $image->ext != 'bmp') {
+            if (! $image->getSource() && $image->ext != 'bmp') {
                 return new PwError('upload.content.error');
             }
             if ($bhv->allowThumb()/* && $upload['ext'] != 'gif'*/) {
@@ -177,7 +177,7 @@ class PwUploadFile
      */
     public static function watermark(PwImage $image, $options = [])
     {
-        if (!in_array($image->type, ['gif', 'jpeg', 'png'])) {
+        if (! in_array($image->type, ['gif', 'jpeg', 'png'])) {
             return;
         }
         $config = Wekit::C('attachment');
@@ -186,7 +186,7 @@ class PwUploadFile
                 $config['mark.'.$key] = $value;
             }
         }
-        if ($image->type == 'gif' && !$config['mark.gif']) {
+        if ($image->type == 'gif' && ! $config['mark.gif']) {
             return;
         }
         if ($image->width < $config['mark.limitwidth'] || $image->height < $config['mark.limitheight']) {

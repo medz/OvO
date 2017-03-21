@@ -47,7 +47,7 @@ class PwBuildLikeService
     {
         $ds = $this->_getLikeLogDs();
         $logLists = $ds->getInfoList($uid, $start, $limit);
-        if (!is_array($logLists) || count($logLists) < 1) {
+        if (! is_array($logLists) || count($logLists) < 1) {
             return [];
         }
         foreach ($logLists as &$logList) {
@@ -58,7 +58,7 @@ class PwBuildLikeService
             $this->_likeids[] = $logList['likeid'];
             $logList['tags'] = empty($logList['tagids']) ? [] : explode(',', $logList['tagids']);
             foreach ($logList['tags'] as $k => $tag) {
-                if (!in_array($tag, $this->_myTagids)) {
+                if (! in_array($tag, $this->_myTagids)) {
                     unset($logList['tags'][$k]);
                 }
             }
@@ -83,7 +83,7 @@ class PwBuildLikeService
         }
         $ds = $this->_getLikeLogDs();
         $logLists = $ds->getInfoList($uids, $start, $limit);
-        if (!is_array($logLists) || count($logLists) < 1) {
+        if (! is_array($logLists) || count($logLists) < 1) {
             return [];
         }
         $_tmpIds = [];
@@ -104,7 +104,7 @@ class PwBuildLikeService
         }
         for ($i = 1; $i < 10 && count($_tmpIds) < $limit; $i++) {
             $appendLog = $ds->getInfoList($uids, $limit + $i, 1);
-            if (!$appendLog) {
+            if (! $appendLog) {
                 break;
             }
             $append = array_shift($appendLog);
@@ -131,7 +131,7 @@ class PwBuildLikeService
         $ds = $this->_getLikeRelationsDs();
         list($start, $limit) = Pw::page2limit($page, $limit);
         $logLists = $ds->getInfoList($tagid, $start, $limit);
-        if (!is_array($logLists) || count($logLists) < 1) {
+        if (! is_array($logLists) || count($logLists) < 1) {
             return [];
         }
         foreach ($logLists as $logList) {
@@ -164,12 +164,12 @@ class PwBuildLikeService
     {
         $ds = $this->_getLikeContentDs();
         $likeLists = $ds->fetchLikeContent($this->_likeids);
-        if (!is_array($likeLists) || count($likeLists) < 1) {
+        if (! is_array($likeLists) || count($likeLists) < 1) {
             return [];
         }
         foreach ($likeLists as $likeList) {
             $from = $ds->transformTypeid($likeList['typeid']);
-            if (!$from) {
+            if (! $from) {
                 continue;
             }
             $this->_appendId($from, $likeList['likeid'], $likeList['fromid']);
@@ -184,7 +184,7 @@ class PwBuildLikeService
      */
     public function getLikeInfo()
     {
-        if (!is_array($this->_infoids) || count($this->_infoids) < 1) {
+        if (! is_array($this->_infoids) || count($this->_infoids) < 1) {
             return [];
         }
         $_tmpInfo = [];
@@ -199,7 +199,7 @@ class PwBuildLikeService
 
     public function getLastReplyInfo()
     {
-        if (!is_array($this->_lastpids) || count($this->_lastpids) < 1) {
+        if (! is_array($this->_lastpids) || count($this->_lastpids) < 1) {
             return [];
         }
         $_tmpInfo = [];
@@ -343,7 +343,7 @@ class PwBuildLikeService
             $data['username'] = $info['created_username'];
             $data['like_count'] = $info['like_count'];
             $data['url'] = WindUrlHelper::createUrl('space/index/fresh', ['typeid' => 3, 'id' => $info['weibo_id'], 'uid' => $info['created_userid']]);
-            if (!$data['subject'] && $info['type'] != PwWeibo::TYPE_MEDAL) {
+            if (! $data['subject'] && $info['type'] != PwWeibo::TYPE_MEDAL) {
                 $data['content'] .= '   <a href="'.$data['url'].'">'.'查看'.'</a>';
             }
             $datas[$info['weibo_id']] = $data;

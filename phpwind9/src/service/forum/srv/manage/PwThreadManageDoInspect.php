@@ -43,7 +43,7 @@ class PwThreadManageDoInspect extends PwThreadManageDo
     {
         $thread = $this->_getThreadDs()->getThread($this->tid);
         list($lou) = explode("\t", $thread['inspect']);
-        if (($this->lou > intval($lou) && $this->lou <= $thread['replies']) || !$thread['inspect']) {
+        if (($this->lou > intval($lou) && $this->lou <= $thread['replies']) || ! $thread['inspect']) {
             $inspect = $this->lou."\t".$this->username;
 
             $topicDm = new PwTopicDm($thread['tid']);

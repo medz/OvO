@@ -59,7 +59,7 @@ class MyspaceController extends PwBaseController
     public function allowdomainAction()
     {
         list($domain, $root) = $this->getInput(['domain', 'root']);
-        if (!$domain) {
+        if (! $domain) {
             return $this->showError('SPACE:domain.fail');
         }
         $uid = $this->_spaceDomainDs()->getUidByDomain($domain);
@@ -81,7 +81,7 @@ class MyspaceController extends PwBaseController
         //个性域名
         list($domain, $spaceroot) = $this->getInput(['domain', 'spaceroot']);
         if ($spaceroot) {
-            if (!$domain) {
+            if (! $domain) {
                 $this->_spaceDomainDs()->delDomain($this->loginUser->uid);
             } else {
                 $uid = $this->_spaceDomainDs()->getUidByDomain($domain);
@@ -89,7 +89,7 @@ class MyspaceController extends PwBaseController
                     $this->showError('REWRITE:domain.exist');
                 }
                 $r = $this->_spaceDomainDs()->getDomainByUid($this->loginUser->uid);
-                if (!$r) {
+                if (! $r) {
                     $this->_spaceDomainDs()->addDomain($this->loginUser->uid, $domain);
                 } else {
                     $this->_spaceDomainDs()->updateDomain($this->loginUser->uid, $domain);
@@ -124,7 +124,7 @@ class MyspaceController extends PwBaseController
     {
         $styleid = $this->getInput('id', 'post');
         $style = $this->_getStyleDs()->getStyle($styleid);
-        if (!$style) {
+        if (! $style) {
             $this->showError('SPACE:fail');
         }
 
@@ -150,21 +150,21 @@ class MyspaceController extends PwBaseController
         $upload = $this->_uploadImage();
         $image = isset($upload['path']) ? $upload['path'] : '';
         $this->spaceBo = new PwSpaceBo($this->loginUser->uid);
-        if (!$image) {
+        if (! $image) {
             //list($image, $_repeat, $_fixed, $_align) = $this->spaceBo->space['back_image'];
-            if (!$background) {
+            if (! $background) {
                 $image = $repeat = $fixed = $align = '';
             } else {
                 $image = $background;
             }
         }
-        if (!in_array($repeat, ['no-repeat', 'repeat'])) {
+        if (! in_array($repeat, ['no-repeat', 'repeat'])) {
             $repeat = 'no-repeat';
         }
-        if (!in_array($fixed, ['fixed', 'scroll'])) {
+        if (! in_array($fixed, ['fixed', 'scroll'])) {
             $fixed = 'scroll';
         }
-        if (!in_array($align, ['left', 'right', 'center'])) {
+        if (! in_array($align, ['left', 'right', 'center'])) {
             $align = 'left';
         }
 
@@ -198,7 +198,7 @@ class MyspaceController extends PwBaseController
         if (($result = $reply->execute()) instanceof PwError) {
             $this->showMessage($result->getError());
         }
-        if (!$reply->getIscheck()) {
+        if (! $reply->getIscheck()) {
             $this->showError('BBS:post.reply.ischeck');
         }
         $content = Wekit::load('forum.srv.PwThreadService')->displayContent($content, $reply->getIsuseubb(), $reply->getRemindUser());

@@ -43,7 +43,7 @@ class PwModuleData
                 $fixed[] = $v['vieworder'];
             }
         }
-        if (!$fixed) {
+        if (! $fixed) {
             return true;
         }
         $i = 1;
@@ -72,14 +72,14 @@ class PwModuleData
     {
         Wekit::load('design.PwDesignData');
         $model = $this->bo->getModel();
-        if (!is_array($fromid)) {
+        if (! is_array($fromid)) {
             $fromid = [$fromid];
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
         $service = Wekit::load('design.srv.model.'.$model.'.'.$cls);
         $service->setModuleBo($this->bo);
         $data = $service->buildDataByIds($fromid);
-        if (!$data) {
+        if (! $data) {
             return [];
         }
         foreach ($data as  $k=>$v) {
@@ -104,7 +104,7 @@ class PwModuleData
                 $delDataIds[] = $v['data_id']; //不删附件
                 continue;
             }
-            if ($v['data_type'] == PwDesignData::AUTO && !$v['is_edited']) {
+            if ($v['data_type'] == PwDesignData::AUTO && ! $v['is_edited']) {
                 $delDataIds[] = $v['data_id'];
                 $_data[] = [];
                 if ($v['from_type'] != PwDesignData::FROM_PUSH) {
@@ -140,7 +140,7 @@ class PwModuleData
         }
 
         foreach ($data as $v) {
-            if ($v['data_id'] && !in_array($v['data_id'], $usedDataid)) {
+            if ($v['data_id'] && ! in_array($v['data_id'], $usedDataid)) {
                 $delDataIds[] = $v['data_id'];
             }
         }
@@ -169,7 +169,7 @@ class PwModuleData
     {
         $_data = [];
         $params = $this->getComponentValue($this->bo->getTemplate(), implode('', $this->bo->getStandardSign()), $order);
-        if ($data['from_type'] == 'auto' && $data['data_type'] == PwDesignData::AUTO && !$data['is_edited']) {
+        if ($data['from_type'] == 'auto' && $data['data_type'] == PwDesignData::AUTO && ! $data['is_edited']) {
             //if ($this->bo->getLimit() > 10) {
                 $data = $this->asynCutImg($data);
             //} else {
@@ -197,13 +197,13 @@ class PwModuleData
      */
     protected function cutImg($data)
     {
-        if (!$this->multiSign['img']) {
+        if (! $this->multiSign['img']) {
             return $data;
         }
         $srv = Wekit::load('design.srv.PwDesignImage');
         foreach ((array) $this->multiSign['img'] as $k=>$v) {
             $data['standard_image'] = '';
-            if (!$data[$k]) {
+            if (! $data[$k]) {
                 continue;
             }
             list($thumbW, $thumbH) = $v;
@@ -234,14 +234,14 @@ class PwModuleData
      */
     protected function asynCutImg($data)
     {
-        if (!$this->multiSign['img']) {
+        if (! $this->multiSign['img']) {
             return $data;
         }
         $ds = Wekit::load('design.PwDesignAsynImage');
 
         foreach ((array) $this->multiSign['img'] as $k=>$v) {
             $data['standard_image'] = '';
-            if (!$data[$k]) {
+            if (! $data[$k]) {
                 continue;
             }
             list($thumbW, $thumbH) = $v;
@@ -274,7 +274,7 @@ class PwModuleData
             }
 
             if (preg_match('/\<if:odd>(.+)<else:>(.+)<\/if>/isU', $string, $matche)) {
-                if (!is_int($order / 2)) {
+                if (! is_int($order / 2)) {
                     $string = $matche[1];
                 }
             }
@@ -314,7 +314,7 @@ class PwModuleData
             }
         }
 
-        if (!preg_match_all('/\{(\w+)}/isU', $string, $matches)) {
+        if (! preg_match_all('/\{(\w+)}/isU', $string, $matches)) {
             return [];
         }
 
@@ -378,10 +378,10 @@ class PwModuleData
      */
     protected function substr($string, $length = 0)
     {
-        if (!$length) {
+        if (! $length) {
             return $string;
         }
-        if (!$string) {
+        if (! $string) {
             return '';
         }
         $string = Pw::stripWindCode($string);

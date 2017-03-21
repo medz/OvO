@@ -26,7 +26,7 @@ class PwDataLazyLoader
 
     public static function getInstance($className)
     {
-        if (!isset(self::$instance[$className])) {
+        if (! isset(self::$instance[$className])) {
             self::$instance[$className] = new self(new $className());
         }
 

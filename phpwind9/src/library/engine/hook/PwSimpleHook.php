@@ -25,10 +25,10 @@ class PwSimpleHook
      */
     private function __construct($hookKey)
     {
-        if (!$hooks = PwHook::getRegistry('s_'.$hookKey)) {
+        if (! $hooks = PwHook::getRegistry('s_'.$hookKey)) {
             return;
         }
-        if (!$map = PwHook::resolveActionHook($hooks)) {
+        if (! $map = PwHook::resolveActionHook($hooks)) {
             return;
         }
         foreach ($map as $key => $value) {
@@ -45,7 +45,7 @@ class PwSimpleHook
      */
     public static function getInstance($hookKey)
     {
-        if (!isset(self::$_instance[$hookKey])) {
+        if (! isset(self::$_instance[$hookKey])) {
             self::$_instance[$hookKey] = new self($hookKey);
         }
 
@@ -61,7 +61,7 @@ class PwSimpleHook
 
     public function runDo()
     {
-        if (!$this->_do) {
+        if (! $this->_do) {
             return;
         }
         $args = func_get_args();
@@ -80,7 +80,7 @@ class PwSimpleHook
      */
     public function runWithVerified()
     {
-        if (!$this->_do) {
+        if (! $this->_do) {
             return true;
         }
         $args = func_get_args();
@@ -104,7 +104,7 @@ class PwSimpleHook
      */
     public function runWithFilters($value)
     {
-        if (!$this->_do) {
+        if (! $this->_do) {
             return $value;
         }
         $args = func_get_args();

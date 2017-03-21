@@ -22,7 +22,7 @@ class PwUserBanSpeak implements PwUserBanTypeInterface
         $userDm->setGroupid(6)
             ->setGroups([]); //用户禁止，设置用户的组为禁止发言组，删除用户拥有的其他附加组
         $result = $this->_getUserDs()->editUser($userDm, PwUser::FETCH_MAIN);
-        if (!$result instanceof PwError) {
+        if (! $result instanceof PwError) {
             $userinfo = $this->_getUserDs()->getUserByUid($dm->getField('uid'), PwUser::FETCH_MAIN);
             Wekit::load('SRV:forum.srv.PwForumMiscService')->updateDataByUser($userinfo['username']);
         }
@@ -35,7 +35,7 @@ class PwUserBanSpeak implements PwUserBanTypeInterface
      */
     public function deleteBan($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return false;
         }
         $userDm = new PwUserInfoDm($uid);

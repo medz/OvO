@@ -28,7 +28,7 @@ class PwDesignDisplay
         $ds = Wekit::load('design.PwDesignData');
         $data = $ds->getDataByModuleid($moduleId);
         foreach ($data as $k => $v) {
-            if (!$isreserv && $v['is_reservation']) {
+            if (! $isreserv && $v['is_reservation']) {
                 continue;
             }
             $_tmp = unserialize($v['extend_info']);
@@ -62,7 +62,7 @@ class PwDesignDisplay
 
     public function updateDesignCron($moduleId)
     {
-        if (!$moduleId) {
+        if (! $moduleId) {
             return false;
         }
         $diff = $_data = [];

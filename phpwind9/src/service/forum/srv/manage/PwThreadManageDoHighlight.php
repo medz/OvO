@@ -42,7 +42,7 @@ class PwThreadManageDoHighlight extends PwThreadManageDo
     public function gleanData($value)
     {
         $this->tids[] = $value['tid'];
-        if ($this->overtime && (!$value['overtime'] || $value['overtime'] > $this->overtime)) {
+        if ($this->overtime && (! $value['overtime'] || $value['overtime'] > $this->overtime)) {
             $this->overids[] = $value['tid'];
         }
     }

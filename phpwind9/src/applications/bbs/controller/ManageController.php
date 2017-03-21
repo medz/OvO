@@ -28,7 +28,7 @@ class ManageController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
 
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
         $this->action = $handlerAdapter->getAction();
@@ -46,7 +46,7 @@ class ManageController extends PwBaseController
      */
     public function manageAction()
     {
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $reason = Wekit::C()->site->get('managereasons', '');
             $this->setOutput(explode("\n", $reason), 'manageReason');
             $this->setOutput($this->action, 'action');
@@ -74,9 +74,9 @@ class ManageController extends PwBaseController
     {
         $tids = $this->getInput('tids', 'post');
         $tid = $this->getInput('tid', 'post');
-        if ($tids && !is_array($tids)) {
+        if ($tids && ! is_array($tids)) {
             $tids = explode(',', $tids);
-        } elseif (!$tids && $tid) {
+        } elseif (! $tids && $tid) {
             $tids = [$tid];
         }
         $manage = new PwThreadManage(new PwFetchTopicByTid($tids), $this->loginUser);
@@ -141,7 +141,7 @@ class ManageController extends PwBaseController
     protected function _getCombinedManage($manage)
     {
         $do = [];
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $operateThread = $manage->getPermission();
             $method = sprintf('_get%sManage', ucfirst($this->action));
             $do[] = $this->$method($manage);
@@ -183,12 +183,12 @@ class ManageController extends PwBaseController
     protected function _getDigestManage($manage)
     {
         $do = new PwThreadManageDoDigest($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
         } else {
             $digest = $this->getInput('digest', 'post');
             $do->setDigest($digest);
             $do->setReason(htmlentities($this->getInput('reason', 'post')));
-            !$digest && $this->doCancel[] = 'dodigest';
+            ! $digest && $this->doCancel[] = 'dodigest';
         }
 
         return $do;
@@ -197,7 +197,7 @@ class ManageController extends PwBaseController
     protected function _getToppedManage($manage)
     {
         $do = new PwThreadManageDoTopped($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $selectedFids = [];
             if ($this->singleData) {
                 $defaultTopped = $this->singleData['topped'];
@@ -220,7 +220,7 @@ class ManageController extends PwBaseController
             $do->setFids($toppedFids);
             $do->setOvertime($toppedOvertime);
             $do->setReason(htmlentities($this->getInput('reason', 'post')));
-            !$topped && $this->doCancel[] = 'dotopped';
+            ! $topped && $this->doCancel[] = 'dotopped';
         }
 
         return $do;
@@ -229,7 +229,7 @@ class ManageController extends PwBaseController
     protected function _getUpManage($manage)
     {
         $do = new PwThreadManageDoUp($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
         } else {
             $uptime = $this->getInput('uptime', 'post');
             $do->setUptime($uptime);
@@ -242,7 +242,7 @@ class ManageController extends PwBaseController
     protected function _getHighlightManage($manage)
     {
         $do = new PwThreadManageDoHighlight($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             if ($this->singleData) {
                 $hightlight = new PwHighlight();
                 $hightlightStyle = $hightlight->parseHighlight($this->singleData['highlight']);
@@ -265,7 +265,7 @@ class ManageController extends PwBaseController
             $do->setHighlight($hightlight->getHighlight());
             $do->setOvertime($highlightOvertime);
             $do->setReason(htmlentities($this->getInput('reason', 'post')));
-            if (!$color && !$bold && !$italic && !$underline) {
+            if (! $color && ! $bold && ! $italic && ! $underline) {
                 $this->doCancel[] = 'dohighlight';
             }
         }
@@ -276,7 +276,7 @@ class ManageController extends PwBaseController
     protected function _getDeleteManage($manage)
     {
         $do = new PwThreadManageDoDeleteTopic($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput('dodelete', 'doaction');
         } else {
             $deductCredit = $this->getInput('deductCredit', 'post');
@@ -290,7 +290,7 @@ class ManageController extends PwBaseController
     protected function _getDownManage($manage)
     {
         $do = new PwThreadManageDoDown($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
         } else {
             list($downtime, $downed) = $this->getInput(['downtime', 'downed'], 'post');
             $do->setDowntime($downtime)->setDowned($downed)->setReason(htmlentities($this->getInput('reason', 'post')));
@@ -302,7 +302,7 @@ class ManageController extends PwBaseController
     protected function _getLockManage($manage)
     {
         $do = new PwThreadManageDoLock($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             if ($this->singleData) {
                 $defaultLocked = Pw::getstatus($this->singleData['tpcstatus'], PwThread::STATUS_CLOSED) ? 2 : 1;
             } else {
@@ -312,7 +312,7 @@ class ManageController extends PwBaseController
         } else {
             $locked = $this->getInput('locked', 'post');
             $do->setLocked($locked)->setReason(htmlentities($this->getInput('reason', 'post')));
-            !$locked && $this->doCancel[] = 'dolock';
+            ! $locked && $this->doCancel[] = 'dolock';
         }
 
         return $do;
@@ -321,7 +321,7 @@ class ManageController extends PwBaseController
     protected function _getMoveManage($manage)
     {
         $do = new PwThreadManageDoMove($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput($this->_getFroumService()->getForumOption($do->fid), 'option_html');
             $this->setOutput('domove', 'doaction');
         } else {
@@ -335,7 +335,7 @@ class ManageController extends PwBaseController
     protected function _getTypeManage($manage)
     {
         $do = new PwThreadManageDoType($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $topicTypes = $do->getTopicTypes();
             $this->setOutput($topicTypes, 'topicTypes');
             $this->setOutput('dotype', 'doaction');
@@ -352,7 +352,7 @@ class ManageController extends PwBaseController
     {
         $do = new PwThreadManageDoCopy($manage);
 
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput('docopy', 'doaction');
             $this->setOutput($this->_getFroumService()->getForumOption($do->fid), 'option_html');
         } else {
@@ -411,7 +411,7 @@ class ManageController extends PwBaseController
      */
     protected function _sendMessage($action, $threads)
     {
-        if (!is_array($threads) || !$threads || !$action || $action == 'doban') {
+        if (! is_array($threads) || ! $threads || ! $action || $action == 'doban') {
             return false;
         }
         $noticeService = Wekit::load('message.srv.PwNoticeService');

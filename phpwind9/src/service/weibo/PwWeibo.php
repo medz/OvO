@@ -41,7 +41,7 @@ class PwWeibo
      */
     public function getWeibos($weiboIds)
     {
-        if (empty($weiboIds) || !is_array($weiboIds)) {
+        if (empty($weiboIds) || ! is_array($weiboIds)) {
             return [];
         }
 
@@ -90,7 +90,7 @@ class PwWeibo
      */
     public function deleteWeibo($weiboId)
     {
-        if (!$weiboId) {
+        if (! $weiboId) {
             return false;
         }
 
@@ -107,7 +107,7 @@ class PwWeibo
      */
     public function batchDeleteWeibo($weiboIds)
     {
-        if (empty($weiboIds) || !is_array($weiboIds)) {
+        if (empty($weiboIds) || ! is_array($weiboIds)) {
             return false;
         }
 
@@ -155,7 +155,7 @@ class PwWeibo
      */
     public function batchDeleteCommentByWeiboId($weiboIds)
     {
-        if (empty($weiboIds) || !is_array($weiboIds)) {
+        if (empty($weiboIds) || ! is_array($weiboIds)) {
             return false;
         }
 

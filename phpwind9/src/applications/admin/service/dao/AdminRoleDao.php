@@ -24,7 +24,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function add($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);
@@ -41,7 +41,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function del($id)
     {
-        if (!$id) {
+        if (! $id) {
             return false;
         }
         $sql = $this->_bindTable('DELETE FROM %s WHERE id=?');
@@ -59,7 +59,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function updateById($id, $fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET ').$this->sqlSingle($fields).' WHERE id=?';
@@ -92,7 +92,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function findByNames($names)
     {
-        if (!$names) {
+        if (! $names) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE name IN ').$this->sqlImplode($names);
@@ -109,7 +109,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function findByName($name)
     {
-        if (!$name) {
+        if (! $name) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE name=?');
@@ -126,7 +126,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function findByIds($ids)
     {
-        if (!$ids) {
+        if (! $ids) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id IN ').$this->sqlImplode($ids);
@@ -143,7 +143,7 @@ class AdminRoleDao extends PwBaseDao
      */
     public function findById($id)
     {
-        if (!$id) {
+        if (! $id) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s WHERE id=?');

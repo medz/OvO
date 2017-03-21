@@ -84,18 +84,18 @@ class PwCutImage
     public function cut()
     {
         $this->_getImageInfo();
-        if (!$this->_imageInfo) {
+        if (! $this->_imageInfo) {
             return false;
         }
         $i_w = $this->_imageInfo[0];
         $i_h = $this->_imageInfo[1];
         $i_scale = $i_w / $i_h;
 
-        if (!$this->cutWidth) {
+        if (! $this->cutWidth) {
             $this->cutWidth = $this->cutHeight * $i_scale;
         }
 
-        if (!$this->cutHeight) {
+        if (! $this->cutHeight) {
             $this->cutHeight = $this->cutWidth / $i_scale;
         }
 
@@ -134,7 +134,7 @@ class PwCutImage
                 $c_w = $c_h * $i_scale;
             }
         }
-        if (!$this->forceThumb) {                                            //强制补白
+        if (! $this->forceThumb) {                                            //强制补白
             $this->cutHeight = $c_h;
             $this->cutWidth = $c_w;
         }
@@ -169,11 +169,11 @@ class PwCutImage
     private function _getImageInfo()
     {
         $this->_imageInfo = [];
-        if (!file_exists($this->image)) {
+        if (! file_exists($this->image)) {
             return false;
         }
         $this->_imageInfo = @getimagesize($this->image);
-        if (!in_array($this->_imageInfo['mime'], ['image/jpeg', 'image/gif', 'image/png'])) {
+        if (! in_array($this->_imageInfo['mime'], ['image/jpeg', 'image/gif', 'image/png'])) {
             $this->_imageInfo = [];
         }
     }
@@ -187,7 +187,7 @@ class PwCutImage
 
     private function _cutImage($cw, $ch, $iw, $ih, $offsetX = 0, $offsetY = 0)
     {
-        if (!$this->_creatFrontImage()) {
+        if (! $this->_creatFrontImage()) {
             return false;
         }
         $this->_creatBackImage();
@@ -204,7 +204,7 @@ class PwCutImage
 
     private function _creatImage()
     {
-        if (!$this->_createFolder(dirname($this->outImage))) {
+        if (! $this->_createFolder(dirname($this->outImage))) {
             return false;
         }
         switch ($this->_imageInfo['mime']) {
@@ -253,9 +253,9 @@ class PwCutImage
 
     private function _createFolder($path = '')
     {
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             $this->_createFolder(dirname($path));
-            if (!@mkdir($path, 0777)) {
+            if (! @mkdir($path, 0777)) {
                 return false;
             }
             @touch($path.'/index.html');

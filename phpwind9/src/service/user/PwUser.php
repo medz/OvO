@@ -86,7 +86,7 @@ class PwUser
     public function fetchUserByUid($uids, $type = self::FETCH_MAIN)
     {
         //getUserListByUids($uids, $type = self::FETCH_MAIN) {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return [];
         }
 
@@ -104,7 +104,7 @@ class PwUser
     public function fetchUserByName($names, $type = self::FETCH_MAIN)
     {
         //getUserListByNames($names, $type = PwUser::FETCH_MAIN) {
-        if (empty($names) || !is_array($names)) {
+        if (empty($names) || ! is_array($names)) {
             return [];
         }
 
@@ -188,7 +188,7 @@ class PwUser
      */
     public function activeUser($uid)
     {
-        if (!$data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
+        if (! $data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
             return false;
         }
         $data['password'] = md5(WindUtility::generateRandStr(16));
@@ -198,7 +198,7 @@ class PwUser
 
     public function synEditUser($uid, $changepwd = 0)
     {
-        if (!$data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
+        if (! $data = $this->_getWindid()->getUser($uid, 1, self::FETCH_ALL)) {
             return false;
         }
         $changepwd && $data['password'] = md5(WindUtility::generateRandStr(16));

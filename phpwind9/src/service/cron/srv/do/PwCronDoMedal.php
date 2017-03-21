@@ -17,7 +17,7 @@ class PwCronDoMedal extends AbstractCronBase
         $ds = $this->_getMedalUserDs();
         $this->_getMedalLogDs()->deleteInfos($time, PwMedalLog::STATUS_AWARDED);
         $count = $ds->countExpiredMedalUser($time);
-        if (!$count) {
+        if (! $count) {
             return false;
         }
         $page = ceil($count / $perpage);

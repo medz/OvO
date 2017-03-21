@@ -21,7 +21,7 @@ class PwTagService
      */
     public function addTags($dmArray)
     {
-        if (!is_array($dmArray) || !$dmArray) {
+        if (! is_array($dmArray) || ! $dmArray) {
             return false;
         }
         $_tagsInfo = $this->_getTagDs()->getTagsByNames(array_keys($dmArray));
@@ -39,7 +39,7 @@ class PwTagService
         $tagRecords = $updateTagDms = $relationDms = $attentionTags = [];
         foreach ($dmArrays as $k => $dm) {
             $k = strtolower(trim($k));
-            if (!$k || !$dm instanceof PwTagDm) {
+            if (! $k || ! $dm instanceof PwTagDm) {
                 continue;
             }
             $time = Pw::getTime();
@@ -84,7 +84,7 @@ class PwTagService
      */
     public function updateTags($typeId, $paramId, $dmArray)
     {
-        if (!$typeId || !$paramId) {
+        if (! $typeId || ! $paramId) {
             return new PwError('data.error');
         }
         $tagsInfo = $this->_getTagDs()->getTagRelationByType($typeId, $paramId);
@@ -109,7 +109,7 @@ class PwTagService
      */
     public function clearTagsByParentIds($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return false;
         }
 
@@ -137,11 +137,11 @@ class PwTagService
             $array[$v['param_id']] = $v;
             $ids[] = $v['param_id'];
         }
-        if (!$ids) {
+        if (! $ids) {
             return [];
         }
         $action = $this->_getTagAction($typeName);
-        if (!$action) {
+        if (! $action) {
             return new PwError('undefined content type');
         }
         $result = $action->getContents($ids);
@@ -177,7 +177,7 @@ class PwTagService
         $this->_getTagDs()->deleteExpireHotTag($updateTime);
         $tags = $this->_getTagDs()->getCountHotTag($categoryId, $num);
         $tagIds = array_keys($tags);
-        if (!$tagIds) {
+        if (! $tagIds) {
             return [];
         }
 
@@ -258,15 +258,15 @@ class PwTagService
     public function getTagByType($type, $paramId)
     {
         $paramId = intval($paramId);
-        if (!$type || $paramId < 1) {
+        if (! $type || $paramId < 1) {
             return [];
         }
         $typeId = $this->getTypeIdByTypeName($type);
-        if (!$typeId) {
+        if (! $typeId) {
             return [];
         }
         $tagRelations = $this->_getTagDs()->getTagRelationByType($typeId, $paramId);
-        if (!count($tagRelations)) {
+        if (! count($tagRelations)) {
             return [];
         }
         $tagIds = array_keys($tagRelations);
@@ -285,7 +285,7 @@ class PwTagService
     public function getTagCard($name, $uid = null)
     {
         $tag = $this->_getTagDs()->getTagByName($name);
-        if (!$tag) {
+        if (! $tag) {
             return [];
         }
         if ($uid) {
@@ -363,7 +363,7 @@ class PwTagService
     public function deleteByTagIds($tagIds)
     {
         $result = $this->_getTagDs()->fetchTag($tagIds);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
         foreach ($result as $tag) {
@@ -394,7 +394,7 @@ class PwTagService
     {
         $tagId = intval($tagId);
         $childTags = $this->_getTagDs()->getTagByParent($tagId);
-        if (!$childTags) {
+        if (! $childTags) {
             return true;
         }
         $childTagIds = [];
@@ -467,17 +467,17 @@ class PwTagService
      */
     public function parserTags($content)
     {
-        if (!$content) {
+        if (! $content) {
             return [];
         }
         preg_match_all('/\#(.*)\#/iUs', $content, $matches);
-        if (!$matches[1]) {
+        if (! $matches[1]) {
             return [];
         }
         $tags = [];
         foreach ($matches[1] as $v) {
             $v = trim($v);
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $tags[] = $v;
@@ -504,7 +504,7 @@ class PwTagService
     private function _getTagAction($typeName)
     {
         $typeName = strtolower($typeName);
-        if (!$this->getTypeIdByTypeName($typeName)) {
+        if (! $this->getTypeIdByTypeName($typeName)) {
             return null;
         }
         $className = 'PwTag'.ucfirst($typeName);
@@ -514,7 +514,7 @@ class PwTagService
 
     protected function _formatTags($tags)
     {
-        if (!$tags) {
+        if (! $tags) {
             return false;
         }
         $tagname = [];

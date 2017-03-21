@@ -96,7 +96,7 @@ class PwClearUserService extends PwBaseHookService
         $num = 0;
         foreach ($clearType as $item) {
             $_type = isset($types[$item]) ? $types[$item] : [];
-            if (!$_type || !$_type['class']) {
+            if (! $_type || ! $_type['class']) {
                 continue;
             }
             /* @var $instance iPwDoHookProcess */

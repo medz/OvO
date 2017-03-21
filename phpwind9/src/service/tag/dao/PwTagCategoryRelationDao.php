@@ -24,7 +24,7 @@ class PwTagCategoryRelationDao extends PwBaseDao
     {
         $array = [];
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v)) {
+            if (! $this->_filterStruct($v)) {
                 continue;
             }
             $array[] = [

@@ -37,7 +37,7 @@ class PwLink
      */
     public function batchDelete($lids)
     {
-        if (empty($lids) || !is_array($lids)) {
+        if (empty($lids) || ! is_array($lids)) {
             return [];
         }
 
@@ -98,7 +98,7 @@ class PwLink
      */
     public function getLinksByLids($lids)
     {
-        if (empty($lids) || !is_array($lids)) {
+        if (empty($lids) || ! is_array($lids)) {
             return [];
         }
 
@@ -114,7 +114,7 @@ class PwLink
      */
     public function addLinkType($typename, $vieworder)
     {
-        if (!$typename) {
+        if (! $typename) {
             return false;
         }
 
@@ -169,7 +169,7 @@ class PwLink
      */
     public function getTypeByName($typeName)
     {
-        if (!$typeName) {
+        if (! $typeName) {
             return [];
         }
 
@@ -257,7 +257,7 @@ class PwLink
      */
     public function batchDelRelationsByLid($lids)
     {
-        if (!$lids) {
+        if (! $lids) {
             return false;
         }
 

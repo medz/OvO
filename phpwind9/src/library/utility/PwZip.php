@@ -24,7 +24,7 @@ class PwZip
      */
     public function addFile($data, $filename, $timestamp = 0)
     {
-        if (!$this->_checkZlib()) {
+        if (! $this->_checkZlib()) {
             return false;
         }
 
@@ -88,7 +88,7 @@ class PwZip
     public function extract($file)
     {
         $extractedData = [];
-        if (!$file || !is_file($file)) {
+        if (! $file || ! is_file($file)) {
             return false;
         }
         $filesize = sprintf('%u', filesize($file));
@@ -97,7 +97,7 @@ class PwZip
         $fileData = fread($this->fileHandle, $filesize);
 
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize); //获取'End of central directory record'区块的数据
-        if (!is_array($EofCentralDirData)) {
+        if (! is_array($EofCentralDirData)) {
             return false;
         }
         $centralDirectoryHeaderOffset = $EofCentralDirData['centraldiroffset'];
@@ -106,11 +106,11 @@ class PwZip
             fseek($this->fileHandle, $centralDirectoryHeaderOffset);
             $centralDirectoryData = $this->_readCentralDirectoryData(); // 获取'Central directory' 区块数据
             $centralDirectoryHeaderOffset += 46 + $centralDirectoryData['filenamelength'] + $centralDirectoryData['extrafieldlength'] + $centralDirectoryData['commentlength'];
-            if (!is_array($centralDirectoryData) || substr($centralDirectoryData['filename'], -1) == '/') {
+            if (! is_array($centralDirectoryData) || substr($centralDirectoryData['filename'], -1) == '/') {
                 continue;
             }
             $data = $this->_readLocalFileHeaderAndData($centralDirectoryData); // 获取压缩的数据
-            if (!$data) {
+            if (! $data) {
                 continue;
             }
             $extractedData[$i] = [
@@ -153,7 +153,7 @@ class PwZip
         $localFileHeaderData = unpack('vextractversion/vflag/vcompressmethod/vmodtime/vmoddate/Vcrc/Vcompressedsize/Vuncompressedsize/vfilenamelength/vextrafieldlength', $localFileHeaderData);
         $localFileHeaderData['filenamelength'] && $localFileHeaderData['filename'] = fread($this->fileHandle, $localFileHeaderData['filenamelength']); //读取文件名
         $localFileHeaderData['extrafieldlength'] && $localFileHeaderData['extrafield'] = fread($this->fileHandle, $localFileHeaderData['extrafieldlength']); //读取extra field
-        if (!$this->_checkLocalFileHeaderAndCentralDir($localFileHeaderData, $centralDirectoryData)) {
+        if (! $this->_checkLocalFileHeaderAndCentralDir($localFileHeaderData, $centralDirectoryData)) {
             return false;
         }
 
@@ -179,7 +179,7 @@ class PwZip
      */
     public function _unCompressData($data, $compressMethod)
     { // 根据具体的压缩方式解压缩，目前仅支持deflate 压缩方式有deflate, deflate64, bzip2 等
-        if (!$compressMethod) {
+        if (! $compressMethod) {
             return $data;
         }
         switch ($compressMethod) {

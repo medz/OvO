@@ -78,7 +78,7 @@ class WindidUserInfoDao extends WindidBaseDao implements WindidUserInterface
      */
     public function addUser($fields)
     {
-        if (!($uid = $this->getBaseInstance()->addUser($fields))) {
+        if (! ($uid = $this->getBaseInstance()->addUser($fields))) {
             return false;
         }
         $fields['uid'] = $uid;

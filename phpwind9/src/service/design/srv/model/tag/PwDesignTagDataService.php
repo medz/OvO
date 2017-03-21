@@ -55,7 +55,7 @@ class PwDesignTagDataService extends PwDesignModelBase
                 break;
         }
         $list = Wekit::load('tag.PwTagSearch')->searchTag($so, $limit, $offset);
-        if (!$list) {
+        if (! $list) {
             return [];
         }
         foreach ($list as $k => $v) {

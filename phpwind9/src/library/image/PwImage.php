@@ -75,7 +75,7 @@ class PwImage
     public function getSource()
     {
         if ($this->_source === null) {
-            if (!$this->type || !function_exists('imagecreatefrom'.$this->type)) {
+            if (! $this->type || ! function_exists('imagecreatefrom'.$this->type)) {
                 $this->_source = false;
             } else {
                 $imagecreatefromtype = 'imagecreatefrom'.$this->type;
@@ -102,11 +102,11 @@ class PwImage
      */
     public function repaint()
     {
-        if (!$source = $this->getSource()) {
+        if (! $source = $this->getSource()) {
             return false;
         }
         $imagefun = 'image'.$this->type;
-        if (!function_exists($imagefun)) {
+        if (! function_exists($imagefun)) {
             return false;
         }
         if ($this->type == 'jpeg') {

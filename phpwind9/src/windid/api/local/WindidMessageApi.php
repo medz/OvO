@@ -284,7 +284,7 @@ class WindidMessageApi
 
     public function readMessages($uid, $messageIds)
     {
-        if (!is_array($messageIds)) {
+        if (! is_array($messageIds)) {
             $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->readMessages($uid, $messageIds);
@@ -294,7 +294,7 @@ class WindidMessageApi
 
     public function deleteMessages($uid, $messageIds)
     {
-        if (!is_array($messageIds)) {
+        if (! is_array($messageIds)) {
             $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->deleteMessages($uid, $messageIds);

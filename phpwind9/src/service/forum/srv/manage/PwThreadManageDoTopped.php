@@ -24,12 +24,12 @@ class PwThreadManageDoTopped extends PwThreadManageDo
      */
     public function check($permission)
     {
-        if (!isset($permission['topped']) || !$permission['topped']) {
+        if (! isset($permission['topped']) || ! $permission['topped']) {
             return false;
         }
         if (array_diff(Pw::collectByKey($this->srv->data, 'topped'), ['0'])) {
             $log = Wekit::load('log.PwLog')->fetchLogByTid(array_keys($this->srv->data), ['19', '20', '21']);
-            if (!$this->srv->user->comparePermission(Pw::collectByKey($log, 'created_userid'))) {
+            if (! $this->srv->user->comparePermission(Pw::collectByKey($log, 'created_userid'))) {
                 return new PwError('permission.level.topped', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
             }
         }
@@ -75,7 +75,7 @@ class PwThreadManageDoTopped extends PwThreadManageDo
         if ($value['fid'] > 0) {
             $this->tids[$value['fid']][] = $value['tid'];
         }
-        if ($this->overtime && (!$value['overtime'] || $value['overtime'] > $this->overtime)) {
+        if ($this->overtime && (! $value['overtime'] || $value['overtime'] > $this->overtime)) {
             $this->overids[] = $value['tid'];
         }
     }

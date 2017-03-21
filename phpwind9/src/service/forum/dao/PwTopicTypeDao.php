@@ -15,7 +15,7 @@ class PwTopicTypeDao extends PwBaseDao
 
     public function addTopicType($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);
@@ -26,7 +26,7 @@ class PwTopicTypeDao extends PwBaseDao
 
     public function updateTopicType($id, $fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET ').$this->sqlSingle($fields).' WHERE id=?';

@@ -42,7 +42,7 @@ class WindidUserBlack
      */
     public function fetchBlacklist($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return [];
         }
 
@@ -73,7 +73,7 @@ class WindidUserBlack
 
     public function setBlacklist($uid, $blackList)
     {
-        if (!is_array($blackList)) {
+        if (! is_array($blackList)) {
             return false;
         }
         $data['uid'] = $uid;

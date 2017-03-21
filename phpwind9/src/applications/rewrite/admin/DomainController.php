@@ -76,10 +76,10 @@ class DomainController extends AdminBaseController
         foreach ($domain as $k => $v) {
             $domain_root = '';
             if ($v['isopen']) {
-                if (!$app['default']) {
+                if (! $app['default']) {
                     $this->showError('REWRITE:default.empty');
                 }
-                if ($k == 'space' && !$v['root']) {
+                if ($k == 'space' && ! $v['root']) {
                     $this->showError('REWRITE:root.empty');
                 }
                 $space_root = isset($domain['space']['root']) ? $domain['space']['root'] : '';

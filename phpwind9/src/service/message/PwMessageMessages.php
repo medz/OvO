@@ -39,7 +39,7 @@ class PwMessageMessages
      */
     public function fetchMessageConfig($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return [];
         }
 

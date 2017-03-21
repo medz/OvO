@@ -44,10 +44,10 @@ class PasswordController extends BaseProfileController
         }
         */
         list($newPwd, $oldPwd, $rePwd) = $this->getInput(['newPwd', 'oldPwd', 'rePwd'], 'post');
-        if (!$oldPwd) {
+        if (! $oldPwd) {
             $this->showError('USER:pwd.change.oldpwd.require');
         }
-        if (!$newPwd) {
+        if (! $newPwd) {
             $this->showError('USER:pwd.change.newpwd.require');
         }
         if ($rePwd != $newPwd) {
@@ -88,7 +88,7 @@ class PasswordController extends BaseProfileController
     public function dosetQAction()
     {
         list($oldPwd, $question, $answer) = $this->getInput(['oldPwd', 'question', 'answer'], 'post');
-        if (!$oldPwd) {
+        if (! $oldPwd) {
             $this->showError('USER:pwd.error');
         }
 
@@ -105,7 +105,7 @@ class PasswordController extends BaseProfileController
                 break;
             case -4://自定义安全问题
                 $myquestion = $this->getInput('myquestion', 'post');
-                if (!$myquestion || !$answer) {
+                if (! $myquestion || ! $answer) {
                     $this->showError('USER:login.question.setting');
                 }
                 $userDm->setQuestion($myquestion, $answer);
@@ -114,7 +114,7 @@ class PasswordController extends BaseProfileController
 //				$this->showMessage('USER:pwd.change.success', 'profile/password/question');
                 break;
             default:
-                if (!$answer) {
+                if (! $answer) {
                     $this->showError('USER:login.question.setting.answer.require');
                 }
                 $userDm->setQuestion($question, $answer);
@@ -125,7 +125,7 @@ class PasswordController extends BaseProfileController
         $userService = Wekit::load('user.srv.PwUserService');
         //如果该用户必须设置安全问题
         if ($userService->mustSettingSafeQuestion($this->loginUser->uid)) {
-            if (!$question || ($question == -1 && !$userService->isSetSafecv())) {
+            if (! $question || ($question == -1 && ! $userService->isSetSafecv())) {
                 $this->showError('USER:user.error.safequestion.need');
             }
         }

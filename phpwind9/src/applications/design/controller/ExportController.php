@@ -30,13 +30,13 @@ class ExportController extends PwBaseController
     {
         $charset = $this->getInput('charset', 'get');
         $pageid = (int) $this->getInput('pageid', 'get');
-        if (!in_array($charset, ['gbk', 'utf-8'])) {
+        if (! in_array($charset, ['gbk', 'utf-8'])) {
             $charset = Wekit::app()->charset;
         }
 
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         if ($pageInfo['page_type'] == PwDesignPage::PORTAL) { //$this->showError("DESIGN:page.emport.fail");

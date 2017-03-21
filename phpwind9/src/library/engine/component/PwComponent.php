@@ -21,14 +21,14 @@ class PwComponent extends WindModule
      */
     public function component($name, $tpl = '', $args = [])
     {
-        if (!$_config = $this->getConfig($name)) {
+        if (! $_config = $this->getConfig($name)) {
             return;
         }
-        if (!empty($_config['service'])) {
+        if (! empty($_config['service'])) {
             $service = Wekit::load($_config['service']);
-            !is_array($args) && $args = [$args];
+            ! is_array($args) && $args = [$args];
             $method = empty($_config['method']) ? 'run' : $_config['method'];
-            if (!method_exists($service, $method)) {
+            if (! method_exists($service, $method)) {
                 throw new PwException('method.not.exit',
                 [
                     '{parm1}' => 'wekit.engine.component.PwComponent.component',

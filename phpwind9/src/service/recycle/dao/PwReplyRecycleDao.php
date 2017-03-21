@@ -32,12 +32,12 @@ class PwReplyRecycleDao extends PwBaseDao
     {
         $fields = [];
         foreach ($data as $key => $value) {
-            if (!$this->_filterStruct($value)) {
+            if (! $this->_filterStruct($value)) {
                 continue;
             }
             $fields[] = [$value['pid'], $value['tid'], $value['fid'], $value['operate_time'], $value['operate_username'], $value['reason']];
         }
-        if (!$fields) {
+        if (! $fields) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s (pid, tid, fid, operate_time, operate_username, reason) VALUES %s', $this->getTable(), $this->sqlMulti($fields));

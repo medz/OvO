@@ -41,7 +41,7 @@ class ManageController extends AdminBaseController
     public function deleteMessagesAction()
     {
         $ids = $this->getInput('ids');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('Message:message.id.empty');
         }
         $this->_getMessageService()->deleteMessageByMessageIds($ids);
@@ -90,7 +90,7 @@ class ManageController extends AdminBaseController
     public function doSendAction()
     {
         list($type, $content, $title, $step, $countStep) = $this->getInput(['type', 'content', 'title', 'step', 'countStep']);
-        !$content && $this->showError('Message:content.empty');
+        ! $content && $this->showError('Message:content.empty');
         if ($step > $countStep) {
             $this->showMessage('ADMIN:success');
         }
@@ -101,7 +101,7 @@ class ManageController extends AdminBaseController
 
                 $vo = new PwUserSo();
                 $searchDs = Wekit::load('SRV:user.PwUserSearch');
-                if (!$user_groups) {
+                if (! $user_groups) {
                     $this->showError('Message:user.groups.empty');
                 }
                 if ($grouptype == 'memberid') {
@@ -118,7 +118,7 @@ class ManageController extends AdminBaseController
                 break;
             case 2:  // 根据用户名
                 $touser = $this->getInput('touser');
-                !$touser && $this->showError('Message:receive.user.empty');
+                ! $touser && $this->showError('Message:receive.user.empty');
                 $touser = explode(' ', $touser);
                 $count = count($touser);
                 $countStep = ceil($count / $this->perstep);
@@ -153,7 +153,7 @@ class ManageController extends AdminBaseController
 
     private function sendNoticeByUsers($userInfos, $content, $title)
     {
-        if (!$userInfos) {
+        if (! $userInfos) {
             return new PwError('Message:user.notfound');
         }
         $notice = Wekit::load('message.srv.PwNoticeService');

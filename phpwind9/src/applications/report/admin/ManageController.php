@@ -45,10 +45,10 @@ class ManageController extends AdminBaseController
     public function deleteAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.select');
         }
-        !is_array($id) && $id = [$id];
+        ! is_array($id) && $id = [$id];
         $this->_sendDealNotice($id, '忽略');
         $this->_getReportDs()->batchDeleteReport($id);
         $this->showMessage('success');
@@ -65,10 +65,10 @@ class ManageController extends AdminBaseController
     public function dealCheckAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.select');
         }
-        !is_array($id) && $id = [$id];
+        ! is_array($id) && $id = [$id];
         $dm = new PwReportDm();
         $dm->setOperateUserid($this->loginUser->uid)
             ->setOperateTime(Pw::getTime())
@@ -113,16 +113,16 @@ class ManageController extends AdminBaseController
     public function addReceiverAction()
     {
         $username = $this->getInput('username', 'post');
-        !$username && $this->showError('Report:user.empty');
+        ! $username && $this->showError('Report:user.empty');
         $user = $this->_getPwUserDs()->getUserByName($username);
-        if (!$user) {
+        if (! $user) {
             $this->showError('Report:user.not.presence');
         }
         $uids = $this->_getReportDs()->getNoticeReceiver();
         if (count($uids) >= $this->_maxUids) {
             $this->showError('REPORT:receiver.num.error');
         }
-        !in_array($user['uid'], $uids) && $uids[] = $user['uid'];
+        ! in_array($user['uid'], $uids) && $uids[] = $user['uid'];
         $config = new PwConfigSet('report');
         $config->set('noticeReceiver', $uids)
                 ->flush();
@@ -135,7 +135,7 @@ class ManageController extends AdminBaseController
     public function deleteReceiverAction()
     {
         $uid = (int) $this->getInput('uid', 'post');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('operate.fail');
         }
 
@@ -157,7 +157,7 @@ class ManageController extends AdminBaseController
      */
     private function getUsersWithGroup($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return [];
         }
         $users = $this->_getPwUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN);

@@ -167,7 +167,7 @@ class PwLinkDm extends PwBaseDm
 
     protected function _beforeUpdate()
     {
-        if (isset($this->_data['url']) && !$this->_data['url']) {
+        if (isset($this->_data['url']) && ! $this->_data['url']) {
             return new PwError('LINK:require_empty');
         }
         if (isset($this->_data['name'])) {
@@ -183,10 +183,10 @@ class PwLinkDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['name']) {
+        if (! $this->_data['name']) {
             return new PwError('LINK:require_empty');
         }
-        if (!$this->_data['url']) {
+        if (! $this->_data['url']) {
             return new PwError('LINK:require_empty');
         }
         $len = Pw::strlen($this->_data['name']);

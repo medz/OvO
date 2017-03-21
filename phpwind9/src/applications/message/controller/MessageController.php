@@ -17,7 +17,7 @@ class MessageController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run'));
         //	$this->forwardRedirect(WindUrlHelper::createUrl('u/login/run'));
         }
@@ -70,7 +70,7 @@ class MessageController extends PwBaseController
         }
         $username = $this->getInput('username');
         if ($username) {
-            !is_array($username) && $username = [$username];
+            ! is_array($username) && $username = [$username];
             $this->setOutput($username, 'username');
         }
         $this->setOutput(in_array('sendmsg', (array) Wekit::C('verify', 'showverify')), 'verify');
@@ -86,7 +86,7 @@ class MessageController extends PwBaseController
             $this->showError($right->getError());
         }
         list($usernames, $content, $code) = $this->getInput(['usernames', 'content', 'code'], 'post');
-        if (!$content) {
+        if (! $content) {
             $this->showError('MESSAGE:content.empty');
         }
         $len = Pw::strlen($content);
@@ -94,7 +94,7 @@ class MessageController extends PwBaseController
             $this->showError('MESSAGE:content.length.error');
         }
         $countUser = count($usernames);
-        (!is_array($usernames) || !$countUser) && $this->showError('MESSAGE:user.empty');
+        (! is_array($usernames) || ! $countUser) && $this->showError('MESSAGE:user.empty');
         // 检测权限
         if ($countUser == 1 && $usernames[0] == $this->loginUser->username) {
             $this->showError('MESSAGE:send.to.myself');
@@ -131,7 +131,7 @@ class MessageController extends PwBaseController
             $username = $this->getInput('username');
         }
         if ($username) {
-            !is_array($username) && $username = [$username];
+            ! is_array($username) && $username = [$username];
             $this->setOutput($username, 'username');
         }
         $this->setOutput(in_array('sendmsg', (array) Wekit::C('verify', 'showverify')), 'verify');
@@ -148,7 +148,7 @@ class MessageController extends PwBaseController
             $this->showError($right->getError());
         }
         list($username, $content, $code) = $this->getInput(['username', 'content', 'code'], 'post');
-        !$content && $this->showError('MESSAGE:content.empty');
+        ! $content && $this->showError('MESSAGE:content.empty');
         if (Pw::strlen($content) > 500) {
             $this->showError('MESSAGE:content.length.error');
         }
@@ -199,7 +199,7 @@ class MessageController extends PwBaseController
     {
         $dialogId = (int) $this->getInput('dialogid');
         $messageId = (int) $this->getInput('messageid');
-        if (!$dialogId || !$messageId) {
+        if (! $dialogId || ! $messageId) {
             $this->showError('MESSAGE:message.id.empty');
         } else {
             $dialog = $this->_getWindid()->getDialog($dialogId);
@@ -208,7 +208,7 @@ class MessageController extends PwBaseController
                 $this->showError('WINDID:code.'.$msg);
             }
             $count = $this->_getWindid()->countMessage($dialogId);
-            if (!$count) {
+            if (! $count) {
                 $this->_getNoticesService()->detchDeleteNoticeByType($this->loginUser->uid, 'message', [$dialog['from_uid']]);
                 $this->showMessage('success', 'message/message/run');
             }
@@ -222,7 +222,7 @@ class MessageController extends PwBaseController
     public function deleteDialogAction()
     {
         $ids = $this->getInput('ids');
-        !$ids && $this->showError('MESSAGE:message.id.empty');
+        ! $ids && $this->showError('MESSAGE:message.id.empty');
         is_numeric($ids) && $ids = [intval($ids)];
         $dialogs = $this->_getWindid()->fetchDialog($ids);
         $dialog_ids = $from_uids = [];
@@ -250,11 +250,11 @@ class MessageController extends PwBaseController
         list($keyword) = $this->getInput(['keyword']);
         empty($keyword) && $this->showError('MESSAGE:keyword.empty');
         $userinfo = $this->_getUserDs()->getUserByName($keyword);
-        if (!$userinfo) {
+        if (! $userinfo) {
             $this->showError('MESSAGE:user.notfound');
         }
         $dialog = $this->_getWindid()->getDialogByUser($this->loginUser->uid, $userinfo['uid']);
-        if (!$dialog) {
+        if (! $dialog) {
             $this->showError(['MESSAGE:dialog.notfound', ['{fromUser}' => $keyword]]);
         }
         $this->showMessage('success', WindUrlHelper::createUrl('message/message/dialog', ['dialogid' => $dialog['dialog_id']]));
@@ -380,7 +380,7 @@ class MessageController extends PwBaseController
             $count = $this->loginUser->info['fans'];
             $count && $attentions = $attentionDs->getFans($this->loginUser->uid, $limit, $start);
         }
-        if (!$attentions) {
+        if (! $attentions) {
             Pw::echoJson(['state' => 'fail']);
             exit;
         }
@@ -397,7 +397,7 @@ class MessageController extends PwBaseController
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN);
         $users = [];
         foreach ($uids as $v) {
-            if (!isset($userList[$v]['username'])) {
+            if (! isset($userList[$v]['username'])) {
                 continue;
             }
             $users[$v]['uid'] = $v;

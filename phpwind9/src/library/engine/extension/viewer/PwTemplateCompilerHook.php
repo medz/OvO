@@ -76,7 +76,7 @@ class PwTemplateCompilerHook extends AbstractWindTemplateCompiler
             $_content = $this->_devHook();
             $content[] = 'echo \''.$_content.'\';';
         }
-        if (!$this->args) {
+        if (! $this->args) {
             $this->args = '';
         } else {
             $this->args = preg_replace(['/\s*array\s*\(\s*/i', '/\s*\)\s*$/i'], '', $this->args);

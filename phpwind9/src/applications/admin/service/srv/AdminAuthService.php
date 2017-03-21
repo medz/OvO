@@ -22,7 +22,7 @@ class AdminAuthService
         /* @var $authDs AdminAuth */
         $authDs = Wekit::load('ADMIN:service.AdminAuth');
         $info = $authDs->findById($id);
-        if (!$info) {
+        if (! $info) {
             return new PwError('ADMIN:auth.del.fail');
         }
         $this->getAdminUserService()->loadUserService()->updateUserStatus($info['uid'], false);
@@ -48,7 +48,7 @@ class AdminAuthService
         }
 
         $userInfo = $this->getAdminUserService()->verifyUserByUsername($username);
-        if (!$userInfo) {
+        if (! $userInfo) {
             return new PwError('ADMIN:auth.add.fail.username.exist');
         }
 
@@ -71,10 +71,10 @@ class AdminAuthService
      */
     public function edit($id, $roles)
     {
-        if (!$id) {
+        if (! $id) {
             return new PwError('ADMIN:auth.edit.fail.id.illegal');
         }
-        if (!$roles) {
+        if (! $roles) {
             return new PwError('ADMIN:auth.add.fail.role.empty');
         }
         $auth = $this->_loadAuthService()->findById($id);

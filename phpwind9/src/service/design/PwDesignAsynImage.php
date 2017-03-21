@@ -12,7 +12,7 @@ class PwDesignAsynImage
 {
     public function getImage($id)
     {
-        if (!$id) {
+        if (! $id) {
             return [];
         }
 
@@ -21,7 +21,7 @@ class PwDesignAsynImage
 
     public function fetchImage($ids)
     {
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             return [];
         }
 
@@ -52,7 +52,7 @@ class PwDesignAsynImage
     {
         $id = (int) $id;
         $data['data_id'] = (int) $dataid;
-        if (!$id || !$data['data_id']) {
+        if (! $id || ! $data['data_id']) {
             return false;
         }
 
@@ -61,7 +61,7 @@ class PwDesignAsynImage
 
     public function deleteImage($id)
     {
-        if (!$id) {
+        if (! $id) {
             return false;
         }
 
@@ -70,7 +70,7 @@ class PwDesignAsynImage
 
     public function batchDelete($ids)
     {
-        if (!is_array($ids)) {
+        if (! is_array($ids)) {
             return false;
         }
 

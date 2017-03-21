@@ -15,7 +15,7 @@ class AdminLogService
     public function __construct()
     {
         $this->logfile = Wind::getRealPath(Wekit::app()->logFile, true);
-        if (!WindFile::isFile($this->logfile)) {
+        if (! WindFile::isFile($this->logfile)) {
             WindFile::write($this->logfile, "<?php die;?>\n");
         }
     }
@@ -81,7 +81,7 @@ class AdminLogService
     public function readLog($offset = 1024000)
     {
         $fp = @fopen($this->logfile, 'rb');
-        if (!$fp) {
+        if (! $fp) {
             return [0];
         }
 

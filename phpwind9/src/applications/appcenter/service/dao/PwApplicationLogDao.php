@@ -22,7 +22,7 @@ class PwApplicationLogDao extends PwBaseDao
      */
     public function add($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);

@@ -19,10 +19,10 @@ class TenpayController extends PwBaseController
         $this->_var = $this->getRequest()->getRequest();
         $this->_conf = Wekit::C('pay');
 
-        if (!$this->_conf['ifopen']) {
+        if (! $this->_conf['ifopen']) {
             $this->paymsg($this->_conf['reason']);
         }
-        if (!$this->_conf['tenpay'] || !$this->_conf['tenpaykey']) {
+        if (! $this->_conf['tenpay'] || ! $this->_conf['tenpaykey']) {
             $this->paymsg('onlinepay.settings.tenpay.error');
         }
         $arr = ['cmdno', 'pay_result', 'date', 'transaction_id', 'sp_billno', 'total_fee', 'fee_type', 'attach'];

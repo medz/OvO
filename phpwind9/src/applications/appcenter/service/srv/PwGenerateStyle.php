@@ -116,7 +116,7 @@ class PwGenerateStyle
             'style-type');
         $base = str_replace('/', '.', $addons[$this->style_type][1]);
         $this->defaultDir = Wind::getRealDir('THEMES:'.$base.'.default');
-        if (!is_dir($this->defaultDir)) {
+        if (! is_dir($this->defaultDir)) {
             return new PwError('APPCENTER:generate.style.unsupport');
         }
         $this->baseDir = Wind::getRealDir('THEMES:'.$base.'.'.$this->alias);
@@ -126,7 +126,7 @@ class PwGenerateStyle
         WindFolder::mkRecur($this->baseDir);
         Wind::import('APPCENTER:service.srv.helper.PwSystemHelper');
         $writable = PwSystemHelper::checkWriteAble($this->baseDir.'/');
-        if (!$writable) {
+        if (! $writable) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
         PwApplicationHelper::copyRecursive($this->defaultDir, $this->baseDir);

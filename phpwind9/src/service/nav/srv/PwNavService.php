@@ -16,12 +16,12 @@ class PwNavService
         $list = WindFolder::read($dir, WindFolder::READ_FILE);
         foreach ($list as $v) {
             $v = $dir.$v;
-            if (!is_file($v)) {
+            if (! is_file($v)) {
                 continue;
             }
             $types = @include $v;
             foreach ($types as $type) {
-                if (!isset($type['type'])) {
+                if (! isset($type['type'])) {
                     continue;
                 }
                 $navType[$type['type']] = $type['name'];
@@ -41,13 +41,13 @@ class PwNavService
             $_list = [];
             $list = $ds->getNavByType($type);
             foreach ($list as $key => $value) {
-                if (!$value['name']) {
+                if (! $value['name']) {
                     continue;
                 }
                 $_list[$key]['name'] = $navBo->bindHtml($value);
                 $_list[$key]['sign'] = $value['sign'];
                 foreach ((array) $value['child'] as $ckey => $cvalue) {
-                    if (!$cvalue['name']) {
+                    if (! $cvalue['name']) {
                         continue;
                     }
                     $_list[$key]['child'][$ckey]['name'] = $navBo->bindHtml($cvalue);
@@ -62,11 +62,11 @@ class PwNavService
 
     public function updateNavOpen($sign, $isshow = 0)
     {
-        if (!$sign) {
+        if (! $sign) {
             return false;
         }
         $nav = $this->_getNavDs()->getNavBySign('my', $sign);
-        if (!$nav['navid']) {
+        if (! $nav['navid']) {
             return false;
         }
         Wekit::load('SRV:nav.dm.PwNavDm');

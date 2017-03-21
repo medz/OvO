@@ -111,7 +111,7 @@ class AreadataController extends AdminBaseController
     public function deleteAction()
     {
         $areaid = $this->getInput('areaid');
-        if (!$areaid) {
+        if (! $areaid) {
             $this->showError('ADMIN:area.areaid.error');
         }
         $childs = $this->_loadAreaDs()->getByParentid($areaid);

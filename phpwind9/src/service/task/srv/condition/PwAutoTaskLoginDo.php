@@ -17,14 +17,14 @@ class PwAutoTaskLoginDo extends PwUserLoginDoBase
      */
     public function welcome(PwUserBo $userBo, $ip)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         /* @var $behaviorDs PwUserBehavior */
         $behaviorDs = Wekit::load('user.PwUserBehavior');
         $info = $behaviorDs->getBehavior($userBo->uid, 'login_days');
         $time = $info['extend_info'] ? $info['extend_info'] : 0;
-        if (!$time || (Pw::time2str($time, 'Y-m-d') < Pw::time2str(Pw::getTime(), 'Y-m-d'))) {
+        if (! $time || (Pw::time2str($time, 'Y-m-d') < Pw::time2str(Pw::getTime(), 'Y-m-d'))) {
             /* @var $taskService PwTaskService */
             $taskService = Wekit::load('SRV:task.srv.PwTaskService');
             $userTask = new PwTaskApply($userBo->uid);

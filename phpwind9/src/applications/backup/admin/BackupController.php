@@ -67,7 +67,7 @@ class BackupController extends AdminBaseController
     {
         $name = $this->getInput('name');
         $name = WindSecurity::escapePath($name);
-        !$name && $this->showError('BACKUP:name.empty');
+        ! $name && $this->showError('BACKUP:name.empty');
         $files = WindFolder::read(WindSecurity::escapePath($this->_bakupDir.$name));
         $filedb = [];
         foreach ($files as $v) {
@@ -104,10 +104,10 @@ class BackupController extends AdminBaseController
     public function batchdeleteAction()
     {
         $files = $this->getInput('files');
-        !$files && $this->showError('BACKUP:name.empty');
+        ! $files && $this->showError('BACKUP:name.empty');
         foreach ($files as $value) {
             $value = WindSecurity::escapePath($value);
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
             if (preg_match('/^(\w{8}_pw_[^_]+_\d{14})(.*)(sql|zip)$/i', $value)) {
@@ -141,17 +141,17 @@ class BackupController extends AdminBaseController
         $tableid = $tableid ? $tableid : 0;
         $insertmethod = $insertmethod == 'extend' ? 'extend' : 'common';
         $sizelimit = $sizelimit ? $sizelimit : 2048;
-        ((!is_array($tabledb) || !$tabledb) && !$step) && $this->showError('BACKUP:name.empty');
+        ((! is_array($tabledb) || ! $tabledb) && ! $step) && $this->showError('BACKUP:name.empty');
         // 读取保存的需要操作的表
 
-        if (!$tabledb && $step) {
+        if (! $tabledb && $step) {
             $cachedTable = WindFile::read(WindSecurity::escapePath($tabledbTmpSaveDir.$tabledbname.'.tmp'));
             $tabledb = explode('|', $cachedTable);
         }
 
-        !$dirname && $dirname = $backupService->getDirectoryName();
+        ! $dirname && $dirname = $backupService->getDirectoryName();
         // 第一次临时保存需要操作的表
-        if (!$step) {
+        if (! $step) {
             $specialTables = array_intersect($backupService->getSpecialTables(), $tabledb);
             $tabledb = array_values(array_diff($tabledb, $backupService->getSpecialTables()));
             if ($tabledb) {
@@ -167,13 +167,13 @@ class BackupController extends AdminBaseController
                 $this->showMessage('正在备份', $referer, true);
             }
         }
-        if (!$tabledb) {
+        if (! $tabledb) {
             $this->showMessage(['BACKUP:bakup_success', [
                 '{path}' => $backupService->getSavePath().$dirname,
             ]], 'admin/backup/backup/run');
         }
         // 保存数据
-        $step = (!$step ? 1 : $step) + 1;
+        $step = (! $step ? 1 : $step) + 1;
         $filename = $dirname.'/'.$dirname.'_'.($step - 1).'.sql';
         list($backupData, $tableid, $start) = $backupService->backupData($tabledb, $tableid, $start, $sizelimit, $insertmethod, $filename);
 
@@ -204,7 +204,7 @@ class BackupController extends AdminBaseController
     public function optimizeAction()
     {
         $tabledb = $this->getInput('tabledb');
-        !$tabledb && $this->showError('BACKUP:table.empty');
+        ! $tabledb && $this->showError('BACKUP:table.empty');
         //关闭站点
         $config = new PwConfigSet('site');
         $siteState = Wekit::C()->getValues('site');
@@ -222,7 +222,7 @@ class BackupController extends AdminBaseController
     public function repairAction()
     {
         $tabledb = $this->getInput('tabledb');
-        !$tabledb && $this->showError('BACKUP:table.empty');
+        ! $tabledb && $this->showError('BACKUP:table.empty');
         //关闭站点
         $config = new PwConfigSet('site');
         $siteState = Wekit::C()->getValues('site');
@@ -241,12 +241,12 @@ class BackupController extends AdminBaseController
     {
         list($file, $dir) = $this->getInput(['file', 'dir']);
         list($step, $count, $isdir) = $this->getInput(['step', 'count', 'isdir']);
-        !$dir && $this->showError('BACKUP:name.empty');
+        ! $dir && $this->showError('BACKUP:name.empty');
         $siteState = Wekit::C('site', 'visit.state');
         if ($siteState != 2) {
             $this->showError('BACKUP:site.isopen');
         }
-        if (!$count) {
+        if (! $count) {
             $count = 1;
             $files = WindFolder::read(WindSecurity::escapePath($this->_bakupDir.$dir));
             foreach ($files as $v) {
@@ -255,8 +255,8 @@ class BackupController extends AdminBaseController
                 }
             }
         }
-        !$step && $step = 1;
-        !$isdir ? $this->_getBackupService()->bakinSql($this->_bakupDir.$dir.'/'.$file) : $this->_getBackupService()->backinData($dir, $step);
+        ! $step && $step = 1;
+        ! $isdir ? $this->_getBackupService()->bakinSql($this->_bakupDir.$dir.'/'.$file) : $this->_getBackupService()->backinData($dir, $step);
 
         $i = $step;
         $step++;
@@ -275,11 +275,11 @@ class BackupController extends AdminBaseController
      */
     protected function _buildTables($tables)
     {
-        if (!$tables) {
+        if (! $tables) {
             return [];
         }
         $structure = WindFile::read(Wind::getRealPath('APPS:install.lang.wind_structure.sql', true));
-        if (!$structure) {
+        if (! $structure) {
             return [];
         }
         $tablePrefix = $this->_getBackupDs()->getTablePrefix();

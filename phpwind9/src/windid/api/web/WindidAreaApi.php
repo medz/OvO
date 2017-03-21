@@ -42,7 +42,7 @@ class WindidAreaApi
         $params = [];
 
         return WindidApi::open('area/getAll', $params);
-        if (!is_array($result)) {
+        if (! is_array($result)) {
             return [];
         }
 

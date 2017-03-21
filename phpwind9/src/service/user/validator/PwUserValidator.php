@@ -103,7 +103,7 @@ class PwUserValidator
      */
     public static function isUsernameValid($username, $uid = 0)
     {
-        if (!$username) {
+        if (! $username) {
             return new PwError('USER:user.error.-1');
         }
         $result = self::_getWindid()->checkUserInput($username, 1, '', $uid);
@@ -186,7 +186,7 @@ class PwUserValidator
     public static function checkPwdComplex($password, $username)
     {
         $register = WindidApi::C('reg');
-        if (!($pwdConfig = $register['security.password'])) {
+        if (! ($pwdConfig = $register['security.password'])) {
             return true;
         }
         $config = array_sum($pwdConfig);
@@ -224,10 +224,10 @@ class PwUserValidator
         if ($_length && $_complex) {
             $_key = 'USER:pwd.format.require';
             $var = ['{type}' => $type, '{min}' => $_min, '{max}' => $_max];
-        } elseif (!$_complex && $_length) {
+        } elseif (! $_complex && $_length) {
             $_key = 'USER:pwd.format.length.require';
             $var = ['{min}' => $_min, '{max}' => $_max];
-        } elseif (!$_length && $_complex) {
+        } elseif (! $_length && $_complex) {
             $_key = 'USER:pwd.error.complex';
             $var = ['{type}' => $type];
         }
@@ -259,7 +259,7 @@ class PwUserValidator
      */
     private static function buildPwdComplexMsg($config)
     {
-        if (!$config) {
+        if (! $config) {
             return '';
         }
         $complex = [1 => '小写字母', 2 => '大写字母', 4 => '数字', 8 => '非空白符号', 9 => '不能和用户名相同'];

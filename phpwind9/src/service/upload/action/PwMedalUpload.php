@@ -36,7 +36,7 @@ class PwMedalUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$_FILES[$this->key]['size']) {
+        if (! $_FILES[$this->key]['size']) {
             return new PwError('MEDAL:image.empty.fail');
         }
 

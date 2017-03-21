@@ -48,7 +48,7 @@ class WindidArea
      */
     public function fetchByAreaid($areaids)
     {
-        if (!$areaids) {
+        if (! $areaids) {
             return [];
         }
 
@@ -92,7 +92,7 @@ class WindidArea
     {
         $data = [];
         foreach ($dms as $_item) {
-            if (!$_item instanceof WindidAreaDm) {
+            if (! $_item instanceof WindidAreaDm) {
                 continue;
             }
             if ($_item->beforeAdd() !== true) {
@@ -100,7 +100,7 @@ class WindidArea
             }
             $data[] = $_item->getData();
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -148,7 +148,7 @@ class WindidArea
      */
     public function batchDeleteArea($areaids)
     {
-        if (!$areaids) {
+        if (! $areaids) {
             return false;
         }
 

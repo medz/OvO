@@ -18,7 +18,7 @@ class PwDesignBak
 
     public function getBak($type, $pageid, $issnap = 0)
     {
-        if (!$type || !$pageid) {
+        if (! $type || ! $pageid) {
             return [];
         }
         $info = $this->_getDao()->getBak($type, $pageid, $issnap);
@@ -39,7 +39,7 @@ class PwDesignBak
     public function replaceBak($type, $pageid, $issnap, $info)
     {
         $data = [];
-        if (!$type || !$pageid) {
+        if (! $type || ! $pageid) {
             return false;
         }
         $data['bak_type'] = $type;
@@ -52,7 +52,7 @@ class PwDesignBak
 
     public function updateSnap($type, $pageid, $snap = 0, $issnap = 0)
     {
-        if (!$type || !$pageid) {
+        if (! $type || ! $pageid) {
             return false;
         }
 
@@ -61,7 +61,7 @@ class PwDesignBak
 
     public function deleteBak($type, $pageid, $issnap = 0)
     {
-        if (!$type || !$pageid) {
+        if (! $type || ! $pageid) {
             return false;
         }
 
@@ -70,7 +70,7 @@ class PwDesignBak
 
     public function deleteByPageId($pageid)
     {
-        if (!$pageid) {
+        if (! $pageid) {
             return false;
         }
 

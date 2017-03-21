@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('WEKIT_VERSION')) {
+if (! defined('WEKIT_VERSION')) {
     error_reporting(E_ERROR | E_PARSE);
 
     require dirname(__DIR__).'/../../bootstrap.php';

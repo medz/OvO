@@ -19,7 +19,7 @@ class PwHighlight
 
     public function setColor($color)
     {
-        if (!$color || !preg_match('/^#[0-9a-f]{3}([0-9a-f]{3})?$/i', $color)) {
+        if (! $color || ! preg_match('/^#[0-9a-f]{3}([0-9a-f]{3})?$/i', $color)) {
             return false;
         }
         $this->color = strtoupper($color);
@@ -91,7 +91,7 @@ class PwHighlight
         $hightlightArray = $this->parseHighlight($highlight);
         $styleString = '';
         foreach ($hightlightArray as $k => $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             switch ($k) {

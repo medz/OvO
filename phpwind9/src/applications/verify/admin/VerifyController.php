@@ -34,7 +34,7 @@ class VerifyController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
         $questions = $this->getInput('contentQuestions', 'post');
         $_questions = [];
-        !$questions && $questions = [];
+        ! $questions && $questions = [];
         foreach ($questions as $key => $value) {
             if (empty($value['ask']) && empty($value['answer'])) {
                 continue;
@@ -46,7 +46,7 @@ class VerifyController extends AdminBaseController
         }
         $type = $this->getInput('type', 'post');
         if ($type == 'flash') {
-            if (!class_exists('SWFBitmap')) {
+            if (! class_exists('SWFBitmap')) {
                 $this->showError('ADMIN:verify.flash.not.allow');
             }
         }

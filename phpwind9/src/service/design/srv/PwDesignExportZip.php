@@ -59,7 +59,7 @@ class PwDesignExportZip
                 }
             }
             $file['filename'] = $this->folder.'/'.$file['filename'];
-            if (!$zip->addFile($file['data'], $file['filename'])) {
+            if (! $zip->addFile($file['data'], $file['filename'])) {
                 return new PwError('DESIGN:zlib.error');
             }
         }
@@ -74,7 +74,7 @@ class PwDesignExportZip
     {
         if (preg_match_all('/\<pw-title\s*id=\"(\w+)\"\s*>/isU', $section, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $section = str_replace($matches[0][$k], '<pw-title>', $section);
@@ -180,10 +180,10 @@ class PwDesignExportZip
 
     protected function read($dir)
     {
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             return [];
         }
-        if (!$handle = @opendir($dir)) {
+        if (! $handle = @opendir($dir)) {
             return [];
         }
         while (false !== ($file = @readdir($handle))) {
@@ -192,11 +192,11 @@ class PwDesignExportZip
             }
             $fileName = $dir.$file;
             if (is_file($fileName)) {
-                if (!$_handle = fopen($fileName, 'rb')) {
+                if (! $_handle = fopen($fileName, 'rb')) {
                     continue;
                 }
                 $data = '';
-                while (!feof($_handle)) {
+                while (! feof($_handle)) {
                     $data .= fgets($_handle, 4096);
                 }
                 fclose($_handle);
@@ -240,7 +240,7 @@ class PwDesignExportZip
                 $child = $dom->createElement($k);
             }
             $root->appendChild($child);
-            if (!is_array($v)) {
+            if (! is_array($v)) {
                 $child->appendChild($dom->createTextNode($v));
             } else {
                 $this->_creatDom($child, $dom, $v);

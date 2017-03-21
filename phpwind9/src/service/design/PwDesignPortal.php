@@ -22,7 +22,7 @@ class PwDesignPortal
 
     public function getPortalByDomain($domain)
     {
-        if (!$domain) {
+        if (! $domain) {
             return [];
         }
 
@@ -31,7 +31,7 @@ class PwDesignPortal
 
     public function countPortalByPagename($pagename)
     {
-        if (!$pagename) {
+        if (! $pagename) {
             return false;
         }
 
@@ -40,7 +40,7 @@ class PwDesignPortal
 
     public function fetchPortal($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return [];
         }
 
@@ -97,7 +97,7 @@ class PwDesignPortal
 
     public function batchDelete($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return false;
         }
 

@@ -108,7 +108,7 @@ class PwUserService
             }
         }
         //当前用户组过期
-        if (!$temp[$groupid]) {
+        if (! $temp[$groupid]) {
             $groupid = $gid;
         }
 
@@ -158,7 +158,7 @@ class PwUserService
     {
         $info = WindidApi::api('user')->getUser($uid, 1);
 
-        return !empty($info['safecv']);
+        return ! empty($info['safecv']);
     }
 
     /**
@@ -174,7 +174,7 @@ class PwUserService
         $groups = $this->getGidsByUid($uid);
         $mustSettingGroups = Wekit::C('login', 'question.groups');
 
-        return !$mustSettingGroups ? false : (array_intersect($groups, $mustSettingGroups) ? true : false);
+        return ! $mustSettingGroups ? false : (array_intersect($groups, $mustSettingGroups) ? true : false);
     }
 
     /**
@@ -186,7 +186,7 @@ class PwUserService
      */
     public function getGidsByUid($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
         $info = Wekit::load('user.PwUser')->getUserByUid($uid, PwUser::FETCH_MAIN);

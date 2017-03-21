@@ -23,14 +23,14 @@ class PwUserMiscService
         $newManager = Wekit::load('user.PwUser')->fetchUserByName($manager);
         $uids = array_keys(Wekit::load('user.PwUserBelong')->getUserByGid(5));
         $oldManager = Wekit::load('user.PwUser')->fetchUserByUid($uids);
-        if (!$newManager && !$oldManager) {
+        if (! $newManager && ! $oldManager) {
             return;
         }
         $newUids = array_keys($newManager);
         $oldUids = array_keys($oldManager);
         $add = array_diff($newUids, $oldUids);
         $del = array_diff($oldUids, $newUids);
-        if (!$add && !$del) {
+        if (! $add && ! $del) {
             return;
         }
 
@@ -98,7 +98,7 @@ class PwUserMiscService
                 $_tmp[$_item['groupid']][] = $_item['username'];
             }
         }
-        if (!$_tmp) {
+        if (! $_tmp) {
             return true;
         }
         $back = [];

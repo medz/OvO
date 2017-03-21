@@ -48,26 +48,26 @@ class PwGlobalFilter extends PwBaseFilter
             $service = Wekit::load('site.srv.PwSiteStatusService');
             $resource = $service->siteStatus($loginUser, $config);
             if ($resource instanceof PwError) {
-                if (!($config['visit.state'] == 1 && $request['mc'] == 'u/login')) {
+                if (! ($config['visit.state'] == 1 && $request['mc'] == 'u/login')) {
                     $this->showError($resource->getError());
                 }
             }
         }
-        if (!in_array($request['mc'], ['u/login', 'u/register', 'u/findPwd']) && !$loginUser->getPermission('allow_visit')) {
+        if (! in_array($request['mc'], ['u/login', 'u/register', 'u/findPwd']) && ! $loginUser->getPermission('allow_visit')) {
             if ($loginUser->isExists()) {
                 $this->showError(['permission.visit.allow', ['{grouptitle}' => $loginUser->getGroupInfo('name')]]);
             } else {
                 $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run'));
             }
         }
-        if ($config['refreshtime'] > 0 && Wind::getApp()->getRequest()->isGet() && !Wind::getApp()->getRequest()->getIsAjaxRequest()) {
+        if ($config['refreshtime'] > 0 && Wind::getApp()->getRequest()->isGet() && ! Wind::getApp()->getRequest()->getIsAjaxRequest()) {
             if (Wekit::V('lastvist')->lastRequestUri == Wekit::V('lastvist')->requestUri && (Wekit::V('lastvist')->lastvisit + $config['refreshtime']) > Pw::getTime()) {
                 $this->showError('SITE:refresh.fast');
             }
         }
         $this->_setPreHook($request['m'], $request['mc'], $request['mca']);
 
-        $debug = $config['debug'] || !$config['css.compress'];
+        $debug = $config['debug'] || ! $config['css.compress'];
         Wekit::setGlobal(['debug' => $debug ? '/dev' : '/build'], 'theme');
     }
 
@@ -151,12 +151,12 @@ class PwGlobalFilter extends PwBaseFilter
             return true;
         } //帖子阅读页在ReadController里处理
         $sysPage = Wekit::load('design.srv.router.PwDesignRouter')->get();
-        if (!isset($sysPage[$request['mca']])) {
+        if (! isset($sysPage[$request['mca']])) {
             return false;
         }
         list($pageName, $unique) = $sysPage[$request['mca']];
         $unique && $pk = $this->getInput($unique, 'get');
-        if (!$pk) {
+        if (! $pk) {
             return false;
         }
 
@@ -174,7 +174,7 @@ class PwGlobalFilter extends PwBaseFilter
      */
     protected function runCron()
     {
-        if (!$homeRouter = Wekit::C('site', 'homeRouter')) {
+        if (! $homeRouter = Wekit::C('site', 'homeRouter')) {
             return '';
         }
         $ishome = false;
@@ -185,19 +185,19 @@ class PwGlobalFilter extends PwBaseFilter
         }
         unset($homeRouter['m'], $homeRouter['c'], $homeRouter['a']);
         foreach ($homeRouter as $k => $v) {
-            if (!$k) {
+            if (! $k) {
                 continue;
             }
             if ($httpRequest->getAttribute($k) != $v) {
                 $ishome = false;
             }
         }
-        if (!$ishome) {
+        if (! $ishome) {
             return '';
         }
         $time = Pw::getTime();
         $cron = Wekit::load('cron.PwCron')->getFirstCron();
-        if (!$cron || $cron['next_time'] > $time) {
+        if (! $cron || $cron['next_time'] > $time) {
             return '';
         }
 
@@ -225,7 +225,7 @@ class PwGlobalFilter extends PwBaseFilter
             $clientIp = $loginUser->ip;
             $createdTime = $online->visitOnline($clientIp);
         }
-        if (!$createdTime) {
+        if (! $createdTime) {
             return false;
         }
         $dm = Wekit::load('online.dm.PwOnlineDm');

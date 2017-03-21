@@ -33,7 +33,7 @@ class PwPostDoAttInjector extends PwBaseHookInjector
             $oldatt_needrvrc = $this->getInput('oldatt_needrvrc', 'post');
             $oldatt_ctype = $this->getInput('oldatt_ctype', 'post');
             $postAtt->editAttachs($oldatt_desc, $oldatt_needrvrc, $oldatt_ctype);
-        } elseif (!$flashatt) {
+        } elseif (! $flashatt) {
             return null;
         }
 

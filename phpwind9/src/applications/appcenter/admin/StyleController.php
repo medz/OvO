@@ -237,12 +237,12 @@ class StyleController extends AdminBaseController
         list($type, $alias) = $this->getInput(['type', 'alias'], 'get');
         $conf = Wekit::load('APPCENTER:service.srv.PwInstallApplication')->getConfig(
             'style-type', $type);
-        if (!$conf) {
+        if (! $conf) {
             $this->showMessage('fail');
         }
 
         $dir = Wind::getRealDir('THEMES:').DIRECTORY_SEPARATOR.$conf[1].DIRECTORY_SEPARATOR.$alias;
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             $this->showError('fail');
         }
         $target = Wind::getRealPath('DATA:tmp.'.$alias.'.zip', true);
@@ -284,7 +284,7 @@ class StyleController extends AdminBaseController
     public function doInstallAction()
     {
         $themes = $this->getInput('themes');
-        if (!$themes) {
+        if (! $themes) {
             $this->showError('STYLE:style.illegal.themes', 'appcenter/style/install');
         }
 
@@ -336,10 +336,10 @@ class StyleController extends AdminBaseController
     {
         list($style_type, $name, $alias, $description, $version, $pwversion, $website) =
         $this->getInput(['style_type', 'name', 'alias', 'description', 'version', 'pwversion', 'website'], 'post');
-        if (!$style_type || !$name || !$alias || !$version || !$pwversion) {
+        if (! $style_type || ! $name || ! $alias || ! $version || ! $pwversion) {
             $this->showError('APPCENTER:empty');
         }
-        if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
+        if (! preg_match('/^[a-z][a-z0-9]+$/i', $alias)) {
             $this->showError('APPCENTER:illegal.alias');
         }
         list($author, $email) = $this->getInput(['author', 'email'], 'post');
@@ -377,7 +377,7 @@ class StyleController extends AdminBaseController
         $_install = Wekit::load('APPCENTER:service.srv.do.PwStyleInstall');
         $conf = $install->getConfig('install-type', 'style');
         $manifest = $pack.'/Manifest.xml';
-        if (!is_file($manifest)) {
+        if (! is_file($manifest)) {
             $this->showError('APPCENTER:install.mainfest.not.exist');
         }
         $r = $install->initInstall($manifest);

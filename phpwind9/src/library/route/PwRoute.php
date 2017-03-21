@@ -79,7 +79,7 @@ class PwRoute extends AbstractPwRoute
     {
         $r = PwDomainHelper::parse_url($url);
         list($host, $isSecure, $script, $path, $scriptUrl) = $r;
-        if ($host && !PwDomainHelper::isMyBrother($host,
+        if ($host && ! PwDomainHelper::isMyBrother($host,
             Wind::getApp()->getRequest()->getHostInfo())) {
             return false;
         }
@@ -140,7 +140,7 @@ class PwRoute extends AbstractPwRoute
     private function _matchCommon($path)
     {
         $pattern = '/^(\w+)(-\w+)(-\w+)(.*)$/i';
-        if (!preg_match($pattern, $path, $matches)) {
+        if (! preg_match($pattern, $path, $matches)) {
             return [];
         }
         $params = [];
@@ -275,11 +275,11 @@ class PwRoute extends AbstractPwRoute
         /* 二级域名 */
         $key = "$_m/$_c/$_a";
         list($domain, $type) = $this->_getDomainByType($key);
-        if (!empty($domain)) {
+        if (! empty($domain)) {
             $domainKey = $this->_getDomainKey();
             if (isset($domainKey[$key])) {
                 $id = $domainKey[$key];
-                if (!isset($args[$id])) {
+                if (! isset($args[$id])) {
                     return '';
                 } else {
                     if (isset($domain[$args[$id]])) {
@@ -320,7 +320,7 @@ class PwRoute extends AbstractPwRoute
     {
         if ($this->rewrite_special) {
             $rule = $this->_getRule();
-            if (!empty($rule)) {
+            if (! empty($rule)) {
                 $_args = $args;
                 foreach ($rule as $v) {
                     if ($v['route'] == "$_m/$_c/$_a") {
@@ -328,8 +328,8 @@ class PwRoute extends AbstractPwRoute
                         preg_match_all('/\{(\w+)\}/', $v['format'], $matches);
                         //if (empty($matches[1])) continue;
                         $is_fname = strpos($v['format'], '{fname}') !== false;
-                        if (1 === count($matches[1]) && !$is_fname) {
-                            if (!isset($_args[$matches[1][0]])) {
+                        if (1 === count($matches[1]) && ! $is_fname) {
+                            if (! isset($_args[$matches[1][0]])) {
                                 continue;
                             }
                         }
@@ -337,21 +337,21 @@ class PwRoute extends AbstractPwRoute
                             if ($this->dynamicDomain) {
                                 continue;
                             }
-                            if (!isset($_args['fid'])) {
+                            if (! isset($_args['fid'])) {
                                 continue;
                             }
                             $domain = $this->_getDomain('id', 'domain');
                             $this->dynamic[] = '<?php $__route_rewrite='.var_export($domain, true).';';
                             $this->dynamic[] = $_args['fid'] ? '($__route_rewrite['.$_args['fid'].'] ? $__route_rewrite['.$_args['fid'].'] : \'fname\')' : '\'fname\'';
                             if (is_numeric($_args['fid'])) {
-                                if (!$domain[$_args['fid']]) {
+                                if (! $domain[$_args['fid']]) {
                                     continue;
                                 }
                                 $format['{fname}'] = $domain[$_args['fid']];
                             }
                         }
                         if ($pos = strpos($v['format'], '{page}')) {
-                            if (!isset($_args['page'])) {
+                            if (! isset($_args['page'])) {
                                 $v['format'] = str_replace($v['format'][$pos - 1].'{page}', '', $v['format']);
                             }
                         }
@@ -415,7 +415,7 @@ class PwRoute extends AbstractPwRoute
         if ($this->rewrite_special) {
             /* 解析特殊伪静态 */
             $rule = $this->_getRule();
-            if (!empty($rule)) {
+            if (! empty($rule)) {
                 if (false !== strpos($path, '?')) {
                     list($rewritePath, $queryPath) = explode('?', $path.'?', 2);
                 } else {
@@ -430,7 +430,7 @@ class PwRoute extends AbstractPwRoute
                         $matches = array_diff_key($matches, range(0, intval(count($matches) / 2)));
                         $args = WindUrlHelper::urlToArgs(trim($queryPath, '?'), true);
                         if ($k == 'thread' || $k == 'cate') {
-                            if (!isset($matches['fid']) && isset($matches['fname'])) {
+                            if (! isset($matches['fid']) && isset($matches['fname'])) {
                                 $domain = $this->_getDomain('domain', 'domain_key');
                                 if (isset($domain[$matches['fname']])) {
                                     list($_a, $_c, $_m, $_args) = WindUrlHelper::resolveAction(
@@ -489,7 +489,7 @@ class PwRoute extends AbstractPwRoute
      */
     protected function init($build = false, $request = null)
     {
-        if (!$this->_init) {
+        if (! $this->_init) {
             $router = Wind::getComponent('router');
             $this->default_m || $this->default_m = Wind::getApp()->getConfig('default-module', '', $router->getDefaultModule());
             if ($this->getConfig('default')) {
@@ -563,11 +563,11 @@ class PwRoute extends AbstractPwRoute
     private function _getDomainByType($type)
     {
         $domain_type = $this->_getType($type);
-        if (!$domain_type) {
+        if (! $domain_type) {
             return [[], ''];
         }
         static $domain = [];
-        if (!isset($domain[$domain_type])) {
+        if (! isset($domain[$domain_type])) {
             $temp = [];
             if (Wekit::C('site', "domain.{$domain_type}.isopen")) {
                 $temp = $this->_getDomain('id', 'domain', $domain_type, true);
@@ -591,7 +591,7 @@ class PwRoute extends AbstractPwRoute
     {
         static $result = [];
         static $domain = null;
-        if (!isset($result[$type][$key][$value])) {
+        if (! isset($result[$type][$key][$value])) {
             //不论match，build，只查一次域名表，表中存放的是所有域名，不包括空间。数量大概在几十个
             $domain === null && $domain = Wekit::load('domain.PwDomain')->getAll();
             foreach ($domain as $v) {
@@ -673,7 +673,7 @@ class PwRoute extends AbstractPwRoute
         $action = trim($action, '/');
         $tmp = explode('/', $action.'/');
         end($tmp);
-        if (5 === count($tmp) && !strncasecmp('app/', $action, 4)) {
+        if (5 === count($tmp) && ! strncasecmp('app/', $action, 4)) {
             list($_a, $_c, $_app_name, $_m) = [prev($tmp), prev($tmp), prev($tmp), prev($tmp)];
             $args['app'] = $_app_name;
         } else {

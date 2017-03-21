@@ -56,7 +56,7 @@ class AdminlogController extends AdminBaseController
                         if (isset($authStruts[$m][$c]['_all'])) {
                             $authKeys += $authStruts[$m][$c]['_all'];
                         }
-                        !empty($authKeys) && $detail[2] = $menus[$authKeys[0]]['name'];
+                        ! empty($authKeys) && $detail[2] = $menus[$authKeys[0]]['name'];
                     }
                     $result[] = $detail;
                 }
@@ -77,7 +77,7 @@ class AdminlogController extends AdminBaseController
 
     public function clearAction()
     {
-        if (!$this->isFounder($this->loginUser->username)) {
+        if (! $this->isFounder($this->loginUser->username)) {
             $this->showError('fail');
         }
 

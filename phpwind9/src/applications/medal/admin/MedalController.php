@@ -274,14 +274,14 @@ Wind::import('ADMIN:library.AdminBaseController');
      */
     public function doUserMedalAction()
     {
-        if (!ini_get('safe_mode')) {
+        if (! ini_get('safe_mode')) {
             ignore_user_abort(true);
             set_time_limit(0);
         }
         $perpage = 500;
         $ds = $this->_getMedalUserDs();
         $count = $ds->countMedalUser();
-        if (!$count) {
+        if (! $count) {
             $this->showMessage('MEDAL:success');
         }
         $page = ceil($count / $perpage);
@@ -407,7 +407,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         if ($medalId < 1) {
             $this->showError('MEDAL:fail');
         }
-        if (!$username) {
+        if (! $username) {
             $this->showError('MEDAL:award.username.require');
         }
         $usernames = array_unique(explode(' ', $username));
@@ -417,12 +417,12 @@ Wind::import('ADMIN:library.AdminBaseController');
         $userDs = Wekit::load('SRV:user.PwUser');
         $users = $userDs->fetchUserByName($usernames);
         //$users = array_keys($userInfos);
-        if (!is_array($users) || count($users) < 1) {
+        if (! is_array($users) || count($users) < 1) {
             $this->showError('MEDAL:username.fail');
         }
 
         $info = $this->_getMedalDs()->getMedalInfo($medalId);
-        if (!$info) {
+        if (! $info) {
             $this->showError('MEDAL:medal.fail');
         }
         $time = Pw::getTime();
@@ -433,7 +433,7 @@ Wind::import('ADMIN:library.AdminBaseController');
         $ds = $this->_getMedalLogDs();
         $msg = '';
         foreach ($users as $user) {
-            if (!$user['uid']) {
+            if (! $user['uid']) {
                 continue;
             }
             /*$userGids = $userSrv->getGidsByUid($user['uid']);
@@ -463,7 +463,7 @@ Wind::import('ADMIN:library.AdminBaseController');
                     ->setExpiredTime($expired);
                 $resource = $ds->replaceMedalLog($dm);
             }
-            if (!$resource instanceof PwError) {
+            if (! $resource instanceof PwError) {
                 $this->_getMedalService()->updateMedalUser($user['uid']);
                 $this->_getMedalService()->sendNotice($user['uid'], $resource, $medalId, 2, $message);
             }
@@ -547,7 +547,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             //$dm->setAwardStatus(5);
             $resource = $ds->deleteInfo($logId);
             $this->_getMedalService()->sendNotice($log['uid'], $log['log_id'], $log['medal_id'], 4);
-            if (!$resource) {
+            if (! $resource) {
                 $this->showError('MEDAL:fail');
             }
         }
@@ -568,7 +568,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             $dm = new PwMedalLogDm($logid);
             $dm->setAwardStatus(PwMedalLog::STATUS_AWARD);
             $resource = $ds->updateInfo($dm);
-            if (!$resource instanceof PwError) {
+            if (! $resource instanceof PwError) {
                 $srv->sendNotice($log['uid'], $log['log_id'], $log['medal_id'], 3);
             }
         }
@@ -584,7 +584,7 @@ Wind::import('ADMIN:library.AdminBaseController');
          foreach ($logids as $logid) {
              $log = $ds->getMedalLog($logid);
              $resource = $ds->deleteInfo($logid);
-             if (!$resource instanceof PwError) {
+             if (! $resource instanceof PwError) {
                  $srv->sendNotice($log['uid'], $log['log_id'], $log['medal_id'], 4);
              }
          }

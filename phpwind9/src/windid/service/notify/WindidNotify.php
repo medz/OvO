@@ -19,7 +19,7 @@ class WindidNotify
 
     public function fetchNotify($nids)
     {
-        if (!is_array($nids) || !$nids) {
+        if (! is_array($nids) || ! $nids) {
             return [];
         }
 
@@ -59,7 +59,7 @@ class WindidNotify
 
     public function batchDelete($nids)
     {
-        if (!is_array($nids) || !$nids) {
+        if (! is_array($nids) || ! $nids) {
             return false;
         }
 
@@ -68,10 +68,10 @@ class WindidNotify
 
     public function batchNotDelete($nids)
     {
-        if (!is_array($nids)) {
+        if (! is_array($nids)) {
             return false;
         }
-        if (!$nids) {
+        if (! $nids) {
             return $this->_getDao()->deleteAll();
         }
 

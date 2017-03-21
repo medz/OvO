@@ -26,14 +26,14 @@ class PwSpaceModel extends PwSpaceBo
         $page = (int) $page;
         if ($page > 0) {
             $method = sprintf('model%sList', ucwords($mod));
-            if (!method_exists($this, $method)) {
+            if (! method_exists($this, $method)) {
                 return [];
             }
 
             return $this->$method($limit, $page);
         } else {
             $method = sprintf('model%s', ucwords($mod));
-            if (!method_exists($this, $method)) {
+            if (! method_exists($this, $method)) {
                 return [];
             }
 
@@ -45,7 +45,7 @@ class PwSpaceModel extends PwSpaceBo
     {
         $_users = [];
         $visitors = unserialize($this->space['visitors']);
-        if (!$visitors) {
+        if (! $visitors) {
             return [0, []];
         }
         $count = count($visitors);
@@ -64,7 +64,7 @@ class PwSpaceModel extends PwSpaceBo
     {
         $_users = [];
         $tovisitors = unserialize($this->space['tovisitors']);
-        if (!$tovisitors) {
+        if (! $tovisitors) {
             return [0, []];
         }
         $count = count($tovisitors);

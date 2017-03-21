@@ -26,10 +26,10 @@ class PwDesignBakDao extends PwBaseDao
     public function replaceBak($data)
     {
         $data['is_snapshot'] = (int) $data['is_snapshot'];
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!$data['bak_type'] || !$data['page_id']) {
+        if (! $data['bak_type'] || ! $data['page_id']) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -39,7 +39,7 @@ class PwDesignBakDao extends PwBaseDao
 
     public function updateSnap($type, $pageid, $snap, $issnap)
     {
-        if (!$type || !$pageid) {
+        if (! $type || ! $pageid) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET `is_snapshot`= ? WHERE `bak_type` = ? AND `page_id` =? AND `is_snapshot` = ?');

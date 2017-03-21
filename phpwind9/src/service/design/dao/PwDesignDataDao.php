@@ -148,7 +148,7 @@ class PwDesignDataDao extends PwBaseDao
                     $array[] = $value;
                     break;
                 case 'module_id':
-                    $value = !is_array($value) && $value ? [$value] : $value;
+                    $value = ! is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND module_id IN '.$this->sqlImplode($value);
                     break;
                 case 'data_type':

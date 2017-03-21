@@ -39,7 +39,7 @@ class PwThreadCateIndex
      */
     public function countNotInFids($cid, $fids)
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return $this->count($cid);
         }
 
@@ -79,7 +79,7 @@ class PwThreadCateIndex
      */
     public function fetchNotInFid($cid, $fids, $limit, $offset, $order = 'lastpost')
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return $this->fetch($cid, $limit, $offset, $order);
         }
         $result = $this->_getDao()->fetchNotInFid($cid, $fids, $limit, $offset, $order);

@@ -60,7 +60,7 @@
         if ($this->tome == self::MYSELF) {
             return true;
         }
-        if (!isset($this->spaceUser['secret'][$key])) {
+        if (! isset($this->spaceUser['secret'][$key])) {
             //手机号码默认仅对自己开放
             if ($key == 'mobile') {
                 $this->spaceUser['secret'][$key] = self::MYSELF;
@@ -90,7 +90,7 @@
      {
          $this->spaceUser = Wekit::load('user.PwUser')->getUserByUid($this->spaceUid, PwUser::FETCH_ALL);
          $this->spaceUser['secret'] = unserialize($this->spaceUser['secret']);
-         !isset($this->spaceUser['secret']['mobile']) && $this->spaceUser['secret']['mobile'] = self::MYSELF;
+         ! isset($this->spaceUser['secret']['mobile']) && $this->spaceUser['secret']['mobile'] = self::MYSELF;
      }
 
      private function _getSpace()

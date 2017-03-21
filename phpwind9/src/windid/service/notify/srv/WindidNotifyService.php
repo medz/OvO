@@ -36,16 +36,16 @@ class WindidNotifyService
      */
     public function send($method, $data, $appid = 0)
     {
-        if (!$operation = $this->getOperation($method)) {
+        if (! $operation = $this->getOperation($method)) {
             return false;
         }
-        if (!$nid = $this->_getNotifyDs()->addNotify($appid, $operation, serialize($data), Pw::getTime())) {
+        if (! $nid = $this->_getNotifyDs()->addNotify($appid, $operation, serialize($data), Pw::getTime())) {
             return false;
         }
         $apps = $this->_getAppDs()->getList();
         $dms = [];
         foreach ($apps as $val) {
-            if (!$val['isnotify'] || $val['id'] == $appid) {
+            if (! $val['isnotify'] || $val['id'] == $appid) {
                 continue;
             }
             $dm = new WindidNotifyLogDm();
@@ -87,11 +87,11 @@ class WindidNotifyService
 
         $syn = false;
         foreach ($apps as $val) {
-            if (!$val['issyn'] && $val['id'] == $appid) {
+            if (! $val['issyn'] && $val['id'] == $appid) {
                 $syn = true;
                 break;
             }
-            if (!$val['issyn'] || $val['id'] == $appid) {
+            if (! $val['issyn'] || $val['id'] == $appid) {
                 continue;
             }
             $array = [

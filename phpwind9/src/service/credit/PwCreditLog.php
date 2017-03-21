@@ -56,12 +56,12 @@ class PwCreditLog
      */
     public function batchAdd($dmArr)
     {
-        if (empty($dmArr) || !is_array($dmArr)) {
+        if (empty($dmArr) || ! is_array($dmArr)) {
             return false;
         }
         $data = [];
         foreach ($dmArr as $key => $dm) {
-            if (!($dm instanceof PwCreditLogDm)) {
+            if (! ($dm instanceof PwCreditLogDm)) {
                 continue;
             }
             if ($dm->beforeAdd() instanceof PwError) {
@@ -125,7 +125,7 @@ class PwCreditLog
      */
     public function batchAddOperate($data)
     {
-        if (empty($data) || !is_array($data)) {
+        if (empty($data) || ! is_array($data)) {
             return false;
         }
 

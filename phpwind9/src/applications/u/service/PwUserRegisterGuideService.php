@@ -34,7 +34,7 @@ class PwUserRegisterGuideService
     {
         $data = $this->_getData();
         $list = $this->orderList($data);
-        if (!$key || !isset($list[$key])) {
+        if (! $key || ! isset($list[$key])) {
             $next = $this->minKey;
         } else {
             $next = $list[$key]['next'];
@@ -122,13 +122,13 @@ class PwUserRegisterGuideService
             return $list;
         }
         $openGuids = $this->_getOpenGuide();
-        if (!$openGuids) {
+        if (! $openGuids) {
             return [];
         }
         $_tempOpen = array_keys($openGuids);
         $min = null;
         foreach ((array) $data as $key => $value) {
-            if (!in_array($key, $_tempOpen)) {
+            if (! in_array($key, $_tempOpen)) {
                 continue;
             }
             $_tmp = ['pre' => null, 'value' => $value, 'next' => null, 'order' => $openGuids[$key]];
@@ -177,7 +177,7 @@ class PwUserRegisterGuideService
     private function _getOpenGuide()
     {
         $config = $this->getConfig();
-        if (!$config) {
+        if (! $config) {
             return [];
         }
         $_open = [];

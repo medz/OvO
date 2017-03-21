@@ -20,7 +20,7 @@ class PwStyleService
      */
     public function useStyle($styleid)
     {
-        if (!$style = $this->_styleDs()->getStyle($styleid)) {
+        if (! $style = $this->_styleDs()->getStyle($styleid)) {
             return new PwError(
             'STYLE:style.not.exist');
         }

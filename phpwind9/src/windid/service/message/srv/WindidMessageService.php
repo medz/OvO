@@ -40,7 +40,7 @@ class WindidMessageService
     public function read($uid, $dialogId, $messageIds = [])
     {
         $dialog = $this->_getMessageDs()->getDialog($dialogId);
-        if (!$dialog || $dialog['to_uid'] != $uid) {
+        if (! $dialog || $dialog['to_uid'] != $uid) {
             return 0;
         }
         if ($messageIds) {
@@ -56,7 +56,7 @@ class WindidMessageService
 
     public function readDialog($dialogIds)
     {
-        if (!is_array($dialogIds)) {
+        if (! is_array($dialogIds)) {
             $dialogIds = [$dialogIds];
         }
         Wind::import('WSRV:message.dm.WindidMessageDm');
@@ -98,7 +98,7 @@ class WindidMessageService
     public function sendMessage($username, $content, $fromUid)
     {
         $userInfo = $this->_getUserDs()->getUserByName($username);
-        if (!$userInfo) {
+        if (! $userInfo) {
             return new WindidError(WindidError::USER_NOT_EXISTS);
         }
 
@@ -116,10 +116,10 @@ class WindidMessageService
      */
     public function sendMessageByUid($uid, $content, $fromUid = 0)
     {
-        if (!$uid || !$fromUid) {
+        if (! $uid || ! $fromUid) {
             return false;
         }
-        if (!isset($this->_blackList[$uid])) {
+        if (! isset($this->_blackList[$uid])) {
             $this->_blackList[$uid] = $this->_getUserBlackDs()->getBlacklist($uid);
         }
 
@@ -196,7 +196,7 @@ class WindidMessageService
     public function sendMessageByUsernames($usernames, $content, $from_uid = 0)
     {
         $userInfos = $this->_getUserDs()->fetchUserByName($usernames);
-        if (!$userInfos) {
+        if (! $userInfos) {
             return new WindidError(WindidError::USER_NOT_EXISTS);
         }
         foreach ($userInfos as $userInfo) {
@@ -217,11 +217,11 @@ class WindidMessageService
      */
     public function sendMessageByUids($uids, $content, $from_uid = 0)
     {
-        if (!$content) {
+        if (! $content) {
             return new WindidError(WindidError::MESSAGE_CONTENT_LENGTH_ERROR);
         }
         $userInfos = $this->_getUserDs()->fetchUserByUid($uids);
-        if (!$userInfos) {
+        if (! $userInfos) {
             return new WindidError(WindidError::USER_NOT_EXISTS);
         }
         foreach ($userInfos as $userInfo) {
@@ -233,11 +233,11 @@ class WindidMessageService
 
     public function delete($uid, $dialogId, $messageIds = [])
     {
-        if (!is_array($messageIds)) {
+        if (! is_array($messageIds)) {
             $messageIds = [$messageIds];
         }
         $dialog = $this->_getMessageDs()->getDialog($dialogId);
-        if (!$dialog || $dialog['to_uid'] != $uid) {
+        if (! $dialog || $dialog['to_uid'] != $uid) {
             return false;
         }
 
@@ -257,7 +257,7 @@ class WindidMessageService
     public function deleteByMessageIds($messageIds)
     {
         $relations = $this->_getMessageDs()->getRelationsByMessageIds($messageIds);
-        if (!$relations) {
+        if (! $relations) {
             return true;
         }
         $dialogIds = $relationIds = [];
@@ -265,20 +265,20 @@ class WindidMessageService
             $dialogIds[] = $v['dialog_id'];
             $relationIds[$v['dialog_id']][] = $v['id'];
         }
-        if (!$dialogIds) {
+        if (! $dialogIds) {
             return true;
         }
         $dialogIds = array_unique($dialogIds);
         foreach ($dialogIds as $dialogId) {
             $dialog = $this->_getMessageDs()->getDialog($dialogId);
-            if (!$dialog || !$relationIds[$dialogId]) {
+            if (! $dialog || ! $relationIds[$dialogId]) {
                 continue;
             }
             $this->_getMessageDs()->batchDeleteRelation($relationIds[$dialogId]);
             $this->resetDialogMessages($dialogId);
             $this->resetUserMessages($dialog['to_uid']);
             $dialog_relation = $this->_getMessageDs()->getDialogMessages($dialogId, 1);
-            if (!$dialog_relation) {
+            if (! $dialog_relation) {
                 $this->_getMessageDs()->batchDeleteDialog([$dialogId]);
             }
         }
@@ -378,19 +378,19 @@ class WindidMessageService
      */
     public function searchMessage($search, $start = 0, $limit = 10)
     {
-        if (!is_array($search)) {
+        if (! is_array($search)) {
             return [0, []];
         }
         $array = ['fromuid', 'keyword', 'username', 'starttime', 'endtime'];
         Wind::import('WSRV:message.srv.vo.WindidMessageSo');
         $vo = new WindidMessageSo();
         foreach ($search as $k => $v) {
-            if (!in_array($k, $array)) {
+            if (! in_array($k, $array)) {
                 continue;
             }
             if ($k == 'username') {
                 $user = $this->_getUserDs()->getUserByName($v);
-                if (!$user['uid']) {
+                if (! $user['uid']) {
                     $user['uid'] = 0;
                 }
                 $vo->setFromUid($user['uid']);
@@ -409,7 +409,7 @@ class WindidMessageService
         }
         // ç»„è£…ç”¨æˆ·æ•°æ®
         $userInfos = $this->_getUserDs()->fetchUserByUid($uids);
-        if (!$userInfos) {
+        if (! $userInfos) {
             return [0, []];
         }
         foreach ($messages as $v) {
@@ -444,7 +444,7 @@ class WindidMessageService
     {
         $lastMessage = [];
         $userInfos = $this->_getUserDs()->fetchUserByUid([$fromUid, $toUid]);
-        if (!$userInfos) {
+        if (! $userInfos) {
             return $lastMessage;
         }
         $lastMessage['from_uid'] = $fromUid;

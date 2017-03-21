@@ -16,15 +16,15 @@ class PwTaskMemberMsgDm extends PwTaskDm
      */
     protected function filterConditionData()
     {
-        if (!isset($this->_data['conditions'])) {
+        if (! isset($this->_data['conditions'])) {
             return true;
         }
         $condition = $this->_data['conditions'];
-        if (!$condition || !is_array($condition)) {
+        if (! $condition || ! is_array($condition)) {
             return new PwError('TASK:condition.require');
         }
 
-        if (!$condition['name']) {
+        if (! $condition['name']) {
             return new PwError('TASK:condition.msg.name.require');
         }
         $url = $condition['url'];

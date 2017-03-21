@@ -63,7 +63,7 @@ class DataController extends DesignBaseController
         $underline = $this->getInput('underline', 'post');
         $color = $this->getInput('color', 'post');
         $standard = $this->_getDesignService()->getStandardSignkey($this->bo->getModel());
-        if (!$data[$standard['sTitle']]) {
+        if (! $data[$standard['sTitle']]) {
             $this->showError('operate.fail');
         }
         foreach ((array) $images as $k => $v) {
@@ -115,7 +115,7 @@ class DataController extends DesignBaseController
     {
         $dataid = (int) $this->getInput('dataid', 'get');
         $data = $this->_getDataDs()->getData($dataid);
-        if (!$data) {
+        if (! $data) {
             $this->showError('fail');
         }
         list($data['bold'], $data['underline'], $data['italic'], $data['color']) = explode('|', $data['style']);
@@ -146,7 +146,7 @@ class DataController extends DesignBaseController
     {
         $dataid = (int) $this->getInput('dataid', 'post');
         $info = $this->_getDataDs()->getData($dataid);
-        if (!$info) {
+        if (! $info) {
             $this->showError('operate.fail');
         }
         $orderid = (int) $info['vieworder'];
@@ -159,7 +159,7 @@ class DataController extends DesignBaseController
         $underline = $this->getInput('underline', 'post');
         $color = $this->getInput('color', 'post');
         $standard = $this->_getDesignService()->getStandardSignkey($this->bo->getModel());
-        if (!$data[$standard['sTitle']]) {
+        if (! $data[$standard['sTitle']]) {
             $this->showError('operate.fail');
         }
         $imageSrv = Wekit::load('design.srv.PwDesignImage');
@@ -211,7 +211,7 @@ class DataController extends DesignBaseController
         $dataid = (int) $this->getInput('dataid', 'get');
         $ds = $this->_getDataDs();
         $data = $ds->getData($dataid);
-        if (!$data) {
+        if (! $data) {
             $this->showError('operate.fail');
         }
         switch ($data['from_type']) {
@@ -231,7 +231,7 @@ class DataController extends DesignBaseController
         $extend = unserialize($data['extend_info']);
         $delImages = $extend['standard_image'];
         Wekit::load('design.srv.PwDesignImage')->clearFiles($this->bo->moduleid, explode('|||', $delImages));
-        if (!$data['is_reservation']) {
+        if (! $data['is_reservation']) {
             $srv = new PwShieldData($data['module_id']);
             $srv->addShieldData();
         }
@@ -294,7 +294,7 @@ class DataController extends DesignBaseController
     {
         $pushid = (int) $this->getInput('pushid', 'get');
         $push = $this->_getPushDs()->getPush($pushid);
-        if (!$push) {
+        if (! $push) {
             $this->showError('operate.fail');
         }
         if ($this->_getPushDs()->deletePush($pushid)) {
@@ -360,7 +360,7 @@ class DataController extends DesignBaseController
         //预订
         foreach ($dataid as $id) {
             $data = $ds->getData($id);
-            if (!$data['is_reservation']) {
+            if (! $data['is_reservation']) {
                 continue;
             }
             $dm = new PwDesignDataDm($id);
@@ -391,7 +391,7 @@ class DataController extends DesignBaseController
     public function batchCheckPushAction()
     {
         $pushid = $this->getInput('pushid', 'post');
-        if (!$pushid) {
+        if (! $pushid) {
             $this->showError('operate.fail');
         }
         $ds = $this->_getPushDs();

@@ -97,7 +97,7 @@ class PwForumMiscService
         $threads = Wekit::load('forum.PwThreadExpand')->countThreadsByFid();
         $posts = Wekit::load('forum.PwThreadExpand')->countPostsByFid();
         foreach ($fids as $key => $value) {
-            if (!isset($threads[$value]) && !isset($posts[$value])) {
+            if (! isset($threads[$value]) && ! isset($posts[$value])) {
                 continue;
             }
             $dm = new PwForumDm($value);

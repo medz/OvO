@@ -29,7 +29,7 @@ class PropertyController extends AdminBaseController
             }
             $modelBo = new PwDesignModelBo($module['model_flag']);
             $model = $modelBo->getModel();
-            if ($model['tab'] && !in_array('data', $model['tab'])) {
+            if ($model['tab'] && ! in_array('data', $model['tab'])) {
                 $isdata = false;
             }
         }
@@ -46,12 +46,12 @@ class PropertyController extends AdminBaseController
     public function add2Action()
     {
         $model = $this->getInput('model', 'post');
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
 
         $bo = new PwDesignModelBo($model);
-        if (!$bo->isModel()) {
+        if (! $bo->isModel()) {
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
@@ -71,12 +71,12 @@ class PropertyController extends AdminBaseController
     public function doaddAction()
     {
         $model = $this->getInput('model', 'post');
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
 
         $bo = new PwDesignModelBo($model);
-        if (!$bo->isModel()) {
+        if (! $bo->isModel()) {
             $this->showError('operate.fail');
         }
         $name = trim($this->getInput('module_name', 'post'));
@@ -153,7 +153,7 @@ class PropertyController extends AdminBaseController
             $model = $this->bo->getModel();
         }
         $module = $this->bo->getModule();
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
@@ -187,7 +187,7 @@ class PropertyController extends AdminBaseController
     {
         $model = $this->getInput('model', 'post');
         $moduleid = $this->getInput('moduleid', 'post');
-        if (!$moduleid) {
+        if (! $moduleid) {
             $this->showError('operate.fail');
         }
 
@@ -197,9 +197,9 @@ class PropertyController extends AdminBaseController
             $this->_getDataDs()->deleteByModuleId($moduleid);
             $this->_getPushDs()->deleteByModuleId($moduleid);
         }
-        !$model && $model = $_model;
+        ! $model && $model = $_model;
         $module = $moduleBo->getModule();
-        if (!$module) {
+        if (! $module) {
             $this->showError('operate.fail');
         }
         $name = trim($this->getInput('module_name', 'post'));

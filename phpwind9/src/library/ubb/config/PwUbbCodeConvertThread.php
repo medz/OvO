@@ -59,11 +59,11 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
      */
     public function isPost()
     {
-        if (!$this->isFeature || !$this->user->isExists()) {
+        if (! $this->isFeature || ! $this->user->isExists()) {
             return 0;
         }
         $tid = $this->thread->tid;
-        if (!isset(self::$_ispost[$tid])) {
+        if (! isset(self::$_ispost[$tid])) {
             if ($this->thread->info['created_userid'] == $this->user->uid) {
                 self::$_ispost[$tid] = 2;
             } elseif (Wekit::load('forum.PwThread')->countPostByTidAndUid($tid, $this->user->uid) > 0) {
@@ -88,7 +88,7 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
 
     public function checkCredit($cValue, $cType)
     {
-        if (!$this->isFeature) {
+        if (! $this->isFeature) {
             return false;
         }
         if ($this->isAuthor()) {
@@ -100,7 +100,7 @@ class PwUbbCodeConvertThread extends PwUbbCodeConvertConfig
 
     public function isBuy()
     {
-        if (!$this->isFeature || !$this->user->isExists()) {
+        if (! $this->isFeature || ! $this->user->isExists()) {
             return false;
         }
         if ($this->isAuthor()) {

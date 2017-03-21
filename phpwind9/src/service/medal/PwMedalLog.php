@@ -50,7 +50,7 @@ class PwMedalLog
 
     public function fetchMedalLog($logids)
     {
-        if (!is_array($logids) && count($logids) < 1) {
+        if (! is_array($logids) && count($logids) < 1) {
             return [];
         }
 
@@ -111,7 +111,7 @@ class PwMedalLog
     {
         $uid = (int) $uid;
         $status = (int) $status;
-        !is_array($medalIds) && $medalIds = [];
+        ! is_array($medalIds) && $medalIds = [];
         $start = (int) $start;
         $perpage = (int) $perpage;
 
@@ -129,7 +129,7 @@ class PwMedalLog
     {
         $uid = (int) $uid;
         $status = (int) $status;
-        !is_array($medalIds) && $medalIds = [];
+        ! is_array($medalIds) && $medalIds = [];
 
         return $this->_getDao()->countMedalLogList($uid, $status, $medalIds);
     }

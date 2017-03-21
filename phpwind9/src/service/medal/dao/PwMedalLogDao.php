@@ -166,10 +166,10 @@ Wind::import('SRC:library.base.PwBaseDao');
 
     public function replace($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!$data['uid'] || !$data['medal_id']) {
+        if (! $data['uid'] || ! $data['medal_id']) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -180,7 +180,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function updateInfo($logId, $data)
      {
-         if (!$data = $this->_filterStruct($data)) {
+         if (! $data = $this->_filterStruct($data)) {
              return false;
          }
          $sql = $this->_bindSql('UPDATE %s SET %s WHERE log_id = ? ', $this->getTable(), $this->sqlSingle($data));

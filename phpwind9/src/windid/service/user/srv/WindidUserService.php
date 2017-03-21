@@ -36,7 +36,7 @@ class WindidUserService
                 $user = $ds->getUserByEmail($userid, WindidUser::FETCH_MAIN);
                 break;
         }
-        if (!$user) {
+        if (! $user) {
             return [WindidError::USER_NOT_EXISTS];
         }
         if ($ifcheck) {
@@ -223,7 +223,7 @@ class WindidUserService
         $allow = ['username', 'password', 'email', 'question', 'answer'];
         $dm = new WindidUserDm($uid);
         foreach ($editInfo as $key => $info) {
-            if (!in_array($key, $allow)) {
+            if (! in_array($key, $allow)) {
                 continue;
             }
             $fun = 'set'.ucfirst($key);
@@ -240,7 +240,7 @@ class WindidUserService
         $allow = ['realname', 'gender', 'byear', 'bmonth', 'bday', 'hometown', 'location', 'homepage', 'qq', 'aliww', 'mobile',    'alipay', 'msn', 'profile'];
         $dm = new WindidUserDm($uid);
         foreach ($editInfo as $key => $info) {
-            if (!in_array($key, $allow)) {
+            if (! in_array($key, $allow)) {
                 continue;
             }
             $fun = 'set'.ucfirst($key);

@@ -75,11 +75,11 @@ class AnnounceController extends AdminBaseController
     public function doRunAction()
     {
         list($aid, $vieworders) = $this->getInput(['aid', 'vieworder'], 'post');
-        if (!$aid) {
+        if (! $aid) {
             $this->showError('operate.select');
         }
         foreach ($aid as $_id) {
-            if (!isset($vieworders[$_id])) {
+            if (! isset($vieworders[$_id])) {
                 continue;
             }
             $dm = new PwAnnounceDm($_id);
@@ -95,10 +95,10 @@ class AnnounceController extends AdminBaseController
     public function doBatchDeleteAction()
     {
         $aids = $this->getInput('aid', 'post');
-        if (!$aids) {
+        if (! $aids) {
             $this->showError('operate.select');
         }
-        if (!$this->_getPwAnnounceDs()->batchDeleteAnnounce($aids)) {
+        if (! $this->_getPwAnnounceDs()->batchDeleteAnnounce($aids)) {
             $this->showError('operate.fail');
         }
         $this->showMessage('operate.success');
@@ -110,7 +110,7 @@ class AnnounceController extends AdminBaseController
     public function doDeleteAction()
     {
         $aid = $this->getInput('aid', 'post');
-        if (!$aid || !$this->_getPwAnnounceDs()->deleteAnnounce($aid)) {
+        if (! $aid || ! $this->_getPwAnnounceDs()->deleteAnnounce($aid)) {
             $this->showError('operate.fail');
         }
         $this->showMessage('operate.success');

@@ -50,7 +50,7 @@ class IndexController extends SpaceBaseController
         }
         $styleid = $this->getInput('id');
         $style = Wekit::load('APPCENTER:service.PwStyle')->getStyle($styleid);
-        if (!$style) {
+        if (! $style) {
             $this->showError('SPACE:fail');
         }
         $this->space->space['space_style'] = $style['alias'];
@@ -115,7 +115,7 @@ class IndexController extends SpaceBaseController
         }
 
         $freshDisplay = new PwFreshDisplay($dataSource);
-        if (!$fresh = $freshDisplay->gather()) {
+        if (! $fresh = $freshDisplay->gather()) {
             $this->showError('fresh.exists.not');
         }
 

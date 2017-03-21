@@ -44,7 +44,7 @@
         $_medals = [];
         //arsort($this->_status);
         foreach ($this->_status as $key => $value) {
-            if (!isset($this->medals[$key])) {
+            if (! isset($this->medals[$key])) {
                 continue;
             }
             $_medals[$key] = $this->medals[$key];
@@ -54,7 +54,7 @@
         $autos = Wekit::load('medal.PwMedalInfo')->getInfoListByReceiveType(1, 1);
         $sevice = $this->_getMedalService();
         foreach ($autos as $key => $auto) {
-            if (!isset($_medals[$key])) {
+            if (! isset($_medals[$key])) {
                 $auto['icon'] = $sevice->getMedalImage($auto['path'], $auto['icon']);
                 $auto['image'] = $sevice->getMedalImage($auto['path'], $auto['image']);
                 $auto['award_status'] = 0;

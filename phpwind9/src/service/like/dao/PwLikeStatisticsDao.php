@@ -71,7 +71,7 @@ class PwLikeStatisticsDao extends PwBaseDao
 
     public function addInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -82,7 +82,7 @@ class PwLikeStatisticsDao extends PwBaseDao
 
     public function updateInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $signkey = $data['signkey'];

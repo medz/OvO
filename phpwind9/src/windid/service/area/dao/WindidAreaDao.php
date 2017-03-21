@@ -89,12 +89,12 @@ class WindidAreaDao extends WindidBaseDao
     {
         $clear = [];
         foreach ($data as $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $clear[] = [$_item['name'], $_item['parentid'], $_item['joinname']];
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`name`, `parentid`, `joinname`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));

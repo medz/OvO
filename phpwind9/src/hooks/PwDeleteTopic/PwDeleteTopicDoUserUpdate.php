@@ -36,7 +36,7 @@ class PwDeleteTopicDoUserUpdate extends iPwGleanDoHookProcess
     public function gleanData($value)
     {
         if ($value['disabled'] != 2) {
-            if (!isset($this->recode[$value['created_userid']])) {
+            if (! isset($this->recode[$value['created_userid']])) {
                 $this->recode[$value['created_userid']] = ['postnum' => 0, 'digest' => 0];
             }
             // use ++ is can't +1

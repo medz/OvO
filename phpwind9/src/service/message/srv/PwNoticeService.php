@@ -22,7 +22,7 @@ class PwNoticeService
     public function sendNotice($uid, $type, $param = 0, $extendParams = [], $updateUnRead = true)
     {
         $action = $this->_getAction($type);
-        if (!$action) {
+        if (! $action) {
             return new PwError('MESSAGE::notice.type.undefined');
         }
 
@@ -45,7 +45,7 @@ class PwNoticeService
             ->setParam($param)
             ->setExtendParams($extendParams)
             ->setTitle($noticeTitle);
-        if (!$notice) {
+        if (! $notice) {
             $noticeId = $this->_getNoticesDs()->addNotice($dm);
         } else {
             $dm->setId($notice['id']);
@@ -55,7 +55,7 @@ class PwNoticeService
         }
 
         //更新通知未读数
-        if ($updateUnRead && (!$notice || $notice['is_read'])) {
+        if ($updateUnRead && (! $notice || $notice['is_read'])) {
             $dm = new PwUserInfoDm($uid);
             $dm->addNotice(1);
             $this->_getUserDs()->editUser($dm, PwUser::FETCH_DATA);
@@ -92,7 +92,7 @@ class PwNoticeService
             $typeIds = array_flip($this->_getTypes());
             foreach ($list as $v) {
                 $type = $typeIds[$v['typeid']];
-                if (!$type) {
+                if (! $type) {
                     continue;
                 }
                 $data[0]['count'] += $v['num'];
@@ -117,7 +117,7 @@ class PwNoticeService
         $ignore = intval($ignore);
         $ignore = $ignore ? 1 : 0;
         $notice = $this->_getNoticesDs()->getNotice($id);
-        if (!$notice) {
+        if (! $notice) {
             return false;
         } else {
             $dm = new PwMessageNoticesDm($id);
@@ -138,11 +138,11 @@ class PwNoticeService
      */
     public function getDetailList($notice)
     {
-        if (!is_array($notice)) {
+        if (! is_array($notice)) {
             return null;
         }
         $action = $this->_getActionByTypeid($notice['typeid']);
-        if (!$action) {
+        if (! $action) {
             return null;
         }
 
@@ -292,16 +292,16 @@ class PwNoticeService
      */
     public function isIgnoreNoticeType($uid, $typeId)
     {
-        if (!in_array($typeId, $this->_getNoticePrivateType())) {
+        if (! in_array($typeId, $this->_getNoticePrivateType())) {
             return false;
         }
         $config = $this->_getMessagesDs()->getMessageConfig($uid);
-        if (!$config['notice_types']) {
+        if (! $config['notice_types']) {
             return false;
         }
         $types = unserialize($config['notice_types']);
 
-        return !in_array($typeId, $types) ? false : true;
+        return ! in_array($typeId, $types) ? false : true;
     }
 
     /**
@@ -313,12 +313,12 @@ class PwNoticeService
      */
     protected function _getAction($type)
     {
-        if (!$type || !in_array($type, array_keys($this->_getTypes()))) {
+        if (! $type || ! in_array($type, array_keys($this->_getTypes()))) {
             return false;
         }
         list($type) = explode('_', $type);
         $actionMethod = sprintf('_get%sAction', ucfirst($type));
-        if (!method_exists($this, $actionMethod)) {
+        if (! method_exists($this, $actionMethod)) {
             $type = strtolower($type);
             $className = sprintf('PwNotice%s', ucfirst($type));
             $fliePath = 'SRV:message.srv.notice.'.$className;
@@ -422,7 +422,7 @@ class PwNoticeService
     public function _checkPrivate($uid, $typeId)
     {
         $config = $this->_getMessagesDs()->getMessageConfig($uid);
-        if (!$config['notice_types']) {
+        if (! $config['notice_types']) {
             return true;
         }
         $noticeValue = unserialize($config['notice_types']);
@@ -437,7 +437,7 @@ class PwNoticeService
     private function _getTypeId($typeName)
     {
         $types = $this->_getTypes();
-        if (!is_array($types) || !isset($types[$typeName])) {
+        if (! is_array($types) || ! isset($types[$typeName])) {
             return 0;
         }
 

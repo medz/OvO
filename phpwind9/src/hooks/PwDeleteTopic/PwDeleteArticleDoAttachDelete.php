@@ -15,7 +15,7 @@ class PwDeleteArticleDoAttachDelete extends iPwGleanDoHookProcess
 {
     public function run($ids)
     {
-        if ($this->srv->isRecycle || (!$attachs = Wekit::load('attach.PwThreadAttach')->fetchAttachByTid($ids))) {
+        if ($this->srv->isRecycle || (! $attachs = Wekit::load('attach.PwThreadAttach')->fetchAttachByTid($ids))) {
             return;
         }
 

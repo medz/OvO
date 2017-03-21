@@ -65,7 +65,7 @@ class PwAttach
 
     public function batchUpdateAttach($aids, PwAttachDm $dm)
     {
-        if (!$aids || !is_array($aids)) {
+        if (! $aids || ! is_array($aids)) {
             return false;
         }
         if (($result = $dm->beforeUpdate()) !== true) {
@@ -82,7 +82,7 @@ class PwAttach
 
     public function batchDeleteAttach($aids)
     {
-        if (!$aids || !is_array($aids)) {
+        if (! $aids || ! is_array($aids)) {
             return false;
         }
 

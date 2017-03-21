@@ -37,11 +37,11 @@ class PwDesignStyle
                     $this->_setFont((int) $v['size'], $v['color'], $v['bold'], $v['underline'], $v['italic']);
                     break;
                 case 'border':
-                    if (!$v['isdiffer']) {
+                    if (! $v['isdiffer']) {
                         $this->_setBorder($v['linewidth'], $v['style'], $v['color']);
                     } else {
                         foreach ($v as $_k => $_v) {
-                            if (!in_array($_k, ['top', 'left', 'right', 'bottom'])) {
+                            if (! in_array($_k, ['top', 'left', 'right', 'bottom'])) {
                                 continue;
                             }
                             $this->_setBorder($_v['linewidth'], $_v['style'], $_v['color'], $_k);
@@ -49,14 +49,14 @@ class PwDesignStyle
                     }
                     break;
                 case 'margin':
-                    if (!$v['isdiffer']) {
+                    if (! $v['isdiffer']) {
                         $this->_setMargin((int) $v['both'], (int) $v['both'], (int) $v['both'], (int) $v['both']);
                     } else {
                         $this->_setMargin((int) $v['top'], (int) $v['right'], (int) $v['bottom'], (int) $v['left']);
                     }
                     break;
                 case 'padding':
-                    if (!$v['isdiffer']) {
+                    if (! $v['isdiffer']) {
                         $this->_setPadding((int) $v['both'], (int) $v['both'], (int) $v['both'], (int) $v['both']);
                     } else {
                         $this->_setPadding((int) $v['top'], (int) $v['right'], (int) $v['bottom'], (int) $v['left']);

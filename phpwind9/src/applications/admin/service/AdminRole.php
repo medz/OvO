@@ -21,7 +21,7 @@ class AdminRole
             return new PwError('ADMIN:role.del.fail.id.empty');
         }
         $result = $this->getAdminRoleDao()->del($rid);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.del.fail');
         }
 
@@ -49,7 +49,7 @@ class AdminRole
         $fields['created_time'] = time();
         $fields['modified_time'] = time();
         $result = $this->getAdminRoleDao()->add($fields);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.add.fail');
         }
 
@@ -96,7 +96,7 @@ class AdminRole
     public function findRolesByNames($names)
     {
         $result = $this->getAdminRoleDao()->findByNames($names);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.find.fail');
         }
 
@@ -113,7 +113,7 @@ class AdminRole
     public function findRolesByName($name)
     {
         $result = $this->getAdminRoleDao()->findByName($name);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.find.fail');
         }
 
@@ -130,7 +130,7 @@ class AdminRole
     public function findRolesByIds($ids)
     {
         $result = $this->getAdminRoleDao()->findByIds($ids);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.find.fail');
         }
 
@@ -147,7 +147,7 @@ class AdminRole
     public function findRoleById($id)
     {
         $result = $this->getAdminRoleDao()->findById($id);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:role.find.fail');
         }
 

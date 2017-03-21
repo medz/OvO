@@ -27,7 +27,7 @@ class PushController extends AdminBaseController
         if ($moduleid) {
             $args['moduleid'] = $moduleid;
         }
-        if ($pageid && !$moduleid) {
+        if ($pageid && ! $moduleid) {
             $pageinfo = $this->_getPageDs()->getPage($pageid);
             $moduleid = explode(',', $pageinfo['module_ids']);
         }
@@ -86,7 +86,7 @@ class PushController extends AdminBaseController
         if ($moduleid) {
             $args['moduleid'] = $moduleid;
         }
-        if ($pageid && !$moduleid) {
+        if ($pageid && ! $moduleid) {
             $pageinfo = $this->_getPageDs()->getPage($pageid);
             $moduleid = explode(',', $pageinfo['module_ids']);
             $args['pageid'] = $pageid;
@@ -156,7 +156,7 @@ class PushController extends AdminBaseController
         $dataid = (int) $this->getInput('dataid', 'post');
         $ds = $this->_getDataDs();
         $data = $ds->getData($dataid);
-        if (!$data) {
+        if (! $data) {
             $this->showError('operate.fail');
         }
 
@@ -177,7 +177,7 @@ class PushController extends AdminBaseController
         $extend = unserialize($data['extend_info']);
         $delImages = $extend['standard_image'];
         Wekit::load('design.srv.PwDesignImage')->clearFiles($this->bo->moduleid, explode('|||', $delImages));
-        if (!$data['is_reservation']) {
+        if (! $data['is_reservation']) {
             $srv = new PwShieldData($data['module_id']);
             $srv->addShieldData();
         }
@@ -218,7 +218,7 @@ class PushController extends AdminBaseController
     public function delpushAction()
     {
         $pushid = (int) $this->getInput('pushid', 'get');
-        if (!$pushid) {
+        if (! $pushid) {
             $this->showError('operate.fail');
         }
         $ds = $this->_getDataDs();
@@ -249,7 +249,7 @@ class PushController extends AdminBaseController
 
         foreach ($dataids as $dataid) {
             $data = $ds->getData($dataid);
-            if (!$data) {
+            if (! $data) {
                 continue;
             }
 

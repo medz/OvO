@@ -19,10 +19,10 @@ class PwThreadManageDoShield extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['shield']) || !$permission['shield']) {
+        if (! isset($permission['shield']) || ! $permission['shield']) {
             return false;
         }
-        if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
+        if (! $this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
             return new PwError('permission.level.shield', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 
@@ -53,7 +53,7 @@ class PwThreadManageDoShield extends PwThreadManageDo
             $this->_getThreadDs()->batchUpdatePost($this->pids, $topicDm);
 
             //回复的屏蔽处理：被站内置顶的回复也会在屏蔽范围内，排除
-            if (!$this->tids) {
+            if (! $this->tids) {
                 Wekit::load('log.srv.PwLogService')->addThreadManageLog($this->srv->user, $type, $this->threads['p'], $this->_reason, '', true);
             }
         }

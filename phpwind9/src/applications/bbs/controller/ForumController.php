@@ -71,7 +71,7 @@ class ForumController extends PwBaseController
      */
     public function myAction()
     {
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/forum/my')]);
         }
         $order = $this->getInput('order', 'get');
@@ -127,14 +127,14 @@ class ForumController extends PwBaseController
         $cate = [];
         $forum = [];
         foreach ($map[0] as $key => $value) {
-            if (!$value['isshow']) {
+            if (! $value['isshow']) {
                 continue;
             }
             $array = $service->findOptionInMap($value['fid'], $map,
                 ['sub' => '--', 'sub2' => '----']);
             $tmp = [];
             foreach ($array as $k => $v) {
-                if ($forums[$k]['isshow'] && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(
+                if ($forums[$k]['isshow'] && (! $forums[$k]['allow_post'] || $this->loginUser->inGroup(
                     explode(',', $forums[$k]['allow_post'])))) {
                     $tmp[] = [$k, strip_tags($v)];
                 }
@@ -148,7 +148,7 @@ class ForumController extends PwBaseController
             && ($joinForum = Wekit::load('forum.PwForumUser')->getFroumByUid($this->loginUser->uid))) {
             $tmp = [];
             foreach ($joinForum as $key => $value) {
-                if (!$key) {
+                if (! $key) {
                     continue;
                 }
                 $tmp[] = [$key, strip_tags($forums[$key]['name'])];
@@ -167,15 +167,15 @@ class ForumController extends PwBaseController
     public function joinAction()
     {
         $fid = $this->getInput('fid', 'post');
-        if (!$fid) {
+        if (! $fid) {
             $this->showError('operate.fail');
         }
 
         $forum = new PwForumBo($fid);
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             $this->showError('BBS:forum.exists.not');
         }
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
         if (Wekit::load('forum.PwForumUser')->get($this->loginUser->uid, $fid)) {
@@ -192,18 +192,18 @@ class ForumController extends PwBaseController
     public function quitAction()
     {
         $fid = $this->getInput('fid', 'post');
-        if (!$fid) {
+        if (! $fid) {
             $this->showError('operate.fail');
         }
 
         $forum = new PwForumBo($fid);
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             $this->showError('BBS:forum.exists.not');
         }
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
-        if (!Wekit::load('forum.PwForumUser')->get($this->loginUser->uid, $fid)) {
+        if (! Wekit::load('forum.PwForumUser')->get($this->loginUser->uid, $fid)) {
             $this->showError('BBS:forum.join.not');
         }
         Wekit::load('forum.PwForumUser')->quit($this->loginUser->uid, $fid);
@@ -214,7 +214,7 @@ class ForumController extends PwBaseController
     public function topictypeAction()
     {
         $fid = $this->getInput('fid');
-        $topictypes = Wekit::load('forum.PwTopicType')->getTopicTypesByFid($fid, !$this->loginUser->getPermission('operate_thread.type'));
+        $topictypes = Wekit::load('forum.PwTopicType')->getTopicTypesByFid($fid, ! $this->loginUser->getPermission('operate_thread.type'));
         $data = [];
         foreach ($topictypes['topic_types'] as $key => $value) {
             $tmp = ['title' => strip_tags($value['name']), 'val' => $value['id']];
@@ -250,7 +250,7 @@ class ForumController extends PwBaseController
         $password = $this->getInput('password', 'post');
 
         $forum = new PwForumBo($fid);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             $this->showError('BBS:forum.exists.not');
         }
         if (md5($password) != $forum->foruminfo['password']) {
@@ -325,7 +325,7 @@ class ForumController extends PwBaseController
         $joinForums = Wekit::load('forum.srv.PwForumService')->getJoinForum($uid);
         $_tmpArray = [];
         foreach ($array as $k => $v) {
-            if (!isset($joinForums[$k])) {
+            if (! isset($joinForums[$k])) {
                 continue;
             }
             $_tmpArray[$k] = strip_tags($joinForums[$k]);
@@ -346,7 +346,7 @@ class ForumController extends PwBaseController
      */
     private static function _formatJoinForum($array)
     {
-        if (!$array) {
+        if (! $array) {
             return false;
         }
         $user = '';

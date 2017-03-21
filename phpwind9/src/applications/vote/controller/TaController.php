@@ -22,7 +22,7 @@ class TaController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('vote/ta/run')]);
         }
     }
@@ -67,7 +67,7 @@ class TaController extends PwBaseController
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
             ], 'pollGroup');
 
-        if (!$total) {
+        if (! $total) {
             $num = 20;
             $uids = $this->_getRecommendService()->getRecommendAttention($this->loginUser->uid, $num);
             $recommend = $this->_getRecommendService()->buildUserInfo($this->loginUser->uid, $uids, $num);
@@ -116,7 +116,7 @@ class TaController extends PwBaseController
                 'allowvote' => $this->loginUser->getPermission('allow_participate_vote'),
             ], 'pollGroup');
 
-        if (!$total) {
+        if (! $total) {
             $num = 20;
             $uids = $this->_getRecommendService()->getRecommendAttention($this->loginUser->uid, $num);
             $recommend = $this->_getRecommendService()->buildUserInfo($this->loginUser->uid, $uids, $num);

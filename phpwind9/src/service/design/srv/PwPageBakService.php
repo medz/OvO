@@ -64,7 +64,7 @@ class PwPageBakService
     {
         $names = explode(',', $this->pageInfo['struct_names']);
         $info = $this->_getStructureDs()->fetchStruct($names);
-        if (!$info) {
+        if (! $info) {
             foreach ($names as $name) {
                 $info[$name] = [];
             }

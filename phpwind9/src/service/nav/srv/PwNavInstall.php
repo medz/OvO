@@ -138,7 +138,7 @@ class PwNavInstall implements iPwInstall
     protected function _install($type, $install)
     {
         $manifest = $install->getManifest();
-        if (!$this->link) {
+        if (! $this->link) {
             $this->link = 'index.php?m=app&app='.$manifest->getApplication('alias');
         }
         $dm = new PwNavDm();

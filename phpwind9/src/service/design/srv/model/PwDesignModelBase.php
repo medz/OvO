@@ -92,7 +92,7 @@ abstract class PwDesignModelBase
      */
     final protected function _formatTime($time)
     {
-        if (!$time) {
+        if (! $time) {
             return '';
         }
 
@@ -106,7 +106,7 @@ abstract class PwDesignModelBase
      */
     final protected function _formatTitle($string)
     {
-        if (!$string) {
+        if (! $string) {
             return '';
         }
 
@@ -140,7 +140,7 @@ abstract class PwDesignModelBase
         foreach ($this->_data as $data) {
             foreach ($signKeys as $signKey) {
                 list($sign, $name, $key) = $signKey;
-                if (!$sign = $this->_transformSign($sign)) {
+                if (! $sign = $this->_transformSign($sign)) {
                     continue;
                 }
                 if (isset($data[$key])) {
@@ -172,7 +172,7 @@ abstract class PwDesignModelBase
                 return str_replace($matche[0][$k], $v, $sign);
             }
         }
-        if (!preg_match('/\{(\w+)}/isU', $sign, $matches)) {
+        if (! preg_match('/\{(\w+)}/isU', $sign, $matches)) {
             return false;
         }
 

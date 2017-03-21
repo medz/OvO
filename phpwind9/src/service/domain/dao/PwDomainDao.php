@@ -25,7 +25,7 @@ class PwDomainDao extends PwBaseDao
      */
     public function replaceDomain($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -43,7 +43,7 @@ class PwDomainDao extends PwBaseDao
      */
     public function updateByDomainType($type, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `domain_type` = ?', $this->getTable(), $this->sqlSingle($data));
@@ -61,7 +61,7 @@ class PwDomainDao extends PwBaseDao
      */
     public function updateByDomainKey($key, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `domain_key` = ?', $this->getTable(), $this->sqlSingle($data));

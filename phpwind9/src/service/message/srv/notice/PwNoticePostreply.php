@@ -28,7 +28,7 @@ class PwNoticePostreply extends PwNoticeAction
      */
     public function formatExtendParams($extendParams, $aggregatedNotice = null)
     {
-        if (!$aggregatedNotice || $aggregatedNotice['is_read']) {
+        if (! $aggregatedNotice || $aggregatedNotice['is_read']) {
             $extendParams['replyUser'] = [$extendParams['replyUserid'] => $extendParams['replyUsername']];
 
             return $extendParams;
@@ -60,7 +60,7 @@ class PwNoticePostreply extends PwNoticeAction
      */
     public function ignoreNotice($notice, $ignore = 1)
     {
-        if (!$notice) {
+        if (! $notice) {
             return false;
         }
 
@@ -77,7 +77,7 @@ class PwNoticePostreply extends PwNoticeAction
     public function getDetailList($notice)
     {
         $list = [];
-        if (!$notice || !$notice['param']) {
+        if (! $notice || ! $notice['param']) {
             return $list;
         }
         $list['replyUsers'] = Wekit::load('user.PwUser')->fetchUserByUid($notice['extend_params']['uids'], PwUser::FETCH_MAIN);

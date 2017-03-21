@@ -37,7 +37,7 @@ class PwApplicationDao extends PwBaseDao
      */
     public function add($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);
@@ -71,7 +71,7 @@ class PwApplicationDao extends PwBaseDao
      */
     public function update($app_id, $fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s set ').$this->sqlSingle($fields).' WHERE app_id=?';
@@ -88,7 +88,7 @@ class PwApplicationDao extends PwBaseDao
      */
     public function findByAppId($appId)
     {
-        if (!$appId) {
+        if (! $appId) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE app_id=?';
@@ -105,7 +105,7 @@ class PwApplicationDao extends PwBaseDao
      */
     public function findByAlias($alias)
     {
-        if (!$alias) {
+        if (! $alias) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE alias=?';
@@ -122,7 +122,7 @@ class PwApplicationDao extends PwBaseDao
      */
     public function fetchByAlias($alias, $index = 'app_id')
     {
-        if (!$alias) {
+        if (! $alias) {
             return [];
         }
         $sql = $this->_bindSql('SELECT * FROM %s WHERE alias IN %s', $this->getTable(), $this->sqlImplode($alias));

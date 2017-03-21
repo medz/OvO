@@ -38,7 +38,7 @@ class PwUserPermissionDm extends PwBaseDm
     public function getData()
     {
         $data = [];
-        if (!$this->gid || !$this->permission) {
+        if (! $this->gid || ! $this->permission) {
             return $data;
         }
 

@@ -29,7 +29,7 @@ class PwReportService
     public function getReceiverList($ifcheck, $type, $limit, $start)
     {
         $reposts = $this->_getReportDs()->getListByType($ifcheck, $type, $limit, $start);
-        if (!$reposts) {
+        if (! $reposts) {
             return [];
         }
         $uids = $pids = $tmpArray = [];
@@ -63,13 +63,13 @@ class PwReportService
     public function sendReport($type, $type_id, $reason)
     {
         $action = $this->_getReportAction($type);
-        if (!$action) {
+        if (! $action) {
             return new PwError('REPORT:type.undefined');
         }
         $typeId = $this->_getTypeId($type);
         $loginUser = Wekit::getLoginUser();
         $dm = $action->buildDm($type_id);
-        if (!$dm) {
+        if (! $dm) {
             return new PwError('REPORT:data.error');
         }
         $dm->setType($typeId)
@@ -88,7 +88,7 @@ class PwReportService
 
     protected function _getReportAction($type)
     {
-        if (!$type) {
+        if (! $type) {
             return null;
         }
         $type = strtolower($type);
@@ -117,10 +117,10 @@ class PwReportService
         $type = $reportType[$data['type']];
         $receivers = $this->getReceiver($type);
 
-        if (!$receivers) {
+        if (! $receivers) {
             return false;
         }
-        if (!$extendParams) {
+        if (! $extendParams) {
             $uids = [$data['author_userid'], $data['created_userid']];
             $users = $this->_getUserDs()->fetchUserByUid($uids);
             $extendParams = [
@@ -198,7 +198,7 @@ class PwReportService
     private function _getTypeId($typeName)
     {
         $types = $this->getTypeMap();
-        if (!isset($types[$typeName])) {
+        if (! isset($types[$typeName])) {
             return false;
         }
 

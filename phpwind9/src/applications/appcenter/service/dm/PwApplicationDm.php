@@ -111,7 +111,7 @@ class PwApplicationDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        return !empty($this->_data['name']) && !empty($this->_data['alias']) && !empty($this->_data['version']) && !empty(
+        return ! empty($this->_data['name']) && ! empty($this->_data['alias']) && ! empty($this->_data['version']) && ! empty(
             $this->_data['pwversion']);
     }
 

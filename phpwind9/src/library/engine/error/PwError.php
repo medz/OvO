@@ -41,7 +41,7 @@ class PwError
      */
     public function addError($error, $var = [], $data = [])
     {
-        if (!$error) {
+        if (! $error) {
             return false;
         }
         $tmp = new stdClass();

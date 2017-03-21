@@ -51,7 +51,7 @@ class PwMail
      */
     public function sendMail($toUser, $subject, $content)
     {
-        if (!$this->_config['mailOpen']) {
+        if (! $this->_config['mailOpen']) {
             return new PwError('ADMIN:email.close');
         }
         $this->_mail->setSubject($subject);

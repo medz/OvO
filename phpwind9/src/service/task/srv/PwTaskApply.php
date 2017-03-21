@@ -54,7 +54,7 @@ class PwTaskApply
             return new PwError('TASK:id.illegal');
         }
         $task = $this->_getTaskDs()->get($taskId);
-        if (!$task) {
+        if (! $task) {
             return new PwError('TASK:id.illegal');
         }
         $canApplied = $this->allowTaskApplied($task);
@@ -79,7 +79,7 @@ class PwTaskApply
             return false;
         }
         $taskList = $this->_getTaskDs()->gets($taskIds);
-        if (!$taskList) {
+        if (! $taskList) {
             return new PwError('TASK:id.illegal');
         }
         $cacheId = 0;
@@ -101,7 +101,7 @@ class PwTaskApply
             }
         }
         $cache = $this->_getTaskDs()->getTaskCacheByUid($this->uid);
-        if (!$cache) {
+        if (! $cache) {
             $cache = [0, []];
         }
         $cacheId && $cache[0] = $cacheId;
@@ -159,14 +159,14 @@ class PwTaskApply
             return new PwError('TASK:no.open');
         }
         $gids = explode(',', $task['user_groups']);
-        if (!array_intersect($gids, $this->gids)) {
+        if (! array_intersect($gids, $this->gids)) {
             return new PwError('TASK:no.right');
         }
         /*前置任务判断*/
         if ($task['pre_task']) {
             $pre_taskApply = $this->_getTaskUserDs()->get($this->uid, $task['pre_task']);
             $pre_task = $this->_getTaskDs()->get($task['pre_task']);
-            if (!$pre_taskApply) {
+            if (! $pre_taskApply) {
                 return new PwError('TASK:pre_task.require',
                 ['{title}' => $pre_task['title']]);
             }
@@ -177,7 +177,7 @@ class PwTaskApply
         }
         /*该任务没有被申请过*/
         $taskApplied = $this->_getTaskUserDs()->get($this->uid, $task['taskid']);
-        if (!$taskApplied) {
+        if (! $taskApplied) {
             return true;
         }
         /*如果该任务已经申请并且该任务非周期任务*/

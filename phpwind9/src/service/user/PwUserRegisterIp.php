@@ -20,7 +20,7 @@ class PwUserRegisterIp
      */
     public function getRecodeByIp($ip)
     {
-        if (!$ip) {
+        if (! $ip) {
             return [];
         }
 
@@ -37,10 +37,10 @@ class PwUserRegisterIp
      */
     public function updateRecodeByIp($ip, $lastDate)
     {
-        if (!$ip) {
+        if (! $ip) {
             return false;
         }
-        !$lastDate && $lastDate = Pw::getTime();
+        ! $lastDate && $lastDate = Pw::getTime();
 
         return $this->_getDao()->update($ip, $lastDate);
     }

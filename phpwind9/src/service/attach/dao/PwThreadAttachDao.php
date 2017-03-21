@@ -75,7 +75,7 @@ class PwThreadAttachDao extends PwBaseDao
 
     public function addAttach($fields)
     {
-        if (!isset($fields['aid']) || !$fields = $this->_filterStruct($fields)) {
+        if (! isset($fields['aid']) || ! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));

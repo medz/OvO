@@ -121,7 +121,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
      */
     public function updateInfo($uid, $data)
     {
-        if (!($clear = $this->_filterStruct($data))) {
+        if (! ($clear = $this->_filterStruct($data))) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `uid` = ?', $this->getTable(), $this->sqlSingle($clear));
@@ -140,7 +140,7 @@ class PwUserRegisterCheckDao extends PwBaseDao
      */
     public function batchUpdateInfo($uids, $data)
     {
-        if (!($clear = $this->_filterStruct($data))) {
+        if (! ($clear = $this->_filterStruct($data))) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `uid` IN %s', $this->getTable(), $this->sqlSingle($clear), $this->sqlImplode($uids));

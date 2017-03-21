@@ -18,7 +18,7 @@ class PwProcess
      */
     public function getProcess($flag)
     {
-        if (!$flag) {
+        if (! $flag) {
             return [];
         }
 
@@ -46,7 +46,7 @@ class PwProcess
 
     public function deleteProcess($flag)
     {
-        if (!$flag) {
+        if (! $flag) {
             return false;
         }
 

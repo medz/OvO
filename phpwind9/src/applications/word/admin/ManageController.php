@@ -39,10 +39,10 @@ class ManageController extends AdminBaseController
     {
         $word = $this->getInput('word', 'post');
         $word['word'] = trim($word['word']);
-        if (!$word['word']) {
+        if (! $word['word']) {
             $this->showError('WORD:word.empty');
         }
-        if (!$word['type']) {
+        if (! $word['type']) {
             $this->showError('WORD:type.empty');
         }
 
@@ -56,12 +56,12 @@ class ManageController extends AdminBaseController
             $this->showError(['WORD:show.exist.word', ['{showword}' => $existWord]]);
         }
 
-        if ($this->_getWordDS()->isReplaceWord($word['type']) && !$word['replace']) {
+        if ($this->_getWordDS()->isReplaceWord($word['type']) && ! $word['replace']) {
             $this->showError('WORD:replaceword.empty');
         }
 
         foreach ($wordList as $value) {
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
 
@@ -81,7 +81,7 @@ class ManageController extends AdminBaseController
     public function editAction()
     {
         $id = intval($this->getInput('id'));
-        if (!$id) {
+        if (! $id) {
             $this->showError('WORD:id_not_exist');
         }
 
@@ -93,16 +93,16 @@ class ManageController extends AdminBaseController
     {
         list($id, $word) = $this->getInput(['id', 'word'], 'post');
 
-        if (!$id) {
+        if (! $id) {
             $this->showError('WORD:id_not_exist');
         }
 
         $word['word'] = trim($word['word']);
 
-        if (!$word['word']) {
+        if (! $word['word']) {
             $this->showError('WORD:word.empty');
         }
-        if (!$word['type']) {
+        if (! $word['type']) {
             $this->showError('WORD:type.empty');
         }
 
@@ -112,7 +112,7 @@ class ManageController extends AdminBaseController
             $this->showError('WORD:word.is.exist');
         }
 
-        if ($this->_getWordDS()->isReplaceWord($word['type']) && !$word['replace']) {
+        if ($this->_getWordDS()->isReplaceWord($word['type']) && ! $word['replace']) {
             $this->showError('WORD:replaceword.empty');
         }
 
@@ -132,7 +132,7 @@ class ManageController extends AdminBaseController
     public function deleteAction()
     {
         $id = intval($this->getInput('id'), 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('WORD:id_not_exist');
         }
 
@@ -152,7 +152,7 @@ class ManageController extends AdminBaseController
             $this->showMessage('success');
         }
 
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             $this->showError('WORD:no_operate_object');
         }
 
@@ -164,7 +164,7 @@ class ManageController extends AdminBaseController
     public function batcheditAction()
     {
         list($ids, $checkAll) = $this->getInput(['ids', 'checkall']);
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             $this->showError('WORD:no_operate_object');
         }
 
@@ -198,12 +198,12 @@ class ManageController extends AdminBaseController
         $ids = $word['ids'] ? explode(',', $word['ids']) : [];
         $ids = array_unique($ids);
 
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             $this->showError('operate.fail');
         }
 
         $wordService = $this->_getWordService();
-        if ($this->_getWordDS()->isReplaceWord($word['type']) && !$word['replace']) {
+        if ($this->_getWordDS()->isReplaceWord($word['type']) && ! $word['replace']) {
             $this->showError('WORD:replaceword.empty');
         }
 
@@ -305,7 +305,7 @@ class ManageController extends AdminBaseController
 
         $source = $bhv->getAbsoluteFile();
 
-        if (!WindFile::isFile($source)) {
+        if (! WindFile::isFile($source)) {
             $this->showError('operate.fail');
         }
 
@@ -314,7 +314,7 @@ class ManageController extends AdminBaseController
         pw::deleteAttach($bhv->dir.$bhv->filename, 0, $bhv->isLocal);
         $content = explode("\n", $content);
 
-        if (!$content) {
+        if (! $content) {
             $this->showError('WORD:import.data.empty');
         }
 
@@ -324,7 +324,7 @@ class ManageController extends AdminBaseController
         foreach ($content as $value) {
             list($word, $type, $replace) = $this->_parseTextUseInImport($value, $typeMap);
 
-            if (!$word || !$type || ($wordService->isExistWord($word))) {
+            if (! $word || ! $type || ($wordService->isExistWord($word))) {
                 continue;
             }
 
@@ -366,7 +366,7 @@ class ManageController extends AdminBaseController
 
         $this->setOutput($syncStatus, 'syncStatus');
 
-        if (!$syncStatus) {
+        if (! $syncStatus) {
             return false;
         }
 

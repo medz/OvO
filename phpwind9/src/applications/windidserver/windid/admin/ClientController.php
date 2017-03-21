@@ -26,7 +26,7 @@ class ClientController extends WindidBaseController
     {
         $clientid = $this->getInput('clientid');
         $client = $this->_getAppDs()->getApp($clientid);
-        if (!$client) {
+        if (! $client) {
             $this->showError('WINDID:fail');
         }
         $time = Pw::getTime();
@@ -61,7 +61,7 @@ class ClientController extends WindidBaseController
     public function doaddAction()
     {
         $apifile = $this->getInput('apifile', 'post');
-        if (!$apifile) {
+        if (! $apifile) {
             $apifile = 'windid.php';
         }
         Wind::import('WSRV:app.dm.WindidAppDm');
@@ -84,7 +84,7 @@ class ClientController extends WindidBaseController
     public function editAction()
     {
         $app = $this->_getAppDs()->getApp(intval($this->getInput('id', 'get')));
-        if (!$app) {
+        if (! $app) {
             $this->showMessage('WINDID:fail');
         }
         $this->setOutput($app, 'app');

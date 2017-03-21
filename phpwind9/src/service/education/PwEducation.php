@@ -20,7 +20,7 @@ class PwEducation
      */
     public function addEducation($dm)
     {
-        if (!$dm instanceof PwEducationDm) {
+        if (! $dm instanceof PwEducationDm) {
             return new PwError('USER:education.illegal.datatype');
         }
         if (($result = $dm->beforeAdd()) instanceof PwError) {
@@ -44,7 +44,7 @@ class PwEducation
         if (($id = intval($id)) < 1 || $uid < 1) {
             return new PwError('USER:education.illegal.request');
         }
-        if (!$dm instanceof PwEducationDm) {
+        if (! $dm instanceof PwEducationDm) {
             return new PwError('USER:education.illegal.datatype');
         }
         if (($result = $dm->beforeUpdate()) instanceof PwError) {

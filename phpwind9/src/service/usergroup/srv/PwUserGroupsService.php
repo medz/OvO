@@ -28,7 +28,7 @@ class PwUserGroupsService
         $credit = 0;
         if (is_array($strategy) && $strategy) {
             foreach ($strategy as $key => $value) {
-                if (!$value || !$user[$key]) {
+                if (! $value || ! $user[$key]) {
                     continue;
                 }
                 if ($key == 'onlinetime') {
@@ -50,7 +50,7 @@ class PwUserGroupsService
      */
     public function getCredit($user)
     {
-        if (!$strategy = Wekit::C('site', 'upgradestrategy')) {
+        if (! $strategy = Wekit::C('site', 'upgradestrategy')) {
             return 0;
         }
 
@@ -94,14 +94,14 @@ class PwUserGroupsService
     public function updateLevel($uid, $fields, $increaseFields)
     {
         $strategy = Wekit::C('site', 'upgradestrategy');
-        if (!is_array($strategy)) {
+        if (! is_array($strategy)) {
             return false;
         }
         $map = array_keys($strategy);
-        if (!array_intersect($map, array_keys($fields)) && !array_intersect($map, array_keys($increaseFields))) {
+        if (! array_intersect($map, array_keys($fields)) && ! array_intersect($map, array_keys($increaseFields))) {
             return false;
         }
-        if (!$user = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_MAIN | PwUser::FETCH_DATA)) {
+        if (! $user = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_MAIN | PwUser::FETCH_DATA)) {
             return false;
         }
 
@@ -183,7 +183,7 @@ class PwUserGroupsService
      */
     public function updateGroupRightCache($gkey = [])
     {
-        if ($gkey && !array_intersect($gkey, $this->_nkey)) {
+        if ($gkey && ! array_intersect($gkey, $this->_nkey)) {
             return;
         }
         Wekit::cache()->set('group_right', $this->getGroupRightCacheValue());

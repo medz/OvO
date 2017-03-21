@@ -22,7 +22,7 @@ class PwInviteCodeService
     public function allowUseInviteCode($code)
     {
         $info = $this->_getDs()->getCode($code);
-        if (!$info) {
+        if (! $info) {
             return new PwError('USER:invite.code.error');
         }
         if (1 == $info['ifused']) {
@@ -49,7 +49,7 @@ class PwInviteCodeService
     public function searchInvitecodeList(PwInviteCodeSo $search, $limit = 10, $start = 0)
     {
         $data = $this->_getDs()->searchCode($search, $limit, $start);
-        if (!$data) {
+        if (! $data) {
             return [];
         }
         $result = [];
@@ -122,7 +122,7 @@ class PwInviteCodeService
      */
     public function allowBuyInviteCode(PwUserBo $user, $num, $creditType)
     {
-        if (!WindValidator::isPositive($num)) {
+        if (! WindValidator::isPositive($num)) {
             return new PwError('USER:invite.buy.num.error');
         }
         $num = intval($num);
@@ -175,7 +175,7 @@ class PwInviteCodeService
         }
         $existCodes = $this->_getDs()->fetchCode($codes);
         $existCodes = array_keys($existCodes);
-        if (!$existCodes) {
+        if (! $existCodes) {
             return array_merge($data, $codes);
         }
         $data = array_merge($data, array_diff($codes, $existCodes));

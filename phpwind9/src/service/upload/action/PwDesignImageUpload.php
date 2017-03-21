@@ -30,7 +30,7 @@ class PwDesignImageUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$_FILES['upload']['size']) {
+        if (! $_FILES['upload']['size']) {
             return new PwError('upload.fail');
         }
 

@@ -35,7 +35,7 @@ class PwDomain
      */
     public function updateByDomainType(PwDomainDm $dm)
     {
-        if (!$type = $dm->getField('domain_type')) {
+        if (! $type = $dm->getField('domain_type')) {
             return new PwError('REWRITE:domain_type_null');
         }
         if (($r = $dm->beforeUpdate()) instanceof PwError) {
@@ -54,7 +54,7 @@ class PwDomain
      */
     public function updateByDomainKey(PwDomainDm $dm)
     {
-        if (!$key = $dm->getField('domain_key')) {
+        if (! $key = $dm->getField('domain_key')) {
             return new PwError('DOMAIN:domain_key_null');
         }
         if (($r = $dm->beforeUpdate()) instanceof PwError) {
@@ -73,7 +73,7 @@ class PwDomain
      */
     public function deleteByDomainType($type)
     {
-        if (!$type) {
+        if (! $type) {
             return false;
         }
 
@@ -89,7 +89,7 @@ class PwDomain
      */
     public function deleteByDomainKey($key)
     {
-        if (!$key) {
+        if (! $key) {
             return false;
         }
 
@@ -105,7 +105,7 @@ class PwDomain
      */
     public function getByDomainKey($key)
     {
-        if (!$key) {
+        if (! $key) {
             return [];
         }
 
@@ -122,7 +122,7 @@ class PwDomain
      */
     public function getByDomainAndRoot($domain, $root)
     {
-        if (!$domain || !$root) {
+        if (! $domain || ! $root) {
             return [];
         }
 
@@ -196,7 +196,7 @@ class PwDomain
     public function getByTypeAndId($type, $id)
     {
         list($type, $id) = [trim($type), intval($id)];
-        if (!$type || $id < 1) {
+        if (! $type || $id < 1) {
             return [];
         }
 
@@ -214,7 +214,7 @@ class PwDomain
     public function fetchByTypeAndId($type, $ids)
     {
         $type = trim($type);
-        if (!$type || !is_array($ids) || count($ids) < 1) {
+        if (! $type || ! is_array($ids) || count($ids) < 1) {
             return [];
         }
 

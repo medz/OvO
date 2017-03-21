@@ -31,13 +31,13 @@ class PwThreadManage extends PwBaseHookService
 
     public function check()
     {
-        if (!$this->data) {
+        if (! $this->data) {
             return new PwError('BBS:manage.error.empty.threads');
         }
         if (empty($this->_do)) {
             return new PwError('BBS:manage.undefined.thread.manage');
         }
-        if (!$permission = $this->getPermission()) {
+        if (! $permission = $this->getPermission()) {
             return new PwError('BBS:manage.permission.deny');
         }
         if (($result = $this->runWithVerified('check', $permission)) !== true) {
@@ -63,10 +63,10 @@ class PwThreadManage extends PwBaseHookService
 
     public function getPermission()
     {
-        if (!is_null($this->permission)) {
+        if (! is_null($this->permission)) {
             return $this->permission;
         }
-        if (!$this->permission = $this->user->getPermission('operate_thread', false, [])) {
+        if (! $this->permission = $this->user->getPermission('operate_thread', false, [])) {
             if (($fids = $this->getFids()) && $this->isBM($fids)) {
                 $this->permission = $this->user->getPermission('operate_thread', true, []);
             }
@@ -97,7 +97,7 @@ class PwThreadManage extends PwBaseHookService
     {
         $forums = Wekit::load('forum.PwForum')->fetchForum($fids);
         foreach ($forums as $key => $value) {
-            if (!$this->_checkBM($this->user->username, $value['manager'], $value['uppermanager'])) {
+            if (! $this->_checkBM($this->user->username, $value['manager'], $value['uppermanager'])) {
                 return false;
             }
         }

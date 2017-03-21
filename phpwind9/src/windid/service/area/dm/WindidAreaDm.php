@@ -74,7 +74,7 @@ class WindidAreaDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['name']) || !$this->_data['name']) {
+        if (! isset($this->_data['name']) || ! $this->_data['name']) {
             return new WindidError(WindidError::FAIL);
         }
         $_tmp = str_replace(['&', '"', "'", '<', '>', '\\', '/'], '', $this->_data['name']);
@@ -90,10 +90,10 @@ class WindidAreaDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->areaid) {
+        if (! $this->areaid) {
             return new WindidError(WindidError::FAIL);
         }
-        if (!isset($this->_data['name']) || !$this->_data['name']) {
+        if (! isset($this->_data['name']) || ! $this->_data['name']) {
             return new WindidError(-2);
         }
         $_tmp = str_replace(['&', '"', "'", '<', '>', '\\', '/'], '', $this->_data['name']);

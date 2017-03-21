@@ -118,7 +118,7 @@ class PwStyle
      */
     public function fetchStyleByAliasAndType($alias, $type = 'site', $index = 'app_id')
     {
-        if (!$alias) {
+        if (! $alias) {
             return [];
         }
 
@@ -134,7 +134,7 @@ class PwStyle
      */
     public function findByAppId($appId)
     {
-        if (!$appId) {
+        if (! $appId) {
             return new PwError('APPCENTER:validate.fail', ['error' => '应用查找时，应用ID非法']);
         }
 

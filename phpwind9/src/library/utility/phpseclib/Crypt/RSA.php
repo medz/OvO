@@ -366,7 +366,7 @@ class Crypt_RSA
      */
     public function Crypt_RSA()
     {
-        if (!defined('CRYPT_RSA_MODE')) {
+        if (! defined('CRYPT_RSA_MODE')) {
             switch (true) {
                 //case extension_loaded('openssl') && version_compare(PHP_VERSION, '4.2.0', '>='):
                 //    define('CRYPT_RSA_MODE', CRYPT_RSA_MODE_OPENSSL);
@@ -420,17 +420,17 @@ class Crypt_RSA
         }
 
         static $e;
-        if (!isset($e)) {
-            if (!defined('CRYPT_RSA_EXPONENT')) {
+        if (! isset($e)) {
+            if (! defined('CRYPT_RSA_EXPONENT')) {
                 // http://en.wikipedia.org/wiki/65537_%28number%29
                 define('CRYPT_RSA_EXPONENT', '65537');
             }
-            if (!defined('CRYPT_RSA_COMMENT')) {
+            if (! defined('CRYPT_RSA_COMMENT')) {
                 define('CRYPT_RSA_COMMENT', 'phpseclib-generated-key');
             }
             // per <http://cseweb.ucsd.edu/~hovav/dist/survey.pdf#page=5>, this number ought not result in primes smaller
             // than 256 bits.
-            if (!defined('CRYPT_RSA_SMALLEST_PRIME')) {
+            if (! defined('CRYPT_RSA_SMALLEST_PRIME')) {
                 define('CRYPT_RSA_SMALLEST_PRIME', 4096);
             }
 
@@ -454,7 +454,7 @@ class Crypt_RSA
         $generator->setRandomGenerator('crypt_random');
 
         $n = $this->one->copy();
-        if (!empty($partial)) {
+        if (! empty($partial)) {
             extract(unserialize($partial));
         } else {
             $exponents = $coefficients = $primes = [];
@@ -488,7 +488,7 @@ class Crypt_RSA
 
                 if ($i == $num_primes) {
                     list($min, $temp) = $absoluteMin->divide($n);
-                    if (!$temp->equals($this->zero)) {
+                    if (! $temp->equals($this->zero)) {
                         $min = $min->add($this->one); // ie. ceil()
                     }
                     $primes[$i] = $generator->randomPrime($min, $finalMax, $timeout);
@@ -530,7 +530,7 @@ class Crypt_RSA
             list($lcm) = $lcm['top']->divide($lcm['bottom']);
             $gcd = $lcm->gcd($e);
             $i0 = 1;
-        } while (!$gcd->equals($this->one));
+        } while (! $gcd->equals($this->one));
 
         $d = $e->modInverse($lcm);
 
@@ -612,11 +612,11 @@ class Crypt_RSA
 
                 $RSAPrivateKey = pack('Ca*a*', CRYPT_RSA_ASN1_SEQUENCE, $this->_encodeLength(strlen($RSAPrivateKey)), $RSAPrivateKey);
 
-                if (!empty($this->password)) {
+                if (! empty($this->password)) {
                     $iv = $this->_random(8);
                     $symkey = pack('H*', md5($this->password.$iv)); // symkey is short for symmetric key
                     $symkey .= substr(pack('H*', md5($symkey.$this->password.$iv)), 0, 8);
-                    if (!class_exists('Crypt_TripleDES')) {
+                    if (! class_exists('Crypt_TripleDES')) {
                         require_once 'Crypt/TripleDES.php';
                     }
                     $des = new Crypt_TripleDES();
@@ -704,7 +704,7 @@ class Crypt_RSA
     {
         switch ($type) {
             case CRYPT_RSA_PUBLIC_FORMAT_RAW:
-                if (!is_array($key)) {
+                if (! is_array($key)) {
                     return false;
                 }
                 $components = [];
@@ -764,13 +764,13 @@ class Crypt_RSA
                     }
                     switch ($matches[1]) {
                         case 'DES-EDE3-CBC':
-                            if (!class_exists('Crypt_TripleDES')) {
+                            if (! class_exists('Crypt_TripleDES')) {
                                 require_once 'Crypt/TripleDES.php';
                             }
                             $crypto = new Crypt_TripleDES();
                             break;
                         case 'DES-CBC':
-                            if (!class_exists('Crypt_DES')) {
+                            if (! class_exists('Crypt_DES')) {
                                 require_once 'Crypt/DES.php';
                             }
                             $crypto = new Crypt_DES();
@@ -864,12 +864,12 @@ class Crypt_RSA
                 $length = $this->_decodeLength($key);
                 $components['coefficients'] = [2 => new Math_BigInteger($this->_string_shift($key, $length), -256)];
 
-                if (!empty($key)) {
+                if (! empty($key)) {
                     if (ord($this->_string_shift($key)) != CRYPT_RSA_ASN1_SEQUENCE) {
                         return false;
                     }
                     $this->_decodeLength($key);
-                    while (!empty($key)) {
+                    while (! empty($key)) {
                         if (ord($this->_string_shift($key)) != CRYPT_RSA_ASN1_SEQUENCE) {
                             return false;
                         }
@@ -988,7 +988,7 @@ class Crypt_RSA
     public function setPublicKey($key, $type = CRYPT_RSA_PUBLIC_FORMAT_PKCS1)
     {
         $components = $this->_parseKey($key, $type);
-        if (empty($this->modulus) || !$this->modulus->equals($components['modulus'])) {
+        if (empty($this->modulus) || ! $this->modulus->equals($components['modulus'])) {
             return false;
         }
         $this->publicExponent = $components['publicExponent'];

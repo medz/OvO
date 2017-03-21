@@ -26,15 +26,15 @@ class PushController extends PwBaseController
     {
         $fromid = (int) $this->getInput('fromid', 'get');
         $fromtype = $this->getInput('fromtype', 'get');
-        if (!$fromtype) {
+        if (! $fromtype) {
             $this->showError('operate.fail');
         }
         $data = $this->_getPushService()->getDataByFromid($fromtype, $fromid);
-        if (!$data) {
+        if (! $data) {
             $this->showError('operate.fail');
         }
         $pageList = $this->_getPermissionsService()->getPermissionsAllPage($this->loginUser->uid);
-        if (!$pageList) {
+        if (! $pageList) {
             $this->showError('push.page.empty');
         }
 
@@ -70,7 +70,7 @@ class PushController extends PwBaseController
             }
             $option .= '<option value="'.$v['module_id'].'">'.$v['module_name'].'</option>';
         }
-        if (!$option) {
+        if (! $option) {
             $option = '<option value="">无可用模块</option>';
         }
         $this->setOutput($option, 'html');

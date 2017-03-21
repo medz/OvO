@@ -31,7 +31,7 @@ class WindidNotifyServer
     public function sendByNid($nid)
     {
         $logDs = $this->_getNotifyLogDs();
-        if (!$queue = $logDs->getList(0, $nid, 0, 0, 0)) {
+        if (! $queue = $logDs->getList(0, $nid, 0, 0, 0)) {
             return false;
         }
         $result = $this->_request($queue);
@@ -43,7 +43,7 @@ class WindidNotifyServer
     public function logSend($logid)
     {
         $logDs = $this->_getNotifyLogDs();
-        if (!$log = $logDs->getLog($logid)) {
+        if (! $log = $logDs->getLog($logid)) {
             return false;
         }
         $result = $this->_request([$logid => $log]);
@@ -62,7 +62,7 @@ class WindidNotifyServer
     protected function _queueSend($nums)
     {
         $logDs = $this->_getNotifyLogDs();
-        if (!$queue = $logDs->getUncomplete(10, $nums * 10)) {
+        if (! $queue = $logDs->getUncomplete(10, $nums * 10)) {
             return false;
         }
         if ($nums > 0) {

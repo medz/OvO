@@ -32,7 +32,7 @@ class PwThreadIndex
      */
     public function countThreadInFids($fids)
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return 0;
         }
 
@@ -48,7 +48,7 @@ class PwThreadIndex
      */
     public function countThreadNotInFids($fids)
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return $this->count();
         }
 
@@ -83,7 +83,7 @@ class PwThreadIndex
      */
     public function fetchInFid($fids, $limit, $offset, $order = 'lastpost')
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return [];
         }
         $result = $this->_getDao()->fetchInFid($fids, $limit, $offset, $order);
@@ -103,7 +103,7 @@ class PwThreadIndex
      */
     public function fetchNotInFid($fids, $limit, $offset, $order = 'lastpost')
     {
-        if (empty($fids) || !is_array($fids)) {
+        if (empty($fids) || ! is_array($fids)) {
             return $this->fetch($limit, $offset, $order);
         }
         $result = $this->_getDao()->fetchNotInFid($fids, $limit, $offset, $order);

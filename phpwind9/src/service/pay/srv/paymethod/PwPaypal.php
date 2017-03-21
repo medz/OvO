@@ -28,7 +28,7 @@ class PwPaypal extends PwPayAbstract
 
     public function check()
     {
-        if (!$this->paypal || !$this->paypal_key) {
+        if (! $this->paypal || ! $this->paypal_key) {
             return new PwError('onlinepay.settings.paypal.error');
         }
 

@@ -30,7 +30,7 @@ class PwReplyModify extends PwPostAction
      */
     public function isInit()
     {
-        return !empty($this->info);
+        return ! empty($this->info);
     }
 
     /**
@@ -38,18 +38,18 @@ class PwReplyModify extends PwPostAction
      */
     public function check()
     {
-        if (!$this->user->isExists()) {
+        if (! $this->user->isExists()) {
             return new PwError('login.not');
         }
         if ($this->info['created_userid'] != $this->user->uid) {
-            if (!$this->user->getPermission('operate_thread.edit', $this->isBM)) {
+            if (! $this->user->getPermission('operate_thread.edit', $this->isBM)) {
                 return new PwError('BBS:post.modify.error.self');
             }
-            if (!$this->user->comparePermission($this->info['created_userid'])) {
+            if (! $this->user->comparePermission($this->info['created_userid'])) {
                 return new PwError('permission.level.edit', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
             }
         }
-        if ($this->forum->forumset['edittime'] && (Pw::getTime() - $this->info['created_time'] > $this->forum->forumset['edittime'] * 60) && !$this->user->getPermission('operate_thread.edit', $this->isBM)) {
+        if ($this->forum->forumset['edittime'] && (Pw::getTime() - $this->info['created_time'] > $this->forum->forumset['edittime'] * 60) && ! $this->user->getPermission('operate_thread.edit', $this->isBM)) {
             return new PwError('BBS:post.modify.timelimit', ['{minute}' => $this->forum->forumset['edittime']]);
         }
         $thread_edit_time = $this->user->getPermission('thread_edit_time');

@@ -81,7 +81,7 @@ class RecycleController extends AdminBaseController
     public function doDeleteTopicAction()
     {
         $tids = $this->getInput('tids', 'post');
-        if (!$tids) {
+        if (! $tids) {
             $this->showError('operate.select');
         }
 
@@ -94,7 +94,7 @@ class RecycleController extends AdminBaseController
     public function doRevertTopicAction()
     {
         $tids = $this->getInput('tids', 'post');
-        if (!$tids) {
+        if (! $tids) {
             $this->showError('operate.select');
         }
 
@@ -167,7 +167,7 @@ class RecycleController extends AdminBaseController
     public function doDeleteReplyAction()
     {
         $pids = $this->getInput('pids', 'post');
-        if (!$pids) {
+        if (! $pids) {
             $this->showError('operate.select');
         }
 
@@ -180,7 +180,7 @@ class RecycleController extends AdminBaseController
     public function doRevertReplyAction()
     {
         $pids = $this->getInput('pids', 'post');
-        if (!$pids) {
+        if (! $pids) {
             $this->showError('operate.select');
         }
 

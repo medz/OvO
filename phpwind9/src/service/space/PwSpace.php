@@ -32,7 +32,7 @@ class PwSpace
      */
     public function fetchSpace($uids)
     {
-        if (!is_array($uids) || count($uids) < 1) {
+        if (! is_array($uids) || count($uids) < 1) {
             return [];
         }
 
@@ -50,7 +50,7 @@ class PwSpace
 
     public function addInfo($dm)
     {
-        if (!$dm instanceof PwSpaceDm) {
+        if (! $dm instanceof PwSpaceDm) {
             return new PwError('SPACE:info.error');
         }
         $resource = $dm->beforeAdd();
@@ -65,7 +65,7 @@ class PwSpace
 
     public function updateInfo($dm)
     {
-        if (!$dm instanceof PwSpaceDm) {
+        if (! $dm instanceof PwSpaceDm) {
             return new PwError('SPACE:info.error');
         }
         $resource = $dm->beforeUpdate();

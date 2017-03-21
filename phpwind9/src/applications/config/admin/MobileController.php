@@ -21,7 +21,7 @@ class MobileController extends AdminBaseController
         $registerConfig = Wekit::C()->getValues('register');
         $loginConfig = Wekit::C()->getValues('login');
         $mobileConfig = Wekit::C()->getValues('mobile');
-        if (!$mobileConfig['plat.type']) {
+        if (! $mobileConfig['plat.type']) {
             $this->showError('USER:mobile.plat.choose.error', 'config/mobile/run', true);
         }
         $mobileService = app(PwMobileService::class);
@@ -84,7 +84,7 @@ class MobileController extends AdminBaseController
     public function dorunAction()
     {
         $mobile_plat = $this->getInput('mobile_plat', 'post');
-        if (!$mobile_plat) {
+        if (! $mobile_plat) {
             $this->showError('USER:mobile.plat.choose.empty');
         }
         /* @var $attService PwAttacmentService */

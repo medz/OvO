@@ -34,7 +34,7 @@ class PwGDCode extends PwBaseCode
 
     public static function init()
     {
-        if (!function_exists('imagecreatetruecolor') && !function_exists('imagecolorallocate') && !function_exists('imagestring') && !function_exists('imagepng') && !function_exists('imagesetpixel') && !function_exists('imagefilledrectangle') && !function_exists('imagerectangle')) {
+        if (! function_exists('imagecreatetruecolor') && ! function_exists('imagecolorallocate') && ! function_exists('imagestring') && ! function_exists('imagepng') && ! function_exists('imagesetpixel') && ! function_exists('imagefilledrectangle') && ! function_exists('imagerectangle')) {
             return false;
         }
         self::setRandCode();
@@ -77,7 +77,7 @@ class PwGDCode extends PwBaseCode
         $bgs = self::getVerifyBackground();
         $rand = array_rand($bgs);
         $imbg = imagecreatefromjpeg($bgs[$rand]);
-        if (!$imbg) {
+        if (! $imbg) {
             return false;
         }
         imagecopymerge(self::$_image, $imbg, 0, 0, mt_rand(0, 450 - self::$verifyWidth), mt_rand(0, 150 - self::$verifyHeight), self::$verifyWidth, self::$verifyHeight, 100);
@@ -108,7 +108,7 @@ class PwGDCode extends PwBaseCode
 
     private static function _setRandColor()
     {
-        if (!self::$isRandColor) {
+        if (! self::$isRandColor) {
             self::$_color = imagecolorallocate(self::$_image, 0, 0, 0);
         } else {
             self::$_color = imagecolorallocate(self::$_image, mt_rand(0, 255), mt_rand(0, 120), mt_rand(0, 255));
@@ -117,7 +117,7 @@ class PwGDCode extends PwBaseCode
 
     private static function _setRandDistortion()
     {
-        if (!self::$isRandDistortion) {
+        if (! self::$isRandDistortion) {
             return true;
         }
         $_tmp = self::$_image;
@@ -136,7 +136,7 @@ class PwGDCode extends PwBaseCode
 
     private static function _setRandGraph()
     {
-        if (!self::$isRandGraph) {
+        if (! self::$isRandGraph) {
             return true;
         }
         $_tmp = mt_rand(1, 3);
@@ -202,7 +202,7 @@ class PwGDCode extends PwBaseCode
 
     private static function _outFlash()
     {
-        if (!class_exists('SWFBitmap')) {
+        if (! class_exists('SWFBitmap')) {
             return false;
         }
         self::_getCodeLenth();
@@ -217,7 +217,7 @@ class PwGDCode extends PwBaseCode
         $_tmpPath = Wind::getRealDir('DATA:tmp.');
         $_tmp = $_tmpPath.WindUtility::generateRandStr(8).'.png';
         imagepng(self::$_image, $_tmp);
-        if (!WindFile::isFile($_tmp)) {
+        if (! WindFile::isFile($_tmp)) {
             return false;
         }
         imagedestroy(self::$_image);

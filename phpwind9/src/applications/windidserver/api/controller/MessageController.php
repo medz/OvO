@@ -36,7 +36,7 @@ class MessageController extends OpenBaseController
         $dialogId = $this->getInput('dialogId', 'get');
         $start = (int) $this->getInput('start', 'get');
         $limit = $this->getInput('limit', 'get');
-        !$limit && $limit = 10;
+        ! $limit && $limit = 10;
         $result = $this->_getMessageDs()->getDialogMessages($dialogId, $start, $limit);
         $this->output($result);
     }
@@ -74,7 +74,7 @@ class MessageController extends OpenBaseController
         $uid = $this->getInput('uid', 'get');
         $start = (int) $this->getInput('start', 'get');
         $limit = (int) $this->getInput('limit', 'get');
-        !$limit && $limit = 10;
+        ! $limit && $limit = 10;
         $result = $this->_getMessageDs()->getDialogs($uid, $start, $limit);
         $this->output($result);
     }
@@ -103,7 +103,7 @@ class MessageController extends OpenBaseController
         isset($username) && $search['username'] = $username;
         isset($starttime) && $search['starttime'] = $starttime;
         isset($endtime) && $search['endtime'] = $endtime;
-        !$limit && $limit = 10;
+        ! $limit && $limit = 10;
         $result = $this->_getMessageService()->searchMessage($search, $start, $limit);
         $this->output($result);
     }
@@ -200,8 +200,8 @@ class MessageController extends OpenBaseController
         $uid = (int) $this->getInput('uid', 'get');
         $start = (int) $this->getInput('start', 'get');
         $limit = (int) $this->getInput('limit', 'get');
-        !$limit && $limit = 10;
-        !$start && $start = 0;
+        ! $limit && $limit = 10;
+        ! $start && $start = 0;
         $result = $this->_getBoxMessage()->fromBox($uid, $start, $limit);
         $this->output($result);
     }
@@ -211,8 +211,8 @@ class MessageController extends OpenBaseController
         $uid = (int) $this->getInput('uid', 'get');
         $start = (int) $this->getInput('start', 'get');
         $limit = (int) $this->getInput('limit', 'get');
-        !$limit && $limit = 10;
-        !$start && $start = 0;
+        ! $limit && $limit = 10;
+        ! $start && $start = 0;
         $result = $this->_getBoxMessage()->toBox($uid, $start, $limit);
         $this->output($result);
     }
@@ -221,7 +221,7 @@ class MessageController extends OpenBaseController
     {
         $uid = (int) $this->getInput('uid', 'post');
         $messageIds = $this->getInput('messageIds', 'post');
-        if (!is_array($messageIds)) {
+        if (! is_array($messageIds)) {
             $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->readMessages($uid, $messageIds);
@@ -232,7 +232,7 @@ class MessageController extends OpenBaseController
     {
         $uid = (int) $this->getInput('uid', 'post');
         $messageIds = $this->getInput('messageIds', 'post');
-        if (!is_array($messageIds)) {
+        if (! is_array($messageIds)) {
             $messageIds = [$messageIds];
         }
         $result = $this->_getBoxMessage()->deleteMessages($uid, $messageIds);

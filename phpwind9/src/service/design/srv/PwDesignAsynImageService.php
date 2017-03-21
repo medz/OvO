@@ -13,10 +13,10 @@ class PwDesignAsynImageService
     public function get($id)
     {
         $image = $this->_getImageDs()->getImage($id);
-        if (!$image['status']) {
+        if (! $image['status']) {
             return '';
         }
-        if (!$image['thumb']) {
+        if (! $image['thumb']) {
             return $this->asynThumb($image);
         }
 
@@ -31,7 +31,7 @@ class PwDesignAsynImageService
 
         $dm = new PwDesignAsynImageDm($image['id']);
         list($dir, $filename, $url) = $thumb;
-        if (!$dir) {
+        if (! $dir) {
             $dm->setStatus(1)
                 ->setThumb($url);
             $this->_getImageDs()->updateImage($dm);

@@ -67,7 +67,7 @@ class PwLikeLogDao extends PwBaseDao
 
     public function addInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($data);
@@ -78,7 +78,7 @@ class PwLikeLogDao extends PwBaseDao
 
     public function updateInfo($logid, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE logid = ? ', $this->getTable(), $this->sqlSingle($data));

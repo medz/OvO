@@ -24,7 +24,7 @@ class PwTaskProfileConditionDo implements PwTaskCompleteInterface
      */
     public function editUser($userDm)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $this->userDm = $userDm;

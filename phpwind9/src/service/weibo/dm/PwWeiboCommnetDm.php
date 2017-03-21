@@ -45,7 +45,7 @@ class PwWeiboCommnetDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['weibo_id'])) {
+        if (! isset($this->_data['weibo_id'])) {
             return new PwError('WEIBO:id.empty');
         }
 

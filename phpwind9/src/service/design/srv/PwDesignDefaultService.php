@@ -47,7 +47,7 @@ class PwDesignDefaultService
         $vo = new PwDesignComponentSo();
         $vo->setCompname('瀑布流 ');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
-        if (!$comp) {
+        if (! $comp) {
             return false;
         }
         $comp = array_shift($comp);
@@ -108,7 +108,7 @@ TPL;
         $vo = new PwDesignComponentSo();
         $vo->setCompname('话题封面 [ 间隔 ]');
         $comp = Wekit::load('design.PwDesignComponent')->searchComponent($vo);
-        if (!$comp) {
+        if (! $comp) {
             return false;
         }
         $comp = array_shift($comp);

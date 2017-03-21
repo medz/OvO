@@ -32,7 +32,7 @@ class PwEmotion
      */
     public function fetchEmotion($emotionIds)
     {
-        if (!is_array($emotionIds) || !$emotionIds) {
+        if (! is_array($emotionIds) || ! $emotionIds) {
             return [];
         }
 
@@ -46,7 +46,7 @@ class PwEmotion
      */
     public function fetchEmotionByCatid($categoryIds)
     {
-        if (!is_array($categoryIds) || !$categoryIds) {
+        if (! is_array($categoryIds) || ! $categoryIds) {
             return [];
         }
 

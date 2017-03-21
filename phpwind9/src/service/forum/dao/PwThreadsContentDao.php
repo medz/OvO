@@ -20,7 +20,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function getThread($tid)
     {
-        if (!$result = $this->getBaseInstance()->getThread($tid)) {
+        if (! $result = $this->getBaseInstance()->getThread($tid)) {
             return $result;
         }
 
@@ -29,7 +29,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function fetchThread($tids)
     {
-        if (!$result = $this->getBaseInstance()->fetchThread($tids)) {
+        if (! $result = $this->getBaseInstance()->fetchThread($tids)) {
             return $result;
         }
 
@@ -38,7 +38,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function getThreadByFid($fid, $limit, $offset)
     {
-        if (!$result = $this->getBaseInstance()->getThreadByFid($fid, $limit, $offset)) {
+        if (! $result = $this->getBaseInstance()->getThreadByFid($fid, $limit, $offset)) {
             return $result;
         }
 
@@ -47,7 +47,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function getThreadByUid($uid, $limit, $offset)
     {
-        if (!$result = $this->getBaseInstance()->getThreadByUid($uid, $limit, $offset)) {
+        if (! $result = $this->getBaseInstance()->getThreadByUid($uid, $limit, $offset)) {
             return $result;
         }
 
@@ -56,7 +56,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function getThreadsByFidAndUids($fid, $uids, $limit, $offset)
     {
-        if (!$result = $this->getBaseInstance()->getThreadsByFidAndUids($fid, $uids, $limit, $offset)) {
+        if (! $result = $this->getBaseInstance()->getThreadsByFidAndUids($fid, $uids, $limit, $offset)) {
             return $result;
         }
 
@@ -65,7 +65,7 @@ class PwThreadsContentDao extends PwBaseDao
 
     public function addThread($fields)
     {
-        if (!$tid = $this->getBaseInstance()->addThread($fields)) {
+        if (! $tid = $this->getBaseInstance()->addThread($fields)) {
             return false;
         }
         $fields['tid'] = $tid;

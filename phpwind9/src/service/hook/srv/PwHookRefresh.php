@@ -20,7 +20,7 @@ class PwHookRefresh
     public function refresh()
     {
         $conf = @include Wind::getRealPath($this->conf, true);
-        if (!$conf || !is_array($conf)) {
+        if (! $conf || ! is_array($conf)) {
             return new PwError('fail');
         }
         $hooks = $inject = [];

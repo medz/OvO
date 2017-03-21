@@ -41,11 +41,11 @@ class PwMobileConfigService
     public function setPlatComponents($platType)
     {
         $plats = $this->getPlats();
-        if (!array_key_exists($platType, $plats)) {
+        if (! array_key_exists($platType, $plats)) {
             return new PwError('USER:mobile.plat.type.not.exit');
         }
         $plat = $plats[$platType];
-        if (!isset($plat['components']['path'])) {
+        if (! isset($plat['components']['path'])) {
             return new PwError('USER:mobile.plat.config.fail');
         }
         /* @var $componentService PwComponentsService */

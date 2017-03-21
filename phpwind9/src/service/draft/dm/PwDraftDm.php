@@ -90,10 +90,10 @@ class PwDraftDm extends PwBaseDm
      */
     protected function check()
     {
-        if (!isset($this->_data['created_userid'])) {
+        if (! isset($this->_data['created_userid'])) {
             return new PwError('BBS:draft.user.not.login');
         }
-        if (!isset($this->_data['title']) || !$this->_data['content']) {
+        if (! isset($this->_data['title']) || ! $this->_data['content']) {
             return new PwError('BBS:draft.content.empty');
         }
 

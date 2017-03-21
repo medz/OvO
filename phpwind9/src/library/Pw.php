@@ -195,7 +195,7 @@ class Pw
      */
     public static function array2str($var)
     {
-        if (empty($var) || !is_array($var)) {
+        if (empty($var) || ! is_array($var)) {
             return '{}';
         }
         $str = '';
@@ -216,7 +216,7 @@ class Pw
      */
     public static function subArray($var, $vkeys)
     {
-        if (!is_array($var) || !is_array($vkeys)) {
+        if (! is_array($var) || ! is_array($vkeys)) {
             return [];
         }
         $result = [];
@@ -275,7 +275,7 @@ class Pw
      */
     public static function time2str($timestamp, $format = 'Y-m-d H:i')
     {
-        if (!$timestamp) {
+        if (! $timestamp) {
             return '';
         }
         if ($format == 'auto') {
@@ -369,7 +369,7 @@ class Pw
 
         // 是否本地存储
         if (parse_url($prefix, PHP_URL_HOST) == $_SERVER['HTTP_HOST']) {
-            return (!file_exists(PUBLIC_PATH.'/windid/attachment/avatar/'.self::getUserDir($uid).'/'.$file)
+            return (! file_exists(PUBLIC_PATH.'/windid/attachment/avatar/'.self::getUserDir($uid).'/'.$file)
                      && $uid !== 0) ? self::getAvatar(0, $size) :
                     PUBLIC_URL.'/windid/attachment/avatar/'.self::getUserDir($uid).'/'.$file;
         } else {
@@ -465,7 +465,7 @@ class Pw
      */
     public static function convert($string, $toEncoding, $fromEncoding = '')
     {
-        !$fromEncoding && $fromEncoding = Wekit::V('charset');
+        ! $fromEncoding && $fromEncoding = Wekit::V('charset');
 
         return WindConvert::convert($string, $toEncoding, $fromEncoding);
     }
@@ -531,7 +531,7 @@ class Pw
      */
     public static function collectByKey($data, $key)
     {
-        if (!is_array($data) || !$key || empty($data)) {
+        if (! is_array($data) || ! $key || empty($data)) {
             return [];
         }
         $_collect = [];
@@ -576,25 +576,25 @@ class Pw
      */
     public static function orderByKeys($data, $key, $orders)
     {
-        if (!is_array($data) || !$key || !is_array($orders) || empty($data) || empty($orders)) {
+        if (! is_array($data) || ! $key || ! is_array($orders) || empty($data) || empty($orders)) {
             return [];
         }
         $_newData = $_tmp = [];
         foreach ($data as $_k => $_v) {
-            if (!isset($_v[$key])) {
+            if (! isset($_v[$key])) {
                 continue;
             }
             if (empty($_v[$key])) {
                 $_newData[$_k] = $_v;
                 continue;
             }
-            if (!isset($_tmp[$_v[$key]])) {
+            if (! isset($_tmp[$_v[$key]])) {
                 $_tmp[$_v[$key]] = [];
             }
             $_tmp[$_v[$key]][$_k] = $_v;
         }
         foreach ($orders as $_o) {
-            if (!isset($_tmp[$_o])) {
+            if (! isset($_tmp[$_o])) {
                 continue;
             }
             foreach ($_tmp[$_o] as $_k => $_v) {

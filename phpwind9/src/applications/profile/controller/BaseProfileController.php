@@ -24,10 +24,10 @@ class BaseProfileController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['_type' => $this->getInput('_type')]));
         }
-        if (!$this->getRequest()->getIsAjaxRequest()) {
+        if (! $this->getRequest()->getIsAjaxRequest()) {
             $this->setLayout('TPL:profile.profile_layout');
         }
     }
@@ -55,7 +55,7 @@ class BaseProfileController extends PwBaseController
         list($left, $tab) = $this->getMenuService()->getCurrentTab($left, $tab);
         $currentMenu = $menus[$left];
         $tab && $currentMenu = $currentMenu['tabs'][$tab];
-        if (!isset($currentMenu['url'])) {
+        if (! isset($currentMenu['url'])) {
             $this->forwardRedirect(WindUrlHelper::createUrl('profile/extends/run', ['_left' => $left, '_tab' => $tab]));
         }
 

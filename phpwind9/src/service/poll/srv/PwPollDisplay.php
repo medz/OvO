@@ -96,7 +96,7 @@ class PwPollDisplay
 
     private function _buildUser($data)
     {
-        if (empty($data) || !count($data)) {
+        if (empty($data) || ! count($data)) {
             return [];
         }
 
@@ -113,7 +113,7 @@ class PwPollDisplay
 
     private function _buildOption($data)
     {
-        if (empty($data) || !count($data)) {
+        if (empty($data) || ! count($data)) {
             return [];
         }
 
@@ -159,7 +159,7 @@ class PwPollThread
 
     public function allowVisit($forum, PwUserBo $user)
     {
-        if (!$forum['allow_visit']) {
+        if (! $forum['allow_visit']) {
             return true;
         }
 
@@ -168,7 +168,7 @@ class PwPollThread
 
     public function allowRead($forum, PwUserBo $user)
     {
-        if (!$forum['allow_read']) {
+        if (! $forum['allow_read']) {
             return true;
         }
 
@@ -177,13 +177,13 @@ class PwPollThread
 
     public function buildForumInfo($threadInfo)
     {
-        if (!$threadInfo) {
+        if (! $threadInfo) {
             return [];
         }
 
         $forumids = [];
         foreach ($threadInfo as $value) {
-            if (!$value['fid']) {
+            if (! $value['fid']) {
                 continue;
             }
             $forumids[] = $value['fid'];
@@ -218,7 +218,7 @@ class PwPollThread
     public function getRelationids()
     {
         $threadPoll = $this->_getThreadPollDs()->fetchByPollid($this->_pollids);
-        if (!$threadPoll) {
+        if (! $threadPoll) {
             return [];
         }
 
