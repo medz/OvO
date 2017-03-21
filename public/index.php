@@ -1,8 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-require dirname(__DIR__).'/bootstrap/app.php';
-=======
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -37,7 +34,6 @@ require __DIR__.'/../bootstrap/autoload.php';
 */
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
->>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +47,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
-<<<<<<< HEAD
 $kernel = $app->make(Medz\Wind\Http\Kernel::class);
-=======
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
->>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
 
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()

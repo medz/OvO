@@ -1,8 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 include base_path('routes/phpwind9.php');
-=======
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +16,3 @@ include base_path('routes/phpwind9.php');
 Route::get('/', function () {
     return view('welcome');
 });
->>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
