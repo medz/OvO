@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Medz\Wind\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

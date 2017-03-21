@@ -34,7 +34,7 @@
         ],
         "psr-4": {
             "Medz\\Wind\\": "src/",
-            "Pw\\Ext\\": "src/extensions/"
+            "Pw\\Ext\\": "phpwind9/src/extensions/"
         }
     },
     "extra": {

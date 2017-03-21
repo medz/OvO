@@ -9,6 +9,7 @@ windframework
 /storage/*.key
 /vendor
 /.idea
+/.composer.lock
 
 /phpwind9/conf/database.php
 /phpwind9/conf/founder.php

@@ -2,55 +2,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| 定义开始时间
-|--------------------------------------------------------------------------
-|
-| 定义一个开始常量，以便统计程序开始运行的时间，
-| 主要作用，记录开始运行的时间到结束时间。用于计算整个程序的运行效率。
-|
-*/
-
-define('LARAVEL_START', microtime(true));
-
-/*
-|--------------------------------------------------------------------------
-| Register The Composer Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader
-| for our application. We just need to utilize it! We'll require it
-| into the script here so that we do not have to worry about the
-| loading of any our classes "manually". Feels great to relax.
-|
-*/
-
-$filename = dirname(__DIR__).'/vendor/autoload.php';
-if (! file_exists($filename) || ! is_file($filename)) {
-    echo '<pre>',
-         '您必须使用Composer包管理设置项目依赖关系，在程序根目录运行以下命令:', PHP_EOL,
-         'composer install', PHP_EOL,
-         '</pre>';
-    exit;
-}
-
-require $filename;
-
-/*
-|-------------------------------------------------------------------------
-| 开发框架信息
-|-------------------------------------------------------------------------
-|
-| 主要用于开发过程中，多一次文件判断不会影响系统性能。
-|
-*/
-
-$frameworkAutoloadFile = dirname(__DIR__).'/windframework/vendor/autoload.php';
-if (file_exists($frameworkAutoloadFile) && is_file($frameworkAutoloadFile)) {
-    require $frameworkAutoloadFile;
-}
-
-/*
-|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
@@ -82,7 +33,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    Medz\Wind\Console\Kernel::class
 );
 
 $app->singleton(

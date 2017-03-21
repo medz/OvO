@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Medz\Wind\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
