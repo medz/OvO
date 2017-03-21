@@ -1,9 +1,9 @@
 <?php
 
 define('WEKIT_PATH', base_path('phpwind9/src/'));
-define('WEKIT_VERSION', Pw::VERSION);
+define('WEKIT_VERSION', app()->version());
 
-define('NEXT_VERSION', Pw::VERSION);
+define('NEXT_VERSION', app()->version());
 define('NEXT_RELEASE', '20161114');
 define('NEXT_FIXBUG', '9000002');
 

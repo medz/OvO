@@ -18,8 +18,7 @@ windframework
 /phpwind9/themes/extres/
 /phpwind9/themes/forum/*
 !/phpwind9/themes/forum/default
-/phpwind9/themes/portal/*
-!/phpwind9/themes/portal/local
+/phpwind9/themes/portal
 !/phpwind9/themes/site/*
 !/phpwind9/themes/site/default
 !/phpwind9/themes/space/*

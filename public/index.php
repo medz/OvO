@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Laravel - A PHP Framework For Web Artisans.
+ * phpwind Fans - 使用 PHP 和 MySQL 开发的高性能社区系统
  *
- * @author   Taylor Otwell <taylor@laravel.com>
+ * @author Seven Du <shiweidu@outlook.com>
  */
 
 /*

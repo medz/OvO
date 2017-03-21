@@ -27,7 +27,7 @@ class HomeController extends AdminBaseController
         }
         $db = Wind::getComponent('db');
         $sysinfo = [
-            'wind_version'    => Pw::VERSION_NAME,
+            'wind_version'    => sprintf('%s %s', config('app.name'), app()->version()),
             'php_version'     => PHP_VERSION,
             'server_software' => str_replace('PHP/'.PHP_VERSION, '',
                 $this->getRequest()->getServer('SERVER_SOFTWARE')),

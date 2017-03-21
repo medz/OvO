@@ -4,6 +4,9 @@ namespace Medz\Wind\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Events\Dispatcher;
+use Medz\Wind\Console\Application as ConsoleApplication;
 
 class Kernel extends ConsoleKernel
 {
@@ -17,24 +20,33 @@ class Kernel extends ConsoleKernel
     ];
 
     /**
-     * Define the application's command schedule.
+     * Create a new console kernel instance.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    protected function schedule(Schedule $schedule)
+    public function __construct(Application $app, Dispatcher $events)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        if (! defined('ARTISAN_BINARY')) {
+            define('ARTISAN_BINARY', 'wind');
+        }
+
+        parent::__construct($app, $events);
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Get the Artisan application instance.
      *
-     * @return void
+     * @return \Medz\Wind\Console\Application
      */
-    protected function commands()
+    protected function getArtisan()
     {
-        require base_path('routes/console.php');
+        if (is_null($this->artisan)) {
+            $this->artisan = (new ConsoleApplication($this->app, $this->events, $this->app->version()))
+                ->resolveCommands($this->commands);
+        }
+
+        return $this->artisan;
     }
 }
