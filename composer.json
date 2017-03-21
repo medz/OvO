@@ -1,9 +1,9 @@
 {
     "name": "medz/phpwind",
     "type": "project",
-    "description": "采用PHP+MySQL方式运行的开源社区程序",
+    "description": "使用 PHP 和 MySQL 开发的高性能社区系统。",
     "keywords": ["medz", "php", "phpwind"],
-    "homepage": "http://www.phpwind.com",
+    "homepage": "https://medz.github.io/phpwind/",
     "license": "MIT",
     "authors": [
         {

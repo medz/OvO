@@ -19,7 +19,7 @@ $app = require_once __DIR__.'/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
-| Run The Fans Application
+| Run The Artisan Application
 |--------------------------------------------------------------------------
 |
 | When we run the console application, the current CLI command will be

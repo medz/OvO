@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'phpwind Fans',
+    'name' => 'Laravel',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,7 +173,7 @@ return [
          */
         Medz\Wind\Providers\AppServiceProvider::class,
         Medz\Wind\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        // Medz\Wind\Providers\BroadcastServiceProvider::class,
         Medz\Wind\Providers\EventServiceProvider::class,
         Medz\Wind\Providers\RouteServiceProvider::class,
 
@@ -191,6 +191,7 @@ return [
     */
 
     'aliases' => [
+
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -224,6 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
     ],
 
 ];
