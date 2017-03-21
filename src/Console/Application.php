@@ -2,9 +2,9 @@
 
 namespace Medz\Wind\Console;
 
-use Illuminate\Console\Application as LaravelApplication;
-use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Console\Application as LaravelApplication;
 
 class Application extends LaravelApplication
 {
