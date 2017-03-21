@@ -3,8 +3,8 @@
 namespace Medz\Wind\Http\Controllers\Auth;
 
 use Medz\Wind\User;
-use Medz\Wind\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Medz\Wind\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
