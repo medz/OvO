@@ -1,7 +1,14 @@
+Homestead.json
+Homestead.yaml
+windframework
+.env
+
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
 /vendor
-/composer.lock
-/windframework
-/.env
+/.idea
 
 /phpwind9/conf/database.php
 /phpwind9/conf/founder.php

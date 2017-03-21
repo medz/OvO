@@ -20,7 +20,11 @@ return [
     ],
 
     'ses' => [
+<<<<<<< HEAD
         'key'    => env('SES_KEY'),
+=======
+        'key' => env('SES_KEY'),
+>>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
@@ -30,8 +34,13 @@ return [
     ],
 
     'stripe' => [
+<<<<<<< HEAD
         'model'  => App\User::class,
         'key'    => env('STRIPE_KEY'),
+=======
+        'model' => App\User::class,
+        'key' => env('STRIPE_KEY'),
+>>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
         'secret' => env('STRIPE_SECRET'),
     ],
 

@@ -45,6 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
+<<<<<<< HEAD
             'root'   => storage_path('app'),
         ],
 
@@ -52,12 +53,25 @@ return [
             'driver'     => 'local',
             'root'       => storage_path('app/public'),
             'url'        => env('APP_URL').'/storage',
+=======
+            'root' => storage_path('app'),
+        ],
+
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+>>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
+<<<<<<< HEAD
             'key'    => env('AWS_KEY'),
+=======
+            'key' => env('AWS_KEY'),
+>>>>>>> 2312580af8a20e78f96f988d420c073f899cbead
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
