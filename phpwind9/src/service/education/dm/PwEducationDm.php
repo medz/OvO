@@ -90,17 +90,17 @@ class PwEducationDm extends PwBaseDm
      */
     protected function check()
     {
-        if (!isset($this->_data['uid'])) {
+        if (! isset($this->_data['uid'])) {
             return new PwError('USER:education.illegal.request');
         }
-        if (!isset($this->_data['schoolid']) || !$this->_data['schoolid']) {
+        if (! isset($this->_data['schoolid']) || ! $this->_data['schoolid']) {
             return new PwError('USER:education.update.school.require');
         }
-        if (!isset($this->_data['start_time']) || !$this->_data['start_time']) {
+        if (! isset($this->_data['start_time']) || ! $this->_data['start_time']) {
             return new PwError('USER:education.update.start_time.require');
         }
         $this->_data['start_time'] = PwEducationHelper::checkEducationYear($this->_data['start_time']);
-        if (!PwEducationHelper::checkDegree($this->_data['degree'])) {
+        if (! PwEducationHelper::checkDegree($this->_data['degree'])) {
             return new PwError('USER:education.update.degree.error');
         }
 

@@ -74,7 +74,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = [$tid];
+        ! is_array($tid) && $tid = [$tid];
 
         $service = new PwPassTopic(new PwFetchTopicByTid($tid));
         $service->execute();
@@ -88,7 +88,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = [$tid];
+        ! is_array($tid) && $tid = [$tid];
 
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
@@ -155,7 +155,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = [$pid];
+        ! is_array($pid) && $pid = [$pid];
 
         $service = new PwPassReply(new PwFetchReplyByPid($pid));
         $service->execute();
@@ -169,7 +169,7 @@ class ContentcheckController extends AdminBaseController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = [$pid];
+        ! is_array($pid) && $pid = [$pid];
 
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();

@@ -62,7 +62,7 @@ class PwOvertime
      */
     public function batchAdd($tids, $type, $overtime)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
         $data = [];
@@ -86,7 +86,7 @@ class PwOvertime
      */
     public function batchDelete($ids)
     {
-        if (!$ids || !is_array($ids)) {
+        if (! $ids || ! is_array($ids)) {
             return false;
         }
 
@@ -103,7 +103,7 @@ class PwOvertime
      */
     public function batchDeleteByTidAndType($tids, $type)
     {
-        if (!$tids || !is_array($tids)) {
+        if (! $tids || ! is_array($tids)) {
             return false;
         }
 

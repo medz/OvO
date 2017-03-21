@@ -59,7 +59,7 @@ class PwWord
      */
     public function getByWord($word)
     {
-        if (!$word) {
+        if (! $word) {
             return [];
         }
 
@@ -92,7 +92,7 @@ class PwWord
      */
     public function fetch($wordIds)
     {
-        if (empty($wordIds) || !is_array($wordIds)) {
+        if (empty($wordIds) || ! is_array($wordIds)) {
             return [];
         }
 
@@ -108,7 +108,7 @@ class PwWord
      */
     public function fetchByWord($word = [])
     {
-        if (empty($word) || !is_array($word)) {
+        if (empty($word) || ! is_array($word)) {
             return [];
         }
 
@@ -193,7 +193,7 @@ class PwWord
      */
     public function deleteByType($type)
     {
-        if (!$type) {
+        if (! $type) {
             return false;
         }
 
@@ -209,7 +209,7 @@ class PwWord
      */
     public function deleteByKeyword($keyword)
     {
-        if (!$keyword) {
+        if (! $keyword) {
             return false;
         }
 
@@ -226,7 +226,7 @@ class PwWord
      */
     public function deleteByTypeAndKeyword($type, $keyword)
     {
-        if (!$type || !$keyword) {
+        if (! $type || ! $keyword) {
             return false;
         }
 
@@ -244,7 +244,7 @@ class PwWord
             return $result;
         }
         $fieldData = $dm->getData();
-        if (!$fieldData) {
+        if (! $fieldData) {
             return false;
         }
 
@@ -261,7 +261,7 @@ class PwWord
      */
     public function batchUpdate($wordIds, PwWordDm $dm)
     {
-        if (empty($wordIds) || !is_array($wordIds)) {
+        if (empty($wordIds) || ! is_array($wordIds)) {
             return false;
         }
         if (($result = $dm->beforeUpdate()) !== true) {
@@ -282,7 +282,7 @@ class PwWord
      */
     public function batchDelete($wordIds)
     {
-        if (empty($wordIds) || !is_array($wordIds)) {
+        if (empty($wordIds) || ! is_array($wordIds)) {
             return false;
         }
         $result = $this->_getDao()->batchDelete($wordIds);
@@ -301,7 +301,7 @@ class PwWord
     private function _isExistWord($word, $excludeId = 0)
     {
         $word = $this->getByWord($word);
-        if (!$word) {
+        if (! $word) {
             return false;
         }
 

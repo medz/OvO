@@ -21,7 +21,7 @@ class LoginController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
         $action = $handlerAdapter->getAction();
-        if ($this->loginUser->isExists() && !in_array($action, ['showverify', 'logout', 'show'])) {
+        if ($this->loginUser->isExists() && ! in_array($action, ['showverify', 'logout', 'show'])) {
             $inviteCode = $this->getInput('invite');
             if ($inviteCode) {
                 $user = Wekit::load('SRV:invite.srv.PwInviteFriendService')->invite($inviteCode, $this->loginUser->uid);
@@ -109,7 +109,7 @@ class LoginController extends PwBaseController
         $registerService = new PwRegisterService();
         $info = $registerService->sysUser($isSuccess['uid']);
 
-        if (!$info) {
+        if (! $info) {
             $this->showError('USER:user.syn.error');
         }
         $identity = PwLoginService::createLoginIdentify($info);
@@ -119,7 +119,7 @@ class LoginController extends PwBaseController
         /* @var $userService PwUserService */
         $userService = Wekit::load('user.srv.PwUserService');
         //解决浏览器记录用户帐号和密码问题
-        if ($isSuccess['safecv'] && !$question) {
+        if ($isSuccess['safecv'] && ! $question) {
             $this->addMessage(true, 'qaE');
             $this->showError('USER:verify.question.empty');
         }
@@ -152,7 +152,7 @@ class LoginController extends PwBaseController
         $info = $registerService->sysUser($result['uid']);
         $identity = PwLoginService::createLoginIdentify($info);
         $backUrl = $this->getInput('backurl');
-        if (!$backUrl) {
+        if (! $backUrl) {
             $backUrl = $this->getRequest()->getServer('HTTP_REFERER');
         }
         $identity = base64_encode($identity.'|'.$backUrl.'|'.$userForm['rememberme']);
@@ -193,7 +193,7 @@ class LoginController extends PwBaseController
             $info = $registerService->sysUser($result['uid']);
             $identity = PwLoginService::createLoginIdentify($info);
             $backUrl = $this->getInput('backurl');
-            if (!$backUrl) {
+            if (! $backUrl) {
                 $backUrl = $this->getRequest()->getServer('HTTP_REFERER');
             }
             $identity = base64_encode($identity.'|'.$backUrl.'|'.$userForm['rememberme']);
@@ -221,7 +221,7 @@ class LoginController extends PwBaseController
         /* @var $userSrv PwUserService */
         $userSrv = Wekit::load('SRV:user.srv.PwUserService');
         $hasQuestion = $userSrv->isSetSafecv($this->loginUser->uid);
-        if (!$hasQuestion && (1 == $v || !$verify)) {
+        if (! $hasQuestion && (1 == $v || ! $verify)) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/welcome', ['_statu' => $statu]));
         }
         if (1 != $v) {
@@ -306,7 +306,7 @@ class LoginController extends PwBaseController
         $mustSetting = Wekit::load('user.srv.PwUserService')->mustSettingSafeQuestion($this->loginUser->uid);
         $verify = $this->_showVerify();
         $v = $this->getInput('v', 'get');
-        if (!$mustSetting && (1 == $v || !$verify)) {
+        if (! $mustSetting && (1 == $v || ! $verify)) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/welcome', ['_statu' => $statu]));
         }
         if (1 != $v) {
@@ -332,12 +332,12 @@ class LoginController extends PwBaseController
             }
         }
         list($question, $answer) = $this->getInput(['question', 'answer'], 'post');
-        if (!$question || !$answer) {
+        if (! $question || ! $answer) {
             $this->showError('USER:login.question.setting');
         }
         if (intval($question) === -4) {
             $question = $this->getInput('myquestion', 'post');
-            if (!$question) {
+            if (! $question) {
                 $this->showError('USER:login.question.setting');
             }
         }
@@ -368,7 +368,7 @@ class LoginController extends PwBaseController
         if (Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNCHECK)) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/show', ['backurl' => $refUrl]));
         }
-        if (!$refUrl) {
+        if (! $refUrl) {
             $refUrl = Wekit::url()->base;
         }
 
@@ -399,10 +399,10 @@ class LoginController extends PwBaseController
     {
         $login = new PwLoginService();
         $info = $login->checkInput($this->getInput('username'));
-        if (!$info) {
+        if (! $info) {
             $this->showError('USER:user.error.-14');
         }
-        if (!empty($info['safecv'])) {
+        if (! empty($info['safecv'])) {
             $registerService = new PwRegisterService();
             $status = PwLoginService::createLoginIdentify($registerService->sysUser($info['uid']));
             $identify = base64_encode($status.'|');
@@ -423,14 +423,14 @@ class LoginController extends PwBaseController
         $uid = $this->loginUser->uid;
         $username = $this->loginUser->username;
         $userService = Wekit::load('user.srv.PwUserService');
-        if (!$userService->logout()) {
+        if (! $userService->logout()) {
             $this->showMessage('USER:loginout.fail');
         }
         $url = $this->getInput('backurl');
-        if (!$url) {
+        if (! $url) {
             $url = $this->getRequest()->getServer('HTTP_REFERER');
         }
-        if (!$url) {
+        if (! $url) {
             $url = WindUrlHelper::createUrl('u/login/run');
         }
 
@@ -451,9 +451,9 @@ class LoginController extends PwBaseController
     private function checkUserInfo()
     {
         $identify = $this->getInput('_statu', 'get');
-        !$identify && $identify = $this->getInput('_statu', 'post');
+        ! $identify && $identify = $this->getInput('_statu', 'post');
 
-        if (!$identify) {
+        if (! $identify) {
             $this->showError('USER:illegal.request');
         }
         list($identify, $url, $rememberme) = explode('|', base64_decode($identify).'|');
@@ -461,7 +461,7 @@ class LoginController extends PwBaseController
 
 // 		$info = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_MAIN);
         $this->loginUser = new PwUserBo($uid);
-        if (!$this->loginUser->isExists() || Pw::getPwdCode($this->loginUser->info['password']) != $password) {
+        if (! $this->loginUser->isExists() || Pw::getPwdCode($this->loginUser->info['password']) != $password) {
             $this->showError('USER:illegal.request');
         }
 
@@ -489,7 +489,7 @@ class LoginController extends PwBaseController
     private function _showVerify()
     {
         $config = Wekit::C('verify', 'showverify');
-        !$config && $config = [];
+        ! $config && $config = [];
         if (in_array('userlogin', $config) == true) {
             return true;
         }
@@ -532,7 +532,7 @@ class LoginController extends PwBaseController
     private function _filterUrl($returnDefault = true)
     {
         $url = $this->getInput('backurl');
-        if (!$url) {
+        if (! $url) {
             $url = $this->getRequest()->getServer('HTTP_REFERER');
         }
         if ($url) {
@@ -542,7 +542,7 @@ class LoginController extends PwBaseController
                 $url = '';
             }
         }
-        if (!$url && $returnDefault) {
+        if (! $url && $returnDefault) {
             $url = Wekit::url()->base;
         }
 

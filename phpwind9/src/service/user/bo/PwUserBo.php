@@ -56,7 +56,7 @@ class PwUserBo
      */
     public static function getInstance($uid)
     {
-        if (!isset(self::$_userBo[$uid])) {
+        if (! isset(self::$_userBo[$uid])) {
             self::$_userBo[$uid] = new self($uid);
         }
 
@@ -75,7 +75,7 @@ class PwUserBo
      */
     public function isExists()
     {
-        return !empty($this->uid);
+        return ! empty($this->uid);
     }
 
     /**
@@ -87,7 +87,7 @@ class PwUserBo
      */
     public function inGroup($groups)
     {
-        if (!$groups || !is_array($groups)) {
+        if (! $groups || ! is_array($groups)) {
             return false;
         }
         if (in_array($this->gid, $groups)) {
@@ -114,13 +114,13 @@ class PwUserBo
         $this->_initGroup();
         $keys = explode('.', $key);
         $key = array_shift($keys);
-        if (!isset($this->_permission[$key]) || $this->_permission[$key]['type'] == 'systemforum' && $this->gid == 5 && !$isBM) {
+        if (! isset($this->_permission[$key]) || $this->_permission[$key]['type'] == 'systemforum' && $this->gid == 5 && ! $isBM) {
             return $defaultValue;
         }
         $result = $this->_permission[$key]['value'];
         if ($keys) {
             foreach ($keys as $_key) {
-                if (!is_array($result) || !isset($result[$_key])) {
+                if (! is_array($result) || ! isset($result[$_key])) {
                     return $defaultValue;
                 }
                 $result = $result[$_key];

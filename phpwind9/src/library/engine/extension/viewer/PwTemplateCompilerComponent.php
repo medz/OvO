@@ -32,15 +32,15 @@ class PwTemplateCompilerComponent extends AbstractWindTemplateCompiler
     public function compile($key, $content)
     {
         if ($this->name) {
-            if (!$this->_config) {
+            if (! $this->_config) {
                 $this->setConfig(Wind::getRealPath('CONF:pwcomponents.php', true));
             }
             if ($config = $this->getConfig($this->name)) {
-                $this->class || !isset($config['class']) || $this->class = $config['class'];
-                $this->method || !isset($config['method']) || $this->method = $config['method'];
-                $this->tpl || !isset($config['tpl']) || $this->tpl = $config['tpl'];
-                $this->suffix || !isset($config['suffix']) || $this->suffix = $config['suffix'];
-                $this->action || !isset($config['action']) || $this->action = $config['action'];
+                $this->class || ! isset($config['class']) || $this->class = $config['class'];
+                $this->method || ! isset($config['method']) || $this->method = $config['method'];
+                $this->tpl || ! isset($config['tpl']) || $this->tpl = $config['tpl'];
+                $this->suffix || ! isset($config['suffix']) || $this->suffix = $config['suffix'];
+                $this->action || ! isset($config['action']) || $this->action = $config['action'];
             }
         }
 

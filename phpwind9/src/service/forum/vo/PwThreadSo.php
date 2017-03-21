@@ -101,7 +101,7 @@ class PwThreadSo
      */
     public function setAuthor($authors)
     {
-        if (!is_array($authors)) {
+        if (! is_array($authors)) {
             $authors = [$authors];
         }
         $users = Wekit::load('user.PwUser')->fetchUserByName($authors);
@@ -115,7 +115,7 @@ class PwThreadSo
      */
     public function setAuthorId($authorid)
     {
-        if (!$authorid) {
+        if (! $authorid) {
             $authorid = [0];
         }
         $this->_data['created_userid'] = $authorid;

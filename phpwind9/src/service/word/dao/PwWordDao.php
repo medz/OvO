@@ -143,7 +143,7 @@ class PwWordDao extends PwBaseDao
 
     private function _buildCondition($condition)
     {
-        if (!$condition) {
+        if (! $condition) {
             return ['', []];
         }
 
@@ -192,7 +192,7 @@ class PwWordDao extends PwBaseDao
      */
     public function updateAll($fieldData)
     {
-        if (!($fieldData = $this->_filterStruct($fieldData))) {
+        if (! ($fieldData = $this->_filterStruct($fieldData))) {
             return false;
         }
 

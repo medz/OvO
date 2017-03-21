@@ -88,7 +88,7 @@ class PwDesignPageDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['page_router']) {
+        if (! $this->_data['page_router']) {
             return new PwError('fail');
         }
 

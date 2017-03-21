@@ -100,7 +100,7 @@ class PwFilterDfa extends PwFilterAction
                $i++; //下一个字符
            } else { //不匹配
                 $cur = 0; //重置当前节点为根节点
-                if (!$isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
+                if (! $isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
                     $p += 2; //设置下一个回溯位置
                 } else {
                     $p += 1; //设置下一个回溯位置
@@ -143,7 +143,7 @@ class PwFilterDfa extends PwFilterAction
                 $i++; //下一个字符
             } else { //不匹配
                 $cur = 0; //重置当前节点为根节点
-                if (!$isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
+                if (! $isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
                     $p += 2; //设置下一个回溯位置
                 } else {
                     $p += 1; //设置下一个回溯位置
@@ -185,7 +185,7 @@ class PwFilterDfa extends PwFilterAction
                 $i++; //下一个字符
             } else { //不匹配
                 $cur = 0; //重置当前节点为根节点
-                if (!$isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
+                if (! $isUTF8 && ord($s[$p]) > 127 && ord($s[$p + 1]) > 127) {
                     $p += 2; //设置下一个回溯位置
                 } else {
                     $p += 1; //设置下一个回溯位置

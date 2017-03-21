@@ -22,7 +22,7 @@ class PwTaskMemberFansDo implements PwTaskCompleteInterface
      */
     public function addFollow($uid, $toUid)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $bp = new PwTaskComplete($toUid, $this);

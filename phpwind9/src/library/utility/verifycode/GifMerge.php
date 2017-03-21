@@ -78,7 +78,7 @@ class GifMerge
     private function start_gifmerge_process($fp)
     {
         if ($this->mod == 'C_FILE') {
-            if (!$this->fin = fopen($fp, 'rb')) {
+            if (! $this->fin = fopen($fp, 'rb')) {
                 if ($this->debug) {
                     echo "Error file open: $fp\<br>";
                 }
@@ -92,7 +92,7 @@ class GifMerge
             }
         }
         $this->getbytes(6);
-        if (!$this->arrcmp($this->buffer, $this->gif, 3)) {
+        if (! $this->arrcmp($this->buffer, $this->gif, 3)) {
             if ($this->debug) {
                 echo "Isn't GIF file!\n<br>";
             }
@@ -209,7 +209,7 @@ class GifMerge
             $outsize = $this->out_color_table_size;
         }
         if ($this->local_color_table_flag) {
-            if ($size == $this->out_color_table_size && !$this->arrcmp($this->local_in, $this->global_out, $size)) {
+            if ($size == $this->out_color_table_size && ! $this->arrcmp($this->local_in, $this->global_out, $size)) {
                 $outtable = $global_out;
                 $outsize = $this->out_color_table_size;
             } else {
@@ -319,7 +319,7 @@ class GifMerge
                 $this->getbytes(3);
                 for (; ;) {
                     $this->getbytes(1);
-                    if (!$this->buffer[0]) {
+                    if (! $this->buffer[0]) {
                         break;
                     }
                     $this->getbytes($this->buffer[0]);
@@ -331,7 +331,7 @@ class GifMerge
                 }
                 for (; ;) {
                     $this->getbytes(1);
-                    if (!$this->buffer[0]) {
+                    if (! $this->buffer[0]) {
                         break;
                     }
                     $this->getbytes($this->buffer[0]);

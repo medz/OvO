@@ -37,7 +37,7 @@ class PwUserVerify
      */
     public function fetchByUid($uids)
     {
-        if (!is_array($uids) || !$uids) {
+        if (! is_array($uids) || ! $uids) {
             return [];
         }
 
@@ -106,7 +106,7 @@ class PwUserVerify
      */
     public function batchDelete($uids)
     {
-        if (!is_array($uids) || !$uids) {
+        if (! is_array($uids) || ! $uids) {
             return false;
         }
 

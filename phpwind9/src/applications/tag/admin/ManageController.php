@@ -73,7 +73,7 @@ class ManageController extends AdminBaseController
     public function doaddAction()
     {
         $tag = $this->getInput('tag');
-        if (!$tag['name']) {
+        if (! $tag['name']) {
             $this->showError('Tag:tagname.empty');
         }
         if ($this->_getTagDs()->getTagByName($tag['name'])) {
@@ -142,11 +142,11 @@ class ManageController extends AdminBaseController
     public function doeditAction()
     {
         $tag = $this->getInput('tag');
-        if (!$tag['name']) {
+        if (! $tag['name']) {
             $this->showError('Tag:tagname.empty');
         }
         $tagInfo = $this->_getTagDs()->getTag($tag['tag_id']);
-        if (!$tagInfo) {
+        if (! $tagInfo) {
             $this->showError('话题不存在！');
         }
         $logo = $this->uploadLogo();
@@ -202,7 +202,7 @@ class ManageController extends AdminBaseController
     {
         $tagIds = $this->getInput('tag_id', 'post');
         is_array($tagIds) or $tagIds = explode(',', $tagIds);
-        if (!$tagIds) {
+        if (! $tagIds) {
             $this->showError('operate.select');
         }
         $this->_getTagService()->deleteByTagIds($tagIds);
@@ -216,7 +216,7 @@ class ManageController extends AdminBaseController
     public function deletehotAction()
     {
         $tagIds = $this->getInput('tag_id');
-        if (!$tagIds) {
+        if (! $tagIds) {
             $this->showError('operate.select');
         }
         foreach ($tagIds as $tagId) {
@@ -236,7 +236,7 @@ class ManageController extends AdminBaseController
     public function sethotAction()
     {
         $tagIds = $this->getInput('tag_id');
-        if (!$tagIds) {
+        if (! $tagIds) {
             $this->showError('operate.select');
         }
         $time = Pw::getTime();
@@ -258,7 +258,7 @@ class ManageController extends AdminBaseController
     {
         $tagIds = explode(',', $this->getInput('tag_id', 'post'));
         $tagName = $this->getInput('tag_name', 'post');
-        if (!$tagIds || !$tagName) {
+        if (! $tagIds || ! $tagName) {
             $this->showError('请输入关联话题名称');
         }
         $tag = $this->_getTagDs()->getTagByName($tagName);
@@ -270,7 +270,7 @@ class ManageController extends AdminBaseController
             $tagInfo = $this->_getTagDs()->getTagByParent($v['tag_id']);
             $tagInfo && $this->showError(sprintf('话题"%s"已经存在合并话题"%s",不允许被合并到其他话题', $v['tag_name'], $tagInfo['tag_name']));
         }
-        if (!$tag) {
+        if (! $tag) {
             $dm = new PwTagDm();
             $dm->setName($tagName);
             $toTagId = $this->_getTagDs()->addTag($dm);
@@ -304,7 +304,7 @@ class ManageController extends AdminBaseController
     {
         $tagIds = explode(',', $this->getInput('tag_id'));
         $categoryIds = $this->getInput('category_ids');
-        if (!$tagIds || !$categoryIds) {
+        if (! $tagIds || ! $categoryIds) {
             $this->showError('operate.select');
         }
         if (count($categoryIds) > 1) {
@@ -416,7 +416,7 @@ class ManageController extends AdminBaseController
     public function deleteCategoryAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
         $this->_getTagCateGoryDs()->deleteCategory($id);
@@ -458,7 +458,7 @@ class ManageController extends AdminBaseController
 
     private function _checkWork($str)
     {
-        if (!$str) {
+        if (! $str) {
             return true;
         }
         if (0 >= preg_match('/^[A-Za-z]+$/', $str)) {
@@ -477,15 +477,15 @@ class ManageController extends AdminBaseController
     private function _addRelateTag($tagId, $tagName)
     {
         $tagId = intval($tagId);
-        if ($tagId < 1 || !$tagName) {
+        if ($tagId < 1 || ! $tagName) {
             return false;
         }
         $tag = $this->_getTagDs()->getTag($tagId);
-        if (!$tag) {
+        if (! $tag) {
             return false;
         }
         $relateTag = $this->_getTagDs()->getTagByName($tagName);
-        if (!$relateTag) {
+        if (! $relateTag) {
             $dm = new PwTagDm();
             $dm->setName($tagName)
                 ->setCreateUid($this->loginUser->uid)
@@ -514,11 +514,11 @@ class ManageController extends AdminBaseController
      */
     private function _buildTagData($tags, $categories)
     {
-        if (!is_array($tags)) {
+        if (! is_array($tags)) {
             return [];
         }
         foreach ($tags as $k => $v) {
-            if (!$v['categories']) {
+            if (! $v['categories']) {
                 continue;
             }
             $tmpCategoryNames = [];

@@ -30,12 +30,12 @@ class PwThreadPollBo
     protected function _init()
     {
         $threadInfo = $this->_getForumThreadDs()->getThread($this->tid);
-        if (!$threadInfo) {
+        if (! $threadInfo) {
             return false;
         }
 
         $pollThread = $this->_getThreadPollDs()->getPoll($this->tid);
-        if (!$pollThread) {
+        if (! $pollThread) {
             return false;
         }
 
@@ -62,7 +62,7 @@ class PwThreadPollBo
      */
     public function getPollInfo($pollid)
     {
-        if (!$pollid) {
+        if (! $pollid) {
             return [];
         }
 
@@ -106,7 +106,7 @@ class PwThreadPollBo
     public function checkForumGroup()
     {
         $fid = $this->info['fid'];
-        if (!$fid) {
+        if (! $fid) {
             return new PwError('BBS:forum.thread.exists.not');
         }
 

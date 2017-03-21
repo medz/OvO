@@ -23,7 +23,7 @@ class SchooldataController extends WindidBaseController
     public function run()
     {
         list($type, $areaid, $name, $first) = $this->getInput(['type', 'areaid', 'name', 'first']);
-        !$type && $type = 3;
+        ! $type && $type = 3;
         $schoolSo = new WindidSchoolSo();
         $schoolSo->setName($name)
             ->setTypeid($type)
@@ -116,7 +116,7 @@ class SchooldataController extends WindidBaseController
     public function deleteAction()
     {
         $schoolid = $this->getInput('schoolid');
-        if (!$schoolid) {
+        if (! $schoolid) {
             $this->showError('ADMIN:school.schoolid.error');
         }
         $this->_getDs()->deleteSchool($schoolid);

@@ -37,7 +37,7 @@ class UpgradeController extends AdminBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder(
+        if (! Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder(
             $this->loginUser->username)) {
             $this->showError('APPCENTER:upgrade.founder');
         }
@@ -45,7 +45,7 @@ class UpgradeController extends AdminBaseController
         $this->upgrade_temp = Wind::getRealPath($this->upgrade_temp, true);
 
         $action = $handlerAdapter->getAction();
-        if (!in_array($action, ['run', 'check', 'select'])) {
+        if (! in_array($action, ['run', 'check', 'select'])) {
             @set_time_limit(0);
             $r = @include $this->upgrade_temp;
             $this->_checkLegal($action, $r);
@@ -98,7 +98,7 @@ class UpgradeController extends AdminBaseController
     {
         $version = $this->getInput('version');
         $upgradeInfo = @include DATA_PATH.'upgrade/info.tmp';
-        if (!isset($upgradeInfo[$version])) {
+        if (! isset($upgradeInfo[$version])) {
             $this->showError('APPCENTER:upgrade.illegal.request',
             'appcenter/upgrade/check');
         }
@@ -110,7 +110,7 @@ class UpgradeController extends AdminBaseController
         }
         $write_result = WindFile::savePhpData($this->upgrade_temp,
             ['version' => $r['version'], 'filelist' => $fileList, 'md5list' => $md5List]);
-        if (!$write_result) {
+        if (! $write_result) {
             $this->showError(['APPCENTER:upgrade.write.fail', ['data']]);
         }
         Wekit::cache()->set('system_upgrade_step', 1);
@@ -199,7 +199,7 @@ class UpgradeController extends AdminBaseController
     {
         $success = 1;
         $useFtp = $this->getInput('ftp', 'post');
-        if (!$useFtp) {
+        if (! $useFtp) {
             $r = PwSystemHelper::checkFolder($this->localFileList);
             if ($r !== true) {
                 list(, $folder) = $r;
@@ -266,7 +266,7 @@ class UpgradeController extends AdminBaseController
             Wekit::cache()->get('system_upgrade_ftp'), $this->fileList);
         $sqlFile = Wind::getRealPath('PUBLIC:update.sql', true);
         $success = 1;
-        if (!file_exists($sqlFile)) {
+        if (! file_exists($sqlFile)) {
             Wekit::cache()->set('system_upgrade_step', 6);
             PwSystemHelper::log('no db update', $this->version);
             $this->forwardRedirect(WindUrlHelper::createUrl('appcenter/upgrade/php'));
@@ -275,7 +275,7 @@ class UpgradeController extends AdminBaseController
         try {
             /* @var $db WindConnection */
             $db = Wind::getComponent('db');
-            if (!$step) {
+            if (! $step) {
                 $sqlArray = PwSystemHelper::sqlParser(WindFile::read($sqlFile),
                     $db->getConfig('charset', '', 'utf8'), $db->getTablePrefix(),
                     $db->getConfig('engine', '', 'MYISAM'));
@@ -464,7 +464,7 @@ class UpgradeController extends AdminBaseController
         $step = Wekit::cache()->get('system_upgrade_step');
         $status = Wekit::cache()->get('system_upgrade');
         $legal = true;
-        if (!$step || !$status) {
+        if (! $step || ! $status) {
             $legal = false;
         }
         if ($action != $this->status[++$step]) {
@@ -474,10 +474,10 @@ class UpgradeController extends AdminBaseController
             $legal = false;
         }
         $this->version = $status['version'];
-        if (!is_array($r['filelist'])) {
+        if (! is_array($r['filelist'])) {
             $legal = false;
         }
-        if (!$legal) {
+        if (! $legal) {
             $this->_clear();
             $this->showError('APPCENTER:upgrade.illegal.request', 'appcenter/upgrade/check');
         }
@@ -493,7 +493,7 @@ class UpgradeController extends AdminBaseController
         $files = WindFolder::read(PUBLIC_PATH, WindFolder::READ_FILE);
         $temp = [];
         foreach ($files as $file) {
-            if (is_file(PUBLIC_PATH.$file) && '.php' === substr($file, -4) && !strncasecmp($file,
+            if (is_file(PUBLIC_PATH.$file) && '.php' === substr($file, -4) && ! strncasecmp($file,
                 'update_', 7)) {
                 $temp[substr($file, 7, 8)] = $file;
             }

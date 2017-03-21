@@ -67,7 +67,7 @@ class PwDesignImageDataService extends PwDesignModelBase
             return $result;
         }
         $image = $bhv->getAttachInfo();
-        if (!$image['filename']) {
+        if (! $image['filename']) {
             return '';
         }
 

@@ -40,7 +40,7 @@ class NavController extends AdminBaseController
         list($posts, $newposts, $navtype) = $this->getInput(['data', 'newdata', 'navtype'], 'post');
         $homeid = $this->getInput('home', 'post');
         foreach ($posts as $post) {
-            if (!$post['name'] || !$navtype) {
+            if (! $post['name'] || ! $navtype) {
                 continue;
             }
             if ($navtype == 'my') {
@@ -67,7 +67,7 @@ class NavController extends AdminBaseController
         }
         if ($newposts) {
             foreach ($newposts as $k => $newpost) {
-                if (!$newpost['name'] || !$navtype) {
+                if (! $newpost['name'] || ! $navtype) {
                     continue;
                 }
                 if ($navtype == 'my') {
@@ -132,10 +132,10 @@ class NavController extends AdminBaseController
         }
         list($navInfo['color'], $navInfo['bold'], $navInfo['italic'], $navInfo['underline']) = explode('|', $navInfo['style']);
         $navInfo['font'] = 'style=';
-        !empty($navInfo['color']) && $navInfo['font'] .= 'color:'.$navInfo['color'].';';
-        !empty($navInfo['bold']) && $navInfo['font'] .= 'font-weight:bold;';
-        !empty($navInfo['italic']) && $navInfo['font'] .= 'font-style:italic;';
-        !empty($navInfo['underline']) && $navInfo['font'] .= 'text-decoration:underline;';
+        ! empty($navInfo['color']) && $navInfo['font'] .= 'color:'.$navInfo['color'].';';
+        ! empty($navInfo['bold']) && $navInfo['font'] .= 'font-weight:bold;';
+        ! empty($navInfo['italic']) && $navInfo['font'] .= 'font-style:italic;';
+        ! empty($navInfo['underline']) && $navInfo['font'] .= 'text-decoration:underline;';
         $this->_getNavType();
         $this->_navTab();
         $this->setOutput($this->_getRootNavOption($navInfo['parentid']), 'navOption');
@@ -152,7 +152,7 @@ class NavController extends AdminBaseController
         $keys = ['navid', 'type', 'parentid', 'name', 'link', 'image', 'fontColor', 'fontBold', 'fontItalic', 'fontUnderline', 'alt', 'target', 'orderid', 'isshow'];
         list($navid, $type, $parentid, $name, $link, $image, $fontColor, $fontBold, $fontItalic, $fontUnderline, $alt, $target, $orderid, $isshow) = $this->getInput($keys, 'post');
         $router = Wind::getComponent('router')->getRoute('pw')->matchUrl($link);
-        if (!$name || !$type) {
+        if (! $name || ! $type) {
             $this->showError('ADMIN:nav.add.fail.strlen.name');
         }
         Wekit::load('SRV:nav.dm.PwNavDm');
@@ -184,7 +184,7 @@ class NavController extends AdminBaseController
     public function delAction()
     {
         $navid = $this->getInput('navid', 'post');
-        if (!$navid) {
+        if (! $navid) {
             $this->showError('operate.fail');
         }
 

@@ -17,7 +17,7 @@ class PwThreadService
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_unique(Pw::collectByKey($replies, 'created_userid')));
         foreach ($replies as $key => $value) {
             $value['content'] = WindSecurity::escapeHTML($value['content']);
-            if (!empty($value['ifshield'])) {
+            if (! empty($value['ifshield'])) {
                 $value['content'] = '<div class="shield">此帖已被屏蔽</div>';
             } elseif ($users[$value['created_userid']]['groupid'] == '6') {
                 $value['content'] = '用户被禁言,该主题自动屏蔽!';
@@ -28,7 +28,7 @@ class PwThreadService
             } else {
                 $value['content'] = Pw::substrs($value['content'], $contentLength);
             }
-            !$value['word_version'] && $value['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($value['content'], $value['word_version']);
+            ! $value['word_version'] && $value['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($value['content'], $value['word_version']);
             $replies[$key] = $value;
         }
 

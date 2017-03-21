@@ -16,7 +16,7 @@ class PwThreadDisplayDoLike extends PwThreadDisplayDoBase
     public function bulidRead($read)
     {
         $info = [];
-        if (!$read['pid']) {
+        if (! $read['pid']) {
             $info = Wekit::load('like.PwLikeContent')->getInfoByTypeidFromid(PwLikeContent::THREAD, $read['tid']);
         }
         if ($read['pid'] == 0 && $info['users']) {
@@ -26,7 +26,7 @@ class PwThreadDisplayDoLike extends PwThreadDisplayDoBase
             }
             $users = Wekit::load('user.PwUser')->fetchUserByUid($uids);
             foreach ($uids as $uid) {
-                if (!$uid) {
+                if (! $uid) {
                     continue;
                 }
                 $read['lastLikeUsers'][$uid]['uid'] = $uid;

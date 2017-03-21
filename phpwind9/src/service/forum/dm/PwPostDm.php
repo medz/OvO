@@ -332,10 +332,10 @@ abstract class PwPostDm extends PwBaseDm
             return new PwError('BBS:post.content.length.more', ['{max}' => $config['content.length.max']]);
         }
         if ($this->forum && $this->user) {
-            if ((!$this->forum->forumset['allowhide'] || !$this->user->getPermission('allow_thread_extend.hide')) && (PwUbbCode::hasTag($this->_data['content'], 'post') || PwUbbCode::hasTag($this->_data['content'], 'hide'))) {
+            if ((! $this->forum->forumset['allowhide'] || ! $this->user->getPermission('allow_thread_extend.hide')) && (PwUbbCode::hasTag($this->_data['content'], 'post') || PwUbbCode::hasTag($this->_data['content'], 'hide'))) {
                 return new PwError('BBS:post.content.hide');
             }
-            if ((!$this->forum->forumset['allowsell'] || !$this->user->getPermission('allow_thread_extend.sell')) && PwUbbCode::hasTag($this->_data['content'], 'sell')) {
+            if ((! $this->forum->forumset['allowsell'] || ! $this->user->getPermission('allow_thread_extend.sell')) && PwUbbCode::hasTag($this->_data['content'], 'sell')) {
                 return new PwError('BBS:post.content.sell');
             }
         }
@@ -359,7 +359,7 @@ abstract class PwPostDm extends PwBaseDm
             if ($this->_data['reminds']) {
                 $useubb = 1;
             }
-            if (!$useubb) {
+            if (! $useubb) {
                 $useubb = ($this->_data['content'] == PwUbbCode::convert($this->_data['content'], new PwUbbCodeConvertThread())) ? 0 : 1;
             }
             $this->_setUseubb($useubb);
@@ -376,7 +376,7 @@ abstract class PwPostDm extends PwBaseDm
             $flag = 1;
         }
         if ($credits = $this->user->getPermission('sell_credits', false, [])) {
-            if (!in_array($type, $credits)) {
+            if (! in_array($type, $credits)) {
                 $type = current($credits);
                 $flag = 1;
             }
@@ -404,8 +404,8 @@ abstract class PwPostDm extends PwBaseDm
     protected function _beforeUpdate()
     {
         ($result = $this->checkData()) === true
-            && (!isset($this->_data['subject']) || ($result = $this->checkTitle()) === true)
-            && (!isset($this->_data['content']) || ($result = $this->checkContent()) === true);
+            && (! isset($this->_data['subject']) || ($result = $this->checkTitle()) === true)
+            && (! isset($this->_data['content']) || ($result = $this->checkContent()) === true);
         $this->_dateFormat();
 
         return $result;

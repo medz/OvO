@@ -39,7 +39,7 @@ class PwApplication
             ['error' => $error]);
         }
         $_r = $this->_load()->update($application->getField('app_id'), $application->getData());
-        if (!$_r) {
+        if (! $_r) {
             return new PwError('APPCENTER:update.fail');
         }
 

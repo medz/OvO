@@ -23,7 +23,7 @@ class WindidApp
 
     public function fetchApp($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return [];
         }
 

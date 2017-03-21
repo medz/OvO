@@ -129,7 +129,7 @@ class PwGenerateApplication
         WindFolder::mkRecur($this->baseDir);
         Wind::import('APPCENTER:service.srv.helper.PwSystemHelper');
         $writable = PwSystemHelper::checkWriteAble($this->baseDir.'/');
-        if (!$writable) {
+        if (! $writable) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
         PwApplicationHelper::copyRecursive($this->defaultDir, $this->baseDir, ['service']);
@@ -158,7 +158,7 @@ class PwGenerateApplication
         $manifest['application']['website'] = $this->website;
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
-        if (!WindFile::write($file, $manifest)) {
+        if (! WindFile::write($file, $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
     }
@@ -186,7 +186,7 @@ class PwGenerateApplication
     {
         $hookInfo = Wekit::load('hook.PwHooks')->fetchByName($hookname);
         list($description, , $interface) = explode("\r\n", $hookInfo['document']);
-        if (!$interface) {
+        if (! $interface) {
             return new PwError('APPCENTER:generate.unsupport.hook');
         }
         $this->baseDir = Wind::getRealDir('EXT:'.$this->alias);
@@ -203,7 +203,7 @@ class PwGenerateApplication
         $manifest['inject-services'][$hookname] = $hook;
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
-        if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
+        if (! WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
 
@@ -220,7 +220,7 @@ class PwGenerateApplication
                 '{{website}}'       => $this->website,
                 '{{description}}'   => $description, ]);
         WindFolder::mkRecur($this->baseDir.'/service/srv/');
-        if (!WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
+        if (! WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
     }
@@ -234,7 +234,7 @@ class PwGenerateApplication
     {
         $hookInfo = Wekit::load('hook.PwHooks')->fetchByName($hookname);
         list($description, $doc) = explode("\r\n", $hookInfo['document']);
-        if (!$doc) {
+        if (! $doc) {
             return new PwError('APPCENTER:generate.unsupport.hook');
         }
         preg_match_all('/\$[a-zA-Z_][a-zA-Z0-9_]*/', $doc, $matches);
@@ -255,7 +255,7 @@ class PwGenerateApplication
 
         $parser = new WindXmlParser();
         $manifest = str_replace('><', ">\n\t<", $parser->parseToXml(['manifest' => $manifest], Wind::getApp()->getResponse()->getCharset()));
-        if (!WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
+        if (! WindFile::write($this->baseDir.'/Manifest.xml', $manifest)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
 
@@ -272,7 +272,7 @@ class PwGenerateApplication
                 '{{website}}'     => $this->website,
                 '{{description}}' => $description, ]);
         WindFolder::mkRecur($this->baseDir.'/service/srv/');
-        if (!WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
+        if (! WindFile::write($this->baseDir.'/service/srv/'.$classname.'.php', $class)) {
             return new PwError('APPCENTER:generate.copy.fail');
         }
     }
@@ -337,7 +337,7 @@ class PwGenerateApplication
 
     protected function _generateService()
     {
-        if (!$this->need_service) {
+        if (! $this->need_service) {
             return true;
         }
         $prefix = 'app_'.$this->alias.'_table';

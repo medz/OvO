@@ -20,7 +20,7 @@ class PwUserBelong
      */
     public function getUserBelongs($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
 
@@ -29,7 +29,7 @@ class PwUserBelong
 
     public function getUserByGid($gid)
     {
-        if (!$gid) {
+        if (! $gid) {
             return [];
         }
 
@@ -45,7 +45,7 @@ class PwUserBelong
      */
     public function fetchUserByUid($uids)
     {
-        if (!$uids) {
+        if (! $uids) {
             return [];
         }
 
@@ -61,7 +61,7 @@ class PwUserBelong
      */
     public function deleteByUid($uid)
     {
-        if (!($uid = intval($uid))) {
+        if (! ($uid = intval($uid))) {
             return false;
         }
 
@@ -77,7 +77,7 @@ class PwUserBelong
      */
     public function batchDeleteByUids($uids)
     {
-        if (!$uids) {
+        if (! $uids) {
             return false;
         }
 
@@ -97,7 +97,7 @@ class PwUserBelong
         if (($uid = intval($uid)) < 1) {
             return new PwError('USER:error.uid');
         }
-        if (!$belongs) {
+        if (! $belongs) {
             return new PwError('USER:error.format');
         }
 

@@ -31,7 +31,7 @@ class PwThreadBo
 
     public function isThread()
     {
-        return !empty($this->info);
+        return ! empty($this->info);
     }
 
     public function isDeleted()

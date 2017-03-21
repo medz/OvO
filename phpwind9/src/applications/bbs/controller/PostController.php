@@ -36,7 +36,7 @@ class PostController extends PwBaseController
         //版块风格
         $pwforum = $this->post->forum;
         if ($pwforum->foruminfo['password']) {
-            if (!$this->loginUser->isExists()) {
+            if (! $this->loginUser->isExists()) {
                 $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/post/'.$action, ['fid' => $$pwforum->fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$pwforum->fid)) {
                 $this->forwardAction('bbs/forum/password', ['fid' => $pwforum->fid]);
@@ -351,13 +351,13 @@ class PostController extends PwBaseController
             'income' => $sellCreditRange['maxincome'],
             'credit' => Pw::subArray($creditBo->cType, $this->loginUser->getPermission('sell_credits')),
         ];
-        !$sellConfig['credit'] && $sellConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
+        ! $sellConfig['credit'] && $sellConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
 
         $enhideConfig = [
             'ifopen' => ($this->post->forum->forumset['allowhide'] && $allowThreadExtend['hide']) ? 1 : 0,
             'credit' => Pw::subArray($creditBo->cType, $this->loginUser->getPermission('enhide_credits')),
         ];
-        !$enhideConfig['credit'] && $enhideConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
+        ! $enhideConfig['credit'] && $enhideConfig['credit'] = array_slice($creditBo->cType, 0, 1, true);
 
         $allowUpload = ($this->post->user->isExists() && $this->post->forum->allowUpload($this->post->user) && ($this->post->user->getPermission('allow_upload') || $this->post->forum->foruminfo['allow_upload'])) ? 1 : 0;
         $attachnum = intval(Wekit::C('attachment', 'attachnum'));
@@ -380,7 +380,7 @@ class PostController extends PwBaseController
 
     private function _bulidAttachs($attach)
     {
-        if (!$attach) {
+        if (! $attach) {
             return '';
         }
         $array = [];
@@ -408,9 +408,9 @@ class PostController extends PwBaseController
         $forceTopicType = $this->post->forum->forumset['force_topic_type'];
         if ($this->post->forum->forumset['topic_type']) {
             $permission = $this->loginUser->getPermission('operate_thread', false, []);
-            $topictypes = $this->_getTopictypeDs()->getTopicTypesByFid($this->post->forum->fid, !$permission['type']);
+            $topictypes = $this->_getTopictypeDs()->getTopicTypesByFid($this->post->forum->fid, ! $permission['type']);
             foreach ($topictypes['sub_topic_types'] as $key => $value) {
-                if (!is_array($value)) {
+                if (! is_array($value)) {
                     continue;
                 }
 // 				if (!$forceTopicType && $value) $jsonArray[$key][$key] = '无分类';

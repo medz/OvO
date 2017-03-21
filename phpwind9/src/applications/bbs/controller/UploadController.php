@@ -22,7 +22,7 @@ class UploadController extends PwBaseController
 
     public function dorunAction()
     {
-        if (!$user = $this->_getUser()) {
+        if (! $user = $this->_getUser()) {
             $this->showError('login.not');
         }
         $fid = $this->getInput('fid', 'post');
@@ -36,7 +36,7 @@ class UploadController extends PwBaseController
         if ($result !== true) {
             $this->showError($result->getError());
         }
-        if (!$data = $bhv->getAttachInfo()) {
+        if (! $data = $bhv->getAttachInfo()) {
             $this->showError('upload.fail');
         }
         $this->setOutput($data, 'data');
@@ -45,7 +45,7 @@ class UploadController extends PwBaseController
 
     public function replaceAction()
     {
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
         $aid = $this->getInput('aid');
@@ -73,7 +73,7 @@ class UploadController extends PwBaseController
 
         list($uid, $password) = explode("\t", Pw::decrypt(urldecode($winduser)));
         $user = new PwUserBo($uid);
-        if (!$user->isExists() || Pw::getPwdCode($user->info['password']) != $password) {
+        if (! $user->isExists() || Pw::getPwdCode($user->info['password']) != $password) {
             return null;
         }
         unset($user->info['password']);

@@ -40,7 +40,7 @@ class PwDebugApplication
      */
     public function compile($force = false)
     {
-        if (!$this->inDevMode1()) {
+        if (! $this->inDevMode1()) {
             return;
         }
         $manifests = $this->_read();
@@ -51,7 +51,7 @@ class PwDebugApplication
         $logs || $logs = [];
         foreach ($manifests as $alias => $manifest) {
             $this->_copyRes($alias, $manifest);
-            if (!isset($logs[$alias]) || md5_file($manifest) != $logs[$alias] || $force) {
+            if (! isset($logs[$alias]) || md5_file($manifest) != $logs[$alias] || $force) {
                 $this->_upgrade($alias, $manifest);
                 $logs[$alias] = md5_file($manifest);
             }
@@ -141,7 +141,7 @@ class PwDebugApplication
             $source = dirname($manifest).DIRECTORY_SEPARATOR.str_replace('.',
                 DIRECTORY_SEPARATOR, $man_array['res']);
             $targetPath = Wind::getRealDir('THEMES:extres.'.$alias, true);
-            if (!is_dir($source)) {
+            if (! is_dir($source)) {
                 return false;
             }
             PwApplicationHelper::copyRecursive($source, $targetPath);
@@ -152,7 +152,7 @@ class PwDebugApplication
                     $packs_log = $v['data'];
                 }
             }
-            if (!in_array($targetPath, $packs_log)) {
+            if (! in_array($targetPath, $packs_log)) {
                 $packs_log[] = $targetPath;
             }
             $log[] = [
@@ -183,7 +183,7 @@ class PwDebugApplication
          */
         foreach ($result as $k) {
             $manifest = $ext.DIRECTORY_SEPARATOR.$k.DIRECTORY_SEPARATOR.'Manifest.xml';
-            if (!is_file($manifest)) {
+            if (! is_file($manifest)) {
                 continue;
             }
             $manifests[$k] = $manifest;
@@ -205,7 +205,7 @@ class PwDebugApplication
         $_install = Wekit::load('APPCENTER:service.srv.do.PwInstall');
         $conf = $install->getConfig('install-type', 'app');
         $manifest = $pack.'/Manifest.xml';
-        if (!is_file($manifest)) {
+        if (! is_file($manifest)) {
             return $this->_e(null,
             new PwError('file.not.exist - '.$manifest));
         }
@@ -234,11 +234,11 @@ class PwDebugApplication
             }
             foreach ($install->getManifest()->getInstallationService() as $var) {
                 $_tmp = $install->getConfig('installation-service', $var);
-                if (!$_tmp) {
+                if (! $_tmp) {
                     continue;
                 }
                 $toinstall = Wekit::load($_tmp['class']);
-                if (!$toinstall instanceof iPwInstall) {
+                if (! $toinstall instanceof iPwInstall) {
                     continue;
                 }
                 $_tmp['_key'] = $var;

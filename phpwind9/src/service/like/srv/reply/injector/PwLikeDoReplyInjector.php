@@ -30,7 +30,7 @@ class PwLikeDoReplyInjector extends PwBaseHookInjector
         } else {
             $info = $ds->getInfoByTypeidFromid(PwLikeContent::THREAD, $tid);
         }
-        if (!isset($info['likeid'])) {
+        if (! isset($info['likeid'])) {
             return true;
         }
 

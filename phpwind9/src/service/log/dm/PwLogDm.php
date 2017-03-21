@@ -161,7 +161,7 @@ class PwLogDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['created_time'])) {
+        if (! isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
 
@@ -173,7 +173,7 @@ class PwLogDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!isset($this->_data['created_time'])) {
+        if (! isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
 

@@ -30,16 +30,16 @@ class PwAttMultiUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$this->user->isExists()) {
+        if (! $this->user->isExists()) {
             return new PwError('login.not');
         }
-        if (!$this->forum->isForum()) {
+        if (! $this->forum->isForum()) {
             return new PwError('BBS:forum.fid.select');
         }
         if (($result = $this->forum->allowUpload($this->user)) !== true) {
             return new PwError('BBS:forum.permissions.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
-        if (!$this->forum->foruminfo['allow_upload'] && !$this->user->getPermission('allow_upload')) {
+        if (! $this->forum->foruminfo['allow_upload'] && ! $this->user->getPermission('allow_upload')) {
             return new PwError('permission.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
 
@@ -166,7 +166,7 @@ class PwAttMultiUpload extends PwUploadAction
 
     public function getAttachInfo()
     {
-        if (!$this->attachs) {
+        if (! $this->attachs) {
             return [];
         }
         $array = current($this->attachs);

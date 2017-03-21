@@ -12,7 +12,7 @@ class PwToppedService
             $category = $this->_getCategoryByFid($currentFid, $forums);
         }
         foreach ($forums as $v) {
-            if ($v['isshow'] || (!$v['isshow'] && strpos($v['allowvisit'], ','.$groupid.',') !== false)) {
+            if ($v['isshow'] || (! $v['isshow'] && strpos($v['allowvisit'], ','.$groupid.',') !== false)) {
                 $v['fid'] == $currentFid && $currentForum = $v;
                 if ($v['type'] == 'category') {
                     if ($currentCategory && $category != $v['fid']) {
@@ -59,7 +59,7 @@ class PwToppedService
                     $top_2[$v2['fid']] = '&nbsp;|-'.$v2['name'];
                 }
                 $top_3[$v2['fid']] = '&nbsp;|-'.$v2['name'];
-                if (!is_array($sub1[$v2['fid']])) {
+                if (! is_array($sub1[$v2['fid']])) {
                     continue;
                 }
                 foreach ((array) $sub1[$v2['fid']] as $k3 => $v3) {
@@ -77,7 +77,7 @@ class PwToppedService
                         $top_2[$v3['fid']] = '&nbsp;&nbsp;&nbsp;|-'.$v3['name'];
                     }
                     $top_3[$v3['fid']] = '&nbsp;&nbsp;&nbsp;|-'.$v3['name'];
-                    if (!is_array($sub2[$v3['fid']])) {
+                    if (! is_array($sub2[$v3['fid']])) {
                         continue;
                     }
                     foreach ((array) $sub2[$v3['fid']] as $k4 => $v4) {
@@ -102,7 +102,7 @@ class PwToppedService
 
     private function _getCategoryByFid($fid, $forums)
     {
-        if (!$forums) {
+        if (! $forums) {
             return 0;
         }
         $current = $forums[$fid];

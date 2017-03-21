@@ -386,7 +386,7 @@ class PwTagDm extends PwBaseDm
     public function checkTagName($tagName = '')
     {
         $tagName = $tagName ? $tagName : $this->_data['tag_name'];
-        if (!$tagName) {
+        if (! $tagName) {
             return true;
         }
         $maxLength = 15;

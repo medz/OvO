@@ -20,7 +20,7 @@ class PwSpaceDomain
      */
     public function addDomain($uid, $domain)
     {
-        if (!$domain || !$uid) {
+        if (! $domain || ! $uid) {
             return false;
         }
 
@@ -37,7 +37,7 @@ class PwSpaceDomain
      */
     public function updateDomain($uid, $domain)
     {
-        if (!$domain || !$uid) {
+        if (! $domain || ! $uid) {
             return false;
         }
 
@@ -65,7 +65,7 @@ class PwSpaceDomain
      */
     public function getUidByDomain($domain)
     {
-        if (!$domain) {
+        if (! $domain) {
             return 0;
         }
 
@@ -81,7 +81,7 @@ class PwSpaceDomain
      */
     public function getDomainByUid($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return '';
         }
 

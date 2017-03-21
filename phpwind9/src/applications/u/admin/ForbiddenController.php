@@ -32,13 +32,13 @@ class ForbiddenController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $key = $this->getInput('key', 'post');
-        if (!in_array($key, ['1', '2'])) {
+        if (! in_array($key, ['1', '2'])) {
             $this->showError('USER:ban.error.data.format');
         }
         $array = [];
         list($end_time, $reason, $types) = $this->getInput(['end_time', 'reason', 'type'], 'post');
         $userInfos = $this->_getUids(explode(',', $this->getInput('value', 'post')), intval($key));
-        if (!$userInfos) {
+        if (! $userInfos) {
             $this->showError('USER:ban.user.illegal');
         }
 
@@ -56,7 +56,7 @@ class ForbiddenController extends AdminBaseController
         $_notice = [];
         $rightTypes = array_keys($this->_getService()->getBanType());
         foreach ($types as $type) {
-            if (!in_array($type, $rightTypes)) {
+            if (! in_array($type, $rightTypes)) {
                 continue;
             }
             foreach ($userInfos as $uid => $info) {
@@ -113,13 +113,13 @@ class ForbiddenController extends AdminBaseController
         $config = new PwConfigSet('site');
         list($open, $condition, $type, $reason) = $this->getInput(['open', 'condition', 'type', 'reason'], 'post');
         if ($open == 1) {
-            if (!$condition['num']) {
+            if (! $condition['num']) {
                 $this->showError('USER:ban.auto.credit.num.require');
             }
-            if (!$type) {
+            if (! $type) {
                 $this->showError('USER:ban.type.require');
             }
-            if (!$reason) {
+            if (! $reason) {
                 $this->showError('USER:ban.reason.require');
             }
         }
@@ -171,7 +171,7 @@ class ForbiddenController extends AdminBaseController
     public function delAction()
     {
         $ids = $this->getInput('ids', 'post');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('operate.select');
         }
         /* @var $banSrv PwUserBanService */
@@ -207,7 +207,7 @@ class ForbiddenController extends AdminBaseController
     private function _getBanDayType()
     {
         static $days = [];
-        if (!$days) {
+        if (! $days) {
             $days = [
                 0   => ['title' => '永久'], //永久禁止
                 3   => ['title' => '三天'], //禁止三天
@@ -235,8 +235,8 @@ class ForbiddenController extends AdminBaseController
     {
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
-        $values = !empty($values) ? array_unique($values) : [];
-        if (!$values) {
+        $values = ! empty($values) ? array_unique($values) : [];
+        if (! $values) {
             $this->showError('USER:ban.user.require');
         }
         switch (intval($type)) {

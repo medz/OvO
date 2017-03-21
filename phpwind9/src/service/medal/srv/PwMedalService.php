@@ -21,14 +21,14 @@ class PwMedalService
     {
         $_medals = [];
         $userMedal = $this->_getMedalUserDs()->getMedalUser($uid);
-        if (!$userMedal) {
+        if (! $userMedal) {
             return [];
         }
         $medalIds = empty($userMedal['medals']) ? [] : explode(',', $userMedal['medals']);
         $medalIds = array_unique($medalIds);
         $medals = $this->_getMedalDs()->fetchMedalInfo($medalIds);
         foreach ($medalIds as $medalId) {
-            if (!$medals[$medalId]) {
+            if (! $medals[$medalId]) {
                 continue;
             }
             $medals[$medalId]['image'] = $this->getMedalImage($medals[$medalId]['path'], $medals[$medalId]['image']);
@@ -48,17 +48,17 @@ class PwMedalService
      */
     public function fetchUserMedal($uids)
     {
-        if (!is_array($uids)) {
+        if (! is_array($uids)) {
             return [];
         }
         $_userMedalIds = $_allMedalId = $_medals = [];
         $userMedal = $this->_getMedalUserDs()->fetchMedalUser($uids);
-        if (!$userMedal) {
+        if (! $userMedal) {
             return [];
         }
 
         foreach ($uids as $uid) {
-            $_userMedalIds[$uid] = !$userMedal[$uid]['medals'] ? [] : explode(',', $userMedal[$uid]['medals']);
+            $_userMedalIds[$uid] = ! $userMedal[$uid]['medals'] ? [] : explode(',', $userMedal[$uid]['medals']);
             $_allMedalId = array_merge($_allMedalId, $_userMedalIds[$uid]);
         }
         $_allMedalId = array_unique($_allMedalId);
@@ -68,7 +68,7 @@ class PwMedalService
         foreach ($_userMedalIds as $uid => $medalIds) {
             $_medalInfo = [];
             foreach ($medalIds as $medalId) {
-                if (!$medals[$medalId]) {
+                if (! $medals[$medalId]) {
                     continue;
                 }
                 $path = $medals[$medalId]['path'] ? $attachUrl : $localUrl;
@@ -92,7 +92,7 @@ class PwMedalService
     public function awardMedal($logId, $uid)
     {
         $log = $this->_getMedalLogDs()->getMedalLog($logId);
-        if (!isset($log['uid']) || $log['uid'] != $uid || $log['award_status'] != 3) {
+        if (! isset($log['uid']) || $log['uid'] != $uid || $log['award_status'] != 3) {
             return new PwError('MEDAL:info.error');
         }
         $medal = $this->_getMedalDs()->getMedalInfo($log['medal_id']);
@@ -120,7 +120,7 @@ class PwMedalService
     public function awardTaskMedal($uid, $medalId)
     {
         $info = $this->_getMedalDs()->getMedalInfo($medalId);
-        if (!$info) {
+        if (! $info) {
             return false;
         }
         $userLog = $this->_getMedalLogDs()->getInfoByUidMedalId($uid, $medalId);
@@ -151,7 +151,7 @@ class PwMedalService
     public function sendNotice($uid, $logId, $medelId, $type = 1, $reason = '')
     {
         $info = $this->_getMedalDs()->getMedalInfo($medelId);
-        if (!$info) {
+        if (! $info) {
             return false;
         }
         $param = 0;
@@ -168,7 +168,7 @@ class PwMedalService
             case 5:
                 $lang = Wind::getComponent('i18n');
                 $awardType = $this->awardTypes($info['award_type']);
-                if (!$reason) {
+                if (! $reason) {
                     $reason = $info['receive_type'] == 1 ? '您的'.$lang->getMessage('MEDAL:awardtype.'.$awardType).'低于勋章设定值'.$info['award_condition'] : '';
                 }
                 $extendParams = ['logid' => $logId, 'name' => $info['name'], 'medelId' => $medelId, 'type' => $type, 'reason' => $reason];
@@ -188,11 +188,11 @@ class PwMedalService
             return new PwError('info_error');
         }
         $info = $this->_getMedalLogDs()->getMedalLog($logid);
-        if (!$info) {
+        if (! $info) {
             return new PwError('info_error');
         }
         $resource = $this->_getMedalLogDs()->deleteInfo($logid);
-        if (!$resource) {
+        if (! $resource) {
             return new PwError('info_error');
         }
         $this->sendNotice($info['uid'], $logid, $info['medal_id'], $type);
@@ -307,9 +307,9 @@ class PwMedalService
      */
     public function allowAwardMedal($userGids, $medalGids = '')
     {
-        $medalGids = !is_array($medalGids) && $medalGids ? explode(',', $medalGids) : $medalGids;
-        $userGids = !is_array($userGids) && $userGids ? explode(',', $userGids) : $userGids;
-        if ($medalGids && !array_intersect($userGids, $medalGids)) {
+        $medalGids = ! is_array($medalGids) && $medalGids ? explode(',', $medalGids) : $medalGids;
+        $userGids = ! is_array($userGids) && $userGids ? explode(',', $userGids) : $userGids;
+        if ($medalGids && ! array_intersect($userGids, $medalGids)) {
             return false;
         }
 
@@ -346,7 +346,7 @@ class PwMedalService
             9  => 'like_count',
             10 => 'login_count',
         ];
-        if (!empty($type)) {
+        if (! empty($type)) {
             return $_array[$type];
         }
 

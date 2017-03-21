@@ -56,7 +56,7 @@ class PwDesignDataDm extends PwBaseDm
 
     public function setDatatype($type)
     {
-        if (!$type) {
+        if (! $type) {
             $type = 1;
         }
         $this->_data['data_type'] = (int) $type;
@@ -115,7 +115,7 @@ class PwDesignDataDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['standard']) {
+        if (! $this->_data['standard']) {
             return new PwError('operate.fail');
         }
 

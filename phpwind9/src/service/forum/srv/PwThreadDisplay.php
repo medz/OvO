@@ -62,10 +62,10 @@ class PwThreadDisplay extends PwBaseHookService
      */
     public function check()
     {
-        if (!$this->thread->isThread()) {
+        if (! $this->thread->isThread()) {
             return new PwError('BBS:forum.thread.exists.not');
         }
-        if (!$this->forum->isForum()) {
+        if (! $this->forum->isForum()) {
             return new PwError('BBS:forum.exists.not');
         }
         if (($result = $this->forum->allowVisit($this->user)) !== true) {
@@ -74,19 +74,19 @@ class PwThreadDisplay extends PwBaseHookService
         if (($result = $this->forum->allowRead($this->user)) !== true) {
             return new PwError('BBS:forum.permissions.read.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
-        if (!$this->forum->foruminfo['allow_read'] && !$this->user->getPermission('allow_read') && $_COOKIE) {
+        if (! $this->forum->foruminfo['allow_read'] && ! $this->user->getPermission('allow_read') && $_COOKIE) {
             return new PwError('permission.read.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($this->thread->isDeleted()) {
             return new PwError('BBS:forum.thread.deleted');
         }
-        if (!$this->thread->isChecked() && $this->thread->authorid != $this->user->uid && !$this->isBM) {
+        if (! $this->thread->isChecked() && $this->thread->authorid != $this->user->uid && ! $this->isBM) {
             $permission = $this->user->getPermission('panel_bbs_manage', false, []);
-            if (!$permission['thread_check']) {
+            if (! $permission['thread_check']) {
                 return new PwError('BBS:forum.thread.ischeck');
             }
         }
-        if ($this->thread->info['tpcstatus'] && Pw::getstatus($this->thread->info['tpcstatus'], PwThread::STATUS_CLOSED) && !$this->user->getPermission('operate_thread.lock', $this->isBM)) {
+        if ($this->thread->info['tpcstatus'] && Pw::getstatus($this->thread->info['tpcstatus'], PwThread::STATUS_CLOSED) && ! $this->user->getPermission('operate_thread.lock', $this->isBM)) {
             return new PwError('BBS:forum.thread.closed');
         }
 
@@ -131,7 +131,7 @@ class PwThreadDisplay extends PwBaseHookService
     public function bulidRead($read, $lou)
     {
         $read['lou'] = $lou;
-        if (!$read['usehtml']) {
+        if (! $read['usehtml']) {
             $read['content'] = WindSecurity::escapeHTML($read['content']);
         }
         $tip = '';
@@ -279,7 +279,7 @@ class PwThreadDisplay extends PwBaseHookService
 
     protected function _bulidContent($read)
     {
-        if (!$read['useubb']) {
+        if (! $read['useubb']) {
             return self::escapeSpace($read['content']);
         }
         $ubb = new PwUbbCodeConvertThread($this->thread, $read, $this->user);
@@ -293,7 +293,7 @@ class PwThreadDisplay extends PwBaseHookService
     protected function _bulidShieldContent()
     {
         $tip = '<div class="shield">此帖已被屏蔽</div>';
-        if (!$this->user->getPermission('operate_thread.shield', $this->isBM)) {
+        if (! $this->user->getPermission('operate_thread.shield', $this->isBM)) {
             return [$tip, 0];
         }
 
@@ -303,7 +303,7 @@ class PwThreadDisplay extends PwBaseHookService
     protected function _bulidBanContent()
     {
         $tip = '<div class="shield">用户被禁言,该主题自动屏蔽!</div>';
-        if (!$this->user->getPermission('operate_thread.ban', $this->isBM)) {
+        if (! $this->user->getPermission('operate_thread.ban', $this->isBM)) {
             return [$tip, 0];
         }
 
@@ -312,7 +312,7 @@ class PwThreadDisplay extends PwBaseHookService
 
     protected function _bulidBbsSign($sign, $groupRight, $userstatus)
     {
-        if (!$groupRight['allow_sign'] || Pw::getstatus($userstatus, PwUser::STATUS_BAN_SIGN)) {
+        if (! $groupRight['allow_sign'] || Pw::getstatus($userstatus, PwUser::STATUS_BAN_SIGN)) {
             return '';
         }
         $sign = WindSecurity::escapeHTML($sign);

@@ -65,7 +65,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
     public function decorateSaveProperty($property, $moduleid)
     {
         //直接调用版本
-        if (isset($property['fids'][0]) && !$property['fids'][0]) {
+        if (isset($property['fids'][0]) && ! $property['fids'][0]) {
             $property['fids'] = [];
         }
         $property['mapFid'] = $property['fids'];
@@ -178,7 +178,7 @@ class PwDesignThreadDataService extends PwDesignModelBase
             $highlight = new PwHighlight();
         }
         foreach ($list as $k => $v) {
-            if (!$forums[$v['fid']]['isshow']) {
+            if (! $forums[$v['fid']]['isshow']) {
                 $v = [];
             }
             $list[$k]['subject'] = $this->_formatTitle($v['subject']);

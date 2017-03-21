@@ -30,7 +30,7 @@ class PwShieldTagDoTopic extends iPwGleanDoHookProcess
     {
         if ($this->tag) {
             $data = Wekit::load('forum.PwThread')->getThread($id);
-            if (!$data) {
+            if (! $data) {
                 return false;
             }
             $tag = $this->tag;

@@ -17,7 +17,7 @@ class PwDesignPage
 
     public function getPage($id)
     {
-        if (!$id) {
+        if (! $id) {
             return [];
         }
 
@@ -26,7 +26,7 @@ class PwDesignPage
 
     public function fetchPage($pageids)
     {
-        if (empty($pageids) || !is_array($pageids)) {
+        if (empty($pageids) || ! is_array($pageids)) {
             return [];
         }
 
@@ -52,7 +52,7 @@ class PwDesignPage
      */
     public function getPageByRouter($router)
     {
-        if (!$router) {
+        if (! $router) {
             return [];
         }
 
@@ -61,7 +61,7 @@ class PwDesignPage
 
     public function fetchPageByTypeUnique($type = self::ALL, $unique = [])
     {
-        if (empty($unique) || !is_array($unique)) {
+        if (empty($unique) || ! is_array($unique)) {
             return [];
         }
 
@@ -86,7 +86,7 @@ class PwDesignPage
      */
     public function concatModule($value)
     {
-        if (!$value) {
+        if (! $value) {
             return [];
         }
         $value = ','.strval($value).',';
@@ -116,7 +116,7 @@ class PwDesignPage
 
     public function deleteNoUnique($router, $unique = 0)
     {
-        if (!$router) {
+        if (! $router) {
             return false;
         }
 
@@ -125,7 +125,7 @@ class PwDesignPage
 
     public function deletePage($id)
     {
-        if (!$id) {
+        if (! $id) {
             return false;
         }
 

@@ -34,7 +34,7 @@ class DesignController extends PwBaseController
         if (is_array($theme)) {
             list($theme, $pack) = $theme;
         }
-        if (!$theme) {
+        if (! $theme) {
             $theme = 'default';
         }
         WindFolder::rm(Wind::getRealDir('DATA:compile.template.'.$theme.'.design.segment.'), true);
@@ -48,7 +48,7 @@ class DesignController extends PwBaseController
         $moduleId = (int) $this->getInput('moduleid', 'post');
         $pageid = (int) $this->getInput('pageid', 'post');
         $module = $this->_getModuleDs()->getModule($moduleId);
-        if (!$module || !$module['isused']) {
+        if (! $module || ! $module['isused']) {
             $this->showError('DESIGN:module.is.delete');
         }
         Wekit::load('design.PwDesignPermissions');
@@ -178,7 +178,7 @@ class DesignController extends PwBaseController
     {
         $pageid = (int) $this->getInput('pageid', 'post');
         $pageInfo = $this->_getPageDs()->getPage($pageid);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         $permissions = $this->_getPermissionsService()->getPermissionsForPage($this->loginUser->uid, $pageid);
@@ -216,7 +216,7 @@ class DesignController extends PwBaseController
 
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         $permissions = $this->_getPermissionsService()->getPermissionsForPage($this->loginUser->uid, $pageid);
@@ -290,7 +290,7 @@ class DesignController extends PwBaseController
         $uri = $this->getInput('uri', 'post');
         $pageDs = $this->_getPageDs();
         $pageInfo = $pageDs->getPage($pageid);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         $permissions = $this->_getPermissionsService()->getPermissionsForPage($this->loginUser->uid, $pageid);
@@ -323,7 +323,7 @@ class DesignController extends PwBaseController
     {
         $pageid = (int) $this->getInput('pageid', 'post');
         $pageInfo = $this->_getPageDs()->getPage($pageid);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         Wekit::load('design.PwDesignPermissions');

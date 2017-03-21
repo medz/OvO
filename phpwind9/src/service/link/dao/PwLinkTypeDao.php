@@ -53,12 +53,12 @@ class PwLinkTypeDao extends PwBaseDao
     public function updateLinkTypes($data)
     {
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v) || !$v['typeid']) {
+            if (! $this->_filterStruct($v) || ! $v['typeid']) {
                 continue;
             }
             $array[] = [$v['typeid'], $v['vieworder'], $v['typename']];
         }
-        if (!$array) {
+        if (! $array) {
             return false;
         }
         $sql = $this->_bindTable('REPLACE INTO %s (`typeid`,`vieworder`,`typename`) VALUES ').$this->sqlMulti($array);

@@ -22,7 +22,7 @@ class PwForumBo
         $forumService = $this->_getForumService();
         $this->foruminfo = $forumService->getForum($fid, $fetchAll ? PwForum::FETCH_ALL : (PwForum::FETCH_MAIN | PwForum::FETCH_EXTRA));
         $this->foruminfo['settings_basic'] && $this->forumset = unserialize($this->foruminfo['settings_basic']);
-        if (!is_array($this->forumset['allowtype'])) {
+        if (! is_array($this->forumset['allowtype'])) {
             $this->forumset['allowtype'] = [];
         }
     }
@@ -34,7 +34,7 @@ class PwForumBo
      */
     public function isForum($allowcate = false)
     {
-        if (empty($this->foruminfo) || !$allowcate && $this->foruminfo['type'] == 'category') {
+        if (empty($this->foruminfo) || ! $allowcate && $this->foruminfo['type'] == 'category') {
             return false;
         }
 
@@ -48,7 +48,7 @@ class PwForumBo
      */
     public function isOpen()
     {
-        return !$this->foruminfo['allow_visit'] && !$this->foruminfo['allow_read'] && !$this->foruminfo['password'];
+        return ! $this->foruminfo['allow_visit'] && ! $this->foruminfo['allow_read'] && ! $this->foruminfo['password'];
     }
 
     /**
@@ -82,7 +82,7 @@ class PwForumBo
      */
     public function isBM($username)
     {
-        if (!$username) {
+        if (! $username) {
             return false;
         }
         if ($this->foruminfo['manager'] && strpos($this->foruminfo['manager'], ",$username,") !== false) {
@@ -104,7 +104,7 @@ class PwForumBo
      */
     public function allowVisit(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_visit']) {
+        if (! $this->foruminfo['allow_visit']) {
             return true;
         }
 
@@ -120,7 +120,7 @@ class PwForumBo
      */
     public function allowRead(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_read']) {
+        if (! $this->foruminfo['allow_read']) {
             return true;
         }
 
@@ -136,7 +136,7 @@ class PwForumBo
      */
     public function allowPost(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_post']) {
+        if (! $this->foruminfo['allow_post']) {
             return true;
         }
 
@@ -152,7 +152,7 @@ class PwForumBo
      */
     public function allowReply(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_reply']) {
+        if (! $this->foruminfo['allow_reply']) {
             return true;
         }
 
@@ -168,7 +168,7 @@ class PwForumBo
      */
     public function allowUpload(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_upload']) {
+        if (! $this->foruminfo['allow_upload']) {
             return true;
         }
 
@@ -184,7 +184,7 @@ class PwForumBo
      */
     public function allowDownload(PwUserBo $user)
     {
-        if (!$this->foruminfo['allow_download']) {
+        if (! $this->foruminfo['allow_download']) {
             return true;
         }
 
@@ -258,7 +258,7 @@ class PwForumBo
         $result = $this->_getForumService()->getSubForums($this->fid);
         if ($isshow) {
             foreach ($result as $key => $value) {
-                if (!$value['isshow']) {
+                if (! $value['isshow']) {
                     unset($result[$key]);
                 }
             }
@@ -288,7 +288,7 @@ class PwForumBo
      */
     public function getManager()
     {
-        if (!$this->foruminfo['manager']) {
+        if (! $this->foruminfo['manager']) {
             return [];
         }
 
@@ -312,7 +312,7 @@ class PwForumBo
      */
     public function getParentForums()
     {
-        if (!$fids = $this->getParentFids()) {
+        if (! $fids = $this->getParentFids()) {
             return [];
         }
         $forums = explode("\t", $this->foruminfo['fupname']);
@@ -348,7 +348,7 @@ class PwForumBo
      */
     public function getThreadType(PwUserBo $user)
     {
-        if (!is_array($this->forumset['typeorder'])) {
+        if (! is_array($this->forumset['typeorder'])) {
             return [];
         }
         asort($this->forumset['typeorder']);

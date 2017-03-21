@@ -17,7 +17,7 @@ class AdminConfig
      */
     public function getConfig($namespace)
     {
-        if (!$namespace) {
+        if (! $namespace) {
             return [];
         }
 
@@ -33,7 +33,7 @@ class AdminConfig
      */
     public function fetchConfig($namespace)
     {
-        if (!$namespace || !is_array($namespace)) {
+        if (! $namespace || ! is_array($namespace)) {
             return [];
         }
 
@@ -50,7 +50,7 @@ class AdminConfig
      */
     public function getConfigByName($namespace, $name)
     {
-        if (!$namespace || !$name) {
+        if (! $namespace || ! $name) {
             return [];
         }
 
@@ -85,7 +85,7 @@ class AdminConfig
      */
     public function setConfigs($namespace, $array)
     {
-        if (empty($namespace) || empty($array) || !is_array($array)) {
+        if (empty($namespace) || empty($array) || ! is_array($array)) {
             return false;
         }
         foreach ($array as $key => $item) {
@@ -107,7 +107,7 @@ class AdminConfig
      */
     public function setConfig($namespace, $name, $value, $decrip = null)
     {
-        if (!$namespace || !$name) {
+        if (! $namespace || ! $name) {
             return false;
         }
 
@@ -123,7 +123,7 @@ class AdminConfig
      */
     public function deleteConfig($namespace)
     {
-        if (!$namespace) {
+        if (! $namespace) {
             return false;
         }
 
@@ -140,7 +140,7 @@ class AdminConfig
      */
     public function deleteConfigByName($namespace, $name)
     {
-        if (!$namespace || !$name) {
+        if (! $namespace || ! $name) {
             return false;
         }
 

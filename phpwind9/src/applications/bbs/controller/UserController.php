@@ -21,7 +21,7 @@ class UserController extends PwBaseController
         $perpage = Wekit::C('bbs', 'thread.perpage');
         $pwforum = new PwForumBo($fid, true);
 
-        if (!$pwforum->isForum(true)) {
+        if (! $pwforum->isForum(true)) {
             $this->showError('BBS:forum.exists.not');
         }
         if (($result = $pwforum->allowVisit($this->loginUser)) !== true) {

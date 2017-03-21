@@ -71,7 +71,7 @@ class PwAdminRoute extends AbstractPwRoute
         $action = trim($action, '/');
         $tmp = explode('/', $action.'/');
         end($tmp);
-        if (5 === count($tmp) && !strncasecmp('app/', $action, 4)) {
+        if (5 === count($tmp) && ! strncasecmp('app/', $action, 4)) {
             list($_a, $_c, $_app_name, $_m) = [prev($tmp), prev($tmp), prev($tmp), prev($tmp)];
             $args['app'] = $_app_name;
         } else {

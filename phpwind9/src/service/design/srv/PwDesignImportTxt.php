@@ -19,11 +19,11 @@ class PwDesignImportTxt
 
     public function checkTxt($filename = '', $content = '')
     {
-        if (!$filename && !$content) {
+        if (! $filename && ! $content) {
             return new PwError('DESIGN:upload.file.error');
         }
         if ($filename) {
-            if (!$content = WindFile::read($filename)) {
+            if (! $content = WindFile::read($filename)) {
                 return new PwError('DESIGN:upload.file.error');
             }
         }
@@ -31,7 +31,7 @@ class PwDesignImportTxt
         $content = unserialize(base64_decode($content));
         $_array = ['page', 'segment', 'structure', 'module'];
         foreach ($_array as $v) {
-            if (!isset($content[$v])) {
+            if (! isset($content[$v])) {
                 return new PwError('DESIGN:file.check.fail');
             }
         }
@@ -82,7 +82,7 @@ class PwDesignImportTxt
 
         foreach ($modules as $k => $v) {
             $dm = new PwDesignModuleDm();
-            if (!$v['module_name']) {
+            if (! $v['module_name']) {
                 continue;
             }
             $style = unserialize($v['module_style']);
@@ -143,7 +143,7 @@ class PwDesignImportTxt
         }
 
         foreach ($segments as $k => $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $_struct .= $v;

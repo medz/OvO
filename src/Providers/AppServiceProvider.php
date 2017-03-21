@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

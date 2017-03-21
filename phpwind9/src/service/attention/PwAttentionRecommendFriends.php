@@ -34,7 +34,7 @@ class PwAttentionRecommendFriends
 
     public function addRecommendFriend($uid, $recommendUid, $recommend_user)
     {
-        if (!$uid || !$recommendUid || $uid == $recommendUid) {
+        if (! $uid || ! $recommendUid || $uid == $recommendUid) {
             return false;
         }
 
@@ -47,7 +47,7 @@ class PwAttentionRecommendFriends
 
     public function batchReplaceRecommendFriend($data)
     {
-        if (!$data || !is_array($data)) {
+        if (! $data || ! is_array($data)) {
             return false;
         }
 

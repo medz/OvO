@@ -36,12 +36,12 @@ class LinkController extends AdminBaseController
     public function dorunAction()
     {
         list($lid, $vieworder) = $this->getInput(['lid', 'vieworder'], 'post');
-        if (!$lid) {
+        if (! $lid) {
             $this->showError('operate.select');
         }
         Wind::import('SRC:service.link.dm.PwLinkDm');
         foreach ($lid as $_id) {
-            if (!isset($vieworder[$_id])) {
+            if (! isset($vieworder[$_id])) {
                 continue;
             }
             $linkDm = new PwLinkDm($_id);
@@ -66,7 +66,7 @@ class LinkController extends AdminBaseController
     public function doaddAction()
     {
         list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids) = $this->getInput(['vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids'], 'post');
-        if (!$typeids) {
+        if (! $typeids) {
             $this->showError('LINK:require_empty');
         }
         Wind::import('SRC:service.link.dm.PwLinkDm');
@@ -113,7 +113,7 @@ class LinkController extends AdminBaseController
     public function doeditAction()
     {
         list($vieworder, $name, $url, $descrip, $logo, $ifcheck, $contact, $typeids, $lid) = $this->getInput(['vieworder', 'name', 'url', 'descrip', 'logo', 'ifcheck', 'contact', 'typeids', 'lid'], 'post');
-        if (!$typeids) {
+        if (! $typeids) {
             $this->showError('LINK:require_empty');
         }
         Wind::import('SRC:service.link.dm.PwLinkDm');
@@ -144,7 +144,7 @@ class LinkController extends AdminBaseController
     public function doDeleteAction()
     {
         $lid = $this->getInput('lid', 'post');
-        if (!$lid) {
+        if (! $lid) {
             $this->showError('operate.select');
         }
         if (($result = $this->_getLinkSrv()->batchDelete($lid)) instanceof PwError) {
@@ -172,7 +172,7 @@ class LinkController extends AdminBaseController
 
         is_array($data) || $data = [];
         foreach ($data as $k => $v) {
-            if (!$v['typename']) {
+            if (! $v['typename']) {
                 continue;
             }
             if (Pw::strlen($v['typename']) > 6) {
@@ -189,7 +189,7 @@ class LinkController extends AdminBaseController
         is_array($newdata) || $newdata = [];
         if ($newdata) {
             foreach ($newdata as $v) {
-                if (!$v['typename']) {
+                if (! $v['typename']) {
                     continue;
                 }
                 if (Pw::strlen($v['typename']) > 6) {
@@ -235,7 +235,7 @@ class LinkController extends AdminBaseController
     public function doDeleteTypeAction()
     {
         $typeId = (int) $this->getInput('typeId', 'post');
-        if (!$typeId) {
+        if (! $typeId) {
             $this->showError('operate.fail');
         }
 
@@ -274,12 +274,12 @@ class LinkController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         list($data, $lid, $single) = $this->getInput(['data', 'lid', 'signle'], 'post');
-        if (!$lid) {
+        if (! $lid) {
             $this->showError('operate.select');
         }
         Wind::import('SRC:service.link.dm.PwLinkDm');
         foreach ($lid as $_id) {
-            if (!isset($data[$_id])) {
+            if (! isset($data[$_id])) {
                 continue;
             }
             $linkDm = new PwLinkDm($_id);

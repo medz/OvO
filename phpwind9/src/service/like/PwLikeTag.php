@@ -32,7 +32,7 @@ class PwLikeTag
      */
     public function fetchLikeTag($tagids)
     {
-        if (!is_array($tagids) || count($tagids) < 1) {
+        if (! is_array($tagids) || count($tagids) < 1) {
             return [];
         }
 

@@ -15,7 +15,7 @@ class PwSpaceProfileDoWork implements PwSpaceProfileDoInterface
 {
     public function createHtml($spaceBo)
     {
-        if (!$spaceBo->allowView('work')) {
+        if (! $spaceBo->allowView('work')) {
             return false;
         }
         $spaceBo->spaceUser['work'] = Wekit::load('work.PwWork')->getByUid($spaceBo->spaceUid, 100);

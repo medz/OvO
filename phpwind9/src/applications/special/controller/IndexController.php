@@ -16,10 +16,10 @@ class IndexController extends PwBaseController
     {
         $id = (int) $this->getInput('id', 'get');
         $portal = $this->_getPortalDs()->getPortal($id);
-        if (!$portal) {
+        if (! $portal) {
             $this->showError('page.status.404');
         }
-        if (!$portal['isopen']) {
+        if (! $portal['isopen']) {
             $permissions = $this->_getPermissionsService()->getPermissionsForUserGroup($this->loginUser->uid);
             if ($permissions < 1) {
                 $this->showError('page.status.404');

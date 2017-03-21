@@ -42,7 +42,7 @@ class PwFresh
      */
     public function fetchFresh($ids)
     {
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             return [];
         }
 
@@ -94,7 +94,7 @@ class PwFresh
      */
     public function getAttentionFresh($uid, $limit = 20, $offset = 0)
     {
-        if (!$fresh = $this->_getRelationDao()->get($uid, $limit, $offset)) {
+        if (! $fresh = $this->_getRelationDao()->get($uid, $limit, $offset)) {
             return [];
         }
         $fresh_ids = $result = [];
@@ -134,7 +134,7 @@ class PwFresh
      */
     public function countAttentionFreshByUid($uid, $uids)
     {
-        if (empty($uid) || empty($uids) || !is_array($uids)) {
+        if (empty($uid) || empty($uids) || ! is_array($uids)) {
             return 0;
         }
 
@@ -153,10 +153,10 @@ class PwFresh
      */
     public function fetchAttentionFreshByUid($uid, $uids, $limit = 20, $offset = 0)
     {
-        if (empty($uid) || empty($uids) || !is_array($uids)) {
+        if (empty($uid) || empty($uids) || ! is_array($uids)) {
             return [];
         }
-        if (!$fresh = $this->_getRelationDao()->fetchAttentionFreshByUid($uid, $uids, $limit, $offset)) {
+        if (! $fresh = $this->_getRelationDao()->fetchAttentionFreshByUid($uid, $uids, $limit, $offset)) {
             return [];
         }
         $fresh_ids = $result = [];
@@ -184,7 +184,7 @@ class PwFresh
      */
     public function getFreshByType($type, $srcIds)
     {
-        if (empty($srcIds) || !is_array($srcIds)) {
+        if (empty($srcIds) || ! is_array($srcIds)) {
             return [];
         }
 
@@ -202,7 +202,7 @@ class PwFresh
      */
     public function send($uid, $type, $srcId)
     {
-        if (!$uid || !$srcId) {
+        if (! $uid || ! $srcId) {
             return 0;
         }
         $data = [
@@ -211,7 +211,7 @@ class PwFresh
             'created_userid' => $uid,
             'created_time'   => Pw::getTime(),
         ];
-        if (!$freshId = $this->_getDao()->addFresh($data)) {
+        if (! $freshId = $this->_getDao()->addFresh($data)) {
             return 0;
         }
         $this->_addRelation($uid, $freshId, $type);
@@ -228,7 +228,7 @@ class PwFresh
      */
     public function batchDelete($ids)
     {
-        if (empty($ids) || !is_array($ids)) {
+        if (empty($ids) || ! is_array($ids)) {
             return false;
         }
         $this->_getDao()->batchDelete($ids);
@@ -247,7 +247,7 @@ class PwFresh
      */
     public function batchDeleteByType($type, $srcIds)
     {
-        if (!$result = $this->getFreshByType($type, $srcIds)) {
+        if (! $result = $this->getFreshByType($type, $srcIds)) {
             return false;
         }
 
@@ -298,7 +298,7 @@ class PwFresh
      */
     public function batchAddRelation($data)
     {
-        if (empty($data) || !is_array($data)) {
+        if (empty($data) || ! is_array($data)) {
             return false;
         }
 

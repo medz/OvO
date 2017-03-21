@@ -27,7 +27,7 @@ class PwTag
      */
     public function addTag(PwTagDm $dm)
     {
-        if (!$dm instanceof PwTagDm) {
+        if (! $dm instanceof PwTagDm) {
             return new PwError('TAG:data_error');
         }
         if (($result = $dm->beforeAdd()) !== true) {
@@ -45,7 +45,7 @@ class PwTag
      */
     public function updateTag(PwTagDm $dm)
     {
-        if (!$dm instanceof PwTagDm) {
+        if (! $dm instanceof PwTagDm) {
             return new PwError('TAG:data_error');
         }
         if (($result = $dm->beforeUpdate()) !== true) {
@@ -65,7 +65,7 @@ class PwTag
     {
         $data = [];
         foreach ($tagDms as $dm) {
-            if (!$dm instanceof PwTagDm) {
+            if (! $dm instanceof PwTagDm) {
                 return new PwError('TAG:data_error');
             }
             $tagIds[] = $dm->tag_id;
@@ -81,7 +81,7 @@ class PwTag
      */
     public function batchDelete($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return false;
         }
 
@@ -117,7 +117,7 @@ class PwTag
      */
     public function batchAddTagRecord($fields)
     {
-        if (!is_array($fields) || !$fields) {
+        if (! is_array($fields) || ! $fields) {
             return false;
         }
         $data = [];
@@ -178,14 +178,14 @@ class PwTag
      */
     public function addRelation(PwTagDm $dm)
     {
-        if (!$dm instanceof PwTagDm) {
+        if (! $dm instanceof PwTagDm) {
             return new PwError('TAG:data_error');
         }
         if ($dm->tag_id < 1) {
             return false;
         }
         $data = $dm->getData();
-        if (!$data['param_id']) {
+        if (! $data['param_id']) {
             return false;
         }
         $result = (int) $this->_getTagRelationDao()->addRelation(array_merge(['tag_id' => $dm->tag_id], $data));
@@ -200,17 +200,17 @@ class PwTag
      */
     public function batchAddRelation($dms)
     {
-        if (!is_array($dms) || !$dms) {
+        if (! is_array($dms) || ! $dms) {
             return false;
         }
         $data = [];
         foreach ($dms as $dm) {
-            if (!$dm instanceof PwTagDm) {
+            if (! $dm instanceof PwTagDm) {
                 return new PwError('TAG:data_error');
             }
             $data[] = array_merge(['tag_id' => $dm->tag_id], $dm->getData());
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -225,7 +225,7 @@ class PwTag
      */
     public function updateRelation($typeId, $paramId, $id, $dm)
     {
-        if (!$dm instanceof PwTagDm) {
+        if (! $dm instanceof PwTagDm) {
             return new PwError('TAG:data_error');
         }
         if ($id < 1 || $paramId < 1) {
@@ -247,7 +247,7 @@ class PwTag
     {
         $typeId = intval($typeId);
         $paramId = intval($paramId);
-        if ($typeId < 1 || $paramId < 1 || !is_array($tagIds) || !$tagIds) {
+        if ($typeId < 1 || $paramId < 1 || ! is_array($tagIds) || ! $tagIds) {
             return false;
         }
         $result = $this->_getTagRelationDao()->batchDeleteRelationsByType($typeId, $paramId, $tagIds);
@@ -289,7 +289,7 @@ class PwTag
     public function batchDeleteRelation($typeId, $paramIds)
     {
         $typeId = intval($typeId);
-        if ($typeId < 1 || !is_array($paramIds) || !count($paramIds)) {
+        if ($typeId < 1 || ! is_array($paramIds) || ! count($paramIds)) {
             return false;
         }
 
@@ -323,7 +323,7 @@ class PwTag
      */
     public function deleteTagRecords($tagIds)
     {
-        if (!is_array($tagIds) || !$tagIds) {
+        if (! is_array($tagIds) || ! $tagIds) {
             return false;
         }
         $this->_getTagRecordDao()->deleteByTagIds($tagIds);
@@ -336,7 +336,7 @@ class PwTag
      */
     public function deleteRelations($tagIds)
     {
-        if (!is_array($tagIds) || !$tagIds) {
+        if (! is_array($tagIds) || ! $tagIds) {
             return false;
         }
         $this->_getTagRelationDao()->deleteByTagIds($tagIds);
@@ -350,7 +350,7 @@ class PwTag
      */
     public function updateTags($tagIds, PwTagDm $dm)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return new PwError('TAG:data_error');
         }
 
@@ -412,7 +412,7 @@ class PwTag
      */
     public function getTagsByNames($tagNames)
     {
-        if (!is_array($tagNames) || !count($tagNames)) {
+        if (! is_array($tagNames) || ! count($tagNames)) {
             return [];
         }
 
@@ -463,7 +463,7 @@ class PwTag
     public function getTagsByParamIds($typeId, $paramIds)
     {
         $typeId = intval($typeId);
-        if ($typeId < 1 || !is_array($paramIds) || !count($paramIds)) {
+        if ($typeId < 1 || ! is_array($paramIds) || ! count($paramIds)) {
             return [];
         }
 
@@ -501,7 +501,7 @@ class PwTag
         if ($num < 1) {
             return [];
         }
-        if (!$categoryId) {
+        if (! $categoryId) {
             return $this->_getTagRecordDao()->getHotTags($num);
         } else {
             return $this->_getTagRecordDao()->getHotTagsByCategory($categoryId, $num);
@@ -556,7 +556,7 @@ class PwTag
      */
     public function fetchTag($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return [];
         }
 
@@ -607,7 +607,7 @@ class PwTag
      */
     public function fetchByTypeIdAndParamIds($typeId, $paramIds)
     {
-        if ($typeId < 1 || !is_array($paramIds) || !$paramIds) {
+        if ($typeId < 1 || ! is_array($paramIds) || ! $paramIds) {
             return [];
         }
 

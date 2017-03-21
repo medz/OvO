@@ -9,7 +9,7 @@ class PwReportThread extends PwReportAction
     {
         $threadDs = Wekit::load('forum.PwThread');
         $result = $threadDs->getThread($type_id);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
         $content = Pw::substrs($result['subject'], 20);

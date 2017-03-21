@@ -138,16 +138,16 @@ class PwUserBanInfoDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!$this->getField('created_time')) {
+        if (! $this->getField('created_time')) {
             $this->_data['created_time'] = Pw::getTime();
         }
-        if (!$this->getField('uid')) {
+        if (! $this->getField('uid')) {
             return new PwError('USER:ban.type.require');
         }
-        if (!$this->getField('typeid')) {
+        if (! $this->getField('typeid')) {
             return new PwError('USER:ban.type.require');
         }
-        if (!$this->getField('reason')) {
+        if (! $this->getField('reason')) {
             return new PwError('USER:ban.reason.require');
         }
 
@@ -159,10 +159,10 @@ class PwUserBanInfoDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->getField('typeid')) {
+        if (! $this->getField('typeid')) {
             return new PwError('USER:ban.type.require');
         }
-        if (!$this->getField('reason')) {
+        if (! $this->getField('reason')) {
             return new PwError('USER:ban.reason.require');
         }
 

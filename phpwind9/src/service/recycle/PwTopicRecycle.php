@@ -22,7 +22,7 @@ class PwTopicRecycle
      */
     public function fetchRecord($tids)
     {
-        if (!$tids || !is_array($tids)) {
+        if (! $tids || ! is_array($tids)) {
             return [];
         }
 
@@ -54,7 +54,7 @@ class PwTopicRecycle
      */
     public function batchAdd($dms)
     {
-        if (empty($dms) || !is_array($dms)) {
+        if (empty($dms) || ! is_array($dms)) {
             return false;
         }
         $data = [];
@@ -63,7 +63,7 @@ class PwTopicRecycle
                 $data[] = $dm->getData();
             }
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 

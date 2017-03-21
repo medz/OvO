@@ -81,7 +81,7 @@ class SetbbsController extends AdminBaseController
         }
         $i = 10000;
         foreach ($allInfo as $key => $value) {
-            (!isset($order[$key]) || $order[$key] === '') && $order[$key] = $i++;
+            (! isset($order[$key]) || $order[$key] === '') && $order[$key] = $i++;
         }
         asort($order);
         reset($order);

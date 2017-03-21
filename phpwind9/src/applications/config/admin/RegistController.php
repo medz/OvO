@@ -27,7 +27,7 @@ class RegistController extends AdminBaseController
         $pwCreditBo = PwCreditBo::getInstance();
 
         $config = Wekit::C()->getValues('register');
-        if (!$config['active.field']) {
+        if (! $config['active.field']) {
             $config['active.field'] = [];
         }
 
@@ -119,7 +119,7 @@ class RegistController extends AdminBaseController
         $groupTypes = $userGroup->getTypeNames();
 
         $config = Wekit::C()->getValues('login');
-        if (!$config['question.groups']) {
+        if (! $config['question.groups']) {
             $config['question.groups'] = [];
         }
         $this->setOutput($config, 'config');
@@ -135,7 +135,7 @@ class RegistController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $way = $this->getInput('ways', 'post');
-        if (!$way) {
+        if (! $way) {
             $this->showError('config.login.type.require');
         }
         $config = new PwConfigSet('login');
@@ -164,7 +164,7 @@ class RegistController extends AdminBaseController
     public function doguideAction()
     {
         $config = $this->getInput('config', 'post');
-        if (!$config) {
+        if (! $config) {
             $this->showError('ADMIN:fail');
         }
         /* @var $guideService PwUserRegisterGuideService */

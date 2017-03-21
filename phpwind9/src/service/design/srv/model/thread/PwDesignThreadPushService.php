@@ -41,11 +41,11 @@ class PwDesignThreadPushService
         $extend = '';
         $pushDs = Wekit::load('design.PwDesignPush');
         $push = $pushDs->getPush($pushid);
-        if (!$push) {
+        if (! $push) {
             return false;
         }
         $thread = Wekit::load('forum.PwThread')->getThread($push['push_from_id']);
-        if (!$thread) {
+        if (! $thread) {
             return false;
         }
         $info = unserialize($push['push_extend']);

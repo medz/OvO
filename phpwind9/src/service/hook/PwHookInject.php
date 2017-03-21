@@ -220,7 +220,7 @@ class PwHookInject
      */
     public function fetch($ids)
     {
-        if (!$ids) {
+        if (! $ids) {
             return [];
         }
 

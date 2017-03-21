@@ -47,7 +47,7 @@ class PwUserActiveCode
         if (($uid = intval($uid)) <= 0) {
             return new PwError('USER:illegal.id');
         }
-        if (!WindValidator::isEmail($email)) {
+        if (! WindValidator::isEmail($email)) {
             return new PwError('USER:user.error.-7');
         }
         $data = ['uid' => $uid, 'email' => $email, 'code' => $code, 'send_time' => $time, 'typeid' => $typeid];

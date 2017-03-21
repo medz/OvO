@@ -19,7 +19,7 @@ class PwMedalCache
      */
     public function fetchMedal($medalIds)
     {
-        if (!is_array($medalIds)) {
+        if (! is_array($medalIds)) {
             return [];
         }
         $_medals = [];
@@ -28,7 +28,7 @@ class PwMedalCache
         $attachUrl = Pw::getPath('').'medal/';
         $localUrl = WindUrlHelper::checkUrl(PUBLIC_RES.'/images/medal/', PUBLIC_URL).'/';
         foreach ($medalIds as $id) {
-            if (!isset($medals[$id])) {
+            if (! isset($medals[$id])) {
                 continue;
             }
             $path = $medals[$id]['path'] ? $attachUrl : $localUrl;
@@ -48,12 +48,12 @@ class PwMedalCache
      */
     public function fetchUserMedal($userMedals)
     {
-        if (!is_array($userMedals)) {
+        if (! is_array($userMedals)) {
             return [];
         }
         $_userMedalIds = $_allMedalId = $_medals = [];
         foreach ($userMedals as $uid => $medalids) {
-            $_userMedalIds[$uid] = !$userMedals[$uid] ? [] : explode(',', $userMedals[$uid]);
+            $_userMedalIds[$uid] = ! $userMedals[$uid] ? [] : explode(',', $userMedals[$uid]);
             $_allMedalId = array_merge($_allMedalId, $_userMedalIds[$uid]);
         }
         $_allMedalId = array_unique($_allMedalId);
@@ -64,7 +64,7 @@ class PwMedalCache
         foreach ($_userMedalIds as $uid => $medalIds) {
             $_medalInfo = [];
             foreach ($medalIds as $id) {
-                if (!$medals[$id]) {
+                if (! $medals[$id]) {
                     continue;
                 }
                 $path = $medals[$id]['path'] ? $attachUrl : $localUrl;
@@ -90,7 +90,7 @@ class PwMedalCache
      */
     public function getMyAndAutoMedal($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
         $_medals = $myMedalIds = $status = [];
@@ -107,7 +107,7 @@ class PwMedalCache
         $medalIds = array_merge($myMedalIds, $autoMedalIds);
         $medalIds = array_unique($medalIds);
         foreach ($medalIds as $id) {
-            if (!isset($medals[$id])) {
+            if (! isset($medals[$id])) {
                 continue;
             }
             $medals[$id]['award_status'] = isset($status[$id]) ? $status[$id] : 0;

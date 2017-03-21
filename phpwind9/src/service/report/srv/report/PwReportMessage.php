@@ -6,7 +6,7 @@ class PwReportMessage extends PwReportAction
     public function buildDm($type_id)
     {
         $result = $this->_getWindid()->getMessageById($type_id);
-        if (!$result) {
+        if (! $result) {
             return false;
         }
         $dm = new PwReportDm();

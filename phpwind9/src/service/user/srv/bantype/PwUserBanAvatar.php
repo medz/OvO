@@ -42,7 +42,7 @@ class PwUserBanAvatar implements PwUserBanTypeInterface
         /* @var $userDs PwUser */
         $userDs = Wekit::load('SRV:user.PwUser');
         $info = $userDs->getUserByUid($uid, PwUser::FETCH_MAIN);
-        if (!Pw::getstatus($info['status'], PwUser::STATUS_BAN_AVATAR)) {
+        if (! Pw::getstatus($info['status'], PwUser::STATUS_BAN_AVATAR)) {
             return $info['status'];
         } //已经解禁不需要再次更改
 

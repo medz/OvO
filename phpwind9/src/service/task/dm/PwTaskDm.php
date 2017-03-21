@@ -282,7 +282,7 @@ class PwTaskDm extends PwBaseDm
         if (empty($this->_data['description'])) {
             return new PwError('TASK:description.empty');
         }
-        if (!isset($this->_data['is_open'])) {
+        if (! isset($this->_data['is_open'])) {
             $this->_data['is_open'] = 0;
         }
         $this->_data['user_groups'] = implode(',', $this->groups);
@@ -306,7 +306,7 @@ class PwTaskDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->id) {
+        if (! $this->id) {
             return new PwError('TASK:id.empty');
         }
         if (empty($this->_data['title'])) {
@@ -343,15 +343,15 @@ class PwTaskDm extends PwBaseDm
      */
     protected function filterConditionData()
     {
-        if (!isset($this->_data['conditions'])) {
+        if (! isset($this->_data['conditions'])) {
             return true;
         }
         $condition = $this->_data['conditions'];
-        if (!$condition || !is_array($condition)) {
+        if (! $condition || ! is_array($condition)) {
             return new PwError('TASK:condition.require');
         }
         //完成条件
-        if (!$condition['child']) {
+        if (! $condition['child']) {
             return new PwError('TASK:condition.require');
         }
         $url = $condition['url'];
@@ -372,12 +372,12 @@ class PwTaskDm extends PwBaseDm
      */
     protected function filterRewardData()
     {
-        if (!isset($this->_data['reward']) || !$this->decoration) {
+        if (! isset($this->_data['reward']) || ! $this->decoration) {
             $this->_data['reward'] = serialize([]);
 
             return true;
         }
-        if (!is_array($this->_data['reward'])) {
+        if (! is_array($this->_data['reward'])) {
             return new PwError('TASK:condition.reward.format.error');
         }
 

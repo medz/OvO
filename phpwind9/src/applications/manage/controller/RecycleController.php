@@ -20,7 +20,7 @@ class RecycleController extends BaseManageController
     {
         parent::beforeAction($handlerAdapter);
         $result = $this->loginUser->getPermission('panel_recycle_manage', false, []);
-        if (!$result['recycle']) {
+        if (! $result['recycle']) {
             $this->showError('BBS:recycle.right.error');
         }
     }
@@ -101,7 +101,7 @@ class RecycleController extends BaseManageController
     public function doDeleteTopicAction()
     {
         $tids = $this->getInput('tids', 'post');
-        if (!$tids) {
+        if (! $tids) {
             $this->showError('operate.fail');
         }
 
@@ -117,7 +117,7 @@ class RecycleController extends BaseManageController
     public function doRevertTopicAction()
     {
         $tids = $this->getInput('tids', 'post');
-        if (!$tids) {
+        if (! $tids) {
             $this->showError('operate.fail');
         }
 
@@ -203,7 +203,7 @@ class RecycleController extends BaseManageController
     public function doDeleteReplyAction()
     {
         $pids = $this->getInput('pids', 'post');
-        if (!$pids) {
+        if (! $pids) {
             $this->showError('operate.fail');
         }
 
@@ -219,7 +219,7 @@ class RecycleController extends BaseManageController
     public function doRevertReplyAction()
     {
         $pids = $this->getInput('pids', 'post');
-        if (!$pids) {
+        if (! $pids) {
             $this->showError('operate.fail');
         }
 

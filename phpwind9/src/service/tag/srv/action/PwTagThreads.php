@@ -52,7 +52,7 @@ class PwTagThreads extends PwTagAction
     {
         $fids = [];
         foreach ($forums as $key => $value) {
-            if (($value['allow_visit'] && !$user->inGroup(explode(',', $value['allow_visit']))) || ($value['allow_read'] && !$user->inGroup(explode(',', $value['allow_read'])))) {
+            if (($value['allow_visit'] && ! $user->inGroup(explode(',', $value['allow_visit']))) || ($value['allow_read'] && ! $user->inGroup(explode(',', $value['allow_read'])))) {
                 $fids[] = $value['fid'];
             }
         }

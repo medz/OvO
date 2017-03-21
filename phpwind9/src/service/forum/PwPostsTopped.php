@@ -72,7 +72,7 @@ class PwPostsTopped
      */
     public function batchDeleteTopped($pids)
     {
-        if (!is_array($pids) || !$pids) {
+        if (! is_array($pids) || ! $pids) {
             return false;
         }
 

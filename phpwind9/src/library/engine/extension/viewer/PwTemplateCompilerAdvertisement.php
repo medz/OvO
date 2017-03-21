@@ -30,7 +30,7 @@ class PwTemplateCompilerAdvertisement extends AbstractWindTemplateCompiler
         } else {
             $ad = $pwAdDs->getByPid($this->id);
         }
-        if (!$ad) {
+        if (! $ad) {
             return '';
         }
         $html = $this->_buildHtml($ad);

@@ -42,7 +42,7 @@ class PwCreditSetService
             asort($freeKeys);
 
             foreach ($newCredit as $key => $value) {
-                if (!$value['name']) {
+                if (! $value['name']) {
                     continue;
                 }
                 $_key = array_shift($freeKeys);
@@ -66,13 +66,13 @@ class PwCreditSetService
     {
         $struct = $this->_getDs()->getCreditStruct();
         foreach ($credits as $key => $value) {
-            if (!in_array('credit'.$key, $struct)) {
+            if (! in_array('credit'.$key, $struct)) {
                 $this->_getDs()->alterAddCredit($key);
             }
         }
         foreach ($struct as $key => $value) {
             $_key = substr($value, 6);
-            if (!isset($credits[$_key])) {
+            if (! isset($credits[$_key])) {
                 if ($_key < 9) {
                     $this->_getDs()->clearCredit($_key);
                 } else {

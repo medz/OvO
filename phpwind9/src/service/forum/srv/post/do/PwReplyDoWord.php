@@ -30,7 +30,7 @@ class PwReplyDoWord extends PwPostDoBase
         $wordFilter = Wekit::load('SRV:word.srv.PwWordFilter');
 
         list($type, $words, $isTip) = $wordFilter->filterWord($content);
-        if (!$type) {
+        if (! $type) {
             return true;
         }
         $words = array_unique($words);

@@ -28,7 +28,7 @@ class DesignBaseController extends AdminBaseController
 
         $this->bo = new PwDesignModuleBo($moduleid);
         $module = $this->bo->getModule();
-        if (!$module) {
+        if (! $module) {
             $this->showError('operate.fail');
         }
         if ($module['module_type'] == PwDesignModule::TYPE_SCRIPT) {
@@ -37,7 +37,7 @@ class DesignBaseController extends AdminBaseController
         $modelBo = new PwDesignModelBo($module['model_flag']);
         $model = $modelBo->getModel();
         $isdata = true;
-        if ($model['tab'] && !in_array('data', $model['tab'])) {
+        if ($model['tab'] && ! in_array('data', $model['tab'])) {
             $isdata = false;
         }
         $this->setOutput($moduleid, 'moduleid');

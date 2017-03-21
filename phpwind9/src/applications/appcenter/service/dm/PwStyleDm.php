@@ -158,7 +158,7 @@ class PwStyleDm extends PwBaseDm
     protected function _beforeUpdate()
     {
         // TODO Auto-generated method stub
-        if (!isset($this->_data['app_id']) || $this->_data['app_id'] < 0) {
+        if (! isset($this->_data['app_id']) || $this->_data['app_id'] < 0) {
             return new PwError('STYLE:id.illegal');
         }
 

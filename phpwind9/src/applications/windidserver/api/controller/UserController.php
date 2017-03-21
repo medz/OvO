@@ -17,7 +17,7 @@ class UserController extends OpenBaseController
     public function loginAction()
     {
         list($userid, $password, $type, $ifcheck, $question, $answer) = $this->getInput(['userid', 'password', 'type', 'ifcheck', 'question', 'answer'], 'post');
-        !$type && $type = 2;
+        ! $type && $type = 2;
         $ifcheck = (bool) $ifcheck;
         $result = $this->_getUserService()->login($userid, $password, $type, $ifcheck, $question, $answer);
         $this->output($result);
@@ -62,8 +62,8 @@ class UserController extends OpenBaseController
     public function getAction()
     {
         list($userid, $type, $fetch) = $this->getInput(['userid', 'type', 'fetch'], 'get');
-        !$type && $type = 1;
-        !$fetch && $fetch = 1;
+        ! $type && $type = 1;
+        ! $fetch && $fetch = 1;
         $result = $this->_getUserService()->getUser($userid, $type, $fetch);
         $this->output($result);
     }
@@ -74,8 +74,8 @@ class UserController extends OpenBaseController
     public function fecthAction()
     {
         list($userids, $type, $fetch) = $this->getInput(['userids', 'type', 'fetch'], 'get');
-        !$type && $type = 1;
-        !$fetch && $fetch = 1;
+        ! $type && $type = 1;
+        ! $fetch && $fetch = 1;
         $result = $this->_getUserService()->fecthUser($userids, $type, $fetch);
         $this->output($result);
     }

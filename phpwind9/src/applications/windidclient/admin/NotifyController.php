@@ -89,7 +89,7 @@ class NotifyController extends AdminBaseController
     public function deleteAction()
     {
         $logid = (int) $this->getInput('logid', 'post');
-        if (!$logid) {
+        if (! $logid) {
             $this->showError('operate.fail');
         }
         if ($this->_getNotifyDs()->deleteLog($logid)) {

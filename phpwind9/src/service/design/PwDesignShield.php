@@ -19,7 +19,7 @@ class PwDesignShield
 
     public function fetchByFromidsAndApp($fromids, $fromapp)
     {
-        if (!is_array($fromids) || !$fromids || !$fromapp) {
+        if (! is_array($fromids) || ! $fromids || ! $fromapp) {
             return [];
         }
 
@@ -57,7 +57,7 @@ class PwDesignShield
     public function deleteShield($id)
     {
         $id = (int) $id;
-        if (!$id) {
+        if (! $id) {
             return false;
         }
 
@@ -72,7 +72,7 @@ class PwDesignShield
      */
     public function antiDelete($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return false;
         }
 

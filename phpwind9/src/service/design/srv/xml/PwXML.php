@@ -15,7 +15,7 @@ class PwXML
 
     public function __construct()
     {
-        if (!class_exists('DOMDocument')) {
+        if (! class_exists('DOMDocument')) {
             throw new WindException('DOMDocument is not exist.');
         }
         $this->dom = new DOMDocument('1.0', 'utf-8');

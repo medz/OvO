@@ -53,7 +53,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
      */
     public function check($permission)
     {
-        if (!isset($permission['ban']) || !$permission['ban']) {
+        if (! isset($permission['ban']) || ! $permission['ban']) {
             return false;
         }
         //管理组的用户不能被禁言
@@ -224,7 +224,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
         }
         $data = $_notice = [];
         foreach ($this->banInfo->types as $type) {
-            if (!in_array($type, $rightTypes)) {
+            if (! in_array($type, $rightTypes)) {
                 continue;
             }
             foreach ($this->selectBanUsers as $uid => $_item) {
@@ -263,7 +263,7 @@ class PwThreadManageDoBan extends PwThreadManageDo
         $banUids = array_keys($this->getBanUsers());
         //【用户禁止帖子删除】
         //删除当前主题帖子  当禁止非楼主时，不能删除当前主题
-        if (1 == $this->delete['current'] && 1 === $right['delCurrentThread'] && !array_diff($banUids, $this->threadCreatedUids)) {
+        if (1 == $this->delete['current'] && 1 === $right['delCurrentThread'] && ! array_diff($banUids, $this->threadCreatedUids)) {
 
             //【用户禁止帖子删除】-根据帖子ID列表删除帖子到回收站
             $service = new PwDeleteTopic(new PwFetchTopicByTid($this->tids), $this->loginUser);

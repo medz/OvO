@@ -17,11 +17,11 @@ class PwTaskMemberPunchDo implements PwTaskCompleteInterface
      */
     public function doPunch($dm)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $punchData = @unserialize($dm->getField('punch'));
-        if (!$punchData || !is_array($punchData)) {
+        if (! $punchData || ! is_array($punchData)) {
             return false;
         }
         /* @var $bo PwUserBo */

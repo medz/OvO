@@ -33,7 +33,7 @@ class PwPatchUpdate
         $url = PwApplicationHelper::acloudUrl(
             ['a' => 'forward', 'do' => 'getSecurityPatch', 'pwversion' => NEXT_VERSION]);
         $r = PwApplicationHelper::requestAcloudData($url);
-        if (!is_array($r)) {
+        if (! is_array($r)) {
             return '无法连接云平台!';
         }
         if ($r['code'] !== '0') {
@@ -60,7 +60,7 @@ class PwPatchUpdate
     public function checkUpgrade()
     {
         $patches = $this->getOnlinePatchList();
-        if (!is_array($patches)) {
+        if (! is_array($patches)) {
             return $patches;
         }
         if ($patches) {
@@ -85,7 +85,7 @@ class PwPatchUpdate
     {
         $tmpfiles = $this->bakFiles = [];
         WindFolder::mkRecur($this->tmpPath);
-        if ($this->ftp && !is_object($this->ftp)) {
+        if ($this->ftp && ! is_object($this->ftp)) {
             try {
                 $this->ftp = $this->ftp['sftp'] ? new PwSftpSave($this->ftp) : new PwFtpSave($this->ftp);
             } catch (WindFtpException $e) {
@@ -120,10 +120,10 @@ class PwPatchUpdate
                     return false;
                 }
             } else {
-                if (!@copy($filename, $bakfile)) {
+                if (! @copy($filename, $bakfile)) {
                     return new PwError('APPCENTER:upgrade.copy.fail', [$rule['filename']]);
                 }
-                if (!@copy($tmpfile, $filename)) {
+                if (! @copy($tmpfile, $filename)) {
                     return new PwError('APPCENTER:upgrade.copy.fail', [$rule['filename']]);
                 }
             }
@@ -146,7 +146,7 @@ class PwPatchUpdate
 
     public function revert()
     {
-        if (!empty($this->bakFiles)) {
+        if (! empty($this->bakFiles)) {
             foreach ($this->bakFiles as $backfile) {
                 if ($this->ftp) {
                     try {
@@ -155,7 +155,7 @@ class PwPatchUpdate
                         return false;
                     }
                 } else {
-                    if (!@copy($backfile, substr($backfile, -13))) {
+                    if (! @copy($backfile, substr($backfile, -13))) {
                         return false;
                     }
                 }
@@ -168,7 +168,7 @@ class PwPatchUpdate
     public function writeAble($patch)
     {
         foreach ($patch['rule'] as $rule) {
-            if (!PwSystemHelper::checkWriteAble(ROOT_PATH.$rule['filename'])) {
+            if (! PwSystemHelper::checkWriteAble(ROOT_PATH.$rule['filename'])) {
                 return false;
             }
         }

@@ -149,7 +149,7 @@ class PwTopicFresh extends PwBaseFresh
         $topic['pic'] = $topic['aids'] ? $this->_att->fetchOne($id.'_0') : [];
         $errcode = [];
         $topic = $this->_bulidContent($topic, $errcode);
-        !$topic['word_version'] && $topic['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($topic['content'], $topic['word_version']);
+        ! $topic['word_version'] && $topic['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($topic['content'], $topic['word_version']);
 
         $result = [
             'replies'          => $topic['replies'],
@@ -213,7 +213,7 @@ class PwReplyFresh extends PwBaseFresh
         $reply['pic'] = $reply['aids'] ? $this->_att->fetchOne($reply['tid'].'_'.$id) : [];
         $reply = $this->_bulidContent($reply, $errcode);
         $quote = $this->_bulidContent($quote, $_tmp);
-        !$reply['word_version'] && $reply['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($reply['content'], $reply['word_version']);
+        ! $reply['word_version'] && $reply['content'] = Wekit::load('SRV:word.srv.PwWordFilter')->replaceWord($reply['content'], $reply['word_version']);
 
         $result = [
             'replies'          => $reply['replies'],
@@ -267,7 +267,7 @@ class PwWeiboFresh extends PwBaseFresh
         $ids = [];
         $arr = $this->_weibo->fetch();
         foreach ($arr as $key => $value) {
-            if ($value['src_id'] && !isset($arr[$value['src_id']])) {
+            if ($value['src_id'] && ! isset($arr[$value['src_id']])) {
                 $ids[] = $value['src_id'];
             }
         }

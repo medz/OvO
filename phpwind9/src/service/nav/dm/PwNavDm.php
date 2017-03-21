@@ -54,10 +54,10 @@ class PwNavDm extends PwBaseDm
         if (is_array($router)) {
             $allow = ['m', 'c', 'a', 'tid', 'fid', 'id', 'uid', 'username', 'tab'];
             foreach ($router as $k => $v) {
-                if (!in_array($k, $allow)) {
+                if (! in_array($k, $allow)) {
                     continue;
                 }
-                if (!$v) {
+                if (! $v) {
                     continue;
                 }
                 $sign .= $v.'|';

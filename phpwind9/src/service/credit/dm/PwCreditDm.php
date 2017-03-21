@@ -22,7 +22,7 @@ class PwCreditDm
 
     public function getDm()
     {
-        if (!is_object($this->dm)) {
+        if (! is_object($this->dm)) {
             $dm = WindidApi::getDm('credit');
             $this->dm = new $dm($this->uid);
         }

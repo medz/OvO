@@ -26,7 +26,7 @@ class PwWindidInform
         Wind::import('SRC:service.user.bo.PwUserBo');
         Wind::import('SRC:service.user.srv.PwLoginService');
         $userBo = new PwUserBo($uid);
-        if ($userBo->isExists() && !Pw::getstatus($userBo->info['status'], PwUser::STATUS_UNACTIVE)) {
+        if ($userBo->isExists() && ! Pw::getstatus($userBo->info['status'], PwUser::STATUS_UNACTIVE)) {
             $srv = new PwLoginService();
             $ip = Wind::getApp()->getRequest()->getClientIp();
             $srv->setLoginCookie($userBo, $ip, 1);
@@ -119,7 +119,7 @@ class PwWindidInform
             $credits[$key]['unit'] = $value['unit'];
         }
         foreach ($credits as $key => $value) {
-            if (!isset($wcredits[$key])) {
+            if (! isset($wcredits[$key])) {
                 unset($credits[$key]);
             }
         }

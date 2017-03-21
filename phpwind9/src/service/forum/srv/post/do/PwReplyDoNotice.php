@@ -57,7 +57,7 @@ class PwReplyDoNotice extends PwPostDoBase
         $params['pid'] = $pid;
         $params['threadUserid'] = $info['created_userid'];
         $type = 'threadreply';
-        if (!$info['reply_notice'] || $this->user->uid == $info['created_userid']) {
+        if (! $info['reply_notice'] || $this->user->uid == $info['created_userid']) {
             return false;
         }
         $blackUid = Wekit::load('user.PwUserBlack')->checkUserBlack($this->user->uid, $info['created_userid']);
@@ -83,7 +83,7 @@ class PwReplyDoNotice extends PwPostDoBase
         $params['pid'] = $pid;
         $params['postUserid'] = $info['created_userid'];
         $type = 'postreply';
-        if (!$info['reply_notice'] || $this->user->uid == $info['created_userid']) {
+        if (! $info['reply_notice'] || $this->user->uid == $info['created_userid']) {
             return false;
         }
         $blackUid = Wekit::load('user.PwUserBlack')->checkUserBlack($this->user->uid, $info['created_userid']);

@@ -23,7 +23,7 @@ class WindidBoxMessage
         $vo = new WindidMessageSo();
         $vo->setFromUid($fromUid);
         $count = $this->_getMessageDs()->countMessage($vo);
-        if (!$count) {
+        if (! $count) {
             return [0, []];
         }
         $list = $this->_getMessageDs()->searchMessage($vo, $start, $limit);
@@ -57,7 +57,7 @@ class WindidBoxMessage
         $vo = new WindidMessageSo();
         $vo->setToUid($toUid);
         $count = $this->_getMessageDs()->countMessage($vo);
-        if (!$count) {
+        if (! $count) {
             return [0, []];
         }
         $list = $this->_getMessageDs()->searchMessage($vo, $start, $limit);

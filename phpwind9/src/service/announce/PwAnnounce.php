@@ -51,7 +51,7 @@ class PwAnnounce
      */
     public function batchDeleteAnnounce($aids)
     {
-        if (!$aids || !is_array($aids)) {
+        if (! $aids || ! is_array($aids)) {
             return false;
         }
 

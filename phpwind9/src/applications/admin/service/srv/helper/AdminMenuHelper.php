@@ -82,7 +82,7 @@ class AdminMenuHelper
             if (isset($_menus[$key])) {
                 continue;
             }
-            if (!is_array($menu) && count($menu) < 2) {
+            if (! is_array($menu) && count($menu) < 2) {
                 continue;
             }
             if (is_array($menu[1])) {
@@ -135,7 +135,7 @@ class AdminMenuHelper
             }
             $_tmp = isset($_node['parent']) ? $_node['parent'] : 'root';
             if (isset($menus[$_tmp])) {
-                if (!isset($menus[$_tmp]['items'])) {
+                if (! isset($menus[$_tmp]['items'])) {
                     continue;
                 }
                 $menus[$_tmp]['items'][$key] = &$menus[$key];
@@ -167,9 +167,9 @@ class AdminMenuHelper
                 $value['items'] = self::_parseMenuTops($value['items']);
             }
             $top = $value['top'];
-            if (!array_key_exists($top, $menus)) {
+            if (! array_key_exists($top, $menus)) {
                 $tmp[$key] = $value;
-            } elseif (!array_key_exists($top, $tmp)) {
+            } elseif (! array_key_exists($top, $tmp)) {
                 $tmp[$top] = $menus[$top];
                 $tmp[$key] = $value;
             } else {
@@ -196,17 +196,17 @@ class AdminMenuHelper
      */
     private static function _resolveMenuAuth($key, &$menu, &$menus)
     {
-        if (!isset($menu['url'])) {
+        if (! isset($menu['url'])) {
             return;
         }
         $action = $menu['url'];
         list($_action, $_arg) = explode('?', $action.'?');
         $_action = explode('/', trim($_action, '/').'/');
         end($_action);
-        if (!$_aAuth = prev($_action)) {
+        if (! $_aAuth = prev($_action)) {
             return;
         }
-        if (!$_cAuth = prev($_action)) {
+        if (! $_cAuth = prev($_action)) {
             return;
         }
         $_mAuth = prev($_action);

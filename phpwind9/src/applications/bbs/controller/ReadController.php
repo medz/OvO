@@ -29,7 +29,7 @@ class ReadController extends PwBaseController
 
         $pwforum = $threadDisplay->getForum();
         if ($pwforum->foruminfo['password']) {
-            if (!$this->loginUser->isExists()) {
+            if (! $this->loginUser->isExists()) {
                 $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $$pwforum->fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$pwforum->fid)) {
                 $this->forwardAction('bbs/forum/password', ['fid' => $pwforum->fid]);
@@ -83,8 +83,8 @@ class ReadController extends PwBaseController
         $this->setOutput($threadPermission, 'threadPermission');
         $this->setOutput($operateThread, 'operateThread');
         $this->setOutput($operateReply, 'operateReply');
-        $this->setOutput((!$this->loginUser->uid && !$this->allowPost($pwforum)) ? ' J_qlogin_trigger' : '', 'postNeedLogin');
-        $this->setOutput((!$this->loginUser->uid && !$this->allowReply($pwforum)) ? ' J_qlogin_trigger' : '', 'replyNeedLogin');
+        $this->setOutput((! $this->loginUser->uid && ! $this->allowPost($pwforum)) ? ' J_qlogin_trigger' : '', 'postNeedLogin');
+        $this->setOutput((! $this->loginUser->uid && ! $this->allowReply($pwforum)) ? ' J_qlogin_trigger' : '', 'replyNeedLogin');
 
         $this->setOutput($_cache['level']['ltitle'], 'ltitle');
         $this->setOutput($_cache['level']['lpic'], 'lpic');
@@ -128,7 +128,7 @@ class ReadController extends PwBaseController
         //锁定时间
         if ($pwforum->forumset['locktime'] && ($threadInfo['created_time'] + $pwforum->forumset['locktime'] * 86400) < Pw::getTime()) {
             $showReply = false;
-        } elseif (Pw::getstatus($threadInfo['tpcstatus'], PwThread::STATUS_LOCKED) && !$this->loginUser->getPermission('reply_locked_threads')) {
+        } elseif (Pw::getstatus($threadInfo['tpcstatus'], PwThread::STATUS_LOCKED) && ! $this->loginUser->getPermission('reply_locked_threads')) {
             $showReply = false;
         }
         $this->setOutput($showReply, 'showReply');
@@ -143,7 +143,7 @@ class ReadController extends PwBaseController
     {
         $tid = $this->getInput('tid');
         $pid = $this->getInput('pid');
-        if (!$tid) {
+        if (! $tid) {
             $post = Wekit::load('forum.PwThread')->getPost($pid);
             $tid = $post['tid'];
         }
@@ -164,7 +164,7 @@ class ReadController extends PwBaseController
     {
         $tid = $this->getInput('tid');
         $thread = Wekit::load('forum.PwThread')->getThread($tid);
-        if (!$thread) {
+        if (! $thread) {
             $this->showError('thread.not');
         }
         $nextThread = Wekit::load('forum.PwThreadExpand')->getThreadByFidUnderTime($thread['fid'], $thread['lastpost_time'], 1);
@@ -183,7 +183,7 @@ class ReadController extends PwBaseController
     {
         $tid = $this->getInput('tid');
         $thread = Wekit::load('forum.PwThread')->getThread($tid);
-        if (!$thread) {
+        if (! $thread) {
             $this->showError('thread.not');
         }
         $preThread = Wekit::load('forum.PwThreadExpand')->getThreadByFidOverTime($thread['fid'], $thread['lastpost_time'], 1);
@@ -221,7 +221,7 @@ class ReadController extends PwBaseController
         }
         $service = Wekit::load('online.srv.PwOnlineService');
         $createdTime = $service->forumOnline($fid);
-        if (!$createdTime) {
+        if (! $createdTime) {
             return false;
         }
         $dm = Wekit::load('online.dm.PwOnlineDm');

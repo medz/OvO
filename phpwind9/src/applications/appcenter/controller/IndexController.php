@@ -19,7 +19,7 @@ class IndexController extends PwBaseController
         $page < 1 && $page = 1;
         list($start, $num) = Pw::page2limit($page, $this->perpage);
         $orderBy = $this->getInput('orderby', 'get');
-        if (!$orderBy || !isset($this->orderBy[$orderBy])) {
+        if (! $orderBy || ! isset($this->orderBy[$orderBy])) {
             $orderBy = key($this->orderBy);
         }
         $count = $this->_appDs()->countByStatus(9);

@@ -20,7 +20,7 @@ class PwTemplateCompilerConfig extends AbstractWindTemplateCompiler
     public function compile($key, $content)
     {
         $content = substr($content, 4, -1);
-        if (!$content) {
+        if (! $content) {
             return '';
         }
         list($namespace, $name) = explode('.', $content.'.', 2);

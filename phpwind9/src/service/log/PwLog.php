@@ -32,7 +32,7 @@ class PwLog
 
     public function fetchLogByTid($tids, $typeid)
     {
-        if (empty($tids) || !is_array($tids) || empty($typeid) || !is_array($typeid)) {
+        if (empty($tids) || ! is_array($tids) || empty($typeid) || ! is_array($typeid)) {
             return [];
         }
 
@@ -93,7 +93,7 @@ class PwLog
         }
         $datas = [];
         foreach ($dms as $_dm) {
-            if (!$_dm instanceof PwLogDm) {
+            if (! $_dm instanceof PwLogDm) {
                 return false;
             }
             if (true !== ($r = $_dm->beforeAdd())) {
@@ -146,7 +146,7 @@ class PwLog
      */
     public function clearLogBeforeDatetime($time)
     {
-        if (!$time) {
+        if (! $time) {
             return false;
         }
 

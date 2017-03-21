@@ -77,7 +77,7 @@ class PwOnlineDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['ip'] && !$this->_data['uid']) {
+        if (! $this->_data['ip'] && ! $this->_data['uid']) {
             return new PwError('fail');
         }
 
@@ -86,7 +86,7 @@ class PwOnlineDm extends PwBaseDm
 
     protected function _beforeUpdate()
     {
-        if (!$this->_data['ip'] && !$this->_data['uid']) {
+        if (! $this->_data['ip'] && ! $this->_data['uid']) {
             return new PwError('fail');
         }
 

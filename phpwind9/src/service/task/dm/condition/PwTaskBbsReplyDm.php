@@ -16,24 +16,24 @@ class PwTaskBbsReplyDm extends PwTaskDm
      */
     protected function filterConditionData()
     {
-        if (!isset($this->_data['conditions'])) {
+        if (! isset($this->_data['conditions'])) {
             return true;
         }
         $condition = $this->_data['conditions'];
-        if (!$condition || !is_array($condition)) {
+        if (! $condition || ! is_array($condition)) {
             return new PwError('TASK:condition.require');
         }
 
-        if (!$condition['tid']) {
+        if (! $condition['tid']) {
             return new PwError('TASK:condition.reply.tid.require');
         }
-        if (!WindValidator::isNonNegative($condition['tid'])) {
+        if (! WindValidator::isNonNegative($condition['tid'])) {
             return new PwError('TASK:condition.reply.tid.isNonNegative');
         }
-        if (!$condition['num']) {
+        if (! $condition['num']) {
             return new PwError('TASK:condition.reply.num.require');
         }
-        if (!WindValidator::isNonNegative($condition['num'])) {
+        if (! WindValidator::isNonNegative($condition['num'])) {
             return new PwError('TASK:condition.reply.num.isNonNegative');
         }
         $condition['num'] = ceil($condition['num']);

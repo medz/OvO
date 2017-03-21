@@ -61,7 +61,7 @@ class WindidMessage
 
     public function fetchMessage($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return [];
         }
 
@@ -88,7 +88,7 @@ class WindidMessage
      */
     public function batchReadRelation($relationIds)
     {
-        if (!is_array($relationIds) || !$relationIds) {
+        if (! is_array($relationIds) || ! $relationIds) {
             return false;
         }
 
@@ -116,7 +116,7 @@ class WindidMessage
 
     public function batchDeleteRelationByDialogIds($dialogIds)
     {
-        if (!is_array($dialogIds) || !$dialogIds) {
+        if (! is_array($dialogIds) || ! $dialogIds) {
             return false;
         }
 
@@ -126,7 +126,7 @@ class WindidMessage
     public function batchDeleteByDialogAndMessages($dialogId, $messgeIds)
     {
         $dialogId = intval($dialogId);
-        if (!is_array($messgeIds) || !$dialogId) {
+        if (! is_array($messgeIds) || ! $dialogId) {
             return false;
         }
 
@@ -189,7 +189,7 @@ class WindidMessage
      */
     public function countUnreadMessageByDialogIds($dialogIds)
     {
-        if (!is_array($dialogIds) || !$dialogIds) {
+        if (! is_array($dialogIds) || ! $dialogIds) {
             return 0;
         }
 
@@ -205,7 +205,7 @@ class WindidMessage
      */
     public function addDialog(WindidMessageDm $dm)
     {
-        if (!$dm instanceof WindidMessageDm) {
+        if (! $dm instanceof WindidMessageDm) {
             return new WindidError('Message:data_error');
         }
         if (($result = $dm->beforeAddDialog()) !== true) {
@@ -265,7 +265,7 @@ class WindidMessage
     public function getDialogByUids($uid, $from_uids)
     {
         $uid = intval($uid);
-        if (!$uid || !$from_uids) {
+        if (! $uid || ! $from_uids) {
             return [];
         }
         $dialogs = $this->_getDialogDao()->getDialogByUids($uid, $from_uids);
@@ -288,7 +288,7 @@ class WindidMessage
     public function getUnreadDialogsByUid($uid, $limit = 20)
     {
         $uid = intval($uid);
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
 
@@ -357,7 +357,7 @@ class WindidMessage
     {
         $data = [];
         $rs = $this->_getDialogDao()->getDialogIds($uid);
-        if (!$rs) {
+        if (! $rs) {
             return $data;
         }
         foreach ($rs as $v) {
@@ -376,7 +376,7 @@ class WindidMessage
      */
     public function fetchDialog($dialogIds)
     {
-        if (!is_array($dialogIds) || !$dialogIds) {
+        if (! is_array($dialogIds) || ! $dialogIds) {
             return [];
         }
         $dialogs = $this->_getDialogDao()->fetchDialogByDialogIds($dialogIds);
@@ -414,7 +414,7 @@ class WindidMessage
         // 获取对话关系
         $mesagesRelations = $this->getDialogMessageRelation($dialogId, $limit, $start);
 
-        if (!$mesagesRelations) {
+        if (! $mesagesRelations) {
             return $mesages;
         }
         $mesages = $this->_getDao()->getMessagesByIds(array_keys($mesagesRelations));
@@ -436,7 +436,7 @@ class WindidMessage
      */
     public function batchDeleteRelation($ids)
     {
-        if (!is_array($ids) || !count($ids)) {
+        if (! is_array($ids) || ! count($ids)) {
             return false;
         }
 
@@ -450,7 +450,7 @@ class WindidMessage
      */
     public function getRelationsByMessageIds($messageIds)
     {
-        if (!is_array($messageIds) || !$messageIds) {
+        if (! is_array($messageIds) || ! $messageIds) {
             return [];
         }
 
@@ -465,7 +465,7 @@ class WindidMessage
      */
     public function fetchRelationByMessageIds($messageIds, $issend = 0)
     {
-        if (!is_array($messageIds) || !$messageIds) {
+        if (! is_array($messageIds) || ! $messageIds) {
             return [];
         }
         $issend = intval($issend);
@@ -484,8 +484,8 @@ class WindidMessage
     public function countUnreadByUidAndFrom($uid, $fromUids)
     {
         $uid = intval($uid);
-        $fromUids = !is_array($fromUids) ? [intval($fromUids)] : $fromUids;
-        if ($uid < 1 || !count($fromUids)) {
+        $fromUids = ! is_array($fromUids) ? [intval($fromUids)] : $fromUids;
+        if ($uid < 1 || ! count($fromUids)) {
             return false;
         }
 
@@ -504,7 +504,7 @@ class WindidMessage
 
     public function batchDeleteDialog($dialogIds)
     {
-        if (!is_array($dialogIds) || !$dialogIds) {
+        if (! is_array($dialogIds) || ! $dialogIds) {
             return false;
         }
 
@@ -522,7 +522,7 @@ class WindidMessage
     public function readMessages($dialogId, $messageIds)
     {
         $dialogId = intval($dialogId);
-        if (!$dialogId || !$messageIds) {
+        if (! $dialogId || ! $messageIds) {
             return 0;
         }
 

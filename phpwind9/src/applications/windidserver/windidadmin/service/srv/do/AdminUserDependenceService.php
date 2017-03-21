@@ -78,7 +78,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
     */
     public function setUser($username, $password, $email, $groupid = 3, $uid = 0)
     {
-        if (!$email) {
+        if (! $email) {
             return new PwError('ADMIN:founder.edit.fail.email.empty');
         }
         Wind::import('WSRV:user.dm.WindidUserDm');
@@ -86,7 +86,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
         $userDm->setEmail($email);
         //$userDm->setGroupid($groupid);
         $password && $userDm->setPassword($password);
-        if (!$uid) {
+        if (! $uid) {
             $userDm->setUsername($username);
 
             return $this->loadUser()->addUser($userDm);

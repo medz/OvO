@@ -715,7 +715,7 @@ class PwSimpleUbbCode
     public static function createUrl($length, $url, $name, $protocol, $isdownload = 0, $checkurl = 0)
     {
         list($name, $strlen) = self::_subConvert($name, $length);
-        !$protocol && $url = 'http://'.$url;
+        ! $protocol && $url = 'http://'.$url;
         $attributes = '';
         $isdownload && $attributes .= ' class="down"';
         $html = "<a href=\"$url\" target=\"_blank\"{$attributes}>$name</a>";

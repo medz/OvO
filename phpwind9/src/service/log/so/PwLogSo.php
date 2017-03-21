@@ -23,7 +23,7 @@ class PwLogSo
      */
     public function setOperatedUsername($username)
     {
-        if (!($username = trim($username))) {
+        if (! ($username = trim($username))) {
             return $this;
         }
         $this->_data['operated_username'] = $username;
@@ -41,7 +41,7 @@ class PwLogSo
      */
     public function setCreatedUsername($username)
     {
-        if (!($username = trim($username))) {
+        if (! ($username = trim($username))) {
             return $this;
         }
         $this->_data['created_username'] = $username;
@@ -95,7 +95,7 @@ class PwLogSo
      */
     public function setStartTime($time)
     {
-        if (!($time = trim($time))) {
+        if (! ($time = trim($time))) {
             return $this;
         }
         $this->_data['start_time'] = Pw::str2time($time);
@@ -113,7 +113,7 @@ class PwLogSo
      */
     public function setEndTime($time)
     {
-        if (!($time = trim($time))) {
+        if (! ($time = trim($time))) {
             return $this;
         }
         $this->_data['end_time'] = Pw::str2time($time);
@@ -131,7 +131,7 @@ class PwLogSo
      */
     public function setIp($ip)
     {
-        if (!($time = trim($ip))) {
+        if (! ($time = trim($ip))) {
             return $this;
         }
         $this->_data['ip'] = $ip;
@@ -149,7 +149,7 @@ class PwLogSo
      */
     public function setKeywords($key)
     {
-        if (!($key = trim($key))) {
+        if (! ($key = trim($key))) {
             return $this;
         }
         $this->_data['keywords'] = $key;

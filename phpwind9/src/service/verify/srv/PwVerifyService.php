@@ -47,11 +47,11 @@ class PwVerifyService
     public function getVerify($verifyType)
     {
         $types = $this->getVerifyType();
-        if (!array_key_exists($verifyType, $types)) {
+        if (! array_key_exists($verifyType, $types)) {
             return new PwError('operate.fail');
         }
         $verify = $types[$verifyType];
-        if (!isset($verify['components']['path'])) {
+        if (! isset($verify['components']['path'])) {
             return new PwError('operate.fail');
         }
         $obj = Wekit::load($verify['components']['path']);
@@ -62,11 +62,11 @@ class PwVerifyService
     public function getOutType($verifyType)
     {
         $types = $this->getVerifyType();
-        if (!array_key_exists($verifyType, $types)) {
+        if (! array_key_exists($verifyType, $types)) {
             return new PwError('operate.fail');
         }
         $verify = $types[$verifyType];
-        if (!isset($verify['components']['path'])) {
+        if (! isset($verify['components']['path'])) {
             return new PwError('operate.fail');
         }
 
@@ -79,11 +79,11 @@ class PwVerifyService
             return false;
         }
         $types = $this->getVerifyType();
-        if (!array_key_exists($verifyType, $types)) {
+        if (! array_key_exists($verifyType, $types)) {
             return false;
         }
         $verify = $types[$verifyType];
-        if (!isset($verify['components']['path'])) {
+        if (! isset($verify['components']['path'])) {
             return false;
         }
         $obj = Wekit::load($verify['components']['path']);

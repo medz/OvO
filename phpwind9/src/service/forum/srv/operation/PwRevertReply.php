@@ -33,7 +33,7 @@ class PwRevertReply extends PwGleanDoProcess
         $recycle = Wekit::load('recycle.PwReplyRecycle')->fetchRecord($pids);
         $tids = [];
         foreach ($recycle as $key => $value) {
-            if (!isset($data[$value['pid']])) {
+            if (! isset($data[$value['pid']])) {
                 continue;
             }
             $data[$value['pid']]['src_tid'] = $value['tid'];

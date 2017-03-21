@@ -39,7 +39,7 @@ class PwForumService
         $forums === null && $forums = $this->getForumList();
         $fids = [];
         foreach ($forums as $key => $value) {
-            if (!$value['allow_visit'] || $user->inGroup(explode(',', $value['allow_visit']))) {
+            if (! $value['allow_visit'] || $user->inGroup(explode(',', $value['allow_visit']))) {
                 $fids[] = $value['fid'];
             }
         }
@@ -61,7 +61,7 @@ class PwForumService
         $forums === null && $forums = $this->getForumList();
         $fids = [];
         foreach ($forums as $key => $value) {
-            if ($value['allow_visit'] && !$user->inGroup(explode(',', $value['allow_visit']))) {
+            if ($value['allow_visit'] && ! $user->inGroup(explode(',', $value['allow_visit']))) {
                 $fids[] = $value['fid'];
             } elseif ($includeHide && $value['isshow'] == 0) {
                 $fids[] = $value['fid'];
@@ -90,7 +90,7 @@ class PwForumService
      */
     public function getForumMap()
     {
-        if (!isset(self::$_map)) {
+        if (! isset(self::$_map)) {
             $forums = $this->getForumList();
             foreach ($forums as $key => $value) {
                 self::$_map[$value['parentid']][] = $value;
@@ -110,7 +110,7 @@ class PwForumService
         $forumdb = [0 => []];
         $forumList = $this->_getForum()->getCommonForumList($fetchmode);
         foreach ($forumList as $forums) {
-            if (!$forums['isshow']) {
+            if (! $forums['isshow']) {
                 continue;
             }
             if ($forums['type'] === 'forum') {
@@ -133,7 +133,7 @@ class PwForumService
      */
     public function getForumsByLevel($parentid, $map)
     {
-        if (!isset($map[$parentid])) {
+        if (! isset($map[$parentid])) {
             return [];
         }
         $length = count($map[$parentid]);
@@ -159,7 +159,7 @@ class PwForumService
      */
     public function findOptionInMap($parentid, $map, $lang = [])
     {
-        if (!isset($map[$parentid])) {
+        if (! isset($map[$parentid])) {
             return [];
         }
         $result = [];
@@ -263,10 +263,10 @@ class PwForumService
      */
     public function updateForumStatistics($forum)
     {
-        if (!$forum instanceof PwForumBo) {
+        if (! $forum instanceof PwForumBo) {
             $forum = new PwForumBo($forum);
         }
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             return false;
         }
         $service = $this->_getForum();
@@ -289,17 +289,17 @@ class PwForumService
      */
     public function updateStatistics($forum, $topic, $replies, $tpost = 0, $lastinfo = [])
     {
-        if (!$forum instanceof PwForumBo) {
+        if (! $forum instanceof PwForumBo) {
             $forum = new PwForumBo($forum);
         }
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             return false;
         }
         $article = $topic + $replies;
         $dm = new PwForumDm($forum->fid);
         $dm->addThreads($topic)->addPosts($replies)->addArticle($article)->addTodayPosts($tpost);
         if ($lastinfo) {
-            !isset($lastinfo['time']) && $lastinfo['time'] = Pw::getTime();
+            ! isset($lastinfo['time']) && $lastinfo['time'] = Pw::getTime();
             $dm->setLastpostInfo($lastinfo['tid'], Pw::substrs($lastinfo['subject'], 26, 0, true), $lastinfo['username'], $lastinfo['time']);
         }
         $service = $this->_getForum();

@@ -51,7 +51,7 @@ class PwBackupService
     {
         $tabledb = array_intersect($this->getSpecialTables(), $tabledb);
         list($dirname, $isCompress) = [$dirname, intval($isCompress)];
-        if (!$dirname || !is_array($tabledb) || !$tabledb) {
+        if (! $dirname || ! is_array($tabledb) || ! $tabledb) {
             return false;
         }
         $createSql = '';
@@ -83,7 +83,7 @@ class PwBackupService
      */
     public function backupData($tabledb, $tableid, $start, $sizelimit, $insertmethod = 'common', $filename = '')
     {
-        if (!is_array($tabledb) || !count($tabledb)) {
+        if (! is_array($tabledb) || ! count($tabledb)) {
             return [];
         }
         $tableid = intval($tableid) ? intval($tableid) : 0;
@@ -110,7 +110,7 @@ class PwBackupService
         list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = [0, '', [], count($tabledb)];
         // 循环每个表
         while ($tableid < $totalTableNum) {
-            if (!isset($tabledb[$tableid])) {
+            if (! isset($tabledb[$tableid])) {
                 continue;
             }
             $tmpWritedRows = $writedRows;
@@ -156,7 +156,7 @@ class PwBackupService
     {
         list($writedRows, $backupData, $tableSaveInfo, $totalTableNum) = [0, '', [], count($tabledb)];
         while ($tableid < $totalTableNum) {
-            if (!isset($tabledb[$tableid])) {
+            if (! isset($tabledb[$tableid])) {
                 continue;
             }
             $tmpWritedRows = $writedRows;
@@ -239,7 +239,7 @@ class PwBackupService
     public function backupTable($tabledb, $dirname, $isCompress)
     {
         list($dirname, $isCompress) = [$dirname, intval($isCompress)];
-        if (!$dirname || !is_array($tabledb) || !count($tabledb)) {
+        if (! $dirname || ! is_array($tabledb) || ! count($tabledb)) {
             return false;
         }
         $createSql = '';
@@ -287,7 +287,7 @@ class PwBackupService
      */
     public function saveData($filePath, $data, $isCompress = false)
     {
-        if (!trim($data) || !$filePath) {
+        if (! trim($data) || ! $filePath) {
             return false;
         }
         $filePath = $this->getSavePath().$filePath;
@@ -318,7 +318,7 @@ class PwBackupService
      */
     public function _recordTableSaveInfo($tableSaveInfo, $filename)
     {
-        if (!$filename || !is_array($tableSaveInfo) || !count($tableSaveInfo)) {
+        if (! $filename || ! is_array($tableSaveInfo) || ! count($tableSaveInfo)) {
             return false;
         }
         $filePath = $this->getSavePath().dirname($filename);
@@ -375,9 +375,9 @@ class PwBackupService
      */
     public static function createFolder($path = '')
     {
-        if ($path && !is_dir($path)) {
+        if ($path && ! is_dir($path)) {
             self::createFolder(dirname($path));
-            if (!@mkdir($path, 0777)) {
+            if (! @mkdir($path, 0777)) {
                 return false;
             }
         }
@@ -403,13 +403,13 @@ class PwBackupService
      */
     public function backinData($dir, $step = 1)
     {
-        if (!$dir || !$step) {
+        if (! $dir || ! $step) {
             return false;
         }
         $step = intval($step) - 1;
         $tmpname = $this->getSavePath().$dir.'/';
         $extend = file_exists($tmpname.'table.zip') ? 'zip' : 'sql';
-        if (!$step) {
+        if (! $step) {
             $specialFile = $tmpname.'specialTables.'.$extend;
             $this->_backinFileData($specialFile, $extend);
             $filename = $tmpname.'table.'.$extend;
@@ -445,7 +445,7 @@ class PwBackupService
      */
     private function _doBackIn($sql)
     {
-        if (!is_array($sql) || !count($sql)) {
+        if (! is_array($sql) || ! count($sql)) {
             return false;
         }
         $tablepre = substr($sql[4], 0, 11) == '-- tablepre' ? trim(substr($sql[4], 12)) : '';
@@ -456,7 +456,7 @@ class PwBackupService
         $tablePrefix = $this->_getBackupDs()->getTablePrefix();
         foreach ($sql as $value) {
             $value = trim($value);
-            if (!$value || Pw::substrs($value, 2, '', false) === '--') {
+            if (! $value || Pw::substrs($value, 2, '', false) === '--') {
                 continue;
             }
             if (preg_match('/;$/i', $value)) {

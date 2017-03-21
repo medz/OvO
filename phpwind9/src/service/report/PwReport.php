@@ -53,7 +53,7 @@ class PwReport
      */
     public function batchUpdateReport($ids, PwReportDm $dm)
     {
-        if (!is_array($ids) || !count($ids)) {
+        if (! is_array($ids) || ! count($ids)) {
             return false;
         }
         if (($result = $dm->beforeUpdate()) !== true) {
@@ -89,7 +89,7 @@ class PwReport
      */
     public function batchDeleteReport($ids)
     {
-        if (!is_array($ids) || !count($ids)) {
+        if (! is_array($ids) || ! count($ids)) {
             return false;
         }
 
@@ -122,7 +122,7 @@ class PwReport
      */
     public function fetchReport($ids)
     {
-        if (!is_array($ids) || !count($ids)) {
+        if (! is_array($ids) || ! count($ids)) {
             return [];
         }
 

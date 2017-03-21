@@ -26,7 +26,7 @@ class PwDesignPermissionsSo
 
     public function setDesignId($ids)
     {
-        if (!$ids) {
+        if (! $ids) {
             return $this;
         }
         $this->_data['design_id'] = $ids;

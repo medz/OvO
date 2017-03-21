@@ -24,7 +24,7 @@ class PwTaskGroupDao extends PwBaseDao
      */
     public function batchReplaceTaskGroups($data)
     {
-        if (empty($data) || !is_array($data)) {
+        if (empty($data) || ! is_array($data)) {
             return false;
         }
         $tmp = [];

@@ -46,7 +46,7 @@ class PwBaseDao extends WindDao
      */
     public function getBaseInstance()
     {
-        if (!$this->_baseInstance) {
+        if (! $this->_baseInstance) {
             if (empty($this->_defaultBaseInstance)) {
                 throw new Exception('This dao is error');
             }
@@ -63,7 +63,7 @@ class PwBaseDao extends WindDao
      */
     public function getTable($table = '')
     {
-        !$table && $table = $this->_table;
+        ! $table && $table = $this->_table;
 
         return $this->getConnection()->getTablePrefix().$table;
     }
@@ -99,7 +99,7 @@ class PwBaseDao extends WindDao
      */
     public function sqlSingleIncrease($array)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return '';
         }
         $str = [];
@@ -120,12 +120,12 @@ class PwBaseDao extends WindDao
      */
     public function sqlSingleBit($array)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return '';
         }
         $str = [];
         foreach ($array as $key => $val) {
-            if (!$val || !is_array($val)) {
+            if (! $val || ! is_array($val)) {
                 continue;
             }
             $key = $this->getConnection()->sqlMetadata($key);
@@ -171,7 +171,7 @@ class PwBaseDao extends WindDao
      */
     public function sqlLimit($limit, $offset = 0)
     {
-        if (!$limit) {
+        if (! $limit) {
             return '';
         }
 
@@ -244,11 +244,11 @@ class PwBaseDao extends WindDao
      */
     protected function _filterStruct($array, $allow = [])
     {
-        if (empty($array) || !is_array($array)) {
+        if (empty($array) || ! is_array($array)) {
             return [];
         }
         empty($allow) && $allow = $this->getDataStruct();
-        if (empty($allow) || !is_array($allow)) {
+        if (empty($allow) || ! is_array($allow)) {
             return $array;
         }
         $data = [];
@@ -295,7 +295,7 @@ class PwBaseDao extends WindDao
 
     protected function _add($fields, $getId = true)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));
@@ -312,7 +312,7 @@ class PwBaseDao extends WindDao
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
         $bitFields = $this->_filterStruct($bitFields);
-        if (!$fields && !$increaseFields && !$bitFields) {
+        if (! $fields && ! $increaseFields && ! $bitFields) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE %s=?', $this->getTable(), $this->sqlMerge($fields, $increaseFields, $bitFields), $this->_pk);
@@ -328,7 +328,7 @@ class PwBaseDao extends WindDao
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
         $bitFields = $this->_filterStruct($bitFields);
-        if (!$fields && !$increaseFields && !$bitFields) {
+        if (! $fields && ! $increaseFields && ! $bitFields) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE %s IN %s', $this->getTable(), $this->sqlMerge($fields, $increaseFields, $bitFields), $this->_pk, $this->sqlImplode($ids));

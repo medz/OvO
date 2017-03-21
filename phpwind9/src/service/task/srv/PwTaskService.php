@@ -21,11 +21,11 @@ class PwTaskService
      */
     public function sendAutoTask($behavior)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return false;
         }
         $whitBehavior = ['login_days', 'post_days', 'thread_count'];
-        if (!in_array($behavior['behavior'], $whitBehavior)) {
+        if (! in_array($behavior['behavior'], $whitBehavior)) {
             return false;
         }
         $tody = Pw::time2str(Pw::getTime(), 'Y-m-d');
@@ -42,7 +42,7 @@ class PwTaskService
                 $isSend = $behavior['number'] == 1 || $behavior['number'] % 50 == 0;
                 break;
         }
-        if (!$isSend) {
+        if (! $isSend) {
             return false;
         }
 
@@ -65,7 +65,7 @@ class PwTaskService
     public function openTask($id, $status, $order = '', $title = '')
     {
         $task = $this->_taskDs()->get($id);
-        if (!$task) {
+        if (! $task) {
             return new PwError('TASK:id.illegal');
         }
         $taskDm = new PwTaskDm();
@@ -97,7 +97,7 @@ class PwTaskService
     public function deleteTask($id)
     {
         $task = $this->_taskDs()->get($id);
-        if (!$task) {
+        if (! $task) {
             return true;
         }
         Pw::deleteAttach($task['icon']);

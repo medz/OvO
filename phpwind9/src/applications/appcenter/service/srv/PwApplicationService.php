@@ -29,7 +29,7 @@ class PwApplicationService
      */
     public function del($app_id)
     {
-        if (!$app_id) {
+        if (! $app_id) {
             return new PwError('validate.fail.appid.not.exit');
         }
         $this->_loadAppDs()->delByAppId($app_id);

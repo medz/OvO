@@ -59,7 +59,7 @@ class PwLikeContent
      */
     public function fetchLikeContent($likeids)
     {
-        if (!is_array($likeids) || count($likeids) < 1) {
+        if (! is_array($likeids) || count($likeids) < 1) {
             return [];
         }
 
@@ -151,7 +151,7 @@ class PwLikeContent
         }
         $data = [];
         $info = $this->_getLikeContentDao()->getInfo($likeid);
-        !$info['users'] && $info['users'] == [];
+        ! $info['users'] && $info['users'] == [];
         $_users = explode(',', $info['users']);
         array_unshift($_users, $uid);
         if (count($_users) > $number) {

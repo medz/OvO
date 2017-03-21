@@ -71,7 +71,7 @@ class CheckController extends AdminBaseController
     public function docheckAction()
     {
         $uids = $this->getInput('uid', 'post');
-        if (!$uids) {
+        if (! $uids) {
             $this->showError('operate.select');
         }
         /* @var $userDs PwUser */
@@ -86,7 +86,7 @@ class CheckController extends AdminBaseController
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNCHECK)) {
                 $userDm = new PwUserInfoDm($_temp['uid']);
                 $userDm->setUncheck(false);
-                if (!Pw::getstatus($_temp['status'], PwUser::STATUS_UNACTIVE)) {
+                if (! Pw::getstatus($_temp['status'], PwUser::STATUS_UNACTIVE)) {
                     $userDm->setGroupid(0);
                     $_credit = $userDs->getUserByUid($_temp['uid'], PwUser::FETCH_DATA);
                     $credit = $groupService->calculateCredit($strategy, $_credit);
@@ -106,7 +106,7 @@ class CheckController extends AdminBaseController
     public function doactiveAction()
     {
         $uids = $this->getInput('uid', 'post');
-        if (!$uids) {
+        if (! $uids) {
             $this->showError('operate.select');
         }
         /* @var $userDs PwUser */
@@ -121,7 +121,7 @@ class CheckController extends AdminBaseController
             if (Pw::getstatus($_temp['status'], PwUser::STATUS_UNACTIVE)) {
                 $userDm = new PwUserInfoDm($_temp['uid']);
                 $userDm->setUnactive(false);
-                if (!Pw::getstatus($_temp['status'], PwUser::STATUS_UNCHECK)) {
+                if (! Pw::getstatus($_temp['status'], PwUser::STATUS_UNCHECK)) {
                     $userDm->setGroupid(0);
                     $_credit = $userDs->getUserByUid($_temp['uid'], PwUser::FETCH_DATA);
                     $credit = $groupService->calculateCredit($strategy, $_credit);
@@ -141,7 +141,7 @@ class CheckController extends AdminBaseController
     public function deleteAction()
     {
         $uids = $this->getInput('uid', 'post');
-        if (!$uids) {
+        if (! $uids) {
             $this->showError('operate.select');
         }
         /* @var $userDs PwUser */

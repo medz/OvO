@@ -17,7 +17,7 @@ class PwLogoutDoUpdateOnline extends PwLogoutDoBase
      */
     public function beforeLogout(PwUserBo $bo)
     {
-        if (!$bo->isExists()) {
+        if (! $bo->isExists()) {
             return true;
         }
         $srv = Wekit::load('online.srv.PwOnlineService');

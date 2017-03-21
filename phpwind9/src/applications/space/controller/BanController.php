@@ -27,7 +27,7 @@ class BanController extends PwBaseController
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run/'));
         }
         $this->space = new PwSpaceBo($spaceUid);
-        if (!$this->space->space['uid']) {
+        if (! $this->space->space['uid']) {
             $user = Wekit::load('user.PwUser')->getUserByUid($spaceUid);
             if ($user) {
                 Wekit::load('space.dm.PwSpaceDm');

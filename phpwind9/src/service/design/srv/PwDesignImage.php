@@ -40,7 +40,7 @@ class PwDesignImage
         $outDir = $this->getSaveDir($this->moduleid);
         $cut = new PwCutImage();
         $image = $this->getRealPath($outFile);
-        if (!$image) {
+        if (! $image) {
             return ['', '', $this->store->get($this->image, 0)];
         } //返回原图片
         $cut->image = $image;
@@ -51,7 +51,7 @@ class PwDesignImage
         $cut->forceThumb = true;
         $cut->forceScale = true;
         if ($cut->cut() !== false) {
-            if (!$this->store instanceof PwStorageLocal) {
+            if (! $this->store instanceof PwStorageLocal) {
                 $localFile = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH.'/'.$outDir.$outFile;
                 $this->store->save($localFile, $outDir.$outFile);
                 $attachUrl = $this->store->get('', 0);
@@ -70,12 +70,12 @@ class PwDesignImage
 
     public function clearFolder($moduleid)
     {
-        if (!$moduleid) {
+        if (! $moduleid) {
             return false;
         }
         $dir = $this->getSaveDir($moduleid);
         $store = Wind::getComponent('storage'); //单独使用
-        if (!$store instanceof PwStorageLocal) {
+        if (! $store instanceof PwStorageLocal) {
             $store->delete($dir, 0);
         } else {
             $dir = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH.'/'.$dir;
@@ -87,12 +87,12 @@ class PwDesignImage
 
     public function clearFiles($moduleid, $images)
     {
-        if (!$images || !is_array($images)) {
+        if (! $images || ! is_array($images)) {
             return false;
         }
         $dir = $this->getSaveDir($moduleid);
         $store = Wind::getComponent('storage'); //单独使用
-        if (!$store instanceof PwStorageLocal) {
+        if (! $store instanceof PwStorageLocal) {
             foreach ($images as $image) {
                 $store->delete($dir.$image, 0);
             }
@@ -106,7 +106,7 @@ class PwDesignImage
 
     protected function getRealPath($outFile)
     {
-        if (!$this->store instanceof PwStorageLocal) {
+        if (! $this->store instanceof PwStorageLocal) {
             $localDir = Wind::getRealDir('PUBLIC:').PUBLIC_ATTACH.'/_tmp/';
             $path = $this->getImage($this->store->get($this->image, 0), $localDir, $outFile);
         } else {
@@ -141,7 +141,7 @@ class PwDesignImage
         if ($url == '' || $path == '') {
             return false;
         }
-        if (!$this->createFolder($path)) {
+        if (! $this->createFolder($path)) {
             return false;
         }
         $ext = strrchr($url, '.');
@@ -197,12 +197,12 @@ class PwDesignImage
 
     private function createFolder($path = '')
     {
-        if (!$path) {
+        if (! $path) {
             return false;
         }
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             $this->createFolder(dirname($path));
-            if (!@mkdir($path, 0777)) {
+            if (! @mkdir($path, 0777)) {
                 return false;
             }
         }

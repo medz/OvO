@@ -316,7 +316,7 @@ class WindidUserDm extends PwBaseDm
     protected function _beforeUpdate()
     {
         Wind::import('WSRV:user.validator.WindidUserValidator');
-        if (!$this->uid) {
+        if (! $this->uid) {
             return new WindidError(WindidError::FAIL);
         }
         if (isset($this->_data['username'])) {

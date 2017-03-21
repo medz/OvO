@@ -24,7 +24,7 @@ class PwPollVoterService
    */
   public function fetchVoteByUid($uids, $limit, $offset)
   {
-      if (!$uids || !is_array($uids)) {
+      if (! $uids || ! is_array($uids)) {
           return [];
       }
       $pollids = [];

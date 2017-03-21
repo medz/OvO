@@ -39,7 +39,7 @@ class PwPoll
      */
     public function fetchPoll($pollids)
     {
-        if (empty($pollids) || !is_array($pollids)) {
+        if (empty($pollids) || ! is_array($pollids)) {
             return [];
         }
 
@@ -131,7 +131,7 @@ class PwPoll
      */
     public function countPollByUids($uids)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return 0;
         }
 
@@ -149,7 +149,7 @@ class PwPoll
      */
     public function fetchPollByUid($uids, $limit, $offset)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return [];
         }
 
@@ -167,7 +167,7 @@ class PwPoll
      */
     public function fetchPollByPollid($pollids, $limit, $offset)
     {
-        if (empty($pollids) || !is_array($pollids)) {
+        if (empty($pollids) || ! is_array($pollids)) {
             return [];
         }
 

@@ -100,7 +100,7 @@ class SetforumController extends AdminBaseController
         is_array($temp_vieworder) || $temp_vieworder = [];
         ksort($temp_vieworder);
         foreach ($temp_vieworder as $key => $value) {
-            if (!isset($newArray[$key])) {
+            if (! isset($newArray[$key])) {
                 continue;
             }
             foreach ($value as $k => $v) {
@@ -131,7 +131,7 @@ class SetforumController extends AdminBaseController
         $fid = $this->getInput('fid');
 
         $forum = new PwForumBo($fid, true);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
 
@@ -194,15 +194,15 @@ class SetforumController extends AdminBaseController
     public function doeditAction()
     {
         $fid = $this->getInput('fid', 'post');
-        if (!$fid) {
+        if (! $fid) {
             $this->showError('operate.fail');
         }
 
         list($copyFids, $copyItems) = $this->getInput(['copy_fids', 'copyitems']);
-        !$copyItems && $copyItems = [];
+        ! $copyItems && $copyItems = [];
 
         $forum = new PwForumBo($fid, true);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
         $this->_updateForums($forum, $copyFids, $copyItems);
@@ -240,11 +240,11 @@ class SetforumController extends AdminBaseController
         $pwforum = Wekit::load('forum.PwForum');
         $copyItems = $copyItems ? array_flip($copyItems) : [];
         array_walk($copyItems, [$this, '_setCopyItems']);
-        !$creditset && $creditset = [];
+        ! $creditset && $creditset = [];
         foreach ($creditset as $key => $value) {
-            !is_numeric($value['limit']) && $creditset[$key]['limit'] = '';
+            ! is_numeric($value['limit']) && $creditset[$key]['limit'] = '';
             foreach ($value['credit'] as $k => $v) {
-                if (!is_numeric($v)) {
+                if (! is_numeric($v)) {
                     $creditset[$key]['credit'][$k] = '';
                 }
             }
@@ -254,7 +254,7 @@ class SetforumController extends AdminBaseController
         foreach ($fids as $fid) {
             $flag = $fid == $mainFid;
             $tmpforum = $flag ? $forum : new PwForumBo($fid, true);
-            if (!$tmpforum->isForum(true)) {
+            if (! $tmpforum->isForum(true)) {
                 continue;
             }
 
@@ -334,7 +334,7 @@ class SetforumController extends AdminBaseController
             $dm->setBasicSetting($forumset);
             if ($password != '******' && ($flag || $copyItems['password'])) {
                 $dm->setPassword($password);
-            } elseif ($password == '******' && !$flag && $copyItems['password']) {
+            } elseif ($password == '******' && ! $flag && $copyItems['password']) {
                 $dm->setEncryptPassword($forum->foruminfo['password']);
             }
             $result = $pwforum->updateForum($dm);
@@ -344,7 +344,7 @@ class SetforumController extends AdminBaseController
             //($flag || $copyItems['topictype']) && $this->doeditTopicType($fid);
             if ($flag) {
                 $this->doeditTopicType($fid);
-            } elseif ($copyItems['topictype'] && !$flag) {
+            } elseif ($copyItems['topictype'] && ! $flag) {
                 app(PwTopicTypeService::class)->copyTopicType($mainFid, $fid);
             }
 
@@ -399,7 +399,7 @@ class SetforumController extends AdminBaseController
         $oldDomain = app(PwDomain::class)->getByDomainKey($domainKey);
         /* @var $srv PwDomainService */
         $srv = app(PwDomainService::class);
-        if (!$forumdomain) {
+        if (! $forumdomain) {
             app(PwDomain::class)->deleteByDomainKey($domainKey);
             if ($oldDomain) {
                 $srv->flushAll();
@@ -422,7 +422,7 @@ class SetforumController extends AdminBaseController
             ->setFirst($forumdomain[0])
             ->setId($fid);
             app(PwDomain::class)->replaceDomain($dm);
-            if (!$oldDomain || $oldDomain['domain'] != $forumdomain) {
+            if (! $oldDomain || $oldDomain['domain'] != $forumdomain) {
                 $srv->flushAll();
             }
         }
@@ -448,7 +448,7 @@ class SetforumController extends AdminBaseController
         list($keyword) = $this->getInput(['keyword']);
         $pwforum = Wekit::load('forum.PwForum');
         $data = $pwforum->searchForum($keyword);
-        if (!$data || !is_array($data)) {
+        if (! $data || ! is_array($data)) {
             $this->showError('FORUM:searchforum.notfound');
         } else {
             $this->setOutput($data, 'data');
@@ -489,7 +489,7 @@ class SetforumController extends AdminBaseController
         $fid = $this->getInput('fid');
 
         $forum = new PwForumBo($fid, true);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
 
@@ -511,7 +511,7 @@ class SetforumController extends AdminBaseController
         $fid = $this->getInput('fid');
 
         $forum = new PwForumBo($fid, true);
-        if (!$forum->isForum(true)) {
+        if (! $forum->isForum(true)) {
             $this->showMessage('版块不存在', 'bbs/setforum/run', true);
         }
 
@@ -563,11 +563,11 @@ class SetforumController extends AdminBaseController
 
         /* 新增主题分类 */
         $newTopicTypes = [];
-        if (!$t_new_name) {
+        if (! $t_new_name) {
             $t_new_name = [];
         }
         foreach ($t_new_name as $k => $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $dm = new PwTopicTypeDm();
@@ -585,11 +585,11 @@ class SetforumController extends AdminBaseController
 
         /* 新增二级主题分类 */
         $newSubTopicTypes = [];
-        if (!$t_new_sub_name) {
+        if (! $t_new_sub_name) {
             $t_new_sub_name = [];
         }
         foreach ($t_new_sub_name as $parentId => $newSubs) {
-            if (!is_array($newSubs)) {
+            if (! is_array($newSubs)) {
                 continue;
             }
             foreach ($newSubs as $k => $v) {
@@ -621,12 +621,12 @@ class SetforumController extends AdminBaseController
         }
 
         foreach ($newSubTopicTypes as $k => $v) {
-            if (!$k) {
+            if (! $k) {
                 continue;
             }
             foreach ($v as $k2 => $v2) {
                 $parentId = is_numeric($k) ? $k : $newTopicIds[$k];
-                if (!$parentId) {
+                if (! $parentId) {
                     continue;
                 }
                 $v2->setParentId($parentId);

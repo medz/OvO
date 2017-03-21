@@ -55,7 +55,7 @@ class PwPostDoPoll extends PwPostDoBase
      */
     public function check($postDm)
     {
-        if ($this->action == 'add' && !$this->user->getPermission('allow_add_vote')) {
+        if ($this->action == 'add' && ! $this->user->getPermission('allow_add_vote')) {
             return new PwError('VOTE:group.permission.add', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if (($result = $this->_checkPoll()) !== true) {
@@ -88,7 +88,7 @@ class PwPostDoPoll extends PwPostDoBase
         $newPollid = $this->_getPollDS()->addPoll($pollDm);
 
         foreach ($optionData as $key => $value) {
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
             $dm = new PwPollOptionDm(); /* @var $pwPollDm PwPollDm */
@@ -146,9 +146,9 @@ class PwPostDoPoll extends PwPostDoBase
             $optionContent = trim($optionData[$_id]);
             $isUpdate = ($optionInfo[$_id]['content'] != $optionContent || $attach) ? true : false;
 
-            !$optionContent && $deleteIds[] = $_id;
+            ! $optionContent && $deleteIds[] = $_id;
 
-            if (!($isUpdate && $optionContent)) {
+            if (! ($isUpdate && $optionContent)) {
                 continue;
             }
 
@@ -169,7 +169,7 @@ class PwPostDoPoll extends PwPostDoBase
         }
 
         foreach ((array) $this->poll['newoption'] as $key => $value) {
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
             $dm = new PwPollOptionDm(); /* @var $pwPollDm PwPollDm */
@@ -186,13 +186,13 @@ class PwPostDoPoll extends PwPostDoBase
     private function _afterUpdate($pollid)
     {
         $optionList = $this->_getPollOptionDS()->getByPollid($pollid);
-        if (!$optionList) {
+        if (! $optionList) {
             return false;
         }
 
         $flag = false;
         foreach ($optionList as $value) {
-            if (!$value['image']) {
+            if (! $value['image']) {
                 continue;
             }
             $flag = true;
@@ -245,7 +245,7 @@ class PwPostDoPoll extends PwPostDoBase
     private function _checkInModify()
     {
         $this->info = $this->getThreadPollBo()->info;
-        if (!$this->info) {
+        if (! $this->info) {
             return new PwError('VOTE:thread.not.exist');
         }
         if ($this->info['poll']['voter_num']) {
@@ -256,7 +256,7 @@ class PwPostDoPoll extends PwPostDoBase
         $reulst = [];
         foreach ($option as $value) {
             $value = trim($value);
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
             $reulst[] = $value;
@@ -280,7 +280,7 @@ class PwPostDoPoll extends PwPostDoBase
         $reulst = [];
         foreach ($option as $value) {
             $value = trim($value);
-            if (!$value) {
+            if (! $value) {
                 continue;
             }
             $reulst[] = $value;

@@ -25,7 +25,7 @@ class PwSftpSave extends AbstractWindFtp
     {
         $this->initConfig($config);
         $this->conn = new Net_SFTP($this->server, $this->port, $this->timeout);
-        if (!$this->conn->login($this->user, $this->pwd)) {
+        if (! $this->conn->login($this->user, $this->pwd)) {
             throw new WindFtpException($this->user, WindFtpException::LOGIN_FAILED);
         }
         $this->initRootPath();
@@ -33,7 +33,7 @@ class PwSftpSave extends AbstractWindFtp
 
     public function upload($localfile, $remotefile, $mode = null)
     {
-        if (!in_array(($savedir = dirname($remotefile)), ['.', '/'])) {
+        if (! in_array(($savedir = dirname($remotefile)), ['.', '/'])) {
             $this->mkdirs($savedir);
         }
         $remotefile = $this->rootPath.WindSecurity::escapePath($remotefile);
@@ -124,7 +124,7 @@ class PwSftpSave extends AbstractWindFtp
     protected function initRootPath()
     {
         $r = $this->changeDir($this->dir ? $this->dir : '.');
-        if (!$r) {
+        if (! $r) {
             throw new WindFtpException($this->dir, WindFtpException::COMMAND_FAILED_CWD);
         }
         $this->rootPath = $this->pwd();

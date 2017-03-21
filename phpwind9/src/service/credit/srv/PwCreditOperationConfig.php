@@ -45,7 +45,7 @@ class PwCreditOperationConfig
      */
     public function getDescrip($operate, $var = [])
     {
-        if (!isset($this->_data[$operate]) || empty($this->_data[$operate][2])) {
+        if (! isset($this->_data[$operate]) || empty($this->_data[$operate][2])) {
             return $operate;
         }
         $descrip = $this->_data[$operate][2];
@@ -60,7 +60,7 @@ class PwCreditOperationConfig
 
     public function getName($operate)
     {
-        if (!isset($this->_data[$operate]) || empty($this->_data[$operate][0])) {
+        if (! isset($this->_data[$operate]) || empty($this->_data[$operate][0])) {
             return $operate;
         }
 
@@ -79,7 +79,7 @@ class PwCreditOperationConfig
      */
     public function isCreditPop($operate)
     {
-        if (!isset($this->_data[$operate])) {
+        if (! isset($this->_data[$operate])) {
             return false;
         }
 

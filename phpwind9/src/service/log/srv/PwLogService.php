@@ -29,7 +29,7 @@ class PwLogService
             ->setIp(Wind::getComponent('request')->getClientIp())
             ->setTypeid($this->getOperatTypeid($ifShield ? 'shieldtag' : 'unshieldtag'));
         $lang = 'LOG:shield.tag.message';
-        !$ifShield && $lang = 'LOG:unshield.tag.message';
+        ! $ifShield && $lang = 'LOG:unshield.tag.message';
         $_args = [];
         $_args['{tagtitle}'] = sprintf('<a href="%s" target="_blank">%s</a>', $langArgs['tag_url'], $this->_buildSecurity($langArgs['tag']));
         $_args['{type}'] = $this->_buildSecurity($langArgs['type']);
@@ -55,7 +55,7 @@ class PwLogService
      */
     public function addEditThreadLog(PwUserBo $user, $thread, $isReply = false)
     {
-        if (!$thread) {
+        if (! $thread) {
             return false;
         }
         $langArgs = [];
@@ -93,7 +93,7 @@ class PwLogService
      */
     public function addDeleteAtachLog(PwUserBo $user, $attach)
     {
-        if (!$attach) {
+        if (! $attach) {
             return false;
         }
         $langArgs = [];
@@ -128,7 +128,7 @@ class PwLogService
      */
     public function addThreadManageLog(PwUserBo $user, $type, $threads, $reason, $extends = '', $useReplyMsg = false)
     {
-        if (!$threads) {
+        if (! $threads) {
             return false;
         }
         $typeid = $this->getOperatTypeid($type);
@@ -152,7 +152,7 @@ class PwLogService
             ->setPid((isset($thread['pid']) && $thread['pid']) ? $thread['pid'] : 0)
             ->setTypeid($typeid)
             ->setContent($this->getLogMsg($_logMsg, $langArgs));
-            if (!isset($thread['pid']) && !Pw::getstatus($thread['tpcstatus'], PwThread::STATUS_OPERATORLOG)) {
+            if (! isset($thread['pid']) && ! Pw::getstatus($thread['tpcstatus'], PwThread::STATUS_OPERATORLOG)) {
                 $topicDm = new PwTopicDm($thread['tid']);
                 $topicDm->setOperatorLog(true);
                 Wekit::load('forum.PwThread')->updateThread($topicDm, PwThread::FETCH_MAIN);
@@ -178,11 +178,11 @@ class PwLogService
      */
     public function addBanUserLog(PwUserBo $user, $uids, $types, $reason, $endTime = '')
     {
-        if (!$types) {
+        if (! $types) {
             return false;
         }
         $userList = Wekit::load('user.PwUser')->fetchUserByUid($uids);
-        if (!$userList) {
+        if (! $userList) {
             return false;
         }
         $_logDms = [];
@@ -231,7 +231,7 @@ class PwLogService
      */
     public function addDeleteFreshLog(PwUserBo $user, $data)
     {
-        if (!$data) {
+        if (! $data) {
             return false;
         }
         $typeid = $this->getOperatTypeid('delfresh');
@@ -288,7 +288,7 @@ class PwLogService
         $list = $this->_getLogDs()->getLogBytid($tid, 0, $limit, $start);
         $types = array_flip($this->getOperatTypeid());
         foreach ($list as $key => $value) {
-            if (!in_array($types[$value['typeid']], ['topped', 'catetopped', 'sitetopped', 'highlight'])) {
+            if (! in_array($types[$value['typeid']], ['topped', 'catetopped', 'sitetopped', 'highlight'])) {
                 $list[$key]['extends'] = '';
             }
             $list[$key]['type'] = $this->getOperatTypeTitle($types[$value['typeid']]);

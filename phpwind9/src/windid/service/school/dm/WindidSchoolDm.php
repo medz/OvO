@@ -98,13 +98,13 @@ class WindidSchoolDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['name']) || !$this->_data['name']) {
+        if (! isset($this->_data['name']) || ! $this->_data['name']) {
             return new WindidError(WindidError::SCHOOL_NAME_EMPTY);
         }
-        if (!isset($this->_data['areaid']) || $this->_data['areaid'] < 1) {
+        if (! isset($this->_data['areaid']) || $this->_data['areaid'] < 1) {
             return new WindidError(WindidError::SCHOOL_AREAID_EMPTY);
         }
-        if (!isset($this->_data['typeid'])) {
+        if (! isset($this->_data['typeid'])) {
             return new WindidError(WindidError::SCHOOL_TYPEID_EMPTY);
         }
 

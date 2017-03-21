@@ -145,14 +145,14 @@ class PwAnnounceDm extends PwBaseDm
         if ($this->_data['start_date'] && $this->_data['end_date'] && ($this->_data['end_date'] < $this->_data['start_date'])) {
             return new PwError('ANNOUNCE:date.error');
         }
-        if (isset($this->_data['subject']) && !$this->_data['subject']) {
+        if (isset($this->_data['subject']) && ! $this->_data['subject']) {
             return new PwError('ANNOUNCE:subject.require');
         }
         if (isset($this->_data['typeid'])) {
-            if ($this->_data['typeid'] == 0 && isset($this->_data['content']) && !$this->_data['content']) {
+            if ($this->_data['typeid'] == 0 && isset($this->_data['content']) && ! $this->_data['content']) {
                 return new PwError('ANNOUNCE:content.require');
             }
-            if ($this->_data['typeid'] == 1 && isset($this->_data['url']) && !$this->_data['url']) {
+            if ($this->_data['typeid'] == 1 && isset($this->_data['url']) && ! $this->_data['url']) {
                 return new PwError('ANNOUNCE:url.require');
             }
         } else {
@@ -172,16 +172,16 @@ class PwAnnounceDm extends PwBaseDm
         if ($this->_data['start_date'] && $this->_data['end_date'] && ($this->_data['end_date'] < $this->_data['start_date'])) {
             return new PwError('ANNOUNCE:date.error');
         }
-        if (!isset($this->_data['subject']) || !$this->_data['subject']) {
+        if (! isset($this->_data['subject']) || ! $this->_data['subject']) {
             return new PwError('ANNOUNCE:subject.require');
         }
-        if (!isset($this->_data['typeid'])) {
+        if (! isset($this->_data['typeid'])) {
             return new PwError('ANNOUNCE:typeid,require');
         }
-        if ($this->_data['typeid'] == 0 && !$this->getField('content')) {
+        if ($this->_data['typeid'] == 0 && ! $this->getField('content')) {
             return new PwError('ANNOUNCE:content.require');
         }
-        if ($this->_data['typeid'] == 1 && !$this->getField('url')) {
+        if ($this->_data['typeid'] == 1 && ! $this->getField('url')) {
             return new PwError('ANNOUNCE:url.require');
         }
 

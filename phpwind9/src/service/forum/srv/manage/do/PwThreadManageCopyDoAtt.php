@@ -18,12 +18,12 @@ class PwThreadManageCopyDoAtt extends PwThreadManageCopyDoBase
     public function copyThread(PwTopicDm $topicDm, $newTid)
     {
         $ifupload = $topicDm->getField('ifupload');
-        if (!$ifupload) {
+        if (! $ifupload) {
             return;
         }
         $tid = $topicDm->tid;
         $this->attachs = $this->_getService()->getAttachByTid($tid, [0]);
-        if (!$this->attachs) {
+        if (! $this->attachs) {
             return;
         }
         foreach ($this->attachs as $v) {

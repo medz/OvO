@@ -30,7 +30,7 @@ class PwTemplateCompilerSegment extends AbstractWindTemplateCompiler
      */
     public function compile($key, $content)
     {
-        if (!$this->tpl) {
+        if (! $this->tpl) {
             return $content;
         }
         if (0 !== strpos($this->args, 'array')) {

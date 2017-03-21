@@ -24,7 +24,7 @@ class PwSpaceDomainDao extends PwBaseDao
      */
     public function addDomain($uid, $domain)
     {
-        if (!$domain || !$uid) {
+        if (! $domain || ! $uid) {
             return false;
         }
 
@@ -41,7 +41,7 @@ class PwSpaceDomainDao extends PwBaseDao
      */
     public function updateDomain($uid, $domain)
     {
-        if (!$domain || !$uid) {
+        if (! $domain || ! $uid) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s SET `domain` = ? WHERE `uid` = ?');

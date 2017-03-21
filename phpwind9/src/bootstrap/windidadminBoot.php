@@ -112,7 +112,7 @@ class windidadminBoot extends adminBoot
     public function beforeStart($front = null)
     {
         parent::beforeStart($front);
-        if (!Wind::getComponent('router')->getRoute('pw')) {
+        if (! Wind::getComponent('router')->getRoute('pw')) {
             Wind::getComponent('router')->addRoute('pw', WindFactory::createInstance('PwRoute', ['bbs']));
         }
         Wind::getComponent('router')->addRoute('admin', WindFactory::createInstance('PwAdminRoute', ['default']), true);

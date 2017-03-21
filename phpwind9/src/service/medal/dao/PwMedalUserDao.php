@@ -81,7 +81,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function replaceInfo($data)
      {
-         if (!$data = $this->_filterStruct($data)) {
+         if (! $data = $this->_filterStruct($data)) {
              return false;
          }
          if ($data['uid'] < 1) {

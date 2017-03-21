@@ -21,7 +21,7 @@ class PwTaskMemberAvatarDo implements PwTaskCompleteInterface
      */
     public function uploadAvatar($uid)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $bp = new PwTaskComplete($uid, $this);

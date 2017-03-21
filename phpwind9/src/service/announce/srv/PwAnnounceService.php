@@ -21,7 +21,7 @@ class PwAnnounceService
      */
     public function formatAnnouncesUsername($announceInfos)
     {
-        if (!$announceInfos || !is_array($announceInfos)) {
+        if (! $announceInfos || ! is_array($announceInfos)) {
             return [];
         }
         $uids = $result = [];

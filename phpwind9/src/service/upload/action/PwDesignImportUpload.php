@@ -26,7 +26,7 @@ class PwDesignImportUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$_FILES) {
+        if (! $_FILES) {
             return new PwError('file.empty.fail');
         }
 

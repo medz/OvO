@@ -17,19 +17,19 @@ class PwTemplateCompilerThemeUrl extends AbstractWindTemplateCompiler
     public function compile($key, $content)
     {
         $content = substr($content, 8, -1);
-        if (!$content) {
+        if (! $content) {
             return '';
         }
         $themeBaseUrl = 'Wind::getComponent(\'response\')->getData(\'G\', \'url\', \'themes\')';
         preg_match('/(\w*.)?(\w*.)?(css|js|images)(.\w*)?/i', $content, $matchs);
-        if (!$matchs) {
+        if (! $matchs) {
             return '';
         }
         if (empty($matchs[3])) {
             return '';
         }
         $pack = $theme = '';
-        if (!empty($matchs[1])) {
+        if (! empty($matchs[1])) {
             $themeType = trim($matchs[1], '.');
             $pack = Wekit::C('site', 'theme.'.$themeType.'.pack');
             $theme = empty($matchs[2]) ? '\'.Wekit::C(\'site\', \'theme.'.$themeType.'.default\').\'' : trim(

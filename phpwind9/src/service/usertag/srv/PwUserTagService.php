@@ -43,7 +43,7 @@ class PwUserTagService
         if ($uid < 1) {
             return new PwError('USER:tag.uid.require');
         }
-        if (!($tag = trim($tag))) {
+        if (! ($tag = trim($tag))) {
             return new PwError('USER:tag.name.require');
         }
         if (($r = $this->allowAdd($uid)) instanceof PwError) {
@@ -97,7 +97,7 @@ class PwUserTagService
         }
 
         $info = $this->_getTagDs()->getTag($tag_id);
-        if (!$info) {
+        if (! $info) {
             return new PwError('USER:tag.id.require');
         }
         $r = $this->_getTagRelationDs()->getRelationByUidAndTagid($uid, $info['tag_id']);

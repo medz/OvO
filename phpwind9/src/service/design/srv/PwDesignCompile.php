@@ -30,7 +30,7 @@ class PwDesignCompile
 
     public static function getInstance()
     {
-        !isset(self::$_instance) && self::$_instance = new self();
+        ! isset(self::$_instance) && self::$_instance = new self();
 
         return self::$_instance;
     }
@@ -105,7 +105,7 @@ class PwDesignCompile
         if ($this->_permission < PwDesignPermissions::IS_ADMIN) {
             return 0;
         }
-        if (!$this->isDesign) {
+        if (! $this->isDesign) {
             return 0;
         }
         $pageInfo = $this->pageBo->getPage();
@@ -206,7 +206,7 @@ class PwDesignCompile
     {
         $this->appendSegment($segmentId);
         $segment = $this->_getSegment($segmentId);
-        if (!$this->isDesign) {
+        if (! $this->isDesign) {
             return $segment;
         }
 
@@ -220,7 +220,7 @@ class PwDesignCompile
         if ($this->isDesign) {
             return '<div class="tempplace J_mod_wrap" id="'.$segmentId.'">'.$segment.'</div>';
         } else {
-            if (!$this->_dataModule) {
+            if (! $this->_dataModule) {
                 return '<?php $getdata=1;?>';
             }
 
@@ -246,9 +246,9 @@ class PwDesignCompile
     public function compileModule($module = '')
     {
         $module && list($data, $mod, $moduleId) = explode('_', $module);
-        !$moduleId && $moduleId = PwDesignModuleBo::$stdId;
+        ! $moduleId && $moduleId = PwDesignModuleBo::$stdId;
         $moduleId = (int) $moduleId;
-        if (!$moduleId) {
+        if (! $moduleId) {
             return '';
         }
         $bo = new PwDesignModuleBo($moduleId);
@@ -282,7 +282,7 @@ class PwDesignCompile
     {
         $moduleId = PwDesignModuleBo::$stdId;
         $moduleId = (int) $moduleId;
-        if (!$moduleId) {
+        if (! $moduleId) {
             return '';
         }
         $bo = new PwDesignModuleBo($moduleId);
@@ -304,7 +304,7 @@ class PwDesignCompile
 
     public function compileTitle($struct = '')
     {
-        if (!$struct) {
+        if (! $struct) {
             return '';
         }
 
@@ -319,7 +319,7 @@ class PwDesignCompile
     public function compileList($moduleId)
     {
         $moduleId = (int) $moduleId;
-        if (!$moduleId) {
+        if (! $moduleId) {
             return '';
         }
 
@@ -353,7 +353,7 @@ class PwDesignCompile
     public function compileTips($id = '')
     {
         $pageInfo = $this->pageBo->getPage();
-        if ($this->isDesign && !$pageInfo['struct_names']) {
+        if ($this->isDesign && ! $pageInfo['struct_names']) {
             return '<div id="linkdemo" class="tempplace_tips">选择一个合适的结构拖至此区域</div>';
         }
 
@@ -437,7 +437,7 @@ class PwDesignCompile
             $content = preg_replace('/href=["|\']'.$standardUrl.'["|\']/isU', 'href="'.$standardUrl.'" target="_blank"', $content);
         }
 
-        if (!$isdata) {
+        if (! $isdata) {
             $out = '<if:__style>';
             $out .= '<span style="{__style}">'.$standardTitle.'</span><else:>';
             $out .= $standardTitle;
@@ -550,7 +550,7 @@ class PwDesignCompile
     private function _getSegment($segment)
     {
         $data = Wekit::load('design.PwDesignSegment')->getSegment($segment, $this->pageid);
-        if (!$data) {
+        if (! $data) {
             return '';
         }
         $segment = $data['segment_tpl'];
@@ -560,7 +560,7 @@ class PwDesignCompile
                 $this->appendStructName($v);
             }
         }
-        if (!$this->isDesign) {
+        if (! $this->isDesign) {
             $segment = str_replace('role=titlebar>&nbsp;</H2>', 'role="titlebar"></H2>', $segment);
             $segment = str_replace('role=titlebar', 'role="titlebar"', $segment);
             $segment = str_replace('<H2 class="design_layout_hd cc J_layout_hd" role="titlebar"></H2>', '', $segment);

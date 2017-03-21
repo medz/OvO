@@ -16,7 +16,7 @@ class WindidStoreService
         $stores = $ds->getValues('storage');
         $config = $ds->getValues('attachment');
         $config = $config['storage.type'];
-        if (!$config || !isset($stores[$config])) {
+        if (! $config || ! isset($stores[$config])) {
             $cls = 'WINDID:library.storage.WindidStorageLocal';
         } else {
             $store = unserialize($stores[$config]);

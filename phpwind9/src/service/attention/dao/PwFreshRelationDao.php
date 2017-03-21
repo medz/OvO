@@ -40,7 +40,7 @@ class PwFreshRelationDao extends PwBaseDao
 
     public function addRelation($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));
@@ -51,7 +51,7 @@ class PwFreshRelationDao extends PwBaseDao
 
     public function addRelationByAttention($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (uid, fresh_id, type, created_userid, created_time) SELECT uid,?,?,?,? FROM %s WHERE touid=? ORDER BY created_time DESC LIMIT 1000', $this->getTable(), $this->getTable($this->_attentionTable));

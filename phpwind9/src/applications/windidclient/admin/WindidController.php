@@ -28,7 +28,7 @@ class WindidController extends AdminBaseController
         if ($windid == 'local') {
             $serverUrl = Wekit::C('site', 'info.url').'/windid';
             $clientId = 1;
-            !$clientKey && $clientKey = md5(WindUtility::generateRandStr(10));
+            ! $clientKey && $clientKey = md5(WindUtility::generateRandStr(10));
             $connect = 'db';
         }
 
@@ -56,10 +56,10 @@ class WindidController extends AdminBaseController
             $service = WindidApi::api('app');
             WindidApi::getDm('app');
 
-            if (!$service->getApp($clientId)) {
+            if (! $service->getApp($clientId)) {
                 $charset = Wekit::V('charset');
                 $charset = str_replace('-', '', strtolower($charset));
-                if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
+                if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
                     $charset = 'utf8';
                 }
 

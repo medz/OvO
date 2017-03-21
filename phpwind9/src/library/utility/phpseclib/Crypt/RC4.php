@@ -173,7 +173,7 @@ class Crypt_RC4
      */
     public function Crypt_RC4()
     {
-        if (!defined('CRYPT_RC4_MODE')) {
+        if (! defined('CRYPT_RC4_MODE')) {
             switch (true) {
                 case extension_loaded('mcrypt') && (defined('MCRYPT_ARCFOUR') || defined('MCRYPT_RC4')):
                     // i'd check to see if rc4 was supported, by doing in_array('arcfour', mcrypt_list_algorithms('')),
@@ -316,11 +316,11 @@ class Crypt_RC4
             if ($this->$keyStream === false) {
                 $this->$keyStream = mcrypt_module_open($this->mode, $this->mcrypt[0], MCRYPT_MODE_STREAM, $this->mcrypt[1]);
                 mcrypt_generic_init($this->$keyStream, $this->key, '');
-            } elseif (!$this->continuousBuffer) {
+            } elseif (! $this->continuousBuffer) {
                 mcrypt_generic_init($this->$keyStream, $this->key, '');
             }
             $newText = mcrypt_generic($this->$keyStream, $text);
-            if (!$this->continuousBuffer) {
+            if (! $this->continuousBuffer) {
                 mcrypt_generic_deinit($this->$keyStream);
             }
 

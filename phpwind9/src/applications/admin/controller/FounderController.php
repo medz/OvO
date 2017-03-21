@@ -78,7 +78,7 @@ class FounderController extends AdminBaseController
     public function editAction()
     {
         $username = $this->getInput('username', 'get');
-        if (!$this->loadFounderService()->isFounder($username)) {
+        if (! $this->loadFounderService()->isFounder($username)) {
             $this->showError(
             'ADMIN:founder.edit.fail');
         }
@@ -108,7 +108,7 @@ class FounderController extends AdminBaseController
     public function delAction()
     {
         $username = $this->getInput('username', 'post');
-        !$username && $this->showError('operate.fail');
+        ! $username && $this->showError('operate.fail');
 
         if ($this->loginUser->username == $username) {
             $this->showError('ADMIN:founder.del.fail.self');

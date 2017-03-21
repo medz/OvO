@@ -77,7 +77,7 @@ class CreditController extends BaseProfileController
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         foreach ($creditBo->cType as $k => $v) {
-            if (!$upgrade['credit'.$k]) {
+            if (! $upgrade['credit'.$k]) {
                 continue;
             }
             $_upgrade[] = $v.'X'.$upgrade['credit'.$k];
@@ -119,7 +119,7 @@ class CreditController extends BaseProfileController
         $exchange = Wekit::C('credit', 'exchange');
         $key = $credit1.'_'.$credit2;
         //是否可以转换
-        if (!isset($exchange[$key]) || !$exchange[$key]['ifopen']) {
+        if (! isset($exchange[$key]) || ! $exchange[$key]['ifopen']) {
             $this->showError('CREDIT:exchange.fail.exists.not');
         }
         //转换的数量必须是设置的数量的整数倍
@@ -173,7 +173,7 @@ class CreditController extends BaseProfileController
 
         $transfer = Wekit::C('credit', 'transfer');
         //该积分是否支持转账
-        if (!isset($transfer[$credit]) || !$transfer[$credit]['ifopen']) {
+        if (! isset($transfer[$credit]) || ! $transfer[$credit]['ifopen']) {
             $this->showError('CREDIT:transfer.fail.credit.exists.not');
         }
         //适合符合最低转换条件
@@ -185,7 +185,7 @@ class CreditController extends BaseProfileController
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
         $toUserInfo = $userDs->getUserByName($touser, PwUser::FETCH_MAIN);
-        if (!$toUserInfo) {
+        if (! $toUserInfo) {
             $this->showError('CREDIT:transfer.fail.touser.exists.not');
         }
 
@@ -223,13 +223,13 @@ class CreditController extends BaseProfileController
     public function rechargeAction()
     {
         $config = Wekit::C('pay');
-        if (!$config['ifopen']) {
+        if (! $config['ifopen']) {
             $this->showError($config['reason']);
         }
         $recharge = Wekit::C('credit', 'recharge');
         $creditBo = PwCreditBo::getInstance();
         foreach ($recharge as $key => $value) {
-            if (!isset($creditBo->cType[$key])) {
+            if (! isset($creditBo->cType[$key])) {
                 unset($recharge[$key]);
             }
         }
@@ -244,13 +244,13 @@ class CreditController extends BaseProfileController
     public function payAction()
     {
         $config = Wekit::C('pay');
-        if (!$config['ifopen']) {
+        if (! $config['ifopen']) {
             $this->showError($config['reason']);
         }
 
         list($credit, $pay, $paymethod) = $this->getInput(['credit', 'pay', 'paymethod']);
 
-        if (!in_array($paymethod, ['1', '2', '3', '4'])) {
+        if (! in_array($paymethod, ['1', '2', '3', '4'])) {
             $this->showError('onlinepay.paymethod.select');
         }
         $onlinepay = Wekit::load('pay.srv.PwPayService')->getPayMethod($paymethod);
@@ -260,7 +260,7 @@ class CreditController extends BaseProfileController
 
         $recharge = Wekit::C('credit', 'recharge');
         $creditBo = PwCreditBo::getInstance();
-        if (!isset($recharge[$credit]) || !isset($creditBo->cType[$credit])) {
+        if (! isset($recharge[$credit]) || ! isset($creditBo->cType[$credit])) {
             $this->showError('CREDIT:pay.type.error');
         }
         $pay = round($pay, 2);
@@ -300,7 +300,7 @@ class CreditController extends BaseProfileController
     public function orderAction()
     {
         $config = Wekit::C('pay');
-        if (!$config['ifopen']) {
+        if (! $config['ifopen']) {
             $this->showError($config['reason']);
         }
         $page = intval($this->getInput('page'));

@@ -29,7 +29,7 @@ class PwShieldTagDoReply extends iPwGleanDoHookProcess
     {
         if ($this->tag) {
             $data = Wekit::load('forum.PwThread')->getPost($id);
-            if (!$data) {
+            if (! $data) {
                 return false;
             }
             $tag = $this->tag;

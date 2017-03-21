@@ -1,29 +1,51 @@
 #!/usr/bin/env php
 <?php
 
-use Medz\Wind\Console\Application;
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
 
-if (PHP_SAPI !== 'cli') {
-    echo 'Warning: Composer should be invoked via the CLI version of PHP, not the '.PHP_SAPI.' SAPI'.PHP_EOL;
-}
+require __DIR__.'/bootstrap/autoload.php';
 
-if (PHP_VERSION_ID < 53000) {
-    file_put_contents('php://stderr', sprintf(
-        "The project requires PHP 5.3 version or higher and your system has\n".
-        "PHP %s version installed.\n\n".
-        PHP_VERSION
-    ));
-    exit(1);
-}
+$app = require_once __DIR__.'/bootstrap/app.php';
 
-// Windows uses Path instead of PATH
-if (!isset($_SERVER['PATH']) && isset($_SERVER['Path'])) {
-    $_SERVER['PATH'] = $_SERVER['Path'];
-}
+/*
+|--------------------------------------------------------------------------
+| Run The Fans Application
+|--------------------------------------------------------------------------
+|
+| When we run the console application, the current CLI command will be
+| executed in this console and the response sent back to a terminal
+| or another output device for the developers. Here goes nothing!
+|
+*/
 
-error_reporting(-1);
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
 
-require __DIR__.'/bootstrap.php';
+$status = $kernel->handle(
+    $input = new Symfony\Component\Console\Input\ArgvInput,
+    new Symfony\Component\Console\Output\ConsoleOutput
+);
 
-$app = new Application();
-$app->run();
+/*
+|--------------------------------------------------------------------------
+| Shutdown The Application
+|--------------------------------------------------------------------------
+|
+| Once Artisan has finished running. We will fire off the shutdown events
+| so that any final work may be done by the application before we shut
+| down the process. This is the last thing to happen to the request.
+|
+*/
+
+$kernel->terminate($input, $status);
+
+exit($status);

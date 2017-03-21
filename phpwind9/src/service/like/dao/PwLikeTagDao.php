@@ -41,7 +41,7 @@ class PwLikeTagDao extends PwBaseDao
 
     public function addInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -52,7 +52,7 @@ class PwLikeTagDao extends PwBaseDao
 
     public function updateInfo($tagid, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE tagid = ?', $this->getTable(), $this->sqlSingle($data));

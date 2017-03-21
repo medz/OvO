@@ -28,7 +28,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
     {
         $userDs = $this->loadUser();
         $user = $userDs->getUserByUid($uid, PwUser::FETCH_MAIN);
-        if ($user && (!Pw::getstatus($user['status'], PwUser::STATUS_ALLOW_LOGIN_ADMIN))) {
+        if ($user && (! Pw::getstatus($user['status'], PwUser::STATUS_ALLOW_LOGIN_ADMIN))) {
             $dm = new PwUserInfoDm($uid);
             $dm->setAllowLoginAdmin($status);
             $userDs->editUser($dm, PwUser::FETCH_MAIN);
@@ -68,7 +68,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
     */
     public function setUser($username, $password, $email, $groupid = 3, $uid = 0)
     {
-        if (!$email) {
+        if (! $email) {
             return new PwError('ADMIN:founder.edit.fail.email.empty');
         }
 
@@ -76,7 +76,7 @@ class AdminUserDependenceService implements IAdminUserDependenceService
         $userDm->setEmail($email);
         $userDm->setGroupid($groupid);
         $password && $userDm->setPassword($password);
-        if (!$uid) {
+        if (! $uid) {
             $userDm->setUsername($username);
 
             return $this->loadUser()->addUser($userDm);

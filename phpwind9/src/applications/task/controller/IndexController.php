@@ -19,7 +19,7 @@ class IndexController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('task/index/run')]);
         }
         if (0 == Wekit::C('site', 'task.isOpen')) {

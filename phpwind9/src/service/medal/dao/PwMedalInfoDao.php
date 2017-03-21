@@ -125,7 +125,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function addInfo($data)
      {
-         if (!$data = $this->_filterStruct($data)) {
+         if (! $data = $this->_filterStruct($data)) {
              return false;
          }
          $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -136,7 +136,7 @@ Wind::import('SRC:library.base.PwBaseDao');
 
      public function updateInfo($medalId, $data)
      {
-         if (!$data = $this->_filterStruct($data)) {
+         if (! $data = $this->_filterStruct($data)) {
              return false;
          }
          $sql = $this->_bindSql('UPDATE %s SET %s WHERE medal_id = ? ', $this->getTable(), $this->sqlSingle($data));

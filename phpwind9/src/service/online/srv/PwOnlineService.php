@@ -33,7 +33,7 @@ class PwOnlineService
     public function forumOnline($fid)
     {
         $vistor = $this->getVisitor(true);
-        if (!is_array($vistor)) {
+        if (! is_array($vistor)) {
             return $this->time;
         }
         list($ip, $createdTime, $modifyTime, $ext) = $vistor;
@@ -42,7 +42,7 @@ class PwOnlineService
         if (isset($ext['currentFid']) && $ext['currentFid'] == $fid && $onlineTime < $this->spaceTime) {
             return false;
         }
-        if (!$ip || !$createdTime || !$modifyTime) {
+        if (! $ip || ! $createdTime || ! $modifyTime) {
             $this->signVisitor($ip, $this->time, $this->time, ['currentFid' => $fid]);    //初始标记
             return $this->time;
         } else {                                                                            //更新标记
@@ -60,7 +60,7 @@ class PwOnlineService
     public function spaceOnline($spaceUid)
     {
         $vistor = $this->getVisitor(true);
-        if (!is_array($vistor)) {
+        if (! is_array($vistor)) {
             return $this->time;
         }
         list($ip, $createdTime, $modifyTime, $ext) = $vistor;
@@ -69,7 +69,7 @@ class PwOnlineService
         if (isset($ext['currentSpace']) && $ext['currentSpace'] == $spaceUid && $onlineTime < $this->spaceTime) {
             return false;
         }
-        if (!$ip || !$createdTime || !$modifyTime) {
+        if (! $ip || ! $createdTime || ! $modifyTime) {
             $this->signVisitor($ip, $this->time, $this->time, ['currentSpace' => $spaceUid]);    //初始标记
             return $this->time;
         } else {                                                                                    //更新标记
@@ -97,7 +97,7 @@ class PwOnlineService
             return false;
         } else {
             list($ip, $createdTime, $modifyTime) = $vistor;
-            if (!$ip || !$createdTime || !$modifyTime) {
+            if (! $ip || ! $createdTime || ! $modifyTime) {
                 $this->signVisitor($clientIp, $this->time, $this->time);    //初始标记
                 return false;
             } else {                                                    //更新标记
@@ -130,7 +130,7 @@ class PwOnlineService
 
         //游客转为登录用户
         $vistor = $this->getVisitor();
-        if (!is_array($vistor)) {
+        if (! is_array($vistor)) {
             return false;
         }
         list($ip, $createdTime, $modifyTime) = $vistor;
@@ -146,7 +146,7 @@ class PwOnlineService
     public function logoutOnline($uid)
     {
         $vistor = $this->getVisitor();
-        if (!is_array($vistor)) {
+        if (! is_array($vistor)) {
             return false;
         }
         list($ip, $createdTime, $modifyTime) = $vistor;

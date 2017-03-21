@@ -34,7 +34,7 @@ class PwSystemHelper
         $i = $alter = 0;
         foreach ($arrSQL as $value) {
             $value = trim($value, " \t");
-            if (!$value || substr($value, 0, 2) === '--') {
+            if (! $value || substr($value, 0, 2) === '--') {
                 continue;
             }
             $query .= $value;
@@ -93,7 +93,7 @@ class PwSystemHelper
                     $ifdo = true;
                 } else {
                     foreach ($column as $v) {
-                        if (!$indexkey[$value[1]][$v]) {
+                        if (! $indexkey[$value[1]][$v]) {
                             $ifdo = true;
                             break;
                         }
@@ -247,7 +247,7 @@ class PwSystemHelper
         $change = $unchange = $new = [];
         foreach ($fileList as $f => $hash) {
             $file = ROOT_PATH.$f;
-            if (!file_exists($file) || !$hash) {
+            if (! file_exists($file) || ! $hash) {
                 $new[] = $f;
                 continue;
             }
@@ -274,7 +274,7 @@ class PwSystemHelper
     {
         Wind::import('APPCENTER:service.srv.helper.PwExtractZip');
         $zip = new PwExtractZip();
-        if (!$data = $zip->extract($source)) {
+        if (! $data = $zip->extract($source)) {
             return false;
         }
         foreach ($data as $value) {
@@ -297,7 +297,7 @@ class PwSystemHelper
     {
         foreach ($fileList as $v => $hash) {
             $file = ROOT_PATH.$v;
-            if (!self::checkWriteAble(file_exists($file) ? $file : dirname($file).'/')) {
+            if (! self::checkWriteAble(file_exists($file) ? $file : dirname($file).'/')) {
                 return [
                 false,
                 $v, ];
@@ -310,7 +310,7 @@ class PwSystemHelper
     public static function log($msg, $version, $start = false)
     {
         static $log;
-        if (!$log) {
+        if (! $log) {
             $log = Wind::getRealDir('DATA:upgrade.log', true).'/'.$version.'.log';
             WindFolder::mkRecur(dirname($log));
         }
@@ -327,7 +327,7 @@ class PwSystemHelper
      */
     public static function checkWriteAble($pathfile)
     {
-        if (!$pathfile) {
+        if (! $pathfile) {
             return false;
         }
         $isDir = substr($pathfile, -1) == '/' ? true : false;

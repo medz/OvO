@@ -27,10 +27,10 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
      */
     public function compile($key, $content)
     {
-        if (!$this->role) {
+        if (! $this->role) {
             return '';
         }
-        if (!$this->_beforeDesign() && !in_array($this->role, ['module', 'script'])) {
+        if (! $this->_beforeDesign() && ! in_array($this->role, ['module', 'script'])) {
             return '';
         }
         $this->service->setCompileMode($this->role);
@@ -73,10 +73,10 @@ class PwTemplateCompilerDesign extends AbstractWindTemplateCompiler
         $this->service = PwDesignCompile::getInstance();
         //$this->service = Wekit::load('design.srv.PwDesignCompile');
         //纠结的template标签
-        if (!isset($this->_router)) {
+        if (! isset($this->_router)) {
             $this->_router();
             list($pageName, $unique) = $this->_pageName();
-            if (!$pageName && !$unique) {
+            if (! $pageName && ! $unique) {
                 return false;
             }
             $this->service->setIsDesign($this->getRequest()->getPost('design'));

@@ -27,7 +27,7 @@ class UpgradeController extends WindController
             if (defined($const)) {
                 continue;
             }
-            if ($const === 'PUBLIC_URL' && !$value) {
+            if ($const === 'PUBLIC_URL' && ! $value) {
                 $value = Wind::getApp()->getRequest()->getBaseUrl(true);
             }
             define($const, $value);
@@ -45,7 +45,7 @@ class UpgradeController extends WindController
         //ajax递交编码转换
         $token = $this->getInput('token', 'get');
         $lockFile = Wind::getRealPath('DATA:setup.setup.lock', true);
-        if (file_exists($lockFile) && !$token) {
+        if (file_exists($lockFile) && ! $token) {
             $this->showError('升级程序已被锁定, 如需重新运行，请先删除setup.lock');
         }
         $encryptToken = trim(file_get_contents($lockFile));
@@ -127,7 +127,7 @@ class UpgradeController extends WindController
             $big = $res['big'];
             $middle = $res['middle'];
             $small = $res['small'];
-            if (!$this->checkFile($middle)) {
+            if (! $this->checkFile($middle)) {
                 $big = $defauleDir.'/face_big.jpg';
                 $middle = $defauleDir.'/face_middle.jpg';
                 $small = $defauleDir.'/face_small.jpg';
@@ -200,7 +200,7 @@ class UpgradeController extends WindController
     private function _getStartAndLimit($start_uid, $end_uid, $isFtp = true)
     {
         $limit = 10;
-        if (!$isFtp) {
+        if (! $isFtp) {
             $limit = 200;
             /* $_lt = $this->_getConfig('limit');
             $_lt = is_numeric($_lt) ? abs($_lt) : 1;
@@ -228,7 +228,7 @@ class UpgradeController extends WindController
      */
     private function checkFile($filename)
     {
-        if (!@fopen($filename, 'r')) {
+        if (! @fopen($filename, 'r')) {
             return false;
         }
 
@@ -250,7 +250,7 @@ class UpgradeController extends WindController
             return isset($this->_tmpconfig[$name]) ? $this->_tmpconfig[$name] : $this->_tmpconfig;
         }
         $file = Wind::getRealPath('DATA:setup.setup_config.php', true);
-        if (!is_file($file)) {
+        if (! is_file($file)) {
             $this->showError('配置文件不存在');
         }
         require $file;
@@ -289,7 +289,7 @@ class UpgradeController extends WindController
         $db_config = $this->_getConfig('db_config');
         $link = mysql_connect(sprintf('%s:%s', $db_config['src_host'], $db_config['src_port']), $db_config['src_username'], $db_config['src_password'], true);
         $pre = $db_config['src_dbpre'] ? $db_config['src_dbpre'] : 'pw_';
-        if (!$link) {
+        if (! $link) {
             $this->showError("Access denied for user '{$db_config['src_username']}'@'{$db_config['src_host']}' (using password: YES)");
         }
         $rt = mysql_select_db($db_config['src_dbname'], $link);
@@ -302,7 +302,7 @@ class UpgradeController extends WindController
             $this->showError('SQL ERROR:'.mysql_error($link).' IN "'.$sql.'"');
         }
         $result = mysql_fetch_array($rt, MYSQL_NUM);
-        if (!$result[0]) {
+        if (! $result[0]) {
             $this->showMessage('没有用户头像需要转换');
         }
 
@@ -320,7 +320,7 @@ class UpgradeController extends WindController
         $key = md5(WindUtility::generateRandStr(10));
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
+        if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 
@@ -370,10 +370,10 @@ class UpgradeController extends WindController
 
         $dir = Wind::getRealDir('THEMES:portal.local.');
         $_dir = [];
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             return [];
         }
-        if (!$handle = @opendir($dir)) {
+        if (! $handle = @opendir($dir)) {
             return [];
         }
         while (false !== ($file = @readdir($handle))) {
@@ -426,7 +426,7 @@ class UpgradeController extends WindController
     protected function copyRecur($fromFolder, $toFolder)
     {
         $dir = @opendir($fromFolder);
-        if (!$dir) {
+        if (! $dir) {
             return false;
         }
         WindFolder::mk($toFolder);

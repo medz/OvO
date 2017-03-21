@@ -20,7 +20,7 @@ class PwFrontFilters extends AbstractWindBootstrap
         Wekit::createapp(Wind::getAppName());
 
         $_debug = Wekit::C('site', 'debug');
-        if ($_debug == !Wind::$isDebug) {
+        if ($_debug == ! Wind::$isDebug) {
             Wind::$isDebug = $_debug;
         }
         error_reporting($_debug ? E_ALL ^ E_NOTICE ^ E_DEPRECATED : E_ERROR | E_PARSE);
@@ -54,7 +54,7 @@ class PwFrontFilters extends AbstractWindBootstrap
      */
     private function _convertCharsetForAjax()
     {
-        if (!Wind::getApp()->getRequest()->getIsAjaxRequest()) {
+        if (! Wind::getApp()->getRequest()->getIsAjaxRequest()) {
             return;
         }
         $toCharset = Wind::getApp()->getResponse()->getCharset();

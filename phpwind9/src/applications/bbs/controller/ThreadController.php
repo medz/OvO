@@ -26,7 +26,7 @@ class ThreadController extends PwBaseController
         $orderby = $this->getInput('orderby', 'get');
 
         $pwforum = new PwForumBo($fid, true);
-        if (!$pwforum->isForum()) {
+        if (! $pwforum->isForum()) {
             $this->showError('BBS:forum.exists.not');
         }
         if ($pwforum->allowVisit($this->loginUser) !== true) {
@@ -36,7 +36,7 @@ class ThreadController extends PwBaseController
             $this->forwardRedirect($pwforum->forumset['jumpurl']);
         }
         if ($pwforum->foruminfo['password']) {
-            if (!$this->loginUser->isExists()) {
+            if (! $this->loginUser->isExists()) {
                 $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $fid])]);
             } elseif (Pw::getPwdCode($pwforum->foruminfo['password']) != Pw::getCookie('fp_'.$fid)) {
                 $this->forwardAction('bbs/forum/password', ['fid' => $fid]);
@@ -56,7 +56,7 @@ class ThreadController extends PwBaseController
             ->setIconNew($pwforum->foruminfo['newtime']);
 
         $defaultOrderby = $pwforum->forumset['threadorderby'] ? 'postdate' : 'lastpost';
-        !$orderby && $orderby = $defaultOrderby;
+        ! $orderby && $orderby = $defaultOrderby;
 
         if ($tab == 'digest') {
             $dataSource = new PwDigestThread($pwforum->fid, $type, $orderby);
@@ -83,7 +83,7 @@ class ThreadController extends PwBaseController
         $this->setOutput($threadList->uploadIcon, 'uploadIcon');
         $this->setOutput($operateThread, 'operateThread');
         $this->setOutput($pwforum->forumset['numofthreadtitle'] ? $pwforum->forumset['numofthreadtitle'] : 26, 'numofthreadtitle');
-        $this->setOutput((!$this->loginUser->uid && !$this->allowPost($pwforum)) ? ' J_qlogin_trigger' : '', 'postNeedLogin');
+        $this->setOutput((! $this->loginUser->uid && ! $this->allowPost($pwforum)) ? ' J_qlogin_trigger' : '', 'postNeedLogin');
 
         $this->setOutput($threadList->page, 'page');
         $this->setOutput($threadList->perpage, 'perpage');
@@ -125,7 +125,7 @@ class ThreadController extends PwBaseController
     private function _initTopictypes($fid, &$type)
     {
         $this->topictypes = $this->_getTopictypeService()->getTopicTypesByFid($fid);
-        if (!isset($this->topictypes['all_types'][$type])) {
+        if (! isset($this->topictypes['all_types'][$type])) {
             $type = 0;
         }
     }

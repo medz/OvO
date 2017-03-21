@@ -28,7 +28,7 @@ class PwBill extends PwPayAbstract
 
     public function check()
     {
-        if (!$this->bill || !$this->bill_key) {
+        if (! $this->bill || ! $this->bill_key) {
             return new PwError('onlinepay.settings.99bill.error');
         }
 

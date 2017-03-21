@@ -34,7 +34,7 @@ class PwLikeRelationsDao extends PwBaseDao
 
     public function addInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($data);

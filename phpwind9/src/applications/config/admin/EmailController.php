@@ -65,7 +65,7 @@ class EmailController extends AdminBaseController
     public function dosendAction()
     {
         list($fromEmail, $toEmail) = $this->getInput(['fromEmail', 'toEmail'], 'post');
-        if (!$toEmail) {
+        if (! $toEmail) {
             $this->showError('ADMIN:email.test.toemail.require');
         }
         $mail = new PwMail();

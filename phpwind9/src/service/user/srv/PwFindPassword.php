@@ -33,9 +33,9 @@ class PwFindPassword
         /* @var $userDs PwUser */
         $userDs = Wekit::load('user.PwUser');
         $info = $userDs->getUserByName($username, PwUser::FETCH_MAIN | PwUser::FETCH_DATA | PwUser::FETCH_INFO);
-        if (!$info) {
+        if (! $info) {
             $info = $this->_getWindid()->getUser($username, 2);
-            if (!$info) {
+            if (! $info) {
                 return;
             }
 
@@ -57,7 +57,7 @@ class PwFindPassword
      */
     public function checkEmail($email)
     {
-        if (!$this->info) {
+        if (! $this->info) {
             return new PwError('USER:illegal.request');
         }
         if ($this->info['email'] != $email) {
@@ -111,7 +111,7 @@ class PwFindPassword
         /* @var $activeCodeDs PwUserActiveCode */
         $activeCodeDs = Wekit::load('user.PwUserActiveCode');
         $info = $activeCodeDs->getInfoByUid($this->info['uid'], PwUserActiveCode::RESETPWD);
-        if (!$info || $info['email'] != $email || $info['code'] != $code) {
+        if (! $info || $info['email'] != $email || $info['code'] != $code) {
             return new PwError('USER:findpwd.email.code.expired');
         }
         /*找回密码：验证码不需要过期及验证机制*/
@@ -315,7 +315,7 @@ class PwFindPassword
     private function allowFindBy($type = self::WAY_EMAIL)
     {
         $findPwd = $this->info['findpwd'];
-        if (!$findPwd) {
+        if (! $findPwd) {
             return true;
         }
         $typeCode = $type == self::WAY_MOBILE ? 0 : 1;
@@ -351,12 +351,12 @@ class PwFindPassword
         $typeCode = $type == self::WAY_MOBILE ? 0 : 1;
         $tryTime = $type == self::WAY_MOBILE ? $this->byMobileNum : $this->byEmailNum;
         /*如果重来没有尝试找回过密码*/
-        if (!$findPwd) {
+        if (! $findPwd) {
             $recodes[$typeCode] = Pw::time2str(Pw::getTime(), 'Y-m-d').':1';
         } else {
             list($recodes[0], $recodes[1]) = explode('|', $findPwd);
             /*如果该方式的找回密码方式没有尝试过*/
-            if (!($recode = $recodes[$typeCode])) {
+            if (! ($recode = $recodes[$typeCode])) {
                 $recodes[$typeCode] = Pw::time2str(Pw::getTime(), 'Y-m-d').':1';
             /*如果该方式的找回密码方式尝试过*/
             } else {

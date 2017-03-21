@@ -12,7 +12,7 @@ class PwDesignSegment
 {
     public function getSegment($segment, $pageid)
     {
-        if (!$segment || $pageid < 1) {
+        if (! $segment || $pageid < 1) {
             return [];
         }
 
@@ -30,7 +30,7 @@ class PwDesignSegment
 
     public function replaceSegment($segment, $pageid, $tpl = '', $struct = '')
     {
-        if (!$segment || $pageid < 1) {
+        if (! $segment || $pageid < 1) {
             return false;
         }
         $data['segment'] = $segment;
@@ -43,7 +43,7 @@ class PwDesignSegment
 
     public function deleteSegment($segment, $pageid)
     {
-        if (!$segment || $pageid < 1) {
+        if (! $segment || $pageid < 1) {
             return false;
         }
 

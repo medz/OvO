@@ -23,12 +23,12 @@ class PwInviteFriendService
     public function inviteRegist($inviteCode, $invited_uid)
     {
         $aUser = $this->checkInviteCode($inviteCode);
-        if (!is_array($aUser)) {
+        if (! is_array($aUser)) {
             return $aUser;
         }
 
         $bUser = $this->_getUserDs()->getUserByUid($invited_uid);
-        if (!$bUser) {
+        if (! $bUser) {
             return new PwError('USER:invite.friend.code.invitedUid.error');
         }
 
@@ -69,12 +69,12 @@ class PwInviteFriendService
             return $result;
         }
         $aUser = $this->checkInviteCode($inviteCode);
-        if (!is_array($aUser)) {
+        if (! is_array($aUser)) {
             return $aUser;
         }
 
         $bUser = $this->_getUserDs()->getUserByUid($invited_uid);
-        if (!$bUser) {
+        if (! $bUser) {
             return new PwError('USER:invite.friend.code.invitedUid.error');
         }
         if ($aUser['uid'] == $bUser['uid']) {
@@ -119,7 +119,7 @@ class PwInviteFriendService
     {
         $uid = $this->parseInviteCode($code);
         $info = $this->_getUserDs()->getUserByUid($uid);
-        if (!$info) {
+        if (! $info) {
             return new PwError('USER:invite.friend.code.illage');
         }
 
@@ -175,7 +175,7 @@ class PwInviteFriendService
 
         if ($aFollowedB && $bFollowedA) {
             return new PwError('USER:invite.friend.exists', ['{name}' => $aUser['username']]);
-        } elseif (!$aFollowedB && !$bFollowedA) {
+        } elseif (! $aFollowedB && ! $bFollowedA) {
             //邀请成功，相互关注
             /* @var $attention PwAttentionService */
             $attention = Wekit::load('attention.srv.PwAttentionService');

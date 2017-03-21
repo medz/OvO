@@ -36,7 +36,7 @@ class PwUserTag
      */
     public function fetchTag($tag_ids)
     {
-        if (!$tag_ids) {
+        if (! $tag_ids) {
             return [];
         }
 
@@ -52,7 +52,7 @@ class PwUserTag
      */
     public function getTagByName($name)
     {
-        if (!$name) {
+        if (! $name) {
             return [];
         }
 
@@ -109,7 +109,7 @@ class PwUserTag
     {
         $data = [];
         foreach ($tagDms as $_item) {
-            if (!$_item instanceof PwUserTagDm) {
+            if (! $_item instanceof PwUserTagDm) {
                 return new PwError('USER:tag.illega.format');
             }
             if (true !== ($r = $_item->beforeAdd())) {
@@ -117,7 +117,7 @@ class PwUserTag
             }
             $data[] = $_item->getData();
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 

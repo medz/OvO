@@ -41,7 +41,7 @@ class AuthController extends AdminBaseController
     {
         /* @var $service AdminAuthService */
         $id = $this->getInput('id', 'post');
-        !$id && $this->showError('operate.fail');
+        ! $id && $this->showError('operate.fail');
 
         $service = Wekit::load('ADMIN:service.srv.AdminAuthService');
         $result = $service->del($id);
@@ -57,7 +57,7 @@ class AuthController extends AdminBaseController
     public function editAction()
     {
         $id = $this->getInput('id', 'get');
-        if (!$id) {
+        if (! $id) {
             $this->showError('ADMIN:auth.edit.fail.id.illegal');
         }
         $user = $this->_loadAuthService()->findById($id);

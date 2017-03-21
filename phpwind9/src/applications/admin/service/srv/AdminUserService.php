@@ -71,7 +71,7 @@ class AdminUserService
         if ($_menus === '-1') {
             return true;
         }
-        if (empty($_menus) || !is_array($_menus)) {
+        if (empty($_menus) || ! is_array($_menus)) {
             return new PwError('ADMIN:menu.fail.allow');
         }
         /* @var $menuService AdminMenuService */
@@ -151,7 +151,7 @@ class AdminUserService
     public function login($username, $password)
     {
         $srv = $this->loadFounderService();
-        if (!$srv->isFounder($username)) {
+        if (! $srv->isFounder($username)) {
             $srv = $this->loadManagerService();
         }
         if (($result = $srv->login($username, $password)) instanceof PwError) {
@@ -164,7 +164,7 @@ class AdminUserService
 
     public function isLogin()
     {
-        if (!($userCookie = Pw::getCookie('AdminUser'))) {
+        if (! ($userCookie = Pw::getCookie('AdminUser'))) {
             return [];
         }
         list($type, $uid, $password) = explode("\t", Pw::decrypt($userCookie));

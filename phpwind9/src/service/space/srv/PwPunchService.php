@@ -19,10 +19,10 @@
      */
     public function getPunch($user = null)
     {
-        !$user && $user = Wekit::getLoginUser();
+        ! $user && $user = Wekit::getLoginUser();
         $punchData = unserialize($user->info['punch']);
         $havePunch = $this->isPunch($punchData);
-        if (!$havePunch) {
+        if (! $havePunch) {
             $unPunchDays = $punchData['time'] > 0 ? ceil((Pw::str2time(Pw::time2str(Pw::getTime(), 'Y-m-d')) - Pw::str2time(Pw::time2str($punchData['time'], 'Y-m-d'))) / 86400) : 1;
             $punchText = $unPunchDays > 1 ? "{$unPunchDays}天未打卡" : '每日打卡';
 
@@ -58,7 +58,7 @@
                 $spaceUser = $space->spaceUser;
                 $punchData = unserialize($spaceUser['punch']);
                 $havePunch = $this->isPunch($punchData);
-                if (!$havePunch) {
+                if (! $havePunch) {
                     return [true, '帮Ta打卡', []];
                 }
                 if ($punchData['username'] != $spaceUser['username']) {

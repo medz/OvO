@@ -59,7 +59,7 @@ class PwHook
         if (self::$prekeys) {
             self::initRegistry();
         }
-        if (!isset(self::$hooks[$registerKey])) {
+        if (! isset(self::$hooks[$registerKey])) {
             self::$hooks[$registerKey] = Wekit::load('hook.srv.PwHookInjectService')->getInjectByHookName($registerKey);
         }
         if (isset(self::$prehooks[$registerKey])) {
@@ -99,7 +99,7 @@ class PwHook
      */
     public static function display($callback, $args, $alias, $viewer)
     {
-        if (!$callback || !is_array($args)) {
+        if (! $callback || ! is_array($args)) {
             return;
         }
         self::$viewer = $viewer;
@@ -177,7 +177,7 @@ class PwHook
             WindFolder::mkRecur(dirname($cacheCompileFile));
             WindFile::write($cacheCompileFile, '', WindFile::READWRITE);
         } else {
-            if (!function_exists($_method) && is_file($cacheCompileFile)) {
+            if (! function_exists($_method) && is_file($cacheCompileFile)) {
                 include $cacheCompileFile;
             }
             if (function_exists($_method)) {
@@ -187,7 +187,7 @@ class PwHook
             }
         }
 
-        if (!$content = self::_resolveTemplate($templateFile, strtoupper($_prefix))) {
+        if (! $content = self::_resolveTemplate($templateFile, strtoupper($_prefix))) {
             return;
         }
         $_content = [];
@@ -234,10 +234,10 @@ class PwHook
                 continue;
             }
 
-            if (!is_file(Wind::getRealPath($filter['class'])) && !class_exists($filter['class'])) {
+            if (! is_file(Wind::getRealPath($filter['class'])) && ! class_exists($filter['class'])) {
                 continue;
             }
-            if (!empty($filter['expression'])) {
+            if (! empty($filter['expression'])) {
                 $v1 = '';
                 list($n, $p, $o, $v2) = WindUtility::resolveExpression($filter['expression']);
                 switch (strtolower($n)) {
@@ -255,7 +255,7 @@ class PwHook
                         break;
                 }
                 $v1 = call_user_func_array($call, explode('.', $p));
-                if (!WindUtility::evalExpression($v1, $v2, $o)) {
+                if (! WindUtility::evalExpression($v1, $v2, $o)) {
                     continue;
                 }
             }
@@ -273,7 +273,7 @@ class PwHook
      */
     private static function _getRequest($key, $method = 'get')
     {
-        if (!$key) {
+        if (! $key) {
             return '';
         }
         switch (strtolower($method)) {

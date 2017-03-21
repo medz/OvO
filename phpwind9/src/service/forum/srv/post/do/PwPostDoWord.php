@@ -35,7 +35,7 @@ class PwPostDoWord extends PwPostDoBase
         $banedStrLen = strlen($content);
         $content = $content.$data['content'];
         list($type, $words, $isTip) = $wordFilter->filterWord($content);
-        if (!$type) {
+        if (! $type) {
             return true;
         }
         $words = array_unique($words);

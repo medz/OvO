@@ -86,7 +86,7 @@ class PwThreadDbCache extends PwBaseMapDbCache
 
     public function addThread($fields)
     {
-        if ($fields['fid'] && (!isset($fields['disabled']) || $fields['disabled'] == 0)) {
+        if ($fields['fid'] && (! isset($fields['disabled']) || $fields['disabled'] == 0)) {
             $this->clearThreadListCache($fields['fid']);
         }
 

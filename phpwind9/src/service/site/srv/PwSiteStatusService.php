@@ -22,7 +22,7 @@ class PwSiteStatusService
      */
     public function siteStatus($user, $config)
     {
-        if (!$user instanceof PwUserBo) {
+        if (! $user instanceof PwUserBo) {
             return new PwError('SITE:source.error');
         }
         $this->_user = $user;
@@ -51,17 +51,17 @@ class PwSiteStatusService
 
     protected function protectVisit()
     {
-        if (!empty($this->_config['visit.gid'])) {
+        if (! empty($this->_config['visit.gid'])) {
             if (in_array($this->_user->gid, $this->_config['visit.gid'])) {
                 return true;
             }
         }
-        if (!empty($this->_config['visit.ip'])) {
+        if (! empty($this->_config['visit.ip'])) {
             if ($this->formatAllowIP($this->_user->ip)) {
                 return true;
             }
         }
-        if (!empty($this->_config['visit.member'])) {
+        if (! empty($this->_config['visit.member'])) {
             if (in_array($this->_user->username, explode(',', $this->_config['visit.member']))) {
                 return true;
             }

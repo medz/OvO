@@ -15,7 +15,7 @@ class PwCompile extends WindHandlerInterceptor
      */
     public function preHandle()
     {
-        if (!$compilers = $this->getCompiler()) {
+        if (! $compilers = $this->getCompiler()) {
             return;
         }
         /* @var $chain WindHandlerInterceptorChain */

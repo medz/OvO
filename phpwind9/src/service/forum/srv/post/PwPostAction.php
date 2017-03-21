@@ -112,7 +112,7 @@ abstract class PwPostAction extends PwBaseHookService
     public function isDisabled()
     {
         $config = Wekit::C('bbs');
-        if ($config['post.check.open'] && !$this->user->inGroup($config['post.check.groups']) && PwPost::inTime($config['post.check.start_hour'], $config['post.check.start_min'], $config['post.check.end_hour'], $config['post.check.end_min'])) {
+        if ($config['post.check.open'] && ! $this->user->inGroup($config['post.check.groups']) && PwPost::inTime($config['post.check.start_hour'], $config['post.check.start_min'], $config['post.check.end_hour'], $config['post.check.end_min'])) {
             return 1;
         }
         switch ($this->user->getPermission('post_check')) {
@@ -162,17 +162,17 @@ abstract class PwPostAction extends PwBaseHookService
     public function checkTopictype(PwPostDm $postDm)
     {
         $topicType = $postDm->getTopictype();
-        if ($topicType && !$this->forum->forumset['topic_type']) {
+        if ($topicType && ! $this->forum->forumset['topic_type']) {
             return new PwError('BBS:post.topictype.closed');
         }
-        if ($this->forum->forumset['topic_type'] && $this->forum->forumset['force_topic_type'] && !$postDm->getTopictype()) {
+        if ($this->forum->forumset['topic_type'] && $this->forum->forumset['force_topic_type'] && ! $postDm->getTopictype()) {
             $topicTypes = Wekit::load('SRV:forum.PwTopicType')->getTypesByFid($this->forum->fid);
             if ($topicTypes) {
                 return new PwError('BBS:post.topictype.empty');
             }
         }
         $permission = $this->user->getPermission('operate_thread');
-        if ($topicType && !$permission['type']) {
+        if ($topicType && ! $permission['type']) {
             $topicTypes or $topicTypes = Wekit::load('SRV:forum.PwTopicType')->getTypesByFid($this->forum->fid);
             if ($topicTypes[$topicType]['issys']) {
                 return new PwError('BBS:post.topictype.admin');
@@ -211,7 +211,7 @@ abstract class PwPostAction extends PwBaseHookService
 
     final public function getUserDm($force = true)
     {
-        if (!is_object($this->userDm) && $force) {
+        if (! is_object($this->userDm) && $force) {
             $this->userDm = new PwUserInfoDm($this->user->uid);
         }
 

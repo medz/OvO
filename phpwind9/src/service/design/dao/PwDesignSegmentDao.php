@@ -33,10 +33,10 @@ class PwDesignSegmentDao extends PwBaseDao
 
     public function replaceSegment($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!$data['segment'] || !$data['page_id']) {
+        if (! $data['segment'] || ! $data['page_id']) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));

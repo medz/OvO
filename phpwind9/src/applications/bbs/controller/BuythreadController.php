@@ -23,7 +23,7 @@ class BuythreadController extends PwBaseController
         $page < 1 && $page = 1;
         list($offset, $limit) = Pw::page2limit($page, $perpage);
         $count = Wekit::load('forum.PwThreadBuy')->countByTidAndPid($tid, $pid);
-        if (!$count) {
+        if (! $count) {
             $this->showError('BBS:thread.buy.error.norecord');
         }
 
@@ -53,10 +53,10 @@ class BuythreadController extends PwBaseController
     {
         list($tid, $pid) = $this->getInput(['tid', 'pid']);
         $submit = (int) $this->getInput('submit', 'post');
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
-        if (!$tid) {
+        if (! $tid) {
             $this->showError('data.error');
         }
         if ($pid) {
@@ -92,7 +92,7 @@ class BuythreadController extends PwBaseController
             $this->showError(['BBS:thread.buy.error.credit.notenough', ['{myCredit}' => $myCredit.$creditType, '{count}' => $creditvalue.$creditType]]);
         }
 
-        !$submit && $this->showMessage(['BBS:thread.buy.message.buy', ['{count}' => $myCredit.$creditType, '{buyCount}' => -$creditvalue.$creditType]]);
+        ! $submit && $this->showMessage(['BBS:thread.buy.message.buy', ['{count}' => $myCredit.$creditType, '{buyCount}' => -$creditvalue.$creditType]]);
 
         $dm = new PwThreadBuyDm();
         $dm->setTid($tid)

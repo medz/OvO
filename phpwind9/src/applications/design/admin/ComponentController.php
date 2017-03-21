@@ -57,7 +57,7 @@ class ComponentController extends AdminBaseController
     public function add2Action()
     {
         $flag = $this->getInput('flag', 'post');
-        if (!$flag) {
+        if (! $flag) {
             $this->forwardRedirect(WindUrlHelper::createUrl('design/component/add1'));
         }
 
@@ -72,11 +72,11 @@ class ComponentController extends AdminBaseController
         $name = $this->getInput('name', 'post');
         $tpl = $this->getInput('tpl', 'post');
         $tpl = $this->_getDesignService()->filterTemplate($tpl);
-        if (!$this->_getDesignService()->checkTemplate($tpl)) {
+        if (! $this->_getDesignService()->checkTemplate($tpl)) {
             $this->showError('DESIGN:template.error');
         }
         $resource = $this->_getDesignComponentDs()->addComponent($flag, $name, $tpl);
-        if (!$resource) {
+        if (! $resource) {
             $this->showMessage('operate.fail');
         }
         $this->showMessage('operate.success', 'design/component/run', true);
@@ -87,7 +87,7 @@ class ComponentController extends AdminBaseController
         $id = (int) $this->getInput('id', 'get');
         $page = (int) $this->getInput('page', 'get');
         $comp = $this->_getDesignComponentDs()->getComponent($id);
-        if (!$comp) {
+        if (! $comp) {
             $this->showMessage('operate.fail');
         }
 
@@ -105,14 +105,14 @@ class ComponentController extends AdminBaseController
         $name = $this->getInput('name', 'post');
         $tpl = $this->getInput('tpl', 'post');
         $tpl = $this->_getDesignService()->filterTemplate($tpl);
-        if (!$this->_getDesignService()->checkTemplate($tpl)) {
+        if (! $this->_getDesignService()->checkTemplate($tpl)) {
             $this->showError('DESIGN:template.error');
         }
         if ($id < 1) {
             $this->showError('operate.fail');
         }
         $resource = $this->_getDesignComponentDs()->updateComponent($id, $flag, $name, $tpl);
-        if (!$resource) {
+        if (! $resource) {
             $this->showMessage('operate.fail');
         }
         $this->showMessage('operate.success', 'design/component/run?page='.$page, true);
@@ -121,11 +121,11 @@ class ComponentController extends AdminBaseController
     public function delAction()
     {
         $id = (int) $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showMessage('operate.fail');
         }
         $resource = $this->_getDesignComponentDs()->deleteComponent($id);
-        if (!$resource) {
+        if (! $resource) {
             $this->showMessage('operate.fail');
         }
         $this->showMessage('operate.success');

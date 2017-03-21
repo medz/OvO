@@ -24,7 +24,7 @@ class PwWeiboDoWord extends PwWeiboDoBase
 
         list($type, $words) = $wordFilter->filterWord($content);
         $words = $words ? $words : [];
-        if (!$type) {
+        if (! $type) {
             return true;
         }
         switch ($type) {

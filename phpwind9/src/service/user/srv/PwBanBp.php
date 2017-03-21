@@ -38,7 +38,7 @@ class PwBanBp
     public function checkIfBan()
     {
         $banInfo = $this->_getDs()->getBanInfo($this->uid);
-        if (!$banInfo) {
+        if (! $banInfo) {
             return false;
         }
         foreach ($this->banType as $_k => $_value) {
@@ -225,7 +225,7 @@ class PwBanBp
      */
     private function _checkIfBan($type = PwUserBan::BAN_SPEAK)
     {
-        if (!array_key_exists($type, $this->banType)) {
+        if (! array_key_exists($type, $this->banType)) {
             return false;
         }
         if (false === $this->banInfo[$type][0]) {

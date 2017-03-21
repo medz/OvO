@@ -18,7 +18,7 @@ class FreshController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/fresh/run')]);
         }
     }
@@ -57,7 +57,7 @@ class FreshController extends PwBaseController
         $type = Wekit::load('attention.srv.PwAttentionService')->getAllType($this->loginUser->uid);
 
         $unpost = '';
-        !$this->loginUser->info['lastpost'] && $this->loginUser->info['lastpost'] = $this->loginUser->info['regdate'];
+        ! $this->loginUser->info['lastpost'] && $this->loginUser->info['lastpost'] = $this->loginUser->info['regdate'];
         $tmp = Pw::getTime() - $this->loginUser->info['lastpost'];
         if ($tmp > 31536000) {
             $unpost = floor($tmp / 31536000).'年多';
@@ -142,7 +142,7 @@ class FreshController extends PwBaseController
         if (($result = $reply->execute()) instanceof PwError) {
             $this->showError($result->getError());
         }
-        if (!$reply->getIscheck()) {
+        if (! $reply->getIscheck()) {
             $this->showError('BBS:post.reply.ischeck');
         }
         $content = Wekit::load('forum.srv.PwThreadService')->displayContent($content, $reply->getIsuseubb(), $reply->getRemindUser());
@@ -215,7 +215,7 @@ class FreshController extends PwBaseController
             $data && $this->addMessage($data, 'data');
             $this->showError($result->getError());
         }
-        if (!$postDm->getField('ischeck')) {
+        if (! $postDm->getField('ischeck')) {
             $this->showMessage('BBS:post.topic.ischeck');
         } elseif ($_getHtml == 1) {
             $freshDisplay = new PwFreshDisplay(new PwFetchFreshByTypeAndSrcId(1, [$pwpost->getNewId()]));
@@ -230,10 +230,10 @@ class FreshController extends PwBaseController
     public function deleteAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.select');
         }
-        if (!$this->loginUser->getPermission('fresh_delete')) {
+        if (! $this->loginUser->getPermission('fresh_delete')) {
             $this->showError('permission.fresh.delete.deny');
         }
 

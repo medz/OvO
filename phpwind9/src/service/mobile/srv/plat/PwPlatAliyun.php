@@ -32,7 +32,7 @@ class PwPlatAliyun
         $url = PwApplicationHelper::acloudUrl(
             ['a' => 'forward', 'do' => 'getSiteLastNum']);
         $info = PwApplicationHelper::requestAcloudData($url);
-        if (!is_array($info)) {
+        if (! is_array($info)) {
             return new PwError('APPCENTER:center.connect.fail');
         }
         if ($info['code'] !== '0') {
@@ -53,7 +53,7 @@ class PwPlatAliyun
         $url = PwApplicationHelper::acloudUrl(
             ['a' => 'forward', 'do' => 'sendSms', 'mobile' => $mobile, 'content' => $content]);
         $info = PwApplicationHelper::requestAcloudData($url);
-        if (!is_array($info)) {
+        if (! is_array($info)) {
             return new PwError('APPCENTER:center.connect.fail');
         }
         if ($info['code'] !== '0') {

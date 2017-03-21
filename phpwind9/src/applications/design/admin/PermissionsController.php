@@ -99,7 +99,7 @@ class PermissionsController extends AdminBaseController
         $uids = [];
         $designId = (int) $this->getInput('id', 'get');
         $pageInfo = $this->_getPageDs()->getPage($designId);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         $ds = $this->_getPermissionsDs();
@@ -161,7 +161,7 @@ class PermissionsController extends AdminBaseController
         if ($new_username) {
             $service = $this->_getPermissionsService();
             foreach ($new_username as $k => $name) {
-                if (!$name) {
+                if (! $name) {
                     continue;
                 }
                 $user = Wekit::load('user.PwUser')->getUserByName($name);
@@ -186,14 +186,14 @@ class PermissionsController extends AdminBaseController
                     $this->showError('DESIGN:user.group.error');
                 }
                 $resource = $ds->addInfo($designType, $designId, $new_uid, $new_permissions[$k]);
-                if (!$resource) {
+                if (! $resource) {
                     $fail++;
                 }
             }
         }
         foreach ($ids as $k => $id) {
             $resource = $ds->updatePermissions($id, $permissions[$k]);
-            if (!$resource) {
+            if (! $resource) {
                 $fail++;
             }
         }
@@ -205,7 +205,7 @@ class PermissionsController extends AdminBaseController
         $id = (int) $this->getInput('id', 'post');
         $ds = $this->_getPermissionsDs();
         $info = $ds->getInfo($id);
-        if (!$info) {
+        if (! $info) {
             $this->showError('operate.fail');
         }
         $ds->deleteInfo($id);

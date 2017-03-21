@@ -104,7 +104,7 @@ class RegisterController extends PwBaseController
     public function sendActiveEmailAction()
     {
         $statu = $this->checkRegisterUser();
-        if (!Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
+        if (! Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
             $this->setOutput('activeEmail', 'type');
             $this->setTemplate('register_about');
 
@@ -134,7 +134,7 @@ class RegisterController extends PwBaseController
     public function sendActiveEmailAgainAction()
     {
         $_statu = $this->checkRegisterUser();
-        if (!Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
+        if (! Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
             $this->showMessage('USER:active.email.dumplicate');
         }
         $registerService = new PwRegisterService();
@@ -148,7 +148,7 @@ class RegisterController extends PwBaseController
     public function editEmailAction()
     {
         $_statu = $this->checkRegisterUser();
-        if (!Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
+        if (! Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
             $this->showMessage('USER:active.email.dumplicate', 'u/login/run');
         }
         $email = $this->getInput('email', 'post');
@@ -171,7 +171,7 @@ class RegisterController extends PwBaseController
     public function activeEmailAction()
     {
         $_statu = $this->checkRegisterUser();
-        if (!Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
+        if (! Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNACTIVE)) {
             //			$this->showMessage('USER:active.email.success', 'u/register/welcome?_statu=' . $_statu);
             $this->setOutput('activeEmail', 'type');
             $this->setTemplate('register_about');
@@ -202,7 +202,7 @@ class RegisterController extends PwBaseController
      */
     public function welcomeAction()
     {
-        if (!$this->getInput('_statu')) {
+        if (! $this->getInput('_statu')) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/register/run'));
         }
         $statu = $this->checkRegisterUser();
@@ -221,17 +221,17 @@ class RegisterController extends PwBaseController
      */
     public function guideAction()
     {
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(Wekit::url()->base);
         }
         $key = $this->getInput('key');
         /* @var $guideService PwUserRegisterGuideService */
         $guideService = Wekit::load('APPS:u.service.PwUserRegisterGuideService');
         $next = $guideService->getNextGuide($key);
-        if (!$next) {
+        if (! $next) {
             if (Wekit::C('register', 'active.check')) {
                 $this->setOutput(1, 'check');
-                if (!Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNCHECK)) {
+                if (! Pw::getstatus($this->loginUser->info['status'], PwUser::STATUS_UNCHECK)) {
                     $this->forwardRedirect(Wekit::url()->base);
                 }
             }
@@ -329,11 +329,11 @@ class RegisterController extends PwBaseController
     private function _checkMobileRight($mobile)
     {
         $config = Wekit::C('register');
-        if (!$config['active.phone']) {
+        if (! $config['active.phone']) {
             return new PwError('USER:mobile.reg.open.error');
         }
 
-        if (!PwUserValidator::isMobileValid($mobile)) {
+        if (! PwUserValidator::isMobileValid($mobile)) {
             return new PwError('USER:error.mobile');
         }
         $mobileInfo = Wekit::load('user.PwUserMobile')->getByMobile($mobile);
@@ -352,8 +352,8 @@ class RegisterController extends PwBaseController
     private function checkRegisterUser()
     {
         $identify = $this->getInput('_statu', 'get');
-        !$identify && $identify = $this->getInput('_statu', 'post');
-        if (!$identify) {
+        ! $identify && $identify = $this->getInput('_statu', 'post');
+        if (! $identify) {
             $this->showError('USER:illegal.request');
         }
         list($uid, $password) = PwRegisterService::parserRegistIdentify($identify);
@@ -395,7 +395,7 @@ class RegisterController extends PwBaseController
     private function _showVerify()
     {
         $config = Wekit::C('verify', 'showverify');
-        !$config && $config = [];
+        ! $config && $config = [];
         if (in_array('register', $config) == true) {
             return true;
         } else {
@@ -449,29 +449,29 @@ class RegisterController extends PwBaseController
         //	验证输入
 
         $config = $this->_getRegistConfig();
-        if (!$username) {
+        if (! $username) {
             $this->showError('USER:user.error.-1', 'u/register/run');
         }
-        if (!$password) {
+        if (! $password) {
             $this->showError('USER:pwd.require', 'u/register/run');
         }
-        if (!$email) {
+        if (! $email) {
             $this->showError('USER:user.error.-6', 'u/register/run');
         }
-        if (!WindValidator::isEmail($email)) {
+        if (! WindValidator::isEmail($email)) {
             $this->showError('USER:user.error.-7', 'u/register/run');
         }
 
         foreach ($config['active.field'] as $field) {
-            if (!$this->getInput($field, 'post')) {
+            if (! $this->getInput($field, 'post')) {
                 $this->showError('USER:register.error.require.needField.'.$field, 'u/register/run');
             }
         }
-        if ($config['active.check'] && !$regreason) {
+        if ($config['active.check'] && ! $regreason) {
             $this->showError('USER:register.error.require.regreason', 'u/register/run');
         }
         if ($config['active.phone']) {
-            !PwUserValidator::isMobileValid($mobile) && $this->showError('USER:error.mobile', 'u/register/run');
+            ! PwUserValidator::isMobileValid($mobile) && $this->showError('USER:error.mobile', 'u/register/run');
             if (($mobileCheck = Wekit::load('mobile.srv.PwMobileService')->checkVerify($mobile, $mobileCode)) instanceof PwError) {
                 $this->showError($mobileCheck->getError());
             }
@@ -522,7 +522,7 @@ class RegisterController extends PwBaseController
     private function _getRegistConfig()
     {
         $config = Wekit::C('register');
-        !$config['active.field'] && $config['active.field'] = [];
+        ! $config['active.field'] && $config['active.field'] = [];
 
         return $config;
     }

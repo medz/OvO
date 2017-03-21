@@ -38,7 +38,7 @@ class PwFreshIndex
      */
     public function fetchByTid($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return [];
         }
 

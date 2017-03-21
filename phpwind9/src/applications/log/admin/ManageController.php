@@ -59,7 +59,7 @@ class ManageController extends AdminBaseController
      */
     public function clearAction()
     {
-        if (!$this->isFounder($this->loginUser->username)) {
+        if (! $this->isFounder($this->loginUser->username)) {
             $this->showError('fail');
         }
         $step = $this->getInput('step', 'post');
@@ -109,7 +109,7 @@ class ManageController extends AdminBaseController
      */
     private function _buildForumTree($parentid, $map, $level = '')
     {
-        if (!isset($map[$parentid])) {
+        if (! isset($map[$parentid])) {
             return [];
         }
         $array = [];

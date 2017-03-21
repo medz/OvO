@@ -103,7 +103,7 @@ class PwUserBanDao extends PwBaseDao
      */
     public function addBanInfo($data)
     {
-        if (!($data = $this->_filterStruct($data))) {
+        if (! ($data = $this->_filterStruct($data))) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -122,7 +122,7 @@ class PwUserBanDao extends PwBaseDao
     {
         $clear = [];
         foreach ($data as $key => $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $_temp = [];
@@ -135,7 +135,7 @@ class PwUserBanDao extends PwBaseDao
             $_temp['reason'] = $_item['reason'];
             $clear[] = $_temp;
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`uid`, `typeid`, `fid`, `end_time`, `created_time`, `created_userid`, `reason`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));
@@ -231,12 +231,12 @@ class PwUserBanDao extends PwBaseDao
      */
     private function _buildCondition($condition)
     {
-        if (!$condition) {
+        if (! $condition) {
             return ['', []];
         }
         $where = $params = [];
         foreach ($condition as $key => $value) {
-            if (!$value && $value !== 0) {
+            if (! $value && $value !== 0) {
                 continue;
             }
             switch ($key) {

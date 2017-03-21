@@ -23,7 +23,7 @@ class PwDesignData
             return [];
         }
         $data = $this->_getDao()->getData($dataid);
-        if (!$data) {
+        if (! $data) {
             return [];
         }
         $standard = unserialize($data['standard']);
@@ -37,7 +37,7 @@ class PwDesignData
 
     public function fetchData($dataids)
     {
-        if (!is_array($dataids)) {
+        if (! is_array($dataids)) {
             return [];
         }
 
@@ -56,7 +56,7 @@ class PwDesignData
 
     public function fetchDataByFrom($fromids, $fromtype = self::FROM_AUTO, $datatype = self::AUTO)
     {
-        if (!is_array($fromids)) {
+        if (! is_array($fromids)) {
             $fromids = (int) $fromids > 0 ? [$fromids] : [];
         }
         if (count($fromids) < 1) {
@@ -72,7 +72,7 @@ class PwDesignData
      */
     public function fetchDataByModuleid($moduleids)
     {
-        if (!is_array($moduleids) || !$moduleids) {
+        if (! is_array($moduleids) || ! $moduleids) {
             return [];
         }
 
@@ -149,7 +149,7 @@ class PwDesignData
      */
     public function updateFixedToAuto($moduleid, $order)
     {
-        if (!$moduleid || !$order) {
+        if (! $moduleid || ! $order) {
             return false;
         }
 
@@ -208,7 +208,7 @@ class PwDesignData
 
     public function batchDelete($dataids)
     {
-        if (!is_array($dataids)) {
+        if (! is_array($dataids)) {
             $dataids = (int) $dataids > 0 ? [$dataids] : [];
         }
         if (count($dataids) < 1) {

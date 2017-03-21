@@ -27,7 +27,7 @@ class PwDeleteTopicDoPollDelete extends iPwGleanDoHookProcess
         $threadPollDs = Wekit::load('poll.PwThreadPoll'); /* @var $threadPollDs PwThreadPoll */
 
         $pollThread = $threadPollDs->fetchPoll($this->record);
-        if (!$pollThread) {
+        if (! $pollThread) {
             return false;
         }
 

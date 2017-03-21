@@ -42,11 +42,11 @@ class PwRegisterDoVerifyMobile extends PwRegisterDoBase
      */
     protected function _check(PwUserInfoDm $userDm)
     {
-        if (!$userDm->uid) {
+        if (! $userDm->uid) {
             return false;
         }
         $config = Wekit::C('register');
-        if (!$config['active.phone']) {
+        if (! $config['active.phone']) {
             return false;
         }
         $mobile = $userDm->getField('mobile');

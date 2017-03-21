@@ -85,7 +85,7 @@ class PwMessageNoticesDao extends PwBaseDao
 
     public function addNotice($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);

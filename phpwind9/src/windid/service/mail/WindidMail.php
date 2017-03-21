@@ -17,7 +17,7 @@ class WindidMail
 
     public function __construct($config = null)
     {
-        if (!is_object($config)) {
+        if (! is_object($config)) {
             $class = Wind::import('WSRV:config.WindidConfig');
             $config = new WindidConfig(WindidConfig::getConfig('mail'));
         }

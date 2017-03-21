@@ -71,7 +71,7 @@ class IndexController extends PwBaseController
             }
             $myTags['tags'] = $tmpArray;
             $myTags['step'] = $myTagsCount > $this->attentionTagList ? 2 : '';
-            $ifcheck = !$this->_checkAllowManage() ? 1 : '';
+            $ifcheck = ! $this->_checkAllowManage() ? 1 : '';
             $tagContents = $params = $relatedTags = [];
             $tmpTagContent = $myTags['tags'] ? array_slice($myTags['tags'], 0, 5, true) : [];
             foreach ($tmpTagContent as $k => $v) {
@@ -136,14 +136,14 @@ class IndexController extends PwBaseController
     {
         list($id, $page, $perpage, $type, $tagName) = $this->getInput(['id', 'page', 'perpage', 'type', 'name']);
         $page = $page ? $page : 1;
-        if (!$id && $tagName) {
+        if (! $id && $tagName) {
             $tagName = rawurldecode($tagName);
             $tag = $this->_getTagDs()->getTagByName($tagName);
             $id = $tag['tag_id'];
         } else {
             $tag = $this->_getTagDs()->getTag($id);
         }
-        if (!$tag) {
+        if (! $tag) {
             $this->showError('TAG:id.empty', 'tag/index/run');
         }
         if ($tag['parent_tag_id']) {
@@ -167,7 +167,7 @@ class IndexController extends PwBaseController
             $perpage = $perpage ? $perpage : $this->perpage;
             list($start, $limit) = Pw::page2limit($page, $perpage);
             // to du $ifcheck
-            $ifcheck = !$this->_checkAllowManage() ? 1 : '';
+            $ifcheck = ! $this->_checkAllowManage() ? 1 : '';
             $typeId = $this->_getTagService()->getTypeIdByTypeName($this->defaultType);
             $count = $this->_getTagDs()->countRelationsByTagId($id, $typeId, $ifcheck);
         //	$tag['content_count'] = $count;
@@ -239,7 +239,7 @@ class IndexController extends PwBaseController
         $log->setIfShield($ifcheck)
             ->execute();
 
-        !$result && $this->showError('fail');
+        ! $result && $this->showError('fail');
         $this->showMessage('success');
     }
 
@@ -338,7 +338,7 @@ class IndexController extends PwBaseController
 
     protected function _formatTags($tags)
     {
-        if (!$tags) {
+        if (! $tags) {
             return false;
         }
         $tagname = [];
@@ -367,7 +367,7 @@ class IndexController extends PwBaseController
     private function _checkAllowEdit($tid)
     {
         $thread = Wekit::load('forum.PwThread')->getThread($tid);
-        if (!($thread['created_userid'] == $this->loginUser->uid && $this->loginUser->getPermission('tag_allow_add')) && $this->loginUser->getPermission('tag_allow_edit') < 1) {
+        if (! ($thread['created_userid'] == $this->loginUser->uid && $this->loginUser->getPermission('tag_allow_add')) && $this->loginUser->getPermission('tag_allow_edit') < 1) {
             return false;
         }
 

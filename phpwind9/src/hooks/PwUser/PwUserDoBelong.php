@@ -26,7 +26,7 @@ class PwUserDoBelong
         }
         /* @var $belongDs PwUserBelong */
         $belongDs = Wekit::load('user.PwUserBelong');
-        if (!$belongs) {
+        if (! $belongs) {
             return $belongDs->deleteByUid($dm->uid);
         }
 

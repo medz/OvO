@@ -53,11 +53,11 @@ class PwTaskGainReward extends PwBaseHookService
      */
     private function init()
     {
-        if (!$this->uid) {
+        if (! $this->uid) {
             return new PwError('TASK:request.illegal');
         }
         $task = $this->_getTaskDs()->get($this->taskId);
-        if (!$task) {
+        if (! $task) {
             return new PwError('TASK:id.illegal');
         }
         $canContinue = $this->allowContinue($task);
@@ -121,11 +121,11 @@ class PwTaskGainReward extends PwBaseHookService
      */
     private function updateUserCache()
     {
-        if (!$this->taskInfo['period']) {
+        if (! $this->taskInfo['period']) {
             return true;
         }
         $userCache = $this->_getTaskDs()->getTaskCacheByUid($this->uid);
-        if (!$userCache) {
+        if (! $userCache) {
             $userCache = ['', []];
         }
         array_push($userCache[1], $this->taskId);
@@ -146,7 +146,7 @@ class PwTaskGainReward extends PwBaseHookService
         /* @var $taskService PwTaskService */
         $taskService = Wekit::load('task.srv.PwTaskService');
         $childs = $taskService->getNextAutoApplicableTaskList($this->taskId, $this->uid);
-        if (!$childs) {
+        if (! $childs) {
             return true;
         }
         $userService = new PwTaskApply($this->uid);
@@ -175,7 +175,7 @@ class PwTaskGainReward extends PwBaseHookService
             return new PwError('TASK:no.open');
         }
         $userTaskStatu = $this->_getTaskUserDs()->get($this->uid, $this->taskId);
-        if (!$userTaskStatu) {
+        if (! $userTaskStatu) {
             return false;
         }
         if (4 == $userTaskStatu['task_status']) {

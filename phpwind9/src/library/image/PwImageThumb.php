@@ -91,13 +91,13 @@ class PwImageThumb
      */
     public function execute()
     {
-        if (!$this->dstfile) {
+        if (! $this->dstfile) {
             return -1;
         }
         if ($this->width <= 0 && $this->height <= 0) {
             return -2;
         }
-        if (!$this->checkEnv()) {
+        if (! $this->checkEnv()) {
             return -3;
         }
         if (($compute = $this->compute()) === false) {
@@ -165,11 +165,11 @@ class PwImageThumb
      */
     public function checkEnv()
     {
-        if (!$this->image->getSource()) {
+        if (! $this->image->getSource()) {
             return false;
         }
         $this->imageFunc = 'image'.$this->image->type;
-        if (!function_exists($this->imageFunc)) {
+        if (! function_exists($this->imageFunc)) {
             return false;
         }
         if ($this->image->type != 'gif' && function_exists('imagecreatetruecolor') && function_exists('imagecopyresampled')) {
@@ -255,7 +255,7 @@ class PwImageThumbIntactCompute extends PwImageThumbCompute
 
         if ($this->width > 0 && $this->height > 0) {
             if ($this->isSmall()) {
-                if (!$this->force) {
+                if (! $this->force) {
                     return false;
                 }
                 $this->dstW = $this->image->width;
@@ -274,7 +274,7 @@ class PwImageThumbIntactCompute extends PwImageThumbCompute
             $this->dstH = $this->height;
             $this->dstW = $this->getThumbWidth();
         } else {
-            if (!$this->force) {
+            if (! $this->force) {
                 return false;
             }
             $this->dstW = $this->image->width;
@@ -313,7 +313,7 @@ class PwImageThumbCenterCompute extends PwImageThumbCompute
             return false;
         }
         if ($this->isSmall()) {
-            if (!$this->force) {
+            if (! $this->force) {
                 return false;
             }
             $this->srcX = 0;

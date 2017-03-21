@@ -56,7 +56,7 @@ class PwUpload
      */
     public function checkFile($file)
     {
-        if (!$file->ext || !isset($this->bhv->ftype[$file->ext])) {
+        if (! $file->ext || ! isset($this->bhv->ftype[$file->ext])) {
             return new PwError(['upload.ext.error', ['{ext}' => '.'.$file->ext]]);
         }
         if ($file->size < 1) {
@@ -98,7 +98,7 @@ class PwUpload
     {
         $uploaddb = [];
         foreach ($_FILES as $key => $value) {
-            if (!self::isUploadedFile($value['tmp_name']) || !$this->bhv->allowType($key)) {
+            if (! self::isUploadedFile($value['tmp_name']) || ! $this->bhv->allowType($key)) {
                 continue;
             }
             $file = new PwUploadFile($key, $value);
@@ -109,7 +109,7 @@ class PwUpload
             $file->savedir = $this->bhv->getSaveDir($file);
             $file->source = $this->store->getAbsolutePath($file->filename, $file->savedir);
 
-            if (!self::moveUploadedFile($value['tmp_name'], $file->source)) {
+            if (! self::moveUploadedFile($value['tmp_name'], $file->source)) {
                 return new PwError('upload.fail');
             }
             if (($result = $file->operate($this->bhv, $this->store)) !== true) {
@@ -173,9 +173,9 @@ class PwUpload
      */
     public static function isUploadedFile($tmp_name)
     {
-        if (!$tmp_name || $tmp_name == 'none') {
+        if (! $tmp_name || $tmp_name == 'none') {
             return false;
-        } elseif (function_exists('is_uploaded_file') && !is_uploaded_file($tmp_name) && !is_uploaded_file(str_replace('\\\\', '\\', $tmp_name))) {
+        } elseif (function_exists('is_uploaded_file') && ! is_uploaded_file($tmp_name) && ! is_uploaded_file(str_replace('\\\\', '\\', $tmp_name))) {
             return false;
         } else {
             return true;
@@ -242,7 +242,7 @@ class PwUpload
      */
     public static function createFolder($path)
     {
-        if (!is_dir($path)) {
+        if (! is_dir($path)) {
             self::createFolder(dirname($path));
             @mkdir($path);
             @chmod($path, 0777);
@@ -253,7 +253,7 @@ class PwUpload
 
     public function __call($methodName, $args)
     {
-        if (!method_exists($this->bhv, $methodName)) {
+        if (! method_exists($this->bhv, $methodName)) {
             return false;
         }
         $method = new ReflectionMethod($this->bhv, $methodName);

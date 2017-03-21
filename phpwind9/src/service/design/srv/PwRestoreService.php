@@ -63,7 +63,7 @@ class PwRestoreService
         $bakDs = $this->_getBakDs();
         $conpDs = $this->_getComponentDs();
         $module = $bakDs->getBak(PwDesignBak::MODULE, $pageid, $issnap);
-        if (!is_array($module['bak_info'])) {
+        if (! is_array($module['bak_info'])) {
             return false;
         }
         $ds = $this->_getModuleDs();
@@ -97,7 +97,7 @@ class PwRestoreService
     protected function restoreData($pageid, $issnap = 0)
     {
         $data = $this->_getBakDs()->getBak(PwDesignBak::DATA, $pageid, $issnap);
-        if (!is_array($data['bak_info'])) {
+        if (! is_array($data['bak_info'])) {
             return false;
         }
 
@@ -126,7 +126,7 @@ class PwRestoreService
     protected function restoreStructure($pageid, $issnap = 0)
     {
         $data = $this->_getBakDs()->getBak(PwDesignBak::STRUCTURE, $pageid, $issnap);
-        if (!is_array($data['bak_info'])) {
+        if (! is_array($data['bak_info'])) {
             return false;
         }
 

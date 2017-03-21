@@ -36,7 +36,7 @@ class PwUserMobileVerify
      */
     public function fetchMobileVerify($mobiles)
     {
-        if (!is_array($mobiles) || !$mobiles) {
+        if (! is_array($mobiles) || ! $mobiles) {
             return [];
         }
 
@@ -99,7 +99,7 @@ class PwUserMobileVerify
      */
     public function batchDelete($mobiles)
     {
-        if (!is_array($mobiles) || !$mobiles) {
+        if (! is_array($mobiles) || ! $mobiles) {
             return false;
         }
 

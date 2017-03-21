@@ -32,7 +32,7 @@ class ImportController extends PwBaseController
 
         $pageBo = new PwDesignPageBo($pageid);
         $pageInfo = $pageBo->getPage();
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
         if ($pageBo->getLock()) {
@@ -40,7 +40,7 @@ class ImportController extends PwBaseController
         }
 
         $ext = strtolower(substr(strrchr($_FILES['file']['name'], '.'), 1));
-        if (!$ext || !in_array($ext, ['txt', 'zip'])) {
+        if (! $ext || ! in_array($ext, ['txt', 'zip'])) {
             $this->showMessage('DESIGN::upload.fail');
         }
 
@@ -61,16 +61,16 @@ class ImportController extends PwBaseController
         $portalid = (int) $this->getInput('portalid', 'get');
         $ds = $this->_getPortalDs();
         $portal = $ds->getPortal($portalid);
-        if (!$portal) {
+        if (! $portal) {
             $this->showError('operate.fail');
         }
         $styleDs = Wekit::load('APPCENTER:service.PwStyle');
         $style = $styleDs->getStyle($styleid);
-        if (!$style || $style['style_type'] != 'portal') {
+        if (! $style || $style['style_type'] != 'portal') {
             $this->showError('operate.fail');
         }
         $pageInfo = $this->_getPageDs()->getPageByTypeAndUnique(PwDesignPage::PORTAL, $portalid);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             $this->showError('operate.fail');
         }
 
@@ -80,7 +80,7 @@ class ImportController extends PwBaseController
         $this->clearPage($pageInfo);
 
         $srv = new PwDesignImportZip($pageBo);
-        if (!$srv->appcenterToLocal($style['alias'])) {
+        if (! $srv->appcenterToLocal($style['alias'])) {
             $this->showError('operate.fail');
         }
 
@@ -91,7 +91,7 @@ class ImportController extends PwBaseController
         //更新数据
 
         foreach ($srv->newIds as $id) {
-            if (!$id) {
+            if (! $id) {
                 continue;
             }
             $autoSrv = new PwAutoData($id);
@@ -105,11 +105,11 @@ class ImportController extends PwBaseController
         //$portal = $this->_getPortalDs()->getPortal($pageInfo['page_unique']);
 
         $srv = new PwDesignImportZip($pageBo);
-        if (!$srv->checkDirectory()) {
+        if (! $srv->checkDirectory()) {
             $this->showError('DESIGN:directory.not.writeable');
         }
         $file = $this->_uploadFile();
-        if (!$file || $file['type'] != 'zip') {
+        if (! $file || $file['type'] != 'zip') {
             $this->showMessage('DESIGN::upload.fail');
         }
         $filename = Wind::getRealDir('PUBLIC:attachment.'.$file['path']).$file['filename'];
@@ -129,7 +129,7 @@ class ImportController extends PwBaseController
         //更新数据
 
         foreach ($srv->newIds as $id) {
-            if (!$id) {
+            if (! $id) {
                 continue;
             }
             $autoSrv = new PwAutoData($id);
@@ -143,7 +143,7 @@ class ImportController extends PwBaseController
     {
         $srv = Wekit::load('design.srv.PwDesignImportTxt');
         $file = $this->_uploadFile();
-        if (!$file || $file['type'] != 'txt') {
+        if (! $file || $file['type'] != 'txt') {
             $this->showMessage('DESIGN:upload.fail');
         }
         $srv = new PwDesignImportTxt();
@@ -161,7 +161,7 @@ class ImportController extends PwBaseController
         //更新数据
 
         foreach ($srv->newIds as $id) {
-            if (!$id) {
+            if (! $id) {
                 continue;
             }
             $autoSrv = new PwAutoData($id);

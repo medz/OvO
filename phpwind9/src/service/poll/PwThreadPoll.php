@@ -71,7 +71,7 @@ class PwThreadPoll
      */
     public function batchDeletePoll($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 
@@ -104,7 +104,7 @@ class PwThreadPoll
      */
     public function fetchPoll($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return [];
         }
 
@@ -136,7 +136,7 @@ class PwThreadPoll
      */
     public function fetchByPollid($pollids)
     {
-        if (empty($pollids) || !is_array($pollids)) {
+        if (empty($pollids) || ! is_array($pollids)) {
             return [];
         }
 

@@ -31,7 +31,7 @@ class PwLikeSource
 
     public function fetchSource($ids)
     {
-        if (!is_array($ids) || count($ids) < 1) {
+        if (! is_array($ids) || count($ids) < 1) {
             return [];
         }
 

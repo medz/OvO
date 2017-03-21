@@ -25,7 +25,7 @@ class ModelController extends AdminBaseController
     public function doaddAction()
     {
         $resource = $this->_getDesignModelDs()->addModel($this->getInput('flag', 'post'), $this->getInput('name', 'post'), $this->getInput('type', 'post'), $this->getInput('signkeys', 'post'));
-        if (!$resource) {
+        if (! $resource) {
             $this->showError('operate.fail');
         }
         $this->showMessage('operate.success');
@@ -34,7 +34,7 @@ class ModelController extends AdminBaseController
     public function editAction()
     {
         $flag = $this->getInput('flag', 'get');
-        if (!$flag) {
+        if (! $flag) {
             return $this->showError('operate.fail');
         }
         $this->setOutput($this->_getDesignModelDs()->getModel($flag), 'info');
@@ -44,11 +44,11 @@ class ModelController extends AdminBaseController
     public function doeditAction()
     {
         $flag = $this->getInput('flag', 'post');
-        if (!$flag) {
+        if (! $flag) {
             $this->showError('operate.fail');
         }
         $resource = $this->_getDesignModelDs()->updateModel($flag, $this->getInput('name', 'post'), $this->getInput('type', 'post'), $this->getInput('signkeys', 'post'));
-        if (!$resource) {
+        if (! $resource) {
             $this->showError('operate.fail');
         }
         $this->showMessage('operate.success');

@@ -25,7 +25,7 @@ class PwPayAction1
     public function run()
     {
         $rmbrate = $this->_conf[$this->_order['buy']]['rate'];
-        !$rmbrate && $rmbrate = 10;
+        ! $rmbrate && $rmbrate = 10;
         $num = round($this->_order['price'] * $rmbrate);
 
         /* @var $creditBo PwCreditBo */

@@ -49,10 +49,10 @@ class PwTaskGroupRewardDo extends PwTaskRewardDoBase
      */
     public function checkReward($reward)
     {
-        if (!$reward['time']) {
+        if (! $reward['time']) {
             return new PwError('TASK:reward.group.num.require');
         }
-        if (!WindValidator::isNonNegative($reward['time'])) {
+        if (! WindValidator::isNonNegative($reward['time'])) {
             return new PwError('TASK:reward.group.num.isNonNegative');
         }
         $reward['time'] = ceil($reward['time']);

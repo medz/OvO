@@ -15,7 +15,7 @@ class PwSpaceProfileDoEducation implements PwSpaceProfileDoInterface
 {
     public function createHtml($spaceBo)
     {
-        if (!$spaceBo->allowView('education')) {
+        if (! $spaceBo->allowView('education')) {
             return false;
         }
         $educations = Wekit::load('education.srv.PwEducationService')->getEducationByUid($spaceBo->spaceUid, 100);

@@ -28,7 +28,7 @@ class PwMessageService
         $loginUser = Wekit::getLoginUser();
         $fromUid or $fromUid = $loginUser->uid;
         $userInfo = $this->_getUserDs()->getUserByName($username);
-        if (!$userInfo) {
+        if (! $userInfo) {
             return new PwError('Message:user.notfound');
         }
         // 检测是否隐私设置
@@ -40,7 +40,7 @@ class PwMessageService
 
         // 检测今天发了多少
         list($result, $sendnum, $maxnum) = $this->_checkTodayNum($loginUser, $result);
-        if (!$result) {
+        if (! $result) {
             return new PwError('MESSAGE:message_max_send.error', ['{sendnum}' => $sendnum, '{maxnum}' => $maxnum]);
         }
 
@@ -94,7 +94,7 @@ class PwMessageService
             return $result;
         }
         $userInfos = $this->_getUserDs()->fetchUserByName($usernames);
-        if (!$userInfos) {
+        if (! $userInfos) {
             return new PwError('MESSAGE:user.notfound');
         }
         // 检测是否隐私设置
@@ -104,7 +104,7 @@ class PwMessageService
         }
         // 检测今天发了多少
         list($result, $sendnum, $maxnum) = $this->_checkTodayNum($loginUser, $result);
-        if (!$result) {
+        if (! $result) {
             return new PwError('MESSAGE:message_max_send.error', ['{sendnum}' => $sendnum, '{maxnum}' => $maxnum]);
         }
         foreach ($result as $uid) {
@@ -121,7 +121,7 @@ class PwMessageService
      */
     public function markDialogReaded($dialogIds)
     {
-        if (!is_array($dialogIds) || !$dialogIds) {
+        if (! is_array($dialogIds) || ! $dialogIds) {
             return false;
         }
 
@@ -138,7 +138,7 @@ class PwMessageService
      */
     public function sendMessageByUid($uid, $content, $fromUid = 0)
     {
-        if (!$uid) {
+        if (! $uid) {
             return new PwError('MESSAGE:user.empty');
         }
         $fromUid or $fromUid = $this->_getLoginUserId();
@@ -192,7 +192,7 @@ class PwMessageService
     public function sendMessagesByUids($uids, $content, $fromUid = 0)
     {
         $fromUid or $fromUid = $this->_getLoginUserId();
-        if (!is_array($uids)) {
+        if (! is_array($uids)) {
             return false;
         }
         foreach ($uids as $uid) {
@@ -214,7 +214,7 @@ class PwMessageService
     public function getDialogs($uid, $start, $limit)
     {
         $count = $this->_getWindid()->countDialog($uid);
-        if (!$count) {
+        if (! $count) {
             return [0, []];
         }
         $dialogs = $this->_getWindid()->getDialogList($uid, $start, $limit);
@@ -257,7 +257,7 @@ class PwMessageService
     {
         // 对话消息分页
         $count = $this->_getWindid()->countMessage($dialogId);
-        if (!$count) {
+        if (! $count) {
             return [0, []];
         }
         $_messages = $this->_getWindid()->getMessageList($dialogId, $start, $limit);
@@ -393,7 +393,7 @@ class PwMessageService
         } else {
             $dm->setMessageCount($num);
         }
-        !defined('WINDID_IS_NOTIFY') && define('WINDID_IS_NOTIFY', 1);
+        ! defined('WINDID_IS_NOTIFY') && define('WINDID_IS_NOTIFY', 1);
 
         $std = PwWindidStd::getInstance('user');
         $std->setMethod('editDmUser', 1);
@@ -403,7 +403,7 @@ class PwMessageService
 
     public function synEditUser($uid)
     {
-        if (!$unread = $this->_getWindid()->getUnRead($uid)) {
+        if (! $unread = $this->_getWindid()->getUnRead($uid)) {
             return true;
         }
 
@@ -455,14 +455,14 @@ class PwMessageService
      */
     private function _checkMessageFan($uids)
     {
-        !is_array($uids) && $uids = [$uids];
+        ! is_array($uids) && $uids = [$uids];
         $loginUid = $this->_getLoginUserId();
         $configs = $this->_getMessagesDs()->fetchMessageConfig($uids);
         $privateFans = [];
         foreach ($configs as $v) {
             $v['privacy'] && $privateFans[] = $v['uid'];
         }
-        if (!$privateFans) {
+        if (! $privateFans) {
             return true;
         }
         $fans = Wekit::load('attention.PwAttention')->fetchFans($loginUid, $privateFans);
@@ -484,7 +484,7 @@ class PwMessageService
      */
     private function _checkTodayNum(PwUserBo $user, $touids)
     {
-        !is_array($touids) && $touids = [$touids];
+        ! is_array($touids) && $touids = [$touids];
         $behavior = $this->_getUserBehaviorDs()->getBehavior($user->uid, 'message_today');
         $dayMax = $user->getPermission('message_max_send');
         $countUser = count($touids);

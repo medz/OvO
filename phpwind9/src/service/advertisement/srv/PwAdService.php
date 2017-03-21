@@ -25,7 +25,7 @@ class PwAdService
         if ($identifier && $this->_getAdDs()->getByIdentifier($identifier)) {
             return new PwError('ADVERTISEMENT:position.exists');
         }
-        if (!array_key_exists($type, $this->_getAdDs()->getAdType())) {
+        if (! array_key_exists($type, $this->_getAdDs()->getAdType())) {
             return new PwError('ADVERTISEMENT:type.error');
         }
         $checkPostition = $this->_getAdDs()->getByPid($id);
@@ -42,7 +42,7 @@ class PwAdService
             ->setStatus($status)
             ->setSchedule($schedule);
         $result = $this->_getAdDs()->addAdPosition($dm);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADVERTISEMENT:add.fail');
         }
         $this->_updateAdcache();
@@ -59,11 +59,11 @@ class PwAdService
         if (empty($id)) {
             return new PwError('ADVERTISEMENT:position.error');
         }
-        if (!array_key_exists($type, $this->_getAdDs()->getAdType())) {
+        if (! array_key_exists($type, $this->_getAdDs()->getAdType())) {
             return new PwError('ADVERTISEMENT:type.error');
         }
         $checkPostition = $this->_getAdDs()->getByPid($id);
-        if (!$checkPostition) {
+        if (! $checkPostition) {
             return new PwError('ADVERTISEMENT:position.not.exists');
         }
 
@@ -77,7 +77,7 @@ class PwAdService
             ->setShowType($showType)
             ->setCondition($condition);
         $result = $this->_getAdDs()->editAdPosition($dm);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADVERTISEMENT:edit.fail');
         }
         $this->_updateAdcache();
@@ -95,14 +95,14 @@ class PwAdService
             return new PwError('ADVERTISEMENT:position.error');
         }
         $checkPostition = $this->_getAdDs()->getByPid($id);
-        if (!$checkPostition) {
+        if (! $checkPostition) {
             return new PwError('ADVERTISEMENT:position.not.exists');
         }
 
         $dm = new PwAdDm($id);
         $dm->setStatus($status);
         $result = $this->_getAdDs()->editAdPosition($dm);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADVERTISEMENT:edit.fail');
         }
         $this->_updateAdcache();
@@ -139,7 +139,7 @@ class PwAdService
 
     public function getAdShowState($currentAd, $mid, $fid, $pid, $floorid, $proid)
     {
-        if (!$currentAd['status'] || !$this->_getScheduleResult($currentAd['schedule']) || !$this->_getConditionResult($currentAd['condition'], $mid, $fid, $pid, $floorid, $proid)) {
+        if (! $currentAd['status'] || ! $this->_getScheduleResult($currentAd['schedule']) || ! $this->_getConditionResult($currentAd['condition'], $mid, $fid, $pid, $floorid, $proid)) {
             return false;
         }
 
@@ -154,7 +154,7 @@ class PwAdService
         }
         $timestamp = Pw::getTime();
         foreach ($schedule as $value) {
-            if ($timestamp > $value[0] && (!$value[1] || $timestamp < $value[1])) {
+            if ($timestamp > $value[0] && (! $value[1] || $timestamp < $value[1])) {
                 return true;
             }
         }

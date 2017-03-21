@@ -44,7 +44,7 @@ class PwUserGroupDm extends PwBaseDm
     public function setGroupType($groupType)
     {
         $ds = $this->loadDataService();
-        if (!in_array($groupType, $ds->getGroupTypes())) {
+        if (! in_array($groupType, $ds->getGroupTypes())) {
             return false;
         }
         $this->_data['type'] = $groupType;
@@ -60,7 +60,7 @@ class PwUserGroupDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!$this->_data['name']) {
+        if (! $this->_data['name']) {
             return new PwError('USER:groups.info.name.empty');
         }
 
@@ -71,7 +71,7 @@ class PwUserGroupDm extends PwBaseDm
     {
         if ($this->gid < 1) {
             return new PwError('USER:groups.info.gid.error');
-        } elseif (!$this->_data['name']) {
+        } elseif (! $this->_data['name']) {
             return new PwError('USER:groups.info.name.empty');
         }
 

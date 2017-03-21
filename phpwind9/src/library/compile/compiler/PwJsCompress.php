@@ -16,14 +16,14 @@ class PwJsCompress extends AbstractPwCompiler
             $newfile = $JS_BUILD_PATH.substr($file, strlen($JS_DEV_PATH));
             WindFolder::mkRecur(dirname($newfile));
             if (substr($file, -3) != '.js') {
-                if (!copy($file, $newfile)) {
+                if (! copy($file, $newfile)) {
                     return new PwError('copy failed');
                 }
                 continue;
             }
             $content = WindFile::read($file);
             $compress = jscompress::pack($content);
-            if (!WindFile::write($newfile, $compress)) {
+            if (! WindFile::write($newfile, $compress)) {
                 return new PwError('write failed');
             }
         }
@@ -31,7 +31,7 @@ class PwJsCompress extends AbstractPwCompiler
 
     private function _getFiles($dir, $skipHiddenDirs = true)
     {
-        if (!$handle = @opendir($dir)) {
+        if (! $handle = @opendir($dir)) {
             return [];
         }
         $files = [];

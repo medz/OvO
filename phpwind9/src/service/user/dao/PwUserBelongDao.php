@@ -78,7 +78,7 @@ class PwUserBelongDao extends PwBaseDao
      */
     public function edit($uid, $fields)
     {
-        if (!($clearData = $this->_filterStruct($fields, $uid))) {
+        if (! ($clearData = $this->_filterStruct($fields, $uid))) {
             return false;
         }
         $this->delete($uid);
@@ -93,7 +93,7 @@ class PwUserBelongDao extends PwBaseDao
      */
     protected function _filterStruct($data, $uid = 0)
     {
-        if (!$data) {
+        if (! $data) {
             return false;
         }
         $clearData = [];

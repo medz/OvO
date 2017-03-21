@@ -70,7 +70,7 @@ class PwDomainService
         if ($domain[0] < 'a' || $domain[0] > 'z') {
             return new PwError('REWRITE:domain.first.illegal');
         }
-        if (!preg_match('/^[a-z0-9]+$/', $domain)) {
+        if (! preg_match('/^[a-z0-9]+$/', $domain)) {
             return new PwError('REWRITE:domain.char.num');
         }
         $result = $this->_domainDs()->getByDomainAndRoot($domain, $root);
@@ -107,7 +107,7 @@ class PwDomainService
         if ($domain[0] < 'a' || $domain[0] > 'z') {
             return new PwError('REWRITE:domain.first.illegal');
         }
-        if (!preg_match('/^[a-z0-9]+$/', $domain)) {
+        if (! preg_match('/^[a-z0-9]+$/', $domain)) {
             return new PwError('REWRITE:domain.char.num');
         }
         $result = $this->_domainDs()->getByDomain($domain);
@@ -146,7 +146,7 @@ class PwDomainService
         $forum_isopen = Wekit::C('domain', 'forum.isopen');
         $result = $this->_domainDs()->getAll();
         foreach ($result as $v) {
-            if ($v['domain_type'] == 'forum' && !$forum_isopen) {
+            if ($v['domain_type'] == 'forum' && ! $forum_isopen) {
                 continue;
             }
             $k = 'http://'.$v['domain'].'.'.$v['root'];

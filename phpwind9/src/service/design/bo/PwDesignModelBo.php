@@ -26,7 +26,7 @@ class PwDesignModelBo
 
     public function isModel()
     {
-        if (!$this->_modelInfo) {
+        if (! $this->_modelInfo) {
             return false;
         }
 
@@ -78,7 +78,7 @@ class PwDesignModelBo
     {
         $_configParser = Wind::getComponent('configParser');
         $configPath = Wind::getRealPath('SRV:design.srv.model.'.$this->modle.'.html_'.$vKey);
-        if (!is_file($configPath)) {
+        if (! is_file($configPath)) {
             return [];
         }
 
@@ -89,7 +89,7 @@ class PwDesignModelBo
     {
         $_configParser = Wind::getComponent('configParser');
         $configPath = Wind::getRealPath('SRV:design.srv.model.'.$this->modle.'.config');
-        if (!is_file($configPath)) {
+        if (! is_file($configPath)) {
             $this->_modelInfo = [];
 
             return;

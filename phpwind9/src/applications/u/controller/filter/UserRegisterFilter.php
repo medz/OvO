@@ -17,7 +17,7 @@ class UserRegisterFilter extends WindActionFilter
     {
         /* @var $userBo PwUserBo */
         $userBo = Wekit::getLoginUser();
-        if ($userBo->isExists() && !in_array($this->router->getAction(), ['welcome', 'guide'])) {
+        if ($userBo->isExists() && ! in_array($this->router->getAction(), ['welcome', 'guide'])) {
 
             //TODO 好友邀请链接
             $inviteCode = $this->getInput('invite');

@@ -21,7 +21,7 @@ class WindidAreaService
     public function getAreaInfo($areaid)
     {
         $info = $this->_getWindidAreaDs()->getArea($areaid);
-        if (!$info) {
+        if (! $info) {
             return [];
         }
 
@@ -38,11 +38,11 @@ class WindidAreaService
      */
     public function getAreaRout($areaid)
     {
-        if (!$areaid) {
+        if (! $areaid) {
             return [];
         }
         $info = $this->_getWindidAreaDs()->getArea($areaid);
-        if (!$info) {
+        if (! $info) {
             return [];
         }
         $rout = [];
@@ -66,7 +66,7 @@ class WindidAreaService
      */
     public function fetchAreaInfo($areaids)
     {
-        if (!$list = $this->_getWindidAreaDs()->fetchByAreaid($areaids)) {
+        if (! $list = $this->_getWindidAreaDs()->fetchByAreaid($areaids)) {
             return [];
         }
         $array = [];
@@ -88,25 +88,25 @@ class WindidAreaService
     public function fetchAreaRout($areaids)
     {
         $list = $this->_getWindidAreaDs()->fetchByAreaid($areaids);
-        if (!$list) {
+        if (! $list) {
             return [];
         }
         $routs = $parents = [];
         foreach ($list as $key => $_item) {
-            if (!$_item['parentid']) {
+            if (! $_item['parentid']) {
                 $routs[$key] = [$key, '', ''];
             } else {
                 $routs[$key] = ['', $_item['parentid'], $key];
                 $parents[$_item['parentid']] = $key;
             }
         }
-        if (!$parents) {
+        if (! $parents) {
             return $routs;
         }
         $list = $this->_getWindidAreaDs()->fetchByAreaid(array_keys($parents));
         foreach ($list as $key => $_item) {
             $tmp = $routs[$parents[$key]];
-            if (!$_item['parentid']) {
+            if (! $_item['parentid']) {
                 $tmp[0] = $key;
                 $tmp[1] = $parents[$key];
                 $tmp[2] = '';
@@ -133,7 +133,7 @@ class WindidAreaService
     {
         $areas = $this->_getWindidAreaDs()->fetchAll();
         //$areas = $this->getCacheArea(); //本地，从缓存获取
-        if (!is_array($areas)) {
+        if (! is_array($areas)) {
             return [];
         }
         $root = [];
@@ -164,12 +164,12 @@ class WindidAreaService
         $childs = $temp = [];
         foreach ($areas as $areaid => $item) {
             if ($item['parentid'] == $parentid) {
-                if (!isset($childs[$areaid])) {
+                if (! isset($childs[$areaid])) {
                     $childs[$areaid] = ['name' => $item['name']];
                 }
                 $temp[] = $areaid;
             } elseif ($areas[$item['parentid']]['parentid'] == $parentid) {
-                if (!isset($childs[$areas[$item['parentid']]['areaid']])) {
+                if (! isset($childs[$areas[$item['parentid']]['areaid']])) {
                     $childs[$areas[$item['parentid']]['areaid']] = ['name' => $areas[$item['parentid']]['name']];
                     $temp[] = $areas[$item['parentid']]['areaid'];
                 }

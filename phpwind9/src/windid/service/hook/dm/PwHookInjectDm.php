@@ -123,7 +123,7 @@ class PwHookInjectDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->id) {
+        if (! $this->id) {
             return ['HOOK:verify.required', ['{{error}}' => 'id']];
         }
         $this->_data['modified_time'] = Pw::getTime();

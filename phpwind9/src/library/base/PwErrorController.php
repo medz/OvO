@@ -48,7 +48,7 @@ class PwErrorController extends WindErrorHandler
         //set layout for common request
         $this->setTemplate('TPL:common.error');
 
-        if (!$this->getRequest()->getIsAjaxRequest()) {
+        if (! $this->getRequest()->getIsAjaxRequest()) {
             $this->setLayout('TPL:common.layout_error');
             $lang = Wind::getComponent('i18n');
             Wekit::setGlobal(NEXT_VERSION, 'version');
@@ -63,7 +63,7 @@ class PwErrorController extends WindErrorHandler
     {
         parent::afterAction($handlerAdapter);
 
-        $debug = Wekit::C('site', 'debug') || !Wekit::C('site', 'css.compress');
+        $debug = Wekit::C('site', 'debug') || ! Wekit::C('site', 'css.compress');
         Wekit::setGlobal(['debug' => $debug ? '/dev' : '/build'], 'theme');
         $this->setTheme('site', null);
 
@@ -116,7 +116,7 @@ class PwErrorController extends WindErrorHandler
     {
         $themePack = Wekit::C('site', 'theme.'.$type.'.pack');
         $themePack = 'THEMES:'.$themePack;
-        if (!$theme) {
+        if (! $theme) {
             $theme = Wekit::C('site', 'theme.'.$type.'.default');
         }
         parent::setTheme($theme, $themePack);

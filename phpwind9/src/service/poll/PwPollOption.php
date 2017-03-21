@@ -39,7 +39,7 @@ class PwPollOption
      */
     public function fetch($optionids)
     {
-        if (empty($optionids) && !is_array($optionids)) {
+        if (empty($optionids) && ! is_array($optionids)) {
             return [];
         }
 
@@ -68,7 +68,7 @@ class PwPollOption
      */
     public function fetchByPollid($pollids)
     {
-        if (empty($pollids) || !is_array($pollids)) {
+        if (empty($pollids) || ! is_array($pollids)) {
             return [];
         }
 
@@ -85,7 +85,7 @@ class PwPollOption
     public function countByPollid($pollid)
     {
         $pollid = intval($pollid);
-        if (!$pollid) {
+        if (! $pollid) {
             return 0;
         }
 
@@ -104,7 +104,7 @@ class PwPollOption
         }
 
         $fieldData = $dm->getData();
-        if (!$fieldData) {
+        if (! $fieldData) {
             return false;
         }
 
@@ -179,7 +179,7 @@ class PwPollOption
      */
     public function batchUpdate($optionids, PwPollOptionDm $dm)
     {
-        if (empty($optionids) || !is_array($optionids)) {
+        if (empty($optionids) || ! is_array($optionids)) {
             return false;
         }
         if (($result = $dm->beforeUpdate()) !== true) {

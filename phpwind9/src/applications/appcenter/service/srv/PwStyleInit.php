@@ -24,7 +24,7 @@ class PwStyleInit
             $configBo->set("theme.$k.pack", $v[1]);
             $pack = Wind::getRealDir('THEMES:'.str_replace('/', '.', $v[1]).'.default');
             $id = $this->install($pack);
-            if (!$id) {
+            if (! $id) {
                 continue;
             }
             $dm = new PwStyleDm();
@@ -38,7 +38,7 @@ class PwStyleInit
     protected function install($pack)
     {
         $manifest = $pack.'/Manifest.xml';
-        if (!is_file($manifest)) {
+        if (! is_file($manifest)) {
             return false;
         }
         /* @var $install PwInstallApplication */

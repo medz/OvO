@@ -39,7 +39,7 @@ class PwUserInfoDao extends PwBaseDao
      */
     public function getUserByName($username)
     {
-        if (!$info = $this->getBaseInstance()->getUserByName($username)) {
+        if (! $info = $this->getBaseInstance()->getUserByName($username)) {
             return [];
         }
 
@@ -55,7 +55,7 @@ class PwUserInfoDao extends PwBaseDao
      */
     public function getUserByEmail($email)
     {
-        if (!$info = $this->getBaseInstance()->getUserByEmail($email)) {
+        if (! $info = $this->getBaseInstance()->getUserByEmail($email)) {
             return [];
         }
 
@@ -105,7 +105,7 @@ class PwUserInfoDao extends PwBaseDao
      */
     public function addUser($fields)
     {
-        if (!$this->getBaseInstance()->addUser($fields)) {
+        if (! $this->getBaseInstance()->addUser($fields)) {
             return false;
         }
         $this->_add($fields, false);

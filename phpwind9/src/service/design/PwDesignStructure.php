@@ -12,7 +12,7 @@ class PwDesignStructure
 {
     public function getStruct($name)
     {
-        if (!$name) {
+        if (! $name) {
             return [];
         }
 
@@ -21,7 +21,7 @@ class PwDesignStructure
 
     public function fetchStruct($names)
     {
-        if (empty($names) || !is_array($names)) {
+        if (empty($names) || ! is_array($names)) {
             return [];
         }
 
@@ -50,7 +50,7 @@ class PwDesignStructure
 
     public function deleteStruct($name)
     {
-        if (!$name) {
+        if (! $name) {
             return [];
         }
 

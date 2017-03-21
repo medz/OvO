@@ -28,7 +28,7 @@ class DraftController extends PwBaseController
     public function doAddAction()
     {
         list($title, $content) = $this->getInput(['atc_title', 'atc_content'], 'post');
-        if (!$title || !$content) {
+        if (! $title || ! $content) {
             $this->showError('BBS:draft.content.empty');
         }
         if ($this->_getDraftDs()->countByUid($this->loginUser->uid) >= $this->maxNum) {
@@ -49,7 +49,7 @@ class DraftController extends PwBaseController
     public function doDeleteAction()
     {
         $id = (int) $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
 

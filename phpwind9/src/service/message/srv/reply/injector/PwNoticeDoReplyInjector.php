@@ -17,7 +17,7 @@ class PwNoticeDoReplyInjector extends PwBaseHookInjector
         $pid = (int) $this->getInput('pid', 'post');
         $content = $this->getInput('atc_content', 'post');
         $post = Wekit::load('forum.PwThread')->getPost($pid);
-        if (!$post['reply_notice']) {
+        if (! $post['reply_notice']) {
             return false;
         }
 

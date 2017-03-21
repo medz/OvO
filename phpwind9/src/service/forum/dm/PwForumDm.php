@@ -378,7 +378,7 @@ class PwForumDm extends PwBaseDm
         }
         if ($parentid) {
             $forum = $this->_getForumService()->getForum($parentid);
-            if (!$forum) {
+            if (! $forum) {
                 return new PwError('BBS:forum.parentid.exists.not');
             }
             if ($forum['type'] == 'sub2') {
@@ -395,7 +395,7 @@ class PwForumDm extends PwBaseDm
 
     protected function _checkManager()
     {
-        if (!$this->_data['manager']) {
+        if (! $this->_data['manager']) {
             return true;
         }
         $users = Wekit::load('user.PwUser')->fetchUserByName($this->_data['manager']);

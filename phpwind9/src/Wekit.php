@@ -12,9 +12,9 @@ if (config('app.env') !== 'production') {
     error_reporting(E_ALL);
 }
 
-if (config('app.debug') && !defined('WIND_DEBUG')) {
+if (config('app.debug') && ! defined('WIND_DEBUG')) {
     define('WIND_DEBUG', 3);
-} elseif (!defined('WIND_DEBUG')) {
+} elseif (! defined('WIND_DEBUG')) {
     define('WIND_DEBUG', 0);
 }
 
@@ -45,7 +45,7 @@ class Wekit
         $_SERVER['SCRIPT_FILENAME'] = public_path('old/'.$file);
 
         self::init($name);
-        if (!empty($components)) {
+        if (! empty($components)) {
             self::$_sc['components'] = (array) $components + self::$_sc['components'];
         }
 

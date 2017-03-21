@@ -84,7 +84,7 @@ class WindidMessageDialogDao extends WindidBaseDao
      */
     public function addDialog($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s ', $this->getTable(), $this->sqlSingle($fields));
@@ -106,7 +106,7 @@ class WindidMessageDialogDao extends WindidBaseDao
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
-        if (!$fields && !$increaseFields) {
+        if (! $fields && ! $increaseFields) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `dialog_id` =? ', $this->getTable(), $this->sqlMerge($fields, $increaseFields));
@@ -128,7 +128,7 @@ class WindidMessageDialogDao extends WindidBaseDao
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
-        if (!$fields && !$increaseFields) {
+        if (! $fields && ! $increaseFields) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `dialog_id` IN %s', $this->getTable(), $this->sqlMerge($fields, $increaseFields), $this->sqlImplode($dialogIds));

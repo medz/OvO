@@ -79,7 +79,7 @@ class WindidNotifyLogDao extends WindidBaseDao
     public function multiAdd($data)
     {
         $_data = [];
-        if (!$data) {
+        if (! $data) {
             return false;
         }
         foreach ($data as $k => $v) {

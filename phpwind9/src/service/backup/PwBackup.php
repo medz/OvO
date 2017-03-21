@@ -20,7 +20,7 @@ class PwBackup
      */
     public function getTableStatus($table)
     {
-        if (!$table) {
+        if (! $table) {
             return 0;
         }
 
@@ -36,7 +36,7 @@ class PwBackup
      */
     public function getCreateTable($table)
     {
-        if (!$table) {
+        if (! $table) {
             return [];
         }
 
@@ -54,7 +54,7 @@ class PwBackup
      */
     public function getData($table, $limit, $start)
     {
-        if (!$table) {
+        if (! $table) {
             return [];
         }
 
@@ -70,7 +70,7 @@ class PwBackup
      */
     public function getColumnCount($table)
     {
-        if (!$table) {
+        if (! $table) {
             return 0;
         }
 
@@ -100,7 +100,7 @@ class PwBackup
         $tableArray = [];
         foreach ($tables as $v) {
             $name = array_values($v);
-            if (!$name[0]) {
+            if (! $name[0]) {
                 continue;
             }
             if (substr($name[0], 0, $prefixLen) != $prefix) {
@@ -125,7 +125,7 @@ class PwBackup
     public function optimizeTables($tables)
     {
         $table = $this->_buildTables($tables);
-        if (!$table) {
+        if (! $table) {
             return false;
         }
         $this->_getBackupDao()->optimizeTables($table);
@@ -143,7 +143,7 @@ class PwBackup
     public function repairTables($tables)
     {
         $table = $this->_buildTables($tables);
-        if (!$table) {
+        if (! $table) {
             return false;
         }
         $this->_getBackupDao()->repairTables($table);
@@ -170,10 +170,10 @@ class PwBackup
      */
     private function _buildTables($tables)
     {
-        if (!$tables) {
+        if (! $tables) {
             return false;
         }
-        !is_array($tables) && $tables = [$tables];
+        ! is_array($tables) && $tables = [$tables];
         $tables = array_unique($tables);
         $table = '';
         foreach ($tables as $v) {

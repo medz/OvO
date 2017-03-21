@@ -55,7 +55,7 @@ class AdminMenuService
         $menuTables = $this->getMenuTable();
         if ($myMenus !== '-1') {
             foreach ($menuTables as $key => $value) {
-                if (isset($value['url']) && !in_array($key, (array) $myMenus)) {
+                if (isset($value['url']) && ! in_array($key, (array) $myMenus)) {
                     unset(
                     $menuTables[$key]);
                 }
@@ -102,7 +102,7 @@ class AdminMenuService
      */
     public function getMenuTable()
     {
-        if (!$menuTables = $this->_getMenuTable()) {
+        if (! $menuTables = $this->_getMenuTable()) {
             return [];
         }
         unset($menuTables['__auths']);
@@ -124,7 +124,7 @@ class AdminMenuService
      */
     public function getMenuAuthStruts()
     {
-        if (!$menusInfo = $this->_getMenuTable()) {
+        if (! $menusInfo = $this->_getMenuTable()) {
             return [];
         }
 
@@ -157,7 +157,7 @@ class AdminMenuService
             if (isset($menus['_extensions'])) {
                 $_extensions = $menus['_extensions'];
                 foreach ($_extensions as $_extName => $_ext) {
-                    if (!isset($_ext['resource'])) {
+                    if (! isset($_ext['resource'])) {
                         continue;
                     }
                     $_tmp = Wind::getRealPath($_ext['resource'], true);
@@ -172,7 +172,7 @@ class AdminMenuService
             $menus = PwSimpleHook::getInstance('admin_menu')->runWithFilters($menus);
 
             foreach ($_extensions as $key => $value) {
-                if (!isset($value['resource'])) {
+                if (! isset($value['resource'])) {
                     continue;
                 }
                 $_tmp = $_configParser->parse($value['resource']);

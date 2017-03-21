@@ -36,10 +36,10 @@ class PwDesignStructureDao extends PwBaseDao
 
     public function editStruct($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!$data['struct_name']) {
+        if (! $data['struct_name']) {
             return false;
         }
 
@@ -48,10 +48,10 @@ class PwDesignStructureDao extends PwBaseDao
 
     public function replace($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!$data['struct_name']) {
+        if (! $data['struct_name']) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));

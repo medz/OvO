@@ -89,7 +89,7 @@ class PwPortalCompile
         if (preg_match_all('/\<pw-tpl\s*id=\"([\w.]+)\"\s*\/>/isU', $section, $matches)) {
             $ds = Wekit::load('design.PwDesignSegment');
             foreach ($matches[1] as $k => $matche) {
-                if (!$matche) {
+                if (! $matche) {
                     continue;
                 }
                 list($common, $tpl) = explode('.', $matche, 2);
@@ -98,7 +98,7 @@ class PwPortalCompile
                     $file = $this->dir.$tpl.'.htm';
                     $v = $tpl;
                     $dir = $this->dir;
-                    if (!WindFile::isFile($file)) {
+                    if (! WindFile::isFile($file)) {
                         $v = $tpl;
                         $dir = $this->commonDir;
                     }
@@ -108,10 +108,10 @@ class PwPortalCompile
                 }
 
                 $file = $dir.$v.'.htm';
-                if (!WindFile::isFile($file)) {
+                if (! WindFile::isFile($file)) {
                     WindFolder::mkRecur($dir);
                     $isAble = $this->_checkRealWriteAble($dir);
-                    if (!$isAble) {
+                    if (! $isAble) {
                         return $section;
                     }
                     WindFolder::mkRecur(dirname($dir).'/images/');
@@ -120,7 +120,7 @@ class PwPortalCompile
                 }
 
                 $xmlFile = dirname($dir).'/Manifest.xml';
-                if (!WindFile::isFile($xmlFile)) {
+                if (! WindFile::isFile($xmlFile)) {
                     $fromFile = Wind::getRealDir('TPL:special.default.').'Manifest.xml';
                     @copy($fromFile, $xmlFile);
                     @chmod($xmlFile, 0777);
@@ -149,11 +149,11 @@ class PwPortalCompile
      */
     public function replaceList($id, $repace, $tpl = 'index')
     {
-        if (!$tpl) {
+        if (! $tpl) {
             return false;
         }
         $file = $this->dir.$tpl.'.htm';
-        if (!WindFile::isFile($file)) {
+        if (! WindFile::isFile($file)) {
             $file = $this->commonDir.$tpl.'.htm';
         }
         $content = $this->read($file);
@@ -178,11 +178,11 @@ class PwPortalCompile
      */
     public function replaceTitle($name, $repace, $tpl = 'index')
     {
-        if (!$tpl) {
+        if (! $tpl) {
             return false;
         }
         $file = $this->dir.$tpl.'.htm';
-        if (!WindFile::isFile($file)) {
+        if (! WindFile::isFile($file)) {
             $file = $this->commonDir.$tpl.'.htm';
         }
         $content = $this->read($file);
@@ -219,7 +219,7 @@ class PwPortalCompile
         $content = $this->read($file);
         if (preg_match_all('/\<pw-list\s*id=\"(\d+)\"\s*[>|\/>](.+)<\/pw-list>/isU', $content, $matches)) {
             foreach ($matches[1] as $k => $v) {
-                if (!isset($bakData[$v])) {
+                if (! isset($bakData[$v])) {
                     continue;
                 }
                 $repace = $bakData[$v]['module_tpl'] ? $bakData[$v]['module_tpl'] : '';
@@ -389,7 +389,7 @@ class PwPortalCompile
 
     private function _checkRealWriteAble($pathfile)
     {
-        if (!$pathfile) {
+        if (! $pathfile) {
             return false;
         }
         $isDir = substr($pathfile, -1) == '/' ? true : false;

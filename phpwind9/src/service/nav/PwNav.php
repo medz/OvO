@@ -51,7 +51,7 @@ class PwNav
 
     public function getNavBySign($type = 'main', $sign = '')
     {
-        if (!$sign) {
+        if (! $sign) {
             return [];
         }
 
@@ -134,7 +134,7 @@ class PwNav
     {
         $number = 0;
         foreach ($dms as $dm) {
-            if (!$dm instanceof PwNavDm) {
+            if (! $dm instanceof PwNavDm) {
                 continue;
             }
             $msg = $this->_getNavDao()->updateNav($dm->navid, $dm->getData());
@@ -159,7 +159,7 @@ class PwNav
     {
         $parenid = 0;
         foreach ($dms as $k => $dm) {
-            if (!$dm instanceof PwNavDm) {
+            if (! $dm instanceof PwNavDm) {
                 continue;
             }
             $data = $dm->getData();
@@ -186,7 +186,7 @@ class PwNav
     public function delNav($navId)
     {
         $child = $this->_getNavDao()->getChildNav($navId, 2);
-        if (!empty($child)) {
+        if (! empty($child)) {
             return new PwError('ADMIN:nav.del.fail.have.child');
         }
 
@@ -236,7 +236,7 @@ class PwNav
      */
     private function _arrayValueSort($array)
     {
-        if (!is_array($array)) {
+        if (! is_array($array)) {
             return [];
         }
         $_array = [];

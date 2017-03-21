@@ -18,7 +18,7 @@ class AdminManagerService
 {
     public function login($username, $password)
     {
-        if (!$this->loadSafeService()->ipLegal(Wind::getComponent('request')->getClientIp())) {
+        if (! $this->loadSafeService()->ipLegal(Wind::getComponent('request')->getClientIp())) {
             return new PwError('ADMIN:login.fail.ip');
         }
         $user = $this->loadUserService()->verifyUser($username, $password);
@@ -28,7 +28,7 @@ class AdminManagerService
 
         /* @var $auth AdminAuth */
         $auth = Wekit::load('ADMIN:service.AdminAuth');
-        if (!$auth->findByUid($user['uid'])) {
+        if (! $auth->findByUid($user['uid'])) {
             return new PwError('ADMIN:login.fail.allow');
         }
         $u = $this->loadUserService()->getUserByUid($user['uid']);
@@ -39,14 +39,14 @@ class AdminManagerService
     public function isLogin($uid, $password)
     {
         $user = $this->loadUserService()->getUserByUid($uid);
-        if (!$user) {
+        if (! $user) {
             return [];
         }
         if (Pw::getPwdCode($user['password']) != $password) {
             return [];
         }
         $auth = Wekit::load('ADMIN:service.AdminAuth');
-        if (!$auth->findByUid($user['uid'])) {
+        if (! $auth->findByUid($user['uid'])) {
             return [];
         }
 

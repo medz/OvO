@@ -66,13 +66,13 @@ class AppController extends AdminBaseController
         $pre = Wekit::C('site', 'cookie.pre');
         $pre && $authkey = $pre.'_'.$authkey;
         $winduser = $this->getInput($authkey, 'post');
-        if (!$winduser) {
+        if (! $winduser) {
             $this->showError('login.not');
         }
         list($type, $u, $pwd) = explode("\t", Pw::decrypt(urldecode($winduser)));
         if ($type == 'founder') {
             $founders = Wekit::load('ADMIN:service.srv.AdminFounderService')->getFounders();
-            if (!isset($founders[$u])) {
+            if (! isset($founders[$u])) {
                 $this->showError('login.not');
             }
             list($md5pwd, $salt) = explode('|', $founders[$u], 2);
@@ -81,7 +81,7 @@ class AppController extends AdminBaseController
             }
         } else {
             $r = Wekit::load('user.PwUser')->getUserByUid($u);
-            if (!$r) {
+            if (! $r) {
                 $this->showError('login.not');
             }
             if (Pw::getPwdCode($r['password']) != $pwd) {
@@ -151,7 +151,7 @@ class AppController extends AdminBaseController
         if ($file) {
             $file = Wind::getRealDir($install->getConfig('tmp_dir'), true).'/'.$file;
             $install->setTmpPath(dirname($file));
-            if (!WindFile::isFile($file)) {
+            if (! WindFile::isFile($file)) {
                 $this->showError('APPCENTER:install.checkpackage.fail');
             }
             $_r = $install->extractPackage($file);
@@ -314,7 +314,7 @@ class AppController extends AdminBaseController
         }
         $result = $this->_appDs()->fetchByAlias($alias, 'alias');
         $to_install = array_diff($alias, array_keys($result));
-        if (!$to_install) {
+        if (! $to_install) {
             $this->showMessage('success');
         }
     }
@@ -343,7 +343,7 @@ class AppController extends AdminBaseController
         $alias = $this->getInput('alias', 'get');
 
         $dir = Wind::getRealDir('EXT:'.$alias);
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             $this->showError('fail');
         }
         $target = Wind::getRealPath('DATA:tmp.'.$alias.'.zip', true);

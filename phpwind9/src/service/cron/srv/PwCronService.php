@@ -18,7 +18,7 @@ class PwCronService
         $ds = $this->_getCronDs();
         $cron = $ds->getCronByFile($cronFile);
         if ($cron['cron_id']) {
-            if (!$time) {
+            if (! $time) {
                 list($day, $hour, $minute) = explode('-', $cron['loop_daytime']);
                 $time = $this->getNextTime($cron['loop_type'], $day, $hour, $minute);
             }
@@ -49,7 +49,7 @@ class PwCronService
         $ds = $this->_getCronDs();
 
         $path = Wind::getRealPath('SRV:cron.srv.system.systemCron');
-        if (!is_file($path)) {
+        if (! is_file($path)) {
             return false;
         }
         $cron = @include $path;
@@ -59,10 +59,10 @@ class PwCronService
             $_sysCron[$v['cron_file']] = $v;
         }
         foreach ($cron as $k => $v) {
-            if (!in_array($v['type'], ['month', 'week', 'day', 'hour', 'now'])) {
+            if (! in_array($v['type'], ['month', 'week', 'day', 'hour', 'now'])) {
                 continue;
             }
-            if (!$v['file']) {
+            if (! $v['file']) {
                 continue;
             }
             $cronInfo = $ds->getCronByFile($v['file']);
@@ -194,7 +194,7 @@ class PwCronService
     {
         $_time = Pw::getTime();
         $cron = $this->_getCronDs()->getFirstCron();
-        if (!$cron || $cron['next_time'] > $_time) {
+        if (! $cron || $cron['next_time'] > $_time) {
             return false;
         }
         list($day, $hour, $minute) = explode('-', $cron['loop_daytime']);
@@ -207,7 +207,7 @@ class PwCronService
             ->setNexttime($nexttime);
         $this->_getCronDs()->updateCron($dm);
 
-        if (!$this->_runAction($cron['cron_file'], $cron['cron_id'])) {
+        if (! $this->_runAction($cron['cron_file'], $cron['cron_id'])) {
             return false;
         }
         $this->runCron();
@@ -217,7 +217,7 @@ class PwCronService
 
     private function _runAction($filename = '', $cronId = 0)
     {
-        if (!$filename || Pw::substrs($filename, 8, 0, false) != 'PwCronDo') {
+        if (! $filename || Pw::substrs($filename, 8, 0, false) != 'PwCronDo') {
             return false;
         }
         $fliePath = 'SRV:cron.srv.do.'.$filename;
