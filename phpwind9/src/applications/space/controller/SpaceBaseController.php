@@ -40,7 +40,7 @@ class SpaceBaseController extends PwBaseController
 
         $this->space = new PwSpaceModel($spaceUid);
 
-        if (!$this->space->space['uid']) {
+        if (! $this->space->space['uid']) {
             $user = Wekit::load('user.PwUser')->getUserByUid($spaceUid);
             if ($user) {
                 Wekit::load('space.dm.PwSpaceDm');
@@ -56,7 +56,7 @@ class SpaceBaseController extends PwBaseController
 
         $this->space->setTome($spaceUid, $this->loginUser->uid);
         $this->space->setVisitUid($this->loginUser->uid);
-        if (!$this->space->allowView('space')) {
+        if (! $this->space->allowView('space')) {
             $this->forwardRedirect(WindUrlHelper::createUrl('space/ban/run', ['uid' => $spaceUid]));
         }
     }
@@ -87,7 +87,7 @@ class SpaceBaseController extends PwBaseController
         }
         $online = Wekit::load('online.srv.PwOnlineService');
         $createdTime = $online->spaceOnline($this->space->spaceUid);
-        if (!$createdTime) {
+        if (! $createdTime) {
             return false;
         }
         $dm = Wekit::load('online.dm.PwOnlineDm');

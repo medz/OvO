@@ -27,11 +27,11 @@ class PwUninstallApplication
             $this->_log[$value['log_type']] = $value['data'];
         }
         $service = $this->getInstallLog('service');
-        if (!$service) {
+        if (! $service) {
             return $this->forceUninstall($appId);
         }
         foreach ($service as $key => $var) {
-            if (!isset($var['class'])) {
+            if (! isset($var['class'])) {
                 continue;
             }
             try {
@@ -39,7 +39,7 @@ class PwUninstallApplication
             } catch (PwException $e) {
                 continue;
             }
-            if (!$_install instanceof iPwInstall) {
+            if (! $_install instanceof iPwInstall) {
                 return new PwError('APPCENTER:install.classtype');
             }
             $r = $_install->unInstall($this);

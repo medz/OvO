@@ -32,7 +32,7 @@ class ManageController extends AdminBaseController
         $sName && $vo->setUsername($sName);
         $sUid && $vo->setUid($sUid);
         $sEmail && $vo->setEmail($sEmail);
-        (!$sGroup || in_array(-1, $sGroup)) || $vo->setGid($sGroup);
+        (! $sGroup || in_array(-1, $sGroup)) || $vo->setGid($sGroup);
         $page = intval($page) == 0 ? 1 : abs(intval($page));
         /* @var $searchDs PwUserSearch */
         $searchDs = Wekit::load('SRV:user.PwUserSearch');
@@ -54,7 +54,7 @@ class ManageController extends AdminBaseController
             }
         }
         $data = $vo->getData();
-        (!$sGroup || in_array(-1, $sGroup)) && $data['gid'] = [-1];
+        (! $sGroup || in_array(-1, $sGroup)) && $data['gid'] = [-1];
         $this->setOutput($data, 'args');
         $this->setOutput($page, 'page');
         $this->setOutput($this->pageNumber, 'perPage');
@@ -84,7 +84,7 @@ class ManageController extends AdminBaseController
                 /* @var $groupDs PwUserGroups */
                 $groupDs = Wekit::load('usergroup.PwUserGroups');
                 $groups = $groupDs->getGroupsByType('default');
-                if (!in_array($groupid, array_keys($groups))) {
+                if (! in_array($groupid, array_keys($groups))) {
                     $dm->setGroups([$groupid => 0]);
                 }
             }
@@ -325,7 +325,7 @@ class ManageController extends AdminBaseController
             }
         }
         //如果用户原先的用户组是不在默认组中，新设置的用户组在默认组中，则抛错
-        if (!in_array($info['groupid'], $banGids) && in_array($groupid, $banGids) && $info['groupid'] != $groupid) {
+        if (! in_array($info['groupid'], $banGids) && in_array($groupid, $banGids) && $info['groupid'] != $groupid) {
             switch ($groupid) {
                 case 6:
                     $this->showError('USER:user.belong.ban.error');
@@ -350,7 +350,7 @@ class ManageController extends AdminBaseController
                 /* @var $userService PwUserService */
                 $userService = Wekit::load('user.srv.PwUserService');
                 list($groupid, $clearGids) = $userService->caculateUserGroupid($groupid, $clearGids);
-            } elseif (!isset($clearGids[$groupid])) {
+            } elseif (! isset($clearGids[$groupid])) {
                 $clearGids[$groupid] = 0;
             }
         }
@@ -358,10 +358,10 @@ class ManageController extends AdminBaseController
         $oldGid = explode(',', $info['groups']);
         $info['groupid'] && array_push($oldGid, $info['groupid']);
         //总版主处理
-        if (in_array(5, $oldGid) && !isset($clearGids[5])) {
+        if (in_array(5, $oldGid) && ! isset($clearGids[5])) {
             $this->showError('USER:user.forumadmin.delete.error');
         }
-        if (!in_array(5, $oldGid) && isset($clearGids[5])) {
+        if (! in_array(5, $oldGid) && isset($clearGids[5])) {
             $this->showError('USER:user.forumadmin.add.error');
         }
 
@@ -435,7 +435,7 @@ class ManageController extends AdminBaseController
         /* @var $pwUser PwUser */
         $pwUser = Wekit::load('user.PwUser');
         $info = $pwUser->getUserByUid($uid);
-        if (!$info) {
+        if (! $info) {
             $this->showError('USER:illega.id', 'admin/u/manage/run');
         }
         $this->setOutput($uid, 'uid');
@@ -460,7 +460,7 @@ class ManageController extends AdminBaseController
     private function _buildArea($areaid)
     {
         $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
-        if (!$areaid) {
+        if (! $areaid) {
             return $default;
         }
         $rout = WindidApi::api('area')->getAreaRout($areaid);

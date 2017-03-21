@@ -92,7 +92,7 @@ class PwDesignPushDao extends PwBaseDao
         foreach ($data as $key => $value) {
             switch ($key) {
                 case 'module_id':
-                    $value = !is_array($value) && $value ? [$value] : $value;
+                    $value = ! is_array($value) && $value ? [$value] : $value;
                     $where .= ' AND module_id IN '.$this->sqlImplode($value);
                     break;
                 case 'created_userid':

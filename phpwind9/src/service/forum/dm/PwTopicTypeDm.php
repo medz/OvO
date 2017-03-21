@@ -79,7 +79,7 @@ class PwTopicTypeDm extends PwBaseDm
 
     public function checkName()
     {
-        if (!$this->_data['name']) {
+        if (! $this->_data['name']) {
             return new PwError('BBS:forum.TOPIC_TYPE_NAME_EMPTY');
         } elseif (strlen($this->_data['name']) > 120) {
             return new PwError('BBS:forum.TOPIC_TYPE_NAME_LENGTH_LIMIT');

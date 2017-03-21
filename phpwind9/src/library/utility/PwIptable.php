@@ -38,7 +38,7 @@ class PwIptable
      */
     public function getIpFromByDomain($domain)
     {
-        if (!$domain) {
+        if (! $domain) {
             return 'Unknown';
         }
         $ip = gethostbyname($domain);
@@ -55,11 +55,11 @@ class PwIptable
      */
     public function getIpFrom($ip)
     {
-        if (!$ip || !$this->_isCorrectIpAddress($ip)) {
+        if (! $ip || ! $this->_isCorrectIpAddress($ip)) {
             return 'Unknown';
         }
         $action = sprintf('_getIpFrom%s', ucfirst($this->_from));
-        if (!method_exists($this, $action)) {
+        if (! method_exists($this, $action)) {
             return 'Unknown';
         }
 
@@ -144,7 +144,7 @@ class IpTableWry
     public function getIpFromWry($ip)
     {
         $unknowIp = 'Unknown';
-        if (!$this->_fp) {
+        if (! $this->_fp) {
             return $unknowIp;
         }
         $ip = $this->packip($ip);
@@ -340,7 +340,7 @@ class IpTableIndex
         $txt = $this->_dirName.'/'.$d_ip[0].'.txt';
         $tag_1 = $d_ip[0];
         $tag_2 = $d_ip[1];
-        if (!file_exists($txt)) {
+        if (! file_exists($txt)) {
             $tag_1 = 0;
             $tag_2 = $d_ip[0];
             $txt = $this->_dirName.'/'.'0.txt';
@@ -383,7 +383,7 @@ class IpTableIndex
                 return $ip_a[2];
             }
             $ip = $this->_d_ip($d_ip);
-            while (!$f && !$l_d && ($wholeIP >= 0)) {
+            while (! $f && ! $l_d && ($wholeIP >= 0)) {
                 if (($s = strpos($d, "\n".$wholeIP.'.')) !== false) {
                     $s = $s + $offset;
                     list($l_d, $f) = $this->_s_ip($handle, $s, $ip);
@@ -425,11 +425,11 @@ class IpTableIndex
         if ($handle = @fopen($this->_indexFile, 'rb')) {
             $offset = ($ip_1 * $this->_bsize) + ($ip_2 * 4);
             fseek($handle, $offset, SEEK_SET);
-            if (!feof($handle)) {
+            if (! feof($handle)) {
                 $c1 = unpack('Nkey', fread($handle, 4));
                 $c1 = $c1['key'];
                 $c2 = 0;
-                while (!feof($handle) && $c2 == 0) {
+                while (! feof($handle) && $c2 == 0) {
                     $c2 = unpack('Nkey', fread($handle, 4));
                     $c2 = $c2['key'];
                 }

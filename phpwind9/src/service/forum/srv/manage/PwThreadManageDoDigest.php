@@ -95,7 +95,7 @@ class PwThreadManageDoDigest extends PwThreadManageDo
         $time = Pw::getTime();
         foreach ($this->threads as $thread) {
             $_tmp = new PwThreadDigestDm($thread['tid']);
-            if (!isset($fids[$thread['fid']])) {
+            if (! isset($fids[$thread['fid']])) {
                 $fids[$thread['fid']] = $srv->getCateId($thread['fid']);
             }
             $_tmp->setCid($fids[$thread['fid']])

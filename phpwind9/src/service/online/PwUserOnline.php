@@ -35,7 +35,7 @@ class PwUserOnline
      */
     public function isOnlines($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return [];
         }
         $data = $this->_getUserOnlineDao()->fetchUserOnline($uids);
@@ -66,7 +66,7 @@ class PwUserOnline
      */
     public function fetchUserOnline($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return false;
         }
 
@@ -149,7 +149,7 @@ class PwUserOnline
      */
     public function deleteInfos($uids)
     {
-        if (!is_array($uids) || !count($uids)) {
+        if (! is_array($uids) || ! count($uids)) {
             return false;
         }
 

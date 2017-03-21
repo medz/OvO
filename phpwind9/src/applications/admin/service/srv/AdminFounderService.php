@@ -15,7 +15,7 @@ class AdminFounderService
     public function login($username, $password)
     {
         $founder = $this->getFounders();
-        if (!$result = $this->checkPwd($founder[$username], $password)) {
+        if (! $result = $this->checkPwd($founder[$username], $password)) {
             return new PwError('ADMIN:login.fail.user.illegal');
         }
 
@@ -24,7 +24,7 @@ class AdminFounderService
 
     public function isLogin($username, $password)
     {
-        if (!$this->isFounder($username)) {
+        if (! $this->isFounder($username)) {
             return [];
         }
         $founder = $this->getFounders();
@@ -32,7 +32,7 @@ class AdminFounderService
         if (Pw::getPwdCode($md5pwd) != $password) {
             return [];
         }
-        if (!$user = $this->loadUserService()->getUserByName($username)) {
+        if (! $user = $this->loadUserService()->getUserByName($username)) {
             $user = [
                 'uid'      => 0,
                 'username' => $username,
@@ -52,7 +52,7 @@ class AdminFounderService
      */
     public function add($username, $password, $email)
     {
-        if (!$this->isWriteable()) {
+        if (! $this->isWriteable()) {
             return new PwError('ADMIN:founder.file.write.fail');
         }
         $this->getFounders();
@@ -62,7 +62,7 @@ class AdminFounderService
         }
 
         $user = $this->loadUserService()->getUserByName($username);
-        if (!$password && !isset($user['password'])) {
+        if (! $password && ! isset($user['password'])) {
             return new PwError(
             'ADMIN:founder.add.fail.password.empty');
         }
@@ -94,11 +94,11 @@ class AdminFounderService
      */
     public function edit($username, $password, $email)
     {
-        if (!$this->isWriteable()) {
+        if (! $this->isWriteable()) {
             return new PwError('ADMIN:founder.file.write.fail');
         }
         $this->getFounders();
-        if (!isset($this->_founder[$username])) {
+        if (! isset($this->_founder[$username])) {
             return new PwError('ADMIN:founder.edit.fail');
         }
 
@@ -161,11 +161,11 @@ class AdminFounderService
      */
     public function del($username)
     {
-        if (!$this->isWriteable()) {
+        if (! $this->isWriteable()) {
             return new PwError('ADMIN:founder.file.write.fail');
         }
         $this->getFounders();
-        if (!isset($this->_founder[$username])) {
+        if (! isset($this->_founder[$username])) {
             return new PwError('ADMIN:founder.del.fail');
         }
         unset($this->_founder[$username]);

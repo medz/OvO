@@ -19,10 +19,10 @@ class PwThreadManageDoDown extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['down']) || !$permission['down']) {
+        if (! isset($permission['down']) || ! $permission['down']) {
             return false;
         }
-        if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
+        if (! $this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
             return new PwError('permission.level.down', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 

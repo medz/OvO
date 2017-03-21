@@ -115,13 +115,13 @@ class WindidAppDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['name']) || !$this->_data['name']) {
+        if (! isset($this->_data['name']) || ! $this->_data['name']) {
             return new WindidError(WindidError::FAIL);
         }
-        if (!isset($this->_data['siteurl']) || !$this->_data['siteurl']) {
+        if (! isset($this->_data['siteurl']) || ! $this->_data['siteurl']) {
             return new WindidError(WindidError::FAIL);
         }
-        if (!isset($this->_data['secretkey']) || !$this->_data['secretkey']) {
+        if (! isset($this->_data['secretkey']) || ! $this->_data['secretkey']) {
             return new WindidError(WindidError::FAIL);
         }
 
@@ -133,16 +133,16 @@ class WindidAppDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->id) {
+        if (! $this->id) {
             return new WindidError(WindidError::FAIL);
         }
-        if (isset($this->_data['name']) && !$this->_data['name']) {
+        if (isset($this->_data['name']) && ! $this->_data['name']) {
             return new WindidError(WindidError::FAIL);
         }
-        if (isset($this->_data['siteurl']) && !$this->_data['siteurl']) {
+        if (isset($this->_data['siteurl']) && ! $this->_data['siteurl']) {
             return new WindidError(WindidError::FAIL);
         }
-        if (isset($this->_data['secretkey']) && !$this->_data['secretkey']) {
+        if (isset($this->_data['secretkey']) && ! $this->_data['secretkey']) {
             return new WindidError(WindidError::FAIL);
         }
 

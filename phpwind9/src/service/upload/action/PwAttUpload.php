@@ -32,16 +32,16 @@ class PwAttUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$this->user->isExists()) {
+        if (! $this->user->isExists()) {
             return new PwError('login.not');
         }
-        if (!$this->forum->isForum()) {
+        if (! $this->forum->isForum()) {
             return new PwError('FORUM_IS_NOT_EXISTS');
         }
         if (($result = $this->forum->allowUpload($this->user)) !== true) {
             return new PwError('BBS:forum.permissions.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
-        if (!$this->forum->foruminfo['allow_upload'] && !$this->user->getPermission('allow_upload')) {
+        if (! $this->forum->foruminfo['allow_upload'] && ! $this->user->getPermission('allow_upload')) {
             return new PwError('permission.upload.allow', ['{grouptitle}' => $this->user->getGroupInfo('name')]);
         }
         if ($uploadPerday = $this->user->getPermission('uploads_perday')) {
@@ -145,7 +145,7 @@ class PwAttUpload extends PwUploadAction
         $attach = $this->_getService()->getTmpAttachByUserid($this->user->uid);
         foreach ($attach as $rt) {
             $aid = $rt['aid'];
-            if (!isset($this->flashatt[$aid])) {
+            if (! isset($this->flashatt[$aid])) {
                 Pw::deleteAttach($rt['path'], $rt['ifthumb']);
                 $deltmp[] = $aid;
                 continue;
@@ -157,7 +157,7 @@ class PwAttUpload extends PwUploadAction
                 if (($max = $this->user->getPermission('sell_credit_range.maxprice')) > 0 && $value['cost'] > $max) {
                     $value['cost'] = $max;
                 }
-                if (!in_array($value['ctype'], $this->user->getPermission('sell_credits', false, []))) {
+                if (! in_array($value['ctype'], $this->user->getPermission('sell_credits', false, []))) {
                     $value['ctype'] = key(PwCreditBo::getInstance()->cType);
                 }
                 $dm->setSpecial(2)
@@ -223,7 +223,7 @@ class PwAttUpload extends PwUploadAction
 
     public function getIfupload()
     {
-        if (!$this->attachs) {
+        if (! $this->attachs) {
             return 0;
         }
         $ifupload = 0;

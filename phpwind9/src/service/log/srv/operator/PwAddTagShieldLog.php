@@ -55,7 +55,7 @@ class PwAddTagShieldLog extends PwBaseHookService
     public function execute()
     {
         $tagInfo = $this->getData();
-        if (!$tagInfo) {
+        if (! $tagInfo) {
             return false;
         }
         $this->_init();

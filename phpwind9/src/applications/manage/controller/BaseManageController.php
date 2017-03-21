@@ -19,7 +19,7 @@ class BaseManageController extends PwBaseController
     {
         parent::beforeAction($handlerAdapter);
 
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             if ($this->getRequest()->getIsAjaxRequest()) {
                 $this->showError('login.not');
             } else {
@@ -27,7 +27,7 @@ class BaseManageController extends PwBaseController
                 $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['backurl' => $backUrl]));
             }
         }
-        if (!$this->_checkRight()) {
+        if (! $this->_checkRight()) {
             $this->showError('BBS:manage.thread_check.right.error');
         }
 

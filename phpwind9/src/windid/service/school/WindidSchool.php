@@ -42,7 +42,7 @@ class WindidSchool
      */
     public function fetchSchool($schoolids)
     {
-        if (!$schoolids) {
+        if (! $schoolids) {
             return [];
         }
 
@@ -93,7 +93,7 @@ class WindidSchool
     {
         $data = [];
         foreach ($schoolDms as $_dm) {
-            if (!$_dm instanceof WindidSchoolDm) {
+            if (! $_dm instanceof WindidSchoolDm) {
                 continue;
             }
             if (true !== ($r = $_dm->beforeAdd())) {
@@ -146,7 +146,7 @@ class WindidSchool
      */
     public function batchDeleteSchool($schoolids)
     {
-        if (!$schoolids) {
+        if (! $schoolids) {
             return false;
         }
 

@@ -41,7 +41,7 @@ class TaskConditionBbsController extends AdminBaseController
      */
     private function _buildForumTree($parentid, $map, $level = '')
     {
-        if (!isset($map[$parentid])) {
+        if (! isset($map[$parentid])) {
             return [];
         }
         $array = [];

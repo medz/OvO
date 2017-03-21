@@ -19,10 +19,10 @@ class IndexController extends PwBaseController
         $_flag = 'cron_process';
         $_time = 3000;
         $servce = Wekit::load('process.srv.PwProcessService');
-        if (!$servce->lockProcess($_flag, $_time)) {
+        if (! $servce->lockProcess($_flag, $_time)) {
             exit;
         }
-        if (!ini_get('safe_mode')) {
+        if (! ini_get('safe_mode')) {
             ignore_user_abort(true);
             set_time_limit(0);
         }

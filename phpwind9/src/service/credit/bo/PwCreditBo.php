@@ -29,7 +29,7 @@ class PwCreditBo
     {
         $credits = Wekit::C('credit', 'credits');
         foreach ($credits as $key => $value) {
-            if (!$value['open']) {
+            if (! $value['open']) {
                 continue;
             }
             $this->cType[$key] = $value['name'];
@@ -72,7 +72,7 @@ class PwCreditBo
      */
     public function set($uid, $cType, $point, $delay = false)
     {
-        if (!isset($this->cType[$cType]) || empty($point)) {
+        if (! isset($this->cType[$cType]) || empty($point)) {
             return false;
         }
         $arr = [
@@ -98,7 +98,7 @@ class PwCreditBo
      */
     public function sets($uid, $setv, $delay = false)
     {
-        if (empty($setv) || !is_array($setv)) {
+        if (empty($setv) || ! is_array($setv)) {
             return false;
         }
         if ($delay) {
@@ -121,7 +121,7 @@ class PwCreditBo
      */
     public function setus($uids, $setv, $delay = false)
     {
-        if (empty($uids) || !is_array($uids) || empty($setv) || !is_array($setv)) {
+        if (empty($uids) || ! is_array($uids) || empty($setv) || ! is_array($setv)) {
             return false;
         }
         $arr = [];
@@ -151,11 +151,11 @@ class PwCreditBo
     public function operate($operation, PwUserBo $user, $delay = false, $log = [], $creditset = [])
     {
         $strategy = $this->getStrategy($operation);
-        if (!$strategy && !$creditset) {
+        if (! $strategy && ! $creditset) {
             return false;
         }
         //如果外部有积分设置传入则使用外部的积分设置策略
-        if (!empty($creditset['limit']) || ($creditset['credit'] && false === $this->_checkCreditSetEmpty($creditset['credit']))) {
+        if (! empty($creditset['limit']) || ($creditset['credit'] && false === $this->_checkCreditSetEmpty($creditset['credit']))) {
             $strategy['limit'] = $creditset['limit'];
             $strategy['credit'] = $creditset['credit'];
         }
@@ -207,7 +207,7 @@ class PwCreditBo
      */
     public function addLog($operation, $setv, PwUserBo $user, $log = [])
     {
-        if (!is_array($setv) || !$setv) {
+        if (! is_array($setv) || ! $setv) {
             return false;
         }
         $log['uid'] = $user->uid;
@@ -240,10 +240,10 @@ class PwCreditBo
 
     public function writeLog()
     {
-        if (!empty($this->_log)) {
+        if (! empty($this->_log)) {
             Wekit::load('credit.PwCreditLog')->batchAdd($this->_log);
         }
-        if (!empty($this->_num)) {
+        if (! empty($this->_num)) {
             $tmp = [];
             $t = Pw::getTime();
             foreach ($this->_num as $uid => $ops) {
@@ -255,7 +255,7 @@ class PwCreditBo
         }
 
         //TODO 记录用户的积分变动情况--用户表字段last_credit_affect_log
-        if (!empty($this->_userLog)) {
+        if (! empty($this->_userLog)) {
             /* @var $userDs PwUser */
             $userDs = Wekit::load('user.PwUser');
 

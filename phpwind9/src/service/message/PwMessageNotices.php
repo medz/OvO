@@ -113,7 +113,7 @@ class PwMessageNotices
             return $result;
         }
         $fields = $dm->getData();
-        if (!$fields) {
+        if (! $fields) {
             return false;
         }
 

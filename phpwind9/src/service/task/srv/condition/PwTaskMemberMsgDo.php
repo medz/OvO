@@ -19,7 +19,7 @@ class PwTaskMemberMsgDo extends PwMessageDoBase implements PwTaskCompleteInterfa
      */
     public function addMessage($uid, $fromUid, $content)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         /* @var $dm PwMessageMessagesDm */
@@ -28,7 +28,7 @@ class PwTaskMemberMsgDo extends PwMessageDoBase implements PwTaskCompleteInterfa
             return false;
         }
         $user = Wekit::load('user.PwUser')->getUserByUid($uid);
-        if (!$user) {
+        if (! $user) {
             return false;
         }
         $this->name = $user['username'];

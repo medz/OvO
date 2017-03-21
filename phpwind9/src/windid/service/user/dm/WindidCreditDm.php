@@ -22,7 +22,7 @@ class WindidCreditDm extends PwBaseDm
 
     public function addCredit($cType, $value)
     {
-        if (!$this->_isLegal($cType) || $value == 0) {
+        if (! $this->_isLegal($cType) || $value == 0) {
             return;
         }
         $this->_increaseData['credit'.$cType] = $value;
@@ -32,7 +32,7 @@ class WindidCreditDm extends PwBaseDm
 
     public function setCredit($cType, $value)
     {
-        if (!$this->_isLegal($cType)) {
+        if (! $this->_isLegal($cType)) {
             return;
         }
         $this->_data['credit'.$cType] = $value;
@@ -53,7 +53,7 @@ class WindidCreditDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->uid) {
+        if (! $this->uid) {
             return false;
         }
         if (empty($this->_data) && empty($this->_increaseData)) {

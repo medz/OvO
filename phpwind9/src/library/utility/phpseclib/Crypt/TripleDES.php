@@ -198,7 +198,7 @@ class Crypt_TripleDES
      */
     public function Crypt_TripleDES($mode = CRYPT_DES_MODE_CBC)
     {
-        if (!defined('CRYPT_DES_MODE')) {
+        if (! defined('CRYPT_DES_MODE')) {
             switch (true) {
                 case extension_loaded('mcrypt'):
                     // i'd check to see if des was supported, by doing in_array('des', mcrypt_list_algorithms('')),
@@ -375,7 +375,7 @@ class Crypt_TripleDES
 
         if (CRYPT_DES_MODE == CRYPT_DES_MODE_MCRYPT) {
             if ($this->changed) {
-                if (!isset($this->enmcrypt)) {
+                if (! isset($this->enmcrypt)) {
                     $this->enmcrypt = mcrypt_module_open(MCRYPT_3DES, '', $this->mode, '');
                 }
                 mcrypt_generic_init($this->enmcrypt, $this->key, $this->encryptIV);
@@ -384,7 +384,7 @@ class Crypt_TripleDES
 
             $ciphertext = mcrypt_generic($this->enmcrypt, $plaintext);
 
-            if (!$this->continuousBuffer) {
+            if (! $this->continuousBuffer) {
                 mcrypt_generic_init($this->enmcrypt, $this->key, $this->encryptIV);
             }
 
@@ -465,7 +465,7 @@ class Crypt_TripleDES
 
         if (CRYPT_DES_MODE == CRYPT_DES_MODE_MCRYPT) {
             if ($this->changed) {
-                if (!isset($this->demcrypt)) {
+                if (! isset($this->demcrypt)) {
                     $this->demcrypt = mcrypt_module_open(MCRYPT_3DES, '', $this->mode, '');
                 }
                 mcrypt_generic_init($this->demcrypt, $this->key, $this->decryptIV);
@@ -474,7 +474,7 @@ class Crypt_TripleDES
 
             $plaintext = mdecrypt_generic($this->demcrypt, $ciphertext);
 
-            if (!$this->continuousBuffer) {
+            if (! $this->continuousBuffer) {
                 mcrypt_generic_init($this->demcrypt, $this->key, $this->decryptIV);
             }
 
@@ -641,7 +641,7 @@ class Crypt_TripleDES
     {
         $length = strlen($text);
 
-        if (!$this->padding) {
+        if (! $this->padding) {
             if (($length & 7) == 0) {
                 return $text;
             } else {
@@ -665,13 +665,13 @@ class Crypt_TripleDES
      */
     public function _unpad($text)
     {
-        if (!$this->padding) {
+        if (! $this->padding) {
             return $text;
         }
 
         $length = ord($text[strlen($text) - 1]);
 
-        if (!$length || $length > 8) {
+        if (! $length || $length > 8) {
             return false;
         }
 

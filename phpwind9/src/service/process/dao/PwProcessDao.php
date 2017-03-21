@@ -25,10 +25,10 @@ class PwProcessDao extends PwBaseDao
 
     public function replaceProcess($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
-        if (!isset($data['flag'])) {
+        if (! isset($data['flag'])) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));

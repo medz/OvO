@@ -98,11 +98,11 @@ class PwTemplateCompilerPage extends AbstractWindTemplateCompiler
      */
     private function getTplContent()
     {
-        if (!$this->tpl) {
+        if (! $this->tpl) {
             return '';
         }
         list($pageFile) = $this->windViewerResolver->getWindView()->getViewTemplate($this->tpl);
-        if (!is_file($pageFile)) {
+        if (! is_file($pageFile)) {
             throw new WindViewException($pageFile, WindViewException::VIEW_NOT_EXIST);
         }
         $content = WindFile::read($pageFile);

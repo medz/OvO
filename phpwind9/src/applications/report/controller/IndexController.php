@@ -14,10 +14,10 @@ class IndexController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/article/run')]);
         }
-        if (!$this->loginUser->getPermission('allow_report')) {
+        if (! $this->loginUser->getPermission('allow_report')) {
             $this->showError(['report.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
     }
@@ -38,7 +38,7 @@ class IndexController extends PwBaseController
     public function doReportAction()
     {
         list($type, $type_id, $reason) = $this->getInput(['type', 'type_id', 'reason'], 'post');
-        if (!$type_id) {
+        if (! $type_id) {
             $this->showError('operate.fail');
         }
         $report = Wekit::load('report.srv.PwReportService');

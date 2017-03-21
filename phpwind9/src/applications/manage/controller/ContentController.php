@@ -20,7 +20,7 @@ class ContentController extends BaseManageController
     {
         parent::beforeAction($handlerAdapter);
         $result = $this->loginUser->getPermission('panel_bbs_manage', false, []);
-        if (!$result['thread_check']) {
+        if (! $result['thread_check']) {
             $this->showError('BBS:manage.thread_check.right.error');
         }
     }
@@ -79,7 +79,7 @@ class ContentController extends BaseManageController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = [$tid];
+        ! is_array($tid) && $tid = [$tid];
 
         $fids = [];
         $threaddb = Wekit::load('forum.PwThread')->fetchThread($tid);
@@ -104,7 +104,7 @@ class ContentController extends BaseManageController
         if (empty($tid)) {
             $this->showError('operate.select');
         }
-        !is_array($tid) && $tid = [$tid];
+        ! is_array($tid) && $tid = [$tid];
 
         $deleteTopic = new PwDeleteTopic(new PwFetchTopicByTid($tid), new PwUserBo($this->loginUser->uid));
         $deleteTopic->setIsDeductCredit(1)->execute();
@@ -168,7 +168,7 @@ class ContentController extends BaseManageController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = [$pid];
+        ! is_array($pid) && $pid = [$pid];
 
         $fids = $tids = [];
         $postdb = Wekit::load('forum.PwThread')->fetchPost($pid);
@@ -201,7 +201,7 @@ class ContentController extends BaseManageController
         if (empty($pid)) {
             $this->showError('operate.select');
         }
-        !is_array($pid) && $pid = [$pid];
+        ! is_array($pid) && $pid = [$pid];
 
         $deleteReply = new PwDeleteReply(new PwFetchReplyByPid($pid), PwUserBo::getInstance($this->loginUser->uid));
         $deleteReply->setIsDeductCredit(1)->execute();

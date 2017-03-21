@@ -86,7 +86,7 @@ class PwAutoAwardMedal
         /* @var $srv PwMedalService */
         $srv = Wekit::load('medal.srv.PwMedalService');
         foreach ($medals as $medal) {
-            if (!$srv->allowAwardMedal($userGids, $medal['medal_gids'])) {
+            if (! $srv->allowAwardMedal($userGids, $medal['medal_gids'])) {
                 continue;
             }
             $this->awardTypeMedals[] = $medal['medal_id'];
@@ -124,7 +124,7 @@ class PwAutoAwardMedal
             }
             $_needId[] = $v;
         }
-        if (!$_needId) {
+        if (! $_needId) {
             return false;
         }
         $this->awardMedalIds = $_needId;
@@ -148,7 +148,7 @@ class PwAutoAwardMedal
             $dm->setMedalid($_medalid)->setUid($this->userBo->uid)->setAwardStatus(3)->setCreatedTime(
                 $time)->setExpiredTime(0);
             $resource = $ds->replaceMedalLog($dm);
-            if (!$resource instanceof PwError) {
+            if (! $resource instanceof PwError) {
                 $srv->sendNotice($this->userBo->uid, $resource,
                 $_medalid, 1);
             }
@@ -182,7 +182,7 @@ class PwAutoAwardMedal
         $dm->setMedalid($this->awardMedalId)->setUid($this->userBo->uid)->setAwardStatus(3)->setCreatedTime(
             $time)->setExpiredTime(0);
         $resource = $ds->replaceMedalLog($dm);
-        if (!$resource instanceof PwError) {
+        if (! $resource instanceof PwError) {
             Wekit::load('medal.srv.PwMedalService')->sendNotice(
             $this->userBo->uid, $resource, $this->awardMedalId, 1);
         }
@@ -197,11 +197,11 @@ class PwAutoAwardMedal
      */
     protected function updateBehaviorMedal($awardType)
     {
-        if (!in_array($awardType, [1, 2, 3])) {
+        if (! in_array($awardType, [1, 2, 3])) {
             return false;
         }
         $intersect = array_intersect($this->awardTypeMedals, array_keys($this->medalBo->medals));
-        if (!$intersect) {
+        if (! $intersect) {
             return false;
         }
         $ds = Wekit::load('medal.PwMedalLog');

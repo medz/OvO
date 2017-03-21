@@ -391,14 +391,14 @@ class Net_SSH1
     public function Net_SSH1($host, $port = 22, $timeout = 10, $cipher = NET_SSH1_CIPHER_3DES)
     {
         $this->fsock = @fsockopen($host, $port, $errno, $errstr, $timeout);
-        if (!$this->fsock) {
+        if (! $this->fsock) {
             user_error(rtrim("Cannot connect to $host. Error $errno. $errstr"), E_USER_NOTICE);
 
             return;
         }
 
         $this->server_identification = $init_line = fgets($this->fsock, 255);
-        if (!preg_match('#SSH-([0-9\.]+)-(.+)#', $init_line, $parts)) {
+        if (! preg_match('#SSH-([0-9\.]+)-(.+)#', $init_line, $parts)) {
             user_error('Can only connect to SSH servers', E_USER_NOTICE);
 
             return;
@@ -501,7 +501,7 @@ class Net_SSH1
         $cipher = isset($this->supported_ciphers[$cipher]) ? $cipher : NET_SSH1_CIPHER_3DES;
         $data = pack('C2a*na*N', NET_SSH1_CMSG_SESSION_KEY, $cipher, $anti_spoofing_cookie, 8 * strlen($double_encrypted_session_key), $double_encrypted_session_key, 0);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_SESSION_KEY', E_USER_NOTICE);
 
             return;
@@ -551,13 +551,13 @@ class Net_SSH1
      */
     public function login($username, $password = '')
     {
-        if (!($this->bitmap & NET_SSH1_MASK_CONSTRUCTOR)) {
+        if (! ($this->bitmap & NET_SSH1_MASK_CONSTRUCTOR)) {
             return false;
         }
 
         $data = pack('CNa*', NET_SSH1_CMSG_USER, strlen($username), $username);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_USER', E_USER_NOTICE);
 
             return false;
@@ -577,7 +577,7 @@ class Net_SSH1
 
         $data = pack('CNa*', NET_SSH1_CMSG_AUTH_PASSWORD, strlen($password), $password);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_AUTH_PASSWORD', E_USER_NOTICE);
 
             return false;
@@ -621,7 +621,7 @@ class Net_SSH1
      */
     public function exec($cmd)
     {
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
+        if (! ($this->bitmap & NET_SSH1_MASK_LOGIN)) {
             user_error('Operation disallowed prior to login()', E_USER_NOTICE);
 
             return false;
@@ -632,7 +632,7 @@ class Net_SSH1
         // terminal is a command line interpreter or shell".  thus, opening a terminal session to run the shell.
         $data = pack('CNa*N4C', NET_SSH1_CMSG_REQUEST_PTY, strlen('vt100'), 'vt100', 24, 80, 0, 0, NET_SSH1_TTY_OP_END);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_REQUEST_PTY', E_USER_NOTICE);
 
             return false;
@@ -648,7 +648,7 @@ class Net_SSH1
 
         $data = pack('CNa*', NET_SSH1_CMSG_EXEC_CMD, strlen($cmd), $cmd);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_EXEC_CMD', E_USER_NOTICE);
 
             return false;
@@ -687,7 +687,7 @@ class Net_SSH1
     {
         $data = pack('CNa*N4C', NET_SSH1_CMSG_REQUEST_PTY, strlen('vt100'), 'vt100', 24, 80, 0, 0, NET_SSH1_TTY_OP_END);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_REQUEST_PTY', E_USER_NOTICE);
 
             return false;
@@ -703,7 +703,7 @@ class Net_SSH1
 
         $data = pack('C', NET_SSH1_CMSG_EXEC_SHELL);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_EXEC_SHELL', E_USER_NOTICE);
 
             return false;
@@ -727,13 +727,13 @@ class Net_SSH1
      */
     public function interactiveWrite($cmd)
     {
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
+        if (! ($this->bitmap & NET_SSH1_MASK_LOGIN)) {
             user_error('Operation disallowed prior to login()', E_USER_NOTICE);
 
             return false;
         }
 
-        if (!($this->bitmap & NET_SSH1_MASK_SHELL) && !$this->_initShell()) {
+        if (! ($this->bitmap & NET_SSH1_MASK_SHELL) && ! $this->_initShell()) {
             user_error('Unable to initiate an interactive shell session', E_USER_NOTICE);
 
             return false;
@@ -741,7 +741,7 @@ class Net_SSH1
 
         $data = pack('CNa*', NET_SSH1_CMSG_STDIN_DATA, strlen($cmd), $cmd);
 
-        if (!$this->_send_binary_packet($data)) {
+        if (! $this->_send_binary_packet($data)) {
             user_error('Error sending SSH_CMSG_STDIN', E_USER_NOTICE);
 
             return false;
@@ -765,13 +765,13 @@ class Net_SSH1
      */
     public function interactiveRead()
     {
-        if (!($this->bitmap & NET_SSH1_MASK_LOGIN)) {
+        if (! ($this->bitmap & NET_SSH1_MASK_LOGIN)) {
             user_error('Operation disallowed prior to login()', E_USER_NOTICE);
 
             return false;
         }
 
-        if (!($this->bitmap & NET_SSH1_MASK_SHELL) && !$this->_initShell()) {
+        if (! ($this->bitmap & NET_SSH1_MASK_SHELL) && ! $this->_initShell()) {
             user_error('Unable to initiate an interactive shell session', E_USER_NOTICE);
 
             return false;

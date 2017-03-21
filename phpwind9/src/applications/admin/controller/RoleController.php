@@ -108,7 +108,7 @@ class RoleController extends AdminBaseController
     public function delAction()
     {
         $rid = $this->getInput('rid', 'post');
-        !$rid && $this->showError('operate.fail');
+        ! $rid && $this->showError('operate.fail');
 
         $result = $this->_loadRoleService()->delById($rid);
         if ($result instanceof PwError) {

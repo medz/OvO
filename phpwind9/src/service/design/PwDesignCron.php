@@ -22,7 +22,7 @@ class PwDesignCron
 
     public function fetchCron($moduleIds)
     {
-        if (!is_array($moduleIds) || !$moduleIds) {
+        if (! is_array($moduleIds) || ! $moduleIds) {
             return [];
         }
 
@@ -42,7 +42,7 @@ class PwDesignCron
 
     public function batchAdd($data)
     {
-        if (!is_array($data) || !$data) {
+        if (! is_array($data) || ! $data) {
             return false;
         }
 

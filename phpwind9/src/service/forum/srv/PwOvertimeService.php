@@ -15,7 +15,7 @@ class PwOvertimeService
             $ids = [];
             foreach ($overtimes as $v) {
                 if ($v['overtime'] > $timestamp) {
-                    (!$newOvertime || $newOvertime > $v['overtime']) && $newOvertime = $v['overtime'];
+                    (! $newOvertime || $newOvertime > $v['overtime']) && $newOvertime = $v['overtime'];
                 } else {
                     switch ($v['m_type']) {
                         case 'topped':

@@ -26,7 +26,7 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
     {
         $fields = [];
         foreach ($data as $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $_temp = [];
@@ -35,7 +35,7 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
             $_temp['same_uid'] = $_item['same_uid'];
             $fields[] = $_temp;
         }
-        if (!$fields) {
+        if (! $fields) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`uid`, `recommend_uid`, `same_uid`) VALUES %s', $this->getTable(), $this->sqlMulti($fields));
@@ -45,7 +45,7 @@ class PwAttentionRecommendRecordDao extends PwBaseDao
 
     public function replace($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($fields));

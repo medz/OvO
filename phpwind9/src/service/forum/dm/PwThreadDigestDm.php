@@ -144,7 +144,7 @@ class PwThreadDigestDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!$this->tid) {
+        if (! $this->tid) {
             return new PwError('BBS:digest.tid.require');
         }
         $this->_data['digest'] = 1;
@@ -157,7 +157,7 @@ class PwThreadDigestDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->tid) {
+        if (! $this->tid) {
             return new PwError('BBS:digest.tid.require');
         }
 

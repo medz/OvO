@@ -23,7 +23,7 @@ class MasingleController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('login.not');
         }
         $this->action = $handlerAdapter->getAction();
@@ -35,7 +35,7 @@ class MasingleController extends PwBaseController
 
     public function manageAction()
     {
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $reason = Wekit::C()->site->get('managereasons', '');
             $this->setOutput(explode("\n", $reason), 'manageReason');
             $this->setOutput($this->action, 'action');
@@ -59,12 +59,12 @@ class MasingleController extends PwBaseController
         $pids = $this->getInput('pids', 'post');
         $tid = $this->getInput('tid', 'post');
         $pid = $this->getInput('pid', 'post');
-        if ($pids && !is_array($pids)) {
+        if ($pids && ! is_array($pids)) {
             $pids = explode(',', $pids);
-        } elseif (!$pids && $pid) {
+        } elseif (! $pids && $pid) {
             $pids = [$pid];
         }
-        if (!$pids) {
+        if (! $pids) {
             $this->showError('operate.select');
         }
         in_array('0', $pids) && $this->_hasThread = true;
@@ -88,7 +88,7 @@ class MasingleController extends PwBaseController
     protected function _getDeleteManage($manage)
     {
         $do = new PwThreadManageDoDeleteReply($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput('dodelete', 'doaction');
         } else {
             $deductCredit = $this->getInput('deductCredit', 'post');
@@ -110,7 +110,7 @@ class MasingleController extends PwBaseController
     protected function _getInspectManage($manage)
     {
         $do = new PwThreadManageDoInspect($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->showError('data.error');
         } else {
             $lou = $this->getInput('lou');
@@ -130,13 +130,13 @@ class MasingleController extends PwBaseController
     protected function _getShieldManage($manage)
     {
         $do = new PwThreadManageDoShield($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput('doshield', 'doaction');
             $this->setOutput($manage->data[0]['ifshield'], 'defaultShield');
         } else {
             list($reason, $ifShield) = $this->getInput(['reason', 'ifShield'], 'post');
             $do->setReason($reason)->setIfShield($ifShield);
-            !$ifShield && $this->_doCancel[] = 'doshield';
+            ! $ifShield && $this->_doCancel[] = 'doshield';
         }
 
         return $do;
@@ -152,13 +152,13 @@ class MasingleController extends PwBaseController
     protected function _getRemindManage($manage)
     {
         $do = new PwThreadManageDoRemind($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->setOutput('doremind', 'doaction');
             $this->setOutput($manage->data[0]['manage_remind'], 'defaultRemind');
         } else {
             list($reason, $ifRemind) = $this->getInput(['reason', 'ifRemind'], 'post');
             $do->setReason($reason)->setIfRemind($ifRemind);
-            !$ifRemind && $this->_doCancel[] = 'doremind';
+            ! $ifRemind && $this->_doCancel[] = 'doremind';
         }
 
         return $do;
@@ -174,7 +174,7 @@ class MasingleController extends PwBaseController
     protected function _getToppedReplyManage($manage)
     {
         $do = new PwThreadManageDoToppedReply($manage);
-        if (!$this->doAction) {
+        if (! $this->doAction) {
             $this->showError('data.error');
         } else {
             list($lou, $topped) = $this->getInput(['lou', 'topped']);
@@ -197,7 +197,7 @@ class MasingleController extends PwBaseController
      */
     protected function _sendMessage($action, $threads)
     {
-        if (!is_array($threads) || !$threads || !$action) {
+        if (! is_array($threads) || ! $threads || ! $action) {
             return false;
         }
         $noticeService = Wekit::load('message.srv.PwNoticeService');

@@ -22,7 +22,7 @@ class ReportController extends BaseManageController
     {
         parent::beforeAction($handlerAdapter);
         $result = $this->loginUser->getPermission('panel_report_manage', false, []);
-        if (!$result['report_manage']) {
+        if (! $result['report_manage']) {
             $this->showError('REPORT:right.error');
         }
     }
@@ -63,10 +63,10 @@ class ReportController extends BaseManageController
     public function deleteAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
-        !is_array($id) && $id = [$id];
+        ! is_array($id) && $id = [$id];
         $this->_sendDealNotice($id, '忽略');
         $this->_getReportDs()->batchDeleteReport($id);
         $this->showMessage('success');
@@ -83,10 +83,10 @@ class ReportController extends BaseManageController
     public function dealCheckAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
-        !is_array($id) && $id = [$id];
+        ! is_array($id) && $id = [$id];
 
         $dm = new PwReportDm();
         $dm->setOperateUserid($this->loginUser->uid)

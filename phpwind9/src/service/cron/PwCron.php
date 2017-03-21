@@ -31,7 +31,7 @@ class PwCron
      */
     public function getCronByFile($cronFile)
     {
-        if (!$cronFile) {
+        if (! $cronFile) {
             return [];
         }
 
@@ -40,7 +40,7 @@ class PwCron
 
     public function fetchCron($cronIds)
     {
-        if (!is_array($cronIds) && count($cronIds) < 1) {
+        if (! is_array($cronIds) && count($cronIds) < 1) {
             return [];
         }
 
@@ -85,7 +85,7 @@ class PwCron
     {
         $nextTime = (int) $nextTime;
         $cronId = (int) $cronId;
-        if (!$cronId || !$nextTime) {
+        if (! $cronId || ! $nextTime) {
             return false;
         }
         $data['next_time'] = $nextTime;

@@ -111,12 +111,12 @@ class IndexController extends AdminBaseController
             return false;
         }
 
-        if (!in_array('adminlogin', Wekit::C()->verify->get('showverify', []))) {
+        if (! in_array('adminlogin', Wekit::C()->verify->get('showverify', []))) {
             return true;
         }
         /* @var $verifySrv PwCheckVerifyService */
         $verifySrv = Wekit::load('verify.srv.PwCheckVerifyService');
-        if (!$verifySrv->checkVerify($this->getInput('code'))) {
+        if (! $verifySrv->checkVerify($this->getInput('code'))) {
             $this->showError('USER:verifycode.error');
         }
 

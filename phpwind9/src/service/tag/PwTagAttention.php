@@ -72,7 +72,7 @@ class PwTagAttention
     public function getAttentionByUidAndTagsIds($uid, $tagIds)
     {
         $uid = intval($uid);
-        if ($uid < 1 || !is_array($tagIds) || !count($tagIds)) {
+        if ($uid < 1 || ! is_array($tagIds) || ! count($tagIds)) {
             return [];
         }
 
@@ -160,7 +160,7 @@ class PwTagAttention
      */
     public function deleteAttentions($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return false;
         }
         $this->_getTagAttentionDao()->deleteByTagIds($tagIds);

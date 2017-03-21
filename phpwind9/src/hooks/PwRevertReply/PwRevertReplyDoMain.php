@@ -19,7 +19,7 @@ class PwRevertReplyDoMain extends iPwGleanDoHookProcess
 
     public function gleanData($value)
     {
-        if ($value['disabled'] != 2 || !$value['src_tid']) {
+        if ($value['disabled'] != 2 || ! $value['src_tid']) {
             return;
         }
         $tid = $value['src_tid'];

@@ -20,7 +20,7 @@ class PwInviteCode
      */
     public function getCode($code)
     {
-        if (!$code) {
+        if (! $code) {
             return [];
         }
 
@@ -36,7 +36,7 @@ class PwInviteCode
      */
     public function getUsedCodeByCreatedUid($createdUid, $limit = 18, $start = 0)
     {
-        if (!$createdUid) {
+        if (! $createdUid) {
             return [];
         }
 
@@ -52,7 +52,7 @@ class PwInviteCode
      */
     public function countUsedCodeByCreatedUid($createdUid)
     {
-        if (!$createdUid) {
+        if (! $createdUid) {
             return 0;
         }
 
@@ -123,12 +123,12 @@ class PwInviteCode
      */
     public function batchAddCode($codeDms)
     {
-        if (empty($codeDms) || !is_array($codeDms)) {
+        if (empty($codeDms) || ! is_array($codeDms)) {
             return false;
         }
         $data = [];
         foreach ($codeDms as $dm) {
-            if (!($dm instanceof PwInviteCodeDm)) {
+            if (! ($dm instanceof PwInviteCodeDm)) {
                 return new PwError('USER:invite.data.format.error');
             }
             if (($r = $dm->beforeAdd()) instanceof PwError) {

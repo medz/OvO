@@ -37,7 +37,7 @@ abstract class PwBaseFilter extends WindActionFilter
      */
     protected function showError($error = '', $referer = '', $refresh = false)
     {
-        if ($referer && !WindValidator::isUrl($referer)) {
+        if ($referer && ! WindValidator::isUrl($referer)) {
             $_referer = explode('#', $referer, 2);
             $referer = WindUrlHelper::createUrl($_referer[0], [],
                 isset($_referer[1]) ? $_referer[1] : '');

@@ -65,7 +65,7 @@ class PwBaseController extends WindController
      */
     protected function showError($error = '', $referer = '', $refresh = false)
     {
-        if ($referer && !WindValidator::isUrl($referer)) {
+        if ($referer && ! WindValidator::isUrl($referer)) {
             $_referer = explode('#', $referer, 2);
             $referer = WindUrlHelper::createUrl($_referer[0], [],
                 isset($_referer[1]) ? $_referer[1] : '');
@@ -101,20 +101,20 @@ class PwBaseController extends WindController
      */
     protected function runHook($registerKey, $bp)
     {
-        if (!$registerKey) {
+        if (! $registerKey) {
             return;
         }
-        if (!$bp instanceof PwBaseHookService) {
+        if (! $bp instanceof PwBaseHookService) {
             throw new PwException('class.type.fail',
                 [
                     '{parm1}' => 'src.library.base.PwBaseController.runHook',
                     '{parm2}' => 'PwBaseHookService',
                     '{parm3}' => get_class($bp), ]);
         }
-        if (!$filters = PwHook::getRegistry($registerKey)) {
+        if (! $filters = PwHook::getRegistry($registerKey)) {
             return;
         }
-        if (!$filters = PwHook::resolveActionHook($filters, $bp)) {
+        if (! $filters = PwHook::resolveActionHook($filters, $bp)) {
             return;
         }
         $args = func_get_args();
@@ -150,7 +150,7 @@ class PwBaseController extends WindController
                 Wekit::C()->site->set('theme.'.$type.'.default', $theme);
             }
         }
-        if (!$theme) {
+        if (! $theme) {
             $theme = $config['theme.'.$type.'.default'];
         }
         parent::setTheme($theme, $themePack);

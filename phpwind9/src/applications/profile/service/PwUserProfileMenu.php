@@ -60,14 +60,14 @@ class PwUserProfileMenu
     public function getCurrentTab($left, $tab = '')
     {
         $menus = $this->registerMenus();
-        if (!isset($menus[$left])) {
+        if (! isset($menus[$left])) {
             $left = $this->getFirstMenu();
         }
         $currentLeft = $menus[$left];
         if (empty($currentLeft['tabs'])) {
             return [$left, ''];
         }
-        if (!$tab && !isset($currentLeft[$tab])) {
+        if (! $tab && ! isset($currentLeft[$tab])) {
             $_temp = array_keys($currentLeft['tabs']);
             $tab = $_temp[0];
         }
@@ -82,7 +82,7 @@ class PwUserProfileMenu
      */
     private function registerMenus()
     {
-        if (!empty($this->extend)) {
+        if (! empty($this->extend)) {
             return $this->extend;
         }
         $menus = $this->_getFromFile();

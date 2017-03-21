@@ -27,7 +27,7 @@ class PwCssCompress extends AbstractPwCompiler
             $files = WindFolder::read($dir, WindFolder::READ_DIR);
             foreach ($files as $v) {
                 $manifest = $dir.'/'.$v.'/'.$this->manifest;
-                if (!WindFile::isFile($manifest)) {
+                if (! WindFile::isFile($manifest)) {
                     continue;
                 }
                 if (($r = $this->_doCss($dir.'/'.$v)) instanceof PwError) {

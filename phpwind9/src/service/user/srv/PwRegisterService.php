@@ -38,14 +38,14 @@ class PwRegisterService extends PwBaseHookService
      */
     public function checkIp($ip)
     {
-        if (!($ipSpace = abs($this->config['security.ip']))) {
+        if (! ($ipSpace = abs($this->config['security.ip']))) {
             return true;
         }
         $space = $ipSpace * 3600;
         /* @var $registerDs PwUserRegisterIp */
         $registerDs = Wekit::load('user.PwUserRegisterIp');
         $data = $registerDs->getRecodeByIp($ip);
-        if (!$data || Pw::getTime() - $data['last_regdate'] > $space) {
+        if (! $data || Pw::getTime() - $data['last_regdate'] > $space) {
             return true;
         }
 
@@ -79,7 +79,7 @@ class PwRegisterService extends PwBaseHookService
      */
     public function register()
     {
-        if (!$this->userDm) {
+        if (! $this->userDm) {
             return new PwError('USER：illegal.request');
         }
         if (($result = $this->checkIp($this->userDm->getField('regip'))) instanceof PwError) {
@@ -113,9 +113,9 @@ class PwRegisterService extends PwBaseHookService
     public function sysUser($uid)
     {
         $info = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_MAIN);
-        if (!$info) {
+        if (! $info) {
             //从windid这边将数据同步到论坛
-            if (!$this->_getUserDs()->activeUser($uid)) {
+            if (! $this->_getUserDs()->activeUser($uid)) {
                 return false;
             }
             //更新用户信息
@@ -146,10 +146,10 @@ class PwRegisterService extends PwBaseHookService
      */
     public function sendEmailActive($username, $email, $statu = '', $uid = 0)
     {
-        if (!$this->config['active.mail']) {
+        if (! $this->config['active.mail']) {
             return true;
         }
-        if ($uid == 0 || !$statu) {
+        if ($uid == 0 || ! $statu) {
             $info = $this->_getUserDs()->getUserByName($username, PwUser::FETCH_MAIN);
             if ($info['email'] != $email) {
                 return new PwError('USER:illegal.request');
@@ -157,7 +157,7 @@ class PwRegisterService extends PwBaseHookService
             $uid = $info['uid'];
             $statu = self::createRegistIdentify($uid, $info['password']);
         }
-        if (!Wind::getComponent('router')->getRoute('pw')) {
+        if (! Wind::getComponent('router')->getRoute('pw')) {
             Wind::getComponent('router')->addRoute('pw', new PwRoute('bbs'));
         }
 
@@ -186,7 +186,7 @@ class PwRegisterService extends PwBaseHookService
         /* @var $activeCodeDs PwUserActiveCode */
         $activeCodeDs = Wekit::load('user.PwUserActiveCode');
         $info = $activeCodeDs->getInfoByUid($uid);
-        if (!$info || $info['email'] != $email || $info['active_time'] > 0) {
+        if (! $info || $info['email'] != $email || $info['active_time'] > 0) {
             return false;
         }
         $validTime = $this->activeCodeValidTime * 3600;
@@ -212,7 +212,7 @@ class PwRegisterService extends PwBaseHookService
         /* @var $activeCodeDs PwUserActiveCode */
         $activeCodeDs = Wekit::load('user.PwUserActiveCode');
         $info = $activeCodeDs->getInfoByUid($uid);
-        if (!$info || $info['email'] != $email || $info['code'] != $code) {
+        if (! $info || $info['email'] != $email || $info['code'] != $code) {
             return new PwError('USER:illegal.request');
         }
         if ($info['active_time'] > 0) {
@@ -228,7 +228,7 @@ class PwRegisterService extends PwBaseHookService
         if (Pw::getstatus($info['status'], PwUser::STATUS_UNACTIVE)) {
             $userDm = new PwUserInfoDm($info['uid']);
             $userDm->setUnactive(false);
-            (!Pw::getstatus($info['status'], PwUser::STATUS_UNCHECK)) && $userDm->setGroupid(0);
+            (! Pw::getstatus($info['status'], PwUser::STATUS_UNCHECK)) && $userDm->setGroupid(0);
             $this->_getUserDs()->editUser($userDm, PwUser::FETCH_MAIN);
         }
         /* @var $registerCheckDs PwUserRegisterCheck */
@@ -257,7 +257,7 @@ class PwRegisterService extends PwBaseHookService
         }
 
         /*如果含有激活邮件则发送到*/
-        if (!in_array(2, $this->config['welcome.type'])) {
+        if (! in_array(2, $this->config['welcome.type'])) {
             return true;
         }
         //如果是邮件激活开启，则不需要发送欢迎邮件
@@ -374,7 +374,7 @@ class PwRegisterService extends PwBaseHookService
         /* @var $creditBo PwCreditBo */
         $creditBo = PwCreditBo::getInstance();
         $creditStrategy = $creditBo->getStrategy('register');
-        !$creditStrategy['credit'] && $creditStrategy['credit'] = [];
+        ! $creditStrategy['credit'] && $creditStrategy['credit'] = [];
         foreach ($creditStrategy['credit'] as $id => $_v) {
             $_id = 'credit'.$id;
             if (isset($_credit[$_id])) {
@@ -421,7 +421,7 @@ class PwRegisterService extends PwBaseHookService
      */
     private function updateRegisterIp($ip, $time)
     {
-        if (!$this->config['security.ip']) {
+        if (! $this->config['security.ip']) {
             return true;
         }
         /* @var $registerDa PwUserRegisterIp */

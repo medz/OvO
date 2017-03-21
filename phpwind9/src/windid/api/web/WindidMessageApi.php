@@ -203,7 +203,7 @@ class WindidMessageApi
      */
     public function searchMessage($search, $start = 0, $limit = 10)
     {
-        if (!is_array($search)) {
+        if (! is_array($search)) {
             return [0, []];
         }
         $params = [
@@ -212,7 +212,7 @@ class WindidMessageApi
         ];
         $array = ['fromuid', 'keyword', 'username', 'starttime', 'endtime'];
         foreach ($search as $k => $v) {
-            if (!in_array($k, $array)) {
+            if (! in_array($k, $array)) {
                 continue;
             }
             $params[$k] = $v;

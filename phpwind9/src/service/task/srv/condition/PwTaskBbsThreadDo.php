@@ -26,7 +26,7 @@ class PwTaskBbsThreadDo extends PwPostDoBase implements PwTaskCompleteInterface
      */
     public function addThread($tid)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $this->tid = $tid;
@@ -41,7 +41,7 @@ class PwTaskBbsThreadDo extends PwPostDoBase implements PwTaskCompleteInterface
      */
     public function doTask($conditions, $step)
     {
-        if (!is_array($step)) {
+        if (! is_array($step)) {
             $step = [];
         }
         if ($conditions['fid'] != $this->fid) {

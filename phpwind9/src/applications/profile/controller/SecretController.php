@@ -24,7 +24,7 @@ class SecretController extends BaseProfileController
         $userInfo = Wekit::load('user.PwUser')->getUserByUid($this->loginUser->uid, PwUser::FETCH_INFO);
         $secret = $userInfo['secret'] ? unserialize($userInfo['secret']) : [];
         //手机号码默认仅自己可见
-        !isset($secret['mobile']) && $secret['mobile'] = 1;
+        ! isset($secret['mobile']) && $secret['mobile'] = 1;
         $this->setOutput($model, 'model');
         $this->setOutput($secret, 'secret');
         $this->setOutput($this->getSecretOption(), 'option');
@@ -92,7 +92,7 @@ class SecretController extends BaseProfileController
             $users = Wekit::load('user.PwUser')->fetchUserByName($blacklist);
             $userids = array_keys($users);
         }
-        ($blacklist && !$userids) && $this->showError('USER:profile.secret.username.error');
+        ($blacklist && ! $userids) && $this->showError('USER:profile.secret.username.error');
         if (count($userids) > 50) {
             $this->showError('USER:profile.secret.username.num.error');
         }

@@ -19,7 +19,7 @@ class PwTaskBbsLikeDo implements PwTaskCompleteInterface
      */
     public function addLike(PwUserBo $userBo, PwLikeDm $dm)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $data = $dm->getData();

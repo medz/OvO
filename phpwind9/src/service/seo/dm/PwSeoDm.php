@@ -67,13 +67,13 @@ class PwSeoDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!isset($this->_data['mod'])) {
+        if (! isset($this->_data['mod'])) {
             return new PwError('SEO:mod.empty');
         }
-        if (!isset($this->_data['page'])) {
+        if (! isset($this->_data['page'])) {
             return new PwError('SEO:page.empty');
         }
-        if (!isset($this->_data['param'])) {
+        if (! isset($this->_data['param'])) {
             return new PwError('SEO:param.empty');
         }
 

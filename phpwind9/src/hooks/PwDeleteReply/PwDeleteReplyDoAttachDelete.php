@@ -23,7 +23,7 @@ class PwDeleteReplyDoAttachDelete extends iPwGleanDoHookProcess
     public function run($ids)
     {
         if ($this->srv->isRecycle
-            || (!$attachs = Wekit::load('attach.PwThreadAttach')->fetchAttachByTidAndPid(array_keys($this->tids), $ids))) {
+            || (! $attachs = Wekit::load('attach.PwThreadAttach')->fetchAttachByTidAndPid(array_keys($this->tids), $ids))) {
             return;
         }
 

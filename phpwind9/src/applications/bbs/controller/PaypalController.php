@@ -19,10 +19,10 @@ class PaypalController extends PwBaseController
         $this->_var = $this->getRequest()->getRequest();
         $this->_conf = Wekit::C('pay');
 
-        if (!$this->_conf['ifopen']) {
+        if (! $this->_conf['ifopen']) {
             $this->paymsg($this->_conf['reason']);
         }
-        if (!$this->_conf['paypal']) {
+        if (! $this->_conf['paypal']) {
             $this->paymsg('onlinepay.settings.paypal.error');
         }
         if ($this->_conf['paypalkey'] != $this->_var['verifycode']) {

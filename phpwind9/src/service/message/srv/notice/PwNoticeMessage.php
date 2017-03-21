@@ -36,11 +36,11 @@ class PwNoticeMessage extends PwNoticeAction
     public function getDetailList($notice)
     {
         $list = [];
-        if (!$notice || !$notice['param']) {
+        if (! $notice || ! $notice['param']) {
             return $list;
         }
         $dialog = $this->_getMessagesService()->getDialogByUid($notice['uid'], $notice['param']);
-        if (!$dialog) {
+        if (! $dialog) {
             return $list;
         }
         //$list = $this->_getMessagesDs()->getDialogMessages($notice['uid'], $notice['param'], 0, 20);

@@ -122,7 +122,7 @@ class PwTaskUserDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->_data['uid'] || !$this->_data['taskid']) {
+        if (! $this->_data['uid'] || ! $this->_data['taskid']) {
             return new PwError('TASK:id.illegal');
         }
     }

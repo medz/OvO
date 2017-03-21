@@ -265,7 +265,7 @@ class WindidMessageDm extends PwBaseDm
     private function checkContent()
     {
         $len = WindString::strlen($this->_data['content']);
-        if (!$this->_data['content'] || $len > 500) {
+        if (! $this->_data['content'] || $len > 500) {
             return new WindidError(WindidError::MESSAGE_CONTENT_LENGTH_ERROR);
         }
 

@@ -39,7 +39,7 @@ class CreditController extends AdminBaseController
         $this->getRequest()->isPost() || $this->showError('operate.fail');
 
         $credits = $this->getInput('credits', 'post');
-        if (!is_array($credits) || empty($credits)) {
+        if (! is_array($credits) || empty($credits)) {
             $this->showError('CREDIT:setting.dataError', 'credit/credit/run');
         }
         $this->_getCreditService()->setCredits($credits, $this->getInput('newcredits', 'post'));
@@ -52,7 +52,7 @@ class CreditController extends AdminBaseController
     public function doDeleteAction()
     {
         $creditId = (int) $this->getInput('creditId', 'post');
-        if (!$creditId) {
+        if (! $creditId) {
             $this->showError('operate.fail');
         }
 
@@ -93,9 +93,9 @@ class CreditController extends AdminBaseController
         $strategy = $creditConfig['strategy'] ? $creditConfig['strategy'] : [];
         if (is_array($info)) {
             foreach ($info as $key => $value) {
-                !is_numeric($value['limit']) && $info[$key]['limit'] = '';
+                ! is_numeric($value['limit']) && $info[$key]['limit'] = '';
                 foreach ($value['credit'] as $k => $v) {
-                    !is_numeric($v) && $info[$key]['credit'][$k] = '';
+                    ! is_numeric($v) && $info[$key]['credit'][$k] = '';
                 }
             }
             $strategy = array_merge($strategy, $info);
@@ -131,7 +131,7 @@ class CreditController extends AdminBaseController
         is_array($recharge) || $recharge = [];
         is_array($ctype) || $ctype = [];
         foreach ($ctype as $key => $value) {
-            if ($rate[$key] && !isset($recharge[$value])) {
+            if ($rate[$key] && ! isset($recharge[$value])) {
                 $recharge[$value] = [
                     'rate' => intval($rate[$key]),
                     'min'  => $min[$key] ? $min[$key] : '', ];
@@ -149,7 +149,7 @@ class CreditController extends AdminBaseController
     public function exchangeAction()
     {
         $exchange = Wekit::C('credit', 'exchange');
-        if (!is_array($exchange)) {
+        if (! is_array($exchange)) {
             $exchange = [];
         }
 
@@ -181,7 +181,7 @@ class CreditController extends AdminBaseController
 
         is_array($credit1) || $credit1 = [];
         foreach ($credit1 as $key => $value) {
-            if (!$value || !$credit2[$key] || !$value1[$key] || !$value2[$key]) {
+            if (! $value || ! $credit2[$key] || ! $value1[$key] || ! $value2[$key]) {
                 continue;
             }
             if ($value == $credit2[$key]) {
@@ -204,7 +204,7 @@ class CreditController extends AdminBaseController
     public function delexchangeAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.fail');
         }
 
@@ -242,7 +242,7 @@ class CreditController extends AdminBaseController
         $transfer = [];
 
         foreach ($creditBo->cType as $key => $value) {
-            if (!$ifopen[$key] && !$rate[$key] && !$min[$key]) {
+            if (! $ifopen[$key] && ! $rate[$key] && ! $min[$key]) {
                 continue;
             }
             $transfer[$key] = [

@@ -14,7 +14,7 @@ class VisitorController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/visitor/run')]);
         }
         $this->setOutput('visitor', 'li');

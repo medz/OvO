@@ -70,13 +70,13 @@ class PwAttentionRecommendFriendsService
     public function getRecommentUser(PwUserBo $loginUser)
     {
         $recommends = $loginUser->info['recommend_friend'];
-        if (!$recommends) {
+        if (! $recommends) {
             return [];
         }
         $recommends = explode('|', $recommends);
         $array = [];
         foreach ($recommends as $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             list($uid, $username, $cnt, $sameUser) = explode(',', $v);
@@ -191,7 +191,7 @@ class PwAttentionRecommendFriendsService
         if ($users) {
             $i = 0;
             foreach ($users as $u) {
-                if (!isset($userInfos[$u['recommend_uid']])) {
+                if (! isset($userInfos[$u['recommend_uid']])) {
                     continue;
                 }
                 $user .= $u['recommend_uid'].','.$userInfos[$u['recommend_uid']]['username'].','.$u['cnt'];

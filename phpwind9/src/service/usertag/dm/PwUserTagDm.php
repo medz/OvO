@@ -86,13 +86,13 @@ class PwUserTagDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['name'])) {
+        if (! isset($this->_data['name'])) {
             new PwError('USER:tag.name.require');
         }
         if (true !== ($r = $this->_checkName($this->_data['name']))) {
             return $r;
         }
-        if (!$this->getField('ifhot')) {
+        if (! $this->getField('ifhot')) {
             $this->_data['ifhot'] = 1;
         }
 
@@ -123,7 +123,7 @@ class PwUserTagDm extends PwBaseDm
      */
     private function _checkName($name)
     {
-        if (!$name) {
+        if (! $name) {
             return new PwError('USER:tag.name.require');
         }
         $len = Pw::strlen($name);
@@ -132,7 +132,7 @@ class PwUserTagDm extends PwBaseDm
             return new PwError('USER:tag.name.length.error');
         }
         //标签名称只支持中文、字母、数字、下划线和小数点哦
-        if (!preg_match('/^[\x7f-\xff\dA-Za-z\.\_]+$/', $name)) {
+        if (! preg_match('/^[\x7f-\xff\dA-Za-z\.\_]+$/', $name)) {
             return new PwError('USER:tag.name.format.error');
         }
 

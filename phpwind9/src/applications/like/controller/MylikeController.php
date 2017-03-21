@@ -46,12 +46,12 @@ class MylikeController extends PwBaseController
         $json = [];
         foreach ($logLists as $_log) {
             $_log['tags'] = array_unique((array) $_log['tags']);
-            if (!$_log['tags']) {
+            if (! $_log['tags']) {
                 continue;
             }
             $tagJson = [];
             foreach ((array) $_log['tags'] as $_tagid) {
-                if (!isset($tagLists[$_tagid]['tagname'])) {
+                if (! isset($tagLists[$_tagid]['tagname'])) {
                     continue;
                 }
                 $tagJson[] = [
@@ -110,7 +110,7 @@ class MylikeController extends PwBaseController
         $likeInfos = $this->_getBuildLikeService()->getLikeInfo();
         $replyInfos = $this->_getBuildLikeService()->getLastReplyInfo();
         foreach ($logLists as $k => $logList) {
-            if (!isset($likeInfos[$logList['likeid']])) {
+            if (! isset($likeInfos[$logList['likeid']])) {
                 continue;
             }
             $_data[$k]['fromid'] = $likeLists[$logList['likeid']]['fromid'];
@@ -182,7 +182,7 @@ class MylikeController extends PwBaseController
     public function doDelLikeAction()
     {
         $logid = (int) $this->getInput('logid', 'post');
-        if (!$logid) {
+        if (! $logid) {
             $this->showError('BBS:like.fail');
         }
         $resource = $this->_getLikeService()->delLike($this->loginUser->uid, $logid);
@@ -200,7 +200,7 @@ class MylikeController extends PwBaseController
         $tagid = (int) $this->getInput('tagid', 'post');
         $type = (int) $this->getInput('type', 'post');
         $logid = (int) $this->getInput('logid', 'post');
-        if (!$logid || !$tagid) {
+        if (! $logid || ! $tagid) {
             $this->showError('BBS:like.fail');
         }
         $this->_getLikeService()->editLogTag($logid, $tagid, $type);
@@ -215,7 +215,7 @@ class MylikeController extends PwBaseController
     {
         $tagname = $this->getInput('tagname', 'post');
         $logid = (int) $this->getInput('logid', 'post');
-        if (!$logid || !$tagname) {
+        if (! $logid || ! $tagname) {
             $this->showError('BBS:like.fail');
         }
         $resource = $this->_getLikeService()->addTag($this->loginUser->uid, $tagname);
@@ -234,7 +234,7 @@ class MylikeController extends PwBaseController
     public function doAddTagAction()
     {
         $tagname = $this->getInput('tagname', 'post');
-        if (!$tagname) {
+        if (! $tagname) {
             $this->showError('BBS:like.fail');
         }
         $resource = $this->_getLikeService()->addTag($this->loginUser->uid, $tagname);
@@ -251,14 +251,14 @@ class MylikeController extends PwBaseController
     public function doDelTagAction()
     {
         $tagid = (int) $this->getInput('tag', 'post');
-        if (!$tagid) {
+        if (! $tagid) {
             $this->showError('operate.fail');
         }
         $info = $this->_getLikeService()->allowEditTag($this->loginUser->uid, $tagid);
         if ($info instanceof PwError) {
             $this->showError($info->getError());
         }
-        if (!$this->_getLikeTagService()->deleteInfo($tagid)) {
+        if (! $this->_getLikeTagService()->deleteInfo($tagid)) {
             $this->showError('BBS:like.fail');
         }
         $this->_getLikeRelationsService()->deleteInfos($tagid);
@@ -288,7 +288,7 @@ class MylikeController extends PwBaseController
                 $this->showError('BBS:like.fail.already.tagname');
             }
         }
-        if (!$allow) {
+        if (! $allow) {
             $this->showError('BBS:like.fail');
         }
 

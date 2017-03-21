@@ -29,13 +29,13 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     {
         $poll = $pollOption = $pollVoter = [];
         $threadPollInfo = $this->_getThreadPollDs()->getPoll($tid);
-        if (empty($threadPollInfo) || !is_array($threadPollInfo)) {
+        if (empty($threadPollInfo) || ! is_array($threadPollInfo)) {
             return [$poll, $pollOption, $pollVoter];
         }
 
         $pollid = $threadPollInfo['poll_id'];
         $poll = $this->_getPollDs()->getPoll($pollid);
-        if (empty($poll) || !is_array($poll)) {
+        if (empty($poll) || ! is_array($poll)) {
             return [$poll, $pollOption, $pollVoter];
         }
 
@@ -48,7 +48,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
     public function copyPoll($tid, $newTid)
     {
         list($poll, $pollOption, $pollVoter) = $this->initInfo($tid);
-        if (!$poll) {
+        if (! $poll) {
             return;
         }
 
@@ -92,7 +92,7 @@ class PwThreadManageCopyDoPoll extends PwThreadManageCopyDoBase
 
     public function copyVoter($uids, $pollid, $optionid)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return false;
         }
 

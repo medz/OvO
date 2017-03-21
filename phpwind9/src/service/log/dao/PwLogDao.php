@@ -65,7 +65,7 @@ class PwLogDao extends PwBaseDao
     {
         $clear = $fields = [];
         foreach ($datas as $key => $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $_temp = [];
@@ -83,7 +83,7 @@ class PwLogDao extends PwBaseDao
             $_temp['pid'] = $_item['pid'];
             $clear[] = $_temp;
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`created_userid`, `created_username`, `operated_uid`, `operated_username`, `created_time`, `typeid`, `fid`, `tid`, `ip`, `extends`, `content`, `pid`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));
@@ -171,7 +171,7 @@ class PwLogDao extends PwBaseDao
     {
         $where = $params = [];
         foreach ($condition as $_k => $_v) {
-            if (!$_v) {
+            if (! $_v) {
                 continue;
             }
             switch ($_k) {
@@ -183,7 +183,7 @@ class PwLogDao extends PwBaseDao
                     break;
                 case 'operated_uid':
                 case 'created_userid':
-                    if (!is_array($_v)) {
+                    if (! is_array($_v)) {
                         $_v = [$_v];
                     }
                     $where[] = $this->_bindSql('%s IN (%s)', $_k, $this->sqlImplode($_v));

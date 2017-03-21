@@ -33,7 +33,7 @@ class PwRegisterDoInviteFriend extends PwRegisterDoBase
      */
     public function beforeRegister(PwUserInfoDm $userDm)
     {
-        if ($this->bp->config['type'] == 2 || !$this->code) {
+        if ($this->bp->config['type'] == 2 || ! $this->code) {
             return false;
         }
         /* @var $inviteService PwInviteFriendService */
@@ -51,7 +51,7 @@ class PwRegisterDoInviteFriend extends PwRegisterDoBase
      */
     public function afterRegister(PwUserInfoDm $userDm)
     {
-        if ($this->bp->config['type'] == 2 || !$userDm->uid) {
+        if ($this->bp->config['type'] == 2 || ! $userDm->uid) {
             return false;
         }
         /* @var $inviteService PwInviteFriendService */

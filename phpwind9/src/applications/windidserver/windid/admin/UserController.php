@@ -82,7 +82,7 @@ class UserController extends WindidBaseController
         $uid = (int) $this->getInput('uid', 'get');
         $user = Wekit::load('WSRV:user.WindidUser');
         $_info = $user->getUserByUid($uid, WindidUser::FETCH_ALL);
-        if (!$_info) {
+        if (! $_info) {
             $this->showError('WINDID:fail');
         }
         $tYear = Pw::time2str(Pw::getTime(), 'Y');
@@ -103,7 +103,7 @@ class UserController extends WindidBaseController
     public function doEditAction()
     {
         $uid = (int) $this->getInput('uid', 'post');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('WINDID:fail');
         }
         Wind::import('WSRV:user.dm.WindidUserDm');
@@ -181,7 +181,7 @@ class UserController extends WindidBaseController
     public function defaultAvatarAction()
     {
         $uid = (int) $this->getInput('uid', 'get');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('WINDID:fail');
         }
         $api = WindidApi::api('avatar');
@@ -197,7 +197,7 @@ class UserController extends WindidBaseController
     public function deleteAction()
     {
         $uid = $this->getInput('uid', 'get');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('WINDID:fail');
         }
         $ds = Wekit::load('WSRV:user.WindidUser');
@@ -212,7 +212,7 @@ class UserController extends WindidBaseController
     public function editCreditAction()
     {
         $uid = $this->getInput('uid', 'get');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('WINDID:fail');
         }
         //Wind::import('WSRV:user.dm.WindidUserDm');
@@ -222,7 +222,7 @@ class UserController extends WindidBaseController
         $config = $service->getValues('credit');
         $user = Wekit::load('WSRV:user.WindidUser');
         $info = $user->getUserByUid($uid, WindidUser::FETCH_DATA);
-        if (!$info) {
+        if (! $info) {
             $this->showError('WINDID:fail');
         }
         $userCreditDb = [];
@@ -241,7 +241,7 @@ class UserController extends WindidBaseController
     public function doEditCreditAction()
     {
         $uid = $this->getInput('uid', 'post');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('WINDID:fail');
         }
         $credits = $this->getInput('credit');
@@ -283,7 +283,7 @@ class UserController extends WindidBaseController
     private function _buildArea($areaid)
     {
         $default = [['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => ''], ['areaid' => '', 'name' => '']];
-        if (!$areaid) {
+        if (! $areaid) {
             return $default;
         }
         /* @var $areaSrv WindidAreaService */

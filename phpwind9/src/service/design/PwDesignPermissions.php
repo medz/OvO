@@ -73,7 +73,7 @@ class PwDesignPermissions
 
     public function batchDelete($ids)
     {
-        if (!is_array($ids) || !$ids) {
+        if (! is_array($ids) || ! $ids) {
             return false;
         }
 

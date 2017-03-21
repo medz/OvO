@@ -21,11 +21,11 @@ class OpenBaseController extends PwBaseController
         $_windidkey = $this->getInput('windidkey', 'get');
         $_time = (int) $this->getInput('time', 'get');
         $_clientid = (int) $this->getInput('clientid', 'get');
-        if (!$_time || !$_clientid) {
+        if (! $_time || ! $_clientid) {
             $this->output(WindidError::FAIL);
         }
         $clent = $this->_getAppDs()->getApp($_clientid);
-        if (!$clent) {
+        if (! $clent) {
             $this->output(WindidError::FAIL);
         }
         if (WindidUtility::appKey($clent['id'], $_time, $clent['secretkey'], $this->getRequest()->getGet(null), $this->getRequest()->getPost()) != $_windidkey) {

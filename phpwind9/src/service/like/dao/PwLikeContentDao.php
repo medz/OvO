@@ -41,7 +41,7 @@ class PwLikeContentDao extends PwBaseDao
 
     public function addInfo($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -52,7 +52,7 @@ class PwLikeContentDao extends PwBaseDao
 
     public function updateInfo($likeid, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s  WHERE likeid = ? ', $this->getTable(), $this->sqlSingle($data));

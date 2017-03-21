@@ -25,7 +25,7 @@ class PwUserPermission
      */
     public function setPermission(PwUserPermissionDm $dm)
     {
-        if (!$data = $dm->getData()) {
+        if (! $data = $dm->getData()) {
             return false;
         }
         $result = $this->_getGroupPermissionDao()->setGroupPermission($data);
@@ -45,7 +45,7 @@ class PwUserPermission
     public function getPermissions($gid, $keys = [])
     {
         $gid = intval($gid);
-        if (!is_array($keys) || !$keys || $gid < 1) {
+        if (! is_array($keys) || ! $keys || $gid < 1) {
             return [];
         }
 
@@ -74,7 +74,7 @@ class PwUserPermission
      */
     public function getPermissionByRkeyAndGids($rkey, $gids)
     {
-        if (empty($gids) || !is_array($gids)) {
+        if (empty($gids) || ! is_array($gids)) {
             return [];
         }
 
@@ -90,7 +90,7 @@ class PwUserPermission
      */
     public function fetchPermissionByRkey($rkeys = [])
     {
-        if (!is_array($rkeys) || !$rkeys) {
+        if (! is_array($rkeys) || ! $rkeys) {
             return [];
         }
 
@@ -106,7 +106,7 @@ class PwUserPermission
      */
     public function fetchPermissionByGid($gids)
     {
-        if (!is_array($gids) || !$gids) {
+        if (! is_array($gids) || ! $gids) {
             return [];
         }
 
@@ -136,7 +136,7 @@ class PwUserPermission
     public function batchDeletePermissionByGidAndKeys($gid, $keys)
     {
         $gid = intval($gid);
-        if (!is_array($keys) || !$keys || $gid < 1) {
+        if (! is_array($keys) || ! $keys || $gid < 1) {
             return false;
         }
 

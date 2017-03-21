@@ -94,13 +94,13 @@ class PwWorkDm extends PwBaseDm
      */
     protected function check()
     {
-        if (!isset($this->_data['uid'])) {
+        if (! isset($this->_data['uid'])) {
             return new PwError('USER:work.illegal.request');
         }
-        if (!isset($this->_data['company']) || !$this->_data['company']) {
+        if (! isset($this->_data['company']) || ! $this->_data['company']) {
             return new PwError('USER:work.update.company.require');
         }
-        if (!$this->_data['starty'] || !$this->_data['startm']) {
+        if (! $this->_data['starty'] || ! $this->_data['startm']) {
             return new PwError('USER:work.update.start_time.require');
         }
 

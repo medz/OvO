@@ -80,7 +80,7 @@ class PwSystemInstallation extends PwInstallApplication
      */
     public function checkEnvironment()
     {
-        if (!function_exists('curl_init')) {
+        if (! function_exists('curl_init')) {
             return new PwError('APPCENTER:upgrade.curl');
         }
         // if (!function_exists('gzinflate')) return new
@@ -98,7 +98,7 @@ class PwSystemInstallation extends PwInstallApplication
         if ($this->useZip) {
             list($bool, $package) = PwSystemHelper::download($downloadUrl,
                 $this->tmpPath.'/'.basename($downloadUrl));
-            if (!$bool) {
+            if (! $bool) {
                 return new PwError($package);
             }
             if ($hash !== md5_file($package)) {
@@ -128,7 +128,7 @@ class PwSystemInstallation extends PwInstallApplication
             $dir = dirname($_file);
             list($bool, $_file) = PwSystemHelper::download($downloadUrl.'/'.$file.'wind',
                 $_file);
-            if (!$bool) {
+            if (! $bool) {
                 return new PwError($_file);
             }
             if ($hash !== md5_file($_file)) {
@@ -208,7 +208,7 @@ class PwSystemInstallation extends PwInstallApplication
         $sourceDir = $this->tmpPath.DIRECTORY_SEPARATOR.$this->target;
         $directoryFile = $sourceDir.DIRECTORY_SEPARATOR.'conf/directory.php';
         $directory = @include $directoryFile;
-        if (!is_array($directory)) {
+        if (! is_array($directory)) {
             return new PwError('APPCENTER:upgrade.directory.fail');
         }
         $this->_log('the remote directory is:'.var_export($directory, true));
@@ -241,7 +241,7 @@ class PwSystemInstallation extends PwInstallApplication
         }
         $this->_log('way of moving directory'.var_export($strtr, true));
 
-        if (!$sourceMd5 = WindFile::read($sourceDir.DIRECTORY_SEPARATOR.'conf/md5sum')) {
+        if (! $sourceMd5 = WindFile::read($sourceDir.DIRECTORY_SEPARATOR.'conf/md5sum')) {
             return new PwError('APPCENTER:upgrade.target.hash.fail');
         }
         $sourceMd5 = PwSystemHelper::resolveMd5($sourceMd5);
@@ -265,7 +265,7 @@ class PwSystemInstallation extends PwInstallApplication
 
         $moveList = $newFileList = [];
 
-        if (!$tmp = WindFile::read(CONF_PATH.'md5sum')) {
+        if (! $tmp = WindFile::read(CONF_PATH.'md5sum')) {
             return new PwError('APPCENTER:upgrade.hash.fail');
         }
         $md5List = PwSystemHelper::resolveMd5($tmp);
@@ -295,7 +295,7 @@ class PwSystemInstallation extends PwInstallApplication
             WindFolder::mkRecur(dirname($sourceDir.DIRECTORY_SEPARATOR.$new));
             copy($sourceDir.DIRECTORY_SEPARATOR.$old, $sourceDir.DIRECTORY_SEPARATOR.$new);
             WindFile::del($sourceDir.DIRECTORY_SEPARATOR.$old);
-            if ('.php' === substr($old, -4) && !strncasecmp($old, 'www'.DIRECTORY_SEPARATOR, 4)) {
+            if ('.php' === substr($old, -4) && ! strncasecmp($old, 'www'.DIRECTORY_SEPARATOR, 4)) {
                 $content = WindFile::read($sourceDir.DIRECTORY_SEPARATOR.$new);
                 if (strpos($content, '../../src/Wekit.php')) {
                     $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
@@ -354,7 +354,7 @@ class PwSystemInstallation extends PwInstallApplication
                     }
                 }
                 $baseFile = basename($_v);
-                if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || !strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
+                if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || ! strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
                     $content = WindFile::read($_v);
                     if (strpos($content, '../../src/Wekit.php')) {
                         $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
@@ -370,7 +370,7 @@ class PwSystemInstallation extends PwInstallApplication
             foreach ($fileList as $f => $hash) {
                 $_v = ROOT_PATH.$f;
                 $baseFile = basename($_v);
-                if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || !strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
+                if ('.php' === substr($baseFile, -4) && (in_array($baseFile, $entrance) || ! strncasecmp($baseFile, 'update_'.DIRECTORY_SEPARATOR, 4))) {
                     $content = WindFile::read($_v);
                     if (strpos($content, '../../src/Wekit.php')) {
                         $content = str_replace('../../src/Wekit.php', $relativePath_2, $content);
@@ -417,7 +417,7 @@ class PwSystemInstallation extends PwInstallApplication
             if ($useFtp) {
                 try {
                     $r = $ftp->upload($v, $k);
-                    if ($useFtp['sftp'] && !$r && $e = $ftp->getError()) {
+                    if ($useFtp['sftp'] && ! $r && $e = $ftp->getError()) {
                         return new PwError('APPCENTER:upgrade.upload.fail',
                             [$v.var_export($e, true)]);
                     }
@@ -471,13 +471,13 @@ class PwSystemInstallation extends PwInstallApplication
         }
 
         foreach ($fileList as $v => $hash) {
-            if (!is_file($source.DIRECTORY_SEPARATOR.$v)) {
+            if (! is_file($source.DIRECTORY_SEPARATOR.$v)) {
                 return new PwError('APPCENTER:upgrade.file.lost');
             }
             if ($useFtp) {
                 try {
                     $r = $ftp->upload($source.DIRECTORY_SEPARATOR.$v, $v);
-                    if ($useFtp['sftp'] && !$r && $e = $ftp->getError()) {
+                    if ($useFtp['sftp'] && ! $r && $e = $ftp->getError()) {
                         return new PwError('APPCENTER:upgrade.upload.fail',
                             [$v.var_export($e, true)]);
                     }
@@ -487,7 +487,7 @@ class PwSystemInstallation extends PwInstallApplication
             } else {
                 WindFolder::mkRecur(dirname(ROOT_PATH.$v));
                 $r = @copy($source.DIRECTORY_SEPARATOR.$v, ROOT_PATH.$v);
-                if (!$r) {
+                if (! $r) {
                     return new PwError('APPCENTER:upgrade.copy.fail', [$v]);
                 }
             }
@@ -512,7 +512,7 @@ class PwSystemInstallation extends PwInstallApplication
                 WindFolder::mkRecur(dirname($dest.DIRECTORY_SEPARATOR.$v));
                 $r = @copy($root.DIRECTORY_SEPARATOR.$v, $dest.DIRECTORY_SEPARATOR.$v);
 
-                if (!$r) {
+                if (! $r) {
                     return new PwError('APPCENTER:upgrade.backup.fail');
                 }
             }

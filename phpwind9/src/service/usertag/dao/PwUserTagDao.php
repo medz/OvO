@@ -104,12 +104,12 @@ class PwUserTagDao extends PwBaseDao
     {
         $clear = [];
         foreach ($data as $_item) {
-            if (!($_tmp = $this->_filterStruct($_item))) {
+            if (! ($_tmp = $this->_filterStruct($_item))) {
                 continue;
             }
             $clear[] = [$_item['name'], $_item['ifhot']];
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`name`, `ifhot`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));
@@ -220,7 +220,7 @@ class PwUserTagDao extends PwBaseDao
     {
         $_where = $_params = [];
         foreach ($condition as $key => $val) {
-            if ($val !== 0 && !$val) {
+            if ($val !== 0 && ! $val) {
                 continue;
             }
             switch ($key) {

@@ -26,14 +26,14 @@ class PwExtractZip
      */
     public function extract($zipPack, $aFile = '')
     {
-        if (!$zipPack || !is_file($zipPack)) {
+        if (! $zipPack || ! is_file($zipPack)) {
             return false;
         }
         $extractedData = [];
         $this->fileHandle = fopen($zipPack, 'rb');
         $filesize = sprintf('%u', filesize($zipPack));
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize);
-        if (!is_array($EofCentralDirData)) {
+        if (! is_array($EofCentralDirData)) {
             return false;
         }
         $centralDirectoryHeaderOffset = $EofCentralDirData['centraldiroffset'];
@@ -41,7 +41,7 @@ class PwExtractZip
             rewind($this->fileHandle);
             fseek($this->fileHandle, $centralDirectoryHeaderOffset);
             $centralDirectoryData = $this->_readCentralDirectoryData();
-            if (!is_array($centralDirectoryData)) {
+            if (! is_array($centralDirectoryData)) {
                 $centralDirectoryHeaderOffset += 46;
                 continue;
             }
@@ -50,7 +50,7 @@ class PwExtractZip
                 continue;
             }
 
-            if (!$aFile) {
+            if (! $aFile) {
                 $data = $this->_readLocalFileHeaderAndData($centralDirectoryData);
                 if ($data === false) {
                     continue;
@@ -76,14 +76,14 @@ class PwExtractZip
 
     public function getFileLists($zipPack)
     {
-        if (!$zipPack || !is_file($zipPack)) {
+        if (! $zipPack || ! is_file($zipPack)) {
             return false;
         }
         $extractedData = [];
         $this->fileHandle = fopen($zipPack, 'rb');
         $filesize = sprintf('%u', filesize($zipPack));
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize);
-        if (!is_array($EofCentralDirData)) {
+        if (! is_array($EofCentralDirData)) {
             return false;
         }
         $centralDirectoryHeaderOffset = $EofCentralDirData['centraldiroffset'];
@@ -91,7 +91,7 @@ class PwExtractZip
             rewind($this->fileHandle);
             fseek($this->fileHandle, $centralDirectoryHeaderOffset);
             $centralDirectoryData = $this->_readCentralDirectoryData();
-            if (!is_array($centralDirectoryData)) {
+            if (! is_array($centralDirectoryData)) {
                 $centralDirectoryHeaderOffset += 46;
                 continue;
             }
@@ -109,7 +109,7 @@ class PwExtractZip
 
     public function extract2($zipPack, $target)
     {
-        if (!$zipPack || !is_file($zipPack)) {
+        if (! $zipPack || ! is_file($zipPack)) {
             return false;
         }
         $extractedData = [];
@@ -118,7 +118,7 @@ class PwExtractZip
         $this->fileHandle = fopen($zipPack, 'rb');
         $filesize = sprintf('%u', filesize($zipPack));
         $EofCentralDirData = $this->_findEOFCentralDirectoryRecord($filesize);
-        if (!is_array($EofCentralDirData)) {
+        if (! is_array($EofCentralDirData)) {
             return false;
         }
         $centralDirectoryHeaderOffset = $EofCentralDirData['centraldiroffset'];
@@ -126,7 +126,7 @@ class PwExtractZip
             rewind($this->fileHandle);
             fseek($this->fileHandle, $centralDirectoryHeaderOffset);
             $centralDirectoryData = $this->_readCentralDirectoryData();
-            if (!is_array($centralDirectoryData)) {
+            if (! is_array($centralDirectoryData)) {
                 $centralDirectoryHeaderOffset += 46;
                 continue;
             }
@@ -167,7 +167,7 @@ class PwExtractZip
         $localFileHeaderData = unpack('vextractversion/vflag/vcompressmethod/vmodtime/vmoddate/Vcrc/Vcompressedsize/Vuncompressedsize/vfilenamelength/vextrafieldlength', $localFileHeaderData);
         $localFileHeaderData['filenamelength'] && $localFileHeaderData['filename'] = fread($this->fileHandle, $localFileHeaderData['filenamelength']);
         $localFileHeaderData['extrafieldlength'] && $localFileHeaderData['extrafield'] = fread($this->fileHandle, $localFileHeaderData['extrafieldlength']);
-        if (!$this->_checkLocalFileHeaderAndCentralDir($localFileHeaderData, $centralDirectoryData)) {
+        if (! $this->_checkLocalFileHeaderAndCentralDir($localFileHeaderData, $centralDirectoryData)) {
             return false;
         }
         //文件加密过
@@ -194,7 +194,7 @@ class PwExtractZip
      */
     private function _unCompressData($data, $compressMethod)
     {
-        if (!$compressMethod) {
+        if (! $compressMethod) {
             return $data;
         }
         switch ($compressMethod) {

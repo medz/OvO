@@ -24,7 +24,7 @@ class PwForumUserService
     public function getActiveUser($fid, $day = 7, $num = 12)
     {
         $key = "active_user_{$fid}_{$day}_{$num}";
-        if (!$result = Wekit::cache()->get($key)) {
+        if (! $result = Wekit::cache()->get($key)) {
             $result = $this->_getActiveUser($fid, $day, $num);
             Wekit::cache()->set($key, $result, [], 3600);
         }
@@ -39,13 +39,13 @@ class PwForumUserService
         $thread = Wekit::load('forum.PwThreadExpand')->countUserThreadByFidAndTime($fid, $time, $num);
         $post = Wekit::load('forum.PwThreadExpand')->countUserPostByFidAndTime($fid, $time, $num);
         foreach ($thread as $key => $value) {
-            if (!$key) {
+            if (! $key) {
                 continue;
             }
             $array[$key] = $value['count'];
         }
         foreach ($post as $key => $value) {
-            if (!$key) {
+            if (! $key) {
                 continue;
             }
             if (isset($array[$key])) {

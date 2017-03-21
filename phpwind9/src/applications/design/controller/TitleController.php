@@ -25,7 +25,7 @@ class TitleController extends DesignBaseController
     public function editAction()
     {
         $titles = $this->bo->getTitle();
-        if (!$titles['titles']) {
+        if (! $titles['titles']) {
             $titles['titles'] = [['title' => '']];
         }
         $this->setOutput($this->_getDesignService()->getSysFontSize(), 'sysfontsize');

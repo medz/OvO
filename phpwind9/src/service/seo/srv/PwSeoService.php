@@ -43,7 +43,7 @@ class PwSeoService
         if (empty($dms)) {
             return false;
         }
-        !is_array($dms) && $dms = [$dms];
+        ! is_array($dms) && $dms = [$dms];
         $r = $this->_seoDs()->batchReplaceSeo($dms);
         if ($r instanceof PwError) {
             return $r;

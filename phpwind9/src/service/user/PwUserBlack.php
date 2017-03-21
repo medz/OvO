@@ -79,7 +79,7 @@ class PwUserBlack
      */
     public function checkUserBlack($uid, $uids)
     {
-        !is_array($uids) && $uids = [$uids];
+        ! is_array($uids) && $uids = [$uids];
         $blacks = $this->fetchBlacklist($uids);
         $privateBlacks = [];
         foreach ($blacks as $v) {

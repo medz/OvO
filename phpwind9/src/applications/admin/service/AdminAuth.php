@@ -55,7 +55,7 @@ class AdminAuth
     public function findByPage($page, $perPgae = 10)
     {
         $count = $this->getAdminAuthDao()->count();
-        if (!$count) {
+        if (! $count) {
             return [0, []];
         }
         $page = (int) $page;
@@ -75,7 +75,7 @@ class AdminAuth
      */
     public function del($id)
     {
-        if (!$id) {
+        if (! $id) {
             return new PwError('ADMIN:auth.del.fail');
         }
 
@@ -92,10 +92,10 @@ class AdminAuth
      */
     public function edit($id, $username, $roles)
     {
-        if (!$id) {
+        if (! $id) {
             return new PwError('ADMIN:auth.edit.fail.id.illegal');
         }
-        if (!$roles) {
+        if (! $roles) {
             return new PwError('ADMIN:auth.add.fail.role.empty');
         }
         $fields['username'] = $username;

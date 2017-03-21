@@ -17,7 +17,7 @@ class FollowController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/follow/run')]);
         }
         $this->setOutput('follow', 'li');
@@ -63,7 +63,7 @@ class FollowController extends PwBaseController
             $userType[$key] = $tmp;
         }
         $follows = WindUtility::mergeArray($follows, $userList);
-        if (!$type && !$follows) {
+        if (! $type && ! $follows) {
             $num = 30;
             $uids = $this->_getRecommendService()->getOnlneUids($num);
             $uids = array_slice($uids, 0, 24);
@@ -97,7 +97,7 @@ class FollowController extends PwBaseController
     public function addAction()
     {
         $uid = $this->getInput('uid', 'post');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('operate.select');
         }
         $private = Wekit::load('user.PwUserBlack')->checkUserBlack($this->loginUser->uid, $uid);
@@ -118,7 +118,7 @@ class FollowController extends PwBaseController
     public function batchaddAction()
     {
         $uids = $this->getInput('uids', 'post');
-        if (!$uids) {
+        if (! $uids) {
             $this->showError('USER:attention.uid.empty');
         }
         foreach ($uids as $uid) {
@@ -140,7 +140,7 @@ class FollowController extends PwBaseController
     public function deleteAction()
     {
         $uid = $this->getInput('uid');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('operate.select');
         }
         $result = $this->_getService()->deleteFollow($this->loginUser->uid, $uid);
@@ -157,7 +157,7 @@ class FollowController extends PwBaseController
     {
         $name = $this->getInput('name', 'post');
         $uid = (int) $this->getInput('uid');
-        if (!$name) {
+        if (! $name) {
             $this->showError('operate.select');
         }
         $result = $this->_getService()->addType($this->loginUser->uid, $name);
@@ -178,7 +178,7 @@ class FollowController extends PwBaseController
     public function savetypeAction()
     {
         list($uid, $id, $type) = $this->getInput(['uid', 'id', 'type'], 'post');
-        if (!$uid) {
+        if (! $uid) {
             $this->showError('operate.select');
         }
         if ($type == 1) {
@@ -195,7 +195,7 @@ class FollowController extends PwBaseController
     public function editTypeAction()
     {
         list($id, $name) = $this->getInput(['id', 'name'], 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.select');
         }
         $type = $this->_getTypeDs()->getType($id);
@@ -226,7 +226,7 @@ class FollowController extends PwBaseController
     public function deleteTypeAction()
     {
         $id = $this->getInput('id', 'post');
-        if (!$id) {
+        if (! $id) {
             $this->showError('operate.select');
         }
         $type = $this->_getTypeDs()->getType($id);

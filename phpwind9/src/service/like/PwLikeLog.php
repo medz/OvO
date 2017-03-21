@@ -49,7 +49,7 @@ class PwLikeLog
      */
     public function fetchLikeLog($logids)
     {
-        if (!is_array($logids) || count($logids) < 1) {
+        if (! is_array($logids) || count($logids) < 1) {
             return [];
         }
 
@@ -65,7 +65,7 @@ class PwLikeLog
      */
     public function getInfoList($uids, $start = 0, $limit = 10)
     {
-        if (!is_array($uids)) {
+        if (! is_array($uids)) {
             $uids = [(int) $uids];
         }
         if (count($uids) < 1) {

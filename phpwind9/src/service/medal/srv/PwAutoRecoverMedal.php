@@ -29,15 +29,15 @@ class PwAutoRecoverMedal
     public function autoRecoverMedal($awardType, $nowCondition)
     {
         $this->checkRecoverMedal($awardType, $nowCondition);
-        if (!$this->recoverIds) {
+        if (! $this->recoverIds) {
             return false;
         }
         $medalIds = array_keys($this->medalBo->medals);
-        if (!$medalIds) {
+        if (! $medalIds) {
             return false;
         }
         $intersect = array_intersect($medalIds, $this->recoverIds);
-        if (!$intersect) {
+        if (! $intersect) {
             return false;
         }
 
@@ -66,7 +66,7 @@ class PwAutoRecoverMedal
 
     protected function recoverMedals($recoverIds)
     {
-        if (!is_array($recoverIds)) {
+        if (! is_array($recoverIds)) {
             return false;
         }
         $ds = Wekit::load('medal.PwMedalLog');

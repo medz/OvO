@@ -36,7 +36,7 @@ class PwTagRelationDao extends PwBaseDao
     {
         $array = [];
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v)) {
+            if (! $this->_filterStruct($v)) {
                 continue;
             }
             $array[] = [
@@ -61,7 +61,7 @@ class PwTagRelationDao extends PwBaseDao
      */
     public function updateRelation($typeId, $paramId, $id, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `type_id`=? AND `param_id`=? AND `content_tag_id`=?', $this->getTable(), $this->sqlSingle($data));
@@ -81,7 +81,7 @@ class PwTagRelationDao extends PwBaseDao
     {
         $array = [];
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v)) {
+            if (! $this->_filterStruct($v)) {
                 continue;
             }
             $array[] = [

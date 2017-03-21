@@ -144,7 +144,7 @@ class ManageController extends AdminBaseController
     {
         $id = $this->getTaskId();
         $task = $this->_taskDs()->get($id);
-        if (!$task) {
+        if (! $task) {
             $this->showError('TASK:id.illegal');
         }
         $dm = $this->setDm($id);
@@ -204,7 +204,7 @@ class ManageController extends AdminBaseController
         /* @var $userGroup PwUserGroups */
         $userGroup = Wekit::load('usergroup.PwUserGroups');
         $groups = $userGroup->getAllGroups();
-        if (!$user_groups || !array_diff(array_keys($groups), $user_groups)) {
+        if (! $user_groups || ! array_diff(array_keys($groups), $user_groups)) {
             $user_groups = [-1];
         }
         $startTime = $this->getInput('start_time');

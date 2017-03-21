@@ -20,11 +20,11 @@ class PwUserBehavior
      */
     public function getBehavior($uid, $behavior)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
         $info = $this->_getdao()->getInfo($uid, $behavior);
-        if (!$info) {
+        if (! $info) {
             return [];
         }
         $time = Pw::getTime();
@@ -42,7 +42,7 @@ class PwUserBehavior
      */
     public function fetchBehavior($uids)
     {
-        if (!is_array($uids) || count($uids) < 1) {
+        if (! is_array($uids) || count($uids) < 1) {
             return [];
         }
 
@@ -73,7 +73,7 @@ class PwUserBehavior
      */
     public function replaceBehavior($uid, $behavior, $time = 0)
     {
-        if ($uid < 1 || !$behavior) {
+        if ($uid < 1 || ! $behavior) {
             return false;
         }
         $expired = $yesterday = 0;
@@ -115,7 +115,7 @@ class PwUserBehavior
      */
     public function replaceDayBehavior($uid, $behavior, $time)
     {
-        if ($uid < 1 || !$behavior || $time < 0) {
+        if ($uid < 1 || ! $behavior || $time < 0) {
             return false;
         }
         $number = 1;
@@ -150,7 +150,7 @@ class PwUserBehavior
      */
     public function replaceDayNumBehavior($uid, $behavior, $time, $num = 1)
     {
-        if ($uid < 1 || !$behavior || $time < 0) {
+        if ($uid < 1 || ! $behavior || $time < 0) {
             return false;
         }
         $number = $num ? $num : 1;
@@ -184,7 +184,7 @@ class PwUserBehavior
      */
     public function replaceInfo($uid, $behavior, $number = 0, $extend = '')
     {
-        if ($uid < 1 || !$behavior) {
+        if ($uid < 1 || ! $behavior) {
             return false;
         }
         $data = [];
@@ -198,7 +198,7 @@ class PwUserBehavior
 
     public function deleteInfo($uid)
     {
-        if (!$uid) {
+        if (! $uid) {
             return false;
         }
 
@@ -207,7 +207,7 @@ class PwUserBehavior
 
     public function deleteInfoByUidBehavior($uid, $behavior)
     {
-        if (!$uid || !$behavior) {
+        if (! $uid || ! $behavior) {
             return false;
         }
 

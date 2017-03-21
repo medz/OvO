@@ -2,7 +2,7 @@
 
 //!defined('WINDID') && define('WINDID', dirname(__FILE__));
 define('WINDID_BOOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
-!defined('WINDID_VERSION') && define('WINDID_VERSION', '1.0.0');
+! defined('WINDID_VERSION') && define('WINDID_VERSION', '1.0.0');
 
 require WINDID_BOOT.'bootstrap.php';
 
@@ -12,11 +12,11 @@ class WindidApi
     {
         static $cls = [];
         $array = ['user', 'config', 'message', 'avatar', 'area', 'school', 'app', 'notify'];
-        if (!in_array($api, $array)) {
+        if (! in_array($api, $array)) {
             return WindidError::FAIL;
         }
         $class = 'Windid'.ucfirst($api).'Api';
-        if (!isset($cls[$class])) {
+        if (! isset($cls[$class])) {
             if (WINDID_CONNECT == 'db') {
                 $class = Wind::import('WINDID:api.local.'.$class);
                 $cls[$class] = new $class();
@@ -44,7 +44,7 @@ class WindidApi
         $getData['windidkey'] = WindidUtility::appKey(WINDID_CLIENT_ID, $time, WINDID_CLIENT_KEY, $getData, $postData);
         $url = WINDID_SERVER_URL.'/index.php?'.http_build_query($getData);
 
-        if (!(strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0)) {
+        if (! (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0)) {
             return false;
         }
 
@@ -64,7 +64,7 @@ class WindidApi
     public static function getDm($api)
     {
         $array = ['user', 'message', 'credit', 'app'];
-        if (!in_array($api, $array)) {
+        if (! in_array($api, $array)) {
             return WindidError::FAIL;
         }
         switch ($api) {

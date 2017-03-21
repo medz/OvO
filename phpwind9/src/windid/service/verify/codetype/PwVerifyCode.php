@@ -97,7 +97,7 @@ class PwVerifyCode
                 break;
         }
         $this->_getGDRandType();
-        if (!PwGDCode::init()) {
+        if (! PwGDCode::init()) {
             return false;
         }
         $this->_saveVerifyCode();

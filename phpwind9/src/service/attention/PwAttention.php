@@ -21,12 +21,12 @@ class PwAttention
      */
     public function isFollowed($uid, $touid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return false;
         }
         $result = $this->_getDao()->get($uid, $touid);
 
-        return !empty($result);
+        return ! empty($result);
     }
 
     /**
@@ -40,7 +40,7 @@ class PwAttention
      */
     public function getFans($uid, $limit = 20, $offset = 0)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
 
@@ -57,7 +57,7 @@ class PwAttention
      */
     public function fetchFans($uid, $touids)
     {
-        if (!$uid || !$touids || !is_array($touids)) {
+        if (! $uid || ! $touids || ! is_array($touids)) {
             return [];
         }
 
@@ -75,7 +75,7 @@ class PwAttention
      */
     public function fetchFansByUids($uids, $limit = 20, $offset = 0)
     {
-        if (!$uids || !is_array($uids)) {
+        if (! $uids || ! is_array($uids)) {
             return [];
         }
 
@@ -93,7 +93,7 @@ class PwAttention
      */
     public function getFollows($uid, $limit = 20, $offset = 0)
     {
-        if (!$uid) {
+        if (! $uid) {
             return [];
         }
 
@@ -110,7 +110,7 @@ class PwAttention
      */
     public function fetchFollows($uid, $touids)
     {
-        if (!$uid || !$touids || !is_array($touids)) {
+        if (! $uid || ! $touids || ! is_array($touids)) {
             return [];
         }
 
@@ -127,7 +127,7 @@ class PwAttention
      */
     public function countFollowToFollow($uid, $touid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return 0;
         }
 
@@ -145,7 +145,7 @@ class PwAttention
      */
     public function getFollowToFollow($uid, $touid, $limit = 3)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return [];
         }
 
@@ -163,7 +163,7 @@ class PwAttention
      */
     public function addFollow($uid, $touid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return new PwError('USER:attention.add.fail');
         }
         if ($uid == $touid) {
@@ -191,10 +191,10 @@ class PwAttention
      */
     public function deleteFollow($uid, $touid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return false;
         }
-        if (!$this->isFollowed($uid, $touid)) {
+        if (! $this->isFollowed($uid, $touid)) {
             return new PwError('USER:attention.del.fail');
         }
 
@@ -213,7 +213,7 @@ class PwAttention
 
     public function fetchFriendsByUids($uids)
     {
-        if (!$uids || !is_array($uids)) {
+        if (! $uids || ! is_array($uids)) {
             return [];
         }
 

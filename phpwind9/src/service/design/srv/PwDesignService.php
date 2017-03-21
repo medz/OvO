@@ -17,11 +17,11 @@ class PwDesignService
         $_configParser = Wind::getComponent('configParser');
         foreach ($list as $model) {
             $configPath = Wind::getRealPath('SRV:design.srv.model.'.$model.'.config');
-            if (!is_file($configPath)) {
+            if (! is_file($configPath)) {
                 continue;
             }
             $config = $_configParser->parse($configPath);
-            if (!isset($config['model'])) {
+            if (! isset($config['model'])) {
                 continue;
             }
             $modelList[$config['model']] = ['name' => $config['name'], 'type' => $config['type']];
@@ -149,7 +149,7 @@ class PwDesignService
     {
         $array = explode(',', $string);
         $signKey = [];
-        if (!is_array($array) || count($array) < 1) {
+        if (! is_array($array) || count($array) < 1) {
             return [];
         }
         foreach ($array as $v) {
@@ -250,7 +250,7 @@ class PwDesignService
 
     public function clearTemplate($pageid, $tplPath)
     {
-        if (!$tplPath) {
+        if (! $tplPath) {
             return false;
         }
         $dir = Wind::getRealDir('THEMES:portal.local.').$tplPath;
@@ -279,7 +279,7 @@ class PwDesignService
     public function copyRecur($fromFolder, $toFolder)
     {
         $dir = @opendir($fromFolder);
-        if (!$dir) {
+        if (! $dir) {
             return false;
         }
         WindFolder::mk($toFolder);
@@ -300,7 +300,7 @@ class PwDesignService
 
     private function _transformSign($sign)
     {
-        if (!preg_match('/\{(.+)}/isU', $sign, $matches)) {
+        if (! preg_match('/\{(.+)}/isU', $sign, $matches)) {
             return false;
         }
 

@@ -51,10 +51,10 @@ class PwSeo
         if (empty($dms)) {
             return false;
         }
-        !is_array($dms) && $dms = [$dms];
+        ! is_array($dms) && $dms = [$dms];
         $data = [];
         foreach ($dms as $dm) {
-            if (!$dm instanceof PwSeoDm) {
+            if (! $dm instanceof PwSeoDm) {
                 continue;
             }
             if (($r = $dm->beforeUpdate()) instanceof PwError) {

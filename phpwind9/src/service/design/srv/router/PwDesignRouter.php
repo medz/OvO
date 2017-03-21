@@ -35,7 +35,7 @@ class PwDesignRouter
      */
     public function set($m, $c, $a, $name = '', $unique = '')
     {
-        if (!$name && !$unique) {
+        if (! $name && ! $unique) {
             return false;
         }
         $router = Wekit::C('site', 'design.router');

@@ -34,7 +34,7 @@ class PwFreshReplyList
 
     public function getReplies($limit = 10, $offset = 0)
     {
-        if (!$this->bhv) {
+        if (! $this->bhv) {
             return [];
         }
 

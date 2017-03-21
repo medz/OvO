@@ -16,21 +16,21 @@ class PwTaskBbsPostDm extends PwTaskDm
      */
     protected function filterConditionData()
     {
-        if (!isset($this->_data['conditions'])) {
+        if (! isset($this->_data['conditions'])) {
             return true;
         }
         $condition = $this->_data['conditions'];
-        if (!$condition || !is_array($condition)) {
+        if (! $condition || ! is_array($condition)) {
             return new PwError('TASK:condition.require');
         }
 
-        if (!$condition['fid']) {
+        if (! $condition['fid']) {
             return new PwError('TASK:condition.pos.fid.require');
         }
-        if (!$condition['num']) {
+        if (! $condition['num']) {
             return new PwError('TASK:condition.post.num.require');
         }
-        if (!WindValidator::isNonNegative($condition['num'])) {
+        if (! WindValidator::isNonNegative($condition['num'])) {
             return new PwError('TASK:condition.post.num.isNonNegative');
         }
         $condition['num'] = ceil($condition['num']);

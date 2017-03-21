@@ -36,7 +36,7 @@ class ArticleController extends AdminBaseController
         list($page, $perpage, $keyword, $created_username, $time_start, $time_end, $fid, $digest, $created_userid, $created_ip, $hits_start, $hits_end, $replies_start, $replies_end) = $this->getInput(['page', 'perpage', 'keyword', 'created_username', 'time_start', 'time_end', 'fid', 'digest', 'created_userid', 'created_ip', 'hits_start', 'hits_end', 'replies_start', 'replies_end']);
         if ($created_username) {
             $user = $this->_getUserDs()->getUserByName($created_username);
-            if (!$user) {
+            if (! $user) {
                 $this->showError(['USER:exists.not', ['{username}' => $created_username]]);
             }
             if ($created_userid) {
@@ -110,7 +110,7 @@ class ArticleController extends AdminBaseController
     {
         $isDeductCredit = $this->getInput('isDeductCredit');
         $tids = $this->getInput('tids', 'post');
-        if (!is_array($tids) || !count($tids)) {
+        if (! is_array($tids) || ! count($tids)) {
             $this->showError('operate.select');
         }
         $service = new PwDeleteTopic(new PwFetchTopicByTid($tids), new PwUserBo($this->loginUser->uid));
@@ -138,7 +138,7 @@ class ArticleController extends AdminBaseController
         list($page, $perpage, $keyword, $fid, $created_username, $created_time_start, $created_time_end, $created_userid, $created_ip, $tid) = $this->getInput(['page', 'perpage', 'keyword', 'fid', 'created_username', 'created_time_start', 'created_time_end', 'created_userid', 'created_ip', 'tid']);
         if ($created_username) {
             $user = $this->_getUserDs()->getUserByName($created_username);
-            if (!$user) {
+            if (! $user) {
                 $this->showError('USER:username.empty');
             }
             if ($created_userid) {
@@ -204,7 +204,7 @@ class ArticleController extends AdminBaseController
     {
         $isDeductCredit = $this->getInput('isDeductCredit');
         $pids = $this->getInput('pids', 'post');
-        if (!is_array($pids) || !count($pids)) {
+        if (! is_array($pids) || ! count($pids)) {
             $this->showError('operate.select');
         }
         $service = new PwDeleteReply(new PwFetchReplyByPid($pids), new PwUserBo($this->loginUser->uid));

@@ -27,7 +27,7 @@ class PwUserBanService
     {
         $banTypes = $this->getBanType();
         foreach ($dmList as $_dm) {
-            if (!$_dm instanceof PwUserBanInfoDm) {
+            if (! $_dm instanceof PwUserBanInfoDm) {
                 continue;
             }
             if (true !== ($r = $_dm->beforeAdd())) {
@@ -125,13 +125,13 @@ class PwUserBanService
     {
         //[如果自动禁止没有开启]
         $config = Wekit::C('site');
-        if (0 == $config['autoForbidden.open'] || !$config['autoForbidden.type']) {
+        if (0 == $config['autoForbidden.open'] || ! $config['autoForbidden.type']) {
             return false;
         }
         //[自动禁止积分依据]如果更新的积分没有在禁止积分范围内
         $credit = $config['autoForbidden.condition']['credit'];
         $key = 'credit'.$credit;
-        if (!in_array($key, array_keys($fields)) && !in_array($key, array_keys($increaseFields))) {
+        if (! in_array($key, array_keys($fields)) && ! in_array($key, array_keys($increaseFields))) {
             return false;
         }
         //[禁止积分依据有没有到达禁止条件]
@@ -178,7 +178,7 @@ class PwUserBanService
             foreach ($_item['type'] as $_i) {
                 isset($banTypes[$_i]) && $extends['type'][] = $banTypes[$_i]['title'];
             }
-            if (!$extends['type']) {
+            if (! $extends['type']) {
                 continue;
             }
             $extends['end_time'] = $_item['end_time'];

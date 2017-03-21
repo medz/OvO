@@ -102,7 +102,7 @@ class PwInviteCodeDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!$this->_data['code']) {
+        if (! $this->_data['code']) {
             return new PwError('USER:invite.code.require');
         }
         $this->_data['ifused'] = 0;
@@ -115,7 +115,7 @@ class PwInviteCodeDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!$this->_data['code']) {
+        if (! $this->_data['code']) {
             return new PwError('USER:invite.code.illage');
         }
         $this->code = $this->_data['code'];

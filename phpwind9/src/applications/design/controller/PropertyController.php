@@ -17,7 +17,7 @@ class PropertyController extends PwBaseController
         $struct = $this->getInput('struct', 'post');
         $model = $this->getInput('model', 'post');
         $pageid = $this->getInput('pageid', 'post');
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
         Wekit::load('design.PwDesignPermissions');
@@ -27,7 +27,7 @@ class PropertyController extends PwBaseController
         }
 
         $bo = new PwDesignModelBo($model);
-        if (!$bo->isModel()) {
+        if (! $bo->isModel()) {
             $this->showError('operate.fail');
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
@@ -62,7 +62,7 @@ class PropertyController extends PwBaseController
         $struct = $this->getInput('struct', 'post');
         $pageid = $this->getInput('pageid', 'post');
         $model = $this->getInput('model', 'post');
-        if (!$model || $pageid < 1) {
+        if (! $model || $pageid < 1) {
             $this->showError('operate.fail');
         }
         Wekit::load('design.PwDesignPermissions');
@@ -72,7 +72,7 @@ class PropertyController extends PwBaseController
         }
 
         $bo = new PwDesignModelBo($model);
-        if (!$bo->isModel()) {
+        if (! $bo->isModel()) {
             $this->showError('operate.fail');
         }
         $name = trim($this->getInput('module_name', 'post'));
@@ -144,12 +144,12 @@ class PropertyController extends PwBaseController
             $model = $moduleBo->getModel();
         }
         $module = $moduleBo->getModule();
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
         Wekit::load('design.PwDesignPermissions');
         $permissions = $this->_getPermissionsService()->getPermissionsForModule($this->loginUser->uid, $moduleid, $module['page_id']);
-        if ($permissions < PwDesignPermissions::IS_ADMIN && !in_array($module['model_flag'], $other)) {
+        if ($permissions < PwDesignPermissions::IS_ADMIN && ! in_array($module['model_flag'], $other)) {
             $this->showError('DESIGN:permissions.fail');
         }
         if ($permissions < PwDesignPermissions::IS_PUSH) {
@@ -187,7 +187,7 @@ class PropertyController extends PwBaseController
         $other = ['html', 'searchbar', 'image'];
         $model = $this->getInput('model', 'post');
         $moduleid = $this->getInput('moduleid', 'post');
-        if (!$moduleid) {
+        if (! $moduleid) {
             $this->showError('operate.fail');
         }
 
@@ -197,9 +197,9 @@ class PropertyController extends PwBaseController
             $this->_getDataDs()->deleteByModuleId($moduleid);
             $this->_getPushDs()->deleteByModuleId($moduleid);
         }
-        !$model && $model = $_model;
+        ! $model && $model = $_model;
         $module = $moduleBo->getModule();
-        if (!$module || $module['page_id'] < 1) {
+        if (! $module || $module['page_id'] < 1) {
             $this->showError('operate.fail');
         }
 
@@ -210,7 +210,7 @@ class PropertyController extends PwBaseController
 
         Wekit::load('design.PwDesignPermissions');
         $permissions = $this->_getPermissionsService()->getPermissionsForModule($this->loginUser->uid, $moduleid, $module['page_id']);
-        if ($permissions < PwDesignPermissions::IS_ADMIN && !in_array($module['model_flag'], $other)) {
+        if ($permissions < PwDesignPermissions::IS_ADMIN && ! in_array($module['model_flag'], $other)) {
             $this->showError('DESIGN:permissions.fail');
         }
         if ($permissions < PwDesignPermissions::IS_PUSH) {
@@ -223,7 +223,7 @@ class PropertyController extends PwBaseController
         $cache = $this->getInput('cache', 'post');
         $property = $this->getInput('property', 'post');
         $property['html'] = $this->_getDesignService()->filterTemplate($property['html']);
-        if (!$this->_getDesignService()->checkTemplate($property['html'])) {
+        if (! $this->_getDesignService()->checkTemplate($property['html'])) {
             $this->showError('DESIGN:template.error');
         }
         //
@@ -266,7 +266,7 @@ class PropertyController extends PwBaseController
     {
         $moduleid = (int) $this->getInput('moduleid', 'post');
         $module = $this->_getModuleDs()->getModule($moduleid);
-        if (!$module || $module['page_id'] < 1) {
+        if (! $module || $module['page_id'] < 1) {
             $this->showError('operate.fail');
         }
 
@@ -298,7 +298,7 @@ class PropertyController extends PwBaseController
         foreach ($files as $file) {
             $filePath = $path.$file;
             $content = WindFile::read($filePath);
-            if (!$content) {
+            if (! $content) {
                 continue;
             }
             $tmp = preg_replace('/\<pw-list\s*id=\"'.$moduleid.'\"\s*>(.+)<\/pw-list>/isU', '', $content);
@@ -315,7 +315,7 @@ class PropertyController extends PwBaseController
     {
         $model = $this->getInput('model', 'post');
         $pageid = $this->getInput('pageid', 'post');
-        if (!$model) {
+        if (! $model) {
             $this->showError('operate.fail');
         }
         Wekit::load('design.PwDesignPermissions');

@@ -46,7 +46,7 @@ class TagController extends AdminBaseController
     public function deleteAction()
     {
         $ids = $this->getInput('ids', 'post');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('USER:tag.ids.require');
         }
         $result = $this->_getDs()->batchDeleteTag($ids);
@@ -62,7 +62,7 @@ class TagController extends AdminBaseController
     public function setHotAction()
     {
         $ids = $this->getInput('ids', 'post');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('USER:tag.ids.require');
         }
         $result = $this->_getDs()->batchUpdateTagHot($ids, 1);
@@ -78,7 +78,7 @@ class TagController extends AdminBaseController
     public function cancleHotAction()
     {
         $ids = $this->getInput('ids', 'post');
-        if (!$ids) {
+        if (! $ids) {
             $this->showError('USER:tag.ids.require');
         }
         $result = $this->_getDs()->batchUpdateTagHot($ids, 0);

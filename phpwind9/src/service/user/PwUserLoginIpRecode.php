@@ -23,7 +23,7 @@ class PwUserLoginIpRecode
      */
     public function updateRecode($ip, $lastTime, $error_count)
     {
-        if (!($ip = trim($ip))) {
+        if (! ($ip = trim($ip))) {
             return false;
         }
 
@@ -39,7 +39,7 @@ class PwUserLoginIpRecode
      */
     public function getRecode($ip)
     {
-        if (!($ip = trim($ip))) {
+        if (! ($ip = trim($ip))) {
             return [];
         }
 

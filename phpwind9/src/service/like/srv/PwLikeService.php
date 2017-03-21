@@ -95,11 +95,11 @@
          if ($info instanceof PwError) {
              return false;
          }
-         if (!$this->_getLikeLogDs()->deleteInfo($logid)) {
+         if (! $this->_getLikeLogDs()->deleteInfo($logid)) {
              return false;
          }
          $likeInfo = $this->_getLikeContentDs()->getLikeContent($info['likeid']);
-         if (!$likeInfo) {
+         if (! $likeInfo) {
              return false;
          }
          list($beLikeUid, $isspecial, $count, $fid) = $this->_getSourceInfo($likeInfo['typeid'], $likeInfo['fromid']);
@@ -141,7 +141,7 @@
      */
     public function addLikeTag($uid, $tagids, $logid, $tags)
     {
-        if (!$tags) {
+        if (! $tags) {
             return new PwError('BBS:like.tagname.not.empty');
         }
         $tagnames = array_filter(explode(' ', $tags));
@@ -284,7 +284,7 @@
         $threads = $this->_getThreadDs()->fetchThread($tids);
         $likes = $likeds->fetchLikeContent($likeids);
         foreach ($likes as $key => $val) {
-            if (!$threads[$val['fromid']]['subject']) {
+            if (! $threads[$val['fromid']]['subject']) {
                 unset($likes[$key]);
             } else {
                 $likes[$key]['subject'] = $threads[$val['fromid']]['subject'];
@@ -304,7 +304,7 @@
     {
         $_tagnames = [];
 
-        if (!is_array($tagnames) || count($tagnames) < 1) {
+        if (! is_array($tagnames) || count($tagnames) < 1) {
             return false;
         }
         $tagInfos = $this->_getLikeTagDs()->getInfoByUid($uid);
@@ -388,7 +388,7 @@
              return new PwError('BBS:like.fail');
          }
          $info = $this->_getLikeTagDs()->getLikeTag($tagid);
-         if (!$info || $info['uid'] < 1) {
+         if (! $info || $info['uid'] < 1) {
              return new PwError('BBS:like.tagname.empty');
          }
          if ($info['uid'] != $uid) {

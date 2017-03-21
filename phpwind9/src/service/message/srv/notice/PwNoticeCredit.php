@@ -78,7 +78,7 @@ class PwNoticeCredit extends PwNoticeAction
      */
     public function ignoreNotice($notice, $ignore = 1)
     {
-        if (!$notice) {
+        if (! $notice) {
             return false;
         }
 

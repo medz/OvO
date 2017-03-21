@@ -39,7 +39,7 @@ class PwDesignLinkDataService extends PwDesignModelBase
 
         $field['isLog'] != -1 && $so->setLogo($field['isLog']);
         $list = $this->_getLinkDs()->searchLink($so, $limit, $offset);
-        if (!$list) {
+        if (! $list) {
             return [];
         }
         foreach ($list as $k => $v) {

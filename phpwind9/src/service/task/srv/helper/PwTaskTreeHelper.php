@@ -26,7 +26,7 @@ class PwTaskTreeHelper
             if ($v['pre_task'] == 0) {
                 $tasks['root']['items'][$id] = &$v;
             } else {
-                if (!isset($tasks[$v['pre_task']])) {
+                if (! isset($tasks[$v['pre_task']])) {
                     continue;
                 }
                 $tasks[$v['pre_task']]['items'][$id] = &$v;
@@ -44,7 +44,7 @@ class PwTaskTreeHelper
      */
     public static function clearAllNextNode($taskTree, &$toClear, $id)
     {
-        if (isset($taskTree['items']) && !empty($taskTree['items'])) {
+        if (isset($taskTree['items']) && ! empty($taskTree['items'])) {
             foreach ($taskTree['items'] as $item) {
                 unset($toClear[$item['id']]);
                 self::clearAllNextNode($item, $toClear, $id);
@@ -65,7 +65,7 @@ class PwTaskTreeHelper
     {
         static $result = [];
         foreach ($tree as $k => $v) {
-            if (!empty($accepts) && !in_array($k, $accepts)) {
+            if (! empty($accepts) && ! in_array($k, $accepts)) {
                 continue;
             }
             $result[$k] = $split.$v['title'];

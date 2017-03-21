@@ -42,7 +42,7 @@ abstract class PwReadDataSource
 
     public function setDesc($desc)
     {
-        $this->asc = !$desc;
+        $this->asc = ! $desc;
         $desc && $this->urlArgs['desc'] = $desc;
 
         return $this;

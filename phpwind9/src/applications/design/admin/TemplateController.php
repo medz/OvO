@@ -52,7 +52,7 @@ class TemplateController extends DesignBaseController
         $tpl = $this->getInput('tpl', 'post');
         $compid = (int) $this->getInput('compid', 'post');
         $tpl = $this->_getDesignService()->filterTemplate($tpl);
-        if (!$this->_getDesignService()->checkTemplate($tpl)) {
+        if (! $this->_getDesignService()->checkTemplate($tpl)) {
             $this->showError('DESIGN:template.error');
         }
         $property = $this->bo->getProperty();
@@ -86,7 +86,7 @@ class TemplateController extends DesignBaseController
         $tplname = $this->getInput('tplname', 'post');
         $tpl = $this->getInput('tpl', 'post');
         $tpl = $this->_getDesignService()->filterTemplate($tpl);
-        if (!$this->_getDesignService()->checkTemplate($tpl)) {
+        if (! $this->_getDesignService()->checkTemplate($tpl)) {
             $this->showError('DESIGN:template.error');
         }
         $return = $this->_getComponentDs()->addComponent($this->bo->getModel(), $tplname, $tpl);

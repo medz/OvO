@@ -56,7 +56,7 @@ class PwReplyDoRemind extends PwPostDoBase
         if ($this->_check() !== true) {
             return false;
         }
-        if (!$this->_reminds) {
+        if (! $this->_reminds) {
             return false;
         }
         $reminds = ($this->_maxNum && count($this->_reminds) > $this->_maxNum) ? array_slice($this->_reminds, 0, $this->_maxNum) : $this->_reminds;

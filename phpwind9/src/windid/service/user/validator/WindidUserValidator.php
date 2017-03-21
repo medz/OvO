@@ -23,7 +23,7 @@ class WindidUserValidator
      */
     public static function checkName($username, $uid = 0, $checkUsername = '')
     {
-        if (!$username) {
+        if (! $username) {
             return new WindidError(WindidError::NAME_EMPTY);
         }
         if (self::isNameLenValid($username, Wekit::app('windid')->charset)) {
@@ -142,13 +142,13 @@ class WindidUserValidator
      */
     private static function isEmailValid($email)
     {
-        if (!$email) {
+        if (! $email) {
             return new WindidError(WindidError::EMAIL_EMPTY);
         }
         if (false === WindValidator::isEmail($email)) {
             return new WindidError(WindidError::EMAIL_ILLEGAL);
         }
-        if (self::getConfig('emailverifytype') == 1 && !self::_inEmailWhiteList($email)) {
+        if (self::getConfig('emailverifytype') == 1 && ! self::_inEmailWhiteList($email)) {
             return new WindidError(WindidError::EMAIL_WHITE_LIST);
         }
         if (self::getConfig('emailverifytype') == 2 && self::_inEmailBlackList($email)) {
@@ -182,7 +182,7 @@ class WindidUserValidator
      */
     private static function _inEmailWhiteList($email)
     {
-        if (!($whitelist = self::getConfig('emailwhitelist'))) {
+        if (! ($whitelist = self::getConfig('emailwhitelist'))) {
             return true;
         }
         foreach ($whitelist as $key => $val) {
@@ -203,7 +203,7 @@ class WindidUserValidator
      */
     private static function _inEmailBlackList($email)
     {
-        if (!($blacklist = self::getConfig('emailblacklist'))) {
+        if (! ($blacklist = self::getConfig('emailblacklist'))) {
             return false;
         }
         foreach ($blacklist as $key => $val) {

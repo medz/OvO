@@ -52,7 +52,7 @@ class PwAutoData extends PwModuleData
         list($start, $end, $refresh) = $this->bo->refreshTime($this->time);
         foreach ($this->designData as $k => $v) {
             $k++;
-            if (!$v) {
+            if (! $v) {
                 $newOrderIds[] = $k;
                 continue;
             }
@@ -65,7 +65,7 @@ class PwAutoData extends PwModuleData
                     $data = $this->formatDesginData($v);
                     $data['vieworder'] = $this->_newPushIds[$v['from_id']]['vieworder'];
                     $data['from_type'] = $this->_newPushIds[$v['from_id']]['from_type'];
-                    if (!$this->_newPushIds[$v['from_id']]['vieworder'] && !$data['is_edited']) {
+                    if (! $this->_newPushIds[$v['from_id']]['vieworder'] && ! $data['is_edited']) {
                         $data['data_type'] = PwDesignData::AUTO;
                     }
                     $this->_newPushIds[$v['from_id']] = $data;
@@ -119,7 +119,7 @@ class PwAutoData extends PwModuleData
         $limit = count($delDataIds);
         $i = 1;
         foreach ($this->_newPushIds as $key => $newData) {
-            if (!$newData['vieworder']) {
+            if (! $newData['vieworder']) {
                 continue;
             }
             if ($i > $limit) {
@@ -161,10 +161,10 @@ class PwAutoData extends PwModuleData
         foreach ($newOrderIds as $order) {
             $isupdate = false;
             $newData = array_shift($this->_newPushIds);
-            if (!$newData) {
+            if (! $newData) {
                 $newData = array_shift($this->_newAutoIds);
             }
-            if (!$newData) {
+            if (! $newData) {
                 break;
             }
             $newData['vieworder'] && $order = $newData['vieworder'];
@@ -266,7 +266,7 @@ class PwAutoData extends PwModuleData
     private function _getAutoData($param)
     {
         $model = $this->bo->getModel();
-        if (!$model) {
+        if (! $model) {
             return false;
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));

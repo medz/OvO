@@ -42,7 +42,7 @@ class RightController extends BaseProfileController
         $this->listGroups();
         $attach = ['allow_upload', 'allow_download', 'uploads_perday'/*, 'upload_file_types'*/];
         foreach ($categorys['bbs']['sub'] as $_k => $_v) {
-            if (!in_array($_v, $attach)) {
+            if (! in_array($_v, $attach)) {
                 continue;
             }
             unset($categorys['bbs']['sub'][$_k]);
@@ -69,7 +69,7 @@ class RightController extends BaseProfileController
     public function dosetAction()
     {
         $gid = $this->getInput('gid', 'post');
-        if (!$gid) {
+        if (! $gid) {
             $this->showError('USER:right.gid.require');
         }
         if (in_array($this->loginUser->gid, $this->banGid)) {
@@ -87,7 +87,7 @@ class RightController extends BaseProfileController
         }
 
         //普通组不能作为当前组，如果拥有拥有附加组的话,当前组必定产生于附加用户组
-        if (!$_groups || !in_array($gid, array_keys($_groups))) {
+        if (! $_groups || ! in_array($gid, array_keys($_groups))) {
             $gid = 0;
         }
         if ($gid == 0) {
@@ -127,7 +127,7 @@ class RightController extends BaseProfileController
             $switchGroups = [];
         } else {
             foreach ($this->loginUser->groups as $value) {
-                if (!$value || $value == $this->loginUser->info['memberid']) {
+                if (! $value || $value == $this->loginUser->info['memberid']) {
                     continue;
                 }
                 $switchGroups[] = $value;

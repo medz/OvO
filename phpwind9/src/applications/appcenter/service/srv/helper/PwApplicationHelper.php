@@ -31,7 +31,7 @@ class PwApplicationHelper
         $query = '';
         foreach ($arrSQL as $value) {
             $value = trim($value, " \t");
-            if (!$value || substr($value, 0, 2) === '--') {
+            if (! $value || substr($value, 0, 2) === '--') {
                 continue;
             }
             $query .= $value;
@@ -67,7 +67,7 @@ class PwApplicationHelper
     public static function readInstallLog($logfile, $key = '')
     {
         static $log = [];
-        if (!isset($log[$logfile])) {
+        if (! isset($log[$logfile])) {
             $log[$logfile] = is_file($logfile) ? @include $logfile : [];
         }
 
@@ -295,7 +295,7 @@ class PwApplicationHelper
     {
         Wind::import('APPCENTER:service.srv.helper.PwExtractZip');
         $zip = new PwExtractZip();
-        if (!$data = $zip->extract($source)) {
+        if (! $data = $zip->extract($source)) {
             return false;
         }
         $_tmp = '';

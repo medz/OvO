@@ -51,7 +51,7 @@ class PwUserInfoDm extends PwBaseDm
      */
     public function getDm()
     {
-        if (!is_object($this->dm)) {
+        if (! is_object($this->dm)) {
             $dm = WindidApi::getDm('user');
             $this->dm = new $dm($this->uid);
         }
@@ -176,7 +176,7 @@ class PwUserInfoDm extends PwBaseDm
      */
     public function setGroups($groups)
     {
-        if (!isset($this->_data['groupid'])) {
+        if (! isset($this->_data['groupid'])) {
             return $this;
         }
         $time = Pw::getTime();
@@ -185,7 +185,7 @@ class PwUserInfoDm extends PwBaseDm
                 $this->_belong[$gid] = $endtime;
             }
         }
-        if (!$this->_data['groupid'] && $this->_belong) {
+        if (! $this->_data['groupid'] && $this->_belong) {
             $this->_data['groupid'] = key($this->_belong);
         }
         $this->_data['groups'] = array_diff(array_keys($this->_belong), [$this->_data['groupid']]);
@@ -993,7 +993,7 @@ class PwUserInfoDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!$this->dm) {
+        if (! $this->dm) {
             return new PwError('USER:user.info.error');
         }
         if (($result = PwUserValidator::isUsernameHasIllegalChar($this->getField('username'))) !== false) {

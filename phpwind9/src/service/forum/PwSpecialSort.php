@@ -123,7 +123,7 @@ class PwSpecialSort
      */
     public function batchDeleteSpecialSortByTid($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 

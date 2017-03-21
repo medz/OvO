@@ -83,10 +83,10 @@ class PwLogLoginDm extends PwBaseDm
      */
     protected function _beforeAdd()
     {
-        if (!isset($this->_data['created_time'])) {
+        if (! isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
-        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
+        if (! isset($this->_data['typeid']) || ! in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
             $this->_data['typeid'] = PwLogLogin::ERROR_PWD;
         }
 
@@ -98,10 +98,10 @@ class PwLogLoginDm extends PwBaseDm
      */
     protected function _beforeUpdate()
     {
-        if (!isset($this->_data['created_time'])) {
+        if (! isset($this->_data['created_time'])) {
             $this->_data['created_time'] = Pw::getTime();
         }
-        if (!isset($this->_data['typeid']) || !in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
+        if (! isset($this->_data['typeid']) || ! in_array($this->_data['typeid'], [PwLogLogin::ERROR_PWD, PwLogLogin::ERROR_SAFEQ])) {
             $this->_data['typeid'] = PwLogLogin::ERROR_PWD;
         }
 

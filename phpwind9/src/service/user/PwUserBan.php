@@ -80,7 +80,7 @@ class PwUserBan
      */
     public function fetchBanInfoByUid($uids, $typeid = self::BAN_SPEAK)
     {
-        if (!$uids) {
+        if (! $uids) {
             return [];
         }
 
@@ -96,7 +96,7 @@ class PwUserBan
      */
     public function fetchBanInfo($ids)
     {
-        if (!$ids) {
+        if (! $ids) {
             return [];
         }
 
@@ -128,7 +128,7 @@ class PwUserBan
      */
     public function batchAddBanInfo($data)
     {
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -161,7 +161,7 @@ class PwUserBan
      */
     public function batchDeleteByUids($uids)
     {
-        if (!$uids) {
+        if (! $uids) {
             return false;
         }
 
@@ -177,7 +177,7 @@ class PwUserBan
      */
     public function batchDelete($ids)
     {
-        if (!$ids) {
+        if (! $ids) {
             return false;
         }
 

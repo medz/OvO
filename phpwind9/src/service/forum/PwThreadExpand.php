@@ -62,7 +62,7 @@ class PwThreadExpand
      */
     public function fetchThreadByUid($uids)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return [];
         }
 

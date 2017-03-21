@@ -67,7 +67,7 @@ class PwPostDbCache extends PwBaseDbCache
 
     public function addPost($fields)
     {
-        if ($fields['tid'] && (!isset($fields['disabled']) || $fields['disabled'] == 0)) {
+        if ($fields['tid'] && (! isset($fields['disabled']) || $fields['disabled'] == 0)) {
             $this->clearPostListCache($fields['tid']);
         }
 

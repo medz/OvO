@@ -128,7 +128,7 @@ class PwDesignStructureDm extends PwBaseDm
 
     protected function _beforeAdd()
     {
-        if (!$this->_data['struct_name']) {
+        if (! $this->_data['struct_name']) {
             return new PwError('fail');
         }
 
@@ -137,7 +137,7 @@ class PwDesignStructureDm extends PwBaseDm
 
     protected function _beforeUpdate()
     {
-        if (!$this->_data['struct_name']) {
+        if (! $this->_data['struct_name']) {
             return new PwError('fail');
         }
 

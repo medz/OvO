@@ -20,7 +20,7 @@ class AdminSafeService
         $ips = str_replace(["\r\n", "\r", "\n", ';'], ',', $ips);
         $ips = trim($ips, ' ,');
         $result = $this->_loadAdminConfig()->setConfig('admin', 'ip.allow', $ips);
-        if (!$result) {
+        if (! $result) {
             return new PwError('ADMIN:safe.set.fail');
         }
 

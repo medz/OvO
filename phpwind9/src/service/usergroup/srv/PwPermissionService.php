@@ -57,7 +57,7 @@ class PwPermissionService
     {
         $permissionCategory = $this->getPermissionCategoryConfig();
         $config = $permissionCategory[$category];
-        if (!$config['sub']) {
+        if (! $config['sub']) {
             return [];
         }
         $permissionKeys = [];
@@ -82,7 +82,7 @@ class PwPermissionService
                     continue;
                 }
             }
-            if (!$config['sub']) {
+            if (! $config['sub']) {
                 continue;
             }
             foreach ($config['sub'] as $v) {
@@ -103,7 +103,7 @@ class PwPermissionService
     {
         //按分类获取权限点
         $permissions = $this->getPermissionsByCategory($category);
-        if (!$permissions['sub']) {
+        if (! $permissions['sub']) {
             return [];
         }
         $permissionsKeys = $this->getPermissionKeysByCategory($category);
@@ -114,7 +114,7 @@ class PwPermissionService
 
         $configs = [];
         foreach ($permissions['sub'] as $k => $v) {
-            if (!$v['items']) {
+            if (! $v['items']) {
                 continue;
             }
             $configs[$k] = ['name' => $v['name'], 'items' => []];
@@ -137,28 +137,28 @@ class PwPermissionService
      */
     public function getPermissionPoint($needKeys, $category = [])
     {
-        if (!$category) {
+        if (! $category) {
             $categoryInfo = $this->getTopLevelCategories();
             $category = array_keys($categoryInfo);
         }
         $return = [];
         $permissionCategory = $this->getPermissionCategoryConfig();
         foreach ($category as $key) {
-            if (!$permissionCategory[$key]['sub']) {
+            if (! $permissionCategory[$key]['sub']) {
                 continue;
             }
             $item = [];
             foreach ($permissionCategory[$key]['sub'] as $_sub => $_item) {
-                if (!$_item['items']) {
+                if (! $_item['items']) {
                     continue;
                 }
                 $_keys = $_item['items'];
-                if ($needKeys && !($_keys = array_intersect($needKeys, $_item['items']))) {
+                if ($needKeys && ! ($_keys = array_intersect($needKeys, $_item['items']))) {
                     continue;
                 }
                 $item = array_merge($item, $_keys);
             }
-            if (!$item) {
+            if (! $item) {
                 continue;
             }
             $return[$key]['name'] = $permissionCategory[$key]['name'];
@@ -189,7 +189,7 @@ class PwPermissionService
             $type = $permissionConfigs[$_i][0];
             switch ($type) {
                 case 'checkbox':
-                    $data = !empty($groupValue) ? $groupValue : [];
+                    $data = ! empty($groupValue) ? $groupValue : [];
                     if (in_array($_i, ['allow_thread_extend'])) {
                         $data = array_keys($data);
                     }
@@ -221,7 +221,7 @@ class PwPermissionService
      */
     public function getPermissionCategoryConfig()
     {
-        if (!$this->_configCategory) {
+        if (! $this->_configCategory) {
             /* @var $_configParser WindConfigParser */
             $_configParser = Wind::getComponent('configParser');
             $file = Wind::getRealPath('SRV:usergroup.srv.permission.permissionCategory');
@@ -239,7 +239,7 @@ class PwPermissionService
      */
     public function getPermissionConfig()
     {
-        if (!$this->_config) {
+        if (! $this->_config) {
             /* @var $_configParser WindConfigParser */
             $_configParser = Wind::getComponent('configParser');
             $file = Wind::getRealPath('SRV:usergroup.srv.permission.permissions');

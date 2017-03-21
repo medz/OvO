@@ -78,7 +78,7 @@ abstract class adminBoot extends bootstrap
 
     public function __construct($re)
     {
-        if (!is_file(Wind::getRealPath('DATA:install.lock', true))) {
+        if (! is_file(Wind::getRealPath('DATA:install.lock', true))) {
             Wind::getComponent('response')->sendRedirect('install.php');
         }
         parent::__construct($re);
@@ -131,7 +131,7 @@ abstract class adminBoot extends bootstrap
     {
         parent::beforeStart($front);
         foreach ($this->dependenceServiceDefinitions as $alias => $definition) {
-            if (!$definition) {
+            if (! $definition) {
                 continue;
             }
             Wind::registeComponent($definition, $alias);
@@ -150,7 +150,7 @@ abstract class adminBoot extends bootstrap
             ob_end_clean();
             $content = preg_replace('/('.preg_quote($searchword, '/').')([^">;]*<)(?!\/script|\/textarea)/si', '<span class="red"><u>\\1</u></span>\\2', $content);
             $compress = Wind::getApp()->getConfig('compress');
-            if (!$compress || !ob_start('ob_gzhandler')) {
+            if (! $compress || ! ob_start('ob_gzhandler')) {
                 ob_start();
             }
             echo $content;

@@ -19,7 +19,7 @@ class MyController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('vote/my/run')]);
         }
     }
@@ -101,7 +101,7 @@ class MyController extends PwBaseController
 
     private function isPostPollGuide()
     {
-        if (!$this->loginUser->getPermission('allow_add_vote')) {
+        if (! $this->loginUser->getPermission('allow_add_vote')) {
             return false;
         }
         $forums = Wekit::load('forum.PwForum')->getForumList(PwForum::FETCH_ALL);
@@ -110,7 +110,7 @@ class MyController extends PwBaseController
         $cate = [];
         $forum = [];
         foreach ($map[0] as $key => $value) {
-            if (!$value['isshow']) {
+            if (! $value['isshow']) {
                 continue;
             }
             $array = $service->findOptionInMap($value['fid'], $map, []);
@@ -119,7 +119,7 @@ class MyController extends PwBaseController
                 $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : [];
                 $isAllowPoll = isset($forumset['allowtype']) && is_array($forumset['allowtype']) && in_array('poll', $forumset['allowtype']);
 
-                if ($forums[$k]['isshow'] && $isAllowPoll && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
+                if ($forums[$k]['isshow'] && $isAllowPoll && (! $forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
                     return true;
                 }
             }

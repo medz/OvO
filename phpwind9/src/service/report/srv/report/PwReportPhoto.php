@@ -18,7 +18,7 @@ class PwReportPhoto extends PwReportAction
     public function buildDm($type_id)
     {
         $photo = $this->_service()->getPhotoInfo($type_id);
-        if (!$photo) {
+        if (! $photo) {
             return false;
         }
         $content = "照片({$photo['name']})";

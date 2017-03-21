@@ -16,19 +16,19 @@ class VoteController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->showError('VOTE:user.not.login');
         }
     }
 
     public function run()
     {
-        if (!$this->loginUser->getPermission('allow_participate_vote')) {
+        if (! $this->loginUser->getPermission('allow_participate_vote')) {
             $this->showError('VOTE:group.not.allow.participate');
         }
 
         list($appType, $typeid, $optionid) = $this->getInput(['apptype', 'typeid', 'optionid']);
-        if (empty($optionid) || !is_array($optionid)) {
+        if (empty($optionid) || ! is_array($optionid)) {
             $this->showError('VOTE:not.select.option');
         }
 
@@ -38,7 +38,7 @@ class VoteController extends PwBaseController
             $this->showError($result->getError());
         }
 
-        if (!$poll->isInit()) {
+        if (! $poll->isInit()) {
             $this->showError('VOTE:thread.not.exist');
         }
         if ($poll->isExpired()) {
@@ -64,7 +64,7 @@ class VoteController extends PwBaseController
         $cate = [];
         $forum = [];
         foreach ($map[0] as $key => $value) {
-            if (!$value['isshow']) {
+            if (! $value['isshow']) {
                 continue;
             }
             $array = $service->findOptionInMap($value['fid'], $map, ['sub' => '--', 'sub2' => '----']);
@@ -74,7 +74,7 @@ class VoteController extends PwBaseController
                 $forumset = $forums[$k]['settings_basic'] ? unserialize($forums[$k]['settings_basic']) : [];
                 $isAllowPoll = isset($forumset['allowtype']) && is_array($forumset['allowtype']) && in_array('poll', $forumset['allowtype']);
 
-                if ($forums[$k]['isshow'] && $isAllowPoll && (!$forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
+                if ($forums[$k]['isshow'] && $isAllowPoll && (! $forums[$k]['allow_post'] || $this->loginUser->inGroup(explode(',', $forums[$k]['allow_post'])))) {
                     $tmp[$k] = strip_tags($v);
                 }
             }

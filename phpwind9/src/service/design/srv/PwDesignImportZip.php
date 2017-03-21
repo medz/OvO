@@ -52,7 +52,7 @@ class PwDesignImportZip
         $extension = ['htm', 'js', 'gif', 'jpg', 'jpeg', 'txt', 'png', 'css', 'xml'];
         $zip = new PwZip();
         $xml = new WindXmlParser('1.0', Wekit::app()->charset);
-        if (!$fileData = $zip->extract($filename)) {
+        if (! $fileData = $zip->extract($filename)) {
             return new PwError('DESIGN:upload.file.error');
         }
         foreach ($fileData as &$file) {
@@ -65,7 +65,7 @@ class PwDesignImportZip
             }
             //过滤文件类型
             $ext = strtolower(substr(strrchr($file['filename'], '.'), 1));
-            if (!in_array($ext, $extension)) {
+            if (! in_array($ext, $extension)) {
                 unset($file);
                 continue;
             }
@@ -98,13 +98,13 @@ class PwDesignImportZip
         }
         WindFile::del($filename);
         //TODO 版本号验证
-        if (!$fileData) {
+        if (! $fileData) {
             return new PwError('DESIGN:file.check.fail');
         }
-        if (!$_isTpl) {
+        if (! $_isTpl) {
             return new PwError('DESIGN:file.check.fail');
         }
-        if (!$this->writeFile($fileData)) {
+        if (! $this->writeFile($fileData)) {
             return true;
         }
 
@@ -119,7 +119,7 @@ class PwDesignImportZip
      */
     public function appcenterToLocal($folder)
     {
-        if (!$folder) {
+        if (! $folder) {
             return false;
         }
         $appPath = Wind::getRealDir('THEMES:portal.appcenter.'.$folder.'.');
@@ -141,10 +141,10 @@ class PwDesignImportZip
             $_file['data'] = $this->compileStyle($_file['data']);
             $ifTpl = true;
         }
-        if (!$ifTpl) {
+        if (! $ifTpl) {
             return false;
         }
-        if (!$this->writeFile($fileData)) {
+        if (! $this->writeFile($fileData)) {
             return true;
         }
 
@@ -229,7 +229,7 @@ class PwDesignImportZip
         WindFolder::mk($dir);
         foreach ($fileData as $file) {
             WindFolder::mkRecur($dir.'/'.dirname($file['filename']));
-            if (!WindFile::write($dir.'/'.$file['filename'], $file['data'])) {
+            if (! WindFile::write($dir.'/'.$file['filename'], $file['data'])) {
                 $failArray[] = $file['filename'];
             }
         }
@@ -239,10 +239,10 @@ class PwDesignImportZip
 
     protected function read($dir)
     {
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             return [];
         }
-        if (!$handle = @opendir($dir)) {
+        if (! $handle = @opendir($dir)) {
             return [];
         }
         while (false !== ($file = @readdir($handle))) {
@@ -251,11 +251,11 @@ class PwDesignImportZip
             }
             $fileName = $dir.$file;
             if (is_file($fileName)) {
-                if (!$_handle = fopen($fileName, 'rb')) {
+                if (! $_handle = fopen($fileName, 'rb')) {
                     continue;
                 }
                 $data = '';
-                while (!feof($_handle)) {
+                while (! feof($_handle)) {
                     $data .= fgets($_handle, 4096);
                 }
                 fclose($_handle);

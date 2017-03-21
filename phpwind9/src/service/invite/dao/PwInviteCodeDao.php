@@ -146,7 +146,7 @@ class PwInviteCodeDao extends PwBaseDao
     {
         $clear = [];
         foreach ($data as $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $_temp = [];
@@ -155,7 +155,7 @@ class PwInviteCodeDao extends PwBaseDao
             $_temp['created_time'] = $_item['created_time'];
             $clear[] = $_temp;
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`code`, `created_userid`, `created_time`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));

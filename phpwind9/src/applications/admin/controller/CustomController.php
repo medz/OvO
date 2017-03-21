@@ -23,7 +23,7 @@ class CustomController extends AdminBaseController
         $menuTables = $menuService->getMenuTable();
         if ($myMenus !== '-1') {
             foreach ($menuTables as $key => $value) {
-                if (isset($value['url']) && !in_array($key, (array) $myMenus)) {
+                if (isset($value['url']) && ! in_array($key, (array) $myMenus)) {
                     unset(
                     $menuTables[$key]);
                 }

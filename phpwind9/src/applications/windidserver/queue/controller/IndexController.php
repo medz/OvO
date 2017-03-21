@@ -15,14 +15,14 @@ class IndexController extends PwBaseController
     {
         $nid = $this->getInput('nid', 'post');
 
-        if (!ini_get('safe_mode')) {
+        if (! ini_get('safe_mode')) {
             ignore_user_abort(true);
             set_time_limit(0);
         }
         if ($nid) {
             $this->_getNotifyService()->sendByNid($nid);
         }
-        if (!$nid || rand(0, 100) == 50) {
+        if (! $nid || rand(0, 100) == 50) {
             $this->_getNotifyService()->send();
         }
         echo 'success';

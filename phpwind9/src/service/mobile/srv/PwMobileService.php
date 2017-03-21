@@ -28,7 +28,7 @@ class PwMobileService
      */
     public function getRestMobileMessage()
     {
-        if (!$this->plat) {
+        if (! $this->plat) {
             return new PwError('USER:mobile.plat.choose.error');
         }
 
@@ -42,7 +42,7 @@ class PwMobileService
      */
     public function sendMobileMessage($mobile)
     {
-        if (!$this->plat) {
+        if (! $this->plat) {
             return new PwError('USER:mobile.plat.choose.error');
         }
         $code = $this->_buildCode();
@@ -73,11 +73,11 @@ class PwMobileService
      */
     public function checkVerify($mobile, $inputCode)
     {
-        if (!$mobile || !$inputCode) {
+        if (! $mobile || ! $inputCode) {
             return new PwError('USER:mobile.code.mobile.empty');
         }
         $info = $this->_getDs()->getMobileVerify($mobile);
-        if (!$info) {
+        if (! $info) {
             return new PwError('USER:mobile.code.error');
         }
         if ($info['expired_time'] < Pw::getTime()) {

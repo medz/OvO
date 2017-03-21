@@ -11,23 +11,23 @@ class AdminSearchLangParserService extends WindLangResource
     {
         $rs = [];
         $path = $this->_getPath();
-        if (!$path || !file_exists($path)) {
+        if (! $path || ! file_exists($path)) {
             return $rs;
         }
-        if (!$handle = fopen($path, 'rb')) {
+        if (! $handle = fopen($path, 'rb')) {
             return $rs;
         }
         $currentMenu = $currentSubMenu = '';
-        while (!feof($handle)) {
+        while (! feof($handle)) {
             $line = trim(fgets($handle, 8192));
-            if (!$line) {
+            if (! $line) {
                 continue;
             }
             if (preg_match('/^\[([a-z_]+)\]$/i', $line, $m)) {
                 $currentMenu = $m[1];
                 $currentSubMenu = '';
             } else {
-                if (!$currentMenu) {
+                if (! $currentMenu) {
                     continue;
                 }
                 if (preg_match('/^\[{2}(.+)\]{2}$/i', $line, $m)) {

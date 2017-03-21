@@ -102,7 +102,7 @@ class PwCache
      */
     public function bulidKey($key, $param = [])
     {
-        if (!isset($this->keys[$key])) {
+        if (! isset($this->keys[$key])) {
             return $key;
         }
         $vkey = $this->keys[$key][0];
@@ -143,7 +143,7 @@ class PwCache
     {
         is_array($param) || $param = [$param];
         $vkey = $this->bulidKey($key, $param);
-        if (!isset($this->_cacheData[$vkey])) {
+        if (! isset($this->_cacheData[$vkey])) {
             $sid = $this->_initServer($key);
             $this->_readykeys[$sid][$vkey] = [$key, $param];
             $this->_query([$sid]);
@@ -164,7 +164,7 @@ class PwCache
         $vkeys = $this->bulidKeys($keys);
         $sids = [];
         foreach ($vkeys as $i => $vkey) {
-            if (!isset($this->_cacheData[$vkey])) {
+            if (! isset($this->_cacheData[$vkey])) {
                 $value = is_array($keys[$i]) ? $keys[$i] : [$keys[$i], []];
                 list($key, $param) = $value;
                 $sid = $this->_initServer($key);
@@ -246,7 +246,7 @@ class PwCache
     protected function _prepare()
     {
         foreach ($this->_prekeys as $value) {
-            if (!is_array($value)) {
+            if (! is_array($value)) {
                 $value = [$value, []];
             }
             list($key, $param) = $value;
@@ -268,7 +268,7 @@ class PwCache
                     continue;
                 }
                 list($key, $param) = $this->_readykeys[$sid][$vkey];
-                if (!isset($this->keys[$key]) || !isset($this->keys[$key][5])) {
+                if (! isset($this->keys[$key]) || ! isset($this->keys[$key][5])) {
                     continue;
                 }
                 if (is_array($this->keys[$key][5])) {
@@ -291,7 +291,7 @@ class PwCache
         $use = $this->_canUse($key);
         list($mod, $config) = $this->_getConfig($use, $mod);
         $sid = $use.'_'.$mod;
-        if (!isset($this->_cacheServer[$sid])) {
+        if (! isset($this->_cacheServer[$sid])) {
             $this->_cacheServer[$sid] = $this->_getCacheServer($use, $config);
         }
 
@@ -338,7 +338,7 @@ class PwCache
                 break;
             case self::USE_MEN:
                 $servers = Wekit::V('mem.servers');
-                !isset($servers[$mod]) && $mod = 'default';
+                ! isset($servers[$mod]) && $mod = 'default';
                 $config = [
                     'key-prefix' => Wekit::V('mem.key.prefix'),
                     'servers'    => $servers[$mod],
@@ -346,7 +346,7 @@ class PwCache
                 break;
             case self::USE_REDIS:
                 $servers = Wekit::V('redis.servers');
-                !isset($servers[$mod]) && $mod = 'default';
+                ! isset($servers[$mod]) && $mod = 'default';
                 $config = [
                     'key-prefix' => Wekit::V('redis.key.prefix'),
                     'servers'    => $servers[$mod],

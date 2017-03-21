@@ -18,7 +18,7 @@ class PwLogoutDoUpdateLastvisit extends PwLogoutDoBase
      */
     public function beforeLogout(PwUserBo $bo)
     {
-        if (!$bo->isExists()) {
+        if (! $bo->isExists()) {
             return true;
         }
         $onlineTime = intval(Wekit::C('site', 'onlinetime'));

@@ -31,10 +31,10 @@ class PwTaskCreditRewardDo extends PwTaskRewardDoBase
      */
     public function checkReward($reward)
     {
-        if (!$reward['num']) {
+        if (! $reward['num']) {
             return new PwError('TASK:reward.credit.num.require');
         }
-        if (!WindValidator::isNonNegative($reward['num'])) {
+        if (! WindValidator::isNonNegative($reward['num'])) {
             return new PwError('TASK:reward.credit.num.isNonNegative');
         }
         $reward['num'] = ceil($reward['num']);

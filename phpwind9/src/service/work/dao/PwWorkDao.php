@@ -23,7 +23,7 @@ class PwWorkDao extends PwBaseDao
      */
     public function add($data)
     {
-        if (!($data = $this->_filterStruct($data))) {
+        if (! ($data = $this->_filterStruct($data))) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -43,7 +43,7 @@ class PwWorkDao extends PwBaseDao
      */
     public function update($id, $uid, $data)
     {
-        if (!($data = $this->_filterStruct($data))) {
+        if (! ($data = $this->_filterStruct($data))) {
             return false;
         }
         unset($data['uid']);

@@ -20,7 +20,7 @@ class PwDesignPageSave
     {
         $ds = $this->_getPageDs();
         $pageInfo = $ds->getPage($pageid);
-        if (!$pageInfo) {
+        if (! $pageInfo) {
             return new PwError('operate.fail');
         }
         $dm = new PwDesignPageDm($pageid);

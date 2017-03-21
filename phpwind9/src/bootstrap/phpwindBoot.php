@@ -19,7 +19,7 @@ class phpwindBoot extends bootstrap
      */
     public function __construct($re)
     {
-        if (!is_file(Wind::getRealPath('DATA:install.lock', true))) {
+        if (! is_file(Wind::getRealPath('DATA:install.lock', true))) {
             Wind::getComponent('response')->sendRedirect('install.php');
         }
         parent::__construct($re);
@@ -96,13 +96,13 @@ class phpwindBoot extends bootstrap
      */
     protected function _getLoginUser()
     {
-        if (!($userCookie = Pw::getCookie('winduser'))) {
+        if (! ($userCookie = Pw::getCookie('winduser'))) {
             $uid = $password = '';
         } else {
             list($uid, $password) = explode("\t", Pw::decrypt($userCookie));
         }
         $user = new PwUserBo($uid);
-        if (!$user->isExists() || Pw::getPwdCode($user->info['password']) != $password) {
+        if (! $user->isExists() || Pw::getPwdCode($user->info['password']) != $password) {
             $user->reset();
         } else {
             unset($user->info['password']);
@@ -118,7 +118,7 @@ class phpwindBoot extends bootstrap
     {
         $requestUri = Wind::getComponent('request')->getRequestUri();
         $_cOnlinetime = Wekit::C('site', 'onlinetime') * 60;
-        if (!($lastvisit = Pw::getCookie('lastvisit'))) {
+        if (! ($lastvisit = Pw::getCookie('lastvisit'))) {
             $onlinetime = 0;
             $lastvisit = WEKIT_TIMESTAMP;
             $lastRequestUri = '';

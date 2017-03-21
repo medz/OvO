@@ -159,7 +159,7 @@ class PwInstallApplication
     {
         $this->_hash = md5_file($packageFile);
         $this->tmpPackage = PwApplicationHelper::extract($packageFile, $this->tmpPath);
-        if ($this->tmpPackage === false || !is_dir($this->tmpPackage)) {
+        if ($this->tmpPackage === false || ! is_dir($this->tmpPackage)) {
             return new PwError(
             'APPCENTER:install.checkpackage.format.fail', ['{{error}}' => $this->tmpPackage]);
         }
@@ -181,7 +181,7 @@ class PwInstallApplication
     {
         if ($manifest === '') {
             $manifest = $this->tmpPackage.'/'.$this->getConfig('manifest');
-            if (!is_file($manifest)) {
+            if (! is_file($manifest)) {
                 return new PwError('APPCENTER:install.mainfest.not.exist');
             }
         }
@@ -221,7 +221,7 @@ class PwInstallApplication
 
             $next = true;
             if ($step !== 'all') {
-                if (!isset($service[$step])) {
+                if (! isset($service[$step])) {
                     return new PwError('APPCENTER:install.step.fail');
                 }
                 isset($service[$step + 1]) && $next = [
@@ -230,11 +230,11 @@ class PwInstallApplication
                 $service = [$service[$step]];
             }
             foreach ($service as $key => $var) {
-                if (!isset($var['class'])) {
+                if (! isset($var['class'])) {
                     continue;
                 }
                 $_install = Wekit::load($var['class']);
-                if (!$_install instanceof iPwInstall) {
+                if (! $_install instanceof iPwInstall) {
                     return new PwError(
                     'APPCENTER:install.classtype');
                 }
@@ -283,11 +283,11 @@ class PwInstallApplication
     {
         list(, $rollback, $install) = $this->resolvedInstallation($this->tmpInstallLog);
         foreach ($rollback as $var) {
-            if (!isset($var['class'])) {
+            if (! isset($var['class'])) {
                 continue;
             }
             $_install = Wekit::load($var['class']);
-            if (!$_install instanceof iPwInstall) {
+            if (! $_install instanceof iPwInstall) {
                 return new PwError('APPCENTER:install.classtype');
             }
             $_install->rollback($install);
@@ -340,7 +340,7 @@ class PwInstallApplication
      */
     public function addInstallLog($key, $value)
     {
-        if (!isset($this->_log[$key])) {
+        if (! isset($this->_log[$key])) {
             $this->_log[$key] = [];
         }
         $this->_log[$key][] = $value;
@@ -400,7 +400,7 @@ class PwInstallApplication
         }
         list($bool, $package) = PwApplicationHelper::requestAcloudData($info['info']['download'],
             $this->tmpPath);
-        if (!$bool) {
+        if (! $bool) {
             return new PwError('APPCENTER:install.download.fail', ['{{error}}' => $package]);
         }
         if ($info['info']['hash'] !== md5_file($package)) {
@@ -450,13 +450,13 @@ class PwInstallApplication
         if ($configName === '') {
             return $this->_config;
         }
-        if (!isset($this->_config[$configName])) {
+        if (! isset($this->_config[$configName])) {
             return $default;
         }
         if ($subConfigName === '') {
             return $this->_config[$configName];
         }
-        if (!isset($this->_config[$configName][$subConfigName])) {
+        if (! isset($this->_config[$configName][$subConfigName])) {
             return $default;
         }
 
@@ -480,7 +480,7 @@ class PwInstallApplication
             $service = $rollback = [];
             $conf = $this->getConfig('install-type',
                 $this->getManifest()->getApplication('type', 'app'));
-            if (!empty($conf['step']['before'])) {
+            if (! empty($conf['step']['before'])) {
                 foreach ($conf['step']['before'] as $var) {
                     $var['class'] = $conf['class'];
                     $service[] = $var;
@@ -493,7 +493,7 @@ class PwInstallApplication
             foreach ($this->getManifest()->getInstallationService() as $var) {
                 // TODO 从钩子中获取
                 $_tmp = $this->getConfig('installation-service', $var);
-                if (!$_tmp) {
+                if (! $_tmp) {
                     continue;
                 }
                 $_tmp['_key'] = $var;
@@ -501,7 +501,7 @@ class PwInstallApplication
                 $this->addInstallLog('service', $_tmp);
             }
 
-            if (!empty($conf['step']['after'])) {
+            if (! empty($conf['step']['after'])) {
                 foreach ($conf['step']['after'] as $var) {
                     $var['class'] = $conf['class'];
                     $service[] = $var;

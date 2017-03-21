@@ -22,11 +22,11 @@ class PwWordService
      */
     public function findWord($word = [])
     {
-        if (empty($word) || !is_array($word)) {
+        if (empty($word) || ! is_array($word)) {
             return [];
         }
         $wordList = $this->_getWordDS()->fetchByWord($word);
-        if (!$wordList) {
+        if (! $wordList) {
             return [];
         }
         $result = [];
@@ -48,7 +48,7 @@ class PwWordService
     public function isExistWord($word, $excludeId = 0)
     {
         $data = $this->_getWordDS()->getByWord($word);
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -71,10 +71,10 @@ class PwWordService
     {
         $type = intval($type);
         $type = $type < 0 ? 0 : $type;
-        if ($type && !$keyword) {
+        if ($type && ! $keyword) {
             return $this->_getWordDS()->deleteByType($type);
         }
-        if (!$type && $keyword) {
+        if (! $type && $keyword) {
             return $this->_getWordDS()->deleteByKeyword($keyword);
         }
         if ($type && $keyword) {

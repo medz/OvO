@@ -28,7 +28,7 @@ class PwTenpay extends PwPayAbstract
 
     public function check()
     {
-        if (!$this->tenpay || !$this->tenpay_key) {
+        if (! $this->tenpay || ! $this->tenpay_key) {
             return new PwError('onlinepay.settings.tenpay.error');
         }
 

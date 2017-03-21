@@ -16,7 +16,7 @@ class FriendController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('my/friend/run')]);
         }
         $this->setOutput('friend', 'li');
@@ -63,7 +63,7 @@ class FriendController extends PwBaseController
         list($start, $limit) = Pw::page2limit($page, $perpage);
 
         $usertags = $this->_getUserTagService()->getUserTagList($this->loginUser->uid);
-        !$usertags && $hotTags = $this->_getUserTagDs()->getHotTag(10);
+        ! $usertags && $hotTags = $this->_getUserTagDs()->getHotTag(10);
         $args = [];
         if ($username) {
             // 按用户名搜索

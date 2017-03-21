@@ -55,9 +55,9 @@ class AdminDefaultFilter extends PwBaseFilter
 
         /* @var $loginUser AdminUserBo */
         $loginUser = Wekit::getLoginUser();
-        if (!$loginUser->isExists() || (!$founderService->isFounder($loginUser->username) && !$safeService->ipLegal(
+        if (! $loginUser->isExists() || (! $founderService->isFounder($loginUser->username) && ! $safeService->ipLegal(
             Wind::getComponent('request')->getClientIp()))) {
-            if (!$this->getRequest()->getIsAjaxRequest()) {
+            if (! $this->getRequest()->getIsAjaxRequest()) {
                 $this->forward->forwardAction('default/index/login');
             } else {
                 $this->errorMessage->addError('logout', 'state');
@@ -66,7 +66,7 @@ class AdminDefaultFilter extends PwBaseFilter
         }
 
         $_unVerifyTable = ['home', 'index', 'find'];
-        if (!in_array(strtolower($request['c']), $_unVerifyTable)) {
+        if (! in_array(strtolower($request['c']), $_unVerifyTable)) {
             if ($request['c'] != 'adminlog') {
                 $logService = Wekit::load('ADMIN:service.srv.AdminLogService');
                 $logService->log($this->getRequest(), $loginUser->username, $request['m'], $request['c'], $request['a']);

@@ -19,7 +19,7 @@ class PwApplicationUpload
     {
         $uploaddb = [];
         foreach ($_FILES as $key => $value) {
-            if (!$this->isUploadedFile($value['tmp_name'])) {
+            if (! $this->isUploadedFile($value['tmp_name'])) {
                 continue;
             }
             $file = new PwUploadFile($key, $value);
@@ -30,7 +30,7 @@ class PwApplicationUpload
             $file->savedir = Pw::getTime().'/';
             $file->source = $this->dir.$file->savedir.$file->filename;
 
-            if (!$this->moveUploadedFile($value['tmp_name'], $file->source)) {
+            if (! $this->moveUploadedFile($value['tmp_name'], $file->source)) {
                 return new PwError('upload.fail');
             }
             if (($result = $file->operate($this->bhv, $this->store)) !== true) {
@@ -80,7 +80,7 @@ class PwApplicationUpload
      */
     public function checkFile($file)
     {
-        if (!$file->ext || !isset($this->ftype[$file->ext])) {
+        if (! $file->ext || ! isset($this->ftype[$file->ext])) {
             return new PwError(['upload.ext.error', ['{ext}' => '.'.$file->ext]]);
         }
         if ($file->size < 1) {
@@ -95,9 +95,9 @@ class PwApplicationUpload
 
     public function isUploadedFile($tmp_name)
     {
-        if (!$tmp_name || $tmp_name == 'none') {
+        if (! $tmp_name || $tmp_name == 'none') {
             return false;
-        } elseif (function_exists('is_uploaded_file') && !is_uploaded_file($tmp_name) && !is_uploaded_file(str_replace('\\\\', '\\', $tmp_name))) {
+        } elseif (function_exists('is_uploaded_file') && ! is_uploaded_file($tmp_name) && ! is_uploaded_file(str_replace('\\\\', '\\', $tmp_name))) {
             return false;
         } else {
             return true;

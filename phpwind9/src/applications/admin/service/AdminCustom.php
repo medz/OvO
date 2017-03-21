@@ -30,7 +30,7 @@ class AdminCustom
      */
     public function replace($username, $custom)
     {
-        if (!$username) {
+        if (! $username) {
             return new PwError('ADMIN:custom.replace.fail');
         }
 

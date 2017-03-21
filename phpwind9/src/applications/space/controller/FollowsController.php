@@ -44,7 +44,7 @@ class FollowsController extends SpaceBaseController
 
         $args['uid'] = $this->space->spaceUid;
         $follows = WindUtility::mergeArray($follows, $userList);
-        if (!$follows && $this->space->tome == PwSpaceBo::MYSELF) {
+        if (! $follows && $this->space->tome == PwSpaceBo::MYSELF) {
             $num = 20;
             $uids = $this->_getRecommendService()->getRecommendAttention($this->loginUser->uid, $num);
             $this->setOutput($this->_getRecommendService()->buildUserInfo($this->loginUser->uid, $uids, $num), 'recommend');

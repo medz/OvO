@@ -230,7 +230,7 @@ class PwDesignModuleDm extends PwBaseDm
 
     private function _verifyColor($v = null)
     {
-        if (!$v) {
+        if (! $v) {
             return $v;
         }
 

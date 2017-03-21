@@ -68,7 +68,7 @@ class PwLogLogin
         }
         $datas = [];
         foreach ($dms as $_dm) {
-            if (!$_dm instanceof PwLogLoginDm) {
+            if (! $_dm instanceof PwLogLoginDm) {
                 return false;
             }
             if (true !== ($r = $_dm->beforeAdd())) {
@@ -121,7 +121,7 @@ class PwLogLogin
      */
     public function clearLogBeforeDatetime($time)
     {
-        if (!$time) {
+        if (! $time) {
             return false;
         }
 

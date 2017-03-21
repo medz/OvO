@@ -37,7 +37,7 @@ class PwDeleteForum extends PwDoProcess
 
     protected function run()
     {
-        if (!$this->forum->isForum(true)) {
+        if (! $this->forum->isForum(true)) {
             return new PwError('BBS:forum.operate.error.exists.not');
         }
         if ($this->forum->getSubForums()) {

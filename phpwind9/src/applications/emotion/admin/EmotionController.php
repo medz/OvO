@@ -48,12 +48,12 @@ class EmotionController extends AdminBaseController
         $orderIds = $this->getInput('category_orderid', 'post');
         $catnames = $this->getInput('category_name', 'post');
         //$apps = $this->getInput('apps','post');
-        if (!$catids) {
+        if (! $catids) {
             $this->showError('ADMIN:fail');
         }
 
         foreach ($catids as $k => $v) {
-            if (!$catnames[$v]) {
+            if (! $catnames[$v]) {
                 $this->showError('ADMIN:catname.empty');
             }
             $dm = new PwEmotionCategoryDm($v);
@@ -86,7 +86,7 @@ class EmotionController extends AdminBaseController
     public function deletecateAction()
     {
         $cateId = (int) $this->getInput('cateid', 'post');
-        if (!$cateId) {
+        if (! $cateId) {
             $this->showError('operate.fail');
         }
 
@@ -100,7 +100,7 @@ class EmotionController extends AdminBaseController
     {
         $catId = (int) $this->getInput('catid', 'get');
         $category = $this->_getEmotionCategoryDs()->getCategory($catId);
-        if (!$folder = $category['emotion_folder']) {
+        if (! $folder = $category['emotion_folder']) {
             $this->showError('ADMIN:fail');
         }
         $emotionList = $this->_getEmotionDs()->getListByCatid($catId);
@@ -130,12 +130,12 @@ class EmotionController extends AdminBaseController
         $orderIds = $this->getInput('orderid', 'post');
         $catId = (int) $this->getInput('catid', 'post');
         $category = $this->_getEmotionCategoryDs()->getCategory($catId);
-        if (!$folder = $category['emotion_folder']) {
+        if (! $folder = $category['emotion_folder']) {
             $this->showError('ADMIN:fail');
         }
 
         foreach ($emotionIds as $v => $vv) {
-            if (!$icons[$v]) {
+            if (! $icons[$v]) {
                 continue;
             }
             $dm = new PwEmotionDm();

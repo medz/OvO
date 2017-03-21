@@ -23,7 +23,7 @@ class PwForumUser
      */
     public function get($uid, $fid)
     {
-        if (!$uid || !$fid) {
+        if (! $uid || ! $fid) {
             return [];
         }
 
@@ -84,7 +84,7 @@ class PwForumUser
      */
     public function join($uid, $fid, $time = 0)
     {
-        if (!$uid || !$fid) {
+        if (! $uid || ! $fid) {
             return false;
         }
 
@@ -101,7 +101,7 @@ class PwForumUser
      */
     public function quit($uid, $fid)
     {
-        if (!$uid || !$fid) {
+        if (! $uid || ! $fid) {
             return false;
         }
 

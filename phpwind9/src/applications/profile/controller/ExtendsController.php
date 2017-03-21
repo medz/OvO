@@ -20,7 +20,7 @@ class ExtendsController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run', ['_type' => $this->getInput('_type')]));
         }
     }
@@ -36,7 +36,7 @@ class ExtendsController extends PwBaseController
         $menus = $profileMenuSrv->getMenus();
         $currentMenu = $menus[$_left];
         ($_tab) && $currentMenu = $menus[$_left]['tabs'][$_tab];
-        if (!$currentMenu) {
+        if (! $currentMenu) {
             $this->showError('USER:profile.extends.noexists');
         }
 
@@ -61,7 +61,7 @@ class ExtendsController extends PwBaseController
         $menus = $profileMenuSrv->getMenus();
         $currentMenu = $menus[$_left];
         ($_tab) && $currentMenu = $menus[$_left]['tabs'][$_tab];
-        if (!$currentMenu) {
+        if (! $currentMenu) {
             $this->showError('USER:profile.extends.noexists');
         }
 

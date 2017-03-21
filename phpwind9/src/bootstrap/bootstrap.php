@@ -97,11 +97,11 @@ abstract class bootstrap
             if (defined($const)) {
                 continue;
             }
-            if ($const === 'PUBLIC_URL' && !$value) {
+            if ($const === 'PUBLIC_URL' && ! $value) {
                 $value = Wind::getComponent('request')->getBaseUrl(true);
                 if (defined('BOOT_PATH') && 0 === strpos(BOOT_PATH, PUBLIC_PATH)) {
                     $path = substr(BOOT_PATH, strlen(PUBLIC_PATH));
-                    !empty($path) && $value = substr($value, 0, -strlen($path));
+                    ! empty($path) && $value = substr($value, 0, -strlen($path));
                 }
             }
             define($const, $value);

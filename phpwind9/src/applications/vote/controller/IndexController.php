@@ -21,14 +21,14 @@ class IndexController extends PwBaseController
      */
     public function memberAction()
     {
-        if (!$this->loginUser->getPermission('allow_view_vote')) {
+        if (! $this->loginUser->getPermission('allow_view_vote')) {
             $this->showError('VOTE:group.not.allow.view');
         }
 
         list($pollid, $optionid) = $this->getInput(['pollid', 'optionid'], 'get');
 
         $poll = $this->_getPollService()->getPoll($pollid);
-        if (!$poll) {
+        if (! $poll) {
             $this->showError('VOTE:thread.not.exist');
         }
 
@@ -64,12 +64,12 @@ class IndexController extends PwBaseController
         list($pollid, $optionid) = $this->getInput(['pollid', 'optionid']);
         $pollid = intval($pollid);
         $optionid = intval($optionid);
-        if (!$pollid || !$optionid) {
+        if (! $pollid || ! $optionid) {
             $this->showError('VOTE:fail');
         }
 
         $poll = $this->_getPollService()->getPoll($pollid);
-        if (!$poll) {
+        if (! $poll) {
             $this->showError('VOTE:thread.not.exist');
         }
 
@@ -96,12 +96,12 @@ class IndexController extends PwBaseController
         list($pollid, $optionid) = $this->getInput(['pollid', 'optionid']);
         $pollid = intval($pollid);
         $optionid = intval($optionid);
-        if (!$pollid || !$optionid) {
+        if (! $pollid || ! $optionid) {
             $this->showError('VOTE:fail');
         }
 
         $poll = $this->_getPollService()->getPoll($pollid);
-        if (!$poll) {
+        if (! $poll) {
             $this->showError('VOTE:thread.not.exist');
         }
 
@@ -127,13 +127,13 @@ class IndexController extends PwBaseController
     private function _afterDelete($pollid)
     {
         $optionList = $this->_getPollOptionDS()->getByPollid($pollid);
-        if (!$optionList) {
+        if (! $optionList) {
             return false;
         }
 
         $flag = false;
         foreach ($optionList as $value) {
-            if (!$value['image']) {
+            if (! $value['image']) {
                 continue;
             }
             $flag = true;

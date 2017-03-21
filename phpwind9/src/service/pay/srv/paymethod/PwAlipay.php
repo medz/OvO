@@ -33,7 +33,7 @@ class PwAlipay extends PwPayAbstract
 
     public function check()
     {
-        if (!$this->alipay || !$this->alipay_partnerID || !$this->alipay_key) {
+        if (! $this->alipay || ! $this->alipay_partnerID || ! $this->alipay_key) {
             return new PwError('onlinepay.settings.alipay.error');
         }
 
@@ -63,7 +63,7 @@ class PwAlipay extends PwPayAbstract
             //'extra_common_param' => ''//$this->formatExtra($extra),
         ];
 
-        if (!$this->alipay_interface) {
+        if (! $this->alipay_interface) {
             $param['service'] = 'trade_create_by_buyer';
             $param['price'] = $vo->getFee();
             $param['quantity'] = '1';

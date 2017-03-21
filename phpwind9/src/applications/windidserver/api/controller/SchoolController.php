@@ -39,8 +39,8 @@ class SchoolController extends OpenBaseController
         $typeid = $this->getInput('typeid', 'get');
         $areaid = $this->getInput('areaid', 'get');
         $firstchar = $this->getInput('first_char', 'get');
-        !$limit && $limit = 10;
-        !$start && $start = 0;
+        ! $limit && $limit = 10;
+        ! $start && $start = 0;
         Wind::import('WINDID:service.school.vo.WindidSchoolSo');
         $schoolSo = new WindidSchoolSo();
         $schoolSo->setName($name)
@@ -59,8 +59,8 @@ class SchoolController extends OpenBaseController
         $typeid = $this->getInput('typeid', 'get');
         $areaid = $this->getInput('areaid', 'get');
         $firstchar = $this->getInput('first_char', 'get');
-        !$limit && $limit = 10;
-        !$start && $start = 0;
+        ! $limit && $limit = 10;
+        ! $start && $start = 0;
         Wind::import('WINDID:service.school.vo.WindidSchoolSo');
         $schoolSo = new WindidSchoolSo();
         $schoolSo->setName($name)

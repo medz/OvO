@@ -61,7 +61,7 @@ class PwDesignPageBo
                 $pageId = $v['page_id'];
                 break;
             }
-            if (!$v['is_unique']) {
+            if (! $v['is_unique']) {
                 $pageId = $v['page_id'];
             }
         }
@@ -117,7 +117,7 @@ class PwDesignPageBo
         $css = '';
         $array = array_merge($this->_getStructureCss(), $this->_getModuleCss());
         foreach ($array as $k => $v) {
-            if (!$v[1]) {
+            if (! $v[1]) {
                 continue;
             }
             $css .= "\r\n".' #'.$k.'{'.$v.'}';
@@ -146,7 +146,7 @@ class PwDesignPageBo
                     if ($v['data_type'] == PwDesignData::ISFIXED) {
                         $this->_getPushDs()->updateAutoByModuleAndOrder($v['module_id'], $v['vieworder']);
                     }
-                    if (!in_array($v['module_id'], $cronMeduleId)) {
+                    if (! in_array($v['module_id'], $cronMeduleId)) {
                         $cronMeduleId[] = $v['module_id'];
                     }
                 }
@@ -158,7 +158,7 @@ class PwDesignPageBo
 
             //到期数据处理
             if ($v['end_time'] > 0 && $v['end_time'] < $time) {
-                if (!in_array($v['module_id'], $cronMeduleId)) {
+                if (! in_array($v['module_id'], $cronMeduleId)) {
                     $cronMeduleId[] = $v['module_id'];
                 }
             }
@@ -171,7 +171,7 @@ class PwDesignPageBo
 
     public function updateDesignCron($moduleids)
     {
-        if (!$moduleids) {
+        if (! $moduleids) {
             return false;
         }
         $diff = $_data = [];
@@ -180,11 +180,11 @@ class PwDesignPageBo
         $crons = $ds->fetchCron($moduleids);
         $_moduleids = array_keys($crons);
         foreach ($moduleids as $id) {
-            if (!in_array($id, $_moduleids)) {
+            if (! in_array($id, $_moduleids)) {
                 $diff[] = $id;
             }
         }
-        if (!$diff) {
+        if (! $diff) {
             return false;
         }
         foreach ($diff as $v) {
@@ -206,7 +206,7 @@ class PwDesignPageBo
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $structureNames = explode(',', $this->_pageInfo['struct_names']);
         foreach ($structureNames as $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $bo = new PwDesignStructureBo($v);
@@ -228,7 +228,7 @@ class PwDesignPageBo
         $srv = Wekit::load('design.srv.PwDesignStyle');
         $moduleIds = explode(',', $this->_pageInfo['module_ids']);
         foreach ($moduleIds as $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $bo = new PwDesignModuleBo($v);

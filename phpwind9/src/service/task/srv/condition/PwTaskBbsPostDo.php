@@ -23,7 +23,7 @@ class PwTaskBbsPostDo extends PwPostDoBase implements PwTaskCompleteInterface
 
     public function addPost($pid, $tid)
     {
-        if (!Wekit::C('site', 'task.isOpen')) {
+        if (! Wekit::C('site', 'task.isOpen')) {
             return true;
         }
         $bp = new PwTaskComplete($this->uid, $this);

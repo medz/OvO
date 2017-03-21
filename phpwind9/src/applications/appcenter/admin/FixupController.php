@@ -18,7 +18,7 @@ class FixupController extends AdminBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder($this->loginUser->username)) {
+        if (! Wekit::load('ADMIN:service.srv.AdminFounderService')->isFounder($this->loginUser->username)) {
             $this->showError('APPCENTER:upgrade.founder');
         }
     }
@@ -29,7 +29,7 @@ class FixupController extends AdminBaseController
     public function run()
     {
         $result = $this->_service()->checkUpgrade();
-        !is_array($result) && $this->setOutput($result, 'connect_fail');
+        ! is_array($result) && $this->setOutput($result, 'connect_fail');
         $this->setOutput($result, 'patches');
     }
 
@@ -45,11 +45,11 @@ class FixupController extends AdminBaseController
         $result = $this->_service()->getOnlinePatchList();
         $ftp = Wekit::cache()->get('system_patch_ftp');
         foreach ($patchids as $id) {
-            if (!isset($result[$id])) {
+            if (! isset($result[$id])) {
                 $this->showError('APPCENTER:upgrade.patch.fail', 'appcenter/fixup/run', true);
             }
             $patch = $result[$id];
-            if (!$ftp) {
+            if (! $ftp) {
                 $r = $this->_service()->writeAble($patch);
                 if ($r === false) {
                     $this->forwardAction('appcenter/fixup/ftp');

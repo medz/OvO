@@ -29,7 +29,7 @@ class PwLoader
      */
     public static function load($path)
     {
-        if (!isset(self::$_instances[$path])) {
+        if (! isset(self::$_instances[$path])) {
             self::$_instances[$path] = self::get($path);
         }
 
@@ -45,7 +45,7 @@ class PwLoader
     public static function loadDao($path, $useCache = true)
     {
         if ($useCache && isset(self::$_cacheService[$path])) {
-            if (!isset(self::$_daoCache[$path])) {
+            if (! isset(self::$_daoCache[$path])) {
                 self::$_daoCache[$path] = self::get(self::$_cacheService[$path])->setPath($path);
             }
 
@@ -67,7 +67,7 @@ class PwLoader
     {
         if ($useCache && isset(self::$_cacheService[$vkey])) {
             $_dk = $vkey.'_'.$index;
-            if (!isset(self::$_daoCache[$_dk])) {
+            if (! isset(self::$_daoCache[$_dk])) {
                 self::$_daoCache[$_dk] = self::get(self::$_cacheService[$vkey])->setIndex($index)->setDaoMap($daoMap)->setVkey($vkey);
             }
 
@@ -77,7 +77,7 @@ class PwLoader
             return self::loadDao($daoMap[$index]);
         }
         $vkey .= '_'.$index;
-        if (!isset(self::$_daoMap[$vkey])) {
+        if (! isset(self::$_daoMap[$vkey])) {
             $instance = null;
             foreach ($daoMap as $key => $value) {
                 if ($index & $key) {
@@ -105,7 +105,7 @@ class PwLoader
     {
         strpos($path, ':') === false && $path = 'SRV:'.$path;
         $class = Wind::import($path);
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             throw new PwException('class.path.fail',
                 ['{parm1}' => 'src.library.PwLoader.get', '{parm2}' => $class, '{parm3}' => $path]);
         }

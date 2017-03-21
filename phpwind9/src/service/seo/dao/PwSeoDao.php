@@ -24,7 +24,7 @@ class PwSeoDao extends PwBaseDao
      */
     public function batchReplaceSeo($data)
     {
-        if (!is_array($data)) {
+        if (! is_array($data)) {
             return false;
         }
         $tmp = [];
@@ -124,7 +124,7 @@ class PwSeoDao extends PwBaseDao
     {
         $seo = [];
         foreach ($result as $v) {
-            if (!$v['param']) {
+            if (! $v['param']) {
                 $seo[$v['page']][0] = [
                     'title'       => $v['title'],
                     'keywords'    => $v['keywords'],

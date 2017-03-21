@@ -5,7 +5,7 @@ class NoticeController extends PwBaseController
     public function beforeAction($handlerAdapter)
     {
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardRedirect(WindUrlHelper::createUrl('u/login/run'));
         }
         $action = $handlerAdapter->getAction();
@@ -69,10 +69,10 @@ class NoticeController extends PwBaseController
     public function deleteAction()
     {
         list($id, $ids) = $this->getInput(['id', 'ids'], 'post');
-        if (!$ids && $id) {
+        if (! $ids && $id) {
             $ids = [intval($id)];
         }
-        if (!is_array($ids)) {
+        if (! is_array($ids)) {
             $this->showError('操作失败');
         }
         if ($this->_getNoticeDs()->deleteNoticeByIdsAndUid($this->loginUser->uid, $ids)) {
@@ -94,7 +94,7 @@ class NoticeController extends PwBaseController
         $unreadCount = $this->_getNoticeDs()->getUnreadNoticeCount($this->loginUser->uid);
         $this->_readNoticeList($unreadCount, $noticeList);
         //set layout for common request
-        if (!$this->getRequest()->getIsAjaxRequest()) {
+        if (! $this->getRequest()->getIsAjaxRequest()) {
             $this->setLayout('layout_notice_minilist');
         }
         $this->setOutput($noticeList, 'noticeList');
@@ -107,7 +107,7 @@ class NoticeController extends PwBaseController
     {
         $id = $this->getInput('id');
         $notice = $this->_getNoticeDs()->getNotice($id);
-        if (!$notice || $notice['uid'] != $this->loginUser->uid) {
+        if (! $notice || $notice['uid'] != $this->loginUser->uid) {
             $this->showError('获取内容失败');
         }
 
@@ -127,7 +127,7 @@ class NoticeController extends PwBaseController
     {
         $id = $this->getInput('id');
         $notice = $this->_getNoticeDs()->getNotice($id);
-        if (!$notice || $notice['uid'] != $this->loginUser->uid) {
+        if (! $notice || $notice['uid'] != $this->loginUser->uid) {
             $this->showError('获取内容失败');
         }
         $prevNotice = $this->_getNoticeDs()->getPrevNotice($this->loginUser->uid, $id);

@@ -71,7 +71,7 @@ class PwInstall implements iPwInstall
             return new PwError('APPCENTER:install.exist.fail', ['{{error}}' => $appId]);
         }
         $alias = $manifest->getApplication('alias');
-        if (!$alias) {
+        if (! $alias) {
             return new PwError('APPCENTER:install.fail.alias.empty');
         }
         /*
@@ -225,7 +225,7 @@ class PwInstall implements iPwInstall
             }
             $name = $install->getManifest()->getApplication('alias');
             $writable = PwSystemHelper::checkWriteAble(EXT_PATH.$name.'/');
-            if (!$writable) {
+            if (! $writable) {
                 return new PwError('APPCENTER:install.mv.fail',
                 ['{{error}}' => 'EXT:'.$name]);
             }
@@ -281,7 +281,7 @@ class PwInstall implements iPwInstall
     {
         try {
             $sqlFile = $install->getTmpPackage().'/'.self::DB_TABLE;
-            if (!is_file($sqlFile)) {
+            if (! is_file($sqlFile)) {
                 return true;
             }
             $strSql = WindFile::read($sqlFile);
@@ -296,7 +296,7 @@ class PwInstall implements iPwInstall
             }
             $install->setInstallLog('table', $sql['CREATE']);
             foreach ($sql as $option => $statements) {
-                if (!in_array($option, ['INSERT', 'UPDATE', 'REPLACE', 'ALTER'])) {
+                if (! in_array($option, ['INSERT', 'UPDATE', 'REPLACE', 'ALTER'])) {
                     continue;
                 }
                 foreach ($statements as $table => $statement) {
@@ -350,7 +350,7 @@ class PwInstall implements iPwInstall
     {
         $manifest = $install->getManifest();
         $hooks = $manifest->getHooks();
-        if (!$hooks) {
+        if (! $hooks) {
             return true;
         }
         foreach ($hooks as $key => $hook) {
@@ -374,7 +374,7 @@ class PwInstall implements iPwInstall
     public function registeInjectServices($install)
     {
         $inject = $install->getManifest()->getInjectServices();
-        if (!$inject) {
+        if (! $inject) {
             return true;
         }
         $alias = $hookName = [];
@@ -387,7 +387,7 @@ class PwInstall implements iPwInstall
         $this->_loadPwHookInject()->batchAdd($inject);
         $injects = $this->_loadPwHookInject()->batchFetchByAlias($alias);
         foreach ($injects as $value) {
-            if (!in_array($value['hook_name'], $hookName)) {
+            if (! in_array($value['hook_name'], $hookName)) {
                 continue;
             }
             $install->addInstallLog('inject', $value['id']);
@@ -436,7 +436,7 @@ class PwInstall implements iPwInstall
             $status |= 8;
         }
         $application->setStatus($status);
-        if (!$application->beforeAdd()) {
+        if (! $application->beforeAdd()) {
             return new PwError('APPCENTER:install.mainfest.fail');
         }
         $this->_load()->add($application);
@@ -456,17 +456,17 @@ class PwInstall implements iPwInstall
     public function registeResource($install)
     {
         $manifest = $install->getManifest()->getManifest();
-        if (!isset($manifest['res']) || !$manifest['res']) {
+        if (! isset($manifest['res']) || ! $manifest['res']) {
             return true;
         }
         $name = $install->getManifest()->getApplication('alias');
         $source = $install->getTmpPackage().'/'.str_replace('.', '/', $manifest['res']);
         $targetPath = Wind::getRealDir('THEMES:extres', true);
-        if (!is_dir($source)) {
+        if (! is_dir($source)) {
             return true;
         }
         $writable = PwSystemHelper::checkWriteAble($targetPath.'/');
-        if (!$writable) {
+        if (! $writable) {
             return new PwError('APPCENTER:install.mv.fail',
             ['{{error}}' => 'THEMES:extres.'.$name]);
         }

@@ -55,7 +55,7 @@ class IndexController extends WindController
             if (defined($const)) {
                 continue;
             }
-            if ($const === 'PUBLIC_URL' && !$value) {
+            if ($const === 'PUBLIC_URL' && ! $value) {
                 $value = Wind::getApp()->getRequest()->getBaseUrl(true);
             }
             define($const, $value);
@@ -147,14 +147,14 @@ class IndexController extends WindController
         $force = $this->getInput('force');
         $input = array_combine($keys, $input);
         foreach ($input as $k => $v) {
-            if (!in_array($k, ['dbpw', 'engine']) && empty($v)) {
+            if (! in_array($k, ['dbpw', 'engine']) && empty($v)) {
                 $this->showError("INSTALL:input_empty_$k");
             }
         }
         if ($input['manager_pwd'] !== $input['manager_ckpwd']) {
             $this->showError('INSTALL:manager_pwd.eque.ckpwd');
         }
-        if (!preg_match('/^[\x7f-\xff\dA-Za-z\.\_]+$/', $input['manager'])) {
+        if (! preg_match('/^[\x7f-\xff\dA-Za-z\.\_]+$/', $input['manager'])) {
             $this->showError('INSTALL:founder.name.error');
         }
         $usernameLen = Pw::strlen($input['manager']);
@@ -167,16 +167,16 @@ class IndexController extends WindController
         }
 
         list($input['dbhost'], $input['dbport']) = explode(':', $input['dbhost']);
-        $input['dbport'] = !empty($input['dbport']) ? intval($input['dbport']) : 3306;
-        if (!empty($input['engine'])) {
+        $input['dbport'] = ! empty($input['dbport']) ? intval($input['dbport']) : 3306;
+        if (! empty($input['engine'])) {
             $input['engine'] = strtoupper($input['engine']);
-            !in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
+            ! in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
         } else {
             $input['engine'] = 'MyISAM';
         }
         $charset = Wind::getApp()->getResponse()->getCharset();
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
+        if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 
@@ -200,10 +200,10 @@ class IndexController extends WindController
             $error = $e->getMessage();
             $this->showError($error, false);
         }
-        if ($dbnameExist && !$force) {
+        if ($dbnameExist && ! $force) {
             $this->showError('INSTALL:have_install', true, 'index/database', true);
         }
-        if (!$dbnameExist) {
+        if (! $dbnameExist) {
             try {
                 $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
                 $pdo->query("CREATE DATABASE IF NOT EXISTS `{$input['dbname']}` DEFAULT CHARACTER SET $charset");
@@ -213,10 +213,10 @@ class IndexController extends WindController
             }
         }
         $pdo->close();
-        if (!$this->_checkWriteAble($this->_getDatabaseFile())) {
+        if (! $this->_checkWriteAble($this->_getDatabaseFile())) {
             $this->showError('INSTALL:error_777_database');
         }
-        if (!$this->_checkWriteAble($this->_getFounderFile())) {
+        if (! $this->_checkWriteAble($this->_getFounderFile())) {
             $this->showError('INSTALL:error_777_founder');
         }
 
@@ -236,11 +236,11 @@ class IndexController extends WindController
         $arrSQL = [];
         foreach ($this->wind_data as $file) {
             $file = Wind::getRealPath("APPS:install.lang.$file", true);
-            if (!WindFile::isFile($file)) {
+            if (! WindFile::isFile($file)) {
                 continue;
             }
             $content = WindFile::read($file);
-            if (!empty($content)) {
+            if (! empty($content)) {
                 $arrSQL = array_merge_recursive($arrSQL,
                 $this->_sqlParser($content, $charset, $input['dbprefix'], $input['engine']));
             }
@@ -461,7 +461,7 @@ class IndexController extends WindController
         $arrSQL = explode("\n", $strSQL);
         foreach ($arrSQL as $value) {
             $value = trim($value, " \t");
-            if (!$value || substr($value, 0, 2) === '--') {
+            if (! $value || substr($value, 0, 2) === '--') {
                 continue;
             }
             $query .= $value;
@@ -507,7 +507,7 @@ class IndexController extends WindController
         $lowestEnvironment = $this->_getLowestEnvironment();
         $rootPath = Wind::getRealDir('ROOT:');
         $space = floor(@disk_free_space($rootPath) / (1024 * 1024));
-        $space = !empty($space) ? $space.'M' : 'unknow';
+        $space = ! empty($space) ? $space.'M' : 'unknow';
         $currentUpload = ini_get('file_uploads') ? ini_get('upload_max_filesize') : 'unknow';
         $upload_ischeck = intval($currentUpload) >= intval($lowestEnvironment['upload']) ? true : false;
         $space_ischeck = intval($space) >= intval($lowestEnvironment['space']) ? true : false;
@@ -650,7 +650,7 @@ class IndexController extends WindController
      */
     private function _checkWriteAble($pathfile)
     {
-        if (!$pathfile) {
+        if (! $pathfile) {
             return false;
         }
         $isDir = in_array(substr($pathfile, -1), ['/', '\\']) ? true : false;
@@ -794,7 +794,7 @@ class IndexController extends WindController
         $key = md5(WindUtility::generateRandStr(10));
         $charset = Wekit::V('charset');
         $charset = str_replace('-', '', strtolower($charset));
-        if (!in_array($charset, ['gbk', 'utf8', 'big5'])) {
+        if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
             $charset = 'utf8';
         }
 
@@ -836,13 +836,13 @@ class IndexController extends WindController
      */
     private function _checkDatabase()
     {
-        if (!WindFile::isFile($this->_getDatabaseFile()) || !WindFile::isFile($this->_getTableSqlFile())) {
+        if (! WindFile::isFile($this->_getDatabaseFile()) || ! WindFile::isFile($this->_getTableSqlFile())) {
             $this->showError('INSTALL:database_config_noexists');
         }
-        if (!$this->_checkWriteAble($this->_getDatabaseFile())) {
+        if (! $this->_checkWriteAble($this->_getDatabaseFile())) {
             $this->showError('INSTALL:error_777_database');
         }
-        if (!$this->_checkWriteAble($this->_getFounderFile())) {
+        if (! $this->_checkWriteAble($this->_getFounderFile())) {
             $this->showError('INSTALL:error_777_founder');
         }
 
@@ -851,7 +851,7 @@ class IndexController extends WindController
         }*/
 
         $database = include $this->_getTempFile();
-        if (!$database['founder']) {
+        if (! $database['founder']) {
             $this->showError('INSTALL:database_config_error');
         }
 

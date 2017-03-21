@@ -22,7 +22,7 @@ class PwComponentsService
      */
     public function setComponent($alias, $component, $description)
     {
-        if (!isset($component['path'])) {
+        if (! isset($component['path'])) {
             return new PwError('HOOK:component.set.verify.fail');
         }
         Wekit::C()->setConfig($this->namespace, $alias, $component, $description);

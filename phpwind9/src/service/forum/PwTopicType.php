@@ -56,7 +56,7 @@ class PwTopicType
 
     public function fetchTopicType($ids)
     {
-        if (!is_array($ids) || !count($ids)) {
+        if (! is_array($ids) || ! count($ids)) {
             return [];
         }
 
@@ -84,7 +84,7 @@ class PwTopicType
         $topicTypes = ['topic_types' => [], 'sub_topic_types' => [], 'all_types' => []];
         $fid = intval($fid);
         $data = $this->_getDao()->getTopicTypesByFid($fid);
-        if (!$data) {
+        if (! $data) {
             return $topicTypes;
         }
         foreach ($data as $v) {

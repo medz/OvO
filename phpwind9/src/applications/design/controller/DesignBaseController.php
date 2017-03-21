@@ -27,7 +27,7 @@ class DesignBaseController extends PwBaseController
 
         $this->bo = new PwDesignModuleBo($moduleid);
         $module = $this->bo->getModule();
-        if (!$module || $module['page_id'] < 1) {
+        if (! $module || $module['page_id'] < 1) {
             $this->showError('operate.fail');
         }
         $this->pageid = $module['page_id'];

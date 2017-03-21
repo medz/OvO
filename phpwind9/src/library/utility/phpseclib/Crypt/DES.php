@@ -234,7 +234,7 @@ class Crypt_DES
      */
     public function Crypt_DES($mode = CRYPT_MODE_DES_CBC)
     {
-        if (!defined('CRYPT_DES_MODE')) {
+        if (! defined('CRYPT_DES_MODE')) {
             switch (true) {
                 case extension_loaded('mcrypt'):
                     // i'd check to see if des was supported, by doing in_array('des', mcrypt_list_algorithms('')),
@@ -372,7 +372,7 @@ class Crypt_DES
 
         if (CRYPT_DES_MODE == CRYPT_DES_MODE_MCRYPT) {
             if ($this->changed) {
-                if (!isset($this->enmcrypt)) {
+                if (! isset($this->enmcrypt)) {
                     $this->enmcrypt = mcrypt_module_open(MCRYPT_DES, '', $this->mode, '');
                 }
                 mcrypt_generic_init($this->enmcrypt, $this->keys, $this->encryptIV);
@@ -381,14 +381,14 @@ class Crypt_DES
 
             $ciphertext = mcrypt_generic($this->enmcrypt, $plaintext);
 
-            if (!$this->continuousBuffer) {
+            if (! $this->continuousBuffer) {
                 mcrypt_generic_init($this->enmcrypt, $this->keys, $this->encryptIV);
             }
 
             return $ciphertext;
         }
 
-        if (!is_array($this->keys)) {
+        if (! is_array($this->keys)) {
             $this->keys = $this->_prepareKey("\0\0\0\0\0\0\0\0");
         }
 
@@ -445,7 +445,7 @@ class Crypt_DES
 
         if (CRYPT_DES_MODE == CRYPT_DES_MODE_MCRYPT) {
             if ($this->changed) {
-                if (!isset($this->demcrypt)) {
+                if (! isset($this->demcrypt)) {
                     $this->demcrypt = mcrypt_module_open(MCRYPT_DES, '', $this->mode, '');
                 }
                 mcrypt_generic_init($this->demcrypt, $this->keys, $this->decryptIV);
@@ -454,14 +454,14 @@ class Crypt_DES
 
             $plaintext = mdecrypt_generic($this->demcrypt, $ciphertext);
 
-            if (!$this->continuousBuffer) {
+            if (! $this->continuousBuffer) {
                 mcrypt_generic_init($this->demcrypt, $this->keys, $this->decryptIV);
             }
 
             return $this->mode != 'ctr' ? $this->_unpad($plaintext) : $plaintext;
         }
 
-        if (!is_array($this->keys)) {
+        if (! is_array($this->keys)) {
             $this->keys = $this->_prepareKey("\0\0\0\0\0\0\0\0");
         }
 
@@ -596,7 +596,7 @@ class Crypt_DES
     {
         $length = strlen($text);
 
-        if (!$this->padding) {
+        if (! $this->padding) {
             if (($length & 7) == 0) {
                 return $text;
             } else {
@@ -620,13 +620,13 @@ class Crypt_DES
      */
     public function _unpad($text)
     {
-        if (!$this->padding) {
+        if (! $this->padding) {
             return $text;
         }
 
         $length = ord($text[strlen($text) - 1]);
 
-        if (!$length || $length > 8) {
+        if (! $length || $length > 8) {
             return false;
         }
 

@@ -20,7 +20,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function getForum($fid)
     {
-        if (!$result = $this->getBaseInstance()->getForum($fid)) {
+        if (! $result = $this->getBaseInstance()->getForum($fid)) {
             return $result;
         }
         if ($ret = $this->getForumStatistics($fid)) {
@@ -37,7 +37,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function fetchForum($fids)
     {
-        if (!$result = $this->getBaseInstance()->fetchForum($fids)) {
+        if (! $result = $this->getBaseInstance()->fetchForum($fids)) {
             return $result;
         }
 
@@ -46,7 +46,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function getForumList()
     {
-        if (!$result = $this->getBaseInstance()->getForumList()) {
+        if (! $result = $this->getBaseInstance()->getForumList()) {
             return $result;
         }
 
@@ -55,7 +55,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function getCommonForumList()
     {
-        if (!$result = $this->getBaseInstance()->getCommonForumList()) {
+        if (! $result = $this->getBaseInstance()->getCommonForumList()) {
             return $result;
         }
 
@@ -64,7 +64,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function addForum($fields)
     {
-        if (!$fid = $this->getBaseInstance()->addForum($fields)) {
+        if (! $fid = $this->getBaseInstance()->addForum($fields)) {
             return false;
         }
         $fields['fid'] = $fid;
@@ -91,7 +91,7 @@ class PwForumStatisticsDao extends PwBaseDao
 
     public function deleteForum($fid)
     {
-        if (!$this->getBaseInstance()->deleteForum($fid)) {
+        if (! $this->getBaseInstance()->deleteForum($fid)) {
             return false;
         }
 

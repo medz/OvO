@@ -18,11 +18,11 @@ class PwPushService
     public function getDataByFromid($model, $formid)
     {
         $cls = sprintf('PwDesign%sPushService', ucwords($model));
-        if (!Wind::import('SRV:design.srv.model.'.$model.'.'.$cls)) {
+        if (! Wind::import('SRV:design.srv.model.'.$model.'.'.$cls)) {
             return [];
         }
         $srv = new $cls();
-        if (!method_exists($srv, 'getFromData')) {
+        if (! method_exists($srv, 'getFromData')) {
             return [];
         }
 
@@ -39,7 +39,7 @@ class PwPushService
         $srv = new PwModuleData($data['module_id']);
         $_data = $srv->buildDataByIds($data['push_from_id']);
         $_data = array_shift($_data);
-        if (!$_data) {
+        if (! $_data) {
             return new PwError('DESIGN:push.data.error');
         }
         $dm->setFormModel($_data['standard_fromapp'])
@@ -131,7 +131,7 @@ class PwPushService
         $push = $pushDs->getPush($pushid);
         $cls = sprintf('PwDesign%sPushService', ucwords($push['push_from_model']));
         if (Wind::import('SRV:design.srv.model.'.$push['push_from_model'].'.'.$cls)) {
-            if (!class_exists($cls, false)) {
+            if (! class_exists($cls, false)) {
                 return false;
             }
             $srv = new $cls();

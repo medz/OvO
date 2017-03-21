@@ -18,7 +18,7 @@ class PwDeleteTopicDoTagDelete extends iPwGleanDoHookProcess
         $ds = Wekit::load('tag.PwTag');
         $tags = $ds->fetchByTypeIdAndParamIds(PwTag::TYPE_THREAD_TOPIC, $ids);
         $tagIds = array_keys($tags);
-        if (!$tagIds) {
+        if (! $tagIds) {
             return false;
         }
         $ds->batchDeleteRelation(PwTag::TYPE_THREAD_TOPIC, $ids);

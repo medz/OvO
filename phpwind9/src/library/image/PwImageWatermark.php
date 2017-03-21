@@ -165,11 +165,11 @@ class PwImageWatermark
     {
         if ($this->type == 1) {
             $water = new PwImage(Wind::getRealDir('REP:mark').'/'.$this->file);
-            if (!$water->isImage() || !$water->getSource()) {
+            if (! $water->isImage() || ! $water->getSource()) {
                 return false;
             }
         } else {
-            if (!$this->text || strlen($this->fontcolor) != 7) {
+            if (! $this->text || strlen($this->fontcolor) != 7) {
                 return false;
             }
             empty($this->fontfamily) && $this->fontfamily = 'en_arial.ttf';
@@ -190,10 +190,10 @@ class PwImageWatermark
      */
     public function execute()
     {
-        if (!$this->image->getSource()) {
+        if (! $this->image->getSource()) {
             return false;
         }
-        if (!function_exists('image'.$this->image->type)) {
+        if (! function_exists('image'.$this->image->type)) {
             return false;
         }
         if (($water = $this->initWaterWay()) === false) {
@@ -264,7 +264,7 @@ class PwImageWatermark
     public function makeImage($type, $image, $filename, $quality = '90')
     {
         $makeimage = 'image'.$type;
-        if (!function_exists($makeimage)) {
+        if (! function_exists($makeimage)) {
             return false;
         }
         if ($type == 'jpeg') {

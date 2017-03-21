@@ -28,7 +28,7 @@ class RemindController extends PwBaseController
     public function run()
     {
         $username = $this->getInput('username');
-        if (!$username) {
+        if (! $username) {
             $remindData = $this->_getRemindDs()->getByUid($this->loginUser->uid);
             $remindData && $reminds = unserialize($remindData['touid']);
             $count = count($reminds);
@@ -95,7 +95,7 @@ class RemindController extends PwBaseController
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN);
         $users = [];
         foreach ($uids as $v) {
-            if (!isset($userList[$v]['username'])) {
+            if (! isset($userList[$v]['username'])) {
                 continue;
             }
             $users[$v] = $userList[$v]['username'];

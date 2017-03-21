@@ -22,7 +22,7 @@ class PwDesignComponent
 
     public function getComponentByFlag($flag)
     {
-        if (!$flag) {
+        if (! $flag) {
             return [];
         }
 
@@ -41,7 +41,7 @@ class PwDesignComponent
 
     public function addComponent($flag, $name, $tpl, $issys = false)
     {
-        if (!$flag || !$tpl || !$name) {
+        if (! $flag || ! $tpl || ! $name) {
             return false;
         }
         $data['model_flag'] = $flag;
@@ -58,7 +58,7 @@ class PwDesignComponent
     public function updateComponent($id, $flag, $name, $tpl)
     {
         $id = (int) $id;
-        if ($id < 1 || !$flag || !$tpl || !$name) {
+        if ($id < 1 || ! $flag || ! $tpl || ! $name) {
             return false;
         }
         $data['model_flag'] = $flag;

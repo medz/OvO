@@ -26,16 +26,16 @@ class PwPollService
     {
         $userid = intval($userid);
         $pollid = intval($pollid);
-        if (!$userid || !$pollid) {
+        if (! $userid || ! $pollid) {
             return new PwError('VOTE:fail');
         }
 
-        if (empty($option) || !is_array($option)) {
+        if (empty($option) || ! is_array($option)) {
             return new PwError('VOTE:not.select.option');
         }
 
         $poll = $this->_getPollDs()->getPoll($pollid);
-        if (!$poll) {
+        if (! $poll) {
             return new PwError('VOTE:thread.not.exist');
         }
 
@@ -81,7 +81,7 @@ class PwPollService
         $pollid = intval($pollid);
 
         $poll = $this->getPoll($pollid);
-        if (!$poll) {
+        if (! $poll) {
             return false;
         }
 
@@ -100,7 +100,7 @@ class PwPollService
      */
     public function resetOptionVotedNum($optionid)
     {
-        if (!$optionid) {
+        if (! $optionid) {
             return false;
         }
 
@@ -133,7 +133,7 @@ class PwPollService
     private function _removePollImg($pollid)
     {
         $pollid = intval($pollid);
-        if (!$pollid) {
+        if (! $pollid) {
             return false;
         }
 
@@ -143,7 +143,7 @@ class PwPollService
             $images[] = $value['image'];
         }
 
-        if (!$images) {
+        if (! $images) {
             return false;
         }
         //$attachDs = Wekit::load('attach.PwAttach'); /* @var $attachDs PwAttach */

@@ -26,7 +26,7 @@ class PwAdDao extends PwBaseDao
 
     public function addAdPosition($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -36,7 +36,7 @@ class PwAdDao extends PwBaseDao
 
     public function editAdPosition($pid, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s  WHERE pid = ? ', $this->getTable(), $this->sqlSingle($data));

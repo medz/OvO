@@ -32,7 +32,7 @@ class LikeController extends PwBaseController
         $start >= 100 && $start = 100;
         $module = Wekit::load('design.PwDesignModule')->getModule($moduleid);
         $perpage = 20;
-        if (!$module) {
+        if (! $module) {
             $this->showMessage('operate.fail');
         } //返回成功信息
         $time = Pw::getTime();
@@ -70,11 +70,11 @@ class LikeController extends PwBaseController
         $typeid = (int) $this->getInput('typeid', 'get');
         $_users = [];
         $like = $this->_getLikeContentService()->getInfoByTypeidFromid($typeid, $fromid);
-        !$like && $this->showError('BBS:like.fail');
+        ! $like && $this->showError('BBS:like.fail');
         $uids = $like['users'] ? explode(',', $like['users']) : [];
         $userInfos = Wekit::load('user.PwUser')->fetchUserByUid($uids);
         foreach ($userInfos as $user) {
-            if (!$user['uid']) {
+            if (! $user['uid']) {
                 continue;
             }
             $_users[$user['uid']]['uid'] = $user['uid'];

@@ -20,7 +20,7 @@ class PwWork
      */
     public function addWorkExperience($dm)
     {
-        if (!$dm instanceof PwWorkDm) {
+        if (! $dm instanceof PwWorkDm) {
             return new PwError('USER:work.illegal.datatype');
         }
         if (($result = $dm->beforeAdd()) instanceof PwError) {
@@ -44,7 +44,7 @@ class PwWork
         if (($id = intval($id)) < 1 || $uid < 1) {
             return new PwError('USER:work.illegal.request');
         }
-        if (!$dm instanceof PwWorkDm) {
+        if (! $dm instanceof PwWorkDm) {
             return new PwError('USER:work.illegal.datatype');
         }
         if (($result = $dm->beforeUpdate()) instanceof PwError) {

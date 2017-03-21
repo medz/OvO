@@ -62,7 +62,7 @@ class PwTagCategoryDao extends PwBaseDao
     {
         $array = [];
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v) || !$v['category_name']) {
+            if (! $this->_filterStruct($v) || ! $v['category_name']) {
                 continue;
             }
             $array[] = [
@@ -71,7 +71,7 @@ class PwTagCategoryDao extends PwBaseDao
                 $v['vieworder'],
             ];
         }
-        if (!is_array($array) || !count($array)) {
+        if (! is_array($array) || ! count($array)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`category_name`,`alias`,`vieworder`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));
@@ -90,7 +90,7 @@ class PwTagCategoryDao extends PwBaseDao
     {
         $array = [];
         foreach ($data as $v) {
-            if (!$this->_filterStruct($v) || !$v['category_id']) {
+            if (! $this->_filterStruct($v) || ! $v['category_id']) {
                 continue;
             }
             $array[] = [
@@ -100,7 +100,7 @@ class PwTagCategoryDao extends PwBaseDao
                 $v['vieworder'],
             ];
         }
-        if (!is_array($array) || !count($array)) {
+        if (! is_array($array) || ! count($array)) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s (`category_id`,`category_name`,`alias`,`vieworder`) VALUES %s ', $this->getTable(), $this->sqlMulti($array));

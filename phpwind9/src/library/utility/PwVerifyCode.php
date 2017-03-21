@@ -102,7 +102,7 @@ class PwVerifyCode
                 break;
         }
         $this->_getGDRandType();
-        if (!PwGDCode::init()) {
+        if (! PwGDCode::init()) {
             return false;
         }
         $this->_saveVerifyCode();
@@ -164,7 +164,7 @@ class PwVerifyCode
 
         //
         $verify_session_id = Pw::getCookie('Pw_verify_code');
-        if (!$verify_session_id) {
+        if (! $verify_session_id) {
             $verify_session_id = md5($code);
             Pw::setCookie('Pw_verify_code', md5($code), 3600);
         }

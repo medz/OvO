@@ -31,7 +31,7 @@ class PwTaskUserDao extends PwBaseDao
      */
     public function replaceUserTask($data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));
@@ -49,7 +49,7 @@ class PwTaskUserDao extends PwBaseDao
      */
     public function updateIsPeriod($taskid, $data)
     {
-        if (!isset($data['period'])) {
+        if (! isset($data['period'])) {
             return false;
         }
         $is_period = intval($data['period']) > 0 ? 1 : 0;
@@ -69,7 +69,7 @@ class PwTaskUserDao extends PwBaseDao
      */
     public function updateByTaskIdAndUid($taskid, $uid, $data)
     {
-        if (!$data = $this->_filterStruct($data)) {
+        if (! $data = $this->_filterStruct($data)) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE `taskid` = ? AND `uid` = ?',

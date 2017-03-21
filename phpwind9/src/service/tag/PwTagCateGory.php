@@ -20,13 +20,13 @@ class PwTagCateGory
     public function addCategoryRelations($tagId, $cateGoryIds)
     {
         $tagId = intval($tagId);
-        if ($tagId < 1 || !is_array($cateGoryIds) || !count($cateGoryIds)) {
+        if ($tagId < 1 || ! is_array($cateGoryIds) || ! count($cateGoryIds)) {
             return false;
         }
         $relationsdata = [];
         foreach ($cateGoryIds as $id) {
             $id = intval($id);
-            if (!$id) {
+            if (! $id) {
                 return false;
             }
             $array['category_id'] = $id;
@@ -87,7 +87,7 @@ class PwTagCateGory
             return [];
         }
         $relations = $this->_getTagCategoryRelationDao()->getByTagId($tagId);
-        if (!$relations) {
+        if (! $relations) {
             return [];
         }
         $categoryIds = [];
@@ -106,7 +106,7 @@ class PwTagCateGory
      */
     public function updateTagCategory(PwTagDm $dm)
     {
-        if (!$dm->getField('category_name')) {
+        if (! $dm->getField('category_name')) {
             return new PwError('TAG:category.name.empty');
         }
 
@@ -122,7 +122,7 @@ class PwTagCateGory
      */
     public function addTagCategory(PwTagDm $dm)
     {
-        if (!$dm->getField('category_name')) {
+        if (! $dm->getField('category_name')) {
             return new PwError('TAG:category.name.empty');
         }
 
@@ -179,7 +179,7 @@ class PwTagCateGory
      */
     public function deleteCateGoryRelations($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return false;
         }
 
@@ -193,7 +193,7 @@ class PwTagCateGory
      */
     public function getRelationsByTagIds($tagIds)
     {
-        if (!is_array($tagIds) || !count($tagIds)) {
+        if (! is_array($tagIds) || ! count($tagIds)) {
             return false;
         }
 

@@ -80,7 +80,7 @@ class PwCommonRead extends PwReadDataSource
      */
     private function _getToppedReply($limit, $offset)
     {
-        if (!$posts = Wekit::load('forum.PwPostsTopped')->getByTid($this->info['tid'], $limit, $offset)) {
+        if (! $posts = Wekit::load('forum.PwPostsTopped')->getByTid($this->info['tid'], $limit, $offset)) {
             return [];
         }
         $replies = Wekit::load('forum.PwThread')->fetchPost(array_keys($posts));

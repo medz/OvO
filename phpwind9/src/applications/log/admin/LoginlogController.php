@@ -53,7 +53,7 @@ class LoginlogController extends AdminBaseController
      */
     public function clearAction()
     {
-        if (!$this->isFounder($this->loginUser->username)) {
+        if (! $this->isFounder($this->loginUser->username)) {
             $this->showError('fail');
         }
         $step = $this->getInput('step', 'post');

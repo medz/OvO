@@ -77,12 +77,12 @@ class WindidSchoolDao extends WindidBaseDao
     {
         $clear = [];
         foreach ($data as $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $clear[] = [$_item['name'], $_item['areaid'], $_item['first_char'], $_item['typeid']];
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`name`, `areaid`, `first_char`, `typeid`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));
@@ -135,7 +135,7 @@ class WindidSchoolDao extends WindidBaseDao
     public function searchSchool($condition, $limit, $start)
     {
         list($where, $param) = $this->_buildCondition($condition);
-        if (!$where) {
+        if (! $where) {
             return [];
         }
         $sql = $this->_bindSql('SELECT * FROM %s %s ORDER BY `first_char` %s', $this->getTable(), $where, $this->sqlLimit($limit, $start));
@@ -154,7 +154,7 @@ class WindidSchoolDao extends WindidBaseDao
     public function countSearchSchool($condition)
     {
         list($where, $param) = $this->_buildCondition($condition);
-        if (!$where) {
+        if (! $where) {
             return [];
         }
         $sql = $this->_bindSql('SELECT COUNT(*) FROM %s %s', $this->getTable(), $where);
@@ -174,7 +174,7 @@ class WindidSchoolDao extends WindidBaseDao
     {
         $where = $params = [];
         foreach ($conditions as $_key => $_var) {
-            if (!$_var) {
+            if (! $_var) {
                 continue;
             }
             switch ($_key) {

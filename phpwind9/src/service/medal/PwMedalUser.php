@@ -32,7 +32,7 @@ class PwMedalUser
      */
     public function fetchMedalUser($uids)
     {
-        if (!is_array($uids) || count($uids) < 1) {
+        if (! is_array($uids) || count($uids) < 1) {
             return [];
         }
 
@@ -48,7 +48,7 @@ class PwMedalUser
      */
     public function fetchMedalUserOrder($uids, $start = 0, $limit = 10)
     {
-        if (!is_array($uids) || count($uids) < 1) {
+        if (! is_array($uids) || count($uids) < 1) {
             return [];
         }
 

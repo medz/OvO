@@ -53,7 +53,7 @@ class PwThread
      */
     public function fetchThread($tids, $fetchmode = self::FETCH_MAIN)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return [];
         }
 
@@ -225,7 +225,7 @@ class PwThread
      */
     public function revertTopic($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 
@@ -240,7 +240,7 @@ class PwThread
      */
     public function deleteThread($tid)
     {
-        if (!$tid) {
+        if (! $tid) {
             return false;
         }
 
@@ -255,7 +255,7 @@ class PwThread
      */
     public function batchDeleteThread($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 
@@ -299,7 +299,7 @@ class PwThread
      */
     public function getPost($pid)
     {
-        if (!$pid) {
+        if (! $pid) {
             return [];
         }
 
@@ -315,7 +315,7 @@ class PwThread
      */
     public function fetchPost($pids)
     {
-        if (empty($pids) || !is_array($pids)) {
+        if (empty($pids) || ! is_array($pids)) {
             return false;
         }
 
@@ -495,7 +495,7 @@ class PwThread
      */
     public function batchUpdatePost($pids, PwReplyDm $replyDm)
     {
-        if (empty($pids) || !is_array($pids)) {
+        if (empty($pids) || ! is_array($pids)) {
             return false;
         }
         if (($result = $replyDm->beforeUpdate()) !== true) {
@@ -534,7 +534,7 @@ class PwThread
      */
     public function revertPost($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 
@@ -550,7 +550,7 @@ class PwThread
      */
     public function batchDeletePost($pids)
     {
-        if (empty($pids) || !is_array($pids)) {
+        if (empty($pids) || ! is_array($pids)) {
             return false;
         }
 
@@ -566,7 +566,7 @@ class PwThread
      */
     public function batchDeletePostByTid($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return false;
         }
 
@@ -580,7 +580,7 @@ class PwThread
 
     public function fetchHit($tids)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return [];
         }
 

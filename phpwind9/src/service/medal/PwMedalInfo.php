@@ -38,7 +38,7 @@ class PwMedalInfo
      */
     public function fetchMedalInfo($medalIds)
     {
-        if (!is_array($medalIds) || count($medalIds) < 1) {
+        if (! is_array($medalIds) || count($medalIds) < 1) {
             return [];
         }
 

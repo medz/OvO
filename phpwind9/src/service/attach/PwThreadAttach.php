@@ -38,7 +38,7 @@ class PwThreadAttach
      */
     public function fetchAttach($aids)
     {
-        if (empty($aids) || !is_array($aids)) {
+        if (empty($aids) || ! is_array($aids)) {
             return [];
         }
 
@@ -55,7 +55,7 @@ class PwThreadAttach
      */
     public function getAttachByTid($tid, $pids)
     {
-        if (!$tid || !$pids) {
+        if (! $tid || ! $pids) {
             return [];
         }
 
@@ -97,7 +97,7 @@ class PwThreadAttach
      */
     public function fetchAttachByTid($tids)
     {
-        if (!$tids || !is_array($tids)) {
+        if (! $tids || ! is_array($tids)) {
             return [];
         }
 
@@ -114,7 +114,7 @@ class PwThreadAttach
      */
     public function fetchAttachByTidAndPid($tids, $pids)
     {
-        if (!$tids || !$pids || !is_array($tids) || !is_array($pids)) {
+        if (! $tids || ! $pids || ! is_array($tids) || ! is_array($pids)) {
             return [];
         }
 
@@ -131,7 +131,7 @@ class PwThreadAttach
      */
     public function fetchAttachByTidsAndPid($tids, $pid = 0)
     {
-        if (empty($tids) || !is_array($tids)) {
+        if (empty($tids) || ! is_array($tids)) {
             return [];
         }
         $pid = intval($pid);
@@ -194,7 +194,7 @@ class PwThreadAttach
      */
     public function batchUpdateAttach($aids, PwThreadAttachDm $dm)
     {
-        if (!$aids || !is_array($aids)) {
+        if (! $aids || ! is_array($aids)) {
             return false;
         }
         if (($result = $dm->beforeUpdate()) !== true) {
@@ -217,7 +217,7 @@ class PwThreadAttach
      */
     public function batchUpdateFidByTid($tids, $fid)
     {
-        if (!$tids || !is_array($tids)) {
+        if (! $tids || ! is_array($tids)) {
             return false;
         }
 
@@ -247,7 +247,7 @@ class PwThreadAttach
      */
     public function batchDeleteAttach($aids)
     {
-        if (!$aids || !is_array($aids)) {
+        if (! $aids || ! is_array($aids)) {
             return false;
         }
         $this->_getAttach()->batchDeleteAttach($aids);

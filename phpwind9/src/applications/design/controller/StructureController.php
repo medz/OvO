@@ -33,7 +33,7 @@ class StructureController extends PwBaseController
         $pageid = (int) $this->getInput('pageid', 'post');
         $title = $this->getInput('title', 'post');
         $tab = $this->getInput('tab', 'post');
-        if (!$titles['titles']) {
+        if (! $titles['titles']) {
             if ($tab) {
                 $i = 1;
                 foreach ($tab as $v) {
@@ -110,7 +110,7 @@ class StructureController extends PwBaseController
             $jtitle = $image[$k] ? '<img src="'.$_tmp['image'].'" title="'.$_tmp['title'].'">' : $_tmp['title'];
             if ($jtitle) {
                 if ($structure == 'tab') {
-                    if (!$tab[$k]) {
+                    if (! $tab[$k]) {
                         $tab[$k] = 'tab_'.$_n;
                         $_n++;
                     }
@@ -125,7 +125,7 @@ class StructureController extends PwBaseController
                     $_tmp['tab'] = $tab[$k];
                 } else {
                     $html .= '<span';
-                    $html .= $jstyle && !$_tmp['link'] ? ' style="'.$jstyle.'"' : '';
+                    $html .= $jstyle && ! $_tmp['link'] ? ' style="'.$jstyle.'"' : '';
                     $html .= '>';
                     $html .= $_tmp['link'] ? '<a href="'.$_tmp['link'].'" style="'.$jstyle.'">' : '';
                     $html .= $jtitle;
@@ -173,7 +173,7 @@ class StructureController extends PwBaseController
         $pageid = (int) $this->getInput('pageid', 'post');
         $title = $this->getInput('title', 'post');
         $struct = $this->bo->getStructure();
-        if (!$struct) {
+        if (! $struct) {
             $this->showMessage('operate.fail');
         }
 
@@ -192,7 +192,7 @@ class StructureController extends PwBaseController
         if ($pageInfo['page_type'] == PwDesignPage::PORTAL) {
             $compile->replaceTitle($this->bo->name, $title);
         } elseif ($pageInfo['page_type'] == PwDesignPage::SYSTEM) {
-            !$struct['segment'] && $struct['segment'] = '';
+            ! $struct['segment'] && $struct['segment'] = '';
             $compile->replaceTitle($this->bo->name, $title, $struct['segment']);
         }
 

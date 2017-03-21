@@ -51,7 +51,7 @@ class PwMessageConfigDao extends PwBaseDao
      */
     public function setMessageConfig($data)
     {
-        if (!($data = $this->_filterStruct($data))) {
+        if (! ($data = $this->_filterStruct($data))) {
             return false;
         }
         $data = [

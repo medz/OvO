@@ -21,7 +21,7 @@ class PwHookDao extends PwBaseDao
      */
     public function add($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('INSERT INTO %s SET ').$this->sqlSingle($fields);
@@ -133,7 +133,7 @@ class PwHookDao extends PwBaseDao
      */
     public function updateByName($name)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindTable('UPDATE %s set ').$this->sqlSingle($fields).' WHERE name=?';
@@ -150,7 +150,7 @@ class PwHookDao extends PwBaseDao
      */
     public function find($name)
     {
-        if (!$name) {
+        if (! $name) {
             return false;
         }
         $sql = $this->_bindTable('SELECT * FROM %s ').' WHERE name=?';
@@ -212,7 +212,7 @@ class PwHookDao extends PwBaseDao
      */
     public function findByPage($num = 10, $start = 0, $index = 'name', $order = 'name')
     {
-        if (!in_array($order, $this->_dataStruct)) {
+        if (! in_array($order, $this->_dataStruct)) {
             return false;
         }
         $sql = $this->_bindSql('SELECT * FROM %s ORDER BY `'.$order.'` %s', $this->getTable(),

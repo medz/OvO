@@ -62,7 +62,7 @@ class PwTryPwdBp
         //手机号码登录
         if (PwUserValidator::isMobileValid($username) === true && in_array(4, $this->loginConfig['ways'])) {
             $mobileInfo = Wekit::load('user.PwUserMobile')->getByMobile($username);
-            if (!$mobileInfo) {
+            if (! $mobileInfo) {
                 return $this->checkVerifyResult(-1, []);
             }
             $r = $this->_getWindid()->login($mobileInfo['uid'], $password, 1, $checkQ, $safeQuestion, $safeAnswer);
@@ -115,7 +115,7 @@ class PwTryPwdBp
     public function checkQuestion($uid, $question, $answer, $ip)
     {
         $info = $this->_getWindid()->getUser($uid, 1);
-        if (!$info) {
+        if (! $info) {
             return new PwError('USER:user.error.-14');
         }
         if (true !== ($r = $this->allowTryAgain($uid, $ip, 'question'))) {
@@ -143,7 +143,7 @@ class PwTryPwdBp
         }
         //密码次数测试
         $info = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_DATA);
-        if (!$info || !$info['trypwd']) {
+        if (! $info || ! $info['trypwd']) {
             $num = $lastTry = 0;
         } else {
             list($lastTry, $num) = explode('|', $info['trypwd']);
@@ -171,7 +171,7 @@ class PwTryPwdBp
             return $isIpOver;
         }
         $info = $this->_getUserDs()->getUserByUid($uid, PwUser::FETCH_DATA);
-        if (!$info || !$info['trypwd']) {
+        if (! $info || ! $info['trypwd']) {
             $num = $lastTry = 0;
         } else {
             list($lastTry, $num) = explode('|', $info['trypwd']);
@@ -270,14 +270,14 @@ class PwTryPwdBp
      */
     private function checkIpLimit($ip, $isUpdate = false)
     {
-        if (!$ip) {
+        if (! $ip) {
             return true;
         }
         /* @var $ipDs PwUserLoginIpRecode */
         $ipDs = Wekit::load('user.PwUserLoginIpRecode');
         $info = $ipDs->getRecode($ip);
         $tody = Pw::time2str(Pw::getTime(), 'Y-m-d');
-        if (!$info) {
+        if (! $info) {
             $info['error_count'] = 0;
             $info['last_time'] = $tody;
         }

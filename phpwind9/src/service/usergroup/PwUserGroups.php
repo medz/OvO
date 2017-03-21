@@ -61,7 +61,7 @@ class PwUserGroups
      */
     public function fetchGroup($gids)
     {
-        if (empty($gids) || !is_array($gids)) {
+        if (empty($gids) || ! is_array($gids)) {
             return [];
         }
 
@@ -77,7 +77,7 @@ class PwUserGroups
      */
     public function getGroupsByType($groupType)
     {
-        if (!$this->checkGroupType($groupType)) {
+        if (! $this->checkGroupType($groupType)) {
             return [];
         }
 
@@ -101,7 +101,7 @@ class PwUserGroups
         $groups = [];
         $allGroups = $this->getAllGroups();
         foreach ($allGroups as $k => $v) {
-            if (!in_array($v['type'], $groupTypes)) {
+            if (! in_array($v['type'], $groupTypes)) {
                 continue;
             }
             $groups[$k] = $v;
@@ -112,7 +112,7 @@ class PwUserGroups
 
     public function getGroupsByTypeInUpgradeOrder($groupType)
     {
-        if (!$this->checkGroupType($groupType)) {
+        if (! $this->checkGroupType($groupType)) {
             return [];
         }
 
@@ -164,7 +164,7 @@ class PwUserGroups
      */
     public function getClassifiedGroups()
     {
-        if (!$groups = $this->getAllGroups()) {
+        if (! $groups = $this->getAllGroups()) {
             return [];
         }
         $data = [];

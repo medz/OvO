@@ -50,7 +50,7 @@ class WindidNotifyLog
             }
             $data[] = $dm->getData();
         }
-        if (!$data) {
+        if (! $data) {
             return false;
         }
 
@@ -75,7 +75,7 @@ class WindidNotifyLog
 
     public function batchDelete($ids)
     {
-        if (!is_array($ids)) {
+        if (! is_array($ids)) {
             $ids = [$ids];
         }
 

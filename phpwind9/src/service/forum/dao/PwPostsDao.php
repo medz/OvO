@@ -94,7 +94,7 @@ class PwPostsDao extends PwBaseDao
     {
         $fields = $this->_filterStruct($fields);
         $increaseFields = $this->_filterStruct($increaseFields);
-        if (!$fields && !$increaseFields) {
+        if (! $fields && ! $increaseFields) {
             return false;
         }
         $sql = $this->_bindSql('UPDATE %s SET %s WHERE tid IN %s', $this->getTable(), $this->sqlMerge($fields, $increaseFields), $this->sqlImplode($tids));

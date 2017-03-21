@@ -43,11 +43,11 @@ class IndexController extends PwBaseController
     {
         $operation = (int) $this->getInput('operation', 'get');
         list($method, $args) = $this->getMethod($operation);
-        if (!$method) {
+        if (! $method) {
             $this->showError('fail');
         }
         $srv = new PwWindidInform();
-        if (!method_exists($srv, $method)) {
+        if (! method_exists($srv, $method)) {
             $this->showMessage('success');
         } //不指定的方法，默认返回成功状态
         $args = $this->getInput($args);

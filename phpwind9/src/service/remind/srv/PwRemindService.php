@@ -29,13 +29,13 @@ class PwRemindService
 
         $pattern = '/@([\x7f-\xff\dA-Za-z\.\_]+)/is';
         preg_match_all($pattern, $content, $matches);
-        if (!$matches[1]) {
+        if (! $matches[1]) {
             return [];
         }
         $reminds = [];
         foreach ($matches[1] as $v) {
             $v = trim($v);
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $reminds[] = $v;
@@ -54,7 +54,7 @@ class PwRemindService
     public function addRemind($uid, $reminds)
     {
         $uid = intval($uid);
-        if ($uid < 1 || !$reminds) {
+        if ($uid < 1 || ! $reminds) {
             return false;
         }
         $remind = $this->_getRemindDs()->getByUid($uid);
@@ -74,7 +74,7 @@ class PwRemindService
     public function buildUsers($uid, $reminds, $maxNum = 0)
     {
         $reminds = array_unique($reminds);
-        if (!$reminds) {
+        if (! $reminds) {
             return [];
         }
         $users = $this->_getUserDs()->fetchUserByName($reminds);
@@ -87,7 +87,7 @@ class PwRemindService
         }
         $i = 0;
         foreach ($reminds as $v) {
-            if (!isset($_tmp[$v])) {
+            if (! isset($_tmp[$v])) {
                 continue;
             }
             if ($maxNum && $i >= $maxNum) {
@@ -109,7 +109,7 @@ class PwRemindService
      */
     public function formatReminds($users)
     {
-        if (!$users) {
+        if (! $users) {
             return false;
         }
         $user = '';

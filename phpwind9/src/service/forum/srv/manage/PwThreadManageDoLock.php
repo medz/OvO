@@ -18,10 +18,10 @@ class PwThreadManageDoLock extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['lock']) || !$permission['lock']) {
+        if (! isset($permission['lock']) || ! $permission['lock']) {
             return false;
         }
-        if (!$this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
+        if (! $this->srv->user->comparePermission(Pw::collectByKey($this->srv->data, 'created_userid'))) {
             return new PwError('permission.level.lock', ['{grouptitle}' => $this->srv->user->getGroupInfo('name')]);
         }
 

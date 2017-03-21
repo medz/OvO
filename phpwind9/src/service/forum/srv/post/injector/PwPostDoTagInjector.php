@@ -16,7 +16,7 @@ class PwPostDoTagInjector extends PwBaseHookInjector
     public function doadd()
     {
         $tagNames = (array) $this->getInput('tagnames', 'post');
-        if (!is_array($tagNames) || !count($tagNames)) {
+        if (! is_array($tagNames) || ! count($tagNames)) {
             return;
         }
 

@@ -40,7 +40,7 @@ class PwLogLoginDao extends PwBaseDao
     {
         $clear = $fields = [];
         foreach ($datas as $key => $_item) {
-            if (!($_item = $this->_filterStruct($_item))) {
+            if (! ($_item = $this->_filterStruct($_item))) {
                 continue;
             }
             $_temp = [];
@@ -51,7 +51,7 @@ class PwLogLoginDao extends PwBaseDao
             $_temp['ip'] = $_item['ip'];
             $clear[] = $_temp;
         }
-        if (!$clear) {
+        if (! $clear) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s (`uid`, `username`, `typeid`, `created_time`, `ip`) VALUES %s', $this->getTable(), $this->sqlMulti($clear));
@@ -138,7 +138,7 @@ class PwLogLoginDao extends PwBaseDao
     {
         $where = $params = [];
         foreach ($condition as $_k => $_v) {
-            if (!$_v) {
+            if (! $_v) {
                 continue;
             }
             switch ($_k) {

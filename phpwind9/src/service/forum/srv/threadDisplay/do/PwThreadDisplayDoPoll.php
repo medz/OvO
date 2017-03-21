@@ -40,7 +40,7 @@ class PwThreadDisplayDoPoll extends PwThreadDisplayDoBase
 
     public function isAllowView()
     {
-        if (!$this->info['poll']['isafter_view'] || $this->isVoted) {
+        if (! $this->info['poll']['isafter_view'] || $this->isVoted) {
             return true;
         }
 
@@ -58,7 +58,7 @@ class PwThreadDisplayDoPoll extends PwThreadDisplayDoBase
 
     public function isAllowVote()
     {
-        if ((!$this->info['poll']['expired_time'] || ($this->info['poll']['expired_time'] && $this->info['poll']['expired_time'] > Pw::getTime())) && $this->user->getPermission('allow_participate_vote')) {
+        if ((! $this->info['poll']['expired_time'] || ($this->info['poll']['expired_time'] && $this->info['poll']['expired_time'] > Pw::getTime())) && $this->user->getPermission('allow_participate_vote')) {
             return true;
         }
 

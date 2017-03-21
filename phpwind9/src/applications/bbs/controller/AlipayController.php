@@ -19,10 +19,10 @@ class AlipayController extends PwBaseController
         $this->_var = $this->getRequest()->getRequest();
         $this->_conf = Wekit::C('pay');
 
-        if (!$this->_conf['ifopen']) {
+        if (! $this->_conf['ifopen']) {
             $this->paymsg($this->_conf['reason']);
         }
-        if (!$this->_conf['alipay']) {
+        if (! $this->_conf['alipay']) {
             $this->paymsg('onlinepay.settings.alipay.error');
         }
 
@@ -42,12 +42,12 @@ class AlipayController extends PwBaseController
         reset($this->_var);
         $arg = '';
         foreach ($this->_var as $key => $value) {
-            if ($value && !in_array($key, ['p', 'm', 'c', 'a', 'sign', 'sign_type'])) {
+            if ($value && ! in_array($key, ['p', 'm', 'c', 'a', 'sign', 'sign_type'])) {
                 $arg .= "$key=$value&";
             }
         }
         $veryfy_result1 = ($this->_var['sign'] == md5(substr($arg, 0, -1).$this->_conf['alipaykey'])) ? true : false;
-        if (!$veryfy_result1 || !preg_match('/true/i', $veryfy_result2)) {
+        if (! $veryfy_result1 || ! preg_match('/true/i', $veryfy_result2)) {
             $this->paymsg('onlinepay.auth.fail', 'fail');
         }
     }
@@ -64,7 +64,7 @@ class AlipayController extends PwBaseController
         if ($fee != $this->_var['total_fee'] || $this->_var['seller_email'] != $this->_conf['alipay']) {
             $this->paymsg('onlinepay.fail');
         }
-        if (!in_array($this->_var['trade_status'], ['TRADE_FINISHED', 'TRADE_SUCCESS', 'WAIT_SELLER_SEND_GOODS'])) {
+        if (! in_array($this->_var['trade_status'], ['TRADE_FINISHED', 'TRADE_SUCCESS', 'WAIT_SELLER_SEND_GOODS'])) {
             $this->paymsg('onlinepay.success');
         }
         if ($order['state'] == 2) {
@@ -124,11 +124,11 @@ function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port =
     }
     if ((int) $port > 0) {
         $parse['port'] = $port;
-    } elseif (!$parse['port']) {
+    } elseif (! $parse['port']) {
         $parse['port'] = '80';
     }
     $parse['host'] = str_replace(['http://', 'https://'], ['', 'ssl://'], "$parse[scheme]://").$parse['host'];
-    if (!$fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
+    if (! $fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
         return false;
     }
     $method = strtoupper($method);

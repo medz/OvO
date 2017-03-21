@@ -106,7 +106,7 @@ class PwAttentionType
      */
     public function getUserType($uid, $touids)
     {
-        if (empty($uid) || empty($touids) || !is_array($touids)) {
+        if (empty($uid) || empty($touids) || ! is_array($touids)) {
             return [];
         }
 
@@ -148,7 +148,7 @@ class PwAttentionType
      */
     public function addUserType($uid, $touid, $typeid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return false;
         }
 
@@ -166,7 +166,7 @@ class PwAttentionType
      */
     public function deleteByUidAndTouidAndType($uid, $touid, $typeid)
     {
-        if (!$uid || !$touid || !$typeid) {
+        if (! $uid || ! $touid || ! $typeid) {
             return false;
         }
 
@@ -184,7 +184,7 @@ class PwAttentionType
      */
     public function saveUserType($uid, $touid, $typeids)
     {
-        if (!$uid || !$touid || !is_array($typeids)) {
+        if (! $uid || ! $touid || ! is_array($typeids)) {
             return false;
         }
         $this->deleteUserType($uid, $touid);
@@ -205,7 +205,7 @@ class PwAttentionType
      */
     public function deleteUserType($uid, $touid)
     {
-        if (!$uid || !$touid) {
+        if (! $uid || ! $touid) {
             return false;
         }
 

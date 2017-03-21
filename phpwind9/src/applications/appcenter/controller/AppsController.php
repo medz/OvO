@@ -16,7 +16,7 @@ class AppsController extends PwBaseController
     {
         $this->appid = $this->getInput('appid');
         parent::beforeAction($handlerAdapter);
-        if (!$this->loginUser->isExists()) {
+        if (! $this->loginUser->isExists()) {
             $this->forwardAction('u/login/run', ['backurl' => WindUrlHelper::createUrl('appcenter/app/run', ['appid' => $this->appid])]);
         }
     }
@@ -27,7 +27,7 @@ class AppsController extends PwBaseController
         $params['uid'] = $this->loginUser->uid;
 
         list($status, $result) = $this->apiRequest('platform.request.geturl', $params);
-        if (!$status) {
+        if (! $status) {
             $this->showError(['APPCENTER:get.app.url.fail', ['{{error}}' => $result]]);
         }
 
@@ -51,7 +51,7 @@ class AppsController extends PwBaseController
         $result = ACloudSysCoreHttpclient::post($this->_getCloudApi(), $this->createHttpQuery($params));
         $result = WindJson::decode($result);
 
-        if (!is_array($result) || !isset($result['code'])) {
+        if (! is_array($result) || ! isset($result['code'])) {
             return [false, ''];
         }
         if ($result['code'] != 0) {
@@ -71,13 +71,13 @@ class AppsController extends PwBaseController
 
     public function createSign($params)
     {
-        if (empty($params) || !is_array($params)) {
+        if (empty($params) || ! is_array($params)) {
             return '';
         }
 
         $keysService = ACloudSysCoreCommon::loadSystemClass('keys', 'config.service');
         $key1 = $keysService->getKey1(1);
-        if (!$key1 || strlen($key1) != 128) {
+        if (! $key1 || strlen($key1) != 128) {
             return '';
         }
 
@@ -88,7 +88,7 @@ class AppsController extends PwBaseController
 
     public function createHttpQuery($params)
     {
-        if (empty($params) || !is_array($params)) {
+        if (empty($params) || ! is_array($params)) {
             return '';
         }
 
@@ -96,7 +96,7 @@ class AppsController extends PwBaseController
             return http_build_query($params);
         }
 
-        if (empty($params) || !is_array($params)) {
+        if (empty($params) || ! is_array($params)) {
             return '';
         }
 

@@ -34,7 +34,7 @@ class PwAvatarUpload extends PwUploadAction
      */
     public function check()
     {
-        if (!$this->user->isExists()) {
+        if (! $this->user->isExists()) {
             return new PwError('login.not');
         }
 

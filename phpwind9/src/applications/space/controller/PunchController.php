@@ -26,7 +26,7 @@ class PunchController extends PwBaseController
         $this->_creditBo = PwCreditBo::getInstance();
 
         // 是否开启
-        if (!$this->config['punch.open']) {
+        if (! $this->config['punch.open']) {
             $this->showError('SPCAE:punch.not.open');
         }
     }
@@ -142,7 +142,7 @@ class PunchController extends PwBaseController
 
     private function _fetchFollowUsers($uids)
     {
-        if (!$uids) {
+        if (! $uids) {
             return '';
         }
         $userList = $this->_getUserDs()->fetchUserByUid($uids, PwUser::FETCH_MAIN | PwUser::FETCH_DATA);
@@ -167,7 +167,7 @@ class PunchController extends PwBaseController
     public function dofriendAction()
     {
         $friends = $this->getInput('friend');
-        !is_array($friends) && $friends = [$friends];
+        ! is_array($friends) && $friends = [$friends];
         if (count($friends) < 0) {
             $this->showError('SPACE:punch.data.error');
         }
@@ -230,7 +230,7 @@ class PunchController extends PwBaseController
     {
         $array = [];
         $behaviors = $this->_getUserBehaviorDs()->fetchBehavior($uids);
-        if (!$behaviors) {
+        if (! $behaviors) {
             return $array;
         }
         $time = Pw::getTime();
@@ -255,7 +255,7 @@ class PunchController extends PwBaseController
         $punchData = $this->loginUser->info['punch'];
         $punchData = $punchData ? unserialize($punchData) : [];
         $reward = $this->config['punch.reward'];
-        if (!$punchData) {
+        if (! $punchData) {
             $data = [
                 'cUnit'        => $this->_creditBo->cUnit[$reward['type']],
                 'cType'        => $this->_creditBo->cType[$reward['type']],

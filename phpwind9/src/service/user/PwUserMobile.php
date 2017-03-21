@@ -37,7 +37,7 @@ class PwUserMobile
      */
     public function fetchByUid($uids)
     {
-        if (!is_array($uids) || !$uids) {
+        if (! is_array($uids) || ! $uids) {
             return [];
         }
 
@@ -123,7 +123,7 @@ class PwUserMobile
      */
     public function batchDelete($uids)
     {
-        if (!is_array($uids) || !$uids) {
+        if (! is_array($uids) || ! $uids) {
             return false;
         }
 

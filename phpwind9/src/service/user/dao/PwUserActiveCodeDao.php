@@ -23,7 +23,7 @@ class PwUserActiveCodeDao extends PwBaseDao
      */
     public function insert($data)
     {
-        if (!($data = $this->_filterStruct($data))) {
+        if (! ($data = $this->_filterStruct($data))) {
             return false;
         }
         $sql = $this->_bindSql('REPLACE INTO %s SET %s', $this->getTable(), $this->sqlSingle($data));

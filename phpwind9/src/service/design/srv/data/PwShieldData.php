@@ -65,7 +65,7 @@ class PwShieldData extends PwModuleData
         $orderid = $ds->getMaxOrder($this->bo->moduleid);
 
         foreach ($this->sourData as $k=>$v) {
-            if (!isset($v['standard_title']) && $v['from_type'] == 'auto') {
+            if (! isset($v['standard_title']) && $v['from_type'] == 'auto') {
                 continue;
             }
             $orderid++;
@@ -141,7 +141,7 @@ class PwShieldData extends PwModuleData
     {
         $limit = $param['limit'];
         $model = $this->bo->getModel();
-        if (!$model) {
+        if (! $model) {
             return false;
         }
         $cls = sprintf('PwDesign%sDataService', ucwords($model));
@@ -167,7 +167,7 @@ class PwShieldData extends PwModuleData
             }
 
             foreach ($data as $k=>$v) {
-                if (!isset($v['standard_title']) || in_array($v['standard_fromid'], $shieldids) || in_array($v['standard_fromid'], $this->autoids)) {
+                if (! isset($v['standard_title']) || in_array($v['standard_fromid'], $shieldids) || in_array($v['standard_fromid'], $this->autoids)) {
                     unset($data[$k]);
                     $i++;
                     continue;

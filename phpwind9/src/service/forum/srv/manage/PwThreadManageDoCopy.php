@@ -25,19 +25,19 @@ class PwThreadManageDoCopy extends PwThreadManageDo
 
     public function check($permission)
     {
-        if (!isset($permission['copy']) || !$permission['copy']) {
+        if (! isset($permission['copy']) || ! $permission['copy']) {
             return false;
         }
         if (isset($this->fid)) {
             $forum = new PwForumBo($this->fid);
-            if (!$forum->isForum()) {
+            if (! $forum->isForum()) {
                 return new PwError('BBS:manage.error.copy.targetforum');
             }
-            if ($this->topictype && !$forum->forumset['topic_type']) {
+            if ($this->topictype && ! $forum->forumset['topic_type']) {
                 return new PwError('BBS:post.topictype.closed');
             }
 
-            if ($forum->forumset['topic_type'] && $forum->forumset['force_topic_type'] && !$this->topictype) {
+            if ($forum->forumset['topic_type'] && $forum->forumset['force_topic_type'] && ! $this->topictype) {
                 $topicTypes = Wekit::load('SRV:forum.PwTopicType')->getTypesByFid($forum->fid);
                 if ($topicTypes) {
                     return new PwError('BBS:post.topictype.empty');

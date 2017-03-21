@@ -19,25 +19,25 @@ class AttachController extends PwBaseController
         $aid = (int) $this->getInput('aid', 'get');
         $submit = (int) $this->getInput('submit', 'post');
         $attach = Wekit::load('attach.PwThreadAttach')->getAttach($aid);
-        if (!$attach) {
+        if (! $attach) {
             $this->showError('BBS:thread.buy.attach.error');
         }
 
         $forum = new PwForumBo($attach['fid']);
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             $this->showError('data.error');
         }
-        if ($attach['cost'] && !$this->loginUser->isExists()) {
+        if ($attach['cost'] && ! $this->loginUser->isExists()) {
             $this->showError('download.fail.login.not', 'bbs/attach/download');
         }
-        if (!$forum->allowDownload($this->loginUser)) {
-            if (!$this->loginUser->isExists()) {
+        if (! $forum->allowDownload($this->loginUser)) {
+            if (! $this->loginUser->isExists()) {
                 $this->showError('download.fail.login.not', 'bbs/attach/download');
             }
             $this->showError(['BBS:forum.permissions.download.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
         }
-        if (!$forum->foruminfo['allow_download'] && !$this->loginUser->getPermission('allow_download')) {
-            if (!$this->loginUser->isExists()) {
+        if (! $forum->foruminfo['allow_download'] && ! $this->loginUser->getPermission('allow_download')) {
+            if (! $this->loginUser->isExists()) {
                 $this->showError('download.fail.login.not', 'bbs/attach/download');
             }
             $this->showError(['permission.download.allow', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
@@ -57,14 +57,14 @@ class AttachController extends PwBaseController
         $lang = Wind::getComponent('i18n');
         if (1 == $this->loginUser->getPermission('allow_download') && $reduceDownload && $attach['cost']) {
             $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.all', ['{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']], '{downCount}' => rtrim($reduceDownload, ',')]);
-        } elseif (1 == $this->loginUser->getPermission('allow_download') && $reduceDownload && !$attach['cost']) {
+        } elseif (1 == $this->loginUser->getPermission('allow_download') && $reduceDownload && ! $attach['cost']) {
             $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.download', ['{downCount}' => rtrim($reduceDownload, ',')]);
         } elseif ($attach['cost']) {
             $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.buy', ['{count}' => $this->loginUser->getCredit($attach['ctype']).$creditBo->cType[$attach['ctype']], '{buyCount}' => -$attach['cost'].$creditBo->cType[$attach['ctype']]]);
         } else {
             $dataShow = $lang->getMessage('BBS:thread.attachbuy.message.success');
         }
-        !$submit && $this->showMessage($dataShow);
+        ! $submit && $this->showMessage($dataShow);
 
         //购买积分操作
         $this->_operateBuyCredit($attach);
@@ -103,7 +103,7 @@ class AttachController extends PwBaseController
         $fgeturl = Wind::getComponent('storage')->getDownloadUrl($attach['path']);
 
         if (strpos($fgeturl, 'http') !== 0) {
-            if (!is_readable($fgeturl)) {
+            if (! is_readable($fgeturl)) {
                 $this->showError('BBS:thread.buy.attach.error');
             }
             $filesize = filesize($fgeturl);
@@ -168,7 +168,7 @@ class AttachController extends PwBaseController
         header('Content-Transfer-Encoding: binary');
         $filesize && header("Content-Length: $filesize");
         $i = 1;
-        while (!@readfile($fgeturl)) {
+        while (! @readfile($fgeturl)) {
             if (++$i > 3) {
                 break;
             }
@@ -179,23 +179,23 @@ class AttachController extends PwBaseController
     public function deleteAction()
     {
         $aid = $this->getInput('aid', 'post');
-        if (!$aid) {
+        if (! $aid) {
             $this->showError('operate.fail');
         }
-        if (!$attach = Wekit::load('attach.PwThreadAttach')->getAttach($aid)) {
+        if (! $attach = Wekit::load('attach.PwThreadAttach')->getAttach($aid)) {
             $this->showError('data.error');
         }
 
         $forum = new PwForumBo($attach['fid']);
-        if (!$forum->isForum()) {
+        if (! $forum->isForum()) {
             $this->showError('data.error');
         }
 
         if ($this->loginUser->uid != $attach['created_userid']) {
-            if (!$this->loginUser->getPermission('operate_thread.deleteatt', $forum->isBM($this->loginUser->username))) {
+            if (! $this->loginUser->getPermission('operate_thread.deleteatt', $forum->isBM($this->loginUser->username))) {
                 $this->showError('permission.attach.delete.deny');
             }
-            if (!$this->loginUser->comparePermission($attach['created_userid'])) {
+            if (! $this->loginUser->comparePermission($attach['created_userid'])) {
                 $this->showError(['permission.level.deleteatt', ['{grouptitle}' => $this->loginUser->getGroupInfo('name')]]);
             }
         }
@@ -207,14 +207,14 @@ class AttachController extends PwBaseController
         }
 
         if ($attach['tid']) {
-            if (!$attach['pid']) {
+            if (! $attach['pid']) {
                 $thread = Wekit::load('forum.PwThread')->getThread($attach['tid'], PwThread::FETCH_ALL);
 
                 $dm = new PwTopicDm($attach['tid']);
-                if (!Wekit::load('attach.PwThreadAttach')->countType($attach['tid'], 0, $attach['type'])) {
+                if (! Wekit::load('attach.PwThreadAttach')->countType($attach['tid'], 0, $attach['type'])) {
                     $dm->setHasAttach($attach['type'], false);
                 }
-                if (!Pw::getstatus($thread['tpcstatus'], PwThread::STATUS_OPERATORLOG) && $this->loginUser->uid != $attach['created_userid']) {
+                if (! Pw::getstatus($thread['tpcstatus'], PwThread::STATUS_OPERATORLOG) && $this->loginUser->uid != $attach['created_userid']) {
                     $dm->setOperatorLog(true);
                 }
             } else {
@@ -229,7 +229,7 @@ class AttachController extends PwBaseController
             if (($content = str_replace('[attachment='.$aid.']', '', $thread['content'])) != $thread['content']) {
                 $dm->setContent($content);
             }
-            if (!$attach['pid']) {
+            if (! $attach['pid']) {
                 Wekit::load('forum.PwThread')->updateThread($dm);
             } else {
                 Wekit::load('forum.PwThread')->updatePost($dm);
@@ -247,12 +247,12 @@ class AttachController extends PwBaseController
 
         list($offset, $limit) = Pw::page2limit($page, $perpage);
         $count = Wekit::load('attach.PwThreadAttachBuy')->countByAid($aid);
-        if (!$count) {
+        if (! $count) {
             $this->showError('BBS:thread.buy.error.norecord');
         }
 
         $record = Wekit::load('attach.PwThreadAttachBuy')->getByAid($aid, $limit, $offset);
-        !$record && $this->showError('BBS:thread.buy.error.norecord');
+        ! $record && $this->showError('BBS:thread.buy.error.norecord');
         $users = Wekit::load('user.PwUser')->fetchUserByUid(array_keys($record));
 
         $data = [];
@@ -283,7 +283,7 @@ class AttachController extends PwBaseController
         }
 
         //如果外部有积分设置传入则使用外部的积分设置策略
-        if (!empty($creditset['limit']) || ($creditset['credit'] && false === $this->_checkCreditSetEmpty($creditset['credit']))) {
+        if (! empty($creditset['limit']) || ($creditset['credit'] && false === $this->_checkCreditSetEmpty($creditset['credit']))) {
             $strategy['limit'] = $creditset['limit'];
             $strategy['credit'] = $creditset['credit'];
         }
@@ -313,7 +313,7 @@ class AttachController extends PwBaseController
      */
     protected function _checkAttachCost($attach)
     {
-        if (!$attach['cost']) {
+        if (! $attach['cost']) {
             return $attach;
         }
         $user = Wekit::getLoginUser();
@@ -323,7 +323,7 @@ class AttachController extends PwBaseController
             return $attach;
         }
         $attachbuy = Wekit::load('attach.PwThreadAttachBuy');
-        if (!$attachbuy->getByAidAndUid($attach['aid'], $user->uid)) {
+        if (! $attachbuy->getByAidAndUid($attach['aid'], $user->uid)) {
             $myCredit = $user->getCredit($attach['ctype']);
             if ($attach['cost'] > $myCredit) {
                 $creditBo = PwCreditBo::getInstance();
@@ -351,10 +351,10 @@ class AttachController extends PwBaseController
         $creditBo = PwCreditBo::getInstance();
         $forumCredit = $forum->getCreditSet($operate);
         $downloadCredit = $this->_getDownloadCredit($operate, $user, $creditBo, $forumCredit);
-        if (!$downloadCredit) {
+        if (! $downloadCredit) {
             return false;
         }
-        if (!$user->isExists()) {
+        if (! $user->isExists()) {
             return new PwError('download.fail.login.not');
         }
         $attachdownload = Wekit::load('attach.PwThreadAttachDownload');
@@ -390,7 +390,7 @@ class AttachController extends PwBaseController
     protected function _operateBuyCredit($attach)
     {
         $user = Wekit::getLoginUser();
-        if (!$attach['cost'] || $attach['created_userid'] == $user->uid) {
+        if (! $attach['cost'] || $attach['created_userid'] == $user->uid) {
             return false;
         }
 

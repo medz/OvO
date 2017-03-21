@@ -777,7 +777,7 @@ class PwUbbCode
      */
     public static function createUrl($url, $name, $protocol, $isdownload = 0, $checkurl = 0)
     {
-        !$protocol && $url = 'http://'.$url;
+        ! $protocol && $url = 'http://'.$url;
         $attributes = '';
         $isdownload && $attributes .= ' class="down"';
         $html = "<a href=\"$url \" target=\"_blank\"{$attributes}>$name</a>";
@@ -796,8 +796,8 @@ class PwUbbCode
      */
     public static function createCode($str, $brush, $toolbar)
     {
-        !$brush && $brush = 'text';
-        !$toolbar && $toolbar = 'false';
+        ! $brush && $brush = 'text';
+        ! $toolbar && $toolbar = 'false';
         $str = str_replace(['[attachment=', '\\"'], ['&#91;attachment=', '"'], trim($str));
         $str = preg_replace('/^(<br \/>)?(.+?)(<br \/>)$/', '\\2', $str);
         $str = str_replace('<br />', "\n", $str);
@@ -883,7 +883,7 @@ class PwUbbCode
                     ."此帖售价 <span id=\"J_buy_price\">$cost</span> <span id=\"J_buy_util\">$cName</span>,已有 <span id=\"J_buy_count\">$sellCount</span> 人购买"
                     .'</span> '
                     ."<a href=\"$recordUrl\" title=\"查看记录\" class=\"mr10 fn J_buy_record\" data-buycount=\"\">[记录]</a>";
-            if (!$config->isAuthor() && !$config->isBuy()) {
+            if (! $config->isAuthor() && ! $config->isBuy()) {
                 $userCredit = $config->getUserCredit($credit);
                 $html .= " <a href=\"$buyUrl\" title=\"购买\" class=\"fn J_post_buy J_qlogin_trigger\" data-credit=\"$userCredit\" data-price=\"$cost\" data-util=\"$cName\" data-role=\"post\">[购买]</a>";
             }
@@ -933,13 +933,13 @@ class PwUbbCode
     public static function createPlayer($url, $width = 0, $height = 0, $auto = 0, $type = 'video')
     {
         $url = self::escapeUrl($url); //by taishici
-        if (!preg_match('/\.(rmvb|rm|wmv|avi|mp3|wma|swf|flv)/i', $url, $match)) {
+        if (! preg_match('/\.(rmvb|rm|wmv|avi|mp3|wma|swf|flv)/i', $url, $match)) {
             $html = "<a href=\"$url \" target=\"_blank\">$url</a>";
         } elseif ($type == 'audio') {
             $html = "<div class=\"J_audio\" data-url=\"$url\" data-autoplay=\"$auto\" data-type=\"{$match[1]}\"></div>";
         } else {
-            !$width && $width = 314;
-            !$height && $height = 256;
+            ! $width && $width = 314;
+            ! $height && $height = 256;
             $html = "<div class=\"J_video\" data-url=\"$url\" data-autoplay=\"1\" data-width=\"$width\" data-height=\"$height\" data-type=\"{$match[1]}\"></div>";
         }
 
@@ -1066,7 +1066,7 @@ class PwUbbCode
         $tableStyle = 'width:'.$width;
         $bgColor && $tableStyle .= ';background-color:'.$bgColor;
         $borderWidth && $tableStyle .= ';border-width:'.$borderWidth.'px;border-style:solid';
-        !$borderColor && $borderColor = '#ffffff';
+        ! $borderColor && $borderColor = '#ffffff';
         $tableStyle .= ';border-color:'.$borderColor;
         $tdStyle = ' style="border-color:'.$borderColor.'"';
         $cellpadding || $cellpadding = 0;
@@ -1107,7 +1107,7 @@ class PwUbbCode
      */
     public static function escapeUrl($path)
     {
-        if (!(strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0)) {
+        if (! (strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0)) {
             return '';
         }
         $path = str_replace(['<', '>', "'", '"', ';'], ['%3c', '%3e', '%27', '%22', '%3b'], $path);

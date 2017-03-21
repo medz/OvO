@@ -64,7 +64,7 @@ class PwFileCache extends AbstractWindCache
      */
     protected function getValue($key)
     {
-        if (!is_file($key)) {
+        if (! is_file($key)) {
             return null;
         }
 
@@ -126,10 +126,10 @@ class PwFileCache extends AbstractWindCache
      */
     protected function formatData($key, $value)
     {
-        if (!$value) {
+        if (! $value) {
             return false;
         }
-        if (!$value[self::EXPIRE] || $value[self::EXPIRE] >= time()) {
+        if (! $value[self::EXPIRE] || $value[self::EXPIRE] >= time()) {
             return $value[self::DATA];
         }
         $this->delete($key);

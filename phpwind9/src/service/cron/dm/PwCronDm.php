@@ -82,7 +82,7 @@ class PwCronDm extends PwBaseDm
 
     protected function _beforeUpdate()
     {
-        if (!$this->cronId) {
+        if (! $this->cronId) {
             return new PwError('fail');
         }
 

@@ -44,7 +44,7 @@ class WindidMessageDao extends WindidBaseDao
      */
     public function addMessage($fields)
     {
-        if (!$fields = $this->_filterStruct($fields)) {
+        if (! $fields = $this->_filterStruct($fields)) {
             return false;
         }
         $sql = $this->_bindSql('INSERT INTO %s SET %s ', $this->getTable(), $this->sqlSingle($fields));

@@ -25,7 +25,7 @@ define('LARAVEL_START', microtime(true));
 */
 
 $filename = dirname(__DIR__).'/vendor/autoload.php';
-if (!file_exists($filename) || !is_file($filename)) {
+if (! file_exists($filename) || ! is_file($filename)) {
     echo '<pre>',
          '您必须使用Composer包管理设置项目依赖关系，在程序根目录运行以下命令:', PHP_EOL,
          'composer install', PHP_EOL,

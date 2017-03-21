@@ -27,7 +27,7 @@ class PwPollVoter
         $userid = intval($userid);
         $pollid = intval($pollid);
         $optionid = intval($optionid);
-        if (!$userid || !$pollid || !$optionid) {
+        if (! $userid || ! $pollid || ! $optionid) {
             return false;
         }
 
@@ -111,7 +111,7 @@ class PwPollVoter
      */
     public function countByUids($uids)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return 0;
         }
 
@@ -129,7 +129,7 @@ class PwPollVoter
      */
     public function fetchPollByUid($uids, $limit, $offset)
     {
-        if (empty($uids) || !is_array($uids)) {
+        if (empty($uids) || ! is_array($uids)) {
             return [];
         }
 
@@ -182,12 +182,12 @@ class PwPollVoter
     public function getPollByUidAndPollid($userid, $pollids)
     {
         $userid = intval($userid);
-        if (!$userid || empty($pollids) || !is_array($pollids)) {
+        if (! $userid || empty($pollids) || ! is_array($pollids)) {
             return [];
         }
 
         $poll = $this->_getPollVoterDao()->getPollByUidAndPollid($userid, $pollids);
-        if (!$poll) {
+        if (! $poll) {
             return [];
         }
 
@@ -210,7 +210,7 @@ class PwPollVoter
     public function isVoted($userid, $pollid)
     {
         $userid = intval($userid);
-        if (!$userid) {
+        if (! $userid) {
             return false;
         }
         $pollid = is_array($pollid) ? $pollid : [$pollid];

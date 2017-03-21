@@ -888,11 +888,11 @@ class Crypt_Rijndael
             0x7D000000, 0xFA000000, 0xEF000000, 0xC5000000, 0x91000000,
         ];
 
-        if (!$this->changed) {
+        if (! $this->changed) {
             return;
         }
 
-        if (!$this->explicit_key_length) {
+        if (! $this->explicit_key_length) {
             // we do >> 2, here, and not >> 5, as we do above, since strlen($this->key) tells us the number of bytes - not bits
             $length = strlen($this->key) >> 2;
             if ($length > 8) {
@@ -1117,7 +1117,7 @@ class Crypt_Rijndael
     {
         $length = strlen($text);
 
-        if (!$this->padding) {
+        if (! $this->padding) {
             if ($length % $this->block_size == 0) {
                 return $text;
             } else {
@@ -1141,13 +1141,13 @@ class Crypt_Rijndael
      */
     public function _unpad($text)
     {
-        if (!$this->padding) {
+        if (! $this->padding) {
             return $text;
         }
 
         $length = ord($text[strlen($text) - 1]);
 
-        if (!$length || $length > $this->block_size) {
+        if (! $length || $length > $this->block_size) {
             return false;
         }
 

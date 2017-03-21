@@ -18,7 +18,7 @@ class ThreadController extends SpaceBaseController
     public function run()
     {
         list($page, $perpage) = $this->getInput(['page', 'perpage']);
-        !$perpage && $perpage = 20;
+        ! $perpage && $perpage = 20;
         $threadList = new PwThreadList();
         $threadList->setPage($page)->setPerpage($perpage);
         $dataSource = null;

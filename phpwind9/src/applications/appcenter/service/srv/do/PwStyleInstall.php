@@ -48,7 +48,7 @@ class PwStyleInstall extends PwInstall
             return new PwError('APPCENTER:install.exist.fail');
         }
         $alias = $manifest->getApplication('alias');
-        if (!$alias) {
+        if (! $alias) {
             return new PwError('APPCENTER:install.fail.alias.empty');
         }
         /* if (!preg_match('/^[a-z][a-z0-9]+$/i', $alias)) return new PwError('APPCENTER:illegal.alias'); */
@@ -135,7 +135,7 @@ class PwStyleInstall extends PwInstall
         list(, $pack) = $this->getStyleType($install);
         $alias = $install->getManifest()->getApplication('alias');
         $targetDir = THEMES_PATH.$pack;
-        if (!PwSystemHelper::checkWriteAble($targetDir.'/')) {
+        if (! PwSystemHelper::checkWriteAble($targetDir.'/')) {
             return new PwError('APPCENTER:install.mv.fail',
                 ['{{error}}' => 'THEMES:'.str_replace('/', '.', $pack)]);
         }
@@ -154,7 +154,7 @@ class PwStyleInstall extends PwInstall
      */
     public function rollback($install)
     {
-        if (!$install instanceof PwInstallApplication) {
+        if (! $install instanceof PwInstallApplication) {
             return false;
         }
         if ($appId = $install->getInstallLog('appId')) {
@@ -190,7 +190,7 @@ class PwStyleInstall extends PwInstall
         $application->setModifiedTime(time());
         list($type) = $this->getStyleType($install);
         $application->setType($type);
-        if (!$application->beforeAdd()) {
+        if (! $application->beforeAdd()) {
             return new PwError('APPCENTER:install.mainfest.fail');
         }
         $this->_load()->addStyle($application);
@@ -207,7 +207,7 @@ class PwStyleInstall extends PwInstall
     {
         $allow_style_type = $install->getConfig('style-type');
         $style_type = $install->getManifest()->getApplication('style-type');
-        if (!$style_type || !isset($allow_style_type[$style_type])) {
+        if (! $style_type || ! isset($allow_style_type[$style_type])) {
             $style_type = key($allow_style_type);
         }
 

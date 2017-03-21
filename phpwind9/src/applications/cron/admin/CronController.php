@@ -50,7 +50,7 @@ Wind::import('ADMIN:library.AdminBaseController');
          $isopen = $this->getInput('isopen', 'post');
          $filename = $this->getInput('filename', 'post');
          $subject = $this->getInput('subject', 'post');
-         if (!$subject && !$filename) {
+         if (! $subject && ! $filename) {
              $this->showError('operate.fail');
          }
          $dm = new PwCronDm();
@@ -85,7 +85,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             case 'now':
                 $time = (int) $this->getInput('now_time', 'post');
                 $type = $this->getInput('now_type', 'post');
-                if (!$time) {
+                if (! $time) {
                     $this->showError('operate.fail');
                 }
                 $minute = $type == 'minute' ? $time : 0;
@@ -97,7 +97,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             default:
                 $this->showError('operate.fail');
         }
-         if (!$isopen) {
+         if (! $isopen) {
              $dm->setNexttime(0);
          }
          $resource = $this->_getCronDs()->addCron($dm);
@@ -114,7 +114,7 @@ Wind::import('ADMIN:library.AdminBaseController');
              $this->showError('operate.fail');
          }
          $info = $this->_getCronDs()->getCron($cronId);
-         if (!$info) {
+         if (! $info) {
              $this->showError('operate.fail');
          }
          list($info['day'], $info['hour'], $info['minute']) = explode('-', $info['loop_daytime']);
@@ -133,7 +133,7 @@ Wind::import('ADMIN:library.AdminBaseController');
          $isopen = $this->getInput('isopen', 'post');
          $filename = $this->getInput('filename', 'post');
          $subject = $this->getInput('subject', 'post');
-         if (!$subject && !$filename) {
+         if (! $subject && ! $filename) {
              $this->showError('operate.fail');
          }
          $dm = new PwCronDm($cronId);
@@ -168,7 +168,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             case 'now':
                 $time = (int) $this->getInput('now_time', 'post');
                 $type = $this->getInput('now_type', 'post');
-                if (!$time) {
+                if (! $time) {
                     $this->showError('operate.fail');
                 }
                 $minute = $type == 'minute' ? $time : 0;
@@ -180,7 +180,7 @@ Wind::import('ADMIN:library.AdminBaseController');
             default:
                 $this->showError('operate.fail');
         }
-         if (!$isopen) {
+         if (! $isopen) {
              $dm->setNexttime(0);
          }
          $resource = $this->_getCronDs()->updateCron($dm);

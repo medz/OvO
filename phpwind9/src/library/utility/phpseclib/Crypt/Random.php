@@ -68,7 +68,7 @@ function crypt_random($min = 0, $max = 0x7FFFFFFF)
     // so we suppress it.
     if (@file_exists('/dev/urandom')) {
         static $fp;
-        if (!$fp) {
+        if (! $fp) {
             $fp = fopen('/dev/urandom', 'rb');
         }
         extract(unpack('Nrandom', fread($fp, 4)));
@@ -88,7 +88,7 @@ function crypt_random($min = 0, $max = 0x7FFFFFFF)
        http://svn.php.net/viewvc/php/php-src/branches/PHP_5_3_2/ext/standard/php_rand.h?view=markup */
     if (version_compare(PHP_VERSION, '5.2.5', '<=')) {
         static $seeded;
-        if (!isset($seeded)) {
+        if (! isset($seeded)) {
             $seeded = true;
             mt_srand(fmod(time() * getmypid(), 0x7FFFFFFF) ^ fmod(1000000 * lcg_value(), 0x7FFFFFFF));
         }
@@ -99,7 +99,7 @@ function crypt_random($min = 0, $max = 0x7FFFFFFF)
     // The CSPRNG's Yarrow and Fortuna periodically reseed.  This function can be reseeded by hitting F5
     // in the browser and reloading the page.
 
-    if (!isset($crypto)) {
+    if (! isset($crypto)) {
         $key = $iv = '';
         for ($i = 0; $i < 8; $i++) {
             $key .= pack('n', mt_rand(0, 0xFFFF));

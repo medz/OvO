@@ -120,7 +120,7 @@ class GroupsController extends AdminBaseController
             $flag = $mainGid == $gid;
             $permissionModel = new PwUserPermissionDm($gid);
             foreach ($permissionKeys as $k) {
-                if (!$flag && !isset($copyItems[$k])) {
+                if (! $flag && ! isset($copyItems[$k])) {
                     continue;
                 }
                 if (isset($gpermission[$k])) {
@@ -231,7 +231,7 @@ class GroupsController extends AdminBaseController
         //新增用户组
         $addGroups = []; //待添加用户组Dm
         foreach ($newGroupName as $k => $v) {
-            if (!$v) {
+            if (! $v) {
                 continue;
             }
             $userGroupModel = new PwUserGroupDm();
