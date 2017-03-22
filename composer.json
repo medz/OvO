@@ -47,15 +47,15 @@
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "php fans key:generate"
+            "php wind key:generate"
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php fans optimize"
+            "php wind optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php fans optimize"
+            "php wind optimize"
         ]
     },
     "config": {
