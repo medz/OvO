@@ -63,9 +63,10 @@ Route::any('/{type}/{filename}.{ext}', function (Illuminate\Filesystem\Filesyste
         'xml' => 'application/xml',
     ];
 
-    $headers = [
-        'Content-Type' => $alias[$ext] ?? $filesystem->mimeType($filename),
-    ];
+    $headers = [];
+    if (isset($alias[$ext])) {
+        $headers['Content-Type'] = $alias[$ext];
+    }
 
     return response()->file($filename, $headers);
 })->where([
