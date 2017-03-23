@@ -81,7 +81,7 @@ class IndexController extends WindController
      */
     public function run()
     {
-        $wind_license = WindFile::read(Wind::getRealPath('ROOT:LICENSE', false));
+        $wind_license = WindFile::read(base_path('LICENSE'));
         $this->setOutput($wind_license, 'wind_license');
     }
 
