@@ -20,7 +20,7 @@ class phpwindBoot extends bootstrap
     public function __construct($re)
     {
         if (! is_file(Wind::getRealPath('DATA:install.lock', true))) {
-            Wind::getComponent('response')->sendRedirect('install.php');
+            Wind::getComponent('response')->sendRedirect('/old/install.php');
         }
         parent::__construct($re);
 
