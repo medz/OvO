@@ -579,7 +579,7 @@ class IndexController extends WindController
     {
         return [
             'os'        => '不限制',
-            'version'   => '5.3.12',
+            'version'   => '5.6.4',
             'mysql'     => '5.0',
             'pdo_mysql' => '必须',
             'upload'    => '不限制',
