@@ -14,7 +14,7 @@ windframework
 /phpwind9/conf/database.php
 /phpwind9/conf/founder.php
 /phpwind9/data/*
-！phpwind9/data/index.html
+!phpwind9/data/index.html
 /phpwind9/themes/extres/
 /phpwind9/themes/forum/*
 !/phpwind9/themes/forum/default
@@ -23,9 +23,9 @@ windframework
 !/phpwind9/themes/site/default
 !/phpwind9/themes/space/*
 !/phpwind9/themes/site/default
-/phpwind9/attachment/
+/phpwind9/attachment/*
 !/phpwind9/attachment/index.html
-/phpwind9/windid/attachment/
+/phpwind9/windid/attachment/*
 !/phpwind9/windid/attachment/index.html
 /phpwind9/src/extensions/*
 !/phpwind9/src/extensions/demo
