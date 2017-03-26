@@ -1,0 +1,114 @@
+/*#
+===================
+@explain: 门户-创建自定义页面
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: portal.css 24144 2013-01-22 06:51:52Z yanchixia $
+===================
+#*/
+
+/*
+===================
+
+===================
+*/
+.create_page{
+	padding:15px;
+	box-shadow:0 0 6px rgba(0,0,0,0.2);
+	background:#fff;
+	color:#333;
+	font-size:12px;
+	width:930px;
+	margin:0 auto;
+}
+/*页面标题*/
+.create_page h1{
+	font-size:14px;
+	margin-bottom:15px;
+	padding:0 5px;
+}
+/*标题*/
+.create_page h2{
+	font-size:12px;
+	color:#666;
+	border-bottom:1px solid #cdcdcd;
+	padding:5px;
+	margin-bottom:10px;
+}
+/*块*/
+.create_page .box{
+	margin-bottom:30px;
+}
+/*内容*/
+.create_page dl{
+	padding:10px 0;
+}
+.create_page dt{
+	float:left;
+	width:150px;
+	font-size:14px;
+	line-height:26px;
+	text-align:right;
+	margin-right:10px;
+}
+.create_page dd{
+	float:left;
+	width:320px;
+}
+.create_page .dd_r{
+	float:left;
+	color:#999;
+	width:370px;
+	line-height:normal;
+}
+.create_page label{
+	line-height:26px;
+	font-size:14px;
+	color:#666;
+}
+
+/*
+===================
+单附件上传
+===================
+*/
+.single_image_up{
+	width:80px;
+	height:20px;
+	position:relative;
+	margin-bottom:5px;
+	overflow:hidden;
+}
+.single_image_up a{
+	height:20px;
+	width:80px; 
+	display:block;
+	line-height:20px;
+	text-indent:25px;
+	background:url(../images/portal/thumb_up.png) no-repeat;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	opacity:0.8;
+	text-decoration:none;
+	color:#333;
+}
+.single_image_up:hover a{
+	text-decoration:none;
+	filter:alpha(opacity=100);
+	-moz-opacity:1;
+	opacity:1;
+}
+.single_image_up input,
+.single_image_up object{
+	width:80px;
+	height:22px;
+	position:absolute;
+	top:0;
+	right:0;
+	background:none;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	opacity:0;
+	cursor:pointer;
+	outline:none;
+}

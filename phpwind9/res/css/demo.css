@@ -1,0 +1,392 @@
+/*
+===================
+@explain: demo
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: demo.css 20679 2012-11-02 07:58:01Z yanchixia $
+===================
+*/
+html,body, 
+div, dl, dt, dd, ul, p, th, td,
+h1, h2, h3, h4, h5, h6, 
+pre, code, form, 
+fieldset, legend{
+	margin: 0;
+	padding: 0;
+}
+cite, 
+em, 
+strong, 
+th {
+	font-style: inherit;
+	font-weight: inherit;
+}
+td, 
+th, 
+div {
+	word-break:break-all;
+	word-wrap:break-word;
+}
+table {
+	border-collapse: collapse;
+	border-spacing:0;
+}
+th {
+	text-align: left;
+	font-weight:100;
+}
+ol li {
+	list-style: decimal outside;
+}
+ol{
+	padding:0 0 0 18px;
+	margin:0;
+}
+li {
+	list-style:none;
+}
+img {
+	border: 0;
+}
+html {
+	-webkit-text-size-adjust:none;
+}
+/*
+===================
+html5相关标签
+===================
+*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+
+/*
+===================
+清除浮动
+* cc 作用于父模型
+* c 作用于浮动模型后，父模型区域里
+===================
+*/
+.cc{
+	zoom:1;
+}
+.cc:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+}
+.c{
+	clear:both;
+	height:0;
+	font:0/0 Arial;
+	overflow:hidden;
+	width:0;
+}
+
+/*
+===================
+间距
+===================
+*/
+.mb5{
+	margin-bottom:5px !important;
+}
+.mb10{
+	margin-bottom:10px !important;
+}
+.mb15{
+	margin-bottom:15px !important;
+}
+.mb20{
+	margin-bottom:20px !important;
+}
+.mr5{
+	margin-right:5px !important;
+}
+.mr10{
+	margin-right:10px !important;
+}
+.mr15{
+	margin-right:15px !important;
+}
+.mr20{
+	margin-right:20px !important;
+}
+.p5{
+	padding:5px;
+}
+.p10{
+	padding:10px;
+}
+.p15{
+	padding:15px;
+}
+.p20{
+	padding:20px;
+}
+
+/*
+===================
+基础样式
+* b 加粗
+* u 下划线
+* i 斜体
+* w 文本不换行
+* tal 文本靠左显示
+* tac 文本居中显示
+* tar 文本靠右显示
+* fl 左浮动
+* fr 右浮动
+* pr 相对定位
+* cp 鼠标点击手势
+* vt 表格内容靠上显示
+===================
+*/
+.b{
+	font-weight:700 !important;
+}
+.u{
+	text-decoration:underline !important;
+}
+.i{
+	font-style:italic !important;
+}
+.w{
+	white-space:nowrap;
+}
+.tal{
+	text-align:left !important;
+}
+.tac{
+	text-align:center !important;
+}
+.tar{
+	text-align:right !important;
+}
+.fl{
+	float:left !important;
+}
+.fr{
+	float:right !important;
+}
+.pr{
+	position:relative;
+}
+.cp{
+	cursor:pointer;
+}
+.vt{
+	vertical-align:top;
+}
+.dn{
+	display:none;
+}
+
+/*
+===================
+字体
+* f10 小字体
+* f12 正常字
+* f14 大字
+* f16 更大
+* f24 标题类
+* fn 文本去粗
+===================
+*/
+.f10{
+	font-size:10px;
+}
+.f12{
+	font-size:12px !important;
+}
+.f14{
+	font-size:14px;
+}
+.f16{
+	font-size:16px;
+}
+.f24{
+	font-size:24px;
+	font-family:Arial, "Microsoft Yahei", Simsun;
+}
+.fn{
+	font-weight:normal !important;
+}
+
+/*
+===================
+系统文本颜色
+===================
+*/
+.red{
+	color:#ff0000 !important;
+}
+.green{
+	color:#008800 !important;
+}
+.gray{
+	color:#999999 !important;
+}
+
+
+/*
+===================
+主体内容开始
+===================
+*/
+
+html{
+	font-family:Arial;
+	color:#333;
+	font-size:12px;
+	background:url(../images/admin/bg.jpg);
+	line-height:1.5;
+}
+.pick_list{z-index:999;}
+a{ text-decoration:none;}
+.demo_wrap{
+	padding:20px 20px 50px;
+	background:url(../images/admin/bg.jpg);
+}
+.demo_nav li{
+	float:left;
+	text-align:center;
+	margin-right:10px;
+
+}
+.demo_nav li a{
+	border:2px solid #ccc;
+	display:block;
+	color:#000;
+	font-family:Arial, "Microsoft Yahei", Simsun;
+	font-size:20px;
+	height:40px;
+	line-height:40px;
+	overflow:hidden;
+	background:#fff;
+	float:left;
+	padding:0 20px;
+}
+.demo_nav li a:hover{
+	border-color:#22697d;
+	text-decoration:none;
+	color:#22697d;
+}
+.demo_nav li.current a{
+	border-color:#22697d;
+	text-decoration:none;
+	color:#22697d;
+}
+.section{
+	padding:20px 0 10px;
+	background:url(../images/admin/content/hr.png) 0 bottom repeat-x;
+	margin-bottom:40px;
+}
+.section h2,
+.section_tag h2{
+	line-height:30px;
+	height:30px;
+	padding:0 10px;
+	font-weight:700;
+	font-size:14px;
+	background:#22697d;
+	position:relative;
+	color:#fff;
+	border-bottom:1px solid #fff;
+	margin-bottom:10px;
+}
+.section_tag h2{
+
+	margin:0;
+}
+.section_tag{
+	padding:20px 0;
+}
+.section h3{
+	font:bold 14px Arial;
+	color:#22697d;
+	padding:0 0 10px;
+}
+.demo_code{
+	float:left;
+	width:60%;
+	min-height:100px;
+	padding:10px;
+	position:relative;
+}
+.demo_html{
+	float:left;
+	width:35%;
+	padding:10px;
+	border-left:3px solid #bee3a7;
+	min-height:100px;
+}
+.demo_html textarea{
+	width:90%;
+	float:left;
+	height:100px;
+}
+.demo_html_cont,
+.demo_code_cont{
+	padding:0 0 30px;
+}
+.demo_html_cont{
+	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+}
+.bread{
+}
+.js_demo .demo_code{
+	width:100%;
+	padding:10px 0;
+}
+.js_demo .demo_html{
+	border-top:3px solid #bee3a7;
+	border-left:0 none;
+	padding:10px 0;
+	width:100%;
+}
+.box{
+	background:#333;
+	height:300px;
+	text-align:center;
+	color:#fff;
+	line-height:300px;
+}
+
+
+/*
+===================
+便捷选择
+* current 选中后
+===================
+*/
+.pick_list{
+}
+.pick_list a{
+	display:inline-block;
+	padding:5px 14px;
+	border:2px solid #ddd;
+	background:#fff;
+	cursor:pointer;
+	color:#333;
+	margin-bottom:5px;
+}
+.pick_list a:hover{
+	border-color:#ff5500;
+	text-decoration:none;
+}
+.pick_list a.current{
+	border-color:#ff5500;
+	background:#fff url(../images/common/radio_disabled.png) right bottom no-repeat;
+}

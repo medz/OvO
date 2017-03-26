@@ -1,0 +1,123 @@
+/*#
+===================
+@explain: 我的主题和回复/主要是想跟版块forum.css分离开来，好方便模块制作
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: article.css 24413 2013-01-30 05:25:51Z yanchixia $
+===================
+#*/
+
+
+/*
+===================
+帖子列表包裹
+===================
+*/
+.thread_page{
+	position:relative;
+}
+/*
+===================
+帖子列表样式
+===================
+*/
+.thread_posts_list{
+	padding:0 15px 15px;
+	min-height:400px;
+}
+.thread_posts_list table{
+	table-layout:fixed;
+}
+.thread_posts_list td{
+	border-bottom:1px dashed #dcdcdc;
+}
+.thread_posts_list tr.tr_check td{
+	background:#ffffee;
+}
+.thread_posts_list .author{
+	width:55px;
+}
+.thread_posts_list .author a{
+	display:block;
+	width:45px;
+	height:45px;
+	overflow:hidden;
+}
+.thread_posts_list .ordinary{
+	background:#f7f7f7;
+	padding:3px 0;
+	color:#666;
+}
+.thread_posts_list .num{
+	width:130px;
+	line-height:18px;
+	text-align:center;
+	color:#999;
+}
+.thread_posts_list .num span{
+	float:right;
+	display:block;
+	background:#f4f4f4;
+	width:54px;
+	height:36px;
+	padding:4px 0;
+	margin:0 0 0 10px;
+	border-radius: 3px;
+	overflow:hidden;
+}
+.thread_posts_list .num em{
+	display:block;
+	font-weight:700;
+}
+.thread_posts_list .st{
+	font-size:14px;
+	margin-right:3px;
+}
+.thread_posts_list .subject{
+	padding:10px 0 !important;
+}
+.thread_posts_list .subject em{
+	font-size:14px;
+	margin-right:5px;
+}
+.thread_posts_list .title{
+	padding-bottom:5px;
+}
+.thread_posts_list .info,
+.thread_posts_list .info a{
+	color:#999;
+}
+.thread_posts_list .info span{
+	margin:0 10px 0 0;
+}
+.thread_posts_list .info a{
+	margin-right:5px;
+}
+
+
+/*
+===================
+帖子列表状态图标
+===================
+*/
+.posts_icon i{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+	vertical-align:middle;
+	background:url(../images/article/icon.png) no-repeat;
+	background-position:-80px -40px;
+	margin-top:1px;
+	font:0/0 Arial;
+}
+.posts_icon i.icon_topic{
+	background-position:0 0;
+}
+
+
+
+
+
+
+
