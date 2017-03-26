@@ -1,18 +1,4 @@
 
-DROP TABLE IF EXISTS `pw_advertisement`;
-CREATE TABLE `pw_advertisement` (
-  `pid` int(10) unsigned NOT NULL,
-  `identifier` varchar(30) NOT NULL,
-  `type_id` tinyint(3) unsigned NOT NULL,
-  `width` smallint(6) NULL DEFAULT '0',
-  `height` smallint(6) NULL DEFAULT '0',
-  `status` tinyint(3) NULL DEFAULT '0',
-  `schedule` varchar(100) NOT NULL,
-  `show_type` tinyint(3) NULL DEFAULT '0',
-  `condition` text,
-  UNIQUE KEY `pid` (`pid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='广告位数据表';
-
 DROP TABLE IF EXISTS `pw_announce`;
 CREATE TABLE `pw_announce` (
   `aid` smallint(6) NOT NULL AUTO_INCREMENT,
