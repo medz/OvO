@@ -1,0 +1,1036 @@
+/*#
+===================
+@explain: 设置/前台管理
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: profile.css 21993 2012-12-18 02:56:39Z yanchixia $
+===================
+#*/
+
+/*
+===================
+结构
+===================
+*/
+.profile_page .cm{
+	float:left;
+	width:100%;
+	min-height:1px;
+}
+.profile_page .cw{
+	margin:0 0 0 150px;
+}
+.profile_page .cw .box_wrap{
+	border-top-left-radius:0;
+}
+.profile_page .md{
+	float:left;
+	width:151px;
+	margin-right:-151px;
+	position:relative;
+}
+.profile_page .content{
+	padding:0 30px;
+	min-height:500px;
+}
+
+/*
+===================
+左侧菜单
+===================
+*/
+.profile_page .menubar{
+	background:#eaeaea;
+}
+.profile_page .menubar ul{
+	overflow:hidden;
+}
+.profile_page .menubar li{
+	border-top:1px dotted #bdbdbd;
+	margin-top:-1px;
+}
+.profile_page .menubar li a{
+	display:block;
+	line-height:50px;
+	height:50px;
+	overflow:hidden;
+	text-indent:40px;
+	color:#333;
+	font-size:14px;
+}
+.profile_page .menubar li a:hover{
+	background-color:#e1e1e1;
+	text-decoration:none;
+}
+.profile_page .menubar li.current{
+	border-bottom:1px solid #c7c7c7;
+	border-top:0;
+}
+.profile_page .menubar li.current a,
+.profile_page .menubar li.current a:hover{
+	text-decoration:none;
+	background-color:#fff;
+	background-position:22px -40px;
+	box-shadow:-1px 1px 2px rgba(0,0,0,0.05);
+	border-bottom-left-radius:3px;
+	border-top-left-radius:3px;
+}
+
+/*
+===================
+tab导航
+===================
+*/
+.profile_nav{
+	border-bottom:1px solid #e3e3e3;
+	height:49px;
+}
+.profile_nav li{
+	float:left;
+	height:50px;
+	line-height:50px;
+	font-size:14px;
+	display:block;
+	margin-right:20px;
+}
+.profile_nav li a{
+	padding:0 10px;
+	display:block;
+	float:left;
+}
+.profile_nav li.current{
+	font-weight:700;
+}
+.profile_nav li.current a,
+.profile_nav li.current a:hover{
+	color:#000;
+	text-decoration:none;
+	background:url(../../images/profile/arrow.png) center bottom no-repeat;
+}
+
+/*
+===================
+隐私设置
+===================
+*/
+.a_privacy{
+	margin-top:15px;
+	padding:0 5px 0 20px;
+	font-size:12px;
+	line-height:20px;
+	color:#666;
+	background:url(../../images/profile/lock.png) 0 0 no-repeat;
+}
+
+/*
+===================
+内容布局
+===================
+*/
+.profile_ct{
+	padding:30px 0 100px;
+}
+.profile_ct h3{
+	padding:5px 10px;
+	margin-bottom:10px;
+	font-size:14px;
+	background:#f7f7f7;
+}
+.profile_ct dl{
+	padding-bottom:20px;
+	font-size:14px;
+	min-height:32px;
+}
+.profile_ct dt{
+	float:left;
+	width:141px;
+	line-height:26px;
+	text-align:right;
+	margin-right:10px;
+}
+.profile_ct dd{
+	float:left;
+	width:580px;
+	line-height:26px;
+}
+.profile_ct dd .btn{
+	font-family:Simsun;
+}
+.profile_ct .length_5{
+	margin-right:10px;
+}
+.profile_ct .tips_error{
+	font-size:12px;
+}
+.profile_ct .user_select_input{
+	height:120px;
+	margin-bottom:20px;
+	width:600px;
+	overflow-y:auto;
+}
+
+/*
+===================
+操作提示
+===================
+*/
+.reg_tips{
+	background:url(../../images/register/arrow_reg.png) 0 4px no-repeat;
+	display:inline-block;
+	padding:5px 10px 5px 20px;
+	vertical-align:middle;
+	color:#999;
+	line-height:1.5;
+	font-size:12px;
+}
+
+/*
+===================
+密码强度
+===================
+*/
+.pwd_strength_1,
+.pwd_strength_2,
+.pwd_strength_3,
+.pwd_strength_4{
+	width:84px;
+	height:9px;
+	overflow:hidden;
+	display:inline-block;
+	background:url(../../images/register/pwd_strength.png) no-repeat;
+	margin-right:5px;
+}
+.pwd_strength_2{
+	background-position:0 -9px;
+}
+.pwd_strength_3{
+	background-position:0 -18px;
+}
+.pwd_strength_4{
+	background-position:0 -27px;
+}
+
+
+/*
+===================
+工作经历
+===================
+*/
+.profile_work{
+	min-height:500px;
+}
+.profile_work ul{
+	padding-bottom:20px;
+}
+.profile_work li{
+	padding:10px;
+	border-bottom:1px dashed #dcdcdc;
+	zoom:1;
+}
+.profile_work li:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+}
+.profile_work li.hd .btn_submit{
+	margin-top:-2px;
+}
+.profile_work li .btn{
+	position:relative;
+	font-family:Simsun;
+}
+.profile_work .unit{
+	float:left;
+	display:inline-block;
+	width:300px;
+	font-size:14px;
+}
+.profile_work .time{
+	display:inline-block;
+	font-size:14px;
+}
+/*
+===================
+教育经历
+===================
+*/
+.profile_educat{
+	min-height:500px;
+}
+.profile_educat ul{
+	padding-bottom:20px;
+}
+.profile_educat li{
+	padding:10px;
+	border-bottom:1px dashed #dcdcdc;
+	zoom:1;
+}
+.profile_educat li:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+}
+.profile_educat li.hd .btn_submit{
+	margin-top:-2px;
+}
+.profile_educat li .btn{
+	position:relative;
+	font-family:Simsun;
+}
+.profile_educat .edu{
+	width:160px;
+	font-size:14px;
+	float:left;
+}
+.profile_educat .unit{
+	width:240px;
+	font-size:14px;
+	float:left;
+}
+.profile_educat .time{
+	display:inline-block;
+	font-size:14px;
+}
+
+/*
+===================
+积分首页
+===================
+*/
+.credit_page{
+	padding:20px 10px;
+}
+
+/*
+===================
+当前总积分
+===================
+*/
+.credit_total{
+	height:180px;
+	position:relative;
+}
+.credit_total h2{
+	font-size:14px;
+	margin-bottom:15px;
+}
+.credit_total h2 span{
+	font-weight:100;
+	font-size:12px;
+	padding-left:10px;
+	color:#999;
+}
+/*进度条*/
+.credit_total .schedule,
+.credit_total .schedule_div{
+}
+.credit_total .schedule{
+	background-color:#ededed;
+	height:16px;
+}
+.credit_total .schedule_div{
+	background-color:#488FCE;
+	height:16px;
+}
+.schedule_wrap{
+	width:445px;
+	position:absolute;
+	margin-top:-16px;
+	margin-left:68px;
+}
+/*相连等级*/
+.credit_total .level li{
+	float:left;
+	border-left:1px solid #ddd;
+	border-left:1px solid rgba(0,0,0,0.15);
+	margin-left:-1px;
+	text-indent:10px;
+	padding-bottom:20px;
+	margin-bottom:-16px;
+	position:relative;
+	z-index:1;
+}
+.credit_total .level li.li{
+	border-left:0 none;
+}
+.credit_total .level li span{
+	padding-left:3px;
+	font-size:10px;
+	color:#999;
+}
+/*当然分值*/
+.credit_total .current{
+	border:1px solid #f4d1a5;
+	background:#fffbe7;
+	font-size:12px;
+	position:absolute;
+	margin-top:8px;
+	margin-left:-35px;
+
+}
+.credit_total .current .arrow{
+	position:absolute;
+	top:-24px;
+	left:25px;
+}
+.credit_total .current p{
+	font-family:Simsun;
+	padding:4px 0;
+	width:70px;
+	text-align:center;
+	color:#666;
+}
+.credit_total .current .arrow span,
+.credit_total .current .arrow em{
+	position:absolute;
+	width:0;
+	height:0;
+	padding:0;
+	margin:9px 0 0 0;
+	border-top:8px transparent dashed;
+	border-right:8px transparent dashed;
+	border-left:8px transparent dashed;
+	overflow:hidden;
+}
+.credit_total .current .arrow span{
+	border-bottom:8px #fffbe7 solid;
+}
+.credit_total .current .arrow em{
+	border-bottom:8px #f4d1a5 solid;
+	margin-top:8px;
+}
+
+/*
+===================
+已有积分
+===================
+*/
+.credit_has h2{
+	font-size:14px;
+	margin-bottom:5px;
+}
+.credit_has dt{
+	height:30px;
+	line-height:30px;
+	background:#f7f7f7;
+	border-top:1px solid #e4e4e4;
+	border-bottom:1px solid #e4e4e4;
+	color:#666;
+}
+.credit_has dd{
+	height:30px;
+	line-height:30px;
+	border-bottom:1px solid #e4e4e4;
+}
+.credit_has span{
+	float:left;
+	line-height:30px;
+	height:30px;
+	overflow:hidden;
+}
+.credit_has span.name{
+	width:160px;
+	padding-left:10px;
+}
+.credit_has span.name_min{
+	width:60px;
+	padding-left:10px;
+}
+.credit_has span.num{
+	width:160px;
+}
+.credit_has span.num_min{
+	width:80px;
+}
+
+/*
+===================
+订单记录
+===================
+*/
+.order_history{
+	padding:20px 10px;
+}
+.order_history td{
+	border-bottom:1px solid #e4e4e4;
+	height:30px;
+	line-height:30px;
+}
+.order_history thead td{
+	background:#f7f7f7;
+	border-top:1px solid #e4e4e4;
+	color:#666;
+}
+.order_history .num{
+	padding-left:10px;
+}
+
+/*
+===================
+转账
+===================
+*/
+.pop_transfer{
+	width:340px;
+}
+.pop_transfer .name{
+	line-height:26px;
+	font-weight:700;
+}
+
+/*
+===================
+转换
+===================
+*/
+.pop_transform{
+	width:340px;
+}
+.pop_transform .name{
+	line-height:26px;
+	font-weight:700;
+}
+
+/*
+===================
+付款方式
+===================
+*/
+.payment_type{
+	width:400px;
+}
+.payment_type li{
+	float:left;
+	padding:5px 15px 10px 2px;
+	position:relative;
+	height:46px;
+	width:140px;
+}
+.payment_type li a{
+	float:left;
+	display:block;
+	width:127px;
+	height:40px;
+	overflow:hidden;
+	text-indent:-2000em;
+	border:1px solid #cccccc;
+	background:url(../../images/common/pay.png) no-repeat;
+}
+.payment_type li a.alipay{
+	background-position:0 0;
+}
+.payment_type li a.tenpay{
+	background-position:0 -40px;
+}
+.payment_type li a.paypal{
+	background-position:0 -80px;
+}
+.payment_type li a.bill{
+	background-position:0 -120px;
+}
+.payment_type li a:hover,
+.payment_type li.current a{
+	border:2px solid #ff5500;
+	margin-top:-1px;
+	margin-left:-1px;
+}
+.payment_type li.current em{
+	background:url(../../images/common/radio_disabled.png) right bottom no-repeat;
+	position:absolute;
+	width:10px;
+	height:8px;
+	right:27px;
+	bottom:14px;
+}
+
+/*
+===================
+管理组
+===================
+*/
+.management_group_list{
+	border:1px solid #ccc;
+	background:#f7f7f7;
+	margin:10px 0 0;
+}
+.management_group_list ul{
+	border-top:1px solid #fff;
+	padding:10px 15px;
+}
+.management_group_list li{
+	float:left;
+	padding-right:13px;
+	margin-right:20px;
+}
+.management_group_list li a{
+	display:inline-block;
+	color:#666;
+}
+.management_group_list li.current a{
+	color:#333;
+}
+.management_group_list .core_arrow{
+	border-top-color:#ccc;
+}
+
+/*
+===================
+我的组别
+===================
+*/
+.my_group{
+	padding:15px 0;
+}
+.my_group h2{
+	line-height:45px;
+	height:45px;
+	font-size:16px;
+	text-align:center;
+	background:url(../../images/profile/my_group_h2.png) 0 -100px repeat-x;
+}
+.my_group .type{
+	float:left;
+	width:140px;
+	margin-right:1px;
+}
+.my_group ul{
+	background:url(../../images/profile/type.png);
+	float:left;
+}
+.my_group li{
+	line-height:30px;
+	height:30px;
+	float:left;
+	width:100%;
+	text-indent:10px;
+	overflow:hidden;
+	margin:0;
+}
+.my_group li .correct_span,
+.my_group li .error_span{
+	margin-left:10px;
+	display:inline;
+}
+.my_group .type li.hd{
+	background:#d8e0e6;
+	font-weight:700;
+}
+.my_group .current{
+	margin-left:141px;
+}
+.my_group .current h2{
+	color:#fff;
+	background-position:0 0;
+}
+.my_group .current ul{
+	background:url(../../images/profile/current.png);
+}
+.my_group .contrast h2{
+	color:#fff;
+	background-position:0 -50px;
+}
+.my_group .contrast ul{
+	background:url(../../images/profile/contrast.png);
+}
+
+/*权限判断*/
+.correct_span,
+.error_span{
+	display:block;
+	float:left;
+	width:20px;
+	height:16px;
+	text-indent:-2000em;
+	overflow:hidden;
+	background:url(../../images/profile/judgment.png) no-repeat;
+	margin:7px 0 0 0;
+}
+.error_span{
+	background-position:0 -23px;
+}
+
+/*
+===================
+权限对比
+===================
+*/
+.my_group_contrast .current{
+	float:left;
+	width:303px;
+	margin:0;
+}
+.my_group_contrast .contrast{
+	float:right;
+	width:303px;
+}
+
+/*
+===================
+当前用户组选择
+===================
+*/
+.pop_group_select{
+	width:300px;
+}
+.pop_group_select li{
+	float:left;
+	width:49.5%;
+	padding-bottom:5px;
+}
+.pop_group_select li input:checked+span{
+	color:#008800;
+}
+
+/*
+===================
+按条件搜索
+===================
+*/
+.profile_search{
+	padding:12px 0;
+}
+.profile_search h2{
+	font-size:12px;
+	color:#666;
+	margin-bottom:10px;
+}
+.profile_search td{
+	padding:5px 0;
+}
+.profile_search th{
+	white-space:nowrap;
+	width:60px;
+}
+.profile_search table{
+	margin-bottom:10px;
+}
+.profile_search .btn{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+/*
+===================
+数据表格
+===================
+*/
+.profile_table{
+	padding:10px 0;
+}
+.profile_table h2{
+	font-size:12px;
+	color:#666;
+	margin-bottom:10px;
+}
+.profile_table thead td{
+	border-top:1px solid #e4e4e4;
+	background:#f7f7f7;
+	padding:6px 5px;
+	color:#666;
+}
+.profile_table td{
+	border-bottom:1px solid #e4e4e4;
+	padding:5px;
+}
+.profile_table tfoot td{
+	border-bottom:0 none;
+	padding:10px 5px;
+}
+.profile_table tfoot td .btn{
+	padding-left:15px;
+	padding-right:15px;
+	margin-right:10px;
+}
+
+/*
+===================
+举报管理
+===================
+*/
+.report_page .hd{
+	padding:12px 0 0;
+}
+.report_page strong{
+	padding:0 10px 0 0;
+	color:#666;
+}
+
+/*
+===================
+个性标签
+===================
+*/
+.cool_tags{
+	padding:10px;
+}
+.cool_tags .hd{
+	font-size:14px;
+	color:#666;
+	padding:10px 0 20px;
+}
+.cool_tags h3{
+	font-size:12px;
+	font-weight:100;
+	margin-bottom:5px;
+	color:#666;
+}
+.cool_tags h3 strong{
+	color:#333;
+	margin-right:2px;
+}
+.cool_tags h3 .more{
+	float:right;
+	color:#999;
+}
+.cool_tags .length_5{
+	padding:3px 4px 2px;
+}
+.cool_tags p{
+	padding-bottom:30px;
+}
+.cool_tags .ft{
+	border-top:1px dotted #ccc;
+	padding:15px 0;
+}
+.cool_tags .ft h4{
+	font-weight:100;
+	color:#666;
+	margin-bottom:5px;
+}
+.cool_tags .ft p{
+	color:#999;
+	font-family:Simsun;
+}
+
+/*
+===================
+个性标签--已有标签
+===================
+*/
+.cool_has_tags .rel{
+	display:inline-block;
+	border:1px solid #b2d9f0;
+	line-height:22px;
+	padding:0 3px 0 7px;
+	margin-right:5px;
+	color:#105cb6;
+	cursor:pointer;
+}
+/*词*/
+.cool_has_tags .rel em{
+	padding-right:3px;
+	font-size:14px;
+}
+/*删除*/
+.cool_has_tags a.del{
+	padding:0 2px;
+	font-family:Simsun;
+	display:inline-block;
+	line-height:16px;
+}
+.cool_has_tags a.del:hover{
+	background:#9fd1f8;
+	color:#fff;
+	text-decoration:none;
+}
+
+/*
+===================
+个性标签--热门标签
+===================
+*/
+.cool_hot_tags{
+	
+}
+.cool_hot_tags a{
+	display:inline-block;
+	line-height:25px;
+	padding:0 10px 0 20px;
+	margin:0 5px 8px 0;
+	font-size:14px;
+	background:#daf5fa url(../../images/profile/add_blue.png) 8px 8px no-repeat;
+}
+.cool_hot_tags a:hover{
+	text-decoration:none;
+	background-color:#c1eff7;
+}
+
+/*
+===================
+个性标签--猜你喜欢
+===================
+*/
+.cool_like_tags{
+	padding-bottom:30px;
+}
+.cool_like_tags li{
+	float:left;
+	width:24.8%;
+}
+.cool_like_tags li p{
+	padding-bottom:2px;
+}
+.cool_like_tags .face{
+	float:left;
+	margin-right:8px;
+	margin-top:3px;
+}
+.cool_like_tags a{
+	color:#666;
+}
+.cool_like_tags .descrip{
+	margin-bottom:3px;
+}
+.cool_like_tags .descrip a{
+	color:#999;
+	margin-right:5px;
+}
+
+/*
+===================
+地区学校资料库
+===================
+*/
+.pop_region_list{
+	padding-bottom:10px;
+}
+.pop_region_list ul{
+	padding-left:2px;
+}
+.pop_region_list ul li{
+	float:left;
+	line-height:20px;
+}
+.pop_region_list ul li a,
+.pop_region_list ul li span{
+	display:block;
+	padding:0 5px;
+	color:#333;
+	white-space:nowrap;
+	border-radius:2px;
+}
+.pop_region_list ul li a:hover{
+	background:#e0e0e0;
+	text-decoration:none;
+}
+.pop_region_list ul li.current a,
+.pop_region_list ul li.current span{
+	background:#266aae;
+	color:#ffffff;
+}
+.pop_region_list .hr{
+	background:#e4e4e4;
+	height:1px;
+	overflow:hidden;
+	font:0/0 Arial;
+	clear:both;
+	margin:10px 0;
+}
+.pop_region_list .filter{
+	padding:10px 0;
+}
+.pop_region_list .filter a{
+	margin-right:12px;
+}
+.pop_region_list .filter a.current{
+	color:#333;
+	font-weight:700;
+}
+.pop_region_list .list{
+	border:1px solid #ccc;
+	height:108px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.pop_region_list .list ul{
+	padding:5px;
+}
+.pop_region_list .list li{
+	float:left;
+	width:33%;
+	cursor:pointer;
+	text-indent:5px;
+	border-radius:2px;
+}
+.pop_region_list .list li:hover{
+	background:#f7f7f7;
+}
+.pop_region_list .list li.current{
+	background:#266aae;
+	color:#ffffff;
+}
+
+
+/*
+===================
+邮箱下拉
+===================
+*/
+.mail_down{
+	position:absolute;
+	width:240px;
+}
+.mail_down ul{
+	border:1px solid #cccccc;
+	padding:1px;
+	background:#fff;
+}
+.mail_down li{
+	line-height:21px;
+	height:21px;
+	overflow:hidden;
+}
+.mail_down li a{
+	display:block;
+	color:#999;
+	text-decoration:none;
+	padding:0 10px;
+}
+.mail_down li a:hover,
+.mail_down li.current a{
+	background-color:#e8f4fc;
+	color:#333;
+}
+
+/*
+===================
+头像上传
+===================
+*/
+.other_upload{
+	background:#f7f7f7;
+	padding:5px 10px;
+	width:280px;
+	text-align:center;
+	margin:40px auto 0;
+}
+.avatar_other{
+	padding:20px 20px 0;
+}
+.avatar_other dt{
+	float:left;
+	width:220px;
+}
+
+/*
+===================
+密码修改
+依赖profile_ct
+===================
+*/
+.password_list dt{
+	width:100px;
+}
+.password_list dd{
+	width:620px;
+}
+
+
+
+
+
+

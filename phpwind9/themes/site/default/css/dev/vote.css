@@ -1,0 +1,377 @@
+/*#
+===================
+@explain: 投票应用
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: vote.css 24492 2013-01-31 03:38:37Z yanchixia $
+===================
+#*/
+
+/*
+===================
+投票列表结构
+===================
+*/
+.vote_page{
+	padding:0 0 15px;
+}
+
+.vote_list{
+	padding:15px 0;
+}
+.vote_list dl.dl{
+	border-bottom:1px dashed #dcdcdc;
+	padding-bottom:10px;
+	margin-bottom:15px;
+}
+.vote_list dt.dt{
+	float:left;
+	width:65px;
+}
+.vote_list .content{
+	float:left;
+	overflow:hidden;
+	width:450px;
+}
+.vote_list .title{
+	font-size:14px;
+	font-weight:700;
+	margin-bottom:8px;
+	color:#666;
+}
+.vote_list .title a.name{
+	color:#105CB6;
+}
+.vote_list .title a{
+	color:#333;
+}
+.vote_list .descrip{
+	margin-bottom:8px;
+}
+.vote_list .num{
+	float:right;
+}
+.vote_list .num div{
+	border-radius:3px;
+	text-align:center;
+	color:#52aad8;
+	background:#edf4fa;
+}
+.vote_list .num div span{
+	display:block;
+	background:#e3f1fa;
+	padding:5px 10px;
+	border-radius:3px 3px 0 0;
+}
+.vote_list .num div em{
+	font-weight:700;
+	display:block;
+	font-size:16px;
+	padding:2px;
+}
+
+
+/*
+===================
+最新投票
+===================
+*/
+.vote_new_list{
+	padding:5px 15px 15px;
+}
+.vote_new_list h2{
+	font-size:14px;
+	margin-bottom:5px;
+}
+.vote_new_list li{
+	border-bottom:1px dotted #e4e4e4;
+	line-height:26px;
+	height:26px;
+	overflow:hidden;
+}
+.vote_new_list li a{
+	display:block;
+	float:left;
+	width:155px;
+	overflow:hidden;
+	height:26px;
+	margin-right:10px;
+	color:#666;
+}
+.vote_new_list li .num{
+	padding-left:20px;
+	background:url(../../images/vote/new_list.png) 0 center no-repeat;
+	font-family:Simsun;
+	color:#999;
+}
+
+
+/*
+===================
+投票
+===================
+*/
+.read_vote_list{
+	width:450px;
+}
+.read_vote_list .hd{
+	font-weight:700;
+	margin-bottom:10px;
+}
+.read_vote_list .hd span{
+	padding:0 15px;
+	color:#cccccc;
+	font-family:Simsun;
+	font-weight:100;
+}
+.read_vote_list ul.ul_line{
+	border-top:1px dotted #d3d3d3;
+}
+.read_vote_list ul.ul_line li{
+	padding:3px 0;
+	border-bottom:1px dotted #d3d3d3;
+}
+.read_vote_list ul.ul_line .options{
+	padding:5px;
+}
+.read_vote_list .options{
+	display:block;
+	padding:0 0 5px 0;
+	position:relative;
+}
+.read_vote_list ul.ul_line .options:hover,
+.read_vote_list ul.ul_line li.current .options{
+	background-color:#e9f2f7;
+}
+.read_vote_list .ft{
+	padding:10px 0;
+}
+.read_vote_list .btn{
+	margin-right:20px;
+	font-weight:700;
+}
+.read_vote_list dl{
+	padding:2px 0;
+}
+.read_vote_list dt{
+	float:left;
+	width:300px;
+	margin-right:10px;
+}
+.read_vote_list .num{
+	float:left;
+	width:120px;
+	font-family:Simsun;
+}
+.read_vote_list .moreuser{
+	float:left;
+	width:80px;
+}
+
+/*
+===================
+投票进度条
+===================
+*/
+.read_vote_list .progress,
+.read_vote_list .progress span{
+	background-image:url(../../images/vote/progress_bg.png);
+	background-repeat:repeat-x;
+}
+.read_vote_list .progress{
+	width:100%;
+	background-color:#efefef;
+	height:15px;
+	display:inline-block;
+	vertical-align:middle;
+	position:relative;
+	border:1px solid #fff;
+}
+.read_vote_list .progress span{
+	background-color: #a5ce45;
+	display:inline-block;
+	height:15px;
+	position:absolute;
+	margin-top:0;
+	left:0;
+	font:0/0 Arial;
+}
+.read_vote_list .progress span.term_1{
+	background-position:0 -15px;
+}
+.read_vote_list .progress span.term_2{
+	background-position:0 -30px;
+}
+.read_vote_list .progress span.term_3{
+	background-position:0 -45px;
+}
+.read_vote_list .progress span.term_4{
+	background-position:0 -60px;
+}
+
+/*
+===================
+查看投票会员列表
+===================
+*/
+.pop_vote_member{
+	width:320px;
+}
+.pop_vote_member ul{
+	height:80px;
+	overflow-y:auto;
+}
+.pop_vote_member li{
+	float:left;
+	width:90px;
+	line-height:25px;
+	height:25px;
+	overflow:hidden;
+}
+.pop_vote_member li a{
+	color:#333;
+}
+.pop_vote_member .not_content_mini{
+	height:50px;
+	padding-top:20px;
+	padding-left:110px;
+	background-position:70px 20px;
+}
+
+/*
+===================
+图片投票
+===================
+*/
+.read_vote_list .li_img dl{
+	_float:left;
+}
+.read_vote_list .li_img dt{
+	width:305px;
+}
+.read_vote_list .li_img .moreuser{
+	float:right;
+}
+.read_vote_list .li_img .progress{
+	vertical-align:top;
+	width:300px;
+}
+.read_vote_list .img{
+	margin-top:2px;
+	float:left;
+	width:120px;
+	height:120px;
+	background:#fff;
+	padding:4px;
+	border:1px solid #ccc;
+	text-align:center;
+	margin-right:10px;
+	line-height:120px;
+	position:relative;
+}
+.read_vote_list .img p{
+	background:#fff;
+	height:120px;
+}
+.read_vote_list .img label{
+	position:absolute;
+	left:4px;
+	top:4px;
+	width:120px;
+	height:120px;
+	cursor:pointer;
+	background:#000;
+	filter:alpha(opacity=0);
+	-moz-opacity:0;
+	opacity:0;
+}
+.read_vote_list .img img{
+	vertical-align:middle;
+	line-height:120px;
+	text-align:center;
+}
+.read_vote_list .img input{
+	position:absolute;
+	right:5px;
+	bottom:5px;
+	margin:0;
+	padding:0;
+}
+
+
+/*
+===================
+最新喜欢会员列表
+===================
+*/
+.read_like_list{
+	padding:0 0 10px;
+}
+.read_like_list h4{
+	margin-bottom:10px;
+	font-size:12px;
+}
+.read_like_list img{
+	vertical-align:top;
+	display:block;
+}
+.read_like_list a{
+	margin-right:10px;
+	width:50px;
+	display:block;
+	float:left;
+	color:#666;
+}
+.read_like_list span{
+	display:block;
+	line-height:22px;
+	text-align:center;
+}
+
+/*无关注时*/
+.nofollow_list{
+	padding:10px 0 10px 15px;
+}
+.nofollow_list .hd{
+	padding:0 10px 10px 40px;
+	line-height:32px;
+	font-size:14px;
+	font-weight:700;
+	color:#999;
+	background:url(../../images/tips/gray_middle.png) 0 0 no-repeat;
+}
+.nofollow_list li{
+	float:left;
+	padding:5px;
+	margin-right:7px;
+	height:125px;
+}
+.nofollow_list li a{
+	display:block;
+}
+.nofollow_list li img{
+	display:block;
+	margin-bottom:5px;
+}
+.nofollow_list .ft{
+	text-align:center;
+	padding:30px;
+}
+.nofollow_list .ft .btn{
+	margin-right:15px;
+	width:83px;
+}
+.nofollow_list input{
+	margin-left:0;
+}
+.nofollow_list li label{
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+	display:block;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+	width:90px;
+}
+

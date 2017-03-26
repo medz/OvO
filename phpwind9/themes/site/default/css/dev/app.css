@@ -1,0 +1,85 @@
+/*#
+===================
+@explain: 应用
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: app.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+
+/*
+===================
+应用结构
+===================
+*/
+.app_page{
+}
+
+/*
+===================
+标题
+===================
+*/
+.app_page h2{
+	font-size:14px;
+}
+
+/*
+===================
+内容区域
+===================
+*/
+.app_page .ct{
+	padding:20px 10px;
+	min-height:400px;
+}
+.app_page .ct ul{
+	margin-bottom:10px;
+}
+.app_page .ct li{
+	float:left;
+	width:49.5%;
+	height:120px;
+}
+.app_page .ct li div{
+	float:left;
+	width:200px;
+}
+.app_page .ct li p{
+	margin-bottom:5px;
+	height:36px;
+	line-height:18px;
+	overflow:hidden;
+}
+.app_page .ct li a.in{
+}
+.app_page .ct li a.in em{
+	font-family:Simsun;
+}
+.app_page .ct h3{
+	font-size:12px;
+	margin-bottom:5px;
+}
+
+/*全局应用图标效果*/
+.app_icon{
+	float:left;
+	margin-right:10px;
+	display:inline-block;
+	vertical-align:top;
+	width:80px;
+	height:80px;
+	position:relative;
+	background:#f7f7f7;
+}
+.app_icon b{
+	position:absolute;
+	left:0;
+	top:0;
+	width:80px;
+	height:80px;
+	background:url(../../images/app/app_bg.png) no-repeat;
+	_background:none;
+}
+
+

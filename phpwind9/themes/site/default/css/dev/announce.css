@@ -1,0 +1,46 @@
+/*#
+===================
+@explain: 公告独立页
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: announce.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+
+/*
+===================
+结构
+===================
+*/
+.announce_page{
+
+}
+.announce_page dl{
+	border-bottom:1px dashed #d3d3d3;
+}
+.announce_page dt{
+	padding:10px 0;
+	font-size:14px;
+	color:#666;
+}
+.announce_page dt:hover{
+	background:#f4f4f4;
+}
+.announce_page .subject{
+	margin-right:20px;
+}
+.announce_page .time{
+	padding-left:20px;
+}
+.announce_page dd{
+	padding:0 0 10px;
+	color:#666;
+	line-height:1.8;
+	display:none;
+}
+.announce_page dl.current dd{
+	display:block;
+}
+.announce_page dl.current dt:hover{
+	background:none;
+}

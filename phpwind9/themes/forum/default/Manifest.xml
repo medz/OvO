@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<application>
+		<name>传统列表</name>
+		<alias>default</alias>
+		<version>1.0</version>
+		<pw-version>9.0</pw-version>
+		<charset>UTF-8</charset>
+		<type>style</type>
+		<style-type>forum</style-type>
+		<description>传统形式的列表展示方式，不过增加了个头像</description>
+		<logo>images/preview.jpg</logo>
+		<website></website>
+		<author-name>phpwind UED</author-name>
+		<author-email>yanchixia@aliyun-inc.com</author-email>
+		<author-icon></author-icon>
+	</application>
+
+</manifest>

@@ -1,0 +1,612 @@
+/*#
+===================
+@explain: 私信与通知
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: message.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+.notice_page,
+.message_page{
+	padding:0 0 15px;
+	min-height:600px;
+}
+
+
+/*
+===================
+私信列表
+===================
+*/
+.message_list,
+.notice_list{
+	padding:0 0 15px;
+}
+/*头尾操作*/
+.message_list .hd,
+.message_list .ft,
+.notice_list .hd,
+.notice_list .ft{
+	border-bottom:1px dashed #dcdcdc;
+	padding:8px 0;
+}
+.message_list .ft,
+.notice_list .ft{
+	margin-bottom:10px;
+}
+.message_list .hd .check,
+.message_list .ft .check,
+.notice_list .hd .check,
+.notice_list .ft .check{
+	float:left;
+	width:60px;
+}
+.message_list .hd input,
+.message_list .ft input,
+.notice_list .hd input,
+.notice_list .ft input{
+	_vertical-align:-1px;
+}
+.message_list .hd .btn,
+.message_list .ft .btn,
+.notice_list .hd .btn,
+.notice_list .ft .btn{
+	border-radius:3px;
+	border:1px solid #d0d0d0;
+	color:#666;
+	font-family:Simsun;
+	padding:2px 8px;
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:10px;
+}
+.message_list .hd .line{
+	margin:0 10px;
+	color:#ccc;
+}
+.message_list .hd .return{
+	font-family:Simsun;
+}
+/*内容区域*/
+.message_list .ct{
+	border-bottom:1px dashed #dcdcdc;
+	padding:8px 0;
+	cursor:pointer;
+}
+.message_list .ct .check{
+	float:left;
+	width:30px;
+}
+.message_list .ct .content{
+	overflow:hidden;
+}
+.message_list .ct .face{
+	float:left;
+	width:50px;
+	margin-right:10px;
+	display:inline;
+}
+.message_list .ct .face:hover{
+	text-decoration:none;
+}
+.message_list .ct .title{
+	padding:5px 0;
+}
+.message_list .ct .title img{
+	vertical-align:top;
+	margin:0 0 0 5px;
+}
+/*私信信息区域*/
+.message_list .ct .info{
+	color:#999;
+}
+/*数量*/
+.message_list .ct .num{
+	float:right;
+}
+/*信息区域操作*/
+.message_list .ct .operating{
+	float:right;
+	margin-right:5px;
+	color:#ccc;
+	display:none;
+	white-space:nowrap;
+}
+.message_list .ct:hover .operating,
+.message_list .ct_ie6 .operating{
+	display:inline;
+}
+.message_list .ct .operating a{
+	margin:0 5px;
+	color:#999;
+}
+/*未读*/
+.message_list .ct .unread{
+	color:#ff5500;
+	margin-left:10px;
+}
+
+
+/*
+===================
+通知列表
+===================
+*/
+.notice_list .core_menu{
+	z-index:1;
+}
+/*类型筛选*/
+.notice_list .filter{
+	float:right;
+}
+.notice_list .filter .current{
+	font-weight:700;
+	color:#333;
+}
+/*通知主体*/
+.notice_list .ct{
+	border-bottom:1px dashed #dcdcdc;
+	padding:8px 0;
+}
+.notice_list .ct .check{
+	float:left;
+	width:30px;
+}
+.notice_list .ct .content{
+	overflow:hidden;
+	padding-left:25px;
+	position:relative;
+}
+.notice_list .ct .content .notice_tip_icon{
+	position:absolute;
+	left:0;
+	top:0;
+}
+.notice_list .ct .info{
+	padding-top:8px;
+	color:#999;
+}
+.notice_list .ct .operating{
+	/*float:right;*/
+	display:none;
+}
+.notice_list .ct .operating a{
+	color:#999;
+}
+.notice_list .ct:hover .operating,
+.notice_list .ct_ie6 .operating{
+	display:inline;
+}
+.notice_list .ct .line{
+	color:#999;
+	margin:0 10px;
+}
+.notice_list .ct .title .notice_tip_icon{
+	margin:2px 5px 0 0;
+}
+
+/*
+===================
+展开
+===================
+*/
+.notice_list .open_up{
+	float:right;
+	font-family:Simsun;
+}
+
+/*
+===================
+内容主体
+===================
+*/
+.notice_list .title{
+	zoom:1;
+	overflow:hidden;
+}
+.notice_list .title:after{
+	content:'\20';
+	display:block;
+	height:0;
+	clear:both;
+	visibility: hidden;
+}
+
+/*
+===================
+关注列表
+===================
+*/
+.notice_follow_list{
+}
+.notice_follow_list dl{
+	border-bottom:1px solid #e4e4e4;
+	padding:10px 0;
+}
+.notice_follow_list dt{
+	float:left;
+	width:60px;
+}
+.notice_follow_list img{
+	vertical-align:top;
+}
+.notice_follow_list .name{
+	font-weight:700;
+	margin-bottom:8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+===================
+任务通知
+===================
+*/
+.notice_task{
+	padding-top:5px;
+}
+.notice_task li{
+	float:left;
+	margin-right:20px;
+}
+.notice_task img{
+	margin-right:5px;
+	vertical-align:middle;
+}
+
+/*
+===================
+关注通知
+===================
+*/
+.notice_follow{
+	margin-left:60px;
+}
+.notice_follow p{
+	margin-bottom:5px;
+}
+.notice_follow .face_mini{
+	vertical-align:middle;
+}
+
+/*
+===================
+消息回复
+===================
+*/
+.notice_list .message_reply_wrap:hover{
+	background:none;
+}
+.message_reply{
+	padding:0 0 15px;
+	overflow:hidden;
+}
+.message_reply dt{
+	float:right;
+	width:50px;
+	margin:0 0 0 20px;
+}
+.message_reply dd{
+	padding-left:50px;
+	float:right;
+}
+.message_reply textarea{
+	height:60px;
+	margin-bottom:10px;
+	outline:0 none;
+	box-shadow:0 0 0;
+	width:488px;
+	float:right;
+}
+.message_reply .btn{
+	width:60px;
+}
+.message_reply .tar{
+	height:30px;
+	float:right;
+}
+
+/*
+===================
+消息对话
+===================
+*/
+.message_dialogue dl{
+	padding:0 0 20px;
+}
+.message_dialogue dt{
+	float:left;
+	width:70px;
+}
+.message_dialogue dd{
+	float:left;
+	width:468px;
+	padding:10px 14px;
+	border:1px solid #dadada;
+	position:relative;
+	color:#666;
+}
+.message_dialogue .time{
+	color:#999;
+}
+.message_dialogue dd .operat{
+	float:right;
+	color:#ccc;
+	font-family:Simsun;
+	display:none;
+}
+.message_dialogue dd:hover .operat,
+.message_dialogue dd.current .operat{
+	display:block;
+}
+.message_dialogue .operat a{
+	color:#5697BD
+}
+.message_dialogue .title{
+	padding-bottom:8px;
+}
+.message_dialogue .title img{
+	vertical-align:top;
+}
+/*我的*/
+.message_dialogue .my dt{
+	float:right;
+	text-align:right;
+}
+.message_dialogue .my dd{
+	float:right;
+	background-color:#f6f6f6;
+}
+.message_dialogue .my .title a{
+	color:#666;
+}
+/*左角*/
+.message_dialogue .arrow{
+	position:absolute;
+	left:0;
+	margin-left:-12px;
+}
+.message_dialogue .arrow span,
+.message_dialogue .arrow em{
+	position:absolute;
+	width:0;
+	height:0;
+	padding:0;
+	border-bottom:6px transparent dashed;
+	border-top:6px transparent dashed;
+	border-left:6px transparent dashed;
+	overflow:hidden;
+}
+.message_dialogue .arrow span{
+	border-right:6px #fff solid;
+}
+.message_dialogue .arrow em{
+	border-right:6px #dadada solid;
+	margin-left:-1px;
+}
+/*右角*/
+.message_dialogue .my .arrow{
+	right:0;
+	margin-left:auto;
+	left:auto;
+}
+.message_dialogue .my .arrow span,
+.message_dialogue .my .arrow em{
+	border-right:6px transparent dashed;
+}
+.message_dialogue .my .arrow span{
+	border-left:6px #f6f6f6 solid;
+}
+.message_dialogue .my .arrow em{
+	border-left:6px #dadada solid;
+	margin-left:1px;
+}
+
+
+
+
+/*
+===================
+私信搜索
+===================
+*/
+.message_search{
+	margin:0 10px 0 15px;
+	float:left;
+	background:#fff;
+	border:1px solid #dddddd;
+	width:113px;
+	height:22px;
+	overflow:hidden;
+	box-shadow:0 2px 2px #f0f0f0 inset;
+}
+.message_search input{
+	border:0 none;
+	float:left;
+	outline:0 none;
+	background:none;
+	width:85px;
+	margin:3px 0 2px 2px;
+	padding:0;
+}
+.message_search button{
+	border:0 none;
+	background:none;
+	padding:0;
+	margin:0;
+	float:right;
+	width:20px;
+	overflow:visible;
+	text-align:left;
+	height:20px;
+	cursor:pointer;
+}
+.message_search button.disabled{
+	background:none !important;
+}
+.message_search button img{
+	vertical-align:middle;
+}
+.message_search button span{
+	width:15px;
+	height:15px;
+	display:inline;
+	font:0/0 Arial;
+	overflow:hidden;
+	padding:0;
+	margin:0 0 0;
+	background:url(../../images/message/search.png) no-repeat;
+	float:left;
+	text-indent:-2000em;
+	cursor:pointer;
+}
+
+/*
+===================
+写私信
+===================
+*/
+.message_post{
+	padding:15px 0 100px 0;
+}
+.message_post dl{
+	padding:10px 0;
+}
+.message_post dt{
+	float:left;
+	width:80px;
+	text-align:right;
+	font-size:14px;
+	margin-right:20px;
+}
+.message_post dd{
+	overflow:hidden;
+}
+.message_post .btn{
+	width:120px;
+}
+
+/*
+===================
+设置
+===================
+*/
+.message_set{
+	padding:15px;
+}
+.message_set dl{
+	border-bottom:1px dashed #dcdcdc;
+	padding:0 0 15px 10px;
+	margin-bottom:15px;
+}
+.message_set dt{
+	height:30px;
+}
+.message_set dt strong{
+	width:80px;
+	text-align:right;
+	padding-right:10px;
+	font-size:14px;
+	float:left;
+}
+.message_set dt span{
+	color:#999;
+	overflow:hidden;
+	float:left;
+	width:500px;
+	margin-bottom:10px;
+}
+.message_set dd{
+	padding:0 20px 0 90px;
+}
+.message_set li{
+	padding:0 0 5px;
+	font-size:14px;
+}
+.message_set .user_select_input li{
+	font-size:12px;
+	padding:0;
+}
+.message_set li span{
+	padding-left:20px;
+	color:#999;
+	font-size:12px;
+}
+.message_set li p{
+	font-size:12px;
+}
+.message_set .ft{
+	border-bottom:0 none;
+}
+.message_set input:checked+em{
+	color:#105cb6;
+}
+.message_set .btn_submit{
+	width:100px;
+}
+
+/*
+===================
+关注
+===================
+*/
+.sys_focus{
+	
+}
+.sys_focus .fe{
+	float:left;
+	margin-right:10px;
+}
+/*
+===================
+关注详细列表
+===================
+*/
+.sys_focus .my_message_follow{
+	height:auto;
+}
+.sys_focus .my_message_follow dl{
+	padding-bottom:8px;
+	margin-bottom:8px;
+	border-bottom:1px dashed #e4e4e4;
+}
+.sys_focus .my_message_follow dt{
+	float:left;
+	width:60px;
+}
+.sys_focus .my_message_follow dt img{
+	vertical-align:top;
+}
+.sys_focus .my_message_follow .name{
+	margin-bottom:5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

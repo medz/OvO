@@ -1,0 +1,469 @@
+/*#
+===================
+@explain: 关注/粉丝/找人/访问脚印
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: fans.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+
+
+/*
+===================
+粉丝关注列表
+===================
+*/
+.fans_page{
+}
+
+.fans_list{
+	padding:15px 0;
+}
+.fans_list dl{
+	border-bottom:1px dashed #e6e6e6;
+	padding:0 0 15px;
+	margin:0 0 17px;
+	position:relative;
+	_height:80px;
+}
+
+/*
+===================
+头像
+===================
+*/
+.fans_list dt{
+	float: left;
+	width: 64px;
+	padding:3px 0 6px;
+	_padding-top:0;
+}
+.fans_list dt a{
+	display:block;
+}
+
+/*
+===================
+打招呼
+===================
+*/
+.fans_list .called{
+	border:1px solid #d8d8d8;
+	border-radius:2px;
+	color:#666;
+	width:48px;
+	text-align:center;
+	background:#f7f7f7;
+	box-shadow:0 1px 1px #ffffff inset;
+}
+.fans_list .called:hover{
+	color:#333;
+	text-decoration:none;
+}
+
+/*
+===================
+内容
+===================
+*/
+.fans_list dd{
+	overflow:hidden;
+}
+
+/*
+===================
+用户名
+===================
+*/
+.fans_list .name{
+	font-size:14px;
+	margin-right:7px;
+}
+
+/*
+===================
+用户名所以栏
+===================
+*/
+.fans_list .title{
+	margin-bottom:5px;
+}
+
+/*
+===================
+用户数据
+===================
+*/
+.fans_list .num{
+	color:#666;
+	margin-bottom:7px;
+}
+.fans_list .num span{
+	color:#ccc;
+	margin:0 9px;
+}
+.fans_list .num a{
+	margin-left:4px;
+}
+
+/*
+===================
+用户最新动作
+===================
+*/
+.fans_list .action a{
+	color:#5697bd;
+	margin:0 5px;
+}
+.fans_list .action .time{
+	color:#999;
+}
+
+/*
+===================
+两者关系
+===================
+*/
+.fans_list .attribute{
+	position:absolute;
+	right:0;
+	top:2px;
+	width:80px;
+}
+.fans_list .attribute .mnfollow{
+	background:url(../../images/fans/mnfollow.png) no-repeat;
+	width:43px;
+	height:13px;
+	overflow:hidden;
+	text-indent:-2000em;
+	display:block;
+	margin-bottom:10px;
+	float:right;
+}
+.fans_list .attribute .core_follow,
+.fans_list .attribute .core_unfollow{
+	float:right;
+}
+
+/*
+===================
+分类
+===================
+*/
+.fans_list .sort{
+	position:absolute;
+	right:250px;
+	top:0;
+	white-space:nowrap;
+}
+.fans_list .sort a{
+	color:#666;
+	display:block;
+	padding:3px 15px;
+}
+.fans_list .sort a:hover,
+.fans_list .sort a.current{
+	border:1px solid #c4c4c4;
+	padding:2px 14px;
+	text-decoration:none;
+	border-radius:3px;
+	background:#f7f7f7;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f7f7f7), to(#ebebeb));
+	background-image: -webkit-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -moz-linear-gradient(top, #f7f7f7, #ebebeb);
+	background-image: -ms-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -o-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: linear-gradient(#f7f7f7, #ebebeb);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#ebebeb', GradientType=0);
+}
+.fans_list .sort em{
+	_vertical-align:0;
+	border-top: 4px #a3a3a3 solid;
+}
+/*
+===================
+下拉
+===================
+*/
+.sort_down{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	width:118px;
+	padding:1px;
+	margin-top:23px;
+	margin-left:-372px;
+	z-index:1;
+}
+.sort_down ul{
+	padding:5px;
+}
+.sort_down li{
+	padding:3px 0;
+	color:#666;
+}
+.sort_down .add{
+	display:block;
+	line-height:25px;
+	background:#eeeeee url(../../images/fans/add.png) 10px center no-repeat;
+	color:#5697bd;
+	border-top:1px dotted #ccc;
+	padding-left:25px;
+}
+.sort_down .input{
+	padding:2px 4px;
+	width:98px;
+	margin-bottom:5px;
+}
+.sort_down .ft{
+	padding:0 5px 5px;
+}
+.sort_down .btn{
+	margin:0;
+	font-family:Simsun;
+	width:50px;
+}
+.sort_down .btn_submit{
+	margin-right:8px;
+}
+
+/*
+===================
+关联关注
+===================
+*/
+.related{
+	border:1px solid #e1e4e5;
+	background:#fbfbfb;
+	border-radius:3px;
+	padding:10px;
+	margin-top:10px;
+}
+.related p{
+	padding:5px;
+}
+
+
+/*
+===================
+找人
+===================
+*/
+.friend_page{
+	padding:15px;
+}
+.friend_page h2{
+	background:#f0f0f0;
+	font-size:12px;
+	font-weight:100;
+	color:#666;
+	line-height:36px;
+	height:36px;
+	padding:0 15px;
+	margin-bottom:15px;
+}
+.friend_page .input{
+	margin-right:5px;
+	padding:3px 4px 2px;
+}
+.friend_page .btn{
+	width:70px;
+}
+/*按用户查找*/
+.friend_page .user{
+	padding:0 15px 30px;
+}
+/*按缘分查找*/
+.friend_page .fate{
+	padding:0 0 30px;
+}
+.friend_page .fate li{
+	float:left;
+	display:inline;
+	border:1px solid #eaeaea;
+	border-radius:3px;
+	width:148px;
+	height:68px;
+	text-align:center;
+	margin:0 8px 0 15px;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbfafa), color-stop(25%, #fbfafa), to(#f3f2f2));
+	background-image: -webkit-linear-gradient(#fbfafa, #fbfafa 25%, #f3f2f2);
+	background-image: -moz-linear-gradient(top, #fbfafa, #fbfafa 25%, #f3f2f2);
+	background-image: -ms-linear-gradient(#fbfafa, #fbfafa 25%, #f3f2f2);
+	background-image: -o-linear-gradient(#fbfafa, #fbfafa 25%, #f3f2f2);
+	background-image: linear-gradient(#fbfafa, #fbfafa 25%, #f3f2f2);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfafa', endColorstr='#v', GradientType=0);
+}
+.friend_page .fate li a{
+	display:block;
+}
+.friend_page .fate li a.in{
+	height:68px;
+}
+.friend_page .fate li a.in:hover{
+	text-decoration:none;
+	background:#fffef7;
+}
+.friend_page .fate li span{
+	display:block;
+	font-size:14px;
+	color:#666;
+	line-height:30px;
+	padding-top:7px;
+}
+.friend_page .fate li em{
+	color:#666;
+}
+/*按标签查找*/
+.friend_page .tags{
+	padding:0 15px 30px;
+}
+.friend_page .tags .hd{
+	margin-bottom:10px;
+}
+.friend_page .tags .hd a{
+	margin-right:10px;
+}
+.friend_page .tags .hd em{
+	background:#69a9d7;
+	border-radius:3px;
+	color:#fff;
+	display:inline-block;
+	vertical-align:middle;
+	padding:3px 5px;
+	margin-right:5px;
+}
+/*精确查找*/
+.friend_page .fine{
+	padding:0 15px 30px;
+}
+.friend_page .fine dl{
+	margin-bottom:15px;
+}
+.friend_page .fine select{
+	padding:1px;
+	line-height:22px;
+	height:22px;
+	margin-right:5px;
+	width:60px;
+}
+.friend_page .fine .begin{
+	width:100px;
+}
+.friend_page .fine dt{
+	float:left;
+	width:60px;
+	text-align:right;
+	color:#666;
+	line-height:22px;
+}
+
+/*无关注时*/
+.nofollow_list{
+	padding:10px 0 10px 15px;
+}
+.nofollow_list .hd{
+	padding:0 10px 10px 40px;
+	line-height:32px;
+	font-size:14px;
+	font-weight:700;
+	color:#999;
+	background:url(../../images/tips/gray_middle.png) 0 0 no-repeat;
+}
+.nofollow_list li{
+	float:left;
+	padding:5px;
+	margin-right:7px;
+	height:125px;
+	width:90px;
+}
+.nofollow_list li a{
+	display:block;
+	float:left;
+	margin-bottom:5px;
+}
+.nofollow_list li img{
+	display:block;
+	vertical-align:top;
+}
+.nofollow_list .ft{
+	text-align:center;
+	padding:30px;
+}
+.nofollow_list .ft .btn{
+	margin-right:15px;
+	width:83px;
+}
+.nofollow_list input{
+	margin-left:0;
+}
+.nofollow_list li label{
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+	display:block;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+	width:90px;
+}
+
+/*
+===================
+关注的人分组
+===================
+*/
+.side_cate_list{
+	padding:10px 15px;
+}
+.side_cate_list li{
+	padding:2px 0;
+	height:20px;
+}
+.side_cate_list #J_group_edit_wrap{
+	height:28px;
+}
+.side_cate_list li .icon_del,
+.side_cate_list li .icon_edit{
+	display:none;
+	margin:2px 0 0 5px;
+}
+.side_cate_list li:hover .icon_del,
+.side_cate_list li:hover .icon_edit,
+.side_cate_list li.hover .icon_del,
+.side_cate_list li.hover .icon_edit{
+	display:block;
+}
+.side_cate_list li .input{
+	margin:0 3px 0 0;
+	width:100px;
+	padding:2px;
+}
+.side_cate_list li a{
+	color:#666;
+}
+.side_cate_list li .btn{
+	margin:0 3px 0 0;
+}
+.side_cate_list li em{
+	color:#999;
+	padding-left:5px;
+}
+.side_cate_list .add{
+	display:block;
+	line-height:25px;
+	background: url(../../images/fans/add.png) 0 center no-repeat;
+	color:#5697bd;
+	padding-left:15px;
+}
+
+
+
+
+
+
+
+
+

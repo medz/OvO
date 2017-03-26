@@ -1,0 +1,373 @@
+/*#
+===================
+@explain: 勋章
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: medal.css 24448 2013-01-30 09:31:12Z yanchixia $
+===================
+#*/
+
+/*
+===================
+勋章
+===================
+*/
+.medal_page{
+	min-height:400px;
+}
+.medal_content{
+	padding:0 0;
+}
+
+/*
+===================
+未展示的勋章
+===================
+*/
+.medal_unshow_list{
+	padding:20px 0;
+	border-bottom:1px dashed #dcdcdc;	
+}
+.medal_unshow_list .hd{
+	margin-bottom:10px;
+}
+.medal_unshow_list .hd h2{
+	display:inline;
+	margin-right:5px;
+	font-size:14px;
+}
+.medal_unshow_list .hd span{
+	color:#666;
+}
+.medal_unshow_list .pre,
+.medal_unshow_list .pre_old,
+.medal_unshow_list .next,
+.medal_unshow_list .next_old{
+	width:24px;
+	height:150px;
+	float:left;
+	overflow:hidden;
+	text-indent:-2000em;
+	background:url(../../images/medal/pre_next.png) no-repeat;
+	display:inline;
+	margin:0 10px;
+}
+.medal_unshow_list .pre{
+	background-position:-60px 40px;
+	cursor:pointer;
+}
+.medal_unshow_list .pre_disable{
+	background-position:0 40px;
+	cursor:default;
+}
+.medal_unshow_list .next{
+	background-position:-83px 40px;
+	cursor:pointer;
+}
+.medal_unshow_list .next_disable{
+	background-position:-23px 40px;
+	cursor:default;
+}
+.medal_unshow_list .ct{
+	float:left;
+	width:550px;
+	position:relative;
+}
+.medal_unshow_list .ct ul{
+	white-space:nowrap;
+}
+.medal_unshow_list .ct li{
+	display:inline;
+	float:left;
+	width:118px;
+	height:180px;
+	border:1px solid #e0e0e0;
+	border-radius:3px;
+	margin-left:15px;
+	text-align:center;	
+	background:#f8f8f8;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#f8f8f8));
+	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8', GradientType=0);
+}
+.medal_unshow_list .ct img{
+	display:block;
+	margin:12px auto 5px;
+}
+.medal_unshow_list .ct li.doing img{
+	filter:alpha(opacity=30);
+	-moz-opacity:0.3;
+	opacity:0.3;
+}
+.medal_unshow_list .ct p{
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+	margin-bottom:8px;
+	padding:0 10px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+	width:100px;
+}
+.medal_unshow_list .ct a.btn{
+	width:60px;
+}
+.medal_unshow_list .ct button.btn{
+	width:80px;
+}
+
+/*
+===================
+已展示的勋章
+===================
+*/
+.medal_show_list{
+	padding:20px 0;
+}
+.medal_show_list .hd{
+	margin-bottom:20px;
+}
+.medal_show_list .hd h2{
+	display:inline;
+	margin-right:5px;
+	font-size:14px;
+}
+.medal_show_list .hd span{
+	color:#666;
+}
+.medal_show_list .ct ul{
+	padding:8px 0;
+}
+.medal_show_list .ct li{
+	float:left;
+	width:158px;
+	height:180px;
+	text-align:center;
+}
+.medal_show_list .ct li a{
+	background:#f8f8f8;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#f8f8f8));
+	background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	background-image: linear-gradient(#ffffff, #ffffff 25%, #f8f8f8);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f8f8f8', GradientType=0);
+	border:1px solid #e0e0e0;
+	display:block;
+	width:120px;
+	margin:auto;
+	padding:15px 0;
+	text-decoration:none;
+	color:#666;
+	border-radius:3px;
+	position:relative;
+}
+.medal_show_list .ct li a:hover{
+	border:1px solid #ccc;
+}
+.medal_show_sort .ct li a{
+	border:1px dashed #aaa;
+}
+.medal_show_sort .ct li a:hover{
+	border:1px dashed #aaa;
+	background:#fffeee;
+	cursor:move;
+}
+.medal_show_list .ct li img{
+	display:block;
+	margin:0 auto 5px;
+}
+.medal_show_list .ct li p{
+	padding:0 5px;
+	line-height:18px;
+	height:18px;
+	overflow:hidden;
+	width:110px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+}
+
+/*
+===================
+手动勋章
+===================
+*/
+.medal_manual_list{
+	border-top:1px dashed #dcdcdc;
+}
+
+/*
+===================
+勋章状态
+===================
+*/
+.status,
+.status_do,
+.status_in,
+.status_can{
+	width:47px;
+	height:48px;
+	background:url(../../images/medal/arrow.png) no-repeat;
+	position:absolute;
+	right:-1px;
+	top:-1px;
+	z-index:1;
+}
+.status_do{
+	background-position:0 -50px;
+}
+.status_in{
+	background-position:0 -100px;
+}
+.status_can{
+	background-position:0 -150px;
+}
+
+/*
+===================
+勋章排行
+===================
+*/
+.medal_rank{
+	padding:10px 0;
+	width:638px;
+	overflow:hidden;
+}
+.medal_rank h2{
+	font-size:12px;
+	border-bottom:1px solid #e9e9e9;
+	line-height:30px;
+	height:30px;
+	padding:3px 15px;
+	background:#f6f6f6;
+}
+.medal_rank .my{
+	float:right;
+	color:#e3652a;
+	font-weight:100;
+}
+.medal_rank ol{
+	padding:15px 0;
+	width:758px;
+	margin:0;
+	list-style:none;
+}
+.medal_rank li{
+	list-style:none;
+	float:left;
+	width:90px;
+	margin:0 46px 0 0;
+	height:140px;
+	overflow:hidden;
+}
+.medal_rank li a{
+	display:block;
+}
+.medal_rank li img{
+	display:block;
+	margin-bottom:1px;
+}
+/*用户名*/
+.medal_rank li .name{
+	background:#f7f7f7;
+	text-align:center;
+	display:block;
+	line-height:22px;
+	height:22px;
+	overflow:hidden;
+}
+/*排序*/
+.medal_rank li .num{
+	height:25px;
+	text-align:right;
+	color:#666;
+}
+/*勋章数*/
+.medal_rank li .num a{
+}
+/*排名值*/
+.medal_rank li .num em{
+	float:left;
+	width:20px;
+	height:20px;
+	background:url(../../images/medal/rank_list.png) no-repeat;
+	overflow:hidden;
+	text-indent:-2000em;
+	margin-right:5px;
+	text-align:left;
+	font-size:0;
+}
+.medal_rank li .num em.em_2{
+	background-position:0 -50px;
+}
+.medal_rank li .num em.em_3{
+	background-position:0 -100px;
+}
+.medal_rank li .num em.em_4{
+	background-position:0 -150px;
+}
+.medal_rank li .num em.em_5{
+	background-position:0 -200px;
+}
+.medal_rank li .num em.em_6{
+	background-position:0 -250px;
+}
+.medal_rank li .num em.em_7{
+	background-position:0 -300px;
+}
+.medal_rank li .num em.em_8{
+	background-position:0 -350px;
+}
+.medal_rank li .num em.em_9{
+	background-position:0 -400px;
+}
+.medal_rank li .num em.em_10{
+	background-position:0 -450px;
+}
+.medal_rank li .num em.em_11{
+	background-position:0 -500px;
+}
+.medal_rank li .num em.em_12{
+	background-position:0 -550px;
+}
+.medal_rank li .num em.em_13{
+	background-position:0 -600px;
+}
+.medal_rank li .num em.em_14{
+	background-position:0 -650px;
+}
+.medal_rank li .num em.em_15{
+	background-position:0 -700px;
+}
+.medal_rank li .num em.em_16{
+	background-position:0 -750px;
+}
+.medal_rank li .num em.em_17{
+	background-position:0 -800px;
+}
+.medal_rank li .num em.em_18{
+	background-position:0 -850px;
+}
+.medal_rank li .num em.em_19{
+	background-position:0 -900px;
+}
+.medal_rank li .num em.em_20{
+	background-position:0 -950px;
+}
+
+
+
+
+
+
+
+

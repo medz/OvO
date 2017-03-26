@@ -1,0 +1,1127 @@
+/*#
+===================
+@explain: 我的空间
+@copyright: Copyright 2012,phpwind.com
+@author: longwenid@gmail.com
+$Id: style.css 24823 2013-02-22 03:25:52Z yanchixia $
+===================
+#*/
+
+/*
+===================
+结构
+===================
+*/
+body{
+	background:url(../../images/bg.png);
+	padding-top:45px;/*头部导航间距*/
+}
+.footer{
+	background:none;
+}
+.main_wrap{
+	font-family:Arial, "Microsoft Yahei";
+}
+/**隐藏掉二级导航**/
+.nav_weak{
+	display:none;
+}
+.space_page{
+	width:850px;
+	padding-top:20px;
+	margin:0 auto;
+}
+.space_content{
+	width:585px;
+	float:left;
+	padding-bottom:30px;
+}
+.space_sidebar{
+	width:230px;
+	float:right;
+}
+
+.my_menu_list{
+	top:40px;
+}
+
+/*
+===================
+共用模块
+===================
+*/
+.box{
+	border:1px solid #e4e4e4;
+	box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	min-height:100px;
+	background:#fff;
+	margin-bottom:30px;
+}
+.box .hd{
+	background:#f1f1f1;
+	padding:10px;
+}
+.box .hd .more{
+	float:right;
+	color:#666;
+}
+.box .hd .line{
+	margin:0 10px;
+	color:#d6d6d6;
+}
+.box .hd h2{
+	font-size:14px;
+	display:inline;
+	color:#333;
+	margin-right:20px;
+}
+.box .hd h3{
+	margin-right:5px;
+	font-size:14px;
+	float:left;
+}
+.box .hd a{
+	color:#666;
+}
+.box .hd a.current{
+	color:#333;
+	font-weight:700;
+}
+.box .ct{
+	padding:5px 10px 10px;
+}
+
+/*
+===================
+空间信息
+===================
+*/
+.space_header{
+	margin-bottom:20px;
+	/*text-shadow:0 0 3px rgba(0,0,0,0.3);*/
+}
+/*头部高度*/
+.space_header .title{
+	height:60px;
+}
+/*空间名称*/
+.space_header h1{
+	font-size:36px;
+	font-weight:400;
+	float:left;
+	margin-right:35px;
+}
+.space_header h1 a{
+	color:#666666;
+}
+/*访问量*/
+.space_header .num{
+	float:left;
+	color:#999;
+	padding-top:15px;
+}
+.space_header .num span{
+	background:#81ab00;
+	color:#fff;
+	display:inline-block;
+	padding:0 5px;
+	margin-left:8px;
+	border-radius:3px;
+}
+.space_header .num span em{
+	width:0;
+	height:0;
+	padding:0;
+	margin-left:-14px;
+	margin-top:4px;
+	border-top:5px transparent dashed;
+	border-bottom:5px transparent dashed;
+	border-left:5px transparent dashed;
+	border-right:5px #81ab00 solid;
+	overflow:hidden;
+	position:absolute;
+}
+/*简介*/
+.space_header .descrip{
+	color:#666;
+	padding-bottom:5px;
+	width:580px;
+}
+/*地址*/
+.space_header .url a{
+	color:#999;
+}
+
+/*
+===================
+空间导航
+===================
+*/
+.space_nav{
+	float:right;
+}
+.space_nav li{
+	float:left;
+	padding:0 10px;
+}
+.space_nav li a{
+	font-size:14px;
+	color:#666;
+}
+.space_nav li.current a{
+	font-weight:700;
+}
+
+/*
+===================
+用户信息
+===================
+*/
+.space_user_info{
+	padding:25px 25px 20px;
+	position:relative;
+}
+/*用户名*/
+.space_user_info .name{
+	font-size:22px;
+	font-weight:400;
+	line-height:normal;
+	padding:5px 0 10px;
+}
+/*个性介绍*/
+.space_user_info .present{
+	margin-bottom:15px;
+	color:#666;
+}
+/*数值*/
+.space_user_info .num{
+	height:55px;
+}
+.space_user_info .num ul{
+	margin-left:-10px;
+	float:left;
+}
+.space_user_info .num li{
+	width:50px;
+	height:45px;
+	padding-left:10px;
+	float:left;
+	border-right:1px solid #eaeaea;
+}
+.space_user_info .num li.tail{
+	border:0 none;
+}
+.space_user_info .num em{
+	display:block;
+	color:#888;
+}
+.space_user_info .num span{
+	font-size:18px;
+	line-height:25px;
+	font-weight:700;
+	color:#444;
+}
+.space_user_info .num a:hover{
+	text-decoration:none;
+}
+/*勋章*/
+.space_user_info .medal{
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.space_user_info .medal ul{
+	margin-right:-6px;
+}
+.space_user_info .medal li{
+	float:left;
+	margin-right:6px;
+	margin-bottom:6px;
+	display:inline;
+	overflow:hidden;
+}
+.space_user_info .medal li a{
+	display:block;
+	float:left;
+}
+.space_user_info .medal li img{
+	vertical-align:top;
+}
+/*发邮件加关注*/
+.space_user_info .operate{
+}
+.space_user_info .operate a,
+.space_user_info .operate span{
+	float:left;
+	width:60px;
+	line-height:20px;
+	height:20px;
+	border:1px solid #d0dfea;
+	color:#666666;
+	border-radius:2px;
+	background:#ffffff;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f3f8f9));
+	background-image: -webkit-linear-gradient(#ffffff, #f3f8f9);
+	background-image: -moz-linear-gradient(top, #ffffff, #f3f8f9);
+	background-image: -ms-linear-gradient(#ffffff, #f3f8f9);
+	background-image: -o-linear-gradient(#ffffff, #f3f8f9);
+	background-image: linear-gradient(#ffffff, #f3f8f9);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f3f8f9', GradientType=0);
+	_padding-top:3px;
+	margin-right:10px;
+}
+.space_user_info .operate a:hover{
+	color:#333;
+	text-decoration:none;
+}
+.space_user_info .operate em{
+	width:13px;
+	height:13px;
+	overflow:hidden;
+	float:left;
+	margin:3px 2px 0 4px;
+	_margin:0 1px 0 4px;
+}
+.space_user_info .operate .follow em{
+	background:url(../../images/mini_add.png) center center no-repeat;
+}
+.space_user_info .operate .message em{
+	background:url(../../images/mini_mail.png) center center no-repeat;
+}
+.space_user_info .operate .unfollow,
+.space_user_info .operate .unfollow:hover{
+	text-align:center;
+	border-color:#dddddd;
+	background:#f7f7f7 !important;
+	filter:none;
+	color:#99bbc5;
+}
+
+/*
+===================
+新鲜事
+===================
+*/
+.space_fresh dl{
+	padding:15px 20px;
+}
+/*头像*/
+.space_fresh dt{
+	float:left;
+	width:65px;
+	padding-top:3px;
+}
+/*内容区域*/
+.space_fresh dd{
+	overflow:hidden;
+	float:left;
+	width:478px;
+}
+.space_fresh dd img{
+	vertical-align:top;
+}
+/*标题区域*/
+.space_fresh .title{
+	font-size:14px;
+	margin-bottom:5px;
+	font-weight:700;
+}
+/*新鲜事标题*/
+.space_fresh .subject{
+	color:#333;
+}
+/*内容简介*/
+.space_fresh .descrip{
+}
+/*相关信息*/
+.space_fresh .my_info{
+	background:#f8f8f8;
+	padding:8px 10px;
+	border-top:1px solid #eeeeee;
+	border-bottom:1px solid #fff;
+	color:#999;
+}
+.space_fresh .my_info a{
+	color:#999;
+}
+.space_fresh .my_info .right{
+	float:right;
+}
+.space_fresh .my_info i{
+	font-style:normal;
+	margin:0 5px;
+}
+/*独立页-相关信息*/
+.space_fresh .info_alone{
+	padding:0 20px 10px;
+	color:#999;
+}
+.space_fresh .info_alone .right{
+	float:right;
+}
+/*更多*/
+.space_fresh .more{
+	font-family:Simsun;
+	margin-top:10px;
+}
+/*新鲜事图片*/
+.space_fresh .photo{
+	margin:5px 0 10px;
+	overflow:hidden;
+}
+.space_fresh .photo ul{
+}
+.space_fresh .photo li{
+	float:left;
+	margin-right:10px;
+	color:#999;
+}
+.space_fresh .photo li img{
+	max-width:100px;
+	max-height:100px;
+	height:100px;
+}
+/*引用*/
+.feed_quote{
+	margin-bottom:10px;
+}
+.feed_quote .content{
+	font-size:12px;
+	margin-bottom:0;
+}
+.feed_quote .feed_repeat_arrow{
+	float:left;
+}
+.feed_quote .info{
+	color:#999;
+	padding-top:5px;
+}
+.feed_quote .info a{
+	color:#999;
+}
+.feed_quote .info .right{
+	float:right;
+}
+.feed_quote .info span a{
+	color:#568cca;
+	margin:0 5px;
+}
+.feed_quote .info i{
+	font-style:normal;
+	margin:0 5px;
+	color:#ccc;
+}
+.feed_quote .title{
+	color:#333;
+	font-weight:700;
+}
+.feed_quote .name{
+	font-weight:700;
+}
+/*回复*/
+.feed_repeat{
+	border:1px solid #e0e4e5;
+	background:#fbfbfb;
+	line-height: 20px;
+	padding: 15px 20px 13px;
+	font-size: 12px;
+	margin: 10px 0 7px;
+	border-radius: 3px;
+}
+.feed_repeat_arrow{
+	width: 25px;
+	margin: -25px -20px 0 0;
+	_margin:-24px -10px 0 0;
+	height: 11px;
+	overflow: hidden;
+	float:right;
+}
+.feed_repeat_arrow span,
+.feed_repeat_arrow em{
+	font-family: "SimSun";
+	overflow: hidden;
+	font-size: 20px;
+	display: block;
+	height: 10px;
+}
+.feed_repeat_arrow span{
+	margin: -9px 0 0;
+	color:#fbfbfb;
+}
+.feed_repeat_arrow em{
+	color:#e0e4e5;
+}
+/*新鲜事独立页回复*/
+.feed_repeat_alone{
+	padding:10px 20px;
+}
+.feed_repeat_alone .feed_repeat_arrow{
+	display:none;
+}
+.feed_repeat_alone textarea{
+	margin-bottom:5px;
+}
+.feed_repeat_alone dl{
+	border-top:1px dashed #ddd;
+	padding:10px 0 0;
+}
+.feed_repeat_alone dt{
+	width:45px;
+}
+.feed_repeat_alone dt img{
+	vertical-align:top;
+}
+.feed_repeat_alone dd{
+	overflow:hidden;
+	padding:0;
+	margin:0;
+}
+.feed_repeat_alone dd span{
+	color:#999;
+}
+/*角*/
+.feed_repeat_arrow{
+	width: 25px;
+	margin: -26px -13px 0 0;
+	height: 11px;
+	overflow: hidden;
+	float:right;
+}
+.feed_repeat_arrow span,
+.feed_repeat_arrow em{
+	font-family: "SimSun";
+	overflow: hidden;
+	font-size: 20px;
+	display: block;
+	height: 10px;
+}
+.feed_repeat_arrow span{
+	margin: -9px 0 0;
+	color:#ffffff;
+}
+.feed_repeat_arrow em{
+	color:#e0e4e5;
+}
+
+/*回复_输入*/
+.space_feed_repeat{
+	padding: 15px 20px 13px;
+	border:1px solid #e4e4e4;
+	box-shadow:0 1px 3px rgba(0,0,0,0.2);
+	background:#fff;
+	margin-bottom:30px;
+	margin-top:-15px;
+}
+.space_feed_repeat dl{
+	border-top:1px solid #eee;
+}
+.feed_repeat_textarea{
+	margin-bottom:15px;
+}
+.input_area textarea{
+	resize:none;
+	width:532px;
+	height:18px;
+	margin-bottom:8px;
+	outline:0 none;
+	min-height:18px;
+}
+.feed_repeat_textarea .enter{
+	text-align:right;
+}
+.feed_repeat_textarea .addition{
+	float:left;
+	width:240px;
+}
+.feed_repeat_textarea .addition label{
+	float:left;
+}
+/*回复按钮*/
+.feed_repeat_textarea .btn{
+	padding-left:15px;
+	padding-right:15px;
+}
+/*表情*/
+.icon_face{
+	float:left;
+	display:block;
+	margin:2px 5px 0 0;
+	width:22px;
+	height:22px;
+	overflow:hidden;
+	text-indent:-2000em;
+	color:#999;
+	background-position:0 -429px;
+	position:relative;
+	z-index:1;
+}
+.icon_face:hover{
+	background-position:0 -489px;
+}
+/*回复_列表*/
+.feed_repeat_list dl{
+	padding:8px 0 0;
+	margin:8px 0 0;
+	border-bottom:0 none;
+	border-top:1px dashed #e6e6e6;
+}
+.feed_repeat_list dt{
+	float:left;
+	padding:3px 0;
+}
+.feed_repeat_list dd{
+	margin-left:40px;
+}
+.feed_repeat_list .repeat_btn{
+	text-align:right;
+}
+.feed_repeat_list .content{
+	font-size:12px;
+	line-height:18px;
+	margin-bottom:0;
+}
+.feed_repeat_list .content span{
+	white-space:nowrap;
+	padding-left:5px;
+}
+.feed_repeat_list .content img{
+	vertical-align:top;
+}
+
+/*
+===================
+人员列表
+===================
+*/
+.space_face_list{
+	overflow:hidden;
+	padding-top:5px;
+	width:210px;
+}
+.space_face_list ul{
+	margin-right:-25px;
+	width:230px;
+}
+.space_face_list li{
+	margin-right:24px;
+	display:inline;
+	float:left;
+	width:50px;
+	margin-left:2px;
+	padding-bottom:15px;
+}
+.space_face_list li img{
+	vertical-align:top;
+	margin-bottom:5px;
+}
+.space_face_list li a{
+	color:#666;
+	height:75px;
+	display:block;
+}
+.space_face_list li a p{
+	line-height:18px;
+	height:18px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.space_face_list li .time{
+	color:#999;
+	line-height:18px;
+	height:18px;
+	overflow:hidden;
+	letter-spacing:-1px;
+}
+
+/*
+===================
+标签
+===================
+*/
+.space_tags_list{
+	padding-bottom:5px;
+}
+.space_tags_list a{
+	display:inline-block;
+	background:#ebebeb;
+	border-radius:3px;
+	padding:2px 5px;
+	margin:0 10px 10px 0;
+	color:#666;
+}
+
+/*
+===================
+话题
+===================
+*/
+.space_topic_list{
+	color:#999;
+}
+.space_topic_list li{
+	line-height:1.8;
+}
+.space_topic_list li a{
+	color:#666;
+	margin-right:5px;
+}
+
+/*
+===================
+资料-结构
+===================
+*/
+.space_profile{
+	padding:5px 5px 20px;
+	margin:0 5px 5px;
+	font-size:14px;
+}
+.space_profile h3{
+	padding:10px 5px;
+	font-size:12px;
+	height:18px;
+	border-bottom:1px solid #e4e4e4;
+	margin-bottom:5px;
+}
+.space_profile h3 strong{
+	font-size:14px;
+}
+.space_profile h3 .edit{
+	float:right;
+	font-size:12px;
+	font-weight:100;
+	color:#333;
+}
+.space_profile dl{
+	padding:5px;
+	color:#666;
+}
+.space_profile dt{
+	float:left;
+	width:90px;
+}
+.space_profile dd{
+	float:left;
+	width:460px;
+}
+.space_profile dd .school{
+	display:inline-block;
+	width:260px;
+}
+
+/*
+===================
+我的帖子列表
+===================
+*/
+.my_article{
+	padding:1px;
+}
+.my_article table{
+	table-layout:fixed;
+}
+.my_article td{
+	padding:10px 0;
+	border-bottom:1px dashed #dcdcdc;
+	color:#666;
+}
+.my_article thead td{
+	padding:5px 0 10px;
+	color:#999;
+}
+.my_article .subject a{
+	font-size:14px;
+}
+.my_article img{
+	margin-right:5px;
+}
+.my_article .time{
+	width:120px;
+}
+.my_article .num{
+	width:80px;
+}
+.my_article .num span{
+	color:#105CB6;
+}
+
+/*
+===================
+帖子列表状态图标
+===================
+*/
+.posts_icon i{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+	vertical-align:middle;
+	background:url(../../images/posts_icon.png) 0 -40px no-repeat;
+	margin-top:1px;
+}
+.posts_icon i.icon_headtopic_1{
+	background-position:0 0;
+}
+.posts_icon i.icon_headtopic_2{
+	background-position:-20px 0;
+}
+.posts_icon i.icon_headtopic_3{
+	background-position:-40px 0;
+}
+.posts_icon i.icon_digest{
+	background-position:-40px -19px;
+}
+.posts_icon i.icon_topichot{
+	background-position:-20px -19px;
+}
+.posts_icon i.icon_topicnew{
+	background-position:0 -20px;
+}
+.posts_icon i.icon_topic{
+	background-position:0 -40px;
+}
+.posts_icon i.icon_img{
+	background-position:-20px -39px;
+}
+.posts_icon i.icon_vote{
+	background-position:-40px -39px;
+}
+.posts_icon i.icon_lock{
+	background-position:0 -60px;
+}
+.posts_icon i.icon_active{
+	background-position:-20px -60px;
+}
+.posts_icon i.icon_like{
+	background-position:-40px -58px;
+}
+.posts_icon i.icon_music{
+	background-position:0 -79px;
+}
+.posts_icon i.icon_shop{
+	background-position:-20px -79px;
+}
+.posts_icon i.icon_file{
+	background-position:-40px -79px;
+}
+.posts_icon i.icon_reward{
+	background-position:-20px -100px;
+}
+.posts_icon i.icon_debate{
+	background-position:-40px -100px;
+}
+
+
+/*
+===================
+粉丝与关注
+===================
+*/
+.space_fans{
+	padding:15px;
+}
+.space_fans dl{
+	border-bottom:1px dashed #e6e6e6;
+	padding:0 0 15px;
+	margin:0 0 17px;
+	position:relative;
+}
+/*头像*/
+.space_fans dt{
+	float: left;
+	width: 64px;
+	padding:3px 0 6px;
+}
+.space_fans dt a{
+	display:block;
+}
+/*打招呼*/
+.space_fans .called{
+	border:1px solid #d8d8d8;
+	border-radius:2px;
+	color:#666;
+	width:48px;
+	text-align:center;
+	background:#f7f7f7;
+	box-shadow:0 1px 1px #ffffff inset;
+}
+.space_fans .called:hover{
+	color:#333;
+	text-decoration:none;
+}
+/*内容*/
+.space_fans dd{
+	overflow:hidden;
+}
+/*用户名*/
+.space_fans .name{
+	font-size:14px;
+	margin-right:7px;
+}
+/*用户名所在栏*/
+.space_fans .title{
+	margin-bottom:5px;
+}
+/*用户数据*/
+.space_fans .num{
+	color:#666;
+	margin-bottom:7px;
+}
+.space_fans .num span{
+	color:#ccc;
+	margin:0 9px;
+}
+.space_fans .num a{
+	margin-left:4px;
+}
+/*用户最新动作*/
+.space_fans .action a{
+	color:#5697bd;
+	margin:0 5px;
+}
+.space_fans .action .time{
+	color:#999;
+}
+/*两者关系*/
+.space_fans .attribute{
+	position:absolute;
+	right:0;
+	top:2px;
+}
+.space_fans .attribute .mnfollow{
+	background:url(../../images/mnfollow.png) no-repeat;
+	width:43px;
+	height:13px;
+	overflow:hidden;
+	text-indent:-2000em;
+	display:block;
+}
+
+/*分类*/
+.space_fans .sort{
+	position:absolute;
+	right:130px;
+	top:0;
+	z-index:1;
+	white-space:nowrap;
+}
+.space_fans .sort a{
+	color:#666;
+	display:block;
+	padding:3px 21px 3px 15px;
+}
+.space_fans .sort a:hover,
+.space_fans .sort a.current{
+	border:1px solid #c4c4c4;
+	padding:2px 20px 2px 14px;
+	text-decoration:none;
+	border-radius:3px;
+	background:#f7f7f7;
+	background-repeat: no-repeat;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f7f7f7), to(#ebebeb));
+	background-image: -webkit-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -moz-linear-gradient(top, #f7f7f7, #ebebeb);
+	background-image: -ms-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: -o-linear-gradient(#f7f7f7, #ebebeb);
+	background-image: linear-gradient(#f7f7f7, #ebebeb);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#ebebeb', GradientType=0);
+}
+.space_fans .sort em{
+	border-top: 4px #a3a3a3 solid;
+}
+/*下拉*/
+.sort_down{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	z-index:2;
+	width:118px;
+	padding:1px;
+}
+.sort_down ul{
+	padding:5px;
+}
+.sort_down li{
+	padding:3px 0;
+	color:#666;
+}
+.sort_down .add{
+	display:block;
+	line-height:25px;
+	background:#eeeeee url(../../images/add_fans_sort.png) 10px center no-repeat;
+	color:#5697bd;
+	border-top:1px dotted #ccc;
+	padding-left:25px;
+}
+.sort_down .input{
+	padding:2px 4px;
+	width:98px;
+	margin-bottom:5px;
+}
+.sort_down .ft{
+	padding:0 5px 5px;
+}
+.sort_down .btn{
+	margin:0;
+	font-family:Simsun;
+	width:50px;
+}
+.sort_down .btn_submit{
+	margin-right:8px;
+}
+/*关联关注*/
+.related{
+	border:1px solid #e1e4e5;
+	background:#fbfbfb;
+	border-radius:3px;
+	padding:10px;
+	margin-top:10px;
+}
+.related p{
+	padding:5px;
+}
+
+
+/*
+===================
+无访问权限时
+===================
+*/
+.ban_page{
+	padding:60px;
+	height:350px;
+}
+.ban_page dl{
+	background:#f4f4f4;
+	height:50px;
+	width:400px;
+	padding:20px;
+	margin:0 auto 40px;
+}
+.ban_page dt{
+	float:left;
+	width:70px;
+}
+.ban_page dd{
+	overflow:hidden;
+}
+.ban_page dd .title{
+	font-size:14px;
+	margin-bottom:10px;
+	font-weight:700;
+}
+.ban_page dd .num{
+	color:#999;
+}
+.ban_page dd .num span{
+	padding:0 5px;
+}
+.ban_page h1{
+	text-align:center;
+	font-weight:100;
+}
+
+/*
+===================
+打卡
+===================
+*/
+.punch_widget{
+	height:44px;
+}
+
+/*
+===================
+空间管理
+===================
+*/
+.design_space_edit{
+	width:51px;
+	height:51px;
+	border:0 none;
+	background:#c3c3c3 url(../../images/design_space_edit.png) 0 0 no-repeat;
+	position:fixed;
+	_position:absolute;
+	right:5px;
+	bottom:202px;
+	text-indent:-2000em;
+	cursor:pointer;
+}
+.design_space_edit:hover{
+	background-position:0 -51px;
+	text-decoration:none;
+}
+
+/*
+===================
+无关注时
+===================
+*/
+.nofollow_list{
+	padding:10px 0 10px 15px;
+}
+.nofollow_list .hd{
+	padding:0 10px 10px 40px;
+	line-height:32px;
+	font-size:14px;
+	font-weight:700;
+	color:#999;
+	background:url(../../images/gray_middle.png) 0 0 no-repeat;
+}
+.nofollow_list li{
+	float:left;
+	padding:5px;
+	margin-right:7px;
+	height:125px;
+	width:90px;
+}
+.nofollow_list li a{
+	display:block;
+	float:left;
+	margin-bottom:5px;
+}
+.nofollow_list li img{
+	display:block;
+}
+.nofollow_list .ft{
+	text-align:center;
+	padding:30px;
+}
+.nofollow_list .ft .btn{
+	margin-right:15px;
+	width:83px;
+}
+.nofollow_list input{
+	margin-left:0;
+}
+.nofollow_list li label{
+	height:18px;
+	line-height:18px;
+	overflow:hidden;
+	display:block;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-ms-text-overflow:ellipsis;
+	width:90px;
+}
+
+
+
+/*
+===================
+隐藏的内容
+===================
+*/
+.content_hidden{
+	border:1px dashed #95c376;
+	padding:15px 20px;
+	margin:1em 0;
+	background:#f8fff3;
+}
+.content_hidden h6{
+	font-size:12px;
+	color:#669933;
+	margin:0 0 5px;
+	padding:0;
+}
