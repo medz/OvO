@@ -1,0 +1,20 @@
+<?php
+defined('WEKIT_VERSION') or exit(403);
+/**
+ * {{description}}
+ *
+ * @author {{author}} <{{email}}>
+ * @copyright {{website}}
+ * @license {{website}}
+ */
+class {{classname}} {
+	
+	/**
+	 * {{document}}
+	 */
+	public function {{method}}({{param}}) {
+		//TODO do your job!
+	}
+}
+
+?>

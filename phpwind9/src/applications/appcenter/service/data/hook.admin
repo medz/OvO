@@ -1,0 +1,26 @@
+<?php
+defined('WEKIT_VERSION') or exit(403);
+/**
+ * 后台菜单添加
+ *
+ * @author {{author}} <{{email}}>
+ * @copyright {{website}}
+ * @license {{website}}
+ */
+class {{classname}} {
+	
+	/**
+	 * 获取{{name}}后台菜单
+	 *
+	 * @param array $config
+	 * @return array 
+	 */
+	public function getAdminMenu($config) {
+		$config += array(
+			'ext_{{alias}}' => array('{{name}}', 'app/manage/*?app={{alias}}', '', '', 'appcenter'),
+			);
+		return $config;
+	}
+}
+
+?>
