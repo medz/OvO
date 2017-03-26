@@ -35,7 +35,7 @@ class PwAdminConfig extends Migration
 
             $table->string('name', 30)->comment('配置名称');
             $table->string('namespace', 15)->comment('配置命名空间');
-            $table->text()->comment('缓存值');
+            $table->text('value')->comment('缓存值');
             $table->enum('vtype', ['string', 'array', 'object'])->nullable()->default('string')->comment('配置值类型');
             $table->primary(['namespace', 'name']);
         });

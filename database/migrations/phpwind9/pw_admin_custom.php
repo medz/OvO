@@ -31,7 +31,7 @@ class pwAdminCustom extends Migration
             }
 
             $table->string('username', 15);
-            $table->text()->comment('常用菜单项');
+            $table->text('custom')->comment('常用菜单项');
             $table->primary('username');
         });
     }
