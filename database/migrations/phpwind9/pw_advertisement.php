@@ -14,7 +14,7 @@ class PwAdvertisement extends Migration
     public function up()
     {
         /*
-            
+
             // 原始 sql：
             DROP TABLE IF EXISTS `pw_advertisement`;
             CREATE TABLE `pw_advertisement` (
@@ -31,7 +31,7 @@ class PwAdvertisement extends Migration
             ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='广告位数据表';
 
          */
-        
+
         Schema::create('pw_advertisement', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
