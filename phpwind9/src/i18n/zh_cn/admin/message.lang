@@ -1,0 +1,66 @@
+success = 操作成功
+fail = 操作失败
+fail.uid.empty = 用户ID不能为空
+
+avatarapi.call.fail = 操作成功，但是获取头像存储地址失败，请检查您的服务器环境
+
+logout.fail = 退出后台失败
+
+login.fail = 登录失败
+login.fail.allow = 您没有权限登录后台
+login.fail.forbidden = "连续进行无效登录次数超过8次，您将在15分钟内无法进行任何后台操作，还剩余 {mtime}分 {stime}秒。"
+login.fail.user.illegal = "账号或密码错误，请重新登录"
+login.fail.email.illegal = 用户email非法
+login.fail.not.login = 登录超时,请重新登录
+login.fail.ip = 您所在的IP不允许登录后台
+menu.success = 菜单操作成功
+menu.fail = 菜单操作失败
+menu.fail.allow = 您没有权限访问该操作
+
+founder.edit.fail = 创始人编辑失败
+founder.edit.fail.email.empty = 邮箱不能为空
+founder.del.fail = 创始人删除失败
+founder.del.success = 创始人删除成功
+founder.del.fail.uid.empty = 用户ID不能为空
+founder.del.fail.self = 自己不能删除自己
+founder.del.fail.all = 请至少保留一个创始人
+founder.add.success = 创始人添加成功
+founder.add.fail = 请输入创始人名称
+founder.add.fail.email.empty = 邮箱不能为空
+founder.add.fail.password.empty = 密码不能为空
+founder.add.fail.username.empty = 用户名不能为空
+founder.add.fail.username.illegal = 该用户是非法用户或者该用户不存在
+founder.add.fail.username.duplicate = 该用户已经被添加为创始人
+founder.file.exist.fail = 创始人配置文件不存在，请检查配置文件
+founder.file.read.fail = 创始人配置文件读取错误，请检查配置文件
+founder.file.write.fail = 创始人配置文件不可写
+
+auth.del.success = 删除后台用户操作成功
+auth.del.fail = 删除后台用户操作失败
+auth.add.success = 添加后台用户成功
+auth.add.fail = 添加后台用户失败
+auth.add.fail.role.empty = 角色不能为空
+auth.add.fail.username.empty = 用户名不能为空
+auth.add.fail.username.duplicate = 该后台用户已经存在
+auth.add.fail.username.exist = 该用户是非法用户或者该用户不存在
+auth.edit.success = 后台用户编辑成功
+auth.edit.fail = 编辑后台用户失败
+auth.edit.fail.id.illegal = "编辑后台用户失败,非法的Id"
+auth.edit.fail.user.exist = "编辑后台用户失败,用户不存在或已经被删除"
+
+role.add.success = 添加角色成功
+role.add.fail = 添加角色失败
+role.add.fail.name.empty = 角色名不能为空
+role.add.fail.name.exist = 角色名已经存在
+role.edit.success = 编辑角色成功
+role.edit.fail = 编辑角色失败
+role.del.success = 删除角色成功
+role.del.fail = 删除角色失败
+role.del.fail.id.empty = 空的角色ID
+role.find.fail = 角色不存在或者查询参数有误
+
+custom.size = 常用菜单设置不宜超过15个
+
+safe.set.fail = 添加限制Ip失败
+catname.empty = 分类名不能为空
+

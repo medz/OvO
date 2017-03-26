@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+<script src="{@G:url.extres}/demo/test.js?v{@G:c.version}"></script>
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<form class="J_ajaxForm" data-role="list" action="{@url:app/demo/manage/doRun}" method="post">
+	<div class="h_a">设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>radio</th>
+				<td>
+					<ul class="switch_list cc">
+						<li><label><input type="radio" name="conf[isopen]" value="1" {@Pw::ifcheck($conf['isopen'] == 1)}><span>开启</span></label></li>
+						<li><label><input type="radio" name="conf[isopen]" value="0" {@Pw::ifcheck($conf['isopen'] == 0)}><span>关闭</span></label></li>
+					</ul>
+				</td>
+				<td><div class="fun_tips">单选框</div></td>
+			</tr>
+			<tr>
+				<th>text</th>
+				<td>
+					<input type="text" name="conf[maxalbum]" class="input length_3" value="{$conf['maxalbum']}">
+				</td>
+				<td><div class="fun_tips">文本框</div></td>
+			</tr>
+			<tr>
+				<th>checkbox</th>
+					<td>
+						<input type="checkbox" name="conf[testcheck][]" class="input length_3" value="1" {@Pw::ifcheck(in_array(1, $conf['testcheck']))}>1
+						<input type="checkbox" name="conf[testcheck][]" class="input length_3" value="2" {@Pw::ifcheck(in_array(2, $conf['testcheck']))}>2
+					</td>
+					<td><div class="fun_tips">复选框</div></td>
+				</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

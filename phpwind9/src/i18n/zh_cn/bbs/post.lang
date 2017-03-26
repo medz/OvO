@@ -1,0 +1,28 @@
+timing = "本时间段内禁止发帖"
+pertime = "灌水预防机制已经打开，在{pertime}秒内不能连续发帖"
+content.empty = 帖子内容不能为空
+content.hide = "您没有权限发表隐藏帖"
+content.sell = "您没有权限发表出售帖"
+content.duplicate = "请勿发表重复内容"
+content.length.limit = "帖子内容长度限制({min} - {max})字"
+content.length.less = "帖子内容不得少于{min}个字"
+content.length.more = "帖子内容不得超过{max}个字"
+subject.empty = 帖子标题不能为空
+subject.length.limit = "帖子标题长度不能超过{len}个字"
+
+forum.not.exists = 该版块不存在
+forum.allow.ttype = "该版块不允许发布{ttype}"
+
+topictype.empty = 请选择主题分类
+topictype.closed = 主题分类功能已关闭
+topictype.admin = 本主题分类为管理专用
+topictype.error=非法的主题分类
+
+perday.max = "今日发帖数已达到最高值{max}"
+
+topic.ischeck = "您发布的主题需要审核后才能显示"
+reply.ischeck = "您发布的回复需内容要审核后才能显示"
+
+modify.error.self = "您没有权限编辑其他人的帖子"
+modify.timelimit = "本版帖子超过{minute}分钟，不允许编辑"
+word.filter.fail = "您提交的内容中含有敏感词 {words}，请修改后再提交"

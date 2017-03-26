@@ -1,0 +1,10 @@
+areaid.error=请选择需要删除的地区
+parentid.error=非法操作
+level.limit=地区只支持三级
+delete.success=删除成功
+delete.error.has.children=请先删除该级的下级数据
+
+error.0=操作失败
+error.-1=地区的ID不能为空
+error.-2=地区的名称不能为空
+error.-3="提交的内容不能包含{flag}"
