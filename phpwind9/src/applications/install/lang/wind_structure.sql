@@ -1,33 +1,4 @@
 
-DROP TABLE IF EXISTS `pw_admin_auth`;
-CREATE TABLE `pw_admin_auth` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `uid` int(10) NULL DEFAULT '0' COMMENT '用户ID',
-  `username` varchar(15) NULL DEFAULT '' COMMENT '用户名',
-  `roles` varchar(255) NULL DEFAULT '' COMMENT '角色',
-  `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '创建时间',
-  `modified_time` int(10) unsigned NULL DEFAULT '0' COMMENT '最后修改时间',
-  PRIMARY KEY (`id`),
-  KEY `idx_uid` (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户权限角色表';
-
-DROP TABLE IF EXISTS `pw_admin_config`;
-CREATE TABLE `pw_admin_config` (
-  `name` varchar(30) NOT NULL COMMENT '配置名称',
-  `namespace` varchar(15) NOT NULL COMMENT '配置命名空间',
-  `value` text COMMENT '缓存值',
-  `vtype` enum('string','array','object') NULL DEFAULT 'string' COMMENT '配置值类型',
-  `description` text COMMENT '配置介绍',
-  PRIMARY KEY (`namespace`,`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='网站配置表';
-
-DROP TABLE IF EXISTS `pw_admin_custom`;
-CREATE TABLE `pw_admin_custom` (
-  `username` varchar(15) NOT NULL,
-  `custom` text COMMENT '常用菜单项',
-  PRIMARY KEY (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='后台常用菜单表';
-
 DROP TABLE IF EXISTS `pw_admin_role`;
 CREATE TABLE `pw_admin_role` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
