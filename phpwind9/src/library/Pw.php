@@ -216,7 +216,7 @@ class Pw
         if (! is_array($var) || ! is_array($vkeys)) {
             return [];
         }
-        $result = array();
+        $result = [];
         foreach ($vkeys as $key) {
             if (isset($var[$key])) {
                 $result[$key] = $var[$key];
