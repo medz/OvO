@@ -1,18 +1,17 @@
 <?php
 
 /**
- * 存储策略
+ * 存储策略.
  *
  * @author Shi Long <long.shi@alibaba-inc.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.windframework.com
  * @version $Id: PwStorage.php 24648 2013-02-04 02:31:11Z jieyin $
- * @package config.service.srv
  */
 class PwStorage
 {
     /**
-     * 返回附件存储类型
+     * 返回附件存储类型.
      *
      * @return array
      */
@@ -20,7 +19,7 @@ class PwStorage
     {
         // $conf = Wind::getRealPath('LIB:storage.storages.php', true);
         $conf = realpath(dirname(__FILE__).'/storages.php');
-        $tmp = array('name' => '', 'alias' => '', 'managelink' => '', 'description' => '', 'components' => array());
+        $tmp = ['name' => '', 'alias' => '', 'managelink' => '', 'description' => '', 'components' => []];
         $storages = @include $conf;
         $storages = PwSimpleHook::getInstance('PwStorage_getStorages')->runWithFilters($storages);
         foreach ($storages as $key => $value) {
@@ -39,11 +38,11 @@ class PwStorage
     public function setStoragesComponents($storageType)
     {
         $storages = $this->getStorages();
-        if (!array_key_exists($storageType, $storages)) {
+        if (! array_key_exists($storageType, $storages)) {
             return new PwError('ADMIN:att.storage.type.not.exit');
         }
         $storage = $storages[$storageType];
-        if (!isset($storage['components']['path'])) {
+        if (! isset($storage['components']['path'])) {
             return new PwError('ADMIN:att.storage.config.fail');
         }
         /* @var $componentService PwComponentsService */

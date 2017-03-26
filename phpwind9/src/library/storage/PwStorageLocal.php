@@ -3,15 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
  * @version $Id: PwStorageLocal.php 24383 2013-01-29 10:09:39Z jieyin $
- * @package upload
  */
-
 class PwStorageLocal
 {
     /**
@@ -45,7 +43,7 @@ class PwStorageLocal
     }
 
     /**
-     * 存储附件,如果是远程存储，记得删除本地文件
+     * 存储附件,如果是远程存储，记得删除本地文件.
      *
      * @param  string $source   本地源文件地址
      * @param  string $filePath 存储相对位置
@@ -69,7 +67,7 @@ class PwStorageLocal
     }
 
     /**
-     * 删除附件
+     * 删除附件.
      *
      * @param string $path 附件地址
      */
