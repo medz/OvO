@@ -3,15 +3,13 @@
 defined('WEKIT_VERSION') || exit('Forbidden');
 @set_time_limit('800');
 /**
- * 上传组件
+ * 上传组件.
  *
  * @author Jianmin Chen <sky_hold@163.com>
  * @copyright ©2003-2103 phpwind.com
  * @license http://www.phpwind.com
  * @version $Id: PwStorageFtp.php 22526 2012-12-25 07:18:36Z yishuo $
- * @package upload
  */
-
 class PwStorageCdn
 {
     private $_config;
@@ -46,7 +44,7 @@ class PwStorageCdn
     }
 
     /**
-     * 存储附件,如果是远程存储，记得删除本地文件
+     * 存储附件,如果是远程存储，记得删除本地文件.
      *
      * @param  string $source   本地源文件地址
      * @param  string $filePath 存储相对位置
@@ -80,7 +78,7 @@ class PwStorageCdn
     }
 
     /**
-     * 删除附件
+     * 删除附件.
      *
      * @param string $path 附件地址
      */
@@ -94,7 +92,6 @@ class PwStorageCdn
     public function _getCdn()
     {
         if ($this->_cdn == null) {
-             
             $this->_cdn = new PwAliCdn();
             $this->_cdn->set_version(RAW_VERSION);
             $this->_cdn->set_appkey($this->_config['dnsappkey']);
