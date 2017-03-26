@@ -12,3 +12,7 @@ finder:
         - "public"
         - "routes"
         - "src"
+    exclude:
+        - "docs"
+        - "tests"
+        - "phpwind9"
