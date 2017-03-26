@@ -14,7 +14,7 @@ class PwAdminAuth extends Migration
     public function up()
     {
         /*
-            
+
             // 原始 pw9 sql:
 
             DROP TABLE IF EXISTS `pw_admin_auth`;
@@ -28,7 +28,7 @@ class PwAdminAuth extends Migration
               PRIMARY KEY (`id`),
               KEY `idx_uid` (`uid`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户权限角色表';
-    
+
             // created_time & modified_time 在迁移中使用 timestamps 替代，修改程序实现。
 
          */
