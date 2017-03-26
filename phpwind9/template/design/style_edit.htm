@@ -1,0 +1,14 @@
+<!--样式-->
+<form action="{@url:design/style/doedit}" method="post">
+	<div class="ct">
+		<div class="pop_cont">
+			<span class="tips_icon">修改样式需要保存后才能看到实际效果。</span>
+			<template source='TPL:design.segment.style' load='true' />
+		</div>
+	</div>
+	<div class="pop_bottom">
+		<button type="submit" class="btn btn_submit J_module_sub" data-update="style">提交</button>
+		<button class="btn J_module_apply" type="submit">应用</button>
+		<input type="hidden" name="moduleid" value="{$moduleid}">
+	</div>
+	</form>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+        <ul class="cc">
+			<!--# foreach($addons as $key => $value){ #-->
+			<li><a href="{@url:appcenter/style/run?type=$key}">{$value[0]}</a></li>
+			<!--# } #-->
+			<li class="current"><a href="{@url:appcenter/style/install}">本地安装</a></li>
+			<li><a href="{@url:appcenter/style/manage}">界面管理</a></li>
+			<!--# if(Wekit::load('APPCENTER:service.srv.PwDebugApplication')->inDevMode1()){ #-->
+			<li><a href="{@url:appcenter/style/generate}">开发助手</a></li>
+			<!--# } #-->
+		</ul>
+	</div>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>可选择上传风格安装包来安装</li>
+			<li>也可选择未安装的模板列表来安装</li>
+		</ul>
+	</div>
+	<div class="h_a">模板安装</div>
+	<template source='installForm' />
+	<!--#if(empty($themes)) { #-->
+	<!--div class="not_content_mini"><i></i>无未安装模板</div-->
+	<!--# } else { #-->
+	<div class="h_a">未安装模板</div>
+	<!-- <form action="{@url:appcenter/style/doinstall}" method="post" > -->
+	<div class="table_full mb10">
+		<table width="100%">
+			<col class="th">
+			<col width="100">
+<!--#foreach ($themes as $k => $v){ #-->
+ 	<!--# foreach($v as $theme){ #-->
+			<tr>
+				<!-- <th><input type="checkbox" name="themes[]" value="THEMES:{@str_replace('/','.',$addons[$k][1]).'.'.$theme}"></th> -->
+				<th><span class="b mr10">{$theme}</span><a class="J_ajax_del w" data-pdata="{'folder': '{@str_replace('/','.',$addons[$k][1]).'.'.$theme}'}" href="{@url:appcenter/style/delFolder}">[删除]</a></th>
+				<td><span style="line-height:24px;">{$addons[$k][0]}</span></td>
+				<td><a class="J_ajax_refresh btn btn_submit" href="{@url:appcenter/style/doinstall}" data-pdata="{'themes[]': 'THEMES:{@str_replace('/','.',$addons[$k][1]).'.'.$theme}'}">安装</a></td>
+			</tr>
+	<!--# } #-->
+<!--# } #-->
+		</table>
+	</div>
+	<!-- <button type="submit" class="btn btn_submit">安装</button>
+	</form> -->
+	<!--# } #-->
+</div>
+<template source='TPL:admin.common.footer' />
+<script src="{@G:url.js}/util_libs/swfupload/swfupload.js?v{@G:c.version}"></script>
+<script src="{@G:url.js}/util_libs/swfupload/plugins/swfupload.cookies.js?v{@G:c.version}"></script>
+<script>
+/*
+ * 1、state = 'success' && step = '' 成功！
+ * 2、state = 'success' && step = 'num' 请求stepurl!
+ * 3、state = 'fail' 失败！
+ */
+var conf = {
+	stepUrl : '{@url:appcenter/app/doInstall}',
+	
+};
+$(function(){
+
+
+	var up_wrap = $('#J_up_wrap'),
+			swfu,
+			up_tip = $('#J_up_tip'),
+			up_file = $('#J_up_file'),
+			up_del = $('#J_up_del'),
+			up_btn = $('#J_upload_btn'),
+			file_input = $('#J_file_input');
+	
+
+	swfu = new SWFUpload({
+		//debug : true,
+		upload_url : '{@url:appcenter/app/upload?_json=1}', 
+		flash_url : GV.JS_ROOT+ 'util_libs/swfupload/Flash/swfupload.swf', 
+		post_params: {
+			siteId : 1,
+			csrf_token : GV.TOKEN
+		},
+		/*custom_settings : {
+			progressTarget : "fsUploadProgress",
+			cancelButtonId : "btnCancel"
+		},*/
+		file_types : "*.zip",
+		file_upload_limit : 1,
+		button_placeholder_id : "J_swfupload_btn", 
+		button_width: "65",
+		button_height: "29",
+		button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+		button_text: '',
+		file_queue_error_handler : function(file, errorCode, message) {
+			try {
+				switch (errorCode) {
+					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+						alert("文件太大了——文件名: " + file.name + ", 大小: " + file.size + ", Message: " + message);
+						break;
+					case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
+						alert("请不要上传0字节的文件");
+						$.error("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
+						break;
+					case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
+						alert("错误的文件类型");
+						break;
+					case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
+						alert('最多只能上传'+ this.settings.file_upload_limit +'个文件');
+						break;
+					default:
+						$.error("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
+						break;
+				}
+			} catch (ex) {
+	       	 $.error(ex);
+	   	 }
+		},
+		file_dialog_complete_handler : function (numFilesSelected, numFilesQueued) {
+			//开始上传
+			this.startUpload();
+			//up_tip.html('<span class="tips_loading">正在上传</span>').show();
+		},
+    //file_size_limit : "20480",
+		upload_start_handler : function (file) {
+			//开始上传文件前触发的事件处理函数
+			try {
+				up_tip.html('<span class="tips_loading">正在上传并校验</span>');
+			}
+			catch (ex) {}
+	
+			return true;
+		},
+		upload_success_handler : function (file, serverData, r) {
+			//文件上传成功后触发的事件处理函数
+			try {
+				var data = $.parseJSON(serverData),
+						_data = data.data;
+
+				if(data.state=== 'success') {
+					file_input.val(_data.file);
+
+					up_wrap.hide();
+
+					up_tip.html('<span class="tips_success">上传成功</span>').show();
+					up_file.text(file.name).show();
+					up_del.show();	
+					up_btn.css('visibility', 'visible');	//按钮可见
+				}else if(data.state === 'fail'){
+					up_tip.html('<span class="tips_error">'+ data.message +'</span>');
+				}
+			} catch (ex) {
+				this.debug(ex);
+			}
+		},
+		upload_complete_handler : function (file) {
+			//完成
+		}
+
+	});
+
+	//删除
+	up_del.on('click', function(e){
+		e.preventDefault();
+		$.post(this.href, {
+			file : file_input.val()
+		}, function(data){
+			if(data.state == 'success') {
+				window.location.href=window.location.href;
+			}else if(data.state == 'fail') {
+				Wind.use('dialog', function(){
+					Wind.dialog.alert(data.message);
+				});
+			}
+		}, 'json');
+		
+	});
+
+	//队列数减1
+	function restLimit() {
+		var stats = swfu.getStats();
+		stats.successful_uploads--;
+		swfu.setStats(stats);
+	}
+	
+});
+Wind.js(GV.JS_ROOT +"/pages/appcenter/admin/setUpApp.js?v="+ GV.JS_VERSION);
+</script>
+</body>
+</html>

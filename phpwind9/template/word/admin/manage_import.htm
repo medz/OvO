@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body style="width:300px;" class="body_none">
+<form class="J_ajaxForm" enctype="multipart/form-data" method="post" action="{@url:word/manage/doimport?_json=1}">
+	<div class="pop_cont" style="height:80px;">
+		<div class="b mb10">词库文件</div>
+		<div><input type="file" name="upload" class="input" style="padding:1px 2px;"></div>
+	</div>
+	<div class="pop_bottom">
+		<button class="btn fr" id="J_dialog_close" type="button">取消</button>
+		<button type="submit" class="btn fr mr10 btn_submit J_ajax_submit_btn">提交</button>
+	</div>
+</form>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

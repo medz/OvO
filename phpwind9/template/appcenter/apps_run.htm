@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/app.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:run}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:appcenter/index/run}">应用中心</a>
+		</div>
+		<div class="cc">
+			<form method="POST" action="{$appUrl}&charset={@Wekit::V('charset')}" id="app_form" target="post_iframe">
+				<input type="hidden" name="frompw" value="{@base64_encode(pw::getTime())}"/>	
+            </form>
+
+			<iframe width="960" height="700" frameborder="0" src="" name="post_iframe" scrolling="no" id="apps"></iframe>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+document.getElementById("app_form").submit();
+</script>
+</body>
+</html>

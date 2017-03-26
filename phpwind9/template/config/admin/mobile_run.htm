@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+<!-- start -->
+<div class="nav">
+	<ul class="cc">
+		<li class="current"><a href="{@url:config/mobile/run}">短信平台</a></li>
+		<li><a href="{@url:config/mobile/set}">功能设置</a></li>
+	</ul>
+</div>
+
+<div class="h_a">功能说明</div>
+<div class="prompt_text">
+	<ul>
+		<li>默认使用阿里云短信平台,支持第三方平台扩展，可以到<a href="{@url:/appcenter/app/run}" class="J_linkframe_trigger">应用中心</a>下载更多的可用方案。</li>
+		<li>请先选择短信平台，然后再到<a href="{@url:config/mobile/set}" class="J_linkframe_trigger">功能设置</a>中设置相关内容</li>
+		
+	</ul>
+</div>
+
+<form method="post" class="J_ajaxForm" action="{@url:config/mobile/dorun}" data-role="list">
+	<div class="h_a">短信平台设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>平台选择</th>
+				<td>
+					<ul class="single_list cc">
+<!--# 
+$msg = '';
+foreach ($plats as $var => $value) {
+	$storageType == $var && $msg = $value['description'];
+#-->
+						<li><span class="mr20"><label><input name="mobile_plat" data-msg="{$value['description']}" value="{$var}" type="radio" {@Pw::ifcheck($paltType==$var)|html}>{$value['name']}</label></span> 
+	<!--# if($value['managelink']) { #-->
+							<a href="{@WindUrlHelper::createUrl($value['managelink'])|url}">[设置]</a>
+	<!--# } #-->
+						</li>
+<!--# } #-->
+					</ul>
+				</td>
+				<td><div class="fun_tips">{$msg}</div></td>
+			</tr>
+		</table>
+		</div>
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+			</div>
+		</div>
+</form>
+
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

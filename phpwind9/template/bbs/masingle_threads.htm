@@ -1,0 +1,169 @@
+<style>
+/*
+===================
+管理操作
+===================
+*/
+.pop_operat_reason{
+	border-top:1px dotted #ccc;
+}
+.pop_operat_reason dt,
+.pop_operat_management dt{
+	float:left;
+	width:85px;
+	line-height:26px;
+}
+.pop_operat_reason dd,
+.pop_operat_management dd{
+	overflow:hidden;
+	line-height:26px;
+}
+.pop_operat_management dl{
+	padding:0 0 10px 0;
+}
+.pop_operat_management ul{
+	padding-bottom:5px;
+}
+.pop_operat_management li{
+	margin-bottom:3px;
+	float:left;
+	width:100%;
+	border:0 none;
+	background:#f7f7f7;
+	padding:3px 0;
+	border-radius: 3px;
+}
+.pop_operat_management li .ct{
+	display:none;
+	padding:5px 10px 10px;
+}
+.pop_operat_management li .hd{
+	padding:0 5px;
+}
+.pop_operat_management li .hd label{
+	display:inline-block;
+	background:url({@G:url.images}/management/arrow_down.png) right center no-repeat;
+	padding:0 5px;
+	width:365px;
+}
+.pop_operat_management li.current .hd label{
+	background:url({@G:url.images}/management/arrow_up.png) right center no-repeat;
+}
+.pop_operat_management li.current{
+	background:#f1f1f1;
+}
+.pop_operat_management li.current .ct{
+	display:block;
+}
+.pop_operat_management .title{
+	padding:0 0 15px 15px;
+}
+.pop_operat_management .merger{
+	padding:0 0 10px 15px;
+}
+.pop_operat_del{
+	font-size:14px;
+	padding:10px 15px 20px;
+}
+
+/*
+===================
+高亮
+===================
+*/
+.sub_high_light{
+}
+.sub_high_light a{
+	display:inline-block;
+	padding:3px 5px;
+	border:1px solid #ccc;
+	background:#fff;
+	margin-right:4px;
+	vertical-align:middle;
+}
+.sub_high_light a:hover{
+	text-decoration:none;
+	border-color:#1377a9;
+}
+.sub_high_light a.current{
+	background-color:#2298d3;
+	border-color:#1377a9 #2298d3 #2298d3;
+	color:#fff;
+}
+.sub_high_light .color_pick{
+	margin-right:15px;
+}
+</style>
+<div style="width:440px;">
+	<form action="{@WindUrlHelper::createUrl('bbs/masingle/' . $doaction)|url}" method="post" id="J_post_manage_ajaxForm">
+	<div class="pop_top J_drag_handle"><a href="#" class="pop_close J_close">关闭</a><strong>帖子操作</strong>(&nbsp;<span class="red" id="J_manage_checked_count">{$count}</span>&nbsp;篇)</div>
+	<div class="pop_cont">
+		<!--# if ($action == 'delete') { #-->	
+		<div class="not_content_mini"><i></i>确定要删除选中的主题？</div>
+		<!--# } else if ($action == 'split') { #-->	
+		<div class="pop_operat_management">
+			<dl class="cc">
+				<dt>拆&nbsp;分&nbsp;到：</dt><dd><label class="mr20"><input name="" type="radio" value="" />新帖</label><label><input name="" type="radio" value="" />合并到其它帖子</label></dd>
+			</dl>
+			<dl class="cc">
+				<dt>新帖标题：</dt><dd><input name="" type="text" placeholder="请输入新帖标题" class="input input_hd length_5" /></dd>
+			</dl>
+			<dl class="cc">
+				<dt>帖子链接：</dt><dd><input name="" type="text" placeholder="请输入新帖标题" class="input length_5" /><span class="tips_icon_error">该帖子不存在</span></dd>
+			</dl>
+			<div class="title"><span class="mr20">家有一老,如有一寶,這句話聽過嗎?如今...</span><a href="" class="s4">[修改]</a></div>
+		</div>
+		<!--# } else if ($action == 'unite') { #-->	
+		<div class="pop_operat_management">
+			<div class="merger">将下述帖子合并到：<input name="" type="text" placeholder="请输入新帖标题" class="input length_4" /></div>
+			<div class="title"><span class="mr20">家有一老,如有一寶,這句話聽過嗎?如今...</span><a href="" class="s4">[删除]</a></div>
+			<div class="title"><span class="mr20">杭州哪里有办证的？</span><a href="" class="s4">[删除]</a></div>
+			<div class="title"><span class="mr20">福建专卖假发票</span><a href="" class="s4">[删除]</a></div>
+		</div>
+		<div class="pop_operat_management">
+			<div class="merger">将下述帖子合并到本帖</div>
+			<div class="title"><span class="mr20">家有一老,如有一寶,這句話聽過嗎?如今...</span><a href="" class="s4">[修改]</a></div>
+			<dl class="cc">
+				<dt>帖子链接：</dt><dd><input name="" type="text" placeholder="请输入新帖标题" class="input length_5" /><div><a href="#" class="a_add s4">+添加帖子</a></div></dd>
+			</dl>
+		</div>
+		<!--# } elseif ($action == 'shield') { #-->
+		<div class="ct mb10" id="J_toggle_lock">
+			<label class="mr20"><input name="ifShield" type="radio" value="1" {@Pw::ifcheck($defaultShield == 0)} />屏蔽</label>
+			<label class="mr20"><input name="ifShield" type="radio" value="0" {@Pw::ifcheck($defaultShield == 1)} />取消屏蔽</label>
+		</div>
+		<!--# } elseif ($action == 'remind') { #-->
+		<div class="ct mb10" id="J_toggle_lock">
+			<label class="mr20"><input name="ifRemind" type="radio" value="1" {@Pw::ifcheck($defaultRemind == 0)} />提醒</label>
+			<label class="mr20"><input name="ifRemind" type="radio" value="0" {@Pw::ifcheck($defaultRemind == 1)} />取消提醒</label>
+		</div>
+		<!--# } #-->
+		<div class="pop_operat_reason">
+			<dl class="cc">
+				<dt>操作理由：</dt>
+				<dd>
+					<input name="reason" type="text" id="J_resson_input" placeholder="写点操作理由吧" class="input length_5 mb10" />
+					<select id="J_resson_select" class="select_5" size="5">
+						<!--# foreach ($manageReason as $val) {
+							$val = trim($val);
+							if (!$val) continue;
+							($val == '------') && $val = '----------------------------';
+						#-->
+							<option>{$val}</option>
+						<!--#}#-->
+					</select>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="pop_bottom cc">
+		<button type="submit" class="btn btn_submit fr" id="J_sub_topped" data-type="{$action}" data-role="read">提交</button>
+		<span class="fl">
+			<label class="mr10"><input name="sendnotice" type="checkbox" value="1" checked />发送通知</label>
+			<!--# if ($action == 'delete') { #-->
+			<label><input name="deductCredit" type="checkbox" value="1" checked />扣除积分</label>
+			<!--# } #-->
+		</span>
+	</div>
+	</form>
+</div>

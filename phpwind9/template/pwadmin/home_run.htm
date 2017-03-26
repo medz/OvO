@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div id="home_toptip"></div>
+	<h2 class="h_a">系统信息</h2>
+	<div class="home_info">
+		<ul>
+			<li>
+				<em>软件版本</em>
+				<span>{$sysinfo['wind_version']} <a href="https://github.com/medz/phpwind/releases" target="_blank">查看最新版本</a></span>
+			</li>
+			<li>
+				<em>PHP版本</em>
+				<span>{$sysinfo['php_version']}</span>
+			</li>
+			<li>
+				<em>MYSQL版本</em>
+				<span>{$sysinfo['mysql_version']}</span>
+			</li>
+			<li>
+				<em>服务器端信息</em>
+				<span>{$sysinfo['server_software']}</span>
+			</li>
+			<li>
+				<em>最大上传限制</em>
+				<span>{$sysinfo['max_upload']}</span>
+			</li>
+			<li>
+				<em>最大执行时间</em>
+				<span>{$sysinfo['max_excute_time']}</span>
+			</li>
+			<li>
+				<em>邮件支持模式</em>
+				<span>{$sysinfo['sys_mail']}</span>
+			</li>
+		</ul>
+	</div>
+	<h2 class="h_a">版权声明</h2>
+	<div class="home_info" id="home_devteam">
+    <ul> 
+      <li>
+        <em>开发者</em>
+        <span>Seven Du &lt;<a href="mailto:shiweidu@outlook.com">shiweidu@outlook.com</a>&gt;</span>
+      </li>
+      <li>
+        <em>授权协议</em>
+        <span>
+          <a href="https://github.com/medz/phpwind/blob/master/LICENSE">Apache-2</a>
+          &nbsp; (phpwind原始代码部分，按照原有phpwind用户协议。增改部分代码严格按照Apache-2)
+        </span>
+      </li>
+      <li>
+        <em>代码仓库</em>
+        <span>
+          GitHub: <a href="https://github.com/medz/phpwind">https://github.com/medz/phpwind</a>
+        </span>
+      </li>
+      <li>
+        <em>信息反馈</em>
+        <span>
+          <a href="https://github.com/medz/phpwind/issues">Bug & Question & Idea & Help</a>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

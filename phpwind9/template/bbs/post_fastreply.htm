@@ -1,0 +1,21 @@
+<div class="reply_list">
+	<div class="core_arrow_top"><em></em><span></span></div>
+		<div class="c"></div>
+		<div class="reply_quick cc">
+			<dl class="ct cc">
+				<dt><img class="J_avatar" data-type="small" src="{@Pw::getAvatar($loginUser->uid,'small')}" width="50" height="50" alt="{$loginUser->username}" /></dt>
+				<dd>
+					<div class="arrow"><em></em><span></span></div>
+					<textarea name="atc_content" id="J_reply_ta_{$pid}" style="height:40px;" class="J_at_user_textarea" placeholder="我也说两句"></textarea>
+				</dd>
+			</dl>
+			<div class="ft cc J_reply_ft">
+				<div class="operate">
+					<a href="" class="a_face J_insert_emotions" data-emotiontarget="#J_reply_ta_{$pid}">表情</a>
+				</div>
+				<button type="submit" data-tid="{$tid}" data-pid="{$pid}" class="btn btn_submit disabled J_reply_sub" disabled="disabled" data-action="{@url:bbs/post/doreply?_getHtml=2}">回复</button>
+				<a href="{@url:bbs/post/reply?tid=$tid&pid=$pid}">高级模式&gt;&gt;</a>
+			</div>
+		</div>
+	<div class="J_reply_page_list"><template source='post_replylist' load='true' /></div>
+</div>

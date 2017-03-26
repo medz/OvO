@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/fans.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:my/follow/run}">我关注的人</a><!--#if($type){#--><em>&gt;</em><a href="{@url:my/follow/run?type=$type}">{$typeArr[$type]}</a><!--#}#-->
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content cc">
+					<div class="box_wrap fans_page">			
+						<template source="TPL:bbs.mine_tab"  load='true' />
+						
+						<div class="content_type">
+							<ul class="cc">
+								<li class="{$classCurrent[0]}"><a href="{@url:my/follow/run}">全部</a></li>
+								<!--# foreach ($typeArr as $key => $value) { #-->
+								<li class="line"></li><li class="{$classCurrent[$key]}"><a href="{@url:my/follow/run?type=$key}">{$value}</a></li>
+								<!--# } #-->
+							</ul>
+						</div>
+						<!--# if ($follows) { #-->
+						<div class="fans_list">
+							<!--# foreach ($follows as $key => $value) { 
+								$birthday = $value['byear'] ? '生日：' . $value['byear'] . '年'.$value['bmonth'].'月'.$value['bday'].'日' : '';
+								$profile = $value['profile'] ? '  自我介绍：'.$value['profile'] : '';
+							#-->
+							<div class="fr">
+								<div id="J_group_check_list_{$value['touid']}" data-id="{$value['touid']}" class="sort_down J_group_check_list" style="display:none;">
+									<ul></ul>
+									<a href="" class="add J_group_creat_show" data-id="{$value['touid']}">创建新分组</a>
+								</div>
+							</div>
+							<dl class="cc J_friends_items">
+								<dt><a href="{@url:space/index/run?uid=$value['touid']}" data-uid="{$value['touid']}" class="J_user_card_show"><img class="J_avatar" src="{@Pw::getAvatar($value['touid'], 'small')}" data-type="small" width="50" height="50" alt="{$value['username']}" /></a><a href="{@url:message/message/pop?username=$value['username']}" data-name="{$value['username']}" class="called J_send_msg_pop">打招呼</a></dt>
+								<dd>
+									<div class="title">
+										<a href="{@url:space/index/run?uid=$value['touid']}" data-uid="{$value['touid']}" class="name J_user_card_show">{$value['username']}</a>
+										<!--# $gender = $value['gender'] == 1 ? 'women' : 'man';
+											$online = Pw::checkOnline($value['lastvisit']) ? 'ol' : 'unol';
+										 #-->
+										<span class="{$gender}_{$online}"></span>
+									</div>
+									<div class="num">
+										关注<a href="{@url:space/follows/run?uid=$value['touid']}">{$value['follows']}</a><span>|</span>粉丝<a href="{@url:space/fans/run?uid=$value['touid']}">{$value['fans']}</a><span>|</span>帖子<a href="{@url:space/thread/run?uid=$value['touid']}">{$value['postnum']}</a>
+									</div>
+									<div class="action">{$birthday}</div>
+									<div class="action">{$profile} </div>
+									<div class="sort">
+										<a href="" id="J_group_trigger_{$value['touid']}" class="J_group_trigger" data-id="{$value['touid']}">
+										<!--# 
+											if ($userType[$value['touid']]) {
+												$userTypeNames = implode(',',$userType[$value['touid']]);
+											} else {
+												$userTypeNames = '未分组';
+											}
+										 #-->
+										<span class="J_group_names" title="{$userTypeNames}"><!--# if ($userType[$value['touid']]) { #-->{@FollowController::bulidGroup($userType[$value['touid']])}<!--# } else { #-->未分组<!--# } #--></span><em class="core_arrow"></em></a>
+									</div>
+									<div class="attribute">
+										<!--# if (isset($fans[$value['touid']])) { #--><span class="mnfollow" title="互相关注">互相关注</span><!--# } #-->
+										<a href="{@url:my/follow/delete}" class="core_unfollow J_unfollow_btn J_friends_unfollow" style="display:none;" data-uid="{$value['touid']}">取消关注</a>
+									</div>
+								</dd>
+							</dl>
+							<!--# } #-->
+							<div class=""><page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="my/follow/run" args="$url" /></div>
+						</div>
+						<!--# } elseif ($recommend) { #-->
+						<form action="{@url:my/follow/batchadd}" method="post" id="J_nofollow_form">
+<!--无关注人时-->
+						<div class="nofollow_list J_check_wrap">
+							<div class="hd">啊哦，你还没有关注任何人，赶紧先关注些人！</div>
+							<ul class="cc">
+								<!--# foreach ($recommend as $value) { #-->
+								<li><a data-uid="{$value['uid']}" class="J_user_card_show" href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'middle')}" data-type="middle" width="90" height="90" alt="{$value['username']}" /></a><label title="{$value['username']}"><input class="J_check" type="checkbox" name="uids[]" value="{$value['uid']}">{$value['username']}</label></li>
+								<!--# } #-->
+							</ul>
+							<div class="ft">
+								<button type="submit" class="btn btn_big btn_submit disabled" disabled="true" id="J_nofollow_btn"><span class="add"></span>关注</button>
+								<label class="w"><input class="J_check_all" type="checkbox">全选</label>
+							</div>
+						</div>
+<!--无关注人时结束-->	
+						</form>
+						<!--# } else { #-->
+						<div class="nofollow_list J_check_wrap">
+							<div class="hd">啊哦，该分组还没有关注的人，试试将关注的人添加到该分组！</div>
+
+						</div>
+						<!--# } #-->
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+				<!--# if ($follows) { #-->
+				<div class="box_wrap">
+					<h2 class="box_title">我关注的人</h2>
+					<div class="side_cate_list">
+						<ul id="J_side_group_list" class="cc">
+							<li>
+								<a href="{@url:my/follow/run}" class="title"><span class="">全部</span><em>({$loginUser->info['follows']})</em></a>
+							</li>
+							<!--# foreach ($typeArr as $key => $value) { #-->
+							<li id="J_side_group_{$key}">
+								<!--# if ($key > 0) { #-->
+								<a href="{@url:my/follow/deleteType}" class="icon_del J_group_del" data-pdata="{'id':'{$key}'}" data-id="{$key}">删除</a>
+								<a href="{@url:my/follow/editType?id=$key}" class="icon_edit J_group_edit" data-id="{$key}" data-name="{$value}">编辑</a>
+								<!--# } #-->
+								<a href="{@url:my/follow/run?type=$key}" class="title"><span class="J_name">{$value}</span><em>(<!--# echo isset($typeCounts[$key]) ? $typeCounts[$key]['count'] : 0; #-->)</em></a>
+							</li>
+							<!--# } #-->
+						</ul>
+						<a href="" class="add" id="J_creat_group_side">创建新分组</a>
+					</div>
+				</div>
+				<!--# } #-->
+			</div>
+		</div>
+	</div>
+<ul style="display:none;" id="J_group_check_ul">
+	<!--# foreach ($typeArr as $k => $v) { #-->
+	<li><label><input class="J_group_name" type="checkbox" data-id="{$k}" data-value="{$v}">{$v}</label></li>
+	<!--# } #-->
+</ul>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+var GRROUP_DATA = '{@FollowController::bulidUserType($userType)|json}';
+
+Wind.use('jquery', 'global', 'ajaxForm', 'dialog', function(){
+<!--# if ($follows) { #-->
+	//有关注
+	Wind.js(GV.JS_ROOT +'pages/my/fansFollow.js?v='+ GV.JS_VERSION);
+/*
+ * 取消关注，删除行
+*/
+	var f_lock = false;
+	$('a.J_friends_unfollow').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+
+		//锁定
+		if(f_lock) {
+			return false;
+		}
+		f_lock = true;
+
+		$.post(this.href, {
+			uid: $this.data('uid')
+		}, function(data){
+			f_lock = false;
+			if(data.state == 'success') {
+				$this.parents('dl').slideUp(function(){
+					$(this).remove();
+
+					//删完了
+					if(!$('.J_friends_items').length) {
+						location.reload();
+					}
+				});
+			}else if(data.state == 'fail'){
+				//global.js
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message,
+					follow : $this
+				});
+			}
+		}, 'json');
+	});
+
+	$('#J_group_check_ul').data({
+		'saveList' : function(elem, type, id){
+			//保存分组
+			Wind.Util.ajaxMaskShow();
+			$.post("{@url:my/follow/savetype}", {
+				uid : elem.data('id'),
+				id : id,
+				type : (type ? 1 : 0)
+			}, function(data){
+				Wind.Util.ajaxMaskRemove();
+				if(data.state === 'success') {
+
+				}else if(data.state === 'fail') {
+					Wind.Util.resultTip({
+						error : true,
+						follow : elem,
+						msg : data.message
+					});
+				}
+			}, 'json');
+		},
+		'saveCreat' : function(btn){
+			//保存创建
+			var creat_wrap = $('#J_group_creat_wrap');
+			$.post("{@url:my/follow/addtype}", { name : $('#J_group_creat_input').val() }, function(data){
+				if(data.state === 'success') {
+					var _data = data.data;
+					creat_wrap.remove();
+					btn.show();
+					
+					//所有列表写入新创建分组
+					var list = $('div.J_group_check_list > ul');
+					list.append('<li><label><input type="checkbox" data-id="'+ _data.id +'" data-value="'+ _data.name +'" class="J_group_name">'+ _data.name +'</label></li>');
+					
+					//选中新创建的
+					var cur_list = btn.parents('.J_group_check_list');
+					cur_list.find('ul > li:last input:checkbox').prop('checked', true);
+					//保存列表
+					$('#J_group_check_ul').data('saveList')($('#J_group_trigger_'+cur_list.data('id')), 1, _data.id);
+
+					var newest = cur_list.find('ul > li:last input:checkbox');
+					newest.prop('checked', true);
+					//checkListGroup.js
+					setGroupNames(newest);
+
+					//右侧栏写入新分组
+					$('#J_side_group_list').append('<li id="J_side_group_'+ _data.id +'"><a class="icon_del J_group_del" data-pdata="{\'id\':\''+ _data.id +'\'}" href="{@url:my/follow/deleteType/}" data-id="'+ _data.id +'">删除</a><a data-name="'+ _data.name +'" data-id="'+ _data.id +'" class="icon_edit J_group_edit" href="{@url:my/follow/editType/)}&id='+ _data.id +'">编辑</a><a class="title" href="{@url:my/follow/run/}&type='+ _data.id +'"><span class="J_name">'+ _data.name +'</span><em>(0)</em></a></li>');
+
+				}else if(data.state === 'fail'){
+					Wind.Util.resultTip({
+						error : true,
+						follow : creat_wrap,
+						msg : data.message
+					});
+				}
+			}, 'json');
+		}
+	});
+
+	$('#J_side_group_list').data({
+		save : function(elem, url){
+			var group_edit_input = $('#J_group_edit_input'),
+				id = elem.data('id');
+			$.post(url, {
+				id : elem.data('id'),
+				name : elem.val()
+			}, function(data){
+				if(data.state === 'success') {
+					var _data = data.data,
+						li = $('#J_side_group_'+ id);
+					if(li.length) {
+						//编辑
+						li.find('.J_name').text(_data.name);
+						li.find('.J_group_edit').data('name', _data.name);
+					}else{
+						//所有列表写入新创建分组
+						var list = $('div.J_group_check_list > ul');
+						list.append('<li><label><input type="checkbox" data-id="'+ _data.id +'" data-value="'+ _data.name +'" class="J_group_name">'+ _data.name +'</label></li>');
+
+						//右侧栏写入新分组
+						$('#J_side_group_list').append('<li id="J_side_group_'+ _data.id +'"><a class="icon_del J_group_del" data-pdata="{\'id\':\''+ _data.id +'\'}" href="{@url:my/follow/deleteType/}" data-id="'+ _data.id +'">删除</a><a data-name="'+ _data.name +'" data-id="'+ _data.id +'" class="icon_edit J_group_edit" href="{@url:my/follow/editType/)}&id='+ _data.id +'">编辑</a><a class="title" href="{@url:my/follow/run/}&type='+ _data.id +'"><span class="J_name">'+ _data.name +'</span><em>(0)</em></a></li>');
+					}
+
+					var group_edit_wrap = $('#J_group_edit_wrap');
+					group_edit_wrap.siblings('li:hidden').show();
+					$('#J_creat_group_side').show();
+					group_edit_wrap.remove();
+				}else if(data.state === 'fail'){
+					Wind.Util.resultTip({
+						error : true,
+						elem : elem,
+						follow : true,
+						msg : data.message
+					});
+				}
+			}, 'json');
+		},
+		creatsave :  '{@url:my/follow/addtype/}',
+		editsave : '{@url:my/follow/editType/}',
+		deltip : '确定要删除该分组吗？<br><span class="gray">此分组下的人不会被取消关注</span>'
+	});
+	Wind.js(GV.JS_ROOT +'pages/common/checkListGroup.js?v='+ GV.JS_VERSION);
+	
+<!--# } else { #-->
+	/*
+	 * 无关注
+	*/
+	var nofollow_btn = $('#J_nofollow_btn');
+	$('input:checkbox').prop('checked', false);
+	//复选框
+	$('input.J_check_all').on('change', function(){
+		if(this.checked) {
+			nofollow_btn.prop('disabled', false).removeClass('disabled');
+		}else{
+			nofollow_btn.prop('disabled', true).addClass('disabled');
+		}
+	});
+
+	var checks = $('input.J_check');
+
+	checks.on('change', function(){
+		if (checks.filter(':checked').length > 0) {
+			nofollow_btn.prop('disabled', false).removeClass('disabled');
+		}else{
+			nofollow_btn.prop('disabled', true).addClass('disabled');
+		}
+	});
+
+	$('#J_nofollow_form').ajaxForm({
+		dataType : 'json',
+		beforeSubmit : function(){
+			//global.js
+			Wind.Util.ajaxBtnDisable(nofollow_btn);
+		},
+		success : function(data){
+			if(data.state == 'success') {
+				location.reload();
+			}else if(data.state == 'fail'){
+				Wind.Util.ajaxBtnEnable(nofollow_btn, false);
+				Wind.Util.resultTip({
+					error : true,
+					follow : nofollow_btn,
+					msg : data.message
+				});
+			}
+		}
+	});
+	
+
+
+<!--# } #-->
+
+	
+
+});
+</script>
+</body>
+</html>

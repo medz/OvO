@@ -1,0 +1,29 @@
+
+	<table class="pop_design_tablelist">
+		<colgroup>
+			<col width="60">
+			<col>
+			<col width="100">
+			<col width="80">
+		</colgroup>
+		<thead>
+			<tr>
+				<th><label><input type="checkbox" class="J_design_check_all J_check_all" data-direction="x" data-checklist="J_check_x">&nbsp;全选</label></th>
+				<td>标题</td>
+				<td>推荐人</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+<!--# foreach ($list as $v){ #-->
+		<tr>
+			<th><input class="J_design_check J_check" type="checkbox" value="{$v['push_id']}" name="pushid[]" data-yid="J_check_y" data-xid="J_check_x"></th>
+			<td><div class="subject"><a href="{$v['url']}" target="_blank">{$v['title']}</a></div></td>
+			<td>{$users[$v['created_userid']]['username']}</td>
+			<td>
+				<a href="{@url:design/data/dopush?pushid=$v['push_id']&moduleid=$v['module_id']}" data-pdata="{'pushid': '{$v['push_id']}', 'moduleid':{$v['module_id']}}" class="mr5 J_data_push" data-role="pass">[通过]</a>
+				<a href="{@url:design/data/delpush?pushid=$v['push_id']&moduleid=$v['module_id']}" data-pdata="{'pushid': '{$v['push_id']}', 'moduleid':{$v['module_id']}}" class="J_data_push" data-role="refuse">[拒绝]</a>
+			</td>					
+		</tr>
+<!--# } #-->
+	</table>
+	<div class="J_pages_wrap"><page tpl='TPL:common.page'  total="$totalpage" page="$page" per="$perpage" count="$count" url="design/data/push" args="$args" /></div>

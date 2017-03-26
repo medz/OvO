@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+<!--添加模板第二步-->
+	<div class="nav">
+		<div class="return"><a href="{@url:design/component/run}">返回上一级</a></div>
+		<ul class="cc">
+			<li class="current"><a href="">添加模板</a></li>
+		</ul>
+	</div>
+	<div class="h_a">添加模板</div>
+	<form class="J_ajaxForm"  action="{@url:design/component/doadd2}" method="post">
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<tr>
+				<th>模板名称</th>
+				<td><input type="text" class="input length_5" name="name"></td>
+			</tr>
+			<tr>
+				<th>模板代码</th>
+				<td><textarea style="width:80%;height:200px;" name="tpl" id="J_design_temp_tpl"></textarea></td>
+			</tr>
+			<tr>
+				<th>属性变量</th>
+				<td>
+					<ul class="variable_sample">
+						<!--# foreach ($signKeys as $sign){ #-->
+						<li>
+							<em>{$sign[0]}</em><span>{$sign[1]}</span>
+						</li>
+						<!--# } #-->
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit" >提交</button>
+			<input type="hidden"  name="flag" value="{$flag}">
+
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

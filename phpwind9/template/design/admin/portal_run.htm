@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">	
+	<div class="nav">
+		<ul class="cc">
+			<li><a href="{@url:design/page/run}">系统页面</a></li>
+			<li class="current"><a href="{@url:design/portal/run}">自定义页面</a></li>
+		</ul>
+	</div>
+
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>根域名设置完后，新增页面的二级域名的域名绑定才能生效。设置新增页面的<a href="{@url:rewrite/domain/run}" class="J_linkframe_trigger">二级域名</a></li>
+		</ul>
+	</div>
+	<div class="cc mb10">
+		<a href="{@url:design/portal/add|pw}" class="btn" target="_blank"><span class="add"></span>添加新页面</a>
+	</div>
+	<form class="J_ajaxForm" method="post" action="{@url:design/portal/batchopen}">
+	<div class="table_list">
+		<table width="100%">
+			<colgroup>
+				<col width="70">
+				<col width="60">
+				<col width="160">
+				<col width="160">
+			</colgroup>
+			<thead>
+				<tr>
+					<td><label><input type="checkbox" data-checklist="J_check_y" data-direction="y" class="J_check_all" name="checkAll">启用</label></td>
+					
+					<td>页面名称</td>
+					<td>文件名</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<!--# foreach ($list as $v){ #-->
+			<tr>
+				<td><input data-yid="J_check_y" data-xid="J_check_x" class="J_check" type="checkbox" name="isopen[{$v['id']}]" value="1" {@Pw::ifcheck($v['isopen'])}>
+				<input type="hidden" name="ids[]" value="{$v['id']}"></td>
+				
+				<td><a href="{@url:special/index/run?id=$v['id']|pw}" target="_blank">{$v['title']}</a></td>
+				<td>{$v['pagename']}</td>
+				<td>
+					<a href="{@url:special/index/run?id=$v['id']|pw}" class="mr5" target="_blank">[查看]</a>
+					<a href="{@url:design/portal/edit?id=$v['id']|pw}" class="mr5" target="_blank">[编辑]</a>
+					<a href="{@url:design/portal/delete}" data-msg="确定要删除此页面？" class="mr5 J_ajax_del" data-pdata="{'id': '{$v[id]}'}">[删除]</a>
+					<a href="{@url:design/permissions/page?id=$v['page_id']}" class="mr5">[权限管理]</a>
+					<a href="{@url:design/module/run?pageid=$v['page_id']}" class="mr5" >[模块管理]</a>
+					<a href="{@url:design/page/doclear}" class="mr5 J_ajax_del" data-msg="您确定要清空页面上的所有模块？<br>清空后将不可恢复！" data-pdata="{'id': '{$v['page_id']}'}">[清空模块]</a>
+				</td>
+			</tr>
+			<!--# } #-->
+		</table>
+	</div>
+	<div style="padding:0 10px 15px;"><page tpl='TPL:common.page'  total="$totalpage" page="$page" per="$perpage" count="$count" url="design/portal/run" args="$args"/></div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<label class="mr20"><input type="checkbox" data-checklist="J_check_x" data-direction="x" class="J_check_all" name="checkAll">启用</label>
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

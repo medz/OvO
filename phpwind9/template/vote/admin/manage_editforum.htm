@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body style="width:450px" class="body_none">
+	<form class="J_ajaxForm" action="{@url:vote/manage/doeditforum}" method="post">
+			<div class="pop_cont">
+				<div class="cc shift">
+					<div class="fl">
+						<h4>选择版块</h4>
+						<div class="select_div" id="J_forum_list">
+							<!--# foreach($cateList as $cate){ #-->
+							<!--# if ($forumList[$cate['fid']]) { 
+								$cate['name'] = strip_tags($cate['name']);
+							#-->
+							<dl>
+								<dt>{$cate['name']}</dt>
+								<dd>
+									<!--# foreach ($forumList[$cate['fid']] as $forum) {
+									$forum['name'] = strip_tags($forum['name']);
+									 #-->
+									<p><a href="#" class="J_forums" data-fid="{$forum['fid']}">{$forum['name']}</a></p>
+									<!--# } #-->
+								</dd>
+							</dl>
+							<!--# }} #-->
+						</div>
+					</div>
+					<div class="fl shift_operate">
+						<p class="mb10"><a id="J_forum_add" href="" class="btn ">添加 &gt;&gt;</a></p><!-- btn_success与dialog.js冲突 -->
+						<p><a id="J_forum_del" href="#" class="btn">&lt;&lt; 移除</a></p>
+					</div>
+					<div class="fl">
+						<h4>已选择</h4>
+						<div class="select_div">
+							<dl class="current">
+								<dd id="J_forum_selected">
+						<!--# foreach($cateList as $cate) { #-->
+								<!--# if ($forumList[$cate['fid']]) { #-->
+								<!--# foreach ($forumList[$cate['fid']] as $forum) { #-->
+									<!--# if (Pw::inArray($forum['fid'], array_keys($pollOpenForum))) {
+									$forum['name'] = strip_tags($forum['name']);
+									 #-->
+									<p><a href="#" data-fid="{$forum['fid']}" id="J_forum_{$forum['fid']}">{$forum['name']}</a></p>
+									<!--# } #-->
+								<!--# } #-->
+								<!--# } #-->
+						<!--# } #-->
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+	<!--# $forumids = $pollOpenForum ? implode(',', $pollOpenForum) : ''; #-->
+			<div class="pop_bottom"><input type="hidden" id="J_fids" name="fid" value="{$forumids}"/><button class="btn fr" type="button" id="J_dialog_close">取消</button><button class="btn btn_submit J_ajax_submit_btn fr mr10" type="submit">提交</button></div>
+		</form>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	var forum_selected = $('#J_forum_selected');
+	$('#J_forum_list dt').on('click', function(){
+		$(this).parent().toggleClass('current').siblings().removeClass('current');
+	});
+	
+	//点击状态
+	$('#J_forum_list, #J_forum_selected').on('click', 'a', function(e){
+		e.preventDefault();
+		$(this).toggleClass('current');
+		if(!$('#J_forum_'+ $(this).data('fid')).length) {
+			//未添加
+			//forum_selected.append('<p><a href="" id="J_forum_'+ $(this).data('fid') +'">'+ $(this).text() +'</a></p>');
+		}
+	});
+	
+	//添加
+	$('#J_forum_add').on('click', function(e){
+		e.preventDefault();
+		var arr = [];
+		$('#J_forum_list a.J_forums.current').each(function(i, o){
+			if(!$('#J_forum_'+ $(this).data('fid')).length) {
+				//未添加
+				forum_selected.append('<p><a href="" data-fid="'+ $(this).data('fid') +'" id="J_forum_'+ $(this).data('fid') +'">'+ $(this).text() +'</a></p>');
+			}
+		});
+		getArr();
+	});
+	
+	//移除
+	$('#J_forum_del').on('click', function(e){
+		e.preventDefault();
+		$('#J_forum_selected a.current').parent().remove();
+		
+		getArr();
+	});
+	
+	function getArr(){
+		var arr = [];
+		$('#J_forum_selected a').each(function(i, o){
+			arr.push($(this).data('fid'));
+		});
+		
+		$('#J_fids').val(arr.join(','));
+	}
+	
+});
+</script>
+</body>
+</html>

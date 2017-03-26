@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li><a href="{@url:appcenter/upgrade/run}">版本升级</a></li>
+			<li class="current"><a href="{@url:appcenter/fixup/run}">安全中心</a></li>
+		</ul>
+	</div>
+	<form action="{@url:appcenter/fixup/doRun}" method="post">
+		<!--# if(isset($connect_fail)){ #-->
+		<div class="upgrade_page">
+			<div class="not_content_mini"><i></i>{$connect_fail}</div>
+		</div>
+		<!--# }else{ #-->
+		<div class="table_list">
+			<table width="100%">
+				<!--# if ($patches) { #-->
+				<colgroup>
+				<col width="60">
+				<col width="300">
+				</colgroup>
+				<thead>
+					<tr>
+						<td><label>
+								<input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x">
+								全选</label></td>
+						<td>编号</td>
+						<td>更新补丁名称</td>
+						<td>更新说明</td>
+						<td><span>发布时间</span></td>
+					</tr>
+				</thead>
+				<!--# foreach ($patches as $v) {
+						$disabled = $v['status'] ? 'disabled="disabled"' : '';
+					 #-->
+				<tr>
+					<td><input {$disabled} type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="patches[]" value="{$v['id']}"></td>
+					<td>{$v['id']}</td>
+					<td>{$v['name']}</td>
+					<td>{$v['desc']}</td>
+					<td>{@Pw::time2str($v['time'])}</td>
+				</tr>
+				<!--# } #-->
+			</table>
+		</div>
+		<!--# } else { #-->
+		<div class="upgrade_page">
+			<div class="not_content_mini"><i></i>啊哦，暂时没有更新补丁！</div>
+		</div>
+		<!--# } } #-->
+		<!--# if (!isset($connect_fail) && $patches) { #-->
+		<div class="btn_wrap">
+			<div class="btn_wrap_pd">
+				<label class="mr20">
+					<input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">
+					全选</label>
+				<button class="btn btn_submit" type="submit">立即升级</button>
+			</div>
+		</div>
+		<!--# } #-->
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+<script>
+
+</script>
+</html>

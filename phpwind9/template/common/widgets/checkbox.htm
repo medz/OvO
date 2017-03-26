@@ -1,0 +1,10 @@
+
+<!-- 数据格式定义：$__tpl_data = array('name' => '' , 'items' => '')  -->
+<!-- name:radio名称,默认值为radio；value:radio当前值,默认值为0；items:为radio的选项,默认一个项 -->
+<!--# isset($__tpl_data['name']) || $__tpl_data['name'] = 'select';
+isset($__tpl_data['items']) || $__tpl_data['items'] = array( array('value' => '0', 'text' => 'test0'), array('value' => '1', 'text' => 'test1'));  
+isset($__tpl_data['value']) || $__tpl_data['value'] = '0';  #-->
+
+<!--# foreach($__tpl_data['items'] as $__v){ #-->
+	<label><input type="checkbox" name="{$__tpl_data['name']}" value="{$__v['value']}" {@Pw::ifcheck($__v['value'] == $__tpl_data['value'])}>{$__v['text']}</label>
+<!--# } #-->

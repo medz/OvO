@@ -1,0 +1,24 @@
+<!--#if ($refresh) {#-->
+<meta http-equiv="refresh" content="1; url={$referer|url}" />
+<!--#}#-->
+<!--#if ($title) {#-->
+<h2 class="reg_head">{$title}</h2>
+<!--#}#-->
+<div class="reg_cont_wrap">
+	<div class="reg_message reg_ignore">
+		<ul class="mb10 f14">
+			<!--# foreach ($message as $value){
+			    if (!is_string($value)) continue;
+				if(!WIND_DEBUG)
+					$value = str_replace(Wind::getRootPath(Wind::getAppName()), '~/', $value);#-->
+			<li id="J_html_error">{$value}</li>
+			<!--# } #-->
+		</ul>
+<!--#$url = Wekit::C('site', 'info.url');#-->
+		<!--# if($referer){ #-->
+		<div class="error_return"><a href="{$referer}">返回上一页</a> 或者 <a href="<!--#if($url){echo $url;} else{#-->{@url:}<!--#}#-->">回到首页</a></div>
+		<!--# }else{ #-->
+		<div class="error_return"><a href="javascript:window.history.go(-1);">返回上一页</a> 或者 <a href="<!--#if($url){echo $url;} else{#-->{@url:}<!--#}#-->">回到首页</a></div>
+		<!--# } #-->
+	</div>
+</div>

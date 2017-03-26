@@ -1,0 +1,12 @@
+
+1.可以在template/index.htm的内容修改区域修改你的模版
+
+2.必须是门户管理权限中的“门户设计”权限并在非debug模式下才能看到刷新效果
+
+3.门户管理权限在后台用户组权限里设置
+
+4.新加<pw-list> <pw-title> 请不要添加id，刷新后会自动生成
+
+css目录使用{@G:design.url.css} 
+images目录使用{@G:design.url.images} 
+js目录使用{@G:design.url.js}

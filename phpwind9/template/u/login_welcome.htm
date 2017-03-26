@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' suffix='htm' />
+<meta http-equiv="refresh" content="1; url={$refUrl|url}" />
+<link href="{@theme:css}/logout.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' suffix='htm'/>
+	<div class="main_wrap">
+		<div class="box_wrap logout_page cc">
+			<div class="logout_message">
+				<h2>{$username}，欢迎您回来，现在将自动转入登录前页面</h2>
+				<div><a href="{$refUrl|url}"> 如果你的浏览器没有自动转入，请点击此链接 </a></div>
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' suffix='htm'/>
+</div>
+{$synLogin|html}
+<script>
+
+</script>
+</body>
+</html>

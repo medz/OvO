@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/article.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:my/article/run}">帖子</a><em>&gt;</em><a href="{@url:my/article/reply}">我的回复</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap thread_page">
+					<nav>
+						<div class="content_nav">
+							<ul>
+								<li><a href="{@url:my/article/run}">我的主题</a></li>
+								<li class="current"><a href="{@url:my/article/reply}">我的回复</a></li>
+							</ul>
+						</div>
+					</nav>
+						<!--# if ($posts) { #-->
+						<div class="thread_posts_list">
+							<table width="100%" summary="帖子列表" class="mb10">
+								<!--# foreach ($posts as $value) { #-->
+								<tr>
+									<td class="subject">
+										<span class="posts_icon">
+										<!--#if ($value['topped']) {#-->
+										<!--i class="icon_headtopic_{$value['topped']}" title="置顶"></i-->
+										<!--#}#-->
+										<i class="icon_topic"></i>
+										
+										</span>
+										<a href="{@url:bbs/read/jump?tid=$value['tid']&pid=$value['pid']}" target="_blank" class="st">{$value['threadSubject']}</a><!--# if ($value['disabled']) { #--><span class="red">(审核中)</span><!--# } #-->
+									</td>
+									<td class="tar" width="120">
+										<span class="gray">{$value['created_time']}</span>
+									</td>
+								</tr>
+								<!--# } #-->
+							</table>
+							<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='my/article/reply' />
+						</div>
+						<!--# } else { #-->
+						<div class="not_content">啊哦，您暂没有回复任何主题哦！去<a href="{@url:run}">首页看看</a>有什么精彩内容吧！</div>
+						<!--# } #-->
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_2' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global');
+</script>
+</body>
+</html>

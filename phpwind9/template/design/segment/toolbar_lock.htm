@@ -1,0 +1,56 @@
+<style>
+body{
+	padding-top:40px !important;
+}
+.header_wrap{
+	position:static !important;
+}
+.custom_wrap{
+	padding:30px 0 !important;
+}
+.top_design_text_wrap{
+	position:fixed;
+	width:100%;
+	top:0;
+	left:0;
+	text-align:center;
+	background:#2e3337;
+	height:24px;
+	line-height:24px;
+	padding:8px 0;
+	font-size:14px;
+	color:#fff;
+	box-shadow:0 2px 5px rgba(0,0,0,0.3);
+	z-index:99999;
+	font-family:Arial;
+	line-height:1.5;
+	_position:absolute;
+	_top: expression(documentElement . scrollTop);
+}
+.top_design_text_wrap a{
+	display:inline-block;
+	font-weight:700;
+	color:#dedede;
+	background:#585c5f;
+	padding:0 15px;
+	border-radius:3px;
+	margin-left:10px;
+}
+</style>
+<div class="top_design_text_wrap">
+	当前页面正被其它用户编辑，请稍后再试！<a id="J_design_quit_direct" href="javascript:;" class="quit">退出</a>
+</div>
+
+<script>
+Wind.ready(document, function(){
+	Wind.use('jquery', function(){
+		$('#J_design_quit_direct').on('click', function(e){
+			e.preventDefault();
+			$.post("{@url:design/design/exit}", {pageid: $('#J_pageid').val(), uri : $('#J_uri').val()}, function(data){
+				location.href = data.data;
+			}, 'json');
+		});
+	});
+	
+});
+</script>

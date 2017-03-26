@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body style="width:450px;" class="body_none">
+<div class="pop_cont pop_table">
+<!--添加用户-->
+	<div class="h_a">提示信息</div>
+	<div class="mb10 prompt_text">
+		使用此功能可以由管理员添加特定用户<br>
+		创始人可以使用此功能添加站点管理员(普通管理员无此权限)
+	</div>
+	
+	<div class="h_a">添加用户</div>
+	<form class="J_ajaxForm" data-role="list" action="{@url:admin/windid/user/add}" method="post" >
+	<input type='hidden' name='type' value="do">
+	<div class="">
+		<table width="100%">
+			<col class="th" />
+			<col />
+			<thead>
+			<tr>
+				<th>用户名</th>
+				<td><input name="username" type="text" class="input input_long"></td>
+			</tr>
+			</thead>
+			<tr>
+				<th>密码</th>
+				<td><input name="password" type="text" class="input input_long"></td>
+			</tr>
+			<tr>
+				<th>电子邮箱</th>
+				<td><input name="email" type="text" class="input input_long mr10"><label style="display:none">
+				<input name="sendEmail" type="checkbox" class="checkbox" value="0">电子邮件通知</label></td>
+			</tr>
+		</table>
+	</div>
+	<div class="pop_bottom">
+		<button type="submit" class="btn btn_submit fr J_ajax_submit_btn">提交</button>
+	</div>
+	
+</form>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

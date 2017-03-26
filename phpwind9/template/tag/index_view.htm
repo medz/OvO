@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/tag.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<pw-start/>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<pw-tpl id="main_segment"/>
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:tag/index/run}">话题</a><em>&gt;</em><a href="{@url:tag/index/view?name=$tag['tag_name']}">{$tag['tag_name']}</a>
+		</div>
+		<pw-tpl id="myTagPage_segment"/>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap tag_info_box cc">
+						<div class="banner"><img src="{@Pw::getPath($tag['tag_logo'])}" width="110" alt="{$tag['tag_name']}" onerror="this.onerror=null;this.src='{@theme:images}/tags/default.png'"/></div>
+						<div class="name"><h3>{$tag['tag_name']}</h3>
+						<!--# if (!$tag['attention']) { #-->
+						<a rel="nofollow" id="J_follow_btn" data-type="add" data-id="{$tag['tag_id']}" href="{@url:tag/index/attention?id=$tag['tag_id']&type=add}" class="core_follow J_qlogin_trigger">关注该话题</a>
+						<!--# } else { #-->
+						<a rel="nofollow" id="J_follow_btn" data-type="del" data-id="{$tag['tag_id']}" href="{@url:tag/index/attention?id=$tag['tag_id']&type=del}" class="core_unfollow J_qlogin_trigger">取消关注</a>
+						<!--# } #-->
+						</div>
+						<div class="num">
+							<ul class="cc">
+								<li>帖子：<em>{$tag['content_count']}</em></li>
+								<li>被关注：<em id="J_follow_count">{$tag['attention_count']}</em></li>
+							</ul>
+						</div>
+						<div class="notice">
+						<!--# $subExcerpt = Pw::substrs($tag['excerpt'], 170); #-->
+							<span id="J_tag_excerpt_part">{$subExcerpt}</span>
+							<span style="display:none;" id="J_tag_excerpt_all">{$tag['excerpt']}</span>
+							<!--# if ($tag['excerpt'] != $subExcerpt) { #-->
+							<a href="#" id="J_show_more" data-type="open" class="more s4">阅读全部&darr;</a>
+							<!--# } #-->
+						</div>
+					</div>
+					<div class="box_wrap tag_page_view">
+						<div class="content_nav">
+							<ul class="cc">
+							<!--# $thread_current = !$args['type'] ?  "class='current'" : '';
+									$user_current = ($args['type'] == 'users') ?  "class='current'" : '';
+							#-->
+								<li {$thread_current|html}><a href="{@url:tag/index/view?name=$tag['tag_name']}">最新帖子</a></li>
+								<li {$user_current|html}><a href="{@url:tag/index/view?name=$tag['tag_name']&type=users}">会员</a></li>
+							</ul>
+						</div>
+						<div class="">
+					<!--# if ($args['type'] == 'users') { #-->
+						<!--# if ($users) { #-->
+						<div class="tag_uesr_list">
+							<ul class="cc">
+								<!--# foreach ($users as $u) { #-->
+								<li>
+									<a href="{@url:space/index/run?uid=$u['uid']}" class="J_user_card_show" data-uid="{$u['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($u['uid'], 'middle')}" data-type="middle" width="100" height="100" alt="{$u['username']}" /></a>
+									<p><a href="{@url:space/index/run?uid=$u['uid']}" class="J_user_card_show" data-uid="{$u['uid']}">{$u['username']}</a></p>
+								</li>
+								<!--# } #-->
+							</ul>
+						</div>
+						<div class="tac">
+							<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='tag/index/view' args='$args'/>
+						</div>
+						<!--# } else { #-->
+						<div class="not_content">
+							<p>啊哦，暂没有会员关注该话题哦，我来<a href="{@url:tag/index/attention?id=$tag['tag_id']&type=add}" id="J_none_follow" class="J_qlogin_trigger">关注一下</a>！</p>
+						</div>
+						<!--# } #-->
+					<!--# } else { #-->
+						<!--# if ($contents) { #-->
+						<div class="tag_lists_wrap" id="J_tag_feed_lists">
+							<!--# foreach ($contents as $key => $value) { 
+								if (!$value['content']) continue;
+							#-->
+							<dl class="cc">
+								<dt class="face"><a href="{@url:space/index/run?uid=$value['created_userid']}" class="J_user_card_show" data-uid="{$value['created_userid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['created_userid'], 'small')}" data-type="small" width="50" height="50" alt="{$value['created_username']}" /></a></dt>
+								<dd class="text_content">
+									<!--# if ($allowManage) { #-->
+										<!--# if ($value['tagifcheck']) { #-->
+									<a href="{@url:tag/index/doshield?id=$tag['tag_id']&type_id=$value['type_id']&param_id=$value['param_id']&ifcheck=0}" class="shield J_tag_shield" title="将该帖移出这个话题">屏蔽</a>
+										<!--# } else { #-->
+									<a href="{@url:tag/index/doshield?id=$tag['tag_id']&type_id=$value['type_id']&param_id=$value['param_id']&ifcheck=1}" class="shield J_tag_shield" title="取消屏蔽">取消屏蔽</a>
+										<!--# } #-->	
+									<!--# } #-->
+									<div class="content">
+										<a href="{@url:space/index/run?uid=$value['created_userid']}" class="name J_user_card_show" data-uid="{$value['created_userid']}">{$value['created_username']}</a>：
+										<em><a href="{@url:bbs/read/run?tid=$value['tid']&fid=$value['fid']}" class="title">{$value['subject']}</a></em><br>
+										<div class="descrip">{@Pw::substrs(Pw::stripWindCode($value['content'],true),125)}</div>
+									</div>
+									<div class="info">
+										<span class="time">{$value['created_time_auto']}</span>&nbsp;来自版块&nbsp;-&nbsp;<a href="{@url:bbs/thread/run?fid=$value['fid']}">{$value['forum_name']|html}</a>
+										<!--# if($relatedTags[$value['tid']]){ #-->
+											<!--# foreach($relatedTags[$value['tid']] as $k=>$v){ if ($k==$key) continue; #-->
+											<a href="{@url:/tag/index/view?name=$v['tag_name']}">{$v['tag_name']}</a>
+											<!--# } #-->
+										<!--# } #-->
+									</div>
+								</dd>
+							</dl>
+							<!--# } #-->
+							<div class="tac">
+								<page tpl='TPL:common.page' page='$page' count='$count' per='$perpage' url='tag/index/view' args='$args'/>
+							</div>
+						</div>
+						<!--# } else { #-->
+						<div class="not_content">
+							啊哦，这个话题下暂没有任何内容哦！
+						</div>
+						<!--# } #-->
+					<!--# } #-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+				<template source='TPL:tag.index_hot_model' load='true' />
+				<template source='TPL:tag.index_my_model' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+var URL_ADD = '{@url:/tag/index/attention?type=add}',	//关注
+	URL_DEL = '{@url:/tag/index/attention?type=del}';	//取消关注
+	
+Wind.use('jquery', 'global', function(){
+
+<!--# if ($loginUser->isExists()) { #-->
+	//关注&取消关注
+	var follow_btn = $('#J_follow_btn'),
+		follow_count = $('#J_follow_count');	//关注统计
+	follow_btn.on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			type = $this.data('type'),
+			url = (type === 'add' ? URL_ADD : URL_DEL),
+			count = parseInt(follow_count.text()),
+			anti_text = (type === 'add' ? '取消关注' : '关注该话题'),			//文案
+			anti_type = (type === 'add' ? 'delete' : 'add'),				//标识
+			anti_cls = (type === 'add' ? 'core_unfollow' : 'core_follow'),	//class
+			anti_count = (type === 'add' ? count+1 : count-1);		//关注统计
+
+		$.post(url, {id : $this.data('id')}, function(data){
+
+			if(data.state === 'success') {
+				//写入相对的信息
+				$this.text(anti_text);
+				$this.data('type', anti_type);
+				$this.removeClass().addClass(anti_cls);
+
+				follow_count.text(anti_count);
+			}else if(data.state === 'fail') {
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message
+				});
+			}
+		}, 'json');
+	});
+
+	//关注一下
+	$('#J_none_follow').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$.getJSON($this.attr('href'), function(data){
+			if(data.state === 'success') {
+				Wind.Util.resultTip({
+					msg : '关注成功',
+					msg : data.message,
+					follow : $this,
+					callback : function(){
+						window.location.reload();
+					}
+				});
+			}else if(data.state === 'fail') {
+				Wind.Util.resultTip({
+					error : true,
+					msg : data.message,
+					follow : $this
+				});
+			}
+		})
+	});
+
+	//ie6屏蔽
+	if($.browser.msie && $.browser.version < 7) {
+		$('#J_tag_feed_lists dl').hover(function(){
+			$(this).addClass('current');
+		}, function(){
+			$(this).removeClass('current');
+		});
+	}
+	
+
+<!--# } #-->
+
+	//阅读全部
+	var tag_excerpt_part = $('#J_tag_excerpt_part'),
+		tag_excerpt_ta = $('#J_tag_excerpt_ta');
+		
+	$('#J_show_more').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this),
+			tag_excerpt_all = $('#J_tag_excerpt_all'),
+			type = $this.data('type'),
+			anti_type = (type === 'open' ? 'close' : 'open'),
+			anti_text = (type === 'open' ? '收起↑' : '阅读全部↓');
+		
+		if(type === 'open') {
+			//阅读全部
+			
+			if(tag_excerpt_all.length) {
+				//已经有html
+				tag_excerpt_all.show();
+				tag_excerpt_part.hide();
+			}else{
+				tag_excerpt_part.hide().before(tag_excerpt_ta.text());
+			}
+			
+		}else{
+			tag_excerpt_all.hide();
+			tag_excerpt_part.show();
+			$this.data('type', 'open');
+		}
+		
+		//修改文案
+		$this.data('type', anti_type).text(anti_text);
+		
+	});
+	
+	//屏蔽
+	$('a.J_tag_shield').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$.post($this.attr('href'), function(data){
+			if(data.state === 'success') {
+				Wind.Util.resultTip({
+					elem : $this,
+					follow : true,
+					msg : '操作成功',
+					callback : function(){
+						window.location.reload();
+					}
+				});
+			//	$this.parents('dl').slideUp('slow', function(){
+			//		$(this).remove();
+			//	});
+			}else{
+				Wind.Util.resultTip({
+					error : true,
+					elem : $this,
+					follow : true,
+					msg : data.message
+				});
+			}
+		}, 'json');
+	});
+	
+	Wind.use(GV.JS_ROOT +'pages/tag/tag_index.js?v=' + GV.JS_VERSION);
+	
+});
+</script>
+<pw-end/>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<div class="content">
+	<div class="profile_nav">
+		<ul>
+			<li><a href="{@url:profile/secret/run?_left=secret}">空间隐私</a></li>
+			<li class="current"><a href="{@url:profile/secret/black?_left=secret}">黑名单</a></li>
+		</ul>
+	</div>
+	<form action="{@url:profile/secret/doblack}" method="post">
+	<div class="profile_ct">
+		<div class="tips mb15">
+			<div class="tips_icon">被列入黑名单的用户，将不能关注你，给你私信，并且屏蔽该用户对你的@和回复提醒</div>
+		</div>
+		<div id="blacklist_set" class="cc">
+				<div class="user_select_input cc J_user_tag_wrap">
+					<ul class="fl J_user_tag_ul">
+					<!--# foreach ($blacklist as $value) { #-->
+					<li><a href="javascript:;">
+						<span class="J_tag_name">{$value}</span>
+						<del class="J_user_tag_del" title="{$value}">×</del>
+						<input type="hidden" name="blacklist[]" value="{$value}">
+						</a>
+					</li>
+					<!--# } #-->
+					</ul>
+					<input class="J_user_tag_input" type="text" data-name="blacklist[]" />
+				</div>
+		</div>
+		<dl class="ft">
+			<dd>
+				<button class="btn btn_submit btn_big" id="J_secret_sub" type="submit">提交</button>
+			</dd>
+		</dl>
+	</div>
+	</form>
+</div>
+<script>
+Wind.ready(document, function(){
+	Wind.use('jquery', 'global', 'ajaxForm', function(){
+		//黑名单
+		$('#J_secret_sub').on('click', function(e){
+			e.preventDefault();
+			var $this = $(this);
+			setTimeout(function(){
+				$this.parents('form').ajaxSubmit({
+					dataType : 'json',
+					success : function(data){
+						if(data.state == 'success') {
+							Wind.Util.resultTip({
+								msg : '操作成功'
+							});
+						}else if(data.state == 'fail') {
+							Wind.Util.resultTip({
+								error : true,
+								msg : data.message
+							});
+						}
+					}
+				});
+			}, 150)
+		});
+	});
+});
+</script>

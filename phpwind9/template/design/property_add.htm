@@ -1,0 +1,14 @@
+<!--模块属性-->
+<form class="J_design_module_form" action="{@url:design/property/doadd?_json=1}" method="post">
+	<div class="ct J_scroll_fixed">
+		<div class="pop_cont">
+			<template source='TPL:design.segment.property' load='true' />
+		</div>
+	</div>
+	<div class="pop_bottom">
+		<button type="submit" class="btn btn_submit" id="J_property_add">提交</button>
+		<input type="hidden" name="model" value="{$model}">
+		<input type="hidden" name="pageid" value="{$pageid}">
+		<input type="hidden" name="struct" value="{$struct}">
+	</div>
+</form>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li><a href="{@url:admin/config/email/run}">电子邮件设置</a></li>
+			<li class="current"><a href="{@url:admin/config/email/send}">电子邮件检测</a></li>
+		</ul>
+	</div>
+	<div class="h_a">电子邮件检测</div>
+	<form class="J_ajaxForm" action="{@url:admin/config/email/dosend}" method="post" >
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>发件人地址</th>
+				<td>
+					<input type="text" class="input length_5" name="" disabled value="{$from}">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>收件人地址</th>
+				<td>
+					<input type="text" class="input length_5" name="toEmail">
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+			<tr>
+				<th>邮件内容</th>
+				<td>
+					<div class="email_example">
+						<h4>测试邮件：</h4>
+						<p>标题：{sitename} 测试邮件</p>
+						<p>内容：恭喜您，如果您收到此邮件则代表后台邮件发送设置正确！</p>
+					</div>
+				</td>
+				<td><div class="fun_tips"></div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+		<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+ </form>
+
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

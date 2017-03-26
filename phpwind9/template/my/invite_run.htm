@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/invite.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:my/invite/run}">邀请好友</a><em>&gt;</em>
+			<a href="{@url:my/invite/run}">邀请码管理</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content cc">
+					<div class="box_wrap invite_page">
+						<template source="TPL:bbs.mine_tab" />
+						<div class="content_type">
+							<ul class="cc">
+								<li class="current"><a href="{@url:my/invite/run}">邀请码管理</a></li>
+								<li class="line"></li><li><a href="{@url:my/invite/statistics}">邀请统计</a></li>
+							</ul>
+						</div>
+						<div class="invite_content">
+							<div class="tips mb10">
+								<div class="tips_icon">
+			<!--#if ($canInvite) {#-->
+								每成功邀请一个好友注册可获得 <span class="org">{$rewardNum}{$rewardCredit['unit']}</span> {$rewardCredit['name']}奖励；邀请码价格 <span class="org">{$pricePerCode}</span> {$creditWithBuy['unit']}{$creditWithBuy['name']}，有效期 <span class="org">{$codeExpired}天</span>。
+			<!--#}else{#-->	
+								抱歉，你所在的用户组暂时没有购买邀请码的权限。
+			<!--#}#-->
+								</div>
+							</div>
+			<!--#if ($canInvite) {#-->
+							<h2>购买邀请码</h2>
+			<!--积分购买-->
+							<div class="buy_invite J_invite_item">
+								<form class="J_invite_form" action="{@url:my/invite/buy}" method="post" data-unit="{$creditWithBuy['unit']}" data-name="{$creditWithBuy['name']}">
+								<dl class="cc">
+									<dt>购买数量</dt>
+									<dd><input type="number" class="input length_3 J_input_number" data-id="J_count_pay" data-price="{$pricePerCode}" data-max="{$canBuyNum}" data-have="{$myCredit}" value="" name="num"><span class="summary"><span class="J_max_text">最多数量</span><span class="">{$canBuyNum}</span></span></dd>
+								</dl>
+								<dl class="cc">
+									<dt>购买方式</dt>
+									<dd>
+										<div class="pick_list J_pick_list">
+											<a href="#" data-val="" class="current">积分购买</a>
+										<!--#if ($canBuyWithMoney) {#--><a href="#" data-val="zx">在线支付</a><!--#}#-->
+										</div>
+									</dd>
+								</dl>
+								<dl class="cc">
+									<dt>邀请码价格</dt>
+									<dd><span class="mr20">{$pricePerCode}{$creditWithBuy['unit']}{$creditWithBuy['name']}/个</span><span class="summary">我有<span class="org">{$myCredit}{$creditWithBuy['unit']}</span>{$creditWithBuy['name']}，共需支付<span id="J_count_pay" class="org J_pay">0</span>{$creditWithBuy['unit']}{$creditWithBuy['name']}</span></dd>
+								</dl>
+								<dl class="cc">
+									<dt>&nbsp;</dt>
+									<dd><button id="J_invite_buy_btn" type="submit" class="btn btn_submit btn_big disabled" disabled="true">购买</button></dd>
+								</dl>
+									</form>
+							</div>
+							
+							<div class="buy_invite J_invite_item" style="display:none;">
+							 <form class="J_invite_form" action="{@url:my/invite/online}" method="post" data-unit="" data-name="元">
+								<dl class="cc">
+									<dt>购买数量</dt>
+									<dd><input type="number" class="input length_3 J_input_number" data-id="J_count_online" data-unit="{$money}" data-max="{$canBuyNum}" value="" data-price="{$money}"><span class="summary"><span class="J_max_text">最多数量</span><span class="">{$canBuyNum}</span></span></dd>
+								</dl>
+								<dl class="cc">
+									<dt>购买方式</dt>
+									<dd>
+										<div class="pick_list J_pick_list">
+											<a href="#" data-val="jf">积分购买</a>
+											<a href="#" class="current">在线支付</a>
+										</div>
+									</dd>
+								</dl>
+								<dl class="cc">
+									<dt>电子邮箱</dt>
+									<dd><input type="text" class="input length_3 J_email_match" value=""></dd>
+								</dl>
+								<dl class="cc">
+									<dt>邀请码价格</dt>
+									<dd><span class="mr20">{$money}元/个</span><span class="summary">共需支付<span id="J_count_online" class="org J_pay">0</span>元人民币</span></dd>
+								</dl>
+								<dl class="cc">
+									<dt>支付方式</dt>
+									<dd>
+										<div class="payment_type">
+											<ul class="cc" id="J_payment_type">
+												<li class="current"><em></em><a href="" class="alipay" data-val="alipay">支付宝</a></li>
+												<li><em></em><a href="" class="tenpay" data-val="tenpay">财付通</a></li>
+												<li><em></em><a href="" class="paypal" data-val="paypal">paypal</a></li>
+												<li><em></em><a href="" class="bill" data-val="bill">99bill</a></li>
+											</ul>
+										</div>
+									</dd>
+								</dl>
+								<dl class="cc">
+									<dt>&nbsp;</dt>
+									<dd><button id="J_invite_buy_btn" type="submit" class="btn btn_submit btn_big disabled" disabled="true">购买</button></dd>
+								</dl>
+								<input type="hidden" id="J_pay_type" value="alipay" />
+							</form>
+							</div>
+			<!--#}#-->
+			<!--结束-->
+							<h2>我的邀请码</h2>
+							<div class="invite_list mb10">
+								<table width="100%">
+									<colgroup>
+										<col>
+										<col width="115">
+										<col width="115">
+										<col width="185">
+									</colgroup>
+									<thead>
+										<tr>
+											<td>邀请码</td>
+											<td>购买时间</td>
+											<td>失效时间</td>
+											<td>操作</td>
+										</tr>
+									</thead>
+			<!--#foreach ($list as $_k => $_item) {#-->
+										<tr>
+											<td id="J_clipboard_code_{$_k}" class="code">{$_item['code']}</td>
+											<td>{@Pw::time2str($_item['created_time'], 'Y-m-d H:i')}</td>
+											<td>{@Pw::time2str($_item['expired_time'], 'Y-m-d H:i')}</td>
+											<td><a href="javascript:;" data-content="{$_item['code']}" data-id="J_clipboard_code_{$_k}" class="mr5 J_copy_clipboard">[复制邀请码]</a><a data-id="J_clipboard_href_{$_k}" class="J_copy_clipboard" href="javascript:;" data-content="{@url:u/register/invite?code=$_item['code']}">[复制邀请码链接]</a></td>
+										</tr>
+			<!--#}#-->
+								</table>
+							</div>
+							<page tpl="TPL:common.page" url="my/invite/run" page="$page" count="$count" per="$perpage"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', 'ajaxForm', 'dialog', function(){
+	//切换显示购买方式
+	$('div.J_pick_list > a').on('click', function(e){
+		e.preventDefault();
+		if(!$(this).hasClass('current')) {
+			$(this).parents('.J_invite_item').hide().siblings('.J_invite_item').show();
+		}
+	});
+	
+	//支付方式
+	$('#J_payment_type a').on('click', function(e){
+		e.preventDefault();
+		$(this).parent().addClass('current').siblings().removeClass('current');
+		$('#J_pay_type').val($(this).data('val'));
+	});
+	
+	var input_number = $('input.J_input_number');
+
+	input_number.val('');
+	input_number.on('keyup', function(){
+		//计算支付
+		var v = Number($(this).val()),
+			count = $('#'+ $(this).data('id')),
+			price = Number($(this).data('price')),									//单价
+			btn = $(this).parents('.J_invite_item').find('button:submit'),
+			have = $(this).data('have'),														//拥有
+			max = $(this).data('max'),															//最大值
+			max_tips = $(this).next().find('.J_max_text'),								//
+			beyond_tips = $(this).parents('.J_invite_item').find('.J_beyond');	//
+			
+		if(v) {
+			count.text(v * price);
+			
+			if(have >= 0) {
+				//积分购买
+				if(v > max || (v * price) > have) {
+					max_tips.text('最多购买数量');
+					btn.prop('disabled', true).addClass('disabled');
+				}else{
+					btn.prop('disabled', false).removeClass('disabled');
+				}
+
+			}else{
+				//在线支付
+				if(v > max) {
+					max_tips.text('最多购买数量');
+					btn.prop('disabled', true).addClass('disabled');
+				}else{
+					btn.prop('disabled', false).removeClass('disabled');
+				}
+			}
+		}else{
+			count.text('0');
+			btn.prop('disabled', true).addClass('disabled');
+		}
+	});
+	
+	//提交
+	$('form.J_invite_form').on('submit', function(e){
+		e.preventDefault();
+		var form = $(this),
+			input = form.find('input.J_input_number'),
+			pay = form.find('.J_pay').text();
+
+		Wind.dialog({
+			message	: '购买'+ input.val() +'个邀请码，共需支付'+ pay + form.data('unit') + form.data('name')+'，确认是否购买？', 
+			type	: 'confirm', 
+			isMask	: true,
+			onOk	: function() {
+				form.ajaxSubmit({
+					dataType : 'json',
+					success : function(data){
+						if(data.state == 'success') {
+							if(data.referer) {
+								window.location.href = decodeURIComponent(data.referer);
+							}else{
+								Wind.dialog.closeAll();
+								Wind.Util.resultTip({
+									msg : '购买成功',
+									callback : function(){
+										window.location.reload();
+									}
+								});
+							}
+						}else if(data.state == 'fail'){
+							Wind.Util.resultTip({
+								error : true,
+								msg : data.message
+							});
+						}
+					}
+				});
+			}
+		});
+	});
+
+
+	//复制组件
+	var copy_clipboard = $('a.J_copy_clipboard');
+	if(copy_clipboard.length) {
+		Wind.use('textCopy', function(){
+			for(i=0, len=copy_clipboard.length; i<len; i++) {
+				var item = $(copy_clipboard[i]);
+				item.textCopy({
+					content : item.data('content'),
+					callback : function(elem){
+						elem.addClass('visited');
+					}
+				});
+			}
+
+		});
+	}
+	
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body class="J_scroll_fixed">
+<div class="wrap jj">
+	<div class="nav">
+		<div class="return"><a href="{@url:windid/user/run}">返回上一级</a></div>
+		<ul class="cc">
+			<li class="current"><a href="{@url:windid/user/edit?uid=$uid}">编辑</a></li>
+			<li><a href="{@url:windid/user/editCredit?uid=$uid}">积分</a></li>
+		</ul>
+	</div>
+<!--====================用户编辑开始====================-->
+<form class="J_ajaxForm" action="{@url:admin/windid/user/doEdit}" method="post">
+<input type="hidden" value="{$uid}" name="uid"/>
+<div class="h_a">用户信息</div>
+<div class="table_full">
+	<table width="100%">
+		<col class="th" />
+		<col/>
+		<thead>
+		<tr>
+			<th>UID</th>
+			<td>{$info['uid']}</td>
+		</tr>
+		</thead>
+		<tr>
+			<th>用户名</th>
+			<td><input name="username" type="text" class="input input_hd length_5" value="{$info['username']}"></td>
+		</tr>
+		<tr>
+			<th>头像</th>
+			<td><div><img id="J_face_img" class="J_avatar" data-type="middle" src="{@Pw::getAvatar($info['uid'])}?t={@Pw::getTime()}" class="face"></div><a id="J_set_def" href="{@url:windid/user/defaultAvatar?uid=$info['uid']}">[恢复为系统头像]</a></td>
+		</tr>
+		<tr>
+			<th>新密码</th>
+			<td><input name="password" type="text" class="input length_5"></td>
+		</tr>
+		<tr>
+			<th>确认密码</th>
+			<td><input name="repassword" type="text" class="input length_5"></td>
+		</tr>
+		<tr>
+			<th>安全问题</th>
+			<td>
+				<select name="question" class="select_5">
+					<option value="-1">不修改安全问题和答案</option>
+					<option value="-2">取消安全问题和答案</option>
+				</select>
+			</td>
+		</tr>
+		<tr style="display:none">
+			<th>安全问题答案</th>
+			<td>
+				<input name="answer" type="text" class="input length_5" value="{$info['answer']}">
+			</td>
+		</tr>
+
+		<tr>
+			<th>注册时间</th>
+			<td>
+				<input name="regdate" type="text" class="input length_5 J_datetime date" value="{@Pw::time2str($info['regdate'], 'Y-m-d H:i:s')}">
+			</td>
+		</tr>
+		<tr>
+			<th>注册IP</th>
+			<td>
+				<input name="regip" type="text" class="input length_5" value="{$info['regip']}">
+			</td>
+		</tr>
+		<tr>
+			<th>最后登录时间</th>
+			<td>
+				{@Pw::time2str($info['lastvisit'], 'Y-m-d H:i:s')}
+			</td>
+		</tr>
+	</table>
+	</div>
+<div class="h_a">基本资料</div>
+<div class="table_full">
+	<table width="100%">
+		<col class="th" />
+		<col/>
+		<tr>
+			<th>真实姓名</th>
+			<td><input name="realname" type="text" class="input input_hd length_5" value="{$info['realname']}"></td>
+		</tr>
+		<tr>
+			<th>性别</th>
+			<td>
+				<select name="gender" class="select_5">
+					<option value="1" {@Pw::isSelected($info['gender'] == 1)}>女</option>
+					<option value="0" {@Pw::isSelected($info['gender'] == 0)}>男</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>生日</th>
+			<td>
+				<input name="birthday" type="text" class="input length_5 J_date" value="{$info['byear']}-{$info['bmonth']}-{$info['bday']}" min="{$bmin}" max="{$bmax}">
+			</td>
+		</tr>
+		<tr>
+			<th>现居住地</th>
+			<td class="J_region_set">
+				<span>
+				<span class="J_province">{$location[0]['name']}</span> <span class="J_city">{$location[1]['name']}</span> <span class="J_district">{$location[2]['name']}</span></span>
+				<a data-pid="{$location[0]['areaid']}" data-cid="{$location[1]['areaid']}" data-did="{$location[2]['areaid']}" href="" class="J_region_change">更改</a>
+				<input class="J_areaid" type="hidden" name="location" value="{$info['location']}" />
+			</td>
+		</tr>
+		<tr>
+			<th>家乡</th>
+			<td class="J_region_set">
+				<span>
+				<span class="J_province">{$hometown[0]['name']}</span> <span class="J_city">{$hometown[1]['name']}</span> <span class="J_district">{$hometown[2]['name']}</span></span>
+				<a data-pid="{$hometown[0]['areaid']}" data-cid="{$hometown[1]['areaid']}" data-did="{$hometown[2]['areaid']}" href="" class="J_region_change">更改</a>
+				<input class="J_areaid" type="hidden" name="hometown" value="{$info['hometown']}" />
+			</td>
+		</tr>
+		<tr>
+			<th>个人主页</th>
+			<td>
+				<input name="homepage" type="text" class="input length_5" value="{$info['homepage']}">
+			</td>
+		</tr>
+		<tr>
+			<th>自我简介</th>
+			<td>
+				<textarea class="length_5" name="profile">{$info['profile']}</textarea>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="h_a">联系信息</div>
+<div class="table_full">
+	<table width="100%">
+		<col class="th" />
+		<col/>
+		<tr>
+			<th>电子邮箱</th>
+			<td>
+				<input name="email" type="email" class="input length_5" value="{$info['email']}">
+			</td>
+		</tr>
+		<tr>
+			<th>手机号码</th>
+			<td>
+				<input name="mobile" type="text" class="input length_5" value="{$info['mobile']}">
+			</td>
+		</tr>
+		<tr>
+			<th>支付宝</th>
+			<td>
+				<input name="alipay" type="text" class="input length_5" value="{$info['alipay']}">
+			</td>
+		</tr>
+		<tr>
+			<th>阿里旺旺</th>
+			<td>
+				<input name="aliww" type="text" class="input length_5" value="{$info['aliww']}">
+			</td>
+		</tr>
+		<tr>
+			<th>QQ</th>
+			<td>
+				<input name="qq" type="text" class="input length_5" value="{$info['qq']}">
+			</td>
+		</tr>
+		<tr>
+			<th>MSN</th>
+			<td>
+				<input name="msn" type="email" class="input length_5" value="{$info['msn']}">
+			</td>
+		</tr>
+	</table>
+	</div>
+
+	
+	<div class="btn_wrap">
+		 <div class="btn_wrap_pd">
+				<button type="submit" class="btn btn_submit J_ajax_submit_btn">提交</button>
+				<input name="uid" type="hidden"  value="{$info['uid']}">
+		 </div>
+	</div>
+</form>
+
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.use('region', function(){
+	$('a.J_region_change').region();
+
+	//恢复默认头像
+	$('#J_set_def').on('click', function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$.post(this.href, function(data){
+			if(data.state == 'success') {
+				$('#J_face_img').attr('src', '{@G:url.images}/face/face_middle.jpg');
+				$this.hide();
+			}else{
+				//common.js
+				resultTip({
+					error : true,
+					msg : data.message[0]
+				});
+			}
+		}, 'json');
+	});
+});
+</script>
+</body>
+</html>

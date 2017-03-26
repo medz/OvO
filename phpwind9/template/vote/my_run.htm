@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/vote.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:vote/my/run}">投票</a><em>&gt;</em><a href="{@url:vote/my/run}">我的投票</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content">
+					<div class="box_wrap vote_page">
+					<nav>
+						<div class="content_nav">
+							<ul>
+								<li><a href="{@url:vote/hot/run}">热门投票</a></li>
+								<li><a href="{@url:vote/ta/run}">Ta的投票</a></li>
+								<li class="current"><a href="{@url:vote/my/run}">我的投票</a></li>
+							</ul>
+						</div>
+						<div class="content_type">
+							<ul class="cc">
+								<li class="current"><a href="{@url:vote/my/run}">我参与的</a></li>
+								<li class="line"></li><li><a href="{@url:vote/my/create}">我发起的</a></li>
+							</ul>
+						</div>
+					</nav>
+						<div class="vote_list">
+							<!--# if ($total) { 
+							foreach($pollInfo as $value){ #-->
+							<template source='TPL:vote.listcommon' load='true' />
+							<!--# }} else { #-->
+							<div class="not_content">啊哦，你还没有参与过投票哦，赶紧去<a href="{@url:vote/hot/run}">参与</a>！</div>
+							<!--# } #-->
+							<div><page tpl='TPL:common.page' page='$page' per='$perpage' count='$total' url='vote/my/run' /></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+				<template source='TPL:vote.sidebar' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', function(){
+	Wind.js(GV.JS_ROOT +'pages/vote/vote_index.js?v=' + GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

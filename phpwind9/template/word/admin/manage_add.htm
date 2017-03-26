@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body style="width:390px;" class="body_none">
+	<form class="J_ajaxForm" action="{@url:word/manage/doadd?_json=1}" method="post">
+	<div class="pop_cont">
+		<div class="pop_table" style="height:200px;">
+			<table width="100%">
+				<tr>
+					<th>敏感词</th>
+					<td>
+					<span class="must_red">*</span><textarea name="word[word]" class="length_5"></textarea>
+					<div class="cc gray">可以批量添加,一行一个敏感词</div>
+					</td>
+				</tr>
+				<tr>
+					<th>等级</th>
+					<td>
+						<select class="select_5" name="word[type]" id="J_type">
+								<!--# foreach($typeList as $key=>$value){ #-->
+								<option value="{$key}">{$value}</option>
+								<!--# } #-->
+						</select>
+					</td>
+				</tr>
+				<tr id="J_replace" style="display:none;">
+					<th>替换为</th>
+					<td>
+						<input class="input length_5" type="text" name="word[replace]" value="****" >
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+	<div class="pop_bottom">
+		<button class="btn fr" id="J_dialog_close" type="button">取消</button>
+		<button type="submit" class="btn btn_submit J_ajax_submit_btn fr mr10">提交</button>
+	</div>
+	</form>
+<template source='TPL:admin.common.footer' />
+<script>
+$(function(){
+	$('#J_type').on('change', function(){
+		var $this = $(this),
+		value = $this.val();
+		if (value == 3) {
+			$('#J_replace').show()
+			return true;
+		}
+		$('#J_replace').hide()
+	});
+});
+</script>
+</body>
+</html>

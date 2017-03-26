@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/announce.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em><a href="{@url:announce/index/run}">公告</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content cc">
+					<div class="box_wrap announce_page" id="J_announce_list">
+						<!--# foreach($list as $value){ #-->
+						<!--# if($aid == $value['aid'])$classValue = 'class=current'; #-->
+						<dl {$classValue}>
+							<dt>
+							<!--# $subject = null; 
+										if($value['typeid']){
+										 $subject = "<a href='".$value['url']."' target='_blank'>".$value['subject']."</a>";
+										}else{
+										 $subject = $value['subject'];
+										} 
+							
+							#-->
+							<!--# if($value['typeid']){ #-->
+							<span class="subject"><a href="{$value['url']}" target="_blank">{$value['subject']}</a></span>
+							<!--# }else{ #-->
+							 <span class="subject">{$value['subject']}</span>
+							<!--# } #-->
+							<a href="{@url:/space/index/run?uid=$value['created_userid']}" class="name">{$value['username']}</a>
+							<!--# 
+							$start_date = Pw::time2str($value['start_date'], 'Y-m-d'); 
+							$end_date = Pw::time2str($value['end_date'], 'Y-m-d'); 
+							#-->
+							<span class="time">{$start_date} 至 {$end_date}</span></dt>
+							<!--# $content = $value['typeid'] ? null : $value['content']; #-->
+							<dd>
+							{$content|html}
+							</dd>
+						</dl>
+						<!--# $classValue = null; } #-->
+						<div class="p10">
+							<page tpl='TPL:common.page' page='$page' per='$perpage' count='$total' url='announce/index/run' />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_2' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+Wind.use('jquery', 'global', function(){
+	//公告手风琴
+	$('#J_announce_list > dl').on('click', function(){
+		$(this).toggleClass('current').siblings('.current').removeClass('current');
+	});
+});
+</script>
+</body>
+</html>

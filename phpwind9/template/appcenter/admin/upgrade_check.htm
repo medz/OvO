@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:appcenter/upgrade/run}">版本升级</a></li>
+			<li><a href="{@url:appcenter/fixup/run}">安全中心</a></li>
+		</ul>
+	</div>
+	<!--# if(isset($connect_fail)){ #-->
+	<div class="upgrade_page">
+		<div class="not_content_mini">
+		<!--# if($connect_fail){ #-->
+			<i></i>{$connect_fail}
+		<!--# } else { #-->
+			<i></i>无法连接云平台，请尝试申请云服务。或选择手动升级。
+		<!--# } #-->
+		</div>
+	</div>
+	<!--# } else { #-->
+		<!--# if($result){ #-->
+			<div class="table_list">
+			<table width="100%">
+				<colgroup>
+					<col width="260">
+					<col width="260">
+					<col width="200">
+					<col width="200">
+				</colgroup>
+				<thead>
+					<tr>
+						<td>升级包名称</td>
+						<td>发布时间</td>
+						<td>操作</td>
+						<td></td>
+					</tr>
+				</thead>
+				<!--# if(isset($result)){ #-->
+				<tbody >
+					<!--# foreach($result as $v){ #-->
+						<tr>
+							<td>{$v['version']}</td>
+							<td>{@Pw::time2str($v['time'])}</td>
+							<td><a href="{@url:appcenter/upgrade/select?version=$v['version']}" class="btn J_ajax_confirm" data-msg="确定已关闭网站，并建议备份程序和数据库。">立即升级</a></td>
+							<td></td>
+						</tr>
+					<!--# } #-->
+				</tbody>
+				<!--# } #-->
+			</table>
+		</div>
+		<!--# } else { #-->
+		<div class="upgrade_page">
+			<div class="not_content_mini"><i class="success"></i>恭喜，您使用的是最新版本！</div>
+		</div>
+		<!--# } #-->
+	<!--# } #-->
+	</div>
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.use('dialog',function() {
+	
+	$('.J_ajax_confirm').on('click',function(e) {
+		e.preventDefault();
+		var $this = $(this), url = $this.attr('href'), msg = $this.data('msg');
+		var params = {
+				message	: msg,
+				type	: 'confirm',
+				isMask	: false,
+				follow	: $(this),//跟随触发事件的元素显示
+				onOk	: function() {
+					window.location.href = url;
+				}
+			};
+			Wind.dialog(params); 
+		
+	});
+	
+});
+</script>
+</body>
+</html>

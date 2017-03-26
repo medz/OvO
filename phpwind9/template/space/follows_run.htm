@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/style.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body {@$space->space['backbround']|html}>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+<div class="space_page">
+	<template source='TPL:space.common.nav' load='true' />
+	<div class="cc">
+		<div class="space_content">
+			<div class="box">
+				<div class="my_article">
+					<div class="hd">
+							<h2><a href="{@url:space/follows/run?uid=$space->spaceUid}"  class="{$classCurrent[0]}">{$host}的关注</a></h2>
+					</div>
+				</div>
+				<div class="space_fans">
+				<!--# if ($follows) { #-->
+				<!--# foreach ($follows as $key => $value) { #-->
+				<dl class="cc">
+					<dt><a href="{@url:space/index/run?uid=$value['touid']}" data-uid="{$value['touid']}" class="J_user_card_show"><img class="J_avatar" src="{@Pw::getAvatar($value['touid'], 'small')}" data-type="small" width="50" height="50" /></a><a rel="nofollow" href="{@url:message/message/pop?username=$value['username']}" data-name="{$value['username']}" class="called J_send_msg_pop J_qlogin_trigger">打招呼</a></dt>
+					<dd>
+						<div class="title">
+							<a href="{@url:space/index/run?uid=$value['touid']}" data-uid="{$value['touid']}" class="name J_user_card_show">{$value['username']}</a>
+						<!--# $status = Pw::checkOnline($value['lastvisit']) ? '' : 'un';
+							if($value['gender']){ #-->
+							<span class="women_{$status}ol"></span>
+						<!--# }else{ #-->
+							<span class="man_{$status}ol"></span>
+						<!--# } #-->
+						</div>
+						<div class="num">
+							关注<a href="{@url:space/follows/run?uid=$value['uid']}">{$value['follows']}</a><span>|</span>粉丝<a href="{@url:space/fans/run?uid=$value['uid']}">{$value['fans']}</a><span>|</span>帖子<a href="{@url:space/thread/run?uid=$value['uid']}">{$value['postnum']}</a>
+						</div>
+						<!-- <div class="action">回复了帖子<a href="">那些年，我们一起游过的海南（完整版）</a><span class="time">（{@Pw::time2str($value['created_time'], 'auto')}）</span></div> -->
+
+						<div class="attribute">
+							<!--# if (isset($myfollows[$value['uid']])) { #-->
+								<!--# if (isset($fans[$value['uid']])) {#-->
+								<span class="mnfollow" title="互相关注">互相关注</span>
+								<!--#} else {#-->
+								<span class="core_unfollow">已关注</span>
+								<!--# } #-->
+							<!--# } elseif ($loginUser->isExists() && $loginUser->uid != $value['uid']) {
+								$isfan = isset($fans[$value['uid']]) ? 'true' : 'false';
+							#-->
+							<a href="{@url:my/follow/add}" class="core_follow J_spaceta_follow J_qlogin_trigger" data-followed="{$isfan}" data-uid="{$value['touid']}">加关注</a>
+							<!--# } #-->
+						</div>
+					</dd>
+				</dl>
+				<!--# } #-->
+					<page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="space/follows/run" args="$args" />
+				<!--# } else { #-->
+				<form action="{@url:my/follow/batchadd}" method="post" id="J_nofollow_form">
+					<!--无关注人时-->
+					
+					<!--#if ($space->tome == 2) {#-->
+					
+						<!--#if($recommend){#-->
+							<div class="nofollow_list J_check_wrap">
+								<div class="hd">啊哦，你还没有关注任何人，赶紧先关注些人！</div>
+								<ul class="cc">
+									<!--# foreach ($recommend as $value) { #-->
+									<li><a data-uid="{$value['uid']}" class="J_user_card_show" href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'middle')}" data-type="middle" width="90" height="90" alt="{$value['username']}" /></a><label><input class="J_check" type="checkbox" name="uids[]" value="{$value['uid']}">{$value['username']}</label></li>
+									<!--# } #-->
+								</ul>
+								<div class="ft">
+									<button type="submit" class="btn btn_big btn_submit disabled" disabled="true" id="J_nofollow_btn"><span class="add"></span>关注</button>
+									<label><input class="J_check_all" type="checkbox">全选</label>
+								</div>
+							</div>
+						<!--#} else {#-->
+							<div class="not_content">啊哦，你还没有关注任何人，赶紧先关注些人！</div>
+						<!--#}#-->
+						
+					<!--#} else {#-->
+						<div class="not_content">啊哦，Ta还没有关注任何人！</div>
+					<!--#}#-->
+					
+					
+					<!--无关注人时结束-->	
+				</form>
+				<!--# } #-->	
+				</div>
+			</div>
+
+		</div>
+		<div class="space_sidebar">
+			<template source='TPL:space.common.sidebar' load='true' />
+		</div>
+	</div>
+</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+var URL_UNFOLLOW = "{@url:my/follow/delete/}",
+		URL_FOLLOW = "{@url:my/follow/add/}";
+//引入js组件
+Wind.use('jquery', 'global', 'dialog', 'ajaxForm', 'tabs', 'draggable', 'uploadPreview', function(){
+	Wind.js(GV.JS_ROOT +'pages/space/space_index.js?v='+ GV.JS_VERSION);
+
+	//关注 取消
+	var lock = false;
+	$('a.J_spaceta_follow').on('click', function(e){
+		if(!GV.U_ID) {
+			return false;
+		}
+		e.preventDefault();
+		var $this = $(this);
+
+		if(lock) {
+			return false;
+		}
+		lock = true;
+
+		Wind.Util.ajaxMaskShow();
+		$.post(this.href, {
+			uid: $this.data('uid')
+		}, function(data){
+			Wind.Util.ajaxMaskRemove();
+			lock = false;
+
+			if(data.state == 'success') {
+				var followed = $this.data('followed');
+				if(followed) {
+					//已关注我
+					$this.replaceWith('<span class="mnfollow">互相关注</span>');
+				}else{
+					$this.replaceWith('<span class="core_unfollow">已关注</span>');
+				}
+
+			}else if(data.state == 'fail') {
+				Wind.Util.resultTip({
+					elem : $this,
+					error : true,
+					follow : true,
+					msg : data.message[0]
+				});
+			}
+			
+		}, 'json').fail(function(){
+			lock = false;
+		});
+
+	});
+
+<!--# if (!$follows) { #-->
+	/*
+	 * 无关注
+	*/
+	var nofollow_btn = $('#J_nofollow_btn');
+	$('input:checkbox').prop('checked', false);
+	//复选框
+	$('input.J_check_all').on('change', function(){
+		if(this.checked) {
+			nofollow_btn.prop('disabled', false).removeClass('disabled');
+		}else{
+			nofollow_btn.prop('disabled', true).addClass('disabled');
+		}
+	});
+
+	var checks = $('input.J_check');
+
+	checks.on('change', function(){
+		if (checks.filter(':checked').length > 0) {
+			nofollow_btn.prop('disabled', false).removeClass('disabled');
+		}else{
+			nofollow_btn.prop('disabled', true).addClass('disabled');
+		}
+	});
+
+	$('#J_nofollow_form').ajaxForm({
+		dataType : 'json',
+		beforeSubmit : function(){
+			//global.js
+			Wind.Util.ajaxBtnDisable(nofollow_btn);
+		},
+		success : function(data){
+			if(data.state == 'success') {
+				location.reload();
+			}else{
+				//global.js
+				Wind.Util.ajaxBtnEnable(nofollow_btn);
+			}
+		}
+	});
+<!--# } #-->
+});
+</script>
+</body>
+</html>

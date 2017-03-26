@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<div class="h_a">搜索</div>
+	<div class="prompt_text">
+		<form id="J_forum_search_form" method="post" action="{@url:hook/manage/search}">
+					<input value="{$name}" class="input length_3 mr10" name="name" autoComplete="off" type="text" placeholder="hook名称">
+					<input value="{$app_name}" class="input length_3 mr10" name="app_name" autoComplete="off" type="text" placeholder="应用名称">
+					<button id="J_forum_search" class="btn btn_submit" type="submit">搜索</button>
+		</form>
+	</div>
+	<div class="cc mb10"><!-- <a href="{@url:hook/manage/add}" class ="btn J_dialog mr10" title="添加新钩子"><span class="add"></span>添加新钩子</a> -->
+	<a class="btn J_ajax_refresh" href="{@url:bbs/cache/doHook}">更新hook緩存</a>
+	</div>
+	
+	<div class="table_list">
+		<table width="100%" id="J_table_list" style="table-layout:fixed;">
+			<thead>
+				<tr>
+					<td>系统别名(系统唯一)</td>
+					<td>所属模块</td>
+					<td>创建时间</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+			<!--# foreach($hooks as $v) { #-->
+			<tr>
+				<td>
+					<span class="mr20">{$v['name']}</span>
+					<!-- <a class="J_dialog link_add" href="{@url:hook/inject/add?hook_name=$v['name']}" style="display: none;" title="添加injector">添加</a> -->
+				</td>
+				<td>{$v['app_name']}</td>
+				<td>{@Pw::time2str($v['created_time'])}</td>
+				<td>
+				<!-- <a class="J_dialog mr5" href="{@url:hook/manage/edit?name=$v['name']}" title="编辑hook">[编辑]</a>
+				<a class="J_ajax_del mr5" href="{@url:hook/manage/del?name=$v['name']}">[删除]</a> -->
+				<a href="{@url:hook/manage/detail?name=$v['name']}" class="mr5">[查看详细]</a></td>
+			</tr>
+			<!--# } #-->
+			</tbody>
+		</table>
+	</div>
+	<!--# if(isset($search)){ #-->
+	<template source="nextpage" />
+	<!--# }else{ #-->
+	<page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="hook/manage/run" />
+	<!--# } #-->
+	
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+//鼠标移上去显示添加导航按钮
+$('#J_table_list').on('mouseover', 'tr', function (e) {
+	$(this).find('a.link_add').show();
+}).on('mouseout', 'tr', function (e) {
+	$(this).find('a.link_add').hide();
+});
+</script>
+</body>
+</html>

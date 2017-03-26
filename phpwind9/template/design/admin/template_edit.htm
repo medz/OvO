@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">	
+	
+	
+<!--添加模板-->
+
+	<div class="nav">
+		<div class="return"><a href="{@url:design/module/run?type=$isapi}">返回上一级</a></div>
+		<ul class="cc">
+			<!--# if (!$isscript){ #-->
+			<li><a href="{@url:design/data/run?moduleid=$moduleid}">显示数据</a></li>
+			<li><a href="{@url:design/data/push?moduleid=$moduleid}">推送审核</a></li>
+			<li><a href="{@url:design/property/edit?moduleid=$moduleid}">属性</a></li>
+			<!--# } #-->
+			<li  class="current"><a href="{@url:design/template/edit?moduleid=$moduleid}">模板</a></li>
+		</ul>
+	</div>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>模板设置：修改完成后需要<a href="{@url:bbs/cache/run}">更新模版缓存</a></li>
+		</ul>
+	</div>
+	<div class="h_a">样式设置</div>
+	<form class="J_ajaxForm" action="{@url:design/template/doedit}" method="post">
+	<div class="design_ct">
+		<template source='TPL:design.segment.component' load='true' />
+	</div>
+	<input type="hidden" id="J_moduleid" value="{$moduleid}">
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit" >提交</button>
+			<input type="hidden"  name="moduleid" value="{$moduleid}">
+		</div>
+	</div>
+	</form>
+
+	
+</div>
+<template source='TPL:admin.common.footer' />
+<script>
+Wind.Util.ajaxMaskShow = function(){};
+Wind.Util.ajaxMaskRemove = function(){};
+</script>
+</body>
+</html>

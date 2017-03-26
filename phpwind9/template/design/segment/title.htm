@@ -1,0 +1,79 @@
+
+			<div class="fr" style="padding:5px;"><button class="btn btn_submit J_mod_title_add" type="button"><span class="add"></span>添加新标题</button></div>
+
+<!--# $i=1; foreach ($titles['titles'] as $title){
+#-->
+			<!--# if($i>1){ #--><a href="" class="fr J_mod_title_del" style="margin:5px;">删除此标题</a><!--# } #-->
+			<div class="J_mod_title_cont">
+				<dl class="cc">
+					<dt>标题：</dt>
+					<dd><input type="text" class="input length_5" value="{$title['title']}" name="title[]"></dd>
+				</dl>
+				<dl class="cc">
+					<dt>链接：</dt>
+					<dd><input type="text" class="input length_5" value="{$title['link']}" name="link[]" placeholder="http://">
+						<p class="gray">以http://开头</p>
+					</dd>
+				</dl>
+				<dl class="cc">
+					<dt>图片：</dt>
+					<dd><input type="text" class="input length_5" value="{$title['image']}" name="image[]" placeholder="http://">
+						<p class="gray">以http://开头</p>
+					</dd>
+				</dl>
+				<dl class="cc">
+					<dt>位置：</dt>
+					<dd>
+						<select class="mr20" name="float[]">
+							<option value="">自动</option>
+							<option value="left" {@Pw::isSelected($title['float'] == 'left')}>居左</option>
+							<option value="right" {@Pw::isSelected($title['float'] == 'right')}>居右</option>
+						</select>
+						边距：<input type="text" class="input length_1 mr5" value="{$title['margin']}" name="margin[]">像素
+					</dd>
+				</dl>
+				<dl class="cc">
+					<dt>文本：</dt>
+					<dd>
+						<select class="mr20" name="fontsize[]">
+							<option value="">大小</option>
+							<!--# foreach ($sysfontsize as $v){ #-->
+								<option value="{$v}" {@Pw::isSelected($title['fontsize'] == $v)}>{$v}px</option>
+							<!--# } #-->
+						</select>
+						颜色：<span class="mr20 color_pick J_color_pick"><em class="J_bg" style="<!--# if ($title['fontcolor']) { #-->background:{$title['fontcolor']};<!--# } #-->"></em></span>
+						<input class="J_hidden_color" name="fontcolor[]"  type="hidden" value="{$title['fontcolor']}">
+						<label><input  name="fontbold[]" type="checkbox" value="1" {@Pw::ifcheck($title['fontbold'])}>粗体</label>
+						<label><input  name="fontunderline[]" type="checkbox" value="1"  {@Pw::ifcheck($title['fontunderline'])}>下划线</label>
+						<label><input  name="fontitalic[]" value="1" type="checkbox"  {@Pw::ifcheck($title['fontitalic'])}>斜体</label>
+					</dd>
+				</dl>
+				<div class="hr"></div>
+				
+			</div>
+			<!--# $i++; } #-->
+			<div>
+				<dl class="cc">
+					<dt>背景图片：</dt>
+					<dd>
+						<input type="text" class="input length_5 mr5" value="{$titles['background']['image']}"  placeholder="http://"  name="bgimage">
+						<select class="mr20" name="bgposition">
+							<option value="">自动</option>
+							<option value="repeat" {@Pw::isSelected($titles['background']['position'] == 'repeat')}>平铺</option>
+							<option value="left" {@Pw::isSelected($titles['background']['position'] == 'left')}>居左</option>
+							<option value="center" {@Pw::isSelected($titles['background']['position'] == 'center')}>居中</option>
+							<option value="right" {@Pw::isSelected($titles['background']['position'] == 'right')}>居右</option>
+						</select>
+						<p class="gray">以http://开头</p>
+					</dd>
+				</dl>
+				<dl class="cc">
+					<dt>背景颜色：</dt>
+					<dd>
+						<span class="color_pick J_color_pick"><em class="J_bg" style="<!--# if ($titles['background']['color']) { #-->background:{$titles['background']['color']};<!--# } #-->"></em></span>
+						<input class="J_hidden_color" name="bgcolor" type="hidden"  value="{$titles['background']['color']}">
+					</dd>
+				</dl>
+			</div>
+
+							

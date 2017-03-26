@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+<!-- start -->
+<div class="nav">
+	<ul class="cc">
+		<li><a href="{@url:/config/attachment/run}">附件设置</a></li>
+		<li class="current"><a href="{@url:/config/attachment/storage}">附件存储</a></li>
+		<li><a href="{@url:/config/attachment/thumb}">附件缩略</a></li>
+		<!-- <li><a href="{@url:/config/storage/run}">头像存储</a></li> -->
+	</ul>
+</div>
+
+<div class="h_a">功能说明</div>
+<div class="prompt_text">
+	<ul>
+		<li>附件存储方案支持app扩展，可以到<a href="{@url:/appcenter/app/run}" class="J_linkframe_trigger">应用中心</a>下载更多的可用存储方案。</li>
+		<li>附件存储方式的更换可能会造成附件丢失，<span class="red">建议在深夜或者关闭站点后</span>再进行操作。并且更换附件存储方案需<span class="red">手动转移</span>附件文件(与存储方案本身提供的支持有关)，请谨慎选择！</li>
+	</ul>
+</div>
+
+<form method="post" class="J_ajaxForm" action="{@url:/config/attachment/dostroage}" data-role="list">
+	<div class="h_a">附件存储方式设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>附件存储</th>
+				<td>
+					<ul class="single_list cc">
+						<!--# if(empty($storages)){ #-->
+						<li>暂无任何附件存储方案可选～</li>
+						<!--# } #-->
+						<!--# 
+						$msg = '';
+						foreach($storages as $var => $value) { 
+							$storageType === $var && $msg = $value['description'];
+						#-->
+						<li><span class="mr20"><label><input name="att_storage" data-msg="{$value['description']}" value="{$var}" type="radio" {@Pw::ifcheck($storageType==$var)|html}><span>{$value['name']}</span></label></span> 
+							<!--# if ($value['managelink']) { #-->
+							<a href="{@WindUrlHelper::createUrl($value['managelink'])|url}">[设置]</a>
+							<!--# } #-->
+						</li>
+						<!--# } #-->
+					</ul>
+				</td>
+				<td><div class="fun_tips">{$msg}</div></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="h_a">头像存储方式设置</div>
+	<div class="table_full">
+		<table width="100%">
+			<col class="th" />
+			<col width="400" />
+			<col />
+			<tr>
+				<th>头像存储路径</th>
+				<td>{@C:site.avatarUrl}</td>
+				<td><div class="fun_tips">当修改头像存储方案后，提交本页面，自动更新</div></td>
+			</tr>
+			<tr>
+				<th>附件存储</th>
+				<td>
+					<ul class="single_list cc">
+						<!--# if (empty($windidStorages)) { #-->
+						<li>暂无任何附件存储方案可选～</li>
+						<!--# } #-->
+						<!--# 
+						$msg = '';
+						foreach($windidStorages as $var => $value) { 
+							$windidStorageType === $var && $msg = $value['description'];
+						#-->
+						<li><span class="mr20"><label><input name="avatar_storage" data-msg="{$value['description']}" value="{$var}" type="radio" {@Pw::ifcheck($windidStorageType==$var)|html}><span>{$value['name']}</span></label></span> 
+							<!--# if ($value['managelink']) { #-->
+							<a href="{$value['managelink']|url}">[设置]</a>
+							<!--# } #-->
+						</li>
+						<!--# } #-->
+					</ul>
+				</td>
+				<td><div class="fun_tips">{$msg}</div></td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<button class="btn btn_submit mr10 J_ajax_submit_btn" type="submit">提交</button>
+		</div>
+	</div>
+</form>
+
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

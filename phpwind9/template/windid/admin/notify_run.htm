@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap">
+	<!-- <div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="{@url:admin/windid/notify/run}">通知管理</a></li>
+		</ul>
+	</div> -->
+	<div class="h_a">提示信息</div>
+	<div class="mb10 prompt_text">
+		<ol>
+			<li>用于管理客户端信息同步通知。</li>
+			<li>过期通知指的是所有客户端都已执行成功的通知，定期删除可提高系统性能。</li>
+		</ol>
+	</div>
+	
+	<div class="h_a">搜索</div>
+	<div class="search_type cc mb10">
+		<form action="{@url:admin/windid/notify/run}" method="post">
+		<label>执行状态：</label>
+			<select name="complete" class="select_2">
+				<option value="">不限</option>
+				<option value="1" {@Pw::isSelected($args['complete'])}>成功</option>
+				<option value="0" {@Pw::isSelected($args['complete'] === '0')}>失败</option>
+			</select>
+			
+			
+		<label>客户端：</label>
+			<select name="clientid" class="select_2">
+				<option value="">不限</option>
+			<!--#foreach ($apps as $v) {#-->
+				<option value="{$v['id']}">{$v['name']}</option>
+			<!--#}#-->
+			</select>
+		<button type="submit" class="btn">搜索</button>
+		</form>
+	</div>
+	<div class="table_list">
+		<table width="100%">
+			<thead>
+				<tr>
+					<td width="60">通知ID</td>
+					<td>通知对象</td>
+					<td>通知内容</td>
+					<td>通知时间</td>
+					<td>执行次数</td>
+					<td>当前状态</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+		<!--#foreach ($list as $key => $v) {#-->
+			<tr>
+				<td>{$v['logid']}</td>
+				<td>{$v['fromclient']} -> {$v['client']}</td>
+				<td>{$v['operation']}</td>
+				<td>{@Pw::time2str($v['time'], 'Y-m-d H:i:s')}</td>
+				<td>{$v['send_num']}</td>
+				<td><!--# if($v['complete']){#-->成功<!--# }else{ #--><span style="color:#ff0000">失败</span><!--#}#--></td>
+				<td><!--# if($v['complete']){#-->-<!--# }else{ #--><a href="{@url:windid/notify/resend?logid=$v['logid']}" class="mr10" title="重新发送">[重新发送]<!--#}#--></a>
+			</tr>
+		<!--#}#-->
+		</table>
+	</div>
+	<page tpl='TPL:common.page' page='$page' count='$count' per='$perPage' url='windid/notify/run' args='$args'/>
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd" id="J_sub_wrap">
+			<a class="btn" href="{@url:admin/windid/notify/clear}" title="清理过期通知">清理过期通知</a>
+		</div>
+	</div>
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

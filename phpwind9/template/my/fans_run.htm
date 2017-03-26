@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:common.head' load='true' />
+<link href="{@theme:css}/fans.css?v={@NEXT_RELEASE}" rel="stylesheet" />
+</head>
+<body>
+<div class="wrap">
+<template source='TPL:common.header' load='true' />
+	<div class="main_wrap">
+		<div class="bread_crumb">
+			<a href="{@url:}" class="home" title="{@C:site.info.name}">首页</a><em>&gt;</em>
+			<a href="{@url:my/fans/run}">我的粉丝</a>
+		</div>
+		<div class="main cc">
+			<div class="main_body">
+				<div class="main_content cc">
+					<div class="box_wrap fans_page">
+						<nav>
+							<template source="TPL:bbs.mine_tab"  load='true'/>
+						</nav>
+						<!--# if ($fans) { #-->
+						<div class="fans_list" id="J_fans_page">
+							<!--# foreach ($fans as $key => $value) { 
+								$birthday = $value['byear'] ? '生日：' . $value['byear'] . '年'.$value['bmonth'].'月'.$value['bday'].'日' : '';
+								$profile = $value['profile'] ? '  自我介绍：'.$value['profile'] : '';
+							#-->
+							<dl class="cc J_friends_items">
+								<dt><a data-uid="{$value['uid']}" class="J_user_card_show" href="{@url:space/index/run?uid=$value['uid']}"><img class="J_avatar" src="{@Pw::getAvatar($value['uid'], 'small')}" data-type="small" width="50" height="50" alt="{$value['username']}" /></a><a href="{@url:message/message/pop?username=$value['username']}" data-name="{$value['username']}" class="called J_send_msg_pop">打招呼</a></dt>
+								<dd>
+									<div class="title">
+										<a href="{@url:space/index/run?uid=$value['uid']}" data-uid="{$value['uid']}" class="name J_user_card_show">{$value['username']}</a>
+										<!--# $gender = $value['gender'] == 1 ? 'women' : 'man';
+											$online = Pw::checkOnline($value['lastvisit']) ? 'ol' : 'unol';
+										 #-->
+										<span class="{$gender}_{$online}"></span>
+									</div>
+									<div class="num">
+										关注<a href="{@url:space/follows/run?uid=$value['uid']}">{$value['follows']}</a><span>|</span>粉丝<a href="{@url:space/fans/run?uid=$value['uid']}">{$value['fans']}</a><span>|</span>帖子<a href="{@url:space/thread/run?uid=$value['uid']}">{$value['postnum']}</a>
+									</div>
+									<div class="action">{$birthday}</div>
+									<div class="action">{$profile} </div>
+									<div class="attribute">
+										<!--# if (isset($follows[$value['uid']])) { #-->
+										<span class="mnfollow" title="互相关注">互相关注</span>
+										<a href="{@url:my/follow/delete}" data-uid="{$value['uid']}" data-role="unfollow" class="core_unfollow J_unfollow_btn J_fans_follow" style="display:none;" data-followed="true">取消关注</a>
+										<!--# } else { #-->
+										<a href="{@url:my/follow/add}" data-uid="{$value['uid']}" data-role="follow" class="core_follow J_fans_follow" data-followed="true">加关注</a>
+										<!--# } #-->
+									</div>
+								</dd>
+							</dl>
+							<!--# } #-->
+							<div class=""><page tpl="TPL:common.page" page="$page" per="$perpage" count="$count" url="my/fans/run" /></div>
+						</div>
+						<!--# } else { #-->
+<!--无关注人时-->
+						<div class="nofollow_list J_check_wrap">
+							<div class="hd">啊哦，你还没有粉丝，试试关注几个争取点人气吧！</div>
+							
+						</div>
+<!--无关注人时结束-->	
+						<!--# } #-->
+					</div>
+				</div>
+			</div>
+			<div class="main_sidebar">
+				<template source='TPL:common.sidebar_1' load='true' />
+			</div>
+		</div>
+	</div>
+<template source='TPL:common.footer' load='true' />
+</div>
+<script>
+var URL_UNFOLLOW = "{@url:my/follow/delete/}",
+		URL_FOLLOW = "{@url:my/follow/add/}";
+
+Wind.use('jquery', 'global', function(){
+	Wind.js(GV.JS_ROOT +'pages/my/fansFollow.js?v='+ GV.JS_VERSION);
+});
+</script>
+</body>
+</html>

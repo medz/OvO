@@ -1,0 +1,67 @@
+<!--#if ($site_info_notice = Wekit::C('site','info.notice')) {#-->
+<style>.header_wrap{top:29px;}body{padding-top:75px;}</style><div id="notice">{$site_info_notice}</div>
+<!--#}#-->
+<header class="header_wrap">
+	<div id="J_header" class="header cc">
+		<div class="logo">
+			<a href="{@url:}">
+				<!--# if($__css = Wekit::C('site', 'css.logo')) { #-->
+				<!--后台logo上传-->
+				<img src="{@Pw::getPath($__css)}" alt="{@Wekit::C('site','info.name')}">
+				<!--# } else { #-->
+				<img src="{@theme:site.images}/logo.png" alt="{@Wekit::C('site','info.name')}">
+				<!--# } #-->
+			</a>
+		</div>
+		<nav class="nav_wrap">
+			<div class="nav">
+				<ul>
+	<!--# $nav = Wekit::load('SRV:nav.bo.PwNavBo');
+		  $nav->setRouter();
+		  $currentId =  '';
+		   $main = $child = array();
+		  if ($nav->isForum()) $nav->setForum($pwforum->foruminfo['parentid'], $fid, $tid);
+		  $main = $nav->getNavFromConfig('main', true);
+		  foreach($main as $key=>$value){
+			if ($value['current']) {
+				$current = 'current';
+				$currentId = $key;
+			} else {
+				$current = '';
+			}
+			$value['child'] && $child[$key] = $value['child'];
+		  #-->
+					<li class="{$current}">{$value['name']|html}</li>
+	<!--# } #-->
+				</ul>
+			</div>
+		</nav>
+		<hook name="header_nav"/>
+		<div class="header_search" role="search">
+			<form action="{@url:search/s/run}" method="post">
+				<input type="text" id="s" aria-label="搜索关键词" accesskey="s" placeholder="搜索其实很简单" x-webkit-speech speech name="keyword"/>
+				<button type="submit" aria-label="搜索"><span>搜索</span></button>
+			</form>
+		</div>
+		<template source="TPL:common.header_login" load="true" />
+	</div>
+</header>
+<!--#
+if ($child) {
+foreach ($child as $ck => $cv) {
+	 if ($currentId == $ck){
+#-->
+	<div class="nav_weak" id="{$ck}">
+<!--# }else{ #-->
+	<div class="nav_weak" id="{$ck}" style="display:none">
+<!--# } #-->
+		<ul class="cc">
+			<!--# foreach($cv as $_v){
+				$current = $_v['current'] ? 'current' : '';
+			#-->
+			<li class="{$current}">{$_v['name']|html}</li>
+			<!--# } #-->
+		</ul>
+	</div>
+<!--#}} #-->
+<div class="tac"><advertisement id='Site.NavBanner' sys='1'/></div>

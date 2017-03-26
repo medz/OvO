@@ -1,0 +1,8 @@
+
+<dl class="cc">
+	<dt><a href="{@url:space/index/run?uid=$loginUser->uid}"><img onerror="this.onerror=null;this.src='{@G:url.images}/face/face_small.jpg'" class="J_avatar" src="{@Pw::getAvatar($loginUser->uid, 'small')}" data-type="small" width="30" height="30" /></a></dt>
+	<dd>
+		<p class="content"><a href="{@url:space/index/run?uid=$loginUser->uid}">{$username}</a>：<em>{$content|html}</em><span>({@Pw::time2str($timestamp, 'auto')})</span></p>
+		<p class="repeat_btn"><a data-user="{$username}" href="" class="J_feed_single">回复</a></p>
+	</dd>
+</dl>

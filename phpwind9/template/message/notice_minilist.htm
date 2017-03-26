@@ -1,0 +1,26 @@
+<!--信息流-->
+			<div id="J_hm_home">
+	<!--#
+	//主题分类
+	if ($noticeList){#-->
+				<ul class="goin J_hm_list">
+	<!--#
+		foreach($noticeList as $v){
+			list($v['type']) = explode('_',$v['type']);
+			$typeTpl = 'notice_segment_' . $v['type'];
+			$class = $v['message_extend_params']['unread_count'] || !$v['is_read'] ? ' unread' : '';
+	#-->
+					<li data-url="{@url:message/notice/detail?id=$v['id']}" class="li{$class}"><i></i>
+						<segment alias='notice_minilist' tpl="$typeTpl" args='$v' name="minilist" />
+					</li>
+	<!--# }#-->
+				</ul>
+	<!--# 
+	} else {
+	 #-->
+	 			<div class="not_content_mini"><i></i>暂没有消息</div>
+	<!--# } #-->
+			<div class="my_message_bottom tac">
+				<a href="{@url:message/message/run}">查看所有消息&nbsp;&gt;&gt;</a>
+			</div>
+		</div>

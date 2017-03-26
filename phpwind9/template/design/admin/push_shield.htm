@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">	
+	<div class="nav">
+		<ul class="cc">
+			<li><a href="{@url:design/push/run}">显示中数据</a></li>
+			<li><a href="{@url:design/push/status?status=1}">待审核数据</a></li>
+			<li><a href="{@url:design/push/status?status=2}">推送数据</a></li>	
+			<li  class="current"><a href="{@url:design/push/shield}">屏蔽数据</a></li>	
+		</ul>
+	</div>
+	<div class="h_a">功能说明</div>
+	<div class="prompt_text">
+		<ul>
+			<li>前台各模块自动调用的数据，被屏蔽后，进入此列表。</li>
+		</ul>
+	</div>
+	<form class="J_ajaxForm" method="post"  action="{@url:design/push/doshielddeletes}" >
+	<div class="table_list">
+		<table width="100%">
+			<colgroup>
+				<col width="70">
+				<col width="350">
+			</colgroup>
+			<thead>
+				<tr>
+					<td><label><input type="checkbox" data-checklist="J_check_y" data-direction="y" class="J_check_all" name="checkAll">全选</label></td>
+					<td>标题</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<!--# foreach ($list as $v){ #-->
+			<tr>
+				<td><input data-yid="J_check_y" data-xid="J_check_x" class="J_check" type="checkbox" name="shieldids[]" value="{$v['shield_id']}"></td>
+				<td><a href="{$v['shield_url']}" target="_blank">{$v['shield_title']}</a></td>
+				<td><a href="{@url:design/push/doshielddelete}" class="mr10 J_ajax_refresh" data-pdata="{'shieldid': '{$v['shield_id']}'}">[取消屏蔽]</a></td>
+			</tr>
+		<!--# } #-->
+		</table>
+		<page tpl='TPL:common.page'  total="$totalpage" page="$page" per="$perpage" count="$count" url="design/push/shield"/>
+	</div>
+
+
+	
+	<div class="btn_wrap">
+	<div class="btn_wrap_pd">
+		<label class="mr20"><input type="checkbox" data-checklist="J_check_x" data-direction="x" class="J_check_all" name="checkAll">全选</label><button data-subcheck="true" class="btn btn_submit J_ajax_submit_btn" type="submit">取消屏蔽</button>
+	</div>
+	</div>
+	</form>	
+</div>
+<template source='TPL:admin.common.footer' />
+</body>
+</html>

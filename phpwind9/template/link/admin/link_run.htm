@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<template source='TPL:admin.common.head' />
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<template source='link_tab' />
+<!--==============================链接列表================================-->
+	<div class="mb10">
+		<a href="{@url:link/link/add}" class="btn J_dialog" title="添加友情链接"><span class="add"></span>添加友情链接</a>
+	</div>
+	<form class="J_ajaxForm" data-role="list" action="{@url:link/link/dorun}" method="post">
+	<div class="table_list">
+		<table width="100%">
+			<colgroup>
+				<col width="80">
+				<col width="60">
+				<col width="120">
+				<col>
+				<col>
+				<col width="200">
+				<col width="100">
+			</colgroup>
+			<thead>
+				<tr>
+					<td><label><input type="checkbox" name="checkAll" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选</label></td>
+					<td>顺序</td>
+					<td>站点名称</td>
+					<td>站点地址</td>
+					<td>站点logo</td>
+					<td><select id="J_link_types">
+					<option value="">全部分类</option>
+					<!--# foreach ($typesList as $v) { #-->
+					<option value="{$v['typeid']}" {@Pw::isSelected($typeid == $v['typeid'])}>{$v['typename']}</option>
+					<!--# } #-->
+					</select></td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="J_link_tr">
+			<!--# if ($links) { #-->
+			<!--# foreach ($links as $v) { #-->
+			<tr>
+				<td><input class="J_check" data-xid="J_check_x" data-yid="J_check_y" type="checkbox" name="lid[]" value="{$v['lid']}"></td>
+				<td><input class="input length_0" type="text" name="vieworder[{$v['lid']}]" value="{$v['vieworder']}"></td>
+				<td>{$v['name']}</td>
+				<td>{$v['url']}</td>
+				<td>{$v['logo']}</td>
+				<td><div class="cate_link">
+					<!--# foreach ($v['typeid'] as $lid) { #-->
+					<span class="J_link_{$typesList[$lid]['typeid']}">{$typesList[$lid]['typename']}</span>
+					<!--# } #-->
+				</div></td>
+				<td><a href="{@url:link/link/edit?lid=$v['lid']}" title="编辑友情链接" class="mr10 J_dialog">[编辑]</a><a href="{@url:link/link/doDelete}" class="mr10 J_ajax_del" data-pdata="{'lid': '{$v['lid']}'}">[删除]</a></td>
+			</tr>
+			<!--# } #-->
+			<!--# } else { #-->
+				<tr><td colspan="7" class="tac">啊哦，暂无内容！</td></tr>
+			<!--# } #-->
+			</tbody>
+		</table>
+	</div>
+	<!--# if ($links) { #-->
+	<div class="btn_wrap">
+		<div class="btn_wrap_pd">
+			<label class="mr20"><input type="checkbox" name="checkAll" class="J_check_all" data-direction="x" data-checklist="J_check_x">全选</label>
+			<button class="btn btn_submit J_ajax_submit_btn" type="submit">提交</button>
+			<button type="button" id="J_link_del_all" class="btn">删除</button>
+		</div>
+	</div>
+	<!--# } #-->
+	</form>
+</div>
+<template source='TPL:admin.common.footer' />
+<script type="text/javascript">
+Wind.use('dialog',function() {
+
+	//分类筛选
+
+	var link_tr = $('#J_link_tr > tr'),
+		link_types = $('#J_link_types');
+	link_types.on('change', function(){
+		linkFilter(this.value);
+	});
+
+	//页面载入筛选
+	if(link_types.val()) {
+		console.log(link_types.val())
+		linkFilter(link_types.val());
+	}
+
+	function linkFilter(v){
+		link_tr.hide();
+		if(v) {
+			$('.J_link_'+ v).parents('tr').show();
+		}else{
+			link_tr.show();
+		}
+	}
+	
+	
+	//批量删除
+	$('#J_link_del_all').on('click', function(e){
+		e.preventDefault();
+		if(!$('input.J_check:checked').length) {
+			Wind.dialog.alert('请至少选定至一条友情链接');
+			return;
+		}
+		Wind.dialog({
+			message	: '确定删除选定的友情链接？', 
+			type	: 'confirm',
+			onOk	: function() {
+				$('form.J_ajaxForm').ajaxSubmit({
+					dataType : 'json',
+					url		 : '{@url:link/link/doDelete}',
+					success	 : function(data, statusText, xhr, $form) {
+						if(data.state === 'success') {
+							var location = window.location;
+							location.href = location.pathname + location.search;
+						}else{
+							Wind.dialog.alert(data.message);
+						}
+					}
+				});
+			}
+		});
+		
+	});
+});
+</script>
+</body>
+</html>

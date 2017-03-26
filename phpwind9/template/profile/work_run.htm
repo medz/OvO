@@ -1,0 +1,55 @@
+<div class="content">
+	<template source="profile_run_tab" load="true" />
+	<div class="profile_work">
+		<ul id="J_work_list">
+			<li class="hd">
+				<span class="fr"><a id="J_work_add" href="#" class="btn btn_submit fn f12">+添加工作经历</a></span>
+				<span class="unit">工作单位</span>
+				<span class="time">工作时间</span>
+			</li>
+			<li id="J_work_op_wrap" class="li_add" style="display:none;">
+				<form id="J_work_form" action="#" method="post">
+					<span class="fr"><button type="submit" class="btn btn_submit mr5">保存</button><a href="#" class="btn" id="J_work_cancl">取消</a><input id="J_edit_id" type="hidden" name="id" /></span>
+					<span class="unit"><input id="J_work_company" name="company" type="text" class="length_4 input" /></span>
+					<span class="time">
+						<select class="mr5" name="startYear" id="J_starty"><option value="">年</option>
+						<!--#foreach ($years as $_year) {#-->
+							<option value="{$_year}">{$_year}</option>
+						<!--#}#-->
+						</select><select class="mr10" name="startMonth" id="J_startm"><option value="">月</option>
+						<!--#foreach ($months as $_month) {#-->
+							<option value="{$_month}">{$_month}</option>
+						<!--#}#--></select><span class="mr10">到</span><select class="mr5" name="endYear" id="J_endy"><option value="">年</option>
+						<!--#foreach ($years as $_year) {#-->
+							<option value="{$_year}">{$_year}</option>
+						<!--#}#--></select><select class="mr10" name="endMonth" id="J_endm"><option value="">月</option>
+						<!--#foreach ($months as $_month) {#-->
+							<option value="{$_month}">{$_month}</option>
+						<!--#}#--></select>
+					</span>
+				</form>
+			</li>
+<!--#if ($count > 0) {#-->
+<!--#foreach ($list as $id => $item) {#-->
+			<li>
+				<span class="fr"><a href="#" class="mr20 J_work_edit" data-id="{$item['id']}" data-company="{$item['company']}" data-starty="{$item['starty']}" data-startm="{$item['startm']}" data-endy="{$item['endy']}" data-endm="{$item['endm']}">编辑</a><a class="J_work_del" href="#" data-uri="{@url:profile/work/delete?page=$page}" data-pdata="{'id':'{$id}'}">删除</a></span>
+				<span class="unit">{$item['company']}</span>
+				<span class="time">{$item['starty']}年{$item['startm']}月&nbsp;至&nbsp;
+				<!--#if (!$item['endy']) {#-->今<!--#}else{#-->{$item['endy']}年{$item['endm']}月<!--#}#--></span>
+			</li>
+<!--#}#-->
+<!--#}else{#-->
+		<li class="tac p20" id="J_work_none">你还没添加工作经历，<a href="#" class="s4">立即添加&gt;&gt;</a></li>
+<!--#}#-->
+		
+		</ul>
+		<page tpl="TPL:common.page" page="$page" url="profile/work/run" count="$count" total="$page_total" args="$args"/>
+	</div>
+</div>
+<script>
+var URL_WORK_ADD = '{@url:profile/work/add}',			//添加工作url
+	URL_WORK_EDIT = '{@url:profile/work/edit}';		//编辑工作url
+Wind.ready(document, function(){
+	Wind.use('jquery', 'global', GV.JS_ROOT +'pages/profile/profileWork.js?v=' +GV.JS_VERSION);
+});
+</script>
