@@ -25,9 +25,9 @@ class IndexController extends WindController
         'pw_user_groups.sql',
         'pw_common_config.sql',
         'pw_design.sql',
-        'pw_acloud.sql',
         'wind_data.sql',
-        'demo_data.sql', ];
+        'demo_data.sql',
+    ];
 
     /* (non-PHPdoc)
      * @see WindSimpleController::beforeAction()
