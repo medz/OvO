@@ -9,7 +9,6 @@ finder:
         - "bootstrap"
         - "config"
         - "database"
-        - "phpwind9"
         - "public"
         - "routes"
         - "src"
