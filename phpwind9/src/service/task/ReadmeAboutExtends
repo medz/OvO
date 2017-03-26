@@ -1,0 +1,87 @@
+关于任务系统中的两处扩展摘要:
+1、完成条件
+2、任务奖励
+
+1】、关于“完成条件”扩展：
+1)、任务钩子：管理所有“完成条件”扩展管理。
+2)、service钩子：hook机制添加一个service钩子的机制。---- 尚缺
+3)、service接口：定义一个service钩子接口规范。
+4)、钩子机制： 添加一个关于hook类别的解析及构造操作。----- 尚缺
+
+注：提供任务钩子，由任务钩子去管理所有相关的完成条件扩展。
+例如：有一论坛任务条件扩展
+setp1：准备配置文件
+	<app>
+		<name>论坛</name>
+		<conditions>
+			<thread>
+				<title>发帖</title>
+				<hook>c_thread_add</hook>
+				<class>XXXXX.missionService</class>
+				<expression>hooktype==thread</expression>
+				<hooktype>thread</hooktype>
+			</thread>
+			<post>
+				<title>回复</title>
+				<hook>c_post_add</hook>
+				<class>XXXXX.missionService</class>
+				<expression>hooktype==post</expression>
+				<hooktype>post</hooktype>
+			</post>
+		</conditions>
+	</app>
+
+step2: 安装如上扩展的时候，任务系统这边解析该配置，在本地同时保存配置中的
+	app-name=论坛
+	conditions.thread=发帖
+	conditions.thread.service=XXXXX.missionService
+	conditions.post=回复
+	conditions.post.service=XXXXX.missionService
+
+step3:同时在c_thread_add/c_post_add两个钩子处，添加任务的钩子
+	如下：
+	'c_thread_add' => array(
+		'thread' => array(
+			'class' => 'SRV:mission.srv.injector.PwmissionInjector', 
+			'method' => 'run', 
+			'expression' => 'hooktype==thread',
+			'hooktype' => 'thread',
+		), 
+	),
+	'c_post_add' => array(
+		'post' => array(
+			'class' => 'SRV:mission.srv.injector.PwmissionInjector', 
+			'method' => 'run', 
+			'expression' => 'hooktype==post',
+			'hooktype' => 'post',
+		), 
+	),
+
+真实操作的例子：论坛-发帖
+1-发帖->任务钩子
+2-用户已申领未完成的任务列表---为空（未领任务-跳出）
+3-初始化：PwMissionHookService->appendDo();->获得该插件下的所有注册进来的任务
+4-doHook: foreach ($用户申领的任务列表) { doHook($condition, $post); }
+
+
+2】、“任务奖励”扩展
+1-安装扩展： 
+	<tool>
+		<name>道具</name>
+		<hook>c_mission</hook>
+		<class>xxxx.道具injector>
+		<method>showForm(后台设置奖励触发请求form)/getReward(领取奖励)/保存任务信息时触发getDescript(service级别)</method>
+		<expression>hooktype=tool</expression>
+	</tool>
+	1-1：在本地保存 奖励 的项目名称，tool->name
+	1-2: 将该插件添加到c_mission钩子处： 钩子的配置
+
+2-使用：
+	2-1：后台设置：
+		新建一个任务，编辑该任务的“奖励”：
+		奖励类型的展示：本地读取列表
+		选择对应列表中的数据-》触发该类型中 showForm插件方法，展示信息--该表单中的信息展示，reward[]数组的方式展示
+		保存任务信息： 在更新任务到数据库中之前，执行getDescript（）方法获得该展示信息，传入reward[]数组
+	2-2：前台申领奖励：
+		点击申领奖励：触发getReward钩子方法。
+	
