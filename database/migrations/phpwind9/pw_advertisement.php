@@ -48,7 +48,7 @@ class PwAdvertisement extends Migration
             $table->text('condition');
 
             $table->unique('pid');
-        }
+        });
     }
 
     /**
