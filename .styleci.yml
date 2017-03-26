@@ -5,14 +5,5 @@ preset: laravel
 risky: false
 
 finder:
-    path: 
-        - "bootstrap"
-        - "config"
-        - "database"
-        - "public"
-        - "routes"
-        - "src"
     exclude:
         - "docs"
-        - "tests"
-        - "phpwind9"
