@@ -1,4 +1,4 @@
 [submodule "docs"]
-	path = docs
-	url = https://github.com/medz/phpwind-docs
+    path = docs
+    url = https://github.com/medz/phpwind-docs
     branch = master
