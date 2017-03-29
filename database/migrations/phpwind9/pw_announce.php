@@ -55,7 +55,7 @@ class PwAnnounce extends Migration
                 });
     }
 
-     /**
+    /**
      * Reverse the migrations.
      *
      * @return void
