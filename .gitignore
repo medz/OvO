@@ -2,6 +2,7 @@ Homestead.json
 Homestead.yaml
 windframework
 .env
+.vagrant
 
 /node_modules
 /public/storage
