@@ -17,25 +17,25 @@ class PwAdminAuth extends Migration
 
             // 原始 pw9 sql:
 
-			DROP TABLE IF EXISTS `pw_application`;
-			CREATE TABLE `pw_application` (
-			  `app_id` char(20) NOT NULL COMMENT '应用id',
-			  `name` varchar(100) NULL DEFAULT '' COMMENT '名称',
-			  `alias` varchar(100) NULL DEFAULT '' COMMENT '别名',
-			  `logo` varchar(100) NULL DEFAULT '' COMMENT '应用logo',
-			  `author_name` varchar(30) NULL DEFAULT '' COMMENT '作者名',
-			  `author_icon` varchar(100) NULL DEFAULT '' COMMENT '作者头像',
-			  `author_email` varchar(200) NULL DEFAULT '' COMMENT '作者email',
-			  `website` varchar(200) NULL DEFAULT '' COMMENT '开发者网站',
-			  `version` varchar(50) NULL DEFAULT '' COMMENT '应用版本',
-			  `pwversion` varchar(50) NULL DEFAULT '',
-			  `created_time` int(10)   NULL DEFAULT '0' COMMENT '创建时间',
-			  `modified_time` int(10) unsigned NULL DEFAULT '0' COMMENT '修改时间',
-			  `status` tinyint(1) NULL DEFAULT '0',
-			  `description` varchar(255) NULL DEFAULT '' COMMENT '描述',
-			  PRIMARY KEY (`app_id`),
-			  UNIQUE KEY `alias` (`alias`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='本地应用信息表';
+            DROP TABLE IF EXISTS `pw_application`;
+            CREATE TABLE `pw_application` (
+              `app_id` char(20) NOT NULL COMMENT '应用id',
+              `name` varchar(100) NULL DEFAULT '' COMMENT '名称',
+              `alias` varchar(100) NULL DEFAULT '' COMMENT '别名',
+              `logo` varchar(100) NULL DEFAULT '' COMMENT '应用logo',
+              `author_name` varchar(30) NULL DEFAULT '' COMMENT '作者名',
+              `author_icon` varchar(100) NULL DEFAULT '' COMMENT '作者头像',
+              `author_email` varchar(200) NULL DEFAULT '' COMMENT '作者email',
+              `website` varchar(200) NULL DEFAULT '' COMMENT '开发者网站',
+              `version` varchar(50) NULL DEFAULT '' COMMENT '应用版本',
+              `pwversion` varchar(50) NULL DEFAULT '',
+              `created_time` int(10)   NULL DEFAULT '0' COMMENT '创建时间',
+              `modified_time` int(10) unsigned NULL DEFAULT '0' COMMENT '修改时间',
+              `status` tinyint(1) NULL DEFAULT '0',
+              `description` varchar(255) NULL DEFAULT '' COMMENT '描述',
+              PRIMARY KEY (`app_id`),
+              UNIQUE KEY `alias` (`alias`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='本地应用信息表';
 
          */
         Schema::create('pw_application', function (Blueprint $table) {
@@ -58,7 +58,7 @@ class PwAdminAuth extends Migration
             $table->tinyInteger('status', 1)->nullable()->default('0')->comment('作者email');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
             $table->primary('app_id');
-            $table->unique('alias');   
+            $table->unique('alias');
         });
     }
 
