@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PwAdminAuth extends Migration
+class PwApplicationLog extends Migration
 {
     /**
      * Run the migrations.
@@ -33,11 +33,12 @@ class PwAdminAuth extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('app_id')->nullable()->default(0)->comment('应用id');
-            $table->string('log_type', 10)->nullable()->default('')->comment('日志类型');
+            $table->char('app_id', 20)->nullable()->default('')->comment('应用ID');
+            $table->char('log_type', 10)->nullable()->default('')->comment('日志类型');
             $table->text('data')->comment('日志内容');
             $table->integer('created_time', 10)->nullable()->default('0')->comment('创建时间');
             $table->integer('modified_time', 10)->nullable()->default('0')->comment('修改时间');
+
             $table->unique(['app_id', 'log_type']);
         });
     }
