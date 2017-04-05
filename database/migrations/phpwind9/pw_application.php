@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PwAdminAuth extends Migration
+class PwApplication extends Migration
 {
     /**
      * Run the migrations.
@@ -43,7 +43,7 @@ class PwAdminAuth extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('app_id')->nullable()->default(0)->comment('应用id');
+            $table->char('app_id', 20)->comment('应用ID');
             $table->string('name', 100)->nullable()->default('')->comment('名称');
             $table->string('alias', 100)->nullable()->default('')->comment('别名');
             $table->string('logo', 100)->nullable()->default('')->comment('应用logo');
@@ -57,6 +57,7 @@ class PwAdminAuth extends Migration
             $table->integer('modified_time', 10)->unsigned()->default('0')->comment('修改时间');
             $table->tinyInteger('status', 1)->nullable()->default('0')->comment('作者email');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
+
             $table->primary('app_id');
             $table->unique('alias');
         });
