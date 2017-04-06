@@ -65,7 +65,6 @@ class PwDesignDisplay
         if (! $moduleId) {
             return false;
         }
-        $diff = $_data = [];
         $ds = Wekit::load('design.PwDesignCron');
         $cron = $ds->getCron($moduleId);
         if ($cron) {
