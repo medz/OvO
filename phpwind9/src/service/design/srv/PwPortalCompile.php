@@ -288,7 +288,7 @@ class PwPortalCompile
     {
         $ds = Wekit::load('design.PwDesignModule');
         if (preg_match_all('/\<pw-list[>|\/>](.+)<\/pw-list>/isU', $section, $matches)) {
-            foreach ($matches[1] as $k => $v) {
+            foreach ($matches[1] as $v) {
                 $v = str_replace('	', '', trim($v));
                 $limit = $this->compileFor($v);
                 $name = 'section_'.$this->getRand(6);
