@@ -27,8 +27,6 @@ class PwAdminRole extends Migration
               PRIMARY KEY (`id`),
               KEY `idx_name` (`name`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
-
-            // created_time & modified_time 在迁移中使用 timestamps 替代，修改程序实现。
         */
         Schema::create('pw_admin_role', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
@@ -38,7 +36,8 @@ class PwAdminRole extends Migration
             $table->increments('id');
             $table->string('name', 15)->nullable()->default('')->comment('角色名');
             $table->text('auths')->comment('权限点');
-            $table->timestamps();
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
 
             $table->primary('id');
             $table->index('name');
