@@ -128,7 +128,7 @@ function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port =
         $parse['port'] = '80';
     }
     $parse['host'] = str_replace(['http://', 'https://'], ['', 'ssl://'], "$parse[scheme]://").$parse['host'];
-    if (! $fp = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
+    if (! $handle = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
         return false;
     }
     $method = strtoupper($method);
@@ -145,11 +145,11 @@ function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port =
     $write = "$method $parse[path] HTTP/1.0\r\nHost: $parse[host]\r\nContent-type: application/x-www-form-urlencoded\r\n{$wlength}Connection: close\r\n\r\n$wdata";
     //echo $write;
 
-    @fwrite($fp, $write);
-    while ($data = @fread($fp, 4096)) {
+    @fwrite($handle, $write);
+    while ($data = @fread($handle, 4096)) {
         $responseText .= $data;
     }
-    @fclose($fp);
+    @fclose($handle);
     empty($showagent) && $responseText = trim(stristr($responseText, "\r\n\r\n"), "\r\n");
 
     return $responseText;
