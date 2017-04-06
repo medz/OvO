@@ -127,8 +127,10 @@ function PostHost($host, $data = '', $method = 'GET', $showagent = null, $port =
     } elseif (! $parse['port']) {
         $parse['port'] = '80';
     }
+
     $errnum = null;
-    $parse['host'] = str_replace(['http://', 'https://'], ['', 'ssl://'], "$parse['scheme']://").$parse['host'];
+    $parse['host'] = str_replace(['http://', 'https://'], ['', 'ssl://'], sprintf('%s://', $parse['scheme'])).$parse['host'];
+
     if (! $handle = @fsockopen($parse['host'], $parse['port'], $errnum, $errstr, $timeout)) {
         return false;
     }
