@@ -34,8 +34,8 @@ class PwAppPollOption extends Migration
             $table->increments('option_id')->comment('选项自增长ID');
             $table->integer('poll_id')->unsigned()->nullable()->default(0)->comment('投票ID');
             $table->mediumInteger('voted_num')->unsigned()->nullable()->default(0)->comment('该选项投票数');
-            $table->string('content', 255)->nullable()->default()->comment('选项内容');
-            $table->string('image', 255)->nullable()->default()->comment('选项图片');
+            $table->string('content', 255)->nullable()->default('')->comment('选项内容');
+            $table->string('image', 255)->nullable()->default('')->comment('选项图片');
             $table->primary('option_id');
             $table->index('poll_id');
         });
