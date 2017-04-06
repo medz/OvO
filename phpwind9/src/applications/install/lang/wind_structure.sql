@@ -1,21 +1,4 @@
 
-DROP TABLE IF EXISTS `pw_app_poll`;
-CREATE TABLE `pw_app_poll` (
-  `poll_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增长ID',
-  `voter_num` mediumint(8) unsigned NULL DEFAULT '0' COMMENT '投票人数',
-  `isafter_view` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '是否投票后查看结果',
-  `isinclude_img` tinyint(3) unsigned NULL DEFAULT '0' COMMENT '是否包含图片',
-  `option_limit` smallint(5) unsigned NULL DEFAULT '0' COMMENT '投票选项控制',
-  `regtime_limit` int(10) unsigned NULL DEFAULT '0' COMMENT '投票注册时间控制',
-  `created_userid` int(10) unsigned NULL DEFAULT '0' COMMENT '投票发起人',
-  `app_type` smallint(5) unsigned NULL DEFAULT '0' COMMENT '投票类型',
-  `expired_time` int(10) unsigned NULL DEFAULT '0' COMMENT '投票有效时间',
-  `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '投票创建时间',
-  PRIMARY KEY (`poll_id`),
-  KEY `idx_createduserid_createdtime` (`created_userid`,`created_time`),
-  KEY `idx_voternum` (`voter_num`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='投票基本信息表';
-
 DROP TABLE IF EXISTS `pw_app_poll_option`;
 CREATE TABLE `pw_app_poll_option` (
   `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '选项自增长ID',
