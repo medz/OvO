@@ -39,7 +39,9 @@ class WindidNotifyService
         if (! $operation = $this->getOperation($method)) {
             return false;
         }
-        if (! $nid = $this->_getNotifyDs()->addNotify($appid, $operation, serialize($data), Pw::getTime())) {
+
+        $time = Pw::getTime();
+        if (! $nid = $this->_getNotifyDs()->addNotify($appid, $operation, serialize($data), $time)) {
             return false;
         }
         $apps = $this->_getAppDs()->getList();
