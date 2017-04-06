@@ -54,8 +54,7 @@ class PwRestoreService
 
     protected function deleteData($pageid)
     {
-        $ds = $this->_getModuleDs();
-        $ds->deleteByPageId($pageid);
+        $this->_getModuleDs()->deleteByPageId($pageid);
     }
 
     protected function restoreModule($pageid, $issnap = 0)
