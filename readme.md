@@ -6,6 +6,8 @@
 
 # 关于 Fans
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/83b5eff7e9ed4b11977207ddc2820bfb)](https://www.codacy.com/app/shiweidu/phpwind?utm_source=github.com&utm_medium=referral&utm_content=medz/phpwind&utm_campaign=badger)
+
 使用 PHP 和 MySQL 开发的高性能社区系统。
 
 > phpwind Fans 版本是原本暂定的 phpwind 10 版本而来，基于官方最新的 phpwind 9.0.1 开发，同步官方所有代码的基础上进行改良和长期维护。
