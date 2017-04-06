@@ -74,7 +74,6 @@ class PwDesignForumDataService extends PwDesignModelBase
 
         $thread = $this->_getThread($_tids);
         foreach ($list as $k => $v) {
-
             $lastthread = $thread[$v['lastpost_tid']];
             $newValue = [
                 'name' => $this->_filterForumHtml($v['name']),
