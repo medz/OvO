@@ -71,35 +71,43 @@ class PwDesignForumDataService extends PwDesignModelBase
         foreach ($list as $k => $v) {
             $_tids[] = $v['lastpost_tid'];
         }
+
         $thread = $this->_getThread($_tids);
         foreach ($list as $k => $v) {
-            $list[$k]['name'] = $this->_filterForumHtml($v['name']);
-            if ($v['type'] == 'category') {
-                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $v['fid']], '', 'pw');
-            } else {
-                $list[$k]['forum_url'] = WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $v['fid']], '', 'pw');
-            }
-            $list[$k]['descrip'] = $this->_formatDes($v['descrip']);
-            $list[$k]['logo'] = $v['logo'] ? Pw::getPath($v['logo']) : '';
 
             $lastthread = $thread[$v['lastpost_tid']];
-            $list[$k]['lastpost_time'] = $this->_formatTime($lastthread['lastpost_time']);
+            $newValue = [
+                'name' => $this->_filterForumHtml($v['name']),
+                'forum_url' => $this->getFromUrl($v['type'], $v['fid']),
+                'descrip' => $this->_formatDes($v['descrip']),
+                'logo' => $v['logo'] ? Pw::getPath($v['logo']) : '',
+                'lastpost_time' => $this->_formatTime($lastthread['lastpost_time']),
+                'lastpost_smallavatar' => $lastthread['lastpost_userid'] ? Pw::getAvatar($lastthread['lastpost_userid'], 'small') : '',
+                'lastpost_middleavatar' => $lastthread['lastpost_userid'] ? Pw::getAvatar($lastthread['lastpost_userid'], 'middle') : '',
+                'lastpost_userid' => $lastthread['lastpost_userid'],
+                'lastpost_username' => $lastthread['lastpost_username'],
+                'lastpost_space' => $lastthread['lastpost_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['lastpost_userid']], '', 'pw') : '',
+                'lastthread_space' => $lastthread['created_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['created_userid']], '', 'pw') : '',
+                'lastthread_smallavatar' => $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'small') : '',
+                'lastthread_middleavatar' => $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'middle') : '',
+                'lastthread_username' => $lastthread['created_username'],
+                'lastthread_time' => $this->_formatTime($lastthread['created_time']),
+                'lastthread' => $this->_formatTitle($lastthread['subject']),
+            ];
 
-            $list[$k]['lastpost_smallavatar'] = $lastthread['lastpost_userid'] ? Pw::getAvatar($lastthread['lastpost_userid'], 'small') : '';
-            $list[$k]['lastpost_middleavatar'] = $lastthread['lastpost_userid'] ? Pw::getAvatar($lastthread['lastpost_userid'], 'middle') : '';
-
-            $list[$k]['lastpost_userid'] = $lastthread['lastpost_userid'];
-            $list[$k]['lastpost_username'] = $lastthread['lastpost_username'];
-            $list[$k]['lastpost_space'] = $lastthread['lastpost_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['lastpost_userid']], '', 'pw') : '';
-            $list[$k]['lastthread_space'] = $lastthread['created_userid'] ? WindUrlHelper::createUrl('space/index/run', ['uid' => $lastthread['created_userid']], '', 'pw') : '';
-            $list[$k]['lastthread_smallavatar'] = $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'small') : '';
-            $list[$k]['lastthread_middleavatar'] = $lastthread['created_userid'] ? Pw::getAvatar($lastthread['created_userid'], 'middle') : '';
-            $list[$k]['lastthread_username'] = $lastthread['created_username'];
-            $list[$k]['lastthread_time'] = $this->_formatTime($lastthread['created_time']);
-            $list[$k]['lastthread'] = $this->_formatTitle($lastthread['subject']);
+            $list[$k] = array_merge($v, $newValue);
         }
 
         return $list;
+    }
+
+    private function getFromUrl($type, $fid)
+    {
+        if ($type == 'category') {
+            return WindUrlHelper::createUrl('bbs/cate/run', ['fid' => $fid], '', 'pw');
+        }
+
+        return WindUrlHelper::createUrl('bbs/thread/run', ['fid' => $fid], '', 'pw');
     }
 
     private function _getThread($tids)
