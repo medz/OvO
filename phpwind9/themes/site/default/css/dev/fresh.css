@@ -56,13 +56,10 @@ $Id: fresh.css 24448 2013-01-30 09:31:12Z yanchixia $
 发布按钮
 ===================
 */
-.fresh_post .posting .btn{
-	padding-top:5px;
-	padding-bottom:5px;
-	width:80px;
-	padding-left:0;
-	padding-right:0;
+.fresh_post .posting .btn {
 	position:relative;
+	width:80px;
+	padding: 5px 0;
 }
 
 /*
