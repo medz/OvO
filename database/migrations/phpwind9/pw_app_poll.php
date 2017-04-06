@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class PwAppPoll extends Migration
 {
     /**
-     * 迁移运行
+     * 迁移运行.
      *
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
