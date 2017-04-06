@@ -1,12 +1,10 @@
 <h1 align="center">phpwind Fans</h1>
 <p align="center">
 <a href="https://shang.qq.com/wpa/qunwpa?idkey=4bdc6869a010f9371c81047847960e9d89ce0585e23308a4f00f99ecb27c48f7" title="加入 phpwind Fans 群"><img src="https://pub.idqqimg.com/wpa/images/group.png" alt="QQ群:30568679"></a>
-<a href="https://www.codacy.com/app/shiweidu/phpwind?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=medz/phpwind&amp;utm_campaign=Badge_Grade" title="代码质量"><img src="https://api.codacy.com/project/badge/Grade/83b5eff7e9ed4b11977207ddc2820bfb"/></a>
+<a href="https://www.codacy.com/app/shiweidu/phpwind?utm_source=github.com&utm_medium=referral&utm_content=medz/phpwind&utm_campaign=badger" title="代码质量"><img src="https://api.codacy.com/project/badge/Grade/83b5eff7e9ed4b11977207ddc2820bfb"/></a>
 </p>
 
 # 关于 Fans
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/83b5eff7e9ed4b11977207ddc2820bfb)](https://www.codacy.com/app/shiweidu/phpwind?utm_source=github.com&utm_medium=referral&utm_content=medz/phpwind&utm_campaign=badger)
 
 使用 PHP 和 MySQL 开发的高性能社区系统。
 
