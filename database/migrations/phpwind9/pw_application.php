@@ -53,9 +53,9 @@ class PwApplication extends Migration
             $table->string('website', 200)->nullable()->default('')->comment('开发者网站');
             $table->string('version', 50)->nullable()->default('')->comment('应用版本');
             $table->string('pwversion', 50)->nullable()->default('')->comment('');
-            $table->integer('created_time', 10)->nullable()->default('0')->comment('创建时间');
-            $table->integer('modified_time', 10)->unsigned()->default('0')->comment('修改时间');
-            $table->tinyInteger('status', 1)->nullable()->default('0')->comment('作者email');
+            $table->integer('created_time')->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->default(0)->comment('修改时间');
+            $table->tinyInteger('status', 1)->nullable()->default(0)->comment('作者email');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
 
             $table->primary('app_id');
