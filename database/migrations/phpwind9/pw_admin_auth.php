@@ -28,9 +28,6 @@ class PwAdminAuth extends Migration
               PRIMARY KEY (`id`),
               KEY `idx_uid` (`uid`)
             ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户权限角色表';
-
-            // created_time & modified_time 在迁移中使用 timestamps 替代，修改程序实现。
-
          */
         Schema::create('pw_admin_auth', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
@@ -41,7 +38,11 @@ class PwAdminAuth extends Migration
             $table->integer('uid')->nullable()->default(0)->comment('用户ID');
             $table->string('username', 15)->nullable()->default('')->comment('用户名');
             $table->string('roles', 255)->nullable()->default('')->comment('角色');
-            $table->timestamps();
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
+
+            $table->primary('id');
+            $table->index('uid');
         });
     }
 
