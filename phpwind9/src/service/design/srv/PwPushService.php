@@ -32,9 +32,9 @@ class PwPushService
     /**
      * 添加推送数据到推送表.
      */
-    public function addPushData(PwDesignPushDm $dm)
+    public function addPushData(PwDesignPushDm $daoModel)
     {
-        $data = $dm->getData();
+        $data = $daoModel->getData();
 
         $srv = new PwModuleData($data['module_id']);
         $_data = $srv->buildDataByIds($data['push_from_id']);
@@ -42,11 +42,11 @@ class PwPushService
         if (! $_data) {
             return new PwError('DESIGN:push.data.error');
         }
-        $dm->setFormModel($_data['standard_fromapp'])
+        $daoModel->setFormModel($_data['standard_fromapp'])
             ->setStandard($_data['standard'])
             ->setExtend($_data['extend']);
 
-        return Wekit::load('design.PwDesignPush')->addPush($dm);
+        return Wekit::load('design.PwDesignPush')->addPush($daoModel);
     }
 
     /**
