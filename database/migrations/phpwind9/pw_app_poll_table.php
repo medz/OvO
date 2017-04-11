@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PwAppPoll extends Migration
+class PwAppPollTable extends Migration
 {
     /**
      * 迁移运行.
