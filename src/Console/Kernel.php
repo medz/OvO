@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
     protected function getArtisan()
     {
         if (is_null($this->artisan)) {
-            $this->artisan = (new ConsoleApplication($this->app, $this->events, $this->app->version()))
+            $this->artisan = with(new ConsoleApplication($this->app, $this->events, $this->app->version()))
                 ->resolveCommands($this->commands);
         }
 
