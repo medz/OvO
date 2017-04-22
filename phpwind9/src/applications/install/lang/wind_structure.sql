@@ -1,14 +1,5 @@
 
 
-DROP TABLE IF EXISTS `pw_app_poll_thread`;
-CREATE TABLE `pw_app_poll_thread` (
-  `tid` int(10) unsigned NOT NULL COMMENT '帖子ID',
-  `poll_id` int(10) unsigned NULL DEFAULT '0' COMMENT '投票ID',
-  `created_userid` int(10) unsigned NULL DEFAULT '0' COMMENT '投票发起人',
-  PRIMARY KEY (`tid`),
-  KEY `idx_pollid` (`poll_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='帖子投票关系表';
-
 DROP TABLE IF EXISTS `pw_app_poll_voter`;
 CREATE TABLE `pw_app_poll_voter` (
   `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '投票参与人ID',
