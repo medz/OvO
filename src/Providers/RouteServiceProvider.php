@@ -56,7 +56,7 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/web.php'));
 
         Route::prefix('old')
-            ->middleware('web')
+            ->middleware('phpwind9')
             ->group(base_path('routes/phpwind9.php'));
     }
 
