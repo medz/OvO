@@ -14,10 +14,26 @@ class Application extends LaravelApplication
     /**
      * Get the path to the application "src" directory.
      *
+     * @param string $path
      * @return string
+     * @author Seven Du <shiweidu@outlook.com>
      */
-    public function path()
+    public function path($path = '')
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'src';
+        return $this->basePath.DIRECTORY_SEPARATOR.'src'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+    }
+
+    /**
+     * Register the core class aliases in the container.
+     *
+     * @return void
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function registerCoreContainerAliases()
+    {
+        parent::registerCoreContainerAliases();
+
+        // Register class aliases.
+        $this->alias('app', \Medz\Wind\Application::class);
     }
 }
