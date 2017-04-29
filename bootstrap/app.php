@@ -12,7 +12,7 @@
 */
 
 $app = new Medz\Wind\Application(
-    realpath(dirname(__DIR__))
+    realpath('../')
 );
 
 /*
