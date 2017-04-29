@@ -1,5 +1,5 @@
 <?php
-    
+
 if (config('database.default') !== 'mysql') {
     throw new \Exception('phpwind 9 Database driver only "MySQL".');
 }
