@@ -1,32 +1,5 @@
 
 
-DROP TABLE IF EXISTS `pw_app_poll_voter`;
-CREATE TABLE `pw_app_poll_voter` (
-  `uid` int(10) unsigned NULL DEFAULT '0' COMMENT '投票参与人ID',
-  `poll_id` int(10) unsigned NULL DEFAULT '0' COMMENT '投票ID',
-  `option_id` int(10) unsigned NULL DEFAULT '0' COMMENT '投票选项ID',
-  `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '参与投票时间',
-  KEY `idx_uid_createdtime` (`uid`,`created_time`),
-  KEY `idx_pollid` (`poll_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户投票记录表';
-
-DROP TABLE IF EXISTS `pw_attachs`;
-CREATE TABLE `pw_attachs` (
-  `aid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '附件id',
-  `name` varchar(80) NULL DEFAULT '' COMMENT '文件名',
-  `type` varchar(15) NULL DEFAULT '' COMMENT '文件类型',
-  `size` int(10) unsigned NULL DEFAULT '0' COMMENT '文件大小',
-  `path` varchar(80) NULL DEFAULT '' COMMENT '存储路径',
-  `ifthumb` tinyint(1) unsigned NULL DEFAULT '0' COMMENT '是否有缩略图',
-  `created_userid` int(10) unsigned NULL DEFAULT '0' COMMENT '上传人用户id',
-  `created_time` int(10) unsigned NULL DEFAULT '0' COMMENT '上传时间',
-  `app` varchar(15) NULL DEFAULT '' COMMENT '来自应用类型',
-  `app_id` int(10) unsigned NULL DEFAULT '0' COMMENT '来自应用模块id',
-  `descrip` varchar(255) NULL DEFAULT '' COMMENT '文件描述',
-  PRIMARY KEY (`aid`),
-  KEY `idx_app_appid` (`app`,`app_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表';
-
 DROP TABLE IF EXISTS `pw_attachs_thread`;
 CREATE TABLE `pw_attachs_thread` (
   `aid` int(10) unsigned NOT NULL COMMENT '附件id',
