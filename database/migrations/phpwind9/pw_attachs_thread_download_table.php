@@ -33,7 +33,17 @@ class PwAttachsThreadDownloadTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+
+            $table->increments('id')->comment('自增长ID');
+            $table->integer('aid')->unsigned()->nullable()->default(0)->comment('附件aid');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('下载人');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('下载时间');
+            $table->mediumInteger('cost')->unsigned()->nullable()->default(0)->comment('花费积分数量');
+            $table->tinyInteger('ctype')->unsigned()->nullable()->default(0)->comment('花费积分类型');
+
+            $table->primary('id');
+            $table->index('aid');
+        };
     }
 
     /**
