@@ -29,6 +29,13 @@ class PwUpgradeLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->string('id', 25)->comment('主键id');
+			$table->tinyInteger('type')->nullable()->default(0)->comment('日志类型');
+			$table->text('data')->comment('内容');
+			
+			$table->primary('id');
+
         }
     }
 
