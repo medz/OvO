@@ -33,16 +33,16 @@ class PwLikeStatisticsTable extends Migration
                 $table->engine = 'InnoDB';
             }
 			
-			$table->string('signkey', 20)->comment('标识key');
-			$table->integer('likeid')->unsigned()->nullable()->default(0)->comment('喜欢ID');
-			$table->integer('typeid')->unsigned()->nullable()->default(0)->comment('类型ID');
-			$table->integer('fromid')->unsigned()->nullable()->default(0)->comment('来源ID');
-			$table->integer('number')->unsigned()->nullable()->default(0)->comment('数量');
+		$table->string('signkey', 20)->comment('标识key');
+		$table->integer('likeid')->unsigned()->nullable()->default(0)->comment('喜欢ID');
+		$table->integer('typeid')->unsigned()->nullable()->default(0)->comment('类型ID');
+		$table->integer('fromid')->unsigned()->nullable()->default(0)->comment('来源ID');
+		$table->integer('number')->unsigned()->nullable()->default(0)->comment('数量');
+
+		$table->index('number');
+		$table->index('signkey');
 			
-			$table->index('number');
-			$table->index('signkey');
-			
-        }
+        };
     }
 
     /**
