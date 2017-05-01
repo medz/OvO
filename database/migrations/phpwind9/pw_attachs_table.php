@@ -49,7 +49,7 @@ class PwAttachsTable extends Migration
             $table->integer('app_id')->unsigned()->default(0)->comment('来自应用模块id');
             $table->string('descrip', 255)->nullable()->default()->comment('文件描述');
 
-            $table->unique('aid');
+            $table->primary('aid');
             $table->index(['app', 'app_id']);
         });
     }
