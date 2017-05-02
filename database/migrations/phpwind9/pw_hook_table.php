@@ -32,6 +32,16 @@ class PwHookTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->string('name', 50);
+			$table->char('app_id', 20)->nullable()->default('')->comment('应用id');
+			$table->string('app_name', 100)->nullable()->default('')->comment('应用名称');
+			$table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+			$table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+			$table->text('document')->comment('钩子详细信息');
+			
+			$table->primary('name');
+			
         }
     }
 
