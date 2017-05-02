@@ -32,6 +32,16 @@ class PwUserActiveCodeTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->integer('uid')->unsigned()->comment('用户ID');
+			$table->string('email', 80)->nullable()->default('')->comment('Email地址');
+			$table->string('code', 10)->nullable()->default('')->comment('激活码');
+			$table->integer('send_time')->unsigned()->nullable()->default(0)->comment('发送时间');
+			$table->integer('active_time')->unsigned()->nullable()->default(0)->comment('激活时间');
+ 			$table->tinyInteger('typeid')->nullable()->default(0)->comment('类型-注册邮箱激活码或是找回密码');		
+			
+			$table->primary('uid');
+			
         }
     }
 
