@@ -29,6 +29,13 @@ class PwCacheTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->char('cache_key', 32)->comment('缓存键名MD5值');
+			$table->text('cache_value')->comment('缓存值');
+			$table->integer('cache_expire')->unsigned()->nullable()->default(0)->comment('缓存过期时间');
+			
+			$table->primary('cache_key');
+			
         }
     }
 
