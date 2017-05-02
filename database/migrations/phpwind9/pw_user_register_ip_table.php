@@ -29,6 +29,13 @@ class PwUserRegisterIpTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->string('ip', 20)->comment('IP地址');
+			$table->integer('last_regdate')->unsigned()->nullable()->default(0)->comment('最后注册时间');
+			$table->integer('num')->unsigned()->nullable()->default(0)->comment('次数');
+			
+			$table->primary('ip');		
+			
         }
     }
 
