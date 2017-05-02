@@ -36,7 +36,7 @@ class PwCacheTable extends Migration
 			
 			$table->primary('cache_key');
 			
-        }
+        };
     }
 
     /**
