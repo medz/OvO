@@ -35,6 +35,19 @@ class PwInviteCodeTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+			
+			$table->char('code', 32);
+			$table->integer('created_userid')->nullable()->default(0);		
+			$table->integer('invited_userid')->nullable()->default(0);					
+ 			$table->tinyInteger('ifused')->nullable()->default(0);
+			$table->integer('created_time')->unsigned()->nullable()->default(0);
+			$table->integer('modified_time')->unsigned()->nullable()->default(0);
+			
+			$table->primary('code');
+ 			$table->index('created_userid');
+			$table->index('invited_userid');
+			$table->index('created_time');
+			
         }
     }
 
