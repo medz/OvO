@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -19,33 +19,36 @@ KEY `idx_tid_pid_createdtime` (`tid`,`pid`,`created_time`)
 
  */
 
-class PwBbsThreadsBuyTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_threads_buy', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('tid')->unsigned()->nullable()->default(0);
-			$table->integer('pid')->unsigned()->nullable()->default(0);
-			$table->integer('created_userid')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('ctype')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('cost')->unsigned()->nullable()->default(0);
-			$table->index(['tid', 'pid', 'created_time']);
-		});
-	}
+class PwBbsThreadsBuyTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_threads_buy', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('tid')->unsigned()->nullable()->default(0);
+            $table->integer('pid')->unsigned()->nullable()->default(0);
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('ctype')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('cost')->unsigned()->nullable()->default(0);
+            $table->index(['tid', 'pid', 'created_time']);
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_threads_buy');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_threads_buy');
+    }
 }
