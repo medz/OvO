@@ -31,7 +31,15 @@ class PwAttentionTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+			
+			$table->integer('uid')->unsigned();
+            $table->integer('touid')->unsigned();
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+			
+			$table->primary('touid','uid');
+            $table->index('uid','created_time');
+            $table->index('touid','created_time');
+        });
     }
 
     /**
