@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class PwAttachsThread extends Migration
+class PwAttachsThreadTable extends Migration
 {
     /**
      * 迁移运行.
