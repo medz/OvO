@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -19,33 +19,36 @@ KEY `idx_lastposttime` (`lastpost_time`)
 
  */
 
-class PwBbsThreadsIndexTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_threads_index', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('tid')->unsigned()->nullable();
-			$table->smallInteger('fid')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->integer('lastpost_time')->unsigned()->nullable()->default(0);
-			$table->primary('tid');
-			$table->index('lastpost_time');
-		});
-	}
+class PwBbsThreadsIndexTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_threads_index', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('tid')->unsigned()->nullable();
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
+            $table->primary('tid');
+            $table->index('lastpost_time');
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_threads_index');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_threads_index');
+    }
 }

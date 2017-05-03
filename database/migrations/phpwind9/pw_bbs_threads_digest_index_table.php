@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -25,40 +25,42 @@ KEY `idx_fid_lastposttime_topictype` (`fid`,`lastpost_time`,`topic_type`)
 
  */
 
-class PwBbsThreadsDigestIndexTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_threads_digest_index', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('tid')->unsigned()->nullable();
-			$table->smallInteger('fid')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
-			$table->smallInteger('cid')->unsigned()->nullable()->default(0);
-			$table->integer('topic_type')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->integer('lastpost_time')->unsigned()->nullable()->default(0);
-			$table->string('operator', 15)->nullable()->default('');
-			$table->integer('operator_userid')->unsigned()->nullable()->default(0);
-			$table->integer('operator_time')->unsigned()->nullable()->default(0);
-			$table->primary('tid');
-			$table->index(['cid', 'lastpost_time']);
-			$table->index(['fid', 'lastpost_time', 'topic_type']);
-		});
+class PwBbsThreadsDigestIndexTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_threads_digest_index', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('tid')->unsigned()->nullable();
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
+            $table->smallInteger('cid')->unsigned()->nullable()->default(0);
+            $table->integer('topic_type')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
+            $table->string('operator', 15)->nullable()->default('');
+            $table->integer('operator_userid')->unsigned()->nullable()->default(0);
+            $table->integer('operator_time')->unsigned()->nullable()->default(0);
+            $table->primary('tid');
+            $table->index(['cid', 'lastpost_time']);
+            $table->index(['fid', 'lastpost_time', 'topic_type']);
+        });
+    }
 
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_threads_digest_index');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_threads_digest_index');
+    }
 }
