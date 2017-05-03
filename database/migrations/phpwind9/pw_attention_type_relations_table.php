@@ -29,13 +29,12 @@ class PwAttentionTypeRelationsTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('uid')->unsigned();
-			$table->integer('touid')->unsigned();
-			$table->integer('typeid');
-			
-            $table->primary('uid','touid','typeid');
-			
+
+            $table->integer('uid')->unsigned();
+            $table->integer('touid')->unsigned();
+            $table->integer('typeid');
+
+            $table->primary('uid', 'touid', 'typeid');
         });
     }
 
@@ -49,4 +48,3 @@ class PwAttentionTypeRelationsTable extends Migration
         Schema::dropIfExists('pw_attention_type_relations');
     }
 }
-
