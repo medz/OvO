@@ -29,12 +29,12 @@ class PwAttentionFreshIndexTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('fresh_id')->unsigned();
-			$table->integer('tid')->unsigned()->nullable()->default(0);
-			
-			$table->primary('fresh_id');
-			$table->index('tid');
+
+            $table->integer('fresh_id')->unsigned();
+            $table->integer('tid')->unsigned()->nullable()->default(0);
+
+            $table->primary('fresh_id');
+            $table->index('tid');
         });
     }
 
@@ -48,4 +48,3 @@ class PwAttentionFreshIndexTable extends Migration
         Schema::dropIfExists('pw_attention_fresh_index');
     }
 }
-

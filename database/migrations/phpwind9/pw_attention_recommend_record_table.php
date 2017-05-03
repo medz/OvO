@@ -29,12 +29,12 @@ class PwAttentionRecommendRecordTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
-			$table->integer('recommend_uid')->unsigned()->nullable()->default(0)->comment('潜在好友');
-			$table->integer('same_uid')->unsigned()->nullable()->default(0)->comment('共同好友');
-			
-			$table->unique('uid','recommend_uid','same_uid');
+
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
+            $table->integer('recommend_uid')->unsigned()->nullable()->default(0)->comment('潜在好友');
+            $table->integer('same_uid')->unsigned()->nullable()->default(0)->comment('共同好友');
+
+            $table->unique('uid', 'recommend_uid', 'same_uid');
         });
     }
 
@@ -48,4 +48,3 @@ class PwAttentionRecommendRecordTable extends Migration
         Schema::dropIfExists('pw_attention_recommend_record');
     }
 }
-
