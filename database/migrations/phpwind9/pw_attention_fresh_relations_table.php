@@ -32,7 +32,16 @@ class PwAttentionFreshRelationsTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+			
+			$table->integer('uid')->unsigned()->nullable()->default(0);
+			$table->integer('fresh_id')->unsigned()->nullable()->default(0);
+			$table->tinyInteger('type')->unsigned()->nullable()->default(0);
+			$table->integer('created_userid')->unsigned()->nullable()->default(0);
+			$table->integer('created_time')->unsigned()->nullable()->default(0);
+			
+			$table->index('uid','created_time');
+			$table->index('fresh_id');
+        });
     }
 
     /**
