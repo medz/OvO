@@ -30,7 +30,15 @@ class PwAttentionTypeTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+			
+			$table->integer('id')->unsigned();
+			$table->integer('uid')->unsigned()->nullable()->default(0);
+			$table->string('name',30)->nullable()->default('');
+			
+            $table->primary('id');
+			$table->index('uid');
+			
+        });
     }
 
     /**
