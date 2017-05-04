@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -45,61 +45,63 @@ KEY `idx_createduserid_createdtime` ( `created_userid` , `created_time` )
 
  */
 
-class PwBbsPostsTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_posts', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->increments('pid')->unsigned();
-			$table->smallInteger('fid')->unsigned()->nullable()->default(0);
-			$table->integer('tid')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('ischeck')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('ifshield')->unsigned()->nullable()->default(0);
-			$table->integer('replies')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('useubb')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('usehtml')->unsigned()->nullable()->default(0);
-			$table->smallInteger('aids')->unsigned()->nullable()->default(0);
-			$table->integer('rpid')->unsigned()->nullable()->default(0);
-			$table->string('subject', 100)->nullable()->default('');
-			$table->text('content');
-			$table->mediumInteger('like_count')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('sell_count')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->string('created_username', 15)->nullable()->default('');
-			$table->integer('created_userid')->unsigned()->nullable()->default(0);
-			$table->string('created_ip', 40)->nullable()->default('');
-			$table->tinyInteger('reply_notice')->unsigned()->nullable()->default(0);
-			$table->integer('modified_time')->unsigned()->nullable()->default(0);
-			$table->string('modified_username', 15)->nullable()->default('');
-			$table->integer('modified_userid')->unsigned()->nullable()->default(0);
-			$table->string('modified_ip', 40)->nullable()->default('');
-			$table->string('reminds', 255)->nullable()->default('');
-			$table->smallInteger('word_version')->unsigned()->nullable()->default(0);
-			$table->string('ipfrom', 255)->nullable()->default('');
-			$table->string('manage_remind', 150)->nullable()->default('');
-			$table->tinyInteger('topped')->unsigned()->nullable()->default(0);
+class PwBbsPostsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_posts', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->increments('pid')->unsigned();
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
+            $table->integer('tid')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('ischeck')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('ifshield')->unsigned()->nullable()->default(0);
+            $table->integer('replies')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('useubb')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('usehtml')->unsigned()->nullable()->default(0);
+            $table->smallInteger('aids')->unsigned()->nullable()->default(0);
+            $table->integer('rpid')->unsigned()->nullable()->default(0);
+            $table->string('subject', 100)->nullable()->default('');
+            $table->text('content');
+            $table->mediumInteger('like_count')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('sell_count')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 15)->nullable()->default('');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->string('created_ip', 40)->nullable()->default('');
+            $table->tinyInteger('reply_notice')->unsigned()->nullable()->default(0);
+            $table->integer('modified_time')->unsigned()->nullable()->default(0);
+            $table->string('modified_username', 15)->nullable()->default('');
+            $table->integer('modified_userid')->unsigned()->nullable()->default(0);
+            $table->string('modified_ip', 40)->nullable()->default('');
+            $table->string('reminds', 255)->nullable()->default('');
+            $table->smallInteger('word_version')->unsigned()->nullable()->default(0);
+            $table->string('ipfrom', 255)->nullable()->default('');
+            $table->string('manage_remind', 150)->nullable()->default('');
+            $table->tinyInteger('topped')->unsigned()->nullable()->default(0);
 
-			$table->primary('pid');
-			$table->index(['tid', 'disabled', 'created_time']);
-			$table->index(['disabled', 'created_time']);
-			$table->index(['created_userid', 'created_time']);
+            $table->primary('pid');
+            $table->index(['tid', 'disabled', 'created_time']);
+            $table->index(['disabled', 'created_time']);
+            $table->index(['created_userid', 'created_time']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_posts');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_posts');
+    }
 }
