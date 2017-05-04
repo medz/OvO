@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -20,35 +20,37 @@ PRIMARY KEY  (`id`)
 
  */
 
-class PwBbsinfoTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbsinfo', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->smallIncrements('id')->unsigned()->comment('主键ID');
-			$table->string('newmember', 15)->nullable()->default('')->comment('最新会员');
-			$table->mediumInteger('totalmember')->unsigned()->nullable()->default(0)->comment('会员总数');
-			$table->mediumInteger('higholnum')->unsigned()->nullable()->default(0)->comment('最高在线人数');
-			$table->integer('higholtime')->unsigned()->nullable()->default(0)->comment('最高在线发生日期');
-			$table->mediumInteger('yposts')->unsigned()->nullable()->default(0)->comment('昨日发帖数');
-			$table->mediumInteger('hposts')->unsigned()->nullable()->default(0)->comment('最高日发帖数');
-			$table->primary('id');
+class PwBbsinfoTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbsinfo', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->smallIncrements('id')->unsigned()->comment('主键ID');
+            $table->string('newmember', 15)->nullable()->default('')->comment('最新会员');
+            $table->mediumInteger('totalmember')->unsigned()->nullable()->default(0)->comment('会员总数');
+            $table->mediumInteger('higholnum')->unsigned()->nullable()->default(0)->comment('最高在线人数');
+            $table->integer('higholtime')->unsigned()->nullable()->default(0)->comment('最高在线发生日期');
+            $table->mediumInteger('yposts')->unsigned()->nullable()->default(0)->comment('昨日发帖数');
+            $table->mediumInteger('hposts')->unsigned()->nullable()->default(0)->comment('最高日发帖数');
+            $table->primary('id');
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbsinfo');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbsinfo');
+    }
 }
