@@ -42,23 +42,23 @@ class PwDesignPortalTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->increments('id')->unsigned()->comment('标识ID');
-        $table->string('pagename', 50)->nullable()->default('')->comment('页面名称');
-        $table->string('title', 255)->nullable()->default('')->comment('title信息');
-        $table->string('keywords', 255)->nullable()->default('')->comment('keywords信息');
-        $table->string('description', 255)->nullable()->default('')->comment('description信息');
-        $table->string('domain', 255)->nullable()->default('')->comment('二级域名');
-        $table->string('cover', 255)->nullable()->default('')->comment('封面图片');
-        $table->tinyInteger('isopen')->unsigned()->nullable()->default(0)->comment('是否使用');
-        $table->tinyInteger('header')->unsigned()->nullable()->default(0)->comment('是否使用公共头');
-        $table->tinyInteger('navigate')->unsigned()->nullable()->default(0)->comment('是否使用公共导航');
-        $table->tinyInteger('footer')->unsigned()->nullable()->default(0)->comment('是否使用公共页脚');
-        $table->string('style', 255)->nullable()->default('')->comment('自定义样式');
-        $table->integer('created_uid')->unsigned()->nullable()->default(0)->comment('创建用户ID');
-        $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->increments('id')->unsigned()->comment('标识ID');
+            $table->string('pagename', 50)->nullable()->default('')->comment('页面名称');
+            $table->string('title', 255)->nullable()->default('')->comment('title信息');
+            $table->string('keywords', 255)->nullable()->default('')->comment('keywords信息');
+            $table->string('description', 255)->nullable()->default('')->comment('description信息');
+            $table->string('domain', 255)->nullable()->default('')->comment('二级域名');
+            $table->string('cover', 255)->nullable()->default('')->comment('封面图片');
+            $table->tinyInteger('isopen')->unsigned()->nullable()->default(0)->comment('是否使用');
+            $table->tinyInteger('header')->unsigned()->nullable()->default(0)->comment('是否使用公共头');
+            $table->tinyInteger('navigate')->unsigned()->nullable()->default(0)->comment('是否使用公共导航');
+            $table->tinyInteger('footer')->unsigned()->nullable()->default(0)->comment('是否使用公共页脚');
+            $table->string('style', 255)->nullable()->default('')->comment('自定义样式');
+            $table->integer('created_uid')->unsigned()->nullable()->default(0)->comment('创建用户ID');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
 
-        $table->primary('id');
-        $table->index('domain');
+            $table->primary('id');
+            $table->index('domain');
         });
     }
 
@@ -72,4 +72,3 @@ class PwDesignPortalTable extends Migration
         Schema::dropIfExists('pw_design_portal');
     }
 }
-
