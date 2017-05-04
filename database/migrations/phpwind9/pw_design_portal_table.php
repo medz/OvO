@@ -59,8 +59,6 @@ class PwDesignPortalTable extends Migration
 
         $table->primary('id');
         $table->index('domain');
-
-
         });
     }
 
