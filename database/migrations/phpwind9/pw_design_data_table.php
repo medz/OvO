@@ -42,7 +42,25 @@ class PwDesignDataTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+        $table->increments('data_id')->unsigned()->comment('数据ID');
+        $table->tinyInteger('from_type')->unsigned()->nullable()->default(0)->comment('数据来源');
+        $table->string('from_app', 20)->nullable()->default('')->comment('来源应用名称');
+        $table->integer('from_id')->unsigned()->nullable()->default(0)->comment('数据来源ID');
+        $table->integer('module_id')->unsigned()->nullable()->default(0)->comment('所属模块ID');
+        $table->string('standard', 255)->nullable()->default('')->comment('标准标签');
+        $table->string('style', 255)->nullable()->default('')->comment('样式');
+        $table->text('extend_info')->comment('数据内容');
+        $table->tinyInteger('data_type')->unsigned()->nullable()->default(0)->comment('数据类型1自动 2固定 3修改');
+        $table->tinyInteger('is_edited')->unsigned()->nullable()->default(0)->comment('是否修改过');
+        $table->tinyInteger('is_reservation')->unsigned()->nullable()->default(0)->comment('是否为预订信息');
+        $table->integer('vieworder')->unsigned()->nullable()->default(0)->comment('排序');
+        $table->integer('start_time')->unsigned()->nullable()->default(0)->comment('开始时间');
+        $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('过期时间');
+        $table->primary('data_id');
+        $table->index('module_id');
+        $table->index('vieworder');
+
+        });
     }
 
     /**
