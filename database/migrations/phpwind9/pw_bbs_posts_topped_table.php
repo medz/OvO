@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -19,35 +19,37 @@ KEY `idx_tid_createdtime` (`tid`,`created_time`)
 
  */
 
-class PwBbsPostsToppedTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_posts_topped', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('pid')->unsigned()->comment('回帖pid');
-			$table->integer('tid')->unsigned()->comment('帖子tid');
-			$table->integer('floor')->unsigned()->nullable()->default(0)->comment('回帖楼层号');
-			$table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('贴内置顶操作人');
-			$table->integer('created_time')->unsigned()->nullable()->default(0)->comment('贴内置顶时间');
+class PwBbsPostsToppedTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_posts_topped', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('pid')->unsigned()->comment('回帖pid');
+            $table->integer('tid')->unsigned()->comment('帖子tid');
+            $table->integer('floor')->unsigned()->nullable()->default(0)->comment('回帖楼层号');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('贴内置顶操作人');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('贴内置顶时间');
 
-			$table->primary('pid');
-			$table->index(['tid', 'created_time']);
+            $table->primary('pid');
+            $table->index(['tid', 'created_time']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_posts_topped');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_posts_topped');
+    }
 }
