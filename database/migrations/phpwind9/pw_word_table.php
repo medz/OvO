@@ -32,7 +32,7 @@ class PwWordTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->mediumIncrements('page_id')->unsigned()->comment('敏感词自增长ID');
+        $table->mediumIncrements('word_id')->unsigned()->comment('敏感词自增长ID');
         $table->tinyInteger('word_type')->unsigned()->nullable()->default(0)->comment('敏感词类型');
         $table->string('word', 100)->nullable()->default('')->comment('敏感词');
         $table->string('word_replace', 100)->nullable()->default('')->comment('敏感词替换');
