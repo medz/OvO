@@ -32,14 +32,13 @@ class PwWordTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->mediumIncrements('word_id')->unsigned()->comment('敏感词自增长ID');
-        $table->tinyInteger('word_type')->unsigned()->nullable()->default(0)->comment('敏感词类型');
-        $table->string('word', 100)->nullable()->default('')->comment('敏感词');
-        $table->string('word_replace', 100)->nullable()->default('')->comment('敏感词替换');
-        $table->tinyInteger('word_from')->unsigned()->nullable()->default(0)->comment('敏感词来源');
-        $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('敏感词创建时间');
-        $table->primary('word_id');
-
+            $table->mediumIncrements('word_id')->unsigned()->comment('敏感词自增长ID');
+            $table->tinyInteger('word_type')->unsigned()->nullable()->default(0)->comment('敏感词类型');
+            $table->string('word', 100)->nullable()->default('')->comment('敏感词');
+            $table->string('word_replace', 100)->nullable()->default('')->comment('敏感词替换');
+            $table->tinyInteger('word_from')->unsigned()->nullable()->default(0)->comment('敏感词来源');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('敏感词创建时间');
+            $table->primary('word_id');
         });
     }
 
@@ -53,4 +52,3 @@ class PwWordTable extends Migration
         Schema::dropIfExists('pw_word');
     }
 }
-
