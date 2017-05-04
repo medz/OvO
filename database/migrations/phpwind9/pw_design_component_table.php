@@ -33,8 +33,8 @@ class PwDesignComponentTable extends Migration
                 $table->engine = 'InnoDB';
             }
         $table->increments('comp_id')->unsigned()->comment('元件ID');
-        $table->string('model_flag', 20)->unsigned()->nullable()->default('')->comment('元件类型标识');
-        $table->string('comp_name', 50)->unsigned()->nullable()->default('')->comment('模版元件名称');
+        $table->string('model_flag', 20)->nullable()->default('')->comment('元件类型标识');
+        $table->string('comp_name', 50)->nullable()->default('')->comment('模版元件名称');
         $table->text('comp_tpl')->comment('模版代码');
         $table->integer('sys_id')->unsigned()->nullable()->comment('系统编号');
         $table->primary('comp_id');
