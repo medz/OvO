@@ -29,7 +29,12 @@ class PwDesignCronTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+        $table->integer('module_id')->unsigned()->nullable()->comment('模块ID');
+        $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('更新时间');
+        $table->primary('module_id');
+        $table->index('created_time');
+
+        });
     }
 
     /**
