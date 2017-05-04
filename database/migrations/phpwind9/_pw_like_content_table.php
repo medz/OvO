@@ -28,7 +28,7 @@ class PwLikeContentTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_like_content', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

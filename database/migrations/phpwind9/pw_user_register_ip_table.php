@@ -23,7 +23,7 @@ class PwUserRegisterIpTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_user_register_ip', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

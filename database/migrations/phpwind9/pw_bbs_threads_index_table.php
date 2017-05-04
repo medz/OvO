@@ -26,7 +26,7 @@ class PwBbsThreadsIndexTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_bbs_threads_index', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

@@ -27,21 +27,20 @@ class PwDesignPermissionsTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_design_permissions', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->increments('id')->unsigned()->comment('ID标识');
-        $table->tinyInteger('design_type')->unsigned()->nullable()->default(0)->comment('设计类型1页面，2模块');
-        $table->integer('design_id')->unsigned()->nullable()->default(0)->comment('设计类型的标识ID');
-        $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
-        $table->tinyInteger('permissions')->unsigned()->nullable()->default(0)->comment('权限级别');
-        $table->primary('id');
-        $table->index('uid');
-        $table->index(['design_type', 'design_id', 'uid']);
-
+            $table->increments('id')->unsigned()->comment('ID标识');
+            $table->tinyInteger('design_type')->unsigned()->nullable()->default(0)->comment('设计类型1页面，2模块');
+            $table->integer('design_id')->unsigned()->nullable()->default(0)->comment('设计类型的标识ID');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->tinyInteger('permissions')->unsigned()->nullable()->default(0)->comment('权限级别');
+            $table->primary('id');
+            $table->index('uid');
+            $table->index(['design_type', 'design_id', 'uid']);
         });
     }
 
@@ -55,4 +54,3 @@ class PwDesignPermissionsTable extends Migration
         Schema::dropIfExists('pw_design_permissions');
     }
 }
-

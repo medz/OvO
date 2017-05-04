@@ -31,7 +31,7 @@ class PwDesignPageTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_design_page', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

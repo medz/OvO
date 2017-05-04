@@ -25,7 +25,7 @@ class PwUserMobileVerifyTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_user_mobile_verify', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

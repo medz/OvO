@@ -36,7 +36,7 @@ class PwTaskTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_task', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

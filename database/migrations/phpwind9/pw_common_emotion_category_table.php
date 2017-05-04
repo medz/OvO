@@ -26,7 +26,7 @@ class PwCommonEmotionCategoryTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_common_emotion_category', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

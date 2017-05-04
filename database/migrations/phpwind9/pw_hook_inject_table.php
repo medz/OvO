@@ -33,7 +33,7 @@ class PwHookInjectTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_hook_inject', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

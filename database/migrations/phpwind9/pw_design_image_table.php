@@ -29,23 +29,22 @@ class PwDesignImageTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_design_image', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->increments('id')->unsigned()->comment('附件ID');
-        $table->string('path', 80)->nullable()->default('')->comment('原图片路径');
-        $table->string('thumb', 80)->nullable()->default('')->comment('缩略图路径');
-        $table->integer('width')->unsigned()->nullable()->default(0)->comment('缩略图宽');
-        $table->integer('height')->unsigned()->nullable()->default(0)->comment('缩略图高');
-        $table->integer('moduleid')->unsigned()->nullable()->default(0)->comment('所属模块');
-        $table->integer('data_id')->unsigned()->nullable()->default(0)->comment('门户数据ID');
-        $table->string('sign', 50)->nullable()->default('')->comment('标签key');
-        $table->tinyInteger('status')->unsigned()->nullable()->default(1)->comment('原图片状态1正常0不正常');
-        $table->primary('id');
-
+            $table->increments('id')->unsigned()->comment('附件ID');
+            $table->string('path', 80)->nullable()->default('')->comment('原图片路径');
+            $table->string('thumb', 80)->nullable()->default('')->comment('缩略图路径');
+            $table->integer('width')->unsigned()->nullable()->default(0)->comment('缩略图宽');
+            $table->integer('height')->unsigned()->nullable()->default(0)->comment('缩略图高');
+            $table->integer('moduleid')->unsigned()->nullable()->default(0)->comment('所属模块');
+            $table->integer('data_id')->unsigned()->nullable()->default(0)->comment('门户数据ID');
+            $table->string('sign', 50)->nullable()->default('')->comment('标签key');
+            $table->tinyInteger('status')->unsigned()->nullable()->default(1)->comment('原图片状态1正常0不正常');
+            $table->primary('id');
         });
     }
 
@@ -59,4 +58,3 @@ class PwDesignImageTable extends Migration
         Schema::dropIfExists('pw_design_image');
     }
 }
-
