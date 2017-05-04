@@ -59,7 +59,7 @@ class PwDesignModuleTable extends Migration
         $table->primary('module_id');
         $table->index('page_id');
         $table->index('module_type');
-        }
+        });
     }
 
     /**
