@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -44,59 +44,61 @@ KEY `idx_issub_vieworder` (`issub`,`vieworder`)
 
  */
 
-class PwBbsForumTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_forum', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->smallIncrements('fid')->unsigned();
-			$table->smallInteger('parentid')->unsigned()->nullable()->default(0);
-			$table->enum('type', ['category', 'forum', 'sub', 'sub2'])->nullable()->default('forum');
-			$table->tinyInteger('issub')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('hassub')->unsigned()->nullable()->default(0);
-			$table->string('name', 255)->nullable()->default('');
-			$table->text('descrip');
-			$table->smallInteger('vieworder')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('across')->unsigned()->nullable()->default(0);
-			$table->string('manager', 255)->nullable()->default('');
-			$table->string('uppermanager', 255)->nullable()->default('');
-			$table->string('icon', 100)->nullable()->default('');
-			$table->string('logo', 100)->nullable()->default('');
-			$table->string('fup', 30)->nullable()->default('');
-			$table->string('fupname', 255)->nullable()->default('');
-			$table->tinyInteger('isshow')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('isshowsub')->unsigned()->nullable()->default(0);
-			$table->smallInteger('newtime')->unsigned()->nullable()->default(0);
-			$table->string('password', 32)->nullable()->default('');
-			$table->string('allow_visit', 255)->nullable()->default('');
-			$table->string('allow_read', 255)->nullable()->default('');
-			$table->string('allow_post', 255)->nullable()->default('');
-			$table->string('allow_reply', 255)->nullable()->default('');
-			$table->string('allow_upload', 255)->nullable()->default('');
-			$table->string('allow_download', 255)->nullable()->default('');
-			$table->tinyInteger('created_time')->unsigned()->nullable()->default(0);
-			$table->string('created_username', 15)->nullable()->default('');
-			$table->tinyInteger('created_userid')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('created_ip')->unsigned()->nullable()->default(0);
-			$table->string('style', 20)->nullable()->default('');
-			$table->primary('fid');
-			$table->index(['issub', 'vieworder']);
+class PwBbsForumTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_forum', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->smallIncrements('fid')->unsigned();
+            $table->smallInteger('parentid')->unsigned()->nullable()->default(0);
+            $table->enum('type', ['category', 'forum', 'sub', 'sub2'])->nullable()->default('forum');
+            $table->tinyInteger('issub')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('hassub')->unsigned()->nullable()->default(0);
+            $table->string('name', 255)->nullable()->default('');
+            $table->text('descrip');
+            $table->smallInteger('vieworder')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('across')->unsigned()->nullable()->default(0);
+            $table->string('manager', 255)->nullable()->default('');
+            $table->string('uppermanager', 255)->nullable()->default('');
+            $table->string('icon', 100)->nullable()->default('');
+            $table->string('logo', 100)->nullable()->default('');
+            $table->string('fup', 30)->nullable()->default('');
+            $table->string('fupname', 255)->nullable()->default('');
+            $table->tinyInteger('isshow')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('isshowsub')->unsigned()->nullable()->default(0);
+            $table->smallInteger('newtime')->unsigned()->nullable()->default(0);
+            $table->string('password', 32)->nullable()->default('');
+            $table->string('allow_visit', 255)->nullable()->default('');
+            $table->string('allow_read', 255)->nullable()->default('');
+            $table->string('allow_post', 255)->nullable()->default('');
+            $table->string('allow_reply', 255)->nullable()->default('');
+            $table->string('allow_upload', 255)->nullable()->default('');
+            $table->string('allow_download', 255)->nullable()->default('');
+            $table->tinyInteger('created_time')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 15)->nullable()->default('');
+            $table->tinyInteger('created_userid')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('created_ip')->unsigned()->nullable()->default(0);
+            $table->string('style', 20)->nullable()->default('');
+            $table->primary('fid');
+            $table->index(['issub', 'vieworder']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_forum');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_forum');
+    }
 }

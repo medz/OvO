@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -18,33 +18,35 @@ UNIQUE KEY `idx_uid_recommenduid` (`uid`,`recommend_uid`)
 
  */
 
-class PwAttentionRecommendFriendsTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_attention_recommend_friends', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
-			$table->integer('recommend_uid')->unsigned()->nullable()->default(0)->comment('推荐好友ID');
-			$table->string('recommend_username', 15)->nullable()->default('')->comment('推荐好友用户名');
-			$table->smallInteger('cnt')->unsigned()->nullable()->default(0)->comment('好友数量');
-			$table->text('recommend_user')->comment('推荐好友信息');
-			$table->primary(['uid', 'recommend_uid']);
+class PwAttentionRecommendFriendsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_attention_recommend_friends', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
+            $table->integer('recommend_uid')->unsigned()->nullable()->default(0)->comment('推荐好友ID');
+            $table->string('recommend_username', 15)->nullable()->default('')->comment('推荐好友用户名');
+            $table->smallInteger('cnt')->unsigned()->nullable()->default(0)->comment('好友数量');
+            $table->text('recommend_user')->comment('推荐好友信息');
+            $table->primary(['uid', 'recommend_uid']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_attention_recommend_friends');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_attention_recommend_friends');
+    }
 }

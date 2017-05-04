@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -20,35 +20,37 @@ KEY `idx_type_srcid` (`type`,`src_id`)
 
  */
 
-class PwAttentionFreshTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_attention_fresh', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->increments('id')->unsigned();
-			$table->tinyInteger('type')->unsigned()->nullable()->default(0);
-			$table->integer('src_id')->unsigned()->nullable()->default(0);
-			$table->integer('created_userid')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->primary('id');
-			$table->index(['created_userid', 'created_time']);
-			$table->index(['type', 'src_id']);
+class PwAttentionFreshTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_attention_fresh', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->increments('id')->unsigned();
+            $table->tinyInteger('type')->unsigned()->nullable()->default(0);
+            $table->integer('src_id')->unsigned()->nullable()->default(0);
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->primary('id');
+            $table->index(['created_userid', 'created_time']);
+            $table->index(['type', 'src_id']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_attention_fresh');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_attention_fresh');
+    }
 }
