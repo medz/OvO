@@ -35,20 +35,20 @@ class PwCreditLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-      $table->increments('id')->unsigned();
-      $table->string('ctype', 8)->nullable()->default('');
-      $table->integer('affect')->unsigned()->nullable()->default(0);
-      $table->string('logtype', 40)->nullable()->default('');
-      $table->string('descrip', 255)->nullable()->default('');
-      $table->integer('created_userid')->unsigned()->nullable()->default(0);
-      $table->string('created_username', 15)->nullable()->default('');
-      $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->increments('id')->unsigned();
+            $table->string('ctype', 8)->nullable()->default('');
+            $table->integer('affect')->unsigned()->nullable()->default(0);
+            $table->string('logtype', 40)->nullable()->default('');
+            $table->string('descrip', 255)->nullable()->default('');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 15)->nullable()->default('');
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
 
-      $table->primary('pid');
-      $table->index(['created_userid', 'created_time']);
-
-      });
+            $table->primary('pid');
+            $table->index(['created_userid', 'created_time']);
+        });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -59,4 +59,3 @@ class PwCreditLogTable extends Migration
         Schema::dropIfExists('pw_credit_log');
     }
 }
-
