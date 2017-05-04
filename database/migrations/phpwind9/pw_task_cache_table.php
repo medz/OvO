@@ -28,11 +28,10 @@ class PwTaskCacheTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->integer('uid')->unsigned()->nullable()->comment('用户ID');
-        $table->string('task_ids', 200)->nullable()->default('')->comment('该用户完成任务的最后ID记录及周期任务ID记录');
-        $table->primary('uid');
-
-       });
+            $table->integer('uid')->unsigned()->nullable()->comment('用户ID');
+            $table->string('task_ids', 200)->nullable()->default('')->comment('该用户完成任务的最后ID记录及周期任务ID记录');
+            $table->primary('uid');
+        });
     }
 
     /**
@@ -45,4 +44,3 @@ class PwTaskCacheTable extends Migration
         Schema::dropIfExists('pw_task_cache');
     }
 }
-

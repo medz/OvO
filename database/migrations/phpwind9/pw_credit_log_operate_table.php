@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -17,31 +17,34 @@ PRIMARY KEY (`uid`,`operate`)
 
  */
 
-class PwCreditLogOperateTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_credit_log_operate', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('uid')->unsigned()->nullable();
-			$table->string('operate', 40)->nullable();
-			$table->smallInteger('num')->unsigned()->nullable()->default(0);
-			$table->integer('update_time')->unsigned()->nullable()->default(0);
-			$table->primary('uid', 'operate');
-		});
-	}
+class PwCreditLogOperateTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_credit_log_operate', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('uid')->unsigned()->nullable();
+            $table->string('operate', 40)->nullable();
+            $table->smallInteger('num')->unsigned()->nullable()->default(0);
+            $table->integer('update_time')->unsigned()->nullable()->default(0);
+            $table->primary('uid', 'operate');
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_credit_log_operate');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_credit_log_operate');
+    }
 }
