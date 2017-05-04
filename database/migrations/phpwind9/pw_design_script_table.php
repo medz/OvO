@@ -29,11 +29,10 @@ class PwDesignScriptTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->integer('module_id')->unsigned()->nullable()->default(0)->comment('模块ID');
-        $table->char('token', 10)->nullable()->comment('加密串');
-        $table->integer('view_times')->unsigned()->nullable()->default(0)->comment('调用次数');
-        $table->primary('module_id');
-        
+            $table->integer('module_id')->unsigned()->nullable()->default(0)->comment('模块ID');
+            $table->char('token', 10)->nullable()->comment('加密串');
+            $table->integer('view_times')->unsigned()->nullable()->default(0)->comment('调用次数');
+            $table->primary('module_id');
         });
     }
 
@@ -47,4 +46,3 @@ class PwDesignScriptTable extends Migration
         Schema::dropIfExists('pw_design_script');
     }
 }
-
