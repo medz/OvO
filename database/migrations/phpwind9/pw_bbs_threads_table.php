@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -49,64 +49,66 @@ KEY `idx_createduserid_createdtime` ( `created_userid` , `created_time` )
 
  */
 
-class PwBbsThreadsTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_threads', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->increments('tid')->unsigned();
-			$table->smallInteger('fid')->unsigned()->nullable()->default(0);
-			$table->integer('topic_type')->unsigned()->nullable()->default(0);
-			$table->string('subject', 100)->nullable()->default('');
-			$table->integer('overtime')->unsigned()->nullable()->default(0);
-			$table->string('highlight', 64)->nullable()->default('');
-			$table->string('inspect', 30)->nullable()->default('');
-			$table->tinyInteger('ifshield')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('digest')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('topped')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('ischeck')->unsigned()->nullable()->default(1);
-			$table->integer('replies')->unsigned()->nullable()->default(0);
-			$table->integer('hits')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('like_count')->unsigned()->nullable()->default(0);
-			$table->string('special', 20)->nullable()->default('');
-			$table->integer('tpcstatus')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('ifupload')->unsigned()->nullable()->default(0);
-			$table->integer('created_time')->unsigned()->nullable()->default(0);
-			$table->string('created_username', 15)->nullable()->default('');
-			$table->integer('created_userid')->unsigned()->nullable()->default(0);
-			$table->string('created_ip', 40)->nullable()->default('');
-			$table->integer('modified_time')->unsigned()->nullable()->default(0);
-			$table->string('modified_username', 15)->nullable()->default('');
-			$table->integer('modified_userid')->unsigned()->nullable()->default(0);
-			$table->string('modified_ip', 40)->nullable()->default('');
-			$table->integer('lastpost_time')->unsigned()->nullable()->default(0);
-			$table->integer('lastpost_userid')->unsigned()->nullable()->default(0);
-			$table->string('lastpost_username', 15)->nullable()->default('');
-			$table->tinyInteger('special_sort')->unsigned()->nullable()->default(0);
-			$table->tinyInteger('reply_notice')->unsigned()->nullable()->default(1);
-			$table->mediumInteger('reply_topped')->unsigned()->nullable()->default(0);
-			$table->integer('thread_status')->unsigned()->nullable()->default(0);
-			$table->primary('tid');
-			$table->index(['fid', 'disabled', 'lastpost_time']);
-			$table->index(['disabled', 'created_time']);
-			$table->index(['created_userid', 'created_time']);
+class PwBbsThreadsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_threads', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->increments('tid')->unsigned();
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
+            $table->integer('topic_type')->unsigned()->nullable()->default(0);
+            $table->string('subject', 100)->nullable()->default('');
+            $table->integer('overtime')->unsigned()->nullable()->default(0);
+            $table->string('highlight', 64)->nullable()->default('');
+            $table->string('inspect', 30)->nullable()->default('');
+            $table->tinyInteger('ifshield')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('digest')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('topped')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('disabled')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('ischeck')->unsigned()->nullable()->default(1);
+            $table->integer('replies')->unsigned()->nullable()->default(0);
+            $table->integer('hits')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('like_count')->unsigned()->nullable()->default(0);
+            $table->string('special', 20)->nullable()->default('');
+            $table->integer('tpcstatus')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('ifupload')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 15)->nullable()->default('');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->string('created_ip', 40)->nullable()->default('');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0);
+            $table->string('modified_username', 15)->nullable()->default('');
+            $table->integer('modified_userid')->unsigned()->nullable()->default(0);
+            $table->string('modified_ip', 40)->nullable()->default('');
+            $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
+            $table->integer('lastpost_userid')->unsigned()->nullable()->default(0);
+            $table->string('lastpost_username', 15)->nullable()->default('');
+            $table->tinyInteger('special_sort')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('reply_notice')->unsigned()->nullable()->default(1);
+            $table->mediumInteger('reply_topped')->unsigned()->nullable()->default(0);
+            $table->integer('thread_status')->unsigned()->nullable()->default(0);
+            $table->primary('tid');
+            $table->index(['fid', 'disabled', 'lastpost_time']);
+            $table->index(['disabled', 'created_time']);
+            $table->index(['created_userid', 'created_time']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_threads');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_threads');
+    }
 }
