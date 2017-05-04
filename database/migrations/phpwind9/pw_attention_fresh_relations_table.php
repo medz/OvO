@@ -26,7 +26,7 @@ class PwAttentionFreshRelationsTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_attention_fresh_relations', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

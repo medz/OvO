@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -24,7 +25,7 @@ class PwAttentionTypeTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_attention_type', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
