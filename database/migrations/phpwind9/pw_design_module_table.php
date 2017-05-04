@@ -42,7 +42,24 @@ class PwDesignModuleTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+        $table->increments('module_id')->unsigned()->comment('模块ID');
+        $table->integer('page_id')->unsigned()->nullable()->default(0)->comment('所属页面ID');
+        $table->string('segment', 50)->nullable()->default('')->comment('模块所属片段');
+        $table->string('module_struct', 20)->nullable()->default('')->comment('模块结构');
+        $table->string('model_flag', 20)->nullable()->default('')->comment('所属模块分类');
+        $table->string('module_name', 50)->nullable()->default('')->comment('模块名称');
+        $table->text('module_property')->comment('模块属性');
+        $table->text('module_title')->comment('模块标题');
+        $table->text('module_style')->comment('模块样式');
+        $table->integer('module_compid')->unsigned()->nullable()->default(0)->comment('模版元件ID');
+        $table->text('module_tpl')->comment('模块模版代码');
+        $table->string('module_cache', 255)->nullable()->default('')->comment('模块更新设置');
+        $table->tinyInteger('isused')->unsigned()->nullable()->default(0)->comment('是否使用');
+        $table->tinyInteger('module_type')->unsigned()->nullable()->default(1)->comment('模块类型 1 拖曳2 导入3 后台添加');
+        $table->primary('module_id');
+        $table->index('page_id');
+        $table->index('module_type');
+        });
     }
 
     /**
