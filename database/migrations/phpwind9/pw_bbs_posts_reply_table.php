@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -16,32 +16,34 @@ KEY `idx_rpid_pid` (`rpid`,`pid`)
 
  */
 
-class PwBbsPostsReplyTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_posts_reply', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->integer('pid')->unsigned();
-			$table->integer('rpid')->unsigned()->nullable()->default(0);
+class PwBbsPostsReplyTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_posts_reply', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->integer('pid')->unsigned();
+            $table->integer('rpid')->unsigned()->nullable()->default(0);
 
-			$table->primary('pid');
-			$table->index(['rpid', 'pid']);
+            $table->primary('pid');
+            $table->index(['rpid', 'pid']);
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_posts_reply');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_posts_reply');
+    }
 }
