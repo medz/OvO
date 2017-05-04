@@ -37,20 +37,18 @@ class PwDesignPageTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->increments('page_id')->unsigned()->comment('页面ID');
-        $table->tinyInteger('page_type')->unsigned()->nullable()->default(0)->comment('页面类型');
-        $table->string('page_name', 50)->nullable()->default('')->comment('页面名称');
-        $table->string('page_router', 50)->nullable()->default('')->comment('页面路由信息');
-        $table->integer('page_unique')->unsigned()->nullable()->default(0)->comment('页面唯一标识');
-        $table->integer('is_unique')->unsigned()->nullable()->default(0)->comment('唯一标识的标识');
-        $table->text('module_ids')->comment('页面模块');
-        $table->text('struct_names')->comment('页面结构');
-        $table->text('segments')->comment('页面模块片段');
-        $table->string('design_lock', 50)->nullable()->default('')->comment('编辑加锁');
-        $table->primary('page_id');
-        $table->index('page_router');
-
-
+            $table->increments('page_id')->unsigned()->comment('页面ID');
+            $table->tinyInteger('page_type')->unsigned()->nullable()->default(0)->comment('页面类型');
+            $table->string('page_name', 50)->nullable()->default('')->comment('页面名称');
+            $table->string('page_router', 50)->nullable()->default('')->comment('页面路由信息');
+            $table->integer('page_unique')->unsigned()->nullable()->default(0)->comment('页面唯一标识');
+            $table->integer('is_unique')->unsigned()->nullable()->default(0)->comment('唯一标识的标识');
+            $table->text('module_ids')->comment('页面模块');
+            $table->text('struct_names')->comment('页面结构');
+            $table->text('segments')->comment('页面模块片段');
+            $table->string('design_lock', 50)->nullable()->default('')->comment('编辑加锁');
+            $table->primary('page_id');
+            $table->index('page_router');
         });
     }
 
@@ -64,4 +62,3 @@ class PwDesignPageTable extends Migration
         Schema::dropIfExists('pw_design_page');
     }
 }
-
