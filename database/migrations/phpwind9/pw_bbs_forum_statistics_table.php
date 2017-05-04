@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -25,41 +25,43 @@ PRIMARY KEY (`fid`)
 
  */
 
-class PwBbsForumStatisticsTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_forum_statistics', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->smallInteger('fid')->unsigned();
-			$table->mediumInteger('todayposts')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('todaythreads')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('article')->unsigned()->nullable()->default(0);
-			$table->integer('posts')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('threads')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('subposts')->unsigned()->nullable()->default(0);
-			$table->mediumInteger('subthreads')->unsigned()->nullable()->default(0);
-			$table->string('lastpost_info', 35)->nullable()->default('');
-			$table->integer('lastpost_time')->unsigned()->nullable()->default(0);
-			$table->string('lastpost_username', 15)->nullable()->default('');
-			$table->integer('lastpost_tid')->unsigned()->nullable()->default(0);
+class PwBbsForumStatisticsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_forum_statistics', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->smallInteger('fid')->unsigned();
+            $table->mediumInteger('todayposts')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('todaythreads')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('article')->unsigned()->nullable()->default(0);
+            $table->integer('posts')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('threads')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('subposts')->unsigned()->nullable()->default(0);
+            $table->mediumInteger('subthreads')->unsigned()->nullable()->default(0);
+            $table->string('lastpost_info', 35)->nullable()->default('');
+            $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
+            $table->string('lastpost_username', 15)->nullable()->default('');
+            $table->integer('lastpost_tid')->unsigned()->nullable()->default(0);
 
-			$table->primary('fid');
+            $table->primary('fid');
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_forum_statistics');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_forum_statistics');
+    }
 }
