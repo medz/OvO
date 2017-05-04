@@ -37,7 +37,7 @@ class PwMedalInfoTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_medal_info', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

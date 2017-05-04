@@ -29,7 +29,7 @@ class PwInviteCodeTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_invite_code', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

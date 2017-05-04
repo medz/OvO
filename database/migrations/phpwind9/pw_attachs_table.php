@@ -12,7 +12,7 @@ class PwAttachsTable extends Migration
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function run()
+    public function up()
     {
         /*
             DROP TABLE IF EXISTS `pw_attachs`;

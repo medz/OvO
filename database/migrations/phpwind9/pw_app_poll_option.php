@@ -25,7 +25,7 @@ class PwAppPollOption extends Migration
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_app_poll_option', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

@@ -23,7 +23,7 @@ class PwCommonProcessTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_common_process', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

@@ -23,7 +23,7 @@ class PwAppPollThread extends Migration
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_app_poll_thread', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

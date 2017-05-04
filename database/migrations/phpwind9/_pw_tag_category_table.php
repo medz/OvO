@@ -28,7 +28,7 @@ class PwTagCategoryTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_tag_category', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

@@ -22,7 +22,7 @@ class PwLinkRelationsTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_link_relations', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

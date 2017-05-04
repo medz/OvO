@@ -24,7 +24,7 @@ class PwTagRecordTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_tag_record', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

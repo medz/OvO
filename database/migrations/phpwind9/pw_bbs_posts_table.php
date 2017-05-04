@@ -52,7 +52,7 @@ class PwBbsPostsTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_bbs_posts', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

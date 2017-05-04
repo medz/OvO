@@ -32,7 +32,7 @@ class PwBbsForumStatisticsTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_bbs_forum_statistics', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {

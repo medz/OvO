@@ -35,7 +35,7 @@ class PwWindidApplicationTable extends Migration
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
         Schema::create('pw_windid_application', function (Blueprint $table) {
             if (env('DB_CONNECTION', false) === 'mysql') {
