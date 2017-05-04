@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -20,34 +20,37 @@ KEY `idx_tid` (`tid`)
 
  */
 
-class PwBbsThreadsSortTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_threads_sort', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->smallInteger('fid')->unsigned()->comment('版块ID');
-			$table->integer('tid')->unsigned()->nullable()->default(0)->comment('帖子ID');
-			$table->integer('extra')->unsigned()->nullable()->default(0)->comment('扩展字段,如置顶1、2、3');
-			$table->string('sort_type', 20)->nullable()->default('')->comment('排序类型');
-			$table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
-			$table->integer('end_time')->unsigned()->nullable()->default(0)->comment('到期时间');
-			$table->primary(['fid', 'tid']);
-			$table->index('tid');
-		});
-	}
+class PwBbsThreadsSortTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_threads_sort', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->smallInteger('fid')->unsigned()->comment('版块ID');
+            $table->integer('tid')->unsigned()->nullable()->default(0)->comment('帖子ID');
+            $table->integer('extra')->unsigned()->nullable()->default(0)->comment('扩展字段,如置顶1、2、3');
+            $table->string('sort_type', 20)->nullable()->default('')->comment('排序类型');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('到期时间');
+            $table->primary(['fid', 'tid']);
+            $table->index('tid');
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_threads_sort');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_threads_sort');
+    }
 }

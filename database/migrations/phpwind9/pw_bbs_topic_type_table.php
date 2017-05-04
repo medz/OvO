@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -20,34 +20,37 @@ PRIMARY KEY (`id`)
 
  */
 
-class PwBbsTopicTypeTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_topic_type', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->increments('id')->unsigned()->comment('主题分类ID');
-			$table->integer('fid')->unsigned()->nullable()->default(0)->comment('版块ID');
-			$table->string('name', 255)->comment('主题分类名称');
-			$table->integer('parentid')->unsigned()->nullable()->default(0)->comment('上级主题分类ID');
-			$table->string('logo', 255)->nullable()->default('')->comment('主题分类图标');
-			$table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('显示排序');
-			$table->tinyInteger('issys')->unsigned()->nullable()->default(0)->comment('是否管理专用(1-是,0-否)');
-			$table->primary('id');
-		});
-	}
+class PwBbsTopicTypeTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_topic_type', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->increments('id')->unsigned()->comment('主题分类ID');
+            $table->integer('fid')->unsigned()->nullable()->default(0)->comment('版块ID');
+            $table->string('name', 255)->comment('主题分类名称');
+            $table->integer('parentid')->unsigned()->nullable()->default(0)->comment('上级主题分类ID');
+            $table->string('logo', 255)->nullable()->default('')->comment('主题分类图标');
+            $table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('显示排序');
+            $table->tinyInteger('issys')->unsigned()->nullable()->default(0)->comment('是否管理专用(1-是,0-否)');
+            $table->primary('id');
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_topic_type');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_topic_type');
+    }
 }

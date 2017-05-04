@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 /*
 
@@ -18,33 +18,35 @@ PRIMARY KEY (`fid`)
 
  */
 
-class PwBbsForumExtraTable extends Migration {
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function run() {
-		Schema::create('pw_bbs_forum_extra', function (Blueprint $table) {
-			if (env('DB_CONNECTION', false) === 'mysql') {
-				$table->engine = 'InnoDB';
-			}
-			$table->smallInteger('fid')->unsigned();
-			$table->string('seo_description', 255)->nullable()->default('');
-			$table->string('seo_keywords', 255)->nullable()->default('');
-			$table->text('settings_basic');
-			$table->text('settings_credit');
-			$table->primary('fid');
+class PwBbsForumExtraTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Schema::create('pw_bbs_forum_extra', function (Blueprint $table) {
+            if (env('DB_CONNECTION', false) === 'mysql') {
+                $table->engine = 'InnoDB';
+            }
+            $table->smallInteger('fid')->unsigned();
+            $table->string('seo_description', 255)->nullable()->default('');
+            $table->string('seo_keywords', 255)->nullable()->default('');
+            $table->text('settings_basic');
+            $table->text('settings_credit');
+            $table->primary('fid');
+        });
+    }
 
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down() {
-		Schema::dropIfExists('pw_bbs_forum_extra');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('pw_bbs_forum_extra');
+    }
 }
