@@ -47,4 +47,3 @@ class PwLikeTagRelationsTable extends Migration
         Schema::dropIfExists('pw_like_tag_relations');
     }
 }
-

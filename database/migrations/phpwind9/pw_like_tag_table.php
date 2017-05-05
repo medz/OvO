@@ -37,7 +37,7 @@ class PwLikeTagTable extends Migration
             $table->integer('number')->unsigned()->nullable()->default(0)->comment('统计数');
 
             $table->primary('tagid');
-            $table->index('uid'); 
+            $table->index('uid');
         });
     }
 
@@ -51,4 +51,3 @@ class PwLikeTagTable extends Migration
         Schema::dropIfExists('pw_like_tag');
     }
 }
-
