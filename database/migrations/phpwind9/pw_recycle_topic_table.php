@@ -31,7 +31,13 @@ class PwRecycleTopicTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('tid')->unsigned();
+            $table->smallinteger('fid')->unsigned()->nullable()->default(0);
+            $table->integer('operate_time')->unsigned()->nullable()->default(0);
+            $table->string('operate_username', 15)->nullable();
+            $table->text('reason');
+            $table->primary('pid');
+        });
     }
 
     /**
