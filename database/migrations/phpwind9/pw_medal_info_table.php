@@ -62,10 +62,8 @@ class PwMedalInfoTable extends Migration
             $table->index('vieworder');
             $table->index('isopen');
             $table->index('award_type');
-
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -77,4 +75,3 @@ class PwMedalInfoTable extends Migration
         Schema::dropIfExists('pw_medal_info');
     }
 }
-
