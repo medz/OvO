@@ -43,8 +43,29 @@ class PwMedalInfoTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('medal_id')->unsigned()->comment('勋章ID');
+            $table->string('name', 50)->nullable()->default('')->comment('勋章名称');
+            $table->string('path', 50)->nullable()->default('')->comment('勋章路径');
+            $table->string('image', 50)->nullable()->default('')->comment('勋章图片(系统勋章带路径)');
+            $table->string('icon', 50)->nullable()->default('')->comment('勋章图标(系统勋章带路径)');
+            $table->string('descrip', 50)->nullable()->default('')->comment('勋章简介');
+            $table->tinyInteger('medal_type')->unsigned()->nullable()->default(1)->comment('勋章类型');
+            $table->tinyInteger('receive_type')->unsigned()->nullable()->default(1)->comment('勋章获取类型');
+            $table->string('medal_gids', 50)->nullable()->default('')->comment('用户组');
+            $table->tinyInteger('award_type')->unsigned()->nullable()->default(1)->comment('勋章类型');
+            $table->smallInteger('award_condition')->unsigned()->nullable()->default(0)->comment('勋章条件');
+            $table->smallInteger('expired_days')->unsigned()->nullable()->default(0)->comment('有效期');
+            $table->tinyInteger('isopen')->unsigned()->nullable()->default(1)->comment('是否开启');
+            $table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('排序');
+
+            $table->primary('medal_id');
+            $table->index('vieworder');
+            $table->index('isopen');
+            $table->index('award_type');
+
+        });
     }
+
 
     /**
      * Reverse the migrations.
