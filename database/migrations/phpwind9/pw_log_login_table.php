@@ -35,7 +35,19 @@ class PwLogLoginTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('主键ID');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->string('username', 15)->nullable()->default('')->comment('用户名字');
+            $table->tinyInteger('typeid')->unsigned()->nullable()->default(0)->comment('错误类型');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('尝试时间');
+            $table->string('ip', 40)->nullable()->default('')->comment('尝试IP');
+
+            $table->primary('id');
+            $table->index('username');
+            $table->index('ip');
+            $table->index('created_time');
+
+        });
     }
 
     /**
