@@ -33,7 +33,18 @@ class PwDomainTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+
+            $table->string('domain_key', 100)->comment('域名标识');
+            $table->string('domain_type', 15)->nullable()->default('')->comment('域名类型');
+            $table->string('domain', 15)->nullable()->default('')->comment('域名');
+            $table->string('root', 45)->nullable()->default('')->comment('根域名');
+            $table->char('first', 1)->nullable()->default('')->comment('域名首字母便于更新');
+            $table->integer('id')->unsigned()->nullable()->default(0)->comment('部署应用的id值');
+            $table->primary('domain_key');
+            $table->index('domain_type');
+
+
+        });
     }
 
     /**
