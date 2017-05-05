@@ -32,7 +32,15 @@ class PwDraftTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('草稿箱id');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('创建人');
+            $table->string('title', 100)->nullable()->default('')->comment('标题');
+            $table->text('content')->comment('内容');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+
+            $table->primary('id');
+            $table->index('created_userid');            
+        });
     }
 
     /**
