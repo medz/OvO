@@ -42,7 +42,25 @@ class PwLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('主键ID');
+            $table->tinyInteger('typeid')->unsigned()->nullable()->default(0)->comment('错误类型');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('操作者UID');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('操作时间');
+            $table->string('created_username', 15)->nullable()->default('')->comment('操作者名字');
+            $table->integer('operated_uid')->unsigned()->nullable()->default(0)->comment('被操作者UID');
+            $table->string('operated_username', 15)->nullable()->default('')->comment('被操作者名字');
+            $table->string('ip', 40)->nullable()->default('')->comment('操作IP');
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0)->comment('版块ID');
+            $table->integer('tid')->unsigned()->nullable()->default(0)->comment('帖子ID');
+            $table->integer('pid')->unsigned()->nullable()->default(0)->comment('帖子回复ID');
+            $table->string('extends', 100)->nullable()->default('')->comment('扩展信息');
+            $table->text('content')->comment('操作日志内容');
+            $table->primary('id');
+            $table->index(['tid','pid']);
+            $table->index('fid');
+            $table->index('created_time');
+
+        });
     }
 
     /**
