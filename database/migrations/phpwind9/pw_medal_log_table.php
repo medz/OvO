@@ -37,8 +37,23 @@ class PwMedalLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('log_id')->unsigned()->comment('勋章记录ID');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->integer('medal_id')->unsigned()->nullable()->default(0)->comment('勋章ID');
+            $table->tinyInteger('award_status')->unsigned()->nullable()->default(1)->comment('勋章状态：1,进行2，申请3，领取4,显示');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
+            $table->tinyInteger('log_order')->unsigned()->nullable()->default(0)->comment('用户勋章排序');
+
+            $table->primary('log_id');
+            $table->index(['uid', 'medal_id']);
+            $table->index('expired_time');
+            $table->index('log_order');
+            $table->index('award_status');
+
+        });
     }
+
 
     /**
      * Reverse the migrations.
