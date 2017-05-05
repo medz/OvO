@@ -50,4 +50,3 @@ class PwMedalUserTable extends Migration
         Schema::dropIfExists('pw_medal_user');
     }
 }
-
