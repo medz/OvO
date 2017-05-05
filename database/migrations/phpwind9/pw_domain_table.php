@@ -42,8 +42,6 @@ class PwDomainTable extends Migration
             $table->integer('id')->unsigned()->nullable()->default(0)->comment('部署应用的id值');
             $table->primary('domain_key');
             $table->index('domain_type');
-
-
         });
     }
 
@@ -57,4 +55,3 @@ class PwDomainTable extends Migration
         Schema::dropIfExists('pw_domain');
     }
 }
-
