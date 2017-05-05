@@ -37,7 +37,21 @@ class PwMessageNoticesTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('通知id');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
+            $table->smallInteger('typeid')->unsigned()->nullable()->default(0)->comment('类型id');
+            $table->integer('param')->unsigned()->nullable()->default(0)->comment('应用类型id');
+            $table->tinyInteger('is_read')->unsigned()->nullable()->default(0)->comment('是否已读');
+            $table->tinyInteger('is_ignore')->unsigned()->nullable()->default(0)->comment('是否忽略');
+            $table->string('title', 255)->nullable()->default('')->comment('标题');
+            $table->text('extend_params')->comment('扩展内容');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+
+            $table->primary('id');
+            $table->index(['uid','is_read', 'modified_time']);
+
+        });
     }
 
     /**
