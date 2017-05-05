@@ -61,4 +61,3 @@ class PwLinkTable extends Migration
         Schema::dropIfExists('pw_link');
     }
 }
-
