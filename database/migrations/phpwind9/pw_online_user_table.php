@@ -35,7 +35,18 @@ class PwOnlineUserTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->string('username', 15)->nullable()->default('')->comment('用户名');
+            $table->integer('modify_time')->unsigned()->nullable()->default(0)->comment('更新时间');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('gid')->unsigned()->nullable()->default(0)->comment('用户组');
+            $table->integer('fid')->unsigned()->nullable()->default(0)->comment('版块ID');
+            $table->integer('tid')->unsigned()->nullable()->default(0)->comment('贴子ID');
+            $table->string('request', 50)->nullable()->default('')->comment('当前请求信息');
+
+            $table->primary('uid');
+            $table->index('fid');
+        });
     }
 
     /**
