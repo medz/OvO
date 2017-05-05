@@ -28,7 +28,11 @@ class PwRemindTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户uid');
+            $table->string('touid', 255)->nullable()->default('')->comment('最近提醒人');
+
+            $table->primary('uid');
+        });
     }
 
     /**
