@@ -36,7 +36,19 @@ class PwLinkTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->smallIncrements('lid')->unsigned()->comment('友情链接id');
+            $table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('排序');
+            $table->string('name', 15)->nullable()->default('')->comment('名称');
+            $table->string('url', 255)->nullable()->default('')->comment('链接');
+            $table->string('descrip', 255)->nullable()->default('')->comment('描述');
+            $table->string('logo', 100)->nullable()->default('')->comment('logo');
+            $table->tinyInteger('iflogo')->unsigned()->nullable()->default(0)->comment('是否有logo');
+            $table->tinyInteger('ifcheck')->unsigned()->nullable()->default(0)->comment('是否审核');
+            $table->string('contact', 100)->nullable()->default('')->comment('联系方式');
+
+            $table->primary('lid');
+            $table->index(['ifcheck', 'vieworder']);
+        });
     }
 
     /**
