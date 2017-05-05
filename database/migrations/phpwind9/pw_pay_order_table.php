@@ -41,8 +41,26 @@ class PwPayOrderTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned();
+            $table->string('order_no', 30)->nullable()->default('')->comment('订单号');
+            $table->decimal('price',8,2)->nullable()->default(0.00)->comment('金额');
+            $table->smallInteger('number')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('state')->unsigned()->nullable()->default(0);
+            $table->string('payemail', 60)->nullable()->default('');
+            $table->tinyInteger('paymethod')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('paytype')->unsigned()->nullable()->default(0);
+            $table->integer('buy')->unsigned()->nullable()->default(0);
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->integer('extra_1')->unsigned()->nullable()->default(0);
+            $table->string('extra_2', 255)->nullable()->default('');
+
+            $table->primary('id');
+            $table->index('order_no');
+            $table->index('created_userid');
+        });
     }
+
 
     /**
      * Reverse the migrations.
