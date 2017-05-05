@@ -33,16 +33,16 @@ class PwWindidAdminAuthTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            
+
             $table->smallInteger('id');
-			$table->integer('uid')->nullable()->default(0)->comment('用户ID');
-			$table->string('username', 15)->nullable()->default('')->comment('用户名');
-			$table->string('roles', 255)->nullable()->default('')->comment('角色');
-			$table->integer('creative_time')->unsigned()->nullable()->default(0)->comment('创建时间');
-			$table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
-			
-			$table->primary('id');
- 			$table->index('uid');
+            $table->integer('uid')->nullable()->default(0)->comment('用户ID');
+            $table->string('username', 15)->nullable()->default('')->comment('用户名');
+            $table->string('roles', 255)->nullable()->default('')->comment('角色');
+            $table->integer('creative_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
+
+            $table->primary('id');
+            $table->index('uid');
         });
     }
 
@@ -56,4 +56,3 @@ class PwWindidAdminAuthTable extends Migration
         Schema::dropIfExists('pw_windid_admin_auth');
     }
 }
-
