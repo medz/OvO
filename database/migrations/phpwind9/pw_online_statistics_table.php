@@ -46,4 +46,3 @@ class PwOnlineStatisticsTable extends Migration
         Schema::dropIfExists('pw_online_statistics');
     }
 }
-

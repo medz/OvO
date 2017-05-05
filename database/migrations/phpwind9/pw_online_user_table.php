@@ -59,4 +59,3 @@ class PwOnlineUserTable extends Migration
         Schema::dropIfExists('pw_online_user');
     }
 }
-

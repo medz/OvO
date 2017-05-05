@@ -42,7 +42,6 @@ class PwOnlineGuestTable extends Migration
 
             $table->primary(['ip', 'created_time']);
             $table->index('fid');
-
         });
     }
 
@@ -56,4 +55,3 @@ class PwOnlineGuestTable extends Migration
         Schema::dropIfExists('pw_online_guest');
     }
 }
-
