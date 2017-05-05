@@ -29,7 +29,12 @@ class PwLikeTagRelationsTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('logid')->unsigned()->nullable()->default(0)->comment('log标识ID');
+            $table->integer('tagid')->unsigned()->nullable()->default(0)->comment('标签ID');
+
+            $table->index('logid');
+            $table->index('tagid');
+        });
     }
 
     /**
