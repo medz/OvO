@@ -54,4 +54,3 @@ class PwDesignShieldTable extends Migration
         Schema::dropIfExists('pw_design_shield');
     }
 }
-

@@ -30,11 +30,11 @@ class PwDesignSegmentTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        $table->string('segment', 50)->default('')->comment('片段名称');
-        $table->smallInteger('page_id')->unsigned()->nullable()->default(0)->comment('所属页面ID');
-        $table->mediumText('segment_tpl')->comment('片段代码');
-        $table->mediumText('segment_struct')->comment('片段结构代码');
-        $table->primary(['segment', 'page_id']);
+            $table->string('segment', 50)->default('')->comment('片段名称');
+            $table->smallInteger('page_id')->unsigned()->nullable()->default(0)->comment('所属页面ID');
+            $table->mediumText('segment_tpl')->comment('片段代码');
+            $table->mediumText('segment_struct')->comment('片段结构代码');
+            $table->primary(['segment', 'page_id']);
         });
     }
 
@@ -48,4 +48,3 @@ class PwDesignSegmentTable extends Migration
         Schema::dropIfExists('pw_design_segment');
     }
 }
-
