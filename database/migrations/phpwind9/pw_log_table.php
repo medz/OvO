@@ -56,10 +56,9 @@ class PwLogTable extends Migration
             $table->string('extends', 100)->nullable()->default('')->comment('扩展信息');
             $table->text('content')->comment('操作日志内容');
             $table->primary('id');
-            $table->index(['tid','pid']);
+            $table->index(['tid', 'pid']);
             $table->index('fid');
             $table->index('created_time');
-
         });
     }
 
@@ -73,4 +72,3 @@ class PwLogTable extends Migration
         Schema::dropIfExists('pw_log');
     }
 }
-
