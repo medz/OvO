@@ -34,7 +34,18 @@ class PwLikeContentTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('likeid')->unsigned()->comment('喜欢ID');
+            $table->integer('typeid')->unsigned()->nullable()->default(0)->comment('喜欢来源类型');
+            $table->integer('fromid')->unsigned()->nullable()->default(0)->comment('来源ID');
+            $table->tinyInteger('isspecial')->unsigned()->nullable()->default(0)->comment('是否特殊设置');
+            $table->string('users', 255)->nullable()->default('')->comment('喜欢的用户ID');
+            $table->integer('reply_pid')->unsigned()->nullable()->default(0)->comment('最新回复ID');
+
+            $table->primary('likeid');
+            $table->index('isspecial'); 
+            $table->index(['typeid', 'fromid']); 
+
+        });
     }
 
     /**
