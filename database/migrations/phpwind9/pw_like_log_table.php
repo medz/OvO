@@ -33,7 +33,16 @@ class PwLikeLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('logid')->unsigned()->comment('标识ID');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->integer('likeid')->unsigned()->nullable()->default(0)->comment('喜欢ID');
+            $table->string('tagids', 50)->nullable()->default('')->comment('分类标签ID');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+
+            $table->primary('logid');
+            $table->index('uid'); 
+            $table->index('created_time'); 
+        });
     }
 
     /**
