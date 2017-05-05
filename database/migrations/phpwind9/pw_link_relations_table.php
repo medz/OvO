@@ -28,6 +28,10 @@ class PwLinkRelationsTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
+            $table->smallIncrements('lid')->unsigned()->comment('友情链接id');
+            $table->smallint('typeid')->unsigned()->comment('分类id');
+
+            $table->index(['lid', 'typeid']);            
         }
     }
 
