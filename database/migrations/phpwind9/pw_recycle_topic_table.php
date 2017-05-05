@@ -50,4 +50,3 @@ class PwRecycleTopicTable extends Migration
         Schema::dropIfExists('pw_recycle_topic');
     }
 }
-
