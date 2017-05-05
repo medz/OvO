@@ -33,7 +33,17 @@ class PwOnlineGuestTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('ip')->unsigned()->comment('用户IP');
+            $table->integer('created_time')->unsigned()->comment('创建时间');
+            $table->integer('modify_time')->unsigned()->nullable()->default(0)->comment('更新时间');
+            $table->integer('fid')->unsigned()->nullable()->default(0)->comment('版块ID');
+            $table->integer('tid')->unsigned()->nullable()->default(0)->comment('贴子ID');
+            $table->string('request', 50)->nullable()->default('')->comment('当前请求信息');
+
+            $table->primary(['ip', 'created_time']);
+            $table->index('fid');
+
+        });
     }
 
     /**
