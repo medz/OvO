@@ -43,7 +43,7 @@ class PwPayOrderTable extends Migration
             }
             $table->increments('id')->unsigned();
             $table->string('order_no', 30)->nullable()->default('')->comment('订单号');
-            $table->decimal('price',8,2)->nullable()->default(0.00)->comment('金额');
+            $table->decimal('price', 8, 2)->nullable()->default(0.00)->comment('金额');
             $table->smallInteger('number')->unsigned()->nullable()->default(0);
             $table->tinyInteger('state')->unsigned()->nullable()->default(0);
             $table->string('payemail', 60)->nullable()->default('');
@@ -61,7 +61,6 @@ class PwPayOrderTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *
@@ -72,4 +71,3 @@ class PwPayOrderTable extends Migration
         Schema::dropIfExists('pw_pay_order');
     }
 }
-
