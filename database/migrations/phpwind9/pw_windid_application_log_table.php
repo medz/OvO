@@ -31,7 +31,15 @@ class PwWindidApplicationLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            
+            $table->char('app_id', 20)->nullable()->default('')->comment('应用id');
+			$table->char('log_type', 10)->nullable()->default('')->comment('日志类型');
+			$table->text('data')->comment('日志内容');
+			$table->integer('creative_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+			$table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+			
+			$table->unique('app_id','log_type');
+        });
     }
 
     /**
