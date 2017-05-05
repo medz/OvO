@@ -40,8 +40,8 @@ class PwLikeLogTable extends Migration
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
 
             $table->primary('logid');
-            $table->index('uid'); 
-            $table->index('created_time'); 
+            $table->index('uid');
+            $table->index('created_time');
         });
     }
 
@@ -55,4 +55,3 @@ class PwLikeLogTable extends Migration
         Schema::dropIfExists('pw_like_log');
     }
 }
-
