@@ -30,7 +30,13 @@ class PwDesignStructureTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->string('struct_name', 50)->comment('结构名称');
+            $table->text('struct_title')->comment('结构标题');
+            $table->text('struct_style')->comment('结构样式');
+            $table->string('segment', 50)->nullable()-comment('结构所属片段');
+            $table->primary('struct_name');
+
+        });
     }
 
     /**
