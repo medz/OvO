@@ -32,7 +32,15 @@ class PwSeoTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->string('mod', 15)->nullable()->comment('模块名');
+            $table->string('page', 20)->nullable()->comment('页面名');
+            $table->string('param', 20)->nullable()->comment('参数名');
+            $table->string('title', 255)->nullable()->default('')->comment('名称');
+            $table->string('keywords', 255)->nullable()->default('')->comment('关键词');
+            $table->string('description', 255)->nullable()->default('')->comment('描述');
+            $table->primary(['mod' ,'page', 'param']);
+
+        });
     }
 
     /**
