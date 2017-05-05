@@ -33,7 +33,15 @@ class PwDesignShieldTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('pid')->unsigned()->comment('标识ID');
+            $table->string('from_app', 20)->nullable()->default('')->comment('来源应用名称');
+            $table->integer('from_id')->unsigned()->nullable()->default(0)->comment('来源ID');
+            $table->integer('module_id')->unsigned()->nullable()->default(0)->comment('被屏蔽的模块');
+            $table->string('shield_title', 255)->nullable()->default('');
+            $table->string('shield_url', 255)->nullable()->default('');
+            $table->primary('shield_id');
+            $table->index(['from_id', 'from_app']);
+        });
     }
 
     /**
