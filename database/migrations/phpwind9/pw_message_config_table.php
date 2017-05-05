@@ -46,4 +46,3 @@ class PwMessageConfigTable extends Migration
         Schema::dropIfExists('pw_message_config');
     }
 }
-
