@@ -33,7 +33,18 @@ class PwLikeSourceTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('sid')->unsigned()->comment('标识ID');
+            $table->string('subject', 250)->nullable()->default('')->comment('标题');
+            $table->string('sourceUrl', 50)->nullable()->default('')->comment('来源URL');
+            $table->string('fromApp', 20)->nullable()->default('')->comment('来源应用名称');
+            $table->integer('typeid')->unsigned()->nullable()->default(0)->comment('喜欢来源类型');
+            $table->integer('fromid')->unsigned()->nullable()->default(0)->comment('来源ID');
+            $table->mediumInteger('like_count')->unsigned()->nullable()->default(0)->comment('喜欢数统计');
+
+            $table->primary('sid');
+            $table->index(['fromid', 'fromApp']); 
+
+        });
     }
 
     /**
