@@ -50,10 +50,8 @@ class PwMedalLogTable extends Migration
             $table->index('expired_time');
             $table->index('log_order');
             $table->index('award_status');
-
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -65,4 +63,3 @@ class PwMedalLogTable extends Migration
         Schema::dropIfExists('pw_medal_log');
     }
 }
-
