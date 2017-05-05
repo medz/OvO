@@ -42,9 +42,8 @@ class PwLikeContentTable extends Migration
             $table->integer('reply_pid')->unsigned()->nullable()->default(0)->comment('最新回复ID');
 
             $table->primary('likeid');
-            $table->index('isspecial'); 
-            $table->index(['typeid', 'fromid']); 
-
+            $table->index('isspecial');
+            $table->index(['typeid', 'fromid']);
         });
     }
 
@@ -58,4 +57,3 @@ class PwLikeContentTable extends Migration
         Schema::dropIfExists('pw_like_content');
     }
 }
-
