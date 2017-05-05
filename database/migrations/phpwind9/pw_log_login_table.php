@@ -46,7 +46,6 @@ class PwLogLoginTable extends Migration
             $table->index('username');
             $table->index('ip');
             $table->index('created_time');
-
         });
     }
 
@@ -60,4 +59,3 @@ class PwLogLoginTable extends Migration
         Schema::dropIfExists('pw_log_login');
     }
 }
-

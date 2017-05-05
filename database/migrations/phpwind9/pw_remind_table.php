@@ -45,4 +45,3 @@ class PwRemindTable extends Migration
         Schema::dropIfExists('pw_remind');
     }
 }
-
