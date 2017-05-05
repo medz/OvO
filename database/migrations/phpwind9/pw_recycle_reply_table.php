@@ -52,4 +52,3 @@ class PwRecycleReplyTable extends Migration
         Schema::dropIfExists('pw_recycle_reply');
     }
 }
-
