@@ -29,7 +29,11 @@ class PwOnlineStatisticsTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->string('signkey', 20)->comment('统计标识');
+            $table->integer('number')->unsigned()->nullable()->default(0)->comment('统计数量');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->primary('signkey');
+        });
     }
 
     /**
