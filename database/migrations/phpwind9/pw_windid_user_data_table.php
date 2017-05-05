@@ -36,7 +36,7 @@ class PwWindidUserDataTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            
+
             $table->integer('uid')->unsigned()->comment('用户ID');
             $table->smallInteger('messages')->unsigned()->nullable()->default(0)->comment('用户消息数');
             $table->integer('credit1')->nullable()->default(0)->comment('积分1');
@@ -47,7 +47,7 @@ class PwWindidUserDataTable extends Migration
             $table->integer('credit6')->nullable()->default(0);
             $table->integer('credit7')->nullable()->default(0);
             $table->integer('credit8')->nullable()->default(0);
-            
+
             $table->primary('uid');
         });
     }
@@ -62,4 +62,3 @@ class PwWindidUserDataTable extends Migration
         Schema::dropIfExists('pw_windid_user_data');
     }
 }
-
