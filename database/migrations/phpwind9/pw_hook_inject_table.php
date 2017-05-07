@@ -56,7 +56,7 @@ class PwHookInjectTable extends Migration
 			$table->primary('id');
 			$table->unique('hook_name', 'alias');
 			
-        }
+        });
     }
 
     /**
