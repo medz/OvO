@@ -48,7 +48,7 @@ class PwInviteCodeTable extends Migration
 			$table->index('invited_userid');
 			$table->index('created_time');
 			
-        }
+        });
     }
 
     /**
