@@ -36,20 +36,19 @@ class PwCommonCronTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('cron_id')->unsigned()->comment('计划任务ID');
-			$table->string('subject', 50)->nullable()->default('')->comment('计划任务名称');
- 			$table->string('loop_type', 10)->nullable()->default('')->comment('循环类型month/week/day/hour/now');
- 			$table->string('loop_daytime', 50)->nullable()->default('')->comment('循环类型时间（日-时-分）');
- 			$table->string('cron_file', 50)->nullable()->default('')->comment('计划任务执行文件');
- 			$table->tinyInteger('isopen')->unsigned()->nullable()->default(1)->comment('是否开启 0 否，1是，2系统任务');
- 			$table->integer('created_time')->unsigned()->nullable()->default(0)->comment('计划任务创建时间');
- 			$table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('计划任务上次执行结束时间');
- 			$table->integer('next_time')->unsigned()->nullable()->default(0)->comment('下一次执行时间');
- 			
- 			$table->primary('cron_id');
- 			$table->index('next_time');
- 
+
+            $table->integer('cron_id')->unsigned()->comment('计划任务ID');
+            $table->string('subject', 50)->nullable()->default('')->comment('计划任务名称');
+            $table->string('loop_type', 10)->nullable()->default('')->comment('循环类型month/week/day/hour/now');
+            $table->string('loop_daytime', 50)->nullable()->default('')->comment('循环类型时间（日-时-分）');
+            $table->string('cron_file', 50)->nullable()->default('')->comment('计划任务执行文件');
+            $table->tinyInteger('isopen')->unsigned()->nullable()->default(1)->comment('是否开启 0 否，1是，2系统任务');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('计划任务创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('计划任务上次执行结束时间');
+            $table->integer('next_time')->unsigned()->nullable()->default(0)->comment('下一次执行时间');
+
+            $table->primary('cron_id');
+            $table->index('next_time');
         });
     }
 
@@ -63,4 +62,3 @@ class PwCommonCronTable extends Migration
         Schema::dropIfExists('pw_common_cron');
     }
 }
-

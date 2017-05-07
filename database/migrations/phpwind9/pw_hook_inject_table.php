@@ -39,23 +39,22 @@ class PwHookInjectTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('id')->unsigned();
-			$table->char('app_id', 20)->nullable()->default('');
-			$table->string('app_name', 100)->nullable()->default('');
-			$table->string('hook_name', 100)->nullable()->default('')->comment('钩子名');
-			$table->string('alias', 100)->nullable()->default('')->comment('挂载别名');
-			$table->string('class', 100)->nullable()->default('')->comment('挂载类');
-			$table->string('method', 100)->nullable()->default('')->comment('调用方法');
-			$table->string('loadway', 20)->nullable()->default('')->comment('导入方式');
-			$table->string('expression', 100)->nullable()->default('')->comment('条件表达式');
-			$table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
-			$table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
-			$table->string('description', 255)->nullable()->default('')->comment('描述');
-			
-			$table->primary('id');
-			$table->unique('hook_name', 'alias');
-			
+
+            $table->integer('id')->unsigned();
+            $table->char('app_id', 20)->nullable()->default('');
+            $table->string('app_name', 100)->nullable()->default('');
+            $table->string('hook_name', 100)->nullable()->default('')->comment('钩子名');
+            $table->string('alias', 100)->nullable()->default('')->comment('挂载别名');
+            $table->string('class', 100)->nullable()->default('')->comment('挂载类');
+            $table->string('method', 100)->nullable()->default('')->comment('调用方法');
+            $table->string('loadway', 20)->nullable()->default('')->comment('导入方式');
+            $table->string('expression', 100)->nullable()->default('')->comment('条件表达式');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+            $table->string('description', 255)->nullable()->default('')->comment('描述');
+
+            $table->primary('id');
+            $table->unique('hook_name', 'alias');
         });
     }
 
@@ -69,4 +68,3 @@ class PwHookInjectTable extends Migration
         Schema::dropIfExists('pw_hook_inject');
     }
 }
-
