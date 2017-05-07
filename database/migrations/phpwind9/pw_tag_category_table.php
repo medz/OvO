@@ -34,7 +34,17 @@ class PwTagCategoryTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->smallIncrements('category_id')->unsigned()->comment('分类id');
+            $table->char('category_name', 20)->nullable()->default('')->comment('分类名称');
+            $table->string('alias', 15)->nullable()->default('')->comment('别名');
+            $table->smallInteger('vieworder')->unsigned()->nullable()->default(0)->comment('顺序');
+            $table->integer('tag_count')->unsigned()->nullable()->default(0)->comment('话题数');
+            $table->string('seo_title', 255)->nullable()->default('')->comment('seo标题');
+            $table->string('seo_description', 255)->nullable()->default('')->comment('seo描述');
+            $table->string('seo_keywords', 255)->nullable()->default('')->comment('seo关键字');
+
+            $table->primary('category_id');
+        });
     }
 
     /**
