@@ -30,14 +30,13 @@ class PwFragTemplateTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('tpl_id')->unsigned();
-			$table->smallInteger('frag_cid')->unsigned()->nullable()->default(0);
-			$table->string('tpl_name', 50)->nullable()->default('');
-			$table->text('template');
-			
-			$table->primary('tpl_id');
-			
+
+            $table->integer('tpl_id')->unsigned();
+            $table->smallInteger('frag_cid')->unsigned()->nullable()->default(0);
+            $table->string('tpl_name', 50)->nullable()->default('');
+            $table->text('template');
+
+            $table->primary('tpl_id');
         });
     }
 
@@ -51,4 +50,3 @@ class PwFragTemplateTable extends Migration
         Schema::dropIfExists('pw_frag_template');
     }
 }
-

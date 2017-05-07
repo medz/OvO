@@ -56,4 +56,3 @@ class PwAttachsThreadBuyTable extends Migration
         Schema::dropIfExists('pw_attachs_thread_buy');
     }
 }
-

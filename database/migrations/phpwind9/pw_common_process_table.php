@@ -29,13 +29,12 @@ class PwCommonProcessTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->string('flag', 20)->comment('进程标记');
- 			$table->integer('uid')->unsigned()->comment('进程锁用户');
- 			$table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
- 
-			$table->primary('flag','uid');
-			
+
+            $table->string('flag', 20)->comment('进程标记');
+            $table->integer('uid')->unsigned()->comment('进程锁用户');
+            $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
+
+            $table->primary('flag', 'uid');
         });
     }
 
@@ -49,4 +48,3 @@ class PwCommonProcessTable extends Migration
         Schema::dropIfExists('pw_common_process');
     }
 }
-
