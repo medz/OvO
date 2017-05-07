@@ -49,4 +49,3 @@ class PwTagRecordTable extends Migration
         Schema::dropIfExists('pw_tag_record');
     }
 }
-
