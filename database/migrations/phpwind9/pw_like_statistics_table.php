@@ -42,7 +42,7 @@ class PwLikeStatisticsTable extends Migration
 		$table->index('number');
 		$table->index('signkey');
 			
-        };
+        });
     }
 
     /**
