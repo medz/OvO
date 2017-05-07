@@ -36,7 +36,7 @@ class PwUpgradeLogTable extends Migration
 
 		$table->primary('id');
 
-        };
+        });
     }
 
     /**
