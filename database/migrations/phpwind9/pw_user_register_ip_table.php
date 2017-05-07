@@ -36,7 +36,7 @@ class PwUserRegisterIpTable extends Migration
 			
 			$table->primary('ip');		
 			
-        }
+        });
     }
 
     /**
