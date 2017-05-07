@@ -30,8 +30,8 @@ class PwTagAttentionTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            $table->integer('uid')->unsigned()->default(0)->comment('用户ID');
-            $table->integer('tag_id')->unsigned()->default(0)->comment('话题id');
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->integer('tag_id')->unsigned()->comment('话题id');
             $table->integer('last_read_time')->unsigned()->nullable()->default(0)->comment('关注时间');
 
             $table->primary(['tag_id', 'uid']);

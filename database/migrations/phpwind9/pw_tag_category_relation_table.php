@@ -29,7 +29,12 @@ class PwTagCategoryRelationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('tag_id')->unsigned()->comment('话题id');
+            $table->smallinteger('category_id')->unsigned()->comment('分类id');
+
+            $table->primary(['category_id', 'tag_id']);
+            $table->index('tag_id');
+        });
     }
 
     /**
