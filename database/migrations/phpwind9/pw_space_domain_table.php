@@ -28,8 +28,8 @@ class PwSpaceDomainTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            $table->string('domain', 15)->nullable()->default('')->comment('空间域名');
-            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户id');
+            $table->string('domain', 15)->default('')->comment('空间域名');
+            $table->integer('uid')->nullable()->default(0)->comment('用户id');
 
             $table->primary('domain');
         });
