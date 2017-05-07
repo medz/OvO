@@ -38,7 +38,21 @@ class PwReportTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('举报id');
+            $table->smallInteger('type')->unsigned()->nullable()->default(0)->comment('举报类型');
+            $table->integer('type_id')->unsigned()->nullable()->default(0)->comment('举报应用id');
+            $table->string('content', 100)->nullable()->default('')->comment('内容');
+            $table->string('content_url', 255)->nullable()->default('')->comment('内容链接');
+            $table->integer('author_userid')->unsigned()->nullable()->default(0)->comment('作者');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('举报人');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('举报时间');
+            $table->string('reason', 255)->nullable()->default('')->comment('原因');
+            $table->tinyInteger('ifcheck')->unsigned()->nullable()->default(0)->comment('是否审核');
+            $table->integer('operate_userid')->unsigned()->nullable()->default(0)->comment('举报处理人');
+            $table->integer('operate_time')->unsigned()->nullable()->default(0)->comment('举报处理时间');
+
+            $table->primary('id');
+        });
     }
 
     /**
