@@ -42,7 +42,7 @@ class PwHookTable extends Migration
 			
 			$table->primary('name');
 			
-        }
+        });
     }
 
     /**
