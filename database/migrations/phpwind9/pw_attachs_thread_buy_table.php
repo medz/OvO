@@ -43,7 +43,7 @@ class PwAttachsThreadBuyTable extends Migration
 
             $table->primary('id');
             $table->index('aid');
-        };
+        });
     }
 
     /**
