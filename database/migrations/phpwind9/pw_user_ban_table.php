@@ -50,7 +50,7 @@ class PwUserBanTable extends Migration
 			$table->unique('uid','typeid','fid');
  			$table->index('created_userid');
 			
-        }
+        });
     }
 
     /**
