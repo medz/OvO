@@ -30,7 +30,13 @@ class PwTagRecordTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('tag_id')->unsigned()->nullable()->default(0)->comment('话题id');
+            $table->tinyInteger('is_reply')->unsigned()->nullable()->default(0)->comment('是否回复');
+            $table->integer('update_time')->unsigned()->nullable()->default(0)->comment('更新时间');
+
+            $table->index('tag_id');
+            $table->index('update_time');
+        });
     }
 
     /**
