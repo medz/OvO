@@ -47,4 +47,3 @@ class PwTagCategoryRelationTable extends Migration
         Schema::dropIfExists('pw_tag_category_relation');
     }
 }
-

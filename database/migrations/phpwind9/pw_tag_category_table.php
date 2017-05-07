@@ -57,4 +57,3 @@ class PwTagCategoryTable extends Migration
         Schema::dropIfExists('pw_tag_category');
     }
 }
-
