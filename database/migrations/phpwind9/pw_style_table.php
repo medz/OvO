@@ -70,4 +70,3 @@ class PwStyleTable extends Migration
         Schema::dropIfExists('pw_style');
     }
 }
-
