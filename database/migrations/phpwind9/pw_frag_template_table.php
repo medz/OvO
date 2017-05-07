@@ -38,7 +38,7 @@ class PwFragTemplateTable extends Migration
 			
 			$table->primary('tpl_id');
 			
-        }
+        });
     }
 
     /**
