@@ -50,7 +50,7 @@ class PwCommonCronTable extends Migration
  			$table->primary('cron_id');
  			$table->index('next_time');
  
-        }
+        });
     }
 
     /**
