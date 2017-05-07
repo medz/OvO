@@ -41,7 +41,23 @@ class PwStyleTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->char('app_id', 20);
+            $table->tinyInteger('iscurrent')->unsigned()->nullable()->default(0)->comment('是否默认');
+            $table->char('style_type', 10)->nullable()->default('')->comment('风格类型');
+            $table->string('name', 100)->nullable()->default('')->comment('名称');
+            $table->string('alias', 100)->nullable()->default('')->comment('应用别名');
+            $table->string('logo', 100)->nullable()->default('')->comment('图标');
+            $table->string('author_name', 30)->nullable()->default('')->comment('作者名');
+            $table->string('author_icon', 100)->nullable()->default('')->comment('作者头像');
+            $table->string('author_email', 200)->nullable()->default('')->comment('作者email');
+            $table->string('website', 200)->nullable()->default('')->comment('作者网站');
+            $table->string('version', 50)->nullable()->default('')->comment('应用版本');
+            $table->string('pwversion', 50)->nullable()->default('');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+            $table->string('description', 255)->nullable()->default('')->comment('描述');
+            $table->primary('app_id');
+        });
     }
 
     /**
