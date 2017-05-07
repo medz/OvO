@@ -45,4 +45,3 @@ class PwSpaceDomainTable extends Migration
         Schema::dropIfExists('pw_space_domain');
     }
 }
-
