@@ -36,7 +36,7 @@ class PwCommonProcessTable extends Migration
  
 			$table->primary('flag','uid');
 			
-        }
+        });
     }
 
     /**
