@@ -37,7 +37,18 @@ class PwSpaceTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->default(0)->comment('用户ID');
+            $table->string('space_name', 50)->nullable()->default('')->comment('空间名称');
+            $table->string('space_descrip', 255)->nullable()->default('')->comment('空间描述');
+            $table->string('space_domain', 20)->nullable()->default('')->comment('二级哉域名');
+            $table->string('space_style', 20)->nullable()->default('')->comment('空间风格');
+            $table->string('back_image', 255)->nullable()->default('')->comment('背景设置');
+            $table->integer('visit_count')->unsigned()->nullable()->default(0)->comment('访问统计');
+            $table->text('visitors')->comment('来访者');
+            $table->text('tovisitors')->comment('我的访问记录');
+            $table->tinyInteger('space_privacy')->nullable()->default(0)->comment('隐私等级');
+            $table->primary('uid');
+        });
     }
 
     /**
