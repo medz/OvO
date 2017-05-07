@@ -49,4 +49,3 @@ class PwTagAttentionTable extends Migration
         Schema::dropIfExists('pw_tag_attention');
     }
 }
-
