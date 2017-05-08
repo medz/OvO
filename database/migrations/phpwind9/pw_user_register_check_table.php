@@ -29,7 +29,12 @@ class PwUserRegisterCheckTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->nullable()->comment('用户ID');
+            $table->tinyInteger('ifchecked')->nullable()->default(1)->comment('是否已经审核');
+            $table->tinyInteger('ifactived')->nullable()->default(1)->comment('是否已经激活');
+
+            $table->primary('uid');
+        });
     }
 
     /**
