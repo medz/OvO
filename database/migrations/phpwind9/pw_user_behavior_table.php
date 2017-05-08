@@ -31,7 +31,14 @@ class PwUserBehaviorTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->default(0)->comment('用户UID');
+            $table->char('behavior', 20)->comment('行为标识');
+            $table->integer('number')->nullable()->default(0)->comment('行为统计');
+            $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
+            $table->string('extend_info', 255)->nullable()->default('')->comment('额外信息');
+
+            $table->primary(['gid','taskid']);
+        });
     }
 
     /**
