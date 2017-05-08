@@ -33,7 +33,16 @@ class PwTagRelationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('tag_id')->unsigned()->default(0)->comment('话题id');
+            $table->integer('content_tag_id')->unsigned()->nullable()->default(0)->comment('内容id');
+            $table->tinyInteger('type_id')->nullable()->default(0)->comment('应用分类id');
+            $table->integer('param_id')->unsigned()->nullable()->default(0)->comment('应用id');
+            $table->tinyInteger('ifcheck')->nullable()->default(0)->comment('是否审核');
+            $table->integer('ifcheck')->unsigned()->nullable()->default(0)->comment('创建时间');
+
+            $table->primary(['type_id', 'param_id', 'content_tag_id']);
+            $table->index(['tag_id', 'type_id']);
+        });
     }
 
     /**
