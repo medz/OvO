@@ -30,7 +30,7 @@ class PwUserMobileTable extends Migration
                 $table->engine = 'InnoDB';
             }
             $table->integer('uid')->unsigned()->comment('用户uid');
-            $table->bigInteger('mobile')->unsigned()->nullable()->default(0)->comment('举报时间');
+            $table->bigInteger('mobile')->unsigned()->nullable()->default(0)->comment('用户手机号码');
 
             $table->primary('uid');
             $table->index('mobile');
