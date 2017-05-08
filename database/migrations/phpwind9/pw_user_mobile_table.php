@@ -29,7 +29,12 @@ class PwUserMobileTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->comment('用户uid');
+            $table->bigInteger('mobile')->unsigned()->nullable()->default(0)->comment('举报时间');
+
+            $table->primary('uid');
+            $table->index('mobile');
+        });
     }
 
     /**
