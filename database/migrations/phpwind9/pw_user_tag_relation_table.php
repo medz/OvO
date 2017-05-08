@@ -49,4 +49,3 @@ class PwUserTagRelationTable extends Migration
         Schema::dropIfExists('pw_user_tag_relation');
     }
 }
-
