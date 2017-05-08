@@ -31,7 +31,14 @@ class PwUserMobileVerifyTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->bigInteger('mobile')->unsigned()->comment('用户手机号码');
+            $table->smallInteger('code')->unsigned()->nullable()->default(0)->comment('验证码');
+            $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
+            $table->tinyInteger('number')->unsigned()->nullable()->default(0);
+            $table->integer('create_time')->unsigned()->nullable()->default(0);
+
+            $table->primary('mobile');
+        });
     }
 
     /**
