@@ -30,7 +30,13 @@ class PwUserBelongTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->mediuminteger('gid')->nullable()->default(0)->comment('用户组ID');
+            $table->integer('endtime')->unsigned()->nullable()->default(0)->comment('有效期');
+
+            $table->primary(['uid', 'gid']);
+            $table->index(['gid');
+        });
     }
 
     /**

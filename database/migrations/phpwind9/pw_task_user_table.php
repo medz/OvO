@@ -34,7 +34,17 @@ class PwTaskUserTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('taskid')->unsigned()->comment('任务ID');
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->tinyInteger('task_status')->nullable()->default(0)->comment('任务状态');
+            $table->tinyInteger('is_period')->nullable()->default(0)->comment('是否是周期任务');
+            $table->string('step', 100)->nullable()->default('')->comment('任务完成的进度信息');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('申请任务时间');
+            $table->integer('finish_time')->unsigned()->nullable()->default(0)->comment('完成任务时间');
+
+            $table->primary(['uid', 'taskid']);
+            $table->index(['uid', 'task_status']);
+        });
     }
 
     /**
