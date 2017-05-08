@@ -29,8 +29,14 @@ class PwUserLoginIpRecodeTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->string('ip', 20)->default('')->comment('IP地址');
+            $table->string('last_time', 10)->default('')->comment('最后访问时间');
+            $table->smallinteger('error_count')->unsigned()->nullable()->default(0)->comment('错误次数');
+
+            $table->primary('ip');
+        });
     }
+
 
     /**
      * Reverse the migrations.
