@@ -32,7 +32,15 @@ class PwUserEducationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned();
+            $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
+            $table->integer('schoolid')->unsigned()->nullable()->default(0)->comment('学校ID');
+            $table->tinyInteger('degree')->nullable()->default(0)->comment('是否显示给所有用户');
+            $table->smallinteger('start_time')->nullable()->default(0)->comment('是否是周期任务');
+
+            $table->primary('id');
+            $table->index(['uid', 'start_time']);
+        });
     }
 
     /**
