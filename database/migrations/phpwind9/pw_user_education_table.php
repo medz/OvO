@@ -53,4 +53,3 @@ class PwUserEducationTable extends Migration
         Schema::dropIfExists('pw_user_education');
     }
 }
-
