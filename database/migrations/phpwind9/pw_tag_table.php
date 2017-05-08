@@ -43,7 +43,26 @@ class PwTagTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('tag_id')->unsigned()->comment('话题id');
+            $table->integer('parent_tag_id')->unsigned()->nullable()->default(0)->comment('举报应用id');
+            $table->char('tag_name', 60)->nullable()->default('')->comment('上级话题id');
+            $table->string('tag_logo', 255)->nullable()->default('')->comment('话题logo');
+            $table->tinyInteger('ifhot')->unsigned()->nullable()->default(1)->comment('允许热门');
+            $table->string('excerpt', 255)->nullable()->default('')->comment('摘要');
+            $table->integer('content_count')->unsigned()->nullable()->default(0)->comment('内容数');
+            $table->integer('attention_count')->unsigned()->nullable()->default(0)->comment('关注数');
+            $table->integer('hits')->unsigned()->nullable()->default(0)->comment('点击数');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('创建人');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->tinyInteger('iflogo')->unsigned()->nullable()->default(0)->comment('是否有logo');
+            $table->string('seo_title', 255)->nullable()->default('')->comment('seo标题');
+            $table->string('seo_description', 255)->nullable()->default('')->comment('seo描述');
+            $table->string('seo_keywords', 255)->nullable()->default('')->comment('seo关键字');
+
+            $table->primary('tag_id');
+            $table->index('tag_name');
+            $table->index('parent_tag_id');
+        });
     }
 
     /**
