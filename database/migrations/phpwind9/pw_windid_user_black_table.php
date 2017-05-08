@@ -28,7 +28,11 @@ class PwWindidUserBlackTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->text('blacklist')->comment('黑名单');
+
+            $table->primary('uid');
+        });
     }
 
     /**
