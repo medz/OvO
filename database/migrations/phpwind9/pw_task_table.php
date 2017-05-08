@@ -42,7 +42,25 @@ class PwTaskTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('taskid')->unsigned()->comment('话题id');
+            $table->integer('pre_task')->unsigned()->nullable()->default(0)->comment('前置任务ID');
+            $table->tinyInteger('is_auto')->nullable()->default(0)->comment('是否是自动任务标识');
+            $table->tinyInteger('is_display_all')->nullable()->default(0)->comment('是否显示给所有用户');
+            $table->smallinteger('view_order')->nullable()->default(0)->comment('顺序');
+            $table->tinyInteger('is_open')->nullable()->default(0)->comment('是否开启状态');
+            $table->integer('start_time')->unsigned()->nullable()->default(0)->comment('开始的时间');
+            $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('结束时间');
+            $table->smallinteger('period')->nullable()->default(0)->comment('是否是周期任务');
+            $table->string('title', 100)->nullable()->default('')->comment('标题');
+            $table->string('description', 255)->nullable()->default('')->comment('描述');
+            $table->string('icon', 200)->nullable()->default('')->comment('图标路径');
+            $table->string('user_groups', 255)->nullable()->default('-1')->comment('可以申请任务的用户组');
+            $table->string('reward', 255)->nullable()->default('')->comment('奖励');
+            $table->string('conditions', 255)->nullable()->default('')->comment('完成条件');
+
+            $table->primary('taskid');
+            $table->index('pre_task');
+        });
     }
 
     /**
