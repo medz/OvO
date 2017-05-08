@@ -37,7 +37,7 @@ class PwUserBehaviorTable extends Migration
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
             $table->string('extend_info', 255)->nullable()->default('')->comment('额外信息');
 
-            $table->primary(['gid','taskid']);
+            $table->primary(['gid', 'taskid']);
         });
     }
 
@@ -51,4 +51,3 @@ class PwUserBehaviorTable extends Migration
         Schema::dropIfExists('pw_user_behavior');
     }
 }
-
