@@ -61,4 +61,3 @@ class PwSpaceTable extends Migration
         Schema::dropIfExists('pw_space');
     }
 }
-
