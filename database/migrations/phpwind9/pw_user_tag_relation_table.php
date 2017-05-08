@@ -30,7 +30,13 @@ class PwUserTagRelationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('tag_id')->unsigned()->nullable()->comment('个性标签ID');
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->integer('created_time')->unsigned()->nullable()->comment('创建时间');
+
+            $table->primary(['uid', 'tag_id']);
+            $table->index('created_time');
+        });
     }
 
     /**
