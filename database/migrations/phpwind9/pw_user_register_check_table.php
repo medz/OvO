@@ -47,4 +47,3 @@ class PwUserRegisterCheckTable extends Migration
         Schema::dropIfExists('pw_user_register_check');
     }
 }
-
