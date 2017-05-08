@@ -30,7 +30,13 @@ class PwTaskGroupTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('taskid')->unsigned()->nullable()->default(0)->comment('任务ID');
+            $table->integer('gid')->default(0)->comment('用户组ID');
+            $table->tinyInteger('is_auto')->nullable()->default(0)->comment('是否是周期任务');
+            $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('举报人');
+
+            $table->primary(['gid','taskid']);
+        });
     }
 
     /**
