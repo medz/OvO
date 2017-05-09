@@ -33,7 +33,16 @@ class PwWindidSchoolTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('schoolid')->unsigned()->comment('学校ID');
+            $table->string('name', 32)->nullable()->default('')->comment('学校名字');
+            $table->integer('areaid')->nullable()->default(0)->comment('地区ID');
+            $table->tinyinteger('typeid')->nullable()->default(0)->comment('类型：大学/高中/初中');
+            $table->char('first_char', 1)->nullable()->default('')->comment('学校名字的首字母');
+
+            $table->primary('schoolid');
+            $table->index(['areaid', 'first_char']);
+            $table->index(['name', 'first_char']);
+        });
     }
 
     /**

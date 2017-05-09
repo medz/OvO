@@ -36,7 +36,19 @@ class PwWeiboTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('weibo_id')->unsigned();
+            $table->integer('src_id')->unsigned()->nullable()->default(0);
+            $table->text('content');
+            $table->tinyinteger('type')->unsigned()->nullable()->default(0);
+            $table->mediuminteger('comments')->unsigned()->nullable()->default(0);
+            $table->text('extra');
+            $table->mediuminteger('like_count')->unsigned()->nullable()->default(0);
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 32)->nullable()->default('');
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+
+            $table->primary('weibo_id');
+        });
     }
 
     /**
