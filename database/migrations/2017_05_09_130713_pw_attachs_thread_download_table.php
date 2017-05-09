@@ -41,7 +41,6 @@ class PwAttachsThreadDownloadTable extends Migration
             $table->mediumInteger('cost')->unsigned()->nullable()->default(0)->comment('花费积分数量');
             $table->tinyInteger('ctype')->unsigned()->nullable()->default(0)->comment('花费积分类型');
 
-            $table->primary('id');
             $table->index('aid');
         });
     }

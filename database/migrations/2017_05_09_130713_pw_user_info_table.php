@@ -63,7 +63,6 @@ class PwUserInfoTable extends Migration
             $table->string('aliww', 30)->nullable()->default('')->comment('阿里旺旺号码');
             $table->string('mobile', 16)->nullable()->default('')->comment('手机号码');
             $table->string('alipay', 30)->nullable()->default('')->comment('支付宝帐号');
-            $table->string('alipay', 30)->nullable()->default('')->comment('支付宝帐号');
             $table->text('bbs_sign')->comment('个性签名');
             $table->text('profile')->comment('个人简介');
             $table->string('regreason', 200)->nullable()->default('')->comment('注册原因');

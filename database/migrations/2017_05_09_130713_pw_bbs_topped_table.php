@@ -30,7 +30,7 @@ class PwBbsToppedTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            $table->smallint('fid')->unsigned()->nullable()->default(0);
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
             $table->integer('tid')->unsigned()->nullable()->default(0);
             $table->integer('pid')->unsigned()->nullable()->default(0);
             $table->integer('created_time')->unsigned()->nullable()->default(0);

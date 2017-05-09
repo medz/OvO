@@ -50,8 +50,8 @@ class PwUserTable extends Migration
             $table->string('groups', 255)->nullable()->default('')->comment('用户附加组的ID缓存字段');
 
             $table->primary('uid');
-            $table->primary('username');
-            $table->primary('email');
+            $table->unique('username');
+            $table->index('email');
         });
     }
 

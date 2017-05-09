@@ -29,7 +29,7 @@ class PwLinkRelationsTable extends Migration
                 $table->engine = 'InnoDB';
             }
             $table->smallIncrements('lid')->unsigned()->comment('友情链接id');
-            $table->smallint('typeid')->unsigned()->comment('分类id');
+            $table->smallInteger('typeid')->unsigned()->comment('分类id');
 
             $table->index(['lid', 'typeid']);
         });

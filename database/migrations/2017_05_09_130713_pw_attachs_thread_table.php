@@ -46,23 +46,23 @@ class PwAttachsThreadTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            $table->integer('aid') > unsigned()->nullable()->comment('附件id');
-            $table->smallInteger('size') > unsigned()->nullable()->default(0)->comment('所属版块id');
-            $table->integer('tid') > unsigned()->nullable()->default(0)->comment('所属帖子id');
-            $table->integer('pid') > unsigned()->nullable()->default(0)->comment('所属回复id');
+            $table->integer('aid') -> unsigned()->nullable()->comment('附件id');
+            $table->smallInteger('fid') -> unsigned()->nullable()->default(0)->comment('所属版块id');
+            $table->integer('tid') -> unsigned()->nullable()->default(0)->comment('所属帖子id');
+            $table->integer('pid') -> unsigned()->nullable()->default(0)->comment('所属回复id');
             $table->string('name', 80)->nullable()->default('')->comment('文件名');
             $table->string('type', 15)->nullable()->default('')->comment('文件类型');
-            $table->integer('size') > unsigned()->nullable()->default(0)->comment('文件大小');
-            $table->integer('hits') > unsigned()->nullable()->default(0)->comment('下载数');
-            $table->smallInteger('width') > unsigned()->nullable()->default(0)->comment('图片宽度');
-            $table->smallInteger('height') > unsigned()->nullable()->default(0)->comment('图片高度');
+            $table->integer('size') -> unsigned()->nullable()->default(0)->comment('文件大小');
+            $table->integer('hits') -> unsigned()->nullable()->default(0)->comment('下载数');
+            $table->smallInteger('width') -> unsigned()->nullable()->default(0)->comment('图片宽度');
+            $table->smallInteger('height') -> unsigned()->nullable()->default(0)->comment('图片高度');
             $table->string('path', 80)->nullable()->default('')->comment('存储路径');
-            $table->tinyInteger('ifthumb') > unsigned()->nullable()->default(0)->comment('是否有缩略图');
-            $table->tinyInteger('special') > unsigned()->nullable()->default(0)->comment('是否售密');
-            $table->integer('cost') > unsigned()->nullable()->default(0)->comment('售密价格');
-            $table->smallInteger('ctype') > unsigned()->nullable()->default(0)->comment('积分类型');
-            $table->integer('created_userid') > unsigned()->nullable()->default(0)->comment('上传人用户id');
-            $table->integer('created_time') > unsigned()->nullable()->default(0)->comment('上传时间');
+            $table->tinyInteger('ifthumb') -> unsigned()->nullable()->default(0)->comment('是否有缩略图');
+            $table->tinyInteger('special') -> unsigned()->nullable()->default(0)->comment('是否售密');
+            $table->integer('cost') -> unsigned()->nullable()->default(0)->comment('售密价格');
+            $table->smallInteger('ctype') -> unsigned()->nullable()->default(0)->comment('积分类型');
+            $table->integer('created_userid') -> unsigned()->nullable()->default(0)->comment('上传人用户id');
+            $table->integer('created_time') -> unsigned()->nullable()->default(0)->comment('上传时间');
             $table->string('descrip', 255)->nullable()->default('')->comment('文件描述');
 
             $table->primary('aid');

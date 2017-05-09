@@ -32,14 +32,14 @@ class PwBbsSpecialsortTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-            $table->string('sort_type', 16)->nullable()->default('');
-            $table->smallInteger('fid')->unsigned()->comment('回帖pid');
-            $table->integer('tid')->unsigned()->comment('帖子tid');
-            $table->integer('tid')->unsigned()->nullable()->default(0)->comment('回帖楼层号');
-            $table->integer('pid')->unsigned()->nullable()->default(0)->comment('贴内置顶操作人');
-            $table->integer('extra')->nullable()->default(0)->comment('贴内置顶操作人');
-            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('贴内置顶时间');
-            $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('贴内置顶时间');
+
+            $table->char('sort_type', 16)->nullable()->default('');
+            $table->smallInteger('fid')->unsigned()->nullable()->default(0);
+            $table->integer('tid')->unsigned()->nullable()->default(0);
+            $table->integer('pid')->unsigned()->nullable()->default(0);
+            $table->integer('extra')->unsigned()->nullable()->default(0);
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+            $table->integer('end_time')->unsigned()->nullable()->default(0);
         });
     }
 

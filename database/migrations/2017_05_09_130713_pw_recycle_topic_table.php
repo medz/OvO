@@ -34,10 +34,10 @@ class PwRecycleTopicTable extends Migration
             $table->integer('tid')->unsigned();
             $table->smallinteger('fid')->unsigned()->nullable()->default(0);
             $table->integer('operate_time')->unsigned()->nullable()->default(0);
-            $table->string('operate_username', 15)->nullable();
+            $table->string('operate_username', 15);
             $table->text('reason');
 
-            $table->primary('pid');
+            $table->primary('tid');
         });
     }
 

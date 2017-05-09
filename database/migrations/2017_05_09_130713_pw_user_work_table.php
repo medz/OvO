@@ -37,8 +37,8 @@ class PwUserWorkTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
             $table->string('company', 100)->nullable()->default('')->comment('公司名字');
-            $table->tsmallinteger('starty')->nullable()->default(0)->comment('开始年份');
-            $table->tsmallinteger('endy')->nullable()->default(0)->comment('结束年份');
+            $table->smallInteger('starty')->nullable()->default(0)->comment('开始年份');
+            $table->smallInteger('endy')->nullable()->default(0)->comment('结束年份');
             $table->tinyInteger('startm')->nullable()->default(0)->comment('开始月份');
             $table->tinyInteger('endm')->nullable()->default(0)->comment('结束月份');
 

@@ -37,7 +37,7 @@ class PwMedalUserTable extends Migration
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('最近的过期时间');
 
             $table->primary('uid');
-            $table->index('ficountsd');
+            $table->index('counts');
         });
     }
 

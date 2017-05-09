@@ -38,7 +38,7 @@ class PwTagRelationTable extends Migration
             $table->tinyInteger('type_id')->nullable()->default(0)->comment('应用分类id');
             $table->integer('param_id')->unsigned()->nullable()->default(0)->comment('应用id');
             $table->tinyInteger('ifcheck')->nullable()->default(0)->comment('是否审核');
-            $table->integer('ifcheck')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
 
             $table->primary(['type_id', 'param_id', 'content_tag_id']);
             $table->index(['tag_id', 'type_id']);
