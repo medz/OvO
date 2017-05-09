@@ -74,6 +74,7 @@ class PwUserInfoTable extends Migration
 
             $table->primary('uid');
         });
+    }
 
     /**
      * Reverse the migrations.
