@@ -33,9 +33,9 @@ class PwUserPermissionGroupsTable extends Migration
             }
             $table->mediuminteger('gid')->unsigned()->comment('用户组ID');
             $table->string('rkey', 64)->comment('权限点');
-            $table->enum('rtype', ['basic','system','systemforum'])->nullable()->default(basic)->comment('权限类型');
+            $table->enum('rtype', ['basic','system','systemforum'])->nullable()->default('basic')->comment('权限类型');
             $table->text('rvalue')->comment('权限值');
-            $table->enum('rtype', ['string','array'])->nullable()->default(string)->comment('权限值类型');
+            $table->enum('rtype', ['string','array'])->nullable()->default('string')->comment('权限值类型');
             $table->primary(['gid', 'rkey']);
         });
     }
