@@ -74,6 +74,7 @@ class PwUserInfoTable extends Migration
 
             $table->primary('uid');
         });
+    }
 
     /**
      * Reverse the migrations.
@@ -85,4 +86,3 @@ class PwUserInfoTable extends Migration
         Schema::dropIfExists('pw_user_info');
     }
 }
-

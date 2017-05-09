@@ -36,7 +36,7 @@ class PwUserTagTable extends Migration
             $table->string('name', 20)->nullable()->default('')->comment('个性标签名字');
             $table->tinyInteger('ifhot')->unsigned()->nullable()->default(0)->comment('是否是热门标签');
             $table->integer('used_count')->unsigned()->nullable()->default(0)->comment('被使用次数');
-            
+
             $table->primary('tag_id');
             $table->unique('name');
             $table->index('used_count');
@@ -53,4 +53,3 @@ class PwUserTagTable extends Migration
         Schema::dropIfExists('pw_user_tag');
     }
 }
-

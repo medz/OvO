@@ -55,7 +55,7 @@ class PwWindidApplicationTable extends Migration
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
             $table->tinyinteger('status')->nullable()->default(0);
             $table->string('description', 255)->nullable()->default('')->comment('描述');
-            
+
             $table->primary('app_id');
             $table->index('alias');
         });
@@ -71,4 +71,3 @@ class PwWindidApplicationTable extends Migration
         Schema::dropIfExists('pw_windid_application');
     }
 }
-

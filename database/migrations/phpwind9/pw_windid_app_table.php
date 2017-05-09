@@ -45,11 +45,10 @@ class PwWindidAppTable extends Migration
             $table->string('charset', 16)->nullable()->default('')->comment('客户端编码');
             $table->tinyInteger('issyn')->unsigned()->nullable()->default(0);
             $table->tinyInteger('isnotify')->unsigned()->nullable()->default(0);
-            
+
             $table->primary('id');
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -61,4 +60,3 @@ class PwWindidAppTable extends Migration
         Schema::dropIfExists('pw_windid_app');
     }
 }
-

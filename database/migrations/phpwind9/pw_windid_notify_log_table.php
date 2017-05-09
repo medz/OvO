@@ -59,4 +59,3 @@ class PwWindidNotifyLogTable extends Migration
         Schema::dropIfExists('pw_windid_notify_log');
     }
 }
-

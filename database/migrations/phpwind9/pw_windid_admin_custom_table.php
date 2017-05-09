@@ -44,4 +44,3 @@ class PwWindidAdminCustomTable extends Migration
         Schema::dropIfExists('pw_windid_admin_custom');
     }
 }
-

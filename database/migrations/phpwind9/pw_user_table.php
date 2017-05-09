@@ -65,4 +65,3 @@ class PwUserTable extends Migration
         Schema::dropIfExists('pw_user');
     }
 }
-

@@ -60,4 +60,3 @@ class PwWindidMessageRelationTable extends Migration
         Schema::dropIfExists('pw_windid_message_relation');
     }
 }
-

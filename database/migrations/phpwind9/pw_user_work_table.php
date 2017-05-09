@@ -41,7 +41,7 @@ class PwUserWorkTable extends Migration
             $table->tsmallinteger('endy')->nullable()->default(0)->comment('结束年份');
             $table->tinyInteger('startm')->nullable()->default(0)->comment('开始月份');
             $table->tinyInteger('endm')->nullable()->default(0)->comment('结束月份');
-            
+
             $table->primary('id');
             $table->index(['uid', 'starty', 'startm']);
         });
@@ -57,4 +57,3 @@ class PwUserWorkTable extends Migration
         Schema::dropIfExists('pw_user_work');
     }
 }
-
