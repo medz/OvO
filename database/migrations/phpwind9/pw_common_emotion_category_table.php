@@ -42,7 +42,7 @@ class PwCommonEmotionCategoryTable extends Migration
 			
 			$table->primary('category_id');
 			
-        }
+        });
     }
 
     /**
