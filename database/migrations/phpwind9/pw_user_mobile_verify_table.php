@@ -51,4 +51,3 @@ class PwUserMobileVerifyTable extends Migration
         Schema::dropIfExists('pw_user_mobile_verify');
     }
 }
-

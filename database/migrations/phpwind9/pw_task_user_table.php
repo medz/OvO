@@ -57,4 +57,3 @@ class PwTaskUserTable extends Migration
         Schema::dropIfExists('pw_task_user');
     }
 }
-

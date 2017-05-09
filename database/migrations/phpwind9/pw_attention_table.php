@@ -36,9 +36,9 @@ class PwAttentionTable extends Migration
             $table->integer('touid')->unsigned();
             $table->integer('created_time')->unsigned()->nullable()->default(0);
 
-            $table->primary('touid', 'uid');
-            $table->index('uid', 'created_time');
-            $table->index('touid', 'created_time');
+            $table->primary(['touid', 'uid']);
+            $table->index(]'uid', 'created_time']);
+            $table->index(]'touid', 'created_time']);
         });
     }
 

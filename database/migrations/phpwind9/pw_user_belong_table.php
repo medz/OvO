@@ -35,7 +35,7 @@ class PwUserBelongTable extends Migration
             $table->integer('endtime')->unsigned()->nullable()->default(0)->comment('有效期');
 
             $table->primary(['uid', 'gid']);
-            $table->index(['gid');
+            $table->index('gid');
         });
     }
 
@@ -49,4 +49,3 @@ class PwUserBelongTable extends Migration
         Schema::dropIfExists('pw_user_belong');
     }
 }
-

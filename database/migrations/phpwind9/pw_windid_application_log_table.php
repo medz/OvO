@@ -38,7 +38,7 @@ class PwWindidApplicationLogTable extends Migration
             $table->integer('creative_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
 
-            $table->unique('app_id', 'log_type');
+            $table->unique(['app_id', 'log_type']);
         });
     }
 

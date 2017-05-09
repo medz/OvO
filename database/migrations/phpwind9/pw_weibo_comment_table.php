@@ -57,4 +57,3 @@ class PwWeiboCommentTable extends Migration
         Schema::dropIfExists('pw_weibo_comment');
     }
 }
-

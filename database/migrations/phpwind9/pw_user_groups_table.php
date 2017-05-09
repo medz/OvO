@@ -33,7 +33,7 @@ class PwUserGroupsTable extends Migration
             }
             $table->mediumIncrements('gid')->unsigned()->comment('用户组ID');
             $table->string('name', 64)->nullable()->default('')->comment('用户组名字');
-            $table->enum('type', ['default','member','system','special','vip'])->comment('用户组类型');
+            $table->enum('type', ['default', 'member', 'system', 'special', 'vip'])->comment('用户组类型');
             $table->string('image', 32)->nullable()->default('')->comment('用户组图标');
             $table->integer('points')->unsigned()->nullable()->default(0)->comment('用户组需要的点');
 
@@ -51,4 +51,3 @@ class PwUserGroupsTable extends Migration
         Schema::dropIfExists('pw_user_groups');
     }
 }
-

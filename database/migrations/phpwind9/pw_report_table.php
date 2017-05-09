@@ -65,4 +65,3 @@ class PwReportTable extends Migration
         Schema::dropIfExists('pw_report');
     }
 }
-

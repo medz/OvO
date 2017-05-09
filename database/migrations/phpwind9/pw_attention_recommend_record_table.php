@@ -34,7 +34,7 @@ class PwAttentionRecommendRecordTable extends Migration
             $table->integer('recommend_uid')->unsigned()->nullable()->default(0)->comment('潜在好友');
             $table->integer('same_uid')->unsigned()->nullable()->default(0)->comment('共同好友');
 
-            $table->unique('uid', 'recommend_uid', 'same_uid');
+            $table->unique(['uid', 'recommend_uid', 'same_uid']);
         });
     }
 

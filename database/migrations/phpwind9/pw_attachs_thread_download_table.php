@@ -43,7 +43,7 @@ class PwAttachsThreadDownloadTable extends Migration
 
             $table->primary('id');
             $table->index('aid');
-        };
+        });
     }
 
     /**
@@ -56,4 +56,3 @@ class PwAttachsThreadDownloadTable extends Migration
         Schema::dropIfExists('pw_attachs_thread_download');
     }
 }
-
