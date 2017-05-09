@@ -45,4 +45,3 @@ class PwWindidUserBlackTable extends Migration
         Schema::dropIfExists('pw_windid_user_black');
     }
 }
-

@@ -42,27 +42,26 @@ class PwCommonNavTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-			
-			$table->integer('navid')->unsigned()->comment('导航ID');
-			$table->integer('parentid')->unsigned()->nullable()->default(0)->comment('导航上级ID');
-			$table->integer('rootid')->unsigned()->nullable()->default(0)->comment('导航类ID');
-			$table->string('type', 32)->nullable()->default('')->comment('所属类型');
-			$table->string('sign', 32)->nullable()->default('')->comment('当前定位标识');
-			$table->char('name', 50)->nullable()->default('')->comment('导航名称');
-			$table->char('style', 50)->nullable()->default('')->comment('导航样式');
-			$table->char('link', 100)->nullable()->default('')->comment('导航链接');
-			$table->char('alt', 50)->nullable()->default('')->comment('链接ALT信息');
-			$table->string('image', 100)->nullable()->default('')->comment('导航小图标');
- 			$table->tinyInteger('target')->unsigned()->nullable()->default(0)->comment('是否新窗口打开');
- 			$table->tinyInteger('isshow')->unsigned()->nullable()->default(0)->comment('是否使用');
- 			$table->tinyInteger('orderid')->unsigned()->nullable()->default(0)->comment('排序');
 
-			$table->primary('navid');
- 			$table->index('type');
- 			$table->index('rootid');
- 			$table->index('orderid');
-			
-        }
+            $table->integer('navid')->unsigned()->comment('导航ID');
+            $table->integer('parentid')->unsigned()->nullable()->default(0)->comment('导航上级ID');
+            $table->integer('rootid')->unsigned()->nullable()->default(0)->comment('导航类ID');
+            $table->string('type', 32)->nullable()->default('')->comment('所属类型');
+            $table->string('sign', 32)->nullable()->default('')->comment('当前定位标识');
+            $table->char('name', 50)->nullable()->default('')->comment('导航名称');
+            $table->char('style', 50)->nullable()->default('')->comment('导航样式');
+            $table->char('link', 100)->nullable()->default('')->comment('导航链接');
+            $table->char('alt', 50)->nullable()->default('')->comment('链接ALT信息');
+            $table->string('image', 100)->nullable()->default('')->comment('导航小图标');
+            $table->tinyInteger('target')->unsigned()->nullable()->default(0)->comment('是否新窗口打开');
+            $table->tinyInteger('isshow')->unsigned()->nullable()->default(0)->comment('是否使用');
+            $table->tinyInteger('orderid')->unsigned()->nullable()->default(0)->comment('排序');
+
+            $table->primary('navid');
+            $table->index('type');
+            $table->index('rootid');
+            $table->index('orderid');
+        });
     }
 
     /**
@@ -75,4 +74,3 @@ class PwCommonNavTable extends Migration
         Schema::dropIfExists('pw_common_nav');
     }
 }
-

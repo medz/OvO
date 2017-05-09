@@ -35,7 +35,7 @@ class PwTaskGroupTable extends Migration
             $table->tinyInteger('is_auto')->nullable()->default(0)->comment('是否是周期任务');
             $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('举报人');
 
-            $table->primary(['gid','taskid']);
+            $table->primary(['gid', 'taskid']);
         });
     }
 
@@ -49,4 +49,3 @@ class PwTaskGroupTable extends Migration
         Schema::dropIfExists('pw_task_group');
     }
 }
-

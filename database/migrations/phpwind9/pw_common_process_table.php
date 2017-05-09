@@ -34,7 +34,7 @@ class PwCommonProcessTable extends Migration
             $table->integer('uid')->unsigned()->comment('进程锁用户');
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
 
-            $table->primary('flag', 'uid');
+            $table->primary(['flag', 'uid']);
         });
     }
 

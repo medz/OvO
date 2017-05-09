@@ -47,7 +47,7 @@ class PwUserBanTable extends Migration
             $table->string('reason', 80)->nullable()->default('')->comment('操作原因');
 
             $table->primary('id');
-            $table->unique('uid', 'typeid', 'fid');
+            $table->unique(['uid', 'typeid', 'fid']);
             $table->index('created_userid');
         });
     }

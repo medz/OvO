@@ -34,7 +34,7 @@ class PwAttentionTypeRelationsTable extends Migration
             $table->integer('touid')->unsigned();
             $table->integer('typeid');
 
-            $table->primary('uid', 'touid', 'typeid');
+            $table->primary(['uid', 'touid', 'typeid']);
         });
     }
 

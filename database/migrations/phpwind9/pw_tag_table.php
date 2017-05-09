@@ -75,4 +75,3 @@ class PwTagTable extends Migration
         Schema::dropIfExists('pw_tag');
     }
 }
-

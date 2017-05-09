@@ -73,4 +73,3 @@ class PwTaskTable extends Migration
         Schema::dropIfExists('pw_task');
     }
 }
-

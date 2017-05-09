@@ -54,7 +54,7 @@ class PwHookInjectTable extends Migration
             $table->string('description', 255)->nullable()->default('')->comment('描述');
 
             $table->primary('id');
-            $table->unique('hook_name', 'alias');
+            $table->unique(['hook_name', 'alias']);
         });
     }
 

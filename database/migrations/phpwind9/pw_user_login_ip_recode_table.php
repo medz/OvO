@@ -37,7 +37,6 @@ class PwUserLoginIpRecodeTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *
@@ -48,4 +47,3 @@ class PwUserLoginIpRecodeTable extends Migration
         Schema::dropIfExists('pw_user_login_ip_recode');
     }
 }
-
