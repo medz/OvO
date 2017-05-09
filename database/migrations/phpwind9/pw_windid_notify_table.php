@@ -31,7 +31,14 @@ class PwWindidNotifyTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('nid')->unsigned();
+            $table->smallinteger('appid')->unsigned()->nullable()->default(0);
+            $table->string('operation', 50)->nullable()->default('');
+            $table->text('param')->comment('消息参数');
+            $table->integer('timestamp')->nullable()->default(0);
+
+            $table->primary('nid');
+        });
     }
 
     /**
