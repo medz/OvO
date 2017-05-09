@@ -55,7 +55,6 @@ class PwPayOrderTable extends Migration
             $table->integer('extra_1')->unsigned()->nullable()->default(0);
             $table->string('extra_2', 255)->nullable()->default('');
 
-            $table->primary('id');
             $table->index('order_no');
             $table->index('created_userid');
         });

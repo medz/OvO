@@ -39,6 +39,7 @@ class PwBbsThreadsSortTable extends Migration
             $table->string('sort_type', 20)->nullable()->default('')->comment('排序类型');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('到期时间');
+
             $table->primary(['fid', 'tid']);
             $table->index('tid');
         });

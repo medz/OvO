@@ -36,7 +36,7 @@ class PwCommonEmotionTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('emotion_id')->unsigned()->comment('表情ID');
+            $table->increments('emotion_id')->unsigned()->comment('表情ID');
             $table->smallInteger('category_id')->unsigned()->nullable()->default('0')->comment('表情分类');
             $table->string('emotion_name', 20)->nullable()->default('')->comment('表情名称');
             $table->string('emotion_folder', 20)->nullable()->default('')->comment('所属文件夹');
@@ -44,7 +44,6 @@ class PwCommonEmotionTable extends Migration
             $table->integer('vieworder')->unsigned()->nullable()->default('0')->comment('排序');
             $table->tinyInteger('isused')->unsigned()->nullable()->default('1')->comment('是否使用');
 
-            $table->primary('emotion_id');
             $table->index('category_id');
             $table->index('isused');
         });

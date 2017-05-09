@@ -56,7 +56,7 @@ class PwDesignDataTable extends Migration
             $table->integer('vieworder')->unsigned()->nullable()->default(0)->comment('排序');
             $table->integer('start_time')->unsigned()->nullable()->default(0)->comment('开始时间');
             $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('过期时间');
-            $table->primary('data_id');
+
             $table->index('module_id');
             $table->index('vieworder');
         });

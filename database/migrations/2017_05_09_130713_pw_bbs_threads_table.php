@@ -95,7 +95,7 @@ class PwBbsThreadsTable extends Migration
             $table->tinyInteger('reply_notice')->unsigned()->nullable()->default(1);
             $table->mediumInteger('reply_topped')->unsigned()->nullable()->default(0);
             $table->integer('thread_status')->unsigned()->nullable()->default(0);
-            $table->primary('tid');
+
             $table->index(['fid', 'disabled', 'lastpost_time']);
             $table->index(['disabled', 'created_time']);
             $table->index(['created_userid', 'created_time']);

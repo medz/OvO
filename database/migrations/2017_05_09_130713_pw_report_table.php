@@ -50,8 +50,6 @@ class PwReportTable extends Migration
             $table->tinyInteger('ifcheck')->unsigned()->nullable()->default(0)->comment('是否审核');
             $table->integer('operate_userid')->unsigned()->nullable()->default(0)->comment('举报处理人');
             $table->integer('operate_time')->unsigned()->nullable()->default(0)->comment('举报处理时间');
-
-            $table->primary('id');
         });
     }
 

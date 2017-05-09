@@ -38,7 +38,6 @@ class PwUserEducationTable extends Migration
             $table->tinyInteger('degree')->unsigned()->nullable()->default(0)->comment('学历ID');
             $table->smallinteger('start_time')->unsigned()->nullable()->default(0)->comment('时间');
 
-            $table->primary('id');
             $table->index(['uid', 'start_time']);
         });
     }

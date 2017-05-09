@@ -40,7 +40,6 @@ class PwBbsTopicTypeTable extends Migration
             $table->string('logo', 255)->nullable()->default('')->comment('主题分类图标');
             $table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('显示排序');
             $table->tinyInteger('issys')->unsigned()->nullable()->default(0)->comment('是否管理专用(1-是,0-否)');
-            $table->primary('id');
         });
     }
 

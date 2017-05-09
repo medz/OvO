@@ -46,7 +46,6 @@ class PwLinkTable extends Migration
             $table->tinyInteger('ifcheck')->unsigned()->nullable()->default(0)->comment('是否审核');
             $table->string('contact', 100)->nullable()->default('')->comment('联系方式');
 
-            $table->primary('lid');
             $table->index(['ifcheck', 'vieworder']);
         });
     }

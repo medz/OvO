@@ -30,6 +30,7 @@ class PwAttentionRecommendCronTable extends Migration
             }
             $table->integer('uid')->unsigned()->comment('用户uid');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+
             $table->primary('uid');
         });
     }

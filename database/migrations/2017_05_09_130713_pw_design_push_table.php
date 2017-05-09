@@ -62,7 +62,7 @@ class PwDesignPushTable extends Migration
             $table->integer('start_time')->unsigned()->nullable()->default(0)->comment('开始时间');
             $table->integer('end_time')->unsigned()->nullable()->default(0)->comment('过期时间');
             $table->integer('checked_time')->unsigned()->nullable()->default(0)->comment('审核时间');
-            $table->primary('push_id');
+
             $table->index('end_time');
             $table->index('status');
         });

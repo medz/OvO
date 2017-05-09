@@ -44,7 +44,6 @@ class PwCreditLogTable extends Migration
             $table->string('created_username', 15)->nullable()->default('');
             $table->integer('created_time')->unsigned()->nullable()->default(0);
 
-            $table->primary('pid');
             $table->index(['created_userid', 'created_time']);
         });
     }

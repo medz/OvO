@@ -36,8 +36,6 @@ class PwUserGroupsTable extends Migration
             $table->enum('type', ['default', 'member', 'system', 'special', 'vip'])->comment('用户组类型');
             $table->string('image', 32)->nullable()->default('')->comment('用户组图标');
             $table->integer('points')->unsigned()->nullable()->default(0)->comment('用户组需要的点');
-
-            $table->primary('gid');
         });
     }
 

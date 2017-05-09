@@ -42,8 +42,6 @@ class PwTagCategoryTable extends Migration
             $table->string('seo_title', 255)->nullable()->default('')->comment('seo标题');
             $table->string('seo_description', 255)->nullable()->default('')->comment('seo描述');
             $table->string('seo_keywords', 255)->nullable()->default('')->comment('seo关键字');
-
-            $table->primary('category_id');
         });
     }
 

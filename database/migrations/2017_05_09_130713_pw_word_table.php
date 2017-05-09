@@ -38,7 +38,6 @@ class PwWordTable extends Migration
             $table->string('word_replace', 100)->nullable()->default('')->comment('敏感词替换');
             $table->tinyInteger('word_from')->unsigned()->nullable()->default(0)->comment('敏感词来源');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('敏感词创建时间');
-            $table->primary('word_id');
         });
     }
 

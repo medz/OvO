@@ -35,7 +35,7 @@ class PwBbsThreadsOvertimeTable extends Migration
             $table->integer('tid')->unsigned()->nullable()->default(0);
             $table->m_type('m_type', ['topped', 'highlight'])->nullable();
             $table->integer('overtime')->unsigned()->nullable()->default(0);
-            $table->primary('id');
+
             $table->unique(['tid', 'm_type']);
         });
     }

@@ -34,6 +34,7 @@ class PwCreditLogOperateTable extends Migration
             $table->string('operate', 40)->nullable();
             $table->smallInteger('num')->unsigned()->nullable()->default(0);
             $table->integer('update_time')->unsigned()->nullable()->default(0);
+
             $table->primary(['uid', 'operate']);
         });
     }

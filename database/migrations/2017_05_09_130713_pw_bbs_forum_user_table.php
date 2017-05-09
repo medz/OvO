@@ -33,6 +33,7 @@ class PwBbsForumUserTable extends Migration
             $table->integer('uid')->unsigned();
             $table->smallInteger('fid')->unsigned();
             $table->integer('join_time')->unsigned()->nullable()->default(0);
+
             $table->primary(['uid', 'fid']);
             $table->index(['fid', 'join_time']);
         });

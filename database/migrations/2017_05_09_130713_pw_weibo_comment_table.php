@@ -42,7 +42,6 @@ class PwWeiboCommentTable extends Migration
             $table->string('created_username', 15)->nullable()->default('');
             $table->integer('created_time')->unsigned()->nullable()->default(0);
 
-            $table->primary('comment_id');
             $table->index(['weibo_id', 'created_time']);
         });
     }

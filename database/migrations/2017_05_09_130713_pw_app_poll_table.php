@@ -48,7 +48,6 @@ class PwAppPollTable extends Migration
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('投票有效时间');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('投票创建时间');
 
-            $table->primary('poll_id');
             $table->index(['created_userid', 'created_time']);
             $table->index('voter_num');
         });

@@ -46,8 +46,6 @@ class PwWeiboTable extends Migration
             $table->integer('created_userid')->unsigned()->nullable()->default(0);
             $table->string('created_username', 32)->nullable()->default('');
             $table->integer('created_time')->unsigned()->nullable()->default(0);
-
-            $table->primary('weibo_id');
         });
     }
 

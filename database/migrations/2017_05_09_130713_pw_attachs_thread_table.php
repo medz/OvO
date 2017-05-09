@@ -64,6 +64,7 @@ class PwAttachsThreadTable extends Migration
             $table->integer('created_userid') > unsigned()->nullable()->default(0)->comment('上传人用户id');
             $table->integer('created_time') > unsigned()->nullable()->default(0)->comment('上传时间');
             $table->string('descrip', 255)->nullable()->default('')->comment('文件描述');
+
             $table->primary('aid');
             $table->index('created_userid');
             $table->index(['tid', 'pid']);

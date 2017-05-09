@@ -38,7 +38,6 @@ class PwDraftTable extends Migration
             $table->text('content')->comment('内容');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
 
-            $table->primary('id');
             $table->index('created_userid');
         });
     }

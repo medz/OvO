@@ -39,7 +39,6 @@ class PwAdminRoleTable extends Migration
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
 
-            $table->primary('id');
             $table->index('name');
         });
     }

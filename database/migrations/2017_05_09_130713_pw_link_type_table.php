@@ -32,7 +32,6 @@ class PwLinkTypeTable extends Migration
             $table->smallIncrements('typeid')->unsigned()->comment('友情链接分类ID');
             $table->string('typename', 6)->nullable()->default('')->comment('分类名称');
             $table->smallInteger('vieworder')->unsigned()->nullable()->default(0)->comment('顺序');
-            $table->primary('typeid');
         });
     }
 

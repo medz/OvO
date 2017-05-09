@@ -36,6 +36,7 @@ class PwAttentionRecommendFriendsTable extends Migration
             $table->string('recommend_username', 15)->nullable()->default('')->comment('推荐好友用户名');
             $table->smallInteger('cnt')->unsigned()->nullable()->default(0)->comment('好友数量');
             $table->text('recommend_user')->comment('推荐好友信息');
+
             $table->primary(['uid', 'recommend_uid']);
         });
     }

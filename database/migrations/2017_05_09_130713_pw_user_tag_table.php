@@ -37,7 +37,6 @@ class PwUserTagTable extends Migration
             $table->tinyInteger('ifhot')->unsigned()->nullable()->default(0)->comment('是否是热门标签');
             $table->integer('used_count')->unsigned()->nullable()->default(0)->comment('被使用次数');
 
-            $table->primary('tag_id');
             $table->unique('name');
             $table->index('used_count');
         });

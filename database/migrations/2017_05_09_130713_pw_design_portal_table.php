@@ -57,7 +57,6 @@ class PwDesignPortalTable extends Migration
             $table->integer('created_uid')->unsigned()->nullable()->default(0)->comment('创建用户ID');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
 
-            $table->primary('id');
             $table->index('domain');
         });
     }

@@ -41,7 +41,6 @@ class PwLikeContentTable extends Migration
             $table->string('users', 255)->nullable()->default('')->comment('喜欢的用户ID');
             $table->integer('reply_pid')->unsigned()->nullable()->default(0)->comment('最新回复ID');
 
-            $table->primary('likeid');
             $table->index('isspecial');
             $table->index(['typeid', 'fromid']);
         });

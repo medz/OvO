@@ -42,7 +42,6 @@ class PwWindidNotifyLogTable extends Migration
             $table->integer('send_num')->unsigned()->nullable()->default(0);
             $table->string('reason', 16)->nullable()->default('');
 
-            $table->primary('logid');
             $table->index('complete');
             $table->index('appid');
             $table->index('nid');

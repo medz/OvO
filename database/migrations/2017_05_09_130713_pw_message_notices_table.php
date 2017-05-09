@@ -48,7 +48,6 @@ class PwMessageNoticesTable extends Migration
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
 
-            $table->primary('id');
             $table->index(['uid', 'is_read', 'modified_time']);
         });
     }

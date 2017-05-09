@@ -40,7 +40,6 @@ class PwBbsinfoTable extends Migration
             $table->integer('higholtime')->unsigned()->nullable()->default(0)->comment('最高在线发生日期');
             $table->mediumInteger('yposts')->unsigned()->nullable()->default(0)->comment('昨日发帖数');
             $table->mediumInteger('hposts')->unsigned()->nullable()->default(0)->comment('最高日发帖数');
-            $table->primary('id');
         });
     }
 

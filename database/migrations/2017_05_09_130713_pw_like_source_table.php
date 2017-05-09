@@ -41,7 +41,6 @@ class PwLikeSourceTable extends Migration
             $table->integer('fromid')->unsigned()->nullable()->default(0)->comment('来源ID');
             $table->mediumInteger('like_count')->unsigned()->nullable()->default(0)->comment('喜欢数统计');
 
-            $table->primary('sid');
             $table->index(['fromid', 'fromApp']);
         });
     }

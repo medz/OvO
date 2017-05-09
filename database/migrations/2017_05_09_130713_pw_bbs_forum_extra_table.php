@@ -36,6 +36,7 @@ class PwBbsForumExtraTable extends Migration
             $table->string('seo_keywords', 255)->nullable()->default('');
             $table->text('settings_basic');
             $table->text('settings_credit');
+
             $table->primary('fid');
         });
     }

@@ -43,7 +43,7 @@ class PwCommonNavTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('navid')->unsigned()->comment('导航ID');
+            $table->increments('navid')->unsigned()->comment('导航ID');
             $table->integer('parentid')->unsigned()->nullable()->default(0)->comment('导航上级ID');
             $table->integer('rootid')->unsigned()->nullable()->default(0)->comment('导航类ID');
             $table->string('type', 32)->nullable()->default('')->comment('所属类型');
@@ -57,7 +57,6 @@ class PwCommonNavTable extends Migration
             $table->tinyInteger('isshow')->unsigned()->nullable()->default(0)->comment('是否使用');
             $table->tinyInteger('orderid')->unsigned()->nullable()->default(0)->comment('排序');
 
-            $table->primary('navid');
             $table->index('type');
             $table->index('rootid');
             $table->index('orderid');

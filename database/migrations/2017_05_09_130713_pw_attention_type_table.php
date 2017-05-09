@@ -32,11 +32,10 @@ class PwAttentionTypeTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('id')->unsigned();
+            $table->increments('id');
             $table->integer('uid')->unsigned()->nullable()->default(0);
             $table->string('name', 30)->nullable()->default('');
 
-            $table->primary('id');
             $table->index('uid');
         });
     }

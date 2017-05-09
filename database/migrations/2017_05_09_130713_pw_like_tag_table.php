@@ -36,7 +36,6 @@ class PwLikeTagTable extends Migration
             $table->string('tagname', 20)->nullable()->comment('标签名');
             $table->integer('number')->unsigned()->nullable()->default(0)->comment('统计数');
 
-            $table->primary('tagid');
             $table->index('uid');
         });
     }

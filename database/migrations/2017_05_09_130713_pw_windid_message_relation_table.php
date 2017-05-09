@@ -42,7 +42,6 @@ class PwWindidMessageRelationTable extends Migration
             $table->tinyinteger('is_read')->unsigned()->nullable()->default(0)->comment('是否已读');
             $table->tinyinteger('is_send')->unsigned()->nullable()->default(0)->comment('是否为发送者私信');
 
-            $table->primary('id');
             $table->index('dialog_id');
             $table->index('message_id');
             $table->index('is_read');

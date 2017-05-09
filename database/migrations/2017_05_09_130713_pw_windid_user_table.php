@@ -45,7 +45,6 @@ class PwWindidUserTable extends Migration
             $table->integer('regdate')->unsigned()->nullable()->default(0)->comment('注册时间');
             $table->string('regip', 20)->nullable()->default('')->comment('安全问题');
 
-            $table->primary('uid');
             $table->unique('username');
             $table->index('email');
         });

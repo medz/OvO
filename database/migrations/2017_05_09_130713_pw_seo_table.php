@@ -38,6 +38,7 @@ class PwSeoTable extends Migration
             $table->string('title', 255)->nullable()->default('')->comment('名称');
             $table->string('keywords', 255)->nullable()->default('')->comment('关键词');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
+
             $table->primary(['mod', 'page', 'param']);
         });
     }

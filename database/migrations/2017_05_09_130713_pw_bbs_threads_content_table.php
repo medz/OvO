@@ -47,6 +47,7 @@ class PwBbsThreadsContentTable extends Migration
             $table->smallInteger('word_version')->unsigned()->nullable()->default(0);
             $table->string('tags', 255)->nullable()->default('');
             $table->string('ipfrom', 255)->nullable()->default('');
+
             $table->primary('tid');
         });
     }

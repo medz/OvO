@@ -55,7 +55,7 @@ class PwLogTable extends Migration
             $table->integer('pid')->unsigned()->nullable()->default(0)->comment('帖子回复ID');
             $table->string('extends', 100)->nullable()->default('')->comment('扩展信息');
             $table->text('content')->comment('操作日志内容');
-            $table->primary('id');
+
             $table->index(['tid', 'pid']);
             $table->index('fid');
             $table->index('created_time');

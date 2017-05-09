@@ -38,6 +38,7 @@ class PwRecycleReplyTable extends Migration
             $table->integer('operate_time')->unsigned()->nullable()->default(0);
             $table->string('operate_username', 15)->nullable();
             $table->text('reason');
+
             $table->primary('pid');
         });
     }

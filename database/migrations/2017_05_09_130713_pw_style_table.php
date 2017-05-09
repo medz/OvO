@@ -56,6 +56,7 @@ class PwStyleTable extends Migration
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
+
             $table->primary('app_id');
         });
     }

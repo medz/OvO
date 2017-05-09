@@ -47,7 +47,7 @@ class PwDesignPageTable extends Migration
             $table->text('struct_names')->comment('页面结构');
             $table->text('segments')->comment('页面模块片段');
             $table->string('design_lock', 50)->nullable()->default('')->comment('编辑加锁');
-            $table->primary('page_id');
+
             $table->index('page_router');
         });
     }

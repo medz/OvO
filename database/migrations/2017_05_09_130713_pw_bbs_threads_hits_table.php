@@ -30,6 +30,7 @@ class PwBbsThreadsHitsTable extends Migration
             }
             $table->integer('tid')->unsigned()->nullable();
             $table->integer('hits')->unsigned()->nullable()->default(0);
+
             $table->primary('tid');
         });
     }

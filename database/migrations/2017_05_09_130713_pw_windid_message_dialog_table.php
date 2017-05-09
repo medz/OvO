@@ -43,7 +43,6 @@ class PwWindidMessageDialogTable extends Migration
             $table->text('last_message')->comment('最新对话');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
 
-            $table->primary('dialog_id');
             $table->index(['to_uid', 'from_uid']);
             $table->index(['to_uid', 'modified_time']);
         });

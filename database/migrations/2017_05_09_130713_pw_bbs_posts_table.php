@@ -88,7 +88,6 @@ class PwBbsPostsTable extends Migration
             $table->string('manage_remind', 150)->nullable()->default('');
             $table->tinyInteger('topped')->unsigned()->nullable()->default(0);
 
-            $table->primary('pid');
             $table->index(['tid', 'disabled', 'created_time']);
             $table->index(['disabled', 'created_time']);
             $table->index(['created_userid', 'created_time']);

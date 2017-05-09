@@ -33,14 +33,12 @@ class PwCommonEmotionCategoryTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('category_id')->unsigned()->comment('分类ID');
+            $table->increments('category_id')->unsigned()->comment('分类ID');
             $table->string('category_name', 20)->nullable()->default('')->comment('分类名');
             $table->string('emotion_folder', 20)->nullable()->default('')->comment('分类文件夹');
             $table->string('emotion_apps', 50)->nullable()->default('')->comment('能使用的应用');
             $table->integer('orderid')->unsigned()->nullable()->default('0')->comment('排序');
             $table->tinyInteger('isopen')->unsigned()->nullable()->default('0')->comment('是否使用');
-
-            $table->primary('category_id');
         });
     }
 

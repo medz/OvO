@@ -38,7 +38,7 @@ class PwAttentionFreshTable extends Migration
             $table->integer('src_id')->unsigned()->nullable()->default(0);
             $table->integer('created_userid')->unsigned()->nullable()->default(0);
             $table->integer('created_time')->unsigned()->nullable()->default(0);
-            $table->primary('id');
+
             $table->index(['created_userid', 'created_time']);
             $table->index(['type', 'src_id']);
         });

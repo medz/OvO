@@ -41,7 +41,6 @@ class PwAttachsThreadBuyTable extends Migration
             $table->mediumInteger('cost')->unsigned()->nullable()->default(0);
             $table->tinyInteger('ctype')->unsigned()->nullable()->default(0);
 
-            $table->primary('id');
             $table->index('aid');
         });
     }

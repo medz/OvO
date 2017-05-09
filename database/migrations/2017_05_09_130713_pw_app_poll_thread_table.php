@@ -32,6 +32,7 @@ class PwAppPollThreadTable extends Migration
             $table->integer('tid')->unsigned()->nullable()->comment('帖子ID');
             $table->integer('poll_id')->unsigned()->nullable()->default(0)->comment('投票ID');
             $table->integer('created_userid')->unsigned()->nullable()->default(0)->comment('投票发起人');
+
             $table->primary('tid');
             $table->index('poll_id');
         });

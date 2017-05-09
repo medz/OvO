@@ -39,7 +39,6 @@ class PwWindidSchoolTable extends Migration
             $table->tinyinteger('typeid')->nullable()->default(0)->comment('类型：大学/高中/初中');
             $table->char('first_char', 1)->nullable()->default('')->comment('学校名字的首字母');
 
-            $table->primary('schoolid');
             $table->index(['areaid', 'first_char']);
             $table->index(['name', 'first_char']);
         });

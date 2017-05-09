@@ -36,8 +36,6 @@ class PwWindidNotifyTable extends Migration
             $table->string('operation', 50)->nullable()->default('');
             $table->text('param')->comment('消息参数');
             $table->integer('timestamp')->nullable()->default(0);
-
-            $table->primary('nid');
         });
     }
 

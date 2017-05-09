@@ -56,7 +56,7 @@ class PwDesignModuleTable extends Migration
             $table->string('module_cache', 255)->nullable()->default('')->comment('模块更新设置');
             $table->tinyInteger('isused')->unsigned()->nullable()->default(0)->comment('是否使用');
             $table->tinyInteger('module_type')->unsigned()->nullable()->default(1)->comment('模块类型 1 拖曳2 导入3 后台添加');
-            $table->primary('module_id');
+
             $table->index('page_id');
             $table->index('module_type');
         });

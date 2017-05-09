@@ -37,7 +37,7 @@ class PwUserBanTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('id')->unsigned();
+            $table->increments('id')->unsigned();
             $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
             $table->char('typeid', 20)->nullable()->default('')->comment('类型');
             $table->integer('fid')->unsigned()->nullable()->default(0)->comment('版块ID---未用');
@@ -46,7 +46,6 @@ class PwUserBanTable extends Migration
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('开始时间');
             $table->string('reason', 80)->nullable()->default('')->comment('操作原因');
 
-            $table->primary('id');
             $table->unique(['uid', 'typeid', 'fid']);
             $table->index('created_userid');
         });

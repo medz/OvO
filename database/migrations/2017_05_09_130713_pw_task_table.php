@@ -58,7 +58,6 @@ class PwTaskTable extends Migration
             $table->string('reward', 255)->nullable()->default('')->comment('奖励');
             $table->string('conditions', 255)->nullable()->default('')->comment('完成条件');
 
-            $table->primary('taskid');
             $table->index('pre_task');
         });
     }

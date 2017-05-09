@@ -38,7 +38,6 @@ class PwWindidMessageTable extends Migration
             $table->text('content')->comment('内容');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('时间');
 
-            $table->primary('message_id');
             $table->index(['from_uid', 'to_uid']);
         });
     }

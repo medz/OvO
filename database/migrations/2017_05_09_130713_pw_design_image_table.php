@@ -44,7 +44,6 @@ class PwDesignImageTable extends Migration
             $table->integer('data_id')->unsigned()->nullable()->default(0)->comment('门户数据ID');
             $table->string('sign', 50)->nullable()->default('')->comment('标签key');
             $table->tinyInteger('status')->unsigned()->nullable()->default(1)->comment('原图片状态1正常0不正常');
-            $table->primary('id');
         });
     }
 

@@ -38,7 +38,7 @@ class PwDesignPermissionsTable extends Migration
             $table->integer('design_id')->unsigned()->nullable()->default(0)->comment('设计类型的标识ID');
             $table->integer('uid')->unsigned()->nullable()->default(0)->comment('用户ID');
             $table->tinyInteger('permissions')->unsigned()->nullable()->default(0)->comment('权限级别');
-            $table->primary('id');
+
             $table->index('uid');
             $table->index(['design_type', 'design_id', 'uid']);
         });

@@ -37,7 +37,7 @@ class PwCommonCronTable extends Migration
                 $table->engine = 'InnoDB';
             }
 
-            $table->integer('cron_id')->unsigned()->comment('计划任务ID');
+            $table->increments('cron_id')->unsigned()->comment('计划任务ID');
             $table->string('subject', 50)->nullable()->default('')->comment('计划任务名称');
             $table->string('loop_type', 10)->nullable()->default('')->comment('循环类型month/week/day/hour/now');
             $table->string('loop_daytime', 50)->nullable()->default('')->comment('循环类型时间（日-时-分）');
@@ -47,7 +47,6 @@ class PwCommonCronTable extends Migration
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('计划任务上次执行结束时间');
             $table->integer('next_time')->unsigned()->nullable()->default(0)->comment('下一次执行时间');
 
-            $table->primary('cron_id');
             $table->index('next_time');
         });
     }

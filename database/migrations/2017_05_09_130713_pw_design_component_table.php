@@ -37,7 +37,7 @@ class PwDesignComponentTable extends Migration
             $table->string('comp_name', 50)->nullable()->default('')->comment('模版元件名称');
             $table->text('comp_tpl')->comment('模版代码');
             $table->integer('sys_id')->unsigned()->nullable()->comment('系统编号');
-            $table->primary('comp_id');
+
             $table->index('model_flag');
         });
     }

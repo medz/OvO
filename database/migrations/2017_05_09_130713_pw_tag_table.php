@@ -59,7 +59,6 @@ class PwTagTable extends Migration
             $table->string('seo_description', 255)->nullable()->default('')->comment('seo描述');
             $table->string('seo_keywords', 255)->nullable()->default('')->comment('seo关键字');
 
-            $table->primary('tag_id');
             $table->index('tag_name');
             $table->index('parent_tag_id');
         });

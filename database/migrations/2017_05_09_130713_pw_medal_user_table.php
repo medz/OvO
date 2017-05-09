@@ -35,6 +35,7 @@ class PwMedalUserTable extends Migration
             $table->string('medals', 255)->nullable()->default('')->comment('拥有的勋章ID');
             $table->integer('counts')->unsigned()->nullable()->default(0)->comment('勋章总数');
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('最近的过期时间');
+
             $table->primary('uid');
             $table->index('ficountsd');
         });

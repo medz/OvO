@@ -52,7 +52,6 @@ class PwWindidHookInjectTable extends Migration
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
             $table->string('description', 255)->nullable()->default('')->comment('描述');
 
-            $table->primary('id');
             $table->index(['hook_name', 'alias']);
         });
     }

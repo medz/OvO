@@ -58,7 +58,6 @@ class PwMedalInfoTable extends Migration
             $table->tinyInteger('isopen')->unsigned()->nullable()->default(1)->comment('是否开启');
             $table->tinyInteger('vieworder')->unsigned()->nullable()->default(0)->comment('排序');
 
-            $table->primary('medal_id');
             $table->index('vieworder');
             $table->index('isopen');
             $table->index('award_type');

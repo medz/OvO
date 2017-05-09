@@ -45,7 +45,6 @@ class PwMedalLogTable extends Migration
             $table->integer('expired_time')->unsigned()->nullable()->default(0)->comment('过期时间');
             $table->tinyInteger('log_order')->unsigned()->nullable()->default(0)->comment('用户勋章排序');
 
-            $table->primary('log_id');
             $table->index(['uid', 'medal_id']);
             $table->index('expired_time');
             $table->index('log_order');

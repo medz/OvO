@@ -39,7 +39,7 @@ class PwDesignShieldTable extends Migration
             $table->integer('module_id')->unsigned()->nullable()->default(0)->comment('被屏蔽的模块');
             $table->string('shield_title', 255)->nullable()->default('');
             $table->string('shield_url', 255)->nullable()->default('');
-            $table->primary('shield_id');
+
             $table->index(['from_id', 'from_app']);
         });
     }

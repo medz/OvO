@@ -87,7 +87,7 @@ class PwBbsForumTable extends Migration
             $table->tinyInteger('created_userid')->unsigned()->nullable()->default(0);
             $table->tinyInteger('created_ip')->unsigned()->nullable()->default(0);
             $table->string('style', 20)->nullable()->default('');
-            $table->primary('fid');
+
             $table->index(['issub', 'vieworder']);
         });
     }

@@ -48,6 +48,7 @@ class PwBbsThreadsDigestIndexTable extends Migration
             $table->string('operator', 15)->nullable()->default('');
             $table->integer('operator_userid')->unsigned()->nullable()->default(0);
             $table->integer('operator_time')->unsigned()->nullable()->default(0);
+
             $table->primary('tid');
             $table->index(['cid', 'lastpost_time']);
             $table->index(['fid', 'lastpost_time', 'topic_type']);
