@@ -62,7 +62,7 @@ class PwCommonNavTable extends Migration
  			$table->index('rootid');
  			$table->index('orderid');
 			
-        }
+        });
     }
 
     /**
