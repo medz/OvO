@@ -42,7 +42,7 @@ class PwUserActiveCodeTable extends Migration
 			
 			$table->primary('uid');
 			
-        }
+        });
     }
 
     /**
