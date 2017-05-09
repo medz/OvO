@@ -34,10 +34,10 @@ class PwWindidAdminConfigTable extends Migration
             $table->string('name', 30)->comment('配置名称');
             $table->string('namespace', 15)->comment('配置命名空间');
             $table->text('value')->comment('缓存值');
-            $table->enum('vtype',['string','array','object'])->nullable()->default('string')->comment('缓存值');
+            $table->enum('vtype', ['string', 'array', 'object'])->nullable()->default('string')->comment('缓存值');
             $table->text('description')->comment('配置介绍');
 
-            $table->primary(['namespace','name']);
+            $table->primary(['namespace', 'name']);
         });
     }
 
@@ -51,4 +51,3 @@ class PwWindidAdminConfigTable extends Migration
         Schema::dropIfExists('pw_windid_admin_config');
     }
 }
-
