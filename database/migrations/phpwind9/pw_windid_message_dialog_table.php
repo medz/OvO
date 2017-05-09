@@ -35,7 +35,18 @@ class PwWindidMessageDialogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('dialog_id')->unsigned()->comment('对话id');
+            $table->integer('to_uid')->unsigned()->nullable()->default(0)->comment('收信人');
+            $table->integer('from_uid')->unsigned()->nullable()->default(0)->comment('发信人');
+            $table->smallinteger('unread_count')->unsigned()->nullable()->default(0)->comment('未读数');
+            $table->mediuminteger('message_count')->unsigned()->nullable()->default(0)->comment('总对话数量');
+            $table->text('last_message')->comment('最新对话');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+
+            $table->primary('dialog_id');
+            $table->index(['to_uid', 'from_uid']);
+            $table->index(['to_uid', 'modified_time']);
+        });
     }
 
     /**
