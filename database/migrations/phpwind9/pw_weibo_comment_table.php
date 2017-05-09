@@ -34,7 +34,17 @@ class PwWeiboCommentTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('comment_id')->unsigned();
+            $table->integer('weibo_id')->unsigned()->nullable()->default(0);
+            $table->text('content');
+            $table->text('extra');
+            $table->integer('created_userid')->unsigned()->nullable()->default(0);
+            $table->string('created_username', 15)->nullable()->default('');
+            $table->integer('created_time')->unsigned()->nullable()->default(0);
+
+            $table->primary('comment_id');
+            $table->index(['weibo_id', 'created_time']);
+        });
     }
 
     /**
