@@ -48,8 +48,32 @@ class PwUserInfoTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
-    }
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->tinyinteger('gender')->nullable()->default(1)->comment('性别');
+            $table->smallinteger('byear')->unsigned()->nullable()->default(1)->comment('出生年份');
+            $table->tinyinteger('bmonth')->unsigned()->nullable()->default(1)->comment('出生月份');
+            $table->tinyinteger('bday')->unsigned()->nullable()->default(1)->comment('出生日期');
+            $table->integer('location')->nullable()->default(0)->comment('居住地ID');
+            $table->string('location_text', 100)->nullable()->default('');
+            $table->integer('hometown')->nullable()->default(0)->comment('积分字段1');
+            $table->string('hometown_text', 100)->nullable()->default('');
+            $table->string('homepage', 75)->nullable()->default('')->comment('主页');
+            $table->string('qq', 12)->nullable()->default('')->comment('QQ 号码');
+            $table->string('msn', 40)->nullable()->default('')->comment('MSN号码');
+            $table->string('aliww', 30)->nullable()->default('')->comment('阿里旺旺号码');
+            $table->string('mobile', 16)->nullable()->default('')->comment('手机号码');
+            $table->string('alipay', 30)->nullable()->default('')->comment('支付宝帐号');
+            $table->string('alipay', 30)->nullable()->default('')->comment('支付宝帐号');
+            $table->text('bbs_sign')->comment('个性签名');
+            $table->text('profile')->comment('个人简介');
+            $table->string('regreason', 200)->nullable()->default('')->comment('注册原因');
+            $table->string('telphone', 20)->nullable()->default('')->comment('电话号码');
+            $table->string('address', 100)->nullable()->default('')->comment('邮寄地址');
+            $table->string('zipcode', 10)->nullable()->default('')->comment('邮政编码');
+            $table->string('secret', 500)->nullable()->default('')->comment('隐私设置');
+
+            $table->primary('uid');
+        });
 
     /**
      * Reverse the migrations.
