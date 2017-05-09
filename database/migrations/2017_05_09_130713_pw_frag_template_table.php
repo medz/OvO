@@ -35,7 +35,6 @@ class PwFragTemplateTable extends Migration
             $table->smallInteger('frag_cid')->unsigned()->nullable()->default(0);
             $table->string('tpl_name', 50)->nullable()->default('');
             $table->text('template');
-
         });
     }
 
