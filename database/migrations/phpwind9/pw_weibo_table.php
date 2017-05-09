@@ -61,4 +61,3 @@ class PwWeiboTable extends Migration
         Schema::dropIfExists('pw_weibo');
     }
 }
-
