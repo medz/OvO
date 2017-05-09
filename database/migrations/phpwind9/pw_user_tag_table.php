@@ -32,7 +32,15 @@ class PwUserTagTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('tag_id')->unsigned()->comment('个性标签ID');
+            $table->string('name', 20)->nullable()->default('')->comment('个性标签名字');
+            $table->tinyInteger('ifhot')->unsigned()->nullable()->default(0)->comment('是否是热门标签');
+            $table->integer('used_count')->unsigned()->nullable()->default(0)->comment('被使用次数');
+            
+            $table->primary('tag_id');
+            $table->unique('name');
+            $table->index('used_count');
+        });
     }
 
     /**

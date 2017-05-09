@@ -38,7 +38,21 @@ class PwUserTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->string('username', 15)->nullable()->default('')->comment('用户名字');
+            $table->string('email', 40)->nullable()->default('')->comment('Email地址');
+            $table->string('password', 32)->nullable()->default('')->comment('随机密码');
+            $table->smallinteger('status')->unsigned()->nullable()->default(0)->comment('状态');
+            $table->mediuminteger('groupid')->unsigned()->nullable()->default(0)->comment('当前用户组ID');
+            $table->mediuminteger('memberid')->unsigned()->nullable()->default(0)->comment('会员组ID');
+            $table->integer('regdate')->unsigned()->nullable()->default(0)->comment('注册时间');
+            $table->string('realname', 50)->nullable()->default('')->comment('真实姓名');
+            $table->string('groups', 255)->nullable()->default('')->comment('用户附加组的ID缓存字段');
+
+            $table->primary('uid');
+            $table->primary('username');
+            $table->primary('email');
+        });
     }
 
     /**

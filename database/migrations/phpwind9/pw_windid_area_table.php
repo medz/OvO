@@ -33,7 +33,16 @@ class PwWindidAreaTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->mediumIncrements('id')->unsigned()->comment('地址ID');
+            $table->string('name', 50)->nullable()->default('')->comment('地区名字');
+            $table->string('joinname', 100)->nullable()->default('')->comment('地区路径的cache地址');
+            $table->mediuminteger('parentid')->unsigned()->nullable()->default(0)->comment('上级路径ID');
+            $table->smallinteger('vieworder')->unsigned()->nullable()->default(0)->comment('顺序');
+            
+            $table->primary('areaid');
+            $table->index('name');
+            $table->index(['parentid', 'vieworder']);
+        });
     }
 
     /**

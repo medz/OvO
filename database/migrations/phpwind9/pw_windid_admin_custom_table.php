@@ -28,7 +28,10 @@ class PwWindidAdminCustomTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->string('username');
+            $table->text('custom')->comment('常用菜单项');
+            $table->primary('username');
+        });
     }
 
     /**

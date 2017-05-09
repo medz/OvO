@@ -41,7 +41,24 @@ class PwWindidApplicationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->char('app_id', 20)->comment('应用id');
+            $table->string('name', 100)->nullable()->default('')->comment('名称');
+            $table->string('alias', 100)->nullable()->default('')->comment('别名');
+            $table->string('logo', 100)->nullable()->default('')->comment('应用logo');
+            $table->string('author_name', 30)->nullable()->default('')->comment('作者名');
+            $table->string('author_icon', 100)->nullable()->default('')->comment('作者头像');
+            $table->string('author_email', 200)->nullable()->default('')->comment('作者email');
+            $table->string('website', 200)->nullable()->default('')->comment('开发者网站');
+            $table->string('version', 50)->nullable()->default('')->comment('应用版本');
+            $table->string('pwversion', 50)->nullable()->default('');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('修改时间');
+            $table->tinyinteger('status')->nullable()->default(0);
+            $table->string('description', 255)->nullable()->default('')->comment('描述');
+            
+            $table->primary('app_id');
+            $table->index('alias');
+        });
     }
 
     /**
