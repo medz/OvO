@@ -36,7 +36,19 @@ class PwWindidUserTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('uid')->unsigned()->comment('用户ID');
+            $table->string('username', 15)->nullable()->default('')->comment('用户名字');
+            $table->string('email', 80)->nullable()->default('')->comment('Email');
+            $table->char('password', 32)->nullable()->default('')->comment('密码');
+            $table->char('salt', 6)->nullable()->default('')->comment('盐值');
+            $table->char('safecv', 8)->nullable()->default('')->comment('安全问题');
+            $table->integer('regdate')->unsigned()->nullable()->default(0)->comment('注册时间');
+            $table->string('regip', 20)->nullable()->default('')->comment('安全问题');
+
+            $table->primary('uid');
+            $table->unique('username');
+            $table->index('email');
+        });
     }
 
     /**
