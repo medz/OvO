@@ -43,7 +43,7 @@ class PwAttachsThreadDownloadTable extends Migration
 
             $table->primary('id');
             $table->index('aid');
-        };
+        });
     }
 
     /**
