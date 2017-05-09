@@ -33,7 +33,7 @@ class PwDesignStructureTable extends Migration
             $table->string('struct_name', 50)->comment('结构名称');
             $table->text('struct_title')->comment('结构标题');
             $table->text('struct_style')->comment('结构样式');
-            $table->string('segment', 50)->nullable() -> comment('结构所属片段');
+            $table->string('segment', 50)->nullable()->comment('结构所属片段');
             $table->primary('struct_name');
         });
     }
