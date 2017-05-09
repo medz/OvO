@@ -34,9 +34,9 @@ class PwWindidConfigTable extends Migration
             $table->string('name', 30)->comment('配置名字');
             $table->string('namespace', 15)->nullable()->default('')->comment('配置命名空间');
             $table->text('value')->comment('值');
-            $table->enum('vtype', ['string','array','object'])->nullable()->default('string')->comment('配置值类型');
+            $table->enum('vtype', ['string', 'array', 'object'])->nullable()->default('string')->comment('配置值类型');
             $table->text('descrip')->comment('描述');
-            
+
             $table->primary(['namespace', 'name']);
         });
     }
@@ -51,4 +51,3 @@ class PwWindidConfigTable extends Migration
         Schema::dropIfExists('pw_windid_config');
     }
 }
-
