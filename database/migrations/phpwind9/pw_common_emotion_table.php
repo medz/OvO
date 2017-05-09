@@ -48,7 +48,7 @@ class PwCommonEmotionTable extends Migration
 			$table->index('category_id');
 			$table->index('isused');
 			
-        }
+        });
     }
 
     /**
