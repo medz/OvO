@@ -47,7 +47,7 @@ class PwAnnounceTable extends Migration
             $table->integer('start_date')->unsigned()->nullable()->default(0);
             $table->integer('end_date')->unsigned()->nullable()->default(0);
 
-            $table->index('staer_date');
+            $table->index('start_date');
             $table->index('vieworder');
         });
     }
