@@ -38,9 +38,9 @@ class PwCommonConfigTable extends Migration
 			$table->enum('vtype', ['string','array','object'])->nullable()->default('string')->comment('配置值类型');
 			$table->text('description')->comment('配置介绍');
 			
-			$table->primary('namespace','name');
+			$table->primary(['namespace','name']);
 			
-        }
+        });
     }
 
     /**
