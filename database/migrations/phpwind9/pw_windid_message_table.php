@@ -32,7 +32,15 @@ class PwWindidMessageTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('message_id')->unsigned()->comment('消息id');
+            $table->integer('from_uid')->unsigned()->nullable()->default(0)->comment('发信人');
+            $table->integer('to_uid')->unsigned()->nullable()->default(0);
+            $table->text('content')->comment('内容');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('时间');
+
+            $table->primary('message_id');
+            $table->index(['from_uid', 'to_uid']);
+        });
     }
 
     /**
