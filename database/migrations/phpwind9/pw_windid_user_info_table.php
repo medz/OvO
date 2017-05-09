@@ -43,7 +43,26 @@ class PwWindidUserInfoTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->integer('uid')->unsigned()->comment('用户ID');
+            $table->string('realname', 20)->nullable()->default('');
+            $table->string('icon', 20)->nullable()->default('')->comment('头像---未用');
+            $table->tinyinteger('gender')->nullable()->default(0)->comment('性别');
+            $table->smallinteger('byear')->unsigned()->nullable()->default(0)->comment('出生年份');
+            $table->tinyinteger('bmonth')->unsigned()->nullable()->default(0)->comment('出生月份');
+            $table->tinyinteger('bday')->unsigned()->nullable()->default(0)->comment('出生日期');
+            $table->integer('hometown')->nullable()->default(0)->comment('家庭地址ID');
+            $table->integer('location')->nullable()->default(0)->comment('居住地ID');
+            $table->string('homepage', 128)->nullable()->default('')->comment('主页');
+            $table->string('qq', 12)->nullable()->default('')->comment('QQ');
+            $table->string('aliww', 30)->nullable()->default('')->comment('阿里旺旺');
+            $table->string('mobile', 16)->nullable()->default('')->comment('手机号码');
+            $table->string('alipay', 80)->nullable()->default('')->comment('支付宝');
+            $table->string('msn', 80)->nullable()->default('')->comment('MSN');
+            $table->string('profile', 250)->nullable()->default('');
+
+            $table->primary('uid');
+            $table->index('bday');
+        });
     }
 
     /**
