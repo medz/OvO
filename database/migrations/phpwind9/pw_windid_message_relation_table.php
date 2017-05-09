@@ -36,7 +36,18 @@ class PwWindidMessageRelationTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned()->comment('关系id');
+            $table->integer('dialog_id')->unsigned()->nullable()->default(0)->comment('对话id');
+            $table->integer('message_id')->unsigned()->nullable()->default(0)->comment('私信id');
+            $table->tinyinteger('is_read')->unsigned()->nullable()->default(0)->comment('是否已读');
+            $table->tinyinteger('is_send')->unsigned()->nullable()->default(0)->comment('是否为发送者私信');
+
+            $table->primary('id');
+            $table->index('dialog_id');
+            $table->index('message_id');
+            $table->index('is_read');
+            $table->index('is_send');
+        });
     }
 
     /**
