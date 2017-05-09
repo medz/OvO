@@ -37,7 +37,7 @@ class PwWindidAdminRoleTable extends Migration
             $table->text('auths')->comment('权限点');
             $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
             $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
-            
+
             $table->primary('id');
             $table->index('name');
         });
@@ -53,4 +53,3 @@ class PwWindidAdminRoleTable extends Migration
         Schema::dropIfExists('pw_windid_admin_role');
     }
 }
-

@@ -67,4 +67,3 @@ class PwWindidHookInjectTable extends Migration
         Schema::dropIfExists('pw_windid_hook_inject');
     }
 }
-

@@ -38,7 +38,7 @@ class PwWindidAreaTable extends Migration
             $table->string('joinname', 100)->nullable()->default('')->comment('地区路径的cache地址');
             $table->mediuminteger('parentid')->unsigned()->nullable()->default(0)->comment('上级路径ID');
             $table->smallinteger('vieworder')->unsigned()->nullable()->default(0)->comment('顺序');
-            
+
             $table->primary('areaid');
             $table->index('name');
             $table->index(['parentid', 'vieworder']);
@@ -55,4 +55,3 @@ class PwWindidAreaTable extends Migration
         Schema::dropIfExists('pw_windid_area');
     }
 }
-
