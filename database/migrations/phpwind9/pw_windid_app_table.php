@@ -36,8 +36,20 @@ class PwWindidAppTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->smallIncrements('id')->unsigned();
+            $table->string('name', 30)->nullable()->default('');
+            $table->string('siteurl', 128)->nullable()->default('');
+            $table->string('siteip', 20)->nullable()->default('');
+            $table->string('secretkey', 50)->nullable()->default('');
+            $table->string('apifile', 128)->nullable()->default('')->comment('通知接收文件');
+            $table->string('charset', 16)->nullable()->default('')->comment('客户端编码');
+            $table->tinyInteger('issyn')->unsigned()->nullable()->default(0);
+            $table->tinyInteger('isnotify')->unsigned()->nullable()->default(0);
+            
+            $table->primary('id');
+        });
     }
+
 
     /**
      * Reverse the migrations.

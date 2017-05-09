@@ -32,7 +32,15 @@ class PwWindidAdminRoleTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('id')->unsigned();
+            $table->string('name', 15)->nullable()->default('')->comment('角色名');
+            $table->text('auths')->comment('权限点');
+            $table->integer('created_time')->unsigned()->nullable()->default(0)->comment('创建时间');
+            $table->integer('modified_time')->unsigned()->nullable()->default(0)->comment('最后修改时间');
+            
+            $table->primary('id');
+            $table->index('name');
+        });
     }
 
     /**
