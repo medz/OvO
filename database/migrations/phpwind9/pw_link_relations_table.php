@@ -32,7 +32,7 @@ class PwLinkRelationsTable extends Migration
             $table->smallint('typeid')->unsigned()->comment('分类id');
 
             $table->index(['lid', 'typeid']);            
-        }
+        });
     }
 
     /**
