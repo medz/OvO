@@ -49,4 +49,3 @@ class PwUserBelongTable extends Migration
         Schema::dropIfExists('pw_user_belong');
     }
 }
-

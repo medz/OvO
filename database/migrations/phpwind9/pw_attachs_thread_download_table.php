@@ -56,4 +56,3 @@ class PwAttachsThreadDownloadTable extends Migration
         Schema::dropIfExists('pw_attachs_thread_download');
     }
 }
-
