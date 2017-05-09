@@ -35,7 +35,18 @@ class PwWindidNotifyLogTable extends Migration
             if (env('DB_CONNECTION', false) === 'mysql') {
                 $table->engine = 'InnoDB';
             }
-        }
+            $table->increments('logid')->unsigned();
+            $table->integer('nid')->unsigned()->nullable()->default(0);
+            $table->smallinteger('appid')->unsigned()->nullable()->default(0);
+            $table->tinyinteger('complete')->unsigned()->nullable()->default(0);
+            $table->integer('send_num')->unsigned()->nullable()->default(0);
+            $table->string('reason', 16)->nullable()->default('');
+
+            $table->primary('logid');
+            $table->index('complete');
+            $table->index('appid');
+            $table->index('nid');
+        });
     }
 
     /**
