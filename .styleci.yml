@@ -7,4 +7,5 @@ risky: false
 finder:
     exclude:
         - "docs"
+    not-name:
         - "database/seeds/phpwind9/data/pw_windid_school.php"
