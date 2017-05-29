@@ -1,6 +1,3 @@
-INSERT INTO `pw_common_emotion_category` (`category_id`, `category_name`, `emotion_folder`, `emotion_apps`, `orderid`, `isopen`) VALUES
-(1, '淘公仔', 'taodoll', 'bbs|weibo|cms|face', 0, 1);
-
 INSERT INTO `pw_common_emotion` (`emotion_id`, `category_id`, `emotion_name`, `emotion_folder`, `emotion_icon`, `vieworder`, `isused`) VALUES
 (1, 1, '弹', 'taodoll', '01.gif', 0, 1),
 (2, 1, '抱抱', 'taodoll', '02.gif', 0, 1),

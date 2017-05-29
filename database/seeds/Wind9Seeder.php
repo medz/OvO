@@ -24,5 +24,6 @@ class Wind9Seeder extends Seeder
         $this->call(PwBbsForumSeeder::class);
         $this->call(PwBbsForumExtraSeeder::class);
         $this->call(PwBbsForumStatisticsSeeder::class);
+        $this->call(PwCommonEmotionCategorySeeder::class);
     }
 }
