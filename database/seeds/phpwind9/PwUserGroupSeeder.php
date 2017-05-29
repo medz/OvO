@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Medz\Wind\Models\PwUserGroup;
 
-class PwUserGroupsSeeder extends Seeder
+class PwUserGroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.

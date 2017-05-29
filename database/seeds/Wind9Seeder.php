@@ -14,6 +14,7 @@ class Wind9Seeder extends Seeder
         $this->call(PwCommonConfigSeeder::class);
         $this->call(PwDesignComponentSeeder::class);
         $this->call(PwDesignPageSeeder::class);
-        $this->call(PwUserGroupsSeeder::class);
+        $this->call(PwUserGroupSeeder::class);
+        $this->call(PwUserPermissionGroupSeeder::class);
     }
 }
