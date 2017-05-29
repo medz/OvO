@@ -17,5 +17,6 @@ class Wind9Seeder extends Seeder
         $this->call(PwUserGroupSeeder::class);
         $this->call(PwUserPermissionGroupSeeder::class);
         $this->call(PwWindIDAreaSeeder::class);
+        $this->call(PwWindIDConfigSeeder::class);
     }
 }

@@ -5,16 +5,21 @@ namespace Medz\Wind\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class PwCommonConfig extends Model
+class PwWindIDConfig extends Model
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'pw_windid_config';
+
     /**
      * The primary key for the model.
      *
-     * @var array
+     * @var string
      */
     protected $primaryKey = ['name', 'namespace'];
-    protected $fillable = ['name', 'namespace', 'value', 'vtype', 'description'];
-    public $incrementing = false;
 
     /**
      * Indicates if the model should be timestamped.
@@ -24,11 +29,11 @@ class PwCommonConfig extends Model
     public $timestamps = false;
 
     /**
-     * The table associated with the model.
+     * Indicates if the IDs are auto-incrementing.
      *
-     * @var string
+     * @var bool
      */
-    protected $table = 'pw_common_config';
+    public $incrementing = false;
 
     /**
      * Set the keys for a save update query.
