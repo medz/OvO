@@ -20,5 +20,6 @@ class Wind9Seeder extends Seeder
         $this->call(PwWindIDConfigSeeder::class);
         $this->call(PwWindIDSchoolSeeder::class);
         $this->call(PwAdminRoleSeeder::class);
+        $this->call(PwBbsInfoSeeder::class);
     }
 }
