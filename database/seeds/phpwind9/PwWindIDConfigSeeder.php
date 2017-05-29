@@ -13,7 +13,7 @@ class PwWindIDConfigSeeder extends Seeder
     public function run()
     {
         $rows = $this->container->make('files')->getRequire(__DIR__.'/data/pw_windid_config.php');
-        foreach($rows as $item) {
+        foreach ($rows as $item) {
             PwWindIDConfig::create([
                 'name' => $item[0],
                 'namespace' => $item[1],
