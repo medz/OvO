@@ -1,11 +1,3 @@
-INSERT INTO `pw_bbs_forum_extra` (`fid`, `seo_description`, `seo_keywords`, `settings_basic`, `settings_credit`) VALUES
-(1, '', '', 'a:4:{s:7:"jumpurl";s:0:"";s:16:"numofthreadtitle";i:50;s:13:"threadperpage";i:20;s:11:"readperpage";i:15;}', 'a:0:{}'),
-(2, '', '', 'a:26:{s:16:"numofthreadtitle";i:50;s:13:"threadperpage";i:20;s:11:"readperpage";i:15;s:18:"minlengthofcontent";i:3;s:8:"locktime";s:0:"";s:8:"edittime";s:0:"";s:12:"contentcheck";i:0;s:7:"ifthumb";i:0;s:10:"thumbwidth";s:0:"";s:11:"thumbheight";s:0:"";s:8:"anticopy";i:0;s:11:"copycontent";s:0:"";s:5:"water";i:0;s:8:"allowrob";i:0;s:9:"allowhide";i:1;s:9:"allowsell";i:1;s:11:"allowencode";i:0;s:9:"anonymous";i:0;s:9:"allowtype";a:1:{i:0;s:7:"default";}s:9:"typeorder";a:1:{s:7:"default";i:0;}s:7:"jumpurl";s:0:"";s:10:"topic_type";i:0;s:16:"force_topic_type";i:0;s:14:"thread_visible";i:0;s:8:"waterimg";s:8:"mark.gif";s:18:"topic_type_display";i:1;}', 'a:10:{s:10:"post_topic";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:12:"delete_topic";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:10:"post_reply";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:12:"delete_reply";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:12:"digest_topic";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:13:"remove_digest";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:11:"push_thread";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:10:"upload_att";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:12:"download_att";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}s:6:"belike";a:2:{s:5:"limit";s:0:"";s:6:"credit";a:3:{i:1;s:0:"";i:2;s:0:"";i:3;s:0:"";}}}');
-
-INSERT INTO `pw_bbs_forum_statistics` (`fid`, `todayposts`, `todaythreads`, `article`, `posts`, `threads`, `subposts`, `subthreads`, `lastpost_info`, `lastpost_time`, `lastpost_username`, `lastpost_tid`) VALUES
-(1, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0),
-(2, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0);
-
 INSERT INTO `pw_common_emotion_category` (`category_id`, `category_name`, `emotion_folder`, `emotion_apps`, `orderid`, `isopen`) VALUES
 (1, '淘公仔', 'taodoll', 'bbs|weibo|cms|face', 0, 1);
 
