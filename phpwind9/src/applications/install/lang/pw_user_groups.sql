@@ -1,20 +1,3 @@
-INSERT INTO `pw_user_groups` (`gid`, `name`, `type`, `image`, `points`) VALUES
-(1, '会员', 'default', '0.gif', 0),
-(2, '游客', 'default', '0.gif', 0),
-(3, '管理员', 'system', '20.gif', 0),
-(4, '总版主', 'system', '19.gif', 0),
-(5, '论坛版主', 'system', '18.gif', 0),
-(6, '禁止发言', 'default', '0.gif', 0),
-(7, '未验证会员', 'default', '0.gif', 0),
-(8, '贫民', 'member', '1.gif', 0),
-(9, '新手', 'member', '3.gif', 50),
-(10, '侠客', 'member', '5.gif', 100),
-(11, '骑士', 'member', '6.gif', 300),
-(12, '圣骑士', 'member', '8.gif', 600),
-(13, '精灵王', 'member', '10.gif', 1000),
-(14, '风云使者', 'member', '12.gif', 5000),
-(15, '光明使者', 'member', '13.gif', 10000),
-(16, 'VIP', 'special', '13.gif', 0);
 
 INSERT INTO `pw_user_permission_groups` (`gid`, `rkey`, `rtype`, `rvalue`, `vtype`) VALUES
 (1, 'allow_add_vote', 'basic', '0', 'string'),
