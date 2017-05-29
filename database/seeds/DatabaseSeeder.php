@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        // phpwind seeder.
+        $this->call(Wind9Seeder::class);
     }
 }
