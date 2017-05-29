@@ -16,7 +16,7 @@ class Wind9Seeder extends Seeder
     }
 
     /**
-     * Seed to common_config
+     * Seed to common_config.
      *
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
