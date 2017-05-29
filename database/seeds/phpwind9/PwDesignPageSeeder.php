@@ -24,7 +24,7 @@ class PwDesignPageSeeder extends Seeder
                 'module_ids' => $item[6],
                 'struct_names' => $item[7],
                 'segments' => $item[8],
-                'design_lock' => $item[9]
+                'design_lock' => $item[9],
             ]);
         }
     }

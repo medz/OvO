@@ -3,6 +3,7 @@
 namespace Medz\Wind\Models;
 
 use Illuminate\Database\Eloquent\Model;
+
 // use Illuminate\Database\Eloquent\Builder;
 
 class PwDesignComponent extends Model
