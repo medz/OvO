@@ -27,5 +27,8 @@ class Wind9Seeder extends Seeder
         $this->call(PwCommonEmotionCategorySeeder::class);
         $this->call(PwCommonEmotionSeeder::class);
         $this->call(PwCommonNavSeeder::class);
+        $this->call(PwMedalInfoSeeder::class);
+        $this->call(PwTaskSeeder::class);
+        $this->call(PwTaskGroupSeeder::class);
     }
 }
