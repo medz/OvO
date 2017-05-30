@@ -39,7 +39,7 @@ class PwBbsThreadsIndexTable extends Migration
             $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
 
             $table->primary('tid');
-            $table->index('lastpost_time');
+            $table->index('lastpost_time', 'idx_lastposttime');
         });
     }
 

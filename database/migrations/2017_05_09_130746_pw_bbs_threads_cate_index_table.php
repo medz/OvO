@@ -41,7 +41,7 @@ class PwBbsThreadsCateIndexTable extends Migration
             $table->integer('lastpost_time')->unsigned()->nullable()->default(0);
 
             $table->primary('tid');
-            $table->index(['cid', 'lastpost_time']);
+            $table->index(['cid', 'lastpost_time'], 'idx_cid_lastposttime');
         });
     }
 
