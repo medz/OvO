@@ -88,7 +88,9 @@ class InstallCommand extends Command
         $this->call('migrate:refresh', ['--seed' => true, '--force' => true]);
 
         $config->set('app.url', $appURL);
-        $this->openBrowser($url = url('/old/install.php'));
+        $url = url('/old/install.php');
+        $url = str_replace('http://localhost', $appURL, $url);
+        $this->openBrowser($url);
 
         $this->info('Open the URL and proceed with the installation:');
         $this->alert($url);
