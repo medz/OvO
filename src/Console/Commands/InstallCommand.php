@@ -207,7 +207,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * 提问 APP_URL
+     * 提问 APP_URL.
      *
      * @return string
      * @author Seven Du <shiweidu@outlook.com>
