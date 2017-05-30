@@ -160,57 +160,6 @@ class IndexController extends WindController
         if (false === WindValidator::isEmail($input['manager_email'])) {
             $this->showError('INSTALL:founder.init.email.error');
         }
-
-        // list($input['dbhost'], $input['dbport']) = explode(':', $input['dbhost']);
-        // $input['dbport'] = ! empty($input['dbport']) ? intval($input['dbport']) : 3306;
-        // if (! empty($input['engine'])) {
-        //     $input['engine'] = strtoupper($input['engine']);
-        //     ! in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
-        // } else {
-        //     $input['engine'] = 'MyISAM';
-        // }
-        // $charset = Wind::getApp()->getResponse()->getCharset();
-        // $charset = str_replace('-', '', strtolower($charset));
-        // if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
-        //     $charset = 'utf8';
-        // }
-
-        // 检测是否安装过了
-
-        // $dsn = 'mysql:host='.$input['dbhost'].';port='.$input['dbport'];
-        // try {
-        //     $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
-        //     $result = $pdo->query('SHOW DATABASES')->fetchAll();
-        //     foreach ($result as $v) {
-        //         if ($v['Database'] == $input['dbname']) {
-        //             $dbnameExist = true;
-        //             break;
-        //         }
-        //     }
-        //     if ($dbnameExist) {
-        //         $result = $pdo->query("SHOW TABLES FROM `{$input['dbname']}`")->rowCount();
-        //         empty($result) && $dbnameExist = false;
-        //     }
-        // } catch (PDOException $e) {
-        //     $error = $e->getMessage();
-        //     $this->showError($error, false);
-        // }
-        // if ($dbnameExist && ! $force) {
-        //     $this->showError('INSTALL:have_install', true, 'index/database', true);
-        // }
-        // if (! $dbnameExist) {
-        //     try {
-        //         $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
-        //         $pdo->query("CREATE DATABASE IF NOT EXISTS `{$input['dbname']}` DEFAULT CHARACTER SET $charset");
-        //     } catch (PDOException $e) {
-        //         $error = $e->getMessage();
-        //         $this->showError($error, false);
-        //     }
-        // }
-        // $pdo->close();
-        // if (! $this->_checkWriteAble($this->_getDatabaseFile())) {
-        //     $this->showError('INSTALL:error_777_database');
-        // }
         if (! $this->_checkWriteAble($this->_getFounderFile())) {
             $this->showError('INSTALL:error_777_founder');
         }
@@ -222,113 +171,10 @@ class IndexController extends WindController
         ];
         WindFile::savePhpData($this->_getTempFile(), $manager);
 
-        // $database = [
-        //     'dsn'         => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
-        //     'user'        => $input['dbuser'],
-        //     'pwd'         => $input['dbpw'],
-        //     'charset'     => $charset,
-        //     'tableprefix' => $input['dbprefix'],
-        //     'engine'      => $input['engine'],
-        //     'founder'     => [
-        //         'manager'       => $input['manager'],
-        //         'manager_pwd'   => $input['manager_pwd'],
-        //         'manager_email' => $input['manager_email'], ], ];
-        // WindFile::savePhpData($this->_getTempFile(), $database);
-
-        // $arrSQL = [];
-        // foreach ($this->wind_data as $file) {
-        //     $file = Wind::getRealPath("APPS:install.lang.$file", true);
-        //     if (! WindFile::isFile($file)) {
-        //         continue;
-        //     }
-        //     $content = WindFile::read($file);
-        //     if (! empty($content)) {
-        //         $arrSQL = array_merge_recursive($arrSQL,
-        //         $this->_sqlParser($content, $charset, $input['dbprefix'], $input['engine']));
-        //     }
-        // }
-        // WindFile::savePhpData($this->_getTableSqlFile(), $arrSQL['SQL']);
-        // WindFile::write($this->_getTableLogFile(), implode('<wind>', $arrSQL['LOG']['CREATE']));
-
         //写入windid配置信息
         $this->_writeWindid();
 
         $this->showMessage('success', false, 'index/finish');
-    }
-
-    /**
-     * 创建数据表.
-     */
-    public function tableAction()
-    {
-        @set_time_limit(300);
-
-        $db = $this->_checkDatabase();
-
-        try {
-            $pdo = new WindConnection($db['dsn'], $db['user'], $db['pwd'], $db['charset']);
-            $pdo->setConfig($db);
-        } catch (PDOException $e) {
-            $this->showError($e->getMessage(), false);
-        }
-
-        $tableSql = include $this->_getTableSqlFile();
-
-        try {
-            foreach ($tableSql['DROP'] as $sql) {
-                $pdo->query($sql);
-            }
-            foreach ($tableSql['CREATE'] as $sql) {
-                $pdo->query($sql);
-            }
-        } catch (PDOException $e) {
-            $this->showError($e->getMessage(), false);
-        }
-        $pdo->close();
-        $log = WindFile::read($this->_getTableLogFile());
-        $this->setOutput($log, 'log');
-    }
-
-    /**
-     * 导入默认数据.
-     */
-    public function dataAction()
-    {
-        @set_time_limit(300);
-
-        $db = $this->_checkDatabase();
-
-        try {
-            $pdo = new WindConnection($db['dsn'], $db['user'], $db['pwd'], $db['charset']);
-            $pdo->setConfig($db);
-        } catch (PDOException $e) {
-            $this->showError($e->getMessage(), false);
-        }
-
-        $tableSql = include $this->_getTableSqlFile();
-        try {
-            foreach ($tableSql['UPDATE'] as $sql) {
-                $pdo->query($sql);
-            }
-        } catch (PDOException $e) {
-            $this->showError($e->getMessage(), false);
-        }
-        $pdo->close();
-
-        //数据库配置
-        $database = [
-            'dsn'         => $db['dsn'],
-            'user'        => $db['user'],
-            'pwd'         => $db['pwd'],
-            'charset'     => $db['charset'],
-            'tableprefix' => $db['tableprefix'],
-            'engine'      => $db['engine'], ];
-        WindFile::savePhpData($this->_getDatabaseFile(), $database);
-
-        //写入windid配置信息
-        $this->_writeWindid();
-
-        $this->forwardRedirect(WindUrlHelper::createUrl('index/finish'));
     }
 
     /**
@@ -446,61 +292,6 @@ class IndexController extends WindController
             $error = $lang->getMessage($error);
         }
         parent::showMessage($error);
-    }
-
-    /**
-     * WIND SQL 格式解析.
-     *
-     * @param string $strSQL  SQL语句字串
-     * @param string $charset 字符集
-     *
-     * @return array(SQL, log)
-     */
-    private function _sqlParser($strSQL, $charset, $dbprefix, $engine)
-    {
-        if (empty($strSQL)) {
-            return [];
-        }
-        $query = '';
-        $logData = $tableSQL = $dataSQL = $fieldSQL = [];
-        $strSQL = str_replace(["\r", "\n\n", ";\n"], ['', "\n", ";<wind>\n"], trim($strSQL, " \n\t")."\n");
-        $arrSQL = explode("\n", $strSQL);
-        foreach ($arrSQL as $value) {
-            $value = trim($value, " \t");
-            if (! $value || substr($value, 0, 2) === '--') {
-                continue;
-            }
-            $query .= $value;
-            if (substr($query, -7) != ';<wind>') {
-                continue;
-            }
-            $query = preg_replace('/([ `]+)pw_/', "\${1}$dbprefix", $query, 1);
-            $sql_key = strtoupper(substr($query, 0, strpos($query, ' ')));
-            if ($sql_key == 'CREATE') {
-                $tablename = trim(strrchr(trim(substr($query, 0, strpos($query, '('))), ' '), '` ');
-                $query = str_replace(['ENGINE=MyISAM', 'DEFAULT CHARSET=utf8', ';<wind>'],
-                    ["ENGINE=$engine", "DEFAULT CHARSET=$charset", ';'], $query);
-                $dataSQL['CREATE'][] = $query;
-                $logData['CREATE'][] = $tablename;
-            } elseif ($sql_key == 'DROP') {
-                $tablename = trim(strrchr(trim(substr($query, 0, strrpos($query, ';'))), ' '), '` ');
-                $query = str_replace(';<wind>', '', $query);
-                $dataSQL['DROP'][] = $query;
-                //$logData['DROP'][] = $tablename;
-            } elseif ($sql_key == 'ALTER') {
-                $query = str_replace(';<wind>', '', $query);
-                $dataSQL['ALTER'][] = $query;
-                //$logData['ALTER'][] = $query;
-            } elseif (in_array($sql_key, ['INSERT', 'REPLACE', 'UPDATE'])) {
-                $query = str_replace(';<wind>', '', $query);
-                $sql_key == 'INSERT' && $query = 'REPLACE'.substr($query, 6);
-                $dataSQL['UPDATE'][] = $query;
-                //$logData['UPDATE'][] = $query;
-            }
-            $query = '';
-        }
-
-        return ['SQL' => $dataSQL, 'LOG' => $logData];
     }
 
     /**
