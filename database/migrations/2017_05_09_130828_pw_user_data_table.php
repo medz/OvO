@@ -74,8 +74,8 @@ class PwUserDataTable extends Migration
             $table->integer('follows')->unsigned()->nullable()->default(0)->comment('关注数');
             $table->integer('fans')->unsigned()->nullable()->default(0)->comment('粉丝数');
             $table->tinyinteger('message_tone')->unsigned()->nullable()->default(1)->comment('是否有新消息');
-            $table->tinyinteger('messages')->unsigned()->nullable()->default(1)->comment('私信数');
-            $table->tinyinteger('notices')->unsigned()->nullable()->default(1)->comment('消息数');
+            $table->tinyinteger('messages')->unsigned()->nullable()->default(0)->comment('私信数');
+            $table->tinyinteger('notices')->unsigned()->nullable()->default(0)->comment('消息数');
             $table->integer('likes')->unsigned()->nullable()->default(0)->comment('最后发帖时间');
             $table->string('punch', 200)->nullable()->default('')->comment('打卡相关');
             $table->integer('credit1')->nullable()->default(0)->comment('积分字段1');
