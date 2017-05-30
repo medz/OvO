@@ -56,7 +56,7 @@ class IndexController extends WindController
                 continue;
             }
             if ($const === 'PUBLIC_URL' && ! $value) {
-                $value = Wind::getApp()->getRequest()->getBaseUrl(true);
+                $value = url('/old');
             }
             define($const, $value);
         }
@@ -133,21 +133,16 @@ class IndexController extends WindController
     public function databaseAction()
     {
         $keys = [
-            'dbhost',
-            'dbuser',
-            'dbname',
-            'dbprefix',
             'manager',
             'manager_pwd',
             'manager_ckpwd',
             'manager_email',
-            'dbpw',
-            'engine', ];
+        ];
         $input = $this->getInput($keys, 'post');
-        $force = $this->getInput('force');
+        // $force = $this->getInput('force');
         $input = array_combine($keys, $input);
         foreach ($input as $k => $v) {
-            if (! in_array($k, ['dbpw', 'engine']) && empty($v)) {
+            if (empty($v)) {
                 $this->showError("INSTALL:input_empty_$k");
             }
         }
@@ -166,89 +161,99 @@ class IndexController extends WindController
             $this->showError('INSTALL:founder.init.email.error');
         }
 
-        list($input['dbhost'], $input['dbport']) = explode(':', $input['dbhost']);
-        $input['dbport'] = ! empty($input['dbport']) ? intval($input['dbport']) : 3306;
-        if (! empty($input['engine'])) {
-            $input['engine'] = strtoupper($input['engine']);
-            ! in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
-        } else {
-            $input['engine'] = 'MyISAM';
-        }
-        $charset = Wind::getApp()->getResponse()->getCharset();
-        $charset = str_replace('-', '', strtolower($charset));
-        if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
-            $charset = 'utf8';
-        }
+        // list($input['dbhost'], $input['dbport']) = explode(':', $input['dbhost']);
+        // $input['dbport'] = ! empty($input['dbport']) ? intval($input['dbport']) : 3306;
+        // if (! empty($input['engine'])) {
+        //     $input['engine'] = strtoupper($input['engine']);
+        //     ! in_array($input['engine'], ['MyISAM', 'InnoDB']) && $input['engine'] = 'MyISAM';
+        // } else {
+        //     $input['engine'] = 'MyISAM';
+        // }
+        // $charset = Wind::getApp()->getResponse()->getCharset();
+        // $charset = str_replace('-', '', strtolower($charset));
+        // if (! in_array($charset, ['gbk', 'utf8', 'big5'])) {
+        //     $charset = 'utf8';
+        // }
 
         // 检测是否安装过了
 
-        $dsn = 'mysql:host='.$input['dbhost'].';port='.$input['dbport'];
-        try {
-            $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
-            $result = $pdo->query('SHOW DATABASES')->fetchAll();
-            foreach ($result as $v) {
-                if ($v['Database'] == $input['dbname']) {
-                    $dbnameExist = true;
-                    break;
-                }
-            }
-            if ($dbnameExist) {
-                $result = $pdo->query("SHOW TABLES FROM `{$input['dbname']}`")->rowCount();
-                empty($result) && $dbnameExist = false;
-            }
-        } catch (PDOException $e) {
-            $error = $e->getMessage();
-            $this->showError($error, false);
-        }
-        if ($dbnameExist && ! $force) {
-            $this->showError('INSTALL:have_install', true, 'index/database', true);
-        }
-        if (! $dbnameExist) {
-            try {
-                $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
-                $pdo->query("CREATE DATABASE IF NOT EXISTS `{$input['dbname']}` DEFAULT CHARACTER SET $charset");
-            } catch (PDOException $e) {
-                $error = $e->getMessage();
-                $this->showError($error, false);
-            }
-        }
-        $pdo->close();
-        if (! $this->_checkWriteAble($this->_getDatabaseFile())) {
-            $this->showError('INSTALL:error_777_database');
-        }
+        // $dsn = 'mysql:host='.$input['dbhost'].';port='.$input['dbport'];
+        // try {
+        //     $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
+        //     $result = $pdo->query('SHOW DATABASES')->fetchAll();
+        //     foreach ($result as $v) {
+        //         if ($v['Database'] == $input['dbname']) {
+        //             $dbnameExist = true;
+        //             break;
+        //         }
+        //     }
+        //     if ($dbnameExist) {
+        //         $result = $pdo->query("SHOW TABLES FROM `{$input['dbname']}`")->rowCount();
+        //         empty($result) && $dbnameExist = false;
+        //     }
+        // } catch (PDOException $e) {
+        //     $error = $e->getMessage();
+        //     $this->showError($error, false);
+        // }
+        // if ($dbnameExist && ! $force) {
+        //     $this->showError('INSTALL:have_install', true, 'index/database', true);
+        // }
+        // if (! $dbnameExist) {
+        //     try {
+        //         $pdo = new WindConnection($dsn, $input['dbuser'], $input['dbpw'], $charset);
+        //         $pdo->query("CREATE DATABASE IF NOT EXISTS `{$input['dbname']}` DEFAULT CHARACTER SET $charset");
+        //     } catch (PDOException $e) {
+        //         $error = $e->getMessage();
+        //         $this->showError($error, false);
+        //     }
+        // }
+        // $pdo->close();
+        // if (! $this->_checkWriteAble($this->_getDatabaseFile())) {
+        //     $this->showError('INSTALL:error_777_database');
+        // }
         if (! $this->_checkWriteAble($this->_getFounderFile())) {
             $this->showError('INSTALL:error_777_founder');
         }
 
-        $database = [
-            'dsn'         => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
-            'user'        => $input['dbuser'],
-            'pwd'         => $input['dbpw'],
-            'charset'     => $charset,
-            'tableprefix' => $input['dbprefix'],
-            'engine'      => $input['engine'],
-            'founder'     => [
-                'manager'       => $input['manager'],
-                'manager_pwd'   => $input['manager_pwd'],
-                'manager_email' => $input['manager_email'], ], ];
-        WindFile::savePhpData($this->_getTempFile(), $database);
+        $manager = [
+            'manager' => $input['manager'],
+            'manager_pwd' => $input['manager_pwd'],
+            'manager_email' => $input['manager_email'],
+        ];
+        WindFile::savePhpData($this->_getTempFile(), $manager);
 
-        $arrSQL = [];
-        foreach ($this->wind_data as $file) {
-            $file = Wind::getRealPath("APPS:install.lang.$file", true);
-            if (! WindFile::isFile($file)) {
-                continue;
-            }
-            $content = WindFile::read($file);
-            if (! empty($content)) {
-                $arrSQL = array_merge_recursive($arrSQL,
-                $this->_sqlParser($content, $charset, $input['dbprefix'], $input['engine']));
-            }
-        }
-        WindFile::savePhpData($this->_getTableSqlFile(), $arrSQL['SQL']);
-        WindFile::write($this->_getTableLogFile(), implode('<wind>', $arrSQL['LOG']['CREATE']));
+        // $database = [
+        //     'dsn'         => 'mysql:host='.$input['dbhost'].';dbname='.$input['dbname'].';port='.$input['dbport'],
+        //     'user'        => $input['dbuser'],
+        //     'pwd'         => $input['dbpw'],
+        //     'charset'     => $charset,
+        //     'tableprefix' => $input['dbprefix'],
+        //     'engine'      => $input['engine'],
+        //     'founder'     => [
+        //         'manager'       => $input['manager'],
+        //         'manager_pwd'   => $input['manager_pwd'],
+        //         'manager_email' => $input['manager_email'], ], ];
+        // WindFile::savePhpData($this->_getTempFile(), $database);
 
-        $this->showMessage('success', false, 'index/table');
+        // $arrSQL = [];
+        // foreach ($this->wind_data as $file) {
+        //     $file = Wind::getRealPath("APPS:install.lang.$file", true);
+        //     if (! WindFile::isFile($file)) {
+        //         continue;
+        //     }
+        //     $content = WindFile::read($file);
+        //     if (! empty($content)) {
+        //         $arrSQL = array_merge_recursive($arrSQL,
+        //         $this->_sqlParser($content, $charset, $input['dbprefix'], $input['engine']));
+        //     }
+        // }
+        // WindFile::savePhpData($this->_getTableSqlFile(), $arrSQL['SQL']);
+        // WindFile::write($this->_getTableLogFile(), implode('<wind>', $arrSQL['LOG']['CREATE']));
+
+        //写入windid配置信息
+        $this->_writeWindid();
+
+        $this->showMessage('success', false, 'index/finish');
     }
 
     /**
@@ -334,7 +339,8 @@ class IndexController extends WindController
         //Wekit::createapp('phpwind');
         Wekit::C()->reload('windid');
         WindidApi::api('user');
-        $db = $this->_checkDatabase();
+        $founder = include $this->_getTempFile();
+        // $db = $this->_checkDatabase();
         //更新HOOK配置数据
 
         Wekit::load('hook.srv.PwHookRefresh')->refresh();
@@ -344,7 +350,7 @@ class IndexController extends WindController
         $cookie_pre = WindUtility::generateRandStr(3);
         Wekit::load('config.PwConfig')->setConfig('site', 'hash', $site_hash);
         Wekit::load('config.PwConfig')->setConfig('site', 'cookie.pre', $cookie_pre);
-        Wekit::load('config.PwConfig')->setConfig('site', 'info.mail', $db['founder']['manager_email']);
+        Wekit::load('config.PwConfig')->setConfig('site', 'info.mail', $founder['manager_email']);
         Wekit::load('config.PwConfig')->setConfig('site', 'info.url', PUBLIC_URL);
         Wekit::load('nav.srv.PwNavService')->updateConfig();
 
@@ -371,7 +377,7 @@ class IndexController extends WindController
         $emotion->updateCache();
 
         //创始人配置
-        $uid = $this->_writeFounder($db['founder']['manager'], $db['founder']['manager_pwd'], $db['founder']['manager_email']);
+        $uid = $this->_writeFounder($founder['manager'], $founder['manager_pwd'], $founder['manager_email']);
 
         //门户演示数据
         app(PwDesignDefaultService::class)->likeModule();
@@ -561,8 +567,8 @@ class IndexController extends WindController
     {
         return [
             'os'        => 'Linux',
-            'version'   => '>7.x.x',
-            'mysql'     => '>5.4.x',
+            'version'   => '>7.1.x',
+            'mysql'     => '>5.7.x',
             'pdo_mysql' => '必须',
             'upload'    => '>2M',
             'space'     => '>50M',
@@ -580,7 +586,7 @@ class IndexController extends WindController
         return [
             'os'        => '不限制',
             'version'   => '5.6.4',
-            'mysql'     => '5.0',
+            'mysql'     => '5.6',
             'pdo_mysql' => '必须',
             'upload'    => '不限制',
             'space'     => '50M',
