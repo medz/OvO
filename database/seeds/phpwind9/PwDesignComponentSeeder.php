@@ -17,7 +17,7 @@ class PwDesignComponentSeeder extends Seeder
             PwDesignComponent::create([
                 'model_flag' => $item[0],
                 'comp_name' => $item[1],
-                'comp_tpl' => $item[2],
+                'comp_tpl' => str_replace('\n', PHP_EOL, $item[2]),
                 'sys_id' => $item[3],
             ]);
         }
