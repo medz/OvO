@@ -7,3 +7,5 @@ risky: false
 finder:
     exclude:
         - "docs"
+    not-name:
+        - "*pw_windid_school.php"

@@ -50,8 +50,8 @@ class PwBbsThreadsDigestIndexTable extends Migration
             $table->integer('operator_time')->unsigned()->nullable()->default(0);
 
             $table->primary('tid');
-            $table->index(['cid', 'lastpost_time']);
-            $table->index(['fid', 'lastpost_time', 'topic_type']);
+            $table->index(['cid', 'lastpost_time'], 'idx_cid_lastposttime');
+            $table->index(['fid', 'lastpost_time', 'topic_type'], 'idx_fid_lastposttime_topictype');
         });
     }
 

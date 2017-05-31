@@ -30,7 +30,7 @@ class PwMessageConfigTable extends Migration
                 $table->engine = 'InnoDB';
             }
             $table->integer('uid')->unsigned()->nullable()->comment('用户uid');
-            $table->tinyInteger('typeid')->unsigned()->nullable()->default(0)->comment('关注人才能发私信');
+            $table->tinyInteger('privacy')->unsigned()->nullable()->default(0)->comment('关注人才能发私信');
             $table->string('notice_types', 255)->nullable()->default('')->comment('通知忽略类型');
 
             $table->primary('uid');

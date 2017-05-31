@@ -12,39 +12,6 @@
 	<div class="server">
 		<table width="100%">
 			<tr>
-				<td class="td1" width="100">数据库信息</td>
-				<td class="td1" width="200">&nbsp;</td>
-				<td class="td1">&nbsp;</td>
-			</tr>
-			<tr>
-				<td class="tar">数据库服务器：</td>
-				<td><input type="text" name="dbhost" value="localhost" class="input"></td>
-				<td><div id="J_install_tip_dbhost"><span class="gray">数据库服务器地址，一般为localhost</span></div></td>
-			</tr>
-
-			<tr>
-				<td class="tar">数据库用户名：</td>
-				<td><input type="text" name="dbuser" value="root" class="input"></td>
-				<td><div id="J_install_tip_dbuser"></div></td>
-			</tr>
-			<tr>
-				<td class="tar">数据库密码：</td>
-				<td><input type="text" name="dbpw" value="" class="input" autoComplete="off"></td>
-				<td><div id="J_install_tip_dbpw"></div></td>
-			</tr>
-			<tr>
-				<td class="tar">数据库名：</td>
-				<td><input type="text" name="dbname" value="" class="input"></td>
-				<td><div id="J_install_tip_dbname"></div></td>
-			</tr>
-			<tr>
-				<td class="tar">数据库表前缀：</td>
-				<td><input type="text" name="dbprefix" value="pw_" class="input"></td>
-				<td><div id="J_install_tip_dbprefix"><span class="gray">建议使用默认，同一数据库安装多个phpwind时需修改</span></div></td>
-			</tr>
-		</table>
-		<table width="100%">
-			<tr>
 				<td class="td1" width="100">创始人信息</td>
 				<td class="td1" width="200">&nbsp;</td>
 				<td class="td1">&nbsp;</td>
@@ -88,11 +55,6 @@ $(function(){
 
 	//聚焦时默认提示
 	var focus_tips = {
-		dbhost : '数据库服务器地址，一般为localhost',
-		dbuser : '',
-		dbpw : '',
-		dbname : '',
-		dbprefix : '建议使用默认，同一数据库安装多个phpwind时需修改',
 		manager : '创始人帐号，拥有站点后台所有管理权限',
 		manager_pwd : '',
 		manager_ckpwd : '',
@@ -123,21 +85,6 @@ $(function(){
 		onkeyup : false,
 		focusInvalid : false,
 		rules: {
-			dbhost: {
-				required	: true
-			},
-			dbuser: {
-				required	: true
-			},
-			dbpw: {
-				required	: false
-			},
-			dbname: {
-				required	: true
-			},
-			dbprefix : {
-				required	: true
-			},
 			manager: {
 				required	: true
 			},
@@ -182,21 +129,6 @@ $(function(){
 			
 		},
 		messages: {
-			dbhost: {
-				required	: '数据库服务器地址不能为空'
-			},
-			dbuser: {
-				required	: '数据库用户名不能为空'
-			},
-			dbpw: {
-				required	: '数据库密码不能为空'
-			},
-			dbname: {
-				required	: '数据库名不能为空'
-			},
-			dbprefix : {
-				required	: '数据库表前缀不能为空'
-			},
 			manager: {
 				required	: '管理员帐号不能为空'
 			},
