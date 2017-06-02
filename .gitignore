@@ -11,3 +11,4 @@ windframework
 /vendor
 /.idea
 /.composer.lock
+/composer.lock
