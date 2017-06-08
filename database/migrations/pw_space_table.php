@@ -24,7 +24,7 @@ CREATE TABLE `pw_space` (
 
  */
 
-class PwWordTable extends Migration
+class PwSpaceTable extends Migration
 {
     /**
      * Run the migrations.
