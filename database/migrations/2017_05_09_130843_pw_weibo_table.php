@@ -41,7 +41,7 @@ class PwWeiboTable extends Migration
             $table->text('content');
             $table->tinyinteger('type')->unsigned()->nullable()->default(0);
             $table->mediuminteger('comments')->unsigned()->nullable()->default(0);
-            $table->text('extra');
+            $table->text('extra')->nullable()->default(null);
             $table->mediuminteger('like_count')->unsigned()->nullable()->default(0);
             $table->integer('created_userid')->unsigned()->nullable()->default(0);
             $table->string('created_username', 32)->nullable()->default('');
