@@ -103,7 +103,7 @@ class AvatarController extends OpenBaseController
     /**
      * 上传头像.
      */
-    public function doavatarAction()
+    public function doAvatarAction()
     {
         $uid = (int) $this->getInput('uid', 'get');
         Wind::import('WSRV:upload.action.WindidAvatarUpload');
@@ -115,6 +115,7 @@ class AvatarController extends OpenBaseController
         } else {
             $this->output($this->errorCode('upload.content.error'));
         }
+
         if ($result instanceof PwError) {
             $this->output($this->errorCode($result->getError()));
         } else {
