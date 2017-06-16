@@ -32,8 +32,8 @@ class PwDesignBakTable extends Migration
             }
             $table->tinyInteger('bak_type')->unsigned()->comment('备份类型');
             $table->integer('page_id')->unsigned()->comment('备份页面');
-            $table->tinyInteger('is_snapshot')->unsigned()->comment('是否快照');
-            $table->mediumText('bak_info')->comment('备份信息');
+            $table->tinyInteger('is_snapshot')->unsigned()->nullable()->default(0)->comment('是否快照');
+            $table->mediumText('bak_info')->nullable()->default(null)->comment('备份信息');
 
             $table->primary(['page_id', 'bak_type', 'is_snapshot']);
         });
