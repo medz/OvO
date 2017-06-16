@@ -70,7 +70,7 @@ class PwBbsPostsTable extends Migration
             $table->smallInteger('aids')->unsigned()->nullable()->default(0);
             $table->integer('rpid')->unsigned()->nullable()->default(0);
             $table->string('subject', 100)->nullable()->default('');
-            $table->text('content');
+            $table->text('content')->nullable()->default(null);
             $table->mediumInteger('like_count')->unsigned()->nullable()->default(0);
             $table->mediumInteger('sell_count')->unsigned()->nullable()->default(0);
             $table->integer('created_time')->unsigned()->nullable()->default(0);
