@@ -73,3 +73,8 @@ Route::any('/{type}/{filename}.{ext}', function (Illuminate\Filesystem\Filesyste
     'type'     => 'attachment|res|themes|windid|',
     'filename' => '.*',
 ]);
+
+// phpwind9 rewrite
+Route::any('/{path}', function () {
+    Wekit::run('index.php', 'phpwind');
+})->where('path', '.*');
