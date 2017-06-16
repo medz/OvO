@@ -37,7 +37,7 @@ class PwCreditLogTable extends Migration
             }
             $table->increments('id')->unsigned();
             $table->string('ctype', 8)->nullable()->default('');
-            $table->integer('affect')->unsigned()->nullable()->default(0);
+            $table->integer('affect')->nullable()->default(0);
             $table->string('logtype', 40)->nullable()->default('');
             $table->string('descrip', 255)->nullable()->default('');
             $table->integer('created_userid')->unsigned()->nullable()->default(0);
