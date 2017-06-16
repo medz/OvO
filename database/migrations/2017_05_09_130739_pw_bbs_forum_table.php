@@ -63,7 +63,7 @@ class PwBbsForumTable extends Migration
             $table->tinyInteger('issub')->unsigned()->nullable()->default(0);
             $table->tinyInteger('hassub')->unsigned()->nullable()->default(0);
             $table->string('name', 255)->nullable()->default('');
-            $table->text('descrip');
+            $table->text('descrip')->nullable()->default(null);
             $table->smallInteger('vieworder')->unsigned()->nullable()->default(0);
             $table->tinyInteger('across')->unsigned()->nullable()->default(0);
             $table->string('manager', 255)->nullable()->default('');
