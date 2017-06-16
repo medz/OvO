@@ -71,6 +71,6 @@ Wind.use('ajaxForm', function(){
 
 			}
 		}
-	});
+	}, 'text');
 
 });
