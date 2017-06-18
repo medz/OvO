@@ -32,6 +32,16 @@
 非常感谢您考虑为 Fans 版做出贡献，
 贡献指南可以在 Fans 文档中心（[https://medz.github.io/phpwind/#/contributing](https://medz.github.io/phpwind/#/contributing)）中找到。
 
+## 赞助
+
+![支付宝](https://medz.cn/old/attachment/1706/thread/16_1_b927db46bbbdc63.png) ![微信](https://medz.cn/old/attachment/1706/thread/16_1_9a4f41e38215bb3.png)
+
+#### 赞助列表
+
+| 赞助人 | 金额 |
+|：----:|----|
+| ![延边电商网-电商创业离不开的平台](https://medz.cn/old/attachment/1706/thread/16_1_9ad0f73c5881d28.png) | ¥500.00 |
+
 # License
 
 Fans 版本包根据 Apache-2 许可证发布，请参阅完整的 [许可证文本](LICENSE)。
