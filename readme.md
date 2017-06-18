@@ -34,7 +34,9 @@
 
 ## 赞助
 
-![支付宝](https://medz.cn/old/attachment/1706/thread/16_1_b927db46bbbdc63.png) ![微信](https://medz.cn/old/attachment/1706/thread/16_1_9a4f41e38215bb3.png)
+| | |
+|----|----|
+| ![支付宝](https://medz.cn/old/attachment/1706/thread/16_1_b927db46bbbdc63.png) | ![微信](https://medz.cn/old/attachment/1706/thread/16_1_9a4f41e38215bb3.png) |
 
 #### 赞助列表
 
