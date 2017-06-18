@@ -36,13 +36,13 @@
 
 | 支付宝 | 微信 |
 |:----:|:----:|
-| ![支付宝](https://medz.cn/old/attachment/1706/thread/16_1_b927db46bbbdc63.png) | ![微信](https://medz.cn/old/attachment/1706/thread/16_1_9a4f41e38215bb3.png) |
+| ![支付宝](https://user-images.githubusercontent.com/5564821/27260484-e3d2afa2-545f-11e7-8f88-ba6fe6df3151.png) | ![微信](https://user-images.githubusercontent.com/5564821/27260491-f9431674-545f-11e7-9d6b-49af1d4df39d.png) |
 
 #### 赞助列表
 
 | 赞助人 | 金额 | 赞助人 | 金额 | 赞助人 | 金额 |
 |:----:|----|:----:|----|:----:|----|
-| [![延边电商网-电商创业离不开的平台](https://medz.cn/old/attachment/1706/thread/16_1_9ad0f73c5881d28.png)](http://www.ybds.cc/) | (支付宝)¥500.00 | [phpwind模板网](http://www.phpwind.net.cn) |（QQ）¥ 10 + 8.88 | | |
+| [![延边电商网-电商创业离不开的平台](https://user-images.githubusercontent.com/5564821/27260510-4d995256-5460-11e7-892d-13116966abce.png)](http://www.ybds.cc) | (支付宝) 500.00 | [phpwind模板网](http://www.phpwind.net.cn) | (QQ) 10 + 8.88 | [![liuwanli](https://user-images.githubusercontent.com/5564821/27260518-aba663ac-5460-11e7-95d9-0a14353bd06c.png)](http://liuwanli.vip) | （微信）8.88 |
 
 # License
 
