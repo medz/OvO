@@ -42,7 +42,7 @@
 
 | 赞助人 | 金额 |
 |:----:|----|
-| ![延边电商网-电商创业离不开的平台](https://medz.cn/old/attachment/1706/thread/16_1_9ad0f73c5881d28.png) | ¥500.00 |
+| [![延边电商网-电商创业离不开的平台](https://medz.cn/old/attachment/1706/thread/16_1_9ad0f73c5881d28.png) 延边电商网-电商创业离不开的平台](http://www.ybds.cc/) | ¥500.00 |
 
 # License
 
