@@ -36,7 +36,7 @@
 
 **Fans** 项目是免费开源的一个项目，个人维护需要付出很多精力，如果你喜欢 Fans 或者像鼓励维护者，请捐赠来鼓励维护者吧。
 
-[捐赠](issues/265)
+[捐赠](https://github.com/medz/phpwind/issues/265)
 
 # License
 
