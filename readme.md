@@ -32,18 +32,11 @@
 非常感谢您考虑为 Fans 版做出贡献，
 贡献指南可以在 Fans 文档中心（[https://medz.github.io/phpwind/#/contributing](https://medz.github.io/phpwind/#/contributing)）中找到。
 
-## 赞助
+## 赞助捐赠
 
-| 支付宝 | 微信 |
-|:----:|:----:|
-| ![支付宝](https://user-images.githubusercontent.com/5564821/27260484-e3d2afa2-545f-11e7-8f88-ba6fe6df3151.png) | ![微信](https://user-images.githubusercontent.com/5564821/27260491-f9431674-545f-11e7-9d6b-49af1d4df39d.png) |
+**Fans** 项目是免费开源的一个项目，个人维护需要付出很多精力，如果你喜欢 Fans 或者像鼓励维护者，请捐赠来鼓励维护者吧。
 
-#### 赞助列表
-
-| 赞助人 | 金额 | 赞助人 | 金额 | 赞助人 | 金额 |
-|:----:|----|:----:|----|:----:|----|
-| [![延边电商网-电商创业离不开的平台](https://user-images.githubusercontent.com/5564821/27260510-4d995256-5460-11e7-892d-13116966abce.png)](http://www.ybds.cc) | (支付宝) 500.00 | [phpwind模板网](http://www.phpwind.net.cn) | (QQ) 10 + 8.88 | [![liuwanli](https://user-images.githubusercontent.com/5564821/27260518-aba663ac-5460-11e7-95d9-0a14353bd06c.png)](http://liuwanli.vip) | （微信）8.88 |
-| 月影丿幻矢 |（微信）68 | cc |（微信）50 |
+[捐赠](issues/265)
 
 # License
 
