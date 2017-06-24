@@ -2,7 +2,6 @@
 
 namespace Medz\Wind\Http\Controllers;
 
-use Medz\Wind\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
