@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->unique('name');
-            $table->uniqid('email');
-            $table->uniqid('phone');
+            $table->unique('email');
+            $table->unique('phone');
         });
     }
 
