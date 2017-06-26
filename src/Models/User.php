@@ -9,4 +9,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
+
+    public function findForPassport(string $username)
+    {
+        return $this->find(1);
+    }
+
+    public function validateForPassportPasswordGrant()
+    {
+        return true;
+    }
 }

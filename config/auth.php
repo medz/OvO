@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Medz\Wind\User::class,
+            'model' => Medz\Wind\Models\User::class,
         ],
 
         // 'users' => [
