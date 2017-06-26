@@ -2,8 +2,8 @@
 
 namespace Medz\Wind\Http\Api;
 
-use Illuminate\Http\Request;
 use Medz\Wind\Models\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
