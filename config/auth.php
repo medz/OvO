@@ -44,6 +44,8 @@ return [
         'api' => [
             'driver' => 'passport',
             'provider' => 'users',
+            'client_id' => env('OAUTH_CLIENT_ID', null),
+            'client_secret' => env('OAUTH_CLIENT_SECRET', null),
         ],
     ],
 
