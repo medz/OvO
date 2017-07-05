@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/phpwind9.php'));
     }
 
-    /**
+    /*
      * Define the "api" routes for the application.
      *
      * These routes are typically stateless.
