@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Http\Middleware;
+namespace Medz\Fans\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

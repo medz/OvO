@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Providers;
+namespace Medz\Fans\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Medz\Wind\Model' => 'Medz\Wind\Policies\ModelPolicy',
+        'Medz\Fans\Model' => 'Medz\Fans\Policies\ModelPolicy',
     ];
 
     /**

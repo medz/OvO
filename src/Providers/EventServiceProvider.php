@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Providers;
+namespace Medz\Fans\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Medz\Wind\Events\Event' => [
-            'Medz\Wind\Listeners\EventListener',
+        'Medz\Fans\Events\Event' => [
+            'Medz\Fans\Listeners\EventListener',
         ],
     ];
 

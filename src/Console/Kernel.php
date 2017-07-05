@@ -1,10 +1,10 @@
 <?php
 
-namespace Medz\Wind\Console;
+namespace Medz\Fans\Console;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
-use Medz\Wind\Console\Application as ConsoleApplication;
+use Medz\Fans\Console\Application as ConsoleApplication;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
     /**
      * Get the Artisan application instance.
      *
-     * @return \Medz\Wind\Console\Application
+     * @return \Medz\Fans\Console\Application
      */
     protected function getArtisan()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Http\Controllers;
+namespace Medz\Fans\Http\Controllers;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 

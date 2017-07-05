@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Exceptions;
+namespace Medz\Fans\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Console\Commands;
+namespace Medz\Fans\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

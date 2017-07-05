@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Console;
+namespace Medz\Fans\Console;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Container\Container;

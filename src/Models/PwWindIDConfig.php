@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Models;
+namespace Medz\Fans\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;

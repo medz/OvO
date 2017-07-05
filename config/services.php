@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Medz\Wind\User::class,
+        'model' => Medz\Fans\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

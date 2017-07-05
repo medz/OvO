@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Http\Middleware;
+namespace Medz\Fans\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as BaseTrimmer;
 

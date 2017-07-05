@@ -1,8 +1,8 @@
 <?php
 
-namespace Medz\Wind\Http\Api;
+namespace Medz\Fans\Http\Api;
 
-use Medz\Wind\Http\Controllers\Controller as BaseController;
+use Medz\Fans\Http\Controllers\Controller as BaseController;
 
 class Controller extends BaseController
 {

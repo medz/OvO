@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Models;
+namespace Medz\Fans\Models;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;

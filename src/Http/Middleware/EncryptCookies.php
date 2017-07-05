@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Http\Middleware;
+namespace Medz\Fans\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

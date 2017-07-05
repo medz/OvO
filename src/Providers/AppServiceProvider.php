@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind\Providers;
+namespace Medz\Fans\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;

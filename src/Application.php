@@ -1,6 +1,6 @@
 <?php
 
-namespace Medz\Wind;
+namespace Medz\Fans;
 
 use Illuminate\Foundation\Application as LaravelApplication;
 
@@ -34,6 +34,6 @@ class Application extends LaravelApplication
         parent::registerCoreContainerAliases();
 
         // Register class aliases.
-        $this->alias('app', \Medz\Wind\Application::class);
+        $this->alias('app', \Medz\Fans\Application::class);
     }
 }
