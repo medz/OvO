@@ -2,7 +2,9 @@
 
 namespace Medz\Fans\Providers;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Route;
+use Dingo\Api\Routing\Router as DingoRouter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -24,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+        $this->makeApiRouter();
     }
 
     /**
@@ -55,13 +58,13 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/phpwind9.php'));
     }
 
-    /*
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
+    // /**
+    //  * Define the "api" routes for the application.
+    //  *
+    //  * These routes are typically stateless.
+    //  *
+    //  * @return void
+    //  */
     // protected function mapApiRoutes()
     // {
     //     Route::prefix('api')
@@ -69,4 +72,13 @@ class RouteServiceProvider extends ServiceProvider
     //          ->namespace('Medz\\Wind\\Http\\Api')
     //          ->group(base_path('routes/api.php'));
     // }
+    
+    protected function makeApiRouter()
+    {
+        $this->app->call(function (DingoRouter $api) {
+            require base_path('routes/api.php');
+
+            return $api;
+        });
+    }
 }
