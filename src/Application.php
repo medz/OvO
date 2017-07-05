@@ -9,7 +9,7 @@ class Application extends LaravelApplication
     /**
      * Defined the application version.
      */
-    const VERSION = '1.1.0';
+    const VERSION = '1.1.0-alpha';
 
     /**
      * Get the path to the application "src" directory.
@@ -34,6 +34,6 @@ class Application extends LaravelApplication
         parent::registerCoreContainerAliases();
 
         // Register class aliases.
-        $this->alias('app', \Medz\Fans\Application::class);
+        $this->alias('app', static::class);
     }
 }
