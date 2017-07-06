@@ -72,6 +72,12 @@ class RouteServiceProvider extends ServiceProvider
     //          ->group(base_path('routes/api.php'));
     // }
 
+    /**
+     * Make API Router.
+     *
+     * @return void
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     protected function makeApiRouter()
     {
         $this->app->call(function (DingoRouter $api) {
