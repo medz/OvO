@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\InstallCommand::class,
+        Commands\PwUpgradeAsFansCommand::class,
     ];
 
     /**
