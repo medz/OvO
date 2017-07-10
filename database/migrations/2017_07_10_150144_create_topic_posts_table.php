@@ -15,6 +15,9 @@ class CreateTopicPostsTable extends Migration
     {
         Schema::create('topic_posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('topic_id')->unsigned()->comment('话题ID');
+            $table->integer('user_id')->unsigned()->comment('讨论发布者');
+            $table->text('content')->comment('讨论内容');
             $table->timestamps();
             $table->softDeletes();
         });
