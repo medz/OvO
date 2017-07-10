@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('pw_salt', 100)->nullable()->default(null)->comment('pw 用户密码计算盐值');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unique('name');
             $table->unique('email');

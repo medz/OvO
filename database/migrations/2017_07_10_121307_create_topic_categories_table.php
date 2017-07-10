@@ -19,6 +19,7 @@ class CreateTopicCategoriesTable extends Migration
             $table->integer('icon')->nullable()->default(null)->comment('icon');
             $table->string('bg_color', 50)->nullable()->default(null)->comment('背景颜色');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
