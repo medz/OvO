@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable()->default(null)->comment('邮箱');
             $table->string('phone')->nullable()->default(null)->comment('手机');
             $table->string('password')->comment('密码');
+            $table->string('pw_password', 100)->nullable()->default(null)->comment('pw 老用户密码');
+            $table->string('pw_salt', 100)->nullable()->default(null)->comment('pw 用户密码计算盐值');
             $table->rememberToken();
             $table->timestamps();
 
