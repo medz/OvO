@@ -10,7 +10,7 @@ class AuthenticateController extends Controller
     public function authenticate(Request $request, JWTAuth $auth)
     {
         $credentials = $request->only(['email', 'password']);
-        $token = $auth->attempt($credentials); 
+        $token = $auth->attempt($credentials);
 
         return $token = $auth->attempt($credentials) !== false
             ? $this->response()->array([
