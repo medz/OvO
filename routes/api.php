@@ -1,6 +1,6 @@
 <?php
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Medz\Fans\Api\Controllers;
 
 /*
@@ -20,4 +20,8 @@ use Medz\Fans\Api\Controllers;
 
 $api->version('v1', function ($api) {
     $api->post('/authenticate', Controllers\AuthenticateController::class.'@authenticate');
+
+    // $api->get('user', ['middleware' => 'api.auth', function (Request $request) {
+    //     return $request->user();
+    // }]);
 });
