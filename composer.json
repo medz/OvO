@@ -16,7 +16,6 @@
         "dingo/api": "1.0.*@dev",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
-        "laravel/passport": "^2.0",
         "laravel/tinker": "~1.0",
         "medz/windframework": "^1.0"
     },
