@@ -2,21 +2,17 @@
 
 namespace Medz\Fans\Models;
 
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use Notifiable;
 
-    public function findForPassport(string $username)
+    public function getAuthPassword()
     {
-        return $this->find(1);
-    }
-
-    public function validateForPassportPasswordGrant()
-    {
-        return true;
+        // dd(request('password'));
+        // dd($this);
+        return parent::getAuthPassword();
     }
 }
