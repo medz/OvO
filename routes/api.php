@@ -1,6 +1,7 @@
 <?php
 
 // use Illuminate\Http\Request;
+use Medz\Fans\Api\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,5 @@
 // });
 
 $api->version('v1', function ($api) {
-    $api->get('/', function () {
-        return 1;
-    });
+    $api->post('/authenticate', Controllers\AuthenticateController::class.'@authenticate');
 });
