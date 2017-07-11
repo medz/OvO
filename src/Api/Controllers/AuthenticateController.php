@@ -2,8 +2,8 @@
 
 namespace Medz\Fans\Api\Controllers;
 
-use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Http\Request;
 
 class AuthenticateController extends Controller
 {
