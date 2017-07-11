@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'user' => Medz\Wind\Models\User::class,
+    'user' => Medz\Fans\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
