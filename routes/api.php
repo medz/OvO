@@ -35,7 +35,7 @@ $api->version('v1', function ($api) {
     | Define the routes that need to be authenticated in the following
     | groups.
     |
-     */
+    */
 
     $api->group(['middleware' => 'api.auth'], function ($api) {
         $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
