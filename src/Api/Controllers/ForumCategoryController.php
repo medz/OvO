@@ -21,14 +21,30 @@ class ForumCategoryController extends Controller
      */
     public function index(TopicCategoryModel $model)
     {
-        return $this->response->array(
+        return $this->response()->array(
             $model->all()->toArray()
         )->setStatusCode(200);
     }
 
-    public function show()
+    /**
+     * Show forum topic category.
+     *
+     * @param \Medz\Fans\Models\TopicCategory $model
+     * @param int $category
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function show(TopicCategoryModel $model, int $category)
     {
-        // todo.
+        $category = $model->find($category);
+
+        if (! $category) {
+            return $this->response()->errorNotFound();
+        }
+
+        return $this->response()->array(
+            $category->toArray()
+        )->setStatusCode(200);
     }
 
     public function store()
