@@ -14,14 +14,32 @@ use Medz\Fans\Api\Controllers;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 $api->version('v1', function ($api) {
+
+    /*
+    |-----------------------------------------------------------------------
+    | Not auth routes.
+    |-----------------------------------------------------------------------
+    |
+    | Define routes that do not require authentication in the following
+    | groups.
+    |
+    */
+
     $api->post('/authenticate', Controllers\AuthenticateController::class.'@authenticate');
 
-    // $api->get('user', ['middleware' => 'api.auth', function (Request $request) {
-    //     return $request->user();
-    // }]);
+
+    /*
+    |-----------------------------------------------------------------------
+    | Defined auth routes.
+    |-----------------------------------------------------------------------
+    |
+    | Define the routes that need to be authenticated in the following
+    | groups.
+    |
+     */
+
+    $api->group(['middleware' => 'api.auth'], function ($api) {
+        $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
+    });
 });

@@ -27,4 +27,18 @@ class AuthenticateController extends Controller
             ])->setStatusCode(201)
             : $this->response()->errorInternal('No token created.');
     }
+
+    /**
+     * Get current user.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function getUser(Request $request)
+    {
+        return $this->response()
+            ->array($request->user()->toArray())
+            ->setStatusCode(200);
+    }
 }
