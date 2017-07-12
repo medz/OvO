@@ -41,7 +41,6 @@ $api->version('v1', function ($api) {
     |
     */
     $api->group(['prefix' => '/forum'], function ($api) {
-
         $api->resource('/categories', Controllers\ForumCategoryController::class);
     });
 
