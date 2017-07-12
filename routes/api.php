@@ -25,7 +25,12 @@ $api->version('v1', function ($api) {
     |
     */
 
-    $api->post('/authenticate', Controllers\AuthenticateController::class.'@authenticate');
+    $api->post('/authenticate', [
+        'middleware' => 'api.throttle',
+        'limit' => 10,
+        'expires' => 5,
+        'uses' => Controllers\AuthenticateController::class.'@authenticate'
+    ]);
 
     /*
     |-----------------------------------------------------------------------
