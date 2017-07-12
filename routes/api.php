@@ -34,6 +34,19 @@ $api->version('v1', function ($api) {
 
     /*
     |-----------------------------------------------------------------------
+    | Defined not auth forum routes.
+    |-----------------------------------------------------------------------
+    |
+    | Define the public API associated with the forum.
+    |
+    */
+    $api->group(['prefix' => '/forum'], function ($api) {
+
+        $api->resource('/categories', Controllers\ForumCategoryController::class);
+    });
+
+    /*
+    |-----------------------------------------------------------------------
     | Defined auth routes.
     |-----------------------------------------------------------------------
     |
