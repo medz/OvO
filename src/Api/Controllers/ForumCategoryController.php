@@ -5,9 +5,6 @@ namespace Medz\Fans\Api\Controllers;
 // use Illuminate\Http\Request;
 use Medz\Fans\Models\TopicCategory as TopicCategoryModel;
 
-/**
- * @Resource("ForumCategory", uri="/forum/categories")
- */
 class ForumCategoryController extends Controller
 {
     /**
