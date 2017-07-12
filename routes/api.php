@@ -29,7 +29,7 @@ $api->version('v1', function ($api) {
         'middleware' => 'api.throttle',
         'limit' => 10,
         'expires' => 5,
-        'uses' => Controllers\AuthenticateController::class.'@authenticate'
+        'uses' => Controllers\AuthenticateController::class.'@authenticate',
     ]);
 
     /*
