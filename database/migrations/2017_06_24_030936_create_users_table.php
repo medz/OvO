@@ -20,8 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('phone', 100)->nullable()->default(null)->comment('手机');
             $table->string('name')->nullable()->default(null)->comment('名字');
             $table->string('location')->nullable()->default(null)->comment('位置');
-            $table->string('bio')->nullable()->default(null);
-            $table->string('gender')->nullable()->default(null);
+            $table->string('bio')->nullable()->default(null)->comment('个人简短传记');
+            $table->string('gender')->nullable()->default(null)->comment('性别');
+            $table->string('link')->nullable()->default(null)->comment('网址');
 
             $table->string('password')->comment('密码');
             $table->string('pw_password', 100)->nullable()->default(null)->comment('pw 老用户密码');
