@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // phpwind seeder.
-        $this->call(Wind9Seeder::class);
+        // TODO.
     }
 }

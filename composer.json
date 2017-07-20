@@ -17,7 +17,6 @@
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "medz/windframework": "^1.0",
         "tymon/jwt-auth": "^0.5.12"
     },
     "require-dev": {
@@ -27,16 +26,10 @@
     },
     "autoload": {
         "classmap": [
-            "database",
-            "phpwind9/src/Wekit.php",
-            "phpwind9/src/library/",
-            "phpwind9/src/service/",
-            "phpwind9/src/bootstrap/",
-            "phpwind9/src/hooks/"
+            "database"
         ],
         "psr-4": {
-            "Medz\\Fans\\": "src/",
-            "Pw\\Ext\\": "phpwind9/src/extensions/"
+            "Medz\\Fans\\": "src/"
         }
     },
     "extra": {
