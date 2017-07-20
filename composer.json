@@ -32,6 +32,11 @@
             "Medz\\Fans\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Medz\\Fans\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.1-dev"

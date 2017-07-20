@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Medz\Fans\Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 

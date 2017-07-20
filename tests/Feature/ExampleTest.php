@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Medz\Fans\Tests\Feature;
 
-use Tests\TestCase;
+use Medz\Fans\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
