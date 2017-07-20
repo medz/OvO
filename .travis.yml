@@ -16,11 +16,11 @@ before_install:
     - php -r "file_exists('.env') || copy('.env.travis', '.env');"
 install:
     - composer install
-    - php artisan key:generate
+    - php fans key:generate
 script:
-    - php artisan migrate
-    - php artisan db:seed
-    - php artisan vendor:publish
+    - php fans migrate
+    - php fans db:seed
+    - php fans vendor:publish
     - php vendor/bin/phpunit
 #after_script:
 #    - php vendor/bin/codacycoverage clover ./storage/logs/coverage.xml
