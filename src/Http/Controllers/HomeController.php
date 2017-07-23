@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         if (! $response->hasMacro('display')) {
             return $path !== '/'
-                ? $response->redirectToRoute('home')
+                ? abort(404)
                 : $response->view('welcome');
         }
 

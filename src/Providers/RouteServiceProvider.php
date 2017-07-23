@@ -25,7 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-        $this->makeApiRouter();
     }
 
     /**
@@ -36,6 +35,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapWebRoutes();
+        $this->makeApiRouter();
     }
 
     /**
