@@ -14,7 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ['email', 'phone', 'password' 'pw_password', 'pw_salt'];
+    protected $hidden = ['email', 'phone', 'password', 'pw_password', 'pw_salt'];
 
     /**
      * Get auth password.

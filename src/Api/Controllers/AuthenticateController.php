@@ -18,14 +18,16 @@ class AuthenticateController extends Controller
     public function authenticate(Request $request, JWTAuth $auth)
     {
         $credentials = $request->only(['email', 'password']);
-        $token = $auth->attempt($credentials);
 
-        return $token = $auth->attempt($credentials) !== false
+        return ($token = $auth->attempt($credentials)) !== false
             ? $this->response()->array([
                 'token' => $token,
-                'user' => $request->user(),
+                'user' => array_merge($request->user()->toArray(), [
+                    'email' => $request->user()->email,
+                    'phone' => $request->user()->phone,
+                ]),
             ])->setStatusCode(201)
-            : $this->response()->errorInternal('No token created.');
+            : $this->response()->error('账号或者密码错误.', 422);
     }
 
     /**
@@ -37,8 +39,12 @@ class AuthenticateController extends Controller
      */
     public function getUser(Request $request)
     {
+        $user = $request->user();
         return $this->response()
-            ->array($request->user()->toArray())
+            ->array(array_merge($user->toArray(), [
+                'email' => $user->email,
+                'phone' => $user->phone,
+            ]))
             ->setStatusCode(200);
     }
 }
