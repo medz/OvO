@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', 'LoginController@show')->name('login');
+Route::get('/{path?}', 'HomeController@index')
+    ->where('path', '.*')
+    ->name('home');
