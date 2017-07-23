@@ -40,6 +40,7 @@ class AuthenticateController extends Controller
     public function getUser(Request $request)
     {
         $user = $request->user();
+
         return $this->response()
             ->array(array_merge($user->toArray(), [
                 'email' => $user->email,
