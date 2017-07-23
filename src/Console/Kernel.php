@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     public function __construct(Application $app, Dispatcher $events)
     {
         if (! defined('ARTISAN_BINARY')) {
-            define('ARTISAN_BINARY', 'wind');
+            define('ARTISAN_BINARY', 'fans');
         }
 
         parent::__construct($app, $events);
