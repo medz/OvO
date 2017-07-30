@@ -34,12 +34,24 @@ $api->version('v1', function ($api) {
 
     /*
     |-----------------------------------------------------------------------
+    | Defined not auth users routes.
+    |-----------------------------------------------------------------------
+    |
+    | Define the public API associated with the users.
+    |
+    */
+
+    $api->resource('/users', Controllers\User\UserController::class);
+
+    /*
+    |-----------------------------------------------------------------------
     | Defined not auth forum routes.
     |-----------------------------------------------------------------------
     |
     | Define the public API associated with the forum.
     |
     */
+
     $api->group(['prefix' => '/forum'], function ($api) {
         $api->resource('/categories', Controllers\ForumCategoryController::class);
     });
