@@ -24,12 +24,11 @@ class User extends Authenticatable
      */
     public function getAuthPassword()
     {
-        if (! $this->pw_salt && ! $this->pw_password) {
-            return parent::getAuthPassword();
+        $password = request('password');
+        if ($this->pw_salt && $this->pw_password && md5(md5($password).$this->pw_salt) === $this->pw_password) {
+            return bcrypt($password);
         }
 
-        $password = request('password');
-
-        return $password;
+        return parent::getAuthPassword();
     }
 }
