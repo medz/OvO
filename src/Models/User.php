@@ -24,8 +24,12 @@ class User extends Authenticatable
      */
     public function getAuthPassword()
     {
-        // dd(request('password'));
-        // dd($this);
-        return parent::getAuthPassword();
+        if (! $this->pw_salt && ! $this->pw_password) {
+            return parent::getAuthPassword();
+        }
+
+        $password = request('password');
+
+        return $password;
     }
 }
