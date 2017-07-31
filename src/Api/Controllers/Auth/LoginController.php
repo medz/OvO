@@ -4,7 +4,6 @@ namespace Medz\Fans\Api\Controllers\Auth;
 
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Http\Request;
-use Medz\Fans\Models\User as UserModel;
 use Medz\Fans\Api\Controllers\Controller;
 
 class LoginController extends Controller

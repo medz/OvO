@@ -24,7 +24,7 @@ $api->version('v1', function ($api) {
     | groups.
     |
     */
-   
+
     $api->post('/login', [
         'middleware' => 'api.throttle',
         'limit' => 10,
