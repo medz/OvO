@@ -24,12 +24,12 @@ $api->version('v1', function ($api) {
     | groups.
     |
     */
-
-    $api->post('/authenticate', [
+   
+    $api->post('/login', [
         'middleware' => 'api.throttle',
         'limit' => 10,
         'expires' => 5,
-        'uses' => Controllers\AuthenticateController::class.'@authenticate',
+        'uses' => Controllers\Auth\LoginController::class.'@login',
     ]);
 
     /*
@@ -67,6 +67,6 @@ $api->version('v1', function ($api) {
     */
 
     $api->group(['middleware' => 'api.auth'], function ($api) {
-        $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
+        // $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
     });
 });
