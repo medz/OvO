@@ -3,6 +3,9 @@ language: php
 php:
     - 7.0
     - 7.1
+cache:
+    directories:
+        - $HOME/.composer/cache
 env:
     - DB=mysql
     - DB=postgres
@@ -18,9 +21,9 @@ install:
     - composer install
     - php fans key:generate
 script:
-    - php fans migrate
-    - php fans db:seed
-    - php fans vendor:publish
+    - php fans migrate -vvv
+    - php fans db:seed -vvv
+    - php fans vendor:publish -vvv
     - php vendor/bin/phpunit
 #after_script:
 #    - php vendor/bin/codacycoverage clover ./storage/logs/coverage.xml
