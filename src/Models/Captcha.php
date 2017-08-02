@@ -1,10 +1,10 @@
 <?php
 
-namespace Medz\Fans;
+namespace Medz\Fans\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class captcha extends Model
+class Captcha extends Model
 {
     //
 }
