@@ -76,6 +76,6 @@ class LoginController extends Controller
             }
         }
 
-        return $defaultKey;
+        return $default;
     }
 }
