@@ -26,6 +26,7 @@ $api->version('v1', function ($api) {
     */
 
     $api->post('/login', [
+        'as' => 'auth.login',
         'middleware' => 'api.throttle',
         'limit' => 10,
         'expires' => 5,

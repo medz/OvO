@@ -4,18 +4,22 @@ namespace Medz\Fans\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Medz\Fans\Models\Captcha as CaptchaModel;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class Captcha extends Notification
+class Captcha extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    protected $captcha;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CaptchaModel $captcha)
     {
         //
     }
