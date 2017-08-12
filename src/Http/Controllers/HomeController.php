@@ -3,6 +3,7 @@
 namespace Medz\Fans\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Medz\Fans\Support\SinglePageAppcation;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;
 
 class HomeController extends Controller
@@ -16,14 +17,10 @@ class HomeController extends Controller
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function index(Request $request, ResponseFactoryContract $response, string $path = '/')
+    public function index(Request $request, SinglePageAppcation $spa)
     {
-        if (! $response->hasMacro('display')) {
-            return $path !== '/'
-                ? abort(404)
-                : $response->view('welcome');
-        }
+        $applicable = $spa->applicable();
 
-        return $response->display($request, $response);
+        return $applicable->display($request);
     }
 }
