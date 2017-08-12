@@ -11,8 +11,7 @@ class HomeController extends Controller
      * The web application.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Illuminate\Contracts\Routing\ResponseFactory $response
-     * @param string $path
+     * @param \Medz\Fans\Support\SinglePageAppcation $spa
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
      */
