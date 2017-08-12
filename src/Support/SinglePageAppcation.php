@@ -13,7 +13,7 @@ class SinglePageAppcation
      *
      * @var array
      */
-    static $applications = [];
+    public static $applications = [];
 
     /**
      * Application instance.

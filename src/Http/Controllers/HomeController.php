@@ -4,7 +4,6 @@ namespace Medz\Fans\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Medz\Fans\Support\SinglePageAppcation;
-use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;
 
 class HomeController extends Controller
 {
