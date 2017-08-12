@@ -13,7 +13,9 @@ class SinglePageAppcation
      *
      * @var array
      */
-    public static $applications = [];
+    public static $applications = [
+        'local' => \Medz\Fans\Application::class,
+    ];
 
     /**
      * Application instance.
@@ -65,7 +67,7 @@ class SinglePageAppcation
 
         // Check whether the published SPA meets the requirements that can be applied.
         // If it is satisfied, it is returned to this SPA.
-        if (($applicable = $this->app->make(static::$applications[$spa]) instanceof ApplicableContract)) {
+        if (($applicable = $this->app->make(static::$applications[$spa])) instanceof ApplicableContract) {
             return $applicable;
         }
 

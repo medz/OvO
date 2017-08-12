@@ -11,5 +11,5 @@ interface Applicable
      * @return \Illuminate\Http\Response
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function display($request);
+    public function toResponse($request);
 }

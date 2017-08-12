@@ -20,6 +20,6 @@ class HomeController extends Controller
     {
         $applicable = $spa->applicable();
 
-        return $applicable->display($request);
+        return $applicable->toResponse($request);
     }
 }
