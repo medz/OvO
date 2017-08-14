@@ -17,8 +17,7 @@ class HomeController extends Controller
      */
     public function index(Request $request, SinglePageAppcation $spa)
     {
-        $applicable = $spa->applicable();
-
-        return $applicable->toResponse($request);
+        return $spa->applicable()
+            ->toResponse($request);
     }
 }
