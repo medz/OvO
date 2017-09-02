@@ -3,7 +3,7 @@
 namespace Medz\Fans\Providers;
 
 use Illuminate\Support\Facades\Route;
-use Dingo\Api\Routing\Router as DingoRouter;
+// use Dingo\Api\Routing\Router as DingoRouter;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
@@ -60,10 +60,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function makeApiRouter()
     {
-        $this->app->call(function (DingoRouter $api) {
-            require base_path('routes/api.php');
+        // $this->app->call(function (DingoRouter $api) {
+        //     require base_path('routes/api.php');
 
-            return $api;
-        });
+        //     return $api;
+        // });
     }
 }
