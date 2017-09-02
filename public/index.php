@@ -5,7 +5,6 @@
  *
  * @author Seven Du <shiweidu@outlook.com>
  */
-
 define('LARAVEL_START', microtime(true));
 
 /*
