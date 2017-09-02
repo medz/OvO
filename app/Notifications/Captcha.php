@@ -3,9 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use App\Models\Captcha as CaptchaModel;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Models\Captcha as CaptchaModel;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class Captcha extends Notification implements ShouldQueue
