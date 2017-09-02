@@ -32,12 +32,12 @@
             "database/factories"
         ],
         "psr-4": {
-            "Medz\\Fans\\": "src/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Medz\\Fans\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "extra": {

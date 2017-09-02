@@ -173,11 +173,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Medz\Fans\Providers\AppServiceProvider::class,
-        Medz\Fans\Providers\AuthServiceProvider::class,
-        // Medz\Fans\Providers\BroadcastServiceProvider::class,
-        Medz\Fans\Providers\EventServiceProvider::class,
-        Medz\Fans\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
     ],
 
