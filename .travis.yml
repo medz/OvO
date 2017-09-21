@@ -23,7 +23,7 @@ install:
 script:
     - php fans migrate -vvv
     - php fans db:seed -vvv
-    - php fans vendor:publish -vvv
+    - php fans vendor:publish --all -vvv
     - php vendor/bin/phpunit
 #after_script:
 #    - php vendor/bin/codacycoverage clover ./storage/logs/coverage.xml
