@@ -42,12 +42,12 @@ class LoginController extends Controller
         ];
 
         if (! ($token = $this->auth->attempt($credentials))) {
-            response()->json(['message' => trans('auth.failed')], 422);
+            return response()->json(['message' => trans('auth.failed')], 422);
         }
 
         return response()->json([
             'token' => $token,
-            'ttl' => $config('jwt.ttl'),
+            'ttl' => config('jwt.ttl'),
             'refresh_ttl' => config('jwt.refresh_ttl'),
         ])->setStatusCode(201);
     }
