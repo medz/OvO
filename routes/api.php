@@ -26,7 +26,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     | groups.
     |
     */
-   
+
     $api->post('/login', Controllers\Auth\LoginController::class.'@login');
 
     // $api->post('/login', [
