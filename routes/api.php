@@ -67,7 +67,6 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
         // Authenticated User.
         $api->group(['prefix' => 'user'], function (RouteContract $api) {
-
             $api->get('/', Controllers\User\AuthenticatedController::class.'@show');
         });
     });
