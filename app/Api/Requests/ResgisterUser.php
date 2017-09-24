@@ -27,7 +27,7 @@ class ResgisterUser extends FormRequest
     {
         return [
             'email' => 'required|email|unique:users,email',
-            'login' => 'required|string|uniqid:users,login',
+            'login' => 'required|string|unique:users,login',
             'password' => 'required|confirmed',
         ];
     }
