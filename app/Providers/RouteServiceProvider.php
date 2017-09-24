@@ -60,10 +60,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function makeApiRouter()
     {
-        // $this->app->call(function (DingoRouter $api) {
-        //     require base_path('routes/api.php');
-
-        //     return $api;
-        // });
+        Route::prefix('api')
+            ->middleware('api')
+            ->group(base_path('routes/api.php'));
     }
 }

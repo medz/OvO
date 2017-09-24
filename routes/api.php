@@ -1,6 +1,8 @@
 <?php
 
-use Medz\Fans\Api\Controllers;
+use App\Api\Controllers;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Contracts\Routing\Registrar as RouteContract;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +15,7 @@ use Medz\Fans\Api\Controllers;
 |
 */
 
-$api->version('v1', function ($api) {
+Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     /*
     |-----------------------------------------------------------------------
@@ -24,14 +26,16 @@ $api->version('v1', function ($api) {
     | groups.
     |
     */
+   
+    $api->post('/login', Controllers\Auth\LoginController::class.'@login');
 
-    $api->post('/login', [
-        'as' => 'auth.login',
-        'middleware' => 'api.throttle',
-        'limit' => 10,
-        'expires' => 5,
-        'uses' => Controllers\Auth\LoginController::class.'@login',
-    ]);
+    // $api->post('/login', [
+    //     'as' => 'auth.login',
+    //     'middleware' => 'api.throttle',
+    //     'limit' => 10,
+    //     'expires' => 5,
+    //     'uses' => Controllers\Auth\LoginController::class.'@login',
+    // ]);
 
     /*
     |-----------------------------------------------------------------------
@@ -42,7 +46,7 @@ $api->version('v1', function ($api) {
     |
     */
 
-    $api->resource('/users', Controllers\User\UserController::class);
+    // $api->resource('/users', Controllers\User\UserController::class);
 
     /*
     |-----------------------------------------------------------------------
@@ -53,9 +57,9 @@ $api->version('v1', function ($api) {
     |
     */
 
-    $api->group(['prefix' => '/forum'], function ($api) {
-        $api->resource('/categories', Controllers\ForumCategoryController::class);
-    });
+    // $api->group(['prefix' => '/forum'], function ($api) {
+    //     $api->resource('/categories', Controllers\ForumCategoryController::class);
+    // });
 
     /*
     |-----------------------------------------------------------------------
@@ -67,7 +71,7 @@ $api->version('v1', function ($api) {
     |
     */
 
-    $api->group(['middleware' => 'api.auth'], function ($api) {
-        // $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
-    });
+    // $api->group(['middleware' => 'api.auth'], function ($api) {
+    //     // $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
+    // });
 });
