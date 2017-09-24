@@ -48,7 +48,7 @@ class LoginController extends Controller
         return response()->json([
             'token' => $token,
             'ttl' => $config('jwt.ttl'),
-            'refresh_ttl' => config('jwt.refresh_ttl')
+            'refresh_ttl' => config('jwt.refresh_ttl'),
         ])->setStatusCode(201);
     }
 
