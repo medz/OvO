@@ -3,5 +3,5 @@
 return [
     'register' => [
         'role' => 2,
-    ]
+    ],
 ];
