@@ -55,6 +55,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     $api->group(['prefix' => 'tags'], function (RouteContract $api) {
         $api->get('/', Controllers\TagController::class.'@index');
+        $api->get('/{tag}', Controllers\TagController::class.'@show');
     });
 
     /*

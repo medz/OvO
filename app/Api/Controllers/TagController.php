@@ -29,4 +29,16 @@ class TagController extends Controller
 
         return response()->json($tags, 200);
     }
+
+    /**
+     * Get tag info.
+     *
+     * @param \App\Models\Tag $tag
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function show(TagModel $tag)
+    {
+        return response()->json($tag, 200);
+    }
 }
