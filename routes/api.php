@@ -37,9 +37,8 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     | Define the public API associated with the users.
     |
     */
-   
-    $api->group(['prefix' => 'users'], function (RouteContract $api) {
 
+    $api->group(['prefix' => 'users'], function (RouteContract $api) {
         $api->get('/', Controllers\User\UserController::class.'@index');
     });
 
@@ -72,7 +71,6 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
         // Authenticated User.
         $api->group(['prefix' => 'user'], function (RouteContract $api) {
-
             $api->get('/', Controllers\User\AuthenticatedController::class.'@show');
         });
     });
