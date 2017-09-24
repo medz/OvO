@@ -15,6 +15,7 @@ class CreateForumTopicCategoriesTable extends Migration
     {
         Schema::create('forum_topic_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('forum_id')->unsigned()->comment('所属论坛');
             $table->string('name', 150)->comment('类别名称');
             $table->integer('topic_count')->unsigned()->nullable()->default(0)->comment('话题统计');
             $table->integer('post_count')->unsigned()->nullable()->default(0)->comment('讨论统计');

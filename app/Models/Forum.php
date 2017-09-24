@@ -12,4 +12,15 @@ class Forum extends Model
      * @var array
      */
     protected $hidden = ['deleted_at'];
+
+    /**
+     * categories.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function categories()
+    {
+        return $this->hasMany(ForumTopicCategory::class);
+    }
 }

@@ -56,6 +56,12 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     $api->group(['prefix' => '/forums'], function (RouteContract $api) {
         $api->get('/', Controllers\Forum\ForumController::class.'@index');
         $api->get('/{forum}', Controllers\Forum\ForumController::class.'@show');
+
+        // Category
+        $api->get('/{forum}/categories', Controllers\Forum\CategoryController::class.'@index');
+    });
+    $api->group(['prefix' => 'forum->categories'], function (RouteContract $api) {
+        $api->get('/{category}', Controllers\Forum\CategoryController::class.'@show');
     });
 
     /*
