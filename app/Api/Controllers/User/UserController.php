@@ -8,6 +8,13 @@ use App\Api\Controllers\Controller;
 
 class UserController extends Controller
 {
+    /**
+     * Get Users.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
     public function index(Request $request)
     {
         $limit = (int) $request->query('limit', 15);
@@ -22,5 +29,17 @@ class UserController extends Controller
             ->get();
 
         return response()->json($users, 200);
+    }
+
+    /**
+     * Get user data.
+     *
+     * @param \App\Models\User $user
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function show(UserModel $user)
+    {
+        return response()->json($user, 200);
     }
 }

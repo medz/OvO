@@ -40,6 +40,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     $api->group(['prefix' => 'users'], function (RouteContract $api) {
         $api->get('/', Controllers\User\UserController::class.'@index');
+        $api->get('/{user}', Controllers\User\UserController::class.'@show');
     });
 
     // $api->apiResource('/users', Controllers\User\UserController::class);
