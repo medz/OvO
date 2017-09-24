@@ -60,12 +60,11 @@ class LoginController extends Controller
      * @return string
      * @author Seven Du <shiweidu@outlook.com>
      */
-    protected function username(string $login, string $default = 'id'): string
+    protected function username(string $login, string $default = 'login'): string
     {
         $map = [
             'email' => filter_var($login, FILTER_VALIDATE_EMAIL),
             'phone' => preg_match('/^(\+?0?86\-?)?((13\d|14[57]|15[^4,\D]|17[3678]|18\d)\d{8}|170[059]\d{7})$/', $login),
-            'login' => preg_match('/^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$/', $login),
         ];
 
         foreach ($map as $field => $value) {
