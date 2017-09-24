@@ -11,12 +11,12 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Role::class)->make([
+        factory(App\Models\Role::class)->create([
             'name' => 'founder',
             'display_name' => '创始人',
         ]);
 
-        factory(App\Models\Role::class)->make([
+        factory(App\Models\Role::class)->create([
             'name' => 'owner',
             'display_name' => '普通用户',
         ]);
