@@ -52,7 +52,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     | Define the public API associated with the tag.
     |
     */
-   
+
     $api->group(['prefix' => 'tags'], function (RouteContract $api) {
         $api->get('/', Controllers\TagController::class.'@index');
     });
