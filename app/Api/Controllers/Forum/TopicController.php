@@ -49,4 +49,16 @@ class TopicController extends Controller
 
         return response()->json($topics, 200);
     }
+
+    /**
+     * Get forum topic info.
+     *
+     * @param \App\Models\ForumTopic $topic
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function show(ForumTopicModel $topic)
+    {
+        return response()->json($topic, 200);
+    }
 }
