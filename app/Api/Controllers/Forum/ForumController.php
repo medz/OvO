@@ -3,8 +3,8 @@
 namespace App\Api\Controllers\Forum;
 
 use Illuminate\Http\Request;
-use App\Models\Forum as ForumModel;
 use App\Api\Controllers\Controller;
+use App\Models\Forum as ForumModel;
 
 class ForumController extends Controller
 {
