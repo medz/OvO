@@ -23,4 +23,15 @@ class Forum extends Model
     {
         return $this->hasMany(ForumTopicCategory::class);
     }
+
+    /**
+     * Topics.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function topics()
+    {
+        return $this->hasMany(ForumTopic::class);
+    }
 }

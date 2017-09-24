@@ -59,6 +59,9 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
         // Category
         $api->get('/{forum}/categories', Controllers\Forum\CategoryController::class.'@index');
+
+        // Topics
+        $api->get('/{forum}/topics', Controllers\Forum\TopicController::class.'@index');
     });
     $api->group(['prefix' => 'forum->categories'], function (RouteContract $api) {
         $api->get('/{category}', Controllers\Forum\CategoryController::class.'@show');
