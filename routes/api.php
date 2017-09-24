@@ -28,6 +28,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     */
 
     $api->post('/login', Controllers\Auth\LoginController::class.'@login');
+    $api->post('/register', Controllers\Auth\RegisterController::class.'@store');
 
     /*
     |-----------------------------------------------------------------------
