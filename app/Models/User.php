@@ -53,6 +53,7 @@ class User extends Authenticatable
             return false;
         } elseif ($role) {
             $ability = $role;
+
             return $userAblity->all($ability);
         }
 
