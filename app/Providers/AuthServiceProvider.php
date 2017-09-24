@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Auth\JwtGuard;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -23,5 +24,10 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->app->make('auth')->extend('jwt', function ($app) {
+            return new JwtGuard(
+                $app->make(\Tymon\JWTAuth\JWTAuth::class)
+            );
+        });
     }
 }
