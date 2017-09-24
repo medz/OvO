@@ -30,4 +30,16 @@ class ForumController extends Controller
 
         return response()->json($forums, 200);
     }
+
+    /**
+     * Get forum info.
+     *
+     * @param \App\Models\Forum $forum
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function show(ForumModel $forum)
+    {
+        return response()->json($forum, 200);
+    }
 }

@@ -55,6 +55,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     $api->group(['prefix' => '/forums'], function (RouteContract $api) {
         $api->get('/', Controllers\Forum\ForumController::class.'@index');
+        $api->get('/{forum}', Controllers\Forum\ForumController::class.'@show');
     });
 
     /*
