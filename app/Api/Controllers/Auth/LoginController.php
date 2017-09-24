@@ -41,17 +41,15 @@ class LoginController extends Controller
             'password' => $request->input('password'),
         ];
 
-        return ! ($token = $this->auth->attempt($credentials))
-            ? $this->response()->error(trans('auth.failed'), 422)
-            : $this->response()->array([
-                'token' => $token,
-                'user' => array_merge(($user = $request->user())->toArray(), [
-                    'phone' => $user->phone,
-                    'email' => $user->email,
-                ]),
-                'ttl' => config('jwt.ttl'),
-                'refresh_ttl' => config('jwt.refresh_ttl'),
-            ])->setStatusCode(201);
+        if (! ($token = $this->auth->attempt($credentials))) {
+            response()->json(['message' => trans('auth.failed')], 422);
+        }
+
+        return response()->json([
+            'token' => $token,
+            'ttl' => $config('jwt.ttl'),
+            'refresh_ttl' => config('jwt.refresh_ttl')
+        ])->setStatusCode(201);
     }
 
     /**
