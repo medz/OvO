@@ -46,6 +46,19 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     /*
     |-----------------------------------------------------------------------
+    | Defined not auth tag routes.
+    |-----------------------------------------------------------------------
+    |
+    | Define the public API associated with the tag.
+    |
+    */
+   
+    $api->group(['prefix' => 'tags'], function (RouteContract $api) {
+        $api->get('/', Controllers\TagController::class.'@index');
+    });
+
+    /*
+    |-----------------------------------------------------------------------
     | Defined not auth forum routes.
     |-----------------------------------------------------------------------
     |
