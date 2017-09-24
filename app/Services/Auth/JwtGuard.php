@@ -6,7 +6,7 @@ use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Contracts\Auth\Guard;
 
-class JwtGuard extends Guard
+class JwtGuard implements Guard
 {
     use GuardHelpers;
 
@@ -36,12 +36,12 @@ class JwtGuard extends Guard
      */
     public function user()
     {
-        if (! $this->user) {
+        if ($this->user) {
             return $this->user;
         }
 
         $user = null;
-        if (! ($token = $this->auth->getToken())) {
+        if (($token = $this->auth->getToken())) {
             $user = $this->auth->toUser($token) ?: null;
         }
 

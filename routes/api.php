@@ -29,14 +29,6 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     $api->post('/login', Controllers\Auth\LoginController::class.'@login');
 
-    // $api->post('/login', [
-    //     'as' => 'auth.login',
-    //     'middleware' => 'api.throttle',
-    //     'limit' => 10,
-    //     'expires' => 5,
-    //     'uses' => Controllers\Auth\LoginController::class.'@login',
-    // ]);
-
     /*
     |-----------------------------------------------------------------------
     | Defined not auth users routes.
@@ -71,7 +63,12 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     |
     */
 
-    // $api->group(['middleware' => 'api.auth'], function ($api) {
-    //     // $api->get('/user', Controllers\AuthenticateController::class.'@getUser');
-    // });
+    $api->group(['middleware' => 'auth:api'], function (RouteContract $api) {
+
+        // Authenticated User.
+        $api->group(['prefix' => 'user'], function (RouteContract $api) {
+
+            $api->get('/', Controllers\User\AuthenticatedController::class.'@show');
+        });
+    });
 });
