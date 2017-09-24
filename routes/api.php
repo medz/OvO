@@ -44,8 +44,6 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
         $api->get('/{user}', Controllers\User\UserController::class.'@show');
     });
 
-    // $api->apiResource('/users', Controllers\User\UserController::class);
-
     /*
     |-----------------------------------------------------------------------
     | Defined not auth forum routes.
@@ -55,9 +53,9 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     |
     */
 
-    // $api->group(['prefix' => '/forum'], function ($api) {
-    //     $api->resource('/categories', Controllers\ForumCategoryController::class);
-    // });
+    $api->group(['prefix' => '/forums'], function (RouteContract $api) {
+        $api->get('/', Controllers\Forum\ForumController::class.'@index');
+    });
 
     /*
     |-----------------------------------------------------------------------
