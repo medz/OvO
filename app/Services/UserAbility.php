@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\User as UserModel;
 use Illuminate\Support\Collection;
-use App\Contracts\Services\UserAbility as UserAbilityContract
+use App\Contracts\Services\UserAbility as UserAbilityContract;
 
 class UserAbility implements UserAbilityContract
 {
