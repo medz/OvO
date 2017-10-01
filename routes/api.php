@@ -78,10 +78,16 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
         $api->get('/{forum}/topics', Controllers\Forum\TopicController::class.'@index');
     });
     $api->group(['prefix' => 'forum->categories'], function (RouteContract $api) {
+
+        // Get a forum category.
         $api->get('/{category}', Controllers\Forum\CategoryController::class.'@show');
     });
     $api->group(['prefix' => 'forum->topics'], function (RouteContract $api) {
+
+        // List all forum topics.
         $api->get('/', Controllers\Forum\TopicController::class.'@all');
+
+        // Get a topic.
         $api->get('/{topic}', Controllers\Forum\TopicController::class.'@show');
     });
 
@@ -100,6 +106,13 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
         // Authenticated User.
         $api->group(['prefix' => 'user'], function (RouteContract $api) {
             $api->get('/', Controllers\User\AuthenticatedController::class.'@show');
+        });
+
+        // Forums.
+        $api->group(['prefix' => 'forums'], function (RouteContract $api) {
+
+            // Create a topic.
+            $api->post('/{forum}/topics', Controllers\Forum\TopicController::class.'@store');
         });
     });
 });

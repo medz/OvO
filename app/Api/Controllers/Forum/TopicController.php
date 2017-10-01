@@ -2,10 +2,13 @@
 
 namespace App\Api\Controllers\Forum;
 
+use Closure;
 use Illuminate\Http\Request;
 use App\Api\Controllers\Controller;
 use App\Models\Forum as ForumModel;
+use Illuminate\Validation\Validator;
 use App\Models\ForumTopic as ForumTopicModel;
+use App\Api\Requests\StoreForumTopic as StoreForumTopicRequest;
 
 class TopicController extends Controller
 {
@@ -61,5 +64,44 @@ class TopicController extends Controller
     public function show(ForumTopicModel $topic)
     {
         return response()->json($topic, 200);
+    }
+
+    /**
+     * Create a topic.
+     *
+     * @param \App\Api\Requests\StoreForumTopic $request
+     * @param \App\Models\Forum $forum
+     * @return mixed
+     * @author Seven Du <shiweidu@outlook.com>
+     */
+    public function store(StoreForumTopicRequest $request, ForumModel $forum)
+    {
+        $category = $request->input('category', null);
+        if (! $forum->allow_not_category || $category) {
+            $request->validateCategory(function (Validator $validator, Closure $failedValidation)
+            use (&$category, $forum) {
+                $validator->errors()->add('category', '选择的分类不存在');
+                $category = $forum->categories()
+                    ->where('id', $category)
+                    ->firstOr($failedValidation);
+            });
+        }
+
+        $topic = new ForumTopicModel();
+        $topic->forum_topic_categories_id = $category->id ?? null;
+        $topic->user_id = $request->user()->id;
+        $topic->subject = $request->input('subject');
+        $topic->body = $request->input('body');
+
+        $forum->topics()->save($topic);
+        $forum->increment('topic_count', 1);
+        if (! is_null($category)) {
+            $category->increment('topic_count', 1);
+        }
+
+        return response()->json([
+            'message' => '创建成功',
+            'topic_id' => $topic->id
+        ], 201);
     }
 }

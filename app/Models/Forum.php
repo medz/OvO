@@ -14,6 +14,15 @@ class Forum extends Model
     protected $hidden = ['deleted_at'];
 
     /**
+     * 应该被转换成原生类型的属性。
+     *
+     * @var array
+     */
+    protected $casts = [
+        'allow_not_category' => 'boolean',
+    ];
+
+    /**
      * categories.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
