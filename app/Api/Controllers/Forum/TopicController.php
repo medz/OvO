@@ -45,6 +45,7 @@ class TopicController extends Controller
         })
             ->limit($limit)
             ->offset($offset)
+            ->orderBy('id', 'desc')
             ->get();
 
         return response()->json($topics, 200);
