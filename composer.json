@@ -13,7 +13,6 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "dingo/api": "1.0.*@dev",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.5.*",
