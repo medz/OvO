@@ -43,7 +43,7 @@ class StoreForumTopic extends FormRequest
     {
         $factory = $this->container->make(ValidationFactory::class);
         $validator = $factory->make(
-            $this->validationData(), [ 'category' => 'required|numeric' ],
+            $this->validationData(), ['category' => 'required|numeric'],
             $this->messages(), $this->attributes()
         );
 

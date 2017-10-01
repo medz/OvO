@@ -78,8 +78,7 @@ class TopicController extends Controller
     {
         $category = $request->input('category', null);
         if (! $forum->allow_not_category || $category) {
-            $request->validateCategory(function (Validator $validator, Closure $failedValidation)
-            use (&$category, $forum) {
+            $request->validateCategory(function (Validator $validator, Closure $failedValidation) use (&$category, $forum) {
                 $validator->errors()->add('category', '选择的分类不存在');
                 $category = $forum->categories()
                     ->where('id', $category)
@@ -101,7 +100,7 @@ class TopicController extends Controller
 
         return response()->json([
             'message' => '创建成功',
-            'topic_id' => $topic->id
+            'topic_id' => $topic->id,
         ], 201);
     }
 }
