@@ -51,6 +51,8 @@ class TopicController extends Controller
             ->orderBy('id', 'desc')
             ->get();
 
+        $topics->load(['user', 'forum']);
+
         return response()->json($topics, 200);
     }
 
