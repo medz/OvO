@@ -65,6 +65,8 @@ class TopicController extends Controller
      */
     public function show(ForumTopicModel $topic)
     {
+        $topic->increment('view_count', 1);
+
         return response()->json($topic, 200);
     }
 
