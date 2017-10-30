@@ -86,8 +86,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/old') }}">Home</a>
-                    <a href="{{ url('/docs') }}">Documentation</a>
+                    <a href="{{ url('/') }}">Home</a>
+                    <a href="https://github.com/medz/phpwind/tree/master/docs">Documentation</a>
                     <a href="https://github.com/medz/phpwind">GitHub</a>
                 </div>
             </div>

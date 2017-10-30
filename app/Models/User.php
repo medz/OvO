@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ['email', 'phone', 'password', 'pw_password', 'pw_salt', 'deleted_at'];
+    protected $hidden = ['email', 'phone', 'password', 'pw_password', 'pw_salt', 'deleted_at', 'remember_token'];
 
     /**
      * The iser roles.
