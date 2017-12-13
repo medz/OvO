@@ -7,6 +7,8 @@
   "author": "Seven Du <shiweidu@outlook.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "js-yaml": "^3.10.0"
   }
 }
