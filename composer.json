@@ -11,13 +11,23 @@
             "homepage": "http://medz.cn"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/SevenDu/Desktop/working/fans-material-spa",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "tymon/jwt-auth": "^0.5.12"
+        "tymon/jwt-auth": "^0.5.12",
+        "medz/fans-material-spa": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
