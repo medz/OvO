@@ -6,4 +6,4 @@ const server = require('./server');
 const app = express();
 app.server = server(app, http);
 
-module.exports = app;
+module.exports = global.fans = app;
