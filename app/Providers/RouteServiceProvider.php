@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('api')->group(base_path('routes/api.php'));
     }
 
-    /**
+    /*
      * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
     //          ->group(base_path('routes/web.php'));
     // }
 
-    /**
+    /*
      * Make API Router.
      *
      * @return void
