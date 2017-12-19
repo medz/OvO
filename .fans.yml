@@ -1,0 +1,6 @@
+http:
+    domain: 127.0.0.1
+    listen: 9010
+    ssl: false
+    ssl_certificate: resources/certificate.crt
+    ssl_certificate_key: resources/certificate.pem
