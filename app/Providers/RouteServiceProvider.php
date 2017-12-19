@@ -34,8 +34,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->makeApiRouter();
-        $this->mapWebRoutes();
+        // $this->makeApiRouter();
+        // $this->mapWebRoutes();
+        Route::middleware('api')->group(base_path('routes/api.php'));
     }
 
     /**
@@ -45,12 +46,12 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
-    }
+    // protected function mapWebRoutes()
+    // {
+    //     Route::middleware('web')
+    //          ->namespace($this->namespace)
+    //          ->group(base_path('routes/web.php'));
+    // }
 
     /**
      * Make API Router.
@@ -58,10 +59,10 @@ class RouteServiceProvider extends ServiceProvider
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
      */
-    protected function makeApiRouter()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->group(base_path('routes/api.php'));
-    }
+    // protected function makeApiRouter()
+    // {
+    //     Route::prefix('api')
+    //         ->middleware('api')
+    //         ->group(base_path('routes/api.php'));
+    // }
 }
