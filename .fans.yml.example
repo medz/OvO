@@ -1,0 +1,5 @@
+http:
+    listen: 3000
+    ssl: false
+    ssl_certificate: /ver/certifacte.crt
+    ssl_certificate_key: /ver/certificate_key.key
