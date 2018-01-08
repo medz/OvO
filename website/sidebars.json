@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "Getting started": ["getting-started-installation"]
+  },
+  "api": {
+    "Overview": "api-overview"
+  }
+}
