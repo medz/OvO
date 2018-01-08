@@ -9,7 +9,7 @@
 const users = [
   {
     caption: 'phpwind',
-    image: '/test-site/img/docusaurus.svg',
+    image: 'http://img1.phpwind.net/attachout/background/4439b6b579ac496.png',
     infoLink: 'https://www.phpwind.net',
     pinned: true,
   },
