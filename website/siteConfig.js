@@ -20,7 +20,7 @@ const siteConfig = {
   tagline: 'Using Node.js created a Forum.',
   url: 'https://medz.github.io/phpwind' /* your website url */,
   baseUrl: '/' /* base url for your project */,
-  projectName: 'phpwind Fans 3',
+  projectName: 'phpwind',
   headerLinks: [
     {search: true},
     {doc: 'getting-started-installation', label: 'Docs'},
