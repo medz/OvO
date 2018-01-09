@@ -2,4 +2,4 @@
 id: getting-started-installation
 title: 安装
 ---
-## Installation
+## 安装
