@@ -19,7 +19,7 @@ const siteConfig = {
   title: 'Fans 3' /* title for your website */,
   tagline: 'Using Node.js created a Forum.',
   url: 'https://medz.github.io/phpwind' /* your website url */,
-  baseUrl: '/' /* base url for your project */,
+  baseUrl: 'https://medz.github.io/phpwind/' /* base url for your project */,
   projectName: 'phpwind',
   headerLinks: [
     {search: true},
@@ -33,7 +33,7 @@ const siteConfig = {
   /* path to images for header/footer */
   headerIcon: 'img/fans.svg',
   footerIcon: 'img/fans.svg',
-  favicon: 'favicon.png',
+  favicon: 'favicon.ico',
   /* colors for website */
   colors: {
     primaryColor: '#1E88E5',
@@ -44,7 +44,7 @@ const siteConfig = {
     'Copyright © ' +
     new Date().getFullYear() +
     ' Seven Du.',
-  // organizationName: 'deltice', // or set an env variable ORGANIZATION_NAME
+  organizationName: 'medz', // or set an env variable ORGANIZATION_NAME
   // projectName: 'test-site', // or set an env variable PROJECT_NAME
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
