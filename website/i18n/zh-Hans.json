@@ -1,0 +1,30 @@
+{
+  "_comment": "这个文件是由 write-translations.js 自动生成",
+  "localized-strings": {
+    "next": "下一步",
+    "previous": "上一步",
+    "tagline": "使用 Node.js 创建一个论坛",
+    "api-overview": "概述",
+    "getting-started-installation": "安装",
+    "Docs": "文档",
+    "API": "API",
+    "Help": "帮助",
+    "Blog": "博客",
+    "GitHub": "GitHub",
+    "Getting started": "开始",
+    "Overview": "概述"
+  },
+  "pages-strings": {
+    "Learn more using the [documentation on this site.](/test-site/docs/en/doc1.html)|no description given": "使用 [本站上的文档](/test-site/docs/en/doc1.html) 了解更多",
+    "Browse Docs|no description given": "浏览文档",
+    "Ask questions about the documentation and project|no description given": "询问有关文档和项目的问题",
+    "Join the community|no description given": "加入社区",
+    "Find out what's new with this project|no description given": "了解此项目的新增内容",
+    "Stay up to date|no description given": "保持最新",
+    "Need help?|no description given": "需要帮助吗？",
+    "This project is maintained by a dedicated group of people.|statement made to reader": "这个项目由一群专门的人来维护。",
+    "Help Translate|recruit community translators for your project": "帮助翻译",
+    "Edit this Doc|recruitment message asking to edit the doc source": "编辑",
+    "Translate this Doc|recruitment message asking to translate the docs": "翻译"
+  }
+}
