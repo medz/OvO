@@ -1,5 +1,5 @@
 ---
 id: getting-started-installation
-title: Installed
+title: 安装
 ---
 ## Installation
