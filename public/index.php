@@ -1,9 +1,9 @@
 <?php
 
 /**
- * phpwind Fans - 使用 PHP 和 MySQL 开发的高性能社区系统
+ * Laravel - A PHP Framework For Web Artisans.
  *
- * @author Seven Du <shiweidu@outlook.com>
+ * @author   Taylor Otwell <taylor@laravel.com>
  */
 define('LARAVEL_START', microtime(true));
 
