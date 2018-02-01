@@ -26,7 +26,7 @@ class User extends Authenticatable implements JWTSubject
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function roles(string $role)
+    public function roles(string $role = '')
     {
         if (! $role) {
             return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
@@ -72,7 +72,9 @@ class User extends Authenticatable implements JWTSubject
     {
         $password = request('password');
         if ($this->pw_salt && $this->pw_password && md5(md5($password).$this->pw_salt) === $this->pw_password) {
-            return bcrypt($password);
+            $this->password = bcrypt($password);
+            $this->pw_salt = $this->pw_password = null;
+            $this->save();
         }
 
         return parent::getAuthPassword();
