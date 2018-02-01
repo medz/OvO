@@ -3,11 +3,11 @@
 - [场景描述](#overview)
 - [Merging 时机](#merging-time)
 - [添加 Laravel 远端到本地仓库](#add-laravel-repo)
-- [步骤 1（合并 Origin `master` 分支）](#merged-origin-master-branch)
+- [步骤 1（合并 Origin `2.0` 分支）](#merged-origin-2.0-branch)
 - [步骤 2（合并 Laravel `master` 分支）](#merged-laravel-master-branch)
     - [解决合并冲突](#resolve-conflict)
 - [步骤 3 提交 `merge-laravel-to-2`](#push-merge-laravel-branch)
-- [步骤 4 将 `merge-laravel-to-2` 合并至 `master`](#merged-merge-laravel-branch-to-master)
+- [步骤 4 将 `merge-laravel-to-2` 合并至 `2.0`](#merged-merge-laravel-branch-to-2.0)
 
 <a name="overview"></a>
 ## 场景描述
@@ -37,15 +37,15 @@ Fans 2 是基于 [laravel/laravel](https://github.com/laravel/laravel) 仓库进
 
 > 如果上述你本地早已完成，可忽略。
 
-<a name="merged-origin-master-branch"></a>
-## 步骤 1（合并 Origin `master` 分支）
+<a name="merged-origin-2.0-branch"></a>
+## 步骤 1（合并 Origin `2.0` 分支）
 
 当我们发现可以 `merge` 操作的版本时，不要着急去进行合并。
 
-首先我们使用 `git checkout merge-laravel-to-2` 进入 **合并操作分支**，进入 `merge-laravel-to-2` 分支后我们应该使用常规 `merge` 将 `master` 
-分支代码合并过来，我们现在执行 `git merge master`
+首先我们使用 `git checkout merge-laravel-to-2` 进入 **合并操作分支**，进入 `merge-laravel-to-2` 分支后我们应该使用常规 `merge` 将 `2.0` 
+分支代码合并过来，我们现在执行 `git merge 2.0`
 
-> 此时，我们已经把 master 代码合并到了 `merge-laravel-to-2` 分支了，如果你出现了冲突，那只能说明一个问题，团队成员以前的 `merge` 操作对 `merge-laravel-to-2` 产生了干扰。
+> 此时，我们已经把 2.x 代码合并到了 `merge-laravel-to-2` 分支了，如果你出现了冲突，那只能说明一个问题，团队成员以前的 `merge` 操作对 `merge-laravel-to-2` 产生了干扰。
 > 还有可能是另一个问题，团队成员在 `merge-laravel-to-2` 分支做出了非 merged 的干扰提交。
 
 <a name="merged-laravel-master-branch"></a>
@@ -77,14 +77,14 @@ git pull laravel master
 很多时候失败都是更新了一些配置版本导致，尤其是前端，此时请在 `merge-laravel-to-2`
  下解决合并带来的不兼容问题。然后执行 `git push` 将 Commit 推到远端。
 
-<a name="merged-merge-laravel-branch-to-master"></a>
-## 步骤 4 将 `merge-laravel-to-2` 合并至 `master`
+<a name="merged-merge-laravel-branch-to-2.0"></a>
+## 步骤 4 将 `merge-laravel-to-2` 合并至 `2.0`
 
 此时，我们距离合并工作只只剩下最后一步了，就是将 `merge-laravel-to-2` 合并完成并解决了冲入的 Laravel 最新代码结构合并到 `master` 分支中。
 
 此时我们的合并必须采用 `squash` 模式进行合并，以免 Laravel 的更新工作给 Fans 2 的 Commits 线带来分叉扰乱团队的历史记录。
 
-首要任务是切换回 `master` 分支：`git checkout master`，然后我们执行 `squash` 进行合并：
+首要任务是切换回 `2.0` 分支：`git checkout 2.0`，然后我们执行 `squash` 进行合并：
 
 ```shell
 git merge --squash merge-laravel-to-2
@@ -92,10 +92,10 @@ git merge --squash merge-laravel-to-2
 
 一般这个步骤都不会报错，如果报错，一定是团队有成员扰乱了 `merge-laravel-to-2` 的 Commits，因为我们已经解决了 Laravel 在 Fans 2 中的冲突，这一步骤不会报错。
 
-好了，我们合并完成，剩下的就是将 `master` 提交到远端即可。
+好了，我们合并完成，剩下的就是将 `2.0` 提交到远端即可。
 
 Commit message 推荐写法：
 
 ```
-chore: Merged laravel:master to master branch, Updated Laravel version to x.x.x
+chore: Merged laravel:master to 2.0 branch, Updated Laravel version to x.x.x
 ```
