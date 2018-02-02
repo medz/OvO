@@ -30,7 +30,7 @@ class ForumSeeder extends Seeder
             'forum_topic_categories_id' => $category->id,
             'user_id' => $user->id,
             'subject' => '👏感谢安装 Fans 2 社区程序❤️',
-            'body' => <<<RAW
+            'body' => <<<'RAW'
 ## 🙏感谢安装
 
 感谢你安装 [Fans](https://github.com/medz/phpwind)
