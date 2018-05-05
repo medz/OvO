@@ -13,7 +13,7 @@ class Application extends LaravelApplication
 
     /**
      * Get the version number of the Laravel framework.
-     * 
+     *
      * @return string
      * @author Seven Du <shiweidu@outlook.com>
      */
