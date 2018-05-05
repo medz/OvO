@@ -39,7 +39,7 @@ class TopicController extends Controller
     /**
      * Get all forum topics.
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param Illuminate\Database\Eloquent\Builder|Illuminate\Database\Eloquent\Relations\Relation|null $query
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
