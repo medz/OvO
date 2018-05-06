@@ -20,7 +20,7 @@ class FilesController extends Controller
 
     /**
      * Upload file method.
-     * 
+     *
      * @param \App\Api\Requests\UploadFileRequest $request
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>

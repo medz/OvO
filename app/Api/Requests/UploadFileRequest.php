@@ -8,7 +8,7 @@ class UploadFileRequest extends Request
 {
     /**
      * Get the valition rules of the request.
-     * 
+     *
      * @return array
      * @author Seven Du <shiweidu@outlook.com>
      */
@@ -21,7 +21,7 @@ class UploadFileRequest extends Request
 
     /**
      * Get the valition messages of the request.
-     * 
+     *
      * @return array
      * @author Seven Du <shiwidu@outlook.com>
      */
