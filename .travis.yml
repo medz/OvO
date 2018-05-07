@@ -8,18 +8,39 @@ matrix:
     - php: 7.0
       env: DB=mysql
       services: mysql
+      addons:
+        apt:
+          sources: 
+            - mysql-5.7-trusty
+          packages:
+            - mysql-server
+            - mysql-client
     - php: 7.0
       env: DB=postgres
       services: postgresql
     - php: 7.1
       env: DB=mysql
       services: mysql
+      addons:
+        apt:
+          sources: 
+            - mysql-5.7-trusty
+          packages:
+            - mysql-server
+            - mysql-client
     - php: 7.1
       env: DB=postgres
       services: postgresql
     - php: 7.2
       env: DB=mysql
       services: mysql
+      addons:
+        apt:
+          sources: 
+            - mysql-5.7-trusty
+          packages:
+            - mysql-server
+            - mysql-client
     - php: 7.2
       env: DB=postgres
       services: postgresql
