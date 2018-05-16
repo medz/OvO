@@ -16,7 +16,7 @@
 
 [https://medz.github.io/phpwind/](https://medz.github.io/phpwind/)
 
-> 文档中心提供了非常多关于 Fans 版本的说明，并且使用 SPA 开发；有良好的用户阅读体验和跨设备体验，相比 GitHub 文档，能更好更清晰的胃用户提供帮助。
+> 文档中心提供了非常多关于 Fans 版本的说明，并且使用 SPA 开发；有良好的用户阅读体验和跨设备体验，相比 GitHub 文档，能更好更清晰的为用户提供帮助。
 >> 文档中心仓库: [medz/phpwind-docs](https://github.com/medz/phpwind-docs)
 >>> 在文档仓库，你可以为 Fans 版提供更多的文档帮助以及页面设计或者是建议。
 
