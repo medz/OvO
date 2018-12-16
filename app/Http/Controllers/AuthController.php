@@ -12,9 +12,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use App\Sms\Utils\TextVerificationCode;
-use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\Login as LoginRequest;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\SendPhoneNumberVerfiyCode as SendPhoneNumberVerfiyCodeRequest;
 
 class AuthController extends Controller
@@ -43,7 +42,7 @@ class AuthController extends Controller
         if ($request->input('verify_type') === 'password') {
             $this->loginWithPassword($request, $user);
         }
-        
+
         return $this->respondWithToken(
             $this->guard()->login($user)
         );

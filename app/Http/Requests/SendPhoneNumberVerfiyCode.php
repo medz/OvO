@@ -27,7 +27,7 @@ class SendPhoneNumberVerfiyCode extends FormRequest
     {
         return [
             'phone' => [
-                'required', 'string', new OnlyNumber
+                'required', 'string', new OnlyNumber,
             ],
             'international_telephone_code' => [
                 'required', 'string',
