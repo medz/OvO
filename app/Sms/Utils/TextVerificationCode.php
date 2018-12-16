@@ -6,6 +6,7 @@ namespace App\Sms\Utils;
 
 use Carbon\Carbon;
 use Overtrue\EasySms\EasySms;
+use Overtrue\EasySms\PhoneNumber;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
@@ -103,14 +104,15 @@ class TextVerificationCode
         return (bool) Cache::has(static::getKey($phone).':has');
     }
 
-    public static function send(string $phone): void
+    public static function send(string $TTC, string $phone): void
     {
-        if (static::has($phone)) {
+        $phoneNumber = new PhoneNumber($phone, $TTC);
+        if (static::has((string) $phoneNumber)) {
             throw new AccessDeniedHttpException('你的发送频率过快');
         }
         try {
-            App::make(EasySms::class)->send($phone, new TextVerificationCodeMessage(
-                static::make($phone)
+            App::make(EasySms::class)->send($phoneNumber, new TextVerificationCodeMessage(
+                static::make((string) $phoneNumber)
             ));
         } catch (NoGatewayAvailableException $e) {
             throw $e->getLastException();

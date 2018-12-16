@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/auth/jwt', 'AuthController@resolve');
+Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');

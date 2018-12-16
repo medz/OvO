@@ -7,23 +7,35 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\Login as LoginRequest;
+use App\Sms\Utils\TextVerificationCode;
 use Illuminate\Auth\AuthenticationException;
+use App\Http\Requests\Login as LoginRequest;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\Http\Requests\SendPhoneNumberVerfiyCode as SendPhoneNumberVerfiyCodeRequest;
 
 class AuthController extends Controller
 {
+    public function sendPhoneVerifyCode(SendPhoneNumberVerfiyCodeRequest $request): Response
+    {
+        TextVerificationCode::send(
+            $request->input('international_telephone_code'),
+            $request->input('phone')
+        );
+
+        return new Response('', Response::HTTP_NO_CONTENT);
+    }
+
     /**
      * Login or register a user.
      */
     public function resolve(LoginRequest $request)
     {
         // Find or register a user.
-        $user = User::firstOr($request->only([
-            'phone', 'international_telephone_code',
-        ]), function () use ($request) {
+        $user = User::where('phone', $request->input('phone'))->where('international_telephone_code', $request->input('international_telephone_code'))->firstOr(function () use ($request) {
             return $this->register($request);
         });
 
@@ -31,7 +43,7 @@ class AuthController extends Controller
         if ($request->input('verify_type') === 'password') {
             $this->loginWithPassword($request, $user);
         }
-
+        
         return $this->respondWithToken(
             $this->guard()->login($user)
         );
