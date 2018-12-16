@@ -1,12 +1,13 @@
 {
-    "name": "laravel/laravel",
+    "name": "medz/fans",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Dragonflies fly on the water, Socialize with fans!",
     "keywords": [
-        "framework",
-        "laravel"
+        "fans",
+        "laravel",
+        "phpwind"
     ],
-    "license": "MIT",
+    "license": "Apache-2.0",
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
