@@ -104,6 +104,12 @@ class TextVerificationCode
         return (bool) Cache::has(static::getKey($phone).':has');
     }
 
+    static public function remove(string $TTC, string $phone): void
+    {
+        $phoneNumber = new PhoneNumber($phone, $TTC);
+        Cache::forget(static::getKey((string) $phoneNumber));
+    }
+
     public static function send(string $TTC, string $phone): void
     {
         $phoneNumber = new PhoneNumber($phone, $TTC);

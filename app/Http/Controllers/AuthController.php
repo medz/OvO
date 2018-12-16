@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Overtrue\EasySms\PhoneNumber;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use App\Sms\Utils\TextVerificationCode;
@@ -42,6 +43,9 @@ class AuthController extends Controller
         if ($request->input('verify_type') === 'password') {
             $this->loginWithPassword($request, $user);
         }
+
+        // Remove verify code.
+        TextVerificationCode::remove($user->international_telephone_code, $user->phone);
 
         return $this->respondWithToken(
             $this->guard()->login($user)

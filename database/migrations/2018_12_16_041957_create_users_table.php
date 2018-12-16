@@ -26,7 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable()->comment('User Password');
             $table->timestamps();
 
-            $table->unique('phone');
+            $table->unique(['phone', 'international_telephone_code']);
+            $table->index('phone');
             $table->index('name');
             $table->index('international_telephone_code');
         });
