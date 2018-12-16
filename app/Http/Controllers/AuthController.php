@@ -9,7 +9,6 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Overtrue\EasySms\PhoneNumber;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use App\Sms\Utils\TextVerificationCode;
