@@ -115,6 +115,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'international_telephone_code' => 'The :attribute must be a valid international telephone code.',
+    'only_number' => 'The :attribute may only contain number.',
 
     /*
     |--------------------------------------------------------------------------

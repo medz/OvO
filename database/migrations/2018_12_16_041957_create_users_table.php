@@ -18,15 +18,17 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->comment('User Unique ID');
             $table->string('name')->comment('User Name');
-            $table->string('phone')->comment('User Phone Number');
+            $table->string('phone', 50)->comment('User Phone Number');
+            $table->string('international_telephone_code', 10)->comment('International telephone code');
             $table->timestamp('phone_verified_at')->nullable();
-            $table->string('email')->nullable()->comment('User Email Address');
+            $table->string('email', 100)->nullable()->comment('User Email Address');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable()->comment('User Password');
             $table->timestamps();
 
             $table->unique('phone');
             $table->index('name');
+            $table->index('international_telephone_code');
         });
     }
 
