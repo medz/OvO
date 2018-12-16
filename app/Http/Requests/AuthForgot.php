@@ -24,7 +24,7 @@ class AuthForgot extends FormRequest
     public function rules()
     {
         return [
-            'phone'
+            'phone',
         ];
     }
 }
