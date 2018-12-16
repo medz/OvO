@@ -35,7 +35,7 @@ class TextVerificationCode
      * @param string $phone
      * @return string
      */
-    static public function getKey(string $phone): string
+    public static function getKey(string $phone): string
     {
         return sprintf(static::CACHE_TEMPLATE, $phone);
     }
@@ -44,14 +44,14 @@ class TextVerificationCode
      * Get the cache expires date.
      * @return \Carbon\Carbon
      */
-    static public function getExpiresAt(): Carbon
+    public static function getExpiresAt(): Carbon
     {
         return (new Carbon)->addSeconds(static::EXPIRES_SECOND);
     }
 
-    static public function getHitExpiresAt(): Carbon
+    public static function getHitExpiresAt(): Carbon
     {
-        return (new Carbon)->addSeconds(static::HIT_EPIRES_SECOND); 
+        return (new Carbon)->addSeconds(static::HIT_EPIRES_SECOND);
     }
 
     /**
@@ -59,7 +59,7 @@ class TextVerificationCode
      * @param string $phone
      * @return $int
      */
-    static public function make(string $phone): int
+    public static function make(string $phone): int
     {
         // Write in Debug logs.
         Log::debug('Make Phone Validation Code.', [
@@ -80,7 +80,7 @@ class TextVerificationCode
      * @param int $code,
      * @return bool
      */
-    static public function validate(string $phone, int $code): bool
+    public static function validate(string $phone, int $code): bool
     {
         // Write in debug logs.
         Log::debug('Cached Verify Phone Validation Code.', [
@@ -98,12 +98,12 @@ class TextVerificationCode
      * @param string $phone
      * @return bool
      */
-    static public function has(string $phone): bool
+    public static function has(string $phone): bool
     {
         return (bool) Cache::has(static::getKey($phone).':has');
     }
 
-    static public function send(string $phone): void
+    public static function send(string $phone): void
     {
         if (static::has($phone)) {
             throw new AccessDeniedHttpException('你的发送频率过快');

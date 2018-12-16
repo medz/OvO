@@ -18,7 +18,7 @@ return [
             'text-verifcation-code' => [
                 'template' => env('SMS_ALIYUN_TEXT_VERIFY_CODE_TEMPLATE', ''),
                 'variable' => env('SMS_ALIYUN_TEXT_VERIFY_CODE_VAR', 'code'),
-            ]
+            ],
         ],
-    ]
+    ],
 ];

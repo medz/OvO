@@ -7,6 +7,8 @@ namespace App\Sms;
 interface ScenesInterface
 {
     public function template(): string;
+
     public function data($payload): array;
+
     public function content($payload): string;
 }

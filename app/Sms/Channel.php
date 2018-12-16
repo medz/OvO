@@ -11,22 +11,22 @@ use Overtrue\EasySms\Contracts\MessageInterface;
 
 class Channel
 {
-    static protected $vendors = [
+    protected static $vendors = [
         \Overtrue\EasySms\Gateways\AliyunGateway::class => 'Aliyun',
     ];
 
-    static protected $channels = [
+    protected static $channels = [
         \App\Sms\Messages\TextVerificationCode::class => 'TextVerificationCode',
     ];
 
-    static public function make(GatewayInterface $gateway, MessageInterface $message): ScenesInterface
+    public static function make(GatewayInterface $gateway, MessageInterface $message): ScenesInterface
     {
         $className = sprintf(
             '\App\Sms\Vendor\%s\%s',
             static::findVendor($gateway),
             static::findChannel($message)
         );
-        
+
         return new $className;
     }
 
@@ -35,9 +35,9 @@ class Channel
      * @param Overtrue\EasySms\Contracts\MessageInterface $message
      * @return string
      */
-    static public function findChannel(MessageInterface $message): string
+    public static function findChannel(MessageInterface $message): string
     {
-        foreach(static::$channels as $messageClassName => $channel) {
+        foreach (static::$channels as $messageClassName => $channel) {
             if ($message instanceof $messageClassName) {
                 Log::debug('Selected SMS vendor.', [
                     'channel' => $channel,
@@ -61,9 +61,9 @@ class Channel
      * @param \Overtrue\EasySms\Contracts\GatewayInterface $gateway
      * @return string
      */
-    static public function findVendor(GatewayInterface $gateway): string
+    public static function findVendor(GatewayInterface $gateway): string
     {
-        foreach(static::$vendors as $gatewayClassName => $directory) {
+        foreach (static::$vendors as $gatewayClassName => $directory) {
             if ($gateway instanceof $gatewayClassName) {
                 Log::debug('Selected SMS vendor.', [
                     'vendor' => $directory,

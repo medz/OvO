@@ -20,7 +20,7 @@ class TextVerificationCode extends Message
         $this->code = $code;
     }
 
-    static public function make(int $code): MessageInterface
+    public static function make(int $code): MessageInterface
     {
         return new static($code);
     }
