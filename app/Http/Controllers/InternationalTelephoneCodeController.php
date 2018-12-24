@@ -20,8 +20,7 @@ class InternationalTelephoneCodeController extends Controller
     {
         return InternationalTelephoneCodeResource::collection(InternationalTelephoneCode::all())
             ->toResponse($request)
-            ->setStatusCode(Response::HTTP_OK)
-        ;
+            ->setStatusCode(Response::HTTP_OK);
     }
 
     /**
