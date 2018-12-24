@@ -13,5 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth
 Route::post('/auth/jwt', 'AuthController@resolve');
 Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
+
+// Internation Telephone code
+Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
