@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\ModelMorphMap;
 use Overtrue\EasySms\EasySms;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\Resource;
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        ModelMorphMap::register();
         Resource::withoutWrapping();
     }
 
