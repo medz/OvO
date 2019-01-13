@@ -45,6 +45,6 @@ class VerifyPhoneTextVerificationCode implements Rule
      */
     public function message()
     {
-        return trans('你输入的验证码错误');
+        return trans('validation.text-code-validate-error');
     }
 }

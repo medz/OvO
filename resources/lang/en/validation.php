@@ -117,6 +117,7 @@ return [
     'uuid' => 'The :attribute must be a valid UUID.',
     'international_telephone_code' => 'The :attribute must be a valid international telephone code.',
     'only_number' => 'The :attribute may only contain number.',
+    'text-code-validate-error' => 'Text validate code error.',
 
     /*
     |--------------------------------------------------------------------------
