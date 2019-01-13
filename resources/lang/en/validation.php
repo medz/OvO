@@ -118,6 +118,11 @@ return [
     'international_telephone_code' => 'The :attribute must be a valid international telephone code.',
     'only_number' => 'The :attribute may only contain number.',
     'text-code-validate-error' => 'Text validate code error.',
+    'jurisdiction' => [
+        'node' => [
+            'illegal' => 'The :node is a illegal.',
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
