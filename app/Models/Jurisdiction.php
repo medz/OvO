@@ -18,13 +18,13 @@ class Jurisdiction extends Model
      * Cached Jurisdiction nodes.
      * @var \Illuminate\Support\Collection
      */
-    static protected $cachedJurisdictions;
+    protected static $cachedJurisdictions;
 
     /**
      * Get all Jurisdiction nodes.
      * @return \Illuminate\Support\Collection
      */
-    static public function nodes(): Collection
+    public static function nodes(): Collection
     {
         if (static::$cachedJurisdictions instanceof Collection) {
             return static::$cachedJurisdictions;

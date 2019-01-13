@@ -67,6 +67,6 @@ class User extends Authenticatable implements JWTSubject
      */
     public function jurisdictions(): HasMany
     {
-        return $this->hasMany(Jurisdiction::class); 
+        return $this->hasMany(Jurisdiction::class);
     }
 }
