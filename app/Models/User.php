@@ -61,4 +61,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(UserExtra::class);
     }
+
+    /**
+     * The user jurisdiction nodes.
+     */
+    public function jurisdictions(): HasMany
+    {
+        return $this->hasMany(Jurisdiction::class); 
+    }
 }

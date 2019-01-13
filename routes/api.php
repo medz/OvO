@@ -19,3 +19,6 @@ Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
 
 // Internation Telephone code
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
+
+// Jurisdiction
+Route::get('/jurisdictions', 'JurisdictionController@nodes');
