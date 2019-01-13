@@ -22,5 +22,6 @@ Route::get('/international-telephone-codes', 'InternationalTelephoneCodeControll
 
 // Jurisdiction
 Route::get('/jurisdictions', 'JurisdictionController@nodes');
+Route::put('/users/{user}/jurisdictions', 'JurisdictionController@sync');
 Route::put('/users/{user}/jurisdictions/{node}', 'JurisdictionController@attach');
 Route::delete('/users/{user}/jurisdictions/{node}', 'JurisdictionController@detach');

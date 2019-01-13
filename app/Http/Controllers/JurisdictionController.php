@@ -9,6 +9,9 @@ use App\Models\Jurisdiction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\SyncUserJurisdictionNodes;
 use App\Http\Resources\Jurisdiction as JurisdictionResource;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -79,5 +82,31 @@ class JurisdictionController extends Controller
         }
 
         return new Response('', Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Sync a jurisdiction node to user.
+     * @param \App\Http\Requests\SyncUserJurisdictionNodes $request
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function sync(SyncUserJurisdictionNodes $request, User $user): Response
+    {
+        $this->authorize('has', Jurisdiction::class);
+        $inputNodes = (new Collection($request->input('nodes')))->pluck('node');
+        $detachNodes = $user->jurisdictions->pluck('node')->diff($inputNodes);
+        $attachNodes = $inputNodes->diff($user->jurisdictions->pluck('node'));
+
+        DB::transaction(function () use ($detachNodes, $attachNodes, $user) {
+            if ($detachNodes->isNotEmpty()) {
+                $user->jurisdictions()->where('node', $detachNodes->all())->delete();
+            }
+
+            $attachNodes->each(function (string $node) use ($user) {
+                $user->jurisdictions()->create(['node' => $node]);
+            });
+        });
+
+        return new Response('', Response::HTTP_NO_CONTENT); 
     }
 }
