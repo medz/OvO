@@ -107,6 +107,6 @@ class JurisdictionController extends Controller
             });
         });
 
-        return new Response('', Response::HTTP_NO_CONTENT); 
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 }
