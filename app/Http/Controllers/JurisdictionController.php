@@ -57,7 +57,7 @@ class JurisdictionController extends Controller
                     'node' => $node,
                 ])
             );
-        } else if ($user->jurisdictions->firstWhere('node', $node)) {
+        } elseif ($user->jurisdictions->firstWhere('node', $node)) {
             return new Response('', Response::HTTP_NO_CONTENT);
         }
 
