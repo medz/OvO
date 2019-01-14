@@ -15,7 +15,7 @@ trait ZuluDateString
      */
     protected function whenDateToZulu($date = null)
     {
-        return $this->when($date, function () {
+        return $this->when($date, function () use ($date) {
             $date = $this->when($date instanceof Carbon, $date, function () use ($date): Carbon {
                 return new Carbon($date);
             });

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::post('/auth/jwt', 'AuthController@resolve');
 Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
+Route::get('/auth/me', 'UserController@show')->middleware('auth');
 
 // Internation Telephone code
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
@@ -28,3 +29,7 @@ Route::get('/jurisdictions', 'JurisdictionController@nodes');
 Route::put('/users/{user}/jurisdictions', 'JurisdictionController@sync');
 Route::put('/users/{user}/jurisdictions/{node}', 'JurisdictionController@attach');
 Route::delete('/users/{user}/jurisdictions/{node}', 'JurisdictionController@detach');
+
+// User
+Route::get('/users', 'UserController@index');
+Route::get('/users/{user}', 'UserController@show');
