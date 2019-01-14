@@ -21,6 +21,7 @@ class HasEnabledITC implements Rule
     public function passes($attribute, $value)
     {
         $this->value = $value;
+
         return boolval(
             InternationalTelephoneCode::where('code', $value)->first()->enabled_at ?? false
         );
