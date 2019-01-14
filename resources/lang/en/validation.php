@@ -115,7 +115,10 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
-    'international_telephone_code' => 'The :attribute must be a valid international telephone code.',
+    'international_telephone_code' => [
+        'format' => 'The :attribute must be a valid international telephone code.',
+        'disabled' => 'The :code not enabled',
+    ],
     'only_number' => 'The :attribute may only contain number.',
     'text-code-validate-error' => 'Text validate code error.',
     'jurisdiction' => [

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests;
 
 use App\Rules\OnlyNumber;
+use App\Rules\HasEnabledITC;
 use App\Rules\InternationalTelephoneCode;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\VerifyPhoneTextVerificationCode;
@@ -35,13 +36,14 @@ class Login extends FormRequest
             'international_telephone_code' => [
                 'required', 'string',
                 new InternationalTelephoneCode,
+                new HasEnabledITC,
             ],
             'phone' => [
                 'required', 'string', new OnlyNumber,
             ],
             'verification_code' => [
                 'required_if:verify_type,phone', 'numeric',
-                new VerifyPhoneTextVerificationCode($this, 'phone'),
+                new VerifyPhoneTextVerificationCode($this),
             ],
             'password' => [
                 'required_if:verify_type,password', 'string',

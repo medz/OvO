@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use App\Models\InternationalTelephoneCode;
 
-class InternationalTelephoneCode implements Rule
+class HasEnabledITC implements Rule
 {
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    protected $value;
 
     /**
      * Determine if the validation rule passes.
@@ -27,7 +20,10 @@ class InternationalTelephoneCode implements Rule
      */
     public function passes($attribute, $value)
     {
-        return (bool) preg_match('/\+[0-9]{1,3}/', $value);
+        $this->value = $value;
+        return boolval(
+            InternationalTelephoneCode::where('code', $value)->first()->enabled_at ?? false
+        );
     }
 
     /**
@@ -37,6 +33,8 @@ class InternationalTelephoneCode implements Rule
      */
     public function message()
     {
-        return trans('validation.international_telephone_code.format');
+        return trans('validation.international_telephone_code.disabled', [
+            'code' => $this->value,
+        ]);
     }
 }
