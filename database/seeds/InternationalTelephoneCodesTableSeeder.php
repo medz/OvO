@@ -12,10 +12,20 @@ class InternationalTelephoneCodesTableSeeder extends Seeder
      */
     public function run()
     {
-        InternationalTelephoneCode::firstOrCreate([
-            'code' => '+86',
-        ], [
-            'name' => '中国',
-        ]);
+        foreach([
+            '+1'  => 'United States',
+            '+1'  => 'Canada',
+            '+44' => 'United Kingdom',
+            '+49' => 'Deutschland',
+            '+81' => 'にっぽんこく',
+            '+82' => '대한민국',
+            '+86' => '中国',
+        ] as $code => $name) {
+            InternationalTelephoneCode::firstOrCreate([
+                'code' => $code,
+            ], [
+                'name' => $name,
+            ]);
+        }
     }
 }
