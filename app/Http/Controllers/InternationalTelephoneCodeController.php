@@ -16,6 +16,14 @@ use App\Http\Resources\InternationalTelephoneCode as InternationalTelephoneCodeR
 class InternationalTelephoneCodeController extends Controller
 {
     /**
+     * Create the constroller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store', 'update', 'destroy']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request      $request
@@ -36,6 +44,7 @@ class InternationalTelephoneCodeController extends Controller
      */
     public function store(CreateTTCRequest $request): JsonResponse
     {
+        $this->authorize('has', InternationalTelephoneCode::class);
         $ttc = new InternationalTelephoneCode($request->only(['code', 'name', 'icon']));
         if ($request->input('enabled', false)) {
             $ttc->enabled_at = new Carbon;
@@ -56,6 +65,7 @@ class InternationalTelephoneCodeController extends Controller
      */
     public function update(UpdateTTCRequest $request, InternationalTelephoneCode $ttc): Response
     {
+        $this->authorize('has', InternationalTelephoneCode::class);
         foreach ($request->only(['code', 'name', 'icon']) as $key => $value) {
             if ($request->has($key)) {
                 $ttc->{$key} = $value;
@@ -80,6 +90,7 @@ class InternationalTelephoneCodeController extends Controller
      */
     public function destroy(int $id)
     {
+        $this->authorize('has', InternationalTelephoneCode::class);
         InternationalTelephoneCode::destroy($id);
 
         return new Response('', Response::HTTP_NO_CONTENT);

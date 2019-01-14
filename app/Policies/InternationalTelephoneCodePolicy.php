@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Jurisdiction;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class JurisdictionPolicy
+class InternationalTelephoneCodePolicy
 {
     use HandlesAuthorization;
 
@@ -19,6 +19,6 @@ class JurisdictionPolicy
      */
     public function has(User $user): bool
     {
-        return (bool) $user->jurisdictions->firstWhere('node', 'user:jurisdiction');
+        return (bool) $user->jurisdictions->firstWhere('node', 'ttc:manage');
     }
 }
