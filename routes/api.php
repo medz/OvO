@@ -20,6 +20,7 @@ Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
 // Internation Telephone code
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
 Route::post('/international-telephone-codes', 'InternationalTelephoneCodeController@store');
+Route::patch('/international-telephone-codes/{ttc}', 'InternationalTelephoneCodeController@update');
 
 // Jurisdiction
 Route::get('/jurisdictions', 'JurisdictionController@nodes');

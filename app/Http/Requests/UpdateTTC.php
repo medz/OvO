@@ -7,7 +7,7 @@ namespace App\Http\Requests;
 use App\Rules\InternationalTelephoneCode;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateTTC extends FormRequest
+class UpdateTTC extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,10 +17,10 @@ class CreateTTC extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['required', new InternationalTelephoneCode],
-            'name' => ['required', 'string', 'max:100'],
-            'icon' => ['required', 'string'],
-            'enabled' => ['required', 'boolean'],
+            'code' => ['nullable', new InternationalTelephoneCode],
+            'name' => ['nullable', 'string', 'max:100'],
+            'icon' => ['nullable', 'string'],
+            'enabled' => ['nullable', 'boolean'],
         ];
     }
 }

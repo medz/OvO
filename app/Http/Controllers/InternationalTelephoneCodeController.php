@@ -48,6 +48,31 @@ class InternationalTelephoneCodeController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateTTC  $request
+     * @param  App\Models\InternationalTelephoneCode $ttc
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateTTCRequest $request, InternationalTelephoneCode $ttc): Response
+    {
+        foreach ($request->only(['code', 'name', 'icon']) as $key => $value) {
+            if ($request->has($key)) {
+                $ttc->{$key} = $value;
+                $needSave = true;
+            }
+        }
+        if (($enabled = $request->input('enabled')) === true || $enabled === 1) {
+            $ttc->enabled_at = new Carbon;
+        } elseif ($enabled === false || $enabled === 0) {
+            $ttc->enabled_at = null;
+        }
+        $ttc->save();
+
+        return new Response('', Response::HTTP_NO_CONTENT);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
