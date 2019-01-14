@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\Models\InternationalTelephoneCode;
+use App\Http\Requests\CreateTTC as CreateTTCRequest;
+use App\Http\Requests\UpdateTTC as UpdateTTCRequest;
 use App\Http\Resources\InternationalTelephoneCode as InternationalTelephoneCodeResource;
 
 class InternationalTelephoneCodeController extends Controller
@@ -28,24 +31,20 @@ class InternationalTelephoneCodeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreateTTC  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTTCRequest $request): JsonResponse
     {
-        //
-    }
+        $ttc = new InternationalTelephoneCode($request->only(['code', 'name', 'icon']));
+        if ($request->input('enabled', false)) {
+            $ttc->enabled_at = new Carbon;
+        }
+        $ttc->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return (new InternationalTelephoneCodeResource($ttc))
+            ->toResponse($request)
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
