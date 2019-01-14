@@ -78,8 +78,10 @@ class InternationalTelephoneCodeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        InternationalTelephoneCode::destroy($id);
+
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 }

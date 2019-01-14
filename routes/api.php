@@ -21,6 +21,7 @@ Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
 Route::post('/international-telephone-codes', 'InternationalTelephoneCodeController@store');
 Route::patch('/international-telephone-codes/{ttc}', 'InternationalTelephoneCodeController@update');
+Route::delete('/international-telephone-codes/{id}', 'InternationalTelephoneCodeController@destroy');
 
 // Jurisdiction
 Route::get('/jurisdictions', 'JurisdictionController@nodes');
