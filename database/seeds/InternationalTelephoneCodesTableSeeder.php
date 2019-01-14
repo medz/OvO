@@ -12,7 +12,7 @@ class InternationalTelephoneCodesTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach([
+        foreach ([
             '+1'  => 'United States',
             '+1'  => 'Canada',
             '+44' => 'United Kingdom',
