@@ -18,6 +18,8 @@ class InternationalTelephoneCode extends JsonResource
             'id' => $this->id,
             'code' => $this->code,
             'name' => $this->name,
+            'icon' => $this->icon,
+            'enabled' => boolval($this->enabled_at),
         ];
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use App\Models\InternationalTelephoneCode;
 
@@ -12,19 +13,14 @@ class InternationalTelephoneCodesTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach ([
-            '+1'  => 'United States',
-            '+1'  => 'Canada',
-            '+44' => 'United Kingdom',
-            '+49' => 'Deutschland',
-            '+81' => 'にっぽんこく',
-            '+82' => '대한민국',
-            '+86' => '中国',
-        ] as $code => $name) {
+        $codes = json_decode(file_get_contents(resource_path('international-telephone-code.json')), true);
+        foreach ($codes as $code) {
             InternationalTelephoneCode::firstOrCreate([
-                'code' => $code,
+                'code' => $code['code'],
+                'name' => $code['name'],
             ], [
-                'name' => $name,
+                'icon' => $code['icon'],
+                'enabled_at' => new Carbon,
             ]);
         }
     }

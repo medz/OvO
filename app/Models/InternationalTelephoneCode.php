@@ -11,5 +11,5 @@ class InternationalTelephoneCode extends Model
      *
      * @var array
      */
-    protected $fillable = ['code', 'name'];
+    protected $fillable = ['code', 'name', 'icon', 'enabled_at'];
 }

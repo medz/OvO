@@ -17,7 +17,12 @@ class CreateInternationalTelephoneCodesTable extends Migration
             $table->increments('id');
             $table->string('code', 10)->comment('International telephone code');
             $table->string('name', 100);
+            $table->string('icon', 50);
+            $table->timestamp('enabled_at')->nullable();
             $table->timestamps();
+
+            $table->index('code');
+            $table->index('enabled_at');
         });
     }
 
