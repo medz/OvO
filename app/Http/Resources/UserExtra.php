@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use App\Models\User as UserModel;
-use Illuminate\Support\Facades\Storage;
-
 class UserExtra extends JsonResource
 {
     /**

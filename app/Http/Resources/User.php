@@ -18,6 +18,7 @@ class User extends JsonResource
     public function toArray($request)
     {
         $user = $request->user();
+
         return [
             'id' => $this->id,
             'name' => $this->when($this->name, $this->name),
@@ -38,9 +39,9 @@ class User extends JsonResource
                     'email' => $this->when($this->email, function () {
                         return [
                             'address' => $this->email,
-                            'verified_at' => $this->whenDateToZulu($this->email_verified_at)
+                            'verified_at' => $this->whenDateToZulu($this->email_verified_at),
                         ];
-                    })
+                    }),
                 ];
             }),
             'created_at' => $this->whenDateToZulu($this->created_at),

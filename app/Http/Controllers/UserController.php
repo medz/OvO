@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        // return 
+        // return
     }
 
     public function show(Request $request, ?User $user = null)
