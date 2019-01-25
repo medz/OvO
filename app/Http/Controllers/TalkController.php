@@ -8,7 +8,9 @@ use App\Models\Talk;
 use App\ModelMorphMap;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Spatie\QueryBuilder\Filter;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Resources\Talk as TalkResource;
 use App\Http\Requests\CreateTalk as CreateTalkRequest;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
@@ -20,17 +22,37 @@ class TalkController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->only(['store']);
+        $this->middleware('auth')->only(['store', 'update', 'destroy']);
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $talks = QueryBuilder::for(Talk::class, $request)
+            ->allowedFilters([
+                Filter::exact('id'),
+                Filter::exact('publisher_id'),
+                Filter::partial('content'),
+            ])
+            ->allowedFields([
+                'id', 'publisher_id', 'content',
+                'resource_type', 'resource', 'cache',
+            ])
+            ->allowedSorts('id')
+            ->defaultSort('-id')
+            ->allowedIncludes([
+                'publisher',
+                'publisher.extras',
+            ])
+            ->paginate(10)
+            ->appends($request->query());
+        
+        return TalkResource::collection($talks);
     }
 
     /**
@@ -41,8 +63,10 @@ class TalkController extends Controller
      */
     public function store(CreateTalkRequest $request)
     {
+        $this->authorize('create', Talk::class);
         // Create a talk.
         $talk = new Talk($request->only(['content', 'resource_type', 'resource']));
+        $talk->publisher_id = $request->user()->id;
 
         // Get repost resource class name.
         $repostableClassName = ModelMorphMap::aliasToClassName(
@@ -67,7 +91,9 @@ class TalkController extends Controller
         // transaction
         DB::transaction(function () use ($talkCountModel, $talk) {
             $talk->save();
-            $talkCountModel->increment('value', 1);
+            $talkCountModel->update([
+                'value' => $talkCountModel->value + 1,
+            ]);
         });
 
         return (new TalkResource($talk))
@@ -79,23 +105,13 @@ class TalkController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Talk  $talk
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function show(Talk $talk)
     {
-        //
-    }
+        $talk->load(['publisher']);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Talk  $talk
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Talk $talk)
-    {
-        //
+        return new TalkResource($talk);
     }
 
     /**
@@ -106,6 +122,22 @@ class TalkController extends Controller
      */
     public function destroy(Talk $talk)
     {
-        //
+        $this->authorize('delete', $talk);
+        $talkCountModel = null;
+        if ($talk->publisher) {
+            $talkCountModel = $talk->publisher->extras()->firstOrCreate(['name' => 'talks_count'], ['value' => ['count' => 0]]);
+        }
+
+        // transaction
+        DB::transaction(function () use ($talkCountModel, $talk) {
+            $talk->delete();
+            if ($talkCountModel && $talkCountModel->value['count'] > 0) {
+                $talkCountModel->update([
+                    'value' => $talkCountModel->value - 1,
+                ]);
+            }
+        });
+
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 }

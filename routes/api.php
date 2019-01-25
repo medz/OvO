@@ -33,3 +33,8 @@ Route::delete('/users/{user}/jurisdictions/{node}', 'JurisdictionController@deta
 // User
 Route::get('/users', 'UserController@index');
 Route::get('/users/{user}', 'UserController@show');
+
+// Talk
+Route::apiResource('talks', 'TalkController', [
+    'except' => ['update'],
+]);

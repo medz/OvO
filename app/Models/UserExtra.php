@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class UserExtra extends Model
 {
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The primary key for the model.
      *
      * @var string
@@ -19,4 +26,13 @@ class UserExtra extends Model
      * @var array
      */
     protected $fillable = ['user_id', 'name', 'value'];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'value' => 'json',
+    ];
 }
