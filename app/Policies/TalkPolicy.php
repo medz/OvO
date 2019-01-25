@@ -21,7 +21,7 @@ class TalkPolicy
         if (! $user->phone_verified_at) {
             $this->deny(trans('auth.unauthorized'));
         }
-        
+
         return true;
     }
 

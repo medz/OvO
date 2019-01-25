@@ -51,7 +51,7 @@ class TalkController extends Controller
             ])
             ->paginate(10)
             ->appends($request->query());
-        
+
         return TalkResource::collection($talks);
     }
 
