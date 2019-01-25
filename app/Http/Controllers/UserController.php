@@ -40,9 +40,8 @@ class UserController extends Controller
             ->defaultSort('-id')
             ->allowedIncludes('extras')
             ->paginate(10)
-            ->appends($request->query())
-        ;
-        
+            ->appends($request->query());
+
         return UserResource::collection($users);
     }
 
