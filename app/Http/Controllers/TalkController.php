@@ -6,12 +6,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Talk;
 use App\ModelMorphMap;
+use App\Models\UserExtra;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Spatie\QueryBuilder\Filter;
 use Illuminate\Support\Facades\DB;
-use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Resources\Talk as TalkResource;
+use App\Http\Requests\ListTalks as ListTalksRequest;
 use App\Http\Requests\CreateTalk as CreateTalkRequest;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
@@ -28,31 +28,30 @@ class TalkController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\ListTalks $request
      * @return mixed
      */
-    public function index(Request $request)
+    public function index(ListTalksRequest $request)
     {
-        $talks = QueryBuilder::for(Talk::class, $request)
-            ->allowedFilters([
-                Filter::exact('id'),
-                Filter::exact('publisher_id'),
-                Filter::partial('content'),
-            ])
-            ->allowedFields([
-                'id', 'publisher_id', 'content',
-                'resource_type', 'resource', 'cache',
-            ])
-            ->allowedSorts('id')
-            ->defaultSort('-id')
-            ->allowedIncludes([
-                'publisher',
-                'publisher.extras',
-            ])
-            ->paginate(10)
-            ->appends($request->query());
+        if ($request->query('id')) {
+            return TalkResource::collection(
+                Talk::whereInId($request->query('id'))
+                    ->paginate(10)
+                    ->appends($request->query())
+            );
+        } elseif ($request->query('query')) {
+            return TalkResource::collection(
+                Talk::search($request->query('query'))
+                    ->paginate(10)
+                    ->appends($request->query())
+            );
+        }
 
-        return TalkResource::collection($talks);
+        return TalkResource::collection(
+            Talk::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
+                ->paginate(10)
+                ->appends($request->query())
+        );
     }
 
     /**
@@ -86,14 +85,17 @@ class TalkController extends Controller
         }
 
         // find user talk count model.
-        $talkCountModel = $request->user()->extras()->firstOrCreate(['name' => 'talks_count'], ['value' => 0]);
+        $extra = $request->user()->extras()->firstOrCreate([
+            'name' => 'talks_count',
+            'type' => UserExtra::TYPE_INTEGER,
+        ], [
+            'integer_value' => 0,
+        ]);
 
         // transaction
-        DB::transaction(function () use ($talkCountModel, $talk) {
+        DB::transaction(function () use ($extra, $talk) {
             $talk->save();
-            $talkCountModel->update([
-                'value' => $talkCountModel->value + 1,
-            ]);
+            $extra->increment('talks_count', 1);
         });
 
         return (new TalkResource($talk))
@@ -123,18 +125,21 @@ class TalkController extends Controller
     public function destroy(Talk $talk)
     {
         $this->authorize('delete', $talk);
-        $talkCountModel = null;
+        $extra = null;
         if ($talk->publisher) {
-            $talkCountModel = $talk->publisher->extras()->firstOrCreate(['name' => 'talks_count'], ['value' => ['count' => 0]]);
+            $extra = $request->user()->extras()->firstOrCreate([
+                'name' => 'talks_count',
+                'type' => UserExtra::TYPE_INTEGER,
+            ], [
+                'integer_value' => 0,
+            ]);
         }
 
         // transaction
-        DB::transaction(function () use ($talkCountModel, $talk) {
+        DB::transaction(function () use ($extra, $talk) {
             $talk->delete();
-            if ($talkCountModel && $talkCountModel->value['count'] > 0) {
-                $talkCountModel->update([
-                    'value' => $talkCountModel->value - 1,
-                ]);
+            if ($extra && $extra->talks_count > 0) {
+                $extra->decrement('integer_value', 1);
             }
         });
 

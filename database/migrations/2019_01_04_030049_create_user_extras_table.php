@@ -17,12 +17,16 @@ class CreateUserExtrasTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->comment('User ID');
             $table->string('name', 50);
-            $table->json('value');
+            $table->string('value_type', 100);
+            $table->json('json_value')->nullable();
+            $table->integer('integer_value')->nullable();
+            $table->string('string_value')->nullable();
 
             // indexs.
             $table->unique(['user_id', 'name']);
             $table->index('user_id');
             $table->index('name');
+            $table->index('value_type');
         });
     }
 

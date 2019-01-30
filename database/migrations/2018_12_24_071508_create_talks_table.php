@@ -37,9 +37,17 @@ class CreateTalksTable extends Migration
                 ->nullable()
                 ->comment('The talk resource');
             $table
-                ->json('cache')
+                ->integer('read_count')
                 ->nullable()
-                ->comment('The talk cache data');
+                ->default(0);
+            $table
+                ->integer('likes_count')
+                ->nullable()
+                ->default(0);
+            $table
+                ->integer('comments_count')
+                ->nullable()
+                ->default(0);
             $table->timestamps(); // created_at, updated_at
         });
     }

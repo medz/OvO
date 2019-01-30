@@ -6,10 +6,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\QueryBuilder\Filter;
-use Spatie\QueryBuilder\QueryBuilder;
 use App\Http\Resources\User as UserResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class UserController extends Controller
 {
@@ -20,29 +19,26 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = QueryBuilder::for(User::class, $request)
-            ->allowedFilters([
-                Filter::exact('id'),
-                Filter::partial('name'),
-                Filter::exact('international_telephone_code'),
-                Filter::partial('phone'),
-                Filter::exact('phone_verified_at'),
-                Filter::partial('email'),
-                Filter::partial('email_verified_at'),
-            ])
-            ->allowedFields([
-                'id', 'name', 'avatar', 'phone',
-                'international_telephone_code',
-                'phone_verified_at', 'email',
-                'email_verified_at', 'created_at',
-            ])
-            ->allowedSorts('id')
-            ->defaultSort('-id')
-            ->allowedIncludes('extras')
-            ->paginate(10)
-            ->appends($request->query());
+        $perPage = 10;
+        if ($request->query('id')) {
+            return UserResource::collection(
+                User::whereIn('id', $request->query('id'))
+                    ->paginate($perPage)
+                    ->appends($request->query())
+            );
+        } elseif ($request->query('query')) {
+            return UserResource::collection(
+                User::search($request->query('query'))
+                    ->paginate($perPage)
+                    ->appends($request->query())
+            );
+        }
 
-        return UserResource::collection($users);
+        return UserResource::collection(
+            User::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
+                ->paginate($perPage)
+                ->appends($request->query())
+        );
     }
 
     /**

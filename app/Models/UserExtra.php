@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserExtra extends Model
 {
+    const TYPE_INTEGER = 'integer';
+    const TYPE_JSON = 'json';
+    const TYPE_STRING = 'string';
+
     /**
      * Indicates if the model should be timestamped.
      *
