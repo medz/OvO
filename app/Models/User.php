@@ -43,11 +43,11 @@ class User extends Authenticatable implements JWTSubject
     public function toSearchableArray()
     {
         return [
-            'id' => $this->getOriginal('id'),
-            'name' => $this->getOriginal('name'),
-            'international_telephone_code' => $this->getOriginal('international_telephone_code'),
-            'phone' => $this->getOriginal('phone'),
-            'email' => $this->getOriginal('email'),
+            'id' => $this->id,
+            'name' => $this->name,
+            'international_telephone_code' => $this->international_telephone_code,
+            'phone' => $this->phone,
+            'email' => $this->email,
         ];
     }
 

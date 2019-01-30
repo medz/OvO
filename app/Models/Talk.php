@@ -30,8 +30,8 @@ class Talk extends Model
     public function toSearchableArray()
     {
         return [
-            'id' => $this->getOriginal('id'),
-            'content' => $this->getOriginal('content'),
+            'id' => $this->id,
+            'content' => $this->content,
         ];
     }
 
