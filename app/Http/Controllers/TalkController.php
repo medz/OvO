@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use App\Models\Talk;
 use App\ModelMorphMap;
 use App\Models\UserExtra;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Talk as TalkResource;
