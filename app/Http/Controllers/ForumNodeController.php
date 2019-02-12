@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\ForumNode;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\CreateForumNode;
 use App\Http\Requests\UpdateForumNode;

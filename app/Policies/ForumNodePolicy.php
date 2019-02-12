@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\App\Models\ForumNode;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ForumNodePolicy
