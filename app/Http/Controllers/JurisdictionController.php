@@ -13,7 +13,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SyncUserJurisdictionNodes;
 use App\Http\Resources\Jurisdiction as JurisdictionResource;
-use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class JurisdictionController extends Controller
 {
