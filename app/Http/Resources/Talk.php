@@ -51,13 +51,13 @@ class Talk extends JsonResource
                             case TalkModel::class:
                                 return ['talk' => new static($this->repostable)];
                             case UserModel::class:
-                                return ['user' => new User($this->repostable)]; 
+                                return ['user' => new User($this->repostable)];
                             default:
                                 return new MissingValue();
                         }
                     });
                 }),
-            ]
+            ],
         ];
     }
 }
