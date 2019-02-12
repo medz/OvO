@@ -30,6 +30,9 @@ Route::put('/users/{user}/jurisdictions', 'JurisdictionController@sync');
 Route::put('/users/{user}/jurisdictions/{node}', 'JurisdictionController@attach');
 Route::delete('/users/{user}/jurisdictions/{node}', 'JurisdictionController@detach');
 
+// Storage Uploaded File
+Route::post('/upload', 'StorageController');
+
 // User
 Route::get('/users', 'UserController@index');
 Route::get('/users/{user}', 'UserController@show');
