@@ -142,6 +142,6 @@ class TalkController extends Controller
             }
         });
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 }

@@ -54,7 +54,7 @@ class JurisdictionController extends Controller
             return $value === $node;
         });
         if ($illegalNode) {
-            throw new UnprocessableEntityHttpException(
+            $this->throwUnprocessableEntity(
                 trans('jurisdiction.node.illegal', [
                     'node' => $node,
                 ])
@@ -65,7 +65,7 @@ class JurisdictionController extends Controller
             ]);
         }
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 
     /**
@@ -81,7 +81,7 @@ class JurisdictionController extends Controller
             $user->jurisdictions()->where('node', $node)->delete();
         }
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 
     /**
@@ -107,6 +107,6 @@ class JurisdictionController extends Controller
             });
         });
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 }

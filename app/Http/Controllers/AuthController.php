@@ -25,7 +25,7 @@ class AuthController extends Controller
             $request->input('phone')
         );
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 
     /**

@@ -79,7 +79,7 @@ class InternationalTelephoneCodeController extends Controller
         }
         $ttc->save();
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 
     /**
@@ -93,6 +93,6 @@ class InternationalTelephoneCodeController extends Controller
         $this->authorize('has', InternationalTelephoneCode::class);
         InternationalTelephoneCode::destroy($id);
 
-        return new Response('', Response::HTTP_NO_CONTENT);
+        return $this->withHttpNoContent();
     }
 }
