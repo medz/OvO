@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use App\Models\User as UserModel;
-use Illuminate\Support\Facades\Storage;
 
 class User extends JsonResource
 {
+    use Concerns\StorageUrl;
+
     /**
      * Transform the resource into an array.
      *
@@ -22,13 +23,7 @@ class User extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->when($this->name, $this->name),
-            'avatar' => $this->when($this->avatar, function () {
-                if (preg_match('/https?\:\/\//', $this->avatar)) {
-                    return $this->avatar;
-                }
-
-                return Storage::url($this->avatar);
-            }),
+            'avatar' => $this->whenStorageUrl($this->avatar),
             $this->mergeWhen($user instanceof UserModel && $user->id === $this->id, function () {
                 return [
                     'phone' => [

@@ -38,3 +38,6 @@ Route::get('/users/{user}', 'UserController@show');
 Route::apiResource('talks', 'TalkController', [
     'except' => ['update'],
 ]);
+
+// Forum nodes
+Route::apiResource('nodes', 'ForumNodeController');

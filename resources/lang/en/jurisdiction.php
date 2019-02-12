@@ -1,9 +1,13 @@
 <?php
 
 return [
+    'forum:nodes-manage' => [
+        'name' => 'Forum > Nodes Manage',
+        'desc' => 'Manage Forum Nodes',
+    ],
     'talk:destroy' => [
         'name' => 'Talk > Desrory',
-        'desc' => 'Destory Talk permission.',
+        'desc' => 'Destory Talk permission',
     ],
     'ttc:manage' => [
         'name' => 'TTC > Manage',
