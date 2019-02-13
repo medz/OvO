@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserExtra;
 use App\Models\ForumNode;
+use App\Models\UserExtra;
 use App\Models\ForumThread;
 use Illuminate\Http\Request;
 use App\Models\ForumThreadContent;
