@@ -37,7 +37,7 @@ class CreateTalksTable extends Migration
                 ->nullable()
                 ->comment('The talk resource');
             $table
-                ->integer('read_count')
+                ->integer('views_count')
                 ->nullable()
                 ->default(0);
             $table

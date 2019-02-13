@@ -110,7 +110,8 @@ class TalkController extends Controller
      */
     public function show(Talk $talk)
     {
-        $talk->load(['publisher']);
+        $talk->load(['publisher', 'repostable']);
+        $talk->increment('views_count', 1);
 
         return new TalkResource($talk);
     }
