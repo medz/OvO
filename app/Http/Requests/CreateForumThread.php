@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateForumNode extends FormRequest
+class CreateForumThread extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,8 @@ class CreateForumNode extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:50', 'unique:forum_nodes,name'],
-            'description' => ['nullable', 'string'],
-            'color' => ['nullable', 'string'],
-            'icon' => ['nullable', 'string'],
+            'title' => ['required', 'string', 'min:10', 'max:190'],
+            'content' => ['nullable', 'string', 'max:5000'],
         ];
     }
 }

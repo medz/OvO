@@ -38,9 +38,16 @@ Route::get('/users', 'UserController@index');
 Route::get('/users/{user}', 'UserController@show');
 
 // Talk
-Route::apiResource('talks', 'TalkController', [
+Route::apiResource('/talks', 'TalkController', [
     'except' => ['update'],
 ]);
 
 // Forum nodes
-Route::apiResource('nodes', 'ForumNodeController');
+Route::apiResource('/forum/nodes', 'ForumNodeController');
+
+// Forum threads
+Route::apiResource('/forum/threads', 'ForumThreadController', [
+    'except' => ['store'],
+]);
+Route::post('/forum/nodes/{node}/threads', 'ForumThreadController@store');
+Route::put('/forum/nodes/{node}/threads/{thread}', 'ForumThreadController@transform');

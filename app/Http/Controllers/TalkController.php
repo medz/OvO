@@ -94,7 +94,7 @@ class TalkController extends Controller
         // transaction
         DB::transaction(function () use ($extra, $talk) {
             $talk->save();
-            $extra->increment('talks_count', 1);
+            $extra->increment('integer_value', 1);
         });
 
         return (new TalkResource($talk))
