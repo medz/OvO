@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Closure;
 use App\Models\Talk;
 use App\ModelMorphMap;
 use App\Models\Comment;
 use App\Models\UserExtra;
-use App\Models\ForumThread;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ListComments;
@@ -52,7 +49,7 @@ class CommentController extends Controller
         $comment = new Comment(array_merge([
             'publisher_id' => $request->user()->id,
         ], $request->only([
-            'content', 'resource_type', 'resource'
+            'content', 'resource_type', 'resource',
         ])));
 
         DB::transaction(function () use ($comment, $commentable, $extra) {

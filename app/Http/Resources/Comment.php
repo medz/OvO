@@ -38,7 +38,7 @@ class Comment extends JsonResource
                             case ForumThreadModel::class:
                                 return ['forum:thread' => new ForumThread($this->commentable)];
                             default:
-                                return new MissingValue; 
+                                return new MissingValue;
                         }
                     });
                 }),
