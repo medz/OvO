@@ -33,27 +33,20 @@ class TalkController extends Controller
     public function index(ListTalksRequest $request)
     {
         if ($request->query('id')) {
-            return TalkResource::collection(
-                Talk::whereInId($request->query('id'))
-                    ->paginate(10)
-                    ->appends($request->query())
-            );
+            $query = Talk::whereInId($request->query('id'));
         } elseif ($request->query('query')) {
-            return TalkResource::collection(
-                Talk::search($request->query('query'))
-                    ->paginate(10)
-                    ->appends($request->query())
-            );
+            $query = Talk::search($request->query('query'));
+        } else {
+            $query = Talk::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
+            ->when($request->query('publisher'), function ($query) use ($request) {
+                return $query->wherePublisherId($request->query('publisher'));
+            });
         }
 
-        return TalkResource::collection(
-            Talk::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
-                ->when($request->query('publisher'), function ($query) use ($request) {
-                    return $query->wherePublisherId($request->query('publisher'));
-                })
-                ->paginate(10)
-                ->appends($request->query())
-        );
+        $talks = $query->paginate(10)->appends($request->query());
+        $talks->load(['publisher', 'repostable']);
+
+        return TalkResource::collection($talks);
     }
 
     /**

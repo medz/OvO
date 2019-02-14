@@ -32,30 +32,26 @@ class ForumThreadController extends Controller
     public function index(ListForumThreads $request)
     {
         if ($request->query('id')) {
-            return ForumThreadResource::collection(
-                ForumThread::whereInId($request->query('id'))
-                    ->paginate(10)
-                    ->appends($request->query())
-            );
+            $query = ForumThread::whereInId($request->query('id'));
         } elseif ($request->query('query')) {
-            return ForumThreadResource::collection(
-                ForumThread::search($request->query('query'))
-                    ->paginate(10)
-                    ->appends($request->query())
-            );
+            $query = ForumThread::search($request->query('query'));
+        } else {
+            $query = ForumThread::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
+            ->when($request->query('node'), function ($query) use ($request) {
+                return $query->whereNodeId($request->query('node'));
+            })
+            ->when($request->query('publisher'), function ($query) use ($request) {
+                return $query->wherePublisherId($request->query('publisher'));
+            });
         }
 
-        return ForumThreadResource::collection(
-            ForumThread::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
-                ->when($request->query('node'), function ($query) use ($request) {
-                    return $query->whereNodeId($request->query('node'));
-                })
-                ->when($request->query('publisher'), function ($query) use ($request) {
-                    return $query->wherePublisherId($request->query('publisher'));
-                })
-                ->paginate(10)
-                ->appends($request->query())
-        );
+        $threads = $query->paginate(10)->appends($request->query());
+        $threads->load(['publisher', 'lastComment']);
+        if (! $request->query('node')) {
+            $threads->load(['node']);
+        }
+
+        return ForumThreadResource::collection($threads);
     }
 
     /**

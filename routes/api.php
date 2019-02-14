@@ -51,3 +51,8 @@ Route::apiResource('/forum/threads', 'ForumThreadController', [
 ]);
 Route::post('/forum/nodes/{node}/threads', 'ForumThreadController@store');
 Route::put('/forum/nodes/{node}/threads/{thread}', 'ForumThreadController@transform');
+
+// Comments
+Route::apiResource('/comments', 'CommentController', [
+    'only' => ['index', 'store', 'destroy'],
+]);

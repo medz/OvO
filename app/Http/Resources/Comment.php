@@ -6,11 +6,10 @@ namespace App\Http\Resources;
 
 use App\ModelMorphMap;
 use App\Models\Talk as TalkModel;
-use App\Models\User as UserModel;
 use App\Models\Talk as ForumThreadModel;
 use Illuminate\Http\Resources\MissingValue;
 
-class Talk extends JsonResource
+class Comment extends JsonResource
 {
     use Concerns\StorageUrl;
 
@@ -24,13 +23,28 @@ class Talk extends JsonResource
     {
         return [
             'id' => $this->id,
-            'content' => $this->content,
             'publisher_id' => $this->publisher_id,
+            'content' => $this->connent,
+            'pinned_at' => $this->whenDateToZulu($this->pinned_at),
+            'created_at' => $this->whenDateToZulu($this->created_at),
+            'commentable' => [
+                'type' => $this->commentable_type,
+                'id' => $this->commentable_id,
+                $this->whenLoaded('commentable', function () {
+                    return $this->merge(function () {
+                        switch (ModelMorphMap::aliasToClassName($this->commentable_type)) {
+                            case TalkModel::class:
+                                return ['talk' => new Talk($this->commentable)];
+                            case ForumThreadModel::class:
+                                return ['forum:thread' => new ForumThread($this->commentable)];
+                            default:
+                                return new MissingValue; 
+                        }
+                    });
+                }),
+            ],
             'resource' => [
                 'type' => $this->resource_type,
-                'link' => $this->when($this->resource_type === 'link', function () {
-                    return $this->resource;
-                }),
                 'video' => $this->when($this->resource_type === 'video', function () {
                     return $this->whenStorageUrl($this->resource);
                 }),
@@ -39,23 +53,8 @@ class Talk extends JsonResource
                         return $this->whenStorageUrl($path);
                     }, $this->resource);
                 }),
-            ],
-            'repostable' => [
-                'type' => $this->repostable_type,
-                'id' => $this->repostable_id,
-                $this->whenLoaded('repostable', function () {
-                    return $this->merge(function () {
-                        switch (ModelMorphMap::aliasToClassName($this->repostable_type)) {
-                            case TalkModel::class:
-                                return ['talk' => new static($this->repostable)];
-                            case UserModel::class:
-                                return ['user' => new User($this->repostable)];
-                            case ForumThreadModel::class:
-                                return ['forum:thread' => new ForumThread($this->repostable)];
-                            default:
-                                return new MissingValue();
-                        }
-                    });
+                'text' => $this->when($this->resource_type === 'long-text', function () {
+                    return $this->resource;
                 }),
             ],
             $this->whenLoaded('publisher', function () {

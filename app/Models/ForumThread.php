@@ -5,7 +5,9 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class ForumThread extends Model
 {
@@ -45,9 +47,22 @@ class ForumThread extends Model
         return $this->belongsTo(ForumNode::class, 'node_id', 'id');
     }
 
-    public function lastComment()
+    /**
+     * The forum thread comments.
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments(): MorphMany
     {
-        // return $this->hasOne()
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
+     * The last comment.
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function lastComment(): MorphOne
+    {
+        return $this->morphOne(Comment::class, 'commentable');
     }
 
     /**

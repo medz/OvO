@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Talk extends Model
 {
@@ -20,6 +22,15 @@ class Talk extends Model
     protected $fillable = [
         'content', 'repostable_type', 'repostable_id',
         'resource_type', 'resource', 'cache',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'resource' => 'json',
     ];
 
     /**
@@ -42,5 +53,23 @@ class Talk extends Model
     public function publisher(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The repostable.
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function repostable(): MorphTo
+    {
+        return $this->morphTo('repostable');
+    }
+
+    /**
+     * The talk comments.
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
