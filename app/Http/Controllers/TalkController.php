@@ -48,6 +48,9 @@ class TalkController extends Controller
 
         return TalkResource::collection(
             Talk::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
+                ->when($request->query('publisher'), function ($query) use ($request) {
+                    return $query->wherePublisherId($request->query('publisher'));
+                })
                 ->paginate(10)
                 ->appends($request->query())
         );

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ListTalks extends FormRequest
+class ListForumThreads extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,6 +30,7 @@ class ListTalks extends FormRequest
             'id.*' => ['required_with:id', 'integer'],
             'sort' => ['nullable', 'string', Rule::in('id')],
             'direction' => ['nullable', 'string', Rule::in('asc', 'desc')],
+            'node' => ['nullable', 'integer', 'min:1'],
             'publisher' => ['nullable', 'integer', 'min:1'],
         ];
     }
