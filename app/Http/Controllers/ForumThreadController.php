@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ForumNode;
 use App\Models\UserExtra;
+use App\Models\ForumNode;
 use App\Models\ForumThread;
 use Illuminate\Http\Request;
 use App\Models\ForumThreadContent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateForumThread;
+use App\Http\Resources\ForumThread as ForumThreadResource;
 
 class ForumThreadController extends Controller
 {
@@ -85,7 +86,9 @@ class ForumThreadController extends Controller
      */
     public function show(ForumThread $thread)
     {
-        //
+        $thread->load(['content', 'publisher', 'node']);
+
+        return new ForumThreadResource($thread);
     }
 
     /**
