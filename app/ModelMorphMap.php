@@ -15,6 +15,9 @@ class ModelMorphMap
     protected static $map = [
         'users' => Models\User::class,
         'talks' => Models\Talk::class,
+        'comments' => Models\Comment::class,
+        'forum:nodes' => Models\ForumNode::class,
+        'forum:threads' => Models\ForumThread::class,
     ];
 
     /**
