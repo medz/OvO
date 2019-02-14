@@ -1,3 +1,12 @@
 {
-    "private": true
+    "private": true,
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "yarn routes:dump && vuepress build docs",
+        "routes:dump": "php artisan route:list > docs/.vuepress/routes.txt"
+    },
+    "dependencies": {
+        "dotenv": "^6.2.0",
+        "vuepress": "^1.0.0-alpha.37"
+    }
 }

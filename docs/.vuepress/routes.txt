@@ -1,0 +1,37 @@
++--------+----------------------------------------+-------------------------------------+------------------+-------------------------------------------------------------------+------------+
+| Domain | Method                                 | URI                                 | Name             | Action                                                            | Middleware |
++--------+----------------------------------------+-------------------------------------+------------------+-------------------------------------------------------------------+------------+
+|        | GET|HEAD|POST|PUT|PATCH|DELETE|OPTIONS | /                                   |                  | Illuminate\Routing\RedirectController                             | web        |
+|        | POST                                   | auth/jwt                            |                  | App\Http\Controllers\AuthController@resolve                       | api        |
+|        | GET|HEAD                               | auth/me                             |                  | App\Http\Controllers\UserController@show                          | api,auth   |
+|        | POST                                   | auth/verify-code                    |                  | App\Http\Controllers\AuthController@sendPhoneVerifyCode           | api        |
+|        | POST                                   | comments                            | comments.store   | App\Http\Controllers\CommentController@store                      | api,auth   |
+|        | GET|HEAD                               | comments                            | comments.index   | App\Http\Controllers\CommentController@index                      | api        |
+|        | DELETE                                 | comments/{comment}                  | comments.destroy | App\Http\Controllers\CommentController@destroy                    | api,auth   |
+|        | POST                                   | forum/nodes                         | nodes.store      | App\Http\Controllers\ForumNodeController@store                    | api,auth   |
+|        | GET|HEAD                               | forum/nodes                         | nodes.index      | App\Http\Controllers\ForumNodeController@index                    | api        |
+|        | DELETE                                 | forum/nodes/{node}                  | nodes.destroy    | App\Http\Controllers\ForumNodeController@destroy                  | api,auth   |
+|        | PUT|PATCH                              | forum/nodes/{node}                  | nodes.update     | App\Http\Controllers\ForumNodeController@update                   | api,auth   |
+|        | GET|HEAD                               | forum/nodes/{node}                  | nodes.show       | App\Http\Controllers\ForumNodeController@show                     | api        |
+|        | POST                                   | forum/nodes/{node}/threads          |                  | App\Http\Controllers\ForumThreadController@store                  | api,auth   |
+|        | PUT                                    | forum/nodes/{node}/threads/{thread} |                  | App\Http\Controllers\ForumThreadController@transform              | api,auth   |
+|        | GET|HEAD                               | forum/threads                       | threads.index    | App\Http\Controllers\ForumThreadController@index                  | api        |
+|        | DELETE                                 | forum/threads/{thread}              | threads.destroy  | App\Http\Controllers\ForumThreadController@destroy                | api,auth   |
+|        | GET|HEAD                               | forum/threads/{thread}              | threads.show     | App\Http\Controllers\ForumThreadController@show                   | api        |
+|        | PUT|PATCH                              | forum/threads/{thread}              | threads.update   | App\Http\Controllers\ForumThreadController@update                 | api,auth   |
+|        | GET|HEAD                               | international-telephone-codes       |                  | App\Http\Controllers\InternationalTelephoneCodeController@index   | api        |
+|        | POST                                   | international-telephone-codes       |                  | App\Http\Controllers\InternationalTelephoneCodeController@store   | api,auth   |
+|        | DELETE                                 | international-telephone-codes/{id}  |                  | App\Http\Controllers\InternationalTelephoneCodeController@destroy | api,auth   |
+|        | PATCH                                  | international-telephone-codes/{ttc} |                  | App\Http\Controllers\InternationalTelephoneCodeController@update  | api,auth   |
+|        | GET|HEAD                               | jurisdictions                       |                  | App\Http\Controllers\JurisdictionController@nodes                 | api,auth   |
+|        | POST                                   | talks                               | talks.store      | App\Http\Controllers\TalkController@store                         | api,auth   |
+|        | GET|HEAD                               | talks                               | talks.index      | App\Http\Controllers\TalkController@index                         | api        |
+|        | DELETE                                 | talks/{talk}                        | talks.destroy    | App\Http\Controllers\TalkController@destroy                       | api,auth   |
+|        | GET|HEAD                               | talks/{talk}                        | talks.show       | App\Http\Controllers\TalkController@show                          | api        |
+|        | POST                                   | upload                              |                  | App\Http\Controllers\StorageController                            | api,auth   |
+|        | GET|HEAD                               | users                               |                  | App\Http\Controllers\UserController@index                         | api        |
+|        | GET|HEAD                               | users/{user}                        |                  | App\Http\Controllers\UserController@show                          | api        |
+|        | PUT                                    | users/{user}/jurisdictions          |                  | App\Http\Controllers\JurisdictionController@sync                  | api,auth   |
+|        | DELETE                                 | users/{user}/jurisdictions/{node}   |                  | App\Http\Controllers\JurisdictionController@detach                | api,auth   |
+|        | PUT                                    | users/{user}/jurisdictions/{node}   |                  | App\Http\Controllers\JurisdictionController@attach                | api,auth   |
++--------+----------------------------------------+-------------------------------------+------------------+-------------------------------------------------------------------+------------+
