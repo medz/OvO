@@ -125,6 +125,7 @@ class ForumThreadController extends Controller
      */
     public function update(UpdateForumThread $request, ForumThread $thread)
     {
+        $this->authorize('update', $thread);
         if (empty($payload = $request->only(['title', 'content']))) {
             return $this->withHttpNoContent();
         }
@@ -157,6 +158,7 @@ class ForumThreadController extends Controller
      */
     public function destroy(ForumThread $thread)
     {
+        $this->authorize('delete', $thread);
         // find user talk count model.
         $extra = $request->user()->extras()->firstOrCreate([
             'name' => 'forum_threads_count',
@@ -179,6 +181,7 @@ class ForumThreadController extends Controller
      */
     public function transform(ForumNode $node, ForumThread $thread)
     {
+        $this->authorize('update', $thread);
         if ($node->id === $thread->node_id) {
             return $this->withHttpNoContent();
         }

@@ -1,4 +1,5 @@
 [
+    "forum:threads-manage",
     "forum:nodes-manage",
     "talk:destroy",
     "ttc:manage",

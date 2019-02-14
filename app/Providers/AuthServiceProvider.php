@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         \App\Models\InternationalTelephoneCode::class => \App\Policies\InternationalTelephoneCodePolicy::class,
         \App\Models\Talk::class => \App\Policies\TalkPolicy::class,
         \App\Models\ForumNode::class => \App\Policies\ForumNodePolicy::class,
+        \App\Models\ForumThread::class => \App\Policies\ForumThreadPolicy::class,
     ];
 
     /**

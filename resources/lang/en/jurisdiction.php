@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'forum:threads-manage' => [
+        'name' => 'Forum > Threads Manage',
+        'desc' => 'Manage Forum Threads',
+    ],
     'forum:nodes-manage' => [
         'name' => 'Forum > Nodes Manage',
         'desc' => 'Manage Forum Nodes',
