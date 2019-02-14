@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\ForumNode;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateForumNode;
 use App\Http\Requests\UpdateForumNode;
+use App\Http\Requests\DeleteForumNode;
 use App\Http\Resources\ForumNode as ForumNodeResource;
 
 class ForumNodeController extends Controller
@@ -77,9 +79,15 @@ class ForumNodeController extends Controller
      * @param  \App\Models\ForumNode  $forumNode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ForumNode $node)
+    public function destroy(DeleteForumNode $request, ForumNode $node)
     {
         $this->authorize('has', ForumNode::class);
-        // 如果关联还未确定，后续开发
+        $target = ForumNode::whereId($request->input('node'))->firstOrFail();
+        DB::transaction(function () use ($target, $node) {
+            $target->increment('threads_count', $node->threads()->count());
+            $node->threads()->update(['node_id', $target->id]);
+        });
+
+        return $this->withHttpNoContent();
     }
 }
