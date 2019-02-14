@@ -13,7 +13,8 @@ class ForumThreadPolicy
     /**
      * Determine whether the user can before forum threads.
      */
-    public function before(User $user, $ability) {
+    public function before(User $user, $ability)
+    {
         return (bool) $user->jurisdictions->firstWhere('node', 'forum:threads-manage');
     }
 
