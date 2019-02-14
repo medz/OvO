@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ForumNode;
 use App\Models\UserExtra;
 use App\Models\ForumThread;
-use Illuminate\Http\Request;
 use App\Models\ForumThreadContent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ListForumThreads;
