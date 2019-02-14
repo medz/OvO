@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\ModelMorphMap;
+use App\Models\Comment;
 use Overtrue\EasySms\EasySms;
+use App\Observers\CommentObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\Resource;
 
@@ -18,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         ModelMorphMap::register();
         Resource::withoutWrapping();
+        Comment::observe(CommentObserver::class);
     }
 
     /**
