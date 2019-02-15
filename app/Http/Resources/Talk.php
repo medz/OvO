@@ -63,7 +63,12 @@ class Talk extends JsonResource
                     'publisher' => new User($this->publisher),
                 ]);
             }),
-            "created_at" => $this->whenDateToZulu($this->created_at),
+            'created_at' => $this->whenDateToZulu($this->created_at),
+            'counts' => [
+                'views' => $this->views_count,
+                'likes' => $this->likes_count,
+                'comments' => $this->comments_count,
+            ],
         ];
     }
 }
