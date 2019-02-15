@@ -103,6 +103,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        $this->authorize('delete', $comment);
         // find user talk count model.
         $extra = $request->user()->extras()->firstOrCreate([
             'name' => 'comments_count',
