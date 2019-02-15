@@ -1,4 +1,5 @@
 [
+    "comment:manage",
     "forum:threads-manage",
     "forum:nodes-manage",
     "talk:destroy",
