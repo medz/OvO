@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'comment:manage' => [
+        'name' => 'Manage Comments',
+        'desc' => 'Manage All Comments',
+    ],
     'forum:threads-manage' => [
         'name' => 'Forum > Threads Manage',
         'desc' => 'Manage Forum Threads',
