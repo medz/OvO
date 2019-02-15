@@ -269,6 +269,10 @@ Status: 201 Created
 
 ## Delete a comment
 
+::: warning
+Need jurisdiction:`comment:manage` or **the authorizationed user is publisher**.
+:::
+
 ```
 DELETE {uri}/comments/{id}
 ```
