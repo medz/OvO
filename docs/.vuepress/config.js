@@ -1,10 +1,11 @@
 const env = require('./env');
 
 module.exports = {
-    title: `${env.APP_NAME} REST APIs`,
-    description: `The ${env.APP_NAME} app REST APIs docs.`,
+    title: `${env.APP_NAME}`,
+    description: `The ${env.APP_NAME} app REST API docs.`,
     base: '/docs/',
     head: [
+        ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
         ['link', { rel: 'icon', href: '/fans.svg' }],
         ['link', { rel: 'mask-icon', href: '/fans.svg' }],
     ],
