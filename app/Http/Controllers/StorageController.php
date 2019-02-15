@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class StorageController extends Controller
 {
@@ -27,7 +28,10 @@ class StorageController extends Controller
             $this->getStoragePath($file)
         );
 
-        return new JsonResponse(['filename' => $filename], JsonResponse::HTTP_CREATED);
+        return new JsonResponse([
+            'filename' => $filename,
+            'url' => Storage::url($filename),
+        ], JsonResponse::HTTP_CREATED);
     }
 
     protected function getStoragePath(UploadedFile $file): string
