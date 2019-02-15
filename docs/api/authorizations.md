@@ -6,7 +6,7 @@ You can use this API to register and log in to the account. We merged the regist
 
 [[toc]]
 
-## Issue token
+## Create an JWT token
 
 ```
 POST {uri}/auth/jwt
