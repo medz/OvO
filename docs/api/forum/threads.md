@@ -94,7 +94,7 @@ Status: 200 OK
 ## Create on an thread
 
 ```
-POST {uri}/forum/threads
+POST {uri}/forum/nodes/{node}/threads
 ```
 
 Input:
