@@ -18,7 +18,6 @@ Input:
 |----|----|----|
 | `international_telephone_code` | `string` | See👉 [ITC](itc.md) codes. |
 | `phone` | `string` | Phone number in the [ITC](itc.md) region. |
-| `verify_type` | `string` | Fixed to `phone`. | 
 | `verification_code` | `integer` | Verification code sent to the phone. |
 
 ```json
@@ -43,7 +42,7 @@ Status: 200 OK
 ## Get the authenticated user
 
 ```
-GET {uri}/auth/me
+GET {uri}/auth/user
 ```
 
 Response with public and private profile information
@@ -67,7 +66,7 @@ Status: 200 OK
 ## Send verification code
 
 ```
-POST {uri}/auth/verify-code
+POST {uri}/verification-code/phone
 ```
 
 Input:

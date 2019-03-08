@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Rules;
 
+use App\VerificationCode;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\PhoneNumber;
 use App\Sms\Utils\TextVerificationCode;
@@ -23,7 +24,7 @@ class VerifyPhoneTextVerificationCode implements Rule
      */
     public function __construct(Request $request, string $phoneNumberField = 'phone', string $TTC = 'international_telephone_code')
     {
-        $this->phoneNumber = (string) (new PhoneNumber($request->{$phoneNumberField}, $request->{$TTC}));
+        $this->phoneNumber = new PhoneNumber($request->{$phoneNumberField}, $request->{$TTC});
     }
 
     /**
@@ -35,9 +36,7 @@ class VerifyPhoneTextVerificationCode implements Rule
      */
     public function passes($attribute, $value)
     {
-        return true;
-
-        return TextVerificationCode::validate($this->phoneNumber, (int) $value);
+        return VerificationCode::instance($this->phoneNumber)->has(false, (string) $value);
     }
 
     /**

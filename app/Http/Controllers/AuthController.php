@@ -6,21 +6,21 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\VerificationCode;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
-use App\Sms\Utils\TextVerificationCode;
 use App\Http\Requests\Login as LoginRequest;
 use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\SendPhoneNumberVerfiyCode as SendPhoneNumberVerfiyCodeRequest;
 
 class AuthController extends Controller
 {
-    public function sendPhoneVerifyCode(SendPhoneNumberVerfiyCodeRequest $request): Response
+    public function sendVerificationCode(SendPhoneNumberVerfiyCodeRequest $request): Response
     {
-        TextVerificationCode::send(
+        VerificationCode::send(
             $request->input('international_telephone_code'),
             $request->input('phone')
         );
@@ -35,16 +35,13 @@ class AuthController extends Controller
     {
         // Find or register a user.
         $user = User::where('phone', $request->input('phone'))->where('international_telephone_code', $request->input('international_telephone_code'))->firstOr(function () use ($request) {
-            return $this->register($request);
+            return $this->create($request->only([
+                'phone', 'international_telephone_code',
+            ]));
         });
 
-        // If verify type is "password"
-        if ($request->input('verify_type') === 'password') {
-            $this->loginWithPassword($request, $user);
-        }
-
-        // Remove verify code.
-        TextVerificationCode::remove($user->international_telephone_code, $user->phone);
+        // Remove verification code.
+        VerificationCode::instance($user->international_telephone_code, $user->phone)->remove();
 
         return $this->respondWithToken(
             $this->guard()->login($user)
@@ -57,17 +54,6 @@ class AuthController extends Controller
     protected function guard(): Guard
     {
         return Auth::guard();
-    }
-
-    /**
-     * Login a user with password.
-     */
-    protected function loginWithPassword(LoginRequest $request, $user)
-    {
-        $credentials = $request->only(['password']);
-        if (! $this->guard()->getProvider()->validateCredentials($credentials)) {
-            throw new AuthenticationException;
-        }
     }
 
     /**
@@ -85,19 +71,11 @@ class AuthController extends Controller
     /**
      * register a user.
      */
-    protected function register(LoginRequest $request): User
+    protected function create(array $payload): User
     {
-        if ($request->input('verify_type') === 'password') {
-            throw new AuthenticationException;
-        }
-
-        $user = new User($request->only([
-            'phone', 'international_telephone_code',
+        return User::create(array_merge($payload, [
+            'id' => Str::uuid()->toString(),
+            'phone_verified_at' => Carbon::now(),
         ]));
-        $user->name = Str::uuid();
-        $user->phone_verified_at = new Carbon;
-        $user->save();
-
-        return $user;
     }
 }

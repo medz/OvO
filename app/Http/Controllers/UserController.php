@@ -19,24 +19,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $perPage = 10;
-        if ($request->query('id')) {
-            return UserResource::collection(
-                User::whereIn('id', $request->query('id'))
-                    ->paginate($perPage)
-                    ->appends($request->query())
-            );
-        } elseif ($request->query('query')) {
-            return UserResource::collection(
-                User::search($request->query('query'))
-                    ->paginate($perPage)
-                    ->appends($request->query())
-            );
-        }
 
         return UserResource::collection(
-            User::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
-                ->paginate($perPage)
-                ->appends($request->query())
+            User::filter($request->all())->paginateFilter($perPage)
         );
     }
 

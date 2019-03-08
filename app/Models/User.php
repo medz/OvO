@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\ModelMorphMap;
 use Laravel\Scout\Searchable;
+use EloquentFilter\Filterable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +16,14 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use Searchable;
+    use Filterable;
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -21,9 +31,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'phone',
-        'international_telephone_code', 'phone_verified_at',
-        'email', 'email_verified_at', 'password',
+        'id', 'name', 'international_telephone_code',
+        'phone', 'phone_verified_at',
+        'email', 'email_verified_at',
     ];
 
     /**
@@ -31,9 +41,37 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
+    protected $hidden = [];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'phone_verified_at' => 'timestamp',
+        'email_verified_at' => 'timestamp',
     ];
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'mix-search';
+    }
+
+    /**
+     * The module object ID.
+     *
+     * @return string
+     */
+    public function getScoutKey()
+    {
+        return sprintf('%s>%s', ModelMorphMap::classToAliasName(static::class), $this->id);
+    }
 
     /**
      * Get the indexable data array for the model.
@@ -43,12 +81,17 @@ class User extends Authenticatable implements JWTSubject
     public function toSearchableArray()
     {
         return [
-            'id' => $this->id,
             'name' => $this->name,
-            'international_telephone_code' => $this->international_telephone_code,
-            'phone' => $this->phone,
-            'email' => $this->email,
         ];
+    }
+
+    /**
+     * The model filter.
+     * @return string
+     */
+    public function modelFilter()
+    {
+        return Filters\UserFilter::class;
     }
 
     /**

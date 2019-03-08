@@ -4,5 +4,6 @@
     "forum:nodes-manage",
     "talk:destroy",
     "ttc:manage",
-    "user:jurisdiction"
+    "user:jurisdiction",
+    "user:manage"
 ]

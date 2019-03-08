@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Send Phone verification code.
+Route::post('/verification-code/phone', 'AuthController@sendVerificationCode');
+
 // Auth
 Route::post('/auth/jwt', 'AuthController@resolve');
-Route::post('/auth/verify-code', 'AuthController@sendPhoneVerifyCode');
-Route::get('/auth/me', 'UserController@show')->middleware('auth');
+Route::get('/auth/user', 'UserController@show')->middleware('auth');
 
 // Internation Telephone code
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');

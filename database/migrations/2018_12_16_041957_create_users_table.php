@@ -16,21 +16,22 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->comment('User Unique ID');
+            $table->uuid('id')->comment('User UUID');
             $table->string('name')->nullable()->comment('User Name');
             $table->string('avatar')->nullable()->comment('User Avatar');
-            $table->string('phone', 50)->comment('User Phone Number');
             $table->string('international_telephone_code', 10)->comment('International telephone code');
+            $table->string('phone', 50)->comment('User Phone Number');
             $table->timestamp('phone_verified_at')->nullable();
-            $table->string('email', 100)->nullable()->comment('User Email Address');
+            $table->string('email', 50)->nullable()->comment('User Email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable()->comment('User Password');
             $table->timestamps();
 
+            $table->primary('id');
             $table->unique(['phone', 'international_telephone_code']);
             $table->index('phone');
             $table->index('name');
             $table->index('international_telephone_code');
+            $table->index('email');
         });
     }
 

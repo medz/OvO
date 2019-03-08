@@ -23,7 +23,7 @@ class User extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->when($this->name, $this->name),
-            'avatar' => $this->whenStorageUrl($this->avatar),
+            'avatar' => $this->when($this->avatar, $this->avatar),
             $this->mergeWhen($user instanceof UserModel && $user->id === $this->id, function () {
                 return [
                     'phone' => [

@@ -30,9 +30,6 @@ class Login extends FormRequest
     public function rules()
     {
         return [
-            'verify_type' => [
-                'required', 'string', 'in:phone,password',
-            ],
             'international_telephone_code' => [
                 'required', 'string',
                 new InternationalTelephoneCode,
@@ -42,11 +39,8 @@ class Login extends FormRequest
                 'required', 'string', new OnlyNumber,
             ],
             'verification_code' => [
-                'required_if:verify_type,phone', 'numeric',
+                'required', 'numeric',
                 new VerifyPhoneTextVerificationCode($this),
-            ],
-            'password' => [
-                'required_if:verify_type,password', 'string',
             ],
         ];
     }

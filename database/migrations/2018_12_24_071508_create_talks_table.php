@@ -15,6 +15,8 @@ class CreateTalksTable extends Migration
     public function up()
     {
         Schema::create('talks', function (Blueprint $table) {
+            // $table->uuid('id')->comment('Talk ID');
+
             $table
                 ->increments('id');
             $table

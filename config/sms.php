@@ -21,4 +21,9 @@ return [
             ],
         ],
     ],
+    'text-verifcation-code' => [
+        'cache-key' => env('SMS_TEXT_VERIFICATION_KET', 'Phone Number(%s) Validation Code'),
+        'expires' => env('SMS_TEXT_VERIFICATION_EXPIRES', 300),
+        'hit_expires' => env('SMS_TEXT_VERIFICATION_HIT_EXPIRES', 60),
+    ],
 ];

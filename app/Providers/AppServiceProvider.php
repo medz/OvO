@@ -7,7 +7,9 @@ use App\Models\Comment;
 use Overtrue\EasySms\EasySms;
 use App\Observers\CommentObserver;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Resources\Json\Resource;
+use App\Notifications\Channels\SmsChannel as SmsNotificationChannel;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(EasySms::class, function () {
             return new EasySms(config('sms'));
+        });
+        Notification::extend('sms', function ($app) {
+            return new SmsNotificationChannel(
+                $app->make(EasySms::class)
+            );
         });
     }
 }

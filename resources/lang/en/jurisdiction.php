@@ -25,4 +25,8 @@ return [
         'name' => 'User > Jurisdiction',
         'desc' => 'Change User Jurisdiction Nodes',
     ],
+    'user:manage' => [
+        'name' => 'User -> Manage',
+        'desc' => 'Manage Users',
+    ],
 ];
