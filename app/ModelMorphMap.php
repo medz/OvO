@@ -37,7 +37,7 @@ class ModelMorphMap
      */
     public static function classToAliasName(string $className): ?string
     {
-        if (($alias = array_search($className, static::map(), true)) === false) {
+        if ($alias = array_search($className, static::map(), true)) {
             return $alias;
         }
 
