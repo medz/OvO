@@ -15,7 +15,7 @@ class CreateUserExtrasTable extends Migration
     {
         Schema::create('user_extras', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->comment('User ID');
+            $table->uuid('user_id')->comment('User ID');
             $table->string('name', 50);
             $table->string('value_type', 100);
             $table->json('json_value')->nullable();

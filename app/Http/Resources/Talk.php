@@ -24,50 +24,33 @@ class Talk extends JsonResource
     {
         return [
             'id' => $this->id,
-            'content' => $this->content,
             'publisher_id' => $this->publisher_id,
-            'resource' => [
-                'type' => $this->resource_type,
-                'link' => $this->when($this->resource_type === 'link', function () {
-                    return $this->resource;
-                }),
-                'video' => $this->when($this->resource_type === 'video', function () {
-                    return $this->whenStorageUrl($this->resource);
-                }),
-                'images' => $this->when($this->resource_type === 'images', function () {
-                    return array_map(function ($path) {
-                        return $this->whenStorageUrl($path);
-                    }, $this->resource);
-                }),
-            ],
-            'repostable' => [
-                'type' => $this->repostable_type,
-                'id' => $this->repostable_id,
-                $this->whenLoaded('repostable', function () {
-                    return $this->merge(function () {
-                        switch (ModelMorphMap::aliasToClassName($this->repostable_type)) {
-                            case TalkModel::class:
-                                return ['talk' => new static($this->repostable)];
-                            case UserModel::class:
-                                return ['user' => new User($this->repostable)];
-                            case ForumThreadModel::class:
-                                return ['forum:thread' => new ForumThread($this->repostable)];
-                            default:
-                                return new MissingValue();
-                        }
-                    });
-                }),
-            ],
-            $this->whenLoaded('publisher', function () {
-                return $this->merge([
-                    'publisher' => new User($this->publisher),
-                ]);
+            'content' => $this->content,
+            'media' => $this->when($this->media, $this->media),
+            $this->mergeWhen($this->shareable_type && $this->shareable_id, function () {
+                return [
+                    'type' => $this->shareable_type,
+                    'id' => $this->shareable_id,
+                    $this->whenLoaded('shareable', function () {
+                        return $this->merge(function () {
+                            switch (ModelMorphMap::aliasToClassName($this->shareable_type)) {
+                                case TalkModel::class:
+                                    return ['talk' => new static($this->shareable)];
+                                case ForumThreadModel::class:
+                                    return ['forum:thread' => new ForumThread($this->shareable)];
+                                default:
+                                    return new MissingValue();
+                            }
+                        });
+                    }),
+                ];
             }),
             'created_at' => $this->whenDateToZulu($this->created_at),
             'counts' => [
                 'views' => $this->views_count,
                 'likes' => $this->likes_count,
                 'comments' => $this->comments_count,
+                'shares' => $this->shares_count
             ],
         ];
     }

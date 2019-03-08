@@ -27,10 +27,9 @@ class ListTalks extends FormRequest
         return [
             'query' => ['nullable', 'string'],
             'id' => ['nullable', 'array'],
-            'id.*' => ['required_with:id', 'integer'],
-            'sort' => ['nullable', 'string', Rule::in('id')],
-            'direction' => ['nullable', 'string', Rule::in('asc', 'desc')],
-            'publisher' => ['nullable', 'integer', 'min:1'],
+            'id.*' => ['required_with:id', 'string'],
+            'publisher' => ['nullable', 'array'],
+            'publisher.*' => ['required_with:publisher', 'string'],
         ];
     }
 }

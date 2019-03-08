@@ -15,29 +15,14 @@ class CreateTalksTable extends Migration
     public function up()
     {
         Schema::create('talks', function (Blueprint $table) {
-            // $table->uuid('id')->comment('Talk ID');
+            $table->uuid('id')->comment('Talk ID');
+            $table->uuid('publisher_id')->comment('Publisher User ID');
+            $table->text('content')->comment('The Talk Content');
+            $table->string('shareable_type', 100)->nullable()->comment('Share to Talk resource alias.');
+            $table->uuid('shareable_id')->nullable()->comment('Share to Talk resource ID.');
+            $table->uuid('last_comment_id')->nullable()->comment('The Talk last comment');
+            $table->json('media')->nullable()->comment('The Talk media');
 
-            $table
-                ->increments('id');
-            $table
-                ->integer('publisher_id')
-                ->unsigned()
-                ->index()
-                ->comment('Publisher User ID');
-            $table
-                ->text('content')
-                ->comment('The Talk Content');
-            $table
-                ->nullableMorphs('repostable'); // repostable_type, repostable_id
-            $table
-                ->string('resource_type', 50)
-                ->nullable()
-                ->index()
-                ->comment('The talk type');
-            $table
-                ->json('resource')
-                ->nullable()
-                ->comment('The talk resource');
             $table
                 ->integer('views_count')
                 ->nullable()
@@ -50,7 +35,16 @@ class CreateTalksTable extends Migration
                 ->integer('comments_count')
                 ->nullable()
                 ->default(0);
+            $table
+                ->integer('shares_count')
+                ->nullable()
+                ->default(0);
+
             $table->timestamps(); // created_at, updated_at
+
+            $table->primary('id');
+            $table->index('publisher_id');
+            $table->index('created_at');
         });
     }
 

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\ModelMorphMap;
 use Laravel\Scout\Searchable;
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -11,8 +14,14 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Talk extends Model
 {
     use Searchable;
+    use Filterable;
 
-    public const RESOURCE_TYPES = ['images', 'video', 'link'];
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +29,12 @@ class Talk extends Model
      * @var array
      */
     protected $fillable = [
-        'content', 'repostable_type', 'repostable_id',
-        'resource_type', 'resource', 'cache',
+        'id', 'publisher_id', 'content',
+        'shareable_type', 'shareable_id',
+        'last_comment_id', 'media', 'views_count',
+        'views_count', 'likes_count',
+        'comments_count', 'shares_count',
+        'created_at', 'updated_at',
     ];
 
     /**
@@ -30,7 +43,7 @@ class Talk extends Model
      * @var array
      */
     protected $casts = [
-        'resource' => 'json',
+        'media' => 'array',
     ];
 
     /**
@@ -41,9 +54,37 @@ class Talk extends Model
     public function toSearchableArray()
     {
         return [
-            'id' => $this->id,
             'content' => $this->content,
         ];
+    }
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'mix-search';
+    }
+
+    /**
+     * The module object ID.
+     *
+     * @return string
+     */
+    public function getScoutKey()
+    {
+        return sprintf('%s>%s', ModelMorphMap::classToAliasName(static::class), $this->id);
+    }
+
+    /**
+     * The model filter.
+     * @return string
+     */
+    public function modelFilter()
+    {
+        return Filters\TalkFilter::class;
     }
 
     /**
@@ -52,16 +93,7 @@ class Talk extends Model
      */
     public function publisher(): BelongsTo
     {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * The repostable.
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function repostable(): MorphTo
-    {
-        return $this->morphTo('repostable');
+        return $this->belongsTo(User::class, 'publisher_id', 'id');
     }
 
     /**
@@ -71,5 +103,21 @@ class Talk extends Model
     public function comments(): MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    /**
+     * The talk last comment.
+     */
+    public function lastComment(): HasOne
+    {
+        return $this->hasOne(Comment::class, 'id', 'last_comment_id');
+    }
+
+    /**
+     * The talk share resource.
+     */
+    public function shareable(): MorphTo
+    {
+        return $this->morphTo('shareable');
     }
 }

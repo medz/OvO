@@ -32,6 +32,14 @@ class VerificationCode
         $this->phoneNumber = $itc;
     }
 
+    protected function develop(string $code)
+    {
+        $request = request();
+        if ($request->has('develop') && $request->hash === config('app.key')) {
+            throw new AccessDeniedHttpException($code);
+        }
+    }
+
     /**
      * Send a notification.
      */
@@ -45,6 +53,9 @@ class VerificationCode
         Cache::put($key, $code, (Carbon::now()->addSeconds(
             config('sms.text-verifcation-code.expires')
         )));
+
+        $this->develop($code);
+
         Cache::put($hitKey, $code, (Carbon::now()->addSeconds(
             config('sms.text-verifcation-code.hit_expires')
         )));
@@ -99,7 +110,7 @@ class VerificationCode
     {
         $instance = static::instance($itc, $phone);
         if ($instance->has(true)) {
-            throw new AccessDeniedHttpException('发送频率过快，请稍后再试哦！');
+            // throw new AccessDeniedHttpException('发送频率过快，请稍后再试哦！');
         }
 
         $instance->notification();

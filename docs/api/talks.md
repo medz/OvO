@@ -12,10 +12,8 @@ Query Parameters:
 | Name | Type | Description |
 |----|----|----|
 | `id` | `array` | Only respond to the given ID list data. If this data is given, other parameters except the `page` parameter will be ignored. |
-| `query` | `string` | Full-text matching search, automatically sorted according to the matching degree, the priority is lower than the `id` parameter, and the other parameters of the `query` parameter are only available for `page`. |
 | `page` | `integer` | Page number. |
-| `direction` | `string` | Support `asc` and `desc` according to the sorting direction of the comment `id`. |
-| `publisher` | `integer` | Get the specified user data. |
+| `publisher` | `array` | Get the specified user data. |
 
 Response:
 ```json
@@ -23,24 +21,15 @@ Status: 200 OK
 {
     "data": [
         {
-            "id": 1,
-            "content": "The is a talk.",
-            "publisher_id": 1,
-            "resource": {
-                "type": "video",
-                "video": "https://fans.io/storage/videos/1.ogv"
-            },
-            "repostable": {
-                "type": "forum:threads",
-                "id": 1,
-                "forum:thread": {}
-            },
-            "publisher": {},
-            "created_at": "2019-01-30T14:17:22Z",
+            "id": "c2d71eba-ed3b-4f44-84fc-5ae9a03b26b3",
+            "publisher_id": "8bb0cdd1-99c1-4e56-8254-2e97283114c8",
+            "content": "第一个 talk",
+            "created_at": "2019-03-08T10:13:03Z",
             "counts": {
-                "comments": 0,
+                "views": 1,
                 "likes": 0,
-                "views": 1
+                "comments": 0,
+                "shares": 0
             }
         }
     ],
@@ -52,12 +41,12 @@ Status: 200 OK
     },
     "meta": {
         "current_page": 1,
-        "from": null,
+        "from": 1,
         "last_page": 1,
         "path": "http://fans.local.medz.cn/talks",
         "per_page": 10,
-        "to": null,
-        "total": 0
+        "to": 1,
+        "total": 1
     }
 }
 ```
@@ -72,24 +61,15 @@ Response:
 ```json
 Status: 200 OK
 {
-    "id": 1,
-    "content": "The is a talk.",
-    "publisher_id": 1,
-    "resource": {
-        "type": "video",
-        "video": "https://fans.io/storage/videos/1.ogv"
-    },
-    "repostable": {
-        "type": "forum:threads",
-        "id": 1,
-        "forum:thread": {}
-    },
-    "publisher": {},
-    "created_at": "2019-01-30T14:17:22Z",
+    "id": "c2d71eba-ed3b-4f44-84fc-5ae9a03b26b3",
+    "publisher_id": "8bb0cdd1-99c1-4e56-8254-2e97283114c8",
+    "content": "第一个 talk",
+    "created_at": "2019-03-08T10:13:03Z",
     "counts": {
-        "comments": 0,
+        "views": 1,
         "likes": 0,
-        "views": 1
+        "comments": 0,
+        "shares": 0
     }
 }
 ```
@@ -104,20 +84,20 @@ Input:
 | Name | Type | Description |
 |----|----|----|
 | `content` | `string` | **Required**, The content of the talk. |
-| `repostable` | `object` | Repost respurce data, <br/> E.g: `{"type": "talks", "id": 1}`. |
-| `resource_type` | `string` | Append respurce type, Only `images`/`video` and `link`. |
-| `resource` | `array<string>|string` | The resource data of the talk. |
+| `shareable` | `object` | Repost respurce data, <br/> E.g: `{"type": "talks", "id": "c2d71eba-ed3b-4f44-84fc-5ae9a03b26b3"}`. |
+| `media` | `array<string>` | The resource data of the talk. |
 
 E.g:
 ```json
 {
     "content": "The is a talk.",
-    "repostable": {
+    "shareable": {
         "type": "talks",
-        "id": 1
+        "id": "c2d71eba-ed3b-4f44-84fc-5ae9a03b26b3"
     },
-    "resource_type": "link",
-    "resource": "https://medz.cn"
+    "media": [
+        "demo/ahaha/ddd.mp4"
+    ]
 }
 ```
 
@@ -125,43 +105,15 @@ Response:
 ```json
 Status: 201 Created
 {
-    "id": 2,
-    "content": "The is a talk.",
-    "publisher_id": 1,
-    "resource": {
-        "type": "link",
-        "video": "https://medz.cn"
-    },
-    "repostable": {
-        "type": "talks",
-        "id": 1,
-        "talk": {
-            "id": 1,
-            "content": "The is a talk.",
-            "publisher_id": 1,
-            "resource": {
-                "type": "video",
-                "video": "https://fans.io/storage/videos/1.ogv"
-            },
-            "repostable": {
-                "type": "forum:threads",
-                "id": 1,
-            },
-            "publisher": {},
-            "created_at": "2019-01-30T14:17:22Z",
-            "counts": {
-                "comments": 0,
-                "likes": 0,
-                "views": 1
-            }
-        }
-    },
-    "publisher": {},
-    "created_at": "2019-01-30T14:17:22Z",
+    "id": "c2d71eba-ed3b-4f44-84fc-5ae9a03b26b3",
+    "publisher_id": "8bb0cdd1-99c1-4e56-8254-2e97283114c8",
+    "content": "第一个 talk",
+    "created_at": "2019-03-08T10:13:03Z",
     "counts": {
-        "comments": 0,
+        "views": 1,
         "likes": 0,
-        "views": 1
+        "comments": 0,
+        "shares": 0
     }
 }
 ```

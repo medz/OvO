@@ -29,7 +29,7 @@ class UserExtra extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'value'];
+    protected $fillable = ['user_id', 'name', 'value', 'value_type'];
 
     /**
      * The attributes that should be cast to native types.

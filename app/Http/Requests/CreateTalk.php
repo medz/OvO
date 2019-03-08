@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests;
 
 use App\Models\Talk;
-use App\ModelMorphMap;
-use Illuminate\Validation\Rule;
+use App\Rules\ModelExists;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateTalk extends FormRequest
@@ -28,41 +27,13 @@ class CreateTalk extends FormRequest
      */
     public function rules()
     {
-        return array_merge([
+        return [
             'content' => ['bail', 'required', 'string', 'max:255'],
-            'repostable' => ['bail', 'nullable', 'array'],
-            'repostable.type' => ['bail', 'required_with:repostable', 'string', Rule::in(ModelMorphMap::classAliases())],
-            'repostable.id' => ['bail', 'required_with:repostable', 'integer', 'min:0'],
-            'resource_type' => ['bail', 'nullable', 'string', Rule::in(Talk::RESOURCE_TYPES)],
-            'resource' => array_merge(['bail', 'required_with:resource_type'], $this->getResourceRules()),
-        ], $this->getResourceItemRules());
-    }
-
-    protected function getResourceItemRules(): array
-    {
-        switch ($this->input('resource_type')) {
-            case 'images':
-                return [
-                    'resource.*' => ['bail', 'required_with_all:resource_type,resource', 'distinct', 'string'],
-                ];
-            case 'link':
-            case 'video':
-            default:
-                return [];
-        }
-    }
-
-    protected function getResourceRules(): array
-    {
-        switch ($this->input('resource_type')) {
-            case 'link':
-                return ['url'];
-            case 'images':
-                return ['array'];
-            case 'video':
-                return ['bail', 'string'];
-            default:
-                return [];
-        }
+            'searchable' => ['bail', 'nullable', 'array'],
+            'shareable.type' => ['bail', 'required_with:searchable', 'string', 'in:talks,forum:threads'],
+            'shareable.id' => ['bail', 'required_with:searchable', 'string', new ModelExists($this, 'shareable.type')],
+            'media' => ['bail', 'nullable', 'array'],
+            'media.*' => ['bail', 'required_with:media', 'string'],
+        ];
     }
 }

@@ -16,8 +16,6 @@ class CommentObserver
      */
     public function created(Comment $comment)
     {
-        if (ForumThread::class === ModelMorphMap::aliasToClassName($comment->commentable_type)) {
-            $comment->commentable()->update(['last_comment_id' => $comment->id]);
-        }
+        $comment->commentable()->update(['last_comment_id' => $comment->id]);
     }
 }

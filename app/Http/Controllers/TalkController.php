@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Models\Talk;
 use App\ModelMorphMap;
 use App\Models\UserExtra;
+use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Talk as TalkResource;
@@ -32,19 +33,9 @@ class TalkController extends Controller
      */
     public function index(ListTalksRequest $request)
     {
-        if ($request->query('id')) {
-            $query = Talk::whereInId($request->query('id'));
-        } elseif ($request->query('query')) {
-            $query = Talk::search($request->query('query'));
-        } else {
-            $query = Talk::orderBy($request->query('sort', 'id'), $request->query('direction', 'desc'))
-            ->when($request->query('publisher'), function ($query) use ($request) {
-                return $query->wherePublisherId($request->query('publisher'));
-            });
-        }
-
-        $talks = $query->paginate(10)->appends($request->query());
-        $talks->load(['publisher', 'repostable']);
+        $perPage = 10;
+        $talks = Talk::filter($request->all())->paginateFilter($perPage);
+        $talks->load(['lastComment', 'shareable']);
 
         return TalkResource::collection($talks);
     }
@@ -58,31 +49,21 @@ class TalkController extends Controller
     public function store(CreateTalkRequest $request)
     {
         $this->authorize('create', Talk::class);
+
         // Create a talk.
-        $talk = new Talk($request->only(['content', 'resource_type', 'resource']));
+        $talk = new Talk($request->only(['content', 'media']));
         $talk->publisher_id = $request->user()->id;
-
-        // Get repost resource class name.
-        $repostableClassName = ModelMorphMap::aliasToClassName(
-            (string) $repostableType = $request->input('repostable.type')
-        );
-
-        // Has repostable, and has repostable class exists.
-        if ($request->has('repostable') && class_exists($repostableClassName)) {
-            // Has repostable resource exists.
-            if (! call_user_func([$repostableClassName, 'find'], $repostableId = $request->input('repostable.id'))) {
-                throw new UnprocessableEntityHttpException('Repost resource not found.');
-            }
-
-            // Set repostable.
-            $talk->repostable_type = $repostableType;
-            $talk->repostable_id = $repostableId;
+        $talk->id = Str::uuid()->toString();
+        
+        if ($request->has('shareable')) {
+            $talk->shareable_type = $request->shareable_type;
+            $talk->shareable_id = $request->shareable_id;
         }
 
         // find user talk count model.
         $extra = $request->user()->extras()->firstOrCreate([
             'name' => 'talks_count',
-            'type' => UserExtra::TYPE_INTEGER,
+            'value_type' => UserExtra::TYPE_INTEGER,
         ], [
             'integer_value' => 0,
         ]);
@@ -106,7 +87,7 @@ class TalkController extends Controller
      */
     public function show(Talk $talk)
     {
-        $talk->load(['publisher', 'repostable']);
+        $talk->load(['publisher', 'shareable']);
         $talk->increment('views_count', 1);
 
         return new TalkResource($talk);
@@ -123,9 +104,9 @@ class TalkController extends Controller
         $this->authorize('delete', $talk);
         $extra = null;
         if ($talk->publisher) {
-            $extra = $request->user()->extras()->firstOrCreate([
+            $extra = $talk->publisher->extras()->firstOrCreate([
                 'name' => 'talks_count',
-                'type' => UserExtra::TYPE_INTEGER,
+                'value_type' => UserExtra::TYPE_INTEGER,
             ], [
                 'integer_value' => 0,
             ]);
@@ -134,7 +115,7 @@ class TalkController extends Controller
         // transaction
         DB::transaction(function () use ($extra, $talk) {
             $talk->delete();
-            if ($extra && $extra->talks_count > 0) {
+            if ($extra && $extra->integer_value > 0) {
                 $extra->decrement('integer_value', 1);
             }
         });
