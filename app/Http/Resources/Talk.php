@@ -6,7 +6,6 @@ namespace App\Http\Resources;
 
 use App\ModelMorphMap;
 use App\Models\Talk as TalkModel;
-use App\Models\User as UserModel;
 use App\Models\Talk as ForumThreadModel;
 use Illuminate\Http\Resources\MissingValue;
 
@@ -50,7 +49,7 @@ class Talk extends JsonResource
                 'views' => $this->views_count,
                 'likes' => $this->likes_count,
                 'comments' => $this->comments_count,
-                'shares' => $this->shares_count
+                'shares' => $this->shares_count,
             ],
         ];
     }

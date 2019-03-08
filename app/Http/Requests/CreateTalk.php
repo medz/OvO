@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
-use App\Models\Talk;
 use App\Rules\ModelExists;
 use Illuminate\Foundation\Http\FormRequest;
 

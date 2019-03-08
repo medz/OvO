@@ -37,7 +37,7 @@ class SmsChannel
         }
 
         $message = $notification->toSms($notifiable);
-        
+
         try {
             $this->client->send($to, $message);
         } catch (\Throwable $th) {

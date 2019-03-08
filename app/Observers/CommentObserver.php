@@ -2,9 +2,7 @@
 
 namespace App\Observers;
 
-use App\ModelMorphMap;
 use App\Models\Comment;
-use App\Models\ForumThread;
 
 class CommentObserver
 {

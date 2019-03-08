@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Talk;
-use App\ModelMorphMap;
 use App\Models\UserExtra;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Talk as TalkResource;
 use App\Http\Requests\ListTalks as ListTalksRequest;
 use App\Http\Requests\CreateTalk as CreateTalkRequest;
-use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 
 class TalkController extends Controller
 {
@@ -54,7 +52,7 @@ class TalkController extends Controller
         $talk = new Talk($request->only(['content', 'media']));
         $talk->publisher_id = $request->user()->id;
         $talk->id = Str::uuid()->toString();
-        
+
         if ($request->has('shareable')) {
             $talk->shareable_type = $request->shareable_type;
             $talk->shareable_id = $request->shareable_id;
