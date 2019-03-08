@@ -7,7 +7,6 @@ namespace App\Rules;
 use App\VerificationCode;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\PhoneNumber;
-use App\Sms\Utils\TextVerificationCode;
 use Illuminate\Contracts\Validation\Rule;
 
 class VerifyPhoneTextVerificationCode implements Rule

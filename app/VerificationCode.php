@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class VerificationCode
 {
     /**
-     * The phone number
+     * The phone number.
      */
     protected $phoneNumber;
 
@@ -25,7 +25,7 @@ class VerificationCode
      */
     public function __construct($itc, ?string $phone = null)
     {
-        if (!($itc instanceof PhoneNumber)) {
+        if (! ($itc instanceof PhoneNumber)) {
             $itc = new PhoneNumber($phone, $itc);
         }
 
@@ -87,7 +87,7 @@ class VerificationCode
     /**
      * Get a instance.
      */
-    static public function instance(...$payload)
+    public static function instance(...$payload)
     {
         return new static(...$payload);
     }
@@ -95,7 +95,7 @@ class VerificationCode
     /**
      * Send a notification.
      */
-    static public function send(string $itc, string $phone): void
+    public static function send(string $itc, string $phone): void
     {
         $instance = static::instance($itc, $phone);
         if ($instance->has(true)) {
@@ -108,7 +108,7 @@ class VerificationCode
     /**
      * The cache key.
      */
-    static public function key(PhoneNumber $phoneNulber, bool $isHit = false): string
+    public static function key(PhoneNumber $phoneNulber, bool $isHit = false): string
     {
         $key = sprintf(config('sms.text-verifcation-code.cache-key'), $phoneNulber->getUniversalNumber());
 

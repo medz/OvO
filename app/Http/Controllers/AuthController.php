@@ -13,7 +13,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Login as LoginRequest;
-use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\SendPhoneNumberVerfiyCode as SendPhoneNumberVerfiyCodeRequest;
 
 class AuthController extends Controller
