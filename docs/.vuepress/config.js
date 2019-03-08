@@ -32,6 +32,7 @@ module.exports = {
                         'comments',
                         'itc',
                         'jurisdictions',
+                        'mix-search',
                         'talks',
                         'upload',
                         'users',
