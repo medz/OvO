@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/verification-code/phone', 'AuthController@sendVerificationCode');
 
 // Auth
-Route::post('/auth/jwt', 'AuthController@resolve');
-Route::get('/auth/user', 'UserController@show')->middleware('auth');
+Route::post('/auth/login', 'AuthController@login');
+Route::post('/auth/logout', 'AuthController@logout');
+Route::post('/auth/refresh', 'AuthController@refresh');
+Route::get('/auth/me', 'UserController@show')->middleware('auth');
 
 // Internation Telephone code
 Route::get('/international-telephone-codes', 'InternationalTelephoneCodeController@index');
