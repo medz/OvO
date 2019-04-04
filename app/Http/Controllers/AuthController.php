@@ -73,7 +73,6 @@ class AuthController extends Controller
     protected function create(array $payload): User
     {
         return User::create(array_merge($payload, [
-            'id' => Str::uuid()->toString(),
             'phone_verified_at' => Carbon::now(),
         ]));
     }

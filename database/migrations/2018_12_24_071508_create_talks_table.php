@@ -15,11 +15,10 @@ class CreateTalksTable extends Migration
     public function up()
     {
         Schema::create('talks', function (Blueprint $table) {
-            $table->uuid('id')->comment('Talk ID');
-            $table->uuid('publisher_id')->comment('Publisher User ID');
+            $table->increments('id')->comment('Talk ID');
+            $table->increments('publisher_id')->comment('Publisher User ID');
             $table->text('content')->comment('The Talk Content');
-            $table->string('shareable_type', 100)->nullable()->comment('Share to Talk resource alias.');
-            $table->uuid('shareable_id')->nullable()->comment('Share to Talk resource ID.');
+            $table->morphs('shareable'); // shareable_type, shareable_id
             $table->uuid('last_comment_id')->nullable()->comment('The Talk last comment');
             $table->json('media')->nullable()->comment('The Talk media');
 

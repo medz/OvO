@@ -51,7 +51,6 @@ class TalkController extends Controller
         // Create a talk.
         $talk = new Talk($request->only(['content', 'media']));
         $talk->publisher_id = $request->user()->id;
-        $talk->id = Str::uuid()->toString();
 
         if ($request->has('shareable')) {
             $talk->shareable_type = $request->shareable_type;
