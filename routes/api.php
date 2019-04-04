@@ -18,8 +18,8 @@ Route::post('/verification-code/phone', 'AuthController@sendVerificationCode');
 
 // Auth
 Route::post('/auth/login', 'AuthController@login');
-Route::post('/auth/logout', 'AuthController@logout');
-Route::post('/auth/refresh', 'AuthController@refresh');
+Route::any('/auth/logout', 'AuthController@logout');
+Route::any('/auth/refresh', 'AuthController@refresh');
 Route::get('/auth/me', 'UserController@show')->middleware('auth');
 
 // Internation Telephone code

@@ -22,7 +22,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['login', 'refresh']);
+        $this->middleware('auth')->except(['login', 'refresh', 'sendVerificationCode']);
     }
 
     /**

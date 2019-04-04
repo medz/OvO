@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fc13a7e79236ad7d99e927b500f7ef7",
+    "content-hash": "46004b35e618f96935bf3b0cd4494056",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1342,6 +1342,82 @@
                 "storage"
             ],
             "time": "2018-11-23T23:41:29+00:00"
+        },
+        {
+            "name": "medz/cors",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/medz/cors.git",
+                "reference": "519b801c269c57b45445395e56d36106836be9dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/medz/cors/zipball/519b801c269c57b45445395e56d36106836be9dc",
+                "reference": "519b801c269c57b45445395e56d36106836be9dc",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Medz\\Cors\\Laravel\\Providers\\LaravelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Medz\\Cors\\": "src/"
+                },
+                "files": [
+                    "src/ThinkPHP/injection.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Seven Du",
+                    "email": "shiweidu@outlook.com"
+                }
+            ],
+            "description": "PHP CORS (Cross-origin resource sharing) middleware.",
+            "keywords": [
+                "cors",
+                "cors-request",
+                "crossdomain",
+                "laravel",
+                "laravel5",
+                "middleware",
+                "php",
+                "php-cors",
+                "psr-15",
+                "psr-7",
+                "request",
+                "response",
+                "slim",
+                "symfony",
+                "thinkphp",
+                "yii2"
+            ],
+            "time": "2019-02-26T10:05:38+00:00"
         },
         {
             "name": "monolog/monolog",
