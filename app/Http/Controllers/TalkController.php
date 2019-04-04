@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Talk;
 use App\Models\UserExtra;
-use Illuminate\Support\Str;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Talk as TalkResource;
