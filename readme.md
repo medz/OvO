@@ -48,7 +48,7 @@ php artisan storage:link
 Run data table migration
 
 ```sh
-php artisan migrate --sedd
+php artisan migrate --seed
 ```
 
 Create founder
