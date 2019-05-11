@@ -36,7 +36,7 @@ class StorageController extends Controller
 
     protected function getStoragePath(UploadedFile $file): string
     {
-        list($type) = explode('/', $file->getMimeType());
+        [$type] = explode('/', $file->getMimeType());
         if (! $type) {
             $type = 'application';
         }
