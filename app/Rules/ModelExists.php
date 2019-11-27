@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Rules;
 
 use App\ModelMorphMap;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Http\Request;
 
 class ModelExists implements Rule
 {

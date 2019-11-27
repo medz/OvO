@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\ModelMorphMap;
-use Laravel\Scout\Searchable;
 use EloquentFilter\Filterable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Rules;
 
 use App\VerificationCode;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\PhoneNumber;
-use Illuminate\Contracts\Validation\Rule;
 
 class VerifyPhoneTextVerificationCode implements Rule
 {

@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\InternationalTelephoneCode;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use App\Models\InternationalTelephoneCode;
 
 class InternationalTelephoneCodesTableSeeder extends Seeder
 {

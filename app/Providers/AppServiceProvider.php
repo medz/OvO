@@ -4,12 +4,12 @@ namespace App\Providers;
 
 use App\ModelMorphMap;
 use App\Models\Comment;
-use Overtrue\EasySms\EasySms;
+use App\Notifications\Channels\SmsChannel as SmsNotificationChannel;
 use App\Observers\CommentObserver;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\Channels\SmsChannel as SmsNotificationChannel;
+use Illuminate\Support\ServiceProvider;
+use Overtrue\EasySms\EasySms;
 
 class AppServiceProvider extends ServiceProvider
 {

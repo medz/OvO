@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Notifications\Channels;
 
+use Illuminate\Notifications\Notification;
 use Overtrue\EasySms\EasySms;
 use Overtrue\EasySms\PhoneNumber;
-use Illuminate\Notifications\Notification;
 
 class SmsChannel
 {

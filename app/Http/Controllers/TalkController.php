@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTalk as CreateTalkRequest;
+use App\Http\Requests\ListTalks as ListTalksRequest;
+use App\Http\Resources\Talk as TalkResource;
 use App\Models\Talk;
 use App\Models\UserExtra;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\Talk as TalkResource;
-use App\Http\Requests\ListTalks as ListTalksRequest;
-use App\Http\Requests\CreateTalk as CreateTalkRequest;
 
 class TalkController extends Controller
 {

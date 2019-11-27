@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Talk;
+use App\Http\Requests\CreateComment;
+use App\Http\Requests\ListComments;
+use App\Http\Resources\Comment as CommentResource;
 use App\ModelMorphMap;
 use App\Models\Comment;
+use App\Models\Talk;
 use App\Models\UserExtra;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\ListComments;
-use App\Http\Requests\CreateComment;
-use App\Http\Resources\Comment as CommentResource;
 
 class CommentController extends Controller
 {

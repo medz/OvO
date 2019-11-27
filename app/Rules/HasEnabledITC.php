@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use App\Models\InternationalTelephoneCode;
+use Illuminate\Contracts\Validation\Rule;
 
 class HasEnabledITC implements Rule
 {

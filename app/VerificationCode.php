@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Notifications\VerificationCodeNotification;
 use Carbon\Carbon;
-use Overtrue\EasySms\PhoneNumber;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\VerificationCodeNotification;
+use Overtrue\EasySms\PhoneNumber;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class VerificationCode

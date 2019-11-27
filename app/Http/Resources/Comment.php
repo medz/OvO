@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use App\ModelMorphMap;
-use App\Models\Talk as TalkModel;
 use App\Models\Talk as ForumThreadModel;
+use App\Models\Talk as TalkModel;
 use Illuminate\Http\Resources\MissingValue;
 
 class Comment extends JsonResource

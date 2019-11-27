@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
-use App\Rules\OnlyNumber;
 use App\Rules\HasEnabledITC;
 use App\Rules\InternationalTelephoneCode;
+use App\Rules\OnlyNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SendPhoneNumberVerfiyCode extends FormRequest

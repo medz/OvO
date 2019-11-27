@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ForumNode;
-use App\Models\UserExtra;
-use App\Models\ForumThread;
-use App\Models\ForumThreadContent;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\ListForumThreads;
 use App\Http\Requests\CreateForumThread;
+use App\Http\Requests\ListForumThreads;
 use App\Http\Requests\UpdateForumThread;
 use App\Http\Resources\ForumThread as ForumThreadResource;
+use App\Models\ForumNode;
+use App\Models\ForumThread;
+use App\Models\ForumThreadContent;
+use App\Models\UserExtra;
+use Illuminate\Support\Facades\DB;
 
 class ForumThreadController extends Controller
 {

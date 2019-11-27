@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
-use App\Rules\OnlyNumber;
 use App\Rules\HasEnabledITC;
 use App\Rules\InternationalTelephoneCode;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\OnlyNumber;
 use App\Rules\VerifyPhoneTextVerificationCode;
+use Illuminate\Foundation\Http\FormRequest;
 
 class Login extends FormRequest
 {

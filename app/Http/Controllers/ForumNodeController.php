@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ForumNode;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateForumNode;
 use App\Http\Requests\DeleteForumNode;
 use App\Http\Requests\UpdateForumNode;
 use App\Http\Resources\ForumNode as ForumNodeResource;
+use App\Models\ForumNode;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class ForumNodeController extends Controller
 {

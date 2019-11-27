@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
-use App\Models\InternationalTelephoneCode;
 use App\Http\Requests\CreateTTC as CreateTTCRequest;
 use App\Http\Requests\UpdateTTC as UpdateTTCRequest;
 use App\Http\Resources\InternationalTelephoneCode as InternationalTelephoneCodeResource;
+use App\Models\InternationalTelephoneCode;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class InternationalTelephoneCodeController extends Controller
 {
