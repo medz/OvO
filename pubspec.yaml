@@ -1,7 +1,7 @@
 name: ovo
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: OvO is a Dart-first schema declaration and validation library.
+version: 0.0.0
+repository: https://github.com/medz/ovo
 
 environment:
   sdk: ^3.1.5

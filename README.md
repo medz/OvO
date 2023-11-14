@@ -1,39 +1,71 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+<p align="center">
+    <h1 align="center">OvO</h1>
+    <p align="center">
+        <!-- ✨ <a href="https://zod.dev">https://zod.dev</a> ✨ -->
+    </p>
+    <p align="center">
+        OvO is a Dart-first schema declaration and validation library.
+    </p>
+</p>
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+## Introduction
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+OvO is a Dart-first schema declaration and validation library. We use the technical term **"Schema"** to define any data type, from simple single data (for example: `string`/`int`, etc.) to complex nested `Map`.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+OvO is designed to be as user-friendly and developer-friendly as possible, with the goal of eliminating tedious type checking and object deserialization. It is easy to compose complex data structure validation using simple declaration validation.
 
-## Features
+several important aspects
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- A fun walkthrough of Dart type extensions
+- Simple and chained interface calls
+- Can be used on any Dart platform (Dart, Web, Flutter)
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+> We are more aggressive and use higher versions of Dart stable versions as much as possible.
 
-## Usage
+### Install from command line
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```bash
+dart pub add ovo
 ```
 
-## Additional information
+### Install from `pubspec.yaml`
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```yaml
+dependencies:
+  ovo: latest
+```
+
+## Basic Usage
+
+Create a simple string schema:
+
+```dart
+import 'package:ovo/ovo.dart' as ovo;
+
+// Create a schema for string.
+final schema = ovo.string();
+
+// Parsing
+await schema.parse('Hello World'); // => 'Hello World'
+await schema.parse(123); // => throws OvoError
+
+// Safe parsing, don't throw error.
+await schema.safeParse('Hello World'); // => OvoSuccess<String>('Hello World')
+await schema.safeParse(123); // => OvoFailure<String>('Expected a string, but received a int')
+```
+
+Creating an JSON schema:
+
+```dart
+import 'package:ovo/ovo.dart' as ovo;
+
+final schema = ovo.json({
+    'name': ovo.string(),
+});
+
+await schema.parse({
+    'name': 'John',
+}); // => {'name': 'John'}
+```
