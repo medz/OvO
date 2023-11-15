@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:ovo/src/error.dart';
 
 import 'context.dart';
 import 'parser.dart';
@@ -19,8 +20,15 @@ class OvoSchema<T> {
     OvoThrowMode throwMode = OvoThrowMode.all,
   }) async {
     final context = OvoContext(data, throwMode: throwMode);
-    final status = await _parser.handle(context);
 
-    return status.whenSuccessOr((context) => throw UnimplementedError());
+    try {
+      final status = await _parser.handle(context);
+
+      return status.whenSuccessOr((context) => throw OvoException(context));
+    } on OvoException {
+      rethrow;
+    } on Error catch (error) {
+      throw OvoError(context, error);
+    }
   }
 }
