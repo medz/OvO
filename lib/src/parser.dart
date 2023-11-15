@@ -42,8 +42,8 @@ extension OvoParserStatusWhen<T> on OvoParserStatus<T> {
 extension OvoContextStatusHelper on OvoContext {
   OvoParserStatus<T> ok<T>(T data) => OvoParserStatus.success(data);
 
-  OvoParserStatus<T> fail<T>({required String kind, String? message}) {
-    this[kind] = message;
+  OvoParserStatus<T> fail<T>(String message) {
+    this + OvoIssue(message);
 
     return OvoParserStatus.failure(this);
   }
@@ -64,7 +64,8 @@ final class _Parser<T> implements OvoParser<T> {
   Future<OvoParserStatus<T>> handle(OvoContext context) async {
     return switch (context.data) {
       T data => context.ok(data),
-      _ => context.fail(kind: 'invalid_type', message: message),
+      _ => context.fail(
+          'Invalid type, expected $T but got ${context.data.runtimeType}'),
     };
   }
 }

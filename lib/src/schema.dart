@@ -1,6 +1,5 @@
 import 'package:meta/meta.dart';
 
-import '../locales/en.dart';
 import 'context.dart';
 import 'parser.dart';
 
@@ -17,11 +16,9 @@ class OvoSchema<T> {
   @mustCallSuper
   Future<T> parse(
     Object? data, {
-    OvoLocaleMapper localeMapper = enLocaleMapper,
     OvoThrowMode throwMode = OvoThrowMode.all,
   }) async {
-    final context =
-        OvoContext(data, localeMapper: localeMapper, throwMode: throwMode);
+    final context = OvoContext(data, throwMode: throwMode);
     final status = await _parser.handle(context);
 
     return status.whenSuccessOr((context) => throw UnimplementedError());

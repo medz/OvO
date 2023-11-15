@@ -4,7 +4,7 @@ import 'context.dart';
 import 'parser.dart';
 import 'schema.dart';
 
-extension OvoTransformSchema<T> on OvoSchema<T> {
+extension OvoTransform<T> on OvoSchema<T> {
   OvoSchema<R> transform<R>(
       FutureOr<OvoParserStatus<R>> Function(OvoContext context, T data)
           transform) {
@@ -23,8 +23,12 @@ class _TransformParser<T, R> implements OvoParser<R> {
 
   @override
   Future<OvoParserStatus<R>> handle(OvoContext context) async {
-    final status = await parser.handle(context);
+    try {
+      final status = await parser.handle(context);
 
-    return status.cast((data) => transform(context, data));
+      return status.cast((data) => transform(context, data));
+    } catch (e) {
+      return context.fail(e.toString());
+    }
   }
 }
