@@ -23,8 +23,9 @@ class _AndParser implements OvoParser<Map> {
 
     for (final parser in parsers) {
       final data = await parser.handle(context);
-
       result.addAll(data);
     }
+
+    return result;
   }
 }

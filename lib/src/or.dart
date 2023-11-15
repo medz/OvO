@@ -18,33 +18,16 @@ class _OrParser implements OvoParser {
   const _OrParser(this.parsers, this.message);
 
   @override
-  Future handle(OvoContext context) {
-    final issues = <OvoIssue>[];
-
+  Future handle(OvoContext context) async {
     for (final parser in parsers) {
-      final tempContext =
-          OvoContext(context.data, throwMode: context.throwMode);
+      final result = await parser.handle(context);
 
-      try {
-        final result = parser.handle(tempContext);
-
-        if (tempContext.passed) {
-          return result;
-        }
-      } on OvoContext catch (e) {
-        issues.addAll(e);
-        if (context.throwMode == OvoThrowMode.all) {
-          continue;
-        }
-
-        break;
+      if (context.passed) {
+        context.issuesClear();
+        return result;
       }
     }
 
-    for (final issue in issues) {
-      context + issue;
-    }
-
-    throw context.throws(message ?? 'No schema matched.');
+    return context.throws(message ?? 'No schema passed.');
   }
 }
