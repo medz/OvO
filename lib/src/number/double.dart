@@ -5,12 +5,12 @@ import '../transform.dart';
 
 typedef OvoDoubleTypeDef = double;
 
-extension OvoInt on OvO {
+extension OvoDouble on OvO {
   OvoSchema<OvoDoubleTypeDef> double({String? message}) =>
       OvoSchema.fromType(message);
 }
 
-extension OvoIntSchema on OvoSchema<num> {
+extension OvoDoubleSchema on OvoSchema<num> {
   OvoSchema<OvoDoubleTypeDef> double({String? message}) {
     if (this is OvoSchema<OvoDoubleTypeDef>) {
       return this as OvoSchema<OvoDoubleTypeDef>;

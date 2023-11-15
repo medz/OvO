@@ -36,7 +36,7 @@ class OvoContext with Iterable<OvoIssue> {
     if (segment != null) yield segment!;
   }
 
-  OvoContext nest(Object? data, String segment) {
+  OvoContext nest(Object? data, [String? segment]) {
     final child = OvoContext(
       data,
       parent: this,

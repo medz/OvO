@@ -22,8 +22,16 @@ class _AndParser implements OvoParser<Map> {
     final result = <dynamic, dynamic>{};
 
     for (final parser in parsers) {
-      final data = await parser.handle(context);
-      result.addAll(data);
+      try {
+        final data = await parser.handle(context);
+        result.addAll(data);
+      } on OvoContext {
+        if (context.throwMode == OvoThrowMode.all) {
+          continue;
+        }
+
+        rethrow;
+      }
     }
 
     return result;

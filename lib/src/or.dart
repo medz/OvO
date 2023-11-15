@@ -20,14 +20,20 @@ class _OrParser implements OvoParser {
   @override
   Future handle(OvoContext context) async {
     for (final parser in parsers) {
-      final result = await parser.handle(context);
+      try {
+        final childContext = context.nest(context.data);
+        final result = await parser.handle(childContext);
 
-      if (context.passed) {
-        context.issuesClear();
-        return result;
+        if (childContext.passed) {
+          context.issuesClear();
+          childContext.issuesClear();
+          return result;
+        }
+      } on OvoContext catch (_) {
+        continue;
       }
     }
 
-    return context.throws(message ?? 'No schema passed.');
+    throw context;
   }
 }

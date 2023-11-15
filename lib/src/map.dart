@@ -21,15 +21,21 @@ class _MapParser<K, V> implements OvoParser<Map<K, V>> {
 
   @override
   Future<Map<K, V>> handle(OvoContext context) async {
-    final data = await OvoParser<Map>(message).handle(context);
+    final Map data = switch (context.data) {
+      Map value => value,
+      _ => throw context.throws(
+          'Invalid type, expected Map but got ${context.data.runtimeType}'),
+    };
+
     final result = <K, V>{};
 
     for (final (key, value) in data.indexed) {
-      final childContext = context.nest(value, key.toString());
+      final keyContext = context.nest(key, key.toString());
+      final valueContext = context.nest(value, key.toString());
 
       try {
-        final parsedKey = await keyParser.handle(childContext);
-        final parsedValue = await valueParser.handle(childContext);
+        final parsedKey = await keyParser.handle(keyContext);
+        final parsedValue = await valueParser.handle(valueContext);
 
         result[parsedKey] = parsedValue;
       } on OvoContext catch (context) {
