@@ -19,6 +19,10 @@ class OvoContext with Iterable<OvoIssue> {
   final OvoThrowMode throwMode;
 
   final List<OvoIssue> _issues = [];
+  final List<OvoContext> _children = [];
+
+  Iterable<OvoContext> get children => _children;
+  OvoContext get root => parent?.root ?? this;
 
   OvoContext(
     this.data, {
@@ -33,16 +37,37 @@ class OvoContext with Iterable<OvoIssue> {
   }
 
   OvoContext nest(Object? data, String segment) {
-    return OvoContext(
+    final child = OvoContext(
       data,
       parent: this,
       segment: segment,
       throwMode: throwMode,
     );
+
+    _children.add(child);
+
+    return child;
   }
 
   @override
   Iterator<OvoIssue> get iterator => _issues.iterator;
 
-  operator +(OvoIssue issue) => _issues.add(issue);
+  OvoContext operator +(OvoIssue issue) => this.._issues.add(issue);
+
+  bool get passed {
+    for (final issue in children) {
+      if (!issue.passed) return false;
+    }
+
+    return _issues.isEmpty;
+  }
+
+  void currentIssuesClear() => _issues.clear();
+  void issuesClear() {
+    for (final child in children) {
+      child.issuesClear();
+    }
+
+    currentIssuesClear();
+  }
 }

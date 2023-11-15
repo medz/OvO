@@ -11,8 +11,8 @@ extension OvoRefine<T> on OvoSchema<T> {
   }) {
     return transform<T>((context, data) async {
       return switch (await test(data)) {
-        true => context.ok(data),
-        false => context.fail(message ?? 'Invalid value'),
+        true => data,
+        false => context.throws(message ?? 'Invalid value'),
       };
     });
   }

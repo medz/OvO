@@ -18,8 +18,8 @@ extension OvoIntSchema on OvoSchema<num> {
 
     return transform((context, data) {
       return switch (data) {
-        OvoIntTypeDef value => context.ok(value),
-        _ => context.fail(message ?? 'Must be an integer'),
+        OvoIntTypeDef value => value,
+        _ => context.throws(message ?? 'Must be an integer'),
       };
     });
   }

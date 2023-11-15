@@ -18,13 +18,17 @@ class OvoSchema<T> {
   Future<T> parse(
     Object? data, {
     OvoThrowMode throwMode = OvoThrowMode.all,
+    String? segment,
   }) async {
-    final context = OvoContext(data, throwMode: throwMode);
+    final context = OvoContext(data, throwMode: throwMode, segment: segment);
 
     try {
-      final status = await _parser.handle(context);
+      final result = await _parser.handle(context);
 
-      return status.whenSuccessOr((context) => throw OvoException(context));
+      if (context.passed) return result;
+      throw OvoException(context);
+    } on OvoContext catch (context) {
+      throw OvoException(context);
     } on OvoException {
       rethrow;
     } on Error catch (error) {

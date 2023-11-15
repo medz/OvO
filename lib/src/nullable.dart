@@ -17,10 +17,8 @@ class _NullableParser<T> implements OvoParser<T?> {
   const _NullableParser(this.parser);
 
   @override
-  Future<OvoParserStatus<T?>> handle(OvoContext context) async {
-    if (context.data == null) {
-      return context.ok(null);
-    }
+  Future<T?> handle(OvoContext context) async {
+    if (context.data == null) return null;
 
     return parser.handle(context);
   }

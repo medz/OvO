@@ -5,16 +5,16 @@ class OvoException implements Exception {
 
   final OvoContext context;
 
-  Map<String, Iterable<OvoIssue>> get issues => _issuesBuilder(context);
+  Map<String, Iterable<OvoIssue>> get issues => _issuesBuilder(context.root);
 
   Map<String, Iterable<OvoIssue>> _issuesBuilder(OvoContext context) {
     final result = <String, Iterable<OvoIssue>>{
       context.path.join('.'): context,
     };
 
-    if (context.parent != null) {
-      final parent = _issuesBuilder(context.parent!);
-      for (final MapEntry(key: path, value: issues) in parent.entries) {
+    for (final child in context.children) {
+      final childIssues = _issuesBuilder(child);
+      for (final MapEntry(key: path, value: issues) in childIssues.entries) {
         if (result.containsKey(path)) {
           result[path] = [...result[path]!, ...issues];
           continue;
@@ -25,6 +25,15 @@ class OvoException implements Exception {
     }
 
     return result;
+  }
+
+  @override
+  String toString() {
+    return issues
+        .map(
+          (key, value) => MapEntry(key, value.map((e) => e.message)),
+        )
+        .toString();
   }
 }
 
