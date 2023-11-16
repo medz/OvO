@@ -1,8 +1,5 @@
 <p align="center">
-    <h1 align="center">OvO</h1>
-    <p align="center">
-        <!-- ✨ <a href="https://zod.dev">https://zod.dev</a> ✨ -->
-    </p>
+    <h1 align="center">✨ OvO ✨</h1>
     <p align="center">
         OvO is a Dart-first schema declaration and validation library.
     </p>
@@ -27,7 +24,11 @@ several important aspects
 ### Install from command line
 
 ```bash
+# Dart project
 dart pub add ovo
+
+# Flutter project
+flutter pub add ovo
 ```
 
 ### Install from `pubspec.yaml`
@@ -45,15 +46,11 @@ Create a simple string schema:
 import 'package:ovo/ovo.dart' as ovo;
 
 // Create a schema for string.
-final schema = ovo.string();
+final schema = ovo.String();
 
 // Parsing
 await schema.parse('Hello World'); // => 'Hello World'
-await schema.parse(123); // => throws OvoError
-
-// Safe parsing, don't throw error.
-await schema.safeParse('Hello World'); // => OvoSuccess<String>('Hello World')
-await schema.safeParse(123); // => OvoFailure<String>('Expected a string, but received a int')
+await schema.parse(123); // => throws OvOException
 ```
 
 Creating an JSON schema:
@@ -61,11 +58,13 @@ Creating an JSON schema:
 ```dart
 import 'package:ovo/ovo.dart' as ovo;
 
-final schema = ovo.json({
-    'name': ovo.string(),
+final schema = ovo.Object({
+    'name': ovo.String(),
 });
 
 await schema.parse({
     'name': 'John',
 }); // => {'name': 'John'}
 ```
+
+## Type-specific

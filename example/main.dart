@@ -1,16 +1,20 @@
-import 'package:ovo/ovo.dart';
+import 'package:ovo/ovo.dart' as ovo;
 
-final m1 = ovo.map(ovo.string(), ovo.int());
-final m2 = ovo.map(ovo.int(), ovo.string());
+final schema = ovo.Object({
+  'name': ovo.AnyOf([
+    ovo.String(),
+    ovo.Array(ovo.String()).unique().size(2),
+  ]),
+});
 
-final schema = ovo.or([m1, m2]);
+final data1 = {
+  'name': 'John Doe',
+};
+final data2 = {
+  'name': ['John', 'Doe'],
+};
 
 void main() async {
-  final res1 = await schema.parse({'1': 1, '2': 2});
-  print(res1);
-
-  final res2 = await schema.parse({1: '1', 2: '2'});
-  print(res2);
-
-  await schema.parse(123); // Throws OvoException
+  print(await schema.parse(data1));
+  print(await schema.parse(data2));
 }
