@@ -1,17 +1,17 @@
 import '../core/context.dart';
 import '../core/ovo.dart';
 
-class Object implements OvO<Map<String, dynamic>> {
-  final Map<String, OvO> properties;
+class Object<T> implements OvO<Map<String, T>> {
+  final Map<String, OvO<T>> properties;
   final String? message;
 
   const Object(this.properties, [this.message]);
 
   @override
-  Future<Map<String, dynamic>> handle(Context context, data) async {
+  Future<Map<String, T>> handle(Context context, data) async {
     final value = OvO.cast<Map<String, dynamic>>(data,
         message: message, path: context.path);
-    final result = <String, dynamic>{};
+    final result = <String, T>{};
     for (final (key, schema) in properties.indexed) {
       result[key] = await schema.handle(context.child(key), value[key]);
     }
