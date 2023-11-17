@@ -19,6 +19,7 @@ export 'src/compositions/any_of.dart';
 export 'src/compositions/const.dart';
 export 'src/compositions/not.dart';
 export 'src/compositions/one_of.dart';
+export 'src/compositions/if_case.dart';
 
 // Functional
 export 'src/functional/nullable.dart';
