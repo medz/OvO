@@ -7,7 +7,7 @@ environment:
   sdk: ^3.1.5
 
 dependencies:
-  _fe_analyzer_shared: ^68.0.0
+  _fe_analyzer_shared: ^72.0.0
   meta: ^1.11.0
 
 dev_dependencies:
