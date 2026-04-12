@@ -1,15 +1,13 @@
-name: ovo
-description: OvO is a Dart-first schema declaration and validation library.
-version: 0.0.2
-repository: https://github.com/medz/ovo
+name: alloy
+description:
+version: 0.0.0-dev.0
+repository: https://github.com/medz/alloy
 
 environment:
-  sdk: ^3.1.5
+  sdk: ^3.11.0
 
 dependencies:
-  _fe_analyzer_shared: ^68.0.0
-  meta: ^1.11.0
 
 dev_dependencies:
-  lints: ^4.0.0
-  test: ^1.21.0
+  lints: ^6.0.0
+  test: ^1.31.0

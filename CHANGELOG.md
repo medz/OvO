@@ -1,3 +1,1 @@
-## 0.0.2
-
-- Add If-Case schema.
+## 0.0.0-dev
